@@ -924,23 +924,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
-    </header>
-    <body>
-      <trans-unit id="Use Face ID" xml:space="preserve">
-        <source>Use Face ID</source>
-        <target>Use Face ID</target>
-        <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Use Touch ID" xml:space="preserve">
-        <source>Use Touch ID</source>
-        <target>Use Touch ID</target>
-        <note>Button title</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
@@ -1717,12 +1700,7 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
         <target>Copy link</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Copy link and password" xml:space="preserve">
-        <source>Copy link and password</source>
-        <target>Copy link and password</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
@@ -1862,11 +1840,6 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
         <source>Couldn't leave the room</source>
         <target>Couldn't leave the room</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Couldn't leave the room." xml:space="preserve">
-        <source>Couldn't leave the room.</source>
-        <target>Couldn't leave the room.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
@@ -3272,6 +3245,11 @@ copied to clipboard</target>
         <target>Save</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Saved" xml:space="preserve">
+        <source>Saved</source>
+        <target>Saved</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>Saving</target>
@@ -3376,11 +3354,6 @@ copied to clipboard</target>
       <trans-unit id="Settings and Security" xml:space="preserve">
         <source>Settings and Security</source>
         <target>Settings and Security</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
-        <source>Share</source>
-        <target>Share</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -3882,11 +3855,6 @@ to the clipboard</target>
         <target>Unpinning</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Updating" xml:space="preserve">
-        <source>Updating</source>
-        <target>Updating</target>
-        <note>Caption of the processing</note>
-      </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
         <target>Uploading</target>
@@ -4087,6 +4055,11 @@ then accessed from any other device.</target>
         <source>Cancel</source>
         <target>Cancel</target>
         <note>Cancel</note>
+      </trans-unit>
+      <trans-unit id="common.close" xml:space="preserve">
+        <source>Close</source>
+        <target>Close</target>
+        <note>Close</note>
       </trans-unit>
       <trans-unit id="common.error" xml:space="preserve">
         <source>Error</source>

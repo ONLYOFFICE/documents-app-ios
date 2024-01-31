@@ -37,3 +37,9 @@
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Շարունակելու համար անհրաժեշտ է նույնականացում";
 
+/* Button title */
+"Use Face ID" = "Օգտագործեք Face ID";
+
+/* Button title */
+"Use Touch ID" = "Օգտագործեք Touch ID";
+

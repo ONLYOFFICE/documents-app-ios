@@ -1,3 +1,12 @@
+/* No comment provided by engineer. */
+": \"%@\"" = ": \"%@\"";
+
+/* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
+"(%@/%@)" = "(%1$@/%2$@)";
+
 /* Count of seclected rows: count + selected */
 "%d selected" = "%d 已选定";
 
@@ -27,6 +36,18 @@
 
 /* No comment provided by engineer. */
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>您必須擁有付費版本的播放器才能使用此服務。</p><p>若您啟動了雙重身份驗證，請從Infomaniak管理器生成CDM應用程序。<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">更多...</a></p>";
+
+/* No comment provided by engineer. */
+"1 day" = "1天";
+
+/* No comment provided by engineer. */
+"7 days" = "7天";
+
+/* No comment provided by engineer. */
+"12 hours" = "12小時";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exist." = "已存在相似名稱的檔案。";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "在设备的文档目录中已存在名称相似的文件。";
@@ -71,6 +92,9 @@
 "Access settings" = "访问设置";
 
 /* No comment provided by engineer. */
+"Access type" = "存取類型";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "帐户名称为空";
 
 /* No comment provided by engineer. */
@@ -85,6 +109,9 @@
 /* Sharing settings add notification message */
 "Add message" = "添加消息";
 
+/* placeholder */
+"Add tag" = "新增標籤";
+
 /* Button title */
 "Add users" = "增加使用者";
 
@@ -92,7 +119,16 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "添加用户或团队允许他们 \n阅读、审查或编辑文件。";
 
 /* No comment provided by engineer. */
+"Additional link State" = "附加連結狀態";
+
+/* No comment provided by engineer. */
+"Additional links" = "附加連結";
+
+/* No comment provided by engineer. */
 "Address is empty" = "地址为空";
+
+/* No comment provided by engineer. */
+"Administration" = "管理";
 
 /* No comment provided by engineer. */
 "All" = "全部";
@@ -116,7 +152,13 @@
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "发生了意外的错误。请稍后再试。对不起，给您带来不便。";
 
 /* No comment provided by engineer. */
+"Anyone with the link" = "知道連結的任何人";
+
+/* No comment provided by engineer. */
 "AppleId authentication failed" = "Apple ID验证失败";
+
+/* No comment provided by engineer. */
+"Apply your own settings to use this room for any custom purpose" = "套用您的個人設定，將此房間用於任何自訂用途";
 
 /* Caption of the process */
 "Applying" = "正在应用中";
@@ -139,6 +181,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "您确定要离开此账户吗？";
+
+/* No comment provided by engineer. */
+"Assign Owner" = "指定擁有者";
 
 /* No comment provided by engineer. */
 "Author" = "作者";
@@ -189,10 +234,25 @@
 "Cancel invitation?" = "取消邀請？";
 
 /* No comment provided by engineer. */
+"Canceled" = "已取消";
+
+/* No comment provided by engineer. */
 "Change owner" = "變更擁有者";
 
 /* No comment provided by engineer. */
+"Change the Room Owner" = "變更房間擁有者";
+
+/* No comment provided by engineer. */
+"Changing access" = "正在變更存取權限";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "请检查您的网络连接并重试";
+
+/* No comment provided by engineer. */
+"Choose Files" = "選擇檔案";
+
+/* No comment provided by engineer. */
+"Choose room type" = "選擇房間類型";
 
 /* Caption of the processing */
 "Cleanup" = "清理";
@@ -221,11 +281,17 @@
 /* Cut from centimeters */
 "cm" = "厘米";
 
+/* No comment provided by engineer. */
+"Collaborate on one or multiple documents with your team" = "與您的團隊共同協作一個或多個文件";
+
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "与您的团队协作";
 
 /* No comment provided by engineer. */
 "Collaboration" = "协作";
+
+/* No comment provided by engineer. */
+"Collaboration room" = "協作房間";
 
 /* Share status */
 "Commentator" = "評論員";
@@ -235,6 +301,9 @@
 
 /* Cancel */
 "common.cancel" = "取消";
+
+/* Close */
+"common.close" = "關閉";
 
 /* Error */
 "common.error" = "错误";
@@ -285,7 +354,13 @@
 "Copy" = "复制";
 
 /* Button title */
+"Copy general link" = "複製一般連結";
+
+/* Button title */
 "Copy here" = "在此复制";
+
+/* Button title */
+"Copy link" = "複製連結";
 
 /* Caption of the processing */
 "Copying" = "正在复制";
@@ -363,6 +438,15 @@
 "Could not write to file" = "无法写入文件";
 
 /* No comment provided by engineer. */
+"Couldn't change the owner." = "無法變更擁有者。";
+
+/* No comment provided by engineer. */
+"Couldn't download the room." = "無法下載此房間。";
+
+/* No comment provided by engineer. */
+"Couldn't leave the room" = "無法離開此房間";
+
+/* No comment provided by engineer. */
 "Couldn't rename the file" = "該檔案無法重新命名";
 
 /* No comment provided by engineer. */
@@ -371,11 +455,20 @@
 /* No comment provided by engineer. */
 "Create" = "创建";
 
+/* No comment provided by engineer. */
+"Create additional links to share the document with different access rights." = "建立附加連結，以不同存取權限共用該文件。";
+
+/* No comment provided by engineer. */
+"Create and copy" = "建立及複製";
+
 /* Introduction Step Two - Description */
 "Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "使用我们全面的工具栏创建并编辑文档：处理文本文档中的复杂对象，在电子表格中执行大量计算，创建令人惊叹的演示文稿并查看没有格式损失的PDF文件。";
 
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。";
+
+/* No comment provided by engineer. */
+"Create room" = "建立房間";
 
 /* Caption of the process
    Caption of the processing */
@@ -386,6 +479,9 @@
 
 /* Share status */
 "Custom filter" = "自定义筛选器";
+
+/* No comment provided by engineer. */
+"Custom room" = "自訂房間";
 
 /* No comment provided by engineer. */
 "Dark" = "暗";
@@ -415,7 +511,16 @@
 "Delete forever" = "永久删除";
 
 /* No comment provided by engineer. */
+"Delete forever?" = "是否永久刪除？";
+
+/* No comment provided by engineer. */
 "Delete from device" = "從裝置中刪除";
+
+/* No comment provided by engineer. */
+"Delete link" = "刪除連結";
+
+/* No comment provided by engineer. */
+"Deleted" = "已刪除";
 
 /* Caption of the processing */
 "Deleting" = "正在删除";
@@ -434,6 +539,9 @@
 
 /* Button title */
 "Disconnect third party" = "断开第三方的连接";
+
+/* No comment provided by engineer. */
+"Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "您確定要離開此房間嗎？您可以透過由房間管理員發送的新邀請再次加入。";
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "DocSpace管理員";
@@ -478,6 +586,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "在本地编辑文档";
 
+/* Button title */
+"Edit room" = "編輯房間";
+
 /* Share status */
 "Editor" = "編輯";
 
@@ -501,6 +612,12 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "若您想要接收來自%@的通知，則請啟用";
+
+/* No comment provided by engineer. */
+"Enable this setting to disable downloads of files and folders from this room shared via a link" = "啟用此設定以禁止透過此房間的共享連結來下載檔案和文件夾";
+
+/* No comment provided by engineer. */
+"Enable time limit" = "啟用時間限制";
 
 /* Presentation Viewer */
 "End Slide Show" = "结束幻灯片放映";
@@ -531,6 +648,12 @@
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "排除子文件夾";
+
+/* No comment provided by engineer. */
+"Expect users" = "預期使用者";
+
+/* No comment provided by engineer. */
+"Expires after 7 days" = "7天後到期";
 
 /* Button title */
 "Export" = "导出";
@@ -578,6 +701,12 @@
 "Failure to download result from conversion online service." = "无法从在线转换服务中下载结果。";
 
 /* No comment provided by engineer. */
+"Failure to prepare the archive" = "未能準備存檔";
+
+/* Category title */
+"Favorites" = "最愛";
+
+/* No comment provided by engineer. */
 "Features" = "功能";
 
 /* Description of file operation error */
@@ -621,6 +750,18 @@
 
 /* Data units */
 "Gb" = "Gb";
+
+/* No comment provided by engineer. */
+"General" = "一般";
+
+/* No comment provided by engineer. */
+"General link" = "一般連結";
+
+/* No comment provided by engineer. */
+"General link State" = "一般連結狀態";
+
+/* No comment provided by engineer. */
+"General links" = "一般連結";
 
 /* No comment provided by engineer. */
 "Get started" = "开始";
@@ -683,6 +824,9 @@
 "Invalid Data" = "数据无效";
 
 /* No comment provided by engineer. */
+"Invalid folder" = "無效的資料夾";
+
+/* No comment provided by engineer. */
 "Invalid Url" = "URL无效";
 
 /* No comment provided by engineer. */
@@ -693,6 +837,12 @@
 
 /* No comment provided by engineer. */
 "Invite people by email" = "以電子郵件邀請他人";
+
+/* Button title */
+"Invite users" = "邀請使用者";
+
+/* No comment provided by engineer. */
+"Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "透過共享連結邀請使用者查看文件，無需註冊。您還可將此房間嵌入任何網頁介面中。";
 
 /* Data units */
 "Kb" = "Kb";
@@ -709,14 +859,32 @@
 /* No comment provided by engineer. */
 "Last name is incorrect" = "姓不正确";
 
+/* Button title */
+"Leave the room" = "離開此房間";
+
 /* No comment provided by engineer. */
 "Light" = "淺色主題";
+
+/* No comment provided by engineer. */
+"Link and password\nsuccessfully copied\nto clipboard" = "已將連結及密碼成功複製到剪貼簿";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
 
 /* No comment provided by engineer. */
+"Link life time" = "連結生命週期";
+
+/* No comment provided by engineer. */
+"Link name %@" = "連結名稱 %@";
+
+/* Button title */
+"Link successfully\ncopied to clipboard" = "已將連結成功複製到剪貼簿";
+
+/* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "邀請連結已發送到郵件";
+
+/* No comment provided by engineer. */
+"Loading..." = "載入中...";
 
 /* Caption of the process */
 "Logging in" = "正在登录";
@@ -770,6 +938,9 @@
 
 /* Button title */
 "Move or Copy" = "移动或复制";
+
+/* Button title */
+"Move to archive" = "移至存檔";
 
 /* Caption of the processing */
 "Moving" = "正在移动";
@@ -835,6 +1006,9 @@
 "No Internet connection" = "无互联网连接";
 
 /* No comment provided by engineer. */
+"No Links State" = "無連結狀態";
+
+/* No comment provided by engineer. */
 "No network" = "无网络";
 
 /* No comment provided by engineer. */
@@ -848,6 +1022,9 @@
 
 /* No comment provided by engineer. */
 "No Search Result" = "沒有搜索結果";
+
+/* No comment provided by engineer. */
+"No users found" = "找不到使用者";
 
 /* Invalid entity date
    Invalid entity owner */
@@ -902,6 +1079,9 @@
 /* No comment provided by engineer. */
 "Oops!" = "抱歉!";
 
+/* Button title */
+"Open" = "開啟";
+
 /* No comment provided by engineer. */
 "Open Document" = "打开文档";
 
@@ -942,6 +1122,9 @@
 "Password" = "密码";
 
 /* No comment provided by engineer. */
+"Password access" = "密碼存取";
+
+/* No comment provided by engineer. */
 "Password is empty" = "密码为空";
 
 /* No comment provided by engineer. */
@@ -959,6 +1142,12 @@
 /* Used in the context: '1 photo' */
 "photo" = "照片";
 
+/* No comment provided by engineer. */
+"Photo Library" = "相簿";
+
+/* No comment provided by engineer. */
+"Photo Library Unavailable" = "相簿無法使用";
+
 /* Used in the context: '3 photos' */
 "photos" = "照片";
 
@@ -973,6 +1162,9 @@
 
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "请转到\"设置\"并为此应用程序的相机启用此功能。";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the photo library for this app to use this feature." = "請前往設定並啟用此應用程式的相簿，以使用此功能。";
 
 /* No comment provided by engineer. */
 "Please re-login to renew your session." = "请重新登录以更新会话。";
@@ -1032,7 +1224,22 @@
 "Project Documents" = "项目文档";
 
 /* No comment provided by engineer. */
+"Protection" = "保護";
+
+/* No comment provided by engineer. */
+"Provide general access to the document selecting the required permission level." = "提供對文件的一般存取，選擇所需的權限級別。";
+
+/* No comment provided by engineer. */
+"Public" = "公共";
+
+/* No comment provided by engineer. */
+"Public room" = "公共房間";
+
+/* No comment provided by engineer. */
 "Push notifications disabled" = "推送通知已禁用";
+
+/* Category title */
+"Recent" = "近期";
 
 /* Button title */
 "Recover here" = "在此恢复";
@@ -1085,11 +1292,17 @@
 /* Caption of the processing */
 "Restoring" = "正在还原";
 
+/* No comment provided by engineer. */
+"Restrict file content copy, file download and printing" = "限制檔案內容複製、檔案下載和列印";
+
 /* Share status */
 "Reviewer" = "檢閱者";
 
 /* Share status */
 "Room admin" = "會議室管理員";
+
+/* No comment provided by engineer. */
+"Room name" = "房間名稱";
 
 /* Category title
    DocSpace rooms */
@@ -1097,6 +1310,12 @@
 
 /* No comment provided by engineer. */
 "Same as system" = "和系統一致";
+
+/* No comment provided by engineer. */
+"Save" = "儲存";
+
+/* No comment provided by engineer. */
+"Saved" = "已儲存";
 
 /* Caption of the processing */
 "Saving" = "正在保存";
@@ -1232,7 +1451,13 @@
 "Switch" = "切换";
 
 /* No comment provided by engineer. */
+"Tag" = "標籤";
+
+/* No comment provided by engineer. */
 "Take a Picture" = "拍照";
+
+/* No comment provided by engineer. */
+"Take Photo" = "拍照";
 
 /* Data units */
 "Tb" = "Tb";
@@ -1269,6 +1494,18 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "用于外部访问的链接\n已复制\n到剪贴板上";
+
+/* No comment provided by engineer. */
+"The link has expired" = "該連結已過期";
+
+/* No comment provided by engineer. */
+"The link has expired and has been disabled" = "該連結已過期並已停用";
+
+/* No comment provided by engineer. */
+"The link will be deleted permanently. You will not be able to undo this action." = "連結將永久刪除。您將無法撤消此操作。";
+
+/* No comment provided by engineer. */
+"The list of users previously invited to DocSpace or separate rooms will appear here." = "先前邀請到DocSpace或單獨房間的使用者清單將顯示在此處。";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "参数不正确。";
@@ -1329,6 +1566,9 @@
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "此电子表格正在编辑中。您想打开 %@ 只查看吗？";
+
+/* No comment provided by engineer. */
+"Time limit" = "時間限制";
 
 /* No comment provided by engineer. */
 "Title" = "标题";
@@ -1421,6 +1661,9 @@
 "Unknown item type." = "未知项目类型。";
 
 /* No comment provided by engineer. */
+"Unlimited" = "無限制";
+
+/* No comment provided by engineer. */
 "Unlock with Face ID" = "用人脸识别解锁";
 
 /* No comment provided by engineer. */
@@ -1458,6 +1701,9 @@
 
 /* No comment provided by engineer. */
 "Users in room" = "會議室中的使用者";
+
+/* No comment provided by engineer. */
+"Valid through" = "有效期限至";
 
 /* Caption of the process */
 "Validation" = "验证";
@@ -1514,10 +1760,22 @@
 "Yb" = "Yb";
 
 /* No comment provided by engineer. */
+"You are about to delete this room. You won’t be able to restore them." = "您即將刪除此房間。您將無法還原它們。";
+
+/* No comment provided by engineer. */
+"You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "您是此房間的擁有者。在離開房間之前，務必將擁有者角色轉移至另一位使用者。";
+
+/* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "您可以将以下账户连接到 %@。";
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "您可以将以下账户连接到 %@。文件将显示在 \"我的文档 \"文件夹中，您可以在门户网站上直接编辑并保存文件。";
+
+/* No comment provided by engineer. */
+"You have left the room" = "您已離開此房間";
+
+/* No comment provided by engineer. */
+"You have left the room and appointed a new owner" = "您已離開此房間，並已指定新的擁有者。";
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "您对此文件夹具有只读访问权限。您无法在此处创建文件或文件夹。";
@@ -1530,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "零字节";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "轉換錯誤";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "无法下载文件。";

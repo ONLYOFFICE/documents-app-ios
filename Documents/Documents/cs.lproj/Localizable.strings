@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "Zrušit";
 
+/* Close */
+"common.close" = "Zavřít";
+
 /* Error */
 "common.error" = "Chyba";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Uložit";
 
+/* No comment provided by engineer. */
+"Saved" = "Uloženo";
+
 /* Caption of the processing */
 "Saving" = "Uložení";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "Nulové bajty";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Chyba při převodu";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "Nelze stáhnout soubor.";

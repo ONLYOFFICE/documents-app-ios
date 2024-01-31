@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "අවලංගු";
 
+/* Close */
+"common.close" = "වසන්න";
+
 /* Error */
 "common.error" = "දෝෂයකි";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "සුරකින්න";
 
+/* No comment provided by engineer. */
+"Saved" = "සුරකින ලදී";
+
 /* Caption of the processing */
 "Saving" = "සුරැකෙමින්";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "බයිට ශූන්‍යයි";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "පරිවර්තන දෝෂය";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";

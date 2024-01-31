@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "取消";
 
+/* Close */
+"common.close" = "關閉";
+
 /* Error */
 "common.error" = "错误";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "儲存";
 
+/* No comment provided by engineer. */
+"Saved" = "已儲存";
+
 /* Caption of the processing */
 "Saving" = "正在保存";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "零字节";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "轉換錯誤";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "无法下载文件。";

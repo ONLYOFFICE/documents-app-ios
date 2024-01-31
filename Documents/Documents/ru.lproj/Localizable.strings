@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "Отмена";
 
+/* Close */
+"common.close" = "Закрыть";
+
 /* Error */
 "common.error" = "Ошибка";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Сохранить";
 
+/* No comment provided by engineer. */
+"Saved" = "Сохранено";
+
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Ошибка преобразования";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "Не удалось скачать файл.";

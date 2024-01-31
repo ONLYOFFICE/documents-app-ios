@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "キャンセル";
 
+/* Close */
+"common.close" = "閉じる";
+
 /* Error */
 "common.error" = "エラー";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "保存";
 
+/* No comment provided by engineer. */
+"Saved" = "保存しました";
+
 /* Caption of the processing */
 "Saving" = "保存中";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "変換エラー";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "このファイルをダウンロードできませんでした。";

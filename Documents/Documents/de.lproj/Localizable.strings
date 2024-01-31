@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "Abbrechen";
 
+/* Close */
+"common.close" = "Schließen";
+
 /* Error */
 "common.error" = "Fehler";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Speichern";
 
+/* No comment provided by engineer. */
+"Saved" = "Gespeichert";
+
 /* Caption of the processing */
 "Saving" = "Wird gespeichert";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "Null Bytes";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Umrechnungsfehler";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "Datei kann nicht heruntergeladen werden.";

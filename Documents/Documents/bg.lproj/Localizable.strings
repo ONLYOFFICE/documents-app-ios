@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "Отказ";
 
+/* Close */
+"common.close" = "Затвори";
+
 /* Error */
 "common.error" = "Грешка";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Запази";
 
+/* No comment provided by engineer. */
+"Saved" = "Записано";
+
 /* Caption of the processing */
 "Saving" = "Спестяване";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "Нулеви байтове";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Грешка при преобразуване";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "Файлът не може да се изтегли.";

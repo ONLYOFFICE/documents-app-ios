@@ -302,6 +302,9 @@
 /* Cancel */
 "common.cancel" = "Չեղարկել";
 
+/* Close */
+"common.close" = "Փակել";
+
 /* Error */
 "common.error" = "Սխալ";
 
@@ -1311,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Պահպանել";
 
+/* No comment provided by engineer. */
+"Saved" = "Պահպանված";
+
 /* Caption of the processing */
 "Saving" = "Խնայողություն";
 
@@ -1782,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Փոխակերպման սխալ";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";

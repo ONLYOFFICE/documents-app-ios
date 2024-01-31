@@ -190,6 +190,6 @@ private extension CGFloat {
 private extension String {
     func removeForbiddenCharacters() -> String {
         let forbiddenCharacters = "*+:\"<>?|/\\"
-        return self.filter { !forbiddenCharacters.contains($0) }
+        return filter { !forbiddenCharacters.contains($0) }
     }
 }

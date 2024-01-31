@@ -186,8 +186,8 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             if user.isVisitor {
                 folderType = onlyoffice.apiClient.serverVersion?.docSpace != nil
-                ? .onlyofficeRoomShared
-                : .onlyofficeShare
+                    ? .onlyofficeRoomShared
+                    : .onlyofficeShare
             }
         }
 

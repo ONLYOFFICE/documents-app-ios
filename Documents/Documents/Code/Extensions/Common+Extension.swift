@@ -86,6 +86,13 @@ public enum ASCCommon {
         /// BEGIN BLOCK
         return false
     }
+
+    static func isiOSAppOnMac() -> Bool {
+        if #available(iOS 14.0, *) {
+            return ProcessInfo.processInfo.isiOSAppOnMac
+        }
+        return false
+    }
 }
 
 func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {

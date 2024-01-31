@@ -88,6 +88,9 @@ struct ManageRoomView: View {
 
     private var roomNameTextField: some View {
         TextField(NSLocalizedString("Room name", comment: ""), text: $viewModel.roomName)
+            .onChange(of: viewModel.roomName) { newValue in
+                viewModel.roomName = newValue.removeForbiddenCharacters()
+            }
             .padding()
             .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isSaving)
@@ -182,4 +185,11 @@ private extension CGFloat {
     ManageRoomView(
         viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
     )
+}
+
+private extension String {
+    func removeForbiddenCharacters() -> String {
+        let forbiddenCharacters = "*+:\"<>?|/\\"
+        return self.filter { !forbiddenCharacters.contains($0) }
+    }
 }

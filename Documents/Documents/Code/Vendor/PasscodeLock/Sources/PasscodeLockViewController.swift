@@ -133,12 +133,12 @@
             if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil) {
                 if #available(iOS 11.0, *) {
                     if context.biometryType == .faceID {
-                        touchIDButton?.setTitle(NSLocalizedString("Use Face ID", comment: "Button title"), for: .normal)
+                        touchIDButton?.setTitle(localizedStringFor("Use Face ID", comment: "Button title"), for: .normal)
                     } else if context.biometryType == .touchID {
-                        touchIDButton?.setTitle(NSLocalizedString("Use Touch ID", comment: "Button title"), for: .normal)
+                        touchIDButton?.setTitle(localizedStringFor("Use Touch ID", comment: "Button title"), for: .normal)
                     }
                 } else {
-                    touchIDButton?.setTitle(NSLocalizedString("Use Touch ID", comment: "Button title"), for: .normal)
+                    touchIDButton?.setTitle(localizedStringFor("Use Touch ID", comment: "Button title"), for: .normal)
                 }
             }
         }

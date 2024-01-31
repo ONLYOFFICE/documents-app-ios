@@ -58,7 +58,7 @@
 			<key>one</key>
 			<string>%lu cartella %2$#@lu_files@</string>
 			<key>other</key>
-			<string>%lu Cartelle %2$#@lu_files@</string>
+			<string>%lu cartelle %2$#@lu_files@</string>
 			<key>zero</key>
 			<string>%2$#@lu_files@</string>
 		</dict>
@@ -74,9 +74,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu Cartella selezionata</string>
+			<string>%lu cartella selezionata</string>
 			<key>other</key>
-			<string>%lu Cartelle selezionate</string>
+			<string>%lu cartelle selezionate</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>

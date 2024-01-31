@@ -1,3 +1,12 @@
+/* No comment provided by engineer. */
+": \"%@\"" = ": \"%@\"";
+
+/* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
+"(%@/%@)" = "(%1$@/%2$@)";
+
 /* Count of seclected rows: count + selected */
 "%d selected" = "Выбрано %d";
 
@@ -347,11 +356,8 @@
 /* Button title */
 "Copy here" = "Скопировать сюда";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Copy link" = "Копировать ссылку";
-
-/* No comment provided by engineer. */
-"Copy link and password" = "Скопируйте ссылку и пароль";
 
 /* Caption of the processing */
 "Copying" = "Копирование";
@@ -749,7 +755,7 @@
 "General link" = "Общая ссылка";
 
 /* No comment provided by engineer. */
-"General link State" = "Общая ссылка";
+"General link State" = "Статус общей ссылки";
 
 /* No comment provided by engineer. */
 "General links" = "Общие ссылки";
@@ -845,7 +851,7 @@
 "kDrive directory" = "Папка kDrive";
 
 /* No comment provided by engineer. */
-"Last name is empty" = "Фамилия пуста";
+"Last name is empty" = "Пустое поле Фамилия";
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "Некорректное поле Фамилия";
@@ -1370,9 +1376,6 @@
 "Settings and Security" = "Настройки и безопасность";
 
 /* No comment provided by engineer. */
-"Share" = "Поделиться";
-
-/* No comment provided by engineer. */
 "Shared access" = "Общий доступ";
 
 /* Category title */
@@ -1672,9 +1675,6 @@
 /* Caption of the processing */
 "Unpning" = "Открепление";
 
-/* Caption of the processing */
-"Updating" = "Обновление";
-
 /* Caption of the process */
 "Uploading" = "Загрузка";
 
@@ -1782,9 +1782,6 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Ошибка преобразования";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "Не удалось скачать файл.";

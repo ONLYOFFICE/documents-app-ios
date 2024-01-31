@@ -37,3 +37,9 @@
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "続けるには、承認が必要です";
 
+/* Button title */
+"Use Face ID" = "Face IDを使用する";
+
+/* Button title */
+"Use Touch ID" = "Touch ID を使用する";
+

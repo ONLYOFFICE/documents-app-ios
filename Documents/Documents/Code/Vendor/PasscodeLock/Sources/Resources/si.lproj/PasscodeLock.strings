@@ -37,3 +37,9 @@
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "ඉදිරියට යාමට සත්‍යාපනය අවශ්‍යයි";
 
+/* Button title */
+"Use Face ID" = "මුහුණු හැඳු. භාවිතය";
+
+/* Button title */
+"Use Touch ID" = "ස්පර්ශ හැඳු. භාවිතය";
+

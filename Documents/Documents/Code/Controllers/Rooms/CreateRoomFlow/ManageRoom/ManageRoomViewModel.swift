@@ -51,6 +51,7 @@ class ManageRoomViewModel: ObservableObject {
     init(
         editingRoom: ASCRoom? = nil,
         selectedRoomType: RoomTypeModel,
+        roomName: String = "",
         onCreate: @escaping (ASCFolder) -> Void
     ) {
         self.editingRoom = editingRoom
@@ -59,8 +60,10 @@ class ManageRoomViewModel: ObservableObject {
 
         if let editingRoom {
             self.selectedRoomType.showDisclosureIndicator = false
-            roomName = editingRoom.title
+            self.roomName = editingRoom.title
             tags = Set(editingRoom.tags ?? [])
+        } else {
+            self.roomName = roomName
         }
     }
 

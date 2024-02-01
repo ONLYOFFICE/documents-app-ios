@@ -12,6 +12,7 @@ struct CreateRoomRouteView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State var selectedRoomType: RoomTypeModel?
+    @State var roomName: String
     var onCreate: (ASCFolder) -> Void
 
     var body: some View {
@@ -19,7 +20,7 @@ struct CreateRoomRouteView: View {
             RoomSelectionView(selectedRoomType: $selectedRoomType)
                 .navigation(item: $selectedRoomType) { type in
                     ManageRoomView(
-                        viewModel: ManageRoomViewModel(selectedRoomType: type) { room in
+                        viewModel: ManageRoomViewModel(selectedRoomType: type, roomName: roomName) { room in
                             presentationMode.wrappedValue.dismiss()
                             onCreate(room)
                         }
@@ -30,5 +31,5 @@ struct CreateRoomRouteView: View {
 }
 
 #Preview {
-    CreateRoomRouteView { _ in }
+    CreateRoomRouteView(roomName: "") { _ in }
 }

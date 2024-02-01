@@ -34,6 +34,7 @@ struct RoomSharingView: View {
             List {
                 if viewModel.room.roomType != .colobaration {
                     generalLincSection
+                        .alert(isPresented: $showDeleteAlert, content: deleteAlert)
                 }
                 additionalLinksSection
                 adminSection
@@ -57,9 +58,11 @@ struct RoomSharingView: View {
                             RoomSharingLinkRow(model: model)
                         }
                         .onDelete { _ in
+                            withAnimation {
+                                viewModel.generalLinkModel = nil
+                            }
                             showDeleteAlert = true
                         }
-                        .alert(isPresented: $showDeleteAlert, content: deleteAlert)
                     } else {
                         RoomSharingLinkRow(model: model)
                     }
@@ -167,7 +170,9 @@ struct RoomSharingView: View {
             primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
                 viewModel.deleteGeneralLink()
             }),
-            secondaryButton: .cancel()
+            secondaryButton: .cancel({
+                viewModel.loadData()
+            })
         )
     }
 

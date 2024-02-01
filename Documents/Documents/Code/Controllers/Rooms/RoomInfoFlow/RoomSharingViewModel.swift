@@ -151,11 +151,13 @@ final class RoomSharingViewModel: ObservableObject {
                 }
             }
         }
-        additionalLinkModels.remove(atOffsets: indexSet)
+        withAnimation {
+            additionalLinkModels.remove(atOffsets: indexSet)
+        }
     }
 
     func deleteGeneralLink() {
-        if let generalLink = flowModel.links.first(where: { $0.linkInfo.id == generalLinkModel?.id }) {
+        if let generalLink = flowModel.links.first(where: { $0.isGeneral }) {
             linkAccessService.removeLink(
                 id: generalLink.linkInfo.id,
                 title: generalLink.linkInfo.title,

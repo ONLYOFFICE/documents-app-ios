@@ -1589,33 +1589,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func deleteFolderAction(folder: ASCFolder) {
+    func deleteArchive(cell: UITableViewCell?, folder: ASCFolder) {
         let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
-        var hud: MBProgressHUD?
-
-        hud?.mode = .indeterminate
-        hud?.label.text = NSLocalizedString("Deleting", comment: "Caption of the processing")
-
         let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
-            hud = MBProgressHUD.showTopMost()
-
-            self.provider?.delete([folder], from: folder, move: true, completeon: { provider, result, success, error in
-                if success {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: 1.3)
-                    if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
-                        if let refreshControl = previousController.refreshControl {
-                            previousController.refresh(refreshControl)
-                        }
-                    }
-                    self.navigationController?.popViewController(animated: true)
-                } else if let error = error {
-                    hud?.hide(animated: true)
-                    UIAlertController.showError(in: self, message: error.localizedDescription)
-                }
-            })
+            if cell != nil { // Check if we delete the current room inside this room or not
+                self.removerActionController.delete(indexes: [folder.uid])
+            } else if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
+                self.navigationController?.popViewController(animated: true)
+                previousController.removerActionController.delete(indexes: [folder.uid])
+            }
         }
         alertController.message = NSLocalizedString("You are about to delete this room. You won’t be able to restore them.", comment: "")
 
@@ -3770,16 +3754,13 @@ extension ASCDocumentsViewController {
     func removedItems(indexPaths: [IndexPath]) {
         guard !indexPaths.isEmpty else { return }
 
-        tableView.beginUpdates()
-
         // Remove data
         var newItemsData = provider?.items ?? []
         provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
 
-        // Remove cells
-        tableView.reloadSections([0], with: .fade)
-        tableView.endUpdates()
-
+        if let refreshControl = refreshControl {
+            refresh(refreshControl)
+        }
         showEmptyView(total < 1)
         updateNavBar()
         setEditMode(false)

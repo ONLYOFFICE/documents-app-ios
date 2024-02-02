@@ -68,14 +68,14 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
             )
         }
 
-        if !folder.isRoot {
+        if !folder.isRoot, folder.isRoom {
             entityOperationsGroup.append(
                 UIAction(
                     title: NSLocalizedString("Delete", comment: "Button title"),
                     image: UIImage(systemName: "trash"),
                     attributes: .destructive
                 ) { action in
-                    viewController.deleteFolderAction(folder: folder)
+                    viewController.deleteArchive(cell: nil, folder: folder)
                 }
             )
 

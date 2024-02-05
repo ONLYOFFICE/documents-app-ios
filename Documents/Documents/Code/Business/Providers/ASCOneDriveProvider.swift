@@ -1239,7 +1239,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

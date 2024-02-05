@@ -477,7 +477,7 @@ class ASCEditorManager: NSObject {
         _ file: ASCFile,
         openMode: ASCDocumentOpenMode = .edit,
         canEdit: Bool,
-        handler: ASCEditorManagerOpenHandler? = nil,
+        openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
         shareHandler: ASCEditorManagerShareHandler? = nil,
@@ -495,16 +495,16 @@ class ASCEditorManager: NSObject {
 
             self.fetchDocumentInfoLegacy(file, viewMode: openMode == .view) { result in
                 if cancel {
-                    handler?(.end, 1, nil, &cancel)
+                    openHandler?(.end, 1, nil, &cancel)
                     return
                 }
 
                 switch result {
                 case let .failure(error):
-                    handler?(.error, 1, error, &cancel)
+                    openHandler?(.error, 1, error, &cancel)
 
                 case let .success(config):
-                    handler?(.progress, 0.7, nil, &cancel)
+                    openHandler?(.progress, 0.7, nil, &cancel)
 
                     self.closeHandler = closeHandler
                     self.favoriteHandler = favoriteHandler
@@ -515,13 +515,13 @@ class ASCEditorManager: NSObject {
                         file: file,
                         config: config,
                         openMode: openMode,
-                        handler: handler
+                        handler: openHandler
                     )
                 }
             }
         }
 
-        handler?(.progress, 0.3, nil, &cancel)
+        openHandler?(.progress, 0.3, nil, &cancel)
 
         if let url = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.collaborationService) as? String {
             documentServiceURL = url
@@ -529,12 +529,12 @@ class ASCEditorManager: NSObject {
         } else {
             fetchDocumentService { url, version, error in
                 if cancel {
-                    handler?(.end, 1, nil, &cancel)
+                    openHandler?(.end, 1, nil, &cancel)
                     return
                 }
 
                 if error != nil {
-                    handler?(.error, 1, error, &cancel)
+                    openHandler?(.error, 1, error, &cancel)
                 } else {
                     fetchAndOpen()
                 }
@@ -544,18 +544,19 @@ class ASCEditorManager: NSObject {
 
     func browsePdfLocal(
         _ pdf: ASCFile,
-        handler: ASCEditorManagerOpenHandler? = nil
+        openHandler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil
     ) {
         var cancel = false
         let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: pdf.id))
 
         openedFile = pdf
 
-        handler?(.begin, 0, nil, &cancel)
+        openHandler?(.begin, 0, nil, &cancel)
 
         if pdf.device {
             if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
-                editLocal(pdf)
+                editLocal(pdf, closeHandler: closeHandler)
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                     ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
@@ -568,29 +569,30 @@ class ASCEditorManager: NSObject {
             }
         }
 
-        handler?(.end, 1, nil, &cancel)
+        openHandler?(.end, 1, nil, &cancel)
     }
 
     func browsePdfCloud(
         for provider: ASCFileProviderProtocol,
         _ pdf: ASCFile,
-        handler: ASCEditorManagerOpenHandler? = nil
+        openHandler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil
     ) {
         var cancel = false
 
-        handler?(.begin, 0, nil, &cancel)
+        openHandler?(.begin, 0, nil, &cancel)
 
         if let viewUrl = pdf.viewUrl {
             let destination = Path.userTemporary + Path(pdf.title)
             provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
                 if cancel {
                     provider.cancel()
-                    handler?(.end, 1, nil, &cancel)
+                    openHandler?(.end, 1, nil, &cancel)
                     return
                 }
 
                 if error != nil {
-                    handler?(.error, Float(progress), error, &cancel)
+                    openHandler?(.error, Float(progress), error, &cancel)
                 } else if result != nil {
                     let localPdf = ASCFile()
                     localPdf.id = destination.rawValue
@@ -600,14 +602,23 @@ class ASCEditorManager: NSObject {
                     let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: localPdf.id))
 
                     if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
-                        self.editCloud(pdf, canEdit: true)
+                        self.editCloud(
+                            pdf,
+                            canEdit: true,
+                            openHandler: openHandler,
+                            closeHandler: closeHandler
+                        )
                     } else {
-                        self.browsePdfLocal(localPdf)
+                        self.browsePdfLocal(
+                            localPdf,
+                            openHandler: openHandler,
+                            closeHandler: closeHandler
+                        )
                     }
 
-                    handler?(.end, 1, nil, &cancel)
+                    openHandler?(.end, 1, nil, &cancel)
                 } else {
-                    handler?(.progress, Float(progress), error, &cancel)
+                    openHandler?(.progress, Float(progress), error, &cancel)
                 }
             }
         }
@@ -1155,7 +1166,12 @@ extension ASCEditorManager {
 
                 stopLocallyEditing()
                 removeAutosave(at: Path.userAutosavedInformation + file.title)
-                closeHandler?(.end, 1, nil, nil, &cancel)
+//                closeHandler?(.end, 1, nil, nil, &cancel)
+                if let error = error as? DocumentEditor.DocumentConverterError, error == .cancel {
+                    closeHandler?(.end, 1, nil, nil, &cancel)
+                } else {
+                    closeHandler?(.error, 1, nil, error, &cancel)
+                }
 
                 openedFile = nil
 

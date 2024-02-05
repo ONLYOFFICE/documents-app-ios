@@ -3398,12 +3398,12 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                guard let strongSelf = self else { return }
+                guard let self else { return }
 
-                if error != nil {
+                if let error {
                     UIAlertController.showError(
-                        in: strongSelf,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not save the file.", comment: "")
+                        in: self,
+                        message: error.localizedDescription
                     )
                 }
             } else if status == .end {
@@ -3412,44 +3412,44 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
 
                 SwiftRater.incrementSignificantUsageCount()
 
-                guard let strongSelf = self else { return }
+                guard let self else { return }
 
                 /// Update file info
                 let updateFileInfo = {
                     if let newFile = file {
-                        if let index = strongSelf.tableData.firstIndex(where: { entity -> Bool in
+                        if let index = self.tableData.firstIndex(where: { entity -> Bool in
                             guard let file = entity as? ASCFile else { return false }
                             return file.id == newFile.id || file.id == originalFile.id
                         }) {
-                            strongSelf.provider?.items[index] = newFile
+                            self.provider?.items[index] = newFile
 
                             let indexPath = IndexPath(row: index, section: 0)
 
-                            strongSelf.tableView.beginUpdates()
-                            strongSelf.tableView.reloadRows(at: [indexPath], with: .none)
-                            strongSelf.tableView.endUpdates()
+                            self.tableView.beginUpdates()
+                            self.tableView.reloadRows(at: [indexPath], with: .none)
+                            self.tableView.endUpdates()
 
-                            if let updatedCell = strongSelf.tableView.cellForRow(at: indexPath) {
-                                strongSelf.highlight(cell: updatedCell)
+                            if let updatedCell = self.tableView.cellForRow(at: indexPath) {
+                                self.highlight(cell: updatedCell)
                             }
                         } else {
-                            strongSelf.provider?.add(item: newFile, at: 0)
-                            strongSelf.tableView.reloadData()
-                            strongSelf.showEmptyView(strongSelf.total < 1)
-                            strongSelf.updateNavBar()
+                            self.provider?.add(item: newFile, at: 0)
+                            self.tableView.reloadData()
+                            self.showEmptyView(self.total < 1)
+                            self.updateNavBar()
 
                             let updateIndexPath = IndexPath(row: 0, section: 0)
-                            strongSelf.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
+                            self.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
 
-                            if let updatedCell = strongSelf.tableView.cellForRow(at: updateIndexPath) {
-                                strongSelf.highlight(cell: updatedCell)
+                            if let updatedCell = self.tableView.cellForRow(at: updateIndexPath) {
+                                self.highlight(cell: updatedCell)
                             }
                         }
                     }
                 }
 
-                if strongSelf.provider?.type == .local {
-                    strongSelf.loadFirstPage { success in
+                if self.provider?.type == .local {
+                    self.loadFirstPage { success in
                         updateFileInfo()
                     }
                 } else {

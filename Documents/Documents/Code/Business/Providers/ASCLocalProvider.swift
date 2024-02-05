@@ -841,7 +841,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfLocal(file)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

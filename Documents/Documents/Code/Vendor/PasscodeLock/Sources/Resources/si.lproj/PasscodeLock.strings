@@ -1,0 +1,45 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "පරණ මුරකේතය යොදන්න.";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "පරණ මුරකේතය යොදන්න";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "මුරකේතය නැවත යොදන්න.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "මුරකේතය තහවුරු කරන්න";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "ඉදිරියට යාමට මුරකේතය යොදන්න.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "මුරකේතය යොදන්න";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "මුරකේතය යොදන්න";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "මුරකේත නොගැළපේ.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "යළි උත්සාහය";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "ඔබගේ මුරකේතය තෝරන්න.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "මුරකේතයක් යොදන්න";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "මුරකේතය යොදන්න";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "ඉදිරියට යාමට සත්‍යාපනය අවශ්‍යයි";
+
+/* Button title */
+"Use Face ID" = "මුහුණු හැඳු. භාවිතය";
+
+/* Button title */
+"Use Touch ID" = "ස්පර්ශ හැඳු. භාවිතය";
+

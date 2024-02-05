@@ -8,35 +8,35 @@
 	<array>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-hyphenation</string>
+			<string>whatsnew-onlyoffice</string>
 			<key>Title</key>
-			<string>Automatic hyphenation</string>
+			<string>Improved compatibility with DocSpace</string>
 			<key>Subtitle</key>
-			<string>Author documents without having to manually hyphenate words at the end of the line.</string>
+			<string>Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-multi-column</string>
+			<string>whatsnew-language</string>
 			<key>Title</key>
-			<string>Multi-column layout</string>
+			<string>Changing text document language</string>
 			<key>Subtitle</key>
-			<string>Divide your text into several columns choosing among available position options.</string>
+			<string>Switch the language of the text document for correct spellchecking and hyphenation.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
 			<string>whatsnew-formula-tips</string>
 			<key>Title</key>
-			<string>Formula tips</string>
+			<string>Search for spreadsheet formulas</string>
 			<key>Subtitle</key>
-			<string>Easily enter formulas in spreadsheets checking the proper syntax in tips.</string>
+			<string>Find necessary formulas in your worksheets using searching bar.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-header-footer-setting</string>
+			<string>whatsnew-custom-cell</string>
 			<key>Title</key>
-			<string>Header &amp; Footer advanced settings</string>
+			<string>Custom cell format</string>
 			<key>Subtitle</key>
-			<string>Adjust headers and footers as you need it.</string>
+			<string>Use custom cell format to display the value as a postal code, phone number or license plate.</string>
 		</dict>
 	</array>
 </dict>

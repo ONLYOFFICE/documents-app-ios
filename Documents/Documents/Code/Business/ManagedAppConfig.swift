@@ -23,9 +23,7 @@ final class ManagedAppConfig {
     private var appConfigHooks: [() -> ManagedAppConfigHook?] = []
     private var provider = UserDefaults.standard
 
-    lazy var appConfigAll: [String: Any] = {
-        provider.dictionary(forKey: configurationKey) ?? [:]
-    }()
+    lazy var appConfigAll: [String: Any] = provider.dictionary(forKey: configurationKey) ?? [:]
 
     // MARK: - Lifecycle Methods
 

@@ -1,0 +1,45 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Introduzca su contraseña antigua.";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Introducir contraseña antigua";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Introduzca la contraseña de nuevo.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Confirmar contraseña";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Introduzca su contraseña para proceder.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Introduzca contraseña";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Introduzca contraseña";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Las contraseñas no coinciden.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Intente de nuevo";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Seleccione su contraseña.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Introduzca una contraseña";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Introducir contraseña";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Se requiere autenticación para proceder";
+
+/* Button title */
+"Use Face ID" = "Usar Face ID";
+
+/* Button title */
+"Use Touch ID" = "Usar Touch ID";
+

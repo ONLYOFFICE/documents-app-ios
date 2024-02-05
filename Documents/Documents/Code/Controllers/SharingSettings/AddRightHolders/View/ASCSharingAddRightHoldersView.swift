@@ -19,6 +19,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onNextButtonTapped()
     func onSelectAllButtonTapped()
     func onDeselectAllButtonTapped()
+    func onDismissButtonTapped()
 
     func present(sheetAccessController: UIViewController)
 }
@@ -50,6 +51,13 @@ class ASCSharingAddRightHoldersView {
     // MARK: - Navigation bar props
 
     let title = NSLocalizedString("Shared access", comment: "")
+
+    private lazy var closeBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Close", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onDismissButtonTapped)
+    )
 
     private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
         title: NSLocalizedString("Select all", comment: ""),
@@ -247,6 +255,10 @@ extension ASCSharingAddRightHoldersView {
     @objc func onDeselectAllButtonTapped() {
         delegate?.onDeselectAllButtonTapped()
     }
+
+    @objc func onDismissButtonTapped() {
+        delegate?.onDismissButtonTapped()
+    }
 }
 
 // MARK: - Navigation bar methods
@@ -255,6 +267,7 @@ extension ASCSharingAddRightHoldersView {
     func configureNavigationBar() {
         configureSearchController()
         updateTitle(withSelectedCount: 0)
+        navigationItem.leftBarButtonItem = closeBarBtn
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
         guard let navigationController = navigationController else {
@@ -350,6 +363,7 @@ extension ASCSharingAddRightHoldersView {
             tableView.allowsSelectionDuringEditing = true
             tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.allowsMultipleSelectionDuringEditing = true
+            tableView.keyboardDismissMode = .onDrag
         }
     }
 
@@ -549,9 +563,7 @@ extension ASCSharingAddRightHoldersView {
 
     func changeModalHeightIfNeeded(keyboardSize: CGRect) {
         guard UIDevice.pad else { return }
-
-        let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
-
+        let presentingViewHeight = view.size.height
         let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
             ? presentingViewHeight
             : defaultPresentingViewSize.height
@@ -562,13 +574,10 @@ extension ASCSharingAddRightHoldersView {
         if keyboardSize.height > freeSpace {
             let differance = keyboardSize.height - freeSpace
             let minModalHeight: CGFloat = 150
-            let newModelHeight = max(defaultPresentingViewSize.height - differance, minModalHeight)
-
-            let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
-
-            log.info("new model size", preferredContentSize)
-            navigationController?.preferredContentSize = preferredContentSize
-            viewController?.preferredContentSize = preferredContentSize
+            let newModelHeight = max(view.frame.height - differance, minModalHeight)
+            log.info("new model height", newModelHeight)
+            navigationController?.preferredContentSize.height = newModelHeight
+            viewController?.preferredContentSize.height = newModelHeight
         } else {
             log.info("new model size is default")
             resetModalSizeIfNeeded()

@@ -95,7 +95,7 @@ class ASCMultiAccountsViewController: UITableViewController {
     // MARK: - private methods
 
     private func setupNavigationBar() {
-        let title = NSLocalizedString("Cancel", comment: "")
+        let title = ASCLocalization.Common.cancel
         let backButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(backAction))
         navigationItem.leftBarButtonItem = backButton
     }

@@ -1,3 +1,12 @@
+/* No comment provided by engineer. */
+": \"%@\"" = ": \"%@\"";
+
+/* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
+"(%@/%@)" = "(%1$@/%2$@)";
+
 /* Count of seclected rows: count + selected */
 "%d selected" = "%d が選択されました";
 
@@ -20,13 +29,25 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</br>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</br>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
 
 /* No comment provided by engineer. */
 "<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</p><p>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
 
 /* No comment provided by engineer. */
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">詳細情報</a></p>";
+
+/* No comment provided by engineer. */
+"1 day" = "1日";
+
+/* No comment provided by engineer. */
+"7 days" = "7日";
+
+/* No comment provided by engineer. */
+"12 hours" = "12時間";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exist." = "類似した名前のファイルが既に存在します。";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "同名のファイルがすでに端末のドキュメントディレクトリに存在します。";
@@ -71,6 +92,9 @@
 "Access settings" = "アクセス設定";
 
 /* No comment provided by engineer. */
+"Access type" = "アクセスタイプ";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "アカウント名が入力されていません";
 
 /* No comment provided by engineer. */
@@ -85,6 +109,9 @@
 /* Sharing settings add notification message */
 "Add message" = "メッセージを追加";
 
+/* placeholder */
+"Add tag" = "タグの追加";
+
 /* Button title */
 "Add users" = "ユーザーを追加する";
 
@@ -92,7 +119,16 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "ユーザーやグループを追加して、\n文書の閲覧、レビュー、編集を許可することができます。";
 
 /* No comment provided by engineer. */
+"Additional link State" = "追加リンクの状態";
+
+/* No comment provided by engineer. */
+"Additional links" = "追加リンク";
+
+/* No comment provided by engineer. */
 "Address is empty" = "住所が空白です";
+
+/* No comment provided by engineer. */
+"Administration" = "管理";
 
 /* No comment provided by engineer. */
 "All" = "すべて";
@@ -116,7 +152,13 @@
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "エラーが発生しました。もう一度お試しください。申し訳ございません。";
 
 /* No comment provided by engineer. */
+"Anyone with the link" = "このリンクを持っている人";
+
+/* No comment provided by engineer. */
 "AppleId authentication failed" = "AppleIdの認証に失敗しました";
+
+/* No comment provided by engineer. */
+"Apply your own settings to use this room for any custom purpose" = "独自の設定を適用して、このルームを任意のカスタム目的に使用できます。";
 
 /* Caption of the process */
 "Applying" = "適用";
@@ -135,13 +177,13 @@
 "Archiving failed." = "アーカイブに失敗しました。";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
-
-/* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "本当にこのアカウントからサインアウトしますか?";
+
+/* No comment provided by engineer. */
+"Assign Owner" = "所有者の割り当て";
 
 /* No comment provided by engineer. */
 "Author" = "著者";
@@ -192,16 +234,25 @@
 "Cancel invitation?" = "招待をキャンセルしますか？";
 
 /* No comment provided by engineer. */
+"Canceled" = "キャンセル";
+
+/* No comment provided by engineer. */
 "Change owner" = "所有者の変更する";
+
+/* No comment provided by engineer. */
+"Change the Room Owner" = "ルーム所有者の変更";
+
+/* No comment provided by engineer. */
+"Changing access" = "アクセスの変更";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "お使いのインターネット接続をご確認ください";
 
 /* No comment provided by engineer. */
-"Choose Code Page" = "コードページを選択してください";
+"Choose Files" = "ファイルの選択";
 
 /* No comment provided by engineer. */
-"Choose CSV Options" = "CSVオプションを選択してください";
+"Choose room type" = "ルームタイプの選択";
 
 /* Caption of the processing */
 "Cleanup" = "クリーンアップ";
@@ -230,11 +281,17 @@
 /* Cut from centimeters */
 "cm" = "センチメートル";
 
+/* No comment provided by engineer. */
+"Collaborate on one or multiple documents with your team" = "1つまたは複数のドキュメントをチームで共同作業";
+
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "チームとコラボレーションする";
 
 /* No comment provided by engineer. */
 "Collaboration" = "コラボレーション";
+
+/* No comment provided by engineer. */
+"Collaboration room" = "コラボレーションルーム";
 
 /* Share status */
 "Commentator" = "コメント";
@@ -244,6 +301,9 @@
 
 /* Cancel */
 "common.cancel" = "キャンセル";
+
+/* Close */
+"common.close" = "閉じる";
 
 /* Error */
 "common.error" = "エラー";
@@ -294,7 +354,13 @@
 "Copy" = "コピー";
 
 /* Button title */
+"Copy general link" = "一般リンクをコピー";
+
+/* Button title */
 "Copy here" = "ここにコピー";
+
+/* Button title */
+"Copy link" = "リンクをコピー";
 
 /* Caption of the processing */
 "Copying" = "コピー中";
@@ -372,6 +438,15 @@
 "Could not write to file" = "ファイルへの書き込みに失敗しました";
 
 /* No comment provided by engineer. */
+"Couldn't change the owner." = "所有者を変更できませんでした。";
+
+/* No comment provided by engineer. */
+"Couldn't download the room." = "ルームをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Couldn't leave the room" = "退室できませんでした。";
+
+/* No comment provided by engineer. */
 "Couldn't rename the file" = "ファイル名を変更できませんでした";
 
 /* No comment provided by engineer. */
@@ -380,13 +455,23 @@
 /* No comment provided by engineer. */
 "Create" = "作成";
 
+/* No comment provided by engineer. */
+"Create additional links to share the document with different access rights." = "異なるアクセス権でドキュメントを共有するための追加リンクを作成します。";
+
+/* No comment provided by engineer. */
+"Create and copy" = "作成とコピー";
+
 /* Introduction Step Two - Description */
 "Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "当社の総合ツールバーでドキュメントを作成、編集: テキストドキュメントにある複雑なオブジェクトを編集。スプレッドシートで広範囲の計算を実行。美しいプレゼンテーションを作成して、書式を変更することなく PDF ファイルで閲覧。";
 
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新しい文書、スプレッドシート、プレゼンテーションを作成します。新しいフォルダーを作成して、ファイルを整理することができます。";
 
-/* Caption of the process */
+/* No comment provided by engineer. */
+"Create room" = "ルームの作成";
+
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "作成中";
 
 /* No comment provided by engineer. */
@@ -394,6 +479,9 @@
 
 /* Share status */
 "Custom filter" = "ユーザー設定のフィルター";
+
+/* No comment provided by engineer. */
+"Custom room" = "カスタムルーム";
 
 /* No comment provided by engineer. */
 "Dark" = "ダーク";
@@ -423,13 +511,19 @@
 "Delete forever" = "完全に削除する";
 
 /* No comment provided by engineer. */
+"Delete forever?" = "永久に削除しますか？";
+
+/* No comment provided by engineer. */
 "Delete from device" = "デバイスから削除する";
+
+/* No comment provided by engineer. */
+"Delete link" = "リンクの削除";
+
+/* No comment provided by engineer. */
+"Deleted" = "削除済み";
 
 /* Caption of the processing */
 "Deleting" = "削除中";
-
-/* No comment provided by engineer. */
-"Delimiter" = "区切り文字";
 
 /* Share status */
 "Deny Access" = "アクセスを拒否する";
@@ -445,6 +539,9 @@
 
 /* Button title */
 "Disconnect third party" = "サードパーティーの接続を解除する";
+
+/* No comment provided by engineer. */
+"Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "本当にこのルームを退室しますか？退室してから、ルームの管理者からの新しい招待があれば、再び参加することができます。";
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "DocSpaceの管理者";
@@ -489,6 +586,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "ドキュメントをローカルで編集する";
 
+/* Button title */
+"Edit room" = "ルームの編集";
+
 /* Share status */
 "Editor" = "エディタ";
 
@@ -514,7 +614,10 @@
 "Enable if you want to receive notifications from the %@" = "%@からの通知を受け取りたい場合は、有効にしてください";
 
 /* No comment provided by engineer. */
-"Encoding" = "符号化する";
+"Enable this setting to disable downloads of files and folders from this room shared via a link" = "この設定を有効にすると、このルームからリンク経由で共有されたファイルやフォルダのダウンロードが無効になります。";
+
+/* No comment provided by engineer. */
+"Enable time limit" = "時間制限を無効にする";
 
 /* Presentation Viewer */
 "End Slide Show" = "スライドショーを終了する";
@@ -545,6 +648,12 @@
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "サブフォルダなし";
+
+/* No comment provided by engineer. */
+"Expect users" = "ユーザーの期待";
+
+/* No comment provided by engineer. */
+"Expires after 7 days" = "7日間のみ有効";
 
 /* Button title */
 "Export" = "エクスポート";
@@ -592,6 +701,12 @@
 "Failure to download result from conversion online service." = "変換オンラインサービスから結果をダウンロードできませんでした。";
 
 /* No comment provided by engineer. */
+"Failure to prepare the archive" = "アーカイブの作成に失敗しました";
+
+/* Category title */
+"Favorites" = "お気に入り";
+
+/* No comment provided by engineer. */
 "Features" = "機能";
 
 /* Description of file operation error */
@@ -635,6 +750,18 @@
 
 /* Data units */
 "Gb" = "Gb";
+
+/* No comment provided by engineer. */
+"General" = "標準";
+
+/* No comment provided by engineer. */
+"General link" = "一般リンク";
+
+/* No comment provided by engineer. */
+"General link State" = "一般リンクの状態";
+
+/* No comment provided by engineer. */
+"General links" = "一般リンク";
 
 /* No comment provided by engineer. */
 "Get started" = "開始する";
@@ -697,6 +824,9 @@
 "Invalid Data" = "無効なデータ";
 
 /* No comment provided by engineer. */
+"Invalid folder" = "無効のフォルダー";
+
+/* No comment provided by engineer. */
 "Invalid Url" = "無効なURL";
 
 /* No comment provided by engineer. */
@@ -707,6 +837,12 @@
 
 /* No comment provided by engineer. */
 "Invite people by email" = "メールで人物を招待する";
+
+/* Button title */
+"Invite users" = "ユーザーの招待";
+
+/* No comment provided by engineer. */
+"Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "共有リンクを介してユーザーを招待し、登録なしでドキュメントを閲覧できます。また、この部屋を任意のウェブインターフェイスに埋め込むこともできます。";
 
 /* Data units */
 "Kb" = "Kb";
@@ -723,14 +859,32 @@
 /* No comment provided by engineer. */
 "Last name is incorrect" = "名字が正しくありません";
 
+/* Button title */
+"Leave the room" = "退室する";
+
 /* No comment provided by engineer. */
 "Light" = "明るい";
+
+/* No comment provided by engineer. */
+"Link and password\nsuccessfully copied\nto clipboard" = "リンクとパスワードが\nクリップボードに\nコピーされました";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "クリップボードに\nコピーされたリンク";
 
 /* No comment provided by engineer. */
+"Link life time" = "リンクの寿命";
+
+/* No comment provided by engineer. */
+"Link name %@" = "リンク名 %@";
+
+/* Button title */
+"Link successfully\ncopied to clipboard" = "リンクがクリップボードに\nコピーされました";
+
+/* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "メールに招待リンクが送信されました";
+
+/* No comment provided by engineer. */
+"Loading..." = "読み込み中...";
 
 /* Caption of the process */
 "Logging in" = "ログイン中";
@@ -784,6 +938,9 @@
 
 /* Button title */
 "Move or Copy" = "移動またはコピー";
+
+/* Button title */
+"Move to archive" = "アーカイブに移動";
 
 /* Caption of the processing */
 "Moving" = "移動中";
@@ -849,6 +1006,9 @@
 "No Internet connection" = "インターネット接続がありません";
 
 /* No comment provided by engineer. */
+"No Links State" = "リンク状態なし";
+
+/* No comment provided by engineer. */
 "No network" = "ネットワークがありません";
 
 /* No comment provided by engineer. */
@@ -862,6 +1022,9 @@
 
 /* No comment provided by engineer. */
 "No Search Result" = "検索結果は見つかりませんでした";
+
+/* No comment provided by engineer. */
+"No users found" = "該当するユーザーが見つかりません";
 
 /* Invalid entity date
    Invalid entity owner */
@@ -916,6 +1079,9 @@
 /* No comment provided by engineer. */
 "Oops!" = "問題が発生しました";
 
+/* Button title */
+"Open" = "開く";
+
 /* No comment provided by engineer. */
 "Open Document" = "ドキュメントを開く";
 
@@ -956,6 +1122,9 @@
 "Password" = "パスワード";
 
 /* No comment provided by engineer. */
+"Password access" = "パスワードによるアクセス";
+
+/* No comment provided by engineer. */
 "Password is empty" = "パスワードが入力されていません";
 
 /* No comment provided by engineer. */
@@ -973,6 +1142,12 @@
 /* Used in the context: '1 photo' */
 "photo" = "写真";
 
+/* No comment provided by engineer. */
+"Photo Library" = "フォトライブラリ";
+
+/* No comment provided by engineer. */
+"Photo Library Unavailable" = "ライブラリー使用不可";
+
 /* Used in the context: '3 photos' */
 "photos" = "写真";
 
@@ -987,6 +1162,9 @@
 
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "この機能を使用するには、「設定」へ移動し、このアプリ用のカメラを有効にしてください。";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the photo library for this app to use this feature." = "この機能を使用するには、設定からこのアプリのフォトライブラリを有効にしてください";
 
 /* No comment provided by engineer. */
 "Please re-login to renew your session." = "セッションを更新するには、再ログインしてください。";
@@ -1046,7 +1224,22 @@
 "Project Documents" = "プロジェクトの文書";
 
 /* No comment provided by engineer. */
+"Protection" = "保護";
+
+/* No comment provided by engineer. */
+"Provide general access to the document selecting the required permission level." = "必要な権限レベルを選択し、ドキュメントへの一般的なアクセスを提供します。";
+
+/* No comment provided by engineer. */
+"Public" = "パブリック";
+
+/* No comment provided by engineer. */
+"Public room" = "パブリックルーム";
+
+/* No comment provided by engineer. */
 "Push notifications disabled" = "プッシュ通知が無効";
+
+/* Category title */
+"Recent" = "最近";
 
 /* Button title */
 "Recover here" = "回復する";
@@ -1099,11 +1292,17 @@
 /* Caption of the processing */
 "Restoring" = "復元中";
 
+/* No comment provided by engineer. */
+"Restrict file content copy, file download and printing" = "ファイル内容のコピー、ファイルのダウンロード、印刷の制限";
+
 /* Share status */
 "Reviewer" = "レビュー";
 
 /* Share status */
 "Room admin" = "ルームの管理者";
+
+/* No comment provided by engineer. */
+"Room name" = "ルーム名";
 
 /* Category title
    DocSpace rooms */
@@ -1111,6 +1310,12 @@
 
 /* No comment provided by engineer. */
 "Same as system" = "システム設定と同じ";
+
+/* No comment provided by engineer. */
+"Save" = "保存";
+
+/* No comment provided by engineer. */
+"Saved" = "保存しました";
 
 /* Caption of the processing */
 "Saving" = "保存中";
@@ -1228,9 +1433,6 @@
 "Sort" = "並べ替え";
 
 /* No comment provided by engineer. */
-"Space" = "間隔";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "スプレッドシート";
 
 /* Default title of sample document */
@@ -1249,10 +1451,13 @@
 "Switch" = "スイッチ";
 
 /* No comment provided by engineer. */
-"Tab" = "タブ";
+"Tag" = "タグ";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "写真を撮る";
+
+/* No comment provided by engineer. */
+"Take Photo" = "写真を撮る";
 
 /* Data units */
 "Tb" = "Tb";
@@ -1289,6 +1494,18 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "外部アクセス用の\nリンクがクリップボードに\nコピーされた";
+
+/* No comment provided by engineer. */
+"The link has expired" = "リンクが無効になりました";
+
+/* No comment provided by engineer. */
+"The link has expired and has been disabled" = "リンクは期限切れで無効になっています。";
+
+/* No comment provided by engineer. */
+"The link will be deleted permanently. You will not be able to undo this action." = "リンクは永久に削除されます。元に戻すことはできません。";
+
+/* No comment provided by engineer. */
+"The list of users previously invited to DocSpace or separate rooms will appear here." = "過去にDocSpaceや別ルームに招待したユーザーのリストはここに表示されます。";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "パラメータが正しくありません。";
@@ -1349,6 +1566,9 @@
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "このスプレッドシートは編集中です。%@ を開いて閲覧だけしますか?";
+
+/* No comment provided by engineer. */
+"Time limit" = "時間制限";
 
 /* No comment provided by engineer. */
 "Title" = "タイトル";
@@ -1441,6 +1661,9 @@
 "Unknown item type." = "未知のアイテム種類。";
 
 /* No comment provided by engineer. */
+"Unlimited" = "無制限";
+
+/* No comment provided by engineer. */
 "Unlock with Face ID" = "Face IDでロックを解除する";
 
 /* No comment provided by engineer. */
@@ -1461,12 +1684,6 @@
 /* Caption of the process */
 "Uploading" = "アップロード中";
 
-/* Button title */
-"Use Face ID" = "Face IDを使用する";
-
-/* Button title */
-"Use Touch ID" = "Touch ID を使用する";
-
 /* No comment provided by engineer. */
 "User" = "ユーザー";
 
@@ -1484,6 +1701,9 @@
 
 /* No comment provided by engineer. */
 "Users in room" = "ルーム内のユーザー";
+
+/* No comment provided by engineer. */
+"Valid through" = "有効期限";
 
 /* Caption of the process */
 "Validation" = "確認";
@@ -1540,10 +1760,22 @@
 "Yb" = "Yb";
 
 /* No comment provided by engineer. */
+"You are about to delete this room. You won’t be able to restore them." = "このルームを削除しようとしています。復元することはできません。";
+
+/* No comment provided by engineer. */
+"You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "あなたはこのルームの所有者です。退室する前に、所有者の役割を他のユーザーに割り当てなければなりません。";
+
+/* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "次のアカウントを %@ に接続できます。";
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "次のアカウントを %@ に接続できます。これらのアカウントは「私の文書」フォルダーで表示され、すべて一か所でポータルから編集、保存できます。’";
+
+/* No comment provided by engineer. */
+"You have left the room" = "退室しました";
+
+/* No comment provided by engineer. */
+"You have left the room and appointed a new owner" = "あなたはルームを退室し、新しい所有者を任命しました。";
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "このフォルダーへは閲覧のみ権限があります。ここでは、ファイルやフォルダーを作成できません。";
@@ -1556,6 +1788,9 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "変換エラー";
 
 /* No comment provided by engineer. */
 "Сould not download file." = "このファイルをダウンロードできませんでした。";

@@ -36,7 +36,14 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         }
     }
 
-    let defaultAccess: ASCShareAccess = .read
+    lazy var defaultAccess: ASCShareAccess = {
+        let accessList = accessProvider.get()
+        guard accessList.contains(.read) else {
+            return accessList.first ?? .read
+        }
+        return .read
+    }()
+
     var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider() {
         didSet {
             sharingAddRightHoldersView?.updateToolbars()
@@ -223,7 +230,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: true))
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: true, showOnlyAdmins: false))
         }
     }
 
@@ -334,6 +341,10 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
         }
 
         forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: deselectAction(in:by:))
+    }
+
+    func onDismissButtonTapped() {
+        navigationController?.dismiss(animated: true)
     }
 
     private func forEachRow(in tableView: UITableView, applyAction action: (UITableView, IndexPath) -> Void) {

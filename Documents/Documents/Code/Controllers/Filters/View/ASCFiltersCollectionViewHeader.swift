@@ -25,7 +25,7 @@ class ASCFiltersCollectionViewHeader: UICollectionReusableView {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.textStyle = .headline
-        label.textAlignment = .left
+        label.textAlignment = .natural
         return label
     }()
 

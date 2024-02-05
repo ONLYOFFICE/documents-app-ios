@@ -50,7 +50,7 @@
 "Lg6-aq-s31.title" = "云";
 
 /* Class = "UILabel"; text = "Loading..."; ObjectID = "Mcf-gv-2zL"; */
-"Mcf-gv-2zL.text" = "正在加载。。。";
+"Mcf-gv-2zL.text" = "正在加载...";
 
 /* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "nQn-Gz-R0Z"; */
 "nQn-Gz-R0Z.title" = "ONLYOFFICE";

@@ -13,6 +13,8 @@ protocol FolderHolder: AnyObject {
     var folder: ASCFolder? { get set }
 }
 
+typealias ASCRoom = ASCFolder
+
 class ASCFolder: ASCEntity {
     var parentId: String?
     var filesCount: Int = 0
@@ -23,6 +25,8 @@ class ASCFolder: ASCEntity {
     var shared: Bool = false
     var pinned: Bool = false
     var roomType: ASCRoomType?
+    var isPrivate: Bool = false
+    var isCanLeaveRoom: Bool = false
     var rootFolderType: ASCFolderType = .unknown
     var updated: Date?
     var updatedBy: ASCUser?
@@ -33,8 +37,8 @@ class ASCFolder: ASCEntity {
     var providerType: ASCFolderProviderType?
     var device: Bool = false
     var parent: ASCFolder?
-    var largeLogo: String?
-    var smallLogo: String?
+    var logo: ASCFolderLogo?
+    var tags: [String]?
     var security: ASCFolderSecurity = .init()
     var providerId: String? {
         if isThirdParty {
@@ -63,6 +67,7 @@ class ASCFolder: ASCEntity {
         shared <- map["shared"]
         pinned <- map["pinned"]
         roomType <- (map["roomType"], EnumTransform())
+        isPrivate <- map["private"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]
@@ -70,8 +75,8 @@ class ASCFolder: ASCEntity {
         createdBy <- map["createdBy"]
         new <- map["new"]
         isThirdParty <- map["providerItem"]
-        largeLogo <- (map["logo.large"], ASCStringTransform())
-        smallLogo <- (map["logo.small"], ASCStringTransform())
+        logo <- map["logo"]
+        tags <- map["tags"]
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]
         // Internal
@@ -96,6 +101,8 @@ class ASCFolder: ASCEntity {
             folder.createdBy = createdBy
             folder.new = new
             folder.isThirdParty = isThirdParty
+            folder.logo = logo
+            folder.tags = tags
             folder.providerType = providerType
             folder.device = device
             folder.parent = parent

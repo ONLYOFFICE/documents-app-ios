@@ -34,6 +34,7 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
     private lazy var title: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
+        label.textAlignment = .natural
         label.font = label.font.withSize(15)
         return label
     }()
@@ -42,12 +43,14 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         let label = UILabel()
         label.textColor = .systemGray
         label.font = label.font.withSize(13)
+        label.textAlignment = .natural
         return label
     }()
 
     private lazy var accessLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
+        label.textAlignment = .natural
         return label
     }()
 

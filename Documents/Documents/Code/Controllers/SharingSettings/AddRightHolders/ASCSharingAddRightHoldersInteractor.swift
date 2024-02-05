@@ -27,13 +27,13 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
 
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType) {
         switch requestType {
-        case let .loadUsers(preloadRightHolders, hideUsersWhoHasRights):
+        case let .loadUsers(preloadRightHolders, hideUsersWhoHasRights, showOnlyAdmins):
             guard preloadRightHolders else {
-                loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights)
+                loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights, showOnlyAdmins: showOnlyAdmins)
                 return
             }
             loadRightHolders { [weak self] in
-                self?.loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights)
+                self?.loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights, showOnlyAdmins: showOnlyAdmins)
             }
         case .loadGroups: return
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
@@ -67,16 +67,20 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 updatedItems.append(item)
             }
             dataStore?.itemsForSharingAdd = updatedItems
+
+        case let .changeOwner(userId, _: handler):
+            changeOwner(userId, handler)
         }
     }
 
-    private func loadUsers(hideUsersWhoHasRights: Bool) {
+    private func loadUsers(hideUsersWhoHasRights: Bool, showOnlyAdmins: Bool) {
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
             if let error = error {
                 log.error(error)
             } else if let users = response?.result {
                 let users = users.filter { user in
-                    !(self.dataStore?.sharedInfoItems.contains(where: { $0.user?.userId == user.userId }) ?? false)
+                    let isFilteredUser = showOnlyAdmins ? (user.isAdmin || user.isRoomAdmin) : true
+                    return isFilteredUser && !(self.dataStore?.sharedInfoItems.contains(where: { $0.user?.userId == user.userId }) ?? false)
                 }
                 self.dataStore?.users = users
                 let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
@@ -119,6 +123,41 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
         default: return nil
         }
         return nil
+    }
+
+    private func changeOwner(_ userId: String, _ handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+
+        guard let folder = dataStore?.entity as? ASCFolder else {
+            handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Invalid folder", comment: "")))
+            return
+        }
+        let access: ASCShareAccess = .none
+        let ownerUserId: String = folder.createdBy?.userId ?? ""
+
+        let parameters: [String: Any] = [
+            "userId": userId,
+            "folderIds": [folder.id],
+        ]
+
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = false
+        inviteRequestModel.invitations = [.init(id: ownerUserId, access: access)]
+
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), parameters) { response, error in
+            if error != nil {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't change the owner.", comment: "")))
+                return
+            } else {
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder), inviteRequestModel.toJSON()) { result, error in
+                    if error != nil {
+                        handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room", comment: "")))
+                    } else {
+                        handler?(.end, folder, nil)
+                    }
+                }
+            }
+        }
     }
 
     private func defineType(byId id: String) -> RightHoldersTableType? {

@@ -130,9 +130,9 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
 
     private func presentCountryCodes() {
         if let countryCodeVC = navigator.navigate(to: .countryPhoneCodes) as? ASCCountryCodeViewController {
-            countryCodeVC.selectCountry = { country, code, region in
-                self.countryCodeField.text = country
-                self.codeField.text = "+\(code)"
+            countryCodeVC.selectCountry = { phoneCountry in
+                self.countryCodeField.text = phoneCountry.country
+                self.codeField.text = "+\(phoneCountry.code)"
             }
         }
     }

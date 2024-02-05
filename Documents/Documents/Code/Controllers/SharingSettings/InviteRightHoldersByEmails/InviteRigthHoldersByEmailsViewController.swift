@@ -129,11 +129,18 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         view.backgroundColor = .systemGroupedBackground
 
         view.addSubview(scrollView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        scrollView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(
+                top: 20,
+                left: 20,
+                bottom: 50,
+                right: 20
+            )
+        )
 
         scrollView.addSubview(tagsView)
         tagsView.translatesAutoresizingMaskIntoConstraints = false

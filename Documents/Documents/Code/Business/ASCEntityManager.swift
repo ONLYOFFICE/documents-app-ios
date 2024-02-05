@@ -60,12 +60,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     handler?(.begin, nil, nil)
 
                     provider.createDocument(fileTitle, fileExtension: fileExtension, in: folder, completeon: { provider, file, success, error in
-                        if let error = error {
-                            handler?(.error, nil, error)
-                        } else if let file = file {
-                            handler?(.end, file, nil)
-                        } else {
-                            handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Can not create file with this name.", comment: "")))
+                        DispatchQueue.main.async {
+                            if let error = error {
+                                handler?(.error, nil, error)
+                            } else if let file = file {
+                                handler?(.end, file, nil)
+                            } else {
+                                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Can not create file with this name.", comment: "")))
+                            }
                         }
                     })
                 }
@@ -118,12 +120,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     handler?(.begin, nil, nil)
 
                     provider.createFolder(folderTitle, in: folder, params: nil, completeon: { provider, folder, success, error in
-                        if let error = error {
-                            handler?(.error, nil, error)
-                        } else if let folder = folder {
-                            handler?(.end, folder, nil)
-                        } else {
-                            handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Can not create folder with this name.", comment: "")))
+                        DispatchQueue.main.async {
+                            if let error = error {
+                                handler?(.error, nil, error)
+                            } else if let folder = folder {
+                                handler?(.end, folder, nil)
+                            } else {
+                                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Can not create folder with this name.", comment: "")))
+                            }
                         }
                     })
                 }
@@ -935,7 +939,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                             semaphore.signal()
                         } else {
-                            log.debug("Download progress: \(file.title) - \(Int(Float(progress) * 100))")
+//                            log.debug("Download progress: \(file.title) - \(Int(Float(progress) * 100))")
                         }
                     }
                     semaphore.wait()

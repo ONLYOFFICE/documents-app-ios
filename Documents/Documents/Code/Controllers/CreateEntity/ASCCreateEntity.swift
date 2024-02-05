@@ -22,6 +22,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     func showCreateController(for provider: ASCFileProviderProtocol, in viewController: ASCDocumentsViewController, sender: Any? = nil) {
         self.provider = provider
 
+        if let provider = provider as? ASCOnlyofficeProvider,
+           provider.apiClient.serverVersion?.docSpace != nil,
+           provider.folder?.isRoomListFolder == true
+        {
+            showCreateRoomController(provider: provider, viewController: viewController)
+            return
+        }
+
         let allowClouds = {
             guard let provider = provider as? ASCOnlyofficeProvider,
                   provider.apiClient.serverVersion?.docSpace == nil
@@ -88,6 +96,19 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         }
     }
 
+    private func showCreateRoomController(provider: ASCOnlyofficeProvider, viewController: ASCDocumentsViewController) {
+        let vc = CreateRoomRouteViewViewController(onAction: { [weak viewController] room in
+            viewController?.add(entity: room, open: true)
+        })
+
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+
+        viewController.present(vc, animated: true, completion: nil)
+    }
+
     private func createEntity(_ type: CreateEntityUIType, in viewController: ASCDocumentsViewController) {
         switch type {
         case .document:
@@ -108,10 +129,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
             let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
 
-            if UIDevice.pad {
-                connectStorageNavigationVC.modalPresentationStyle = .formSheet
-                connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-            }
+            connectStorageNavigationVC.modalPresentationStyle = .formSheet
+            connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
             viewController.present(connectStorageNavigationVC, animated: true, completion: nil)
         }

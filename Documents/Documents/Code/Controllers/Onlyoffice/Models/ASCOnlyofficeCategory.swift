@@ -33,6 +33,10 @@ class ASCOnlyofficeCategory: ASCCategory {
             return NSLocalizedString("My Documents", comment: "Category title")
         case .onlyofficeShare:
             return NSLocalizedString("Shared with Me", comment: "Category title")
+        case .onlyofficeFavorites:
+            return NSLocalizedString("Favorites", comment: "Category title")
+        case .onlyofficeRecent:
+            return NSLocalizedString("Recent", comment: "Category title")
         case .onlyofficeRoomShared:
             return NSLocalizedString("Rooms", comment: "Category title")
         case .onlyofficeRoomArchived:
@@ -176,6 +180,7 @@ class ASCOnlyofficeCategory: ASCCategory {
         switch type {
         case .onlyofficeUser,
              .onlyofficeShare,
+             .onlyofficeRoomShared,
              .onlyofficeCommon,
              .onlyofficeProjects,
              .onlyofficeTrash:

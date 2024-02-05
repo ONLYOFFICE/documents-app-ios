@@ -32,6 +32,8 @@ struct ASCEntityActions: OptionSet {
     static let pin = ASCEntityActions(rawValue: 1 << 18)
     static let unpin = ASCEntityActions(rawValue: 1 << 19)
     static let unarchive = ASCEntityActions(rawValue: 1 << 20)
+    static let leave = ASCEntityActions(rawValue: 1 << 21)
+    static let link = ASCEntityActions(rawValue: 1 << 22)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
@@ -60,7 +62,7 @@ protocol FileProviderHolder: AnyObject {
 }
 
 enum ASCFiletProviderContentType {
-    case files, folders, documents, spreadsheets, presentations, images, collaboration, custom, viewOnly, fillingForms
+    case files, folders, documents, spreadsheets, presentations, images, collaboration, `public`, custom, viewOnly, fillingForms
 }
 
 protocol ASCFileProviderProtocol {

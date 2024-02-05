@@ -112,7 +112,8 @@ extension Endpoint {
     static func make<Response: BaseMappable>(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameterEncoding: ParameterEncoding? = nil
+        _ parameterEncoding: ParameterEncoding? = nil,
+        _ params: [String: Any]? = nil
     ) -> Endpoint<[Response]> {
         return Endpoint<[Response]>(
             path: path,

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsv-AQ-fXv">
-                        <rect key="frame" x="70" y="76" width="699.5" height="1"/>
+                        <rect key="frame" x="72" y="76" width="697.5" height="1"/>
                         <color key="backgroundColor" systemColor="separatorColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ozk-8w-1zr">
@@ -31,22 +31,22 @@
                             </constraint>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-folder" translatesAutoresizingMaskIntoConstraints="NO" id="PR2-Y6-y52">
-                        <rect key="frame" x="15" y="16.5" width="45" height="44"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-folder" translatesAutoresizingMaskIntoConstraints="NO" id="PR2-Y6-y52" customClass="ASCFolderLogoAvatarView" customModule="Documents_dev" customModuleProvider="target">
+                        <rect key="frame" x="18" y="16.5" width="35" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="45" id="XWM-h0-zho"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="45" id="XWM-h0-zho"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rjE-BW-CqC">
-                        <rect key="frame" x="70" y="13.5" width="591.5" height="50.5"/>
+                        <rect key="frame" x="72" y="13.5" width="589.5" height="50.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HwK-NL-VyC">
-                                <rect key="frame" x="0.0" y="0.0" width="460.5" height="50.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="458.5" height="50.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-SM-JLf">
                                         <rect key="frame" x="0.0" y="0.0" width="66" height="19.5"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSO-Bd-Qea">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSO-Bd-Qea">
                                                 <rect key="frame" x="0.0" y="0.0" width="46" height="19.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <nil key="textColor"/>
@@ -69,7 +69,7 @@
                                             </imageView>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez1-hI-WEL">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez1-hI-WEL">
                                         <rect key="frame" x="0.0" y="20.5" width="37" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -83,7 +83,7 @@
                                             </fragment>
                                         </attributedString>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxY-4m-846">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxY-4m-846">
                                         <rect key="frame" x="0.0" y="36" width="26.5" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -99,22 +99,26 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.2000, 12:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="oRS-8K-VdB">
-                                <rect key="frame" x="465.5" y="0.0" width="126" height="50.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.2000, 12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="oRS-8K-VdB">
+                                <rect key="frame" x="463.5" y="0.0" width="126" height="50.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="security" translatesAutoresizingMaskIntoConstraints="NO" id="VXU-4u-f8X">
+                        <rect key="frame" x="48" y="48" width="12" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="zsv-AQ-fXv" secondAttribute="trailing" constant="-100" id="1cS-Lr-98j"/>
                     <constraint firstItem="PR2-Y6-y52" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2un-MG-hil"/>
                     <constraint firstItem="zsv-AQ-fXv" firstAttribute="leading" secondItem="rjE-BW-CqC" secondAttribute="leading" id="FUI-CK-Urx"/>
                     <constraint firstAttribute="bottom" secondItem="zsv-AQ-fXv" secondAttribute="bottom" id="Vs0-2i-rER"/>
-                    <constraint firstItem="PR2-Y6-y52" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-5" id="gLI-20-uAv"/>
-                    <constraint firstItem="rjE-BW-CqC" firstAttribute="leading" secondItem="PR2-Y6-y52" secondAttribute="trailing" constant="10" id="ikH-E9-2NI"/>
+                    <constraint firstItem="PR2-Y6-y52" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="gLI-20-uAv"/>
+                    <constraint firstItem="rjE-BW-CqC" firstAttribute="leading" secondItem="PR2-Y6-y52" secondAttribute="trailing" constant="19" id="ikH-E9-2NI"/>
                     <constraint firstItem="rjE-BW-CqC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ue4-cL-lNN"/>
                     <constraint firstAttribute="trailing" secondItem="rjE-BW-CqC" secondAttribute="trailing" constant="8" id="wTb-7n-ux9"/>
                 </constraints>
@@ -125,6 +129,7 @@
                 <outlet property="dateRight" destination="oRS-8K-VdB" id="7sp-83-KCb"/>
                 <outlet property="icon" destination="PR2-Y6-y52" id="341-FS-DgZ"/>
                 <outlet property="owner" destination="ez1-hI-WEL" id="G7y-uu-dcG"/>
+                <outlet property="privateIcon" destination="VXU-4u-f8X" id="Z5V-Q0-GSL"/>
                 <outlet property="title" destination="BSO-Bd-Qea" id="sGa-R1-dEE"/>
                 <outlet property="titleImage" destination="mJh-Db-ug6" id="QLE-tQ-SlV"/>
                 <outlet property="titleStackView" destination="qzY-SM-JLf" id="EIj-k3-nP5"/>
@@ -134,11 +139,12 @@
     </objects>
     <resources>
         <image name="list-folder" width="35" height="44"/>
+        <image name="security" width="13" height="14"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

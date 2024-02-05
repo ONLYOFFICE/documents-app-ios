@@ -49,5 +49,11 @@ enum ASCAppSettings {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
         }
+
+        // Force RTL
+        static var forceRtl: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugForceRtl) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugForceRtl) }
+        }
     }
 }

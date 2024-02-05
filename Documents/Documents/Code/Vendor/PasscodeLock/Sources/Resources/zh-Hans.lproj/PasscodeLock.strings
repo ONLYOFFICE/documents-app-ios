@@ -1,0 +1,45 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "输入您的旧密码。";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "输入旧密码";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "再次输入密码。";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "确认密码";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "输入您的密码以继续。";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "输入密码";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "输入密码";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "密码不匹配。";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "再试一次";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "选择密码。";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "输入密码";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "输入密码";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "需要身份验证才能继续";
+
+/* Button title */
+"Use Face ID" = "使用Face ID";
+
+/* Button title */
+"Use Touch ID" = "使用Touch ID";
+

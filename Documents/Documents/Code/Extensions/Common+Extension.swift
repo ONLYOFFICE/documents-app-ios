@@ -9,64 +9,89 @@
 import UIKit
 
 public enum ASCCommon {
-    public static var appDisplayName: String? {
+    static var appDisplayName: String? {
         // http://stackoverflow.com/questions/28254377/get-app-name-in-swift
-        return Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
+        Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
     }
 
-    public static var appBundleID: String? {
-        return Bundle.main.bundleIdentifier
+    static var appBundleID: String? {
+        Bundle.main.bundleIdentifier
     }
 
-    public static var appVersion: String? {
+    static var appVersion: String? {
         if let versionMode = appVersionMode {
             return "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")-\(versionMode)"
         }
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 
-    public static var appVersionMode: String? {
-        return Bundle.main.infoDictionary?["VersionMode"] as? String
+    static var appVersionMode: String? {
+        Bundle.main.infoDictionary?["VersionMode"] as? String
     }
 
-    public static var appBuild: String? {
-        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+    static var appBuild: String? {
+        Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
 
-    public static var currentDevice: UIDevice {
-        return UIDevice.current
+    static var currentDevice: UIDevice {
+        UIDevice.current
     }
 
-    public static var deviceModel: String {
-        return currentDevice.model
+    static var deviceModel: String {
+        currentDevice.model
     }
 
-    public static var systemVersion: String {
-        return currentDevice.systemVersion
+    static var systemVersion: String {
+        currentDevice.systemVersion
     }
 
-    public static var statusBarHeight: CGFloat {
-        return UIApplication.shared.statusBarFrame.height
+    static var statusBarHeight: CGFloat {
+        UIApplication.shared.statusBarFrame.height
     }
 
-    public static var applicationIconBadgeNumber: Int {
+    static var applicationIconBadgeNumber: Int {
         get {
-            return UIApplication.shared.applicationIconBadgeNumber
+            UIApplication.shared.applicationIconBadgeNumber
         }
         set {
             UIApplication.shared.applicationIconBadgeNumber = newValue
         }
     }
 
-    public static var isUnitTesting: Bool = ASCCommon.environment("ASC_UNIT_TESTING") != nil
+    static var isRTL: Bool {
+        UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+    }
 
-    public static func environment(_ name: String) -> String? {
+    static var isUnitTesting: Bool = ASCCommon.environment("ASC_UNIT_TESTING") != nil
+
+    static func environment(_ name: String) -> String? {
         return ProcessInfo.processInfo.environment[name]
     }
 
-    public static func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {
+    static func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {
         let task = DispatchWorkItem { completion() }
         queue.asyncAfter(deadline: .now() + seconds, execute: task)
+    }
+
+    static func isBeforeRelease() -> Bool {
+        // FIXME: REMOVE BELOW
+        /// BEGIN BLOCK
+
+        let expiryDate = "2024-02-04"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        return Date() < dateFormatter.date(from: expiryDate) ?? Date()
+
+        /// BEGIN BLOCK
+        return false
+    }
+
+    static func isiOSAppOnMac() -> Bool {
+        if #available(iOS 14.0, *) {
+            return ProcessInfo.processInfo.isiOSAppOnMac
+        }
+        return false
     }
 }
 

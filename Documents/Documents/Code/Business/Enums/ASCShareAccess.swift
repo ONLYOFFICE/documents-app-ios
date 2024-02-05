@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ASCShareLinkType: Int, Codable {
+    case invitation = 0
+    case external
+}
+
 enum ASCShareAccess: Int, CaseIterable {
     case none = 0
     case full = 1
@@ -123,3 +128,5 @@ enum ASCShareAccess: Int, CaseIterable {
         return nil
     }
 }
+
+extension ASCShareAccess: Codable {}

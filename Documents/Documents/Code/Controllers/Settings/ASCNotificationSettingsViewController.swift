@@ -1,6 +1,6 @@
 //
 //  ASCNotificationSettingsViewController.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Alexander Yuzhin on 25.05.2022.
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.

@@ -89,6 +89,28 @@ class OnlyofficeResponseArray<T: Mappable>: OnlyofficeResponseBase {
     }
 }
 
+class OnlyofficeResponseArrayCodable<T: Codable>: OnlyofficeResponseBase {
+    var result: [T]?
+
+    required convenience init?(map: Map) {
+        self.init()
+    }
+
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+
+        if let response = map["response"].currentValue,
+           let data = try? JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+        {
+            do {
+                result = try JSONDecoder().decode([T].self, from: data)
+            } catch {
+                log.error(error)
+            }
+        }
+    }
+}
+
 class OnlyofficeResponseArrayType<T>: OnlyofficeResponseBase {
     var result: [T]?
 

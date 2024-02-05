@@ -27,6 +27,8 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
             return [.roomManager, .powerUser, .read]
         case .custom:
             return [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+        case .public:
+            return [.roomManager, .powerUser]
         }
     }
 }

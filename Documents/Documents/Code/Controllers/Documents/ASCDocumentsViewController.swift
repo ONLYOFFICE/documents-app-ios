@@ -1691,6 +1691,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
         }
     }
+    
+    func transformToRoom(folder: ASCFolder) {
+        // TODO:
+    }
 
     private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
         let hud = MBProgressHUD.showTopMost()

@@ -34,6 +34,7 @@ struct ASCEntityActions: OptionSet {
     static let unarchive = ASCEntityActions(rawValue: 1 << 20)
     static let leave = ASCEntityActions(rawValue: 1 << 21)
     static let link = ASCEntityActions(rawValue: 1 << 22)
+    static let transformToRoom = ASCEntityActions(rawValue: 1 << 23)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

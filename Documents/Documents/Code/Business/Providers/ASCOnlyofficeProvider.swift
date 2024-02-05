@@ -1277,7 +1277,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
-
+            let isUserCategory = folder.rootFolderType == .onlyofficeUser
+            let isRoomCategory = folder.rootFolderType == .onlyofficeRoomShared
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
@@ -1324,6 +1325,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isArchiveCategory, !folder.isRoot {
                 entityActions.insert(.link)
                 entityActions.insert(.info)
+            }
+            
+            if canEdit, isDocspace, isUserCategory {
+                entityActions.insert(.transformToRoom)
             }
 
             if isRoomFolder, !isArchiveCategory {
@@ -1883,5 +1888,12 @@ private extension ASCFiltersControllerProtocol {
             return .docspace
         }
         return .documents
+    }
+}
+
+private extension ASCOnlyofficeProvider {
+    
+    var isDocspace: Bool {
+        apiClient.serverVersion?.docSpace != nil
     }
 }

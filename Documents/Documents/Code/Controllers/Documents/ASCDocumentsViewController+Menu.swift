@@ -477,6 +477,20 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Transform to a room
+        
+        if actions.contains(.transformToRoom) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: "Button title"),
+                    image: UIImage(systemName: "") // TODO: Upload image
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    transformToRoom(folder: folder)
+                }
+            )
+        }
 
         /// Copy action
 

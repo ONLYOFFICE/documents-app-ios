@@ -10,6 +10,8 @@ Thumbs.db
 *.dSYM
 *.dSYM.zip
 *.ipa
+.swiftpm
+.build/
 
 Pods
 fastlane/report.xml

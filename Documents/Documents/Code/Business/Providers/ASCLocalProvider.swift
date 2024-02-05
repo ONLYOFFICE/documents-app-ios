@@ -177,6 +177,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .collaborationRoom,
                      .reviewRoom,
                      .viewOnlyRoom,
+                     .publicRoom,
                      .dropBox,
                      .googleDrive,
                      .oneDrive,
@@ -767,6 +768,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
             if folder.rootFolderType == .deviceTrash {
                 return [.delete, .restore]
+            }
+
+            if canRead, canEdit {
+                entityActions.insert(.open)
             }
 
             if canEdit {

@@ -111,7 +111,26 @@ class ASCFolderCell: MGSwipeTableCell {
 
         /// Display owner
 
-        owner?.text = folderInfo.createdBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
+        let roomTypeDescription: String?
+
+        switch folderInfo.roomType {
+        case .custom:
+            roomTypeDescription = CreatingRoomType.custom.name
+        case .public:
+            roomTypeDescription = CreatingRoomType.publicRoom.name
+        case .colobaration:
+            roomTypeDescription = CreatingRoomType.collaboration.name
+        default:
+            roomTypeDescription = nil
+        }
+
+        owner?.text = [roomTypeDescription, folderInfo.createdBy?.displayName]
+            .compactMap { $0 }
+            .joined(separator: " | ")
+
+        if owner?.text?.isEmpty == true {
+            owner?.text = NSLocalizedString("Unknown", comment: "Invalid entity name")
+        }
 
         /// Display date
 
@@ -119,10 +138,12 @@ class ASCFolderCell: MGSwipeTableCell {
         dateRight?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
 
         /// Thumb view
-        if folder?.roomType != nil, folder?.rootFolderType == .onlyofficeRoomArchived {
-            setDefaultIcon()
-        } else if let roomType = folder?.roomType {
-            setRoomIcon(roomType: roomType)
+        if let roomType = folder?.roomType {
+            if folder?.rootFolderType == .onlyofficeRoomArchived {
+                setDefaultIcon()
+            } else {
+                setRoomIcon(roomType: roomType)
+            }
         } else {
             icon.image = Asset.Images.listFolder.image
         }
@@ -183,7 +204,7 @@ class ASCFolderCell: MGSwipeTableCell {
         )
 
         icon?.kf.setProviderImage(
-            with: provider.absoluteUrl(from: folder?.logo.large ?? ""),
+            with: provider.absoluteUrl(from: folder?.logo?.large ?? ""),
             for: provider,
             placeholder: roomPlaceholderImage,
             options: [
@@ -191,10 +212,10 @@ class ASCFolderCell: MGSwipeTableCell {
             ],
             completionHandler: { [weak self] result in
                 switch result {
+                case .success:
+                    self?.icon?.titleInitials = ""
                 case .failure:
                     self?.setDefaultIcon()
-                default:
-                    break
                 }
             }
         )
@@ -205,11 +226,12 @@ class ASCFolderCell: MGSwipeTableCell {
     private func setDefaultIcon() {
         if let icon = icon {
             icon.image = roomPlaceholderImage
-            var color = UIColor()
+            var color = Asset.Colors.roomDefault.color
+
             if folder?.rootFolderType == .onlyofficeRoomArchived {
-                color = UIColor(hex: "#A3A9AE")
-            } else {
-                color = UIColor(hex: "#" + (folder?.logo.color ?? "FF6680"))
+                color = Asset.Colors.roomArchive.color
+            } else if let hexColor = folder?.logo?.color {
+                color = UIColor(hex: "#\(hexColor)")
             }
 
             icon.backgroundColor = color
@@ -219,32 +241,16 @@ class ASCFolderCell: MGSwipeTableCell {
     }
 
     private func setPrivateIcon() {
-        if let folder = folder {
-            if !folder.isPrivate {
-                privateIcon.isHidden = true
-            } else {
-                privateIcon.isHidden = false
-            }
+        if let folder {
+            privateIcon.isHidden = !folder.isPrivate
         }
     }
 
     private func formatFolderName(folderName: String) -> String {
-        let nameComponents = folderName.split(separator: " ")
-
-        switch nameComponents.count {
-        case 0:
-            return ""
-        case 1:
-            if let firstInitial = nameComponents.first?.first {
-                return String(firstInitial).uppercased()
-            } else {
-                return ""
-            }
-        default:
-            let firstNameInitial = nameComponents.first?.first.map(String.init) ?? ""
-            let lastNameInitial = nameComponents.last?.first.map(String.init) ?? ""
-            return (firstNameInitial + lastNameInitial).uppercased()
-        }
+        folderName.components(separatedBy: " ")
+            .filter { !$0.isEmpty }
+            .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+            .uppercased()
     }
 }
 

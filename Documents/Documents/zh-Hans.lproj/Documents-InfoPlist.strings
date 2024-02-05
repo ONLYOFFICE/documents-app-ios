@@ -1,9 +1,6 @@
 /* Bundle name */
 "CFBundleName" = "文档";
 
-/* (No Commment) */
-"CFBundleDisplayName" = "文档";
-
 /* (No Comment) */
 "New Document" = "新建文档";
 

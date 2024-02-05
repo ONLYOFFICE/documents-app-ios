@@ -8,6 +8,7 @@
 
 import FileKit
 import KeychainSwift
+import ObservableSwift
 import UIKit
 
 class ASCFileManager {

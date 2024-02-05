@@ -231,7 +231,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false))
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false, showOnlyAdmins: false))
         }
 
         if !groupsCurrentlyLoading {
@@ -306,6 +306,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
 // MARK: - View Delegate
 
 extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersViewDelegate {
+    func onDismissButtonTapped() {
+        navigationController?.dismiss(animated: true)
+    }
+
     func getAccessList() -> ([ASCShareAccess]) {
         return accessProvider.get()
     }

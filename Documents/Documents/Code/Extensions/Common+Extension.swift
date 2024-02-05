@@ -72,6 +72,27 @@ public enum ASCCommon {
         let task = DispatchWorkItem { completion() }
         queue.asyncAfter(deadline: .now() + seconds, execute: task)
     }
+
+    static func isBeforeRelease() -> Bool {
+        // FIXME: REMOVE BELOW
+        /// BEGIN BLOCK
+
+        let expiryDate = "2024-02-04"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        return Date() < dateFormatter.date(from: expiryDate) ?? Date()
+
+        /// BEGIN BLOCK
+        return false
+    }
+
+    static func isiOSAppOnMac() -> Bool {
+        if #available(iOS 14.0, *) {
+            return ProcessInfo.processInfo.isiOSAppOnMac
+        }
+        return false
+    }
 }
 
 func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {

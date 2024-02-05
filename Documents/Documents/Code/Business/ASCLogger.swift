@@ -85,7 +85,9 @@ struct ASCLogger {
 
         hook?(log, level)
 
-        os_log("%@", log: osLog, type: level.osLogType, log)
+        #if !DEBUG
+            os_log("%@", log: osLog, type: level.osLogType, log)
+        #endif
 
         pulseLog(level, "\(message)", arguments, function: function, line: line)
     }

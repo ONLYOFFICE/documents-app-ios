@@ -43,12 +43,20 @@ platform :ios do
     clean_build_artifacts
   end
 
+  desc "Unlock keychain"
+  lane :unlock_keystore do
+    unlock_keychain(
+      path: ENV["KEYSTORAGE_NAME"],
+      password: ENV["KEYSTORAGE_PASSWORD"],
+      set_default: true)
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan(
       scheme: "Documents",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
-      devices: ["iPhone 14 Pro"],
+      devices: ["iPhone 15 Pro"],
       clean: true
     )
   end
@@ -126,6 +134,9 @@ platform :ios do
     pilot(
       app_identifier: ENV["APP_IDENTIFIER"],
       changelog: appstore_change_log,
+      distribute_external: true,
+      groups: ['Company users'],
+      notify_external_testers: true,
       skip_waiting_for_build_processing: true
     )
 

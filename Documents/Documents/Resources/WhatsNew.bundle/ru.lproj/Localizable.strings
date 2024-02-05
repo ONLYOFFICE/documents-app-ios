@@ -1,8 +1,8 @@
-"Automatic hyphenation" = "Автоматическая расстановка переносов";
-"Author documents without having to manually hyphenate words at the end of the line." = "Редактируйте документы без необходимости вручную расставлять переносы в конце строки.";
-"Multi-column layout" = "Применение разметки с несколькими колонками";
-"Divide your text into several columns choosing among available position options." = "Разделите текст на несколько колонок, выбрав один из предложенных вариантов их расположения.";
-"Formula tips" = "Подсказки при вводе формул";
-"Easily enter formulas in spreadsheets checking the proper syntax in tips." = "Без труда вводите формулы в электронных таблицах, используя всплывающие подсказки.";
-"Header & Footer advanced settings" = "Расширенные настройки колонтитулов";
-"Adjust headers and footers as you need it." = "Настраивайте параметры верхнего и нижнего колонтитулов так, как вам нужно.";
+"Improved compatibility with DocSpace" = "Улучшенная совместимость с DocSpace";
+"Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc." = "Войдите в DocSpace на любом устройстве iOS, чтобы создавать комнаты, приглашать пользователей, добавлять значки и т. д.";
+"Changing text document language" = "Изменение языка текстового документа";
+"Switch the language of the text document for correct spellchecking and hyphenation." = "Переключайте язык в документе для корректной проверки орфографии и переноса текста.";
+"Search for spreadsheet formulas" = "Поиск формул в электронных таблицах";
+"Find necessary formulas in your worksheets using searching bar." = "Находите необходимые формулы с помощью панели поиска.";
+"Custom cell format" = "Пользовательский формат ячеек";
+"Use custom cell format to display the value as a postal code, phone number or license plate." = "Используйте пользовательский формат ячеек, чтобы отобразить значение в виде почтового индекса, номера телефона или автомобильного номера.";

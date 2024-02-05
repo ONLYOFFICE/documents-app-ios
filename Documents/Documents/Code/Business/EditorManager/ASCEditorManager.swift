@@ -180,6 +180,7 @@ class ASCEditorManager: NSObject {
 
                     if !(config.document?.key?.isEmpty ?? true), !(config.document?.url?.isEmpty ?? true) {
                         continuation.resume(returning: .success(config))
+                        return
                     }
                 }
 
@@ -546,20 +547,25 @@ class ASCEditorManager: NSObject {
         handler: ASCEditorManagerOpenHandler? = nil
     ) {
         var cancel = false
+        let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: pdf.id))
 
         openedFile = pdf
 
         handler?(.begin, 0, nil, &cancel)
 
         if pdf.device {
-            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
-                ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
-                ASCAnalytics.Event.Key.onDevice: !pdf.id.contains(Path.userTemporary.rawValue),
-            ])
-            documentInteractionController = UIDocumentInteractionController(url: URL(fileURLWithPath: pdf.id))
-            documentInteractionController?.uti = "com.adobe.pdf"
-            documentInteractionController?.delegate = self
-            documentInteractionController?.presentPreview(animated: true)
+            if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
+                editLocal(pdf)
+            } else {
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
+                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: !pdf.id.contains(Path.userTemporary.rawValue),
+                ])
+                documentInteractionController = UIDocumentInteractionController(url: URL(fileURLWithPath: pdf.id))
+                documentInteractionController?.uti = "com.adobe.pdf"
+                documentInteractionController?.delegate = self
+                documentInteractionController?.presentPreview(animated: true)
+            }
         }
 
         handler?(.end, 1, nil, &cancel)
@@ -591,7 +597,13 @@ class ASCEditorManager: NSObject {
                     localPdf.title = pdf.title
                     localPdf.device = true
 
-                    self.browsePdfLocal(localPdf)
+                    let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: localPdf.id))
+
+                    if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
+                        self.editCloud(pdf, canEdit: true)
+                    } else {
+                        self.browsePdfLocal(localPdf)
+                    }
 
                     handler?(.end, 1, nil, &cancel)
                 } else {
@@ -884,7 +896,7 @@ extension ASCEditorManager {
         let isDocument = ([ASCConstants.FileExtensions.docx] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
         let isSpreadsheet = ([ASCConstants.FileExtensions.xlsx] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
         let isPresentation = ([ASCConstants.FileExtensions.pptx] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
-        let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
         openedFile = nil
         openedCopy = locallyEditing
@@ -963,7 +975,7 @@ extension ASCEditorManager {
         let isDocument = ([ASCConstants.FileExtensions.docx] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
         let isSpreadsheet = ([ASCConstants.FileExtensions.xlsx] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
         let isPresentation = ([ASCConstants.FileExtensions.pptx] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
-        let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
         openedFile = nil
 

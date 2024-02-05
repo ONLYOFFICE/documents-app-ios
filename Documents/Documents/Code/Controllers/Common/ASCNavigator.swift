@@ -14,6 +14,8 @@ enum Destination {
     case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
     case shareSettings(entity: ASCEntity)
     case addUsers(entity: ASCEntity)
+    case leaveRoom(entity: ASCEntity, handler: ASCEntityHandler?)
+    case roomSharingLink(folder: ASCFolder)
 
     // MARK: - Login
 
@@ -61,31 +63,67 @@ final class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
+
         case let .shareSettings(entity):
-            if let sharedViewController = viewController as? ASCSharingOptionsViewController {
-                let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
-
-                if UIDevice.pad {
-                    sharedNavigationVC.modalPresentationStyle = .formSheet
+            var shareRoomNavigationVC: ASCBaseNavigationController?
+            if entity.isRoom {
+                if let room = entity as? ASCFolder {
+                    let shareRoomViewController = RoomSharingRootViewController(room: room)
+                    shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
                 }
-
-                navigationController?.present(sharedNavigationVC, animated: true, completion: nil)
+            } else if let sharedViewController = viewController as? ASCSharingOptionsViewController {
+                shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
                 sharedViewController.setup(entity: entity)
                 sharedViewController.requestToLoadRightHolders()
             }
+
+            if let shareRoomNavigationVC {
+                shareRoomNavigationVC.modalPresentationStyle = .formSheet
+                shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+                navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
+            }
+
         case let .addUsers(entity):
             if let addUsersViewController = viewController as? ASCSharingInviteRightHoldersViewController {
                 let addUsersNavigationVC = ASCBaseNavigationController(rootASCViewController: addUsersViewController)
-                if UIDevice.pad {
-                    addUsersNavigationVC.modalPresentationStyle = .formSheet
-                }
+
+                addUsersNavigationVC.modalPresentationStyle = .formSheet
+                addUsersNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
                 navigationController?.present(addUsersNavigationVC, animated: true, completion: nil)
+
                 addUsersViewController.dataStore?.entity = entity
                 addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
                 addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
             }
+
+        case let .leaveRoom(entity, handler):
+            if let leaveRoomViewController = viewController as? ASCSharingChooseNewOwnerRightHoldersViewController {
+                let leaveRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: leaveRoomViewController)
+
+                leaveRoomNavigationVC.modalPresentationStyle = .formSheet
+                leaveRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+                navigationController?.present(leaveRoomNavigationVC, animated: true, completion: nil)
+
+                leaveRoomViewController.dataStore?.entity = entity
+                leaveRoomViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
+                leaveRoomViewController.handler = handler
+            }
+
         case .onlyofficeConnectPortal:
             navigationController?.viewControllers = [viewController]
+
+        case .roomSharingLink:
+            if let shareRoomViewController = viewController as? RoomSharingRootViewController {
+                let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
+
+                shareRoomNavigationVC.modalPresentationStyle = .formSheet
+                shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+                navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
+            }
+
         default:
             navigationController?.pushViewController(viewController, animated: true)
         }
@@ -104,6 +142,9 @@ final class ASCNavigator {
         case .addUsers:
             let vc = ASCSharingInviteRightHoldersViewController()
             vc.sourceViewController = navigationController?.viewControllers.last
+            return vc
+        case .leaveRoom:
+            let vc = ASCSharingChooseNewOwnerRightHoldersViewController()
             return vc
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
@@ -129,6 +170,8 @@ final class ASCNavigator {
             return ASCDevelopOptionsViewController()
         case .themeOptions:
             return ASCAppThemeViewController()
+        case let .roomSharingLink(folder):
+            return RoomSharingRootViewController(room: folder)
         }
     }
 }

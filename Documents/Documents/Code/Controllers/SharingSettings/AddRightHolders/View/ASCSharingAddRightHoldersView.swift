@@ -19,6 +19,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onNextButtonTapped()
     func onSelectAllButtonTapped()
     func onDeselectAllButtonTapped()
+    func onDismissButtonTapped()
 
     func present(sheetAccessController: UIViewController)
 }
@@ -50,6 +51,13 @@ class ASCSharingAddRightHoldersView {
     // MARK: - Navigation bar props
 
     let title = NSLocalizedString("Shared access", comment: "")
+
+    private lazy var closeBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Close", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onDismissButtonTapped)
+    )
 
     private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
         title: NSLocalizedString("Select all", comment: ""),
@@ -247,6 +255,10 @@ extension ASCSharingAddRightHoldersView {
     @objc func onDeselectAllButtonTapped() {
         delegate?.onDeselectAllButtonTapped()
     }
+
+    @objc func onDismissButtonTapped() {
+        delegate?.onDismissButtonTapped()
+    }
 }
 
 // MARK: - Navigation bar methods
@@ -255,6 +267,7 @@ extension ASCSharingAddRightHoldersView {
     func configureNavigationBar() {
         configureSearchController()
         updateTitle(withSelectedCount: 0)
+        navigationItem.leftBarButtonItem = closeBarBtn
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
         guard let navigationController = navigationController else {

@@ -10,7 +10,7 @@ import UIKit
 
 class ASCDocumentsEmptyView: UIView {
     enum EmptyViewState {
-        case `default`, local, trash, cloud, cloudNoPermissions, search, error, networkError
+        case `default`, local, trash, cloud, cloudNoPermissions, search, usersNotFound, error, networkError
     }
 
     // MARK: - Properties
@@ -124,6 +124,12 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No search result", comment: "")
             subtitleLabel?.text = NSLocalizedString("No results matching your search could be found. Please try another phrase.", comment: "")
+            actionButton?.removeFromSuperview()
+        case .usersNotFound:
+            centerYConstraint?.constant = -150
+            imageView?.image = Asset.Images.emptySearchResult.image
+            titleLabel?.text = NSLocalizedString("No users found", comment: "")
+            subtitleLabel?.text = NSLocalizedString("The list of users previously invited to DocSpace or separate rooms will appear here.", comment: "")
             actionButton?.removeFromSuperview()
         case .error:
             imageView?.image = Asset.Images.emptyCommonError.image

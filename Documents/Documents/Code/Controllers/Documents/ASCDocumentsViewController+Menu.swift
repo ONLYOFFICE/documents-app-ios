@@ -13,7 +13,6 @@ import UIKit
 extension ASCDocumentsViewController {
     // MARK: - Item context menu
 
-    @available(iOS 13.0, *)
     func buildFileContextMenu(for cell: ASCFileCell) -> UIMenu? {
         guard
             let file = cell.file,
@@ -249,7 +248,6 @@ extension ASCDocumentsViewController {
         }
     }
 
-    @available(iOS 13.0, *)
     func buildFolderContextMenu(for cell: ASCFolderCell) -> UIMenu? {
         guard
             let folder = cell.folder,

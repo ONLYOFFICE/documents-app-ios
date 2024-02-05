@@ -421,10 +421,17 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     /// - Parameters:
     ///   - path: file path or id
     ///   - destinationURL: url of destination
+    ///   - range: data range
     ///   - processing: a closure with result of operation or error
-    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
+    func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
         guard let _ = googleUser else {
             processing(nil, 0, ASCProviderError(msg: ErrorType.download.description))
+            return
+        }
+
+        // TODO: Under construction
+        if range != nil {
+            processing(nil, 0, nil)
             return
         }
 

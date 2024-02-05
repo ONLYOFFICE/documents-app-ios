@@ -433,13 +433,17 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         return URL(string: urlString)
     }
 
-    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
-        guard let provider = provider else {
+    func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
+        guard let provider else {
             processing(nil, 0, nil)
             return
         }
 
-        //        ASCBaseApi.clearCookies(for: provider.baseURL)
+        // TODO: Under construction
+        if range != nil {
+            processing(nil, 0, nil)
+            return
+        }
 
         var downloadProgress: Progress?
 

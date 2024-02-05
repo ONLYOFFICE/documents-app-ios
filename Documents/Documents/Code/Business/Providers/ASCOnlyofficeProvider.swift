@@ -647,8 +647,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func download(_ path: String, to: URL, processing: @escaping NetworkProgressHandler) {
-        apiClient.download(path, to, processing)
+    func download(_ path: String, to: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
+        apiClient.download(path, to, range, processing)
     }
 
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {

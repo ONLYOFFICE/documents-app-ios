@@ -402,16 +402,24 @@ class ASCEditorManager: NSObject {
                 OnlyofficeApiClient.request(
                     OnlyofficeAPI.Endpoints.Files.trackEdit(file: file), ["docKeyForTrack": key]
                 ) { response, error in
-                    if let error = error {
+                    if let error {
                         log.error(error)
                         self.openHandler?(.error, 1, error, &cancel)
+                    }
+
+                    if let response = response?.result {
+                        if let key = response["key"] as? Bool {
+                            if !key {
+                                let error = response["value"] as? String ?? "No key"
+                                log.warning(error)
+                            }
+                        }
                     }
                 }
             } else {
                 OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
-                    log.info("apiFileStartEdit")
 
-                    if let error = error {
+                    if let error {
                         if let status = response?.status,
                            let code = response?.statusCode,
                            status == 1, code == 403
@@ -548,14 +556,14 @@ class ASCEditorManager: NSObject {
         closeHandler: ASCEditorManagerCloseHandler? = nil
     ) {
         var cancel = false
-        let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: pdf.id))
+        let isDocumentOformPdf = ASCOformPdfChecker.checkLocal(url: URL(fileURLWithPath: pdf.id))
 
         openedFile = pdf
 
         openHandler?(.begin, 0, nil, &cancel)
 
         if pdf.device {
-            if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
+            if isDocumentOformPdf {
                 editLocal(pdf, closeHandler: closeHandler)
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
@@ -584,41 +592,41 @@ class ASCEditorManager: NSObject {
 
         if let viewUrl = pdf.viewUrl {
             let destination = Path.userTemporary + Path(pdf.title)
-            provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
-                if cancel {
-                    provider.cancel()
-                    openHandler?(.end, 1, nil, &cancel)
-                    return
-                }
 
-                if error != nil {
-                    openHandler?(.error, Float(progress), error, &cancel)
-                } else if result != nil {
-                    let localPdf = ASCFile()
-                    localPdf.id = destination.rawValue
-                    localPdf.title = pdf.title
-                    localPdf.device = true
+            Task {
+                var cancel = false
+                let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
 
-                    let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: localPdf.id))
-
-                    if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
-                        self.editCloud(
-                            pdf,
-                            canEdit: true,
-                            openHandler: openHandler,
-                            closeHandler: closeHandler
-                        )
-                    } else {
-                        self.browsePdfLocal(
-                            localPdf,
-                            openHandler: openHandler,
-                            closeHandler: closeHandler
-                        )
-                    }
-
-                    openHandler?(.end, 1, nil, &cancel)
+                if isDocumentOformPdf {
+                    handler?(.end, 1, nil, &cancel)
+                    self.editCloud(pdf, canEdit: true)
                 } else {
-                    openHandler?(.progress, Float(progress), error, &cancel)
+                    provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
+                        if cancel {
+                            provider.cancel()
+                            openHandler?(.end, 1, nil, &cancel)
+                            return
+                        }
+
+                        if error != nil {
+                            openHandler?(.error, Float(progress), error, &cancel)
+                        } else if result != nil {
+                            let localPdf = ASCFile()
+                            localPdf.id = destination.rawValue
+                            localPdf.title = pdf.title
+                            localPdf.device = true
+
+                            self.browsePdfLocal(
+                                localPdf,
+                                openHandler: openHandler,
+                                closeHandler: closeHandler
+                            )
+
+                            openHandler?(.end, 1, nil, &cancel)
+                        } else {
+                            openHandler?(.progress, Float(progress), error, &cancel)
+                        }
+                    }
                 }
             }
         }
@@ -761,7 +769,7 @@ class ASCEditorManager: NSObject {
 
         if let viewUrl = file.viewUrl {
             let destination = Path.userTemporary + Path(file.title)
-            provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
+            provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
                 if cancel {
                     handler?(.end, 1, nil, &cancel)
                     return

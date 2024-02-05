@@ -13,7 +13,8 @@ struct RoomSharingCustomizeLinkView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
-
+    @State private var showDeleteAlert = false
+    
     var body: some View {
         handleHUD()
 
@@ -51,6 +52,7 @@ struct RoomSharingCustomizeLinkView: View {
             restrictionSection
             timeLimitSection
             deleteSection
+                .alert(isPresented: $showDeleteAlert, content: deleteAlert)
         }
         .navigationBarTitle(Text(NSLocalizedString("Additional links", comment: "")))
     }
@@ -121,7 +123,9 @@ struct RoomSharingCustomizeLinkView: View {
                         textString: NSLocalizedString("Delete link", comment: ""),
                         cellType: .deletable,
                         textAlignment: .center,
-                        onTapAction: viewModel.onDelete
+                        onTapAction: {
+                            showDeleteAlert = true
+                        }
                     )
                 )
             }
@@ -165,6 +169,17 @@ struct RoomSharingCustomizeLinkView: View {
             }
             hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
         }
+    }
+    
+    private func deleteAlert() -> Alert {
+        Alert(
+            title: Text(NSLocalizedString("Delete link", comment: "")),
+            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
+            primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
+                viewModel.onDelete()
+            }),
+            secondaryButton: .cancel()
+        )
     }
 }
 

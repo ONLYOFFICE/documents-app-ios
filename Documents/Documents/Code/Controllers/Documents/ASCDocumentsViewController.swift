@@ -1693,7 +1693,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     func transformToRoom(folder: ASCFolder) {
-        // TODO:
+        let vc = CreateRoomRouteViewViewController(roomName: folder.title, onAction: { [weak self] room in
+            // TODO: move to rooms category
+        })
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true, completion: nil)
     }
 
     private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {

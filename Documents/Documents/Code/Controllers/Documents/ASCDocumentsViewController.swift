@@ -1352,7 +1352,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
         if let folder = folder,
-           !folder.isRoom
+           !folder.isRoom || folder.rootFolderType == .onlyofficeRoomArchived
         {
             sortSelectBarButton?.isEnabled = !hasError && total > 0
         }
@@ -1585,21 +1585,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if let fileCell = cell as? ASCFileCell, let file = fileCell.file {
             removerActionController.delete(indexes: [file.uid])
         } else if let folderCell = cell as? ASCFolderCell, let folder = folderCell.folder {
-            removerActionController.delete(indexes: [folder.uid])
+            if folder.rootFolderType == .onlyofficeRoomArchived {
+                deleteArchive(folder: folder)
+            } else {
+                removerActionController.delete(indexes: [folder.uid])
+            }
         }
     }
 
-    func deleteArchive(cell: UITableViewCell?, folder: ASCFolder) {
+    func deleteArchive(folder: ASCFolder) {
         let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
         let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
-            if cell != nil { // Check if we delete the current room inside this room or not
-                self.removerActionController.delete(indexes: [folder.uid])
-            } else if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
-                self.navigationController?.popViewController(animated: true)
-                previousController.removerActionController.delete(indexes: [folder.uid])
-            }
+            self.removerActionController.delete(indexes: [folder.uid])
         }
         alertController.message = NSLocalizedString("You are about to delete this room. You won’t be able to restore them.", comment: "")
 

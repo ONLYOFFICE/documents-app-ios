@@ -553,11 +553,7 @@ extension ASCDocumentsViewController {
                     attributes: .destructive
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    if folder.parent?.rootFolderType == .onlyofficeRoomArchived {
-                        self.deleteArchive(cell: cell, folder: folder)
-                    } else {
-                        self.delete(cell: cell)
-                    }
+                    self.delete(cell: cell)
                 }
             )
         }
@@ -720,19 +716,16 @@ extension ASCDocumentsViewController {
         delete.callback = { [unowned self] cell -> Bool in
             guard view.isUserInteractionEnabled else { return true }
 
-            if folder.parent?.rootFolderType == .onlyofficeRoomArchived {
-                self.deleteArchive(cell: cell, folder: folder)
-            } else {
-                self.deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
-                    guard let cell = cell as? MGSwipeTableCell else { return }
+            deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
+                guard let cell = cell as? MGSwipeTableCell else { return }
 
-                    cell.hideSwipe(animated: true)
+                cell.hideSwipe(animated: true)
 
-                    if allowDelete {
-                        self.delete(cell: cell)
-                    }
+                if allowDelete {
+                    self.delete(cell: cell)
                 }
             }
+
             return false
         }
 

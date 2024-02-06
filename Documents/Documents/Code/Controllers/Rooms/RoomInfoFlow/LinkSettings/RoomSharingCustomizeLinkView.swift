@@ -22,7 +22,7 @@ struct RoomSharingCustomizeLinkView: View {
             .navigationBarItems(rightBtn: doneButton)
             .disabledIfDeleting(viewModel.isDeleting)
             .alertForErrorMessage($viewModel.errorMessage)
-            .dismissOnChange(of: viewModel.isDeleted || viewModel.isSaved, using: presentationMode)
+            .dismissOnChange(of: viewModel.isReadyToDismissed, using: presentationMode)
     }
 
     @ViewBuilder
@@ -145,7 +145,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     private func handleHUD() {
         MBProgressHUD.currentHUD?.hide(animated: false)
-
+        
         if viewModel.isSaving || viewModel.isDeleting {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
@@ -162,7 +162,7 @@ struct RoomSharingCustomizeLinkView: View {
                 if viewModel.isDeleted {
                     hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
                 } else if viewModel.isSaved {
-                    hud.setState(result: .success(NSLocalizedString("Saved", comment: "")))
+                    hud.setState(result: .success(resultModalModel.message))
                 }
             case .failure:
                 hud.setState(result: .failure(resultModalModel.message))

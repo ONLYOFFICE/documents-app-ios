@@ -33,6 +33,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isSaved: Bool = false
     @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
+    @Published var isReadyToDismissed: Bool = false
 
     var isDeletePossible: Bool {
         if room.roomType == .public, link?.isGeneral == true {
@@ -110,6 +111,7 @@ extension RoomSharingCustomizeLinkViewModel {
             link.access = .none
             outputLink = link
             isDeleted = true
+            isReadyToDismissed = true
         }
     }
 
@@ -143,7 +145,11 @@ private extension RoomSharingCustomizeLinkViewModel {
                     if isExpired, selectedDate > Date() {
                         isExpired = false
                     }
+                    resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
                     isSaved = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + CGFloat.dismissAfterSeconds) { [self] in
+                        self.isReadyToDismissed = true
+                    }
                 }
             case let .failure(error):
                 DispatchQueue.main.async { [self] in
@@ -181,6 +187,10 @@ private extension RoomSharingCustomizeLinkViewModel {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }()
+}
+
+private extension CGFloat {
+    static let dismissAfterSeconds = 1.0
 }
 
 private extension Int {

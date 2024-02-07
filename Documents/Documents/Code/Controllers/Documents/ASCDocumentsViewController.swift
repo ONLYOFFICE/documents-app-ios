@@ -704,7 +704,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func createAddBarButton() -> UIBarButtonItem? {
-        guard provider?.allowAdd(toFolder: folder) == true else { return nil }
+        guard ((provider?.allowAdd(toFolder: folder)) != nil) && folder?.rootFolderType != .onlyofficeRoomArchived else { return nil }
 
         let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
 
@@ -1351,11 +1351,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let hasError = errorView?.superview != nil
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        if let folder = folder,
-           !folder.isRoom || folder.rootFolderType == .onlyofficeRoomArchived
-        {
-            sortSelectBarButton?.isEnabled = !hasError && total > 0
-        }
+        sortSelectBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0

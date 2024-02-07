@@ -14,7 +14,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
     @State private var showDeleteAlert = false
-    
+
     var body: some View {
         handleHUD()
 
@@ -145,7 +145,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     private func handleHUD() {
         MBProgressHUD.currentHUD?.hide(animated: false)
-        
+
         if viewModel.isSaving || viewModel.isDeleting {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
@@ -170,7 +170,7 @@ struct RoomSharingCustomizeLinkView: View {
             hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
         }
     }
-    
+
     private func deleteAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Delete link", comment: "")),

@@ -28,13 +28,16 @@ final class ASCOformPdfChecker {
         return await withCheckedContinuation { continuation in
             provider.download(url.absoluteString, to: URL(fileURLWithPath: destination.rawValue), range: 0 ..< 110) { result, progress, error in
 
-                if let data = result as? Data, data.count == 110 {
-                    continuation.resume(
-                        returning: check(data: data)
-                    )
-                } else {
+                if error != nil {
                     continuation.resume(
                         returning: false
+                    )
+                    return
+                }
+
+                if let data = result as? Data, data.count > 110 {
+                    continuation.resume(
+                        returning: check(data: data)
                     )
                 }
             }

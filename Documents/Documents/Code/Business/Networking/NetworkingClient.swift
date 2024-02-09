@@ -82,7 +82,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     }
 
     public func cancelAll() {
-        (sessions + [manager]).forEach { manager in
+        for manager in sessions + [manager] {
             manager.session.getAllTasks { tasks in
                 tasks.forEach { $0.cancel() }
             }

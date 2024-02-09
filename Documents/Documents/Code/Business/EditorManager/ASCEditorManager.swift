@@ -1392,7 +1392,7 @@ extension ASCEditorManager {
 
             renameHandler(file, title) { success in
                 if success {
-                    [self.openedlocallyFile, self.openedFile].forEach { file in
+                    for file in [self.openedlocallyFile, self.openedFile] {
                         file?.title = title
 
                         if !fileExtension.isEmpty {

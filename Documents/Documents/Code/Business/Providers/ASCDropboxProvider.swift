@@ -112,7 +112,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         operationProcess?.cancel()
         operationProcess = nil
 
-        operationHendlers.forEach { handler in
+        for handler in operationHendlers {
             handler.progress.cancel()
         }
         operationHendlers.removeAll()

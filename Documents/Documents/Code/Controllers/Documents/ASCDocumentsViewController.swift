@@ -376,7 +376,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             hideableViewControllerOnTransition = nil
         }
 
-        tableView.visibleCells.forEach { cell in
+        for cell in tableView.visibleCells {
             if let swipeCell = cell as? MGSwipeTableCell {
                 swipeCell.hideSwipe(animated: false)
             }

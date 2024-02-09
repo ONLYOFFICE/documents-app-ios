@@ -484,6 +484,8 @@
 		FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835022A84CAF100EFA839 /* CreateEntityUIType.swift */; };
 		FCE8351E2A84CAF100EFA839 /* ASCCreateEntityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835152A84CAF100EFA839 /* ASCCreateEntityUI.swift */; };
 		FCE8351F2A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835182A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift */; };
+		FCE993622B766D18009A0CC8 /* ASCOformPdfChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE993612B766D18009A0CC8 /* ASCOformPdfChecker.swift */; };
+		FCE993642B766D33009A0CC8 /* DocumentConverterErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE993632B766D33009A0CC8 /* DocumentConverterErrorProtocol.swift */; };
 		FCE9F65D2B2B4BAC0056E420 /* ASCSharingAddRightHoldersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F64D2B2B4BAC0056E420 /* ASCSharingAddRightHoldersInteractor.swift */; };
 		FCE9F65E2B2B4BAC0056E420 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F64E2B2B4BAC0056E420 /* ASCSharingAddRightHoldersRAMDataStore.swift */; };
 		FCE9F65F2B2B4BAC0056E420 /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6502B2B4BAC0056E420 /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift */; };
@@ -1173,6 +1175,8 @@
 		FCE835022A84CAF100EFA839 /* CreateEntityUIType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEntityUIType.swift; sourceTree = "<group>"; };
 		FCE835152A84CAF100EFA839 /* ASCCreateEntityUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityUI.swift; sourceTree = "<group>"; };
 		FCE835182A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityUIViewController.swift; sourceTree = "<group>"; };
+		FCE993612B766D18009A0CC8 /* ASCOformPdfChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOformPdfChecker.swift; sourceTree = "<group>"; };
+		FCE993632B766D33009A0CC8 /* DocumentConverterErrorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentConverterErrorProtocol.swift; sourceTree = "<group>"; };
 		FCE9F64D2B2B4BAC0056E420 /* ASCSharingAddRightHoldersInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersInteractor.swift; sourceTree = "<group>"; };
 		FCE9F64E2B2B4BAC0056E420 /* ASCSharingAddRightHoldersRAMDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersRAMDataStore.swift; sourceTree = "<group>"; };
 		FCE9F6502B2B4BAC0056E420 /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift; sourceTree = "<group>"; };
@@ -2489,6 +2493,7 @@
 		FC5943512AE6816E001BA2F9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				FCE993632B766D33009A0CC8 /* DocumentConverterErrorProtocol.swift */,
 				FC5943522AE6816E001BA2F9 /* EditorDocumentProtocol.swift */,
 				FC5943532AE6816E001BA2F9 /* EditorViewControllerProtocol.swift */,
 			);
@@ -3195,6 +3200,7 @@
 			isa = PBXGroup;
 			children = (
 				FCE9F6FF2B2B56EC0056E420 /* ViewState.swift */,
+				FCE993612B766D18009A0CC8 /* ASCOformPdfChecker.swift */,
 				FCE9F7002B2B56EC0056E420 /* ASCAttachmentManager.swift */,
 			);
 			path = Utils;
@@ -3566,6 +3572,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseSessions/FirebaseSessions.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
@@ -3676,6 +3683,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSessions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
@@ -3968,6 +3976,7 @@
 				FC25B458284F68AB0075D6C2 /* ASCNotificationSettingsViewController.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
+				FCE993622B766D18009A0CC8 /* ASCOformPdfChecker.swift in Sources */,
 				1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
@@ -4343,6 +4352,7 @@
 				FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */,
 				1DA5E66B269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FC35D44F2A987DFB00C6383F /* UIWindow+Extensions.swift in Sources */,
+				FCE993642B766D33009A0CC8 /* DocumentConverterErrorProtocol.swift in Sources */,
 				FC81C67D22C5041600A7D104 /* ASCCustomHighlightButton.swift in Sources */,
 				FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */,
 				FC35D4532A987DFC00C6383F /* UIControl+Extension.swift in Sources */,

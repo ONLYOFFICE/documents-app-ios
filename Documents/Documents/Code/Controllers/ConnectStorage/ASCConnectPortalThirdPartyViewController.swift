@@ -72,7 +72,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 }
             }
 
-            strongSelf.defaultProviders.forEach { type in
+            for type in strongSelf.defaultProviders {
                 if let defaultProviderIndex = localProviders.firstIndex(where: { $0.provider == type }) {
                     localProviders.remove(at: defaultProviderIndex)
                 }
@@ -82,7 +82,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             /// Override the list according to preference.
             var orderedProviders: [(provider: ASCFolderProviderType, info: [String: String])] = []
 
-            ASCConstants.Clouds.preferredOrderCloudProviders.forEach { type in
+            for type in ASCConstants.Clouds.preferredOrderCloudProviders {
                 if let providerInfo = localProviders.first(where: { $0.provider == type }) {
                     orderedProviders.append(providerInfo)
                 }

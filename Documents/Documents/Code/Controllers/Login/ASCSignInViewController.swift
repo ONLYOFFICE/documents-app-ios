@@ -135,8 +135,8 @@ class ASCSignInViewController: ASCBaseViewController {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
+        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {

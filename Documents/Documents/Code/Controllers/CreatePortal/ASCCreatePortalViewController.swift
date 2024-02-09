@@ -134,8 +134,8 @@ class ASCCreatePortalViewController: ASCBaseViewController {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
+        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
         IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIStackView.self, UIView.self]
     }
 

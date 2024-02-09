@@ -24,7 +24,6 @@ extension ASCEditorManager {
         config: OnlyofficeDocumentConfig,
         openMode: ASCDocumentOpenMode
     ) -> UIViewController? {
-        let title = file.title
         let isCoauthoring = !(config.document?.key?.isEmpty ?? true) && !(config.document?.url?.isEmpty ?? true)
         let sdkCheck = compareCloudSdk(with: SpreadsheetEditorViewController.sdkVersionString)
 

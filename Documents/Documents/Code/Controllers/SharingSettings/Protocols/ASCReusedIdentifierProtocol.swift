@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 protocol ASCReusedIdentifierProtocol {
     static var reuseId: String { get }
 }

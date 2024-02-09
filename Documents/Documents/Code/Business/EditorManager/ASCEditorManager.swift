@@ -1174,8 +1174,8 @@ extension ASCEditorManager {
 
                 stopLocallyEditing()
                 removeAutosave(at: Path.userAutosavedInformation + file.title)
-//                closeHandler?(.end, 1, nil, nil, &cancel)
-                if let error = error as? DocumentEditor.DocumentConverterError, error == .cancel {
+
+                if let error = error as? (any DocumentConverterErrorProtocol), error.isEqual(DocumentEditor.DocumentConverterError.cancel) {
                     closeHandler?(.end, 1, nil, nil, &cancel)
                 } else {
                     closeHandler?(.error, 1, nil, error, &cancel)

@@ -10,6 +10,9 @@ import FileKit
 import SpreadsheetEditor
 
 extension SpreadsheetEditor.EditorDocument: EditorDocumentProtocol {}
+extension SpreadsheetEditor.DocumentConverterError: DocumentConverterErrorProtocol {
+    var identifier: String { localizedDescription }
+}
 
 extension ASCEditorManager {
     var spreadsheetEditorExternalSettings: [AnyHashable: Any] {

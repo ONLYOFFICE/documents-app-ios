@@ -187,7 +187,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
                         self.view?.dismiss(animated: true, completion: nil)
 
-                        hud?.hide(animated: true, afterDelay: 0.3)
+                        hud?.hide(animated: true, afterDelay: .shortDelay)
                     }
 
                     completion()

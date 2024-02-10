@@ -418,7 +418,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                     ASCOnlyofficeUserDefaultsCacheCategoriesProvider().clearCache()
 
                     hud.setSuccessState()
-                    hud.hide(animated: true, afterDelay: 2)
+                    hud.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                     strongSelf.calcCacheSize()
                 }

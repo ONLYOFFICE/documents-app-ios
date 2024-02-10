@@ -633,7 +633,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 2)
+                hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                 NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 

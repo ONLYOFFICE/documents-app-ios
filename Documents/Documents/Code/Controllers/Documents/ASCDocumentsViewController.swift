@@ -1693,9 +1693,34 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     func transformToRoom(folder: ASCFolder) {
-        let vc = CreateRoomRouteViewViewController(roomName: folder.title, onAction: { [weak self] room in
-            // TODO: move to rooms category
-        })
+        let vc = CreateRoomRouteViewViewController(
+            roomName: folder.title,
+            hideActivityOnSuccess: false
+        ) { [weak self] room in
+            let hud: MBProgressHUD? = MBProgressHUD.currentHUD
+            self?.provider?.transfer(
+                items: [folder],
+                to: room,
+                move: false,
+                conflictResolveType: .duplicate,
+                contentOnly: true
+            ) { [weak self] status, progress, result, error, cancel in
+                guard let self else { return }
+                if status == .error {
+                    hud?.hide(animated: false)
+                    UIAlertController.showError(
+                        in: self,
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
+                    )
+                } else if status == .end {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: .standardDelay)
+                    if let rootVC = ASCViewControllerManager.shared.rootController {
+                        rootVC.display(provider: provider, folder: room)
+                    }
+                }
+            }
+        }
         if UIDevice.pad {
             vc.isModalInPresentation = true
             vc.modalPresentationStyle = .formSheet

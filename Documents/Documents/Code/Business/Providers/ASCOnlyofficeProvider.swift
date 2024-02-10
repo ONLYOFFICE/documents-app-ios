@@ -813,7 +813,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         items: [ASCEntity],
         to folder: ASCFolder,
         move: Bool,
-        overwrite: Bool,
+        conflictResolveType: ConflictResolveType,
+        contentOnly: Bool = false,
         handler: ASCEntityProgressHandler?
     ) {
         var cancel = false
@@ -833,7 +834,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         var parameters: [String: Any] = [
             "destFolderId": folder.id,
-            "conflictResolveType": overwrite ? 1 : 0, // Overwriting behavior: skip(0), overwrite(1) or duplicate(2)
+            "conflictResolveType": conflictResolveType.rawValue
         ]
 
         if folderIds.count > 0 {
@@ -842,6 +843,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if fileIds.count > 0 {
             parameters["fileIds"] = fileIds
+        }
+        
+        if contentOnly {
+            parameters["content"] = true
         }
 
         apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in

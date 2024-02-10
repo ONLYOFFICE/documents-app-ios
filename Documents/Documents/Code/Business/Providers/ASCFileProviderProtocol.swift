@@ -119,7 +119,7 @@ protocol ASCFileProviderProtocol {
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler)
     func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?)
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?)
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?)
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?)
 
     // Access
     func allowAdd(toFolder folder: ASCFolder?) -> Bool
@@ -169,7 +169,7 @@ extension ASCFileProviderProtocol {
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
     func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {}
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool = false, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
 
     func allowAdd(toFolder folder: ASCFolder?) -> Bool { return allowEdit(entity: folder) }
     func allowComment(entity: AnyObject?) -> Bool { return allowEdit(entity: entity) }
@@ -245,4 +245,12 @@ extension ASCSortableFileProviderProtocol {
 
         entities = folders as [ASCEntity] + files as [ASCEntity]
     }
+}
+
+// MARK: ConflictResolveType
+
+enum ConflictResolveType: Int {
+    case skip = 0
+    case overwrite = 1
+    case duplicate = 2
 }

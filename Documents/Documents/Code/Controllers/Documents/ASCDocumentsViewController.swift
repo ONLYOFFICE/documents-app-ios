@@ -2301,7 +2301,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         items: [ASCEntity],
         to folder: ASCFolder,
         move: Bool = false,
-        overwride: Bool = false,
+        conflictResolveType: ConflictResolveType = .skip,
         completion: ((MovedEntities?) -> Void)? = nil
     ) {
         guard let provider = provider else { return }
@@ -2317,7 +2317,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items: items,
             to: folder,
             move: move,
-            overwrite: overwride,
+            conflictResolveType: conflictResolveType,
             handler: { status, progress, result, error, cancel in
                 if status == .begin {
                     if hud == nil {
@@ -2353,7 +2353,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         items: [ASCEntity],
         to folder: ASCFolder,
         move: Bool = false,
-        complation: @escaping ((_ overwride: Bool, _ cancel: Bool) -> Void)
+        complation: @escaping ((_ conflictResolveType: ConflictResolveType, _ cancel: Bool) -> Void)
     ) {
         guard let provider = provider else { return }
 
@@ -2396,7 +2396,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             title: NSLocalizedString("Overwrite", comment: "Button title"),
                             style: .default,
                             handler: { action in
-                                complation(true, false)
+                                complation(.overwrite, false)
                             }
                         )
                     )
@@ -2406,7 +2406,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             title: NSLocalizedString("Skip", comment: "Button title"),
                             style: .default,
                             handler: { action in
-                                complation(false, false)
+                                complation(.skip, false)
                             }
                         )
                     )
@@ -2416,14 +2416,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             title: ASCLocalization.Common.cancel,
                             style: .cancel,
                             handler: { action in
-                                complation(false, true)
+                                complation(.skip, true)
                             }
                         )
                     )
 
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    complation(false, false)
+                    complation(.skip, false)
                 }
             }
         })
@@ -2467,13 +2467,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isInsideTransfer = (strongSelf.provider?.id == provider.id) && !(strongSelf.provider is ASCGoogleDriveProvider)
 
                 if isInsideTransfer {
-                    strongSelf.insideCheckTransfer(items: items, to: folder, move: move) { overwride, cancel in
+                    strongSelf.insideCheckTransfer(items: items, to: folder, move: move) { conflictResolveType, cancel in
                         guard !cancel else {
                             completion?(items)
                             return
                         }
 
-                        strongSelf.insideTransfer(items: items, to: folder, move: move, overwride: overwride) { movedEntities in
+                        strongSelf.insideTransfer(items: items, to: folder, move: move, conflictResolveType: conflictResolveType) { movedEntities in
                             guard movedEntities != nil else {
                                 completion?(items)
                                 return
@@ -3689,7 +3689,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                     }
                 }
             } else {
-                insideCheckTransfer(items: items, to: dstFolder, move: move, complation: { [weak self] overwride, cancel in
+                insideCheckTransfer(items: items, to: dstFolder, move: move, complation: { [weak self] conflictResolveType, cancel in
                     guard
                         let strongSelf = self,
                         let folder = strongSelf.folder
@@ -3699,7 +3699,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                     let isSameFolder = dstFolder.id == folder.id
 
                     if !cancel {
-                        strongSelf.insideTransfer(items: items, to: dstFolder, move: move, overwride: overwride, completion: { entities in
+                        strongSelf.insideTransfer(items: items, to: dstFolder, move: move, conflictResolveType: conflictResolveType, completion: { entities in
                             if isSameFolder {
                                 strongSelf.loadFirstPage()
                             } else {

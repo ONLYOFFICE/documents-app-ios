@@ -484,7 +484,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Create room", comment: "Button title"),
-                    image: UIImage(systemName: "") // TODO: Upload image
+                    image: Asset.Images.menuNineSquaresInsideSquare.image
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     transformToRoom(folder: folder)

@@ -1716,11 +1716,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: .standardDelay)
                     if let rootVC = ASCViewControllerManager.shared.rootController {
-                        rootVC.display(provider: provider, folder: room)
+                        rootVC.display(provider: provider, folder: room, inCategory: .onlyofficeRoomShared)
                     }
                 }
             }
         }
+        
         if UIDevice.pad {
             vc.isModalInPresentation = true
             vc.modalPresentationStyle = .formSheet

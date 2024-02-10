@@ -414,6 +414,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     // MARK: - Select row
+    
+    func category(ofType type: ASCFolderType) -> ASCOnlyofficeCategory? {
+        categories.first(where: { $0.folder?.rootFolderType == type })
+    }
 
     func select(category: ASCCategory, animated: Bool = false) {
         guard let splitVC = splitViewController else {

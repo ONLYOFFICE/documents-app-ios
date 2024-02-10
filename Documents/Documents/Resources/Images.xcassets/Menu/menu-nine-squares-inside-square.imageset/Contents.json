@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "menu-person-light.pdf",
+      "filename" : "menu-nine-squares-inside-square-light.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "menu-person-dark.pdf",
+      "filename" : "menu-nine-squares-inside-square-dark.pdf",
       "idiom" : "universal"
     }
   ],

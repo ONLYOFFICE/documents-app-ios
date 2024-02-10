@@ -15,6 +15,7 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var roomName: String = ""
     @Published var isSaving = false
+    @Published var isSavedSuccessfully = false
     @Published var errorMessage: String?
     @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
@@ -25,6 +26,7 @@ class ManageRoomViewModel: ObservableObject {
     // MARK: - Public vars
 
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
+    let hideActivityOnSuccess: Bool
     var isEditMode: Bool { editingRoom != nil }
     var editingRoomImage: URL? {
         if let urlStr = editingRoom?.logo?.small,
@@ -40,7 +42,7 @@ class ManageRoomViewModel: ObservableObject {
         roomName.isEmpty || isSaving
     }
 
-    // MARK: - Private var
+    // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
@@ -52,10 +54,12 @@ class ManageRoomViewModel: ObservableObject {
         editingRoom: ASCRoom? = nil,
         selectedRoomType: RoomTypeModel,
         roomName: String = "",
+        hideActivityOnSuccess: Bool = true,
         onCreate: @escaping (ASCFolder) -> Void
     ) {
         self.editingRoom = editingRoom
         self.selectedRoomType = selectedRoomType
+        self.hideActivityOnSuccess = hideActivityOnSuccess
         self.onCreate = onCreate
 
         if let editingRoom {
@@ -91,13 +95,14 @@ private extension ManageRoomViewModel {
                 tags: tags.map { $0 }
             )
         ) { [weak self] result in
+            self?.isSaving = false
             switch result {
             case let .success(room):
+                self?.isSavedSuccessfully = true
                 self?.onCreate(room)
             case let .failure(error):
                 self?.errorMessage = error.localizedDescription
             }
-            self?.isSaving = false
         }
     }
 

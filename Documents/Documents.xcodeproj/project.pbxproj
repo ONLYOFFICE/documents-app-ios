@@ -148,6 +148,7 @@
 		E856CF0A2B5916F4003E4C3D /* RoomSharingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEF12B5916F3003E4C3D /* RoomSharingRootViewController.swift */; };
 		E856CF0B2B5916F4003E4C3D /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEF32B5916F3003E4C3D /* EditRoomViewController.swift */; };
 		E856CF0C2B5916F4003E4C3D /* RoomTypeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEF52B5916F3003E4C3D /* RoomTypeViewRow.swift */; };
+		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
 		E8EEC40F2B2C622000A0640D /* CreateTagRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40B2B2C622000A0640D /* CreateTagRequestModel.swift */; };
 		E8EEC4102B2C622000A0640D /* CreateRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40C2B2C622000A0640D /* CreateRoomRequestModel.swift */; };
 		E8EEC4112B2C622000A0640D /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */; };
@@ -720,6 +721,7 @@
 		E856CEF12B5916F3003E4C3D /* RoomSharingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingRootViewController.swift; sourceTree = "<group>"; };
 		E856CEF32B5916F3003E4C3D /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
 		E856CEF52B5916F3003E4C3D /* RoomTypeViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTypeViewRow.swift; sourceTree = "<group>"; };
+		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		E8EEC40B2B2C622000A0640D /* CreateTagRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTagRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40C2B2C622000A0640D /* CreateRoomRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachLogoRequestModel.swift; sourceTree = "<group>"; };
@@ -2392,6 +2394,7 @@
 				FC35D4252A987DF900C6383F /* UIWindow+Extensions.swift */,
 				FC35D42C2A987DF900C6383F /* URL+Extensions.swift */,
 				FC35D43F2A987DFB00C6383F /* UserDefaultsExtensions.swift */,
+				E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4057,6 +4060,7 @@
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				F35933232B305CB600449F33 /* NavigationLink+Extensions.swift in Sources */,
 				1D4C6775268A2573000F2284 /* ASCSharingOptionsPresenter.swift in Sources */,
+				E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */,
 				FC5943E52AE6D328001BA2F9 /* ASCDocumentEditorConfiguration.swift in Sources */,
 				FC35D4402A987DFB00C6383F /* UIDevice+Extension.swift in Sources */,
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,

@@ -13,7 +13,6 @@ import UIKit
 extension ASCDocumentsViewController {
     // MARK: - Item context menu
 
-    @available(iOS 13.0, *)
     func buildFileContextMenu(for cell: ASCFileCell) -> UIMenu? {
         guard
             let file = cell.file,
@@ -249,7 +248,6 @@ extension ASCDocumentsViewController {
         }
     }
 
-    @available(iOS 13.0, *)
     func buildFolderContextMenu(for cell: ASCFolderCell) -> UIMenu? {
         guard
             let folder = cell.folder,
@@ -476,6 +474,20 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.unarchive(cell: cell, folder: folder)
+                }
+            )
+        }
+        
+        /// Transform to a room
+        
+        if actions.contains(.transformToRoom) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: "Button title"),
+                    image: Asset.Images.menuNineSquaresInsideSquare.image
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    transformToRoom(folder: folder)
                 }
             )
         }

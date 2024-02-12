@@ -119,7 +119,7 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
         (URLSession.shared.dataTask(with: url as URL) { data, response, error in
             DispatchQueue.main.async {
-                hud?.hide(animated: true, afterDelay: 0.3)
+                hud?.hide(animated: true, afterDelay: .shortDelay)
                 guard data != nil else {
                     log.error("url is anavailable \(url)")
                     completion(false)

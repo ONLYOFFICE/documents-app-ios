@@ -114,7 +114,7 @@ class ASCSMSCodeViewController: ASCBaseViewController {
         ASCSignInController.shared.login(by: request) { success in
             if success {
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 2)
+                hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
             } else {
                 hud?.hide(animated: true)
             }

@@ -813,7 +813,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         items: [ASCEntity],
         to folder: ASCFolder,
         move: Bool,
-        overwrite: Bool,
+        conflictResolveType: ConflictResolveType,
+        contentOnly: Bool = false,
         handler: ASCEntityProgressHandler?
     ) {
         var cancel = false
@@ -833,7 +834,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         var parameters: [String: Any] = [
             "destFolderId": folder.id,
-            "conflictResolveType": overwrite ? 1 : 0, // Overwriting behavior: skip(0), overwrite(1) or duplicate(2)
+            "conflictResolveType": conflictResolveType.rawValue
         ]
 
         if folderIds.count > 0 {
@@ -842,6 +843,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if fileIds.count > 0 {
             parameters["fileIds"] = fileIds
+        }
+        
+        if contentOnly {
+            parameters["content"] = true
         }
 
         apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in
@@ -1277,7 +1282,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
-
+            let isUserCategory = folder.rootFolderType == .onlyofficeUser
+            let isRoomCategory = folder.rootFolderType == .onlyofficeRoomShared
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
@@ -1324,6 +1330,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isArchiveCategory, !folder.isRoot {
                 entityActions.insert(.link)
                 entityActions.insert(.info)
+            }
+            
+            if canEdit, isDocspace, isUserCategory {
+                entityActions.insert(.transformToRoom)
             }
 
             if isRoomFolder, !isArchiveCategory {
@@ -1884,5 +1894,12 @@ private extension ASCFiltersControllerProtocol {
             return .docspace
         }
         return .documents
+    }
+}
+
+private extension ASCOnlyofficeProvider {
+    
+    var isDocspace: Bool {
+        apiClient.serverVersion?.docSpace != nil
     }
 }

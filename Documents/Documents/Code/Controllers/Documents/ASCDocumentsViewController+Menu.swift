@@ -477,9 +477,9 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Transform to a room
-        
+
         if actions.contains(.transformToRoom) {
             transferActions.append(
                 UIAction(

@@ -414,7 +414,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     // MARK: - Select row
-    
+
     func category(ofType type: ASCFolderType) -> ASCOnlyofficeCategory? {
         categories.first(where: { $0.folder?.rootFolderType == type })
     }

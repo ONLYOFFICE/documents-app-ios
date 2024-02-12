@@ -9,10 +9,8 @@
 import Foundation
 
 extension TimeInterval {
-    
     static let standardDelay: TimeInterval = 1.3
     static let shortDelay: TimeInterval = 0.3
     static let oneSecondDelay: TimeInterval = 1
     static let twoSecondsDelay: TimeInterval = 2
-    
 }

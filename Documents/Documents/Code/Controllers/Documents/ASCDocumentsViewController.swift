@@ -1691,7 +1691,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
         }
     }
-    
+
     func transformToRoom(folder: ASCFolder) {
         let vc = CreateRoomRouteViewViewController(
             roomName: folder.title,
@@ -1721,7 +1721,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             }
         }
-        
+
         if UIDevice.pad {
             vc.isModalInPresentation = true
             vc.modalPresentationStyle = .formSheet

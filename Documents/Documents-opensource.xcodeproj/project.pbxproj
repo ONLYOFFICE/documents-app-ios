@@ -490,6 +490,7 @@
 		FCE993512B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE993502B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift */; };
 		FCE9935E2B766BCC009A0CC8 /* ASCOformPdfChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9935D2B766BCC009A0CC8 /* ASCOformPdfChecker.swift */; };
 		FCE993602B766BF2009A0CC8 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9935F2B766BF2009A0CC8 /* KFImageView.swift */; };
+		FCE993662B7A09DD009A0CC8 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE993652B7A09DD009A0CC8 /* TimeInterval+Extensions.swift */; };
 		FCE9F63B2B2B49D60056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6332B2B49D50056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */; };
 		FCE9F63C2B2B49D60056E420 /* ASCSharingAddRightHoldersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6342B2B49D50056E420 /* ASCSharingAddRightHoldersRouter.swift */; };
 		FCE9F63D2B2B49D60056E420 /* ASCSharingAddRightHoldersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6352B2B49D50056E420 /* ASCSharingAddRightHoldersPresenter.swift */; };
@@ -1080,6 +1081,7 @@
 		FCE993502B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentConverterErrorProtocol.swift; sourceTree = "<group>"; };
 		FCE9935D2B766BCC009A0CC8 /* ASCOformPdfChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOformPdfChecker.swift; sourceTree = "<group>"; };
 		FCE9935F2B766BF2009A0CC8 /* KFImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
+		FCE993652B7A09DD009A0CC8 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		FCE9F6332B2B49D50056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersViewController.swift; sourceTree = "<group>"; };
 		FCE9F6342B2B49D50056E420 /* ASCSharingAddRightHoldersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersRouter.swift; sourceTree = "<group>"; };
 		FCE9F6352B2B49D50056E420 /* ASCSharingAddRightHoldersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersPresenter.swift; sourceTree = "<group>"; };
@@ -2300,6 +2302,7 @@
 				FC83D5D92A974E1C00C404CB /* UserDefaultsExtensions.swift */,
 				E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */,
 				E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */,
+				FCE993652B7A09DD009A0CC8 /* TimeInterval+Extensions.swift */,
 				FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */,
 			);
 			path = Extensions;
@@ -3654,6 +3657,7 @@
 				FC142A37289819B400EDE7CE /* ASCFolder.swift in Sources */,
 				FC83D6052A974E2200C404CB /* UIControl+Extension.swift in Sources */,
 				FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
+				FCE993662B7A09DD009A0CC8 /* TimeInterval+Extensions.swift in Sources */,
 				FC70811E2812E2260057FCD2 /* ASCImageViewController.swift in Sources */,
 				FC83D5732A9742F000C404CB /* ASCLogger.swift in Sources */,
 				FC70811F2812E2260057FCD2 /* ASCCopyLinkTableViewCell.swift in Sources */,

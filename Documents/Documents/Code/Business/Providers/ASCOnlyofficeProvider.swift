@@ -834,7 +834,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         var parameters: [String: Any] = [
             "destFolderId": folder.id,
-            "conflictResolveType": conflictResolveType.rawValue
+            "conflictResolveType": conflictResolveType.rawValue,
         ]
 
         if folderIds.count > 0 {
@@ -844,7 +844,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if fileIds.count > 0 {
             parameters["fileIds"] = fileIds
         }
-        
+
         if contentOnly {
             parameters["content"] = true
         }
@@ -1331,7 +1331,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.link)
                 entityActions.insert(.info)
             }
-            
+
             if canEdit, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
             }
@@ -1898,7 +1898,6 @@ private extension ASCFiltersControllerProtocol {
 }
 
 private extension ASCOnlyofficeProvider {
-    
     var isDocspace: Bool {
         apiClient.serverVersion?.docSpace != nil
     }

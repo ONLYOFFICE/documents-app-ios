@@ -119,6 +119,12 @@ extension ASCFolder {
     }
 }
 
+extension ASCFolder {
+    var isEmpty: Bool {
+        filesCount == 0 && foldersCount == 0
+    }
+}
+
 // MARK: - ASCEntity extension for DocSpace
 
 extension ASCEntity {

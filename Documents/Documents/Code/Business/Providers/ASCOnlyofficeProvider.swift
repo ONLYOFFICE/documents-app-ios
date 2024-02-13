@@ -962,6 +962,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if folder.rootFolderType == .onlyofficeUser {
             return true
         }
+
+        if folder.rootFolderType == .onlyofficeRoomArchived {
+            return total > 0
+        }
+
         return folder.security.create
     }
 

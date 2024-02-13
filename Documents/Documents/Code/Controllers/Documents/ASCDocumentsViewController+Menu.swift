@@ -728,7 +728,7 @@ extension ASCDocumentsViewController {
         delete.callback = { [unowned self] cell -> Bool in
             guard view.isUserInteractionEnabled else { return true }
 
-            self.deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
+            deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
                 guard let cell = cell as? MGSwipeTableCell else { return }
 
                 cell.hideSwipe(animated: true)
@@ -737,6 +737,7 @@ extension ASCDocumentsViewController {
                     self.delete(cell: cell)
                 }
             }
+
             return false
         }
 

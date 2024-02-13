@@ -25,7 +25,7 @@ extension MBProgressHUD {
         }
         return nil
     }
-    
+
     static func showTopMost(mode: MBProgressHUDMode, hideCurrent: Bool = true) {
         if hideCurrent {
             currentHUD?.hide(animated: false)

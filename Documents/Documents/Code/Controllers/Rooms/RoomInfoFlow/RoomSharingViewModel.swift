@@ -248,13 +248,13 @@ private extension RoomSharingViewModel {
                 isSharingScreenPresenting = true
                 sharingLink = URL(string: link.linkInfo.shareLink)
             },
-            onCopyAction: { [ weak self ] in
+            onCopyAction: { [weak self] in
                 guard let self else { return }
                 onCopyLinkAndNotify(link: link)
             }
         )
     }
-    
+
     private func onCopyLinkAndNotify(link: RoomSharingLinkModel?) {
         guard let link = link else { return }
         isActivitiIndicatorDisplaying = true
@@ -267,9 +267,9 @@ private extension RoomSharingViewModel {
                 )
             } else {
                 UIPasteboard.general.string = """
-            \(link.linkInfo.shareLink)
-            \(link.linkInfo.password ?? "")
-            """
+                \(link.linkInfo.shareLink)
+                \(link.linkInfo.password ?? "")
+                """
                 resultModalModel = .init(
                     result: .success,
                     message: .linkAndPasswordCopiedSuccessfull

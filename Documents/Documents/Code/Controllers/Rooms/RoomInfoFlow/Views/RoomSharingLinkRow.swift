@@ -17,7 +17,7 @@ struct RoomSharingLinkRowModel: Identifiable {
     var isSharingPossible: Bool
     var onTapAction: () -> Void
     var onShareAction: () -> Void
-    var onCopyAction: () -> ()
+    var onCopyAction: () -> Void
 
     static var empty = RoomSharingLinkRowModel(
         id: "",

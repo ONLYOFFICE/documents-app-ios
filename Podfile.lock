@@ -228,7 +228,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FileKit
-  - FilesProvider (from `https://github.com/ayuzhin/FileProviderV2.git`)
+  - FilesProvider (from `https://github.com/ayuzhin/FileProvider.git`)
   - Firebase
   - Firebase/Analytics
   - Firebase/Crashlytics
@@ -317,7 +317,7 @@ EXTERNAL SOURCES:
   DocumentEditor:
     :path: "../editors-ios/DocumentEditor.podspec"
   FilesProvider:
-    :git: https://github.com/ayuzhin/FileProviderV2.git
+    :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
     :git: https://github.com/ayuzhin/MediaBrowser.git
   PresentationEditor:
@@ -334,7 +334,7 @@ EXTERNAL SOURCES:
 CHECKOUT OPTIONS:
   FilesProvider:
     :commit: 19f16c1e4993117592a1a4ee2e2f9cdb3db05413
-    :git: https://github.com/ayuzhin/FileProviderV2.git
+    :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
     :commit: 8411f5defa223c5edb8677c5af3707a38e75051a
     :git: https://github.com/ayuzhin/MediaBrowser.git
@@ -407,6 +407,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: b154353a3190c17024d0345f7ca70b660aece462
+PODFILE CHECKSUM: d9676997e77e25c0ec473322d907a3ad008bed75
 
 COCOAPODS: 1.13.0

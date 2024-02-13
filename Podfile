@@ -51,7 +51,7 @@ def common_pods
 
   # Utils
 
-  pod 'FilesProvider', :git => 'https://github.com/ayuzhin/FileProviderV2.git'
+  pod 'FilesProvider', :git => 'https://github.com/ayuzhin/FileProvider.git'
   pod 'FileKit'
   pod 'IQKeyboardManagerSwift'
   pod 'KeychainSwift'

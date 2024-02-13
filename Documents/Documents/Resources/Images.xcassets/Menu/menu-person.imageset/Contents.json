@@ -1,25 +1,25 @@
 {
-    "images" : [
-        {
-            "idiom" : "universal",
-            "filename" : "menu-person-light.pdf"
-        },
-        {
-            "idiom" : "universal",
-            "filename" : "menu-person-dark.pdf",
-            "appearances" : [
-                {
-                    "appearance" : "luminosity",
-                    "value" : "dark"
-                }
-            ]
-        }
-    ],
-    "info" : {
-        "version" : 1,
-        "author" : "xcode"
+  "images" : [
+    {
+      "filename" : "menu-person-light.pdf",
+      "idiom" : "universal"
     },
-    "properties" : {
-        "preserves-vector-representation" : true
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "menu-person-dark.pdf",
+      "idiom" : "universal"
     }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
 }

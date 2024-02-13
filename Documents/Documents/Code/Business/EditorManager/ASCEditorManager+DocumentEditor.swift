@@ -10,6 +10,9 @@ import DocumentEditor
 import FileKit
 
 extension DocumentEditor.EditorDocument: EditorDocumentProtocol {}
+extension DocumentEditor.DocumentConverterError: DocumentConverterErrorProtocol {
+    var identifier: String { localizedDescription }
+}
 
 extension ASCEditorManager {
     var documentEditorExternalSettings: [AnyHashable: Any] {

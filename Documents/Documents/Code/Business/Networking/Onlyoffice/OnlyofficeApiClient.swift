@@ -131,6 +131,7 @@ class OnlyofficeApiClient: NetworkingClient {
     func download(
         _ path: String,
         _ to: URL,
+        _ range: Range<Int64>? = nil,
         _ processing: @escaping NetworkProgressHandler
     ) {
         guard let url = OnlyofficeApiClient.absoluteUrl(from: URL(string: path)) else {
@@ -142,25 +143,33 @@ class OnlyofficeApiClient: NetworkingClient {
             (to, [.removePreviousFile, .createIntermediateDirectories])
         }
 
-        var headers: HTTPHeaders?
+        var headers: HTTPHeaders = []
 
         if baseURL?.host == url.host, let token, !token.isEmpty {
-            headers = [
-                "Authorization": isHttp2 ? "Bearer \(token)" : token,
-            ]
+            headers.add(isHttp2 ? .authorization(bearerToken: token) : .authorization(token))
+        }
+
+        if let range {
+            headers.add(name: "Range", value: "bytes=\(range.lowerBound)-\(range.upperBound)")
         }
 
         let redirectHandler = Redirector(
             behavior: Redirector.Behavior.modify { task, request, response in
                 var redirectedRequest = request
 
-                // Set Authorization in header if redirect to same host
-                if redirectedRequest.url?.host == url.host,
-                   let originalRequest = task.originalRequest,
-                   let headers = originalRequest.allHTTPHeaderFields,
-                   let authorizationHeaderValue = headers["Authorization"]
+                if let originalRequest = task.originalRequest,
+                   let headers = originalRequest.allHTTPHeaderFields
                 {
-                    redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
+                    // Set Authorization in header if redirect to same host
+                    if redirectedRequest.url?.host == url.host,
+                       let authorizationHeaderValue = headers["Authorization"]
+                    {
+                        redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
+                    }
+
+                    if let rangeHeaderValue = headers["Range"] {
+                        redirectedRequest.setValue(rangeHeaderValue, forHTTPHeaderField: "Range")
+                    }
                 }
 
                 return redirectedRequest
@@ -186,7 +195,7 @@ class OnlyofficeApiClient: NetworkingClient {
 
         downloadManager.download(
             url,
-            headers: headers,
+            headers: headers.isEmpty ? nil : headers,
             to: destination
         )
         .downloadProgress(queue: queue) { progress in

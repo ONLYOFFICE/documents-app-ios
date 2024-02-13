@@ -170,9 +170,9 @@ struct RoomSharingView: View {
             primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
                 viewModel.deleteGeneralLink()
             }),
-            secondaryButton: .cancel({
+            secondaryButton: .cancel {
                 viewModel.loadData()
-            })
+            }
         )
     }
 

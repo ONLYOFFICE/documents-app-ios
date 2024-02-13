@@ -90,7 +90,7 @@ final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionCon
                 completion?(nil)
             } else if status == .end {
                 hud?.setSuccessState()
-                hud?.hide(animated: false, afterDelay: 1.3)
+                hud?.hide(animated: false, afterDelay: .standardDelay)
                 hud = nil
 
                 let deletedItems = items.filter { provider.allowDelete(entity: $0) || (($0 as? ASCFolder)?.isThirdParty ?? false) }

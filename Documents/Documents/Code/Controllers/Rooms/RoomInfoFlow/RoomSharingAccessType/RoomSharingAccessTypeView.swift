@@ -45,7 +45,7 @@ struct RoomSharingAccessTypeView: View {
             if let hud = MBProgressHUD.currentHUD {
                 if (viewModel.error ?? "").isEmpty {
                     hud.setState(result: .success(nil))
-                    hud.hide(animated: true, afterDelay: 1.3)
+                    hud.hide(animated: true, afterDelay: .standardDelay)
                 } else {
                     hud.hide(animated: true)
                 }

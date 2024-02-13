@@ -248,7 +248,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>8.0</string>
+	<string>8.0.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -293,7 +293,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>952</string>
+	<string>955</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>

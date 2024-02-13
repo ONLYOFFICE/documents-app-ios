@@ -184,7 +184,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             } else if status == .end {
                 if let entity {
                     hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: 1.3)
+                    hud?.hide(animated: false, afterDelay: .standardDelay)
                     viewController.add(entity: entity)
                 } else {
                     hud?.hide(animated: false)

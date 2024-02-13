@@ -21,7 +21,7 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
             var users: [ASCSharingRightHolderViewModel] = []
             var groups: [ASCSharingRightHolderViewModel] = []
 
-            resopnse.items.forEach { sharedInfo in
+            for sharedInfo in resopnse.items {
                 var name = ""
                 var id: String?
                 var avatarUrl: String?

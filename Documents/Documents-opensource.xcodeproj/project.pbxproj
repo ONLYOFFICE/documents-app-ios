@@ -487,6 +487,10 @@
 		FCE886EE2A83B76B0064F79D /* CreateEntityUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886ED2A83B76B0064F79D /* CreateEntityUIType.swift */; };
 		FCE886F12A83B7AF0064F79D /* CreateEntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886F02A83B7AF0064F79D /* CreateEntityViewModel.swift */; };
 		FCE886F62A83C6C60064F79D /* ASCCreateEntityUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886F52A83C6C60064F79D /* ASCCreateEntityUIViewController.swift */; };
+		FCE993512B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE993502B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift */; };
+		FCE9935E2B766BCC009A0CC8 /* ASCOformPdfChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9935D2B766BCC009A0CC8 /* ASCOformPdfChecker.swift */; };
+		FCE993602B766BF2009A0CC8 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9935F2B766BF2009A0CC8 /* KFImageView.swift */; };
+		FCE993662B7A09DD009A0CC8 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE993652B7A09DD009A0CC8 /* TimeInterval+Extensions.swift */; };
 		FCE9F63B2B2B49D60056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6332B2B49D50056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */; };
 		FCE9F63C2B2B49D60056E420 /* ASCSharingAddRightHoldersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6342B2B49D50056E420 /* ASCSharingAddRightHoldersRouter.swift */; };
 		FCE9F63D2B2B49D60056E420 /* ASCSharingAddRightHoldersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6352B2B49D50056E420 /* ASCSharingAddRightHoldersPresenter.swift */; };
@@ -1074,6 +1078,10 @@
 		FCE886ED2A83B76B0064F79D /* CreateEntityUIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEntityUIType.swift; sourceTree = "<group>"; };
 		FCE886F02A83B7AF0064F79D /* CreateEntityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEntityViewModel.swift; sourceTree = "<group>"; };
 		FCE886F52A83C6C60064F79D /* ASCCreateEntityUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityUIViewController.swift; sourceTree = "<group>"; };
+		FCE993502B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentConverterErrorProtocol.swift; sourceTree = "<group>"; };
+		FCE9935D2B766BCC009A0CC8 /* ASCOformPdfChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOformPdfChecker.swift; sourceTree = "<group>"; };
+		FCE9935F2B766BF2009A0CC8 /* KFImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
+		FCE993652B7A09DD009A0CC8 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		FCE9F6332B2B49D50056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersViewController.swift; sourceTree = "<group>"; };
 		FCE9F6342B2B49D50056E420 /* ASCSharingAddRightHoldersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersRouter.swift; sourceTree = "<group>"; };
 		FCE9F6352B2B49D50056E420 /* ASCSharingAddRightHoldersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersPresenter.swift; sourceTree = "<group>"; };
@@ -1801,6 +1809,7 @@
 			isa = PBXGroup;
 			children = (
 				E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */,
+				FCE9935F2B766BF2009A0CC8 /* KFImageView.swift */,
 				E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */,
 			);
 			path = Representable;
@@ -1944,6 +1953,7 @@
 			isa = PBXGroup;
 			children = (
 				E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */,
+				FCE9935D2B766BCC009A0CC8 /* ASCOformPdfChecker.swift */,
 				E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */,
 			);
 			path = Utils;
@@ -2292,6 +2302,7 @@
 				FC83D5D92A974E1C00C404CB /* UserDefaultsExtensions.swift */,
 				E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */,
 				E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */,
+				FCE993652B7A09DD009A0CC8 /* TimeInterval+Extensions.swift */,
 				FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */,
 			);
 			path = Extensions;
@@ -2412,6 +2423,7 @@
 		FC5943302AE67586001BA2F9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				FCE993502B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift */,
 				FC5943312AE67586001BA2F9 /* EditorDocumentProtocol.swift */,
 				FC5943322AE67586001BA2F9 /* EditorViewControllerProtocol.swift */,
 			);
@@ -3431,6 +3443,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseSessions/FirebaseSessions.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
@@ -3481,6 +3494,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSessions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
@@ -3530,6 +3544,7 @@
 				FC7080D72812E2260057FCD2 /* OnlyofficeEndpoints.swift in Sources */,
 				FC142A7128981A1F00EDE7CE /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC83D6172A974E2300C404CB /* Collection+Extensions.swift in Sources */,
+				FCE993602B766BF2009A0CC8 /* KFImageView.swift in Sources */,
 				FC7080D82812E2260057FCD2 /* ASCStringTransform.swift in Sources */,
 				FC142A6B28981A1F00EDE7CE /* ASCSettingsViewController.swift in Sources */,
 				FC7DD79F2B502F7E0037405B /* TimeLimitCellView.swift in Sources */,
@@ -3642,6 +3657,7 @@
 				FC142A37289819B400EDE7CE /* ASCFolder.swift in Sources */,
 				FC83D6052A974E2200C404CB /* UIControl+Extension.swift in Sources */,
 				FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
+				FCE993662B7A09DD009A0CC8 /* TimeInterval+Extensions.swift in Sources */,
 				FC70811E2812E2260057FCD2 /* ASCImageViewController.swift in Sources */,
 				FC83D5732A9742F000C404CB /* ASCLogger.swift in Sources */,
 				FC70811F2812E2260057FCD2 /* ASCCopyLinkTableViewCell.swift in Sources */,
@@ -3722,6 +3738,7 @@
 				FC7081572812E2260057FCD2 /* AppDelegate+Helpers.swift in Sources */,
 				FC7081582812E2260057FCD2 /* ASCTextFieldCellViewModel.swift in Sources */,
 				FC83D6072A974E2200C404CB /* Decodable+Extensions.swift in Sources */,
+				FCE9935E2B766BCC009A0CC8 /* ASCOformPdfChecker.swift in Sources */,
 				FC70815A2812E2260057FCD2 /* ASCWebDAVProvider.swift in Sources */,
 				FC70815B2812E2260057FCD2 /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FCE9F7A82B3044CE0056E420 /* CurrentFolderMenu.swift in Sources */,
@@ -3755,6 +3772,7 @@
 				FCE886EE2A83B76B0064F79D /* CreateEntityUIType.swift in Sources */,
 				FC83D5722A9742F000C404CB /* ASCAnalytics.swift in Sources */,
 				1D667A3028CDFF39009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */,
+				FCE993512B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift in Sources */,
 				FCE886F62A83C6C60064F79D /* ASCCreateEntityUIViewController.swift in Sources */,
 				FCE9F6492B2B4AF20056E420 /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */,
@@ -4410,7 +4428,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp.git";
 			requirement = {
-				branch = release/v8.0.0;
+				branch = hotfix/v8.0.1;
 				kind = branch;
 			};
 		};

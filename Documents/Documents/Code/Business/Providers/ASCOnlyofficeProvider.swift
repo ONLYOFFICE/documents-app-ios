@@ -647,8 +647,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func download(_ path: String, to: URL, processing: @escaping NetworkProgressHandler) {
-        apiClient.download(path, to, processing)
+    func download(_ path: String, to: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
+        apiClient.download(path, to, range, processing)
     }
 
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
@@ -813,7 +813,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         items: [ASCEntity],
         to folder: ASCFolder,
         move: Bool,
-        overwrite: Bool,
+        conflictResolveType: ConflictResolveType,
+        contentOnly: Bool = false,
         handler: ASCEntityProgressHandler?
     ) {
         var cancel = false
@@ -833,7 +834,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         var parameters: [String: Any] = [
             "destFolderId": folder.id,
-            "conflictResolveType": overwrite ? 1 : 0, // Overwriting behavior: skip(0), overwrite(1) or duplicate(2)
+            "conflictResolveType": conflictResolveType.rawValue,
         ]
 
         if folderIds.count > 0 {
@@ -842,6 +843,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if fileIds.count > 0 {
             parameters["fileIds"] = fileIds
+        }
+
+        if contentOnly {
+            parameters["content"] = true
         }
 
         apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in
@@ -1282,7 +1287,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
-
+            let isUserCategory = folder.rootFolderType == .onlyofficeUser
+            let isRoomCategory = folder.rootFolderType == .onlyofficeRoomShared
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
@@ -1329,6 +1335,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isArchiveCategory, !folder.isRoot {
                 entityActions.insert(.link)
                 entityActions.insert(.info)
+            }
+
+            if canEdit, isDocspace, isUserCategory {
+                entityActions.insert(.transformToRoom)
             }
 
             if isRoomFolder, !isArchiveCategory {
@@ -1755,7 +1765,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     file,
                     openMode: openMode,
                     canEdit: canEdit,
-                    handler: openHandler,
+                    openHandler: openHandler,
                     closeHandler: closeHandler,
                     favoriteHandler: favoriteHandler,
                     shareHandler: shareHandler,
@@ -1827,7 +1837,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else if isAllowConvert {
@@ -1888,5 +1899,11 @@ private extension ASCFiltersControllerProtocol {
             return .docspace
         }
         return .documents
+    }
+}
+
+private extension ASCOnlyofficeProvider {
+    var isDocspace: Bool {
+        apiClient.serverVersion?.docSpace != nil
     }
 }

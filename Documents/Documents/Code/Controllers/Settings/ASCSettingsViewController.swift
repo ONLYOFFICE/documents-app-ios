@@ -337,7 +337,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
 
             var commonSize: UInt64 = 0
 
-            [Path.userTemporary, Path.userAutosavedInformation].forEach { path in
+            for path in [Path.userTemporary, Path.userAutosavedInformation] {
                 _ = path.find(searchDepth: 5) { path in
                     if path.isRegular {
                         commonSize += path.fileSize ?? 0
@@ -394,8 +394,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             hud.label.text = NSLocalizedString("Clearing", comment: "Caption of the processing")
 
             DispatchQueue.global().async { [weak self] in
-                [Path.userTemporary, Path.userAutosavedInformation].forEach { path in
-
+                for path in [Path.userTemporary, Path.userAutosavedInformation] {
                     _ = path.find(searchDepth: 1) { path in
                         ASCLocalFileHelper.shared.removeFile(path)
                         return true
@@ -418,7 +417,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                     ASCOnlyofficeUserDefaultsCacheCategoriesProvider().clearCache()
 
                     hud.setSuccessState()
-                    hud.hide(animated: true, afterDelay: 2)
+                    hud.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                     strongSelf.calcCacheSize()
                 }

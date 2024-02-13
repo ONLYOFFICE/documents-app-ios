@@ -97,19 +97,22 @@ struct ManageRoomView: View {
     }
 
     private func handleHUD() {
-        if viewModel.isSaving {
+        if viewModel.isSavedSuccessfully {
+            if let hud = MBProgressHUD.currentHUD, viewModel.hideActivityOnSuccess {
+                hud.setState(result: .success(nil))
+                hud.hide(animated: true, afterDelay: .standardDelay)
+            }
+        } else if viewModel.isSaving {
             MBProgressHUD.currentHUD?.hide(animated: false)
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
             hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the processing")
-        } else {
-            if let hud = MBProgressHUD.currentHUD {
-                if let _ = viewModel.errorMessage {
-                    hud.hide(animated: true)
-                } else {
-                    hud.setState(result: .success(nil))
-                    hud.hide(animated: true, afterDelay: 1.3)
-                }
+        } else if let hud = MBProgressHUD.currentHUD {
+            if let _ = viewModel.errorMessage {
+                hud.hide(animated: true)
+            } else {
+                hud.setState(result: .success(nil))
+                hud.hide(animated: true, afterDelay: .standardDelay)
             }
         }
     }

@@ -458,7 +458,7 @@ extension ASCSharingInviteRightHoldersViewController {
             self.dataStore?.sharedInfoItems = []
             self.dataStore?.itemsForSharingAdd = []
             self.dataStore?.itemsForSharingRemove = []
-            emails.forEach { email in
+            for email in emails {
                 self.dataStore?.add(shareInfo: .init(access: access, email: email))
             }
             self.routeToVerifyRightHolders()

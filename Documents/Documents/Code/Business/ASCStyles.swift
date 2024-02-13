@@ -9,7 +9,7 @@
 import Foundation
 import MGSwipeTableCell
 
-class ASCStyles {
+enum ASCStyles {
     static let initialize: Void = {
         // Appearances
 //        UINavigationBar.appearance().titleTextAttributes = [
@@ -29,7 +29,7 @@ class ASCStyles {
     }()
 
     static func decorate(menu buttons: [MGSwipeButton]) -> [MGSwipeButton] {
-        buttons.forEach { button in
+        for button in buttons {
             button.buttonWidth = 75
             button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             button.centerIconOverText()

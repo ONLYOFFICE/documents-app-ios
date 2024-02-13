@@ -39,7 +39,7 @@ class ASCAccount: NSObject, NSCoding, Mappable {
 
     var userType: UserType?
     var avatarAbsoluteUrl: URL? {
-        guard let avatarUrlString = self.avatar,
+        guard let avatarUrlString = avatar,
               let portal = portal,
               let portalUrl = URL(string: portal),
               !avatarUrlString.contains("/skins/default/images/default_user_photo_size_"),

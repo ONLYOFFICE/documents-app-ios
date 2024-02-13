@@ -348,7 +348,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             self?.tableView.isUserInteractionEnabled = !show
             self?.tableView.visibleCells.forEach { cell in
                 let contentUI = cell.subviews(ofType: UILabel.self) + cell.subviews(ofType: UIImageView.self)
-                contentUI.forEach { view in
+                for view in contentUI {
                     view.showSkeleton(show, animeted: true)
                     if let label = view as? UILabel {
                         if #available(iOS 13.0, *) {
@@ -414,6 +414,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     // MARK: - Select row
+
+    func category(ofType type: ASCFolderType) -> ASCOnlyofficeCategory? {
+        categories.first(where: { $0.folder?.rootFolderType == type })
+    }
 
     func select(category: ASCCategory, animated: Bool = false) {
         guard let splitVC = splitViewController else {

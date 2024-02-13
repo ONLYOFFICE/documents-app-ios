@@ -10,6 +10,9 @@ import FileKit
 import PresentationEditor
 
 extension PresentationEditor.EditorDocument: EditorDocumentProtocol {}
+extension PresentationEditor.DocumentConverterError: DocumentConverterErrorProtocol {
+    var identifier: String { localizedDescription }
+}
 
 extension ASCEditorManager {
     var presentationEditorExternalSettings: [AnyHashable: Any] {

@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-class NextcloudAPI {
+enum NextcloudAPI {
     enum Path {
         public static let storageStats = "index.php/apps/files/ajax/getstoragestats.php"
     }

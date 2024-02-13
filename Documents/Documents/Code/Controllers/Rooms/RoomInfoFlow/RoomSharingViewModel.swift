@@ -131,7 +131,7 @@ final class RoomSharingViewModel: ObservableObject {
     }
 
     func deleteAdditionalLink(indexSet: IndexSet) {
-        indexSet.forEach { index in
+        for index in indexSet {
             if let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == additionalLinkModels[safe: index]?.id }) {
                 linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ASCPushNotificationManager {
+enum ASCPushNotificationManager {
     static func requestRegister(fcmToken: String? = nil) {
         if let fcmToken = fcmToken {
             UserDefaults.standard.set(fcmToken, forKey: ASCConstants.SettingsKeys.pushFCMToken)

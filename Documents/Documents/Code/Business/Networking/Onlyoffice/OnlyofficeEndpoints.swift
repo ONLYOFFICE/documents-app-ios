@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-class OnlyofficeAPI {
+enum OnlyofficeAPI {
     enum Path {
         // Api version
         private static let version = "2.0"

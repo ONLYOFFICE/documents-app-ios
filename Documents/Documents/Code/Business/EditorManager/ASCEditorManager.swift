@@ -1174,14 +1174,8 @@ extension ASCEditorManager {
 
                 stopLocallyEditing()
                 removeAutosave(at: Path.userAutosavedInformation + file.title)
-//                closeHandler?(.end, 1, nil, nil, &cancel)
-                
-                // Cancel is default closing error and we need check it for all Editors
-                if let error = error as? DocumentEditor.DocumentConverterError, error == .cancel {
-                    closeHandler?(.end, 1, nil, nil, &cancel)
-                } else if let error = error as? PresentationEditor.DocumentConverterError, error == .cancel {
-                    closeHandler?(.end, 1, nil, nil, &cancel)
-                } else if let error = error as? SpreadsheetEditor.DocumentConverterError, error == .cancel {
+
+                if let error = error as? (any DocumentConverterErrorProtocol), error.isEqual(DocumentEditor.DocumentConverterError.cancel) {
                     closeHandler?(.end, 1, nil, nil, &cancel)
                 } else {
                     closeHandler?(.error, 1, nil, error, &cancel)
@@ -1398,7 +1392,7 @@ extension ASCEditorManager {
 
             renameHandler(file, title) { success in
                 if success {
-                    [self.openedlocallyFile, self.openedFile].forEach { file in
+                    for file in [self.openedlocallyFile, self.openedFile] {
                         file?.title = title
 
                         if !fileExtension.isEmpty {

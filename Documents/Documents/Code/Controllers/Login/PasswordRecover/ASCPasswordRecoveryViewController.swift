@@ -107,7 +107,7 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
             switch result {
             case let .success(response):
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 2)
+                hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                 self?.presentEmailSentVC(responseText: response.response)
             case let .failure(error):

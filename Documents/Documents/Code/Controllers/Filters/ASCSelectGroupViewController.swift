@@ -36,12 +36,12 @@ class ASCSelectGroupViewController: UIViewController {
     }
 
     private func selectItem(byId id: String) {
-        filteredGroup.enumerated().forEach { index, item in
+        for (index, item) in filteredGroup.enumerated() {
             if item.groupId == id {
                 filteredGroup[index].isSelected = true
             }
         }
-        dataArray.enumerated().forEach { index, item in
+        for (index, item) in dataArray.enumerated() {
             if item.groupId == id {
                 dataArray[index].isSelected = true
             }
@@ -233,11 +233,11 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func deselectAll() {
-        filteredGroup.enumerated().forEach { index, _ in
+        for (index, _) in filteredGroup.enumerated() {
             filteredGroup[index].isSelected = false
         }
 
-        dataArray.enumerated().forEach { index, _ in
+        for (index, _) in dataArray.enumerated() {
             dataArray[index].isSelected = false
         }
     }

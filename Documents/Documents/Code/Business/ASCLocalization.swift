@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ASCLocalization {
+enum ASCLocalization {
     enum Common {
         static let cancel = NSLocalizedString("common.cancel", tableName: nil, bundle: Bundle.main, value: "Cancel", comment: "Cancel")
         static let close = NSLocalizedString("common.close", tableName: nil, bundle: Bundle.main, value: "Close", comment: "Close")

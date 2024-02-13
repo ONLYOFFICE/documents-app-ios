@@ -704,7 +704,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func createAddBarButton() -> UIBarButtonItem? {
-        guard provider?.allowAdd(toFolder: folder) == true else { return nil }
+        guard ((provider?.allowAdd(toFolder: folder)) != nil) && folder?.rootFolderType != .onlyofficeRoomArchived else { return nil }
 
         let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
 
@@ -1351,11 +1351,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let hasError = errorView?.superview != nil
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        if let folder = folder,
-           !folder.isRoom
-        {
-            sortSelectBarButton?.isEnabled = !hasError && total > 0
-        }
+        sortSelectBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0
@@ -1585,37 +1581,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if let fileCell = cell as? ASCFileCell, let file = fileCell.file {
             removerActionController.delete(indexes: [file.uid])
         } else if let folderCell = cell as? ASCFolderCell, let folder = folderCell.folder {
-            removerActionController.delete(indexes: [folder.uid])
+            if folder.rootFolderType == .onlyofficeRoomArchived {
+                deleteArchive(folder: folder)
+            } else {
+                removerActionController.delete(indexes: [folder.uid])
+            }
         }
     }
 
-    func deleteFolderAction(folder: ASCFolder) {
+    func deleteArchive(folder: ASCFolder) {
         let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
-        var hud: MBProgressHUD?
-
-        hud?.mode = .indeterminate
-        hud?.label.text = NSLocalizedString("Deleting", comment: "Caption of the processing")
-
         let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
-            hud = MBProgressHUD.showTopMost()
-
-            self.provider?.delete([folder], from: folder, move: true, completeon: { provider, result, success, error in
-                if success {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: .standardDelay)
-                    if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
-                        if let refreshControl = previousController.refreshControl {
-                            previousController.refresh(refreshControl)
-                        }
-                    }
-                    self.navigationController?.popViewController(animated: true)
-                } else if let error = error {
-                    hud?.hide(animated: true)
-                    UIAlertController.showError(in: self, message: error.localizedDescription)
-                }
-            })
+            self.removerActionController.delete(indexes: [folder.uid])
         }
         alertController.message = NSLocalizedString("You are about to delete this room. You won’t be able to restore them.", comment: "")
 
@@ -3807,16 +3786,13 @@ extension ASCDocumentsViewController {
     func removedItems(indexPaths: [IndexPath]) {
         guard !indexPaths.isEmpty else { return }
 
-        tableView.beginUpdates()
-
         // Remove data
         var newItemsData = provider?.items ?? []
         provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
 
-        // Remove cells
-        tableView.reloadSections([0], with: .fade)
-        tableView.endUpdates()
-
+        if let refreshControl = refreshControl {
+            refresh(refreshControl)
+        }
         showEmptyView(total < 1)
         updateNavBar()
         setEditMode(false)

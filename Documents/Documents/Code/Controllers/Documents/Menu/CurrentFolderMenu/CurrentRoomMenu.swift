@@ -152,14 +152,14 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                             "type": sortType.rawValue,
                             "order": sortAscending ? "ascending" : "descending",
                         ]
-                        
+
                         if sortType != sort.type {
                             sortInfo["type"] = sort.type.rawValue
                         } else {
                             sortAscending = !sortAscending
                             sortInfo["order"] = sortAscending ? "ascending" : "descending"
                         }
-                        
+
                         UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
                     }
                 )

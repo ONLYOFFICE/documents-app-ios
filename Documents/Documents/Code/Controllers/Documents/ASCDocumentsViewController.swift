@@ -2090,7 +2090,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: .standardDelay)
 
                     if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
-                        updateProviderFilesStatus(entity: file, indexPath: indexPath)
+                        updateProviderStatus(for: file, indexPath: indexPath)
                     }
                 } else {
                     hud?.hide(animated: false)
@@ -3387,7 +3387,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     func closeProgress(file: ASCFile, title: String) -> ASCEditorManagerCloseHandler {
         var hud: MBProgressHUD?
 
-        let originalFile: ASCFile? = file
+        let originalFile = file
         let closeHandler: ASCEditorManagerCloseHandler = { [weak self] status, progress, file, error, cancel in
             log.info("Close file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
 
@@ -3418,26 +3418,26 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
 
                 /// Update file info
                 let updateFileInfo = {
-                    if let newFile = file ?? originalFile {
-                        if let index = self.tableData.firstIndex(where: { entity -> Bool in
-                            guard let file = entity as? ASCFile else { return false }
-                            return file.id == newFile.id || file.id == originalFile?.id
-                        }) {
-                            let indexPath = IndexPath(row: index, section: 0)
+                    let newFile = file ?? originalFile
 
-                            self.updateProviderFilesStatus(entity: newFile, indexPath: indexPath)
-                        } else {
-                            self.provider?.add(item: newFile, at: 0)
-                            self.tableView.reloadData()
-                            self.showEmptyView(self.total < 1)
-                            self.updateNavBar()
+                    if let index = self.tableData.firstIndex(where: { entity -> Bool in
+                        guard let file = entity as? ASCFile else { return false }
+                        return file.id == newFile.id || file.id == originalFile.id
+                    }) {
+                        let indexPath = IndexPath(row: index, section: 0)
 
-                            let updateIndexPath = IndexPath(row: 0, section: 0)
-                            self.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
+                        self.updateProviderStatus(for: newFile, indexPath: indexPath)
+                    } else {
+                        self.provider?.add(item: newFile, at: 0)
+                        self.tableView.reloadData()
+                        self.showEmptyView(self.total < 1)
+                        self.updateNavBar()
 
-                            if let updatedCell = self.tableView.cellForRow(at: updateIndexPath) {
-                                self.highlight(cell: updatedCell)
-                            }
+                        let updateIndexPath = IndexPath(row: 0, section: 0)
+                        self.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
+
+                        if let updatedCell = self.tableView.cellForRow(at: updateIndexPath) {
+                            self.highlight(cell: updatedCell)
                         }
                     }
                 }
@@ -3455,16 +3455,13 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         return closeHandler
     }
 
-    func updateProviderFilesStatus(entity: ASCEntity, indexPath: IndexPath) {
+    func updateProviderStatus(for entity: ASCEntity, indexPath: IndexPath) {
         if let file = entity as? ASCFile {
-            handleFileStatusUpdate(file: file, indexPath: indexPath)
+            handleStatusUpdate(for: file, indexPath: indexPath)
         }
-//        else if let folder = entity as? ASCFolder {
-//            // If we need update folder status in future
-//        }
     }
 
-    func handleFileStatusUpdate(file: ASCFile, indexPath: IndexPath) {
+    func handleStatusUpdate(for file: ASCFile, indexPath: IndexPath) {
         if let index = tableData.firstIndex(where: { existingEntity -> Bool in
             guard let existingFile = existingEntity as? ASCFile else { return false }
             return existingFile.id == file.id

@@ -3468,20 +3468,18 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         }) {
             let updatedIndexPath = IndexPath(row: index, section: 0)
 
-            if categoryIsFavorite {
+            if categoryIsFavorite, !file.isFavorite {
                 provider?.remove(at: updatedIndexPath.row)
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [updatedIndexPath], with: .fade)
                 tableView.endUpdates()
+
+                showEmptyView(total < 1)
             } else {
                 provider?.items[updatedIndexPath.row] = file
                 tableView.beginUpdates()
                 tableView.reloadRows(at: [updatedIndexPath], with: .fade)
                 tableView.endUpdates()
-            }
-
-            if categoryIsFavorite, !file.isFavorite {
-                showEmptyView(total < 1)
             }
         }
     }

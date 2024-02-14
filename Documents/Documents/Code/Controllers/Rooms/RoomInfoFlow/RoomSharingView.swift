@@ -143,7 +143,7 @@ struct RoomSharingView: View {
             Text(NSLocalizedString("Additional links", comment: ""))
             Text("(\(viewModel.additionalLinkModels.count)/\(viewModel.additionalLinksLimit))")
             Spacer()
-            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit {
+            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit && viewModel.isSharingPossible {
                 Button {
                     viewModel.createAddLinkAction()
                 } label: {

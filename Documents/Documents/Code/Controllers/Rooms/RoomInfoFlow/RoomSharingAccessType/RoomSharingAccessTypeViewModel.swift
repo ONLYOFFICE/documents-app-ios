@@ -13,7 +13,7 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
     @Published var accessModels: [ASCShareAccessRowModel] = []
     @Published var isAccessChanging: Bool = false
     @Published var error: String?
-    private let accesses: [ASCShareAccess] = [.roomManager, .powerUser]
+    private let accesses: [ASCShareAccess] = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
     private let room: ASCFolder
     private let user: ASCUser
 

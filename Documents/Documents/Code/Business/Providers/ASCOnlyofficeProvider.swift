@@ -1204,6 +1204,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canShare = allowShare(entity: file)
             let canDownload = !file.denyDownload
             let canRename = allowRename(entity: file)
+            let isUserCategory = file.rootFolderType == .onlyofficeUser
             let isTrash = file.rootFolderType == .onlyofficeTrash
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
@@ -1257,6 +1258,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canRead, !isTrash, canDownload {
                 entityActions.insert(.download)
             }
+        
+            if canEdit, isDocspace, isUserCategory {
+                entityActions.insert(.transformToRoom)
+            }
 
             if canEdit, canShare, !isProjects, canDownload, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
@@ -1288,7 +1293,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
             let isUserCategory = folder.rootFolderType == .onlyofficeUser
-            let isRoomCategory = folder.rootFolderType == .onlyofficeRoomShared
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 

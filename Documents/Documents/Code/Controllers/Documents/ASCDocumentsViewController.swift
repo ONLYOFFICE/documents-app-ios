@@ -3812,6 +3812,8 @@ extension ASCDocumentsViewController {
             title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
         } else if let currentFolder = currentFolder, currentFolder.isThirdParty {
             title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
+        } else if let currentFolder = currentFolder, currentFolder.rootFolderType == .onlyofficeRoomArchived {
+            complation(cell, true)
         }
 
         let alertDelete = UIAlertController(

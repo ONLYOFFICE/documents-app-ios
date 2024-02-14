@@ -2090,21 +2090,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: .standardDelay)
 
                     if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
-                        if categoryIsFavorite {
-                            self.provider?.remove(at: indexPath.row)
-                            self.tableView.beginUpdates()
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
-                            self.tableView.endUpdates()
-                        } else {
-                            self.provider?.items[indexPath.row] = file
-                            self.tableView.beginUpdates()
-                            self.tableView.reloadRows(at: [indexPath], with: .fade)
-                            self.tableView.endUpdates()
-                        }
-                    }
-
-                    if categoryIsFavorite, !favorite {
-                        showEmptyView(total < 1)
+                        updateProviderStatus(for: file, indexPath: indexPath)
                     }
                 } else {
                     hud?.hide(animated: false)
@@ -3432,34 +3418,26 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
 
                 /// Update file info
                 let updateFileInfo = {
-                    if let newFile = file {
-                        if let index = self.tableData.firstIndex(where: { entity -> Bool in
-                            guard let file = entity as? ASCFile else { return false }
-                            return file.id == newFile.id || file.id == originalFile.id
-                        }) {
-                            self.provider?.items[index] = newFile
+                    let newFile = file ?? originalFile
 
-                            let indexPath = IndexPath(row: index, section: 0)
+                    if let index = self.tableData.firstIndex(where: { entity -> Bool in
+                        guard let file = entity as? ASCFile else { return false }
+                        return file.id == newFile.id || file.id == originalFile.id
+                    }) {
+                        let indexPath = IndexPath(row: index, section: 0)
 
-                            self.tableView.beginUpdates()
-                            self.tableView.reloadRows(at: [indexPath], with: .none)
-                            self.tableView.endUpdates()
+                        self.updateProviderStatus(for: newFile, indexPath: indexPath)
+                    } else {
+                        self.provider?.add(item: newFile, at: 0)
+                        self.tableView.reloadData()
+                        self.showEmptyView(self.total < 1)
+                        self.updateNavBar()
 
-                            if let updatedCell = self.tableView.cellForRow(at: indexPath) {
-                                self.highlight(cell: updatedCell)
-                            }
-                        } else {
-                            self.provider?.add(item: newFile, at: 0)
-                            self.tableView.reloadData()
-                            self.showEmptyView(self.total < 1)
-                            self.updateNavBar()
+                        let updateIndexPath = IndexPath(row: 0, section: 0)
+                        self.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
 
-                            let updateIndexPath = IndexPath(row: 0, section: 0)
-                            self.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
-
-                            if let updatedCell = self.tableView.cellForRow(at: updateIndexPath) {
-                                self.highlight(cell: updatedCell)
-                            }
+                        if let updatedCell = self.tableView.cellForRow(at: updateIndexPath) {
+                            self.highlight(cell: updatedCell)
                         }
                     }
                 }
@@ -3475,6 +3453,35 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         }
 
         return closeHandler
+    }
+
+    func updateProviderStatus(for entity: ASCEntity, indexPath: IndexPath) {
+        if let file = entity as? ASCFile {
+            handleStatusUpdate(for: file, indexPath: indexPath)
+        }
+    }
+
+    func handleStatusUpdate(for file: ASCFile, indexPath: IndexPath) {
+        if let index = tableData.firstIndex(where: { existingEntity -> Bool in
+            guard let existingFile = existingEntity as? ASCFile else { return false }
+            return existingFile.id == file.id
+        }) {
+            let updatedIndexPath = IndexPath(row: index, section: 0)
+
+            if categoryIsFavorite, !file.isFavorite {
+                provider?.remove(at: updatedIndexPath.row)
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [updatedIndexPath], with: .fade)
+                tableView.endUpdates()
+
+                showEmptyView(total < 1)
+            } else {
+                provider?.items[updatedIndexPath.row] = file
+                tableView.beginUpdates()
+                tableView.reloadRows(at: [updatedIndexPath], with: .fade)
+                tableView.endUpdates()
+            }
+        }
     }
 
     func updateItems(provider: ASCFileProviderProtocol) {

@@ -115,6 +115,18 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        if actions.contains(.transformToRoom) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: "Button title"),
+                    image: Asset.Images.menuNineSquaresInsideSquare.image
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    transformToRoom(entities: [file])
+                }
+            )
+        }
 
         /// Copy action
 
@@ -487,7 +499,7 @@ extension ASCDocumentsViewController {
                     image: Asset.Images.menuNineSquaresInsideSquare.image
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    transformToRoom(folder: folder)
+                    transformToRoom(entities: [folder])
                 }
             )
         }

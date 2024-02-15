@@ -771,6 +771,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isRecent = categoryIsRecent
         let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
+        let isPersonalCategory = folder.rootFolderType == .onlyofficeUser
+        let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
         let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
         let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
@@ -802,6 +804,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         var items: [UIBarButtonItem] = []
+        
+        // Create room
+        if isPersonalCategory, isDocSpace {
+            items.append(createBarButton(Asset.Images.menuNineSquaresInsideSquare.image, #selector(onTransformToRoomSelected)))
+            items.append(barFlexSpacer)
+        }
 
         // Move
         if !isTrash, !isDocSpaceArchive, !isDocSpaceArchiveRoomContent, !isDocSpaceRoomShared, isDevice || !(isShared || isProjectRoot || isGuest) {
@@ -1674,18 +1682,26 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func transformToRoom(folder: ASCFolder) {
+    func transformToRoom(entities: [ASCEntity]) {
+        let entitiesIsOnlyOneFolder: Bool = {
+            guard entities.count == 1 else { return false }
+            return entities[0] is ASCFolder
+        }()
+        let suggestedName: String = {
+            guard entitiesIsOnlyOneFolder else { return "" }
+            return (entities[0] as? ASCFolder)?.title ?? ""
+        }()
         let vc = CreateRoomRouteViewViewController(
-            roomName: folder.title,
+            roomName: suggestedName,
             hideActivityOnSuccess: false
         ) { [weak self] room in
             let hud: MBProgressHUD? = MBProgressHUD.currentHUD
             self?.provider?.transfer(
-                items: [folder],
+                items: entities,
                 to: room,
                 move: false,
                 conflictResolveType: .duplicate,
-                contentOnly: true
+                contentOnly: entitiesIsOnlyOneFolder
             ) { [weak self] status, progress, result, error, cancel in
                 guard let self else { return }
                 if status == .error {
@@ -2796,6 +2812,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         present(selectController, animated: true, completion: nil)
+    }
+    
+    @objc func onTransformToRoomSelected(_ sender: Any) {
+        let entities: [ASCEntity] = selectedIds.compactMap { uid in
+            tableData.first(where: { $0.uid == uid })
+        }
+        guard !entities.isEmpty else { return }
+
+        transformToRoom(entities: entities)
     }
 
     @objc func onCopySelected(_ sender: Any) {

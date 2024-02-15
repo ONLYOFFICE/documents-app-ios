@@ -1545,8 +1545,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             provider?.delegate = self
             provider?.open(file: file, openMode: viewMode ? .view : .edit, canEdit: provider?.allowEdit(entity: file) ?? false)
             searchController.isActive = false
-        } else if let index = tableData.firstIndex(where: { $0.id == file.id }) {
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+        } else {
+            var cell: UITableViewCell? = nil
+            if let index = tableData.firstIndex(where: { $0.id == file.id }) {
+                cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+            }
             provider?.delegate = self
             provider?.preview(file: file, files: (tableData.filter { $0 is ASCFile }) as? [ASCFile], in: cell)
         }

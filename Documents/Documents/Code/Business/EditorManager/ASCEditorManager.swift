@@ -598,8 +598,10 @@ class ASCEditorManager: NSObject {
                 let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
 
                 if isDocumentOformPdf {
-                    openHandler?(.end, 1, nil, &cancel)
-                    self.editCloud(pdf, canEdit: true)
+                    DispatchQueue.main.sync {
+                        openHandler?(.end, 1, nil, &cancel)
+                        self.editCloud(pdf, canEdit: true)
+                    }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
                         if cancel {

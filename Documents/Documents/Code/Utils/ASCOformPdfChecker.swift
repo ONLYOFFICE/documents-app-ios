@@ -12,7 +12,8 @@ import Foundation
 
 final class ASCOformPdfChecker {
     class func check(data: Data?) -> Bool {
-        data?.string(encoding: .utf8)?.contains("/ONLYOFFICEFORM") ?? false
+        guard let data else { return false }
+        return String(decoding: data, as: UTF8.self).contains("/ONLYOFFICEFORM")
     }
 
     class func checkLocal(url: URL?) -> Bool {

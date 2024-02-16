@@ -804,7 +804,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         var items: [UIBarButtonItem] = []
-        
+
         // Create room
         if isPersonalCategory, isDocSpace {
             items.append(createBarButton(Asset.Images.menuNineSquaresInsideSquare.image, #selector(onTransformToRoomSelected)))
@@ -2813,7 +2813,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         present(selectController, animated: true, completion: nil)
     }
-    
+
     @objc func onTransformToRoomSelected(_ sender: Any) {
         let entities: [ASCEntity] = selectedIds.compactMap { uid in
             tableData.first(where: { $0.uid == uid })

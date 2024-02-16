@@ -11,22 +11,14 @@ PODS:
   - DocumentEditor (8.0.1):
     - DocumentConverter
     - SpreadsheetEditor
-  - FacebookCore (0.9.0):
-    - FBSDKCoreKit (~> 5.0)
-  - FacebookLogin (0.9.0):
-    - FacebookCore (~> 0.9.0)
-    - FBSDKCoreKit (~> 5.0)
-    - FBSDKLoginKit (~> 5.0)
-  - FBSDKCoreKit (5.15.1):
-    - FBSDKCoreKit/Basics (= 5.15.1)
-    - FBSDKCoreKit/Core (= 5.15.1)
-  - FBSDKCoreKit/Basics (5.15.1)
-  - FBSDKCoreKit/Core (5.15.1):
-    - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.15.1):
-    - FBSDKLoginKit/Login (= 5.15.1)
-  - FBSDKLoginKit/Login (5.15.1):
-    - FBSDKCoreKit (~> 5.0)
+  - FBAEMKit (16.3.1):
+    - FBSDKCoreKit_Basics (= 16.3.1)
+  - FBSDKCoreKit (16.3.1):
+    - FBAEMKit (= 16.3.1)
+    - FBSDKCoreKit_Basics (= 16.3.1)
+  - FBSDKCoreKit_Basics (16.3.1)
+  - FBSDKLoginKit (16.3.1):
+    - FBSDKCoreKit (= 16.3.1)
   - FileKit (5.2.0)
   - FilesProvider (0.26.1)
   - Firebase (10.21.0):
@@ -173,7 +165,7 @@ PODS:
     - GTMSessionFetcher/Core
   - IQKeyboardManagerSwift (7.0.1)
   - KeychainSwift (21.0.0)
-  - Kingfisher (7.10.2)
+  - Kingfisher (7.11.0)
   - MBProgressHUD (1.2.0)
   - MediaBrowser (2.1.2):
     - SDWebImage
@@ -185,11 +177,11 @@ PODS:
   - nanopb/decode (2.30909.1)
   - nanopb/encode (2.30909.1)
   - ObjectMapper (4.2.0)
-  - PhoneNumberKit (3.7.6):
-    - PhoneNumberKit/PhoneNumberKitCore (= 3.7.6)
-    - PhoneNumberKit/UIKit (= 3.7.6)
-  - PhoneNumberKit/PhoneNumberKitCore (3.7.6)
-  - PhoneNumberKit/UIKit (3.7.6):
+  - PhoneNumberKit (3.7.8):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.7.8)
+    - PhoneNumberKit/UIKit (= 3.7.8)
+  - PhoneNumberKit/PhoneNumberKitCore (3.7.8)
+  - PhoneNumberKit/UIKit (3.7.8):
     - PhoneNumberKit/PhoneNumberKitCore
   - PresentationEditor (8.0.1):
     - DocumentConverter
@@ -200,9 +192,9 @@ PODS:
   - ReCaptcha (1.6.0):
     - ReCaptcha/Core (= 1.6.0)
   - ReCaptcha/Core (1.6.0)
-  - SDWebImage (5.18.10):
-    - SDWebImage/Core (= 5.18.10)
-  - SDWebImage/Core (5.18.10)
+  - SDWebImage (5.18.11):
+    - SDWebImage/Core (= 5.18.11)
+  - SDWebImage/Core (5.18.11)
   - Siren (6.1.2)
   - SkyFloatingLabelTextField (4.0.0)
   - SpreadsheetEditor (8.0.1):
@@ -213,7 +205,7 @@ PODS:
     - SwiftMessages/App (= 10.0.0)
   - SwiftMessages/App (10.0.0)
   - SwiftRater (2.1.1)
-  - SwiftyDropbox (10.0.1)
+  - SwiftyDropbox (10.0.2)
   - SwiftyJSON (5.0.1)
   - SwiftyXMLParser (5.6.0)
   - UICircularProgressRing (8.0.0)
@@ -225,8 +217,8 @@ DEPENDENCIES:
   - atlantis-proxyman
   - DocumentConverter (from `../editors-ios/DocumentConverter.podspec`)
   - DocumentEditor (from `../editors-ios/DocumentEditor.podspec`)
-  - FacebookCore
-  - FacebookLogin
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - FileKit
   - FilesProvider (from `https://github.com/ayuzhin/FileProvider.git`)
   - Firebase
@@ -265,9 +257,9 @@ SPEC REPOS:
     - Alamofire
     - AppAuth
     - atlantis-proxyman
-    - FacebookCore
-    - FacebookLogin
+    - FBAEMKit
     - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
     - FBSDKLoginKit
     - FileKit
     - Firebase
@@ -354,10 +346,10 @@ SPEC CHECKSUMS:
   atlantis-proxyman: 0aa5c86216f191e460ec0847d2c731ca4d7c1abf
   DocumentConverter: 4591dfcd57c281864ee2caffb15d9f58228a5cbb
   DocumentEditor: c2fc55e66d09acc8b90e53410870936b889d30c8
-  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
-  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
-  FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
-  FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
+  FBAEMKit: 6c7b5eb77c96861bb59e040842c6e55bf39512ce
+  FBSDKCoreKit: 5e4dd478947ab1bcc887e8cfadeae0727af1a942
+  FBSDKCoreKit_Basics: cd7b5f5d1e8868c26706917919d058999ca672c3
+  FBSDKLoginKit: 572cca0bc6c90067ef197187697cb3b584310c52
   FileKit: 10bfd8a3023a0b09f24c9f49546cbbddf43fd464
   FilesProvider: ffd7aff5bb3f87d33188ae79d37d9ef05934d3df
   Firebase: 4453b799f72f625384dc23f412d3be92b0e3b2a0
@@ -381,18 +373,18 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 8a1b34ad97ebe6f909fb8b9b77fba99943007556
   IQKeyboardManagerSwift: 7f6b1b1d1497855d2beea7f2f10ffcc6978525b1
   KeychainSwift: 4a71a45c802fd9e73906457c2dcbdbdc06c9419d
-  Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
+  Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MediaBrowser: 6d830e6aff5446dbe8d002738abf4daa498e2ae7
   MGSwipeTableCell: d99ed6466f393b71cd488c6f798ba112ff5d1d01
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  PhoneNumberKit: 3c68a822bad955ffcefc72a52df72b6596498555
+  PhoneNumberKit: ff3827b9bd8a7ac9744963f241665859091c78ab
   PresentationEditor: f62485a5ec71f78fae712b02d96755ce942ca3b6
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
-  SDWebImage: fc8f2d48bbfd72ef39d70e981bd24a3f3be53fec
+  SDWebImage: a3ba0b8faac7228c3c8eadd1a55c9c9fe5e16457
   Siren: c951ae243b57160629fb2e4d2f630cbfc5d5452b
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SpreadsheetEditor: 496d0331203f0d2a324c229d78dfc53a57a5ecb5
@@ -400,13 +392,13 @@ SPEC CHECKSUMS:
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   SwiftMessages: d3540f0f981dfbac25bd2ae9a662effa48f76f92
   SwiftRater: bb8caf402fe466c8f93b53a902cc24a4eb68acec
-  SwiftyDropbox: 00fa35e46cb3c2dd680a0e4654e8a4430be40a45
+  SwiftyDropbox: b6860b69d449f6e941b570993363575eb6333ee8
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyXMLParser: 9b98995235961881322015ebe38d1f3d7c953bd7
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: d9676997e77e25c0ec473322d907a3ad008bed75
+PODFILE CHECKSUM: 8fa497d15f34bab4b9079b6a4541183de5c2eba8
 
 COCOAPODS: 1.13.0

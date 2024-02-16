@@ -1258,7 +1258,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canRead, !isTrash, canDownload {
                 entityActions.insert(.download)
             }
-        
+
             if canEdit, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
             }

@@ -15,14 +15,11 @@ def common_pods
 
   # Social
 
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
   pod 'GoogleAPIClientForREST/Drive'
   pod 'SwiftyDropbox'
-
-  # Firebase
-
   pod 'Firebase'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'

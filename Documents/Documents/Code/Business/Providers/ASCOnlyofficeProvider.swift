@@ -1095,11 +1095,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
-        if let file = file, let folder = self.folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
+        if let file = file, let providerFolder = self.folder, ASCOnlyofficeCategory.isDocSpace(type: providerFolder.rootFolderType) {
             return file.security.delete
         }
 
-        if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {
+        if let providerFolder = self.folder, providerFolder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: providerFolder) {
             return false
         }
 
@@ -1107,7 +1107,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return folder.security.delete
         }
 
-        if let folder = self.folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
+        if let folder = folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
             return folder.security.delete
         }
 

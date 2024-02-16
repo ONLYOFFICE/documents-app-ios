@@ -807,7 +807,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         // Create room
         if isPersonalCategory, isDocSpace {
-            items.append(createBarButton(Asset.Images.menuNineSquaresInsideSquare.image, #selector(onTransformToRoomSelected)))
+            items.append(createBarButton(Asset.Images.barRectanglesAdd.image, #selector(onTransformToRoomSelected)))
             items.append(barFlexSpacer)
         }
 

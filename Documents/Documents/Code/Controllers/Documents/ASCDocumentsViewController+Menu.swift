@@ -120,7 +120,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Create room", comment: "Button title"),
-                    image: Asset.Images.menuNineSquaresInsideSquare.image
+                    image: Asset.Images.menuRectanglesAdd.image
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     transformToRoom(entities: [file])
@@ -496,7 +496,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Create room", comment: "Button title"),
-                    image: Asset.Images.menuNineSquaresInsideSquare.image
+                    image: Asset.Images.menuRectanglesAdd.image
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     transformToRoom(entities: [folder])

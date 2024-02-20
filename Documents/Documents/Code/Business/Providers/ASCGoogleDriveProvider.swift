@@ -429,12 +429,6 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             return
         }
 
-        // TODO: Under construction
-        if range != nil {
-            processing(nil, 0, nil)
-            return
-        }
-
         // Force stop fetching
         cancel()
 
@@ -470,7 +464,11 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                     queryDownload = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: path)
                 }
 
-                let downloadRequest = strongSelf.googleDriveService.request(for: queryDownload) as URLRequest
+                var downloadRequest = strongSelf.googleDriveService.request(for: queryDownload) as URLRequest
+
+                if let range {
+                    downloadRequest.setValue("bytes=\(range.lowerBound)-\(range.upperBound)", forHTTPHeaderField: "Range")
+                }
 
                 strongSelf.fetcher = strongSelf.googleDriveService.fetcherService.fetcher(with: downloadRequest)
 
@@ -1258,8 +1256,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
-        if allowOpen {
+        if allowOpen || isForm {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in

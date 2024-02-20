@@ -40,6 +40,14 @@ final class ASCOformPdfChecker {
                     continuation.resume(
                         returning: check(data: data)
                     )
+                } else if let fileUrl = result as? URL, fileUrl.isFileURL {
+                    let data = try? Data(contentsOf: fileUrl)
+
+                    try? FileManager.default.removeItem(at: fileUrl)
+
+                    continuation.resume(
+                        returning: check(data: data)
+                    )
                 }
             }
         }

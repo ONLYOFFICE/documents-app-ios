@@ -307,12 +307,6 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
         processing(nil, 0, nil)
 
-        // TODO: Under construction
-        if range != nil {
-            processing(nil, 0, nil)
-            return
-        }
-
         if let error = ASCLocalFileHelper.shared.copy(from: Path(path), to: Path(destinationURL.path)) {
             processing(nil, 1, error)
         } else {

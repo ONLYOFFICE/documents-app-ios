@@ -149,6 +149,8 @@ class ASCEditorManager: NSObject {
             editorWindow?.tintColor = delegate.window??.tintColor
         }
 
+        editorWindow?.windowLevel = UIWindow.Level.statusBar - 10
+
         if let topWindow = UIWindow.keyWindow {
             editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
         }

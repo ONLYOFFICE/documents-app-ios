@@ -171,9 +171,9 @@ class ASCRootViewController: ASCBaseTabBarController {
                         if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
                             if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController {
                                 let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                                documentsNC.pushViewController(documentsVC, animated: false)
                                 documentsVC.provider = ASCFileManager.onlyofficeProvider
                                 documentsVC.folder = folder
+                                documentsNC.pushViewController(documentsVC, animated: false)
                             }
                         }
                     }

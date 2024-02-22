@@ -433,6 +433,13 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 documentsNavigationVC.viewControllers = [categoriesVC]
             }
 
+            let onlyOfficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider
+            onlyOfficeProvider?.reset()
+            onlyOfficeProvider?.category = category
+            documentsVC.provider = onlyOfficeProvider
+            documentsVC.folder = category.folder
+            documentsVC.title = category.title
+            
             if animated {
                 splitVC.showDetailViewController(documentsNC, sender: self)
             } else {
@@ -442,17 +449,11 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                     }
                 }
             }
-
-            splitVC.hideMasterController()
-
-            let onlyOfficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider
-            onlyOfficeProvider?.category = category
-            documentsVC.provider = onlyOfficeProvider
-            documentsVC.folder = category.folder
-            documentsVC.title = category.title
-
+            
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
+
+            splitVC.hideMasterController()
 
             if loadedCategories.isEmpty {
                 currentlySelectedFolderType = documentsVC.folder?.rootFolderType

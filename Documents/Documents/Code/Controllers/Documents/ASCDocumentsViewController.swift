@@ -465,8 +465,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isDocument = fileExt == ASCConstants.FileExtensions.docx
                 let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
                 let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
+                let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
-                if isDocument || isSpreadsheet || isPresentation {
+                if isDocument || isSpreadsheet || isPresentation || isForm {
                     provider.open(file: file, openMode: .create, canEdit: true)
                 }
             }

@@ -27,7 +27,14 @@ final class ASCOformPdfChecker {
         let destination = Path.userTemporary + UUID().uuidString
 
         return await withCheckedContinuation { continuation in
-            provider.download(url.absoluteString, to: URL(fileURLWithPath: destination.rawValue), range: 0 ..< 110) { result, progress, error in
+            guard let stringPath = url.absoluteString.removingPercentEncoding else {
+                continuation.resume(
+                    returning: false
+                )
+                return
+            }
+
+            provider.download(stringPath, to: URL(fileURLWithPath: destination.rawValue), range: 0 ..< 110) { result, progress, error in
 
                 if error != nil {
                     continuation.resume(

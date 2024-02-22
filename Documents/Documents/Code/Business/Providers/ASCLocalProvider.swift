@@ -307,12 +307,6 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
         processing(nil, 0, nil)
 
-        // TODO: Under construction
-        if range != nil {
-            processing(nil, 0, nil)
-            return
-        }
-
         if let error = ASCLocalFileHelper.shared.copy(from: Path(path), to: Path(destinationURL.path)) {
             processing(nil, 1, error)
         } else {
@@ -811,9 +805,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt) || ASCConstants.FileExtensions.forms.contains(fileExt)
 
-        if allowOpen {
+        if isPdf {
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler)
+        } else if allowOpen {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in

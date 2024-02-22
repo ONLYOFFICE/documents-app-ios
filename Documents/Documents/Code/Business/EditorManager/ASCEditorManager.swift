@@ -149,6 +149,8 @@ class ASCEditorManager: NSObject {
             editorWindow?.tintColor = delegate.window??.tintColor
         }
 
+        editorWindow?.windowLevel = UIWindow.Level.statusBar - 10
+
         if let topWindow = UIWindow.keyWindow {
             editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
         }
@@ -600,7 +602,12 @@ class ASCEditorManager: NSObject {
                 if isDocumentOformPdf {
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-                        self.editCloud(pdf, canEdit: true)
+
+                        if provider is ASCOnlyofficeProvider {
+                            self.editCloud(pdf, canEdit: true)
+                        } else {
+                            provider.open(file: pdf, openMode: .edit, canEdit: true)
+                        }
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in

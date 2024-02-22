@@ -465,8 +465,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isDocument = fileExt == ASCConstants.FileExtensions.docx
                 let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
                 let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
+                let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
-                if isDocument || isSpreadsheet || isPresentation {
+                if isDocument || isSpreadsheet || isPresentation || isForm {
                     provider.open(file: file, openMode: .create, canEdit: true)
                 }
             }
@@ -804,7 +805,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         var items: [UIBarButtonItem] = []
-        
+
         // Create room
         if isPersonalCategory, isDocSpace {
             items.append(createBarButton(Asset.Images.barRectanglesAdd.image, #selector(onTransformToRoomSelected)))
@@ -2813,7 +2814,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         present(selectController, animated: true, completion: nil)
     }
-    
+
     @objc func onTransformToRoomSelected(_ sender: Any) {
         let entities: [ASCEntity] = selectedIds.compactMap { uid in
             tableData.first(where: { $0.uid == uid })

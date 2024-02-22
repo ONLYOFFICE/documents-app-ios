@@ -6,8 +6,8 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import FacebookCore
-import FacebookLogin
+import FBSDKCoreKit
+import FBSDKLoginKit
 import UIKit
 
 typealias ASCFacebookSignInHandler = (_ token: String?, _ error: Error?) -> Void
@@ -28,7 +28,7 @@ class ASCFacebookSignInController {
            let appDelegate = UIApplication.shared.delegate as? AppDelegate
         {
             // Initialize Facebook SDK
-            Settings.appID = ASCConstants.Clouds.Facebook.appId
+            Settings.shared.appID = ASCConstants.Clouds.Facebook.appId
             ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
 
             ASCFacebookSignInController.initializedSdk = true
@@ -42,21 +42,25 @@ class ASCFacebookSignInController {
 
         loginManager.logOut()
 
-        loginManager.logIn(permissions: [.publicProfile, .email], viewController: controller) { loginResult in
-            switch loginResult {
-            case let .failed(error):
+        let permissions: [Permission] = [.publicProfile, .email]
+        loginManager.logIn(permissions: permissions.map { $0.name }, from: controller) { loginResult, error in
+            if let error {
                 log.error(error)
                 self.signInHandler?(nil, error)
-            case .cancelled:
-                log.info("User cancelled login.")
-                self.signInHandler?(nil, nil)
-            case let .success(grantedPermissions, declinedPermissions, accessToken):
-                log.debug("GRANTED PERMISSIONS: \(grantedPermissions)")
-                log.debug("DECLINED PERMISSIONS: \(declinedPermissions)")
-                log.debug("ACCESS TOKEN \(accessToken.tokenString)")
+                return
+            }
 
-                self.signInHandler?(accessToken.tokenString, nil)
-//                self.signInHandler?(accessToken.authenticationToken, nil)
+            if let result = loginResult {
+                if result.isCancelled {
+                    log.info("User cancelled login.")
+                    self.signInHandler?(nil, nil)
+                } else {
+                    log.debug("GRANTED PERMISSIONS: \(result.grantedPermissions)")
+                    log.debug("DECLINED PERMISSIONS: \(result.declinedPermissions)")
+                    log.debug("ACCESS TOKEN \(result.token?.tokenString ?? "none")")
+
+                    self.signInHandler?(result.token?.tokenString, nil)
+                }
             }
         }
     }
@@ -74,7 +78,7 @@ class ASCFacebookSignInController {
            let appDelegate = UIApplication.shared.delegate as? AppDelegate
         {
             // Initialize Facebook SDK
-            Settings.appID = ASCConstants.Clouds.Facebook.appId
+            Settings.shared.appID = ASCConstants.Clouds.Facebook.appId
             ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
 
             ASCFacebookSignInController.initializedSdk = true

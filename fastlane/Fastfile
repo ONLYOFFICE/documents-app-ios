@@ -135,8 +135,9 @@ platform :ios do
       app_identifier: ENV["APP_IDENTIFIER"],
       changelog: appstore_change_log,
       distribute_external: true,
-      groups: ['Company users'],
+      groups: ["Company users"],
       notify_external_testers: true,
+      submit_beta_review: true,
       skip_waiting_for_build_processing: true
     )
 

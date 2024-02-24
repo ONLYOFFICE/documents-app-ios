@@ -439,7 +439,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             documentsVC.provider = onlyOfficeProvider
             documentsVC.folder = category.folder
             documentsVC.title = category.title
-            
+
             if animated {
                 splitVC.showDetailViewController(documentsNC, sender: self)
             } else {
@@ -449,7 +449,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                     }
                 }
             }
-            
+
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 

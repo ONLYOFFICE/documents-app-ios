@@ -972,6 +972,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    private func updateFolder(viewController: ASCDocumentsViewController) {
+        if let refreshControl = viewController.refreshControl {
+            viewController.refresh(refreshControl)
+        }
+    }
+
     private func showToolBar(_ show: Bool, animated: Bool = true) {
         navigationController?.setToolbarHidden(!show, animated: animated)
     }
@@ -1749,18 +1755,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.endUpdates()
                         }
                     case .archiveAction:
-                        if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
-                           let folderItem = previousController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
-                           let indexPath = previousController.tableView.indexPath(for: folderItem)
+                        if let previousViewController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
+                           let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                           let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                         {
-                            previousController.provider?.remove(at: indexPath.row)
-                            previousController.tableView.beginUpdates()
-                            previousController.tableView.deleteRows(at: [indexPath], with: .fade)
-                            previousController.tableView.endUpdates()
+                            previousViewController.provider?.remove(at: indexPath.row)
+                            previousViewController.tableView.beginUpdates()
+                            previousViewController.tableView.deleteRows(at: [indexPath], with: .fade)
+                            previousViewController.tableView.endUpdates()
 
-                            if let refreshControl = previousController.refreshControl {
-                                previousController.refresh(refreshControl)
-                            }
+                            self.updateFolder(viewController: previousViewController)
 
                             self.navigationController?.popViewController(animated: true)
                         }
@@ -1992,23 +1996,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 self.tableView.beginUpdates()
                                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                                 self.tableView.endUpdates()
-                                if let refreshControl = self.refreshControl {
-                                    self.refresh(refreshControl)
-                                }
+                                self.updateFolder(viewController: self)
                             }
                         } else {
-                            if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
-                               let folderItem = previousController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
-                               let indexPath = previousController.tableView.indexPath(for: folderItem)
+                            if let previousViewController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
+                               let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                               let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                             {
-                                previousController.provider?.remove(at: indexPath.row)
-                                previousController.tableView.beginUpdates()
-                                previousController.tableView.deleteRows(at: [indexPath], with: .fade)
-                                previousController.tableView.endUpdates()
+                                previousViewController.provider?.remove(at: indexPath.row)
+                                previousViewController.tableView.beginUpdates()
+                                previousViewController.tableView.deleteRows(at: [indexPath], with: .fade)
+                                previousViewController.tableView.endUpdates()
 
-                                if let refreshControl = previousController.refreshControl {
-                                    previousController.refresh(refreshControl)
-                                }
+                                self.updateFolder(viewController: previousViewController)
 
                                 self.navigationController?.popViewController(animated: true)
                             }
@@ -2041,15 +2041,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 self.tableView.beginUpdates()
                                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                                 self.tableView.endUpdates()
-                                if let refreshControl = self.refreshControl {
-                                    self.refresh(refreshControl)
-                                }
+                                self.updateFolder(viewController: self)
                             }
                         } else {
                             self.navigationController?.popViewController(animated: true)
-                            if let refreshControl = self.refreshControl {
-                                self.refresh(refreshControl)
-                            }
+                            self.updateFolder(viewController: self)
                         }
                         hud?.hide(animated: false, afterDelay: .standardDelay)
                     }
@@ -2313,6 +2309,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         to folder: ASCFolder,
         move: Bool = false,
         conflictResolveType: ConflictResolveType = .skip,
+        contentOnly: Bool = false,
         completion: ((MovedEntities?) -> Void)? = nil
     ) {
         guard let provider = provider else { return }
@@ -2329,6 +2326,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             to: folder,
             move: move,
             conflictResolveType: conflictResolveType,
+            contentOnly: contentOnly,
             handler: { status, progress, result, error, cancel in
                 if status == .begin {
                     if hud == nil {
@@ -2601,6 +2599,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
                 // Update table view
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+
+                // Update category main folder
+                if let previousViewController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
+                    self.updateFolder(viewController: previousViewController)
+                }
 
                 self.showEmptyView(self.total < 1)
                 self.updateNavBar()
@@ -3826,9 +3829,7 @@ extension ASCDocumentsViewController {
         var newItemsData = provider?.items ?? []
         provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
 
-        if let refreshControl = refreshControl {
-            refresh(refreshControl)
-        }
+        updateFolder(viewController: self)
         showEmptyView(total < 1)
         updateNavBar()
         setEditMode(false)

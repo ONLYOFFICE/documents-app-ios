@@ -619,7 +619,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         handler?(.end, conflictItems, nil)
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         handler?(.begin, 0, nil, nil, &cancel)
@@ -634,7 +634,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 let destPath = Path(folder.id) + title
 
                 if destPath.exists {
-                    if overwrite, srcPath != destPath {
+                    if conflictResolveType == .overwrite, srcPath != destPath {
                         ASCLocalFileHelper.shared.removeFile(destPath)
                     } else {
                         continue

@@ -116,6 +116,8 @@ extension ASCDocumentsViewController {
             )
         }
 
+        // Transform to a room
+        
         if actions.contains(.transformToRoom) {
             middleActions.append(
                 UIAction(
@@ -449,6 +451,20 @@ extension ASCDocumentsViewController {
         // Transfer actions
 
         var transferActions: [UIMenuElement] = []
+        
+        /// Transform to a room
+
+        if actions.contains(.transformToRoom) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: "Button title"),
+                    image: Asset.Images.menuRectanglesAdd.image
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    transformToRoom(entities: [folder])
+                }
+            )
+        }
 
         /// Download action
 
@@ -486,20 +502,6 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.unarchive(cell: cell, folder: folder)
-                }
-            )
-        }
-
-        /// Transform to a room
-
-        if actions.contains(.transformToRoom) {
-            transferActions.append(
-                UIAction(
-                    title: NSLocalizedString("Create room", comment: "Button title"),
-                    image: Asset.Images.menuRectanglesAdd.image
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    transformToRoom(entities: [folder])
                 }
             )
         }

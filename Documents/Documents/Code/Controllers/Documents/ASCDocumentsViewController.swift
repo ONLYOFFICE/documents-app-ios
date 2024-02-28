@@ -857,7 +857,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) || (isDocSpaceArchive && canRemoveLeastOneItem()) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) {
             let addRemoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
                 items.append(barFlexSpacer)
@@ -899,9 +899,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(barFlexSpacer)
         }
 
+        // Unarchive
+        if isDocSpaceArchive {
+            items.append(createBarButton(Asset.Images.barRestoreAll.image, #selector(onUnarchiveSelected)))
+            items.append(barFlexSpacer)
+        }
+
         // Remove all rooms
         if isDocSpaceArchive, canRemoveAllItems() {
-            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
+            let removeAllButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms))
+            removeAllButton.tintColor = .red
+
+            items.append(removeAllButton)
             items.append(barFlexSpacer)
         }
 
@@ -2980,20 +2989,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    @objc func onArchiveSelected(_ sender: Any) {
+    private func processArchive(action: ASCEntityActions, caption: String) {
         guard let provider = provider, selectedIds.count > 0 else { return }
 
         let dispatchGroup = DispatchGroup()
         var indexPathes: [IndexPath] = []
-        let hud = MBProgressHUD.showTopMost()
 
-        hud?.label.text = NSLocalizedString("Archiving", comment: "Caption of the processing")
-        tableData.filter { selectedIds.contains($0.uid) }
+        let hud = MBProgressHUD.showTopMost()
+        hud?.label.text = caption
+        tableData.filter { self.selectedIds.contains($0.uid) }
             .compactMap { $0 as? ASCFolder }
             .forEach {
-                guard let indexPath = indexPath(by: $0) else { return }
+                guard let indexPath = self.indexPath(by: $0) else { return }
                 dispatchGroup.enter()
-                provider.handle(action: .archive, folder: $0) { status, _, _ in
+                provider.handle(action: action, folder: $0) { status, _, _ in
                     if status == .end {
                         indexPathes.append(indexPath)
                     }
@@ -3011,6 +3020,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             self.setEditMode(false)
             hud?.hide(animated: true, afterDelay: .oneSecondDelay)
         }
+    }
+
+    @objc func onArchiveSelected(_ sender: Any) {
+        processArchive(action: .archive, caption: NSLocalizedString("Archiving", comment: "Caption of the processing"))
+    }
+
+    @objc func onUnarchiveSelected(_ sender: Any) {
+        let alertController = UIAlertController(title: NSLocalizedString("Restore rooms?", comment: ""), message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "Restore", style: .default) { _ in
+            self.processArchive(action: .unarchive, caption: NSLocalizedString("Unarchiving", comment: "Caption of the processing"))
+        }
+
+        alertController.message = NSLocalizedString("All shared links in rooms will become active, and its contents will be available to everyone with the link. Do you want to restore the room?", comment: "")
+        alertController.addAction(action)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true)
     }
 
     private func showDeafultRomoveNotification(folderCount: Int, fileCount: Int, sender: Any, handler: @escaping () -> Void) {

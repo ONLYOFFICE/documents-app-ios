@@ -894,7 +894,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     ///   - items: The list of transfer object
     ///   - folder: The destination folder
     ///   - handler: a closure with result of operation or error
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         guard let _ = googleUser else {

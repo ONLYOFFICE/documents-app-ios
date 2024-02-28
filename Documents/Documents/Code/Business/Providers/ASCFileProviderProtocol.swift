@@ -143,13 +143,13 @@ extension ASCFileProviderProtocol {
     var contentTypes: [ASCFiletProviderContentType] {
         [.files, .folders, .documents, .spreadsheets, .presentations, .images]
     }
-
+    
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
     func serialize() -> String? { return nil }
     func deserialize(_ jsonString: String) {}
-
+    
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {}
     func isReachable(with info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) { complation(false, nil) }
     func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }
@@ -169,10 +169,7 @@ extension ASCFileProviderProtocol {
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
     func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {}
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool = false, handler: ASCEntityProgressHandler?) {
-        transfer(items: items, to: folder, move: move, conflictResolveType: conflictResolveType, contentOnly: contentOnly, handler: handler)
-    }
-
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
     func allowAdd(toFolder folder: ASCFolder?) -> Bool { return allowEdit(entity: folder) }
     func allowComment(entity: AnyObject?) -> Bool { return allowEdit(entity: entity) }
     func allowRead(entity: AnyObject?) -> Bool { return false }

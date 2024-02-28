@@ -2313,6 +2313,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         to folder: ASCFolder,
         move: Bool = false,
         conflictResolveType: ConflictResolveType = .skip,
+        contentOnly: Bool = false,
         completion: ((MovedEntities?) -> Void)? = nil
     ) {
         guard let provider = provider else { return }
@@ -2329,6 +2330,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             to: folder,
             move: move,
             conflictResolveType: conflictResolveType,
+            contentOnly: contentOnly,
             handler: { status, progress, result, error, cancel in
                 if status == .begin {
                     if hud == nil {

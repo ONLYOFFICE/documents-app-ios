@@ -944,7 +944,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         guard let provider = provider else {
@@ -985,7 +985,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     }
                 }
 
-                if overwrite {
+                if conflictResolveType == .overwrite {
                     provider.contents(path: destPath) { data, error in
                         if data != nil {
                             provider.removeItem(path: destPath) { removeError in

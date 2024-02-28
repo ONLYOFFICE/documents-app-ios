@@ -862,8 +862,6 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             operationQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
 
-                //                ASCBaseApi.clearCookies(for: provider.baseURL)
-
                 provider.removeItem(path: entity.id, completionHandler: { error in
                     if let error = error {
                         lastError = error
@@ -903,8 +901,6 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
 
-                //                ASCBaseApi.clearCookies(for: provider.baseURL)
-
                 provider.attributesOfItem(path: destPath, completionHandler: { object, error in
                     if error == nil {
                         conflictItems.append(entity)
@@ -922,7 +918,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         }
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         guard let provider = provider else {
@@ -950,10 +946,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
 
-                //                ASCBaseApi.clearCookies(for: provider.baseURL)
-
                 if move {
-                    provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    provider.moveItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {
@@ -965,7 +959,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                         semaphore.signal()
                     })
                 } else {
-                    provider.copyItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    provider.copyItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {

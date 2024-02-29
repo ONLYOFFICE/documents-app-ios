@@ -1072,7 +1072,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 let semaphore = DispatchSemaphore(value: 0)
 
                 if move {
-                    _ = provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    _ = provider.moveItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {
@@ -1084,7 +1084,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                         semaphore.signal()
                     })
                 } else {
-                    _ = provider.copyItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    _ = provider.copyItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {

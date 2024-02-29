@@ -929,7 +929,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 //                ASCBaseApi.clearCookies(for: provider.baseURL)
 
                 if move {
-                    provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    provider.moveItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {
@@ -941,7 +941,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         semaphore.signal()
                     })
                 } else {
-                    provider.copyItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    provider.copyItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {

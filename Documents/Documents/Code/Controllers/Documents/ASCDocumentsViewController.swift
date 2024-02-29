@@ -907,10 +907,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         // Remove all rooms
         if isDocSpaceArchive, canRemoveAllItems() {
-            let removeAllButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms))
-            removeAllButton.tintColor = .red
+            let removeSelectedButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveSelectedArchivedRooms))
+            removeSelectedButton.tintColor = .red
 
-            items.append(removeAllButton)
+            items.append(removeSelectedButton)
             items.append(barFlexSpacer)
         }
 
@@ -1776,6 +1776,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.updateFolder(viewController: previousViewController)
 
                             self.navigationController?.popViewController(animated: true)
+                        }
+                    case .archiveRestoreAction:
+                        if let folderItem = self.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                           let indexPath = self.tableView.indexPath(for: folderItem)
+                        {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+
+                            self.showEmptyView(self.total < 1)
+                            self.updateNavBar()
+                            self.setEditMode(false)
                         }
                     }
                 } else {
@@ -2857,8 +2870,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         setEditMode(false)
     }
 
-    @objc func onRemoveAllArchivedRooms(_ sender: Any) {
-        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender, notificationType: .alert)
+    @objc func onRemoveSelectedArchivedRooms(_ sender: Any) {
+        onTrash(ids: selectedIds, sender, notificationType: .alert)
     }
 
     @objc func onTrashSelected(_ sender: Any) {
@@ -2990,37 +3003,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func processArchive(action: ASCEntityActions, caption: String) {
-        guard let provider = provider, selectedIds.count > 0 else { return }
-
-        let dispatchGroup = DispatchGroup()
-        var indexPathes: [IndexPath] = []
-
-        let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = caption
         tableData.filter { self.selectedIds.contains($0.uid) }
             .compactMap { $0 as? ASCFolder }
             .forEach {
-                guard let indexPath = self.indexPath(by: $0) else { return }
-                dispatchGroup.enter()
-                provider.handle(action: action, folder: $0) { status, _, _ in
-                    if status == .end {
-                        indexPathes.append(indexPath)
-                    }
-                    if status == .end || status == .error {
-                        dispatchGroup.leave()
-                    }
-                }
+                handleAction(folder: $0, action: action, processingLabel: caption, copmletionBehavior: .archiveRestoreAction)
             }
-
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.removedItems(indexPaths: indexPathes)
-            self.showEmptyView(self.total < 1)
-            self.updateNavBar()
-            self.setEditMode(false)
-            hud?.hide(animated: true, afterDelay: .oneSecondDelay)
-        }
     }
+
+    // Example usage in onArchiveSelected and onUnarchiveSelected
 
     @objc func onArchiveSelected(_ sender: Any) {
         processArchive(action: .archive, caption: NSLocalizedString("Archiving", comment: "Caption of the processing"))
@@ -3961,4 +3951,5 @@ extension ASCDocumentsViewController {
 private enum CompletionBehavior {
     case delete(UITableViewCell)
     case archiveAction
+    case archiveRestoreAction
 }

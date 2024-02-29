@@ -11,6 +11,7 @@ import UIKit
 
 enum UserType: String {
     case docspaseAdmin
+    case admin
     case user
     case powerUser
     case roomAdmin
@@ -25,6 +26,8 @@ enum UserType: String {
             return NSLocalizedString("Power user", comment: "")
         case .roomAdmin:
             return NSLocalizedString("Room admin", comment: "")
+        case .admin:
+            return NSLocalizedString("Admin", comment: "")
         }
     }
 }

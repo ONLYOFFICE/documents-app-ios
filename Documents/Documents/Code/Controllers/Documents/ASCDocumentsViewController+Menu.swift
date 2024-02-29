@@ -117,7 +117,7 @@ extension ASCDocumentsViewController {
         }
 
         // Transform to a room
-        
+
         if actions.contains(.transformToRoom) {
             middleActions.append(
                 UIAction(
@@ -451,7 +451,7 @@ extension ASCDocumentsViewController {
         // Transfer actions
 
         var transferActions: [UIMenuElement] = []
-        
+
         /// Transform to a room
 
         if actions.contains(.transformToRoom) {

@@ -53,6 +53,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return provider?.items ?? []
     }
 
+    private var previousViewController: ASCDocumentsViewController? {
+        navigationController?.viewControllers[safe: 1] as? ASCDocumentsViewController
+    }
+
     private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
@@ -1764,8 +1768,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.endUpdates()
                         }
                     case .archiveAction:
-                        if let previousViewController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
-                           let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                        if let previousViewController = self.previousViewController,
+                           let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
                            let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                         {
                             previousViewController.provider?.remove(at: indexPath.row)
@@ -1778,7 +1782,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.navigationController?.popViewController(animated: true)
                         }
                     case .archiveRestoreAction:
-                        if let folderItem = self.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                        if let folderItem = self.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
                            let indexPath = self.tableView.indexPath(for: folderItem)
                         {
                             self.provider?.remove(at: indexPath.row)
@@ -2021,7 +2025,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 self.updateFolder(viewController: self)
                             }
                         } else {
-                            if let previousViewController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
+                            if let previousViewController = self.previousViewController,
                                let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
                                let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                             {
@@ -2623,7 +2627,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 
                 // Update category main folder
-                if let previousViewController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
+                if let previousViewController = previousViewController {
                     self.updateFolder(viewController: previousViewController)
                 }
 
@@ -3010,15 +3014,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
     }
 
-    // Example usage in onArchiveSelected and onUnarchiveSelected
-
     @objc func onArchiveSelected(_ sender: Any) {
         processArchive(action: .archive, caption: NSLocalizedString("Archiving", comment: "Caption of the processing"))
     }
 
     @objc func onUnarchiveSelected(_ sender: Any) {
         let alertController = UIAlertController(title: NSLocalizedString("Restore rooms?", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         let action = UIAlertAction(title: "Restore", style: .default) { _ in
             self.processArchive(action: .unarchive, caption: NSLocalizedString("Unarchiving", comment: "Caption of the processing"))
         }

@@ -1046,7 +1046,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
-        let overwrite = conflictResolveType == .overwrite
         guard let provider = provider else {
             handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined), &cancel)
             return

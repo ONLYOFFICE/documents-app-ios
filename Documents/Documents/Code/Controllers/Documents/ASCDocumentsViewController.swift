@@ -2026,7 +2026,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             }
                         } else {
                             if let previousViewController = self.previousViewController,
-                               let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                               let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
                                let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                             {
                                 previousViewController.provider?.remove(at: indexPath.row)

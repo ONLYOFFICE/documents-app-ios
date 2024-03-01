@@ -432,8 +432,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             {
                 documentsNavigationVC.viewControllers = [categoriesVC]
             }
-            
-            
 
             let onlyOfficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider
             onlyOfficeProvider?.reset()

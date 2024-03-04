@@ -129,7 +129,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         operationProcess?.cancel()
         operationProcess = nil
 
-        operationHendlers.forEach { handler in
+        for handler in operationHendlers {
             handler.progress.cancel()
         }
         operationHendlers.removeAll()
@@ -397,13 +397,11 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider?.url(of: string ?? "")
     }
 
-    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
-        guard let provider = provider else {
+    func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
+        guard let provider else {
             processing(nil, 0, nil)
             return
         }
-
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         var downloadProgress: Progress?
 
@@ -899,7 +897,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         guard let provider = provider else {
@@ -930,7 +928,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 //                ASCBaseApi.clearCookies(for: provider.baseURL)
 
                 if move {
-                    provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    provider.moveItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {
@@ -942,7 +940,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         semaphore.signal()
                     })
                 } else {
-                    provider.copyItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
+                    provider.copyItem(path: entity.id, to: destPath, overwrite: conflictResolveType == .overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {
@@ -1073,8 +1071,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
-        if allowOpen {
+        if allowOpen || isForm {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
@@ -1110,7 +1109,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

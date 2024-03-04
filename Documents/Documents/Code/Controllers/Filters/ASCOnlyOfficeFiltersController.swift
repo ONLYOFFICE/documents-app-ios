@@ -138,7 +138,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
 
     private func hasSelectedFilter(state: State) -> Bool {
         var result = false
-        State.DataType.allCases.forEach { type in
+        for type in State.DataType.allCases {
             switch type {
             case .extensionFilters:
                 result = result || state.filterModels.map { $0.isSelected }.contains(true)
@@ -156,7 +156,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         var params: [String: Any] = ["withSubfolders": "true"]
         guard hasSelectedFilter(state: state) else { return params }
 
-        State.DataType.allCases.forEach { type in
+        for type in State.DataType.allCases {
             switch type {
             case .extensionFilters:
                 if let model = state.filterModels.first(where: { $0.isSelected }) {
@@ -209,7 +209,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         buildCommonResetButtonClosureBuilder()
         builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
             guard let self = self else { return }
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .extensionFilters, .searchFilters: break
                 case .ownerFilters:
@@ -231,7 +231,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     private func buildDidSelectedClosure() {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .extensionFilters:
                     let isFilterModelsContainsSelectedId: Bool = self.tempState.filterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
@@ -266,7 +266,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                             let navigationVC = UINavigationController(rootASCViewController: self.selectGroupViewController)
                             ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
                             self.currentSelectedAuthorFilterType = .group
-                        default: return
+                        default: continue
                         }
                         self.updateViewModel()
                     }
@@ -289,7 +289,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         builder.commonResetButtonClosure = { [weak self] in
             guard let self = self else { return }
 
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .extensionFilters:
                     self.resetModels(models: &self.tempState.filterModels)
@@ -327,7 +327,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func resetAuthorModels() {
-        tempState.authorsModels.enumerated().forEach { index, _ in
+        for (index, _) in tempState.authorsModels.enumerated() {
             resetAuthorModel(index: index)
         }
     }
@@ -338,7 +338,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func resetModels(models: inout [ASCDocumentsFilterModel]) {
-        models.enumerated().forEach { index, _ in
+        for (index, _) in models.enumerated() {
             models[index].isSelected = false
         }
     }

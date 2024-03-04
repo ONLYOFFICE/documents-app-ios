@@ -63,7 +63,7 @@ class ASCOnlyofficeCategory: ASCCategory {
         case .onlyofficeShare:
             return Asset.Images.categoryShare.image
         case .onlyofficeRoomShared:
-            return Asset.Images.categoryFolder.image
+            return Asset.Images.categoryRoom.image
         case .onlyofficeRoomArchived:
             return Asset.Images.categoryArchived.image
         case .onlyofficeBunch, .onlyofficeProjects:

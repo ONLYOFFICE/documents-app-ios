@@ -10,12 +10,18 @@ import SwiftUI
 
 struct TimeLimitCellView: View {
     var model: TimeLimitCellModel
+
+    var minimumDate: Date {
+        let calendar = Calendar.current
+        return calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: Date())) ?? Date()
+    }
+
     var body: some View {
         HStack {
             DatePicker(
                 model.title,
                 selection: model.$selectedDate,
-                in: min(model.selectedDate, Date())...,
+                in: minimumDate...,
                 displayedComponents: [.date, .hourAndMinute]
             )
         }

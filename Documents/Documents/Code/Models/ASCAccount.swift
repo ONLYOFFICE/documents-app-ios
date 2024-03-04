@@ -11,6 +11,7 @@ import UIKit
 
 enum UserType: String {
     case docspaseAdmin
+    case admin
     case user
     case powerUser
     case roomAdmin
@@ -25,6 +26,8 @@ enum UserType: String {
             return NSLocalizedString("Power user", comment: "")
         case .roomAdmin:
             return NSLocalizedString("Room admin", comment: "")
+        case .admin:
+            return NSLocalizedString("Admin", comment: "")
         }
     }
 }
@@ -39,7 +42,7 @@ class ASCAccount: NSObject, NSCoding, Mappable {
 
     var userType: UserType?
     var avatarAbsoluteUrl: URL? {
-        guard let avatarUrlString = self.avatar,
+        guard let avatarUrlString = avatar,
               let portal = portal,
               let portalUrl = URL(string: portal),
               !avatarUrlString.contains("/skins/default/images/default_user_photo_size_"),

@@ -26,6 +26,14 @@ extension MBProgressHUD {
         return nil
     }
 
+    static func showTopMost(mode: MBProgressHUDMode, hideCurrent: Bool = true) {
+        if hideCurrent {
+            currentHUD?.hide(animated: false)
+        }
+        let hud = showTopMost()
+        hud?.mode = mode
+    }
+
     func setSuccessState(title: String? = nil) {
         mode = .customView
         customView = UIImageView(image: Asset.Images.hudCheckmark.image)

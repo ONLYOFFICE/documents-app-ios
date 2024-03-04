@@ -199,7 +199,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         buildCommonResetButtonClosureBuilder()
         builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
             guard let self = self else { return }
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .roomTypeFilters, .thirdPartyResourceFilters: break
                 case .memberFilters:
@@ -218,7 +218,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
 
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .roomTypeFilters:
                     let isFilterModelsContainsSelectedId: Bool = self.tempState.roomTypeFilters.map { $0.filterType.rawValue }.contains(filterViewModel.id)
@@ -247,7 +247,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                             let navigationVC = UINavigationController(rootASCViewController: self.selectUserViewController)
                             ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
                             self.currentSelectedAuthorFilterType = .user
-                        default: return
+                        default: continue
                         }
                         self.updateViewModel()
                     } else if self.tempState.meFilter.filterType.rawValue == filterViewModel.id {
@@ -273,7 +273,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         builder.commonResetButtonClosure = { [weak self] in
             guard let self = self else { return }
 
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .roomTypeFilters:
                     self.resetModels(models: &self.tempState.roomTypeFilters)
@@ -321,7 +321,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func resetModels(models: inout [ASCDocumentsFilterModel]) {
-        models.enumerated().forEach { index, _ in
+        for (index, _) in models.enumerated() {
             models[index].isSelected = false
         }
     }

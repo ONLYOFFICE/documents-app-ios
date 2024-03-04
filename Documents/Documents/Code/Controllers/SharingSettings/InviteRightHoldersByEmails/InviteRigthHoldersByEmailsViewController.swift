@@ -260,7 +260,10 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         nextBtn.setTitleForAllStates(NSLocalizedString("Next", comment: "").uppercased())
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         nextBtn.isEnabled = isNextBarBtnEnabled
-        nextBtn.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
+
+        Task { @MainActor [weak nextBtn] in
+            nextBtn?.iq.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
+        }
 
         let barItem = UIBarButtonItem(customView: nextBtn)
         barItem.isEnabled = isNextBarBtnEnabled
@@ -279,7 +282,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
             tintColor: nil
         )
         let accessList = viewModel.accessProvides()
-        accessList.forEach { access in
+        for access in accessList {
             accessController.addAction(UIAlertAction(
                 title: access.title(),
                 style: access == .deny ? .destructive : .default,

@@ -10,6 +10,9 @@ import FileKit
 import SpreadsheetEditor
 
 extension SpreadsheetEditor.EditorDocument: EditorDocumentProtocol {}
+extension SpreadsheetEditor.DocumentConverterError: DocumentConverterErrorProtocol {
+    var identifier: String { localizedDescription }
+}
 
 extension ASCEditorManager {
     var spreadsheetEditorExternalSettings: [AnyHashable: Any] {
@@ -21,7 +24,6 @@ extension ASCEditorManager {
         config: OnlyofficeDocumentConfig,
         openMode: ASCDocumentOpenMode
     ) -> UIViewController? {
-        let title = file.title
         let isCoauthoring = !(config.document?.key?.isEmpty ?? true) && !(config.document?.url?.isEmpty ?? true)
         let sdkCheck = compareCloudSdk(with: SpreadsheetEditorViewController.sdkVersionString)
 

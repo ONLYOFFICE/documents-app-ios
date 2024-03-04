@@ -149,6 +149,8 @@ class ASCEditorManager: NSObject {
             editorWindow?.tintColor = delegate.window??.tintColor
         }
 
+        editorWindow?.windowLevel = UIWindow.Level.statusBar - 10
+
         if let topWindow = UIWindow.keyWindow {
             editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
         }
@@ -402,16 +404,24 @@ class ASCEditorManager: NSObject {
                 OnlyofficeApiClient.request(
                     OnlyofficeAPI.Endpoints.Files.trackEdit(file: file), ["docKeyForTrack": key]
                 ) { response, error in
-                    if let error = error {
+                    if let error {
                         log.error(error)
                         self.openHandler?(.error, 1, error, &cancel)
+                    }
+
+                    if let response = response?.result {
+                        if let key = response["key"] as? Bool {
+                            if !key {
+                                let error = response["value"] as? String ?? "No key"
+                                log.warning(error)
+                            }
+                        }
                     }
                 }
             } else {
                 OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
-                    log.info("apiFileStartEdit")
 
-                    if let error = error {
+                    if let error {
                         if let status = response?.status,
                            let code = response?.statusCode,
                            status == 1, code == 403
@@ -477,7 +487,7 @@ class ASCEditorManager: NSObject {
         _ file: ASCFile,
         openMode: ASCDocumentOpenMode = .edit,
         canEdit: Bool,
-        handler: ASCEditorManagerOpenHandler? = nil,
+        openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
         shareHandler: ASCEditorManagerShareHandler? = nil,
@@ -495,16 +505,16 @@ class ASCEditorManager: NSObject {
 
             self.fetchDocumentInfoLegacy(file, viewMode: openMode == .view) { result in
                 if cancel {
-                    handler?(.end, 1, nil, &cancel)
+                    openHandler?(.end, 1, nil, &cancel)
                     return
                 }
 
                 switch result {
                 case let .failure(error):
-                    handler?(.error, 1, error, &cancel)
+                    openHandler?(.error, 1, error, &cancel)
 
                 case let .success(config):
-                    handler?(.progress, 0.7, nil, &cancel)
+                    openHandler?(.progress, 0.7, nil, &cancel)
 
                     self.closeHandler = closeHandler
                     self.favoriteHandler = favoriteHandler
@@ -515,13 +525,13 @@ class ASCEditorManager: NSObject {
                         file: file,
                         config: config,
                         openMode: openMode,
-                        handler: handler
+                        handler: openHandler
                     )
                 }
             }
         }
 
-        handler?(.progress, 0.3, nil, &cancel)
+        openHandler?(.progress, 0.3, nil, &cancel)
 
         if let url = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.collaborationService) as? String {
             documentServiceURL = url
@@ -529,12 +539,12 @@ class ASCEditorManager: NSObject {
         } else {
             fetchDocumentService { url, version, error in
                 if cancel {
-                    handler?(.end, 1, nil, &cancel)
+                    openHandler?(.end, 1, nil, &cancel)
                     return
                 }
 
                 if error != nil {
-                    handler?(.error, 1, error, &cancel)
+                    openHandler?(.error, 1, error, &cancel)
                 } else {
                     fetchAndOpen()
                 }
@@ -544,18 +554,19 @@ class ASCEditorManager: NSObject {
 
     func browsePdfLocal(
         _ pdf: ASCFile,
-        handler: ASCEditorManagerOpenHandler? = nil
+        openHandler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil
     ) {
         var cancel = false
-        let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: pdf.id))
+        let isDocumentOformPdf = ASCOformPdfChecker.checkLocal(url: URL(fileURLWithPath: pdf.id))
 
         openedFile = pdf
 
-        handler?(.begin, 0, nil, &cancel)
+        openHandler?(.begin, 0, nil, &cancel)
 
         if pdf.device {
-            if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
-                editLocal(pdf)
+            if isDocumentOformPdf {
+                editLocal(pdf, closeHandler: closeHandler)
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                     ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
@@ -568,46 +579,63 @@ class ASCEditorManager: NSObject {
             }
         }
 
-        handler?(.end, 1, nil, &cancel)
+        openHandler?(.end, 1, nil, &cancel)
     }
 
     func browsePdfCloud(
         for provider: ASCFileProviderProtocol,
         _ pdf: ASCFile,
-        handler: ASCEditorManagerOpenHandler? = nil
+        openHandler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil
     ) {
         var cancel = false
 
-        handler?(.begin, 0, nil, &cancel)
+        openHandler?(.begin, 0, nil, &cancel)
 
         if let viewUrl = pdf.viewUrl {
             let destination = Path.userTemporary + Path(pdf.title)
-            provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
-                if cancel {
-                    provider.cancel()
-                    handler?(.end, 1, nil, &cancel)
-                    return
-                }
 
-                if error != nil {
-                    handler?(.error, Float(progress), error, &cancel)
-                } else if result != nil {
-                    let localPdf = ASCFile()
-                    localPdf.id = destination.rawValue
-                    localPdf.title = pdf.title
-                    localPdf.device = true
+            Task {
+                var cancel = false
+                let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
 
-                    let officeFormatType = DocumentLocalConverter.officeFileFormat(URL(fileURLWithPath: localPdf.id))
+                if isDocumentOformPdf {
+                    DispatchQueue.main.sync {
+                        openHandler?(.end, 1, nil, &cancel)
 
-                    if officeFormatType == DocumentConverter.OfficeFormatType.documentOformPdf {
-                        self.editCloud(pdf, canEdit: true)
-                    } else {
-                        self.browsePdfLocal(localPdf)
+                        if provider is ASCOnlyofficeProvider {
+                            self.editCloud(pdf, canEdit: true)
+                        } else {
+                            provider.open(file: pdf, openMode: .edit, canEdit: true)
+                        }
                     }
-
-                    handler?(.end, 1, nil, &cancel)
                 } else {
-                    handler?(.progress, Float(progress), error, &cancel)
+                    provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
+                        if cancel {
+                            provider.cancel()
+                            openHandler?(.end, 1, nil, &cancel)
+                            return
+                        }
+
+                        if error != nil {
+                            openHandler?(.error, Float(progress), error, &cancel)
+                        } else if result != nil {
+                            let localPdf = ASCFile()
+                            localPdf.id = destination.rawValue
+                            localPdf.title = pdf.title
+                            localPdf.device = true
+
+                            self.browsePdfLocal(
+                                localPdf,
+                                openHandler: openHandler,
+                                closeHandler: closeHandler
+                            )
+
+                            openHandler?(.end, 1, nil, &cancel)
+                        } else {
+                            openHandler?(.progress, Float(progress), error, &cancel)
+                        }
+                    }
                 }
             }
         }
@@ -750,7 +778,7 @@ class ASCEditorManager: NSObject {
 
         if let viewUrl = file.viewUrl {
             let destination = Path.userTemporary + Path(file.title)
-            provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
+            provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
                 if cancel {
                     handler?(.end, 1, nil, &cancel)
                     return
@@ -1155,7 +1183,12 @@ extension ASCEditorManager {
 
                 stopLocallyEditing()
                 removeAutosave(at: Path.userAutosavedInformation + file.title)
-                closeHandler?(.end, 1, nil, nil, &cancel)
+
+                if let error = error as? (any DocumentConverterErrorProtocol), error.isEqual(DocumentEditor.DocumentConverterError.cancel) {
+                    closeHandler?(.end, 1, nil, nil, &cancel)
+                } else {
+                    closeHandler?(.error, 1, nil, error, &cancel)
+                }
 
                 openedFile = nil
 
@@ -1368,7 +1401,7 @@ extension ASCEditorManager {
 
             renameHandler(file, title) { success in
                 if success {
-                    [self.openedlocallyFile, self.openedFile].forEach { file in
+                    for file in [self.openedlocallyFile, self.openedFile] {
                         file?.title = title
 
                         if !fileExtension.isEmpty {

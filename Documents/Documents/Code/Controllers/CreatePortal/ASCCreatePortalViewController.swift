@@ -134,8 +134,8 @@ class ASCCreatePortalViewController: ASCBaseViewController {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
+        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
         IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIStackView.self, UIView.self]
     }
 
@@ -633,7 +633,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 2)
+                hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                 NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 

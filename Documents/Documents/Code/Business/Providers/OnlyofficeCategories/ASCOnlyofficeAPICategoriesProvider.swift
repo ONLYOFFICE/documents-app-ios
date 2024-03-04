@@ -53,7 +53,7 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
     }
 
     func setAppPriorityTitle(categories: [ASCCategory]) {
-        categories.forEach { category in
+        for category in categories {
             let appPriorityTitle: String = {
                 guard let rootFolderType = category.folder?.rootFolderType else { return "" }
                 return ASCOnlyofficeCategory.title(of: rootFolderType)

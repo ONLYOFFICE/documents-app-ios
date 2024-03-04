@@ -131,7 +131,7 @@ final class RoomSharingViewModel: ObservableObject {
     }
 
     func deleteAdditionalLink(indexSet: IndexSet) {
-        indexSet.forEach { index in
+        for index in indexSet {
             if let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == additionalLinkModels[safe: index]?.id }) {
                 linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
@@ -247,11 +247,40 @@ private extension RoomSharingViewModel {
                 guard let self, isSharingPossible else { return }
                 isSharingScreenPresenting = true
                 sharingLink = URL(string: link.linkInfo.shareLink)
+            },
+            onCopyAction: { [weak self] in
+                guard let self else { return }
+                onCopyLinkAndNotify(link: link)
             }
         )
+    }
+
+    private func onCopyLinkAndNotify(link: RoomSharingLinkModel?) {
+        guard let link = link else { return }
+        isActivitiIndicatorDisplaying = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [self] in
+            if link.linkInfo.password == nil {
+                UIPasteboard.general.string = link.linkInfo.shareLink
+                resultModalModel = .init(
+                    result: .success,
+                    message: .linkCopiedSuccessfull
+                )
+            } else {
+                UIPasteboard.general.string = """
+                \(link.linkInfo.shareLink)
+                \(link.linkInfo.password ?? "")
+                """
+                resultModalModel = .init(
+                    result: .success,
+                    message: .linkAndPasswordCopiedSuccessfull
+                )
+            }
+            isActivitiIndicatorDisplaying = false
+        }
     }
 }
 
 private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
+    static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
 }

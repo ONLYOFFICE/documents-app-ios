@@ -304,7 +304,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         completeon?(self, folder, true, nil)
     }
 
-    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
+    func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
         processing(nil, 0, nil)
 
         if let error = ASCLocalFileHelper.shared.copy(from: Path(path), to: Path(destinationURL.path)) {
@@ -619,7 +619,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         handler?(.end, conflictItems, nil)
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         handler?(.begin, 0, nil, nil, &cancel)
@@ -634,7 +634,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 let destPath = Path(folder.id) + title
 
                 if destPath.exists {
-                    if overwrite, srcPath != destPath {
+                    if conflictResolveType == .overwrite, srcPath != destPath {
                         ASCLocalFileHelper.shared.removeFile(destPath)
                     } else {
                         continue
@@ -805,9 +805,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt) || ASCConstants.FileExtensions.forms.contains(fileExt)
 
-        if allowOpen {
+        if isPdf {
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler)
+        } else if allowOpen {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
@@ -841,7 +845,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfLocal(file)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

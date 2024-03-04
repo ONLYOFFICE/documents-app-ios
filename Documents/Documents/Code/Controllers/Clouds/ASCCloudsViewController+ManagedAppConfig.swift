@@ -23,11 +23,11 @@ extension ASCCloudsViewController {
             return
         }
 
-        newProvidersInfo.forEach { providerInfo in
+        for providerInfo in newProvidersInfo {
             guard let providerTypeString = providerInfo["type"] as? String,
                   let providerType = ASCFileProviderType(rawValue: providerTypeString)
             else {
-                return
+                continue
             }
 
             let connectProvider: (Bool, ASCFileProviderProtocol?) -> Void = { success, provider in

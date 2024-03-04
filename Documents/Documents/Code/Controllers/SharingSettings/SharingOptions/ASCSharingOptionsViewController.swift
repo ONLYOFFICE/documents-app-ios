@@ -234,7 +234,7 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
         case let .displayChangeRightHolderAccess(viewModel: viewModel):
             if viewModel.error == nil {
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 1)
+                hud?.hide(animated: true, afterDelay: .oneSecondDelay)
                 hud = nil
                 updateAndReloadRightHolderCell(by: viewModel.rightHolder)
             } else if let errorMessage = viewModel.error {
@@ -245,7 +245,7 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
         case let .displayRemoveRightHolderAccess(viewModel: viewModel):
             if viewModel.error == nil {
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 1)
+                hud?.hide(animated: true, afterDelay: .oneSecondDelay)
                 hud = nil
             } else if let errorMessage = viewModel.error {
                 hud?.hide(animated: false)
@@ -330,7 +330,7 @@ extension ASCSharingOptionsViewController: ASCSharingViewDelegate {
             hud = MBProgressHUD.showTopMost()
             hud?.label.numberOfLines = 0
             hud?.setSuccessState(title: NSLocalizedString("Link copied\nto the clipboard", comment: ""))
-            hud?.hide(animated: true, afterDelay: 1)
+            hud?.hide(animated: true, afterDelay: .oneSecondDelay)
             hud = nil
         }
     }
@@ -511,7 +511,7 @@ extension ASCSharingOptionsViewController {
                     hud = MBProgressHUD.showTopMost()
                     hud?.label.numberOfLines = 0
                     hud?.setSuccessState(title: NSLocalizedString("The link for external\naccess is copied\nto the clipboard", comment: ""))
-                    hud?.hide(animated: true, afterDelay: 1.3)
+                    hud?.hide(animated: true, afterDelay: .standardDelay)
                     hud = nil
                 }
             }

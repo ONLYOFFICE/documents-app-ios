@@ -121,7 +121,7 @@ class ASCCloudsViewController: UITableViewController {
     func updateMyClouds() {
         connected = []
 
-        ASCFileManager.cloudProviders.forEach { provider in
+        for provider in ASCFileManager.cloudProviders {
             connected.append({
                 $0.title = provider.user?.displayName ?? provider.user?.userId
                 $0.subtitle = provider.user?.department
@@ -136,7 +136,7 @@ class ASCCloudsViewController: UITableViewController {
     func updateLoginClouds() {
         login = []
 
-        ASCConstants.Clouds.defaultConnectCloudProviders.forEach { type in
+        for type in ASCConstants.Clouds.defaultConnectCloudProviders {
             if !connected.contains(where: { $0.provider?.type == type }) {
                 login.append({
                     $0.title = providerName(type)

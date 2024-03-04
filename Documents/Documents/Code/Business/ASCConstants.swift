@@ -221,12 +221,12 @@ class ASCConstants {
     }
 
     enum Colors {
-        static var red: UIColor { if #available(iOS 13.0, *) { return UIColor.systemRed } else { return UIColor(hex: "#ff3b30") } }
-        static var darkerGrey: UIColor { if #available(iOS 13.0, *) { return UIColor.systemGray } else { return UIColor(hex: "#424245") } }
-        static var darkGrey: UIColor { if #available(iOS 13.0, *) { return UIColor.systemGray2 } else { return UIColor(hex: "#555555") } }
-        static var grey: UIColor { if #available(iOS 13.0, *) { return UIColor.systemGray3 } else { return UIColor(hex: "#999da6") } }
-        static var lightGrey: UIColor { if #available(iOS 13.0, *) { return UIColor.systemGray4 } else { return UIColor(hex: "#c8c7cc") } }
-        static var lighterGrey: UIColor { if #available(iOS 13.0, *) { return UIColor.systemGray6 } else { return UIColor(hex: "#eff1f3") } }
+        static var red: UIColor { UIColor.systemRed }
+        static var darkerGrey: UIColor { UIColor.systemGray }
+        static var darkGrey: UIColor { UIColor.systemGray2 }
+        static var grey: UIColor { UIColor.systemGray3 }
+        static var lightGrey: UIColor { UIColor.systemGray4 }
+        static var lighterGrey: UIColor { UIColor.systemGray6 }
     }
 
     enum Searchable {

@@ -430,8 +430,8 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider?.relativePathOf(url: url)
     }
 
-    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
-        guard let provider = provider else {
+    func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
+        guard let provider else {
             processing(nil, 0, nil)
             return
         }
@@ -944,7 +944,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         guard let provider = provider else {
@@ -985,7 +985,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     }
                 }
 
-                if overwrite {
+                if conflictResolveType == .overwrite {
                     provider.contents(path: destPath) { data, error in
                         if data != nil {
                             provider.removeItem(path: destPath) { removeError in
@@ -1152,8 +1152,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
-        if allowOpen {
+        if allowOpen || isForm {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
@@ -1189,7 +1190,8 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

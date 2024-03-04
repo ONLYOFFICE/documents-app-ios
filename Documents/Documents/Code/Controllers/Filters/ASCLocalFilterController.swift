@@ -86,7 +86,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
 
     private func hasSelectedFilter(state: State) -> Bool {
         var result = false
-        State.DataType.allCases.forEach { type in
+        for type in State.DataType.allCases {
             switch type {
             case .extensionFilters:
                 result = result || state.filterModels.map { $0.isSelected }.contains(true)
@@ -101,7 +101,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
         var params: [String: Any] = ["withSubfolders": true]
         guard hasSelectedFilter(state: state) else { return params }
 
-        State.DataType.allCases.forEach { type in
+        for type in State.DataType.allCases {
             switch type {
             case .extensionFilters:
                 if let model = state.filterModels.first(where: { $0.isSelected }) {
@@ -153,7 +153,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
 
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .extensionFilters:
                     let isFilterModelsContainsSelectedId: Bool = self.tempState.filterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
@@ -184,7 +184,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
         builder.commonResetButtonClosure = { [weak self] in
             guard let self = self else { return }
 
-            State.DataType.allCases.forEach { type in
+            for type in State.DataType.allCases {
                 switch type {
                 case .extensionFilters:
                     self.resetModels(models: &self.tempState.filterModels)
@@ -220,7 +220,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
     }
 
     private func resetModels(models: inout [ASCDocumentsFilterModel]) {
-        models.enumerated().forEach { index, _ in
+        for (index, _) in models.enumerated() {
             models[index].isSelected = false
         }
     }

@@ -17,6 +17,7 @@ struct RoomSharingLinkRowModel: Identifiable {
     var isSharingPossible: Bool
     var onTapAction: () -> Void
     var onShareAction: () -> Void
+    var onCopyAction: () -> Void
 
     static var empty = RoomSharingLinkRowModel(
         id: "",
@@ -25,7 +26,8 @@ struct RoomSharingLinkRowModel: Identifiable {
         isExpired: false,
         isSharingPossible: true,
         onTapAction: {},
-        onShareAction: {}
+        onShareAction: {},
+        onCopyAction: {}
     )
 }
 
@@ -60,8 +62,13 @@ struct RoomSharingLinkRow: View {
 
             Spacer()
 
-            HStack {
+            HStack(spacing: 20) {
                 if !model.isExpired, model.isSharingPossible {
+                    Image(systemName: "link")
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                        .onTapGesture {
+                            model.onCopyAction()
+                        }
                     Image(systemName: "square.and.arrow.up")
                         .foregroundColor(Asset.Colors.brend.swiftUIColor)
                         .onTapGesture {

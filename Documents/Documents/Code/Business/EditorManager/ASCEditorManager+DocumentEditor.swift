@@ -10,6 +10,9 @@ import DocumentEditor
 import FileKit
 
 extension DocumentEditor.EditorDocument: EditorDocumentProtocol {}
+extension DocumentEditor.DocumentConverterError: DocumentConverterErrorProtocol {
+    var identifier: String { localizedDescription }
+}
 
 extension ASCEditorManager {
     var documentEditorExternalSettings: [AnyHashable: Any] {
@@ -27,7 +30,7 @@ extension ASCEditorManager {
         var documentPermissions = config.document?.permissions.dictionary ?? [:]
 
         if !documentPermissions.keys.contains("fillForms") {
-            documentPermissions["fillForms"] = isForm && allowForm && [ASCConstants.FileExtensions.oform, ASCConstants.FileExtensions.pdf].contains(fileExt)
+            documentPermissions["fillForms"] = isForm && allowForm && [ASCConstants.FileExtensions.pdf].contains(fileExt)
         }
 
         let isCoauthoring = !(config.document?.key?.isEmpty ?? true) && !(config.document?.url?.isEmpty ?? true)

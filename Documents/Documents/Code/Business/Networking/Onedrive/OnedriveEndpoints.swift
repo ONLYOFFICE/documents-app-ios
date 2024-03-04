@@ -8,7 +8,7 @@
 
 import Foundation
 
-class OnedriveAPI {
+enum OnedriveAPI {
     enum Path {
         public static let me = "me"
     }

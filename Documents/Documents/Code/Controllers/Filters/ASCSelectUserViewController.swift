@@ -39,12 +39,12 @@ class ASCSelectUserViewController: UIViewController {
     }
 
     private func selectItem(byId id: String) {
-        filteredUsers.enumerated().forEach { index, item in
+        for (index, item) in filteredUsers.enumerated() {
             if item.id == id {
                 filteredUsers[index].isSelected = true
             }
         }
-        dataArray.enumerated().forEach { index, item in
+        for (index, item) in dataArray.enumerated() {
             if item.id == id {
                 dataArray[index].isSelected = true
             }
@@ -231,11 +231,11 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func deselectAll() {
-        filteredUsers.enumerated().forEach { index, _ in
+        for (index, _) in filteredUsers.enumerated() {
             filteredUsers[index].isSelected = false
         }
 
-        dataArray.enumerated().forEach { index, _ in
+        for (index, _) in dataArray.enumerated() {
             dataArray[index].isSelected = false
         }
     }

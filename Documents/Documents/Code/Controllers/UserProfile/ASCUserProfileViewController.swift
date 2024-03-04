@@ -212,7 +212,7 @@ class ASCUserProfileViewController: UITableViewController {
 
         if let hud = MBProgressHUD.showTopMost() {
             hud.setSuccessState(title: NSLocalizedString("Logout", comment: "Caption of the process"))
-            hud.hide(animated: true, afterDelay: 2)
+            hud.hide(animated: true, afterDelay: .twoSecondsDelay)
         }
 
         guard let navigationController = navigationController else {

@@ -1,6 +1,6 @@
 import Foundation
 
-class HTMLStringMappings {
+enum HTMLStringMappings {
     /// The unicode characters that always need to be escaped.
     static let unsafeUnicodeCharacters: Set<Character> = ["!", "\"", "$", "%", "&", "'", "+", ",", "<", "=", ">", "@", "[", "]", "`", "{", "}"]
 

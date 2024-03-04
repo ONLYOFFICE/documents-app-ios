@@ -18,6 +18,7 @@ class ASCSharingSettingsAccessProviderFactory {
         ASCConstants.FileExtensions.xlsx: { ASCSharingSettingsAccessTableProvider() },
         ASCConstants.FileExtensions.pptx: { ASCSharingSettingsAccessPresentationProvider() },
         ASCConstants.FileExtensions.oform: { ASCSharingSettingsAccessOFormProvider() },
+        ASCConstants.FileExtensions.pdf: { ASCSharingSettingsAccessOFormProvider() },
     ]
 
     func get(entity: ASCEntity, isAccessExternal: Bool) -> ASCSharingSettingsAccessProvider {

@@ -16,13 +16,13 @@ class CreateRoomRouteViewViewController: UIHostingController<CreateRoomRouteView
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder,
-            rootView: CreateRoomRouteView { _ in }
+            rootView: CreateRoomRouteView(roomName: "", hideActivityOnSuccess: true) { _ in }
         )
     }
 
-    init(onAction: @escaping (ASCFolder) -> Void) {
+    init(roomName: String = "", hideActivityOnSuccess: Bool = true, onAction: @escaping (ASCFolder) -> Void) {
         super.init(
-            rootView: CreateRoomRouteView(onCreate: onAction)
+            rootView: CreateRoomRouteView(roomName: roomName, hideActivityOnSuccess: hideActivityOnSuccess, onCreate: onAction)
         )
     }
 }

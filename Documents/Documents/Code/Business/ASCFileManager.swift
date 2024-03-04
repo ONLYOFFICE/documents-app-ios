@@ -39,7 +39,7 @@ class ASCFileManager {
         provider?.reset()
         localProvider.reset()
         onlyofficeProvider?.reset()
-        cloudProviders.forEach { provider in
+        for provider in cloudProviders {
             provider.reset()
         }
     }
@@ -87,7 +87,7 @@ class ASCFileManager {
             allProviders.append(onlyofficeProvider)
         }
 
-        allProviders.forEach { provider in
+        for provider in allProviders {
             if let serializeProvider = provider.serialize() {
                 provividersInfo.append(serializeProvider)
             }
@@ -108,7 +108,7 @@ class ASCFileManager {
         {
             cloudProviders = []
 
-            serializedProviders.forEach { serializedProvider in
+            for serializedProvider in serializedProviders {
                 if let jsonProvider = serializedProvider.toDictionary(),
                    let type = ASCFileProviderType(rawValue: jsonProvider["type"] as? String ?? ""),
                    let provider = ASCFileManager.createProvider(by: type)

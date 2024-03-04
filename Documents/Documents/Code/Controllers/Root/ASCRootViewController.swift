@@ -145,7 +145,7 @@ class ASCRootViewController: ASCBaseTabBarController {
         }
     }
 
-    private func navigateOnlyofficeProvider(to folder: ASCFolder?) {
+    private func navigateOnlyofficeProvider(to folder: ASCFolder?, inCategory categoryType: ASCFolderType? = nil) {
         if let index = viewControllers?.firstIndex(where: { $0 is ASCOnlyofficeSplitViewController }) {
             selectedIndex = index
 
@@ -156,7 +156,12 @@ class ASCRootViewController: ASCBaseTabBarController {
                 isFirstOpenOnlyofficeCategory = true
 
                 if let folder = folder {
-                    let category = ASCOnlyofficeCategory(folder: folder)
+                    let category: ASCOnlyofficeCategory = {
+                        guard let categoryType,
+                              let category = categoryVC.category(ofType: categoryType)
+                        else { return ASCOnlyofficeCategory(folder: folder) }
+                        return category
+                    }()
 
                     /// Display root folder of category
                     categoryVC.select(category: category)
@@ -166,9 +171,9 @@ class ASCRootViewController: ASCBaseTabBarController {
                         if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
                             if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController {
                                 let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                                documentsNC.pushViewController(documentsVC, animated: false)
                                 documentsVC.provider = ASCFileManager.onlyofficeProvider
                                 documentsVC.folder = folder
+                                documentsNC.pushViewController(documentsVC, animated: false)
                             }
                         }
                     }
@@ -193,13 +198,13 @@ class ASCRootViewController: ASCBaseTabBarController {
         }
     }
 
-    func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?) {
+    func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?, inCategory categoryType: ASCFolderType? = nil) {
         guard let provider = provider else { return }
 
         if provider.type == .local {
             navigateLocalProvider(to: folder)
         } else if provider.type == .onlyoffice {
-            navigateOnlyofficeProvider(to: folder)
+            navigateOnlyofficeProvider(to: folder, inCategory: categoryType)
         } else if provider.type == .icloud {
             navigateiCloudProvider(to: folder)
         } else {

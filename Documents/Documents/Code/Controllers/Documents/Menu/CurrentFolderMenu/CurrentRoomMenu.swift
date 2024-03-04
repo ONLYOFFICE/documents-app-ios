@@ -18,14 +18,16 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         var selectGroup: [UIMenuElement] = []
 
         // Select
-        selectGroup.append(
-            UIAction(
-                title: NSLocalizedString("Select", comment: "Button title"),
-                image: UIImage(systemName: "checkmark.circle")
-            ) { action in
-                viewController.setEditMode(!viewController.tableView.isEditing)
-            }
-        )
+        if !folder.isEmpty {
+            selectGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Select", comment: "Button title"),
+                    image: UIImage(systemName: "checkmark.circle")
+                ) { action in
+                    viewController.setEditMode(!viewController.tableView.isEditing)
+                }
+            )
+        }
 
         var entityActionsGroup: [UIMenuElement] = []
 
@@ -138,29 +140,30 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         }
 
         let sortStates: [ASCDocumentSortStateType] = sortTypes.map { ($0, $0 == sortType) }
+        if !folder.isEmpty {
+            for sort in sortStates {
+                sortGroup.append(
+                    UIAction(
+                        title: sort.type.description,
+                        image: sort.active ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
+                        state: sort.active ? .on : .off
+                    ) { action in
+                        var sortInfo = [
+                            "type": sortType.rawValue,
+                            "order": sortAscending ? "ascending" : "descending",
+                        ]
 
-        for sort in sortStates {
-            sortGroup.append(
-                UIAction(
-                    title: sort.type.description,
-                    image: sort.active ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
-                    state: sort.active ? .on : .off
-                ) { action in
-                    var sortInfo = [
-                        "type": sortType.rawValue,
-                        "order": sortAscending ? "ascending" : "descending",
-                    ]
+                        if sortType != sort.type {
+                            sortInfo["type"] = sort.type.rawValue
+                        } else {
+                            sortAscending = !sortAscending
+                            sortInfo["order"] = sortAscending ? "ascending" : "descending"
+                        }
 
-                    if sortType != sort.type {
-                        sortInfo["type"] = sort.type.rawValue
-                    } else {
-                        sortAscending = !sortAscending
-                        sortInfo["order"] = sortAscending ? "ascending" : "descending"
+                        UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
                     }
-
-                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-                }
-            )
+                )
+            }
         }
 
         let selectMenu = UIMenu(title: "", options: .displayInline, children: selectGroup)

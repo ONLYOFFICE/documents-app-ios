@@ -41,7 +41,7 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                 var imprtantRightHolders: [ASCSharingRightHolderViewModel] = []
                 var otherRightHolders: [ASCSharingRightHolderViewModel] = []
 
-                sharedInfoItems.forEach { sharedInfo in
+                for sharedInfo in sharedInfoItems {
                     var sharedInfo = sharedInfo
                     if !sharedInfo.locked, let folder = entity as? ASCFolder, folder.isRoom {
                         sharedInfo.locked = !folder.security.editAccess

@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-class DropboxAPI {
+enum DropboxAPI {
     enum URL {
         public static let api = "https://api.dropboxapi.com"
     }

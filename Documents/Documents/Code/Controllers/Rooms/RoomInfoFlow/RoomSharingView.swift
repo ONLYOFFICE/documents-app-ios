@@ -143,7 +143,7 @@ struct RoomSharingView: View {
             Text(NSLocalizedString("Additional links", comment: ""))
             Text("(\(viewModel.additionalLinkModels.count)/\(viewModel.additionalLinksLimit))")
             Spacer()
-            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit {
+            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit && viewModel.isSharingPossible {
                 Button {
                     viewModel.createAddLinkAction()
                 } label: {
@@ -178,23 +178,19 @@ struct RoomSharingView: View {
 
     private func handleHUD() {
         if viewModel.isActivitiIndicatorDisplaying {
-            MBProgressHUD.currentHUD?.hide(animated: false)
-            let hud = MBProgressHUD.showTopMost()
-            hud?.mode = .indeterminate
-        } else {
-            if let hud = MBProgressHUD.currentHUD {
-                if let resultModalModel = $viewModel.resultModalModel.wrappedValue {
-                    switch resultModalModel.result {
-                    case .success:
-                        hud.setState(result: .success(resultModalModel.message))
-                    case .failure:
-                        hud.setState(result: .failure(resultModalModel.message))
-                    }
-
-                    hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
-                } else {
-                    hud.hide(animated: true)
+            MBProgressHUD.showTopMost(mode: .indeterminate)
+        } else if let hud = MBProgressHUD.currentHUD {
+            if let resultModalModel = viewModel.resultModalModel {
+                switch resultModalModel.result {
+                case .success:
+                    hud.setState(result: .success(resultModalModel.message))
+                case .failure:
+                    hud.setState(result: .failure(resultModalModel.message))
                 }
+
+                hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
+            } else {
+                hud.hide(animated: true)
             }
         }
     }

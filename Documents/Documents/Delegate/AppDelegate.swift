@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         } else if service == "google" {
                             return GIDSignIn.sharedInstance.handle(url)
                         } else if service == "dropbox" {
-                            return DropboxClientsManager.handleRedirectURL(url, completion: ASCDropboxSDKWrapper.shared.handleOAuthRedirect)
+                            return DropboxClientsManager.handleRedirectURL(url, includeBackgroundClient: false, completion: ASCDropboxSDKWrapper.shared.handleOAuthRedirect)
                         } else if service == "oodocuments" {
                             return ASCViewControllerManager.shared.route(by: url, options: options)
                         }

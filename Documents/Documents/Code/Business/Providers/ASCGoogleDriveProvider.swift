@@ -421,8 +421,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     /// - Parameters:
     ///   - path: file path or id
     ///   - destinationURL: url of destination
+    ///   - range: data range
     ///   - processing: a closure with result of operation or error
-    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
+    func download(_ path: String, to destinationURL: URL, range: Range<Int64>? = nil, processing: @escaping NetworkProgressHandler) {
         guard let _ = googleUser else {
             processing(nil, 0, ASCProviderError(msg: ErrorType.download.description))
             return
@@ -463,7 +464,11 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                     queryDownload = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: path)
                 }
 
-                let downloadRequest = strongSelf.googleDriveService.request(for: queryDownload) as URLRequest
+                var downloadRequest = strongSelf.googleDriveService.request(for: queryDownload) as URLRequest
+
+                if let range {
+                    downloadRequest.setValue("bytes=\(range.lowerBound)-\(range.upperBound)", forHTTPHeaderField: "Range")
+                }
 
                 strongSelf.fetcher = strongSelf.googleDriveService.fetcherService.fetcher(with: downloadRequest)
 
@@ -889,7 +894,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     ///   - items: The list of transfer object
     ///   - folder: The destination folder
     ///   - handler: a closure with result of operation or error
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
         guard let _ = googleUser else {
@@ -1251,8 +1256,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
-        if allowOpen {
+        if allowOpen || isForm {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
@@ -1288,7 +1294,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

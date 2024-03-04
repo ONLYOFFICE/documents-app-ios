@@ -135,8 +135,8 @@ class ASCSignInViewController: ASCBaseViewController {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
-        IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
+        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -252,7 +252,7 @@ class ASCSignInViewController: ASCBaseViewController {
         ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
-                hud?.hide(animated: true, afterDelay: 2)
+                hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                 // Notify
                 NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
@@ -282,7 +282,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
-                        hud?.hide(animated: true, afterDelay: 2)
+                        hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 
@@ -325,7 +325,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
-                        hud?.hide(animated: true, afterDelay: 2)
+                        hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                         // Notify
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
@@ -367,7 +367,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
-                        hud?.hide(animated: true, afterDelay: 2)
+                        hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 
@@ -411,7 +411,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
-                        hud?.hide(animated: true, afterDelay: 2)
+                        hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
 
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 
@@ -543,7 +543,7 @@ class ASCSignInViewController: ASCBaseViewController {
                             )
                         } else {
                             hud?.setSuccessState()
-                            hud?.hide(animated: true, afterDelay: 1)
+                            hud?.hide(animated: true, afterDelay: .oneSecondDelay)
 
                             OnlyofficeApiClient.request(
                                 OnlyofficeAPI.Endpoints.Auth.deviceRegistration,

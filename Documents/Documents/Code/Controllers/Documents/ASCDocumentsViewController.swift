@@ -1064,9 +1064,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     "text": searchValue,
                 ]
             }
-
+            
             // Sort
-            if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
+            
+            let sortInfo: [String: Any]? = {
+                guard let sortInfoOnRootFolderType = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] else {
+                    return nil
+                }
+                return sortInfoOnRootFolderType[String(folder.rootFolderType.rawValue)] as? [String: Any]
+                ?? UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any]
+            }()
+
+            if let sortInfo {
                 var sortParams: [String: Any] = [:]
 
                 if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {

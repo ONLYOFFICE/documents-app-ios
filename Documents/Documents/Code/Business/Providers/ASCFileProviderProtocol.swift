@@ -143,13 +143,13 @@ extension ASCFileProviderProtocol {
     var contentTypes: [ASCFiletProviderContentType] {
         [.files, .folders, .documents, .spreadsheets, .presentations, .images]
     }
-    
+
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
     func serialize() -> String? { return nil }
     func deserialize(_ jsonString: String) {}
-    
+
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {}
     func isReachable(with info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) { complation(false, nil) }
     func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }

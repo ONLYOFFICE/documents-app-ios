@@ -1366,10 +1366,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func updateNavBar() {
+        guard let folder = folder else { return }
         let hasError = errorView?.superview != nil
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        sortSelectBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
+        sortSelectBarButton?.isEnabled = !hasError && (folder.isRoom || total > 0)
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0

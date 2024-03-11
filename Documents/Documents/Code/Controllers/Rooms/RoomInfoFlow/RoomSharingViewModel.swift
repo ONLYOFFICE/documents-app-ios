@@ -36,12 +36,11 @@ final class RoomSharingViewModel: ObservableObject {
 
     // MARK: Navigation published vars
 
-    @Published var selctedUser: ASCUser?
+    @Published var selectedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
     @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
     @Published var isAddUsersScreenDisplaying: Bool = false
-
     // MARK: var input
 
     lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil)
@@ -134,6 +133,12 @@ final class RoomSharingViewModel: ObservableObject {
     func onAppear() {
         buildViewModel()
     }
+    
+    func onUserRemove(userId: String) {
+        flowModel.sharings.removeAll(where: { $0.user.userId == userId })
+        selectedUser = nil
+        buildViewModel()
+    }
 
     func deleteAdditionalLink(indexSet: IndexSet) {
         for index in indexSet {
@@ -223,7 +228,7 @@ private extension RoomSharingViewModel {
             isOwner: sharing.user.isOwner,
             onTapAction: { [weak self] in
                 guard !sharing.user.isOwner, let self else { return }
-                selctedUser = sharing.user
+                selectedUser = sharing.user
             }
         )
     }

@@ -20,7 +20,7 @@ struct RoomSharingView: View {
 
         return screenView
             .navigationBarTitle(Text(viewModel.room.title), displayMode: .inline)
-            .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
+            .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
@@ -228,7 +228,8 @@ private extension View {
             RoomSharingAccessTypeView(
                 viewModel: RoomSharingAccessTypeViewModel(
                     room: viewModel.room,
-                    user: user
+                    user: user,
+                    onRemove: viewModel.onUserRemove(userId:)
                 )
             )
         }

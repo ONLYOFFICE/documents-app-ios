@@ -16,11 +16,8 @@ struct RoomSharingAccessTypeView: View {
         handleHUD()
 
         return List {
-            Section {
-                ForEach(viewModel.accessModels) { model in
-                    RoomSharingAccessRowView(model: model)
-                }
-            }
+            rolesSection
+            deleteSection
         }
         .disabled(viewModel.isAccessChanging)
         .navigationBarTitle(Text(NSLocalizedString("Access type", comment: "")))
@@ -50,6 +47,34 @@ struct RoomSharingAccessTypeView: View {
                     hud.hide(animated: true)
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private var rolesSection: some View {
+        Section(
+            header: Text(NSLocalizedString("Roles", comment: "")),
+            footer: Text(NSLocalizedString("Unauthorized members will be able only to view the document.", comment: "")))
+        {
+            ForEach(viewModel.accessModels) { model in
+                RoomSharingAccessRowView(model: model)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var deleteSection: some View {
+        Section {
+            ASCLabledCellView(
+                model: ASCLabledCellModel(
+                    textString: NSLocalizedString("Remove", comment: ""),
+                    cellType: .deletable,
+                    textAlignment: .leading,
+                    onTapAction: {
+                        viewModel.removeUser()
+                    }
+                )
+            )
         }
     }
 }
@@ -87,5 +112,5 @@ struct RoomSharingAccessRowView: View {
 }
 
 #Preview {
-    RoomSharingAccessTypeView(viewModel: RoomSharingAccessTypeViewModel(room: .init(), user: .init()))
+    RoomSharingAccessTypeView(viewModel: RoomSharingAccessTypeViewModel(room: .init(), user: .init(), onRemove: { _ in }))
 }

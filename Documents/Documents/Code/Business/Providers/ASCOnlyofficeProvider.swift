@@ -98,6 +98,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         apiClient.baseURL = URL(string: baseUrl)
         apiClient.token = token
     }
+    
+    func title(folder: ASCFolder?) -> String? {
+        if folder?.isRoot == true, let rootFolderType = folder?.rootFolderType {
+            return ASCOnlyofficeCategory.title(of: rootFolderType)
+        } else {
+            return folder?.title
+        }
+    }
 
     func setFiltersController() {
         guard let folder = folder, filterController == nil else { return }

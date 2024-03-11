@@ -84,6 +84,7 @@ protocol ASCFileProviderProtocol {
     var contentTypes: [ASCFiletProviderContentType] { get }
 
     // Methods
+    func title(folder: ASCFolder?) -> String?
     func copy() -> ASCFileProviderProtocol
     func cancel()
     func reset()
@@ -143,7 +144,7 @@ extension ASCFileProviderProtocol {
     var contentTypes: [ASCFiletProviderContentType] {
         [.files, .folders, .documents, .spreadsheets, .presentations, .images]
     }
-
+    func title(folder: ASCFolder?) -> String? { folder?.title }
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}

@@ -966,7 +966,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func updateTitle() {
         if !tableView.isEditing {
-            title = folder?.title
+            title = {
+                if folder?.isRoot == true, let rootFolderType = folder?.rootFolderType {
+                    return ASCOnlyofficeCategory.title(of: rootFolderType)
+                } else {
+                    return folder?.title
+                }
+            }()
         } else {
             updateSelectedInfo()
         }

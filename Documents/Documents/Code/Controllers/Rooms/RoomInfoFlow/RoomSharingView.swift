@@ -24,7 +24,8 @@ struct RoomSharingView: View {
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
-            .navigationBarItems()
+            .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
+            .navigationBarItems(viewModel: viewModel)
             .onAppear { viewModel.onAppear() }
     }
 
@@ -197,10 +198,16 @@ struct RoomSharingView: View {
 }
 
 private extension View {
-    func navigationBarItems() -> some View {
+    
+    func navigationBarItems(viewModel: RoomSharingViewModel) -> some View {
         navigationBarItems(
             leading: Button(ASCLocalization.Common.close) {
                 UIApplication.topViewController()?.dismiss(animated: true)
+            },
+            trailing: Button(action: {
+                viewModel.addUsers()
+            }) {
+                Image(systemName: "person.crop.circle.badge.plus")
             }
         )
     }
@@ -251,6 +258,15 @@ private extension View {
             ))
         })
     }
+    
+    func navigateToAddUsers(
+        isDisplaying: Binding<Bool>,
+        viewModel: RoomSharingViewModel) -> some View {
+            navigation(isActive: isDisplaying) {
+                SharingInviteRightHoldersRepresentable(entity: viewModel.room)
+                    .navigationBarHidden(true)
+            }
+        }
 }
 
 struct RoomSharingView_Previews: PreviewProvider {

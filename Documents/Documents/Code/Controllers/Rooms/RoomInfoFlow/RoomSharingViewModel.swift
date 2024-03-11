@@ -40,6 +40,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var selectdLink: RoomSharingLinkModel?
     @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
+    @Published var isAddUsersScreenDisplaying: Bool = false
 
     // MARK: var input
 
@@ -83,6 +84,10 @@ final class RoomSharingViewModel: ObservableObject {
     // MARK: Handlers
 
     func shareButtonAction() {}
+    
+    func addUsers() {
+        isAddUsersScreenDisplaying = true
+    }
 
     func createAddLinkAction() {
         isCreatingLinkScreenDisplaing = true

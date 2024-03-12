@@ -144,6 +144,7 @@ extension ASCFileProviderProtocol {
     var contentTypes: [ASCFiletProviderContentType] {
         [.files, .folders, .documents, .spreadsheets, .presentations, .images]
     }
+
     func title(folder: ASCFolder?) -> String? { folder?.title }
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}

@@ -16,20 +16,19 @@ protocol CurrentFolderMenuProtocol {
 // MARK: Sort
 
 extension CurrentFolderMenuProtocol {
-    
     var sortInfoOnRootFolderType: [String: Any] {
         UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] ?? [:]
     }
-    
+
     var sortInfo: [String: Any]? {
         UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any]
     }
-    
+
     func sortInfo(forRootFolderType folder: ASCFolder) -> [String: Any]? {
         sortInfoOnRootFolderType[String(folder.rootFolderType.rawValue)] as? [String: Any]
-        ?? UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any]
+            ?? UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any]
     }
-    
+
     func sortDetails(sortInfo: [String: Any]?) -> (ASCDocumentSortType, sortAscending: Bool) {
         var sortType: ASCDocumentSortType = .dateandtime
         var sortAscending = false
@@ -44,13 +43,13 @@ extension CurrentFolderMenuProtocol {
         }
         return (sortType, sortAscending)
     }
-    
+
     static func setSortInfoOnRootFolderType(folder: ASCFolder, sortInfo: [String: Any]) {
         var sortInfoOnRootFolderType = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] ?? [:]
         sortInfoOnRootFolderType[String(folder.rootFolderType.rawValue)] = sortInfo
         UserDefaults.standard.set(sortInfoOnRootFolderType, forKey: ASCConstants.SettingsKeys.sortDocuments)
     }
-    
+
     static func buildSortInfo(
         sortState sort: ASCDocumentSortStateType,
         sortType: ASCDocumentSortType,
@@ -70,7 +69,7 @@ extension CurrentFolderMenuProtocol {
         }
         return sortInfo
     }
-    
+
     static func buildUIAction(
         sortState sort: ASCDocumentSortStateType,
         sortType: ASCDocumentSortType,
@@ -85,7 +84,7 @@ extension CurrentFolderMenuProtocol {
             UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
         }
     }
-    
+
     static func buildUIAction(
         sortState sort: ASCDocumentSortStateType,
         sortType: ASCDocumentSortType,
@@ -184,7 +183,6 @@ final class CurrentFolderMenu {
 // MARK: Constants
 
 private extension String {
-    
     static let type = "type"
     static let order = "order"
     static let ascending = "ascending"
@@ -192,11 +190,10 @@ private extension String {
 }
 
 private extension UIImage {
-    
     static func sortDirectionIcon(isActive: Bool, sortAscending: Bool) -> UIImage? {
         guard isActive else { return nil }
         return sortAscending
-        ? UIImage(systemName: "chevron.up")
-        : UIImage(systemName: "chevron.down")
+            ? UIImage(systemName: "chevron.up")
+            : UIImage(systemName: "chevron.down")
     }
 }

@@ -41,6 +41,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
     @Published var isAddUsersScreenDisplaying: Bool = false
+
     // MARK: var input
 
     lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil)
@@ -83,7 +84,7 @@ final class RoomSharingViewModel: ObservableObject {
     // MARK: Handlers
 
     func shareButtonAction() {}
-    
+
     func addUsers() {
         isAddUsersScreenDisplaying = true
     }
@@ -133,7 +134,7 @@ final class RoomSharingViewModel: ObservableObject {
     func onAppear() {
         buildViewModel()
     }
-    
+
     func onUserRemove(userId: String) {
         flowModel.sharings.removeAll(where: { $0.user.userId == userId })
         selectedUser = nil

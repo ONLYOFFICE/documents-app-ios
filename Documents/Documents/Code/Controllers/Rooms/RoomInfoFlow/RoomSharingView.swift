@@ -198,7 +198,6 @@ struct RoomSharingView: View {
 }
 
 private extension View {
-    
     func navigationBarItems(viewModel: RoomSharingViewModel) -> some View {
         navigationBarItems(
             leading: Button(ASCLocalization.Common.close) {
@@ -259,15 +258,16 @@ private extension View {
             ))
         })
     }
-    
+
     func navigateToAddUsers(
         isDisplaying: Binding<Bool>,
-        viewModel: RoomSharingViewModel) -> some View {
-            navigation(isActive: isDisplaying) {
-                SharingInviteRightHoldersRepresentable(entity: viewModel.room)
-                    .navigationBarHidden(true)
-            }
+        viewModel: RoomSharingViewModel
+    ) -> some View {
+        navigation(isActive: isDisplaying) {
+            SharingInviteRightHoldersRepresentable(entity: viewModel.room)
+                .navigationBarHidden(true)
         }
+    }
 }
 
 struct RoomSharingView_Previews: PreviewProvider {

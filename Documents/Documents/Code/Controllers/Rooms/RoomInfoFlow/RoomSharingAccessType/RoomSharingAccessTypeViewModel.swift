@@ -11,7 +11,7 @@ import Foundation
 
 class RoomSharingAccessTypeViewModel: ObservableObject {
     typealias UserIdentifier = String
-    
+
     @Published var accessModels: [ASCShareAccessRowModel] = []
     @Published var isAccessChanging: Bool = false
     @Published var error: String?
@@ -28,7 +28,7 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
         self.onRemove = onRemove
         updateModels()
     }
-    
+
     func removeUser() {
         guard let userId = user.userId else { return }
         isAccessChanging = true

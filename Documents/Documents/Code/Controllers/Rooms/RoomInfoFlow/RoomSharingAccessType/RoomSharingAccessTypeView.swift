@@ -49,19 +49,19 @@ struct RoomSharingAccessTypeView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var rolesSection: some View {
         Section(
             header: Text(NSLocalizedString("Roles", comment: "")),
-            footer: Text(NSLocalizedString("Unauthorized members will be able only to view the document.", comment: "")))
-        {
+            footer: Text(NSLocalizedString("Unauthorized members will be able only to view the document.", comment: ""))
+        ) {
             ForEach(viewModel.accessModels) { model in
                 RoomSharingAccessRowView(model: model)
             }
         }
     }
-    
+
     @ViewBuilder
     private var deleteSection: some View {
         Section {

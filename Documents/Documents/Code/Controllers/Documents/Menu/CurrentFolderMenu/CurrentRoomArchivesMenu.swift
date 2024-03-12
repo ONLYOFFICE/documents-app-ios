@@ -35,7 +35,7 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
                     sortType: sortType,
                     sortAscending: sortAscending,
                     folder: folder
-                )            
+                )
             )
         }
 

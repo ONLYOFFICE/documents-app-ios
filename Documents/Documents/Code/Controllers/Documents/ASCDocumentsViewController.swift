@@ -950,7 +950,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             }
         } else {
-            title = folder?.title
+            title = provider?.title(folder: folder)
         }
     }
 
@@ -966,7 +966,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func updateTitle() {
         if !tableView.isEditing {
-            title = folder?.title
+            title = provider?.title(folder: folder)
         } else {
             updateSelectedInfo()
         }

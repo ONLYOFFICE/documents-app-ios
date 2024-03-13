@@ -42,6 +42,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    var selectedIds: Set<String> = []
+
     // MARK: - Private
 
     private lazy var loadedDocumentsViewControllerFinder: ASCLoadedViewControllerFinderProtocol = ASCLoadedDocumentViewControllerByProviderAndFolderFinder()
@@ -53,11 +55,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return provider?.items ?? []
     }
 
-    private var previousViewController: ASCDocumentsViewController? {
-        navigationController?.viewControllers[safe: 1] as? ASCDocumentsViewController
-    }
-
-    private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
@@ -767,23 +764,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard let folder = folder else {
             return
         }
-
-        let isRoot = folder.parentId == nil || folder.parentId == "0"
-        let isRoomList = folder.isRoomListFolder
-        let isDevice = (provider?.id == ASCFileManager.localProvider.id)
-        let isShared = folder.rootFolderType == .onlyofficeShare
-        let isTrash = self.isTrash(folder)
-        let isRecent = categoryIsRecent
-        let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
-        let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
-        let isPersonalCategory = folder.rootFolderType == .onlyofficeUser
-        let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
-        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
-        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
-        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
-        let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
-        let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
-        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder
+        let tools: ASCToolBarType = CurrentNavigationBars.shared.configureToolBar(viewController: self)
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -811,13 +792,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Create room
-        if isPersonalCategory, isDocSpace {
+        if tools.contains(.createRoom) {
             items.append(createBarButton(Asset.Images.barRectanglesAdd.image, #selector(onTransformToRoomSelected)))
             items.append(barFlexSpacer)
         }
 
         // Move
-        if !isTrash, !isDocSpaceArchive, !isDocSpaceArchiveRoomContent, !isDocSpaceRoomShared, isDevice || !(isShared || isProjectRoot || isGuest) {
+        if tools.contains(.move) {
             let addMoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
                 items.append(barFlexSpacer)
@@ -830,7 +811,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Copy
-        if !isTrash, !isRoomList {
+        if tools.contains(.copy) {
             let addCopyBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
                 items.append(barFlexSpacer)
@@ -843,25 +824,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Restore
-        if isTrash {
+        if tools.contains(.restore) {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Restore room
-        if isDocSpaceArchive, folder.security.move {
+        if tools.contains(.restoreRoom) {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onRoomRestore)))
             items.append(barFlexSpacer)
         }
 
         // Remove from list
-        if isShared {
+        if tools.contains(.removeFromList) {
             items.append(createBarButton(Asset.Images.barDeleteLink.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) {
+        if tools.contains(.remove) {
             let addRemoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
                 items.append(barFlexSpacer)
@@ -875,14 +856,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Info
-        if isInfoShowing {
+        if tools.contains(.info) {
             items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
             items.append(barFlexSpacer)
         }
 
         // Pin
-        if isDocSpaceRoomShared {
-            if !isInfoShowing {
+        if tools.contains(.pin) {
+            if !tools.contains(.info) {
                 items.append(barIconSpacer)
                 items.append(barFlexSpacer)
             }
@@ -892,25 +873,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Archive
-        if isDocSpaceRoomShared {
+        if tools.contains(.archive) {
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove all
-        if isTrash {
+        if tools.contains(.removeAll) {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
             items.append(barFlexSpacer)
         }
 
         // Unarchive
-        if isDocSpaceArchive {
+        if tools.contains(.unarchive) {
             items.append(createBarButton(Asset.Images.barRestoreAll.image, #selector(onUnarchiveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove all rooms
-        if isDocSpaceArchive, canRemoveAllItems() {
+        if tools.contains(.removeAllRooms) {
             let removeSelectedButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveSelectedArchivedRooms))
             removeSelectedButton.tintColor = .red
 
@@ -924,13 +905,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         events.listenTo(eventName: "item:didSelect") { [weak self] in
             self?.updateSelectedInfo()
-            if isNeededUpdateToolBarOnSelection {
+            if tools.contains(.neededUpdateToolBarOnSelection) {
                 self?.configureToolBar()
             }
         }
         events.listenTo(eventName: "item:didDeselect") { [weak self] in
             self?.updateSelectedInfo()
-            if isNeededUpdateToolBarOnDeselection {
+            if tools.contains(.neededUpdateToolBarOnDeselection) {
                 self?.configureToolBar()
             }
         }
@@ -1768,7 +1749,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.endUpdates()
                         }
                     case .archiveAction:
-                        if let previousViewController = self.previousViewController,
+                        if let previousViewController = self.navigationController?.previousViewController,
                            let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
                            let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                         {
@@ -2025,7 +2006,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 self.updateFolder(viewController: self)
                             }
                         } else {
-                            if let previousViewController = self.previousViewController,
+                            if let previousViewController = self.navigationController?.previousViewController,
                                let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
                                let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                             {
@@ -2627,7 +2608,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 
                 // Update category main folder
-                if let previousViewController = previousViewController {
+                if let previousViewController = navigationController?.previousViewController {
                     self.updateFolder(viewController: previousViewController)
                 }
 
@@ -2721,6 +2702,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             }
         }
+    }
+
+    func canRemoveAllItems() -> Bool {
+        let canRemoveAllFolders: Bool = tableData.compactMap { $0 as? ASCFolder }.reduce(true) { partialResult, folder in
+            partialResult && folder.security.delete
+        }
+        let canRemoveAllFiles = tableData.compactMap { $0 as? ASCFile }.reduce(true) { partialResult, file in
+            partialResult && file.security.delete
+        }
+        return canRemoveAllFolders && canRemoveAllFiles
     }
 
     private func selectAllItems<T>(type: T.Type, extensions: [String]? = nil, roomTypes: [ASCRoomType]? = nil) {
@@ -2901,16 +2892,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let files = tableData.compactMap { $0 as? ASCFile }
         return folders.contains(where: { $0.security[keyPath: folderKeyPathSecurity] })
             || files.contains(where: { $0.security[keyPath: fileKeyPathSecurity] })
-    }
-
-    private func canRemoveAllItems() -> Bool {
-        let canRemoveAllFolders: Bool = tableData.compactMap { $0 as? ASCFolder }.reduce(true) { partialResult, folder in
-            partialResult && folder.security.delete
-        }
-        let canRemoveAllFiles = tableData.compactMap { $0 as? ASCFile }.reduce(true) { partialResult, file in
-            partialResult && file.security.delete
-        }
-        return canRemoveAllFolders && canRemoveAllFiles
     }
 
     private func canRemoveAllSelectedItems() -> Bool {
@@ -3948,6 +3929,10 @@ extension ASCDocumentsViewController {
     func getProviderIndexes(items: [ASCEntity]) -> [IndexPath] {
         items.compactMap(indexPath(by:)).map { $0 }
     }
+}
+
+extension UINavigationController {
+    var previousViewController: ASCDocumentsViewController? { viewControllers.last { $0 != topViewController } as? ASCDocumentsViewController }
 }
 
 private enum CompletionBehavior {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2B466D2BA1A0770005B5E9 /* CurrentNavigationBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B466C2BA1A0770005B5E9 /* CurrentNavigationBars.swift */; };
+		0F2B466F2BA1A1070005B5E9 /* ASCToolBarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B466E2BA1A1070005B5E9 /* ASCToolBarType.swift */; };
 		0F5AFB4E2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5AFB4D2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift */; };
 		0FA5C7A02B03B98300380510 /* ASCFolderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */; };
 		0FE15DB92B1B1D2800E25986 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE15DB82B1B1D2700E25986 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */; };
@@ -672,6 +674,8 @@
 
 /* Begin PBXFileReference section */
 		051F20752774A7A1DE291FB1 /* Pods-Documents-develop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-develop.release.xcconfig"; path = "Target Support Files/Pods-Documents-develop/Pods-Documents-develop.release.xcconfig"; sourceTree = "<group>"; };
+		0F2B466C2BA1A0770005B5E9 /* CurrentNavigationBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentNavigationBars.swift; sourceTree = "<group>"; };
+		0F2B466E2BA1A1070005B5E9 /* ASCToolBarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCToolBarType.swift; sourceTree = "<group>"; };
 		0F5AFB4D2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift; sourceTree = "<group>"; };
 		0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderLogo.swift; sourceTree = "<group>"; };
 		0FE15DB82B1B1D2700E25986 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersViewController.swift; sourceTree = "<group>"; };
@@ -1302,6 +1306,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F2B466A2BA19DBB0005B5E9 /* NavigationBarMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0F2B466E2BA1A1070005B5E9 /* ASCToolBarType.swift */,
+				0F2B466C2BA1A0770005B5E9 /* CurrentNavigationBars.swift */,
+			);
+			path = NavigationBarMenu;
+			sourceTree = "<group>";
+		};
 		8A69B5B3249762DE00152BDE /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -2819,6 +2832,7 @@
 		FCC64F70291920F7004D9A47 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				0F2B466A2BA19DBB0005B5E9 /* NavigationBarMenu */,
 				FCE9F7922B3033750056E420 /* CurrentFolderMenu */,
 				FCC64F71291920F7004D9A47 /* CellContext */,
 				FCC64F74291920F7004D9A47 /* CellSwipe */,
@@ -3704,6 +3718,7 @@
 				FCE2B4232930CCA700E50429 /* ASCGroup.swift in Sources */,
 				FC5D040F263AF06400D9DBCF /* NetworkingError.swift in Sources */,
 				FC83D53B2A973E2100C404CB /* UIAlertController+SwiftAlertController.swift in Sources */,
+				0F2B466D2BA1A0770005B5E9 /* CurrentNavigationBars.swift in Sources */,
 				FC83D5392A973E2100C404CB /* CALayer+Animate.swift in Sources */,
 				FC2C73D92754BC5F008E9063 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC83D5322A973E2100C404CB /* UIButton+Extensions.swift in Sources */,
@@ -3908,6 +3923,7 @@
 				FC7DC872285A2D3400E61C69 /* ASCSelectUserViewController.swift in Sources */,
 				FC7DD77D2B502DD70037405B /* PasswordCellView.swift in Sources */,
 				FC7D997D2729966300410795 /* ASCBaseViewController.swift in Sources */,
+				0F2B466F2BA1A1070005B5E9 /* ASCToolBarType.swift in Sources */,
 				FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */,
 				FC7DD77A2B502DD70037405B /* SubTitledDetailCellView.swift in Sources */,
 				FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */,

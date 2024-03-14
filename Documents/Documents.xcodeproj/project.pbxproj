@@ -204,6 +204,7 @@
 		FC156CEF261708A00015835A /* sample in Resources */ = {isa = PBXBuildFile; fileRef = FC156CEE261708A00015835A /* sample */; };
 		FC156CF526170A660015835A /* new in Resources */ = {isa = PBXBuildFile; fileRef = FC156CF426170A660015835A /* new */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
+		FC1765062BA3335A00D6B6F0 /* ASCDocumentsViewController+DragDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1765052BA3335900D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */; };
 		FC1828F32A24E606005D9220 /* ASCAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F22A24E606005D9220 /* ASCAppSettings.swift */; };
 		FC1828F52A24E622005D9220 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F42A24E621005D9220 /* AppTheme.swift */; };
 		FC1828F72A24E638005D9220 /* ASCAppThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F62A24E638005D9220 /* ASCAppThemeViewController.swift */; };
@@ -793,6 +794,7 @@
 		FC156CEE261708A00015835A /* sample */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sample; path = "../../../../document-templates/sample"; sourceTree = "<group>"; };
 		FC156CF426170A660015835A /* new */ = {isa = PBXFileReference; lastKnownFileType = folder; name = new; path = "../../../../document-templates/new"; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
+		FC1765052BA3335900D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+DragDrop.swift"; sourceTree = "<group>"; };
 		FC1828F22A24E606005D9220 /* ASCAppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppSettings.swift; sourceTree = "<group>"; };
 		FC1828F42A24E621005D9220 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		FC1828F62A24E638005D9220 /* ASCAppThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppThemeViewController.swift; sourceTree = "<group>"; };
@@ -2896,6 +2898,7 @@
 				FC65B17E21F9AE1D00AD5114 /* Models */,
 				FC31B27A1E76796E008699C3 /* Views */,
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
+				FC1765052BA3335900D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */,
 				FCEBA71F28B3ADBB0009D50B /* ASCDocumentsViewController+Menu.swift */,
 				FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */,
 			);
@@ -3809,7 +3812,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4082,6 +4086,7 @@
 				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
 				FC35D4542A987DFC00C6383F /* UIBarButtonItem+Extensions.swift in Sources */,
 				FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */,
+				FC1765062BA3335A00D6B6F0 /* ASCDocumentsViewController+DragDrop.swift in Sources */,
 				1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */,
 				1D14AAD626962E6F009E48AD /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
 				FC1828F32A24E606005D9220 /* ASCAppSettings.swift in Sources */,

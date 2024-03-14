@@ -1199,6 +1199,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return entityActions
     }
 
+    func isTrash(for folder: ASCFolder?) -> Bool {
+        folder?.rootFolderType == .onlyofficeTrash
+    }
+
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 

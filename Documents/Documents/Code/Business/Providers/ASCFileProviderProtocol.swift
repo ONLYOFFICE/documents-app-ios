@@ -84,7 +84,7 @@ protocol ASCFileProviderProtocol {
     var contentTypes: [ASCFiletProviderContentType] { get }
 
     // Methods
-    func title(folder: ASCFolder?) -> String?
+    func title(for folder: ASCFolder?) -> String?
     func copy() -> ASCFileProviderProtocol
     func cancel()
     func reset()
@@ -129,6 +129,7 @@ protocol ASCFileProviderProtocol {
     func allowComment(entity: AnyObject?) -> Bool
     func allowDelete(entity: AnyObject?) -> Bool
     func actions(for entity: ASCEntity?) -> ASCEntityActions
+    func isTrash(for folder: ASCFolder?) -> Bool
 
     // Open files
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool)
@@ -145,7 +146,7 @@ extension ASCFileProviderProtocol {
         [.files, .folders, .documents, .spreadsheets, .presentations, .images]
     }
 
-    func title(folder: ASCFolder?) -> String? { folder?.title }
+    func title(for folder: ASCFolder?) -> String? { folder?.title }
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
@@ -177,6 +178,7 @@ extension ASCFileProviderProtocol {
     func allowRead(entity: AnyObject?) -> Bool { return false }
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
+    func isTrash(for folder: ASCFolder?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         log.error("Handle action \(action.rawValue) for folder \(folder.title) doesn't supported")

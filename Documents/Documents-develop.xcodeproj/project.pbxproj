@@ -155,6 +155,7 @@
 		FC476C2F2BA080BB00E3AF36 /* RoomSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC476C212BA080BB00E3AF36 /* RoomSharingView.swift */; };
 		FC476C302BA080BB00E3AF36 /* RoomSharingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC476C222BA080BB00E3AF36 /* RoomSharingViewModel.swift */; };
 		FC476C312BA080BB00E3AF36 /* SharingInviteRightHoldersRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC476C232BA080BB00E3AF36 /* SharingInviteRightHoldersRepresentable.swift */; };
+		FC476C332BA188BB00E3AF36 /* ASCDocumentsViewController+DragDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC476C322BA188BB00E3AF36 /* ASCDocumentsViewController+DragDrop.swift */; };
 		FC4BCA39274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BCA38274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift */; };
 		FC4BCA3D274FA3B000C91403 /* ASCShareSettingsAPIWorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BCA3C274FA3B000C91403 /* ASCShareSettingsAPIWorkerFactory.swift */; };
 		FC4BCA3F274FA3C100C91403 /* ASCPersonalShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BCA3E274FA3C100C91403 /* ASCPersonalShareSettingsAPIWorker.swift */; };
@@ -813,6 +814,7 @@
 		FC476C212BA080BB00E3AF36 /* RoomSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingView.swift; sourceTree = "<group>"; };
 		FC476C222BA080BB00E3AF36 /* RoomSharingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingViewModel.swift; sourceTree = "<group>"; };
 		FC476C232BA080BB00E3AF36 /* SharingInviteRightHoldersRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingInviteRightHoldersRepresentable.swift; sourceTree = "<group>"; };
+		FC476C322BA188BB00E3AF36 /* ASCDocumentsViewController+DragDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+DragDrop.swift"; sourceTree = "<group>"; };
 		FC4BCA38274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerProtocol.swift; sourceTree = "<group>"; };
 		FC4BCA3C274FA3B000C91403 /* ASCShareSettingsAPIWorkerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactory.swift; sourceTree = "<group>"; };
 		FC4BCA3E274FA3C100C91403 /* ASCPersonalShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPersonalShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
@@ -2659,6 +2661,7 @@
 				FC65B17E21F9AE1D00AD5114 /* Models */,
 				FC31B27A1E76796E008699C3 /* Views */,
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
+				FC476C322BA188BB00E3AF36 /* ASCDocumentsViewController+DragDrop.swift */,
 				FCEBA6F928B361910009D50B /* ASCDocumentsViewController+Menu.swift */,
 				FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */,
 			);
@@ -4103,6 +4106,7 @@
 				FC5D0416263BECB600D9DBCF /* DropboxEndpoints.swift in Sources */,
 				FCECDDD826430B00006CD7B9 /* ASCPasswordRecoveryController.swift in Sources */,
 				FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */,
+				FC476C332BA188BB00E3AF36 /* ASCDocumentsViewController+DragDrop.swift in Sources */,
 				FC7DC8EF2861FE8E00E61C69 /* ASCSwitchCell.swift in Sources */,
 				FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */,
 				FCC64F82291921D7004D9A47 /* ASCSharingSettingsAccessTableProvider.swift in Sources */,

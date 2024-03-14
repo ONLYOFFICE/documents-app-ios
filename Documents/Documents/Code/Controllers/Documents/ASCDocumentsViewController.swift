@@ -857,7 +857,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) || (isDocSpaceArchive && canRemoveLeastOneItem()) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) {
             let addRemoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
                 items.append(barFlexSpacer)
@@ -892,6 +892,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
+        
+        // Restore room
+        if isDocSpaceArchive {
+            items.append(createBarButton(Asset.Images.barTrashSlash.image, #selector(onRoomRestore)))
+            items.append(barFlexSpacer)
+        }
+
 
         // Remove all
         if isTrash {

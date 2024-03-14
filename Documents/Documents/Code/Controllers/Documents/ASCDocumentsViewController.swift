@@ -901,7 +901,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         // Remove all rooms
         if isDocSpaceArchive, canRemoveAllItems() {
-            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
+            let deleteButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms))
+            deleteButton.tintColor = .red
+            
+            items.append(deleteButton)
             items.append(barFlexSpacer)
         }
 

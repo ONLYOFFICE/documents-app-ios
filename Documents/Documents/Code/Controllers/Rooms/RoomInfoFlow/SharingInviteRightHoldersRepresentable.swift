@@ -9,30 +9,25 @@
 import SwiftUI
 
 struct SharingInviteRightHoldersRepresentable: UIViewControllerRepresentable {
-    
     var entity: ASCEntity
-    
+
     init(entity: ASCEntity) {
         self.entity = entity
     }
-    
+
     func makeUIViewController(context: Context) -> UIViewController {
-        
         let addUsersController = ASCSharingInviteRightHoldersViewController()
         let addUsersNavigationVC = ASCBaseNavigationController(rootASCViewController: addUsersController)
-        
+
         addUsersNavigationVC.modalPresentationStyle = .formSheet
         addUsersNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-        
+
         addUsersController.dataStore?.entity = entity
         addUsersController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
         addUsersController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
-        
+
         return addUsersNavigationVC
     }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        
-    }
-    
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }

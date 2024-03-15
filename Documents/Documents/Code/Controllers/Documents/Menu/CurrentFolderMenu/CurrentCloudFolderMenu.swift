@@ -25,10 +25,8 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
         )
         let sortInfoOnRootFolderType = sortInfoOnRootFolderType
         let (sortType, sortAscending) = sortDetails(sortInfo: sortInfo(forRootFolderType: folder))
-        let sortStates: [ASCDocumentSortStateType] = {
-            defaultsSortTypes.map { ($0, $0 == sortType) }
+        let sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
             + [(.author, sortType == .author)]
-        }()
 
         for sort in sortStates {
             sortActions.append(

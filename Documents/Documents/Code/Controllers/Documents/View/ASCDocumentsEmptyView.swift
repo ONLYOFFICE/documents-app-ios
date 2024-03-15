@@ -10,7 +10,16 @@ import UIKit
 
 class ASCDocumentsEmptyView: UIView {
     enum EmptyViewState {
-        case `default`, local, trash, cloud, cloudNoPermissions, search, usersNotFound, error, networkError
+        case `default`
+        case local
+        case trash
+        case cloud
+        case docspace
+        case cloudNoPermissions
+        case search
+        case usersNotFound
+        case error
+        case networkError
     }
 
     // MARK: - Properties
@@ -67,11 +76,6 @@ class ASCDocumentsEmptyView: UIView {
             actionButton?.addTarget(self, action: #selector(onButtonTouchUpOutside), for: .touchUpOutside)
 
             subtitleLabel?.numberOfLines = 8
-            // Logo motion
-
-//            if type == .local || type == .cloud {
-//                imageView?.addMotionEffect(effectGroup)
-//            }
         }
     }
 
@@ -108,6 +112,12 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
+            actionButton?.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
+        case .docspace:
+            imageView?.image = Asset.Images.emptyFolder.image
+            titleLabel?.text = NSLocalizedString("Room created!", comment: "")
+            subtitleLabel?.text = NSLocalizedString("Create new folders to \norganize your files.", comment: "")
+            actionButton?.styleType = .blank
             actionButton?.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
         case .trash:
             imageView?.image = Asset.Images.emptyTrash.image

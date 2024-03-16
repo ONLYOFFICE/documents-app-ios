@@ -33,7 +33,7 @@ final class ASCUserTest: XCTestCase {
         sut.isVisitor = false
         sut.isCollaborator = false
 
-        XCTAssertEqual(sut.userType, .docspaseAdmin)
+        XCTAssertEqual(sut.userType, .admin)
     }
 
     func testWhenIsVisitorThenUserTypeUser() {

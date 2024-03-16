@@ -122,46 +122,21 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         // Sort
         var sortGroup: [UIMenuElement] = []
 
-        var sortType: ASCDocumentSortType = .dateandtime
-        var sortAscending = false
-
         if !folder.isRoot {
             sortTypes = [.az, .size, .dateandtime]
         }
 
-        if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
-                sortType = ASCDocumentSortType(sortBy)
-            }
-
-            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
-                sortAscending = sortOrder == "ascending"
-            }
-        }
-
+        let (sortType, sortAscending) = sortDetails(sortInfo: sortInfo(forRootFolderType: folder))
         let sortStates: [ASCDocumentSortStateType] = sortTypes.map { ($0, $0 == sortType) }
         if !folder.isEmpty {
             for sort in sortStates {
                 sortGroup.append(
-                    UIAction(
-                        title: sort.type.description,
-                        image: sort.active ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
-                        state: sort.active ? .on : .off
-                    ) { action in
-                        var sortInfo = [
-                            "type": sortType.rawValue,
-                            "order": sortAscending ? "ascending" : "descending",
-                        ]
-
-                        if sortType != sort.type {
-                            sortInfo["type"] = sort.type.rawValue
-                        } else {
-                            sortAscending = !sortAscending
-                            sortInfo["order"] = sortAscending ? "ascending" : "descending"
-                        }
-
-                        UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-                    }
+                    Self.buildUIAction(
+                        sortState: sort,
+                        sortType: sortType,
+                        sortAscending: sortAscending,
+                        folder: folder
+                    )
                 )
             }
         }
@@ -171,7 +146,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         let entityOperationsMenu = UIMenu(title: "", options: .displayInline, children: entityOperationsGroup)
         let sortMenu = UIMenu(title: "", options: .displayInline, children: sortGroup)
 
-        var menus: [UIMenuElement] = [
+        let menus: [UIMenuElement] = [
             selectMenu,
             entityActionsMenu,
             entityOperationsMenu,

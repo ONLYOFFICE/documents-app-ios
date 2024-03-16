@@ -30,7 +30,7 @@ final class ASCUser: Mappable {
     var activationStatus: ActivationStatus = .applyed
 
     var userType: UserType {
-        return isAdmin ? .docspaseAdmin : isVisitor ? .user : isCollaborator ? .powerUser : .roomAdmin
+        return isAdmin ? (isDocspace ? .docspaseAdmin : .admin) : isVisitor ? .user : isCollaborator ? .powerUser : .roomAdmin
     }
 
     init() {
@@ -153,5 +153,11 @@ extension ASCUser: Codable {
         var sharedTo = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .sharedTo)
         try sharedTo.encode(displayName, forKey: .displayName)
         try sharedTo.encode(userId, forKey: .userId)
+    }
+}
+
+private extension ASCUser {
+    var isDocspace: Bool {
+        OnlyofficeApiClient.shared.serverVersion?.docSpace != nil
     }
 }

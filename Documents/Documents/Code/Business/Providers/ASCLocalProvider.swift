@@ -709,6 +709,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         return entityActions
     }
 
+    func isTrash(for folder: ASCFolder?) -> Bool {
+        folder?.rootFolderType == .deviceTrash
+    }
+
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 

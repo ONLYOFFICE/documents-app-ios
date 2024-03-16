@@ -16,6 +16,7 @@ struct ASCLabledCellView: View {
             .frame(maxWidth: .infinity, alignment: frameAlignment(for: model.textAlignment))
             .foregroundColor(textColor(for: model.cellType))
             .multilineTextAlignment(convertToTextAlignment(model.textAlignment))
+            .contentShape(Rectangle())
             .onTapGesture {
                 model.onTapAction()
             }

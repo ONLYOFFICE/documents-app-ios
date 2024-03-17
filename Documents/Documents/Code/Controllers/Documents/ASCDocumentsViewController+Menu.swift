@@ -498,7 +498,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Move from archive", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.up.bin")
+                    image: UIImage(systemName: "trash.slash")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.unarchive(cell: cell, folder: folder)

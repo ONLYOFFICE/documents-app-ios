@@ -50,10 +50,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         provider?.items ?? []
     }
 
+    var selectedIds: Set<String> = []
+
     // MARK: - Private
 
     private lazy var loadedDocumentsViewControllerFinder: ASCLoadedViewControllerFinderProtocol = ASCLoadedDocumentViewControllerByProviderAndFolderFinder()
-    private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
@@ -61,7 +62,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     // MARK: - Actions controllers vars
 
-    private lazy var removerActionController: ASCEntityRemoverActionController & FileProviderHolder & FolderHolder = ASCDocumentsEntityRemoverActionController(
+    lazy var removerActionController: ASCEntityRemoverActionController & FileProviderHolder & FolderHolder = ASCDocumentsEntityRemoverActionController(
         provider: provider,
         folder: folder,
         itemsGetter: getLocalAndCloudItems,
@@ -92,8 +93,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     // Navigation bar
+    var sortSelectBarButton: UIBarButtonItem?
     private var addBarButton: UIBarButtonItem?
-    private var sortSelectBarButton: UIBarButtonItem?
     private var sortBarButton: UIBarButtonItem?
     private var selectBarButton: UIBarButtonItem?
     private var cancelBarButton: UIBarButtonItem?
@@ -532,6 +533,207 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    func isSelectedItemsPinned() -> Bool {
+        guard selectedIds.count > 0 else { return false }
+        return tableData
+            .filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .reduce(true) { partialResult, folder in
+                partialResult && folder.pinned
+            }
+    }
+
+    func updateFolder(viewController: ASCDocumentsViewController) {
+        if let refreshControl = viewController.refreshControl {
+            viewController.refresh(refreshControl)
+        }
+    }
+
+    func setEditMode(_ edit: Bool) {
+        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = edit
+
+        tableView.setEditing(edit, animated: true)
+        configureNavigationBar()
+
+        configureToolBar()
+        showToolBar(edit)
+
+        selectedIds.removeAll()
+        updateTitle()
+    }
+
+    func loadFirstPage(_ completeon: ((_ success: Bool) -> Void)? = nil) {
+        provider?.page = 0
+
+        setEditMode(false)
+        showLoadingPage(true)
+
+        if searchController.isActive {
+            searchController.isActive = false
+        }
+
+        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
+            searchController.searchBar.isHidden = true
+        }
+
+        addBarButton?.isEnabled = false // Disable create entity while loading first page
+
+        fetchData { [weak self] success in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+
+                // UI update
+                strongSelf.showLoadingPage(false)
+
+                if success {
+                    strongSelf.showEmptyView(strongSelf.total < 1)
+                } else {
+                    if strongSelf.errorView?.superview == nil {
+                        strongSelf.showErrorView(true)
+                    }
+                }
+
+                strongSelf.updateNavBar()
+
+                // Fire callback
+                completeon?(success)
+
+                // Highlight entity if needed
+                strongSelf.highlight(entity: strongSelf.highlightEntity)
+
+                // Check network
+                if !success &&
+                    strongSelf.folder?.rootFolderType != .deviceDocuments &&
+                    !ASCNetworkReachability.shared.isReachable &&
+                    OnlyofficeApiClient.shared.token != nil
+                {
+                    ASCBanner.shared.showError(
+                        title: NSLocalizedString("No network", comment: ""),
+                        message: NSLocalizedString("Check your internet connection", comment: "")
+                    )
+                }
+            }
+        }
+    }
+
+    func showEmptyView(_ show: Bool) {
+        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
+            if !searchController.isActive {
+                searchController.searchBar.isHidden = show
+            }
+        }
+
+        if !show {
+            emptyView?.removeFromSuperview()
+            searchEmptyView?.removeFromSuperview()
+
+            if let tableView = view as? UITableView {
+                tableView.backgroundView = nil
+            }
+
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .automatic
+
+        } else {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.largeTitleDisplayMode = .never
+
+            let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
+
+            // If loading view still display
+            if let _ = loadingView.superview {
+                return
+            }
+
+            if searchController.isActive {
+                localEmptyView?.type = .search
+            } else {
+                if let folder = folder, let provider = provider {
+                    if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
+                        localEmptyView?.type = .trash
+                    } else if provider.type == .local {
+                        localEmptyView?.type = .local
+                    } else {
+                        localEmptyView?.type = .cloud
+
+                        if !(provider.allowEdit(entity: folder)) {
+                            localEmptyView?.type = .cloudNoPermissions
+                        }
+                    }
+                }
+            }
+
+            if localEmptyView?.superview == nil {
+                localEmptyView?.frame = CGRect(
+                    x: 0,
+                    y: 0,
+                    width: tableView.width,
+                    height: tableView.height
+                )
+                if let tableView = view as? UITableView {
+                    tableView.backgroundView = localEmptyView
+                }
+            }
+        }
+    }
+
+    func updateNavBar() {
+        guard let folder else { return }
+
+        let hasError = errorView?.superview != nil
+
+        addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
+        sortSelectBarButton?.isEnabled = !hasError && (folder.isRoom || total > 0)
+        sortBarButton?.isEnabled = !hasError && total > 0
+        selectBarButton?.isEnabled = !hasError && total > 0
+        filterBarButton?.isEnabled = !hasError && total > 0
+    }
+
+    func highlight(cell: UITableViewCell) {
+        let originalBgColor = cell.contentView.backgroundColor
+
+        let highlightView = UIView(frame: CGRect(
+            x: -100,
+            y: 0,
+            width: cell.contentView.width + 200,
+            height: cell.contentView.height
+        )
+        )
+        cell.contentView.insertSubview(highlightView, at: 0)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            if #available(iOS 13.0, *) {
+                highlightView.backgroundColor = .tertiarySystemGroupedBackground
+            } else {
+                highlightView.backgroundColor = .groupTableViewBackground
+            }
+        }) { finished in
+            UIView.animate(withDuration: 0.5, animations: {
+                highlightView.backgroundColor = originalBgColor
+            }) { finished in
+                highlightView.removeFromSuperview()
+            }
+        }
+    }
+
+    func indexPath(by entity: ASCEntity) -> IndexPath? {
+        if let file = entity as? ASCFile {
+            if let index = tableData.firstIndex(where: { ($0 as? ASCFile)?.id == file.id }) {
+                return IndexPath(row: index, section: 0)
+            }
+        } else if let folder = entity as? ASCFolder {
+            if let index = tableData.firstIndex(where: { ($0 as? ASCFolder)?.id == folder.id }) {
+                return IndexPath(row: index, section: 0)
+            }
+        }
+
+        return nil
+    }
+
+    func isTrash(_ folder: ASCFolder?) -> Bool {
+        provider?.isTrash(for: folder) ?? false
+    }
+
     @objc func onFilterAction() {
         let providerCopy = provider?.copy()
         provider?.filterController?.folder = folder
@@ -627,6 +829,67 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     @objc func popViewController(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             navigationController?.popViewController(animated: true)
+        }
+    }
+
+    @objc func updateFileInfo(_ notification: Notification) {
+        if let file = notification.object as? ASCFile {
+            if let path = indexPath(by: file) {
+                if let index = provider?.items.firstIndex(where: { ($0 as? ASCFile)?.id == file.id }) {
+                    provider?.items[index] = file
+                }
+
+                tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+
+                delay(seconds: 0.3) { [weak self] in
+                    if let cell = self?.tableView.cellForRow(at: path) {
+                        self?.highlight(cell: cell)
+                    }
+                }
+            }
+        }
+    }
+
+    @objc func networkStatusChanged(_ notification: Notification) {
+        if let info = notification.userInfo {
+            log.info(info)
+        }
+    }
+
+    @objc func onUpdateSizeClass(_ notification: Notification) {
+        updateTitle()
+
+        // Force hide create popover
+        SwiftMessages.hide()
+
+        if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController(),
+           topVC is ASCCreateEntityUIViewController
+        {
+            topVC.dismiss(animated: false, completion: nil)
+        }
+
+        // Cancel search
+        searchController.searchBar.resignFirstResponder()
+        searchController.isActive = false
+    }
+
+    @objc func onAppDidBecomeActive(_ notification: Notification) {
+        guard let folder = folder else {
+            return
+        }
+
+        if folder.device {
+            fetchLocalData()
+        }
+    }
+
+    @objc func onReloadData(_ notification: Notification) {
+        tableView.reloadData()
+    }
+
+    @objc func onAppMovedToBackground() {
+        if !ASCViewControllerManager.shared.phoneLayout {
+            setEditMode(false)
         }
     }
 
@@ -763,23 +1026,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard let folder = folder else {
             return
         }
-
-        let isRoot = folder.parentId == nil || folder.parentId == "0"
-        let isRoomList = folder.isRoomListFolder
-        let isDevice = (provider?.id == ASCFileManager.localProvider.id)
-        let isShared = folder.rootFolderType == .onlyofficeShare
-        let isTrash = self.isTrash(folder)
-        let isRecent = categoryIsRecent
-        let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
-        let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
-        let isPersonalCategory = folder.rootFolderType == .onlyofficeUser
-        let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
-        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
-        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
-        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
-        let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
-        let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
-        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder
+        let tools: ASCToolBarType = CurrentNavigationBars.shared.configureToolBar(viewController: self)
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -807,13 +1054,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Create room
-        if isPersonalCategory, isDocSpace {
+        if tools.contains(.createRoom) {
             items.append(createBarButton(Asset.Images.barRectanglesAdd.image, #selector(onTransformToRoomSelected)))
             items.append(barFlexSpacer)
         }
 
         // Move
-        if !isTrash, !isDocSpaceArchive, !isDocSpaceArchiveRoomContent, !isDocSpaceRoomShared, isDevice || !(isShared || isProjectRoot || isGuest) {
+        if tools.contains(.move) {
             let addMoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
                 items.append(barFlexSpacer)
@@ -826,7 +1073,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Copy
-        if !isTrash, !isRoomList {
+        if tools.contains(.copy) {
             let addCopyBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
                 items.append(barFlexSpacer)
@@ -839,25 +1086,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Restore
-        if isTrash {
+        if tools.contains(.restore) {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Restore room
-        if isDocSpaceArchive, folder.security.move {
+        if tools.contains(.restoreRoom) {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onRoomRestore)))
             items.append(barFlexSpacer)
         }
 
         // Remove from list
-        if isShared {
+        if tools.contains(.removeFromList) {
             items.append(createBarButton(Asset.Images.barDeleteLink.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) || (isDocSpaceArchive && canRemoveLeastOneItem()) {
+        if tools.contains(.remove) {
             let addRemoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
                 items.append(barFlexSpacer)
@@ -871,14 +1118,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Info
-        if isInfoShowing {
+        if tools.contains(.info) {
             items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
             items.append(barFlexSpacer)
         }
 
         // Pin
-        if isDocSpaceRoomShared {
-            if !isInfoShowing {
+        if tools.contains(.pin) {
+            if !tools.contains(.info) {
                 items.append(barIconSpacer)
                 items.append(barFlexSpacer)
             }
@@ -888,20 +1135,29 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Archive
-        if isDocSpaceRoomShared {
+        if tools.contains(.archive) {
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove all
-        if isTrash {
+        if tools.contains(.removeAll) {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
             items.append(barFlexSpacer)
         }
 
+        // Unarchive
+        if tools.contains(.unarchive) {
+            items.append(createBarButton(Asset.Images.barRestoreAll.image, #selector(onUnarchiveSelected)))
+            items.append(barFlexSpacer)
+        }
+
         // Remove all rooms
-        if isDocSpaceArchive, canRemoveAllItems() {
-            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
+        if tools.contains(.removeAllRooms) {
+            let removeSelectedButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveSelectedArchivedRooms))
+            removeSelectedButton.tintColor = .red
+
+            items.append(removeSelectedButton)
             items.append(barFlexSpacer)
         }
 
@@ -911,13 +1167,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         events.listenTo(eventName: "item:didSelect") { [weak self] in
             self?.updateSelectedInfo()
-            if isNeededUpdateToolBarOnSelection {
+            if tools.contains(.neededUpdateToolBarOnSelection) {
                 self?.configureToolBar()
             }
         }
         events.listenTo(eventName: "item:didDeselect") { [weak self] in
             self?.updateSelectedInfo()
-            if isNeededUpdateToolBarOnDeselection {
+            if tools.contains(.neededUpdateToolBarOnDeselection) {
                 self?.configureToolBar()
             }
         }
@@ -954,16 +1210,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    private func isSelectedItemsPinned() -> Bool {
-        guard selectedIds.count > 0 else { return false }
-        return tableData
-            .filter { selectedIds.contains($0.uid) }
-            .compactMap { $0 as? ASCFolder }
-            .reduce(true) { partialResult, folder in
-                partialResult && folder.pinned
-            }
-    }
-
     private func updateTitle() {
         if !tableView.isEditing {
             title = provider?.title(for: folder)
@@ -974,19 +1220,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func showToolBar(_ show: Bool, animated: Bool = true) {
         navigationController?.setToolbarHidden(!show, animated: animated)
-    }
-
-    func setEditMode(_ edit: Bool) {
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = edit
-
-        tableView.setEditing(edit, animated: true)
-        configureNavigationBar()
-
-        configureToolBar()
-        showToolBar(edit)
-
-        selectedIds.removeAll()
-        updateTitle()
     }
 
     private func fetchData(_ completeon: ((Bool) -> Void)? = nil) {
@@ -1129,60 +1362,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func loadFirstPage(_ completeon: ((_ success: Bool) -> Void)? = nil) {
-        provider?.page = 0
-
-        setEditMode(false)
-        showLoadingPage(true)
-
-        if searchController.isActive {
-            searchController.isActive = false
-        }
-
-        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
-            searchController.searchBar.isHidden = true
-        }
-
-        addBarButton?.isEnabled = false // Disable create entity while loading first page
-
-        fetchData { [weak self] success in
-            DispatchQueue.main.async {
-                guard let strongSelf = self else { return }
-
-                // UI update
-                strongSelf.showLoadingPage(false)
-
-                if success {
-                    strongSelf.showEmptyView(strongSelf.total < 1)
-                } else {
-                    if strongSelf.errorView?.superview == nil {
-                        strongSelf.showErrorView(true)
-                    }
-                }
-
-                strongSelf.updateNavBar()
-
-                // Fire callback
-                completeon?(success)
-
-                // Highlight entity if needed
-                strongSelf.highlight(entity: strongSelf.highlightEntity)
-
-                // Check network
-                if !success &&
-                    strongSelf.folder?.rootFolderType != .deviceDocuments &&
-                    !ASCNetworkReachability.shared.isReachable &&
-                    OnlyofficeApiClient.shared.token != nil
-                {
-                    ASCBanner.shared.showError(
-                        title: NSLocalizedString("No network", comment: ""),
-                        message: NSLocalizedString("Check your internet connection", comment: "")
-                    )
-                }
-            }
-        }
-    }
-
     private func showLoadingPage(_ show: Bool) {
         if show {
             if total > 0 {
@@ -1200,67 +1379,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         } else {
             loadingView.removeFromSuperview()
-        }
-    }
-
-    func showEmptyView(_ show: Bool) {
-        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
-            if !searchController.isActive {
-                searchController.searchBar.isHidden = show
-            }
-        }
-
-        if !show {
-            emptyView?.removeFromSuperview()
-            searchEmptyView?.removeFromSuperview()
-
-            if let tableView = view as? UITableView {
-                tableView.backgroundView = nil
-            }
-
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .automatic
-
-        } else {
-            navigationController?.navigationBar.prefersLargeTitles = false
-            navigationItem.largeTitleDisplayMode = .never
-
-            let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
-
-            // If loading view still display
-            if let _ = loadingView.superview {
-                return
-            }
-
-            if searchController.isActive {
-                localEmptyView?.type = .search
-            } else {
-                if let folder = folder, let provider = provider {
-                    if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
-                        localEmptyView?.type = .trash
-                    } else if provider.type == .local {
-                        localEmptyView?.type = .local
-                    } else {
-                        localEmptyView?.type = .cloud
-
-                        if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView?.type = .cloudNoPermissions
-                        }
-                    }
-                }
-            }
-
-            if localEmptyView?.superview == nil {
-                localEmptyView?.frame = CGRect(
-                    x: 0,
-                    y: 0,
-                    width: tableView.width,
-                    height: tableView.height
-                )
-                if let tableView = view as? UITableView {
-                    tableView.backgroundView = localEmptyView
-                }
-            }
         }
     }
 
@@ -1299,82 +1417,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    @objc func updateFileInfo(_ notification: Notification) {
-        if let file = notification.object as? ASCFile {
-            if let path = indexPath(by: file) {
-                if let index = provider?.items.firstIndex(where: { ($0 as? ASCFile)?.id == file.id }) {
-                    provider?.items[index] = file
-                }
-
-                tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-
-                delay(seconds: 0.3) { [weak self] in
-                    if let cell = self?.tableView.cellForRow(at: path) {
-                        self?.highlight(cell: cell)
-                    }
-                }
-            }
-        }
-    }
-
-    @objc func networkStatusChanged(_ notification: Notification) {
-        if let info = notification.userInfo {
-            log.info(info)
-        }
-    }
-
-    @objc func onUpdateSizeClass(_ notification: Notification) {
-        updateTitle()
-
-        // Force hide create popover
-        SwiftMessages.hide()
-
-        if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController(),
-           topVC is ASCCreateEntityUIViewController
-        {
-            topVC.dismiss(animated: false, completion: nil)
-        }
-
-        // Cancel search
-        searchController.searchBar.resignFirstResponder()
-        searchController.isActive = false
-    }
-
-    @objc func onAppDidBecomeActive(_ notification: Notification) {
-        guard let folder = folder else {
-            return
-        }
-
-        if folder.device {
-            fetchLocalData()
-        }
-    }
-
-    @objc func onReloadData(_ notification: Notification) {
-        tableView.reloadData()
-    }
-
-    @objc func onAppMovedToBackground() {
-        if !ASCViewControllerManager.shared.phoneLayout {
-            setEditMode(false)
-        }
-    }
-
     @objc
     private func onAppDidEnterBackground() {
         searchController.isActive = false
-    }
-
-    func updateNavBar() {
-        guard let folder else { return }
-
-        let hasError = errorView?.superview != nil
-
-        addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        sortSelectBarButton?.isEnabled = !hasError && (folder.isRoom || total > 0)
-        sortBarButton?.isEnabled = !hasError && total > 0
-        selectBarButton?.isEnabled = !hasError && total > 0
-        filterBarButton?.isEnabled = !hasError && total > 0
     }
 
     @available(iOS 14.0, *)
@@ -1494,51 +1539,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return UIMenu(title: "", options: .displayInline, children: uiActions)
     }
 
-    func highlight(cell: UITableViewCell) {
-        let originalBgColor = cell.contentView.backgroundColor
-
-        let highlightView = UIView(frame: CGRect(
-            x: -100,
-            y: 0,
-            width: cell.contentView.width + 200,
-            height: cell.contentView.height
-        )
-        )
-        cell.contentView.insertSubview(highlightView, at: 0)
-
-        UIView.animate(withDuration: 0.5, animations: {
-            if #available(iOS 13.0, *) {
-                highlightView.backgroundColor = .tertiarySystemGroupedBackground
-            } else {
-                highlightView.backgroundColor = .groupTableViewBackground
-            }
-        }) { finished in
-            UIView.animate(withDuration: 0.5, animations: {
-                highlightView.backgroundColor = originalBgColor
-            }) { finished in
-                highlightView.removeFromSuperview()
-            }
-        }
-    }
-
-    func indexPath(by entity: ASCEntity) -> IndexPath? {
-        if let file = entity as? ASCFile {
-            if let index = tableData.firstIndex(where: { ($0 as? ASCFile)?.id == file.id }) {
-                return IndexPath(row: index, section: 0)
-            }
-        } else if let folder = entity as? ASCFolder {
-            if let index = tableData.firstIndex(where: { ($0 as? ASCFolder)?.id == folder.id }) {
-                return IndexPath(row: index, section: 0)
-            }
-        }
-
-        return nil
-    }
-
-    func isTrash(_ folder: ASCFolder?) -> Bool {
-        provider?.isTrash(for: folder) ?? false
-    }
-
     private func configureSwipeGesture() {
         let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
         swipeToPreviousFolder.direction = .right
@@ -1612,20 +1612,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func deleteArchive(folder: ASCFolder) {
-        let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
-
-        let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
-            self.removerActionController.delete(indexes: [folder.uid])
-        }
-        alertController.message = NSLocalizedString("You are about to delete this room. You won’t be able to restore them.", comment: "")
-
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
-
     func rename(cell: UITableViewCell) {
         guard let provider = provider else { return }
 
@@ -1676,70 +1662,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func archive(cell: UITableViewCell?, folder: ASCFolder) {
-        let processLabel: String = NSLocalizedString("Archiving", comment: "Caption of the processing")
-        if let cell = cell {
-            handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
-        } else {
-            handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
-        }
-    }
-
-    func unarchive(cell: UITableViewCell?, folder: ASCFolder) {
-        let processLabel: String = NSLocalizedString("Moving from archive", comment: "Caption of the processing")
-        if let cell = cell {
-            handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
-        } else {
-            handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
-        }
-    }
-
-    func transformToRoom(entities: [ASCEntity]) {
-        let entitiesIsOnlyOneFolder: Bool = {
-            guard entities.count == 1 else { return false }
-            return entities[0] is ASCFolder
-        }()
-        let suggestedName: String = {
-            guard entitiesIsOnlyOneFolder else { return "" }
-            return (entities[0] as? ASCFolder)?.title ?? ""
-        }()
-        let vc = CreateRoomRouteViewViewController(
-            roomName: suggestedName,
-            hideActivityOnSuccess: false
-        ) { [weak self] room in
-            let hud: MBProgressHUD? = MBProgressHUD.currentHUD
-            self?.provider?.transfer(
-                items: entities,
-                to: room,
-                move: false,
-                conflictResolveType: .duplicate,
-                contentOnly: entitiesIsOnlyOneFolder
-            ) { [weak self] status, progress, result, error, cancel in
-                guard let self else { return }
-                if status == .error {
-                    hud?.hide(animated: false)
-                    UIAlertController.showError(
-                        in: self,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
-                    )
-                } else if status == .end {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: .standardDelay)
-                    if let rootVC = ASCViewControllerManager.shared.rootController {
-                        rootVC.display(provider: provider, folder: room, inCategory: .onlyofficeRoomShared)
-                    }
-                }
-            }
-        }
-
-        if UIDevice.pad {
-            vc.isModalInPresentation = true
-            vc.modalPresentationStyle = .formSheet
-        }
-        present(vc, animated: true, completion: nil)
-    }
-
-    private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
+    func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
         let hud = MBProgressHUD.showTopMost()
         hud?.isHidden = false
         provider?.handle(action: action, folder: folder) { [weak self] status, entity, error in
@@ -1760,49 +1683,33 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.endUpdates()
                         }
                     case .archiveAction:
-                        if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
-                           let folderItem = previousController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
-                           let indexPath = previousController.tableView.indexPath(for: folderItem)
+                        if let previousViewController = self.navigationController?.previousViewController,
+                           let folderItem = previousViewController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
+                           let indexPath = previousViewController.tableView.indexPath(for: folderItem)
                         {
-                            previousController.provider?.remove(at: indexPath.row)
-                            previousController.tableView.beginUpdates()
-                            previousController.tableView.deleteRows(at: [indexPath], with: .fade)
-                            previousController.tableView.endUpdates()
+                            previousViewController.provider?.remove(at: indexPath.row)
+                            previousViewController.tableView.beginUpdates()
+                            previousViewController.tableView.deleteRows(at: [indexPath], with: .fade)
+                            previousViewController.tableView.endUpdates()
 
-                            if let refreshControl = previousController.refreshControl {
-                                previousController.refresh(refreshControl)
-                            }
+                            self.updateFolder(viewController: previousViewController)
 
                             self.navigationController?.popViewController(animated: true)
                         }
-                    }
-                } else {
-                    hud?.hide(animated: false)
-                }
-            }
-        }
-    }
+                    case .archiveRestoreAction:
+                        if let folderItem = self.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.id == folder.id }),
+                           let indexPath = self.tableView.indexPath(for: folderItem)
+                        {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
 
-    func pinToggle(cell: UITableViewCell) {
-        guard let folderCell = cell as? ASCFolderCell,
-              let folder = folderCell.folder,
-              let provider = provider else { return }
-        let hud = MBProgressHUD.showTopMost()
-        hud?.isHidden = false
-        let action: ASCEntityActions = folder.pinned ? .unpin : .pin
-        let processLabel: String = folder.pinned
-            ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
-            : NSLocalizedString("Pinning", comment: "Caption of the processing")
-        provider.handle(action: action, folder: folder) { [weak self] status, entity, error in
-            guard let self = self else {
-                hud?.hide(animated: false)
-                return
-            }
-            self.baseProcessHandler(hud: hud, processingMessage: processLabel, status, entity, error) {
-                if entity != nil {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: .standardDelay)
-                    self.loadFirstPage()
+                            self.showEmptyView(self.total < 1)
+                            self.updateNavBar()
+                            self.setEditMode(false)
+                        }
+                    }
                 } else {
                     hud?.hide(animated: false)
                 }
@@ -1828,305 +1735,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         } else if status == .end {
             completion()
-        }
-    }
-
-    func download(cell: UITableViewCell) {
-        if cell is ASCFileCell {
-            downloadFile(cell: cell)
-        } else if cell is ASCFolderCell {
-            let folderCell = cell as! ASCFolderCell
-            downloadFolder(cell: cell, folder: folderCell.folder!)
-        }
-    }
-
-    func downloadFile(cell: UITableViewCell) {
-        guard
-            let fileCell = cell as? ASCFileCell,
-            let file = fileCell.file,
-            let provider = provider
-        else {
-            UIAlertController.showError(
-                in: self,
-                message: NSLocalizedString("Could not download file.", comment: "")
-            )
-            return
-        }
-
-        var forceCancel = false
-        let openingAlert = ASCProgressAlert(
-            title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...",
-            message: nil,
-            handler: { cancel in
-                forceCancel = cancel
-            }
-        )
-
-        ASCEntityManager.shared.download(for: provider, entity: file) { [unowned self] status, progress, result, error, cancel in
-            if status == .begin {
-                openingAlert.show()
-            }
-
-            openingAlert.progress = progress
-
-            if forceCancel {
-                cancel = forceCancel
-                provider.cancel()
-                return
-            }
-
-            if status == .end || status == .error {
-                if status == .error {
-                    openingAlert.hide()
-                    UIAlertController.showError(
-                        in: self,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not download file.", comment: "")
-                    )
-                } else {
-                    if let newFile = result as? ASCFile, let rootVC = ASCViewControllerManager.shared.rootController {
-                        // Switch category to 'On Device'
-                        rootVC.display(provider: ASCFileManager.localProvider, folder: nil)
-
-                        // Delay so that the loading indication is completed
-                        delay(seconds: 0.6) {
-                            openingAlert.hide()
-
-                            let splitVC = ASCViewControllerManager.shared.topViewController as? ASCBaseSplitViewController
-                            let documentsNC = splitVC?.detailViewController as? ASCDocumentsNavigationController
-                            let documentsVC: ASCDocumentsViewController? = documentsNC?.viewControllers.first as? ASCDocumentsViewController ?? ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController
-
-                            if let documentsVC = documentsVC {
-                                documentsVC.loadFirstPage { success in
-                                    if success {
-                                        if let index = documentsVC.tableData.firstIndex(where: { ($0 as? ASCFile)?.title == newFile.title }) {
-                                            // Scroll to new cell
-                                            let indexPath = IndexPath(row: index, section: 0)
-                                            documentsVC.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
-
-                                            // Highlight new cell
-                                            delay(seconds: 0.3) {
-                                                if let newCell = documentsVC.tableView.cellForRow(at: indexPath) {
-                                                    documentsVC.highlight(cell: newCell)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    func downloadFolder(cell: UITableViewCell?, folder: ASCFolder) {
-        guard let provider = provider as? ASCOnlyofficeProvider
-        else { return }
-
-        let transferAlert = ASCProgressAlert(
-            title: NSLocalizedString("Downloading", comment: "Caption of the processing"),
-            message: nil,
-            handler: { cancel in
-                if cancel {
-                    provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
-                    provider.cancel()
-                    log.warning("Active operations canceled")
-                }
-            }
-        )
-
-        transferAlert.show()
-
-        provider.download(items: [folder]) { progress in
-            transferAlert.progress = progress
-        } completion: { [weak self] result in
-            switch result {
-            case let .success(url):
-                transferAlert.hide {
-                    let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-
-                    if UIDevice.pad {
-                        if let cell = cell {
-                            activityViewController.popoverPresentationController?.sourceView = cell
-                            activityViewController.popoverPresentationController?.sourceRect = cell.bounds
-                        } else {
-                            activityViewController.popoverPresentationController?.sourceView = self?.sortSelectBarButton?.customView
-                            activityViewController.popoverPresentationController?.sourceRect = (self?.sortSelectBarButton?.customView!.bounds)!
-                        }
-                    }
-
-                    self?.present(activityViewController, animated: true, completion: nil)
-                }
-            case let .failure(error):
-                transferAlert.hide()
-                log.error(error)
-
-                if let self {
-                    UIAlertController.showError(
-                        in: self,
-                        message: NSLocalizedString("Couldn't download the room.", comment: "")
-                    )
-                }
-            }
-        }
-    }
-
-    func leaveRoom(cell: UITableViewCell?, folder: ASCFolder) {
-        guard let provider = provider as? ASCOnlyofficeProvider
-        else { return }
-
-        var hud: MBProgressHUD?
-
-        let isOwner: Bool = provider.checkRoomOwner(folder: folder)
-        let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
-
-        if isOwner {
-            let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
-                self.navigator.navigate(to: .leaveRoom(entity: folder) { status, result, error in
-                    if status == .begin {
-                        hud = MBProgressHUD.showTopMost()
-                    } else if status == .error {
-                        hud?.hide(animated: true)
-                        UIAlertController.showError(
-                            in: self,
-                            message: NSLocalizedString("Couldn't leave the room", comment: "")
-                        )
-                    } else if status == .end {
-                        hud?.setSuccessState()
-                        hud?.label.numberOfLines = 0
-                        hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
-                        if let cell = cell {
-                            if let indexPath = self.tableView.indexPath(for: cell) {
-                                self.provider?.remove(at: indexPath.row)
-                                self.tableView.beginUpdates()
-                                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                                self.tableView.endUpdates()
-                                if let refreshControl = self.refreshControl {
-                                    self.refresh(refreshControl)
-                                }
-                            }
-                        } else {
-                            if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
-                               let folderItem = previousController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
-                               let indexPath = previousController.tableView.indexPath(for: folderItem)
-                            {
-                                previousController.provider?.remove(at: indexPath.row)
-                                previousController.tableView.beginUpdates()
-                                previousController.tableView.deleteRows(at: [indexPath], with: .fade)
-                                previousController.tableView.endUpdates()
-
-                                if let refreshControl = previousController.refreshControl {
-                                    previousController.refresh(refreshControl)
-                                }
-
-                                self.navigationController?.popViewController(animated: true)
-                            }
-                        }
-                        hud?.hide(animated: false, afterDelay: .standardDelay)
-                    }
-                })
-            }
-            alertController.message = NSLocalizedString("You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.", comment: "")
-
-            alertController.addAction(assignOwnerAction)
-
-        } else {
-            let submitAction = UIAlertAction(title: ASCLocalization.Common.ok, style: .default) { _ in
-                provider.leaveRoom(folder: folder) { status, result, error in
-                    if status == .begin {
-                        hud = MBProgressHUD.showTopMost()
-                    } else if status == .error {
-                        hud?.hide(animated: true)
-                        UIAlertController.showError(
-                            in: self,
-                            message: NSLocalizedString("Couldn't leave the room", comment: "")
-                        )
-                    } else if status == .end {
-                        hud?.setSuccessState()
-                        hud?.label.text = NSLocalizedString("You have left the room", comment: "")
-                        if let cell = cell {
-                            if let indexPath = self.tableView.indexPath(for: cell) {
-                                self.provider?.remove(at: indexPath.row)
-                                self.tableView.beginUpdates()
-                                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                                self.tableView.endUpdates()
-                                if let refreshControl = self.refreshControl {
-                                    self.refresh(refreshControl)
-                                }
-                            }
-                        } else {
-                            self.navigationController?.popViewController(animated: true)
-                            if let refreshControl = self.refreshControl {
-                                self.refresh(refreshControl)
-                            }
-                        }
-                        hud?.hide(animated: false, afterDelay: .standardDelay)
-                    }
-                }
-            }
-
-            alertController.message = NSLocalizedString("Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.", comment: "")
-
-            alertController.addAction(submitAction)
-        }
-
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
-
-    func editRoom(folder: ASCFolder) {
-        let vc = EditRoomViewController(folder: folder) { _ in
-            if let refreshControl = self.refreshControl {
-                self.refresh(refreshControl)
-                if let viewControllers = self.navigationController?.viewControllers,
-                   let index = viewControllers.firstIndex(of: self),
-                   index > 0
-                {
-                    let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
-                    previousController?.refresh(refreshControl)
-                }
-            }
-        }
-
-        vc.modalPresentationStyle = .formSheet
-        vc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-
-        present(vc, animated: true, completion: nil)
-    }
-
-    func favorite(cell: UITableViewCell, favorite: Bool) {
-        guard
-            let provider = provider,
-            let fileCell = cell as? ASCFileCell,
-            let file = fileCell.file
-        else { return }
-
-        var hud: MBProgressHUD?
-
-        ASCEntityManager.shared.favorite(for: provider, entity: file, favorite: favorite) { [unowned self] status, entity, error in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-                hud?.mode = .indeterminate
-            } else if status == .error {
-                hud?.hide(animated: true)
-
-                if let error {
-                    UIAlertController.showError(in: self, message: error.localizedDescription)
-                }
-            } else if status == .end {
-                if entity != nil {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: .standardDelay)
-
-                    if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
-                        updateProviderStatus(for: file, indexPath: indexPath)
-                    }
-                } else {
-                    hud?.hide(animated: false)
-                }
-            }
         }
     }
 
@@ -2615,6 +2223,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 // Update table view
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 
+                // Update category main folder
+                if let previousViewController = navigationController?.previousViewController {
+                    self.updateFolder(viewController: previousViewController)
+                }
+
                 self.showEmptyView(self.total < 1)
                 self.updateNavBar()
             }
@@ -2685,26 +2298,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         })
     }
 
-    func copyGeneralLinkToClipboard(room: ASCFolder) {
-        if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
-            let hud = MBProgressHUD.showTopMost()
-            Task {
-                let generalLinkResult = await onlyofficeProvider.generalLink(for: room)
-
-                await MainActor.run {
-                    switch generalLinkResult {
-                    case let .success(link):
-                        UIPasteboard.general.string = link
-                        hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
-
-                    case .failure:
-                        hud?.setState(result: .failure(nil))
-                    }
-
-                    hud?.hide(animated: true, afterDelay: .standardDelay)
-                }
-            }
+    func canRemoveAllItems() -> Bool {
+        let canRemoveAllFolders: Bool = tableData.compactMap { $0 as? ASCFolder }.reduce(true) { partialResult, folder in
+            partialResult && folder.security.delete
         }
+        let canRemoveAllFiles = tableData.compactMap { $0 as? ASCFile }.reduce(true) { partialResult, file in
+            partialResult && file.security.delete
+        }
+        return canRemoveAllFolders && canRemoveAllFiles
     }
 
     private func selectAllItems<T>(type: T.Type, extensions: [String]? = nil, roomTypes: [ASCRoomType]? = nil) {
@@ -2828,38 +2429,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         present(selectController, animated: true, completion: nil)
     }
 
-    @objc func onTransformToRoomSelected(_ sender: Any) {
-        let entities: [ASCEntity] = selectedIds.compactMap { uid in
-            tableData.first(where: { $0.uid == uid })
-        }
-        guard !entities.isEmpty else { return }
-
-        transformToRoom(entities: entities)
-    }
-
     @objc func onCopySelected(_ sender: Any) {
         transfer(indexes: selectedIds)
     }
 
     @objc func onMoveSelected(_ sender: Any) {
         transfer(indexes: selectedIds, move: true)
-    }
-
-    @objc func onRoomRestore(_ sender: Any) {
-        guard selectedIds.count > 0 else { return }
-        tableData.filter { selectedIds.contains($0.uid) }
-            .compactMap { $0 as? ASCFolder }
-            .forEach {
-                guard let indexPath = indexPath(by: $0), let cell = tableView.cellForRow(at: indexPath) else { return }
-                unarchive(cell: cell, folder: $0)
-            }
-        showEmptyView(total < 1)
-        updateNavBar()
-        setEditMode(false)
-    }
-
-    @objc func onRemoveAllArchivedRooms(_ sender: Any) {
-        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender, notificationType: .alert)
     }
 
     @objc func onTrashSelected(_ sender: Any) {
@@ -2885,16 +2460,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let files = tableData.compactMap { $0 as? ASCFile }
         return folders.contains(where: { $0.security[keyPath: folderKeyPathSecurity] })
             || files.contains(where: { $0.security[keyPath: fileKeyPathSecurity] })
-    }
-
-    private func canRemoveAllItems() -> Bool {
-        let canRemoveAllFolders: Bool = tableData.compactMap { $0 as? ASCFolder }.reduce(true) { partialResult, folder in
-            partialResult && folder.security.delete
-        }
-        let canRemoveAllFiles = tableData.compactMap { $0 as? ASCFile }.reduce(true) { partialResult, file in
-            partialResult && file.security.delete
-        }
-        return canRemoveAllFolders && canRemoveAllFiles
     }
 
     private func canRemoveAllSelectedItems() -> Bool {
@@ -2929,7 +2494,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return canPerformActionOnFolders && canPerformActionOnFiles
     }
 
-    private func onTrash(ids: Set<String>, _ sender: Any, notificationType: NotificationType) {
+    func onTrash(ids: Set<String>, _ sender: Any, notificationType: NotificationType) {
         guard view.isUserInteractionEnabled else { return }
 
         if ids.count > 0 {
@@ -2947,79 +2512,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     self.removerActionController.delete(indexes: ids)
                 }
             }
-        }
-    }
-
-    @objc func onInfoSelected(_ sender: Any) {
-        guard let provider = provider, let folder = folder, selectedIds.count == 1 else { return }
-        presentShareController(provider: provider, entity: folder)
-    }
-
-    @objc func onPinSelected(_ sender: Any) {
-        guard let provider = provider, selectedIds.count > 0 else { return }
-
-        let dispatchGroup = DispatchGroup()
-        var indexPathes: [IndexPath] = []
-        let hud = MBProgressHUD.showTopMost()
-        let isSelectedItemsPinned = isSelectedItemsPinned()
-        let action: ASCEntityActions = isSelectedItemsPinned ? .unpin : .pin
-        hud?.label.text = isSelectedItemsPinned
-            ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
-            : NSLocalizedString("Pinning", comment: "Caption of the processing")
-        tableData.filter { selectedIds.contains($0.uid) }
-            .compactMap { $0 as? ASCFolder }
-            .forEach {
-                guard let indexPath = indexPath(by: $0) else { return }
-                dispatchGroup.enter()
-                provider.handle(action: action, folder: $0) { status, _, _ in
-                    if status == .end {
-                        indexPathes.append(indexPath)
-                    }
-                    if status == .end || status == .error {
-                        dispatchGroup.leave()
-                    }
-                }
-            }
-
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.updateNavBar()
-            self.setEditMode(false)
-            hud?.hide(animated: true, afterDelay: .oneSecondDelay)
-            self.loadFirstPage()
-        }
-    }
-
-    @objc func onArchiveSelected(_ sender: Any) {
-        guard let provider = provider, selectedIds.count > 0 else { return }
-
-        let dispatchGroup = DispatchGroup()
-        var indexPathes: [IndexPath] = []
-        let hud = MBProgressHUD.showTopMost()
-
-        hud?.label.text = NSLocalizedString("Archiving", comment: "Caption of the processing")
-        tableData.filter { selectedIds.contains($0.uid) }
-            .compactMap { $0 as? ASCFolder }
-            .forEach {
-                guard let indexPath = indexPath(by: $0) else { return }
-                dispatchGroup.enter()
-                provider.handle(action: .archive, folder: $0) { status, _, _ in
-                    if status == .end {
-                        indexPathes.append(indexPath)
-                    }
-                    if status == .end || status == .error {
-                        dispatchGroup.leave()
-                    }
-                }
-            }
-
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.removedItems(indexPaths: indexPathes)
-            self.showEmptyView(self.total < 1)
-            self.updateNavBar()
-            self.setEditMode(false)
-            hud?.hide(animated: true, afterDelay: .oneSecondDelay)
         }
     }
 
@@ -3840,9 +3332,7 @@ extension ASCDocumentsViewController {
         var newItemsData = provider?.items ?? []
         provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
 
-        if let refreshControl = refreshControl {
-            refresh(refreshControl)
-        }
+        updateFolder(viewController: self)
         showEmptyView(total < 1)
         updateNavBar()
         setEditMode(false)
@@ -3944,7 +3434,12 @@ extension ASCDocumentsViewController {
     }
 }
 
-private enum CompletionBehavior {
+extension UINavigationController {
+    var previousViewController: ASCDocumentsViewController? { viewControllers.last { $0 != topViewController } as? ASCDocumentsViewController }
+}
+
+enum CompletionBehavior {
     case delete(UITableViewCell)
     case archiveAction
+    case archiveRestoreAction
 }

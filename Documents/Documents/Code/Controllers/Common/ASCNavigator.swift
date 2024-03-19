@@ -19,7 +19,7 @@ enum Destination {
 
     // MARK: - Login
 
-    case onlyofficeConnectPortal
+    case onlyofficeConnectPortal(portal: String?)
     case onlyofficeSignIn(portal: String?)
     case countryPhoneCodes
 
@@ -111,8 +111,13 @@ final class ASCNavigator {
                 leaveRoomViewController.handler = handler
             }
 
-        case .onlyofficeConnectPortal:
-            navigationController?.viewControllers = [viewController]
+        case let .onlyofficeConnectPortal(portal):
+            if let connectPortalViewController = viewController as? ASCConnectPortalViewController {
+                navigationController?.viewControllers = [connectPortalViewController]
+                if let portal {
+                    connectPortalViewController.forceConnect(to: portal)
+                }
+            }
 
         case .roomSharingLink:
             if let shareRoomViewController = viewController as? RoomSharingRootViewController {

@@ -376,6 +376,7 @@
 		FC68529B26837B7300D830EC /* DropboxAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526626837B7300D830EC /* DropboxAccount.swift */; };
 		FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526726837B7300D830EC /* NetworkingClient.swift */; };
 		FC68529F26837B7300D830EC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526826837B7300D830EC /* Endpoint.swift */; };
+		FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */; };
 		FC6A754D29910FB80056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754C29910FB80056262F /* Pulse */; };
 		FC6A754F29910FB80056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754E29910FB80056262F /* PulseLogHandler */; };
 		FC6A755129910FB80056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A755029910FB80056262F /* PulseUI */; };
@@ -461,7 +462,6 @@
 		FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8092265DA5E00A155C2 /* ASCFolderType.swift */; };
 		FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8032265D8DA00A155C2 /* ASCShareAccess.swift */; };
 		FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
-		FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
 		FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */; };
 		FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */; };
 		FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0946AF249776D4005D54E6 /* ASCLogger.swift */; };
@@ -963,6 +963,7 @@
 		FC68526626837B7300D830EC /* DropboxAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxAccount.swift; sourceTree = "<group>"; };
 		FC68526726837B7300D830EC /* NetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		FC68526826837B7300D830EC /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCRootViewController+ManagedAppConfig.swift"; sourceTree = "<group>"; };
 		FC6D9A502355CDC100A970C6 /* ASCDropboxProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDropboxProvider.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6E84C82775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
@@ -2835,6 +2836,7 @@
 			isa = PBXGroup;
 			children = (
 				FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */,
+				FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -3806,7 +3808,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3872,7 +3875,6 @@
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
 				1D667A3E28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift in Sources */,
-				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				1D14AAE226964AF2009E48AD /* ASCSharingSettingsAccessProviderFactoryTests.swift in Sources */,
 				FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */,
@@ -4028,6 +4030,7 @@
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */,
 				1D9BBE9629A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
+				FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
 				FCD5F46C2B4EF4BA00C04D91 /* Toggle+Extension.swift in Sources */,

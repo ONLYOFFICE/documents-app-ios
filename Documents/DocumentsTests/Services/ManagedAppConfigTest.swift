@@ -23,7 +23,7 @@ class ManagedAppConfigTest: XCTestCase {
     let configurationKey = "com.apple.configuration.managed"
     let feedbackKey = "com.apple.feedback.managed"
 
-    let newProvidersKey = "newProviders"
+    let operationTypeKey = "newProviders"
     let provider1 = [
         "address": "https://webdav.example.com",
         "login": "user1",
@@ -46,11 +46,13 @@ class ManagedAppConfigTest: XCTestCase {
 
     override func setUpWithError() throws {
         sampleConfig1 = [
-            newProvidersKey: [provider1],
+            "type": operationTypeKey,
+            "option": [provider1],
         ]
 
         sampleConfig2 = [
-            newProvidersKey: [provider2],
+            "type": operationTypeKey,
+            "option": [provider2],
         ]
 
         handler1 = AppConfigHandlerMock()
@@ -69,10 +71,13 @@ class ManagedAppConfigTest: XCTestCase {
     }
 
     func testReadProvider() throws {
-        let providers: [Any]? = manager.appConfig(newProvidersKey)
-        XCTAssertNotNil(providers)
+        let type: String? = manager.appConfig("type")
+        let options: [Any]? = manager.appConfig("option")
+        
+        XCTAssertNotNil(type)
+        XCTAssertNotNil(options)
 
-        let provider: [String: Any]? = providers?.first as? [String: Any]
+        let provider: [String: Any]? = options?.first as? [String: Any]
         XCTAssertNotNil(provider)
 
         XCTAssertTrue(NSDictionary(dictionary: provider!).isEqual(to: provider1))
@@ -83,6 +88,7 @@ class ManagedAppConfigTest: XCTestCase {
         manager.add(observer: handler2)
 
         UserDefaults.standard.set(sampleConfig2, forKey: configurationKey)
+        ManagedAppConfig.shared.triggerHooks()
 
         var value1 = handler1?.value
         var value2 = handler2?.value
@@ -96,6 +102,7 @@ class ManagedAppConfigTest: XCTestCase {
         handler2 = nil
 
         UserDefaults.standard.set(sampleConfig1, forKey: configurationKey)
+        ManagedAppConfig.shared.triggerHooks()
 
         value1 = handler1?.value
         value2 = handler2?.value

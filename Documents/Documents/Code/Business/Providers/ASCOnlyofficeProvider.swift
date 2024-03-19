@@ -1603,6 +1603,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///
     /// - Parameter error: Error
     func handleNetworkError(_ error: Error?) -> Bool {
+        // Internal reset session, do not handle
+        if let error = error as? NetworkingError {
+            switch error {
+            case .cancelled, .sessionDeinitialized:
+                return true
+            default:
+                break
+            }
+        }
+
         let endSessionLife = apiClient.expires == nil || Date() > apiClient.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
@@ -1664,6 +1674,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         message = error.localizedDescription
                     }
                 }
+
+            case .cancelled, .sessionDeinitialized:
+                return
+
             default:
                 break
             }

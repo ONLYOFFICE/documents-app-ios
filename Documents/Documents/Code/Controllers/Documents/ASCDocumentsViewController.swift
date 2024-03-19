@@ -198,11 +198,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
         return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeFavorites
     }()
-    
-    private var categoryIsRooms: Bool {
-        guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRoomShared
-    }
 
     // MARK: - Lifecycle Methods
 
@@ -1245,7 +1240,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         localEmptyView?.type = .trash
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
-                    } else if categoryIsRooms {
+                    } else if folder.rootFolderType == .onlyofficeRoomShared {
                         localEmptyView?.type = .docspace
                     } else {
                         localEmptyView?.type = .cloud

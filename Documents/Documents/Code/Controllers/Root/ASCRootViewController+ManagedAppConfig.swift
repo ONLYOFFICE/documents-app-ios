@@ -17,9 +17,7 @@ extension ASCRootViewController: ManagedAppConfigHook {
 extension ASCRootViewController {
     /// {
     ///     "type": "connectPortal",
-    ///     "options": {
-    ///         "url": "https://example.com"
-    ///     }
+    ///     "url": "https://example.com"
     /// }
 
     enum MDMOperationType: String {
@@ -32,9 +30,7 @@ extension ASCRootViewController {
 
         switch type {
         case .connectPortal:
-            if let options = config["options"] as? [String: Any],
-               let url = options["url"] as? String
-            {
+            if let url = config["url"] as? String {
                 forceConnectPortal(address: url)
             }
 

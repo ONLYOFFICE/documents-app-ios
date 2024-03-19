@@ -531,6 +531,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ASCViewControllerManager.shared.rootController?.isUserInteractionEnabled = true
         }
     }
+    
+    func updateSelectedItems(indexPath: IndexPath) {
+        if let folder = tableData[indexPath.row] as? ASCFolder {
+            selectedIds.insert(folder.uid)
+        } else if let file = tableData[indexPath.row] as? ASCFile {
+            selectedIds.insert(file.uid)
+        }
+        events.trigger(eventName: "item:didSelect")
+    }
 
     @objc func onFilterAction() {
         let providerCopy = provider?.copy()
@@ -3177,13 +3186,7 @@ extension ASCDocumentsViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-            if let folder = tableData[indexPath.row] as? ASCFolder {
-                selectedIds.insert(folder.uid)
-            } else if let file = tableData[indexPath.row] as? ASCFile {
-                selectedIds.insert(file.uid)
-            }
-
-            events.trigger(eventName: "item:didSelect")
+            updateSelectedItems(indexPath: indexPath)
             return
         }
 

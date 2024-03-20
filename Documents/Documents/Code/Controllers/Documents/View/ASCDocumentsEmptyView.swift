@@ -117,8 +117,7 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("Room created!", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new folders to \norganize your files.", comment: "")
-            actionButton?.styleType = .blank
-            actionButton?.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
+            actionButton?.setTitle(NSLocalizedString("Create new files", comment: ""), for: .normal)
         case .trash:
             imageView?.image = Asset.Images.emptyTrash.image
             titleLabel?.text = NSLocalizedString("The trash is empty", comment: "")

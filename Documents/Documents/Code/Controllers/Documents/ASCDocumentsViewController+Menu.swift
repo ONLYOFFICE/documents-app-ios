@@ -289,6 +289,7 @@ extension ASCDocumentsViewController {
                         animated: true,
                         scrollPosition: .none
                     )
+                    self?.updateSelectedItems(indexPath: index)
                 }
             }
         )

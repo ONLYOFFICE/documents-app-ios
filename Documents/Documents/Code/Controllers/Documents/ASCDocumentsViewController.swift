@@ -531,6 +531,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ASCViewControllerManager.shared.rootController?.isUserInteractionEnabled = true
         }
     }
+    
+    func updateSelectedItems(indexPath: IndexPath) {
+        if let folder = tableData[indexPath.row] as? ASCFolder {
+            selectedIds.insert(folder.uid)
+        } else if let file = tableData[indexPath.row] as? ASCFile {
+            selectedIds.insert(file.uid)
+        }
+        events.trigger(eventName: "item:didSelect")
+        configureToolBar()
+    }
 
     @objc func onFilterAction() {
         let providerCopy = provider?.copy()
@@ -779,7 +789,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
         let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
         let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
-        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder
+        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder || isDocSpaceArchive
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -857,7 +867,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) || (isDocSpaceArchive && canRemoveLeastOneItem()) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) {
             let addRemoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
                 items.append(barFlexSpacer)
@@ -871,9 +881,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Info
-        if isInfoShowing {
-            items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+        if isDocSpaceArchive && !isInfoShowing {
+            items.append(barIconSpacer)
             items.append(barFlexSpacer)
+        } else if isInfoShowing {
+                items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+                items.append(barFlexSpacer)
         }
 
         // Pin
@@ -892,6 +905,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
+        
+        // Restore room
+        if isDocSpaceArchive {
+            items.append(createBarButton(Asset.Images.barTrashSlash.image, #selector(onRoomRestore)))
+            items.append(barFlexSpacer)
+        }
+
 
         // Remove all
         if isTrash {
@@ -901,7 +921,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         // Remove all rooms
         if isDocSpaceArchive, canRemoveAllItems() {
-            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
+            let deleteButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms))
+            deleteButton.tintColor = .red
+            
+            items.append(deleteButton)
             items.append(barFlexSpacer)
         }
 
@@ -3168,13 +3191,7 @@ extension ASCDocumentsViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-            if let folder = tableData[indexPath.row] as? ASCFolder {
-                selectedIds.insert(folder.uid)
-            } else if let file = tableData[indexPath.row] as? ASCFile {
-                selectedIds.insert(file.uid)
-            }
-
-            events.trigger(eventName: "item:didSelect")
+            updateSelectedItems(indexPath: indexPath)
             return
         }
 

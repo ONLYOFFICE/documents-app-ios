@@ -154,6 +154,7 @@
 		FC6A757029915CE10056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756F29915CE10056262F /* Pulse */; };
 		FC6A757229915CE10056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A757129915CE10056262F /* PulseLogHandler */; };
 		FC6A757429915CE10056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A757329915CE10056262F /* PulseUI */; };
+		FC6F5F392BAB010300F109CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FC6F5F382BAB010200F109CD /* PrivacyInfo.xcprivacy */; };
 		FC7080D52812E2260057FCD2 /* ASCSharingSettingsAccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC43EE926A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift */; };
 		FC7080D62812E2260057FCD2 /* ASCNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694B12631C10400808644 /* ASCNavigator.swift */; };
 		FC7080D72812E2260057FCD2 /* OnlyofficeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526026837B7300D830EC /* OnlyofficeEndpoints.swift */; };
@@ -866,6 +867,7 @@
 		FC6E84DF2775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Transfer.strings"; sourceTree = "<group>"; };
 		FC6E84E02775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UserProfile.strings"; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
+		FC6F5F382BAB010200F109CD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FC70824C2812E2270057FCD2 /* Documents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Documents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC72B0C62AFE082E00FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCRightAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
@@ -3192,6 +3194,7 @@
 				FCEF258D2978190200522A3A /* WhatsNew.bundle */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
+				FC6F5F382BAB010200F109CD /* PrivacyInfo.xcprivacy */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -3296,6 +3299,7 @@
 				FC7082292812E2260057FCD2 /* LaunchScreen.storyboard in Resources */,
 				FC70822A2812E2260057FCD2 /* ASCFileCell.xib in Resources */,
 				FC70822C2812E2260057FCD2 /* Debug.storyboard in Resources */,
+				FC6F5F392BAB010300F109CD /* PrivacyInfo.xcprivacy in Resources */,
 				FC70822E2812E2260057FCD2 /* Images.xcassets in Resources */,
 				FC70822F2812E2260057FCD2 /* sample in Resources */,
 				FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */,

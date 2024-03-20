@@ -539,6 +539,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             selectedIds.insert(file.uid)
         }
         events.trigger(eventName: "item:didSelect")
+        configureToolBar()
     }
 
     @objc func onFilterAction() {
@@ -788,7 +789,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
         let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
         let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
-        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder
+        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder || isDocSpaceArchive
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -880,9 +881,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Info
-        if isInfoShowing {
-            items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+        if isDocSpaceArchive && !isInfoShowing {
+            items.append(barIconSpacer)
             items.append(barFlexSpacer)
+        } else if isInfoShowing {
+                items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+                items.append(barFlexSpacer)
         }
 
         // Pin

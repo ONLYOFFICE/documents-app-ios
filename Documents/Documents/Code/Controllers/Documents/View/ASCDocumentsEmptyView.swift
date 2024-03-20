@@ -159,3 +159,15 @@ class ASCDocumentsEmptyView: UIView {
         }
     }
 }
+
+private extension ASCDocumentsEmptyView.EmptyViewState {
+    
+    var actionButtonStyleType: ASCButtonStyleType {
+        switch self {
+        case .docspace:
+            .link
+        default:
+            .action
+        }
+    }
+}

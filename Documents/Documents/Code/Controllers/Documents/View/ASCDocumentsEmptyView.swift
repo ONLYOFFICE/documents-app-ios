@@ -156,6 +156,7 @@ class ASCDocumentsEmptyView: UIView {
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.removeFromSuperview()
         }
+        actionButton.styleType = type.actionButtonStyleType
     }
 }
 

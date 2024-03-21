@@ -99,6 +99,13 @@ class ASCButtonStyle: UIButton {
                         ? self.backgroundColor
                         : .lightGray
                 }, completion: nil)
+            case .link:
+                backgroundColor = .clear
+                setTitleColorForAllStates(
+                    self.isHighlighted
+                    ? .systemBlue.lighten(by: 0.1)
+                    : .systemBlue
+                )
             default:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted

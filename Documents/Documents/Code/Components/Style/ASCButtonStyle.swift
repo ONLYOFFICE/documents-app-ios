@@ -137,6 +137,11 @@ class ASCButtonStyle: UIButton {
                 }
             case .link:
                 backgroundColor = .clear
+                setTitleColorForAllStates(
+                    isEnabled
+                    ? .systemBlue
+                    : .lightGray.lighten(by: 0.5)
+                )
             default:
                 backgroundColor = isEnabled ? Asset.Colors.brend.color : Asset.Colors.grayLight.color
             }

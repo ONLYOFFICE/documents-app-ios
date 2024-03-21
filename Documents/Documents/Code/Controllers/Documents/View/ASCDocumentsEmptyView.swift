@@ -74,6 +74,7 @@ class ASCDocumentsEmptyView: UIView {
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)
             actionButton?.addTarget(self, action: #selector(onButtonTouchDown), for: .touchDown)
             actionButton?.addTarget(self, action: #selector(onButtonTouchUpOutside), for: .touchUpOutside)
+            customizeButtonTitle()
 
             subtitleLabel?.numberOfLines = 8
         }
@@ -103,6 +104,12 @@ class ASCDocumentsEmptyView: UIView {
             .animate()
             .shadowOpacity(shadowOpacity: 1)
             .start()
+    }
+    
+    private func customizeButtonTitle() {
+        if actionButton?.styleType == .action {
+            actionButton?.setTitleColor(.white, for: .normal)
+        }
     }
 
     private func updateType() {

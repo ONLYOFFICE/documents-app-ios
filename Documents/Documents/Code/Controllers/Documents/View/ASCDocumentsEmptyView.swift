@@ -69,8 +69,7 @@ class ASCDocumentsEmptyView: UIView {
 
             isUserInteractionEnabled = true
 
-            actionButton?.styleType = .action
-            actionButton?.setTitleColor(.white, for: .normal)
+            actionButton?.styleType = type.actionButtonStyleType
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)
             actionButton?.addTarget(self, action: #selector(onButtonTouchDown), for: .touchDown)
             actionButton?.addTarget(self, action: #selector(onButtonTouchUpOutside), for: .touchUpOutside)
@@ -82,28 +81,34 @@ class ASCDocumentsEmptyView: UIView {
 
     @objc func onActionButton() {
         onAction?()
-        actionButton?.layer
-            .animate()
-            .shadowOpacity(shadowOpacity: 1)
-            .start()
+        if actionButton?.styleType == .action {
+            actionButton?.layer
+                .animate()
+                .shadowOpacity(shadowOpacity: 1)
+                .start()
 
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.prepare()
-        generator.impactOccurred()
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.prepare()
+            generator.impactOccurred()
+        }
     }
 
     @objc func onButtonTouchDown() {
-        actionButton?.layer
-            .animate()
-            .shadowOpacity(shadowOpacity: 0)
-            .start()
+        if actionButton?.styleType == .action {
+            actionButton?.layer
+                .animate()
+                .shadowOpacity(shadowOpacity: 0)
+                .start()
+        }
     }
 
     @objc func onButtonTouchUpOutside() {
-        actionButton?.layer
-            .animate()
-            .shadowOpacity(shadowOpacity: 1)
-            .start()
+        if actionButton?.styleType == .action {
+            actionButton?.layer
+                .animate()
+                .shadowOpacity(shadowOpacity: 1)
+                .start()
+        }
     }
     
     private func customizeButtonTitle() {

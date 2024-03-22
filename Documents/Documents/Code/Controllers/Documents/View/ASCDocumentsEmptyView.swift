@@ -14,8 +14,9 @@ class ASCDocumentsEmptyView: UIView {
         case local
         case trash
         case cloud
-        case docspace
         case cloudNoPermissions
+        case docspace
+        case docspaceNoPermissions
         case search
         case usersNotFound
         case error
@@ -139,6 +140,11 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("You have read-only access to this folder. You cannot create files or folders here.", comment: "")
+            actionButton?.removeFromSuperview()
+        case .docspaceNoPermissions:
+            imageView?.image = Asset.Images.emptyFolder.image
+            titleLabel?.text = NSLocalizedString("No docs here yet", comment: "")
+            subtitleLabel?.text = NSLocalizedString("Files and folders uploaded by admins will appeared here.", comment: "")
             actionButton?.removeFromSuperview()
         case .search:
             centerYConstraint?.constant = -150

@@ -1648,6 +1648,42 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
+    
+    func showRestoreRoomAlert(handler: @escaping () -> Void) {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Restore room?", comment: ""),
+            message: NSLocalizedString("All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?", comment: ""),
+            preferredStyle: .alert
+        )
+        
+        let restoreAction = UIAlertAction(
+            title: NSLocalizedString("Restore", comment: ""),
+            style: .default) { _ in
+                handler()
+            }
+        
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
+        
+        alertController.addAction(restoreAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    func restoreRoom() {
+        guard selectedIds.count > 0 else { return }
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0),
+                      let cell = tableView.cellForRow(at: indexPath)
+                else { return }
+                unarchive(cell: cell, folder: $0)
+            }
+        showEmptyView(total < 1)
+        updateNavBar()
+        setEditMode(false)
+    }
 
     func rename(cell: UITableViewCell) {
         guard let provider = provider else { return }
@@ -2869,16 +2905,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onRoomRestore(_ sender: Any) {
-        guard selectedIds.count > 0 else { return }
-        tableData.filter { selectedIds.contains($0.uid) }
-            .compactMap { $0 as? ASCFolder }
-            .forEach {
-                guard let indexPath = indexPath(by: $0), let cell = tableView.cellForRow(at: indexPath) else { return }
-                unarchive(cell: cell, folder: $0)
-            }
-        showEmptyView(total < 1)
-        updateNavBar()
-        setEditMode(false)
+        showRestoreRoomAlert { [ weak self ] in
+            guard let self else { return }
+            self.restoreRoom()
+        }
     }
 
     @objc func onRemoveAllArchivedRooms(_ sender: Any) {

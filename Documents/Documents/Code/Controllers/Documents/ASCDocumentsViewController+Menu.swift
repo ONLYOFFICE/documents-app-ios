@@ -502,7 +502,10 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "arrow.up.bin")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.unarchive(cell: cell, folder: folder)
+                    self.showRestoreRoomAlert { [ weak self ] in
+                        guard let self else { return }
+                        self.unarchive(cell: cell, folder: folder)
+                    }
                 }
             )
         }

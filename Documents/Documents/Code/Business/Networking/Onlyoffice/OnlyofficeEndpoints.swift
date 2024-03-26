@@ -69,6 +69,7 @@ enum OnlyofficeAPI {
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        public static let roomstags = "api/\(version)/files/rooms/tags"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 

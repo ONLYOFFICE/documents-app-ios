@@ -47,6 +47,15 @@
 "12 hours" = "12小时";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "转换错误";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "无法下载文件。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "无法上转文件。";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "已存在具有相似名称的文件。";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1797,4 @@
 
 /* Data units */
 "Zero bytes" = "零字节";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "转换错误";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "无法下载文件。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "无法上转文件。";
 

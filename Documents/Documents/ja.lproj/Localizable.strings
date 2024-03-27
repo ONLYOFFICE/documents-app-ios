@@ -47,6 +47,15 @@
 "12 hours" = "12時間";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "変換エラー";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "このファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "ファイルをアップロードできませんでした。";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "類似した名前のファイルが既に存在します。";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1797,4 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "変換エラー";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "このファイルをダウンロードできませんでした。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "ファイルをアップロードできませんでした。";
 

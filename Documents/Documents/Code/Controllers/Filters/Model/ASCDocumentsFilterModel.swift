@@ -179,6 +179,7 @@ enum FiltersSection: String, CaseIterable {
     case author = "Author"
     case search = "Search"
     case member
+    case tags
     case thirdPartyResource
 
     func localizedString() -> String {

@@ -14,6 +14,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         enum DataType: CaseIterable {
             case memberFilters
             case roomTypeFilters
+            case tags
             case thirdPartyResourceFilters
         }
 
@@ -22,6 +23,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         var hasSelectedMember: Bool { memberFilter.selectedName != nil && memberFilter.selectedName?.isEmpty == false }
         var roomTypeFilters: [ASCDocumentsFilterModel]
         var thirdPartyResourceFilters: [ASCDocumentsFilterModel]
+        var tagsFilters: [ASCDocumentsFilterModel] = []
 
         var itemsCount: Int
 

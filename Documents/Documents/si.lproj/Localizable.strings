@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>මෙම සේවාව භාවිතයට ඔබ සතුව වාදකයේ ගෙවන අනුවාදයක් තිබිය යුතුය.</p><p>ඔබ ද්විත්ව සත්‍යාපනය සක්‍රිය කර ඇත්නම්, කරුණාකර Infomaniak කළමනාකරණය හරහා CDM යෙදුමක් උත්පාදනය කරන්න. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">තවත්...</a></p>";
 
 /* No comment provided by engineer. */
-"1 day" = "දවස් 1";
+"Сonversion error" = "පරිවර්තන දෝෂය";
 
 /* No comment provided by engineer. */
-"7 days" = "දවස් 7";
+"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
 
 /* No comment provided by engineer. */
-"12 hours" = "පැය 12";
+"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "දැනටමත් සමාන නමක් සහිත ගොනුවක් ඇත.";
@@ -431,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "ගොනුවෙන් කියවීමට නොහැකි විය";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "ගොනුව සුරැකීමට නොහැකි විය.";
-
 /* Description of file operation error */
 "Could not write to file" = "ගොනුවට ලිවීමට නොහැකි විය";
 
@@ -467,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "නව ලේඛන, පැතුරුම්පත් හෝ සමර්පණ සාදන්න. ඔබගේ ගොනු සංවිධානය කිරීමට නව බහාලුම් සාදන්න.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "කාමරය සාදන්න";
 
 /* Caption of the process
@@ -870,9 +867,6 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "සබැඳිය පසුරු පුවරුවට\nපිටපත් විය";
-
-/* No comment provided by engineer. */
-"Link life time" = "සබැඳියේ ආයු කාලය";
 
 /* No comment provided by engineer. */
 "Link name %@" = "සබැඳියේ නම %@";
@@ -1314,9 +1308,6 @@
 /* No comment provided by engineer. */
 "Save" = "සුරකින්න";
 
-/* No comment provided by engineer. */
-"Saved" = "සුරකින ලදී";
-
 /* Caption of the processing */
 "Saving" = "සුරැකෙමින්";
 
@@ -1661,9 +1652,6 @@
 "Unknown item type." = "නොදන්නා අථක වර්ගයකි.";
 
 /* No comment provided by engineer. */
-"Unlimited" = "අසීමිතයි";
-
-/* No comment provided by engineer. */
 "Unlock with Face ID" = "මුහුණු හැඳු. මඟින් හරින්න";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1776,4 @@
 
 /* Data units */
 "Zero bytes" = "බයිට ශූන්‍යයි";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "පරිවර්තන දෝෂය";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
 

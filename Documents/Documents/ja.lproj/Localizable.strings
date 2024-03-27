@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">詳細情報</a></p>";
 
 /* No comment provided by engineer. */
-"1 day" = "1日";
+"Сonversion error" = "変換エラー";
 
 /* No comment provided by engineer. */
-"7 days" = "7日";
+"Сould not download file." = "このファイルをダウンロードできませんでした。";
 
 /* No comment provided by engineer. */
-"12 hours" = "12時間";
+"Сould not upload file." = "ファイルをアップロードできませんでした。";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "類似した名前のファイルが既に存在します。";
@@ -431,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "ファイルからの読み込みに失敗しました";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "このファイルを保存できませんでした。";
-
 /* Description of file operation error */
 "Could not write to file" = "ファイルへの書き込みに失敗しました";
 
@@ -467,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新しい文書、スプレッドシート、プレゼンテーションを作成します。新しいフォルダーを作成して、ファイルを整理することができます。";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "ルームの作成";
 
 /* Caption of the process
@@ -870,9 +867,6 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "クリップボードに\nコピーされたリンク";
-
-/* No comment provided by engineer. */
-"Link life time" = "リンクの寿命";
 
 /* No comment provided by engineer. */
 "Link name %@" = "リンク名 %@";
@@ -1314,9 +1308,6 @@
 /* No comment provided by engineer. */
 "Save" = "保存";
 
-/* No comment provided by engineer. */
-"Saved" = "保存しました";
-
 /* Caption of the processing */
 "Saving" = "保存中";
 
@@ -1661,9 +1652,6 @@
 "Unknown item type." = "未知のアイテム種類。";
 
 /* No comment provided by engineer. */
-"Unlimited" = "無制限";
-
-/* No comment provided by engineer. */
 "Unlock with Face ID" = "Face IDでロックを解除する";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1776,4 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "変換エラー";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "このファイルをダウンロードできませんでした。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "ファイルをアップロードできませんでした。";
 

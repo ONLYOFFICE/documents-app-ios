@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.</p><p>Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Подробнее...</a></p>";
 
 /* No comment provided by engineer. */
-"1 day" = "1 день";
+"Сonversion error" = "Ошибка преобразования";
 
 /* No comment provided by engineer. */
-"7 days" = "7 дней";
+"Сould not download file." = "Не удалось скачать файл.";
 
 /* No comment provided by engineer. */
-"12 hours" = "12 часов";
+"Сould not upload file." = "Не удалось загрузить файл.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Файл с похожим именем уже существует.";
@@ -431,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Невозможно прочитать из файла";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Невозможно сохранить файл.";
-
 /* Description of file operation error */
 "Could not write to file" = "Не удалось записать в файл";
 
@@ -467,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Создавайте новые документы, таблицы или презентации. Создавайте новые папки, чтобы упорядочивать файлы.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Создать комнату";
 
 /* Caption of the process
@@ -870,9 +867,6 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
-
-/* No comment provided by engineer. */
-"Link life time" = "Срок службы ссылки";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Название ссылки %@";
@@ -1314,9 +1308,6 @@
 /* No comment provided by engineer. */
 "Save" = "Сохранить";
 
-/* No comment provided by engineer. */
-"Saved" = "Сохранено";
-
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
@@ -1661,9 +1652,6 @@
 "Unknown item type." = "Неизвестный тип файла.";
 
 /* No comment provided by engineer. */
-"Unlimited" = "Неограниченно";
-
-/* No comment provided by engineer. */
 "Unlock with Face ID" = "Разблокировать с помощью Face ID";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1776,4 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Ошибка преобразования";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 

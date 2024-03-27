@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Трябва да имате платена версия на плейъра, за да използвате тази услуга.</p><p>Ако сте активирали двойно удостоверяване, моля, генерирайте CDM приложение от мениджъра на Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Повече...</a></p>";
 
 /* No comment provided by engineer. */
-"1 day" = "1 ден";
+"Сonversion error" = "Грешка при преобразуване";
 
 /* No comment provided by engineer. */
-"7 days" = "7 дни";
+"Сould not download file." = "Файлът не може да се изтегли.";
 
 /* No comment provided by engineer. */
-"12 hours" = "12 часа";
+"Сould not upload file." = "Файлът не може да се качи.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Вече съществува файл с подобно име.";
@@ -431,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Файлът не може да бъде прочетен";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Файлът не можа да бъде запазен.";
-
 /* Description of file operation error */
 "Could not write to file" = "Върху файлът не може да се пише";
 
@@ -467,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Създавайте нови документи, таблици или презентации. Създайте нови папки, за да организирате файловете си.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Създай стая";
 
 /* Caption of the process
@@ -870,9 +867,6 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Връзката е копирана\nв клипборда";
-
-/* No comment provided by engineer. */
-"Link life time" = "Давност на линка";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Име на линка %@";
@@ -1314,9 +1308,6 @@
 /* No comment provided by engineer. */
 "Save" = "Запази";
 
-/* No comment provided by engineer. */
-"Saved" = "Записано";
-
 /* Caption of the processing */
 "Saving" = "Спестяване";
 
@@ -1661,9 +1652,6 @@
 "Unknown item type." = "Неизвестен тип елемент.";
 
 /* No comment provided by engineer. */
-"Unlimited" = "Без ограничение";
-
-/* No comment provided by engineer. */
 "Unlock with Face ID" = "Отключване с Идентификатор на лицето";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1776,4 @@
 
 /* Data units */
 "Zero bytes" = "Нулеви байтове";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Грешка при преобразуване";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Файлът не може да се изтегли.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Файлът не може да се качи.";
 

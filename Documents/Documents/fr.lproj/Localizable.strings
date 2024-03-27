@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Pour utiliser ce service, il faut disposer d'une version payante du lecteur.</p><p>Si vous avez activé l'authentification à deux facteurs, veuillez générer une demande MDP à partir du gestionnaire Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">En savoir plus...</a></p>";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Erreur de conversion";
+"1 day" = "1 jour";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Impossible de télécharger le fichier.";
+"7 days" = "7 jours";
 
 /* No comment provided by engineer. */
-"Сould not upload file." = "Impossible de charger le fichier.";
+"12 hours" = "12 heures";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Le fichier portant un nom similaire existe déjà.";
@@ -431,6 +431,9 @@
 /* Description of file operation error */
 "Could not read from file" = "Impossible de lire le fichier";
 
+/* No comment provided by engineer. */
+"Could not save the file." = "Impossible d'enregistrer le fichier.";
+
 /* Description of file operation error */
 "Could not write to file" = "Impossible d'écrire dans le fichier";
 
@@ -464,7 +467,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Créez de nouveaux documents, feuilles de calcul ou présentations. Créez de nouveaux dossiers pour organiser vos fichiers.";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Create room" = "Créer une salle";
 
 /* Caption of the process
@@ -867,6 +870,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Le lien\nest copié dans le Presse-papiers";
+
+/* No comment provided by engineer. */
+"Link life time" = "Durée de vie du lien";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Nom du lien %@";
@@ -1308,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Enregistrer...";
 
+/* No comment provided by engineer. */
+"Saved" = "Enregistré";
+
 /* Caption of the processing */
 "Saving" = "Enregistrement";
 
@@ -1652,6 +1661,9 @@
 "Unknown item type." = "Type d'élément inconnu.";
 
 /* No comment provided by engineer. */
+"Unlimited" = "Illimité";
+
+/* No comment provided by engineer. */
 "Unlock with Face ID" = "Débloquer avec Face ID";
 
 /* No comment provided by engineer. */
@@ -1776,4 +1788,13 @@
 
 /* Data units */
 "Zero bytes" = "Zéro octet";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Erreur de conversion";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Impossible de télécharger le fichier.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossible de charger le fichier.";
 

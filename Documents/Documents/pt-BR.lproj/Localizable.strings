@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Você deve ter uma versão paga do player para usar este serviço.</p><p>Se você ativou a autenticação dupla, gere um aplicativo CDM a partir do gerenciador Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Mais...</a></p>";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Сerro de conversão";
+"1 day" = "1 dia";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Não baixou arquivo.";
+"7 days" = "7 dias";
 
 /* No comment provided by engineer. */
-"Сould not upload file." = "Não fez upload do arquivo.";
+"12 hours" = "12 horas";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Já existe um arquivo com um nome semelhante.";
@@ -431,6 +431,9 @@
 /* Description of file operation error */
 "Could not read from file" = "Não foi possível ler do arquivo";
 
+/* No comment provided by engineer. */
+"Could not save the file." = "Não foi possível salvar o arquivo.";
+
 /* Description of file operation error */
 "Could not write to file" = "Não foi possível gravar no arquivo";
 
@@ -464,7 +467,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crie novos documentos, planilhas ou apresentações. Crie novas pastas para organizar seus arquivos.";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Create room" = "Criar quarto";
 
 /* Caption of the process
@@ -867,6 +870,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Link copiado para a área de transferência";
+
+/* No comment provided by engineer. */
+"Link life time" = "Tempo de vida do link";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Nome do link %@";
@@ -1308,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Salvar";
 
+/* No comment provided by engineer. */
+"Saved" = "Salvo";
+
 /* Caption of the processing */
 "Saving" = "Salvando";
 
@@ -1652,6 +1661,9 @@
 "Unknown item type." = "Tipo de item desconhecido.";
 
 /* No comment provided by engineer. */
+"Unlimited" = "Ilimitado";
+
+/* No comment provided by engineer. */
 "Unlock with Face ID" = "Desbloquear com Face ID";
 
 /* No comment provided by engineer. */
@@ -1776,4 +1788,13 @@
 
 /* Data units */
 "Zero bytes" = "Zero bytes";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Сerro de conversão";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Não baixou arquivo.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Não fez upload do arquivo.";
 

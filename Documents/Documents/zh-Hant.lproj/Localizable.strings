@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>您必須擁有付費版本的播放器才能使用此服務。</p><p>若您啟動了雙重身份驗證，請從Infomaniak管理器生成CDM應用程序。<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">更多...</a></p>";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "轉換錯誤";
+"1 day" = "1天";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "无法下载文件。";
+"7 days" = "7天";
 
 /* No comment provided by engineer. */
-"Сould not upload file." = "无法上转文件。";
+"12 hours" = "12小時";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "已存在相似名稱的檔案。";
@@ -431,6 +431,9 @@
 /* Description of file operation error */
 "Could not read from file" = "无法读取文件";
 
+/* No comment provided by engineer. */
+"Could not save the file." = "无法保存该文件。";
+
 /* Description of file operation error */
 "Could not write to file" = "无法写入文件";
 
@@ -464,7 +467,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Create room" = "建立房間";
 
 /* Caption of the process
@@ -867,6 +870,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
+
+/* No comment provided by engineer. */
+"Link life time" = "連結生命週期";
 
 /* No comment provided by engineer. */
 "Link name %@" = "連結名稱 %@";
@@ -1308,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "儲存";
 
+/* No comment provided by engineer. */
+"Saved" = "已儲存";
+
 /* Caption of the processing */
 "Saving" = "正在保存";
 
@@ -1652,6 +1661,9 @@
 "Unknown item type." = "未知项目类型。";
 
 /* No comment provided by engineer. */
+"Unlimited" = "無限制";
+
+/* No comment provided by engineer. */
 "Unlock with Face ID" = "用人脸识别解锁";
 
 /* No comment provided by engineer. */
@@ -1776,4 +1788,13 @@
 
 /* Data units */
 "Zero bytes" = "零字节";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "轉換錯誤";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "无法下载文件。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "无法上转文件。";
 

@@ -38,13 +38,13 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Այս ծառայությունից օգտվելու համար դուք պետք է ունենաք նվագարկչի վճարովի տարբերակ:</p><p> Եթե դուք ակտիվացրել եք կրկնակի նույնականացում, խնդրում ենք ստեղծել CDM հավելված Infomaniak մենեջերից: <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Ավելին...</a></p>";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Փոխակերպման սխալ";
+"1 day" = "1 օր";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+"7 days" = "7 օր";
 
 /* No comment provided by engineer. */
-"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
+"12 hours" = "12 ժամ";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Նման անունով ֆայլ արդեն գոյություն ունի:";
@@ -431,6 +431,9 @@
 /* Description of file operation error */
 "Could not read from file" = "Չհաջողվեց կարդալ ֆայլից";
 
+/* No comment provided by engineer. */
+"Could not save the file." = "Չհաջողվեց պահպանել ֆայլը:";
+
 /* Description of file operation error */
 "Could not write to file" = "Չհաջողվեց գրել ֆայլին";
 
@@ -464,7 +467,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Create room" = "Ստեղծել սենյակ";
 
 /* Caption of the process
@@ -867,6 +870,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Հղումը պատճենված է\nդեպի clipboard ";
+
+/* No comment provided by engineer. */
+"Link life time" = "Հղման ժամանակը";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Հղման անվանումը";
@@ -1308,6 +1314,9 @@
 /* No comment provided by engineer. */
 "Save" = "Պահպանել";
 
+/* No comment provided by engineer. */
+"Saved" = "Պահպանված";
+
 /* Caption of the processing */
 "Saving" = "Խնայողություն";
 
@@ -1652,6 +1661,9 @@
 "Unknown item type." = "Անհայտ ապրանքի տեսակը:";
 
 /* No comment provided by engineer. */
+"Unlimited" = "Անսահմանափակ";
+
+/* No comment provided by engineer. */
 "Unlock with Face ID" = "Ապակողպեք Face ID-ով";
 
 /* No comment provided by engineer. */
@@ -1776,4 +1788,13 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Փոխակերպման սխալ";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
 

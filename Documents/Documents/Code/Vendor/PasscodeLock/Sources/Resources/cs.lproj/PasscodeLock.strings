@@ -37,3 +37,9 @@
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Pro pokračování je třeba autorizace";
 
+/* Button title */
+"Use Face ID" = "Použít odemykání pomocí obličeje";
+
+/* Button title */
+"Use Touch ID" = "Použít odemykání pomocí otisku";
+

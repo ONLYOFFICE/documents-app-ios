@@ -37,3 +37,9 @@
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "需要身份验证才能继续";
 
+/* Button title */
+"Use Face ID" = "使用Face ID";
+
+/* Button title */
+"Use Touch ID" = "使用Touch ID";
+

@@ -18,6 +18,16 @@ protocol RoomSharingLinkAccessService {
         completion: @escaping (Error?) -> Void
     )
 
+    func revokeLink(
+        id: String,
+        title: String,
+        linkType: ASCShareLinkType,
+        password: String?,
+        room: ASCRoom,
+        denyDownload: Bool,
+        completion: @escaping (Error?) -> Void
+    )
+
     func changeOrCreateLink(
         id: String?,
         title: String,
@@ -92,6 +102,35 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         )
 
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.removeLink(folder: room), requestModel.dictionary) { response, error in
+            DispatchQueue.main.async {
+                guard response != nil, error == nil else {
+                    completion(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse)
+                    return
+                }
+                completion(nil)
+            }
+        }
+    }
+    
+    func revokeLink(
+        id: String,
+        title: String,
+        linkType: ASCShareLinkType,
+        password: String?,
+        room: ASCRoom,
+        denyDownload: Bool,
+        completion: @escaping (Error?) -> Void
+    ) {
+        let requestModel = RoomRevokeLinkRequestModel(
+            linkId: id,
+            title: title,
+            access: ASCShareAccess.none.rawValue,
+            linkType: linkType.rawValue,
+            password: password,
+            denyDownload: <#T##Bool#>
+        )
+        
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.revokeLink(folder: room), requestModel.dictionary) { response, error in
             DispatchQueue.main.async {
                 guard response != nil, error == nil else {
                     completion(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse)

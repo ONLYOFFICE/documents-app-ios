@@ -29,6 +29,8 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
+    @Published var isRevoking: Bool = false
+    @Published var isRevoked: Bool = false
     @Published var isSaving: Bool = false
     @Published var isSaved: Bool = false
     @Published var resultModalModel: ResultViewModel?
@@ -129,6 +131,27 @@ extension RoomSharingCustomizeLinkViewModel {
     }
     
     func onRevoke() {
+       guard let linkId,
+             var link = link ?? outputLink else { return }
+        isRevoking = true
+        linkAccessService.revokeLink(
+            id: linkId,
+            title: link.linkInfo.title,
+            linkType: link.linkInfo.linkType,
+            password: link.linkInfo.password,
+            room: room, 
+            denyDownload: isRestrictCopyOn) { [ self ] error in
+                isRevoking = false
+                guard error == nil else {
+                    log.error(error?.localizedDescription ?? "")
+                    errorMessage = error?.localizedDescription
+                    return
+                }
+                link.access = .none
+                outputLink = link
+                isRevoked = true
+                isReadyToDismissed = true
+            }
         
     }
 }

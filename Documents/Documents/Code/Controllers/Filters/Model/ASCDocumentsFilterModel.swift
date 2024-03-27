@@ -192,6 +192,8 @@ enum FiltersSection: String, CaseIterable {
             return NSLocalizedString("Search", comment: "")
         case .member:
             return NSLocalizedString("Member", comment: "")
+        case .tags:
+            return NSLocalizedString("Tags", comment: "")
         case .thirdPartyResource:
             return NSLocalizedString("Third party resource", comment: "")
         }

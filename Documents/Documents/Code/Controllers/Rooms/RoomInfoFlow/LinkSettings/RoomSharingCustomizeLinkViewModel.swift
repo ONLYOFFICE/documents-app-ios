@@ -44,6 +44,14 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         }
         return true
     }
+    
+    var isRevokePossible: Bool {
+        if room.roomType == .public, link?.isGeneral == true {
+            return true
+        } else {
+            return false
+        }
+    }
 
     var isPossibleToSave: Bool {
         !linkName.isEmpty && selectedDate > Date() && !isSaving
@@ -118,6 +126,10 @@ extension RoomSharingCustomizeLinkViewModel {
     func onSave() {
         guard isPossibleToSave else { return }
         saveCurrentState()
+    }
+    
+    func onRevoke() {
+        
     }
 }
 

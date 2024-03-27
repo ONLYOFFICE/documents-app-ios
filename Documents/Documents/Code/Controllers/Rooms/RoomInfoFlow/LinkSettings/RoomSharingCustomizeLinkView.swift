@@ -166,13 +166,15 @@ struct RoomSharingCustomizeLinkView: View {
     private func handleHUD() {
         MBProgressHUD.currentHUD?.hide(animated: false)
 
-        if viewModel.isSaving || viewModel.isDeleting {
+        if viewModel.isSaving || viewModel.isDeleting || viewModel.isRevoking {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
             if viewModel.isDeleting {
                 hud?.label.text = NSLocalizedString("Removing", comment: "") + "..."
             } else if viewModel.isSaving {
                 hud?.label.text = NSLocalizedString("Saving", comment: "") + "..."
+            } else if viewModel.isRevoking {
+                hud?.label.text = NSLocalizedString("Revoking", comment: "") + "..."
             }
         } else if let resultModalModel = viewModel.resultModalModel,
                   let hud = MBProgressHUD.showTopMost()
@@ -183,6 +185,8 @@ struct RoomSharingCustomizeLinkView: View {
                     hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
                 } else if viewModel.isSaved {
                     hud.setState(result: .success(resultModalModel.message))
+                } else if viewModel.isRevoked {
+                    hud.setState(result: .success(NSLocalizedString("Revoked", comment: "")))
                 }
             case .failure:
                 hud.setState(result: .failure(resultModalModel.message))

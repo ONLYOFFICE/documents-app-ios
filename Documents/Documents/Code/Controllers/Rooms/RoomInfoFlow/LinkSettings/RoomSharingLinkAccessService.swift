@@ -127,7 +127,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             access: ASCShareAccess.none.rawValue,
             linkType: linkType.rawValue,
             password: password,
-            denyDownload: <#T##Bool#>
+            denyDownload: denyDownload
         )
         
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.revokeLink(folder: room), requestModel.dictionary) { response, error in

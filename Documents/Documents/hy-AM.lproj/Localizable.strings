@@ -47,6 +47,15 @@
 "12 hours" = "12 ժամ";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "Փոխակերպման սխալ";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Նման անունով ֆայլ արդեն գոյություն ունի:";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1797,4 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Փոխակերպման սխալ";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
 

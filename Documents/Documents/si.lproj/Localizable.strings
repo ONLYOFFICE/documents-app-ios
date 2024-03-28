@@ -47,6 +47,15 @@
 "12 hours" = "පැය 12";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "පරිවර්තන දෝෂය";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "දැනටමත් සමාන නමක් සහිත ගොනුවක් ඇත.";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1797,4 @@
 
 /* Data units */
 "Zero bytes" = "බයිට ශූන්‍යයි";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "පරිවර්තන දෝෂය";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
 

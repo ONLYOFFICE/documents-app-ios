@@ -144,9 +144,11 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             case .memberFilters:
                 return state.memberFilter.selectedName?.isEmpty == false || state.meFilter.isSelected
             case .roomTypeFilters:
-                return state.roomTypeFilters.map { $0.isSelected }.contains(true)
+                return state.roomTypeFilters.contains(where: { $0.isSelected })
+            case .tags:
+                return state.tagsFilters.contains(where: { $0.isSelected })
             case .thirdPartyResourceFilters:
-                return state.thirdPartyResourceFilters.map { $0.isSelected }.contains(true)
+                return state.thirdPartyResourceFilters.contains(where: { $0.isSelected })
             }
         }
     }

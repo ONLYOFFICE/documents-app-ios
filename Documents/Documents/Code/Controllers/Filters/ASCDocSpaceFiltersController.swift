@@ -266,6 +266,16 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                         }
                         self.runPreload()
                     }
+                case .tags:
+                    let isFilterModelsContainsSelectedId: Bool = self.tempState.tagsFilters.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+
+                    if isFilterModelsContainsSelectedId {
+                        let previousSelectedFilter = self.tempState.tagsFilters.first(where: { $0.isSelected })
+                        for (index, filterModel) in self.tempState.tagsFilters.enumerated() {
+                            self.tempState.tagsFilters[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                        }
+                        self.runPreload()
+                    }
                 }
             }
         }

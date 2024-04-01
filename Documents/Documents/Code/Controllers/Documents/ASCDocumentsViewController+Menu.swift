@@ -448,6 +448,20 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Disable notifications
+        
+        if actions.contains(.disableNotifications) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Disable notifications", comment: ""),
+                    image: UIImage(systemName: "bell.slash")
+                ) { [ unowned self ] action in
+                    cell.hideSwipe(animated: true)
+                    disableNotifications(room: folder)
+                }
+            )
+        }
 
         // Transfer actions
 

@@ -35,6 +35,7 @@ struct ASCEntityActions: OptionSet {
     static let leave = ASCEntityActions(rawValue: 1 << 21)
     static let link = ASCEntityActions(rawValue: 1 << 22)
     static let transformToRoom = ASCEntityActions(rawValue: 1 << 23)
+    static let disableNotifications = ASCEntityActions(rawValue: 1 << 24)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

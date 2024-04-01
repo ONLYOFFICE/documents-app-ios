@@ -1352,6 +1352,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canEdit, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
             }
+            
+            if isDocspace, folder.isRoom {
+                entityActions.insert(.disableNotifications)
+            }
 
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)

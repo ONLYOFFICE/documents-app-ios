@@ -283,6 +283,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                     self.resetAuthorModels()
                 case .thirdPartyResourceFilters:
                     self.resetModels(models: &self.tempState.thirdPartyResourceFilters)
+                case .tags:
+                    self.resetTagsModel()
                 }
             }
 
@@ -320,6 +322,12 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     private func resetAuthorModel() {
         tempState.memberFilter.selectedName = nil
         tempState.memberFilter.id = nil
+    }
+    
+    private func resetTagsModel() {
+        tempState.tagsFilters.enumerated().forEach { i, _ in
+            tempState.tagsFilters[i].isSelected = false
+        }
     }
 
     private func resetModels(models: inout [ASCDocumentsFilterModel]) {

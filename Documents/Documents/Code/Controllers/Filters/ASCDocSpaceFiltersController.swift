@@ -169,6 +169,10 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                 guard let model = state.roomTypeFilters.first(where: { $0.isSelected }) else { return params }
                 params["filterType"] = model.filterType.filterValue
                 return params
+            case .tags:
+                guard let model = state.tagsFilters.first(where: { $0.isSelected }) else { return params }
+                params["Tags"] = model.filterType.filterValue
+                return params
             case .thirdPartyResourceFilters: return params
             }
         }

@@ -23,7 +23,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         var hasSelectedMember: Bool { memberFilter.selectedName != nil && memberFilter.selectedName?.isEmpty == false }
         var roomTypeFilters: [ASCDocumentsFilterModel]
         var thirdPartyResourceFilters: [ASCDocumentsFilterModel]
-        var tagsFilters: [ASCDocumentsFilterModel] = []
+        var tagsFilters: [ASCDocumentsFilterModel]
 
         var itemsCount: Int
 
@@ -32,6 +32,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                   memberFilter: memberFilter,
                   roomTypeFilters: docTypeFilters,
                   thirdPartyResourceFilters: [],
+                  tagsFilters: [],
                   itemsCount: count)
         }
 
@@ -40,6 +41,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                   memberFilter: memberFilter,
                   roomTypeFilters: roomTypeFilters,
                   thirdPartyResourceFilters: [],
+                  tagsFilters: [],
                   itemsCount: count)
         }
 
@@ -209,7 +211,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             guard let self = self else { return }
             for type in State.DataType.allCases {
                 switch type {
-                case .roomTypeFilters, .thirdPartyResourceFilters: break
+                case .roomTypeFilters, .thirdPartyResourceFilters, .tags: break
                 case .memberFilters:
                     self.resetAuthorModels()
                     self.runPreload()

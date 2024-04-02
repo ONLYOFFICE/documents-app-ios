@@ -78,13 +78,6 @@ target 'Documents' do
   project 'Documents/Documents.xcodeproj'
   
   common_pods
-  
-  if Dir.exist?('../editors-ios')
-    pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
-    pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
-    pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
-    pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
-  end
 
   target 'DocumentsTests' do
     inherit! :complete
@@ -99,37 +92,8 @@ target 'Documents-develop' do
   common_pods
 end
 
-def fix_xcworkspaces
-  puts "Fix xcworkspaces"
-
-  template = File.open("scripts/xcworkspace.template").read()
-
-  project_names = [
-    "Documents",
-    "Documents-opensource",
-    "Documents-develop"
-  ]
-
-  for project_name in project_names do
-    begin
-      file = File.open("ONLYOFFICE-#{project_name}.xcworkspace/contents.xcworkspacedata", "w")
-      file.write(template % { :project => "Documents/#{project_name}.xcodeproj" } ) 
-    rescue IOError => e
-      #some error occur, dir not writable etc.
-    ensure
-      file.close unless file.nil?
-    end
-  end
-
-end
-
 post_install do | installer |
   require 'fileutils'
-  FileUtils.cp_r(
-    'Pods/Target Support Files/Pods-Documents/Pods-Documents-acknowledgements.plist',
-    'Documents/Settings.bundle/Acknowledgements.plist',
-    :remove_destination => true
-  )
 
   installer.aggregate_targets.each do |target|
     target.xcconfigs.each do |variant, xcconfig|
@@ -166,5 +130,5 @@ post_install do | installer |
 end
 
 post_integrate do |installer|
-  fix_xcworkspaces
+  
 end

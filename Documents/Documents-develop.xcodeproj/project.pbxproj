@@ -3178,6 +3178,7 @@
 				FC1CA5AE2645294F001CC5CA /* Check dependencies and try checkout */,
 				FCCB1946262ACA20007517BB /* SwiftGen */,
 				FCE4227928A377AD0073E2BB /* SwiftFormat */,
+				FC87B4622BBBE78A00DBDBDD /* Create Acknowledgements */,
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
@@ -3577,6 +3578,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    #find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+		};
+		FC87B4622BBBE78A00DBDBDD /* Create Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create Acknowledgements";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nset -o pipefail\n\nif [[ ! $PATH =~ /opt/homebrew/bin: ]] ; then \n    PATH=/opt/homebrew/bin/:/opt/homebrew/sbin:${PATH}\nfi\n\nif ! which license-plist > /dev/null; then\n    echo \"warning: license-plist is not installed. Run 'brew install licenseplist' to install it.\"\nelse\n    license_plist=\"${PROJECT_DIR}/../license_plist.yml\"\n    echo '\noptions:\n  outputPath: \"Documents/Settings.bundle\"\n  prefix: com.onlyoffice.Documents.Acknowledgements\n  podsPath: \"Pods\"\n  xcworkspacePath: \"ONLYOFFICE-Documents-develop.xcworkspace\"\n  force: false\n  addVersionNumbers: false\n  suppressOpeningDirectory: false\n  singlePage: false\n  failIfMissingLicense: false\n  addSources: false\n  sandboxMode: false\n\nmanual:\n  - name: \"ONLYOFFICE DocumentConverter\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE DocumentEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE SpreadsheetEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE PresentationEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\nexclude:\n  - atlantis-proxyman\n  - ios-license-generator\n' > \"$license_plist\"\n    \n    cd \"${PROJECT_DIR}/..\"\n    \n    license-plist --config-path \"${license_plist}\"\n    \n    rm -f \"${license_plist}\"\n    rm -f \"Documents/Settings.bundle/com.onlyoffice.Documents.Acknowledgements.latest_result.txt\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		FCC471031F56A2DF00373597 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;

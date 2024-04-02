@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>DefaultValue</key>
-			<string>8.0.1 (963)</string>
+			<string>8.1 (963)</string>
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>
@@ -16,7 +16,7 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>Acknowledgements</string>
+			<string>com.onlyoffice.Documents.Acknowledgements</string>
 			<key>Title</key>
 			<string>Acknowledgements</string>
 			<key>Type</key>

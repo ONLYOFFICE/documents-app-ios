@@ -7,10 +7,6 @@ PODS:
   - AppAuth/ExternalUserAgent (1.6.2):
     - AppAuth/Core
   - atlantis-proxyman (1.24.0)
-  - DocumentConverter (8.0.1)
-  - DocumentEditor (8.0.1):
-    - DocumentConverter
-    - SpreadsheetEditor
   - FBAEMKit (16.3.1):
     - FBSDKCoreKit_Basics (= 16.3.1)
   - FBSDKCoreKit (16.3.1):
@@ -183,9 +179,6 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.7.8)
   - PhoneNumberKit/UIKit (3.7.8):
     - PhoneNumberKit/PhoneNumberKitCore
-  - PresentationEditor (8.0.1):
-    - DocumentConverter
-    - SpreadsheetEditor
   - PromisesObjC (2.3.1)
   - PromisesSwift (2.3.1):
     - PromisesObjC (= 2.3.1)
@@ -197,8 +190,6 @@ PODS:
   - SDWebImage/Core (5.18.11)
   - Siren (6.1.2)
   - SkyFloatingLabelTextField (4.0.0)
-  - SpreadsheetEditor (8.0.1):
-    - DocumentConverter
   - SwiftFormat/CLI (0.53.1)
   - SwiftGen (6.6.2)
   - SwiftMessages (10.0.0):
@@ -215,8 +206,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - atlantis-proxyman
-  - DocumentConverter (from `../editors-ios/DocumentConverter.podspec`)
-  - DocumentEditor (from `../editors-ios/DocumentEditor.podspec`)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FileKit
@@ -236,12 +225,10 @@ DEPENDENCIES:
   - MGSwipeTableCell
   - ObjectMapper
   - PhoneNumberKit
-  - PresentationEditor (from `../editors-ios/PresentationEditor.podspec`)
   - ReCaptcha (from `https://github.com/fjcaetano/ReCaptcha.git`)
   - SDWebImage
   - Siren
   - SkyFloatingLabelTextField (from `https://github.com/Skyscanner/SkyFloatingLabelTextField.git`)
-  - SpreadsheetEditor (from `../editors-ios/SpreadsheetEditor.podspec`)
   - SwiftFormat/CLI
   - SwiftGen
   - SwiftMessages
@@ -304,22 +291,14 @@ SPEC REPOS:
     - WhatsNewKit
 
 EXTERNAL SOURCES:
-  DocumentConverter:
-    :path: "../editors-ios/DocumentConverter.podspec"
-  DocumentEditor:
-    :path: "../editors-ios/DocumentEditor.podspec"
   FilesProvider:
     :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
     :git: https://github.com/ayuzhin/MediaBrowser.git
-  PresentationEditor:
-    :path: "../editors-ios/PresentationEditor.podspec"
   ReCaptcha:
     :git: https://github.com/fjcaetano/ReCaptcha.git
   SkyFloatingLabelTextField:
     :git: https://github.com/Skyscanner/SkyFloatingLabelTextField.git
-  SpreadsheetEditor:
-    :path: "../editors-ios/SpreadsheetEditor.podspec"
   WSTagsField:
     :git: https://github.com/ayuzhin/WSTagsField.git
 
@@ -344,8 +323,6 @@ SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   atlantis-proxyman: 0aa5c86216f191e460ec0847d2c731ca4d7c1abf
-  DocumentConverter: 4591dfcd57c281864ee2caffb15d9f58228a5cbb
-  DocumentEditor: c2fc55e66d09acc8b90e53410870936b889d30c8
   FBAEMKit: 6c7b5eb77c96861bb59e040842c6e55bf39512ce
   FBSDKCoreKit: 5e4dd478947ab1bcc887e8cfadeae0727af1a942
   FBSDKCoreKit_Basics: cd7b5f5d1e8868c26706917919d058999ca672c3
@@ -380,14 +357,12 @@ SPEC CHECKSUMS:
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   PhoneNumberKit: ff3827b9bd8a7ac9744963f241665859091c78ab
-  PresentationEditor: f62485a5ec71f78fae712b02d96755ce942ca3b6
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
   SDWebImage: a3ba0b8faac7228c3c8eadd1a55c9c9fe5e16457
   Siren: c951ae243b57160629fb2e4d2f630cbfc5d5452b
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
-  SpreadsheetEditor: 496d0331203f0d2a324c229d78dfc53a57a5ecb5
   SwiftFormat: a8623113c7adcbeb4289a013cac68ec801e1ed24
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   SwiftMessages: d3540f0f981dfbac25bd2ae9a662effa48f76f92
@@ -399,6 +374,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: 8fa497d15f34bab4b9079b6a4541183de5c2eba8
+PODFILE CHECKSUM: f4c5b98a88a0cb2e1c19076a7265c813e92c8174
 
 COCOAPODS: 1.13.0

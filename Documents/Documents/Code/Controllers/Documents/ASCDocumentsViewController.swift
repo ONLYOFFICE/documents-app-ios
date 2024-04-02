@@ -531,7 +531,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ASCViewControllerManager.shared.rootController?.isUserInteractionEnabled = true
         }
     }
-    
+
     func updateSelectedItems(indexPath: IndexPath) {
         if let folder = tableData[indexPath.row] as? ASCFolder {
             selectedIds.insert(folder.uid)
@@ -885,8 +885,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(barIconSpacer)
             items.append(barFlexSpacer)
         } else if isInfoShowing {
-                items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
-                items.append(barFlexSpacer)
+            items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+            items.append(barFlexSpacer)
         }
 
         // Pin
@@ -905,13 +905,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
-        
+
         // Restore room
         if isDocSpaceArchive {
             items.append(createBarButton(Asset.Images.barTrashSlash.image, #selector(onRoomRestore)))
             items.append(barFlexSpacer)
         }
-
 
         // Remove all
         if isTrash {
@@ -923,7 +922,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if isDocSpaceArchive, canRemoveAllItems() {
             let deleteButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms))
             deleteButton.tintColor = .red
-            
+
             items.append(deleteButton)
             items.append(barFlexSpacer)
         }
@@ -1648,28 +1647,29 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
-    
+
     func showRestoreRoomAlert(handler: @escaping () -> Void) {
         let alertController = UIAlertController(
             title: NSLocalizedString("Restore room?", comment: ""),
             message: NSLocalizedString("All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?", comment: ""),
             preferredStyle: .alert
         )
-        
+
         let restoreAction = UIAlertAction(
             title: NSLocalizedString("Restore", comment: ""),
-            style: .default) { _ in
-                handler()
-            }
-        
+            style: .default
+        ) { _ in
+            handler()
+        }
+
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
-        
+
         alertController.addAction(restoreAction)
         alertController.addAction(cancelAction)
-        
+
         present(alertController, animated: true)
     }
-    
+
     func restoreRoom() {
         guard selectedIds.count > 0 else { return }
         tableData.filter { selectedIds.contains($0.uid) }
@@ -2905,7 +2905,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onRoomRestore(_ sender: Any) {
-        showRestoreRoomAlert { [ weak self ] in
+        showRestoreRoomAlert { [weak self] in
             guard let self else { return }
             self.restoreRoom()
         }

@@ -454,8 +454,12 @@ extension ASCDocumentsViewController {
         if actions.contains(.disableNotifications) {
             basicActions.append(
                 UIAction(
-                    title: NSLocalizedString("Disable notifications", comment: ""),
-                    image: UIImage(systemName: "bell.slash")
+                    title: folder.mute
+                    ? NSLocalizedString("Enable notifications", comment: "")
+                    : NSLocalizedString("Disable notifications", comment: ""),
+                    image: folder.mute
+                    ? UIImage(systemName: "bell")
+                    : UIImage(systemName: "bell.slash")
                 ) { [ unowned self ] action in
                     cell.hideSwipe(animated: true)
                     disableNotifications(room: folder)

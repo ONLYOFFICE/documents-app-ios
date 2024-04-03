@@ -1754,6 +1754,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     func disableNotifications(room: ASCFolder) {
+        RoomSharingNetworkService().disableNotifications(room: room) { [ weak self ] result in
+            guard let self else { return }
+            switch result {
+            case let .success(responce):
+                if let roomId = Int(room.id),
+                   responce.disabledRooms.contains(roomId) {
+                    self.folder?.mute = true
+                } else {
+                    self.folder?.mute = false
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
     func transformToRoom(entities: [ASCEntity]) {

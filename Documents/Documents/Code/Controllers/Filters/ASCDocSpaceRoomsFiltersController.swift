@@ -9,6 +9,9 @@
 import Foundation
 
 class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
+    
+    private let networkService = OnlyofficeApiClient.shared
+    
     required init(
         builder: ASCFiltersCollectionViewModelBuilder,
         filtersViewController: ASCFiltersViewController,
@@ -24,7 +27,10 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultDocSpaceRoomsState(total)
+            networkService.request(OnlyofficeAPI.Endpoints.Tags.getList(), RoomTagsListRequestModel().dictionary) { [weak self] result, error in
+                guard let self else { return }
+                tempState = .defaultDocSpaceRoomsState(total)
+            }
         }
         runPreload()
     }

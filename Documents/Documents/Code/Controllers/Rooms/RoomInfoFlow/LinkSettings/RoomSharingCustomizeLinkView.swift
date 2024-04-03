@@ -134,7 +134,7 @@ struct RoomSharingCustomizeLinkView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var revokeSection: some View {
         if viewModel.isRevokePossible {
@@ -146,7 +146,8 @@ struct RoomSharingCustomizeLinkView: View {
                         textAlignment: .center,
                         onTapAction: {
                             showRevokeAlert = true
-                        })
+                        }
+                    )
                 )
             }
         }
@@ -205,7 +206,7 @@ struct RoomSharingCustomizeLinkView: View {
             secondaryButton: .cancel()
         )
     }
-    
+
     private func revokeAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Revoke link", comment: "")),

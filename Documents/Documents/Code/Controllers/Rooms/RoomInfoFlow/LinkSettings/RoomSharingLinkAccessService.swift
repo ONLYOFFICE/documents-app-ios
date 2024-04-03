@@ -111,7 +111,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             }
         }
     }
-    
+
     func revokeLink(
         id: String,
         title: String,
@@ -129,7 +129,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             password: password,
             denyDownload: denyDownload
         )
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.revokeLink(folder: room), requestModel.dictionary) { response, error in
             DispatchQueue.main.async {
                 guard response != nil, error == nil else {

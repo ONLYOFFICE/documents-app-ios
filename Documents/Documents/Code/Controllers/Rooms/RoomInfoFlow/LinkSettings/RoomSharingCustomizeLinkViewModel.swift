@@ -46,7 +46,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         }
         return true
     }
-    
+
     var isRevokePossible: Bool {
         if room.roomType == .public, link?.isGeneral == true {
             return true
@@ -129,30 +129,30 @@ extension RoomSharingCustomizeLinkViewModel {
         guard isPossibleToSave else { return }
         saveCurrentState()
     }
-    
+
     func onRevoke() {
-       guard let linkId,
-             var link = link ?? outputLink else { return }
+        guard let linkId,
+              var link = link ?? outputLink else { return }
         isRevoking = true
         linkAccessService.revokeLink(
             id: linkId,
             title: link.linkInfo.title,
             linkType: link.linkInfo.linkType,
             password: link.linkInfo.password,
-            room: room, 
-            denyDownload: isRestrictCopyOn) { [ self ] error in
-                isRevoking = false
-                guard error == nil else {
-                    log.error(error?.localizedDescription ?? "")
-                    errorMessage = error?.localizedDescription
-                    return
-                }
-                link.access = .none
-                outputLink = link
-                isRevoked = true
-                isReadyToDismissed = true
+            room: room,
+            denyDownload: isRestrictCopyOn
+        ) { [self] error in
+            isRevoking = false
+            guard error == nil else {
+                log.error(error?.localizedDescription ?? "")
+                errorMessage = error?.localizedDescription
+                return
             }
-        
+            link.access = .none
+            outputLink = link
+            isRevoked = true
+            isReadyToDismissed = true
+        }
     }
 }
 

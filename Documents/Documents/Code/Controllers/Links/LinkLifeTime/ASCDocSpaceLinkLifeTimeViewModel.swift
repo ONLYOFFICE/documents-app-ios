@@ -57,4 +57,3 @@ final class LinkLifeTimeViewModel: ObservableObject {
         updateCellModels()
     }
 }
-

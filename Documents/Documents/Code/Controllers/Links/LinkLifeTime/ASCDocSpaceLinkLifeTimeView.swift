@@ -28,4 +28,3 @@ struct LinkLifeTimeView_Previews: PreviewProvider {
         LinkLifeTimeView(viewModel: LinkLifeTimeViewModel())
     }
 }
-

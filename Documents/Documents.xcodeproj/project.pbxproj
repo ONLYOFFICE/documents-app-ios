@@ -149,6 +149,7 @@
 		E856CF0B2B5916F4003E4C3D /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEF32B5916F3003E4C3D /* EditRoomViewController.swift */; };
 		E856CF0C2B5916F4003E4C3D /* RoomTypeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEF52B5916F3003E4C3D /* RoomTypeViewRow.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
+		E8CD95572BBD8A2D00F89ED3 /* RoomTagsListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD95562BBD8A2D00F89ED3 /* RoomTagsListRequestModel.swift */; };
 		E8EEC40F2B2C622000A0640D /* CreateTagRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40B2B2C622000A0640D /* CreateTagRequestModel.swift */; };
 		E8EEC4102B2C622000A0640D /* CreateRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40C2B2C622000A0640D /* CreateRoomRequestModel.swift */; };
 		E8EEC4112B2C622000A0640D /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */; };
@@ -724,6 +725,7 @@
 		E856CEF32B5916F3003E4C3D /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
 		E856CEF52B5916F3003E4C3D /* RoomTypeViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTypeViewRow.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		E8CD95562BBD8A2D00F89ED3 /* RoomTagsListRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTagsListRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40B2B2C622000A0640D /* CreateTagRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTagRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40C2B2C622000A0640D /* CreateRoomRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachLogoRequestModel.swift; sourceTree = "<group>"; };
@@ -2778,6 +2780,7 @@
 		FC68525D26837B7300D830EC /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD95562BBD8A2D00F89ED3 /* RoomTagsListRequestModel.swift */,
 				F369502B2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift */,
 				E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */,
 				E8EEC40E2B2C622000A0640D /* AttachTagsRequestModel.swift */,
@@ -4005,6 +4008,7 @@
 				FCE9F6602B2B4BAC0056E420 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
 				FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */,
 				FC35D4632A987DFC00C6383F /* NSAttributedString+Extensions.swift in Sources */,
+				E8CD95572BBD8A2D00F89ED3 /* RoomTagsListRequestModel.swift in Sources */,
 				FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */,
 				FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */,
 				FC7DD8B62B5556AD0037405B /* ActivityView.swift in Sources */,

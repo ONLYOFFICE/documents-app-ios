@@ -163,8 +163,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomTags, folder.id), .delete)
             }
             
-            static func getList() -> Endpoint<OnlyofficeResponseBase> {
-                return Endpoint<OnlyofficeResponseBase>.make(Path.tags, .get, URLEncoding.queryString)
+            static func getList() -> Endpoint<OnlyofficeResponseArrayCodable<String>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<String>>.make(Path.tags, .get, URLEncoding.queryString)
             }
         }
 

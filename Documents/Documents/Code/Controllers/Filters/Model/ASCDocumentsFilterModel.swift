@@ -210,6 +210,8 @@ enum ApiFilterType {
             return "MediaOnly"
         case .excludeSubfolders:
             return "excludeSubfolders"
+        case let .tag(tag):
+            return tag
         case .customRoom:
             return "5"
         case .fillingFormRoom:
@@ -234,6 +236,66 @@ enum ApiFilterType {
     }
 }
 
+extension ApiFilterType {
+    init?(rawValue: String) {
+        switch rawValue {
+        case "none":
+            self = .none
+        case "files":
+            self = .files
+        case "folders":
+            self = .folders
+        case "documents":
+            self = .documents
+        case "presentations":
+            self = .presentations
+        case "spreadsheets":
+            self = .spreadsheets
+        case "formTemplates":
+            self = .formTemplates
+        case "forms":
+            self = .forms
+        case "images":
+            self = .images
+        case "me":
+            self = .me
+        case "user":
+            self = .user
+        case "group":
+            self = .group
+        case "archive":
+            self = .archive
+        case "byExtension":
+            self = .byExtension
+        case "media":
+            self = .media
+        case "excludeSubfolders":
+            self = .excludeSubfolders
+        case "customRoom":
+            self = .customRoom
+        case "fillingFormRoom":
+            self = .fillingFormRoom
+        case "collaborationRoom":
+            self = .collaborationRoom
+        case "reviewRoom":
+            self = .reviewRoom
+        case "viewOnlyRoom":
+            self = .viewOnlyRoom
+        case "publicRoom":
+            self = .publicRoom
+        case "dropBox":
+            self = .dropBox
+        case "googleDrive":
+            self = .googleDrive
+        case "oneDrive":
+            self = .oneDrive
+        case "box":
+            self = .box
+        default:
+            return nil
+        }
+    }
+}
 enum FiltersSection: String, CaseIterable {
     case type = "Type"
     case author = "Author"

@@ -69,7 +69,6 @@ enum OnlyofficeAPI {
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
-        public static let roomsTags = "api/\(version)/files/rooms/tags"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -165,7 +164,7 @@ enum OnlyofficeAPI {
             }
             
             static func getList() -> Endpoint<OnlyofficeResponseBase> {
-                return Endpoint<OnlyofficeResponseBase>.make(Path.roomsTags, .get, URLEncoding.queryString)
+                return Endpoint<OnlyofficeResponseBase>.make(Path.tags, .get, URLEncoding.queryString)
             }
         }
 

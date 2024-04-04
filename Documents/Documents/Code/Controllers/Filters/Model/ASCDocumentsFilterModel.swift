@@ -88,7 +88,7 @@ struct ActionButtonViewModel {
     )
 }
 
-enum ApiFilterType: String {
+enum ApiFilterType {
     case none
     case files
     case folders
@@ -112,11 +112,71 @@ enum ApiFilterType: String {
     case publicRoom
     case reviewRoom
     case viewOnlyRoom
+    case tag(String)
     /// third party resource
     case dropBox
     case googleDrive
     case oneDrive
     case box
+    
+    var rawValue: String {
+        switch self {
+        case .none:
+            return "none"
+        case .files:
+            return "files"
+        case .folders:
+            return "folders"
+        case .documents:
+            return "documents"
+        case .presentations:
+            return "presentations"
+        case .spreadsheets:
+            return "spreadsheets"
+        case .formTemplates:
+            return "formTemplates"
+        case .forms:
+            return "forms"
+        case .images:
+            return "images"
+        case .me:
+            return "me"
+        case .user:
+            return "user"
+        case .group:
+            return "group"
+        case .archive:
+            return "archive"
+        case .byExtension:
+            return "byExtension"
+        case .media:
+            return "media"
+        case .excludeSubfolders:
+            return "excludeSubfolders"
+        case let .tag(tag):
+            return tag
+        case .customRoom:
+            return "customRoom"
+        case .fillingFormRoom:
+            return "fillingFormRoom"
+        case .collaborationRoom:
+            return "collaborationRoom"
+        case .reviewRoom:
+            return "reviewRoom"
+        case .viewOnlyRoom:
+            return "viewOnlyRoom"
+        case .publicRoom:
+            return "publicRoom"
+        case .dropBox:
+            return "dropBox"
+        case .googleDrive:
+            return "3"
+        case .oneDrive:
+            return "googleDrive"
+        case .box:
+            return "box"
+        }
+    }
 
     var filterValue: String {
         switch self {

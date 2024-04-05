@@ -2003,6 +2003,11 @@ others which use WebDAV protocol.</target>
         <target>Disable if you do not want to receive notifications from the %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Disable notifications" xml:space="preserve">
+        <source>Disable notifications</source>
+        <target>Disable notifications</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>Disconnect third party</target>
@@ -2127,6 +2132,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target>Enable if you want to receive notifications from the %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable notifications" xml:space="preserve">
+        <source>Enable notifications</source>
+        <target>Enable notifications</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">

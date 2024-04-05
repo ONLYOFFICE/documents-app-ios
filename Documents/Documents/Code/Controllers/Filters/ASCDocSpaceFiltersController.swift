@@ -14,8 +14,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         enum DataType: CaseIterable {
             case memberFilters
             case roomTypeFilters
-            case tags
             case thirdPartyResourceFilters
+            case tags
         }
 
         var meFilter: ASCDocumentsFilterModel
@@ -36,12 +36,12 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                   itemsCount: count)
         }
 
-        static var defaultDocSpaceRoomsState: (Int) -> State = { count in
+        static var defaultDocSpaceRoomsState: (Int, [String]) -> State = { count, tags in
             State(meFilter: meFilter,
                   memberFilter: memberFilter,
                   roomTypeFilters: roomTypeFilters,
                   thirdPartyResourceFilters: [],
-                  tagsFilters: [],
+                  tagsFilters: tags.map { ASCDocumentsFilterModel(filterName: $0, isSelected: false, filterType: .tag($0)) },
                   itemsCount: count)
         }
 
@@ -175,7 +175,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                 return params
             case .tags:
                 guard let model = state.tagsFilters.first(where: { $0.isSelected }) else { return params }
-                params["Tags"] = model.filterType.filterValue
+                params["tags"] = model.filterType.filterValue
                 return params
             case .thirdPartyResourceFilters: return params
             }
@@ -189,6 +189,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             filtersContainers: [
                 .init(sectionName: usersSectionTitle, elements: usersFilters),
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.roomTypeFilters),
+                tempState.tagsFilters.isEmpty ? nil : .init(sectionName: FiltersSection.tags.localizedString(), elements: tempState.tagsFilters),
                 tempState.thirdPartyResourceFilters.isEmpty ? nil : .init(sectionName: FiltersSection.thirdPartyResource.localizedString(), elements: tempState.thirdPartyResourceFilters),
             ].compactMap { $0 },
             actionButtonViewModel: tempState.itemsCount > 0
@@ -331,6 +332,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             completion(provider.total)
         })
     }
+    
+    // MARK: - Reset
 
     private func resetAuthorModels() {
         tempState.meFilter.isSelected = false

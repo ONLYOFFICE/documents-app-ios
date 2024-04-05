@@ -18,7 +18,7 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
         itemsCount: Int
     ) {
         super.init(builder: builder, filtersViewController: filtersViewController, itemsCount: itemsCount)
-        tempState = .defaultDocSpaceRoomsState(itemsCount)
+        tempState = .defaultDocSpaceRoomsState(itemsCount, [])
         usersSectionTitle = FiltersSection.member.localizedString()
         buildActions()
     }
@@ -29,7 +29,7 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
         } else {
             networkService.request(OnlyofficeAPI.Endpoints.Tags.getList(), RoomTagsListRequestModel().dictionary) { [weak self] result, error in
                 guard let self else { return }
-                tempState = .defaultDocSpaceRoomsState(total)
+                tempState = .defaultDocSpaceRoomsState(total, result?.result ?? [])
             }
         }
         runPreload()
@@ -59,7 +59,7 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
                 return params
             case .tags:
                 guard let model = state.tagsFilters.first(where: { $0.isSelected }) else { return params }
-                params["tags"] = model.filterType.filterValue
+                params["tags"] = "[\"\(model.filterType.filterValue)\"]"
                 return params
             }
         }

@@ -222,7 +222,7 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.room, folder.id), .put)
             }
             
-            static func disableNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
+            static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }
         }

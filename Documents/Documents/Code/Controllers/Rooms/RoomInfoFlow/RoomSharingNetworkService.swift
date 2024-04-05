@@ -77,9 +77,9 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
         }
     }
     
-    func disableNotifications(room: ASCFolder, completion: @escaping (Result<RoomNotificationsResponceModel, Error>) -> Void) {
-        let requestModel = RoomNotificationsRequestModel(roomsID: Int(room.id)!, mute: room.mute)
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.disableNotifications(room: room), requestModel.dictionary) { responce, error in
+    func toggleRoomNotifications(room: ASCFolder, completion: @escaping (Result<RoomNotificationsResponceModel, Error>) -> Void) {
+        let requestModel = RoomNotificationsRequestModel(roomsID: Int(room.id)!, mute: !room.mute)
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.toggleRoomNotifications(room: room), requestModel.dictionary) { responce, error in
             guard let responce = responce?.result else {
                 if let error {
                     completion(.failure(error))

@@ -67,7 +67,7 @@ class ASCFolder: ASCEntity {
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
         pinned <- map["pinned"]
-        mute <- map["Mute"]
+        mute <- map["mute"]
         roomType <- (map["roomType"], EnumTransform())
         isPrivate <- map["private"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())

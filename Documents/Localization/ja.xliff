@@ -1956,6 +1956,10 @@ WebDAVプロトコルを使用する
         <target>%@からの通知を受け取りたくない場合は、無効にしてください</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Disable notifications" xml:space="preserve">
+        <source>Disable notifications</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>サードパーティーの接続を解除する</target>
@@ -2080,6 +2084,10 @@ WebDAVプロトコルを使用する
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target>%@からの通知を受け取りたい場合は、有効にしてください</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable notifications" xml:space="preserve">
+        <source>Enable notifications</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">

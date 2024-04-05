@@ -1752,6 +1752,23 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
         }
     }
+    
+    func disableNotifications(room: ASCFolder) {
+        RoomSharingNetworkService().toggleRoomNotifications(room: room) { [ weak self ] result in
+            guard let self else { return }
+            switch result {
+            case let .success(responce):
+                if let roomId = Int(room.id),
+                   responce.disabledRooms.contains(roomId) {
+                    room.mute = true
+                } else {
+                    room.mute = false
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     func transformToRoom(entities: [ASCEntity]) {
         let entitiesIsOnlyOneFolder: Bool = {

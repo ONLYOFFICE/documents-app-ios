@@ -174,8 +174,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                 params["filterType"] = model.filterType.filterValue
                 return params
             case .tags:
-                guard let model = state.tagsFilters.first(where: { $0.isSelected }) else { return params }
-                params["tags"] = model.filterType.filterValue
+                guard let selectedTagsValue = selectedTagsValues(state: state) else { return params }
+                params["tags"] = selectedTagsValue
                 return params
             case .thirdPartyResourceFilters: return params
             }
@@ -370,5 +370,14 @@ extension ASCDocSpaceFiltersController: ASCFiltersViewControllerDelegate {
 
         currentSelectedAuthorFilterType = nil
         runPreload()
+    }
+}
+
+extension ASCDocSpaceFiltersController {
+    
+    func selectedTagsValues(state: State) -> String? {
+        let selectedTags = state.tagsFilters.filter { $0.isSelected }
+        guard !selectedTags.isEmpty else { return nil }
+        return "[\"\(selectedTags.map { $0.filterType.filterValue }.joined(separator: ","))\"]"
     }
 }

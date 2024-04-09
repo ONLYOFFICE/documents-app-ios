@@ -58,8 +58,8 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
                 params["provider"] = model.filterType.filterValue
                 return params
             case .tags:
-                guard let model = state.tagsFilters.first(where: { $0.isSelected }) else { return params }
-                params["tags"] = "[\"\(model.filterType.filterValue)\"]"
+                guard let selectedTagsValue = selectedTagsValues(state: state) else { return params }
+                params["tags"] = selectedTagsValue
                 return params
             }
         }

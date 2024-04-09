@@ -29,3 +29,12 @@ struct RoomRemoveLinkRequestModel: Codable {
     var linkType: Int
     var password: String?
 }
+
+struct RoomRevokeLinkRequestModel: Codable {
+    var linkId: String
+    var title: String
+    var access: Int
+    var linkType: Int
+    var password: String?
+    var denyDownload: Bool
+}

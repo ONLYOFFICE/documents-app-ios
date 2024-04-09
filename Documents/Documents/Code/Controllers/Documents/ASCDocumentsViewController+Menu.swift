@@ -289,6 +289,7 @@ extension ASCDocumentsViewController {
                         animated: true,
                         scrollPosition: .none
                     )
+                    self?.updateSelectedItems(indexPath: index)
                 }
             }
         )
@@ -447,6 +448,24 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Disable notifications
+        
+        if actions.contains(.disableNotifications) {
+            basicActions.append(
+                UIAction(
+                    title: folder.mute
+                    ? NSLocalizedString("Enable notifications", comment: "")
+                    : NSLocalizedString("Disable notifications", comment: ""),
+                    image: folder.mute
+                    ? UIImage(systemName: "bell")
+                    : UIImage(systemName: "bell.slash")
+                ) { [ unowned self ] action in
+                    cell.hideSwipe(animated: true)
+                    disableNotifications(room: folder)
+                }
+            )
+        }
 
         // Transfer actions
 
@@ -501,7 +520,10 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "arrow.up.bin")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.unarchive(cell: cell, folder: folder)
+                    self.showRestoreRoomAlert { [weak self] in
+                        guard let self else { return }
+                        self.unarchive(cell: cell, folder: folder)
+                    }
                 }
             )
         }

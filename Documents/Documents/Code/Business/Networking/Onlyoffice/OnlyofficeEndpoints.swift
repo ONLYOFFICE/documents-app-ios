@@ -69,6 +69,7 @@ enum OnlyofficeAPI {
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        public static let disableNotifications = "api/\(version)/settings/notification/rooms"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -205,6 +206,10 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
+            static func revokeLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.roomLinks, folder.id), .put)
+            }
+
             static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }
@@ -219,6 +224,10 @@ enum OnlyofficeAPI {
 
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.room, folder.id), .put)
+            }
+            
+            static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }
         }
 

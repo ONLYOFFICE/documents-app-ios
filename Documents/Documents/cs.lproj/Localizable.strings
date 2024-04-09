@@ -47,6 +47,15 @@
 "12 hours" = "12 hodin";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "Chyba při převodu";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Nelze stáhnout soubor.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Nelze nahrát soubor.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Soubor s podobným názvem již existuje.";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1797,4 @@
 
 /* Data units */
 "Zero bytes" = "Nulové bajty";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Chyba při převodu";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Nelze stáhnout soubor.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Nelze nahrát soubor.";
 

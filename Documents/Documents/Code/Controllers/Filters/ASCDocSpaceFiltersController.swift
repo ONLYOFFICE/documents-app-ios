@@ -378,6 +378,6 @@ extension ASCDocSpaceFiltersController {
     func selectedTagsValues(state: State) -> String? {
         let selectedTags = state.tagsFilters.filter { $0.isSelected }
         guard !selectedTags.isEmpty else { return nil }
-        return "[\"\(selectedTags.map { $0.filterType.filterValue }.joined(separator: ","))\"]"
+        return "[\"\(selectedTags.map { $0.filterType.filterValue }.joined(separator: "\",\""))\"]"
     }
 }

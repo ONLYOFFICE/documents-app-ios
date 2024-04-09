@@ -15,6 +15,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             case memberFilters
             case roomTypeFilters
             case thirdPartyResourceFilters
+            case tags
         }
 
         var meFilter: ASCDocumentsFilterModel
@@ -22,6 +23,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         var hasSelectedMember: Bool { memberFilter.selectedName != nil && memberFilter.selectedName?.isEmpty == false }
         var roomTypeFilters: [ASCDocumentsFilterModel]
         var thirdPartyResourceFilters: [ASCDocumentsFilterModel]
+        var tagsFilters: [ASCDocumentsFilterModel]
 
         var itemsCount: Int
 
@@ -30,14 +32,16 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                   memberFilter: memberFilter,
                   roomTypeFilters: docTypeFilters,
                   thirdPartyResourceFilters: [],
+                  tagsFilters: [],
                   itemsCount: count)
         }
 
-        static var defaultDocSpaceRoomsState: (Int) -> State = { count in
+        static var defaultDocSpaceRoomsState: (Int, [String]) -> State = { count, tags in
             State(meFilter: meFilter,
                   memberFilter: memberFilter,
                   roomTypeFilters: roomTypeFilters,
                   thirdPartyResourceFilters: [],
+                  tagsFilters: tags.map { ASCDocumentsFilterModel(filterName: $0, isSelected: false, filterType: .tag($0)) },
                   itemsCount: count)
         }
 
@@ -142,9 +146,11 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             case .memberFilters:
                 return state.memberFilter.selectedName?.isEmpty == false || state.meFilter.isSelected
             case .roomTypeFilters:
-                return state.roomTypeFilters.map { $0.isSelected }.contains(true)
+                return state.roomTypeFilters.contains(where: { $0.isSelected })
+            case .tags:
+                return state.tagsFilters.contains(where: { $0.isSelected })
             case .thirdPartyResourceFilters:
-                return state.thirdPartyResourceFilters.map { $0.isSelected }.contains(true)
+                return state.thirdPartyResourceFilters.contains(where: { $0.isSelected })
             }
         }
     }
@@ -167,6 +173,10 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                 guard let model = state.roomTypeFilters.first(where: { $0.isSelected }) else { return params }
                 params["filterType"] = model.filterType.filterValue
                 return params
+            case .tags:
+                guard let selectedTagsValue = selectedTagsValues(state: state) else { return params }
+                params["tags"] = selectedTagsValue
+                return params
             case .thirdPartyResourceFilters: return params
             }
         }
@@ -179,6 +189,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             filtersContainers: [
                 .init(sectionName: usersSectionTitle, elements: usersFilters),
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.roomTypeFilters),
+                tempState.tagsFilters.isEmpty ? nil : .init(sectionName: FiltersSection.tags.localizedString(), elements: tempState.tagsFilters),
                 tempState.thirdPartyResourceFilters.isEmpty ? nil : .init(sectionName: FiltersSection.thirdPartyResource.localizedString(), elements: tempState.thirdPartyResourceFilters),
             ].compactMap { $0 },
             actionButtonViewModel: tempState.itemsCount > 0
@@ -201,7 +212,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             guard let self = self else { return }
             for type in State.DataType.allCases {
                 switch type {
-                case .roomTypeFilters, .thirdPartyResourceFilters: break
+                case .roomTypeFilters, .thirdPartyResourceFilters, .tags: break
                 case .memberFilters:
                     self.resetAuthorModels()
                     self.runPreload()
@@ -264,6 +275,11 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                         }
                         self.runPreload()
                     }
+                case .tags:
+                    if let tappedTagIndex: Int =  tempState.tagsFilters.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
+                        tempState.tagsFilters[tappedTagIndex].isSelected.toggle()
+                        self.runPreload()
+                    }
                 }
             }
         }
@@ -281,6 +297,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                     self.resetAuthorModels()
                 case .thirdPartyResourceFilters:
                     self.resetModels(models: &self.tempState.thirdPartyResourceFilters)
+                case .tags:
+                    self.resetTagsModel()
                 }
             }
 
@@ -309,6 +327,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             completion(provider.total)
         })
     }
+    
+    // MARK: - Reset
 
     private func resetAuthorModels() {
         tempState.meFilter.isSelected = false
@@ -318,6 +338,12 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     private func resetAuthorModel() {
         tempState.memberFilter.selectedName = nil
         tempState.memberFilter.id = nil
+    }
+    
+    private func resetTagsModel() {
+        tempState.tagsFilters.enumerated().forEach { i, _ in
+            tempState.tagsFilters[i].isSelected = false
+        }
     }
 
     private func resetModels(models: inout [ASCDocumentsFilterModel]) {
@@ -339,5 +365,14 @@ extension ASCDocSpaceFiltersController: ASCFiltersViewControllerDelegate {
 
         currentSelectedAuthorFilterType = nil
         runPreload()
+    }
+}
+
+extension ASCDocSpaceFiltersController {
+    
+    func selectedTagsValues(state: State) -> String? {
+        let selectedTags = state.tagsFilters.filter { $0.isSelected }
+        guard !selectedTags.isEmpty else { return nil }
+        return "[\"\(selectedTags.map { $0.filterType.filterValue }.joined(separator: "\",\""))\"]"
     }
 }

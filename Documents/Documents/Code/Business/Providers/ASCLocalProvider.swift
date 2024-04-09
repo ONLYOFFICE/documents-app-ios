@@ -181,7 +181,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .dropBox,
                      .googleDrive,
                      .oneDrive,
-                     .box:
+                     .box,
+                     .tag:
                     return list
                 }
             }(commonList)

@@ -85,14 +85,16 @@ class ASCViewControllerManager {
 
             WhatsNewService.show()
             appDelegate?.checkNotifications()
+            rootController?.checkMDMConfigInfo()
         } else {
             /// Firsh launch of the app
 
             UserDefaults.standard.set(ASCCommon.appVersion, forKey: ASCConstants.SettingsKeys.appVersion)
             prepareContent()
             rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-            showIntro {
+            showIntro { [weak self] in
                 appDelegate?.checkNotifications()
+                self?.rootController?.checkMDMConfigInfo()
             }
         }
 
@@ -153,7 +155,7 @@ class ASCViewControllerManager {
         SwiftRater.appLaunched()
     }
 
-    private func showIntro(complation: (() -> Void)? = nil) {
+    private func showIntro(complation: @escaping (() -> Void)) {
         delay(seconds: 0.2) { [weak self] in
             if let topVC = self?.rootController?.topMostViewController() {
                 let introController = ASCIntroViewController.instantiate(from: Storyboard.intro)

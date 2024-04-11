@@ -217,6 +217,7 @@
 		FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */; };
 		FC6852182683572600D830EC /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6852162683572600D830EC /* ASCOneDriveFileProvider.swift */; };
 		FC6852192683572600D830EC /* ASCOneDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6852172683572600D830EC /* ASCOneDriveProvider.swift */; };
+		FC692BD62BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC692BD52BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift */; };
 		FC6A691125C83C1D007F1FD6 /* ASCFileProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */; };
 		FC6A756229915B530056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756129915B530056262F /* Pulse */; };
 		FC6A756429915B530056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756329915B530056262F /* PulseLogHandler */; };
@@ -225,6 +226,7 @@
 		FC6E927D2B5FB18E005E0A72 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6E927C2B5FB18E005E0A72 /* KFImageView.swift */; };
 		FC6E92C02B67E0C0005E0A72 /* ASCOformPdfChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6E92BF2B67E0C0005E0A72 /* ASCOformPdfChecker.swift */; };
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
+		FC6F5F372BAB00D600F109CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FC6F5F362BAB00D500F109CD /* PrivacyInfo.xcprivacy */; };
 		FC72B0C52AFE039300FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC72B0C42AFE039300FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */; };
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
 		FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */; };
@@ -871,11 +873,13 @@
 		FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOwnCloudProvider.swift; sourceTree = "<group>"; };
 		FC6852162683572600D830EC /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		FC6852172683572600D830EC /* ASCOneDriveProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProvider.swift; sourceTree = "<group>"; };
+		FC692BD52BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCRootViewController+ManagedAppConfig.swift"; sourceTree = "<group>"; };
 		FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFileProviderProtocol.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6E927C2B5FB18E005E0A72 /* KFImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
 		FC6E92BF2B67E0C0005E0A72 /* ASCOformPdfChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOformPdfChecker.swift; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
+		FC6F5F362BAB00D500F109CD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FC72B0C42AFE039300FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRightAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
@@ -2551,6 +2555,7 @@
 			isa = PBXGroup;
 			children = (
 				FC7D99472729944D00410795 /* ASCRootViewController.swift */,
+				FC692BD52BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -3136,6 +3141,7 @@
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
 				FCE4354D2644261D00C51F31 /* Documents.dev.plist */,
+				FC6F5F362BAB00D500F109CD /* PrivacyInfo.xcprivacy */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -3357,6 +3363,7 @@
 				8A2EB084231FFA3700A12A4E /* ASCFolderCell.xib in Resources */,
 				FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */,
 				8A278AE42499614C00B6AA30 /* Debug.storyboard in Resources */,
+				FC6F5F372BAB00D600F109CD /* PrivacyInfo.xcprivacy in Resources */,
 				FCCC4D6A261B12B500ACC6F1 /* sample in Resources */,
 				FC18290C2A24E9D8005D9220 /* ASCDetailCell.xib in Resources */,
 				FCC396441ECDC6BD0016BB10 /* UserProfile.storyboard in Resources */,
@@ -4039,6 +4046,7 @@
 				FCFE46DC275E237E007C9AE0 /* ASCUniqNameFinder.swift in Sources */,
 				FCE9F79B2B303DF60056E420 /* CurrentRoomMenu.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
+				FC692BD62BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */,
 				FC2B0CCD264158B400969DB9 /* OnlyofficeApplicationType.swift in Sources */,
 				FC7DC879285A2D3400E61C69 /* ASCOnlyOfficeFiltersController.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,

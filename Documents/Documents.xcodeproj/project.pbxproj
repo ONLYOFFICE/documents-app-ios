@@ -381,12 +381,14 @@
 		FC68529B26837B7300D830EC /* DropboxAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526626837B7300D830EC /* DropboxAccount.swift */; };
 		FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526726837B7300D830EC /* NetworkingClient.swift */; };
 		FC68529F26837B7300D830EC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526826837B7300D830EC /* Endpoint.swift */; };
+		FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */; };
 		FC6A754D29910FB80056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754C29910FB80056262F /* Pulse */; };
 		FC6A754F29910FB80056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754E29910FB80056262F /* PulseLogHandler */; };
 		FC6A755129910FB80056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A755029910FB80056262F /* PulseUI */; };
 		FC6D9A512355CDC100A970C6 /* ASCDropboxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A502355CDC100A970C6 /* ASCDropboxProvider.swift */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
+		FC6F5F2A2BAAFB7000F109CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */; };
 		FC72B0C92AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */; };
 		FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */; };
 		FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */; };
@@ -466,7 +468,6 @@
 		FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8092265DA5E00A155C2 /* ASCFolderType.swift */; };
 		FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8032265D8DA00A155C2 /* ASCShareAccess.swift */; };
 		FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
-		FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
 		FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */; };
 		FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */; };
 		FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0946AF249776D4005D54E6 /* ASCLogger.swift */; };
@@ -973,6 +974,7 @@
 		FC68526626837B7300D830EC /* DropboxAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxAccount.swift; sourceTree = "<group>"; };
 		FC68526726837B7300D830EC /* NetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		FC68526826837B7300D830EC /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCRootViewController+ManagedAppConfig.swift"; sourceTree = "<group>"; };
 		FC6D9A502355CDC100A970C6 /* ASCDropboxProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDropboxProvider.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6E84C82775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 		FC6E84DF2775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Transfer.strings"; sourceTree = "<group>"; };
 		FC6E84E02775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UserProfile.strings"; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
+		FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCRightAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGlobalTest.swift; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
@@ -2849,6 +2852,7 @@
 			isa = PBXGroup;
 			children = (
 				FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */,
+				FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -3348,6 +3352,7 @@
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
 				FCECDDEF2643DF1A006CD7B9 /* Documents-InfoPlist.strings */,
 				FCF3AAC21EF9483100DF63BA /* Documents.plist */,
+				FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -3509,6 +3514,7 @@
 				FC1828FB2A24E65B005D9220 /* ASCDetailCell.xib in Resources */,
 				FCCD8C92285782EB00ECD606 /* ASCStandartCell.xib in Resources */,
 				FC25B451284F67F70075D6C2 /* ASCSwitchCell.xib in Resources */,
+				FC6F5F2A2BAAFB7000F109CD /* PrivacyInfo.xcprivacy in Resources */,
 				FCECDDEE2643DD1B006CD7B9 /* Documents.plist in Resources */,
 				FC25B44D284F67F70075D6C2 /* ASCNotificationWarningCell.xib in Resources */,
 				FCC396441ECDC6BD0016BB10 /* UserProfile.storyboard in Resources */,
@@ -3888,7 +3894,6 @@
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
 				1D667A3E28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift in Sources */,
-				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				1D14AAE226964AF2009E48AD /* ASCSharingSettingsAccessProviderFactoryTests.swift in Sources */,
 				FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */,
@@ -4045,6 +4050,7 @@
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */,
 				1D9BBE9629A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
+				FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
 				FCD5F46C2B4EF4BA00C04D91 /* Toggle+Extension.swift in Sources */,

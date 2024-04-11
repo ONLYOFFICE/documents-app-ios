@@ -99,6 +99,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         apiClient.token = token
     }
 
+    func title(folder: ASCFolder?) -> String? {
+        if folder?.isRoot == true, let rootFolderType = folder?.rootFolderType {
+            return ASCOnlyofficeCategory.title(of: rootFolderType)
+        } else {
+            return folder?.title
+        }
+    }
+
     func setFiltersController() {
         guard let folder = folder, filterController == nil else { return }
         filterController = makeFilterController(folder: folder)
@@ -1191,6 +1199,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return entityActions
     }
 
+    func isTrash(for folder: ASCFolder?) -> Bool {
+        folder?.rootFolderType == .onlyofficeTrash
+    }
+
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
@@ -1339,6 +1351,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if canEdit, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
+            }
+            
+            if isDocspace, folder.isRoom {
+                entityActions.insert(.disableNotifications)
             }
 
             if isRoomFolder, !isArchiveCategory {

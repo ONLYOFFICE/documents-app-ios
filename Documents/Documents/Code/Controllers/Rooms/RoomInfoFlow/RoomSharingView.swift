@@ -20,11 +20,12 @@ struct RoomSharingView: View {
 
         return screenView
             .navigationBarTitle(Text(viewModel.room.title), displayMode: .inline)
-            .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
+            .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
-            .navigationBarItems()
+            .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
+            .navigationBarItems(viewModel: viewModel)
             .onAppear { viewModel.onAppear() }
     }
 
@@ -197,12 +198,24 @@ struct RoomSharingView: View {
 }
 
 private extension View {
-    func navigationBarItems() -> some View {
+    
+    func navigationBarItems(viewModel: RoomSharingViewModel) -> some View {
         navigationBarItems(
             leading: Button(ASCLocalization.Common.close) {
                 UIApplication.topViewController()?.dismiss(animated: true)
-            }
+            },
+            trailing: viewModel.isSharingPossible 
+            ? addUsersButton(viewModel: viewModel)
+            : nil
         )
+    }
+    
+    func addUsersButton(viewModel: RoomSharingViewModel) -> some View {
+        Button(action: {
+            viewModel.addUsers()
+        }) {
+            Image(systemName: "person.crop.circle.badge.plus")
+        }
     }
 
     func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
@@ -221,7 +234,8 @@ private extension View {
             RoomSharingAccessTypeView(
                 viewModel: RoomSharingAccessTypeViewModel(
                     room: viewModel.room,
-                    user: user
+                    user: user,
+                    onRemove: viewModel.onUserRemove(userId:)
                 )
             )
         }
@@ -250,6 +264,16 @@ private extension View {
                 outputLink: viewModel.changedLinkBinding
             ))
         })
+    }
+
+    func navigateToAddUsers(
+        isDisplaying: Binding<Bool>,
+        viewModel: RoomSharingViewModel
+    ) -> some View {
+        navigation(isActive: isDisplaying) {
+            SharingInviteRightHoldersRepresentable(entity: viewModel.room)
+                .navigationBarHidden(true)
+        }
     }
 }
 

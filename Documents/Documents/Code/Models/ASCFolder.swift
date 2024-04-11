@@ -24,6 +24,7 @@ class ASCFolder: ASCEntity {
     var access: ASCEntityAccess = .none
     var shared: Bool = false
     var pinned: Bool = false
+    var mute: Bool = false
     var roomType: ASCRoomType?
     var isPrivate: Bool = false
     var isCanLeaveRoom: Bool = false
@@ -66,6 +67,7 @@ class ASCFolder: ASCEntity {
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
         pinned <- map["pinned"]
+        mute <- map["mute"]
         roomType <- (map["roomType"], EnumTransform())
         isPrivate <- map["private"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())
@@ -93,6 +95,7 @@ class ASCFolder: ASCEntity {
             folder.title = title
             folder.access = access
             folder.shared = shared
+            folder.mute = mute
             folder.roomType = roomType
             folder.rootFolderType = rootFolderType
             folder.updated = updated

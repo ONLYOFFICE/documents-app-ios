@@ -47,6 +47,15 @@
 "12 hours" = "12 horas";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "Error de conversión";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "No se pudo descargar el archivo.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "No se pudo subir el archivo.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Ya existe un archivo con un nombre similar.";
 
 /* No comment provided by engineer. */
@@ -1788,13 +1797,4 @@
 
 /* Data units */
 "Zero bytes" = "Cero bytes";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Error de conversión";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "No se pudo descargar el archivo.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "No se pudo subir el archivo.";
 

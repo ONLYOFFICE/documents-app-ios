@@ -181,7 +181,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .dropBox,
                      .googleDrive,
                      .oneDrive,
-                     .box:
+                     .box,
+                     .tag:
                     return list
                 }
             }(commonList)
@@ -707,6 +708,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
 
         return entityActions
+    }
+
+    func isTrash(for folder: ASCFolder?) -> Bool {
+        folder?.rootFolderType == .deviceTrash
     }
 
     private func actions(for file: ASCFile?) -> ASCEntityActions {

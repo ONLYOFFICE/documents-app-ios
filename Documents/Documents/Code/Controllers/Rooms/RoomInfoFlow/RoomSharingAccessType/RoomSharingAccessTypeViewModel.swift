@@ -10,19 +10,38 @@ import Combine
 import Foundation
 
 class RoomSharingAccessTypeViewModel: ObservableObject {
+    typealias UserIdentifier = String
+
     @Published var accessModels: [ASCShareAccessRowModel] = []
     @Published var isAccessChanging: Bool = false
     @Published var error: String?
     private let accesses: [ASCShareAccess] = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
     private let room: ASCFolder
     private let user: ASCUser
+    private let onRemove: (UserIdentifier) -> Void
 
     private let networkService: RoomUsersAccessNetworkService = ServicesProvider.shared.roomUsersAccessNetworkService
 
-    init(room: ASCFolder, user: ASCUser) {
+    init(room: ASCFolder, user: ASCUser, onRemove: @escaping (UserIdentifier) -> Void) {
         self.room = room
         self.user = user
+        self.onRemove = onRemove
         updateModels()
+    }
+
+    func removeUser() {
+        guard let userId = user.userId else { return }
+        isAccessChanging = true
+        networkService.changeUserAccess(room: room, userId: userId, newAccess: .none) { [weak self] error in
+            guard let self else { return }
+            if error == nil {
+                user.accessValue = .none
+            }
+            self.error = error?.localizedDescription
+            self.updateModels()
+            isAccessChanging = false
+            self.onRemove(userId)
+        }
     }
 
     private func updateModels() {

@@ -124,4 +124,50 @@ extension Date {
             self = date
         }
     }
+
+    /// Get number of seconds between two date
+    ///
+    /// - Parameter date: date to compare self to.
+    /// - Returns: number of seconds between self and given date.
+    func secondsSince(_ date: Date) -> Double {
+        return timeIntervalSince(date)
+    }
+
+    /// Get number of minutes between two date
+    ///
+    /// - Parameter date: date to compare self to.
+    /// - Returns: number of minutes between self and given date.
+    func minutesSince(_ date: Date) -> Double {
+        return timeIntervalSince(date) / 60
+    }
+
+    /// Get number of hours between two date
+    ///
+    /// - Parameter date: date to compare self to.
+    /// - Returns: number of hours between self and given date.
+    func hoursSince(_ date: Date) -> Double {
+        return timeIntervalSince(date) / 3600
+    }
+
+    /// Get number of days between two date
+    ///
+    /// - Parameter date: date to compare self to.
+    /// - Returns: number of days between self and given date.
+    func daysSince(_ date: Date) -> Double {
+        return timeIntervalSince(date) / (3600 * 24)
+    }
+
+    /// Check if a date is between two other dates.
+    ///
+    /// - Parameters:
+    ///   - startDate: start date to compare self to.
+    ///   - endDate: endDate date to compare self to.
+    ///   - includeBounds: true if the start and end date should be included (default is false).
+    /// - Returns: true if the date is between the two given dates.
+    func isBetween(_ startDate: Date, _ endDate: Date, includeBounds: Bool = false) -> Bool {
+        if includeBounds {
+            return startDate.compare(self).rawValue * compare(endDate).rawValue >= 0
+        }
+        return startDate.compare(self).rawValue * compare(endDate).rawValue > 0
+    }
 }

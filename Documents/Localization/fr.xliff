@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -331,7 +331,7 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -572,7 +572,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -724,7 +724,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -805,7 +805,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -832,7 +832,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -869,7 +869,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -926,7 +926,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -998,7 +998,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1080,7 +1080,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1137,7 +1137,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
@@ -1352,6 +1352,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Adresse est vide</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Admin" xml:space="preserve">
+        <source>Admin</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Administration" xml:space="preserve">
         <source>Administration</source>
         <target>Administration</target>
@@ -1380,6 +1384,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
         <target>Toutes les notifications</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" xml:space="preserve">
+        <source>All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1993,6 +2001,10 @@ d'autres via le protocole WebDAV.</target>
         <target>Désactivez si vous ne voulez pas recevoir des notifications de la part de %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Disable notifications" xml:space="preserve">
+        <source>Disable notifications</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>Déconnecter les services tiers</target>
@@ -2117,6 +2129,10 @@ d'autres via le protocole WebDAV.</target>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target>Activez si vous voulez recevoir des notifications de la part de  %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable notifications" xml:space="preserve">
+        <source>Enable notifications</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
@@ -3139,6 +3155,10 @@ dans le presse-papiers</target>
         <target>Recharger</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Remove" xml:space="preserve">
+        <source>Remove</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
         <target>Retirer des favoris</target>
@@ -3199,6 +3219,10 @@ dans le presse-papiers</target>
         <target>Restauration</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Restore room?" xml:space="preserve">
+        <source>Restore room?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
         <source>Restoring</source>
         <target>Restauration</target>
@@ -3213,6 +3237,22 @@ dans le presse-papiers</target>
         <source>Reviewer</source>
         <target>Réviseur</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Revoke link" xml:space="preserve">
+        <source>Revoke link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Revoked" xml:space="preserve">
+        <source>Revoked</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Revoking" xml:space="preserve">
+        <source>Revoking</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Roles" xml:space="preserve">
+        <source>Roles</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
         <source>Room admin</source>
@@ -3590,6 +3630,10 @@ dans le presse-papiers</target>
         <target>Le nom du portail doit comporter entre 6 et 50 caractères</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The previous link will become unavailable. A new general link will be created." xml:space="preserve">
+        <source>The previous link will become unavailable. A new general link will be created.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The quota of users is almost exhausted. Сontact the portal administrator" xml:space="preserve">
         <source>The quota of users is almost exhausted. Сontact the portal administrator</source>
         <target>Le quota d'utilisateurs est presque épuisé. Сontactez l'administrateur du portail</target>
@@ -3763,6 +3807,10 @@ dans le presse-papiers</target>
       <trans-unit id="Unarchiving failed." xml:space="preserve">
         <source>Unarchiving failed.</source>
         <target>Échec du désarchivage.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized members will be able only to view the document." xml:space="preserve">
+        <source>Unauthorized members will be able only to view the document.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -4186,7 +4234,7 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

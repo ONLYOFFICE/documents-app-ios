@@ -275,24 +275,26 @@ extension ASCDocumentsViewController {
 
         var commonActions: [UIMenuElement] = []
 
-        commonActions.append(
-            UIAction(
-                title: NSLocalizedString("Select", comment: "Button title"),
-                image: UIImage(systemName: "checkmark.circle")
-            ) { [weak self] action in
-                cell.hideSwipe(animated: true)
-                self?.setEditMode(true)
-
-                if let index = self?.tableView.indexPath(for: cell) {
-                    self?.tableView.selectRow(
-                        at: index,
-                        animated: true,
-                        scrollPosition: .none
-                    )
-                    self?.updateSelectedItems(indexPath: index)
+        if actions.contains(.select) {
+            commonActions.append(
+                UIAction(
+                    title: NSLocalizedString("Select", comment: "Button title"),
+                    image: UIImage(systemName: "checkmark.circle")
+                ) { [weak self] action in
+                    cell.hideSwipe(animated: true)
+                    self?.setEditMode(true)
+                    
+                    if let index = self?.tableView.indexPath(for: cell) {
+                        self?.tableView.selectRow(
+                            at: index,
+                            animated: true,
+                            scrollPosition: .none
+                        )
+                        self?.updateSelectedItems(indexPath: index)
+                    }
                 }
-            }
-        )
+            )
+        }
 
         if actions.contains(.open), !tableView.isEditing {
             commonActions.append(

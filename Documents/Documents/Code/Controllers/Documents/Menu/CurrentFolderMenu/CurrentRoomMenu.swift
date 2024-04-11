@@ -15,20 +15,6 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         guard let provider = viewController.provider else { return UIMenu() }
         let actions = provider.actions(for: folder)
 
-        var selectGroup: [UIMenuElement] = []
-
-        // Select
-        if !folder.isEmpty {
-            selectGroup.append(
-                UIAction(
-                    title: NSLocalizedString("Select", comment: "Button title"),
-                    image: UIImage(systemName: "checkmark.circle")
-                ) { action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
-                }
-            )
-        }
-
         var entityActionsGroup: [UIMenuElement] = []
 
         // Edit room
@@ -156,13 +142,11 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             }
         }
 
-        let selectMenu = UIMenu(title: "", options: .displayInline, children: selectGroup)
         let entityActionsMenu = UIMenu(title: "", options: .displayInline, children: entityActionsGroup)
         let entityOperationsMenu = UIMenu(title: "", options: .displayInline, children: entityOperationsGroup)
         let sortMenu = UIMenu(title: "", options: .displayInline, children: sortGroup)
 
         let menus: [UIMenuElement] = [
-            selectMenu,
             entityActionsMenu,
             entityOperationsMenu,
             sortMenu,

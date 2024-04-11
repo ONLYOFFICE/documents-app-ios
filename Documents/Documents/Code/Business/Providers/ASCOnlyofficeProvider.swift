@@ -1328,6 +1328,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]
             }
+            
+            if folder.isRoom == false {
+                entityActions.insert(.select)
+            }
 
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)

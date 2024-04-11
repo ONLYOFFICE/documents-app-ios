@@ -1040,6 +1040,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             let canRead = allowRead(entity: folder)
             let canEdit = allowEdit(entity: folder)
             let canDelete = allowDelete(entity: folder)
+            
+            entityActions.insert(.select)
 
             if canRead, canEdit {
                 entityActions.insert(.open)

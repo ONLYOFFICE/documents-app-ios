@@ -11,7 +11,7 @@
 "PasscodeLockConfirmTitle" = "Подтвердите код доступа";
 
 /* (No Comment) */
-"PasscodeLockEnterDescription" = "Введите код доступа для продолжения.";
+"PasscodeLockEnterDescription" = "";
 
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Введите код доступа";
@@ -26,7 +26,7 @@
 "PasscodeLockMismatchTitle" = "Попробуй еще раз";
 
 /* (No Comment) */
-"PasscodeLockSetDescription" = "Выберите свой код доступа.";
+"PasscodeLockSetDescription" = "Выберите код для разблокировки приложения.";
 
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Введите код доступа";

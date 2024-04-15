@@ -268,6 +268,8 @@
 
         open func passcodeLockDidFail(_ lock: PasscodeLockType) {
             animateWrongPassword()
+            descriptionLabel?.textColor = .red
+            descriptionLabel?.text = lock.state.description
         }
 
         open func passcodeLockDidChangeState(_ lock: PasscodeLockType) {

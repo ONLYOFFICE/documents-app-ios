@@ -14,7 +14,7 @@
 
     struct EnterPasscodeState: PasscodeLockStateType {
         let title: String
-        let description: String
+        var description: String
         let isCancellableAction: Bool
         var isTouchIDAllowed = true
 
@@ -29,14 +29,17 @@
         }
 
         private var isNotificationSent = false
+        private let defaultDesc = " "
+        private let incorrectPassCode = localizedStringFor("Incorect passcode", comment: "Entered wrong passcode")
 
         init(allowCancellation: Bool = false) {
             isCancellableAction = allowCancellation
             title = localizedStringFor("PasscodeLockEnterTitle", comment: "Enter passcode title")
-            description = localizedStringFor("PasscodeLockEnterDescription", comment: "Enter passcode description")
+            description = defaultDesc
         }
 
         mutating func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType) {
+            var lock = lock
             guard let currentPasscode = lock.repository.passcode else {
                 return
             }
@@ -53,6 +56,7 @@
                     incorrectPasscodeAttempts = 0
                 }
 
+                lock.state.description = incorrectPassCode
                 lock.delegate?.passcodeLockDidFail(lock)
             }
 

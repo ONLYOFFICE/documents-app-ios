@@ -8,11 +8,11 @@
 
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Enter Passcode";
-"PasscodeLockEnterDescription" = "Enter your passcode to proceed.";
+"PasscodeLockEnterDescription" = "";
 
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Enter a Passcode";
-"PasscodeLockSetDescription" = "Choose your passcode.";
+"PasscodeLockSetDescription" = "Choose passcode to unlock app";
 
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Confirm Passcode";

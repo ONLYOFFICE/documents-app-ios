@@ -20,7 +20,8 @@
         }
 
         open var state: PasscodeLockStateType {
-            return lockState
+            get { lockState }
+            set { lockState = newValue }
         }
 
         open var isTouchIDAllowed: Bool {

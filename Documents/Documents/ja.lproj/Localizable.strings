@@ -440,9 +440,6 @@
 /* Description of file operation error */
 "Could not read from file" = "ファイルからの読み込みに失敗しました";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "このファイルを保存できませんでした。";
-
 /* Description of file operation error */
 "Could not write to file" = "ファイルへの書き込みに失敗しました";
 
@@ -476,7 +473,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新しい文書、スプレッドシート、プレゼンテーションを作成します。新しいフォルダーを作成して、ファイルを整理することができます。";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "ルームの作成";
 
 /* Caption of the process
@@ -1322,9 +1319,6 @@
 
 /* No comment provided by engineer. */
 "Save" = "保存";
-
-/* No comment provided by engineer. */
-"Saved" = "保存しました";
 
 /* Caption of the processing */
 "Saving" = "保存中";

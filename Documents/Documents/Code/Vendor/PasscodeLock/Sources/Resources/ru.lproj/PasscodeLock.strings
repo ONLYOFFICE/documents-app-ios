@@ -22,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Попробуй еще раз";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "Выберите код для разблокировки приложения.";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Введите код доступа";
 
@@ -33,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Требуется аутентификация";
-
-/* Button title */
-"Use Face ID" = "Использовать Face ID";
-
-/* Button title */
-"Use Touch ID" = "Использовать Touch ID";
 

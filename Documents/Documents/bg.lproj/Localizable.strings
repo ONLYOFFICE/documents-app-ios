@@ -440,9 +440,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Файлът не може да бъде прочетен";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Файлът не можа да бъде запазен.";
-
 /* Description of file operation error */
 "Could not write to file" = "Върху файлът не може да се пише";
 
@@ -476,7 +473,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Създавайте нови документи, таблици или презентации. Създайте нови папки, за да организирате файловете си.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Създай стая";
 
 /* Caption of the process
@@ -1322,9 +1319,6 @@
 
 /* No comment provided by engineer. */
 "Save" = "Запази";
-
-/* No comment provided by engineer. */
-"Saved" = "Записано";
 
 /* Caption of the processing */
 "Saving" = "Спестяване";

@@ -440,9 +440,6 @@
 /* Description of file operation error */
 "Could not read from file" = "无法读取文件";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "无法保存该文件。";
-
 /* Description of file operation error */
 "Could not write to file" = "无法写入文件";
 
@@ -476,7 +473,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "创建房间";
 
 /* Caption of the process
@@ -1322,9 +1319,6 @@
 
 /* No comment provided by engineer. */
 "Save" = "保存";
-
-/* No comment provided by engineer. */
-"Saved" = "已保存";
 
 /* Caption of the processing */
 "Saving" = "正在保存";

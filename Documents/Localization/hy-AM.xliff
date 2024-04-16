@@ -970,8 +970,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>Ընտրեք ձեր ծածկագիրը:</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -1820,11 +1819,6 @@ others which use WebDAV protocol.</source>
         <target>Չհաջողվեց կարդալ ֆայլից</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not save the file." xml:space="preserve">
-        <source>Could not save the file.</source>
-        <target>Չհաջողվեց պահպանել ֆայլը:</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>Չհաջողվեց գրել ֆայլին</target>
@@ -1880,10 +1874,19 @@ others which use WebDAV protocol.</source>
         <target>Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create new files" xml:space="preserve">
+        <source>Create new files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
+        <source>Create new folders to 
+organize your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target>Ստեղծել սենյակ</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2288,6 +2291,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target>Ֆայլերի նախադիտում</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appeared here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2748,6 +2755,10 @@ copied to clipboard</source>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Կապ չկա</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No docs here yet" xml:space="preserve">
+        <source>No docs here yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3254,6 +3265,10 @@ copied to clipboard</source>
         <target>Սենյակի ադմին</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Room created!" xml:space="preserve">
+        <source>Room created!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
         <target>Սենյակի անվանումը</target>
@@ -3278,11 +3293,6 @@ copied to clipboard</source>
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
         <target>Պահպանել</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Saved" xml:space="preserve">
-        <source>Saved</source>
-        <target>Պահպանված</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3504,6 +3514,10 @@ copied to clipboard</source>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
         <target>Նշել</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags" xml:space="preserve">
+        <source>Tags</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">

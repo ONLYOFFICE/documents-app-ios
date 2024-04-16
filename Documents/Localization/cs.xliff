@@ -1060,8 +1060,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>Zvolte přístupový kód.</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -1910,11 +1909,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Nelze číst ze souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not save the file." xml:space="preserve">
-        <source>Could not save the file.</source>
-        <target>Soubor se nepodařilo uložit</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>Nelze zapisovat do souboru</target>
@@ -1970,10 +1964,19 @@ jiné, které používají protokol WebDAV.</target>
         <target>Vytvářejte nové dokumenty, tabulky nebo prezentace. Vytvořte nové složky pro uspořádání souborů.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create new files" xml:space="preserve">
+        <source>Create new files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
+        <source>Create new folders to 
+organize your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target>Vytvořit místnost</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2378,6 +2381,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target>Náhled souborů</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appeared here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2837,6 +2844,10 @@ zkopírován do schránky</target>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Bez připojení</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No docs here yet" xml:space="preserve">
+        <source>No docs here yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3343,6 +3354,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Správce místnosti</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Room created!" xml:space="preserve">
+        <source>Room created!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
         <target>Název místnosti</target>
@@ -3367,11 +3382,6 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
         <target>Uložit</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Saved" xml:space="preserve">
-        <source>Saved</source>
-        <target>Uloženo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3593,6 +3603,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
         <target>Štítek</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags" xml:space="preserve">
+        <source>Tags</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">

@@ -440,9 +440,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Невозможно прочитать из файла";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Невозможно сохранить файл.";
-
 /* Description of file operation error */
 "Could not write to file" = "Не удалось записать в файл";
 
@@ -476,7 +473,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Создавайте новые документы, таблицы или презентации. Создавайте новые папки, чтобы упорядочивать файлы.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Создать комнату";
 
 /* Caption of the process
@@ -1322,9 +1319,6 @@
 
 /* No comment provided by engineer. */
 "Save" = "Сохранить";
-
-/* No comment provided by engineer. */
-"Saved" = "Сохранено";
 
 /* Caption of the processing */
 "Saving" = "Сохранение";

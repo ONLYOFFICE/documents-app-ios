@@ -925,8 +925,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>パスコードを選択してください。</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -1775,11 +1774,6 @@ WebDAVプロトコルを使用する
         <target>ファイルからの読み込みに失敗しました</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not save the file." xml:space="preserve">
-        <source>Could not save the file.</source>
-        <target>このファイルを保存できませんでした。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>ファイルへの書き込みに失敗しました</target>
@@ -1835,10 +1829,19 @@ WebDAVプロトコルを使用する
         <target>新しい文書、スプレッドシート、プレゼンテーションを作成します。新しいフォルダーを作成して、ファイルを整理することができます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create new files" xml:space="preserve">
+        <source>Create new files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
+        <source>Create new folders to 
+organize your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target>ルームの作成</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2243,6 +2246,10 @@ WebDAVプロトコルを使用する
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target>ファイルのプレビュー</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appeared here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2703,6 +2710,10 @@ copied to clipboard</source>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>接続がありません</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No docs here yet" xml:space="preserve">
+        <source>No docs here yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3209,6 +3220,10 @@ copied to clipboard</source>
         <target>ルームの管理者</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Room created!" xml:space="preserve">
+        <source>Room created!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
         <target>ルーム名</target>
@@ -3233,11 +3248,6 @@ copied to clipboard</source>
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
         <target>保存</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Saved" xml:space="preserve">
-        <source>Saved</source>
-        <target>保存しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3459,6 +3469,10 @@ copied to clipboard</source>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
         <target>タグ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags" xml:space="preserve">
+        <source>Tags</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">

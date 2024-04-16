@@ -22,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Опитай пак";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "Изберете паролата си.";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Въведете парола";
 
@@ -33,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Изисква се удостоверяване, за да продължите";
-
-/* Button title */
-"Use Face ID" = "Използвайте Face ID";
-
-/* Button title */
-"Use Touch ID" = "Използвайте Touch ID";
 

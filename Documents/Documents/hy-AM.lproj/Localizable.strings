@@ -440,9 +440,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Չհաջողվեց կարդալ ֆայլից";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Չհաջողվեց պահպանել ֆայլը:";
-
 /* Description of file operation error */
 "Could not write to file" = "Չհաջողվեց գրել ֆայլին";
 
@@ -476,7 +473,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Ստեղծել սենյակ";
 
 /* Caption of the process
@@ -1322,9 +1319,6 @@
 
 /* No comment provided by engineer. */
 "Save" = "Պահպանել";
-
-/* No comment provided by engineer. */
-"Saved" = "Պահպանված";
 
 /* Caption of the processing */
 "Saving" = "Խնայողություն";

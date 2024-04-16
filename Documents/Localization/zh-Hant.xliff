@@ -925,8 +925,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>选择密码。</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -1775,11 +1774,6 @@ others which use WebDAV protocol.</source>
         <target>无法读取文件</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not save the file." xml:space="preserve">
-        <source>Could not save the file.</source>
-        <target>无法保存该文件。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>无法写入文件</target>
@@ -1835,10 +1829,19 @@ others which use WebDAV protocol.</source>
         <target>创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create new files" xml:space="preserve">
+        <source>Create new files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
+        <source>Create new folders to 
+organize your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target>建立房間</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2243,6 +2246,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target>文件预览</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appeared here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2700,6 +2707,10 @@ copied to clipboard</source>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>无连接</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No docs here yet" xml:space="preserve">
+        <source>No docs here yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3206,6 +3217,10 @@ copied to clipboard</source>
         <target>會議室管理員</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Room created!" xml:space="preserve">
+        <source>Room created!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
         <target>房間名稱</target>
@@ -3230,11 +3245,6 @@ copied to clipboard</source>
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
         <target>儲存</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Saved" xml:space="preserve">
-        <source>Saved</source>
-        <target>已儲存</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3456,6 +3466,10 @@ copied to clipboard</source>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
         <target>標籤</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags" xml:space="preserve">
+        <source>Tags</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">

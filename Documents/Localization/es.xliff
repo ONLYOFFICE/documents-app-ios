@@ -968,8 +968,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>Seleccione su contraseña.</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -1818,11 +1817,6 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>No se puede leer desde el archivo</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not save the file." xml:space="preserve">
-        <source>Could not save the file.</source>
-        <target>No se puede guardar el archivo.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>No se puede escribir en el archivo</target>
@@ -1878,10 +1872,19 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Cree nuevos documentos, hojas de cálculo o presentaciones. Cree nuevas carpetas para organizar los archivos.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create new files" xml:space="preserve">
+        <source>Create new files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
+        <source>Create new folders to 
+organize your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target>Crear sala</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2286,6 +2289,10 @@ otros que utilizan el protocolo WebDAV.</target>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target>Vista previa de archivos</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appeared here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2745,6 +2752,10 @@ con éxito al portapapeles</target>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Sin conexión</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No docs here yet" xml:space="preserve">
+        <source>No docs here yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3251,6 +3262,10 @@ Si el problema persiste, contáctenos y mencione este código de error: SSO - %@
         <target>Administrador de sala</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Room created!" xml:space="preserve">
+        <source>Room created!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
         <target>Nombre de sala</target>
@@ -3275,11 +3290,6 @@ Si el problema persiste, contáctenos y mencione este código de error: SSO - %@
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
         <target>Guardar</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Saved" xml:space="preserve">
-        <source>Saved</source>
-        <target>Guardado</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3501,6 +3511,10 @@ Si el problema persiste, contáctenos y mencione este código de error: SSO - %@
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
         <target>Etiqueta</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags" xml:space="preserve">
+        <source>Tags</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">

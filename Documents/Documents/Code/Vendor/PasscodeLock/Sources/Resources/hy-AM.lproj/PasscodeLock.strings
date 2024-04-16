@@ -22,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Կրկին փորձել";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "Ընտրեք ձեր ծածկագիրը:";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Մուտքագրեք գաղտնաբառ";
 
@@ -33,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Շարունակելու համար անհրաժեշտ է նույնականացում";
-
-/* Button title */
-"Use Face ID" = "Օգտագործեք Face ID";
-
-/* Button title */
-"Use Touch ID" = "Օգտագործեք Touch ID";
 

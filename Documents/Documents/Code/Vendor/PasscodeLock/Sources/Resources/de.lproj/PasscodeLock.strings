@@ -22,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Versuchen Sie es erneut";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "Wählen Sie Ihr Kennwort.";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Geben Sie ein Kennwort ein";
 
@@ -33,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Authentifizierung ist erforderlich, um fortzufahren";
-
-/* Button title */
-"Use Face ID" = "Face-ID verwenden";
-
-/* Button title */
-"Use Touch ID" = "Touch-ID verwenden";
 

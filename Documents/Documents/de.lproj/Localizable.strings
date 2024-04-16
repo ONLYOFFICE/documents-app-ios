@@ -440,9 +440,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Lesen aus Datei unmöglich";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Die Datei konnte nicht gespeichert werden.";
-
 /* Description of file operation error */
 "Could not write to file" = "Schreiben an Datei unmöglich";
 
@@ -476,7 +473,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Erstellen von neuen Dokumenten, Tabellenkalkulationen oder Präsentationen. Neue Ordner erstellen, um die vorhandenen Dateien zu sortieren.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Raum erstellen";
 
 /* Caption of the process
@@ -1322,9 +1319,6 @@
 
 /* No comment provided by engineer. */
 "Save" = "Speichern";
-
-/* No comment provided by engineer. */
-"Saved" = "Gespeichert";
 
 /* Caption of the processing */
 "Saving" = "Wird gespeichert";

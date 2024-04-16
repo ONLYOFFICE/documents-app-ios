@@ -22,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "再试一次";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "选择密码。";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "输入密码";
 
@@ -33,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "需要身份验证才能继续";
-
-/* Button title */
-"Use Face ID" = "使用Face ID";
-
-/* Button title */
-"Use Touch ID" = "使用Touch ID";
 

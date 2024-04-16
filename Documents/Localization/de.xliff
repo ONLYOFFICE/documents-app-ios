@@ -973,8 +973,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>Wählen Sie Ihr Kennwort.</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -1823,11 +1822,6 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Lesen aus Datei unmöglich</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not save the file." xml:space="preserve">
-        <source>Could not save the file.</source>
-        <target>Die Datei konnte nicht gespeichert werden.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>Schreiben an Datei unmöglich</target>
@@ -1883,10 +1877,19 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Erstellen von neuen Dokumenten, Tabellenkalkulationen oder Präsentationen. Neue Ordner erstellen, um die vorhandenen Dateien zu sortieren.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create new files" xml:space="preserve">
+        <source>Create new files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
+        <source>Create new folders to 
+organize your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target>Raum erstellen</target>
-        <note>No comment provided by engineer.</note>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2291,6 +2294,10 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target>Dateivorschau</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appeared here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2751,6 +2758,10 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Keine Verbindung</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No docs here yet" xml:space="preserve">
+        <source>No docs here yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3257,6 +3268,10 @@ in die Zwischenablage kopiert</target>
         <target>Admin des Raums</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Room created!" xml:space="preserve">
+        <source>Room created!</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
         <target>Name des Raums</target>
@@ -3281,11 +3296,6 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
         <target>Speichern</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Saved" xml:space="preserve">
-        <source>Saved</source>
-        <target>Gespeichert</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3507,6 +3517,10 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
         <target>Tag</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags" xml:space="preserve">
+        <source>Tags</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">

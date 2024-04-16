@@ -8,7 +8,6 @@
 
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Enter Passcode";
-"PasscodeLockEnterDescription" = "";
 
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Enter a Passcode";

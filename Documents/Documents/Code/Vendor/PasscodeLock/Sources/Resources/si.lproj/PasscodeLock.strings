@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "මුරකේතය තහවුරු කරන්න";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "ඉදිරියට යාමට මුරකේතය යොදන්න.";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "මුරකේතය යොදන්න";
 

@@ -1040,11 +1040,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Подтвердите код доступа</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>Введите код доступа для продолжения.</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Введите код доступа</target>

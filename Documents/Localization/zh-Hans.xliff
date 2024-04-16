@@ -904,11 +904,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>确认密码</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>输入您的密码以继续。</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>输入密码</target>

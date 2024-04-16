@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Потвърдете паролата";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "Въведете паролата си, за да продължите.";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Въведете парола";
 

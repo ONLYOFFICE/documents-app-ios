@@ -949,11 +949,6 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target>Conferma il codice di accesso</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>Inserire il tuo codice di accesso per procedere.</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Inserire il codice di accesso</target>

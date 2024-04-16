@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Подтвердите код доступа";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Введите код доступа";
 

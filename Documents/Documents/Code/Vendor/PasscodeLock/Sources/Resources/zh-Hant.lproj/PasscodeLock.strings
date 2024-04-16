@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "确认密码";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "输入您的密码以继续。";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "输入密码";
 

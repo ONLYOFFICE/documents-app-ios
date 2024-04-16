@@ -949,11 +949,6 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Confirme o código de acesso</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>Digite seu código de acesso para continuar.</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Digite o código de acesso</target>

@@ -947,11 +947,6 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>Confirmar contraseña</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>Introduzca su contraseña para proceder.</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Introduzca contraseña</target>

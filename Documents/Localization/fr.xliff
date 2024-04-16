@@ -949,11 +949,6 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Confirmez le code d'accès</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>Entrez votre code d'accès pour continuer.</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Entrez le code d'accès</target>

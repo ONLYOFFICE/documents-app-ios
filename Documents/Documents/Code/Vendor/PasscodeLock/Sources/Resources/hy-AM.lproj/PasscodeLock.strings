@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Հաստատել գաղտնաբառը";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "Շարունակելու համար մուտքագրեք ձեր ծածկագիրը:";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Մուտքագրեք գաղտնաբառ";
 

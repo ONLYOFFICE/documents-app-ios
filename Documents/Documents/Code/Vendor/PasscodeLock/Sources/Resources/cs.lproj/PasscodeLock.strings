@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Potvrďte přístupový kód";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "Zadejte přístupový kód a pokračujte.";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Zadejte přístupový kód";
 

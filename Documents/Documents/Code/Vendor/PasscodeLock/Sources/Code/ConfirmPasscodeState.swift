@@ -25,6 +25,7 @@
         }
 
         func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType) {
+            var lock = lock
             if passcode == passcodeToConfirm {
                 lock.repository.savePasscode(passcode)
                 lock.delegate?.passcodeLockDidSucceed(lock)
@@ -36,6 +37,7 @@
                 let nextState = SetPasscodeState(title: mismatchTitle, description: mismatchDescription)
 
                 lock.changeStateTo(nextState)
+                lock.state.description = localizedStringFor("Incorrect passcode entered", comment: "Entered wrong passcode")
                 lock.delegate?.passcodeLockDidFail(lock)
             }
         }

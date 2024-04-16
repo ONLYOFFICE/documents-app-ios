@@ -29,13 +29,11 @@
         }
 
         private var isNotificationSent = false
-        private let defaultDesc = " "
-        private let incorrectPassCode = localizedStringFor("Incorect passcode", comment: "Entered wrong passcode")
 
         init(allowCancellation: Bool = false) {
             isCancellableAction = allowCancellation
             title = localizedStringFor("PasscodeLockEnterTitle", comment: "Enter passcode title")
-            description = defaultDesc
+            description = " "
         }
 
         mutating func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType) {
@@ -56,7 +54,7 @@
                     incorrectPasscodeAttempts = 0
                 }
 
-                lock.state.description = incorrectPassCode
+                lock.state.description = localizedStringFor("Incorrect passcode entered", comment: "Entered wrong passcode")
                 lock.delegate?.passcodeLockDidFail(lock)
             }
 

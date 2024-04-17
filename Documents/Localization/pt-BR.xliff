@@ -354,6 +354,10 @@ comece a usar seu office</target>
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS";</note>
       </trans-unit>
+      <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
+        <source>Sign in as LDAP User</source>
+        <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
+      </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
         <source>Detail</source>
         <target>Detalhes</target>
@@ -2098,6 +2102,10 @@ outros que usam o protocolo WebDAV.</target>
       <trans-unit id="Email" xml:space="preserve">
         <source>Email</source>
         <target>Email</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Email adress" xml:space="preserve">
+        <source>Email adress</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
@@ -3919,6 +3927,10 @@ para a área de transferência</target>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
         <target>Autenticação do usuário necessária</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User name" xml:space="preserve">
+        <source>User name</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">

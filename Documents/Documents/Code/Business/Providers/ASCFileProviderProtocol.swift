@@ -131,6 +131,7 @@ protocol ASCFileProviderProtocol {
     func allowDelete(entity: AnyObject?) -> Bool
     func actions(for entity: ASCEntity?) -> ASCEntityActions
     func isTrash(for folder: ASCFolder?) -> Bool
+    func allowDragAndDrop(for entity: ASCEntity?) -> Bool
 
     // Open files
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool)
@@ -179,6 +180,7 @@ extension ASCFileProviderProtocol {
     func allowRead(entity: AnyObject?) -> Bool { return false }
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
+    func allowDragAndDrop(for entity: ASCEntity?) -> Bool { return true }
     func isTrash(for folder: ASCFolder?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {

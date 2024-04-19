@@ -444,6 +444,10 @@ začněte používat vaší kancelář</target>
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS";</note>
       </trans-unit>
+      <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
+        <source>Sign in as LDAP User</source>
+        <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
+      </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
         <source>Detail</source>
         <target>Podrobnosti</target>
@@ -2189,6 +2193,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Email" xml:space="preserve">
         <source>Email</source>
         <target>E-mail</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Email address" xml:space="preserve">
+        <source>Email address</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
@@ -4010,6 +4018,10 @@ do schránky</target>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
         <target>Požadované ověření uživatele</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User name" xml:space="preserve">
+        <source>User name</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">

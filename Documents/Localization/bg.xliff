@@ -2105,8 +2105,8 @@ others which use WebDAV protocol.</source>
         <target>Електронна поща</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Email adress" xml:space="preserve">
-        <source>Email adress</source>
+      <trans-unit id="Email address" xml:space="preserve">
+        <source>Email address</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">

@@ -2109,9 +2109,9 @@ others which use WebDAV protocol.</target>
         <target>Email</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Email adress" xml:space="preserve">
-        <source>Email adress</source>
-        <target>Email adress</target>
+      <trans-unit id="Email address" xml:space="preserve">
+        <source>Email address</source>
+        <target>Email address</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">

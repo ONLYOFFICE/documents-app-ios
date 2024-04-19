@@ -60,7 +60,7 @@ class ASCSignInViewController: ASCBaseViewController {
         let capabilities = OnlyofficeApiClient.shared.capabilities
         
         if capabilities?.ldapEnabled ?? false {
-            emailField?.placeholder = NSLocalizedString("Email adress", comment: "")
+            emailField?.placeholder = NSLocalizedString("Email address", comment: "")
         } else {
             emailField?.placeholder = NSLocalizedString("Email", comment: "")
         }
@@ -229,7 +229,7 @@ class ASCSignInViewController: ASCBaseViewController {
                                       : UIImage(systemName: "circle"), for: .normal)
         emailField.placeholder = signInWithLdap 
         ? NSLocalizedString("User name", comment: "").uppercased()
-        : NSLocalizedString("Email adress", comment: "").uppercased()
+        : NSLocalizedString("Email address", comment: "").uppercased()
     }
     
     @IBAction func onForgotPassword(_ sender: Any) {

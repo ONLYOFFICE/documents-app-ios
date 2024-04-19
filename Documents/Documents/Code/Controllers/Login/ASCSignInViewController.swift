@@ -58,7 +58,7 @@ class ASCSignInViewController: ASCBaseViewController {
         ssoButton?.styleType = .bordered
 
         let capabilities = OnlyofficeApiClient.shared.capabilities
-        capabilities?.ldapEnabled = true
+        
         if capabilities?.ldapEnabled ?? false {
             emailField?.placeholder = NSLocalizedString("Email adress", comment: "")
         } else {
@@ -191,6 +191,10 @@ class ASCSignInViewController: ASCBaseViewController {
     }
 
     private func valid(email: String) -> Bool {
+        if signInWithLdap {
+            return true
+        }
+        
         if email.length < 1 {
             emailField?.errorMessage = NSLocalizedString("Email is empty", comment: "")
             emailField?.shake()

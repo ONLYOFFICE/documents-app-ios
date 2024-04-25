@@ -8,6 +8,6 @@
 
 import Foundation
 
- struct RoomNotificationsResponceModel: Codable {
+struct RoomNotificationsResponceModel: Codable {
     let disabledRooms: [Int]
 }

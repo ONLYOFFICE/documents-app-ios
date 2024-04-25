@@ -23,7 +23,7 @@ private struct ItemDragInfo {
 
 extension ASCDocumentsViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        guard 
+        guard
             tableView.cellForRow(at: indexPath) != nil,
             let providerId = provider?.id,
             provider?.allowDragAndDrop(for: tableData[indexPath.row]) == true

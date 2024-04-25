@@ -111,7 +111,7 @@ class ASCDocumentsEmptyView: UIView {
                 .start()
         }
     }
-    
+
     private func customizeButtonTitle() {
         if actionButton?.styleType == .action {
             actionButton?.setTitleColor(.white, for: .normal)
@@ -179,7 +179,6 @@ class ASCDocumentsEmptyView: UIView {
 }
 
 private extension ASCDocumentsEmptyView.EmptyViewState {
-    
     var actionButtonStyleType: ASCButtonStyleType {
         switch self {
         case .docspace:

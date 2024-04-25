@@ -163,7 +163,7 @@ enum OnlyofficeAPI {
             static func deleteFromRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomTags, folder.id), .delete)
             }
-            
+
             static func getList() -> Endpoint<OnlyofficeResponseArrayCodable<String>> {
                 return Endpoint<OnlyofficeResponseArrayCodable<String>>.make(Path.tags, .get, URLEncoding.queryString)
             }
@@ -225,7 +225,7 @@ enum OnlyofficeAPI {
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.room, folder.id), .put)
             }
-            
+
             static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }

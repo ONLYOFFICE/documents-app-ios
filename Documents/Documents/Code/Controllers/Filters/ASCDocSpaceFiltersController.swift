@@ -276,7 +276,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                         self.runPreload()
                     }
                 case .tags:
-                    if let tappedTagIndex: Int =  tempState.tagsFilters.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
+                    if let tappedTagIndex: Int = tempState.tagsFilters.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
                         tempState.tagsFilters[tappedTagIndex].isSelected.toggle()
                         self.runPreload()
                     }
@@ -327,7 +327,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             completion(provider.total)
         })
     }
-    
+
     // MARK: - Reset
 
     private func resetAuthorModels() {
@@ -339,9 +339,9 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         tempState.memberFilter.selectedName = nil
         tempState.memberFilter.id = nil
     }
-    
+
     private func resetTagsModel() {
-        tempState.tagsFilters.enumerated().forEach { i, _ in
+        for (i, _) in tempState.tagsFilters.enumerated() {
             tempState.tagsFilters[i].isSelected = false
         }
     }
@@ -369,7 +369,6 @@ extension ASCDocSpaceFiltersController: ASCFiltersViewControllerDelegate {
 }
 
 extension ASCDocSpaceFiltersController {
-    
     func selectedTagsValues(state: State) -> String? {
         let selectedTags = state.tagsFilters.filter { $0.isSelected }
         guard !selectedTags.isEmpty else { return nil }

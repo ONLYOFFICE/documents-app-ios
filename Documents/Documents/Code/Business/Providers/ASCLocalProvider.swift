@@ -776,7 +776,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             }
 
             entityActions.insert(.select)
-            
+
             if canRead, canEdit {
                 entityActions.insert(.open)
             }

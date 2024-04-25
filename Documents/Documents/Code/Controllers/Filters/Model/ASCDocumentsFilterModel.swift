@@ -118,7 +118,7 @@ enum ApiFilterType {
     case googleDrive
     case oneDrive
     case box
-    
+
     var rawValue: String {
         switch self {
         case .none:
@@ -298,35 +298,35 @@ extension ApiFilterType {
 }
 
 extension ApiFilterType: Equatable {
-    static func ==(lhs: ApiFilterType, rhs: ApiFilterType) -> Bool {
+    static func == (lhs: ApiFilterType, rhs: ApiFilterType) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none),
-            (.files, .files),
-            (.folders, .folders),
-            (.documents, .documents),
-            (.presentations, .presentations),
-            (.spreadsheets, .spreadsheets),
-            (.formTemplates, .formTemplates),
-            (.forms, .forms), (.images, .images),
-            (.me, .me),
-            (.user, .user),
-            (.group, .group),
-            (.archive, .archive),
-            (.byExtension, .byExtension),
-            (.media, .media),
-            (.excludeSubfolders, .excludeSubfolders),
-            (.customRoom, .customRoom),
-            (.fillingFormRoom, .fillingFormRoom),
-            (.collaborationRoom, .collaborationRoom),
-            (.reviewRoom, .reviewRoom),
-            (.viewOnlyRoom, .viewOnlyRoom),
-            (.publicRoom, .publicRoom),
-            (.dropBox, .dropBox),
-            (.googleDrive, .googleDrive),
-            (.oneDrive, .oneDrive),
-            (.box, .box):
+             (.files, .files),
+             (.folders, .folders),
+             (.documents, .documents),
+             (.presentations, .presentations),
+             (.spreadsheets, .spreadsheets),
+             (.formTemplates, .formTemplates),
+             (.forms, .forms), (.images, .images),
+             (.me, .me),
+             (.user, .user),
+             (.group, .group),
+             (.archive, .archive),
+             (.byExtension, .byExtension),
+             (.media, .media),
+             (.excludeSubfolders, .excludeSubfolders),
+             (.customRoom, .customRoom),
+             (.fillingFormRoom, .fillingFormRoom),
+             (.collaborationRoom, .collaborationRoom),
+             (.reviewRoom, .reviewRoom),
+             (.viewOnlyRoom, .viewOnlyRoom),
+             (.publicRoom, .publicRoom),
+             (.dropBox, .dropBox),
+             (.googleDrive, .googleDrive),
+             (.oneDrive, .oneDrive),
+             (.box, .box):
             return true
-        case (.tag(let leftTag), .tag(let rightTag)):
+        case let (.tag(leftTag), .tag(rightTag)):
             return leftTag == rightTag
         default:
             return false

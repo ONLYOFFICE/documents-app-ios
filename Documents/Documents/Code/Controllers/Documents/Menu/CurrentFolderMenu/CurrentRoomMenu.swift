@@ -66,17 +66,17 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
-        
+
         if actions.contains(.disableNotifications) {
             entityActionsGroup.append(
                 UIAction(
                     title: folder.mute
-                    ? NSLocalizedString("Disable notifications", comment: "")
-                    : NSLocalizedString("Enable notifications", comment: ""),
+                        ? NSLocalizedString("Disable notifications", comment: "")
+                        : NSLocalizedString("Enable notifications", comment: ""),
                     image: folder.mute
-                    ? UIImage(systemName: "bell.slash")
-                    : UIImage(systemName: "bell")
-                ){ _ in
+                        ? UIImage(systemName: "bell.slash")
+                        : UIImage(systemName: "bell")
+                ) { _ in
                     viewController.disableNotifications(room: folder)
                 }
             )

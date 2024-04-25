@@ -43,10 +43,10 @@ class ASCSignInViewController: ASCBaseViewController {
     @IBOutlet var loginByLabel: UILabel!
     @IBOutlet var appleIdButton: UIButton!
     @IBOutlet var signInButtonsStack: UIStackView!
-    @IBOutlet weak var signInWithLdapStack: UIStackView!
-    @IBOutlet weak var signInWithLdapButton: UIButton!
-    @IBOutlet weak var signInWithLdapLabel: UILabel!
-    
+    @IBOutlet var signInWithLdapStack: UIStackView!
+    @IBOutlet var signInWithLdapButton: UIButton!
+    @IBOutlet var signInWithLdapLabel: UILabel!
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
@@ -58,7 +58,7 @@ class ASCSignInViewController: ASCBaseViewController {
         ssoButton?.styleType = .bordered
 
         let capabilities = OnlyofficeApiClient.shared.capabilities
-        
+
         if capabilities?.ldapEnabled ?? false {
             emailField?.placeholder = NSLocalizedString("Email address", comment: "")
         } else {
@@ -194,7 +194,7 @@ class ASCSignInViewController: ASCBaseViewController {
         if signInWithLdap {
             return true
         }
-        
+
         if email.length < 1 {
             emailField?.errorMessage = NSLocalizedString("Email is empty", comment: "")
             emailField?.shake()
@@ -221,17 +221,17 @@ class ASCSignInViewController: ASCBaseViewController {
     }
 
     // MARK: - Actions
-    
+
     @IBAction func onSignInAsLdapUser(_ sender: Any) {
         signInWithLdap.toggle()
-        signInWithLdapButton.setImage(signInWithLdap 
-                                      ? UIImage(systemName: "checkmark.circle.fill")
-                                      : UIImage(systemName: "circle"), for: .normal)
-        emailField.placeholder = signInWithLdap 
-        ? NSLocalizedString("User name", comment: "").uppercased()
-        : NSLocalizedString("Email address", comment: "").uppercased()
+        signInWithLdapButton.setImage(signInWithLdap
+            ? UIImage(systemName: "checkmark.circle.fill")
+            : UIImage(systemName: "circle"), for: .normal)
+        emailField.placeholder = signInWithLdap
+            ? NSLocalizedString("User name", comment: "").uppercased()
+            : NSLocalizedString("Email address", comment: "").uppercased()
     }
-    
+
     @IBAction func onForgotPassword(_ sender: Any) {
         navigator.navigate(to: .recoveryPasswordByEmail)
     }

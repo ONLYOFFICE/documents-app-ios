@@ -1227,7 +1227,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             let canDelete = allowDelete(entity: folder)
 
             entityActions.insert(.select)
-            
+
             if canRead, canEdit {
                 entityActions.insert(.open)
             }

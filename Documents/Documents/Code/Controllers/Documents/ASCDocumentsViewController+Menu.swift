@@ -283,7 +283,7 @@ extension ASCDocumentsViewController {
                 ) { [weak self] action in
                     cell.hideSwipe(animated: true)
                     self?.setEditMode(true)
-                    
+
                     if let index = self?.tableView.indexPath(for: cell) {
                         self?.tableView.selectRow(
                             at: index,
@@ -450,19 +450,19 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Disable notifications
-        
+
         if actions.contains(.disableNotifications) {
             basicActions.append(
                 UIAction(
                     title: folder.mute
-                    ? NSLocalizedString("Enable notifications", comment: "")
-                    : NSLocalizedString("Disable notifications", comment: ""),
+                        ? NSLocalizedString("Enable notifications", comment: "")
+                        : NSLocalizedString("Disable notifications", comment: ""),
                     image: folder.mute
-                    ? UIImage(systemName: "bell")
-                    : UIImage(systemName: "bell.slash")
-                ) { [ unowned self ] action in
+                        ? UIImage(systemName: "bell")
+                        : UIImage(systemName: "bell.slash")
+                ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     disableNotifications(room: folder)
                 }

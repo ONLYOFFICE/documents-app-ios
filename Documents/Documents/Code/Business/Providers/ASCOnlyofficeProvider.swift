@@ -1186,12 +1186,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         return true
     }
-    
+
     func allowDragAndDrop(for entity: ASCEntity?) -> Bool {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
         let parentFolder = file?.parent ?? folder?.parent
-        
+
         if file != nil, parentFolder?.rootFolderType == .onlyofficeRoomArchived {
             return false
         }
@@ -1328,7 +1328,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]
             }
-            
+
             if folder.isRoom == false {
                 entityActions.insert(.select)
             }
@@ -1373,7 +1373,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canEdit, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
             }
-            
+
             if isDocspace, folder.isRoom {
                 entityActions.insert(.disableNotifications)
             }

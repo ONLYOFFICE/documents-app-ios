@@ -94,7 +94,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
             let documentsVC: ASCDocumentsViewController = ASCDocumentsViewController.instantiate(from: Storyboard.main)
 
             if animated {
-                splitVC.showDetailViewController(documentsVC, sender: self)
+                splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
             } else {
                 DispatchQueue.main.async {
                     UIView.performWithoutAnimation {
@@ -103,7 +103,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
                         {
                             documentsNC.viewControllers = [categoryVC]
                         }
-                        splitVC.showDetailViewController(documentsVC, sender: self)
+                        splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
                     }
                 }
             }

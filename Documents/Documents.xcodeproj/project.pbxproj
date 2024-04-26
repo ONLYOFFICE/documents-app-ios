@@ -190,6 +190,8 @@
 		F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */; };
 		F3E71CBB2B98708600D91AA5 /* SharingInviteRightHoldersRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E71CBA2B98708600D91AA5 /* SharingInviteRightHoldersRepresentable.swift */; };
 		F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */; };
+		FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */; };
+		FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
 		FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D9B1E82657F00BC2F5E /* ASCIndexTransform.swift */; };
@@ -772,6 +774,8 @@
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC029A3C27BCF8E800E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
+		FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentServerVersionRequest.swift; sourceTree = "<group>"; };
+		FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentServerVersionResponse.swift; sourceTree = "<group>"; };
 		FC050F7F1ECB1F6800FD452C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConnectStorage.storyboard; sourceTree = "<group>"; };
 		FC050F821ECB1F6A00FD452C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FC059D971E82584400BC2F5E /* ASCDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDateTransform.swift; sourceTree = "<group>"; };
@@ -2201,6 +2205,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FC0377A12BDB8D6500DDB2EF /* DocumentServer */ = {
+			isa = PBXGroup;
+			children = (
+				FC0377A22BDB8D7200DDB2EF /* Models */,
+			);
+			path = DocumentServer;
+			sourceTree = "<group>";
+		};
+		FC0377A22BDB8D7200DDB2EF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */,
+				FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FC059D961E82581D00BC2F5E /* Transforms */ = {
 			isa = PBXGroup;
 			children = (
@@ -2700,6 +2721,7 @@
 		FC68524326837B7300D830EC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				FC0377A12BDB8D6500DDB2EF /* DocumentServer */,
 				FC68524426837B7300D830EC /* Nextcloud */,
 				FC68524C26837B7300D830EC /* Onedrive */,
 				FC68525026837B7300D830EC /* Onlyoffice */,
@@ -4116,6 +4138,7 @@
 				1D9B808F2674001D0020B5ED /* ASCAccessRowTableViewCell.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
+				FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */,
 				F34DC2462B3B11730074E367 /* RoomUsersResponceModel.swift in Sources */,
 				FCEF856F26C64B7A00173DDF /* WhatsNewService.swift in Sources */,
 				1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */,
@@ -4277,6 +4300,7 @@
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC35D4602A987DFC00C6383F /* UIButton+Extensions.swift in Sources */,
 				1D14AAC42694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
+				FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */,
 				E8EEC4112B2C622000A0640D /* AttachLogoRequestModel.swift in Sources */,
 				FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */,
 				FC35D4442A987DFB00C6383F /* UITableView+Extensions.swift in Sources */,

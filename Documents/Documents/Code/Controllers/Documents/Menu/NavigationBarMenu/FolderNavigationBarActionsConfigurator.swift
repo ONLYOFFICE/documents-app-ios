@@ -1,5 +1,5 @@
 //
-//  CurrentNavigationBars.swift
+//  FolderNavigationBarActionsConfigurator.swift
 //  Documents-develop
 //
 //  Created by Victor Tihovodov on 13.03.2024.
@@ -8,14 +8,17 @@
 
 import UIKit
 
-final class CurrentNavigationBars {
-    static let shared: CurrentNavigationBars = CurrentNavigationBars()
+final class FolderNavigationBarActionsConfigurator {
+    var viewController: ASCDocumentsViewController!
 
-    func configureToolBar(viewController: ASCDocumentsViewController) -> ASCToolBarType {
-        var items: ASCToolBarType = []
+    init(viewController: ASCDocumentsViewController) {
+        self.viewController = viewController
+    }
+
+    func configureFolderActionsToolBar() -> ASCToolBarType {
+        var actions: ASCToolBarType = []
 
         guard let folder = viewController.folder else { return [] }
-
         let provider = viewController.provider
         let onlyOfficeProvider = provider as? ASCOnlyofficeProvider
 
@@ -39,77 +42,77 @@ final class CurrentNavigationBars {
 
         // Create room
         if isPersonalCategory, isDocSpace {
-            items.insert(.createRoom)
+            actions.insert(.createRoom)
         }
 
         // Move
         if !isTrash, !isDocSpaceArchive, !isDocSpaceArchiveRoomContent, !isDocSpaceRoomShared, isDevice || !(isShared || isProjectRoot || isGuest) {
-            items.insert(.move)
+            actions.insert(.move)
         }
 
         // Copy
         if !isTrash, !isRoomList {
-            items.insert(.copy)
+            actions.insert(.copy)
         }
 
         // Restore
         if isTrash {
-            items.insert(.restore)
+            actions.insert(.restore)
         }
 
         // Restore room
         if isDocSpaceArchive, folder.security.move {
-            items.insert(.restoreRoom)
+            actions.insert(.restoreRoom)
         }
 
         // Remove from list
         if isShared {
-            items.insert(.removeFromList)
+            actions.insert(.removeFromList)
         }
 
         // Remove
         if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) {
-            items.insert(.remove)
+            actions.insert(.remove)
         }
 
         // Info
         if isInfoShowing {
-            items.insert(.info)
+            actions.insert(.info)
         }
 
         // Pin
         if isDocSpaceRoomShared {
-            items.insert(.pin)
+            actions.insert(.pin)
         }
 
         // Archive
         if isDocSpaceRoomShared {
-            items.insert(.archive)
+            actions.insert(.archive)
         }
 
         // Remove all
         if isTrash {
-            items.insert(.removeAll)
+            actions.insert(.removeAll)
         }
 
         // Unarchive
         if isDocSpaceArchive {
-            items.insert(.unarchive)
+            actions.insert(.unarchive)
         }
 
         // Remove all rooms
         if isDocSpaceArchive, isCanRemoveAllRooms {
-            items.insert(.removeAllRooms)
+            actions.insert(.removeAllRooms)
         }
 
         if isNeededUpdateToolBarOnSelection {
-            items.insert(.neededUpdateToolBarOnSelection)
+            actions.insert(.neededUpdateToolBarOnSelection)
         }
 
         if isNeededUpdateToolBarOnDeselection {
-            items.insert(.neededUpdateToolBarOnDeselection)
+            actions.insert(.neededUpdateToolBarOnDeselection)
         }
 
-        return items
+        return actions
     }
 }

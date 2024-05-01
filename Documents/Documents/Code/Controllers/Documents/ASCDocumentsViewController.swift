@@ -1023,44 +1023,63 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func configureToolBar() {
-        guard let folder = folder else {
-            return
-        }
-        let tools: ASCToolBarType = CurrentNavigationBars.shared.configureToolBar(viewController: self)
+        let configurator: FolderNavigationBarActionsConfigurator = FolderNavigationBarActionsConfigurator(viewController: self)
+        let folderActions = configurator.configureFolderActionsToolBar()
+        let items = setFolderActionsToItemsNavigationBar(actions: folderActions)
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
+
+        events.listenTo(eventName: "item:didSelect") { [weak self] in
+            self?.updateSelectedInfo()
+            if folderActions.contains(.neededUpdateToolBarOnSelection) {
+                self?.configureToolBar()
+            }
+        }
+        events.listenTo(eventName: "item:didDeselect") { [weak self] in
+            self?.updateSelectedInfo()
+            if folderActions.contains(.neededUpdateToolBarOnDeselection) {
+                self?.configureToolBar()
+            }
+        }
+
+        setToolbarItems(items, animated: false)
+    }
+
+    private func createBarButton(_ image: UIImage, _ selector: Selector) -> UIBarButtonItem {
+        let buttonItem = ASCStyles.createBarButton(image: image, target: self, action: selector)
+        buttonItem.isEnabled = tableView.indexPathsForSelectedRows?.count ?? 0 > 0
+
+        events.listenTo(eventName: "item:didSelect") { [weak self] in
+            buttonItem.isEnabled = self?.tableView.indexPathsForSelectedRows?.count ?? 0 > 0
+        }
+
+        events.listenTo(eventName: "item:didDeselect") { [weak self] in
+            buttonItem.isEnabled = self?.tableView.indexPathsForSelectedRows?.count ?? 0 > 0
+        }
+
+        return buttonItem
+    }
+
+    private func setFolderActionsToItemsNavigationBar(actions: ASCToolBarType) -> [UIBarButtonItem] {
+        guard let folder = folder else {
+            return []
+        }
 
         let fixedWidthButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         let barIconSpacer = UIBarButtonItem(customView: fixedWidthButton)
         let barFlexSpacer: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
-        let createBarButton: (_ image: UIImage, _ selector: Selector) -> UIBarButtonItem = { [weak self] image, selector in
-            guard let strongSelf = self else { return UIBarButtonItem() }
-            let buttonItem = ASCStyles.createBarButton(image: image, target: strongSelf, action: selector)
-
-            buttonItem.isEnabled = (strongSelf.tableView.indexPathsForSelectedRows?.count ?? 0) > 0
-
-            strongSelf.events.listenTo(eventName: "item:didSelect") { [weak self] in
-                buttonItem.isEnabled = (self?.tableView.indexPathsForSelectedRows?.count ?? 0) > 0
-            }
-            strongSelf.events.listenTo(eventName: "item:didDeselect") { [weak self] in
-                buttonItem.isEnabled = (self?.tableView.indexPathsForSelectedRows?.count ?? 0) > 0
-            }
-
-            return buttonItem
-        }
-
         var items: [UIBarButtonItem] = []
 
         // Create room
-        if tools.contains(.createRoom) {
+        if actions.contains(.createRoom) {
             items.append(createBarButton(Asset.Images.barRectanglesAdd.image, #selector(onTransformToRoomSelected)))
             items.append(barFlexSpacer)
         }
 
         // Move
-        if tools.contains(.move) {
+        if actions.contains(.move) {
             let addMoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
                 items.append(barFlexSpacer)
@@ -1073,7 +1092,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Copy
-        if tools.contains(.copy) {
+        if actions.contains(.copy) {
             let addCopyBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
                 items.append(barFlexSpacer)
@@ -1086,25 +1105,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Restore
-        if tools.contains(.restore) {
+        if actions.contains(.restore) {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Restore room
-        if tools.contains(.restoreRoom) {
+        if actions.contains(.restoreRoom) {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onRoomRestore)))
             items.append(barFlexSpacer)
         }
 
         // Remove from list
-        if tools.contains(.removeFromList) {
+        if actions.contains(.removeFromList) {
             items.append(createBarButton(Asset.Images.barDeleteLink.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove
-        if tools.contains(.remove) {
+        if actions.contains(.remove) {
             let addRemoveBtnCompletion: () -> Void = { [self] in
                 items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
                 items.append(barFlexSpacer)
@@ -1118,14 +1137,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Info
-        if tools.contains(.info) {
+        if actions.contains(.info) {
             items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
             items.append(barFlexSpacer)
         }
 
         // Pin
-        if tools.contains(.pin) {
-            if !tools.contains(.info) {
+        if actions.contains(.pin) {
+            if !actions.contains(.info) {
                 items.append(barIconSpacer)
                 items.append(barFlexSpacer)
             }
@@ -1135,25 +1154,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Archive
-        if tools.contains(.archive) {
+        if actions.contains(.archive) {
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove all
-        if tools.contains(.removeAll) {
+        if actions.contains(.removeAll) {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
             items.append(barFlexSpacer)
         }
 
         // Unarchive
-        if tools.contains(.unarchive) {
+        if actions.contains(.unarchive) {
             items.append(createBarButton(Asset.Images.barRestoreAll.image, #selector(onUnarchiveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove all rooms
-        if tools.contains(.removeAllRooms) {
+        if actions.contains(.removeAllRooms) {
             let removeSelectedButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveSelectedArchivedRooms))
             removeSelectedButton.tintColor = .red
 
@@ -1165,20 +1184,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.removeLast()
         }
 
-        events.listenTo(eventName: "item:didSelect") { [weak self] in
-            self?.updateSelectedInfo()
-            if tools.contains(.neededUpdateToolBarOnSelection) {
-                self?.configureToolBar()
-            }
-        }
-        events.listenTo(eventName: "item:didDeselect") { [weak self] in
-            self?.updateSelectedInfo()
-            if tools.contains(.neededUpdateToolBarOnDeselection) {
-                self?.configureToolBar()
-            }
-        }
-
-        setToolbarItems(items, animated: false)
+        return items
     }
 
     private func updateSelectedInfo() {

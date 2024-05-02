@@ -320,6 +320,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 params["searchArea"] = searchArea
             }
 
+            /// Payment Info
+            strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Rooms.tenantExtra) {
+                response, error in
+                if (response?.result?.notPaid) != nil {
+                    completeon?(strongSelf, folder, false, OnlyofficeServerError.paymentRequired)
+                }
+            }
+
             /// Search
             if let search = parameters["search"] as? [String: Any] {
                 params["filterBy"] = "title"

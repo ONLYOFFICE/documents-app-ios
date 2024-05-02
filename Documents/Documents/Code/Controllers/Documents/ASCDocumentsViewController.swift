@@ -1128,6 +1128,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     return true
                 }()
 
+                let isPaymentRequired: Bool = {
+                    guard let error = error as? OnlyofficeServerError, case OnlyofficeServerError.paymentRequired = error else {
+                        return false
+                    }
+                    return true
+                }()
+
+                if isPaymentRequired {
+                    strongSelf.showErrorView(success, error)
+                    completeon?(success)
+                }
+
                 if !isCanceled {
                     strongSelf.showErrorView(!success, error)
                 }
@@ -1303,10 +1315,27 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             showLoadingPage(false)
             showEmptyView(false)
 
-            if !ASCNetworkReachability.shared.isReachable {
-                errorView?.type = .networkError
+            if let onlyOfficeServerError = error as? OnlyofficeServerError {
+                switch onlyOfficeServerError {
+                case .unauthorized:
+                    print("unauthorized")
+                case .paymentRequired:
+                    errorView?.type = .paymentRequired
+                case .forbidden:
+                    print("forbidden")
+                case .notFound:
+                    print("not found")
+                case .requestTooLarge:
+                    print("requestTooLarge")
+                case let .unknown(message):
+                    print(message)
+                }
             } else {
-                errorView?.type = .error
+                if !ASCNetworkReachability.shared.isReachable {
+                    errorView?.type = .networkError
+                } else {
+                    errorView?.type = .error
+                }
             }
 
             if let error = error {

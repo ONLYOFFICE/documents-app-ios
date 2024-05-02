@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F5AFB4E2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5AFB4D2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift */; };
+		0F68D1A92BE3E6F40007D88B /* ASCTenantExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F68D1A82BE3E6F40007D88B /* ASCTenantExtra.swift */; };
+		0F68D1AB2BE3E7D30007D88B /* ASCTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F68D1AA2BE3E7D30007D88B /* ASCTariff.swift */; };
 		0FA5C7A02B03B98300380510 /* ASCFolderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */; };
 		0FE15DB92B1B1D2800E25986 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE15DB82B1B1D2700E25986 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */; };
 		0FE15DBB2B1B1E2100E25986 /* ASCSharingChooseNewOwnerRightHoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE15DBA2B1B1E2100E25986 /* ASCSharingChooseNewOwnerRightHoldersView.swift */; };
@@ -682,6 +684,8 @@
 /* Begin PBXFileReference section */
 		051F20752774A7A1DE291FB1 /* Pods-Documents-develop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-develop.release.xcconfig"; path = "Target Support Files/Pods-Documents-develop/Pods-Documents-develop.release.xcconfig"; sourceTree = "<group>"; };
 		0F5AFB4D2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift; sourceTree = "<group>"; };
+		0F68D1A82BE3E6F40007D88B /* ASCTenantExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTenantExtra.swift; sourceTree = "<group>"; };
+		0F68D1AA2BE3E7D30007D88B /* ASCTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTariff.swift; sourceTree = "<group>"; };
 		0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderLogo.swift; sourceTree = "<group>"; };
 		0FE15DB82B1B1D2700E25986 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersViewController.swift; sourceTree = "<group>"; };
 		0FE15DBA2B1B1E2100E25986 /* ASCSharingChooseNewOwnerRightHoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingChooseNewOwnerRightHoldersView.swift; sourceTree = "<group>"; };
@@ -2718,6 +2722,8 @@
 				0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */,
 				FCE2B4182930CCA700E50429 /* ASCGroup.swift */,
 				FCE2B4192930CCA700E50429 /* ASCPaymentQuota.swift */,
+				0F68D1A82BE3E6F40007D88B /* ASCTenantExtra.swift */,
+				0F68D1AA2BE3E7D30007D88B /* ASCTariff.swift */,
 				FCE2B41A2930CCA700E50429 /* ASCPushSubscribed.swift */,
 				FCE2B41C2930CCA700E50429 /* ASCRoomType.swift */,
 				FCE2B41B2930CCA700E50429 /* ASCUser.swift */,
@@ -3680,6 +3686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCFE46DA275E237E007C9AE0 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
+				0F68D1AB2BE3E7D30007D88B /* ASCTariff.swift in Sources */,
 				FC7D99942729997C00410795 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
 				FC7D99432729942700410795 /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
 				FC7D996A2729952400410795 /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,
@@ -3883,6 +3890,7 @@
 				FC476C262BA080BB00E3AF36 /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
 				FCC64F5529191950004D9A47 /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
 				FC5D0411263BE43A00D9DBCF /* NetworkingServerError.swift in Sources */,
+				0F68D1A92BE3E6F40007D88B /* ASCTenantExtra.swift in Sources */,
 				FC7D99222729942700410795 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC7D996C2729952400410795 /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FCE9F7942B3033A40056E420 /* CurrentFolderMenu.swift in Sources */,

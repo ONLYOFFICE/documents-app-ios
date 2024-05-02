@@ -21,6 +21,7 @@ class ASCDocumentsEmptyView: UIView {
         case usersNotFound
         case error
         case networkError
+        case paymentRequired
     }
 
     // MARK: - Properties
@@ -168,6 +169,11 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel?.text = NSLocalizedString("No connection", comment: "")
             subtitleLabel?.text = NSLocalizedString("No network connection can be found. Please check the connection and reload the page.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Reload", comment: ""), for: .normal)
+        case .paymentRequired:
+            imageView?.image = Asset.Images.emptyNoConnection.image
+            titleLabel?.text = NSLocalizedString("Business subscription expired", comment: "")
+            subtitleLabel?.text = NSLocalizedString("Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.", comment: "")
+            actionButton?.setTitle(NSLocalizedString("Renew Business plan", comment: ""), for: .normal)
         default:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")

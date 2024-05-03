@@ -73,7 +73,7 @@ class ManagedAppConfigTest: XCTestCase {
     func testReadProvider() throws {
         let type: String? = manager.appConfig("type")
         let options: [Any]? = manager.appConfig("option")
-        
+
         XCTAssertNotNil(type)
         XCTAssertNotNil(options)
 

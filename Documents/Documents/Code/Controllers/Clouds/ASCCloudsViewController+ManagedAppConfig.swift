@@ -58,6 +58,6 @@ extension ASCCloudsViewController {
             }
         }
 
-        ManagedAppConfig.shared.setAppConfig(nil)
+        ManagedAppConfig.shared.processed = true
     }
 }

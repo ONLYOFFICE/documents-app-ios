@@ -20,9 +20,15 @@ final class ManagedAppConfig {
     private var appConfigHooks: [() -> ManagedAppConfigHook?] = []
     private let provider = UserDefaults.standard
     private var observer: NSKeyValueObservation?
+    private var observerMirror: NSKeyValueObservation?
 
     var appConfigAll: [String: Any]? {
-        provider.managedAppConfig
+        provider.managedAppConfigMirror
+    }
+
+    var processed: Bool {
+        get { provider.configurationProcessed }
+        set { provider.configurationProcessed = newValue }
     }
 
     // MARK: - Lifecycle Methods
@@ -35,13 +41,22 @@ final class ManagedAppConfig {
         unsubscribeNotification()
 
         observer = provider.observe(\.managedAppConfig, options: [.initial, .old, .new], changeHandler: { [weak self] defaults, change in
-            guard !Device.current.isSimulator else { return }
+            let nsManagedAppConfig = NSMutableDictionary(dictionary: self?.provider.managedAppConfig ?? [:])
+
+            if !nsManagedAppConfig.isEqual(to: self?.provider.managedAppConfigMirror ?? [:]) {
+                self?.processed = false
+                self?.setAppConfig(self?.provider.managedAppConfig)
+            }
+        })
+
+        observerMirror = provider.observe(\.managedAppConfigMirror, options: [.new], changeHandler: { [weak self] defaults, change in
             self?.triggerHooks()
         })
     }
 
     private func unsubscribeNotification() {
         observer?.invalidate()
+        observerMirror?.invalidate()
     }
 
     deinit {
@@ -55,7 +70,8 @@ final class ManagedAppConfig {
 
     /// Force call hooks
     func triggerHooks() {
-        if let configuration = provider.dictionary(forKey: configurationKey) {
+        if processed { return }
+        if let configuration = provider.dictionary(forKey: configurationMirrorKey) {
             appConfigHooks.forEach { $0()?.onApp(config: configuration) }
         }
     }
@@ -75,7 +91,7 @@ final class ManagedAppConfig {
     /// Rewrite configuration value from the MDM server to an app.
     /// - Returns: Key of configuration value from the MDM server
     func setAppConfig(_ dictionary: [String: Any]?) {
-        provider.managedAppConfig = dictionary
+        provider.managedAppConfigMirror = dictionary
     }
 
     /// Set feedback information that can be queried over MDM.
@@ -87,11 +103,24 @@ final class ManagedAppConfig {
 
 private let configurationKey = "com.apple.configuration.managed"
 private let feedbackKey = "com.apple.feedback.managed"
+private let configurationMirrorKey = "com.apple.configuration.managed.mirror"
+private let feedbackMirrorKey = "com.apple.feedback.managed.mirror"
+private let configurationProcessedKey = "com.apple.configuration.managed.processed"
 
 private extension UserDefaults {
     @objc dynamic var managedAppConfig: [String: Any]? {
         get { dictionary(forKey: configurationKey) }
         set { set(newValue, forKey: configurationKey) }
+    }
+
+    @objc dynamic var managedAppConfigMirror: [String: Any]? {
+        get { dictionary(forKey: configurationMirrorKey) }
+        set { set(newValue, forKey: configurationMirrorKey) }
+    }
+
+    @objc dynamic var configurationProcessed: Bool {
+        get { bool(forKey: configurationProcessedKey) }
+        set { set(newValue, forKey: configurationProcessedKey) }
     }
 
     @objc dynamic var managedFeedbackConfig: [String: Any]? {

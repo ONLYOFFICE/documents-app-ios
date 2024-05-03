@@ -1128,18 +1128,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     return true
                 }()
 
-                let isPaymentRequired: Bool = {
-                    guard let error = error as? OnlyofficeServerError, case OnlyofficeServerError.paymentRequired = error else {
-                        return false
-                    }
-                    return true
-                }()
-
-                if isPaymentRequired {
-                    strongSelf.showErrorView(success, error)
-                    completeon?(success)
-                }
-
                 if !isCanceled {
                     strongSelf.showErrorView(!success, error)
                 }
@@ -1315,31 +1303,30 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             showLoadingPage(false)
             showEmptyView(false)
 
-            if let onlyOfficeServerError = error as? OnlyofficeServerError {
-                switch onlyOfficeServerError {
-                case .unauthorized:
-                    print("unauthorized")
-                case .paymentRequired:
-                    errorView?.type = .paymentRequired
-                case .forbidden:
-                    print("forbidden")
-                case .notFound:
-                    print("not found")
-                case .requestTooLarge:
-                    print("requestTooLarge")
-                case let .unknown(message):
-                    print(message)
-                }
-            } else {
-                if !ASCNetworkReachability.shared.isReachable {
+            if let error = error as? NetworkingError {
+                switch error {
+                case let .apiError(error):
+                    if let onlyofficeError = error as? OnlyofficeServerError {
+                        switch onlyofficeError {
+                        case .paymentRequired:
+                            errorView?.type = .paymentRequired
+                            errorView?.onAction = {
+                                if let url = URL(string: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCConstants.Urls.applicationPage) {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                }
+                            }
+                        default:
+                            errorView?.type = .error
+                        }
+                    }
+                case .noInternet:
                     errorView?.type = .networkError
-                } else {
+                case .cancelled, .sessionDeinitialized:
+                    return
+                default:
                     errorView?.type = .error
+                    errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
                 }
-            }
-
-            if let error = error {
-                errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
             }
 
             if errorView?.superview == nil {

@@ -170,7 +170,7 @@ class ASCDocumentsEmptyView: UIView {
             subtitleLabel?.text = NSLocalizedString("No network connection can be found. Please check the connection and reload the page.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Reload", comment: ""), for: .normal)
         case .paymentRequired:
-            imageView?.image = Asset.Images.emptyNoConnection.image
+            imageView?.image = Asset.Images.bussinesSubscriptionExpired.image
             titleLabel?.text = NSLocalizedString("Business subscription expired", comment: "")
             subtitleLabel?.text = NSLocalizedString("Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Renew Business plan", comment: ""), for: .normal)

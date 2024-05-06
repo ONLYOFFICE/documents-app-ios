@@ -67,52 +67,49 @@ class ManagedAppConfigTest: XCTestCase {
     }
 
     func testReadConfig() throws {
-//        TODO: restore me
-//        XCTAssertNotNil(manager.appConfigAll)
+        XCTAssertNotNil(manager.appConfigAll)
     }
 
     func testReadProvider() throws {
-//        TODO: restore me
-//        let type: String? = manager.appConfig("type")
-//        let options: [Any]? = manager.appConfig("option")
-//
-//        XCTAssertNotNil(type)
-//        XCTAssertNotNil(options)
-//
-//        let provider: [String: Any]? = options?.first as? [String: Any]
-//        XCTAssertNotNil(provider)
-//
-//        XCTAssertTrue(NSDictionary(dictionary: provider!).isEqual(to: provider1))
+        let type: String? = manager.appConfig("type")
+        let options: [Any]? = manager.appConfig("option")
+
+        XCTAssertNotNil(type)
+        XCTAssertNotNil(options)
+
+        let provider: [String: Any]? = options?.first as? [String: Any]
+        XCTAssertNotNil(provider)
+
+        XCTAssertTrue(NSDictionary(dictionary: provider!).isEqual(to: provider1))
     }
 
     func testObservers() throws {
-//        TODO: restore me
-//        manager.add(observer: handler1)
-//        manager.add(observer: handler2)
-//
-//        UserDefaults.standard.set(sampleConfig2, forKey: configurationKey)
-//        ManagedAppConfig.shared.triggerHooks()
-//
-//        var value1 = handler1?.value
-//        var value2 = handler2?.value
-//
-//        XCTAssertNotNil(value1)
-//        XCTAssertNotNil(value2)
-//
-//        XCTAssertTrue(NSDictionary(dictionary: value1!).isEqual(to: sampleConfig2))
-//        XCTAssertTrue(NSDictionary(dictionary: value2!).isEqual(to: sampleConfig2))
-//
-//        handler2 = nil
-//
-//        UserDefaults.standard.set(sampleConfig1, forKey: configurationKey)
-//        ManagedAppConfig.shared.triggerHooks()
-//
-//        value1 = handler1?.value
-//        value2 = handler2?.value
-//
-//        XCTAssertNotNil(value1)
-//        XCTAssertNil(value2)
-//
-//        XCTAssertTrue(NSDictionary(dictionary: value1!).isEqual(to: sampleConfig1))
+        manager.add(observer: handler1)
+        manager.add(observer: handler2)
+
+        UserDefaults.standard.set(sampleConfig2, forKey: configurationKey)
+        ManagedAppConfig.shared.triggerHooks()
+
+        var value1 = handler1?.value
+        var value2 = handler2?.value
+
+        XCTAssertNotNil(value1)
+        XCTAssertNotNil(value2)
+
+        XCTAssertTrue(NSDictionary(dictionary: value1!).isEqual(to: sampleConfig2))
+        XCTAssertTrue(NSDictionary(dictionary: value2!).isEqual(to: sampleConfig2))
+
+        handler2 = nil
+
+        UserDefaults.standard.set(sampleConfig1, forKey: configurationKey)
+        ManagedAppConfig.shared.triggerHooks()
+
+        value1 = handler1?.value
+        value2 = handler2?.value
+
+        XCTAssertNotNil(value1)
+        XCTAssertNil(value2)
+
+        XCTAssertTrue(NSDictionary(dictionary: value1!).isEqual(to: sampleConfig1))
     }
 }

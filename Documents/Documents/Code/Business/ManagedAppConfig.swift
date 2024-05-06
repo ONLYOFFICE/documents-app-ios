@@ -20,10 +20,9 @@ final class ManagedAppConfig {
     private var appConfigHooks: [() -> ManagedAppConfigHook?] = []
     private let provider = UserDefaults.standard
     private var observer: NSKeyValueObservation?
-    private var observerMirror: NSKeyValueObservation?
 
     var appConfigAll: [String: Any]? {
-        provider.managedAppConfigMirror
+        provider.managedAppConfig
     }
 
     var processed: Bool {
@@ -40,23 +39,19 @@ final class ManagedAppConfig {
     private func subscribeNotification() {
         unsubscribeNotification()
 
-        observer = provider.observe(\.managedAppConfig, options: [.initial, .old, .new], changeHandler: { [weak self] defaults, change in
-            let nsManagedAppConfig = NSMutableDictionary(dictionary: self?.provider.managedAppConfig ?? [:])
+        observer = provider.observe(\.managedAppConfig, options: [.initial, .new], changeHandler: { [weak self] defaults, change in
+            let nsManagedAppConfig = NSDictionary(dictionary: self?.provider.managedAppConfig ?? [:])
 
             if !nsManagedAppConfig.isEqual(to: self?.provider.managedAppConfigMirror ?? [:]) {
                 self?.processed = false
-                self?.setAppConfig(self?.provider.managedAppConfig)
+                self?.provider.managedAppConfigMirror = self?.provider.managedAppConfig
+                self?.triggerHooks()
             }
-        })
-
-        observerMirror = provider.observe(\.managedAppConfigMirror, options: [.new], changeHandler: { [weak self] defaults, change in
-            self?.triggerHooks()
         })
     }
 
     private func unsubscribeNotification() {
         observer?.invalidate()
-        observerMirror?.invalidate()
     }
 
     deinit {
@@ -71,7 +66,7 @@ final class ManagedAppConfig {
     /// Force call hooks
     func triggerHooks() {
         if processed { return }
-        if let configuration = provider.dictionary(forKey: configurationMirrorKey) {
+        if let configuration = provider.managedAppConfig {
             appConfigHooks.forEach { $0()?.onApp(config: configuration) }
         }
     }
@@ -91,7 +86,7 @@ final class ManagedAppConfig {
     /// Rewrite configuration value from the MDM server to an app.
     /// - Returns: Key of configuration value from the MDM server
     func setAppConfig(_ dictionary: [String: Any]?) {
-        provider.managedAppConfigMirror = dictionary
+        provider.managedAppConfig = dictionary
     }
 
     /// Set feedback information that can be queried over MDM.

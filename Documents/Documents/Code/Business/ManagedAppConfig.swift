@@ -25,6 +25,11 @@ final class ManagedAppConfig {
         provider.managedAppConfig
     }
 
+    var processed: Bool {
+        get { provider.configurationProcessed }
+        set { provider.configurationProcessed = newValue }
+    }
+
     // MARK: - Lifecycle Methods
 
     init() {
@@ -34,9 +39,14 @@ final class ManagedAppConfig {
     private func subscribeNotification() {
         unsubscribeNotification()
 
-        observer = provider.observe(\.managedAppConfig, options: [.initial, .old, .new], changeHandler: { [weak self] defaults, change in
-            guard !Device.current.isSimulator else { return }
-            self?.triggerHooks()
+        observer = provider.observe(\.managedAppConfig, options: [.initial, .new], changeHandler: { [weak self] defaults, change in
+            let nsManagedAppConfig = NSDictionary(dictionary: self?.provider.managedAppConfig ?? [:])
+
+            if !nsManagedAppConfig.isEqual(to: self?.provider.managedAppConfigMirror ?? [:]) {
+                self?.processed = false
+                self?.provider.managedAppConfigMirror = self?.provider.managedAppConfig
+                self?.triggerHooks()
+            }
         })
     }
 
@@ -55,7 +65,8 @@ final class ManagedAppConfig {
 
     /// Force call hooks
     func triggerHooks() {
-        if let configuration = provider.dictionary(forKey: configurationKey) {
+        if processed { return }
+        if let configuration = provider.managedAppConfig {
             appConfigHooks.forEach { $0()?.onApp(config: configuration) }
         }
     }
@@ -87,11 +98,24 @@ final class ManagedAppConfig {
 
 private let configurationKey = "com.apple.configuration.managed"
 private let feedbackKey = "com.apple.feedback.managed"
+private let configurationMirrorKey = "com.apple.configuration.managed.mirror"
+private let feedbackMirrorKey = "com.apple.feedback.managed.mirror"
+private let configurationProcessedKey = "com.apple.configuration.managed.processed"
 
 private extension UserDefaults {
     @objc dynamic var managedAppConfig: [String: Any]? {
         get { dictionary(forKey: configurationKey) }
         set { set(newValue, forKey: configurationKey) }
+    }
+
+    @objc dynamic var managedAppConfigMirror: [String: Any]? {
+        get { dictionary(forKey: configurationMirrorKey) }
+        set { set(newValue, forKey: configurationMirrorKey) }
+    }
+
+    @objc dynamic var configurationProcessed: Bool {
+        get { bool(forKey: configurationProcessedKey) }
+        set { set(newValue, forKey: configurationProcessedKey) }
     }
 
     @objc dynamic var managedFeedbackConfig: [String: Any]? {

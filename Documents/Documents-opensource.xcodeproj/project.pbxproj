@@ -62,10 +62,6 @@
 		FC03A6502BDA7F67005E8FFB /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63A2BDA7F67005E8FFB /* RoomLinkResponceModel.swift */; };
 		FC03A6512BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */; };
 		FC03A6522BDA7F67005E8FFB /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63C2BDA7F67005E8FFB /* RoomUsersResponceModel.swift */; };
-		FC0BBF19296C25B80060F49E /* DocumentConverter in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF18296C25B80060F49E /* DocumentConverter */; };
-		FC0BBF1B296C25B80060F49E /* DocumentEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1A296C25B80060F49E /* DocumentEditor */; };
-		FC0BBF1D296C25B80060F49E /* PresentationEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1C296C25B80060F49E /* PresentationEditor */; };
-		FC0BBF1F296C25B80060F49E /* SpreadsheetEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1E296C25B80060F49E /* SpreadsheetEditor */; };
 		FC1429F92898183D00EDE7CE /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F32898183D00EDE7CE /* ASCEntityUniqNameFinder.swift */; };
 		FC1429FB2898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F42898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift */; };
 		FC1429FD2898183D00EDE7CE /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F62898183D00EDE7CE /* ASCEntityExistenceChecker.swift */; };
@@ -3317,9 +3313,9 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
-				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
-				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
+				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */,
+				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */,
+				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */,
 				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -3487,6 +3483,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfigInterop/FirebaseRemoteConfigInterop.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseSessions/FirebaseSessions.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
@@ -3538,6 +3535,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfigInterop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSessions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
@@ -4486,15 +4484,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
+		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
+		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
+		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};

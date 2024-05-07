@@ -354,6 +354,10 @@ start using your office</source>
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS";</note>
       </trans-unit>
+      <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
+        <source>Sign in as LDAP User</source>
+        <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
+      </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
         <source>Detail</source>
         <target>Детайл</target>
@@ -2001,6 +2005,10 @@ others which use WebDAV protocol.</source>
         <target>Деактивирайте, ако не искате да получавате известия от %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Disable notifications" xml:space="preserve">
+        <source>Disable notifications</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>Преказнете връзката с трета страна</target>
@@ -2097,6 +2105,10 @@ others which use WebDAV protocol.</source>
         <target>Електронна поща</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Email address" xml:space="preserve">
+        <source>Email address</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
         <source>Email is empty</source>
         <target>Имейлът е празен</target>
@@ -2125,6 +2137,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target>Активирайте, ако искате да получавате известия от %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable notifications" xml:space="preserve">
+        <source>Enable notifications</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
@@ -3913,6 +3929,10 @@ to the clipboard</source>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
         <target>Изисква се удостоверяване на потребителя</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User name" xml:space="preserve">
+        <source>User name</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">

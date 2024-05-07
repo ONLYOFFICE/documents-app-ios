@@ -88,7 +88,7 @@ struct ActionButtonViewModel {
     )
 }
 
-enum ApiFilterType: String {
+enum ApiFilterType {
     case none
     case files
     case folders
@@ -112,11 +112,71 @@ enum ApiFilterType: String {
     case publicRoom
     case reviewRoom
     case viewOnlyRoom
+    case tag(String)
     /// third party resource
     case dropBox
     case googleDrive
     case oneDrive
     case box
+
+    var rawValue: String {
+        switch self {
+        case .none:
+            return "none"
+        case .files:
+            return "files"
+        case .folders:
+            return "folders"
+        case .documents:
+            return "documents"
+        case .presentations:
+            return "presentations"
+        case .spreadsheets:
+            return "spreadsheets"
+        case .formTemplates:
+            return "formTemplates"
+        case .forms:
+            return "forms"
+        case .images:
+            return "images"
+        case .me:
+            return "me"
+        case .user:
+            return "user"
+        case .group:
+            return "group"
+        case .archive:
+            return "archive"
+        case .byExtension:
+            return "byExtension"
+        case .media:
+            return "media"
+        case .excludeSubfolders:
+            return "excludeSubfolders"
+        case let .tag(tag):
+            return tag
+        case .customRoom:
+            return "customRoom"
+        case .fillingFormRoom:
+            return "fillingFormRoom"
+        case .collaborationRoom:
+            return "collaborationRoom"
+        case .reviewRoom:
+            return "reviewRoom"
+        case .viewOnlyRoom:
+            return "viewOnlyRoom"
+        case .publicRoom:
+            return "publicRoom"
+        case .dropBox:
+            return "dropBox"
+        case .googleDrive:
+            return "3"
+        case .oneDrive:
+            return "googleDrive"
+        case .box:
+            return "box"
+        }
+    }
 
     var filterValue: String {
         switch self {
@@ -150,6 +210,8 @@ enum ApiFilterType: String {
             return "MediaOnly"
         case .excludeSubfolders:
             return "excludeSubfolders"
+        case let .tag(tag):
+            return tag
         case .customRoom:
             return "5"
         case .fillingFormRoom:
@@ -174,11 +236,110 @@ enum ApiFilterType: String {
     }
 }
 
+extension ApiFilterType {
+    init?(rawValue: String) {
+        switch rawValue {
+        case "none":
+            self = .none
+        case "files":
+            self = .files
+        case "folders":
+            self = .folders
+        case "documents":
+            self = .documents
+        case "presentations":
+            self = .presentations
+        case "spreadsheets":
+            self = .spreadsheets
+        case "formTemplates":
+            self = .formTemplates
+        case "forms":
+            self = .forms
+        case "images":
+            self = .images
+        case "me":
+            self = .me
+        case "user":
+            self = .user
+        case "group":
+            self = .group
+        case "archive":
+            self = .archive
+        case "byExtension":
+            self = .byExtension
+        case "media":
+            self = .media
+        case "excludeSubfolders":
+            self = .excludeSubfolders
+        case "customRoom":
+            self = .customRoom
+        case "fillingFormRoom":
+            self = .fillingFormRoom
+        case "collaborationRoom":
+            self = .collaborationRoom
+        case "reviewRoom":
+            self = .reviewRoom
+        case "viewOnlyRoom":
+            self = .viewOnlyRoom
+        case "publicRoom":
+            self = .publicRoom
+        case "dropBox":
+            self = .dropBox
+        case "googleDrive":
+            self = .googleDrive
+        case "oneDrive":
+            self = .oneDrive
+        case "box":
+            self = .box
+        default:
+            return nil
+        }
+    }
+}
+
+extension ApiFilterType: Equatable {
+    static func == (lhs: ApiFilterType, rhs: ApiFilterType) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none),
+             (.files, .files),
+             (.folders, .folders),
+             (.documents, .documents),
+             (.presentations, .presentations),
+             (.spreadsheets, .spreadsheets),
+             (.formTemplates, .formTemplates),
+             (.forms, .forms), (.images, .images),
+             (.me, .me),
+             (.user, .user),
+             (.group, .group),
+             (.archive, .archive),
+             (.byExtension, .byExtension),
+             (.media, .media),
+             (.excludeSubfolders, .excludeSubfolders),
+             (.customRoom, .customRoom),
+             (.fillingFormRoom, .fillingFormRoom),
+             (.collaborationRoom, .collaborationRoom),
+             (.reviewRoom, .reviewRoom),
+             (.viewOnlyRoom, .viewOnlyRoom),
+             (.publicRoom, .publicRoom),
+             (.dropBox, .dropBox),
+             (.googleDrive, .googleDrive),
+             (.oneDrive, .oneDrive),
+             (.box, .box):
+            return true
+        case let (.tag(leftTag), .tag(rightTag)):
+            return leftTag == rightTag
+        default:
+            return false
+        }
+    }
+}
+
 enum FiltersSection: String, CaseIterable {
     case type = "Type"
     case author = "Author"
     case search = "Search"
     case member
+    case tags
     case thirdPartyResource
 
     func localizedString() -> String {
@@ -191,6 +352,8 @@ enum FiltersSection: String, CaseIterable {
             return NSLocalizedString("Search", comment: "")
         case .member:
             return NSLocalizedString("Member", comment: "")
+        case .tags:
+            return NSLocalizedString("Tags", comment: "")
         case .thirdPartyResource:
             return NSLocalizedString("Third party resource", comment: "")
         }

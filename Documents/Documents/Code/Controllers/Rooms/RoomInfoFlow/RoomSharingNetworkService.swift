@@ -76,6 +76,21 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             completion(.success(users))
         }
     }
+
+    func toggleRoomNotifications(room: ASCFolder, completion: @escaping (Result<RoomNotificationsResponceModel, Error>) -> Void) {
+        let requestModel = RoomNotificationsRequestModel(roomsID: Int(room.id)!, mute: !room.mute)
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.toggleRoomNotifications(room: room), requestModel.dictionary) { responce, error in
+            guard let responce = responce?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
+                }
+                return
+            }
+            completion(.success(responce))
+        }
+    }
 }
 
 extension RoomSharingNetworkService {

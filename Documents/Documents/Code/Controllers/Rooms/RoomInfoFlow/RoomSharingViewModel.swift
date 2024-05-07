@@ -22,6 +22,7 @@ final class RoomSharingViewModel: ObservableObject {
     let room: ASCRoom
     let additionalLinksLimit = 5
     var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
+    var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived }
     private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false
@@ -228,7 +229,7 @@ private extension RoomSharingViewModel {
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,
             onTapAction: { [weak self] in
-                guard !sharing.user.isOwner, let self else { return }
+                guard let self, isUserSelectionAllow, !sharing.user.isOwner else { return }
                 selectedUser = sharing.user
             }
         )

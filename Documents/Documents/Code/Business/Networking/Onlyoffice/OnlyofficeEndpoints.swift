@@ -65,10 +65,11 @@ enum OnlyofficeAPI {
         public static let roomArchive = "api/\(version)/files/rooms/%@/archive"
         public static let roomUnarchive = "api/\(version)/files/rooms/%@/unarchive"
         public static let tags = "api/\(version)/files/tags"
-        public static let roomsTags = "api/\(version)/files/rooms/%@/tags"
+        public static let roomTags = "api/\(version)/files/rooms/%@/tags"
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        public static let disableNotifications = "api/\(version)/settings/notification/rooms"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -156,11 +157,15 @@ enum OnlyofficeAPI {
             }
 
             static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomTags, folder.id), .put)
             }
 
             static func deleteFromRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .delete)
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomTags, folder.id), .delete)
+            }
+
+            static func getList() -> Endpoint<OnlyofficeResponseArrayCodable<String>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<String>>.make(Path.tags, .get, URLEncoding.queryString)
             }
         }
 
@@ -219,6 +224,10 @@ enum OnlyofficeAPI {
 
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.room, folder.id), .put)
+            }
+
+            static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }
         }
 

@@ -1060,6 +1060,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             let canEdit = allowEdit(entity: folder)
             let canDelete = allowDelete(entity: folder)
 
+            entityActions.insert(.select)
+
             if canRead, canEdit {
                 entityActions.insert(.open)
             }

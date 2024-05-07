@@ -9,13 +9,15 @@
 import Foundation
 
 class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
+    private let networkService = OnlyofficeApiClient.shared
+
     required init(
         builder: ASCFiltersCollectionViewModelBuilder,
         filtersViewController: ASCFiltersViewController,
         itemsCount: Int
     ) {
         super.init(builder: builder, filtersViewController: filtersViewController, itemsCount: itemsCount)
-        tempState = .defaultDocSpaceRoomsState(itemsCount)
+        tempState = .defaultDocSpaceRoomsState(itemsCount, [])
         usersSectionTitle = FiltersSection.member.localizedString()
         buildActions()
     }
@@ -24,7 +26,10 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultDocSpaceRoomsState(total)
+            networkService.request(OnlyofficeAPI.Endpoints.Tags.getList(), RoomTagsListRequestModel().dictionary) { [weak self] result, error in
+                guard let self else { return }
+                tempState = .defaultDocSpaceRoomsState(total, result?.result ?? [])
+            }
         }
         runPreload()
     }
@@ -50,6 +55,10 @@ class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
             case .thirdPartyResourceFilters:
                 guard let model = state.thirdPartyResourceFilters.first(where: { $0.isSelected }) else { return params }
                 params["provider"] = model.filterType.filterValue
+                return params
+            case .tags:
+                guard let selectedTagsValue = selectedTagsValues(state: state) else { return params }
+                params["tags"] = selectedTagsValue
                 return params
             }
         }

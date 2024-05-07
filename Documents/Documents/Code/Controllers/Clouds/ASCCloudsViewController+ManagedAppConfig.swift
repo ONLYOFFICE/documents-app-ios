@@ -10,20 +10,27 @@ import UIKit
 
 extension ASCCloudsViewController: ManagedAppConfigHook {
     func onApp(config: [String: Any?]) {
-        connectProvidersFromConfigIfNeeded()
+        connectProvidersFromConfigIfNeeded(config: config)
     }
 }
 
 extension ASCCloudsViewController {
-    private func connectProvidersFromConfigIfNeeded() {
-        let newProvidersKey = "newProviders"
-        var appConfig = ManagedAppConfig.shared.appConfigAll
+    enum MDMOperationType: String {
+        case newProviders
+        case unknown
+    }
 
-        guard let newProvidersInfo = appConfig[newProvidersKey] as? [[String: Any]] else {
+    private func connectProvidersFromConfigIfNeeded(config: [String: Any?]) {
+        let type = MDMOperationType(rawValue: config["type"] as? String ?? "") ?? .unknown
+
+        guard
+            type == .newProviders,
+            let options = config["options"] as? [[String: Any]]
+        else {
             return
         }
 
-        for providerInfo in newProvidersInfo {
+        for providerInfo in options {
             guard let providerTypeString = providerInfo["type"] as? String,
                   let providerType = ASCFileProviderType(rawValue: providerTypeString)
             else {
@@ -51,7 +58,6 @@ extension ASCCloudsViewController {
             }
         }
 
-        appConfig[newProvidersKey] = nil
-        ManagedAppConfig.shared.setAppConfig(appConfig.count > 0 ? appConfig : nil)
+        ManagedAppConfig.shared.setAppConfig(nil)
     }
 }

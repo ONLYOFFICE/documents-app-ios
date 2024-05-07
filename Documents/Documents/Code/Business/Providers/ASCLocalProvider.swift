@@ -181,7 +181,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .dropBox,
                      .googleDrive,
                      .oneDrive,
-                     .box:
+                     .box,
+                     .tag:
                     return list
                 }
             }(commonList)
@@ -773,6 +774,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             if folder.rootFolderType == .deviceTrash {
                 return [.delete, .restore]
             }
+
+            entityActions.insert(.select)
 
             if canRead, canEdit {
                 entityActions.insert(.open)

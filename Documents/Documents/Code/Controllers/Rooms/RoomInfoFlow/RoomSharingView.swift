@@ -203,12 +203,18 @@ private extension View {
             leading: Button(ASCLocalization.Common.close) {
                 UIApplication.topViewController()?.dismiss(animated: true)
             },
-            trailing: Button(action: {
-                viewModel.addUsers()
-            }) {
-                Image(systemName: "person.crop.circle.badge.plus")
-            }
+            trailing: viewModel.isSharingPossible
+                ? addUsersButton(viewModel: viewModel)
+                : nil
         )
+    }
+
+    func addUsersButton(viewModel: RoomSharingViewModel) -> some View {
+        Button(action: {
+            viewModel.addUsers()
+        }) {
+            Image(systemName: "person.crop.circle.badge.plus")
+        }
     }
 
     func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {

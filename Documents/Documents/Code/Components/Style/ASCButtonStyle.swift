@@ -9,7 +9,7 @@
 import UIKit
 
 enum ASCButtonStyleType: Int {
-    case `default`, action, blank, bordered, gray, capsule
+    case `default`, action, blank, bordered, gray, capsule, link
 }
 
 class ASCButtonStyle: UIButton {
@@ -99,6 +99,13 @@ class ASCButtonStyle: UIButton {
                         ? self.backgroundColor
                         : .lightGray
                 }, completion: nil)
+            case .link:
+                backgroundColor = .clear
+                setTitleColorForAllStates(
+                    isHighlighted
+                        ? .systemBlue.lighten(by: 0.1)
+                        : .systemBlue
+                )
             default:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted
@@ -135,6 +142,13 @@ class ASCButtonStyle: UIButton {
                 } else {
                     backgroundColor = isEnabled ? .lightGray.lighten(by: 0.5) : .lightGray.lighten(by: 0.7)
                 }
+            case .link:
+                backgroundColor = .clear
+                setTitleColorForAllStates(
+                    isEnabled
+                        ? .systemBlue
+                        : .lightGray.lighten(by: 0.5)
+                )
             default:
                 backgroundColor = isEnabled ? Asset.Colors.brend.color : Asset.Colors.grayLight.color
             }
@@ -202,6 +216,9 @@ class ASCButtonStyle: UIButton {
             titleLabel?.adjustsFontForContentSizeCategory = true
             contentEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
             layerCornerRadius = height * 0.5
+        case .link:
+            backgroundColor = .clear
+            setTitleColorForAllStates(.systemBlue)
         default:
             backgroundColor = Asset.Colors.brend.color
             titleLabel?.textStyle = ASCTextStyle.bodyWhite

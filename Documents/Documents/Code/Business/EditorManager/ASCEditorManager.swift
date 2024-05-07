@@ -215,7 +215,8 @@ class ASCEditorManager: NSObject {
     }
 
     public func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.documentService, ["version": "true"]) { response, error in
+        let documentServerVersionRequest = DocumentServerVersionRequest(version: .true)
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.documentService, documentServerVersionRequest.dictionary) { response, error in
 
             let removePath = "/web-apps/apps/api/documents/api.js"
 
@@ -232,8 +233,10 @@ class ASCEditorManager: NSObject {
             }
 
             if let results = response?.result as? [String: Any] {
-                if let docService = results["docServiceUrlApi"] as? String,
-                   let version = results["version"] as? String
+                if let jsonData = try? JSONSerialization.data(withJSONObject: results),
+                   let documentServerVersion = try? JSONDecoder().decode(DocumentServerVersionResponse.self, from: jsonData),
+                   let docService = documentServerVersion.docServiceUrlApi,
+                   let version = documentServerVersion.version
                 {
                     UserDefaults.standard.set(version, forKey: ASCConstants.SettingsKeys.sdkVersion)
 
@@ -539,14 +542,20 @@ class ASCEditorManager: NSObject {
         } else {
             fetchDocumentService { url, version, error in
                 if cancel {
-                    openHandler?(.end, 1, nil, &cancel)
+                    DispatchQueue.main.async {
+                        openHandler?(.end, 1, nil, &cancel)
+                    }
                     return
                 }
 
                 if error != nil {
-                    openHandler?(.error, 1, error, &cancel)
+                    DispatchQueue.main.async {
+                        openHandler?(.error, 1, error, &cancel)
+                    }
                 } else {
-                    fetchAndOpen()
+                    DispatchQueue.main.async {
+                        fetchAndOpen()
+                    }
                 }
             }
         }

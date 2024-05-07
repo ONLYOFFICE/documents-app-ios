@@ -1262,6 +1262,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         localEmptyView?.type = .trash
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
+                    } else if folder.rootFolderType == .onlyofficeRoomShared {
+                        localEmptyView?.type = .docspace
+
+                        if !(provider.allowEdit(entity: folder)) {
+                            localEmptyView?.type = .docspaceNoPermissions
+                        }
                     } else {
                         localEmptyView?.type = .cloud
 
@@ -1750,6 +1756,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
         } else {
             handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
+        }
+    }
+
+    func disableNotifications(room: ASCFolder) {
+        RoomSharingNetworkService().toggleRoomNotifications(room: room) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(responce):
+                if let roomId = Int(room.id),
+                   responce.disabledRooms.contains(roomId)
+                {
+                    room.mute = true
+                } else {
+                    room.mute = false
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
         }
     }
 

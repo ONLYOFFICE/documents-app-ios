@@ -15,20 +15,6 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         guard let provider = viewController.provider else { return UIMenu() }
         let actions = provider.actions(for: folder)
 
-        var selectGroup: [UIMenuElement] = []
-
-        // Select
-        if !folder.isEmpty {
-            selectGroup.append(
-                UIAction(
-                    title: NSLocalizedString("Select", comment: "Button title"),
-                    image: UIImage(systemName: "checkmark.circle")
-                ) { action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
-                }
-            )
-        }
-
         var entityActionsGroup: [UIMenuElement] = []
 
         // Edit room
@@ -77,6 +63,21 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     image: UIImage(systemName: "info.circle")
                 ) { action in
                     viewController.navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        if actions.contains(.disableNotifications) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: folder.mute
+                        ? NSLocalizedString("Disable notifications", comment: "")
+                        : NSLocalizedString("Enable notifications", comment: ""),
+                    image: folder.mute
+                        ? UIImage(systemName: "bell.slash")
+                        : UIImage(systemName: "bell")
+                ) { _ in
+                    viewController.disableNotifications(room: folder)
                 }
             )
         }
@@ -141,13 +142,11 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             }
         }
 
-        let selectMenu = UIMenu(title: "", options: .displayInline, children: selectGroup)
         let entityActionsMenu = UIMenu(title: "", options: .displayInline, children: entityActionsGroup)
         let entityOperationsMenu = UIMenu(title: "", options: .displayInline, children: entityOperationsGroup)
         let sortMenu = UIMenu(title: "", options: .displayInline, children: sortGroup)
 
         let menus: [UIMenuElement] = [
-            selectMenu,
             entityActionsMenu,
             entityOperationsMenu,
             sortMenu,

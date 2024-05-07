@@ -275,24 +275,26 @@ extension ASCDocumentsViewController {
 
         var commonActions: [UIMenuElement] = []
 
-        commonActions.append(
-            UIAction(
-                title: NSLocalizedString("Select", comment: "Button title"),
-                image: UIImage(systemName: "checkmark.circle")
-            ) { [weak self] action in
-                cell.hideSwipe(animated: true)
-                self?.setEditMode(true)
+        if actions.contains(.select) {
+            commonActions.append(
+                UIAction(
+                    title: NSLocalizedString("Select", comment: "Button title"),
+                    image: UIImage(systemName: "checkmark.circle")
+                ) { [weak self] action in
+                    cell.hideSwipe(animated: true)
+                    self?.setEditMode(true)
 
-                if let index = self?.tableView.indexPath(for: cell) {
-                    self?.tableView.selectRow(
-                        at: index,
-                        animated: true,
-                        scrollPosition: .none
-                    )
-                    self?.updateSelectedItems(indexPath: index)
+                    if let index = self?.tableView.indexPath(for: cell) {
+                        self?.tableView.selectRow(
+                            at: index,
+                            animated: true,
+                            scrollPosition: .none
+                        )
+                        self?.updateSelectedItems(indexPath: index)
+                    }
                 }
-            }
-        )
+            )
+        }
 
         if actions.contains(.open), !tableView.isEditing {
             commonActions.append(
@@ -445,6 +447,24 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        /// Disable notifications
+
+        if actions.contains(.disableNotifications) {
+            basicActions.append(
+                UIAction(
+                    title: folder.mute
+                        ? NSLocalizedString("Enable notifications", comment: "")
+                        : NSLocalizedString("Disable notifications", comment: ""),
+                    image: folder.mute
+                        ? UIImage(systemName: "bell")
+                        : UIImage(systemName: "bell.slash")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    disableNotifications(room: folder)
                 }
             )
         }

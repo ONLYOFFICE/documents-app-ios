@@ -354,6 +354,10 @@ comece a usar seu office</target>
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS";</note>
       </trans-unit>
+      <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
+        <source>Sign in as LDAP User</source>
+        <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
+      </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
         <source>Detail</source>
         <target>Detalhes</target>
@@ -2000,6 +2004,10 @@ outros que usam o protocolo WebDAV.</target>
         <target>Desative se você não quiser receber notificações do %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Disable notifications" xml:space="preserve">
+        <source>Disable notifications</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>Desconectar terceiro</target>
@@ -2096,6 +2104,10 @@ outros que usam o protocolo WebDAV.</target>
         <target>Email</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Email address" xml:space="preserve">
+        <source>Email address</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
         <source>Email is empty</source>
         <target>E-mail está vazio</target>
@@ -2124,6 +2136,10 @@ outros que usam o protocolo WebDAV.</target>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target>Ative se você quiser receber notificações do %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable notifications" xml:space="preserve">
+        <source>Enable notifications</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
@@ -3911,6 +3927,10 @@ para a área de transferência</target>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
         <target>Autenticação do usuário necessária</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User name" xml:space="preserve">
+        <source>User name</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">

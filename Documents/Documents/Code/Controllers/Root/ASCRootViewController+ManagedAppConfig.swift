@@ -38,7 +38,7 @@ extension ASCRootViewController {
             break
         }
 
-        ManagedAppConfig.shared.setAppConfig(nil)
+        ManagedAppConfig.shared.processed = true
     }
 
     private func forceConnectPortal(address: String) {

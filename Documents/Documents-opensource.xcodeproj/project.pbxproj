@@ -62,10 +62,6 @@
 		FC03A6502BDA7F67005E8FFB /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63A2BDA7F67005E8FFB /* RoomLinkResponceModel.swift */; };
 		FC03A6512BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */; };
 		FC03A6522BDA7F67005E8FFB /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63C2BDA7F67005E8FFB /* RoomUsersResponceModel.swift */; };
-		FC0BBF19296C25B80060F49E /* DocumentConverter in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF18296C25B80060F49E /* DocumentConverter */; };
-		FC0BBF1B296C25B80060F49E /* DocumentEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1A296C25B80060F49E /* DocumentEditor */; };
-		FC0BBF1D296C25B80060F49E /* PresentationEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1C296C25B80060F49E /* PresentationEditor */; };
-		FC0BBF1F296C25B80060F49E /* SpreadsheetEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1E296C25B80060F49E /* SpreadsheetEditor */; };
 		FC1429F92898183D00EDE7CE /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F32898183D00EDE7CE /* ASCEntityUniqNameFinder.swift */; };
 		FC1429FB2898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F42898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift */; };
 		FC1429FD2898183D00EDE7CE /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F62898183D00EDE7CE /* ASCEntityExistenceChecker.swift */; };
@@ -485,6 +481,10 @@
 		FC83D61E2A974E2300C404CB /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D5F42A974E2200C404CB /* Array+Extensions.swift */; };
 		FC83D61F2A974E2300C404CB /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D5F52A974E2200C404CB /* UIBarButtonItem+Extensions.swift */; };
 		FC83D6202A974E2300C404CB /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D5F62A974E2200C404CB /* NSLayoutConstraint+Extensions.swift */; };
+		FC87B4662BBBEBD900DBDBDD /* DocumentConverter in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B4652BBBEBD900DBDBDD /* DocumentConverter */; };
+		FC87B4682BBBEBD900DBDBDD /* DocumentEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B4672BBBEBD900DBDBDD /* DocumentEditor */; };
+		FC87B46A2BBBEBD900DBDBDD /* PresentationEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B4692BBBEBD900DBDBDD /* PresentationEditor */; };
+		FC87B46C2BBBEBD900DBDBDD /* SpreadsheetEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B46B2BBBEBD900DBDBDD /* SpreadsheetEditor */; };
 		FC881E7929AB882A0006C202 /* ASCDocSpaceRoomsFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC881E7829AB882A0006C202 /* ASCDocSpaceRoomsFiltersController.swift */; };
 		FC8D71A42952F2DD005CA466 /* ASCDocSpaceFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D71A22952F2DD005CA466 /* ASCDocSpaceFiltersController.swift */; };
 		FCA3E7002B35C89000C5EDEC /* PasscodeLock in Frameworks */ = {isa = PBXBuildFile; productRef = FCA3E6FF2B35C89000C5EDEC /* PasscodeLock */; };
@@ -1215,13 +1215,13 @@
 				FC397E382B3591CF00830F43 /* HTMLString in Frameworks */,
 				FC6A757429915CE10056262F /* PulseUI in Frameworks */,
 				FCA3E7002B35C89000C5EDEC /* PasscodeLock in Frameworks */,
+				FC87B46A2BBBEBD900DBDBDD /* PresentationEditor in Frameworks */,
+				FC87B4682BBBEBD900DBDBDD /* DocumentEditor in Frameworks */,
 				FC6A757229915CE10056262F /* PulseLogHandler in Frameworks */,
-				FC0BBF1B296C25B80060F49E /* DocumentEditor in Frameworks */,
 				FC7082242812E2260057FCD2 /* CloudKit.framework in Frameworks */,
-				FC0BBF1F296C25B80060F49E /* SpreadsheetEditor in Frameworks */,
+				FC87B46C2BBBEBD900DBDBDD /* SpreadsheetEditor in Frameworks */,
 				FC6A757029915CE10056262F /* Pulse in Frameworks */,
-				FC0BBF1D296C25B80060F49E /* PresentationEditor in Frameworks */,
-				FC0BBF19296C25B80060F49E /* DocumentConverter in Frameworks */,
+				FC87B4662BBBEBD900DBDBDD /* DocumentConverter in Frameworks */,
 				86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3246,6 +3246,7 @@
 				FC7080CE2812E2260057FCD2 /* [CP] Check Pods Manifest.lock */,
 				FC7080D02812E2260057FCD2 /* SwiftGen */,
 				FC7080D12812E2260057FCD2 /* SwiftFormat */,
+				FC87B4632BBBE7E500DBDBDD /* Create Acknowledgements */,
 				FC7080D22812E2260057FCD2 /* Sources */,
 				FC7082232812E2260057FCD2 /* Frameworks */,
 				FC7082262812E2260057FCD2 /* Resources */,
@@ -3259,16 +3260,16 @@
 			);
 			name = "Documents-opensource";
 			packageProductDependencies = (
-				FC0BBF18296C25B80060F49E /* DocumentConverter */,
-				FC0BBF1A296C25B80060F49E /* DocumentEditor */,
-				FC0BBF1C296C25B80060F49E /* PresentationEditor */,
-				FC0BBF1E296C25B80060F49E /* SpreadsheetEditor */,
 				FC6A756F29915CE10056262F /* Pulse */,
 				FC6A757129915CE10056262F /* PulseLogHandler */,
 				FC6A757329915CE10056262F /* PulseUI */,
 				FC397E372B3591CF00830F43 /* HTMLString */,
 				FC397E3B2B3596AF00830F43 /* ObservableSwift */,
 				FCA3E6FF2B35C89000C5EDEC /* PasscodeLock */,
+				FC87B4652BBBEBD900DBDBDD /* DocumentConverter */,
+				FC87B4672BBBEBD900DBDBDD /* DocumentEditor */,
+				FC87B4692BBBEBD900DBDBDD /* PresentationEditor */,
+				FC87B46B2BBBEBD900DBDBDD /* SpreadsheetEditor */,
 			);
 			productName = "Documents-Swift";
 			productReference = FC70824C2812E2270057FCD2 /* Documents.app */;
@@ -3311,11 +3312,11 @@
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
-				FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
 				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */,
 				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */,
 				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -3575,6 +3576,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC87B4632BBBE7E500DBDBDD /* Create Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create Acknowledgements";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nset -o pipefail\n\nif [[ ! $PATH =~ /opt/homebrew/bin: ]] ; then \n    PATH=/opt/homebrew/bin/:/opt/homebrew/sbin:${PATH}\nfi\n\nif ! which license-plist > /dev/null; then\n    echo \"warning: license-plist is not installed. Run 'brew install licenseplist' to install it.\"\nelse\n    license_plist=\"${PROJECT_DIR}/../license_plist.yml\"\n    echo '\noptions:\n  outputPath: \"Documents/Settings.bundle\"\n  prefix: com.onlyoffice.Documents.Acknowledgements\n  podsPath: \"Pods\"\n  xcworkspacePath: \"ONLYOFFICE-Documents-opensource.xcworkspace\"\n  force: false\n  addVersionNumbers: false\n  suppressOpeningDirectory: false\n  singlePage: false\n  failIfMissingLicense: false\n  addSources: false\n  sandboxMode: false\n\nexclude:\n  - atlantis-proxyman\n  - ios-license-generator\n' > \"$license_plist\"\n    \n    cd \"${PROJECT_DIR}/..\"\n    \n    license-plist --config-path \"${license_plist}\"\n    \n    rm -f \"${license_plist}\"\n    rm -f \"Documents/Settings.bundle/com.onlyoffice.Documents.Acknowledgements.latest_result.txt\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4478,14 +4499,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp.git";
-			requirement = {
-				branch = hotfix/v8.0.1;
-				kind = branch;
-			};
-		};
 		FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -4494,29 +4507,17 @@
 				version = 2.1.5;
 			};
 		};
+		FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp";
+			requirement = {
+				kind = exactVersion;
+				version = 8.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FC0BBF18296C25B80060F49E /* DocumentConverter */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
-			productName = DocumentConverter;
-		};
-		FC0BBF1A296C25B80060F49E /* DocumentEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
-			productName = DocumentEditor;
-		};
-		FC0BBF1C296C25B80060F49E /* PresentationEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
-			productName = PresentationEditor;
-		};
-		FC0BBF1E296C25B80060F49E /* SpreadsheetEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
-			productName = SpreadsheetEditor;
-		};
 		FC397E372B3591CF00830F43 /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;
@@ -4539,6 +4540,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = PulseUI;
+		};
+		FC87B4652BBBEBD900DBDBDD /* DocumentConverter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
+			productName = DocumentConverter;
+		};
+		FC87B4672BBBEBD900DBDBDD /* DocumentEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
+			productName = DocumentEditor;
+		};
+		FC87B4692BBBEBD900DBDBDD /* PresentationEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
+			productName = PresentationEditor;
+		};
+		FC87B46B2BBBEBD900DBDBDD /* SpreadsheetEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
+			productName = SpreadsheetEditor;
 		};
 		FCA3E6FF2B35C89000C5EDEC /* PasscodeLock */ = {
 			isa = XCSwiftPackageProductDependency;

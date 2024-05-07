@@ -445,6 +445,9 @@
 		FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */; };
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
 		FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */; };
+		FCC0D9A22BCE81E70025DC02 /* engine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC0D9A12BCE81E70025DC02 /* engine.xcframework */; };
+		FCC0D9A32BCE81F40025DC02 /* engine.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCC0D9A12BCE81E70025DC02 /* engine.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCC0D9D72BCE9B9F0025DC02 /* SDKCoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */; };
 		FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD122D379DD00F500C3 /* ASCFolderProviderType.swift */; };
 		FCC38BD722D37A9D00F500C3 /* ASCConnectStorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD622D37A9D00F500C3 /* ASCConnectStorageCell.swift */; };
 		FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC3963F1ECDC6890016BB10 /* Settings.storyboard */; };
@@ -656,6 +659,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FCC0D9A32BCE81F40025DC02 /* engine.xcframework in CopyFiles */,
 				FC4293C1294A684B00DC3932 /* kernel.xcframework in CopyFiles */,
 				FC4293C9294A685900DC3932 /* XpsFile.xcframework in CopyFiles */,
 				FC4293B3294A684900DC3932 /* DocxRenderer.xcframework in CopyFiles */,
@@ -1105,6 +1109,7 @@
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSDWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
+		FCC0D9A12BCE81E70025DC02 /* engine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = engine.xcframework; path = "../../editors-ios/build/SDK/lib/engine.xcframework"; sourceTree = "<group>"; };
 		FCC38BD122D379DD00F500C3 /* ASCFolderProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderProviderType.swift; sourceTree = "<group>"; };
 		FCC38BD622D37A9D00F500C3 /* ASCConnectStorageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageCell.swift; sourceTree = "<group>"; };
 		FCC3963E1ECDC6890016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -1307,11 +1312,13 @@
 				FC2B7F202B4E86EA0064DDDA /* HTMLString in Frameworks */,
 				FC4293BE294A684B00DC3932 /* kernel_network.xcframework in Frameworks */,
 				FC4293B4294A684900DC3932 /* EpubFile.xcframework in Frameworks */,
+				FCC0D9D72BCE9B9F0025DC02 /* SDKCoreSwift in Frameworks */,
 				FC5368FD24EB1C2F0092765B /* DocumentConverter.framework in Frameworks */,
 				FC4293C6294A685700DC3932 /* x2t.xcframework in Frameworks */,
 				FC4293BC294A684A00DC3932 /* HtmlRenderer.xcframework in Frameworks */,
 				FC4293B2294A684900DC3932 /* DocxRenderer.xcframework in Frameworks */,
 				FC4293C4294A685500DC3932 /* UnicodeConverter.xcframework in Frameworks */,
+				FCC0D9A22BCE81E70025DC02 /* engine.xcframework in Frameworks */,
 				3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */,
 				FC4293B8294A684A00DC3932 /* graphics.xcframework in Frameworks */,
 			);
@@ -1345,6 +1352,7 @@
 				FC42939F294A673400DC3932 /* DjVuFile.xcframework */,
 				FC429393294A673300DC3932 /* doctrenderer.xcframework */,
 				FC429397294A673300DC3932 /* DocxRenderer.xcframework */,
+				FCC0D9A12BCE81E70025DC02 /* engine.xcframework */,
 				FC429394294A673300DC3932 /* EpubFile.xcframework */,
 				FC42939B294A673300DC3932 /* Fb2File.xcframework */,
 				FC429399294A673300DC3932 /* graphics.xcframework */,
@@ -3215,6 +3223,7 @@
 				FC1CA5AE2645294F001CC5CA /* Check dependencies and try checkout */,
 				FCCB1946262ACA20007517BB /* SwiftGen */,
 				FCE4227928A377AD0073E2BB /* SwiftFormat */,
+				FC87B4622BBBE78A00DBDBDD /* Create Acknowledgements */,
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
@@ -3240,6 +3249,7 @@
 				FC2B7F1F2B4E86EA0064DDDA /* HTMLString */,
 				FC2B7F222B4E86F90064DDDA /* ObservableSwift */,
 				FC2B7F252B4E87070064DDDA /* PasscodeLock */,
+				FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */,
 			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents-dev.app */;
@@ -3291,9 +3301,10 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "HTMLString" */,
-				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */,
-				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
+				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
+				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
+				FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -3617,6 +3628,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    #find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+		};
+		FC87B4622BBBE78A00DBDBDD /* Create Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create Acknowledgements";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nset -o pipefail\n\nif [[ ! $PATH =~ /opt/homebrew/bin: ]] ; then \n    PATH=/opt/homebrew/bin/:/opt/homebrew/sbin:${PATH}\nfi\n\nif ! which license-plist > /dev/null; then\n    echo \"warning: license-plist is not installed. Run 'brew install licenseplist' to install it.\"\nelse\n    license_plist=\"${PROJECT_DIR}/../license_plist.yml\"\n    echo '\noptions:\n  outputPath: \"Documents/Settings.bundle\"\n  prefix: com.onlyoffice.Documents.Acknowledgements\n  podsPath: \"Pods\"\n  xcworkspacePath: \"ONLYOFFICE-Documents-develop.xcworkspace\"\n  force: false\n  addVersionNumbers: false\n  suppressOpeningDirectory: false\n  singlePage: false\n  failIfMissingLicense: false\n  addSources: false\n  sandboxMode: false\n\nmanual:\n  - name: \"ONLYOFFICE DocumentConverter\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE DocumentEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE SpreadsheetEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE PresentationEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\nexclude:\n  - atlantis-proxyman\n  - ios-license-generator\n' > \"$license_plist\"\n    \n    cd \"${PROJECT_DIR}/..\"\n    \n    license-plist --config-path \"${license_plist}\"\n    \n    rm -f \"${license_plist}\"\n    rm -f \"Documents/Settings.bundle/com.onlyoffice.Documents.Acknowledgements.latest_result.txt\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		FCC471031F56A2DF00373597 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4625,17 +4656,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "HTMLString" */ = {
+		FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
+		FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
+		FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
+		};
+		FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../editors-ios/Common/SDKCore";
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -4677,6 +4712,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = PulseUI;
+		};
+		FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */;
+			productName = SDKCoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

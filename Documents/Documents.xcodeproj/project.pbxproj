@@ -424,6 +424,10 @@
 		FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */; };
 		FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */; };
 		FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */; };
+		FC87B4392BBAE06B00DBDBDD /* DocumentConverter in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B4382BBAE06B00DBDBDD /* DocumentConverter */; };
+		FC87B43B2BBAE06B00DBDBDD /* DocumentEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B43A2BBAE06B00DBDBDD /* DocumentEditor */; };
+		FC87B43D2BBAE06B00DBDBDD /* PresentationEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B43C2BBAE06B00DBDBDD /* PresentationEditor */; };
+		FC87B43F2BBAE06B00DBDBDD /* SpreadsheetEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC87B43E2BBAE06B00DBDBDD /* SpreadsheetEditor */; };
 		FC89C39E2368450700705DE7 /* ASCGoogleDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89C39D2368450700705DE7 /* ASCGoogleDriveProvider.swift */; };
 		FC8BBC9E22BA5D6200761152 /* ASCCreatePortalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */; };
 		FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */; };
@@ -1334,16 +1338,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC87B43D2BBAE06B00DBDBDD /* PresentationEditor in Frameworks */,
 				FC6A754F29910FB80056262F /* PulseLogHandler in Frameworks */,
 				FC2B7F0F2B4E83760064DDDA /* ObservableSwift in Frameworks */,
 				FC2B7F0C2B4E83620064DDDA /* HTMLString in Frameworks */,
 				FC7DD7AA2B503B980037405B /* PasscodeLock in Frameworks */,
 				FC6A755129910FB80056262F /* PulseUI in Frameworks */,
+				FC87B43F2BBAE06B00DBDBDD /* SpreadsheetEditor in Frameworks */,
 				FC6A754D29910FB80056262F /* Pulse in Frameworks */,
 				FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */,
 				FC7DD7A62B503B5A0037405B /* PasscodeLock in Frameworks */,
+				FC87B43B2BBAE06B00DBDBDD /* DocumentEditor in Frameworks */,
 				FC2B7EF82B4E7E0C0064DDDA /* HTMLString in Frameworks */,
 				7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */,
+				FC87B4392BBAE06B00DBDBDD /* DocumentConverter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3409,6 +3417,7 @@
 				FC1CA5A326452823001CC5CA /* Check dependencies and try checkout */,
 				FCE1861D2628C51F0086D21B /* SwiftGen */,
 				FC70518527C23DE400D4F8F1 /* SwiftFormat */,
+				FC87B44B2BBAF86700DBDBDD /* Create Acknowledgements */,
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
@@ -3431,6 +3440,10 @@
 				FC2B7F0E2B4E83760064DDDA /* ObservableSwift */,
 				FC7DD7A52B503B5A0037405B /* PasscodeLock */,
 				FC7DD7A92B503B980037405B /* PasscodeLock */,
+				FC87B4382BBAE06B00DBDBDD /* DocumentConverter */,
+				FC87B43A2BBAE06B00DBDBDD /* DocumentEditor */,
+				FC87B43C2BBAE06B00DBDBDD /* PresentationEditor */,
+				FC87B43E2BBAE06B00DBDBDD /* SpreadsheetEditor */,
 			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents.app */;
@@ -3498,6 +3511,7 @@
 				FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "HTMLString" */,
 				FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */,
 				FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "editors-ios" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -3635,70 +3649,10 @@
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
 				"${BUILT_PRODUCTS_DIR}/atlantis-proxyman/Atlantis.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/DocumentConverter/DocumentConverter.framework",
-				"${BUILT_PRODUCTS_DIR}/DocumentEditor/DocumentEditor.framework",
-				"${BUILT_PRODUCTS_DIR}/PresentationEditor/PresentationEditor.framework",
-				"${BUILT_PRODUCTS_DIR}/SpreadsheetEditor/SpreadsheetEditor.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/DjVuFile.framework/DjVuFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/doctrenderer.framework/doctrenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/DocxRenderer.framework/DocxRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/EpubFile.framework/EpubFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/Fb2File.framework/Fb2File",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/graphics.framework/graphics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/HtmlFile2.framework/HtmlFile2",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/HtmlRenderer.framework/HtmlRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/kernel.framework/kernel",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/kernel_network.framework/kernel_network",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/PdfFile.framework/PdfFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/UnicodeConverter.framework/UnicodeConverter",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/x2t.framework/x2t",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/XpsFile.framework/XpsFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/DjVuFile.framework/DjVuFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/doctrenderer.framework/doctrenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/DocxRenderer.framework/DocxRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/EpubFile.framework/EpubFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/Fb2File.framework/Fb2File",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/graphics.framework/graphics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/HtmlFile2.framework/HtmlFile2",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/HtmlRenderer.framework/HtmlRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/kernel.framework/kernel",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/kernel_network.framework/kernel_network",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/PdfFile.framework/PdfFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/UnicodeConverter.framework/UnicodeConverter",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/x2t.framework/x2t",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/XpsFile.framework/XpsFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/DjVuFile.framework/DjVuFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/doctrenderer.framework/doctrenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/DocxRenderer.framework/DocxRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/EpubFile.framework/EpubFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/Fb2File.framework/Fb2File",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/graphics.framework/graphics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/HtmlFile2.framework/HtmlFile2",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/HtmlRenderer.framework/HtmlRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/kernel.framework/kernel",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/kernel_network.framework/kernel_network",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/PdfFile.framework/PdfFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/UnicodeConverter.framework/UnicodeConverter",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/x2t.framework/x2t",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/XpsFile.framework/XpsFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/DjVuFile.framework/DjVuFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/doctrenderer.framework/doctrenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/DocxRenderer.framework/DocxRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/EpubFile.framework/EpubFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/Fb2File.framework/Fb2File",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/graphics.framework/graphics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/HtmlFile2.framework/HtmlFile2",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/HtmlRenderer.framework/HtmlRenderer",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/kernel.framework/kernel",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/kernel_network.framework/kernel_network",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/PdfFile.framework/PdfFile",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/UnicodeConverter.framework/UnicodeConverter",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/x2t.framework/x2t",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/XpsFile.framework/XpsFile",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -3747,28 +3701,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlantis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocumentConverter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocumentEditor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresentationEditor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpreadsheetEditor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DjVuFile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/doctrenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocxRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpubFile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fb2File.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfFile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnicodeConverter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/x2t.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XpsFile.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3869,6 +3805,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nelse\n    echo \"Skip Uploading\"\nfi\n";
+		};
+		FC87B44B2BBAF86700DBDBDD /* Create Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create Acknowledgements";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nset -o pipefail\n\nif [[ ! $PATH =~ /opt/homebrew/bin: ]] ; then \n    PATH=/opt/homebrew/bin/:/opt/homebrew/sbin:${PATH}\nfi\n\nif ! which license-plist > /dev/null; then\n    echo \"warning: license-plist is not installed. Run 'brew install licenseplist' to install it.\"\nelse\n    license_plist=\"${PROJECT_DIR}/../license_plist.yml\"\n    echo '\noptions:\n  outputPath: \"Documents/Settings.bundle\"\n  prefix: com.onlyoffice.Documents.Acknowledgements\n  podsPath: \"Pods\"\n  xcworkspacePath: \"ONLYOFFICE-Documents.xcworkspace\"\n  force: false\n  addVersionNumbers: false\n  suppressOpeningDirectory: false\n  singlePage: false\n  failIfMissingLicense: false\n  addSources: false\n  sandboxMode: false\n\nmanual:\n  - name: \"ONLYOFFICE-DocumentConverter\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE-DocumentEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE-SpreadsheetEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\n  - name: \"ONLYOFFICE-PresentationEditor\"\n    file: \"../editors-ios/LICENSE.txt\"\n\nexclude:\n  - atlantis-proxyman\n  - ios-license-generator\n' > \"$license_plist\"\n    \n    cd \"${PROJECT_DIR}/..\"\n    \n    license-plist --config-path \"${license_plist}\"\n    \n    rm -f \"${license_plist}\"\n    rm -f \"Documents/Settings.bundle/com.onlyoffice.Documents.Acknowledgements.latest_result.txt\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		FCC471031F56A2DF00373597 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5094,6 +5050,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
+		FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "editors-ios" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../editors-ios";
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -5142,6 +5102,22 @@
 		FC7DD7A92B503B980037405B /* PasscodeLock */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PasscodeLock;
+		};
+		FC87B4382BBAE06B00DBDBDD /* DocumentConverter */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DocumentConverter;
+		};
+		FC87B43A2BBAE06B00DBDBDD /* DocumentEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DocumentEditor;
+		};
+		FC87B43C2BBAE06B00DBDBDD /* PresentationEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PresentationEditor;
+		};
+		FC87B43E2BBAE06B00DBDBDD /* SpreadsheetEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpreadsheetEditor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

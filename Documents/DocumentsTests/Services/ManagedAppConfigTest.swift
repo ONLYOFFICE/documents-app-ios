@@ -23,38 +23,24 @@ class ManagedAppConfigTest: XCTestCase {
     let configurationKey = "com.apple.configuration.managed"
     let feedbackKey = "com.apple.feedback.managed"
 
-    let operationTypeKey = "newProviders"
-    let provider1 = [
+    let sampleConfig1 = [
         "address": "https://webdav.example.com",
         "login": "user1",
         "password": "password1",
         "type": "ASCFileProviderTypeWebDAV",
     ]
 
-    let provider2 = [
+    let sampleConfig2 = [
         "address": "https://webdav.example.com",
         "login": "user2",
         "password": "password2",
         "type": "ASCFileProviderTypeWebDAV",
     ]
 
-    var sampleConfig1: [String: Any] = [:]
-    var sampleConfig2: [String: Any] = [:]
-
     var handler1: AppConfigHandlerMock?
     var handler2: AppConfigHandlerMock?
 
     override func setUpWithError() throws {
-        sampleConfig1 = [
-            "type": operationTypeKey,
-            "option": [provider1],
-        ]
-
-        sampleConfig2 = [
-            "type": operationTypeKey,
-            "option": [provider2],
-        ]
-
         handler1 = AppConfigHandlerMock()
         handler2 = AppConfigHandlerMock()
 
@@ -72,15 +58,14 @@ class ManagedAppConfigTest: XCTestCase {
 
     func testReadProvider() throws {
         let type: String? = manager.appConfig("type")
-        let options: [Any]? = manager.appConfig("option")
+        let address: String? = manager.appConfig("address")
+        let login: String? = manager.appConfig("login")
+        let password: String? = manager.appConfig("password")
 
         XCTAssertNotNil(type)
-        XCTAssertNotNil(options)
-
-        let provider: [String: Any]? = options?.first as? [String: Any]
-        XCTAssertNotNil(provider)
-
-        XCTAssertTrue(NSDictionary(dictionary: provider!).isEqual(to: provider1))
+        XCTAssertNotNil(address)
+        XCTAssertNotNil(login)
+        XCTAssertNotNil(password)
     }
 
     func testObservers() throws {

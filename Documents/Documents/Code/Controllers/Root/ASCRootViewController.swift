@@ -65,7 +65,7 @@ class ASCRootViewController: ASCBaseTabBarController {
             } else {
                 deviceSC.tabBarItem.title = NSLocalizedString("On iPhone", comment: "")
                 deviceSC.tabBarItem.image = allowFaceId ? Asset.Images.tabIphoneX.image : Asset.Images.tabIphone.image
-                
+
                 if Device.current.hasDynamicIsland {
                     deviceSC.tabBarItem.image = Asset.Images.tabIphoneIsland.image
                 }

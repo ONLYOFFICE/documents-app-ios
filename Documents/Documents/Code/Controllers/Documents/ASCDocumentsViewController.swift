@@ -1317,6 +1317,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             }
                         default:
                             errorView?.type = .error
+                            errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
                         }
                     }
                 case .noInternet:

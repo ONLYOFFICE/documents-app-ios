@@ -3313,9 +3313,9 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */,
-				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */,
-				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
+				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
+				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
 				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -4484,15 +4484,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */ = {
+		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
+		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
+		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
@@ -4511,8 +4511,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp";
 			requirement = {
-				kind = exactVersion;
-				version = 8.0.1;
+				branch = release/v8.1.0;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

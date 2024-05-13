@@ -3,10 +3,10 @@
     {
       "identity" : "editors-ios-sp",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ONLYOFFICE/editors-ios-sp.git",
+      "location" : "https://github.com/ONLYOFFICE/editors-ios-sp",
       "state" : {
-        "revision" : "24ee115b17ff1cde1a9c391fdc43efef6e91efb3",
-        "version" : "8.0.1"
+        "branch" : "release/v8.1.0",
+        "revision" : "1d85f0d92118341102d0abfc23605100067a5e30"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log.git",
       "state" : {
-        "revision" : "532d8b529501fb73a2455b179e0bbb6d49b652ed",
-        "version" : "1.5.3"
+        "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
+        "version" : "1.5.4"
       }
     }
   ],

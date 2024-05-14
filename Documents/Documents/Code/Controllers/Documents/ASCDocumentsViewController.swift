@@ -1322,6 +1322,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     }
                 case .noInternet:
                     errorView?.type = .networkError
+                case .cancelled, .sessionDeinitialized:
+                    return
                 default:
                     errorView?.type = .error
                     errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"

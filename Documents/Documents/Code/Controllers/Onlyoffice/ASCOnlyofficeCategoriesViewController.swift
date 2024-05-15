@@ -304,13 +304,21 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 guard let error = error as? NetworkingError else { return }
 
                 switch error {
+                case let .apiError(error):
+                    if let onlyofficeError = error as? OnlyofficeServerError {
+                        switch onlyofficeError {
+                        case .paymentRequired:
+                            return
+                        default:
+                            break
+                        }
+                    }
+
                 case .cancelled, .sessionDeinitialized:
                     return
                 default:
-                    break
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
-
-                UIAlertController.showError(in: self, message: error.localizedDescription)
             }
         }
     }

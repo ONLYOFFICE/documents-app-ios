@@ -1664,6 +1664,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             case let .apiError(error):
                 if let error = error as? OnlyofficeServerError {
                     switch error {
+                    case .paymentRequired:
+                        return true
                     case .unauthorized:
                         errorFeedback(title: error.localizedDescription, message: NSLocalizedString("Please re-login to renew your session.", comment: ""))
                     case let .unknown(message):
@@ -1702,8 +1704,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if let onlyofficeError = error as? OnlyofficeServerError {
                     switch onlyofficeError {
                     case .paymentRequired:
-                        title = ASCLocalization.Error.paymentRequiredTitle
-                        message = ASCLocalization.Error.paymentRequiredMsg
+                        return
                     case .forbidden:
                         title = ASCLocalization.Error.forbiddenTitle
                         message = ASCLocalization.Error.forbiddenMsg

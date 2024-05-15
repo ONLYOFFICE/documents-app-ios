@@ -1303,14 +1303,31 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             showLoadingPage(false)
             showEmptyView(false)
 
-            if !ASCNetworkReachability.shared.isReachable {
-                errorView?.type = .networkError
-            } else {
-                errorView?.type = .error
-            }
-
-            if let error = error {
-                errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
+            if let error = error as? NetworkingError {
+                switch error {
+                case let .apiError(error):
+                    if let onlyofficeError = error as? OnlyofficeServerError {
+                        switch onlyofficeError {
+                        case .paymentRequired:
+                            errorView?.type = .paymentRequired
+                            errorView?.onAction = {
+                                if let url = URL(string: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCConstants.Urls.applicationPage) {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                }
+                            }
+                        default:
+                            errorView?.type = .error
+                            errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
+                        }
+                    }
+                case .noInternet:
+                    errorView?.type = .networkError
+                case .cancelled, .sessionDeinitialized:
+                    return
+                default:
+                    errorView?.type = .error
+                    errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
+                }
             }
 
             if errorView?.superview == nil {

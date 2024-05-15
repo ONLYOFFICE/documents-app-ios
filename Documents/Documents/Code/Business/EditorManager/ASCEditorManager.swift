@@ -607,16 +607,13 @@ class ASCEditorManager: NSObject {
             Task {
                 var cancel = false
                 let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
-
+                
                 if isDocumentOformPdf {
+                    pdf.editable = true // Force allow edit the file
+
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-
-                        if provider is ASCOnlyofficeProvider {
-                            self.editCloud(pdf, canEdit: true)
-                        } else {
-                            provider.open(file: pdf, openMode: .edit, canEdit: true)
-                        }
+                        provider.open(file: pdf, openMode: .edit, canEdit: true)
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in

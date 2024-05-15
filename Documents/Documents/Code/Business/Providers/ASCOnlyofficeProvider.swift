@@ -1779,100 +1779,100 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt) || file.editable
 
-        if allowOpen {
-            let strongDelegate = delegate
-            let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-            let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-            let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
-                if let editorFile = editorFile {
-                    self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
-                        if let portalFile = entity as? ASCFile {
-                            complation(portalFile.isFavorite)
-                        } else {
-                            complation(editorFile.isFavorite)
-                        }
-                    }
-                }
-            }
-            let shareHandler: ASCEditorManagerShareHandler = { file in
-                guard let file = file else { return }
-                strongDelegate?.presentShareController(provider: self, entity: file)
-            }
-            let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
-                guard let file = file else { complation(false); return }
+        guard allowOpen else { return }
 
-                self.rename(file, to: title) { provider, result, success, error in
-                    if let file = result as? ASCFile {
-                        complation(file.title.fileName() == title)
+        let strongDelegate = delegate
+        let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+        let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
+            if let editorFile = editorFile {
+                self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
+                    if let portalFile = entity as? ASCFile {
+                        complation(portalFile.isFavorite)
                     } else {
-                        complation(false)
+                        complation(editorFile.isFavorite)
                     }
                 }
             }
+        }
+        let shareHandler: ASCEditorManagerShareHandler = { file in
+            guard let file = file else { return }
+            strongDelegate?.presentShareController(provider: self, entity: file)
+        }
+        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+            guard let file = file else { complation(false); return }
 
-            if ASCEditorManager.shared.checkSDKVersion() {
-                ASCEditorManager.shared.editCloud(
-                    file,
-                    openMode: openMode,
-                    canEdit: canEdit,
-                    openHandler: openHandler,
-                    closeHandler: closeHandler,
-                    favoriteHandler: favoriteHandler,
-                    shareHandler: shareHandler,
-                    renameHandler: renameHandler
-                )
-            } else {
-                ASCEditorManager.shared.editFileLocally(
-                    for: self,
-                    file,
-                    openMode: openMode,
-                    canEdit: canEdit,
-                    handler: openHandler,
-                    closeHandler: closeHandler,
-                    renameHandler: renameHandler,
-                    lockedHandler: {
-                        delay(seconds: 0.3) {
-                            let isSpreadsheet = file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
-                            let isPresentation = file.title.fileExtension() == ASCConstants.FileExtensions.pptx
+            self.rename(file, to: title) { provider, result, success, error in
+                if let file = result as? ASCFile {
+                    complation(file.title.fileName() == title)
+                } else {
+                    complation(false)
+                }
+            }
+        }
 
-                            var message = String(format: NSLocalizedString("This document is being edited. Do you want open %@ to view only?", comment: ""), file.title)
+        if ASCEditorManager.shared.checkSDKVersion() {
+            ASCEditorManager.shared.editCloud(
+                file,
+                openMode: openMode,
+                canEdit: canEdit,
+                openHandler: openHandler,
+                closeHandler: closeHandler,
+                favoriteHandler: favoriteHandler,
+                shareHandler: shareHandler,
+                renameHandler: renameHandler
+            )
+        } else {
+            ASCEditorManager.shared.editFileLocally(
+                for: self,
+                file,
+                openMode: openMode,
+                canEdit: canEdit,
+                handler: openHandler,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler,
+                lockedHandler: {
+                    delay(seconds: 0.3) {
+                        let isSpreadsheet = file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
+                        let isPresentation = file.title.fileExtension() == ASCConstants.FileExtensions.pptx
 
-                            message = isSpreadsheet
-                                ? String(format: NSLocalizedString("This spreadsheet is being edited. Do you want open %@ to view only?", comment: ""), file.title)
-                                : message
-                            message = isPresentation
-                                ? String(format: NSLocalizedString("This presentation is being edited. Do you want open %@ to view only?", comment: ""), file.title)
-                                : message
+                        var message = String(format: NSLocalizedString("This document is being edited. Do you want open %@ to view only?", comment: ""), file.title)
 
-                            let alertController = UIAlertController.alert(
-                                ASCConstants.Name.appNameShort,
-                                message: message,
-                                actions: []
+                        message = isSpreadsheet
+                            ? String(format: NSLocalizedString("This spreadsheet is being edited. Do you want open %@ to view only?", comment: ""), file.title)
+                            : message
+                        message = isPresentation
+                            ? String(format: NSLocalizedString("This presentation is being edited. Do you want open %@ to view only?", comment: ""), file.title)
+                            : message
+
+                        let alertController = UIAlertController.alert(
+                            ASCConstants.Name.appNameShort,
+                            message: message,
+                            actions: []
+                        )
+                        .okable { _ in
+                            let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+                            let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+
+                            ASCEditorManager.shared.editFileLocally(
+                                for: self,
+                                file,
+                                openMode: openMode,
+                                canEdit: false,
+                                handler: openHandler,
+                                closeHandler: closeHandler
                             )
-                            .okable { _ in
-                                let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-                                let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                        }
+                        .cancelable()
 
-                                ASCEditorManager.shared.editFileLocally(
-                                    for: self,
-                                    file,
-                                    openMode: openMode,
-                                    canEdit: false,
-                                    handler: openHandler,
-                                    closeHandler: closeHandler
-                                )
-                            }
-                            .cancelable()
-
-                            if let topVC = ASCViewControllerManager.shared.topViewController {
-                                topVC.present(alertController, animated: true, completion: nil)
-                            }
+                        if let topVC = ASCViewControllerManager.shared.topViewController {
+                            topVC.present(alertController, animated: true, completion: nil)
                         }
                     }
-                )
-            }
+                }
+            )
         }
     }
 

@@ -22,6 +22,7 @@ struct ManageRoomView: View {
             roomTypeSection
             roomImageAndNameSection
             roomTagsSection
+            roomOwnerSection
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
@@ -60,6 +61,27 @@ struct ManageRoomView: View {
                 .background(Color.systemGroupedBackground)
         }
         .background(Color.secondarySystemGroupedBackground)
+    }
+
+    @ViewBuilder
+    private var roomOwnerSection: some View {
+        if viewModel.isEditMode {
+            Section {
+                HStack(spacing: 8) {
+                    Text(NSLocalizedString("Owner", comment: ""))
+                    Spacer()
+                    Text(viewModel.roomOwnerName)
+                        .foregroundColor(.secondary)
+                    Image(systemName: "chevron.right")
+                        .font(.subheadline)
+                        .foregroundColor(Color.separator)
+                        .flipsForRightToLeftLayoutDirection(true)
+                }
+                .onTapGesture {
+                    viewModel.isUserSelectionPresenting = true
+                }
+            }
+        }
     }
 
     @ViewBuilder

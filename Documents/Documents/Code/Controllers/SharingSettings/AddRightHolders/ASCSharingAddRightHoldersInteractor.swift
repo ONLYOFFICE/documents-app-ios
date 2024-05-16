@@ -134,17 +134,12 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
         }
         let access: ASCShareAccess = .none
         let ownerUserId: String = folder.createdBy?.userId ?? ""
-
-        let parameters: [String: Any] = [
-            "userId": userId,
-            "folderIds": [folder.id],
-        ]
-
+        let requestModel = ChangeRoomOwnerRequestModel(userId: userId, folderIds: [folder.id])
         let inviteRequestModel = OnlyofficeInviteRequestModel()
         inviteRequestModel.notify = false
         inviteRequestModel.invitations = [.init(id: ownerUserId, access: access)]
 
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), parameters) { response, error in
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), requestModel.dictionary) { response, error in
             if error != nil {
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't change the owner.", comment: "")))
                 return

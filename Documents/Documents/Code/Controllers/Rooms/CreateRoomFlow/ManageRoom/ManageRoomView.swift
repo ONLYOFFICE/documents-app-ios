@@ -25,6 +25,7 @@ struct ManageRoomView: View {
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
+        .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
@@ -165,6 +166,25 @@ private extension View {
                     }
                 ),
                 dismissOnSelection: true
+            )
+        })
+    }
+
+    func navigateToUserSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            UserListView(
+                viewModel: UserListViewModel(
+                    selectedUser: Binding<ASCUser?>(
+                        get: { viewModel.newRoomOwner },
+                        set: { newValue in
+                            if let newValue {
+                                viewModel.newRoomOwner = newValue
+                                viewModel.roomOwnerName = newValue.displayName ?? ""
+                            }
+                        }
+                    ),
+                    ignoreUserId: viewModel.ignoreUserId
+                )
             )
         })
     }

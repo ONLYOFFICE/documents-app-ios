@@ -47,6 +47,7 @@ enum OnlyofficeAPI {
         public static let trackEdit = "api/\(version)/files/file/%@/trackeditfile"
         public static let documentService = "api/\(version)/files/docservice"
         public static let people = "api/\(version)/people"
+        public static let peopleFilter = "api/\(version)/people/filter"
         public static let groups = "api/\(version)/group"
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
@@ -110,6 +111,8 @@ enum OnlyofficeAPI {
         enum People {
             static let me: Endpoint<OnlyofficeResponse<ASCUser>> = Endpoint<OnlyofficeResponse<ASCUser>>.make(Path.peopleSelf)
             static let all: Endpoint<OnlyofficeResponseArray<ASCUser>> = Endpoint<OnlyofficeResponseArray<ASCUser>>.make(Path.people)
+            static let filter: Endpoint<OnlyofficeResponseArray<ASCUser>> =
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(Path.peopleFilter, .get, URLEncoding.default)
             static let groups: Endpoint<OnlyofficeResponseArray<ASCGroup>> = Endpoint<OnlyofficeResponseArray<ASCGroup>>.make(Path.groups)
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))

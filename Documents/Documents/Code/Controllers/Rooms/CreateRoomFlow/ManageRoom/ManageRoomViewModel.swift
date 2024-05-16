@@ -14,6 +14,7 @@ class ManageRoomViewModel: ObservableObject {
     // MARK: - Published vars
 
     @Published var roomName: String = ""
+    @Published var roomOwnerName: String = ""
     @Published var isSaving = false
     @Published var isSavedSuccessfully = false
     @Published var errorMessage: String?
@@ -22,6 +23,10 @@ class ManageRoomViewModel: ObservableObject {
     @Published var tags: Set<String> = []
 
     @Published var isRoomSelectionPresenting = false
+    @Published var isUserSelectionPresenting = false
+
+    var newRoomOwner: ASCUser?
+    var ignoreUserId: String?
 
     // MARK: - Public vars
 
@@ -65,6 +70,8 @@ class ManageRoomViewModel: ObservableObject {
         if let editingRoom {
             self.selectedRoomType.showDisclosureIndicator = false
             self.roomName = editingRoom.title
+            roomOwnerName = editingRoom.createdBy?.displayName ?? ""
+            ignoreUserId = editingRoom.createdBy?.userId
             tags = Set(editingRoom.tags ?? [])
         } else {
             self.roomName = roomName
@@ -117,6 +124,7 @@ private extension ManageRoomViewModel {
                 room: room,
                 name: roomName,
                 image: selectedImage,
+                ownerToChange: newRoomOwner,
                 tagsToAdd: Array(tags.subtracting(room.tags ?? [])),
                 tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags))
             )

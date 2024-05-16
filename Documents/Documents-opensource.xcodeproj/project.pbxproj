@@ -38,6 +38,9 @@
 		E856CEC22B5904D8003E4C3D /* Rooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEA42B5904D8003E4C3D /* Rooms.swift */; };
 		E856CECF2B5904D8003E4C3D /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEB72B5904D8003E4C3D /* EditRoomViewController.swift */; };
 		E856CED02B5904D8003E4C3D /* RoomTypeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CEB92B5904D8003E4C3D /* RoomTypeViewRow.swift */; };
+		E87835F32BF607720041D041 /* RoomNotificationsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87835F22BF607720041D041 /* RoomNotificationsResponceModel.swift */; };
+		E87835F62BF608DC0041D041 /* RoomNotificationsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87835F42BF608DB0041D041 /* RoomNotificationsRequestModel.swift */; };
+		E87835F72BF608DC0041D041 /* RoomTagsListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87835F52BF608DC0041D041 /* RoomTagsListRequestModel.swift */; };
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
@@ -643,6 +646,9 @@
 		E856CEA42B5904D8003E4C3D /* Rooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rooms.swift; sourceTree = "<group>"; };
 		E856CEB72B5904D8003E4C3D /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
 		E856CEB92B5904D8003E4C3D /* RoomTypeViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTypeViewRow.swift; sourceTree = "<group>"; };
+		E87835F22BF607720041D041 /* RoomNotificationsResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomNotificationsResponceModel.swift; sourceTree = "<group>"; };
+		E87835F42BF608DB0041D041 /* RoomNotificationsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomNotificationsRequestModel.swift; sourceTree = "<group>"; };
+		E87835F52BF608DC0041D041 /* RoomTagsListRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTagsListRequestModel.swift; sourceTree = "<group>"; };
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
@@ -1822,6 +1828,7 @@
 		E856CE952B5904D8003E4C3D /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				E87835F82BF60FDE0041D041 /* UserList */,
 				FC1764DD2BA332AC00D6B6F0 /* CreateRoomFlow */,
 				E856CEA32B5904D8003E4C3D /* Enums */,
 				FC1764F72BA332F200D6B6F0 /* RoomInfoFlow */,
@@ -1853,6 +1860,13 @@
 				E856CEB92B5904D8003E4C3D /* RoomTypeViewRow.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E87835F82BF60FDE0041D041 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserList;
 			sourceTree = "<group>";
 		};
 		E8AC0F0F2B14F29F00B8EEA2 /* Utils */ = {
@@ -2682,6 +2696,7 @@
 		FC68525526837B7300D830EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E87835F22BF607720041D041 /* RoomNotificationsResponceModel.swift */,
 				FC68525D26837B7300D830EC /* Request */,
 				1DD3DCC42B3D25FC0001D1B8 /* RoomLinkResponceModel.swift */,
 				1DD3DCC52B3D25FC0001D1B8 /* RoomUsersResponceModel.swift */,
@@ -2702,6 +2717,8 @@
 		FC68525D26837B7300D830EC /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				E87835F42BF608DB0041D041 /* RoomNotificationsRequestModel.swift */,
+				E87835F52BF608DC0041D041 /* RoomTagsListRequestModel.swift */,
 				1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModels.swift */,
 				FC68525E26837B7300D830EC /* OnlyofficeAuthRequest.swift */,
 				E83125DD2B2B080F006016F1 /* AttachLogoRequestModel.swift */,
@@ -3771,6 +3788,7 @@
 				FC1765012BA332F300D6B6F0 /* RoomSharingRootViewController.swift in Sources */,
 				FC7081742812E2260057FCD2 /* ASCReusedIdentifierProtocol.swift in Sources */,
 				FC7081752812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
+				E87835F62BF608DC0041D041 /* RoomNotificationsRequestModel.swift in Sources */,
 				FC7081792812E2260057FCD2 /* ASCDocumentsNavigationController.swift in Sources */,
 				FC2882BE28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FC1764E52BA332AD00D6B6F0 /* CreateRoomRouteViewViewController.swift in Sources */,
@@ -3933,6 +3951,7 @@
 				FC7DD7972B502F7E0037405B /* ASCDocSpaceLinkLifeTimeViewModel.swift in Sources */,
 				FC142A6D28981A1F00EDE7CE /* ASCPasscodeLockViewController.swift in Sources */,
 				FCE886F12A83B7AF0064F79D /* CreateEntityViewModel.swift in Sources */,
+				E87835F32BF607720041D041 /* RoomNotificationsResponceModel.swift in Sources */,
 				FC7081F32812E2260057FCD2 /* ASC2FAViewController.swift in Sources */,
 				FC7081F42812E2260057FCD2 /* ASCFileProviderType.swift in Sources */,
 				FC83D5712A9742F000C404CB /* ASCPushNotificationManager.swift in Sources */,
@@ -3972,6 +3991,7 @@
 				E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */,
 				FC83D5B92A9745A100C404CB /* OnlyofficeCapabilities.swift in Sources */,
 				FC83D61A2A974E2300C404CB /* UIImage+Extension.swift in Sources */,
+				E87835F72BF608DC0041D041 /* RoomTagsListRequestModel.swift in Sources */,
 				FC70820D2812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
 				FC142A1E289818B800EDE7CE /* ASCDocumentsFilterModel.swift in Sources */,
 				FC142A8428981A8500EDE7CE /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,

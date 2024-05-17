@@ -72,6 +72,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     }
 
     private lazy var usersTableViewDataSourceAndDelegate = ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.usersModels)
+    private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.groupsModels)
 
     private lazy var searchResultsTableViewDataSourceAndDelegate: ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate = {
         guard let usersTableView = sharingAddRightHoldersView?.usersTableView
@@ -82,6 +83,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     }()
 
     private var usersModels: [(model: ASCSharingRightHolderViewModel, isSelected: IsSelected)] = []
+    private var groupsModels: [(model: ASCSharingRightHolderViewModel, isSelected: IsSelected)] = []
 
     private lazy var onCellTapped: (ASCSharingRightHolderViewModel, IsSelected) -> Void = { [weak self] model, isSelected in
         guard let self = self else { return }

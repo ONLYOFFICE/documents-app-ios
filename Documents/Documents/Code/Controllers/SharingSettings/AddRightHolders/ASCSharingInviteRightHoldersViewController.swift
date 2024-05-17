@@ -144,7 +144,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
             searchControllerDelegate: self,
             searchResultsUpdating: self,
             searchBarDelegate: self,
-            showsScopeBar: false
+            showsScopeBar: true
         )
         sharingAddRightHoldersView?.viewController = self
         sharingAddRightHoldersView?.delegate = self

@@ -373,6 +373,7 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
         }
 
         forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: deselectAction(in:by:))
+        forEachRow(in: sharingAddRightHoldersView.groupsTableView, applyAction: deselectAction(in:by:))
     }
 
     func onDismissButtonTapped() {

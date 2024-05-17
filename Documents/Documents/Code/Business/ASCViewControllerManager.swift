@@ -195,6 +195,13 @@ class ASCViewControllerManager {
                     NSLocalizedString("Presentation Sample", comment: "Default title of sample document")
                 )
             )
+            ASCLocalFileHelper.shared.copy(
+                from: sampleFolder + "sample.pdf",
+                to: Path.userDocuments + String(
+                    format: "%@.pdf",
+                    NSLocalizedString("PDF Form Sample", comment: "Default title of sample document")
+                )
+            )
         }
     }
 

@@ -409,19 +409,26 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         guard let searchText = searchController.searchBar.text else { return }
 
         guard !searchText.isEmpty else {
+            groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
             usersTableViewDataSourceAndDelegate.set(models: usersModels)
             usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+            groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = true
             sharingAddRightHoldersView?.showEmptyView(false)
+            sharingAddRightHoldersView?.groupsTableView.reloadData()
             sharingAddRightHoldersView?.usersTableView.reloadData()
             sharingAddRightHoldersView?.searchResultsTable.reloadData()
             return
         }
 
+        let foundGroupsModels = groupsModels.filter { $0.0.name.lowercased().contains(searchText.lowercased()) }
         let foundUsersModels = usersModels.filter { $0.0.name.lowercased().contains(searchText.lowercased()) }
 
+        groupsTableViewDataSourceAndDelegate.set(models: foundGroupsModels)
         usersTableViewDataSourceAndDelegate.set(models: foundUsersModels)
         usersTableViewDataSourceAndDelegate.inviteSectionEnabled = false
+        groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = false
 
+        sharingAddRightHoldersView?.groupsTableView.reloadData()
         sharingAddRightHoldersView?.usersTableView.reloadData()
 
         if sharingAddRightHoldersView?.searchResultsTable.superview == nil {
@@ -431,7 +438,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         }
         sharingAddRightHoldersView?.searchResultsTable.reloadData()
 
-        if foundUsersModels.isEmpty {
+        if foundUsersModels.isEmpty, foundGroupsModels.isEmpty {
             sharingAddRightHoldersView?.showEmptyView(true)
         } else {
             sharingAddRightHoldersView?.showEmptyView(false)
@@ -454,9 +461,12 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         }
         sharingAddRightHoldersView?.removeDarkenFromScreen()
 
+        groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
         usersTableViewDataSourceAndDelegate.set(models: usersModels)
         usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+        groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = true
 
+        sharingAddRightHoldersView?.groupsTableView.reloadData()
         sharingAddRightHoldersView?.usersTableView.reloadData()
 
         if getSelectedTableView().superview == nil {

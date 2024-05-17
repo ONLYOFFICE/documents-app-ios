@@ -208,10 +208,14 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 
     func reset() {
         usersCurrentlyLoading = false
+        groupsCurrentlyLoading = false
         selectedAccess = defaultAccess
         usersModels = []
+        groupsModels = []
         usersTableViewDataSourceAndDelegate.set(models: [])
+        groupsTableViewDataSourceAndDelegate.set(models: [])
         usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+        groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = true
 
         updateSelectDeleselectAllBarBtn()
         sharingAddRightHoldersView?.reset()

@@ -277,8 +277,11 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
             usersTableViewDataSourceAndDelegate.set(models: viewModel.users)
             sharingAddRightHoldersView?.usersTableView.reloadData()
             usersCurrentlyLoading = false
-        case .displayGroups:
-            return
+        case let .displayGroups(viewModel: viewModel):
+            groupsModels = viewModel.groups
+            groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
+            sharingAddRightHoldersView?.groupsTableView.reloadData()
+            groupsCurrentlyLoading = false
         case let .displaySelected(viewModel: viewModel):
             switch viewModel.type {
             case .users:
@@ -286,19 +289,21 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
                     usersModels[index].1 = viewModel.isSelect
                 }
             case .groups:
-                return
+                if let index = groupsModels.firstIndex(where: { $0.0.id == viewModel.selectedModel.id }) {
+                    groupsModels[index].1 = viewModel.isSelect
+                }
             }
         }
 
         updateNextBarBtnIfNeeded()
         sharingAddRightHoldersView?.updateTitle(withSelectedCount: countOfSelectedRows)
-        if !usersCurrentlyLoading {
+        if !usersCurrentlyLoading, !groupsCurrentlyLoading {
             updateSelectDeleselectAllBarBtn()
         }
     }
 
     func updateSelectDeleselectAllBarBtn() {
-        if countOfSelectedRows > 0, countOfSelectedRows == usersModels.count {
+        if countOfSelectedRows > 0, countOfSelectedRows == usersModels.count + groupsModels.count {
             sharingAddRightHoldersView?.showDeselectBarBtn()
         } else {
             sharingAddRightHoldersView?.showSelectBarBtn()
@@ -359,6 +364,7 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
         }
 
         forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: selectAction(in:by:))
+        forEachRow(in: sharingAddRightHoldersView.groupsTableView, applyAction: selectAction(in:by:))
     }
 
     func onDeselectAllButtonTapped() {

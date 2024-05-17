@@ -36,6 +36,16 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         }
     }
 
+    var groupsCurrentlyLoading = false {
+        didSet {
+            if groupsCurrentlyLoading {
+                sharingAddRightHoldersView?.runGroupsLoadingAnimation()
+            } else {
+                sharingAddRightHoldersView?.stopGroupsLoadingAnimation()
+            }
+        }
+    }
+
     lazy var defaultAccess: ASCShareAccess = {
         let accessList = accessProvider.get()
         guard accessList.contains(.read) else {
@@ -233,6 +243,11 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
             interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: true, showOnlyAdmins: false))
+        }
+
+        if !groupsCurrentlyLoading {
+            groupsCurrentlyLoading = true
+            interactor?.makeRequest(requestType: .loadGroups)
         }
     }
 

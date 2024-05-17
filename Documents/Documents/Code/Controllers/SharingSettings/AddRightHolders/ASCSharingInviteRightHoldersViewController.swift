@@ -62,7 +62,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 
     lazy var selectedAccess: ASCShareAccess = self.defaultAccess
     var countOfSelectedRows: Int {
-        usersModels.reduce(0) { result, selectedModel in
+        (usersModels + groupsModels).reduce(0) { result, selectedModel in
             guard selectedModel.isSelected else { return result }
             return result + 1
         }
@@ -85,11 +85,12 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.groupsModels)
 
     private lazy var searchResultsTableViewDataSourceAndDelegate: ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate = {
-        guard let usersTableView = sharingAddRightHoldersView?.usersTableView
+        guard let usersTableView = sharingAddRightHoldersView?.usersTableView,
+              let groupsTableView = sharingAddRightHoldersView?.groupsTableView
         else {
             return ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [:])
         }
-        return ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [.users: usersTableView])
+        return ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [.users: usersTableView, .groups: groupsTableView])
     }()
 
     private var usersModels: [(model: ASCSharingRightHolderViewModel, isSelected: IsSelected)] = []

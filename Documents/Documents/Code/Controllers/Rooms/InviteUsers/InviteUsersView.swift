@@ -8,8 +8,8 @@
 
 import Combine
 import Foundation
-import SwiftUI
 import MBProgressHUD
+import SwiftUI
 
 struct InviteUsersView: View {
     @ObservedObject var viewModel: InviteUsersViewModel
@@ -19,47 +19,18 @@ struct InviteUsersView: View {
         VStack {
             List {
                 Section(header: Text(NSLocalizedString("External link", comment: ""))) {
-                    Toggle(isOn: $viewModel.isLinkEnabled) {
-                        Text(NSLocalizedString("Link", comment: ""))
-                    }
-                    .toggleStyle(SwitchToggleStyle(tint: .blue))
-
-                    NavigationLink(destination: ASCShareAccess(selectedAccessRight: $viewModel.selectedAccessRight)) {
-                        HStack {
-                            Text(NSLocalizedString("Access rights", comment: ""))
-                            Spacer()
-                            Text(viewModel.selectedAccessRight.rawValue)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    
-                    HStack {
-                        Text(viewModel.link)
-                            .foregroundColor(.blue)
-                            .lineLimit(1)
-                            .truncationMode(.middle)
-                        Spacer()
-                        Button(action: {
-                            UIPasteboard.general.string = viewModel.link
-                        }) {
-                            Image(systemName: "square.and.arrow.up")
-                                .foregroundColor(.blue)
-                        }
-                    }
+                    linkToggleCell
+                    accessCell
+                    linkCell
                 }
 
                 Section(header: Text(NSLocalizedString("Add manually", comment: ""))) {
-                    // TODO: -
-//                    NavigationLink(destination: InviteByEmailView()) {
-//                        Text("Invite people by email")
-//                    }
-//                    NavigationLink(destination: ChooseFromListView(viewModel: viewModel)) {
-//                        Text("Choose from list")
-//                    }
+                    inviteByEmailCell
+                    chooseFromListCell
                 }
             }
         }
-        .navigationBarTitle(NSLocalizedString("Invite users", comment: ""), displayMode: .inline)
+        .navigationBarTitle(Text(NSLocalizedString("Invite users", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing: cancelButton)
         .onAppear {
             viewModel.fetchData()
@@ -70,6 +41,61 @@ struct InviteUsersView: View {
     var cancelButton: some View {
         Button(NSLocalizedString("Cancel", comment: "")) {
             presentationMode.wrappedValue.dismiss()
+        }
+    }
+
+    private var linkToggleCell: some View {
+        Toggle(isOn: $viewModel.isLinkEnabled) {
+            Text(NSLocalizedString("Link", comment: ""))
+        }
+        .tintColor(Asset.Colors.brend.swiftUIColor)
+    }
+
+    private var accessCell: some View {
+        HStack {
+            Text(NSLocalizedString("Access rights", comment: ""))
+            Spacer()
+            Text(viewModel.selectedAccessRight.title())
+                .foregroundColor(.gray)
+            ChevronUpDownView()
+        }
+    }
+
+    private var linkCell: some View {
+        HStack {
+            Text(viewModel.link)
+                .foregroundColor(.blue)
+                .lineLimit(1)
+                .truncationMode(.middle)
+            Spacer()
+            Button(action: {
+                UIPasteboard.general.string = viewModel.link
+            }) {
+                Image(systemName: "square.and.arrow.up")
+                    .foregroundColor(.blue)
+            }
+        }
+    }
+
+    private var inviteByEmailCell: some View {
+        HStack {
+            Text(NSLocalizedString("Invite people by email", comment: ""))
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.subheadline)
+                .foregroundColor(Color.separator)
+                .flipsForRightToLeftLayoutDirection(true)
+        }
+    }
+
+    private var chooseFromListCell: some View {
+        HStack {
+            Text(NSLocalizedString("Choose from list", comment: ""))
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.subheadline)
+                .foregroundColor(Color.separator)
+                .flipsForRightToLeftLayoutDirection(true)
         }
     }
 
@@ -90,8 +116,14 @@ struct InviteUsersView: View {
 struct InviteUsersView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            // TODO: -
-            //InviteUsersView(viewModel: InviteUsersViewModel())
+            InviteUsersView(
+                viewModel: InviteUsersViewModel(
+                    isLinkEnabled: true,
+                    selectedAccessRight: .comment,
+                    link: "https://www.google.com",
+                    isLoading: false
+                )
+            )
         }
     }
 }

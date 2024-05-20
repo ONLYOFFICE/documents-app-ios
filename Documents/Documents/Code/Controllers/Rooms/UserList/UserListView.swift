@@ -1,6 +1,6 @@
 //
 //  UserListView.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 16.05.2024.
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.

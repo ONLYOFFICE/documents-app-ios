@@ -1374,7 +1374,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.transformToRoom)
             }
 
-            if isDocspace, folder.isRoom {
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .onlyofficeRoomArchived) {
                 entityActions.insert(.disableNotifications)
             }
 

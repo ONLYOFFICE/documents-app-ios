@@ -1,53 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Documents-->
-        <scene sceneID="bsX-hb-y31">
+        <!--Documents View Controller-->
+        <scene sceneID="FJb-4P-IXM">
             <objects>
-                <tableViewController storyboardIdentifier="ASCDocumentsViewController" id="fJN-RF-dPt" customClass="ASCDocumentsViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" id="dn1-pl-9Iq">
+                <viewController storyboardIdentifier="ASCDocumentsViewController" id="oax-qz-UEH" customClass="ASCDocumentsViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1sh-HZ-NOJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="aan-I3-gvB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bkv-KY-Eve">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="fJN-RF-dPt" id="Z3n-cy-JqO"/>
-                            <outlet property="delegate" destination="fJN-RF-dPt" id="FT8-9O-gDt"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Documents" id="iQZ-4u-7mL">
-                        <barButtonItem key="rightBarButtonItem" image="nav-add" style="plain" id="dc0-v7-zmz"/>
-                    </navigationItem>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Il-6Y-0MR"/>
                     <connections>
-                        <outlet property="loadingView" destination="TJE-TK-bp8" id="99R-gM-EIb"/>
+                        <outlet property="loadingView" destination="TJE-TK-bp8" id="LZB-k2-8Vd"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naY-P6-khl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihz-AR-QHT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="TJE-TK-bp8" userLabel="Loading Page View">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="179"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHn-ff-TcR">
-                            <rect key="frame" x="91.333333333333343" y="20.666666666666671" width="117.33333333333334" height="50"/>
+                            <rect key="frame" x="91.333333333333343" y="64.666666666666671" width="117.33333333333334" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcf-gv-2zL">
-                                    <rect key="frame" x="40.000000000000021" y="15.999999999999996" width="67.333333333333314" height="18.000000000000004"/>
+                                    <rect key="frame" x="40.000000000000021" y="16" width="67.333333333333314" height="18"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Nvt-TO-vlC">
-                                    <rect key="frame" x="10" y="14.999999999999996" width="20" height="20.000000000000004"/>
+                                    <rect key="frame" x="10" y="15" width="20" height="20"/>
                                 </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -63,10 +58,34 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="ZHn-ff-TcR" firstAttribute="centerY" secondItem="TJE-TK-bp8" secondAttribute="centerY" constant="-44" id="Qgx-s8-D0U"/>
+                        <constraint firstItem="ZHn-ff-TcR" firstAttribute="centerY" secondItem="TJE-TK-bp8" secondAttribute="centerY" id="Qgx-s8-D0U"/>
                         <constraint firstItem="ZHn-ff-TcR" firstAttribute="centerX" secondItem="TJE-TK-bp8" secondAttribute="centerX" id="fkZ-Sv-7eY"/>
                     </constraints>
                 </view>
+            </objects>
+            <point key="canvasLocation" x="-1266" y="5488"/>
+        </scene>
+        <!--Documents-->
+        <scene sceneID="bsX-hb-y31">
+            <objects>
+                <tableViewController storyboardIdentifier="ASCDocumentsViewController2" id="fJN-RF-dPt" customClass="ASCDocumentsViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" id="dn1-pl-9Iq">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="fJN-RF-dPt" id="Z3n-cy-JqO"/>
+                            <outlet property="delegate" destination="fJN-RF-dPt" id="FT8-9O-gDt"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Documents" id="iQZ-4u-7mL">
+                        <barButtonItem key="rightBarButtonItem" image="nav-add" style="plain" id="dc0-v7-zmz"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naY-P6-khl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-418" y="5487"/>
         </scene>
@@ -110,7 +129,7 @@
         <!--Root View Controller-->
         <scene sceneID="Mfk-H8-Nhb">
             <objects>
-                <tabBarController storyboardIdentifier="ASCRootViewController" id="Crl-OQ-r9p" customClass="ASCRootViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ASCRootViewController" id="Crl-OQ-r9p" customClass="ASCRootViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qLn-Z8-dS1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -130,17 +149,17 @@
         <!--Documents Navigation Controller-->
         <scene sceneID="5up-Af-98j">
             <objects>
-                <navigationController storyboardIdentifier="ASCDocumentsNavigationController" toolbarHidden="NO" id="Kd4-Yi-6Nk" customClass="ASCDocumentsNavigationController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ASCDocumentsNavigationController" toolbarHidden="NO" id="Kd4-Yi-6Nk" customClass="ASCDocumentsNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="gm2-id-6GY">
                         <rect key="frame" x="0.0" y="59" width="430" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1yc-Mg-0s9" customClass="ASCDocumentsToolbar" customModule="Documents_dev" customModuleProvider="target">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1yc-Mg-0s9" customClass="ASCDocumentsToolbar" customModule="Documents" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="849" width="430" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="fJN-RF-dPt" kind="relationship" relationship="rootViewController" id="Zgh-cp-EJT"/>
+                        <segue destination="oax-qz-UEH" kind="relationship" relationship="rootViewController" id="ac5-Lm-C6y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxQ-3f-emM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,13 +169,13 @@
         <!--On iPad-->
         <scene sceneID="Pqc-ZS-88v">
             <objects>
-                <tableViewController title="On iPad" clearsSelectionOnViewWillAppear="NO" id="Kfl-YE-c7u" customClass="ASCDeviceCategoryViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="On iPad" clearsSelectionOnViewWillAppear="NO" id="Kfl-YE-c7u" customClass="ASCDeviceCategoryViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xrw-tq-hXE">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <inset key="separatorInset" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCDeviceCategoryCell" id="7sU-YA-GWq" customClass="ASCDeviceCategoryCell" customModule="Documents_dev" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCDeviceCategoryCell" id="7sU-YA-GWq" customClass="ASCDeviceCategoryCell" customModule="Documents" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333332061767578" width="430" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7sU-YA-GWq" id="76N-63-IOy">
@@ -208,12 +227,12 @@
         <!--On iPad-->
         <scene sceneID="WF2-e5-2xw">
             <objects>
-                <navigationController title="On iPad" toolbarHidden="NO" id="gvd-UQ-EFI" customClass="ASCBaseNavigationController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="On iPad" toolbarHidden="NO" id="gvd-UQ-EFI" customClass="ASCBaseNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="d7J-Pn-QaZ">
                         <rect key="frame" x="0.0" y="59" width="430" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FYW-j1-A9Q" customClass="ASCDocumentsToolbar" customModule="Documents_dev" customModuleProvider="target">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FYW-j1-A9Q" customClass="ASCDocumentsToolbar" customModule="Documents" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="800" width="430" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
@@ -228,7 +247,7 @@
         <!--Clouds-->
         <scene sceneID="siG-3Q-yE9">
             <objects>
-                <splitViewController id="cD4-gd-yuz" customClass="ASCCloudsSplitViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="cD4-gd-yuz" customClass="ASCCloudsSplitViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Clouds" image="tab-cloud" id="6qd-Sb-ejT"/>
                     <connections>
                         <segue destination="WM5-Ng-sRj" kind="relationship" relationship="masterViewController" id="ZFB-j2-I96"/>
@@ -241,7 +260,7 @@
         <!--ONLYOFFICE-->
         <scene sceneID="dKU-oj-7a2">
             <objects>
-                <splitViewController id="bji-k6-nhO" customClass="ASCOnlyofficeSplitViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="bji-k6-nhO" customClass="ASCOnlyofficeSplitViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="ONLYOFFICE" image="tab-onlyoffice" id="WLM-Ff-ccz"/>
                     <connections>
                         <segue destination="cGA-Zo-QiU" kind="relationship" relationship="masterViewController" id="zLm-DG-njb"/>
@@ -254,7 +273,7 @@
         <!--On iPad-->
         <scene sceneID="gzc-wK-0iB">
             <objects>
-                <splitViewController id="Wxe-DL-Nw3" customClass="ASCDeviceSplitViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="Wxe-DL-Nw3" customClass="ASCDeviceSplitViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="On iPad" id="d8B-af-U9v"/>
                     <connections>
                         <segue destination="gvd-UQ-EFI" kind="relationship" relationship="masterViewController" id="dou-js-4Xo"/>
@@ -267,13 +286,13 @@
         <!--ONLYOFFICE-->
         <scene sceneID="2Na-fn-WFC">
             <objects>
-                <navigationController title="ONLYOFFICE" toolbarHidden="NO" id="cGA-Zo-QiU" customClass="ASCOnlyofficeNavigationController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="ONLYOFFICE" toolbarHidden="NO" id="cGA-Zo-QiU" customClass="ASCOnlyofficeNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="ONLYOFFICE" image="tab-onlyoffice" selectedImage="tab-onlyoffice-selected" id="nQn-Gz-R0Z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="45I-gF-TL7">
                         <rect key="frame" x="0.0" y="59" width="430" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sdV-RH-UAW" customClass="ASCDocumentsToolbar" customModule="Documents_dev" customModuleProvider="target">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sdV-RH-UAW" customClass="ASCDocumentsToolbar" customModule="Documents" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="800" width="430" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
@@ -288,7 +307,7 @@
         <!--ONLYOFFICE-->
         <scene sceneID="QQn-kU-RRY">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="xU3-4a-g2k" customClass="ASCOnlyofficeCategoriesViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="xU3-4a-g2k" customClass="ASCOnlyofficeCategoriesViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xys-ec-uPG">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,10 +316,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="430" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNw-LZ-xKd" userLabel="Avatar Shadow" customClass="ASCShadowRadiusView" customModule="Documents_dev" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNw-LZ-xKd" userLabel="Avatar Shadow" customClass="ASCShadowRadiusView" customModule="Documents" customModuleProvider="target">
                                     <rect key="frame" x="28" y="26" width="48" height="48"/>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ezx-Px-vt0" customClass="ASCProfileAvatarView" customModule="Documents_dev" customModuleProvider="target">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ezx-Px-vt0" customClass="ASCProfileAvatarView" customModule="Documents" customModuleProvider="target">
                                     <rect key="frame" x="28" y="26" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="e8s-LK-XQ3"/>
@@ -356,7 +375,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCOnlyofficeCategoryCell" id="Ubb-vr-FmQ" customClass="ASCOnlyofficeCategoryCell" customModule="Documents_dev" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCOnlyofficeCategoryCell" id="Ubb-vr-FmQ" customClass="ASCOnlyofficeCategoryCell" customModule="Documents" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="155.33333206176758" width="430" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ubb-vr-FmQ" id="LxX-U4-0C2">
@@ -415,13 +434,13 @@
         <!--Clouds-->
         <scene sceneID="Elh-if-wDT">
             <objects>
-                <navigationController title="Clouds" toolbarHidden="NO" id="WM5-Ng-sRj" customClass="ASCCloudsNavigationController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="Clouds" toolbarHidden="NO" id="WM5-Ng-sRj" customClass="ASCCloudsNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Clouds" image="tab-cloud" selectedImage="tab-cloud-selected" id="wcS-gn-5AV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="yDq-yV-sgH">
                         <rect key="frame" x="0.0" y="59" width="430" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uvQ-Qk-4F1" customClass="ASCDocumentsToolbar" customModule="Documents_dev" customModuleProvider="target">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uvQ-Qk-4F1" customClass="ASCDocumentsToolbar" customModule="Documents" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="800" width="430" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
@@ -436,13 +455,13 @@
         <!--Clouds-->
         <scene sceneID="yeE-07-BeF">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="rVo-4g-kEo" customClass="ASCCloudsViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="rVo-4g-kEo" customClass="ASCCloudsViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="lsp-DK-7fg">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <inset key="separatorInset" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCCloudCategoryCell-Connected" id="VJB-PG-JHM" customClass="ASCCloudCategoryCell" customModule="Documents_dev" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCCloudCategoryCell-Connected" id="VJB-PG-JHM" customClass="ASCCloudCategoryCell" customModule="Documents" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333332061767578" width="430" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VJB-PG-JHM" id="R9M-it-zLp">
@@ -459,7 +478,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6vY-Ue-hFq">
                                             <rect key="frame" x="74" y="12.666666666666664" width="286" height="41"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="s1a-WZ-ro9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="s1a-WZ-ro9">
                                                     <rect key="frame" x="0.0" y="0.0" width="286" height="20.333333333333332"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
@@ -468,7 +487,7 @@
                                                         <fragment content="Do not translate"/>
                                                     </attributedString>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-fy-5tz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-fy-5tz">
                                                     <rect key="frame" x="0.0" y="25.333333333333339" width="286" height="15.666666666666668"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" name="text-subtitle"/>
@@ -494,7 +513,7 @@
                                     <outlet property="title" destination="s1a-WZ-ro9" id="y2P-Gl-B4A"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCCloudCategoryCell-Login" id="nV1-w1-ZlC" customClass="ASCCloudCategoryCell" customModule="Documents_dev" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCCloudCategoryCell-Login" id="nV1-w1-ZlC" customClass="ASCCloudCategoryCell" customModule="Documents" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="121.33333206176758" width="430" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nV1-w1-ZlC" id="gev-9D-nLe">
@@ -531,7 +550,7 @@
                                     <outlet property="title" destination="EbX-7l-0KP" id="8Rs-Hs-LI9"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCCloudCategoryCell-Add" id="d0h-9A-wmy" customClass="ASCCloudCategoryCell" customModule="Documents_dev" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCCloudCategoryCell-Add" id="d0h-9A-wmy" customClass="ASCCloudCategoryCell" customModule="Documents" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="187.33333206176758" width="430" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d0h-9A-wmy" id="zf3-8W-Ggn">
@@ -578,7 +597,7 @@
         <!--Choose Cloud-->
         <scene sceneID="fG7-TB-T3Q">
             <objects>
-                <viewController storyboardIdentifier="ASCCloudsEmptyViewController" title="Choose Cloud" id="pM4-zR-Xil" customClass="ASCCloudsEmptyViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ASCCloudsEmptyViewController" title="Choose Cloud" id="pM4-zR-Xil" customClass="ASCCloudsEmptyViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Tt-pu-i37"/>
                         <viewControllerLayoutGuide type="bottom" id="xhB-qG-cgi"/>

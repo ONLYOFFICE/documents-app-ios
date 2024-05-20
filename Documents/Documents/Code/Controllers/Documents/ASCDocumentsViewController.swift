@@ -18,7 +18,7 @@ import UIKit
 typealias MovedEntities = [ASCEntity]
 typealias UnmovedEntities = [ASCEntity]
 
-class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognizerDelegate {
+class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
     // MARK: - Public
@@ -58,6 +58,26 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
     private var needsToLoadFirstPageOnAppear = false
+    private lazy var navigationBarExtendPanelView: NavigationBarExtendPanelView = {
+        guard let contentControl else { return NavigationBarExtendPanelView(frame: .zero) }
+        let view = NavigationBarExtendPanelView(contentView: contentControl)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var contentControl: ASCCategorySegmentControl? = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.items = [
+            "One",
+            "Two not been implemented",
+            "Three not been implemented",
+        ]
+        $0.selectIndex = 0
+        $0.onChange = { index in
+            print("Index: \(index)")
+        }
+        return $0
+    }(ASCCategorySegmentControl(frame: .zero))
 
     // MARK: - Actions controllers vars
 
@@ -99,6 +119,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private var cancelBarButton: UIBarButtonItem?
     private var selectAllBarButton: UIBarButtonItem?
     private var filterBarButton: UIBarButtonItem?
+
+    lazy var tableView: UITableView = {
+        $0.backgroundView = UIView()
+        $0.tableFooterView = UIView()
+        $0.dataSource = self
+        $0.delegate = self
+        $0.dragDelegate = self
+        $0.dropDelegate = self
+        $0.dragInteractionEnabled = true
+        $0.separatorStyle = .none
+        return $0
+    }(UITableView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 500)), style: .plain))
 
     // Search
     private lazy var searchController: UISearchController = {
@@ -206,9 +238,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         definesPresentationContext = true
 
-        tableView.backgroundView = UIView()
-        tableView.tableFooterView = UIView()
-
         configureNavigationBar(animated: false)
         configureProvider()
         configureSwipeGesture()
@@ -232,19 +261,46 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
 
-        // Drag Drop support
-        if #available(iOS 11.0, *) {
-            tableView.dragDelegate = self
-            tableView.dropDelegate = self
-            tableView.dragInteractionEnabled = true
-            tableView.separatorStyle = .none
-        }
-
         if !featureLargeTitle {
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationItem.largeTitleDisplayMode = .never
             navigationItem.searchController = searchController
         }
+
+        configureNavigationItem()
+        configureView()
+    }
+
+    private func configureNavigationItem() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationItem.compactAppearance = appearance
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        if #available(iOS 15.0, *) {
+            navigationItem.compactScrollEdgeAppearance = appearance
+        }
+    }
+
+    private func configureView() {
+        view.backgroundColor = .systemBackground
+
+        view.addSubview(tableView)
+        view.addSubview(navigationBarExtendPanelView)
+
+        tableView.fillToSuperview()
+
+        navigationBarExtendPanelView.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor
+        )
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.contentInset.top = navigationBarExtendPanelView.contentView?.frame.height ?? 0
+        tableView.verticalScrollIndicatorInsets.top = tableView.contentInset.top
     }
 
     deinit {
@@ -295,14 +351,22 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = uiRefreshControl
-        } else {
-            tableView.addSubview(uiRefreshControl)
-        }
+        tableView.refreshControl = uiRefreshControl
 
         checkUnsuccessfullyOpenedFile()
         configureProvider()
+
+        if let navBar = navigationController?.navigationBar,
+           let contentView = navigationBarExtendPanelView.contentView
+        {
+//            if contentView.constraints.first(where: { $0.firstAttribute.rawValue == NSLayoutConstraint.Attribute.top.rawValue }) != nil {
+                contentView.anchor(top: navBar.bottomAnchor)
+                tableView.contentInset.top = tableView.frame.height
+                if tableView.visibleCells.count > 0 {
+                    tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                }
+//            }
+        }
 
         // Update current provider if needed
         if let provider = provider, provider.id != ASCFileManager.provider?.id {
@@ -366,9 +430,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return super.preferredInterfaceOrientationForPresentation
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if let viewController = hideableViewControllerOnTransition {
@@ -1215,10 +1279,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             showEmptyView(false)
 
             view.addSubview(loadingView)
-
-            loadingView.translatesAutoresizingMaskIntoConstraints = false
-            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
+            loadingView.anchorCenterSuperview()
 
         } else {
             loadingView.removeFromSuperview()
@@ -1235,10 +1296,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if !show {
             emptyView?.removeFromSuperview()
             searchEmptyView?.removeFromSuperview()
-
-            if let tableView = view as? UITableView {
-                tableView.backgroundView = nil
-            }
+            tableView.backgroundView = nil
 
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic
@@ -1285,9 +1343,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     width: tableView.width,
                     height: tableView.height
                 )
-                if let tableView = view as? UITableView {
-                    tableView.backgroundView = localEmptyView
-                }
+                tableView.backgroundView = localEmptyView
             }
         }
     }
@@ -1295,10 +1351,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func showErrorView(_ show: Bool, _ error: Error? = nil) {
         if !show {
             errorView?.removeFromSuperview()
-
-            if let tableView = view as? UITableView {
-                tableView.backgroundView = nil
-            }
+            tableView.backgroundView = nil
         } else if tableData.count < 1 {
             showLoadingPage(false)
             showEmptyView(false)
@@ -1337,9 +1390,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     width: tableView.frame.width,
                     height: tableView.frame.height
                 )
-                if let tableView = view as? UITableView {
-                    tableView.backgroundView = errorView
-                }
+                tableView.backgroundView = errorView
             }
         }
     }
@@ -1868,7 +1919,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             previousController.tableView.deleteRows(at: [indexPath], with: .fade)
                             previousController.tableView.endUpdates()
 
-                            if let refreshControl = previousController.refreshControl {
+                            if let refreshControl = previousController.tableView.refreshControl {
                                 previousController.refresh(refreshControl)
                             }
 
@@ -2102,7 +2153,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 self.tableView.beginUpdates()
                                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                                 self.tableView.endUpdates()
-                                if let refreshControl = self.refreshControl {
+                                if let refreshControl = self.tableView.refreshControl {
                                     self.refresh(refreshControl)
                                 }
                             }
@@ -2116,7 +2167,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 previousController.tableView.deleteRows(at: [indexPath], with: .fade)
                                 previousController.tableView.endUpdates()
 
-                                if let refreshControl = previousController.refreshControl {
+                                if let refreshControl = previousController.tableView.refreshControl {
                                     previousController.refresh(refreshControl)
                                 }
 
@@ -2151,13 +2202,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                 self.tableView.beginUpdates()
                                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                                 self.tableView.endUpdates()
-                                if let refreshControl = self.refreshControl {
+                                if let refreshControl = self.tableView.refreshControl {
                                     self.refresh(refreshControl)
                                 }
                             }
                         } else {
                             self.navigationController?.popViewController(animated: true)
-                            if let refreshControl = self.refreshControl {
+                            if let refreshControl = self.tableView.refreshControl {
                                 self.refresh(refreshControl)
                             }
                         }
@@ -2177,7 +2228,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     func editRoom(folder: ASCFolder) {
         let vc = EditRoomViewController(folder: folder) { _ in
-            if let refreshControl = self.refreshControl {
+            if let refreshControl = self.tableView.refreshControl {
                 self.refresh(refreshControl)
                 if let viewControllers = self.navigationController?.viewControllers,
                    let index = viewControllers.firstIndex(of: self),
@@ -3204,12 +3255,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
 // MARK: - Table view data source
 
-extension ASCDocumentsViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension ASCDocumentsViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableData.count < total {
             return tableData.count + 1
         }
@@ -3217,7 +3268,7 @@ extension ASCDocumentsViewController {
         return tableData.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableData.count > 0 {
             emptyView?.removeFromSuperview()
 
@@ -3259,7 +3310,7 @@ extension ASCDocumentsViewController {
         return UITableViewCell()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
             updateSelectedItems(indexPath: indexPath)
             return
@@ -3297,7 +3348,7 @@ extension ASCDocumentsViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
             if let folder = tableData[indexPath.row] as? ASCFolder {
                 selectedIds.remove(folder.uid)
@@ -3310,7 +3361,7 @@ extension ASCDocumentsViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.tag == kPageLoadingCellTag {
             cell.setEditing(false, animated: false)
             cell.isHidden = false
@@ -3346,7 +3397,7 @@ extension ASCDocumentsViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if tableData.count < total, indexPath.row == tableData.count - 1 {
             if let cell = tableView.cellForRow(at: indexPath), cell.tag == kPageLoadingCellTag {
                 return false
@@ -3356,7 +3407,7 @@ extension ASCDocumentsViewController {
     }
 
     @available(iOS 13.0, *)
-    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { [weak self] suggestedActions in
             guard
                 let strongSelf = self,
@@ -3374,9 +3425,26 @@ extension ASCDocumentsViewController {
     }
 
     @available(iOS 13.0, *)
-    override func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
         setEditMode(true)
         return true
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        77
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollContentOffset = scrollView.contentOffset.y + navigationBarExtendPanelView.frame.height
+        if scrollContentOffset > 2.0 {
+            UIView.animate(withDuration: 0.100, animations: {
+                self.navigationBarExtendPanelView.standardAppearance()
+            })
+        } else {
+            UIView.animate(withDuration: 0.100, animations: {
+                self.navigationBarExtendPanelView.scrollEdgeAppearance()
+            })
+        }
     }
 }
 
@@ -3927,7 +3995,7 @@ extension ASCDocumentsViewController {
         var newItemsData = provider?.items ?? []
         provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
 
-        if let refreshControl = refreshControl {
+        if let refreshControl = tableView.refreshControl {
             refresh(refreshControl)
         }
         showEmptyView(total < 1)

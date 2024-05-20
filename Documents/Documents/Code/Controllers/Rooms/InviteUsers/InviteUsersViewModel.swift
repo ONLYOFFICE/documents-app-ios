@@ -11,23 +11,30 @@ import Foundation
 import SwiftUI
 
 final class InviteUsersViewModel: ObservableObject {
-    
     @Published var isLinkEnabled: Bool = true
-    @Published var selectedAccessRight: ASCShareAccess
+    @Published var selectedAccessRight: ASCShareAccess = .none
     @Published var link: String = ""
     @Published var isLoading: Bool = false
-    
+
+    @Published var isAddUsersScreenDisplaying: Bool = false
+
+    let room: ASCRoom
+
     private var cancellables = Set<AnyCancellable>()
-    
-    init(isLinkEnabled: Bool, selectedAccessRight: ASCShareAccess, link: String, isLoading: Bool, cancellables: Set<AnyCancellable> = Set<AnyCancellable>()) {
+
+    init(
+        isLinkEnabled: Bool,
+        selectedAccessRight: ASCShareAccess,
+        link: String,
+        isLoading: Bool,
+        room: ASCRoom
+    ) {
         self.isLinkEnabled = isLinkEnabled
         self.selectedAccessRight = selectedAccessRight
         self.link = link
         self.isLoading = isLoading
-        self.cancellables = cancellables
+        self.room = room
     }
 
-    func fetchData() {
-        
-    }
+    func fetchData() {}
 }

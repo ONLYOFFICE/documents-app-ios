@@ -270,8 +270,15 @@ private extension View {
         viewModel: RoomSharingViewModel
     ) -> some View {
         navigation(isActive: isDisplaying) {
-            SharingInviteRightHoldersRepresentable(entity: viewModel.room)
-                .navigationBarHidden(true)
+            InviteUsersView(
+                viewModel: InviteUsersViewModel(
+                    isLinkEnabled: true,
+                    selectedAccessRight: .comment,
+                    link: "google.com",
+                    isLoading: false,
+                    room: viewModel.room
+                )
+            )
         }
     }
 }

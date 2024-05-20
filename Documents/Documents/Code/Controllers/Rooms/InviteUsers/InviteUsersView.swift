@@ -32,6 +32,7 @@ struct InviteUsersView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("Invite users", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing: cancelButton)
+        .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
         .onAppear {
             viewModel.fetchData()
         }
@@ -86,6 +87,7 @@ struct InviteUsersView: View {
                 .foregroundColor(Color.separator)
                 .flipsForRightToLeftLayoutDirection(true)
         }
+        .contentShape(Rectangle())
     }
 
     private var chooseFromListCell: some View {
@@ -96,6 +98,10 @@ struct InviteUsersView: View {
                 .font(.subheadline)
                 .foregroundColor(Color.separator)
                 .flipsForRightToLeftLayoutDirection(true)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.isAddUsersScreenDisplaying = true
         }
     }
 
@@ -113,6 +119,20 @@ struct InviteUsersView: View {
     }
 }
 
+// MARK: - Navigation
+
+private extension View {
+    func navigateToAddUsers(
+        isDisplaying: Binding<Bool>,
+        viewModel: InviteUsersViewModel
+    ) -> some View {
+        navigation(isActive: isDisplaying) {
+            SharingInviteRightHoldersRepresentable(entity: viewModel.room)
+                .navigationBarHidden(true)
+        }
+    }
+}
+
 struct InviteUsersView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -121,7 +141,8 @@ struct InviteUsersView_Previews: PreviewProvider {
                     isLinkEnabled: true,
                     selectedAccessRight: .comment,
                     link: "https://www.google.com",
-                    isLoading: false
+                    isLoading: false,
+                    room: ASCRoom()
                 )
             )
         }

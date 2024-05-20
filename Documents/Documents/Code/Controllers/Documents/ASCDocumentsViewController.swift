@@ -1262,9 +1262,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         localEmptyView?.type = .trash
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
-                    } else if folder.rootFolderType == .onlyofficeRoomShared {
-                        localEmptyView?.type = .docspace
-
+                    } else if folder.isRoom {
+                        localEmptyView?.type = .room
                         if !(provider.allowEdit(entity: folder)) {
                             localEmptyView?.type = .docspaceNoPermissions
                         }

@@ -15,7 +15,7 @@ class ASCDocumentsEmptyView: UIView {
         case trash
         case cloud
         case cloudNoPermissions
-        case docspace
+        case room
         case docspaceNoPermissions
         case search
         case usersNotFound
@@ -127,7 +127,7 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
-        case .docspace:
+        case .room:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("Room created!", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new folders to \norganize your files.", comment: "")
@@ -187,7 +187,7 @@ class ASCDocumentsEmptyView: UIView {
 private extension ASCDocumentsEmptyView.EmptyViewState {
     var actionButtonStyleType: ASCButtonStyleType {
         switch self {
-        case .docspace:
+        case .room:
             .link
         default:
             .action

@@ -1260,6 +1260,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 if let folder = folder, let provider = provider {
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
                         localEmptyView?.type = .trash
+                    } else if folder.rootFolderType == .onlyofficeRoomArchived && !folder.isRoom {
+                        localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
                     } else if folder.rootFolderType == .onlyofficeRoomShared {

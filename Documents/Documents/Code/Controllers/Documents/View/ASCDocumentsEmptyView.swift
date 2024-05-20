@@ -22,6 +22,7 @@ class ASCDocumentsEmptyView: UIView {
         case error
         case networkError
         case paymentRequired
+        case docspaceArchive
     }
 
     // MARK: - Properties
@@ -174,6 +175,11 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel?.text = NSLocalizedString("Business subscription expired", comment: "")
             subtitleLabel?.text = NSLocalizedString("Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Renew Business plan", comment: ""), for: .normal)
+        case .docspaceArchive:
+            imageView?.image = Asset.Images.emptyFolder.image
+            titleLabel.text = NSLocalizedString("No archived rooms here yet", comment: "")
+            subtitleLabel.text = NSLocalizedString("You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.", comment: "")
+            actionButton?.removeFromSuperview()
         default:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")

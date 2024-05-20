@@ -1,6 +1,6 @@
 //
 //  ServicesProvider.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 28/12/23.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.

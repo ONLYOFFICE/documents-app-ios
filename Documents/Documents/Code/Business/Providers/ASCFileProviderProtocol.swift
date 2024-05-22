@@ -140,6 +140,9 @@ protocol ASCFileProviderProtocol {
 
     // Action Handlers
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?)
+
+    // Subcategories
+    func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory]
 }
 
 // MARK: - ASCFileProvider protocol
@@ -153,15 +156,15 @@ extension ASCFileProviderProtocol {
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
-    func serialize() -> String? { return nil }
+    func serialize() -> String? { nil }
     func deserialize(_ jsonString: String) {}
 
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {}
     func isReachable(with info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) { complation(false, nil) }
-    func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }
-    func errorMessage(by errorObject: Any) -> String { return "" }
-    func handleNetworkError(_ error: Error?) -> Bool { return false }
-    func modifyImageDownloader(request: URLRequest) -> URLRequest { return request }
+    func absoluteUrl(from string: String?) -> URL? { URL(string: string ?? "") }
+    func errorMessage(by errorObject: Any) -> String { "" }
+    func handleNetworkError(_ error: Error?) -> Bool { false }
+    func modifyImageDownloader(request: URLRequest) -> URLRequest { request }
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
     func download(_ path: String, to: URL, range: Range<Int64>?, processing: @escaping NetworkProgressHandler) {}
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
@@ -176,18 +179,20 @@ extension ASCFileProviderProtocol {
     func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {}
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, conflictResolveType: ConflictResolveType, contentOnly: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
-    func allowAdd(toFolder folder: ASCFolder?) -> Bool { return allowEdit(entity: folder) }
-    func allowComment(entity: AnyObject?) -> Bool { return allowEdit(entity: entity) }
-    func allowRead(entity: AnyObject?) -> Bool { return false }
-    func allowEdit(entity: AnyObject?) -> Bool { return false }
-    func allowDelete(entity: AnyObject?) -> Bool { return false }
-    func allowDragAndDrop(for entity: ASCEntity?) -> Bool { return true }
-    func isTrash(for folder: ASCFolder?) -> Bool { return false }
-    func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
+    func allowAdd(toFolder folder: ASCFolder?) -> Bool { allowEdit(entity: folder) }
+    func allowComment(entity: AnyObject?) -> Bool { allowEdit(entity: entity) }
+    func allowRead(entity: AnyObject?) -> Bool { false }
+    func allowEdit(entity: AnyObject?) -> Bool { false }
+    func allowDelete(entity: AnyObject?) -> Bool { false }
+    func allowDragAndDrop(for entity: ASCEntity?) -> Bool { true }
+    func isTrash(for folder: ASCFolder?) -> Bool { false }
+    func actions(for entity: ASCEntity?) -> ASCEntityActions { [] }
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         log.error("Handle action \(action.rawValue) for folder \(folder.title) doesn't supported")
         handler?(.error, folder, ASCProviderError(msg: "Unsupported handle action"))
     }
+
+    func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory] { [] }
 }
 
 // MARK: - ASCSortableFileProvider protocol

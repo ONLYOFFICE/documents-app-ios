@@ -316,7 +316,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
                 "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
             ]
-            if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType), let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
+            if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
+               let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
+            {
                 params["searchArea"] = searchArea
             }
 
@@ -328,7 +330,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Sort
-
             strongSelf.fetchInfo = parameters
 
             if let sort = parameters["sort"] as? [String: Any] {
@@ -1901,6 +1902,26 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }
+    }
+
+    func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory] {
+        guard
+            let docspaceVersion = apiClient.serverVersion?.docSpace,
+            docspaceVersion.isVersion(greaterThanOrEqualTo: "2.5.1")
+        else { return [] }
+
+        if folder.isRoot, folder.rootFolderType == .onlyofficeUser {
+            let resentFolder = folder.copy()
+            resentFolder.rootFolderType = .onlyofficeRecent
+            resentFolder.id = OnlyofficeAPI.Path.Forlder.recentRaw
+
+            return [
+                ASCSegmentCategory(title: NSLocalizedString("My Documents", comment: ""), folder: folder),
+                ASCSegmentCategory(title: NSLocalizedString("Recently accessible via link", comment: ""), folder: resentFolder),
+            ]
+        }
+
+        return []
     }
 }
 

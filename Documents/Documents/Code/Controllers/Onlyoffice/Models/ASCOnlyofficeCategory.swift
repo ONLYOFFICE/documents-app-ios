@@ -128,7 +128,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func isDocSpace(type: ASCFolderType) -> Bool {
         guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
-        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser:
+        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser, .onlyofficeRecent:
             return true
         default:
             return false
@@ -151,6 +151,8 @@ class ASCOnlyofficeCategory: ASCCategory {
             return "Active"
         case .onlyofficeRoomArchived:
             return "Archive"
+        case .onlyofficeRecent:
+            return "RecentByLinks"
         default: return nil
         }
     }

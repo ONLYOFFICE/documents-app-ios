@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "security-light.pdf"
+            "filename" : "world-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "security-dark.pdf",
+            "filename" : "world-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

@@ -1,6 +1,6 @@
 //
 //  ASCDocSpaceLinkViewModel.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Lolita Chernysheva on 20.11.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.

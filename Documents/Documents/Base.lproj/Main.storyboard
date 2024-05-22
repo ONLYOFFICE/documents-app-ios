@@ -63,31 +63,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-1266" y="5488"/>
-        </scene>
-        <!--Documents-->
-        <scene sceneID="bsX-hb-y31">
-            <objects>
-                <tableViewController storyboardIdentifier="ASCDocumentsViewController2" id="fJN-RF-dPt" customClass="ASCDocumentsViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" id="dn1-pl-9Iq">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="fJN-RF-dPt" id="Z3n-cy-JqO"/>
-                            <outlet property="delegate" destination="fJN-RF-dPt" id="FT8-9O-gDt"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Documents" id="iQZ-4u-7mL">
-                        <barButtonItem key="rightBarButtonItem" image="nav-add" style="plain" id="dc0-v7-zmz"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="naY-P6-khl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-418" y="5487"/>
+            <point key="canvasLocation" x="-419" y="5488"/>
         </scene>
         <!--Settings-->
         <scene sceneID="eOB-gh-oOg">
@@ -712,7 +688,6 @@
         <image name="cloud-yandex-disk" width="36" height="36"/>
         <image name="empty-connect-to-cloud" width="200" height="200"/>
         <image name="logo-large" width="186" height="80"/>
-        <image name="nav-add" width="30" height="30"/>
         <image name="tab-cloud" width="30" height="28"/>
         <image name="tab-cloud-selected" width="30" height="28"/>
         <image name="tab-onlyoffice" width="30" height="28"/>

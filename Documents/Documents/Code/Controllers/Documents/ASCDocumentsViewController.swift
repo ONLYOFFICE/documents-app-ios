@@ -26,7 +26,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     var folder: ASCFolder? {
         didSet {
             folderHolders.forEach { $0.folder = folder }
-            if oldValue == nil, folder != nil {
+            if oldValue == nil, let folder {
+                displayCategoryTabsIfNeeded(folder: folder)
                 loadFirstPage()
             }
         }
@@ -59,25 +60,26 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private var hideableViewControllerOnTransition: UIViewController?
     private var needsToLoadFirstPageOnAppear = false
     private lazy var navigationBarExtendPanelView: NavigationBarExtendPanelView = {
-        guard let contentControl else { return NavigationBarExtendPanelView(frame: .zero) }
         let view = NavigationBarExtendPanelView(contentView: contentControl)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private lazy var contentControl: ASCCategorySegmentControl? = {
+    private lazy var contentControl: ASCCategorySegmentControl = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.items = [
-            "One",
-            "Two not been implemented",
-            "Three not been implemented",
-        ]
-        $0.selectIndex = 0
-        $0.onChange = { index in
-            print("Index: \(index)")
-        }
+        $0.onChange = onCategorySegmentChange
         return $0
     }(ASCCategorySegmentControl(frame: .zero))
+
+    var categories: [ASCSegmentCategory] = [] {
+        didSet {
+            updateCategoryTabs()
+        }
+    }
+
+    private var displaySegmentTabs: Bool {
+        categories.count > 0
+    }
 
     // MARK: - Actions controllers vars
 
@@ -269,16 +271,23 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         configureNavigationItem()
         configureView()
+        viewDidLayoutSubviews()
     }
 
     private func configureNavigationItem() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        navigationItem.compactAppearance = appearance
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        if #available(iOS 15.0, *) {
-            navigationItem.compactScrollEdgeAppearance = appearance
+        if displaySegmentTabs {
+            let appearance = UINavigationBarAppearance()
+            if navigationBarExtendPanelView.isHidden {
+                appearance.configureWithDefaultBackground()
+            } else {
+                appearance.configureWithTransparentBackground()
+            }
+            navigationItem.compactAppearance = appearance
+            navigationItem.standardAppearance = appearance
+            navigationItem.scrollEdgeAppearance = appearance
+            if #available(iOS 15.0, *) {
+                navigationItem.compactScrollEdgeAppearance = appearance
+            }
         }
     }
 
@@ -286,20 +295,29 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         view.backgroundColor = .systemBackground
 
         view.addSubview(tableView)
-        view.addSubview(navigationBarExtendPanelView)
 
         tableView.fillToSuperview()
 
-        navigationBarExtendPanelView.anchor(
-            top: view.topAnchor,
-            leading: view.leadingAnchor,
-            trailing: view.trailingAnchor
-        )
+        if displaySegmentTabs {
+            view.addSubview(navigationBarExtendPanelView)
+
+            navigationBarExtendPanelView.anchor(
+                top: view.topAnchor,
+                leading: view.leadingAnchor,
+                trailing: view.trailingAnchor
+            )
+        }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.contentInset.top = navigationBarExtendPanelView.contentView?.frame.height ?? 0
+
+        if navigationBarExtendPanelView.isHidden {
+            tableView.contentInset.top = 0
+        } else if displaySegmentTabs {
+            tableView.contentInset.top = navigationBarExtendPanelView.contentView?.frame.height ?? 0
+        }
+
         tableView.verticalScrollIndicatorInsets.top = tableView.contentInset.top
     }
 
@@ -346,6 +364,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         configureNavigationBar()
+        viewDidLayoutSubviews()
+    }
+
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+
+        if displaySegmentTabs {
+            var navigationController = navigationController
+
+            if let splitVC: UISplitViewController = findParentController() {
+                navigationController = splitVC.viewControllers.last(where: { $0 is UINavigationController }) as? UINavigationController
+            }
+
+            if let navBar = navigationController?.navigationBar,
+               navBar.window != nil,
+               let contentView = navigationBarExtendPanelView.contentView
+            {
+                if contentView.constraints.first(where: { $0.identifier == "navBarExtendContentViewTop" }) == nil {
+                    let constarint = contentView.topAnchor.constraint(equalTo: navBar.bottomAnchor)
+                    constarint.identifier = "navBarExtendContentViewTop"
+                    constarint.isActive = true
+                }
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -356,25 +398,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         checkUnsuccessfullyOpenedFile()
         configureProvider()
 
-        if let navBar = navigationController?.navigationBar,
-           let contentView = navigationBarExtendPanelView.contentView
-        {
-//            if contentView.constraints.first(where: { $0.firstAttribute.rawValue == NSLayoutConstraint.Attribute.top.rawValue }) != nil {
-                contentView.anchor(top: navBar.bottomAnchor)
-                tableView.contentInset.top = tableView.frame.height
-                if tableView.visibleCells.count > 0 {
-                    tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-                }
-//            }
-        }
-
         // Update current provider if needed
-        if let provider = provider, provider.id != ASCFileManager.provider?.id {
+        if let provider, provider.id != ASCFileManager.provider?.id {
             ASCFileManager.provider = provider
         }
 
         // Store last open folder
-        if let folder = folder, let folderAsString = folder.toJSONString() {
+        if let folder, let folderAsString = folder.toJSONString() {
             UserDefaults.standard.set(folderAsString, forKey: ASCConstants.SettingsKeys.lastFolder)
         }
 
@@ -388,6 +418,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         searchController.searchBar.alpha = 1
                     })
                 }
+                self?.viewDidLayoutSubviews()
             }
         }
 
@@ -445,6 +476,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 swipeCell.hideSwipe(animated: false)
             }
         }
+
+        delay(seconds: 0.01) { [weak self] in
+            self?.viewIsAppearing(true)
+        }
     }
 
     private func cleanup() {
@@ -455,6 +490,25 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         provider = nil
         UserDefaults.standard.removeObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments)
         NotificationCenter.default.removeObserver(self)
+    }
+
+    private func displayCategoryTabsIfNeeded(folder: ASCFolder) {
+        categories = provider?.segmentCategory(of: folder) ?? []
+    }
+
+    private func updateCategoryTabs() {
+        contentControl.items = categories
+        contentControl.selectIndex = categories.count > 0 ? 0 : nil
+    }
+
+    private func onCategorySegmentChange(_ category: ASCSegmentCategory) {
+        folder = category.folder
+
+        if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
+            onlyofficeProvider.folder = folder
+        }
+
+        loadFirstPage()
     }
 
     // MARK: - Public
@@ -1233,30 +1287,37 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         fetchData { [weak self] success in
             DispatchQueue.main.async {
-                guard let strongSelf = self else { return }
+                guard let self else { return }
 
                 // UI update
-                strongSelf.showLoadingPage(false)
+                self.showLoadingPage(false)
 
                 if success {
-                    strongSelf.showEmptyView(strongSelf.total < 1)
+                    self.showEmptyView(self.total < 1)
                 } else {
-                    if strongSelf.errorView?.superview == nil {
-                        strongSelf.showErrorView(true)
+                    if self.errorView?.superview == nil {
+                        self.showErrorView(true)
                     }
                 }
 
-                strongSelf.updateNavBar()
+                self.updateNavBar()
 
                 // Fire callback
                 completeon?(success)
 
+                self.viewDidLayoutSubviews()
+
                 // Highlight entity if needed
-                strongSelf.highlight(entity: strongSelf.highlightEntity)
+                self.highlight(entity: self.highlightEntity)
+
+                // Scroll to top
+                if self.tableView.visibleCells.count > 0 && self.highlightEntity == nil {
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                }
 
                 // Check network
                 if !success &&
-                    strongSelf.folder?.rootFolderType != .deviceDocuments &&
+                    self.folder?.rootFolderType != .deviceDocuments &&
                     !ASCNetworkReachability.shared.isReachable &&
                     OnlyofficeApiClient.shared.token != nil
                 {
@@ -1279,7 +1340,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             showEmptyView(false)
 
             view.addSubview(loadingView)
-            loadingView.anchorCenterSuperview()
+            loadingView.anchorCenterXToSuperview()
+            loadingView.anchorCenterYToSuperview(constant: 40)
 
         } else {
             loadingView.removeFromSuperview()
@@ -3435,15 +3497,17 @@ extension ASCDocumentsViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let scrollContentOffset = scrollView.contentOffset.y + navigationBarExtendPanelView.frame.height
-        if scrollContentOffset > 2.0 {
-            UIView.animate(withDuration: 0.100, animations: {
-                self.navigationBarExtendPanelView.standardAppearance()
-            })
-        } else {
-            UIView.animate(withDuration: 0.100, animations: {
-                self.navigationBarExtendPanelView.scrollEdgeAppearance()
-            })
+        if displaySegmentTabs {
+            let scrollContentOffset = scrollView.contentOffset.y + navigationBarExtendPanelView.frame.height
+            if scrollContentOffset > 2.0 {
+                UIView.animate(withDuration: 0.100, animations: {
+                    self.navigationBarExtendPanelView.standardAppearance()
+                })
+            } else {
+                UIView.animate(withDuration: 0.100, animations: {
+                    self.navigationBarExtendPanelView.scrollEdgeAppearance()
+                })
+            }
         }
     }
 }
@@ -3472,6 +3536,10 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
             searchSeparator.alpha = 1
             searchController.view?.insertSubview(searchSeparator, at: 0)
         }
+
+        navigationBarExtendPanelView.isHidden = true
+        viewDidLayoutSubviews()
+        configureNavigationItem()
     }
 
     func willDismissSearchController(_ searchController: UISearchController) {
@@ -3498,6 +3566,10 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
                 strongSelf.updateNavBar()
             }
         }
+
+        navigationBarExtendPanelView.isHidden = false
+        viewDidLayoutSubviews()
+        configureNavigationItem()
     }
 }
 

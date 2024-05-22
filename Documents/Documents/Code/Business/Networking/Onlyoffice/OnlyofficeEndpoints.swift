@@ -83,6 +83,7 @@ enum OnlyofficeAPI {
             public static let favorites = "@favorites"
             public static let recent = "@recent"
             public static let room = "rooms"
+            public static let recentRaw = "recent" // Recently accessible via link
         }
     }
 

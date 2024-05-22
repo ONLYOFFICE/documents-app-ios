@@ -11,7 +11,7 @@ import UIKit
 final class ASCCategorySegmentControl: UIScrollView {
     // MARK: - Properties
 
-    var items: [String] = [] {
+    var items: [ASCSegmentCategory] = [] {
         didSet {
             updateData()
         }
@@ -28,7 +28,7 @@ final class ASCCategorySegmentControl: UIScrollView {
     var activeColor = Asset.Colors.brend.color
     var defaultColor = UIColor.secondaryLabel
 
-    var onChange: ((_ index: Int) -> Void)?
+    var onChange: ((_ category: ASCSegmentCategory) -> Void)?
 
     private lazy var stackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +69,8 @@ final class ASCCategorySegmentControl: UIScrollView {
             origin: CGPoint(x: -1000, y: frame.height - 1),
             size: CGSize(width: 2000, height: 1.0 / UIScreen.main.scale)
         )
+
+        moveUnderline()
     }
 
     private func configureView() {
@@ -109,15 +111,26 @@ final class ASCCategorySegmentControl: UIScrollView {
         }
     }
 
-    private func makeTab(with title: String) -> UIButton {
+    private func makeTab(with category: ASCSegmentCategory) -> UIButton {
         {
-            $0.setTitle(title, for: .normal)
+            $0.setTitle(category.title, for: .normal)
             $0.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote)
             $0.setTitleColor(defaultColor, for: .normal)
             $0.setTitleColor(activeColor, for: .highlighted)
             $0.setTitleColor(activeColor, for: .selected)
             return $0
         }(UIButton(type: .custom))
+    }
+
+    private func moveUnderline() {
+        guard
+            let selectedButton = stackView.arrangedSubviews.first(where: { $0.tag == selectIndex }) as? UIButton
+        else { return }
+
+        underlineView.frame = CGRect(
+            origin: CGPoint(x: selectedButton.frame.minX + stackView.spacing - 4, y: selectedButton.frame.maxY - 4),
+            size: CGSize(width: selectedButton.frame.width, height: 4)
+        )
     }
 
     private func select(index: Int?, animated: Bool = true) {
@@ -138,24 +151,13 @@ final class ASCCategorySegmentControl: UIScrollView {
 
         selectedButton.isSelected = true
 
-        let doUnderline = { [weak self] in
-            guard
-                let underlineView = self?.underlineView,
-                let stackView = self?.stackView
-            else { return }
-            underlineView.frame = CGRect(
-                origin: CGPoint(x: selectedButton.frame.minX + stackView.spacing - 4, y: selectedButton.frame.maxY - 4),
-                size: CGSize(width: selectedButton.frame.width, height: 4)
-            )
-        }
-
         if animated {
-            UIView.animate(withDuration: 0.3) {
-                doUnderline()
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.moveUnderline()
             }
         } else {
-            UIView.performWithoutAnimation {
-                doUnderline()
+            UIView.performWithoutAnimation { [weak self] in
+                self?.moveUnderline()
             }
         }
 
@@ -165,8 +167,9 @@ final class ASCCategorySegmentControl: UIScrollView {
     }
 
     @objc private func onTabTapped(_ sender: UIButton) {
-        select(index: sender.tag)
-        onChange?(sender.tag)
+        guard sender.tag != selectIndex else { return }
+        selectIndex = sender.tag
+        onChange?(items[sender.tag])
     }
 }
 
@@ -180,9 +183,9 @@ extension ASCCategorySegmentControl: NavigationBarExtendPanelContentViewProtocol
 #Preview {
     let view = ASCCategorySegmentControl()
     view.items = [
-        "One",
-        "Two not been implemented",
-        "Three not been implemented",
+        ASCSegmentCategory(title: "One", folder: ASCFolder()),
+        ASCSegmentCategory(title: "Two not been implemented", folder: ASCFolder()),
+        ASCSegmentCategory(title: "Three not been implemented", folder: ASCFolder()),
     ]
     view.selectIndex = 1
     return view

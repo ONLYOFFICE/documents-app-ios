@@ -146,6 +146,7 @@
 		FC4639C12BFB2BF900DA603A /* ASCCategorySegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C02BFB2BF900DA603A /* ASCCategorySegmentControl.swift */; };
 		FC4639C42BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */; };
 		FC4639C72BFB33C400DA603A /* NavigationBarExtendPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */; };
+		FC4639C92BFCBF4B00DA603A /* ASCSegmentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */; };
 		FC4DC3E6282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E4282BFB2F001060D6 /* ASCOAuthCredential.swift */; };
 		FC4DC3E9282BFBE7001060D6 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E7282BFBE7001060D6 /* DropBoxRequestInterceptor.swift */; };
 		FC5943242AE67567001BA2F9 /* ASCDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943222AE67567001BA2F9 /* ASCDIContainer.swift */; };
@@ -807,6 +808,7 @@
 		FC4639C02BFB2BF900DA603A /* ASCCategorySegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCategorySegmentControl.swift; sourceTree = "<group>"; };
 		FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtendPanelContentViewProtocol.swift; sourceTree = "<group>"; };
 		FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtendPanelView.swift; sourceTree = "<group>"; };
+		FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSegmentCategory.swift; sourceTree = "<group>"; };
 		FC4D0A1C2494F5EA001EF1B5 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		FC4D0A1F2494F7C9001EF1B5 /* ASCDebugNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugNavigationController.swift; sourceTree = "<group>"; };
 		FC4D0A212494F807001EF1B5 /* ASCDebugConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugConsoleViewController.swift; sourceTree = "<group>"; };
@@ -2631,6 +2633,7 @@
 			children = (
 				FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */,
 				FCF696402637E73000808644 /* ASCDocumentSortType.swift */,
+				FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4001,6 +4004,7 @@
 				FC03A63E2BDA7F67005E8FFB /* AttachLogoRequestModel.swift in Sources */,
 				FC1828EE2A24D08F005D9220 /* ASCDetailCell.swift in Sources */,
 				FC7081DE2812E2260057FCD2 /* ASCOneDriveFileProvider.swift in Sources */,
+				FC4639C92BFCBF4B00DA603A /* ASCSegmentCategory.swift in Sources */,
 				FC142A20289818B800EDE7CE /* ASCUserTableViewDataModelItem.swift in Sources */,
 				FC7081E02812E2260057FCD2 /* ASCIndexTransform.swift in Sources */,
 				FC1429FD2898183D00EDE7CE /* ASCEntityExistenceChecker.swift in Sources */,

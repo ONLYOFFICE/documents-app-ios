@@ -11,12 +11,22 @@ import Foundation
 import SwiftUI
 
 final class InviteUsersViewModel: ObservableObject {
-    @Published var isLinkEnabled: Bool = true
+    // MARK: Published vars
+
+    @Published var isExternalLinkSwitchActive: Bool = false
     @Published var selectedAccessRight: ASCShareAccess = .none
-    @Published var link: String = ""
+    @Published var linkStr: String = ""
     @Published var isLoading: Bool = false
+    @Published var isExternalLinkSectionAvailable: Bool = false
+    @Published var externalLink: ASCSharingOprionsExternalLink?
+
+    // MARK: Navigation related published vars
 
     @Published var isAddUsersScreenDisplaying: Bool = false
+    @Published var isInviteByEmailsScreenDisplaying: Bool = false
+    @Published var isSharingScreenPresenting: Bool = false
+
+    // MARK: Public vars
 
     let room: ASCRoom
     var accessMenuItems: [MenuViewItem] {
@@ -30,20 +40,38 @@ final class InviteUsersViewModel: ObservableObject {
         }
     }
 
-    private var cancellables = Set<AnyCancellable>()
+    var dismissAction: (() -> Void)?
 
-    init(
-        isLinkEnabled: Bool,
-        selectedAccessRight: ASCShareAccess,
-        link: String,
-        isLoading: Bool,
-        room: ASCRoom
-    ) {
-        self.isLinkEnabled = isLinkEnabled
-        self.selectedAccessRight = selectedAccessRight
-        self.link = link
-        self.isLoading = isLoading
+    private(set) var sharingLink: URL?
+
+    // MARK: Private vars
+
+    private var cancelable = Set<AnyCancellable>()
+    private var service: InviteUsersService = InviteUsersServiceImp()
+
+    private var preventToggleAction: Bool = false
+
+    // MARK: Init
+
+    init(room: ASCRoom) {
         self.room = room
+
+        $isExternalLinkSwitchActive
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] isActive in
+                guard let self else { return }
+                if self.preventToggleAction {
+                    self.preventToggleAction = false
+                    return
+                }
+                changeLinkAccess(newAccess: isActive ? .powerUser : .none)
+            })
+            .store(in: &cancelable)
+    }
+
+    // MARK: Public methods
+
     func fetchData() {
         isLoading = true
         service.loadExternalLink(entity: room) { [weak self] result in
@@ -66,9 +94,20 @@ final class InviteUsersViewModel: ObservableObject {
             }
         }
     }
+
+    func shareLink() {
+        guard let externalLink else { return }
+        isSharingScreenPresenting = true
+        sharingLink = URL(string: externalLink.link)
     }
 
-    func fetchData() {}
+    // MARK: Private methods
+
+    private func setAccessRight(_ accessRight: ASCShareAccess) {
+        selectedAccessRight = accessRight
+        changeLinkAccess(newAccess: accessRight)
+    }
+
     private func changeLinkAccess(newAccess: ASCShareAccess) {
         service.setExternalLinkAccess(
             linkId: externalLink?.id,

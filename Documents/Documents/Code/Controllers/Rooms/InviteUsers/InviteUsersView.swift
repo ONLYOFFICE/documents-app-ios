@@ -18,11 +18,7 @@ struct InviteUsersView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text(NSLocalizedString("External link", comment: ""))) {
-                    linkToggleCell
-                    accessCell
-                    linkCell
-                }
+                externalLinkSection
 
                 Section(header: Text(NSLocalizedString("Add manually", comment: ""))) {
                     inviteByEmailCell
@@ -32,7 +28,9 @@ struct InviteUsersView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("Invite users", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing: cancelButton)
+        .navigateToInviteByEmail(isDisplaying: $viewModel.isInviteByEmailsScreenDisplaying, viewModel: viewModel)
         .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
+        .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
         .onAppear {
             viewModel.fetchData()
         }
@@ -42,39 +40,61 @@ struct InviteUsersView: View {
     var cancelButton: some View {
         Button(NSLocalizedString("Cancel", comment: "")) {
             presentationMode.wrappedValue.dismiss()
+            viewModel.dismissAction?()
+        }
+    }
+
+    @ViewBuilder
+    private var externalLinkSection: some View {
+        if viewModel.isExternalLinkSectionAvailable {
+            Section(header: Text(NSLocalizedString("External link", comment: ""))) {
+                linkToggleCell
+                if viewModel.externalLink != nil {
+                    accessCell
+                    linkCell
+                }
+            }
         }
     }
 
     private var linkToggleCell: some View {
-        Toggle(isOn: $viewModel.isLinkEnabled) {
+        Toggle(isOn: $viewModel.isExternalLinkSwitchActive) {
             Text(NSLocalizedString("Link", comment: ""))
         }
         .tintColor(Asset.Colors.brend.swiftUIColor)
     }
 
     private var accessCell: some View {
-        HStack {
-            Text(NSLocalizedString("Access rights", comment: ""))
-            Spacer()
-            Text(viewModel.selectedAccessRight.title())
-                .foregroundColor(.gray)
-            ChevronUpDownView()
+        MenuView(menuItems: viewModel.accessMenuItems) {
+            HStack {
+                Text(NSLocalizedString("Access rights", comment: ""))
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(viewModel.selectedAccessRight.title())
+                    .foregroundColor(.gray)
+                ChevronUpDownView()
+            }
         }
     }
 
     private var linkCell: some View {
         HStack {
-            Text(viewModel.link)
-                .foregroundColor(.blue)
+            Text(viewModel.linkStr)
+                .foregroundColor(.primary)
                 .lineLimit(1)
-                .truncationMode(.middle)
+                .truncationMode(.tail)
             Spacer()
             Button(action: {
-                UIPasteboard.general.string = viewModel.link
+                UIPasteboard.general.string = viewModel.linkStr
+                viewModel.shareLink()
             }) {
                 Image(systemName: "square.and.arrow.up")
                     .foregroundColor(.blue)
             }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.shareLink()
         }
     }
 
@@ -88,6 +108,9 @@ struct InviteUsersView: View {
                 .flipsForRightToLeftLayoutDirection(true)
         }
         .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.isInviteByEmailsScreenDisplaying = true
+        }
     }
 
     private var chooseFromListCell: some View {
@@ -122,6 +145,16 @@ struct InviteUsersView: View {
 // MARK: - Navigation
 
 private extension View {
+    func navigateToInviteByEmail(
+        isDisplaying: Binding<Bool>,
+        viewModel: InviteUsersViewModel
+    ) -> some View {
+        navigation(isActive: isDisplaying) {
+            InviteRigthHoldersByEmailsRepresentable(entity: viewModel.room)
+                .navigationBarHidden(true)
+        }
+    }
+
     func navigateToAddUsers(
         isDisplaying: Binding<Bool>,
         viewModel: InviteUsersViewModel
@@ -131,6 +164,14 @@ private extension View {
                 .navigationBarHidden(true)
         }
     }
+
+    func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
+        sheet(isPresented: isPresented) {
+            if let link {
+                ActivityView(activityItems: [link])
+            }
+        }
+    }
 }
 
 struct InviteUsersView_Previews: PreviewProvider {
@@ -138,10 +179,6 @@ struct InviteUsersView_Previews: PreviewProvider {
         NavigationView {
             InviteUsersView(
                 viewModel: InviteUsersViewModel(
-                    isLinkEnabled: true,
-                    selectedAccessRight: .comment,
-                    link: "https://www.google.com",
-                    isLoading: false,
                     room: ASCRoom()
                 )
             )

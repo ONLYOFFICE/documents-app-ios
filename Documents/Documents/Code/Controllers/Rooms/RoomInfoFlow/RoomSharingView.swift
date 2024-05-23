@@ -272,10 +272,6 @@ private extension View {
         navigation(isActive: isDisplaying) {
             InviteUsersView(
                 viewModel: InviteUsersViewModel(
-                    isLinkEnabled: true,
-                    selectedAccessRight: .comment,
-                    link: "google.com",
-                    isLoading: false,
                     room: viewModel.room
                 )
             )

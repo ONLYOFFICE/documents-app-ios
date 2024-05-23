@@ -179,7 +179,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                             srcDocumentsVC.provider?.remove(at: index)
                                         }
                                     }
-                                    srcDocumentsVC.tableView?.reloadData()
+                                    srcDocumentsVC.tableView.reloadData()
                                 }
                             } else {
                                 log.error("Items don't copied")
@@ -222,7 +222,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                         srcDocumentsVC.provider?.remove(at: index)
                                     }
                                 }
-                                srcDocumentsVC.tableView?.reloadData()
+                                srcDocumentsVC.tableView.reloadData()
                                 srcDocumentsVC.showEmptyView(srcDocumentsVC.total < 1)
                                 srcDocumentsVC.updateNavBar()
                             }

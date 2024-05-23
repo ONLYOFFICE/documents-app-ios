@@ -306,7 +306,6 @@ extension ASCDocumentsViewController {
 
                     guard
                         let self,
-                        let tableView = self.tableView,
                         let index = tableView.indexPath(for: cell)
                     else { return }
 

@@ -155,6 +155,10 @@
 		FC397E382B3591CF00830F43 /* HTMLString in Frameworks */ = {isa = PBXBuildFile; productRef = FC397E372B3591CF00830F43 /* HTMLString */; };
 		FC397E3C2B3596AF00830F43 /* ObservableSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FC397E3B2B3596AF00830F43 /* ObservableSwift */; };
 		FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4160FE290911E4006B5E4A /* ASCLinkTableViewHeaderFooterView.swift */; };
+		FC4639C12BFB2BF900DA603A /* ASCCategorySegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C02BFB2BF900DA603A /* ASCCategorySegmentControl.swift */; };
+		FC4639C42BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */; };
+		FC4639C72BFB33C400DA603A /* NavigationBarExtendPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */; };
+		FC4639C92BFCBF4B00DA603A /* ASCSegmentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */; };
 		FC4DC3E6282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E4282BFB2F001060D6 /* ASCOAuthCredential.swift */; };
 		FC4DC3E9282BFBE7001060D6 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E7282BFBE7001060D6 /* DropBoxRequestInterceptor.swift */; };
 		FC5943242AE67567001BA2F9 /* ASCDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943222AE67567001BA2F9 /* ASCDIContainer.swift */; };
@@ -825,6 +829,10 @@
 		FC41D80B2265DA8700A155C2 /* ASCFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFilterType.swift; sourceTree = "<group>"; };
 		FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileProviderType.swift; sourceTree = "<group>"; };
 		FC43E70E2195B5FC002AAA32 /* ASCYandexFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCYandexFileProvider.swift; sourceTree = "<group>"; };
+		FC4639C02BFB2BF900DA603A /* ASCCategorySegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCategorySegmentControl.swift; sourceTree = "<group>"; };
+		FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtendPanelContentViewProtocol.swift; sourceTree = "<group>"; };
+		FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtendPanelView.swift; sourceTree = "<group>"; };
+		FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSegmentCategory.swift; sourceTree = "<group>"; };
 		FC4D0A1C2494F5EA001EF1B5 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		FC4D0A1F2494F7C9001EF1B5 /* ASCDebugNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugNavigationController.swift; sourceTree = "<group>"; };
 		FC4D0A212494F807001EF1B5 /* ASCDebugConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugConsoleViewController.swift; sourceTree = "<group>"; };
@@ -2364,6 +2372,7 @@
 		FC31B27A1E76796E008699C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FC4639C52BFB339D00DA603A /* NavigationBarExtendPanel */,
 				FC33FA922B0F595400688E17 /* ASCFolderLogoAvatarView.swift */,
 				FC301A1F230D6D4600DC25CA /* ASCFolderCell.swift */,
 				FC301A20230D6D4600DC25CA /* ASCFolderCell.xib */,
@@ -2478,6 +2487,23 @@
 				FC1828E82A24CAF5005D9220 /* AppTheme.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		FC4639C22BFB2C1D00DA603A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FC4639C52BFB339D00DA603A /* NavigationBarExtendPanel */ = {
+			isa = PBXGroup;
+			children = (
+				FC4639C02BFB2BF900DA603A /* ASCCategorySegmentControl.swift */,
+				FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */,
+			);
+			path = NavigationBarExtendPanel;
 			sourceTree = "<group>";
 		};
 		FC4D0A1E2494F78B001EF1B5 /* Debug */ = {
@@ -2659,6 +2685,7 @@
 			children = (
 				FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */,
 				FCF696402637E73000808644 /* ASCDocumentSortType.swift */,
+				FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2955,6 +2982,7 @@
 				1D8CFC50290D85E600F71071 /* Menu */,
 				1D8CFC45290D7FF600F71071 /* ActionControllers */,
 				FC65B17E21F9AE1D00AD5114 /* Models */,
+				FC4639C22BFB2C1D00DA603A /* Protocols */,
 				FC31B27A1E76796E008699C3 /* Views */,
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
 				FC1764CF2BA3318600D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */,
@@ -3887,6 +3915,7 @@
 				FC0377B62BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift in Sources */,
 				FC70816A2812E2260057FCD2 /* ASCSharingOptionsRouter.swift in Sources */,
 				FC70816B2812E2260057FCD2 /* ASCTransferViewCell.swift in Sources */,
+				FC4639C72BFB33C400DA603A /* NavigationBarExtendPanelView.swift in Sources */,
 				FC83D6122A974E2300C404CB /* UIButton+Extensions.swift in Sources */,
 				FC1429FB2898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
 				FC70816F2812E2260057FCD2 /* ASCConstants.swift in Sources */,
@@ -3982,6 +4011,7 @@
 				FC03A6482BDA7F67005E8FFB /* OnlyofficeCapabilities.swift in Sources */,
 				E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */,
 				FC7081BB2812E2260057FCD2 /* ASCEntityLinkMakerProtocol.swift in Sources */,
+				FC4639C42BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift in Sources */,
 				FC142A2A289818B900EDE7CE /* ASCFiltersControllerProtocol.swift in Sources */,
 				FC142A41289819B400EDE7CE /* ASCDeepLink.swift in Sources */,
 				E83125D42B28B20A006016F1 /* ASCAttachmentManager.swift in Sources */,
@@ -4036,6 +4066,7 @@
 				FC03A63E2BDA7F67005E8FFB /* AttachLogoRequestModel.swift in Sources */,
 				FC1828EE2A24D08F005D9220 /* ASCDetailCell.swift in Sources */,
 				FC7081DE2812E2260057FCD2 /* ASCOneDriveFileProvider.swift in Sources */,
+				FC4639C92BFCBF4B00DA603A /* ASCSegmentCategory.swift in Sources */,
 				FC142A20289818B800EDE7CE /* ASCUserTableViewDataModelItem.swift in Sources */,
 				FC7081E02812E2260057FCD2 /* ASCIndexTransform.swift in Sources */,
 				FC1429FD2898183D00EDE7CE /* ASCEntityExistenceChecker.swift in Sources */,
@@ -4082,6 +4113,7 @@
 				FC142A39289819B400EDE7CE /* ASCUser.swift in Sources */,
 				FC7081FF2812E2260057FCD2 /* ASCLoginType.swift in Sources */,
 				FC83D61F2A974E2300C404CB /* UIBarButtonItem+Extensions.swift in Sources */,
+				FC4639C12BFB2BF900DA603A /* ASCCategorySegmentControl.swift in Sources */,
 				FC7082002812E2260057FCD2 /* UITextField+Style.swift in Sources */,
 				FC7082012812E2260057FCD2 /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */,
 				FC7082032812E2260057FCD2 /* ASCOnlyofficeCategory.swift in Sources */,

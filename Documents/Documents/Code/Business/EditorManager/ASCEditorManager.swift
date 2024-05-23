@@ -607,7 +607,7 @@ class ASCEditorManager: NSObject {
             Task {
                 var cancel = false
                 let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
-                
+
                 if isDocumentOformPdf {
                     pdf.editable = true // Force allow edit the file
 

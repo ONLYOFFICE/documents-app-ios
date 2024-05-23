@@ -34,6 +34,28 @@ final class InviteUsersViewModel: ObservableObject {
         self.link = link
         self.isLoading = isLoading
         self.room = room
+    func fetchData() {
+        isLoading = true
+        service.loadExternalLink(entity: room) { [weak self] result in
+            guard let self else { return }
+            DispatchQueue.main.async { [self] in
+                self.isLoading = false
+                self.isExternalLinkSectionAvailable = true
+                switch result {
+                case let .success(externalLink):
+                    self.externalLink = externalLink
+                    if let externalLink {
+                        self.linkStr = externalLink.link
+                        self.selectedAccessRight = externalLink.access
+                        self.preventToggleAction = true
+                        self.isExternalLinkSwitchActive = ![ASCShareAccess.deny, .none].contains(where: { externalLink.access == $0 })
+                    }
+                case let .failure(error):
+                    log.error(error.localizedDescription, error)
+                }
+            }
+        }
+    }
     }
 
     func fetchData() {}

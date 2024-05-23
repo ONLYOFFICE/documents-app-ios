@@ -210,7 +210,7 @@ struct RoomSharingCustomizeLinkView: View {
     private func revokeAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Revoke link", comment: "")),
-            message: Text(NSLocalizedString("The previous link will become unavailable. A new general link will be created.", comment: "")),
+            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
             primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
                 viewModel.onRevoke()
             }),

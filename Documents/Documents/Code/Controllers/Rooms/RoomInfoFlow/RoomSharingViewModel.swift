@@ -20,7 +20,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
-    let additionalLinksLimit = 5
+    let linksLimit = 6
     var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
     var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived }
     private(set) var sharingLink: URL?
@@ -34,6 +34,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var invites: [ASCUserRowModel] = []
     @Published var generalLinkModel: RoomSharingLinkRowModel?
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
+    @Published var sharedLinksModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
 
     // MARK: Navigation published vars
 
@@ -217,6 +218,7 @@ private extension RoomSharingViewModel {
             generalLinkModel = mapToLinkViewModel(link: generalLink)
         }
         additionalLinkModels = flowModel.links.filter { !$0.isGeneral }.map { self.mapToLinkViewModel(link: $0) }
+        sharedLinksModels = flowModel.links.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
         users = flowModel.sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
         invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
@@ -248,6 +250,7 @@ private extension RoomSharingViewModel {
             titleString: link.linkInfo.title,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
+            isGeneral: link.isGeneral,
             isSharingPossible: isSharingPossible,
             onTapAction: { [weak self] in
                 guard let self else { return }

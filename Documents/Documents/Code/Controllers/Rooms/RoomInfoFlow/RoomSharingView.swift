@@ -33,11 +33,7 @@ struct RoomSharingView: View {
     private var screenView: some View {
         if !viewModel.isInitializing {
             List {
-                if viewModel.room.roomType != .colobaration {
-                    generalLincSection
-                        .alert(isPresented: $showDeleteAlert, content: deleteAlert)
-                }
-                additionalLinksSection
+                sharedLinksSection
                 adminSection
                 usersSection
                 invitesSection
@@ -81,10 +77,10 @@ struct RoomSharingView: View {
     }
 
     @ViewBuilder
-    private var additionalLinksSection: some View {
-        if viewModel.generalLinkModel != nil || viewModel.room.roomType == .custom, !viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible {
-            Section(header: additionLinksSectionHeader) {
-                if viewModel.additionalLinkModels.isEmpty {
+    private var sharedLinksSection: some View {
+        if viewModel.isSharingPossible {
+            Section(header: sharedLinksSectionHeader) {
+                if viewModel.sharedLinksModels.isEmpty {
                     ASCCreateLinkCellView(
                         model: ASCCreateLinkCellModel(
                             textString: NSLocalizedString("Create and copy", comment: ""),
@@ -93,11 +89,11 @@ struct RoomSharingView: View {
                         )
                     )
                 } else {
-                    ForEach(viewModel.additionalLinkModels) { linkModel in
+                    ForEach(viewModel.sharedLinksModels) { linkModel in
                         RoomSharingLinkRow(model: linkModel)
                     }
                     .onDelete { indexSet in
-                        viewModel.deleteAdditionalLink(indexSet: indexSet)
+                        viewModel.deleteAdditionalLink(indexSet: indexSet) // MARK: - TODO
                     }
                 }
             }
@@ -139,19 +135,17 @@ struct RoomSharingView: View {
         }
     }
 
-    private var additionLinksSectionHeader: some View {
+    private var sharedLinksSectionHeader: some View {
         HStack {
-            Text(NSLocalizedString("Additional links", comment: ""))
-            Text("(\(viewModel.additionalLinkModels.count)/\(viewModel.additionalLinksLimit))")
+            Text(NSLocalizedString("Shared links", comment: ""))
+            Text("(\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))")
             Spacer()
-            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit && viewModel.isSharingPossible {
+            if viewModel.sharedLinksModels.count < viewModel.linksLimit && viewModel.isSharingPossible {
                 Button {
                     viewModel.createAddLinkAction()
                 } label: {
-                    if !viewModel.additionalLinkModels.isEmpty {
-                        Image(systemName: "plus")
-                            .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                    }
+                    Image(systemName: "plus")
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 }
             }
         }

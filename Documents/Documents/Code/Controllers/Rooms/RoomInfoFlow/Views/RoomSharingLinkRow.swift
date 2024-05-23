@@ -14,6 +14,7 @@ struct RoomSharingLinkRowModel: Identifiable {
     var titleString: String
     var imagesNames: [String] = []
     var isExpired: Bool
+    var isGeneral: Bool
     var isSharingPossible: Bool
     var onTapAction: () -> Void
     var onShareAction: () -> Void
@@ -24,6 +25,7 @@ struct RoomSharingLinkRowModel: Identifiable {
         titleString: "",
         imagesNames: [],
         isExpired: false,
+        isGeneral: false,
         isSharingPossible: true,
         onTapAction: {},
         onShareAction: {},

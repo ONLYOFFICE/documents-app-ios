@@ -19,6 +19,16 @@ final class InviteUsersViewModel: ObservableObject {
     @Published var isAddUsersScreenDisplaying: Bool = false
 
     let room: ASCRoom
+    var accessMenuItems: [MenuViewItem] {
+        [
+            ASCShareAccess.roomManager,
+            ASCShareAccess.powerUser,
+        ].map { access in
+            MenuViewItem(text: access.title(), customImage: access.swiftUIImage) {
+                self.setAccessRight(access)
+            }
+        }
+    }
 
     private var cancellables = Set<AnyCancellable>()
 

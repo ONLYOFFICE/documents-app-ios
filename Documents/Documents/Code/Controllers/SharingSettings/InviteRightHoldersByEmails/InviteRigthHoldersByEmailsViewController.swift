@@ -199,7 +199,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     @objc func showSureDismissAlert() {
         guard !tagsView.tags.isEmpty else {
-            navigationController?.popViewController(animated: true)
+            navigationController?.dismiss(animated: true)
             return
         }
         let title = NSLocalizedString("Cancel invitation?", comment: "")

@@ -215,7 +215,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         groupsModels = []
         usersTableViewDataSourceAndDelegate.set(models: [])
         groupsTableViewDataSourceAndDelegate.set(models: [])
-        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = false
         groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = true
 
         updateSelectDeleselectAllBarBtn()
@@ -411,7 +411,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         guard !searchText.isEmpty else {
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
             usersTableViewDataSourceAndDelegate.set(models: usersModels)
-            usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+            usersTableViewDataSourceAndDelegate.inviteSectionEnabled = false
             groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = true
             sharingAddRightHoldersView?.showEmptyView(false)
             sharingAddRightHoldersView?.groupsTableView.reloadData()
@@ -463,7 +463,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
 
         groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
         usersTableViewDataSourceAndDelegate.set(models: usersModels)
-        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = false
         groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = true
 
         sharingAddRightHoldersView?.groupsTableView.reloadData()

@@ -37,7 +37,7 @@ extension RoomLinkResponceModel {
         let denyDownload: Bool
         let isExpired: Bool
         let primary: Bool
-        let requestToken: String
+        let requestToken: String?
 
         enum CodingKeys: String, CodingKey {
             case id, title, shareLink, expirationDate, linkType, password, denyDownload, isExpired, primary, requestToken

@@ -270,8 +270,11 @@ private extension View {
         viewModel: RoomSharingViewModel
     ) -> some View {
         navigation(isActive: isDisplaying) {
-            SharingInviteRightHoldersRepresentable(entity: viewModel.room)
-                .navigationBarHidden(true)
+            InviteUsersView(
+                viewModel: InviteUsersViewModel(
+                    room: viewModel.room
+                )
+            )
         }
     }
 }

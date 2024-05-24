@@ -17,7 +17,7 @@ class ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<T: UITableViewC
     let type = T.self
     var rowHeight: CGFloat = 60
     var onCellTapped: ((T.ViewModel, IsSelected) -> Void)?
-    var inviteSectionEnabled = true
+    var inviteSectionEnabled = false
     var inviteCellClousure: () -> Void = {}
 
     private var models: Group = []

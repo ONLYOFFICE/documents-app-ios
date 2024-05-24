@@ -35,14 +35,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         return UIMenu(title: "", children: menuItems)
     }
 
-    private lazy var keyboardToolbar: UIToolbar = {
-        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.width, height: 44))
-        bar.translatesAutoresizingMaskIntoConstraints = true
-        bar.items = makeToolbarItems()
-        bar.sizeToFit()
-        return bar
-    }()
-
     lazy var tagsView: WSTagsField = {
         let tagsField = WSTagsField()
         tagsField.layer.cornerRadius = 10
@@ -220,10 +212,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     }
 
     func updateToolbars() {
-        if UIDevice.phone {
-            keyboardToolbar.items = makeToolbarItems()
-            tagsView.textField.inputAccessoryView = keyboardToolbar
-        }
         toolbarItems = makeToolbarItems()
     }
 

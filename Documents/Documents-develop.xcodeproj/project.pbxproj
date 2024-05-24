@@ -295,6 +295,7 @@
 		FC759BF12C00611000510096 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BB32C00611000510096 /* ASCShareSettingsAPIWorker.swift */; };
 		FC759BF22C00611000510096 /* ASCShareSettingsAPIWorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BB42C00611000510096 /* ASCShareSettingsAPIWorkerFactory.swift */; };
 		FC759BF32C00611000510096 /* ASCShareSettingsRoomsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BB52C00611000510096 /* ASCShareSettingsRoomsAPIWorker.swift */; };
+		FC759CE32C006C8000510096 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759CE22C006C8000510096 /* DispatchQueueExtensions.swift */; };
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
 		FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */; };
 		FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC7B37D51E929B46009C41AD /* Settings.bundle */; };
@@ -973,6 +974,7 @@
 		FC759BB32C00611000510096 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		FC759BB42C00611000510096 /* ASCShareSettingsAPIWorkerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactory.swift; sourceTree = "<group>"; };
 		FC759BB52C00611000510096 /* ASCShareSettingsRoomsAPIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsRoomsAPIWorker.swift; sourceTree = "<group>"; };
+		FC759CE22C006C8000510096 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
 		FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroViewController.swift; sourceTree = "<group>"; };
@@ -1653,6 +1655,7 @@
 				FC83D5132A973E1F00C404CB /* Date+Extension.swift */,
 				FC83D51C2A973E2000C404CB /* Decodable+Extensions.swift */,
 				FC83D5102A973E1F00C404CB /* Dictionary+Extension.swift */,
+				FC759CE22C006C8000510096 /* DispatchQueueExtensions.swift */,
 				FC83D5052A973E1E00C404CB /* Encodable+Extensions.swift */,
 				FC83D4FD2A973E1D00C404CB /* KingfisherWrapper+Extensions.swift */,
 				FC83D5092A973E1E00C404CB /* MBProgressHUD+Extension.swift */,
@@ -4077,6 +4080,7 @@
 				FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */,
 				FC759BEA2C00611000510096 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FC759BF22C00611000510096 /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
+				FC759CE32C006C8000510096 /* DispatchQueueExtensions.swift in Sources */,
 				FCF6186C268E0A9A00CD8D84 /* ASCLoadedVCFinderModels.swift in Sources */,
 				FC7DC872285A2D3400E61C69 /* ASCSelectUserViewController.swift in Sources */,
 				FC7DD77D2B502DD70037405B /* PasswordCellView.swift in Sources */,

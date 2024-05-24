@@ -3499,15 +3499,20 @@ extension ASCDocumentsViewController: UITableViewDataSource, UITableViewDelegate
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if displaySegmentTabs {
-            let scrollContentOffset = scrollView.contentOffset.y + navigationBarExtendPanelView.frame.height
-            if scrollContentOffset > 2.0 {
-                UIView.animate(withDuration: 0.100, animations: {
-                    self.navigationBarExtendPanelView.standardAppearance()
-                })
-            } else {
-                UIView.animate(withDuration: 0.100, animations: {
-                    self.navigationBarExtendPanelView.scrollEdgeAppearance()
-                })
+            DispatchQueue.main.debounce(interval: 0.01) { [weak self, weak scrollView] in
+                guard let self, let scrollView else { return }
+                
+                let scrollContentOffset = scrollView.contentOffset.y + self.navigationBarExtendPanelView.frame.height
+                
+                if scrollContentOffset > 2.0 {
+                    UIView.animate(withDuration: 0.1, animations: { [weak self] in
+                        self?.navigationBarExtendPanelView.standardAppearance()
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.1, animations: { [weak self] in
+                        self?.navigationBarExtendPanelView.scrollEdgeAppearance()
+                    })
+                }
             }
         }
     }

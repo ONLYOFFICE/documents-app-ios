@@ -30,7 +30,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func title(of type: ASCFolderType) -> String {
         switch type {
         case .onlyofficeUser:
-            return NSLocalizedString("My Documents", comment: "Category title")
+            return NSLocalizedString("Documents", comment: "Category title")
         case .onlyofficeShare:
             return NSLocalizedString("Shared with Me", comment: "Category title")
         case .onlyofficeFavorites:

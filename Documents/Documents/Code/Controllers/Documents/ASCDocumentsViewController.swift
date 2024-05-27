@@ -1389,6 +1389,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         if !(provider.allowEdit(entity: folder)) {
                             localEmptyView?.type = .docspaceNoPermissions
                         }
+                    } else if folder.rootFolderType == .onlyofficeRecent {
+                        localEmptyView?.type = .recentFolder
                     } else {
                         localEmptyView?.type = .cloud
 

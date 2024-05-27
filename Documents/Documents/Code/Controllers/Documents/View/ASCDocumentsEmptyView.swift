@@ -24,6 +24,7 @@ class ASCDocumentsEmptyView: UIView {
         case networkError
         case paymentRequired
         case docspaceArchive
+        case recentFolder
     }
 
     // MARK: - Properties
@@ -186,6 +187,11 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel.text = NSLocalizedString("No archived rooms here yet", comment: "")
             subtitleLabel.text = NSLocalizedString("You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.", comment: "")
+            actionButton?.removeFromSuperview()
+        case .recentFolder:
+            imageView?.image = Asset.Images.emptyFolder.image
+            titleLabel?.text = NSLocalizedString("No files here yet", comment: "")
+            subtitleLabel?.text = NSLocalizedString("Here you will find a list of the recently opened files shared with you via an external link.", comment: "")
             actionButton?.removeFromSuperview()
         default:
             imageView?.image = Asset.Images.emptyFolder.image

@@ -13,7 +13,6 @@ import SwiftUI
 
 struct RoomSharingView: View {
     @ObservedObject var viewModel: RoomSharingViewModel
-    @State private var showDeleteAlert = false
 
     var body: some View {
         handleHUD()
@@ -26,6 +25,7 @@ struct RoomSharingView: View {
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
             .navigationBarItems(viewModel: viewModel)
+            .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
     }
 
@@ -33,11 +33,7 @@ struct RoomSharingView: View {
     private var screenView: some View {
         if !viewModel.isInitializing {
             List {
-                if viewModel.room.roomType != .colobaration {
-                    generalLincSection
-                        .alert(isPresented: $showDeleteAlert, content: deleteAlert)
-                }
-                additionalLinksSection
+                sharedLinksSection
                 adminSection
                 usersSection
                 invitesSection
@@ -50,57 +46,29 @@ struct RoomSharingView: View {
     }
 
     @ViewBuilder
-    private var generalLincSection: some View {
-        if viewModel.isSharingPossible || viewModel.generalLinkModel != nil {
-            Section(header: Text(NSLocalizedString("General link", comment: ""))) {
-                if let model = viewModel.generalLinkModel {
-                    if viewModel.room.roomType == .custom {
-                        ForEach([model]) { _ in
-                            RoomSharingLinkRow(model: model)
-                        }
-                        .onDelete { _ in
-                            withAnimation {
-                                viewModel.generalLinkModel = nil
-                            }
-                            showDeleteAlert = true
-                        }
-                    } else {
-                        RoomSharingLinkRow(model: model)
-                    }
-                } else {
-                    ASCCreateLinkCellView(
-                        model: .init(
-                            textString: NSLocalizedString("Create and copy", comment: ""),
-                            imageNames: [],
-                            onTapAction: viewModel.createAndCopyGeneralLink
-                        )
-                    )
-                }
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var additionalLinksSection: some View {
-        if viewModel.generalLinkModel != nil || viewModel.room.roomType == .custom, !viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible {
-            Section(header: additionLinksSectionHeader) {
-                if viewModel.additionalLinkModels.isEmpty {
+    private var sharedLinksSection: some View {
+        if viewModel.isSharingPossible, viewModel.isPossibleCreateNewLink {
+            Section(header: sharedLinksSectionHeader) {
+                if viewModel.sharedLinksModels.isEmpty {
                     ASCCreateLinkCellView(
                         model: ASCCreateLinkCellModel(
                             textString: NSLocalizedString("Create and copy", comment: ""),
                             imageNames: [],
-                            onTapAction: viewModel.createAndCopyAdditionalLink
+                            onTapAction: viewModel.sharedLinksModels.isEmpty
+                                ? viewModel.createAndCopyGeneralLink
+                                : viewModel.createAndCopyAdditionalLink
                         )
                     )
                 } else {
-                    ForEach(viewModel.additionalLinkModels) { linkModel in
+                    ForEach(viewModel.sharedLinksModels) { linkModel in
                         RoomSharingLinkRow(model: linkModel)
                     }
                     .onDelete { indexSet in
-                        viewModel.deleteAdditionalLink(indexSet: indexSet)
+                        viewModel.deleteSharedLink(indexSet: indexSet)
                     }
                 }
             }
+            .alert(isPresented: $viewModel.isDeleteAlertDisplaying, content: deleteAlert)
         }
     }
 
@@ -139,19 +107,17 @@ struct RoomSharingView: View {
         }
     }
 
-    private var additionLinksSectionHeader: some View {
+    private var sharedLinksSectionHeader: some View {
         HStack {
-            Text(NSLocalizedString("Additional links", comment: ""))
-            Text("(\(viewModel.additionalLinkModels.count)/\(viewModel.additionalLinksLimit))")
+            Text(NSLocalizedString("Shared links", comment: ""))
+            Text("(\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))")
             Spacer()
-            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit && viewModel.isSharingPossible {
+            if viewModel.sharedLinksModels.count < viewModel.linksLimit && viewModel.isSharingPossible {
                 Button {
                     viewModel.createAddLinkAction()
                 } label: {
-                    if !viewModel.additionalLinkModels.isEmpty {
-                        Image(systemName: "plus")
-                            .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                    }
+                    Image(systemName: "plus")
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 }
             }
         }
@@ -162,19 +128,6 @@ struct RoomSharingView: View {
             Text(title)
             Text("(\(count))")
         }
-    }
-
-    private func deleteAlert() -> Alert {
-        Alert(
-            title: Text(NSLocalizedString("Delete link", comment: "")),
-            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
-            primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
-                viewModel.deleteGeneralLink()
-            }),
-            secondaryButton: .cancel {
-                viewModel.loadData()
-            }
-        )
     }
 
     private func handleHUD() {
@@ -194,6 +147,36 @@ struct RoomSharingView: View {
                 hud.hide(animated: true)
             }
         }
+    }
+}
+
+// MARK: - Alerts
+
+private extension RoomSharingView {
+    func deleteAlert() -> Alert {
+        Alert(
+            title: Text(NSLocalizedString("Delete link", comment: "")),
+            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
+            primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
+                viewModel.proceedDeletingLink()
+            }),
+            secondaryButton: .cancel {
+                viewModel.declineRemoveLink()
+            }
+        )
+    }
+
+    func revokeAlert() -> Alert {
+        Alert(
+            title: Text(NSLocalizedString("Revoke link", comment: "")),
+            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
+            primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
+                viewModel.proceedDeletingLink()
+            }),
+            secondaryButton: .cancel {
+                viewModel.declineRemoveLink()
+            }
+        )
     }
 }
 

@@ -312,7 +312,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        if navigationBarExtendPanelView.isHidden {
+        if navigationBarExtendPanelView.isHidden || tableData.isEmpty {
             tableView.contentInset.top = 0
         } else if displaySegmentTabs {
             tableView.contentInset.top = navigationBarExtendPanelView.contentView?.frame.height ?? 0
@@ -378,8 +378,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
 
             if let navBar = navigationController?.navigationBar,
+               let contentView = navigationBarExtendPanelView.contentView,
                navBar.window != nil,
-               let contentView = navigationBarExtendPanelView.contentView
+               contentView.window != nil
             {
                 if contentView.constraints.first(where: { $0.identifier == "navBarExtendContentViewTop" }) == nil {
                     let constarint = contentView.topAnchor.constraint(equalTo: navBar.bottomAnchor)
@@ -461,10 +462,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         return super.preferredInterfaceOrientationForPresentation
     }
 
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//    }
-
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if let viewController = hideableViewControllerOnTransition {
             viewController.dismiss(animated: true, completion: nil)
@@ -477,7 +474,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
 
-        delay(seconds: 0.01) { [weak self] in
+        delay(seconds: 0.1) { [weak self] in
             self?.viewIsAppearing(true)
         }
     }
@@ -1358,7 +1355,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         if !show {
             emptyView?.removeFromSuperview()
             searchEmptyView?.removeFromSuperview()
-            tableView.backgroundView = nil
+            tableView.tableHeaderView = UIView()
 
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic
@@ -1368,6 +1365,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             navigationItem.largeTitleDisplayMode = .never
 
             let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
+            let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
+            let isDocRecently = isDocSpace && folder?.rootFolderType == .onlyofficeRecent
 
             // If loading view still display
             if let _ = loadingView.superview {
@@ -1377,7 +1376,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             if searchController.isActive {
                 localEmptyView?.type = .search
             } else {
-                if let folder = folder, let provider = provider {
+                if let folder, let provider {
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
                         localEmptyView?.type = .trash
                     } else if folder.rootFolderType == .onlyofficeRoomArchived && !folder.isRoom {
@@ -1389,6 +1388,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         if !(provider.allowEdit(entity: folder)) {
                             localEmptyView?.type = .docspaceNoPermissions
                         }
+                    } else if isDocRecently {
+                        localEmptyView?.type = .recentlyAccessibleViaLink
                     } else {
                         localEmptyView?.type = .cloud
 
@@ -1399,22 +1400,24 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 }
             }
 
-            if localEmptyView?.superview == nil {
-                localEmptyView?.frame = CGRect(
-                    x: 0,
-                    y: 0,
-                    width: tableView.width,
-                    height: tableView.height
-                )
-                tableView.backgroundView = localEmptyView
-            }
+            guard
+                let localEmptyView, localEmptyView.superview == nil
+            else { return }
+
+            tableView.tableHeaderView = localEmptyView
+            localEmptyView.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: tableView.width,
+                height: tableView.contentSize.height
+            )
         }
     }
 
     private func showErrorView(_ show: Bool, _ error: Error? = nil) {
         if !show {
             errorView?.removeFromSuperview()
-            tableView.backgroundView = nil
+            tableView.tableHeaderView = UIView()
         } else if tableData.count < 1 {
             showLoadingPage(false)
             showEmptyView(false)
@@ -1446,15 +1449,17 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 }
             }
 
-            if errorView?.superview == nil {
-                errorView?.frame = CGRect(
-                    x: 0,
-                    y: 0,
-                    width: tableView.frame.width,
-                    height: tableView.frame.height
-                )
-                tableView.backgroundView = errorView
-            }
+            guard
+                let errorView, errorView.superview == nil
+            else { return }
+
+            tableView.tableHeaderView = errorView
+            errorView.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: tableView.width,
+                height: tableView.contentSize.height
+            )
         }
     }
 
@@ -3501,9 +3506,9 @@ extension ASCDocumentsViewController: UITableViewDataSource, UITableViewDelegate
         if displaySegmentTabs {
             DispatchQueue.main.debounce(interval: 0.01) { [weak self, weak scrollView] in
                 guard let self, let scrollView else { return }
-                
+
                 let scrollContentOffset = scrollView.contentOffset.y + self.navigationBarExtendPanelView.frame.height
-                
+
                 if scrollContentOffset > 2.0 {
                     UIView.animate(withDuration: 0.1, animations: { [weak self] in
                         self?.navigationBarExtendPanelView.standardAppearance()

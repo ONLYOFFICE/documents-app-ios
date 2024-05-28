@@ -1975,8 +1975,12 @@ private extension ASCFiltersControllerProtocol {
     }
 }
 
-private extension ASCOnlyofficeProvider {
+extension ASCOnlyofficeProvider {
     var isDocspace: Bool {
         apiClient.serverVersion?.docSpace != nil
+    }
+
+    static var isDocspaceApi: Bool {
+        ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
     }
 }

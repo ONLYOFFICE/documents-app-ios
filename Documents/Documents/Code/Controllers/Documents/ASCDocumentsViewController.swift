@@ -131,6 +131,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         $0.dropDelegate = self
         $0.dragInteractionEnabled = true
         $0.separatorStyle = .none
+        $0.allowsMultipleSelectionDuringEditing = true
         return $0
     }(UITableView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 500)), style: .plain))
 
@@ -3496,6 +3497,10 @@ extension ASCDocumentsViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
         setEditMode(true)
         return true
+    }
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -10,9 +10,8 @@ import Foundation
 import UIKit
 
 class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
-    
     // MARK: Public vars
-    
+
     var tempState: State
     var usersSectionTitle = FiltersSection.author.localizedString()
 
@@ -30,13 +29,13 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     }
 
     var onAction: () -> Void = {}
-    
+
     // MARK: Private vars
-    
+
     private(set) var appliedState: State?
     private var currentSelectedAuthorFilterType: ApiFilterType?
     private var currentLoading = false
-    
+
     private var builder: ASCFiltersCollectionViewModelBuilder
 
     private lazy var selectUserViewController: ASCSelectUserViewController = {
@@ -117,7 +116,6 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     }
 
     func updateViewModel() {
-        
         let viewModel = builder.buildViewModel(
             state: currentLoading ? .loading : .normal,
             filtersContainers: buildFilterContainers(),
@@ -125,7 +123,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         )
         filtersViewController.viewModel = viewModel
     }
-    
+
     func buildActions() {
         buildDidSelectedClosure()
         buildCommonResetButtonClosureBuilder()
@@ -172,9 +170,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
 // MARK: - Private methods
 
 private extension ASCDocSpaceFiltersController {
-    
     // MARK: Build
-    
+
     func buildActionButtonViewModel() -> ActionButtonViewModel {
         tempState.itemsCount > 0
             ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
@@ -186,7 +183,7 @@ private extension ASCDocSpaceFiltersController {
                                     textColor: Asset.Colors.tableCellSeparator.color,
                                     isActive: false)
     }
-    
+
     func buildFilterContainers() -> [FiltersContainer] {
         [
             buildUserFilterContainer(),
@@ -195,7 +192,7 @@ private extension ASCDocSpaceFiltersController {
             buildThirdPartyContainer(),
         ].compactMap { $0 }
     }
-    
+
     func buildUserFilterContainer() -> FiltersContainer {
         let usersFilters: [FilterTypeConvirtable] = tempState.hasSelectedMember ? [tempState.memberFilter] : [tempState.meFilter, tempState.memberFilter]
         return FiltersContainer(
@@ -203,32 +200,32 @@ private extension ASCDocSpaceFiltersController {
             elements: usersFilters
         )
     }
-    
+
     func buildTypeContainer() -> FiltersContainer {
         FiltersContainer(
             sectionName: FiltersSection.type.localizedString(),
             elements: tempState.roomTypeFilters
         )
     }
-    
+
     func buildTagsContainer() -> FiltersContainer? {
         tempState.tagsFilters.isEmpty
-        ? nil
-        : FiltersContainer(
-            sectionName: FiltersSection.tags.localizedString(),
-            elements: tempState.tagsFilters
-        )
+            ? nil
+            : FiltersContainer(
+                sectionName: FiltersSection.tags.localizedString(),
+                elements: tempState.tagsFilters
+            )
     }
-    
+
     func buildThirdPartyContainer() -> FiltersContainer? {
         tempState.thirdPartyResourceFilters.isEmpty
-        ? nil
-        : FiltersContainer(
-            sectionName: FiltersSection.thirdPartyResource.localizedString(),
-            elements: tempState.thirdPartyResourceFilters
-        )
+            ? nil
+            : FiltersContainer(
+                sectionName: FiltersSection.thirdPartyResource.localizedString(),
+                elements: tempState.thirdPartyResourceFilters
+            )
     }
-    
+
     func buildDidSelectedClosure() {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
@@ -309,7 +306,7 @@ private extension ASCDocSpaceFiltersController {
             self.runPreload()
         }
     }
-    
+
     // MARK: Reset methods
 
     private func resetAuthorModels() {

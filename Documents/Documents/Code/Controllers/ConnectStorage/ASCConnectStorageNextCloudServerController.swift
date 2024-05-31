@@ -89,7 +89,6 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
                 params["url"] = serverUrl
 
                 self.complation?(params)
-                self.dismiss(animated: true, completion: nil)
             } else if let error = info["error"] as? String {
                 UIAlertController.showError(in: self, message: error)
             }

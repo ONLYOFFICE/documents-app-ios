@@ -93,7 +93,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "square.and.arrow.up")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.shareWithLink()
+                    navigator.navigate(to: .sharedSettingsLink(file: file))
                 }
             )
         }

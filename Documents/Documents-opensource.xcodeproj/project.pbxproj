@@ -51,6 +51,9 @@
 		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
 		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
+		F378881C2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378881B2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift */; };
+		F378881E2C0B3054007FEB4A /* SharedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378881D2C0B3054007FEB4A /* SharedSettingsView.swift */; };
+		F37888202C0B310E007FEB4A /* SharedSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378881F2C0B310E007FEB4A /* SharedSettingsViewModel.swift */; };
 		FC0377B62BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377B22BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377B72BDBABCE00DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377B32BDBABCE00DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC03A63E2BDA7F67005E8FFB /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A6272BDA7F67005E8FFB /* AttachLogoRequestModel.swift */; };
@@ -684,6 +687,9 @@
 		F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountScreenModel.swift; sourceTree = "<group>"; };
 		F378024329DAE3720020B453 /* AccountCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
 		F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
+		F378881B2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsRootViewController.swift; sourceTree = "<group>"; };
+		F378881D2C0B3054007FEB4A /* SharedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsView.swift; sourceTree = "<group>"; };
+		F378881F2C0B310E007FEB4A /* SharedSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsViewModel.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1983,9 +1989,20 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		F378881A2C09D0BD007FEB4A /* DocspaceFileLinkFlow */ = {
+			isa = PBXGroup;
+			children = (
+				F378881B2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift */,
+				F378881D2C0B3054007FEB4A /* SharedSettingsView.swift */,
+				F378881F2C0B310E007FEB4A /* SharedSettingsViewModel.swift */,
+			);
+			path = DocspaceFileLinkFlow;
+			sourceTree = "<group>";
+		};
 		F38E5D402B0B45B500EDBCE3 /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				F378881A2C09D0BD007FEB4A /* DocspaceFileLinkFlow */,
 				FC7DD7922B502F7E0037405B /* CreatelLink */,
 				FC7DD7862B502F7E0037405B /* LinkLifeTime */,
 				FC7DD7892B502F7E0037405B /* Views */,
@@ -3738,6 +3755,7 @@
 				FC7080F62812E2260057FCD2 /* NetworkingClient.swift in Sources */,
 				FC7080F72812E2260057FCD2 /* ASCGoogleSignInController.swift in Sources */,
 				FC7080F82812E2260057FCD2 /* ASCButtonStyle.swift in Sources */,
+				F378881E2C0B3054007FEB4A /* SharedSettingsView.swift in Sources */,
 				FC59433F2AE67586001BA2F9 /* ASCEditorManager.swift in Sources */,
 				FC7080F92812E2260057FCD2 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
 				FC7080FA2812E2260057FCD2 /* ASCSharingSettingsAccessProvider.swift in Sources */,
@@ -3825,6 +3843,7 @@
 				FC7081272812E2260057FCD2 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC7081292812E2260057FCD2 /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				1D667A2D28CDFE4D009BD85D /* ASCOnlyofficeCategoriesGrouper.swift in Sources */,
+				F378881C2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift in Sources */,
 				E8BE285F2B2435E5007F5942 /* MenuView.swift in Sources */,
 				FC70812A2812E2260057FCD2 /* ASCTextViewTableViewCell.swift in Sources */,
 				FC03A6492BDA7F67005E8FFB /* OnlyofficeDocumentConfig.swift in Sources */,
@@ -4039,6 +4058,7 @@
 				FC7081C82812E2260057FCD2 /* ASCDocumentSortType.swift in Sources */,
 				FCE9F63B2B2B49D60056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */,
 				FC7081C92812E2260057FCD2 /* DropboxApiClient.swift in Sources */,
+				F37888202C0B310E007FEB4A /* SharedSettingsViewModel.swift in Sources */,
 				FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FC7081CA2812E2260057FCD2 /* ASCEntityAccess.swift in Sources */,
 				FC7DD7A12B502F7E0037405B /* ASCDocSpaceLinkView.swift in Sources */,

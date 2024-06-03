@@ -123,6 +123,36 @@ struct ManageRoomView: View {
             .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isSaving)
     }
+    
+    private var thirdPartySection: some View {
+        Section {
+            Toggle(isOn: $isThirdPartyStorageEnabled) {
+                Text("Third party storage")
+            }
+            if isThirdPartyStorageEnabled {
+                NavigationLink(destination: StorageSelectionView(selectedStorage: $selectedStorage)) {
+                    HStack {
+                        Text("Storage")
+                        Spacer()
+                        Text(selectedStorage)
+                            .foregroundColor(.gray)
+                    }
+                }
+                NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
+                    HStack {
+                        Text("Location")
+                        Spacer()
+                        Text(selectedLocation)
+                            .foregroundColor(.gray)
+                    }
+                }
+                Toggle(isOn: $isCreateNewFolderEnabled) {
+                    Text("Create new folder")
+                }
+            }
+        }
+        .disabled(!isThirdPartyStorageEnabled)
+    }
 
     private func handleHUD() {
         if viewModel.isSavedSuccessfully {

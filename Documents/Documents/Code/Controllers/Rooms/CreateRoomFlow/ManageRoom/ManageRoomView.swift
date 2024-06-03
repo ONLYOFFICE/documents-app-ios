@@ -14,6 +14,11 @@ struct ManageRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: ManageRoomViewModel
+    
+    @State private var isThirdPartyStorageEnabled: Bool = false
+    @State private var isCreateNewFolderEnabled: Bool = false
+    @State private var selectedStorage: String = "Google Drive"
+    @State private var selectedLocation: String = "/Files for test"
 
     var body: some View {
         handleHUD()

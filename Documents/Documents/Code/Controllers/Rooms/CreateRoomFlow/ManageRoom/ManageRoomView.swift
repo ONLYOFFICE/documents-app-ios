@@ -239,6 +239,28 @@ private extension String {
     }
 }
 
+struct StorageSelectionView: View {
+    @Binding var selectedStorage: String
+
+    var body: some View {
+        List {
+            Button(action: {
+                selectedStorage = "Google Drive"
+            }) {
+                Text("Google Drive")
+                    .foregroundColor(selectedStorage == "Google Drive" ? .blue : .primary)
+            }
+            Button(action: {
+                selectedStorage = "Dropbox"
+            }) {
+                Text("Dropbox")
+                    .foregroundColor(selectedStorage == "Dropbox" ? .blue : .primary)
+            }
+        }
+        .navigationBarTitle("Select Storage", displayMode: .inline)
+    }
+}
+
 struct LocationSelectionView: View {
     @Binding var selectedLocation: String
 

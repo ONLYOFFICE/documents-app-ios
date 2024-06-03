@@ -238,3 +238,25 @@ private extension String {
         return filter { !forbiddenCharacters.contains($0) }
     }
 }
+
+struct LocationSelectionView: View {
+    @Binding var selectedLocation: String
+
+    var body: some View {
+        List {
+            Button(action: {
+                selectedLocation = "/Files for test"
+            }) {
+                Text("/Files for test")
+                    .foregroundColor(selectedLocation == "/Files for test" ? .blue : .primary)
+            }
+            Button(action: {
+                selectedLocation = "/Documents"
+            }) {
+                Text("/Documents")
+                    .foregroundColor(selectedLocation == "/Documents" ? .blue : .primary)
+            }
+        }
+        .navigationBarTitle("Select Location", displayMode: .inline)
+    }
+}

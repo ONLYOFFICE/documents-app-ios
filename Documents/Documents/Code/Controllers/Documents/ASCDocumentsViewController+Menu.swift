@@ -313,6 +313,19 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        if actions.contains(.share) {
+            commonActions.append(
+                UIAction(
+                    title: NSLocalizedString("Share", comment: ""),
+                    image: UIImage(systemName: "square.and.arrow.up")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.showShereFolderAlert(folder: folder)
+                }
+            )
+        }
+
 
         // Basic actions
 

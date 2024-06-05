@@ -23,6 +23,7 @@ final class SharedSettingsViewModel: ObservableObject {
     @Published var isShared: Bool
     @Published var links: [SharedSettingsLinkRowModel] = []
     @Published var isDocspaceUserOnly: Bool = false
+    @Published var selectdLink: SharedSettingsLinkResponceModel?
 
     init(file: ASCFile) {
         self.file = file
@@ -55,9 +56,11 @@ final class SharedSettingsViewModel: ObservableObject {
             id: link.sharedTo.id,
             linkAccess: link.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink,
             expiredTo: "",
-            rights: ""
-        ) {
-            // MARK: TODO
-        }
+            rights: "",
+            onTapAction: { [weak self] in
+                guard let self else { return }
+                self.selectdLink = link
+            }
+        )
     }
 }

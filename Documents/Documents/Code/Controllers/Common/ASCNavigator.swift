@@ -123,7 +123,7 @@ final class ASCNavigator {
         case let .sharedSettingsLink(file):
             let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
             sharedSettingsViewController.modalPresentationStyle = .pageSheet
-            navigationController?.pushViewController(sharedSettingsViewController, animated: true)
+            navigationController?.present(sharedSettingsViewController, animated: true)
 
         default:
             navigationController?.pushViewController(viewController, animated: true)

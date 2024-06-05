@@ -50,5 +50,8 @@ struct SharedSettingsLinkRow: View {
                     .foregroundColor(.gray)
             }
         }
+        .onTapGesture {
+            model.onTapAction()
+        }
     }
 }

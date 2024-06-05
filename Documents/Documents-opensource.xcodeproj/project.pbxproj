@@ -54,6 +54,9 @@
 		F378881C2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378881B2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift */; };
 		F378881E2C0B3054007FEB4A /* SharedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378881D2C0B3054007FEB4A /* SharedSettingsView.swift */; };
 		F37888202C0B310E007FEB4A /* SharedSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378881F2C0B310E007FEB4A /* SharedSettingsViewModel.swift */; };
+		F37888222C0B6A3E007FEB4A /* SharedSettingsLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37888212C0B6A3E007FEB4A /* SharedSettingsLinkRow.swift */; };
+		F37888242C0DB6AB007FEB4A /* NetworkManagerSharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37888232C0DB6AB007FEB4A /* NetworkManagerSharedSettings.swift */; };
+		F37888272C0DBA36007FEB4A /* SharedSettingsLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37888262C0DBA36007FEB4A /* SharedSettingsLinkResponceModel.swift */; };
 		FC0377B62BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377B22BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377B72BDBABCE00DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377B32BDBABCE00DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC03A63E2BDA7F67005E8FFB /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A6272BDA7F67005E8FFB /* AttachLogoRequestModel.swift */; };
@@ -690,6 +693,9 @@
 		F378881B2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsRootViewController.swift; sourceTree = "<group>"; };
 		F378881D2C0B3054007FEB4A /* SharedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsView.swift; sourceTree = "<group>"; };
 		F378881F2C0B310E007FEB4A /* SharedSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsViewModel.swift; sourceTree = "<group>"; };
+		F37888212C0B6A3E007FEB4A /* SharedSettingsLinkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsLinkRow.swift; sourceTree = "<group>"; };
+		F37888232C0DB6AB007FEB4A /* NetworkManagerSharedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerSharedSettings.swift; sourceTree = "<group>"; };
+		F37888262C0DBA36007FEB4A /* SharedSettingsLinkResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettingsLinkResponceModel.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1992,11 +1998,22 @@
 		F378881A2C09D0BD007FEB4A /* DocspaceFileLinkFlow */ = {
 			isa = PBXGroup;
 			children = (
+				F37888252C0DBA1D007FEB4A /* Network */,
 				F378881B2C09D0FF007FEB4A /* SharedSettingsRootViewController.swift */,
 				F378881D2C0B3054007FEB4A /* SharedSettingsView.swift */,
 				F378881F2C0B310E007FEB4A /* SharedSettingsViewModel.swift */,
+				F37888212C0B6A3E007FEB4A /* SharedSettingsLinkRow.swift */,
 			);
 			path = DocspaceFileLinkFlow;
+			sourceTree = "<group>";
+		};
+		F37888252C0DBA1D007FEB4A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F37888232C0DB6AB007FEB4A /* NetworkManagerSharedSettings.swift */,
+				F37888262C0DBA36007FEB4A /* SharedSettingsLinkResponceModel.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F38E5D402B0B45B500EDBCE3 /* Links */ = {
@@ -3754,6 +3771,7 @@
 				FC7080F52812E2260057FCD2 /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC7080F62812E2260057FCD2 /* NetworkingClient.swift in Sources */,
 				FC7080F72812E2260057FCD2 /* ASCGoogleSignInController.swift in Sources */,
+				F37888272C0DBA36007FEB4A /* SharedSettingsLinkResponceModel.swift in Sources */,
 				FC7080F82812E2260057FCD2 /* ASCButtonStyle.swift in Sources */,
 				F378881E2C0B3054007FEB4A /* SharedSettingsView.swift in Sources */,
 				FC59433F2AE67586001BA2F9 /* ASCEditorManager.swift in Sources */,
@@ -3785,6 +3803,7 @@
 				FC7081052812E2260057FCD2 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				FC7081062812E2260057FCD2 /* ASCSharingOptionsModels.swift in Sources */,
 				FC83D5702A9742F000C404CB /* ASCNetworkReachability.swift in Sources */,
+				F37888222C0B6A3E007FEB4A /* SharedSettingsLinkRow.swift in Sources */,
 				FC7081092812E2260057FCD2 /* ASCCreatePortalViewController.swift in Sources */,
 				FC142A9328990AEC00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FCE9F6482B2B4AF20056E420 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
@@ -3802,6 +3821,7 @@
 				1D8CFC39290D7E7400F71071 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FC7081102812E2260057FCD2 /* ASCSharingOptionsViewController.swift in Sources */,
 				E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */,
+				F37888242C0DB6AB007FEB4A /* NetworkManagerSharedSettings.swift in Sources */,
 				FCE9F7A42B3044CE0056E420 /* CurrentLocalFolderMenu.swift in Sources */,
 				FC83D5F72A974E2200C404CB /* UIColor+Extension.swift in Sources */,
 				FC142A3B289819B400EDE7CE /* ASCFile.swift in Sources */,

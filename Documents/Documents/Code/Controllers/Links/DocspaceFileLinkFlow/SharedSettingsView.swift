@@ -13,41 +13,38 @@ struct SharedSettingsView: View {
 
     var body: some View {
         List {
-            viewModel.isShared
-            ? sharedLinkSection
-            : createAndCopySection
-            
+            if viewModel.isShared {
+                sharedLinkSection
+            } else {
+                createAndCopySection
+            }
         }
         .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
     }
-
+    
     @ViewBuilder
     private var createAndCopySection: some View {
         Section(
             header: Text(NSLocalizedString("Shared links", comment: "")),
             footer: Text(NSLocalizedString("Provide access to the document and set the permission levels.", comment: ""))
         ) {
-            ASCCreateLinkCellView(model: ASCCreateLinkCellModel(
+            ASCCreateLinkCellView(model:ASCCreateLinkCellModel(
                 textString: NSLocalizedString("Create and copy", comment: ""),
                 imageNames: [],
-                onTapAction: viewModel.createAndCopySharedLink
-            )
+                onTapAction: viewModel.createAndCopySharedLink)
             )
         }
     }
-    
+
     @ViewBuilder
     private var sharedLinkSection: some View {
         Section(
             header: Text(NSLocalizedString("Shared links", comment: "")),
             footer: Text(NSLocalizedString("Provide access to the document and set the permission levels.", comment: ""))
         ) {
-            ASCCreateLinkCellView(model: ASCCreateLinkCellModel(
-                textString: NSLocalizedString("Create and copy", comment: ""),
-                imageNames: [],
-                onTapAction: viewModel.createAndCopySharedLink
-            )
-            )
+            ForEach(viewModel.links) { linkModel in
+                SharedSettingsLinkRow(model: linkModel)
+            }
         }
     }
 }

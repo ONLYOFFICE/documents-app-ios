@@ -2191,6 +2191,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func copySharedLink() {}
+
     func leaveRoom(cell: UITableViewCell?, folder: ASCFolder) {
         guard let provider = provider as? ASCOnlyofficeProvider
         else { return }

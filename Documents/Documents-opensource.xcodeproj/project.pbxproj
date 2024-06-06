@@ -61,6 +61,7 @@
 		F3BBC3762C10BDB80048F8B4 /* EditSharedLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBC3752C10BDB80048F8B4 /* EditSharedLinkViewModel.swift */; };
 		F3BBC3782C10C2660048F8B4 /* ASCDetailedChevronUpDownCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBC3772C10C2660048F8B4 /* ASCDetailedChevronUpDownCellView.swift */; };
 		F3BBC37A2C10E0930048F8B4 /* CheckmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBC3792C10E0930048F8B4 /* CheckmarkCellView.swift */; };
+		F3BBC37C2C11EE870048F8B4 /* EditSharedLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBC37B2C11EE870048F8B4 /* EditSharedLinkRequestModel.swift */; };
 		FC0377B62BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377B22BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377B72BDBABCE00DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377B32BDBABCE00DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC03A63E2BDA7F67005E8FFB /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A6272BDA7F67005E8FFB /* AttachLogoRequestModel.swift */; };
@@ -705,6 +706,7 @@
 		F3BBC3752C10BDB80048F8B4 /* EditSharedLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSharedLinkViewModel.swift; sourceTree = "<group>"; };
 		F3BBC3772C10C2660048F8B4 /* ASCDetailedChevronUpDownCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDetailedChevronUpDownCellView.swift; sourceTree = "<group>"; };
 		F3BBC3792C10E0930048F8B4 /* CheckmarkCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkCellView.swift; sourceTree = "<group>"; };
+		F3BBC37B2C11EE870048F8B4 /* EditSharedLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSharedLinkRequestModel.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC0377B22BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentServerVersionRequest.swift; sourceTree = "<group>"; };
@@ -2020,6 +2022,7 @@
 			children = (
 				F37888232C0DB6AB007FEB4A /* NetworkManagerSharedSettings.swift */,
 				F37888262C0DBA36007FEB4A /* SharedSettingsLinkResponceModel.swift */,
+				F3BBC37B2C11EE870048F8B4 /* EditSharedLinkRequestModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -4074,6 +4077,7 @@
 				FC7081B92812E2260057FCD2 /* ASCBaseTableViewController.swift in Sources */,
 				FC7081BA2812E2260057FCD2 /* ASCSharingRightHolderViewModelProtocol.swift in Sources */,
 				FC83D6062A974E2200C404CB /* KingfisherWrapper+Extensions.swift in Sources */,
+				F3BBC37C2C11EE870048F8B4 /* EditSharedLinkRequestModel.swift in Sources */,
 				FC03A6482BDA7F67005E8FFB /* OnlyofficeCapabilities.swift in Sources */,
 				E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */,
 				FC7081BB2812E2260057FCD2 /* ASCEntityLinkMakerProtocol.swift in Sources */,

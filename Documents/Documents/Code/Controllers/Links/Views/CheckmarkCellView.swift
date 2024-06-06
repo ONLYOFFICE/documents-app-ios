@@ -6,28 +6,30 @@
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct CheckmarkCellViewModel {
     var text: String
     var isChecked: Bool
+
+    var onTapAction: () -> Void
 }
 
 struct CheckmarkCellView: View {
-    @State var model: CheckmarkCellViewModel
+    var model: CheckmarkCellViewModel
 
     var body: some View {
         HStack {
             Text(model.text)
-                .font(.body)
-                .foregroundColor(.primary)
             Spacer()
             if model.isChecked {
                 Image(systemName: "checkmark")
-                    .foregroundColor(.blue)
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         }
-        .padding()
+        .onTapGesture {
+            model.onTapAction()
+        }
     }
 }

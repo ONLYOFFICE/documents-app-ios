@@ -24,15 +24,25 @@ struct EditSharedLinkView: View {
         Section(
             header: Text(NSLocalizedString("General", comment: "")))
         {
+            accessCell
+            linkLifeTimeCell
+        }
+    }
+
+    private var accessCell: some View {
+        MenuView(menuItems: viewModel.accessMenuItems) {
             ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
                 title: NSLocalizedString("Access rights", comment: ""),
-                detail: ""
-            ))
-            ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
-                title: NSLocalizedString("Link life time", comment: ""),
-                detail: ""
+                detail: viewModel.selectedAccessRight.title()
             ))
         }
+    }
+
+    private var linkLifeTimeCell: some View {
+        ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
+            title: NSLocalizedString("Link life time", comment: ""),
+            detail: ""
+        ))
     }
 
     @ViewBuilder
@@ -41,10 +51,26 @@ struct EditSharedLinkView: View {
             header: Text(NSLocalizedString("Type", comment: "")))
         {
             CheckmarkCellView(model: CheckmarkCellViewModel(
-                text: NSLocalizedString("Anyone with the link", comment: ""), isChecked: viewModel.linkAccess == .anyoneWithLink
+                text: NSLocalizedString("Anyone with the link", comment: ""),
+                isChecked: viewModel.linkAccess == .anyoneWithLink,
+                onTapAction: {
+                    if viewModel.linkAccess == .docspaceUserOnly {
+                        viewModel.setLinkType()
+                    } else {
+                        return
+                    }
+                }
             ))
             CheckmarkCellView(model: CheckmarkCellViewModel(
-                text: NSLocalizedString("DoсSpace users only", comment: ""), isChecked: viewModel.linkAccess == .docspaceUserOnly
+                text: NSLocalizedString("DoсSpace users only", comment: ""),
+                isChecked: viewModel.linkAccess == .docspaceUserOnly,
+                onTapAction: {
+                    if viewModel.linkAccess == .anyoneWithLink {
+                        viewModel.setLinkType()
+                    } else {
+                        return
+                    }
+                }
             ))
         }
     }

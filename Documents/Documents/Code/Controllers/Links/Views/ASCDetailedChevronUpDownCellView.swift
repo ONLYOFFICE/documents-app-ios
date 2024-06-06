@@ -15,7 +15,7 @@ struct ASCDetailedChevronUpDownCellViewModel {
 }
 
 struct ASCDetailedChevronUpDownCellView: View {
-    @State var model: ASCDetailedChevronUpDownCellViewModel
+    var model: ASCDetailedChevronUpDownCellViewModel
 
     var body: some View {
         HStack {
@@ -23,10 +23,7 @@ struct ASCDetailedChevronUpDownCellView: View {
             Spacer()
             HStack {
                 Text(model.detail)
-                VStack {
-                    Image(systemName: "chevron.up")
-                    Image(systemName: "chevron.down")
-                }
+                ChevronUpDownView()
             }
         }
     }

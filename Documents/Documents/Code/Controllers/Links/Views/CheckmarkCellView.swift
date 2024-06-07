@@ -28,6 +28,7 @@ struct CheckmarkCellView: View {
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         }
+        .contentShape(Rectangle())
         .onTapGesture {
             model.onTapAction()
         }

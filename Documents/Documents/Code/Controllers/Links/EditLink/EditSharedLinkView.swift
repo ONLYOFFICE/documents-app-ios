@@ -39,10 +39,12 @@ struct EditSharedLinkView: View {
     }
 
     private var linkLifeTimeCell: some View {
-        ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
-            title: NSLocalizedString("Link life time", comment: ""),
-            detail: ""
-        ))
+        MenuView(menuItems: viewModel.linkLifeTimeMenuItems) {
+            ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
+                title: NSLocalizedString("Link life time", comment: ""),
+                detail: ""
+            ))
+        }
     }
 
     @ViewBuilder

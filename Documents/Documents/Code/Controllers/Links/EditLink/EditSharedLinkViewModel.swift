@@ -31,6 +31,20 @@ final class EditSharedLinkViewModel: ObservableObject {
         }
     }
 
+    var linkLifeTimeMenuItems: [MenuViewItem] {
+        [
+            LinkLifeTimeOption.twelveHours,
+            LinkLifeTimeOption.oneDay,
+            LinkLifeTimeOption.sevenDays,
+            LinkLifeTimeOption.unlimited,
+            LinkLifeTimeOption.custom,
+        ].map { option in
+            MenuViewItem(text: option.localized) { [unowned self] in
+                setLinkLifeTime(option: option)
+            }
+        }
+    }
+
     // MARK: - Private vars
 
     private var link: SharedSettingsLinkResponceModel?
@@ -91,4 +105,6 @@ final class EditSharedLinkViewModel: ObservableObject {
             }
         }
     }
+
+    private func setLinkLifeTime(option: LinkLifeTimeOption) {}
 }

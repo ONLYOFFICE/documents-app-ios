@@ -16,7 +16,7 @@ final class EditSharedLinkViewModel: ObservableObject {
     @Published var selectedAccessRight: ASCShareAccess = .none
     @Published var selectedDate: Date
     @Published var expirationDateString: String
-
+    @Published var linkLifeTimeString: String
     @Published var selectedLinkLifeTimeOption: LinkLifeTimeOption = .sevenDays
 
     // MARK: - Public vars
@@ -71,7 +71,8 @@ final class EditSharedLinkViewModel: ObservableObject {
         }()
 
         expirationDateString = linkInfo.expirationDate
-        updateExpirationDateString()
+        linkLifeTimeString = linkInfo.expirationDate
+        updatelinkLifeTimeLimitString()
     }
 
     private func setAccessRight(_ accessRight: ASCShareAccess) {
@@ -143,10 +144,11 @@ final class EditSharedLinkViewModel: ObservableObject {
         case .custom:
             break
         }
-        updateExpirationDateString()
+        updatelinkLifeTimeLimitString()
+        changeLink(isInternal: linkAccess == .docspaceUserOnly)
     }
 
-    private func updateExpirationDateString() {
+    private func updatelinkLifeTimeLimitString() {
         let expirationString = expirationDateString
         let now = Date()
 
@@ -155,15 +157,15 @@ final class EditSharedLinkViewModel: ObservableObject {
         guard let timeInterval = expirationDate?.timeIntervalSince(now) else { return }
 
         if timeInterval < 0 {
-            expirationDateString = NSLocalizedString("Expired", comment: "Expiration status")
+            linkLifeTimeString = NSLocalizedString("Expired", comment: "Expiration status")
             isExpired = true
         } else if timeInterval < 24 * 60 * 60 {
             let hours = Int(timeInterval / 3600)
-            expirationDateString = String(format: NSLocalizedString("%d hours", comment: "Hours left"), hours)
+            linkLifeTimeString = String(format: NSLocalizedString("%d hours", comment: "Hours left"), hours)
             isExpired = false
         } else {
             let days = Int(timeInterval / (24 * 60 * 60))
-            expirationDateString = String(format: NSLocalizedString("%d days", comment: "Days left"), days)
+            linkLifeTimeString = String(format: NSLocalizedString("%d days", comment: "Days left"), days)
             isExpired = false
         }
     }

@@ -49,7 +49,7 @@ struct EditSharedLinkView: View {
         MenuView(menuItems: viewModel.linkLifeTimeMenuItems) {
             ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
                 title: NSLocalizedString("Link life time", comment: ""),
-                detail: viewModel.expirationDateString
+                detail: viewModel.linkLifeTimeString
             ))
         }
         if viewModel.selectedLinkLifeTimeOption == .custom {

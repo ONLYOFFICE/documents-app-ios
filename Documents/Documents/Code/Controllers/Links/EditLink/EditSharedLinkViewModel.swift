@@ -7,6 +7,7 @@
 //
 
 import Combine
+import MBProgressHUD
 import SwiftUI
 
 final class EditSharedLinkViewModel: ObservableObject {
@@ -88,7 +89,18 @@ final class EditSharedLinkViewModel: ObservableObject {
 
     func removeLink() {}
 
-    func copyLink() {}
+    func copyLink() {
+        let hud = MBProgressHUD.showTopMost()
+        if let sharingLinkURL {
+            UIPasteboard.general.string = sharingLinkURL.absoluteString
+            hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+
+        } else {
+            hud?.setState(result: .failure(nil))
+        }
+
+        hud?.hide(animated: true, afterDelay: .standardDelay)
+    }
 
     func regenerateLink() {}
 

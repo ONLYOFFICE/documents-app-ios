@@ -130,12 +130,20 @@ class ASCConnectCloudViewController: UITableViewController {
                 let providerType = ASCFileProviderType(rawValue: identifier) ?? .unknown
 
                 switch providerType {
+                case .nextcloud:
+                    presentProviderConnection(by: providerType, animated: true)
+                case .owncloud:
+                    presentProviderConnection(by: providerType, animated: true)
                 case .googledrive:
                     tableView.deselectRow(at: indexPath, animated: true)
                     presentProviderConnection(by: providerType)
                 case .dropbox:
                     presentProviderConnection(by: providerType, animated: true)
                 case .onedrive:
+                    presentProviderConnection(by: providerType, animated: true)
+                case .kdrive:
+                    presentProviderConnection(by: providerType, animated: true)
+                case .webdav:
                     presentProviderConnection(by: providerType, animated: true)
                 default:
                     tableView.deselectRow(at: indexPath, animated: true)
@@ -242,19 +250,25 @@ class ASCConnectCloudViewController: UITableViewController {
                 }
             }
         case .nextcloud:
-            connectionVC = ASCConnectStorageNextCloudServerController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageNextCloudServerController {
-                viewController.complation = authComplation(info:)
+            let viewController = ASCConnectStorageNextCloudServerController.instantiate(from: Storyboard.connectStorage)
+            viewController.complation = authComplation(info:)
+            if animated {
+                navigationController?.pushViewController(viewController, animated: animated)
+            } else {
+                connectionVC = viewController
             }
         case .owncloud:
-            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
-                    provider: .ownCloud,
-                    logo: providerImage(type),
-                    title: providerName(type),
-                    complation: authComplation(info:)
-                )
+            let viewController = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
+            viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .ownCloud,
+                logo: providerImage(type),
+                title: providerName(type),
+                complation: authComplation(info:)
+            )
+            if animated {
+                navigationController?.pushViewController(viewController, animated: animated)
+            } else {
+                connectionVC = viewController
             }
         case .yandex:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
@@ -269,14 +283,17 @@ class ASCConnectCloudViewController: UITableViewController {
                 )
             }
         case .webdav:
-            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
-                    provider: .webDav,
-                    logo: providerImage(type),
-                    title: providerName(type),
-                    complation: authComplation(info:)
-                )
+            let viewController = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
+            viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .webDav,
+                logo: providerImage(type),
+                title: providerName(type),
+                complation: authComplation(info:)
+            )
+            if animated {
+                navigationController?.pushViewController(viewController, animated: animated)
+            } else {
+                connectionVC = viewController
             }
         case .onedrive:
             let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
@@ -296,17 +313,20 @@ class ASCConnectCloudViewController: UITableViewController {
                 connectionVC = oauth2VC
             }
         case .kdrive:
-            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
-                    provider: .kDrive,
-                    loginTitle: NSLocalizedString("Email", comment: ""),
-                    needServer: false,
-                    logo: providerImage(type),
-                    title: providerName(type),
-                    instruction: NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: ""),
-                    complation: authComplation(info:)
-                )
+            let viewController = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
+            viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .kDrive,
+                loginTitle: NSLocalizedString("Email", comment: ""),
+                needServer: false,
+                logo: providerImage(type),
+                title: providerName(type),
+                instruction: NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: ""),
+                complation: authComplation(info:)
+            )
+            if animated {
+                navigationController?.pushViewController(viewController, animated: animated)
+            } else {
+                connectionVC = viewController
             }
         default:
             break

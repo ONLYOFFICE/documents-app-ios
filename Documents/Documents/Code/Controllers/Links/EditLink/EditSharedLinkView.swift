@@ -15,6 +15,12 @@ struct EditSharedLinkView: View {
         List {
             generalSection
             typeSection
+            if viewModel.isExpired {
+                regenerateLinkSection
+            } else {
+                copyLinkSection
+            }
+            removeLinkSection
         }
         .navigationBarTitle(Text(NSLocalizedString("Shared link", comment: "")), displayMode: .inline)
     }
@@ -38,13 +44,25 @@ struct EditSharedLinkView: View {
         }
     }
 
+    @ViewBuilder
     private var linkLifeTimeCell: some View {
         MenuView(menuItems: viewModel.linkLifeTimeMenuItems) {
             ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
                 title: NSLocalizedString("Link life time", comment: ""),
-                detail: ""
+                detail: viewModel.expirationDateString
             ))
         }
+        if viewModel.selectedLinkLifeTimeOption == .custom {
+            validThrowCell
+        }
+    }
+
+    private var validThrowCell: some View {
+        TimeLimitCellView(model: TimeLimitCellModel(
+            selectedDate: $viewModel.selectedDate,
+            title: NSLocalizedString("Valid through", comment: ""),
+            displayedComponents: [.date]
+        ))
     }
 
     @ViewBuilder
@@ -72,6 +90,47 @@ struct EditSharedLinkView: View {
                     } else {
                         return
                     }
+                }
+            ))
+        }
+    }
+
+    @ViewBuilder
+    private var copyLinkSection: some View {
+        Section {
+            ASCLabledCellView(model: ASCLabledCellModel(
+                textString: NSLocalizedString("Copy link", comment: ""),
+                cellType: .standard,
+                textAlignment: .center,
+                onTapAction: {
+                    viewModel.copyLink()
+                }
+            ))
+        }
+    }
+
+    private var regenerateLinkSection: some View {
+        Section {
+            ASCLabledCellView(model: ASCLabledCellModel(
+                textString: NSLocalizedString("Regenerate link", comment: ""),
+                cellType: .standard,
+                textAlignment: .center,
+                onTapAction: {
+                    viewModel.regenerateLink()
+                }
+            ))
+        }
+    }
+
+    @ViewBuilder
+    private var removeLinkSection: some View {
+        Section {
+            ASCLabledCellView(model: ASCLabledCellModel(
+                textString: NSLocalizedString("Remove link", comment: ""),
+                cellType: .deletable,
+                textAlignment: .center,
+                onTapAction: {
+                    viewModel.removeLink()
                 }
             ))
         }

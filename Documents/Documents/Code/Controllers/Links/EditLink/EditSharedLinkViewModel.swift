@@ -14,6 +14,10 @@ final class EditSharedLinkViewModel: ObservableObject {
     @Published var linkAccess: LinkAccess
     @Published var isExpired: Bool = false
     @Published var selectedAccessRight: ASCShareAccess = .none
+    @Published var selectedDate: Date
+    @Published var expirationDateString: String
+
+    @Published var selectedLinkLifeTimeOption: LinkLifeTimeOption = .sevenDays
 
     // MARK: - Public vars
 
@@ -61,6 +65,13 @@ final class EditSharedLinkViewModel: ObservableObject {
         sharingLinkURL = URL(string: linkInfo.shareLink)
         self.file = file
         selectedAccessRight = ASCShareAccess(inputLink.access)
+        selectedDate = {
+            let dateString = linkInfo.expirationDate
+            return Self.dateFormatter.date(from: dateString) ?? Date()
+        }()
+
+        expirationDateString = linkInfo.expirationDate
+        updateExpirationDateString()
     }
 
     private func setAccessRight(_ accessRight: ASCShareAccess) {
@@ -74,6 +85,12 @@ final class EditSharedLinkViewModel: ObservableObject {
         changeLink(isInternal: linkAccess == .docspaceUserOnly ? false : true)
     }
 
+    func removeLink() {}
+
+    func copyLink() {}
+
+    func regenerateLink() {}
+
     private func changeLink(
         access: ASCShareAccess? = nil,
         isInternal: Bool
@@ -85,7 +102,7 @@ final class EditSharedLinkViewModel: ObservableObject {
             access: access?.rawValue ?? selectedAccessRight.rawValue,
             primary: linkInfo.primary,
             isInternal: isInternal,
-            expirationDate: linkInfo.expirationDate
+            expirationDate: expirationDateString
         )
 
         service.setLinkAccess(file: file, requestModel: requestModel) { [weak self] result in
@@ -96,8 +113,8 @@ final class EditSharedLinkViewModel: ObservableObject {
                     guard let self else { return }
                     linkAccess = result.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink
                     sharingLinkURL = URL(string: result.sharedTo.shareLink)
-                    // TODO: isExpired =
                     selectedAccessRight = ASCShareAccess(rawValue: result.access) ?? .none
+                    expirationDateString = result.sharedTo.expirationDate
                 }
 
             case let .failure(error):
@@ -106,5 +123,68 @@ final class EditSharedLinkViewModel: ObservableObject {
         }
     }
 
-    private func setLinkLifeTime(option: LinkLifeTimeOption) {}
+    private func setLinkLifeTime(option: LinkLifeTimeOption) {
+        selectedLinkLifeTimeOption = option
+        switch option {
+        case .twelveHours:
+            if let expiration = Calendar.current.date(byAdding: .hour, value: 12, to: Date()) {
+                expirationDateString = Self.sendDateFormatter.string(from: expiration)
+            }
+        case .oneDay:
+            if let expiration = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+                expirationDateString = Self.sendDateFormatter.string(from: expiration)
+            }
+        case .sevenDays:
+            if let expiration = Calendar.current.date(byAdding: .day, value: 7, to: Date()) {
+                expirationDateString = Self.sendDateFormatter.string(from: expiration)
+            }
+        case .unlimited:
+            break
+        case .custom:
+            break
+        }
+        updateExpirationDateString()
+    }
+
+    private func updateExpirationDateString() {
+        let expirationString = expirationDateString
+        let now = Date()
+
+        let expirationDate = Self.dateFormatter.date(from: expirationString)
+
+        guard let timeInterval = expirationDate?.timeIntervalSince(now) else { return }
+
+        if timeInterval < 0 {
+            expirationDateString = NSLocalizedString("Expired", comment: "Expiration status")
+            isExpired = true
+        } else if timeInterval < 24 * 60 * 60 {
+            let hours = Int(timeInterval / 3600)
+            expirationDateString = String(format: NSLocalizedString("%d hours", comment: "Hours left"), hours)
+            isExpired = false
+        } else {
+            let days = Int(timeInterval / (24 * 60 * 60))
+            expirationDateString = String(format: NSLocalizedString("%d days", comment: "Days left"), days)
+            isExpired = false
+        }
+    }
+}
+
+// MARK: Date formaters
+
+private extension EditSharedLinkViewModel {
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }()
+
+    static let sendDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
 }

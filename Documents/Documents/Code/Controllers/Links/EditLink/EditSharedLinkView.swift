@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EditSharedLinkView: View {
     @ObservedObject var viewModel: EditSharedLinkViewModel
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         List {
@@ -31,7 +32,9 @@ struct EditSharedLinkView: View {
             header: Text(NSLocalizedString("General", comment: "")))
         {
             accessCell
+                .disabled(viewModel.isExpired)
             linkLifeTimeCell
+                .disabled(viewModel.isExpired)
         }
     }
 
@@ -130,7 +133,11 @@ struct EditSharedLinkView: View {
                 cellType: .deletable,
                 textAlignment: .center,
                 onTapAction: {
-                    viewModel.removeLink()
+                    viewModel.removeLink {
+                        DispatchQueue.main.async {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
                 }
             ))
         }

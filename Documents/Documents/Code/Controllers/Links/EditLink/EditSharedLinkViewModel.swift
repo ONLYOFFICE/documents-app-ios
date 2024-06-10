@@ -87,7 +87,11 @@ final class EditSharedLinkViewModel: ObservableObject {
         changeLink(isInternal: linkAccess == .docspaceUserOnly ? false : true)
     }
 
-    func removeLink() {}
+    func removeLink(completion: @escaping () -> Void) {
+        changeLink(access: ASCShareAccess.none, isInternal: linkAccess == .docspaceUserOnly) {
+            completion()
+        }
+    }
 
     func copyLink() {
         let hud = MBProgressHUD.showTopMost()
@@ -106,7 +110,8 @@ final class EditSharedLinkViewModel: ObservableObject {
 
     private func changeLink(
         access: ASCShareAccess? = nil,
-        isInternal: Bool
+        isInternal: Bool,
+        completion: (() -> Void)? = nil
     ) {
         guard let link = link else { return }
         let linkInfo = link.sharedTo
@@ -128,6 +133,7 @@ final class EditSharedLinkViewModel: ObservableObject {
                     sharingLinkURL = URL(string: result.sharedTo.shareLink)
                     selectedAccessRight = ASCShareAccess(rawValue: result.access) ?? .none
                     expirationDateString = result.sharedTo.expirationDate
+                    completion?()
                 }
 
             case let .failure(error):

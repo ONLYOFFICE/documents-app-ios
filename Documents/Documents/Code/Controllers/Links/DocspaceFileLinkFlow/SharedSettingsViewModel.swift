@@ -32,7 +32,21 @@ final class SharedSettingsViewModel: ObservableObject {
         buildViewModel()
     }
 
-    func createAndCopySharedLink() {}
+    func createAndCopySharedLink() {
+        networkService.createAndCopy(file: file) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                self.flowModel.links = [link]
+                DispatchQueue.main.async {
+                    self.isShared = true
+                    self.buildViewModel()
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     func loadLinks() {
         networkService.fetchFileLinks(file: file) { [weak self] result in

@@ -2191,7 +2191,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    func copySharedLink() {}
+    func copySharedLink(file: ASCFile) {
+        NetworkManagerSharedSettings().createAndCopy(file: file) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                let hud = MBProgressHUD.showTopMost()
+                UIPasteboard.general.string = link.sharedTo.shareLink
+                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     func leaveRoom(cell: UITableViewCell?, folder: ASCFolder) {
         guard let provider = provider as? ASCOnlyofficeProvider

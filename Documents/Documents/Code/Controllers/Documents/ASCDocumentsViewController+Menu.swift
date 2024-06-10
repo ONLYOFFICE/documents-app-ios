@@ -79,7 +79,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Copy shared link", comment: ""),
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
-                    self.copySharedLink()
+                    self.copySharedLink(file: file)
                 }
             )
         }

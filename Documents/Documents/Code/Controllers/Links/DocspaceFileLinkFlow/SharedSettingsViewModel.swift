@@ -8,6 +8,7 @@
 
 import Combine
 import Foundation
+import MBProgressHUD
 import SwiftUI
 
 struct LinksFlowModel {
@@ -42,6 +43,11 @@ final class SharedSettingsViewModel: ObservableObject {
                     self.isShared = true
                     self.buildViewModel()
                 }
+                let hud = MBProgressHUD.showTopMost()
+                UIPasteboard.general.string = link.sharedTo.shareLink
+                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+
             case let .failure(error):
                 print(error.localizedDescription)
             }

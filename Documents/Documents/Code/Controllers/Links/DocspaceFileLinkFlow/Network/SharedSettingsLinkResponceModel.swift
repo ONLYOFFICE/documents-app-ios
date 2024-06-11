@@ -17,7 +17,7 @@ struct LinkInfo: Codable {
     let id: String
     let title: String
     let shareLink: String
-    let expirationDate: String
+    let expirationDate: String?
     let linkType: Int
     let denyDownload: Bool
     let isExpired: Bool

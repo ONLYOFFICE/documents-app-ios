@@ -64,7 +64,10 @@ struct EditSharedLinkView: View {
 
     private var validThrowCell: some View {
         TimeLimitCellView(model: TimeLimitCellModel(
-            selectedDate: $viewModel.selectedDate,
+            selectedDate: Binding<Date>(
+                get: { viewModel.selectedDate ?? Date() },
+                set: { viewModel.selectedDate = $0 }
+            ),
             title: NSLocalizedString("Valid through", comment: ""),
             displayedComponents: [.date]
         ))

@@ -13,7 +13,7 @@ struct EditSharedLinkRequestModel: Codable {
     var access: Int
     var primary: Bool
     var isInternal: Bool
-    var expirationDate: String
+    var expirationDate: String?
 
     enum CodingKeys: String, CodingKey {
         case isInternal = "internal"

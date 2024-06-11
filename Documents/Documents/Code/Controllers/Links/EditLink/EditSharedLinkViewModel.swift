@@ -15,8 +15,8 @@ final class EditSharedLinkViewModel: ObservableObject {
     @Published var linkAccess: LinkAccess
     @Published var isExpired: Bool = false
     @Published var selectedAccessRight: ASCShareAccess = .none
-    @Published var selectedDate: Date
-    @Published var expirationDateString: String
+    @Published var selectedDate: Date?
+    @Published var expirationDateString: String?
     @Published var linkLifeTimeString: String
     @Published var selectedLinkLifeTimeOption: LinkLifeTimeOption = .sevenDays
 
@@ -69,12 +69,14 @@ final class EditSharedLinkViewModel: ObservableObject {
         self.file = file
         selectedAccessRight = ASCShareAccess(inputLink.access)
         selectedDate = {
-            let dateString = linkInfo.expirationDate
-            return Self.dateFormatter.date(from: dateString) ?? Date()
+            guard let dateString = linkInfo.expirationDate else {
+                return nil
+            }
+            return Self.dateFormatter.date(from: dateString)
         }()
 
         expirationDateString = linkInfo.expirationDate
-        linkLifeTimeString = linkInfo.expirationDate
+        linkLifeTimeString = linkInfo.expirationDate ?? NSLocalizedString("Unlimited", comment: "")
         updatelinkLifeTimeLimitString()
     }
 
@@ -93,11 +95,13 @@ final class EditSharedLinkViewModel: ObservableObject {
         sharingLinkURL = URL(string: linkInfo.shareLink)
         selectedAccessRight = ASCShareAccess(link.access)
         selectedDate = {
-            let dateString = linkInfo.expirationDate
-            return Self.dateFormatter.date(from: dateString) ?? Date()
+            guard let dateString = linkInfo.expirationDate else {
+                return nil
+            }
+            return Self.dateFormatter.date(from: dateString)
         }()
         expirationDateString = linkInfo.expirationDate
-        linkLifeTimeString = linkInfo.expirationDate
+        linkLifeTimeString = linkInfo.expirationDate ?? NSLocalizedString("Unlimited", comment: "")
         updatelinkLifeTimeLimitString()
     }
 
@@ -179,7 +183,6 @@ final class EditSharedLinkViewModel: ObservableObject {
                     expirationDateString = result.sharedTo.expirationDate
                     completion?()
                 }
-
             case let .failure(error):
                 print(error.localizedDescription)
             }
@@ -202,7 +205,7 @@ final class EditSharedLinkViewModel: ObservableObject {
                 expirationDateString = Self.sendDateFormatter.string(from: expiration)
             }
         case .unlimited:
-            break
+            expirationDateString = nil
         case .custom:
             break
         }
@@ -211,6 +214,13 @@ final class EditSharedLinkViewModel: ObservableObject {
     }
 
     private func updatelinkLifeTimeLimitString() {
+        guard let expirationDateString else {
+            if selectedLinkLifeTimeOption == .unlimited {
+                linkLifeTimeString = NSLocalizedString("Unlimited", comment: "")
+            }
+            return
+        }
+
         let expirationString = expirationDateString
         let now = Date()
 

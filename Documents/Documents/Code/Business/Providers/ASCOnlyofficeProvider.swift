@@ -1305,7 +1305,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isDocspace, canShare {
+            if isUserCategory, isDocspace, canShare {
                 entityActions.insert(.docspaceShare)
                 entityActions.insert(.copySharedLink)
             }

@@ -77,6 +77,7 @@ final class SharedSettingsViewModel: ObservableObject {
             linkAccess: link.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink,
             expiredTo: "",
             rights: "",
+            isExpired: link.sharedTo.isExpired,
             onTapAction: { [weak self] in
                 guard let self else { return }
                 self.selectdLink = link

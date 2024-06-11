@@ -18,10 +18,11 @@ struct SharedSettingsLinkRowModel: Identifiable {
     var linkAccess: LinkAccess
     var expiredTo: String
     var rights: String
+    var isExpired: Bool
 
     var onTapAction: () -> Void
 
-    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", onTapAction: {})
+    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", isExpired: false, onTapAction: {})
 }
 
 struct SharedSettingsLinkRow: View {
@@ -39,7 +40,9 @@ struct SharedSettingsLinkRow: View {
                 .cornerRadius(40)
             VStack(alignment: .leading) {
                 Text(model.linkAccess.rawValue)
-                Text(model.expiredTo)
+                Text(model.isExpired ? NSLocalizedString("The link has expired", comment: "") : model.expiredTo)
+                    .foregroundColor(model.isExpired ? .red : .secondaryLabel)
+                    .font(.system(size: 13))
             }
 
             Spacer()

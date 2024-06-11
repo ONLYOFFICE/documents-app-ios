@@ -105,8 +105,12 @@ final class EditSharedLinkViewModel: ObservableObject {
         updatelinkLifeTimeLimitString()
     }
 
+    func didDateChangedManualy() {
+        setLinkLifeTime(option: .custom)
+    }
+
     func setLinkType() {
-        changeLink(isInternal: linkAccess == .docspaceUserOnly ? false : true)
+        changeLink(isInternal: linkAccess == .docspaceUserOnly)
     }
 
     func removeLink(completion: @escaping () -> Void) {
@@ -207,7 +211,9 @@ final class EditSharedLinkViewModel: ObservableObject {
         case .unlimited:
             expirationDateString = nil
         case .custom:
-            break
+            if let selectedDate {
+                expirationDateString = Self.sendDateFormatter.string(from: selectedDate)
+            }
         }
         updatelinkLifeTimeLimitString()
         changeLink(isInternal: linkAccess == .docspaceUserOnly)

@@ -12,6 +12,7 @@ import SwiftUI
 struct CheckmarkCellViewModel {
     var text: String
     var isChecked: Bool
+    let isEnabled: Bool
 
     var onTapAction: () -> Void
 }
@@ -22,10 +23,11 @@ struct CheckmarkCellView: View {
     var body: some View {
         HStack {
             Text(model.text)
+                .foregroundColor(model.isEnabled ? .black : .secondaryLabel)
             Spacer()
             if model.isChecked {
                 Image(systemName: "checkmark")
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                    .foregroundColor(model.isEnabled ? Asset.Colors.brend.swiftUIColor : .secondaryLabel)
             }
         }
         .contentShape(Rectangle())

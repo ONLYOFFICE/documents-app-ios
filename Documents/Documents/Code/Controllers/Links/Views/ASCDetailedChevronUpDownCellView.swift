@@ -12,6 +12,7 @@ import SwiftUI
 struct ASCDetailedChevronUpDownCellViewModel {
     let title: String
     let detail: String
+    let isEnabled: Bool
 }
 
 struct ASCDetailedChevronUpDownCellView: View {
@@ -20,7 +21,7 @@ struct ASCDetailedChevronUpDownCellView: View {
     var body: some View {
         HStack {
             Text(model.title)
-                .foregroundColor(.black)
+                .foregroundColor(model.isEnabled ? .black : .secondaryLabel)
             Spacer()
             HStack {
                 Text(model.detail)

@@ -42,7 +42,8 @@ struct EditSharedLinkView: View {
         MenuView(menuItems: viewModel.accessMenuItems) {
             ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
                 title: NSLocalizedString("Access rights", comment: ""),
-                detail: viewModel.selectedAccessRight.title()
+                detail: viewModel.selectedAccessRight.title(),
+                isEnabled: !viewModel.isExpired
             ))
         }
     }
@@ -52,7 +53,8 @@ struct EditSharedLinkView: View {
         MenuView(menuItems: viewModel.linkLifeTimeMenuItems) {
             ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
                 title: NSLocalizedString("Link life time", comment: ""),
-                detail: viewModel.linkLifeTimeString
+                detail: viewModel.linkLifeTimeString,
+                isEnabled: !viewModel.isExpired
             ))
         }
         if viewModel.selectedLinkLifeTimeOption == .custom {
@@ -76,6 +78,7 @@ struct EditSharedLinkView: View {
             CheckmarkCellView(model: CheckmarkCellViewModel(
                 text: NSLocalizedString("Anyone with the link", comment: ""),
                 isChecked: viewModel.linkAccess == .anyoneWithLink,
+                isEnabled: !viewModel.isExpired,
                 onTapAction: {
                     if viewModel.linkAccess == .docspaceUserOnly {
                         viewModel.setLinkType()
@@ -84,9 +87,11 @@ struct EditSharedLinkView: View {
                     }
                 }
             ))
+            .disabled(viewModel.isExpired)
             CheckmarkCellView(model: CheckmarkCellViewModel(
                 text: NSLocalizedString("DoсSpace users only", comment: ""),
                 isChecked: viewModel.linkAccess == .docspaceUserOnly,
+                isEnabled: !viewModel.isExpired,
                 onTapAction: {
                     if viewModel.linkAccess == .anyoneWithLink {
                         viewModel.setLinkType()
@@ -95,6 +100,7 @@ struct EditSharedLinkView: View {
                     }
                 }
             ))
+            .disabled(viewModel.isExpired)
         }
     }
 

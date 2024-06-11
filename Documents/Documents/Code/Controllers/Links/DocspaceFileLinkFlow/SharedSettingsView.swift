@@ -49,11 +49,27 @@ struct SharedSettingsView: View {
     @ViewBuilder
     private var sharedLinkSection: some View {
         Section(
-            header: Text(NSLocalizedString("Shared links", comment: "")),
+            header: sharedLinksSectionHeader,
             footer: Text(NSLocalizedString("Provide access to the document and set the permission levels.", comment: ""))
         ) {
             ForEach(viewModel.links) { linkModel in
                 SharedSettingsLinkRow(model: linkModel)
+            }
+        }
+    }
+
+    private var sharedLinksSectionHeader: some View {
+        HStack {
+            Text(NSLocalizedString("Shared links", comment: ""))
+            Text("(\(viewModel.links.count)/\(viewModel.linksLimit))")
+            Spacer()
+            if viewModel.links.count < viewModel.linksLimit {
+                Button {
+                    viewModel.addLink()
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                }
             }
         }
     }

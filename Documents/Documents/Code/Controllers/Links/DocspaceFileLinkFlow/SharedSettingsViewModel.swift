@@ -17,7 +17,7 @@ struct LinksFlowModel {
 
 final class SharedSettingsViewModel: ObservableObject {
     let file: ASCFile
-
+    let linksLimit = 6
     private let networkService = NetworkManagerSharedSettings()
     private(set) var flowModel = LinksFlowModel()
 
@@ -48,6 +48,22 @@ final class SharedSettingsViewModel: ObservableObject {
                 hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
                 hud?.hide(animated: true, afterDelay: .standardDelay)
 
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func addLink() {
+        let requestModel = AddSharedLinkRequestModel(access: ASCShareAccess.read.rawValue, primary: false, isInternal: false)
+        networkService.addLink(file: file, requestModel: requestModel) { result in
+            switch result {
+            case let .success(link):
+                self.flowModel.links.append(link)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    self.buildViewModel()
+                }
             case let .failure(error):
                 print(error.localizedDescription)
             }

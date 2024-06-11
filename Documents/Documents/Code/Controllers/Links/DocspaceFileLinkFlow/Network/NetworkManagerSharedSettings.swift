@@ -74,6 +74,20 @@ final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
             completion(.success(link))
         }
     }
+
+    func addLink(file: ASCFile, requestModel: AddSharedLinkRequestModel, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Files.addLink(file: file), requestModel.dictionary) { result, error in
+            guard let link = result?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
+                }
+                return
+            }
+            completion(.success(link))
+        }
+    }
 }
 
 struct SharedSettingsLinkModel {

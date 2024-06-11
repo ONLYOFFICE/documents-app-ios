@@ -20,6 +20,8 @@ final class EditSharedLinkViewModel: ObservableObject {
     @Published var linkLifeTimeString: String
     @Published var selectedLinkLifeTimeOption: LinkLifeTimeOption = .sevenDays
 
+    private let networkService = NetworkManagerSharedSettings()
+
     // MARK: - Public vars
 
     var accessMenuItems: [MenuViewItem] {
@@ -83,6 +85,22 @@ final class EditSharedLinkViewModel: ObservableObject {
         )
     }
 
+    func buildViewModel() {
+        guard let link = link else { return }
+        let linkInfo = link.sharedTo
+        isExpired = linkInfo.isExpired
+        linkAccess = linkInfo.isInternal ? .docspaceUserOnly : .anyoneWithLink
+        sharingLinkURL = URL(string: linkInfo.shareLink)
+        selectedAccessRight = ASCShareAccess(link.access)
+        selectedDate = {
+            let dateString = linkInfo.expirationDate
+            return Self.dateFormatter.date(from: dateString) ?? Date()
+        }()
+        expirationDateString = linkInfo.expirationDate
+        linkLifeTimeString = linkInfo.expirationDate
+        updatelinkLifeTimeLimitString()
+    }
+
     func setLinkType() {
         changeLink(isInternal: linkAccess == .docspaceUserOnly ? false : true)
     }
@@ -106,7 +124,33 @@ final class EditSharedLinkViewModel: ObservableObject {
         hud?.hide(animated: true, afterDelay: .standardDelay)
     }
 
-    func regenerateLink() {}
+    func regenerateLink() {
+        guard let link = link,
+              let expiration = Calendar.current.date(byAdding: .day, value: 7, to: Date()) else { return }
+
+        expirationDateString = Self.sendDateFormatter.string(from: expiration)
+
+        let requestModel = EditSharedLinkRequestModel(
+            linkId: link.sharedTo.id,
+            access: link.access,
+            primary: link.sharedTo.primary,
+            isInternal: link.sharedTo.isInternal,
+            expirationDate: expirationDateString
+        )
+
+        networkService.regenerateLink(file: file, requestModel: requestModel) { result in
+            switch result {
+            case let .success(link):
+                self.link = link
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    self.buildViewModel()
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     private func changeLink(
         access: ASCShareAccess? = nil,

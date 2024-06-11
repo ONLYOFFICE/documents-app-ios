@@ -57,11 +57,17 @@ final class EditSharedLinkViewModel: ObservableObject {
     private var link: SharedSettingsLinkResponceModel?
     private var file: ASCFile
     private var service: NetworkManagerSharedSettingsProtocol = NetworkManagerSharedSettings()
+    private var onRemoveCompletion: (() -> Void)?
 
     // MARK: - init
 
-    init(file: ASCFile, inputLink: SharedSettingsLinkResponceModel) {
+    init(
+        file: ASCFile,
+        inputLink: SharedSettingsLinkResponceModel,
+        onRemoveCompletion: (() -> Void)?
+    ) {
         link = inputLink
+        self.onRemoveCompletion = onRemoveCompletion
         let linkInfo = inputLink.sharedTo
         isExpired = linkInfo.isExpired
         linkAccess = linkInfo.isInternal ? .docspaceUserOnly : .anyoneWithLink
@@ -115,7 +121,10 @@ final class EditSharedLinkViewModel: ObservableObject {
 
     func removeLink(completion: @escaping () -> Void) {
         changeLink(access: ASCShareAccess.none, isInternal: linkAccess == .docspaceUserOnly) {
-            completion()
+            DispatchQueue.main.async { [weak self] in
+                self?.onRemoveCompletion?()
+                completion()
+            }
         }
     }
 
@@ -189,6 +198,7 @@ final class EditSharedLinkViewModel: ObservableObject {
                 }
             case let .failure(error):
                 print(error.localizedDescription)
+                completion?()
             }
         }
     }

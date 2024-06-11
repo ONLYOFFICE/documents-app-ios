@@ -146,9 +146,7 @@ struct EditSharedLinkView: View {
                 textAlignment: .center,
                 onTapAction: {
                     viewModel.removeLink {
-                        DispatchQueue.main.async {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             ))

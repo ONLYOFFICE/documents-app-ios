@@ -1147,6 +1147,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>%1$@ | %2$@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="%d days" xml:space="preserve">
+        <source>%d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="%d hours" xml:space="preserve">
+        <source>%d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
         <target>%d избрани </target>
@@ -1230,6 +1238,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
         <target>Файл с подобно име вече съществува в директорията на документа на устройството.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
+        <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1737,6 +1749,10 @@ others which use WebDAV protocol.</source>
         <target>Копирай линк</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>Копиране</target>
@@ -2082,6 +2098,10 @@ organize your files.</source>
         <target>Изтеглянето</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="DoсSpace users only" xml:space="preserve">
+        <source>DoсSpace users only</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
         <target>Dropbox</target>
@@ -2214,6 +2234,10 @@ organize your files.</source>
         <source>Expect users</source>
         <target>Очаквайте потребители</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Expired" xml:space="preserve">
+        <source>Expired</source>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2775,6 +2799,10 @@ copied to clipboard</source>
         <target>Следващ</target>
         <note>Next step</note>
       </trans-unit>
+      <trans-unit id="NextCloud" xml:space="preserve">
+        <source>NextCloud</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
@@ -3185,6 +3213,10 @@ copied to clipboard</source>
         <target>Защита</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
+        <source>Provide access to the document and set the permission levels.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target>Осигурете цялостен достъп до документа, избирайки необходимото ниво на разрешение.</target>
@@ -3224,6 +3256,10 @@ copied to clipboard</source>
         <target>Възстановяване</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regenerate link" xml:space="preserve">
+        <source>Regenerate link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Регистрация</target>
@@ -3242,6 +3278,10 @@ copied to clipboard</source>
         <source>Remove from Favorites</source>
         <target>Премахни от Любими</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Remove link" xml:space="preserve">
+        <source>Remove link</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
@@ -3478,6 +3518,14 @@ copied to clipboard</source>
         <target>Настройки и сигурност</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share folder" xml:space="preserve">
+        <source>Share folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>Директория на SharePoint</target>
@@ -3486,6 +3534,10 @@ copied to clipboard</source>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target>Споделен достъп</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared link" xml:space="preserve">
+        <source>Shared link</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">

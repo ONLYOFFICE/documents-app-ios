@@ -1237,6 +1237,14 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>%1$@ | %2$@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="%d days" xml:space="preserve">
+        <source>%d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="%d hours" xml:space="preserve">
+        <source>%d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
         <target>%d vybráno</target>
@@ -1320,6 +1328,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
         <target>Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
+        <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1827,6 +1839,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Kopírovat odkaz</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>Kopírování</target>
@@ -2172,6 +2188,10 @@ organize your files.</source>
         <target>Stahování</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="DoсSpace users only" xml:space="preserve">
+        <source>DoсSpace users only</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
         <target>Dropbox</target>
@@ -2304,6 +2324,10 @@ organize your files.</source>
         <source>Expect users</source>
         <target>Očekávat uživatele</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Expired" xml:space="preserve">
+        <source>Expired</source>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2864,6 +2888,10 @@ zkopírován do schránky</target>
         <target>Další</target>
         <note>Next step</note>
       </trans-unit>
+      <trans-unit id="NextCloud" xml:space="preserve">
+        <source>NextCloud</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
@@ -3274,6 +3302,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Zabezpečení</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
+        <source>Provide access to the document and set the permission levels.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target>Zajistěte obecný přístup k dokumentu výběrem požadované úrovně oprávnění.</target>
@@ -3313,6 +3345,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Obnova</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regenerate link" xml:space="preserve">
+        <source>Regenerate link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Registrace</target>
@@ -3331,6 +3367,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <source>Remove from Favorites</source>
         <target>Odstranění z oblíbených položek</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Remove link" xml:space="preserve">
+        <source>Remove link</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
@@ -3567,6 +3607,14 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Nastavení a zabezpečení</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share folder" xml:space="preserve">
+        <source>Share folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>Adresář SharePoint</target>
@@ -3575,6 +3623,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target>Sdílený přístup</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared link" xml:space="preserve">
+        <source>Shared link</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">

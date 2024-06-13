@@ -37,6 +37,8 @@ struct ASCEntityActions: OptionSet {
     static let transformToRoom = ASCEntityActions(rawValue: 1 << 23)
     static let disableNotifications = ASCEntityActions(rawValue: 1 << 24)
     static let select = ASCEntityActions(rawValue: 1 << 25)
+    static let docspaceShare = ASCEntityActions(rawValue: 1 << 26)
+    static let copySharedLink = ASCEntityActions(rawValue: 1 << 27)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

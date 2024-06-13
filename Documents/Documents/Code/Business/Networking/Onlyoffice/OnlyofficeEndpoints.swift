@@ -25,6 +25,8 @@ enum OnlyofficeAPI {
         public static let peoplePhoto = "api/\(version)/people/%@/photo"
         public static let files = "api/\(version)/files/%@"
         public static let file = "api/\(version)/files/file/%@"
+        public static let fileLinks = "api/\(version)/files/file/%@/links"
+        public static let createAndCopyFileLink = "api/\(version)/files/file/%@/link"
         public static let folder = "api/\(version)/files/folder/%@"
         public static let favorite = "api/\(version)/files/favorites"
         public static let filesShare = "api/\(version)/files/share"
@@ -240,6 +242,26 @@ enum OnlyofficeAPI {
         enum Files {
             static func info(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id))
+            }
+
+            static func getLinks(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .get)
+            }
+
+            static func createAndCopyLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.createAndCopyFileLink, file.id), .get)
+            }
+
+            static func setLinkAccess(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .put)
+            }
+
+            static func regenerateLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .put)
+            }
+
+            static func addLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .put)
             }
 
             static func update(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {

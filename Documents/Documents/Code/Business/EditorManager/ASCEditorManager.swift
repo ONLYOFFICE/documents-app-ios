@@ -631,6 +631,9 @@ class ASCEditorManager: NSObject {
                             localPdf.title = pdf.title
                             localPdf.device = true
 
+                            self.openedlocallyFile = pdf
+                            self.provider = provider
+
                             self.browsePdfLocal(
                                 localPdf,
                                 openHandler: openHandler,

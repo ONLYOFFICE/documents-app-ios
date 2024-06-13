@@ -1304,6 +1304,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if file.isNew {
                 entityActions.insert(.new)
             }
+
+            if isUserCategory, isDocspace, canShare {
+                entityActions.insert(.docspaceShare)
+                entityActions.insert(.copySharedLink)
+            }
         }
 
         return entityActions
@@ -1375,6 +1380,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if isDocspace, folder.isRoom, !(folder.rootFolderType == .onlyofficeRoomArchived) {
                 entityActions.insert(.disableNotifications)
+            }
+
+            if isDocspace, isUserCategory, canShare {
+                entityActions.insert(.share)
             }
 
             if isRoomFolder, !isArchiveCategory {
@@ -1926,6 +1935,17 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 extension ASCOnlyofficeProvider {
     func generalLink(for room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
+            guard room.roomType != .colobaration else {
+                if let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
+                    let path = "%@/rooms/shared/filter?folder=%@"
+                    let urlStr = String(format: path, baseUrl, room.id)
+                    continuation.resume(returning: .success(urlStr))
+                } else {
+                    continuation.resume(returning: .failure(NetworkingError.invalidUrl))
+                }
+                return
+            }
+
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
                 if let error {
                     continuation.resume(returning: .failure(error))

@@ -1913,6 +1913,29 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func showShereFolderAlert(folder: ASCFolder) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("Share folder", comment: ""),
+            message: NSLocalizedString("A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.", comment: ""),
+            preferredStyle: .alert,
+            tintColor: nil
+        )
+
+        alert.addCancel()
+
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Create", comment: ""),
+                style: .default,
+                handler: { [unowned self] _ in
+                    self.transformToRoom(entities: [folder])
+                }
+            )
+        )
+
+        present(alert, animated: true, completion: nil)
+    }
+
     func transformToRoom(entities: [ASCEntity]) {
         let entitiesIsOnlyOneFolder: Bool = {
             guard entities.count == 1 else { return false }
@@ -2187,6 +2210,21 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         message: NSLocalizedString("Couldn't download the room.", comment: "")
                     )
                 }
+            }
+        }
+    }
+
+    func copySharedLink(file: ASCFile) {
+        NetworkManagerSharedSettings().createAndCopy(file: file) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                let hud = MBProgressHUD.showTopMost()
+                UIPasteboard.general.string = link.sharedTo.shareLink
+                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+            case let .failure(error):
+                print(error.localizedDescription)
             }
         }
     }

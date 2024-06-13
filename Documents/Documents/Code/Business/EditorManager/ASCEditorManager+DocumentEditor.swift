@@ -89,11 +89,6 @@ extension ASCEditorManager {
                 configuration.denyDownload = file.denyDownload
             }
 
-            /// Turn off share from editors for the DocSpace
-            if protalType == .docSpace {
-                configuration.supportShare = false
-            }
-
             configuration = cloudEditor(config: configuration)
         } else {
             configuration = localEditor(config: configuration)

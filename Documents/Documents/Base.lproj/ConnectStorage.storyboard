@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="AZl-CS-15I" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="no6-cW-rms">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -27,14 +27,14 @@
         <!--Connect Storage-->
         <scene sceneID="rE5-1B-dYl">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectPortalThirdPartyViewController" id="atj-gF-cBt" customClass="ASCConnectPortalThirdPartyViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectPortalThirdPartyViewController" id="atj-gF-cBt" customClass="ASCConnectPortalThirdPartyViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="w7h-mx-KAW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCConnectStorageCell" id="fPw-5H-qxK" customClass="ASCConnectStorageCell" customModule="Documents" customModuleProvider="target">
-                                <rect key="frame" x="20" y="49" width="350" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCConnectStorageCell" id="fPw-5H-qxK" customClass="ASCConnectStorageCell" customModule="Documents_dev" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.333332061767578" width="350" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPw-5H-qxK" id="iLZ-1I-1O0">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
@@ -84,7 +84,7 @@
         <!--ConnectStorage OAuth2 View Controller-->
         <scene sceneID="03v-J5-3Ba">
             <objects>
-                <viewController storyboardIdentifier="ASCConnectStorageOAuth2ViewController" id="0k5-t4-ZyS" userLabel="ConnectStorage OAuth2 View Controller" customClass="ASCConnectStorageOAuth2ViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ASCConnectStorageOAuth2ViewController" id="0k5-t4-ZyS" userLabel="ConnectStorage OAuth2 View Controller" customClass="ASCConnectStorageOAuth2ViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pf7-ag-ZkR"/>
                         <viewControllerLayoutGuide type="bottom" id="KXn-gC-po4"/>
@@ -116,7 +116,7 @@
             <objects>
                 <navigationController id="AH0-KI-BpN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qoa-IQ-q1f">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -130,7 +130,7 @@
         <!--Connect Cloud-->
         <scene sceneID="N9l-wW-KWa">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectCloudViewController" id="eeO-aA-EMd" customClass="ASCConnectCloudViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectCloudViewController" id="eeO-aA-EMd" customClass="ASCConnectCloudViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="78" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="mel-cT-MWn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +138,7 @@
                         <sections>
                             <tableViewSection footerTitle="You can connect the following accounts to the ONLYOFFICE™ Documents." id="muA-mV-bS6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uWd-rP-55v">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCFileProviderTypeNextcloud" id="uWd-rP-55v">
                                         <rect key="frame" x="20" y="18" width="350" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uWd-rP-55v" id="MvB-Ms-Wep">
@@ -154,11 +154,8 @@
                                                 <constraint firstItem="hh7-sk-dQz" firstAttribute="centerX" secondItem="MvB-Ms-Wep" secondAttribute="centerX" id="Mje-hc-gmy"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="1qg-xC-CtZ" kind="show" id="IvU-WL-rNO"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="W4g-JG-9eM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCFileProviderTypeOwncloud" id="W4g-JG-9eM">
                                         <rect key="frame" x="20" y="96" width="350" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W4g-JG-9eM" id="GDD-bA-Mzv">
@@ -174,9 +171,6 @@
                                                 <constraint firstItem="9lp-or-YNx" firstAttribute="centerY" secondItem="GDD-bA-Mzv" secondAttribute="centerY" id="Ps4-gJ-gvc"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="1Tk-tU-uCs" kind="show" identifier="owncloudSegue" id="6bB-ls-lfg"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCFileProviderTypeGoogleDrive" id="ePH-0w-FFx">
                                         <rect key="frame" x="20" y="174" width="350" height="78"/>
@@ -229,7 +223,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="h5j-NS-D58">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCFileProviderTypeKDrive" id="h5j-NS-D58">
                                         <rect key="frame" x="20" y="408" width="350" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h5j-NS-D58" id="aC8-hQ-gBr">
@@ -245,11 +239,8 @@
                                                 <constraint firstItem="ncP-MJ-Yd9" firstAttribute="centerY" secondItem="aC8-hQ-gBr" secondAttribute="centerY" id="mVO-S5-gAf"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="1Tk-tU-uCs" kind="show" identifier="kdriveSegue" id="kew-Ww-ZfA"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qr5-Ji-isI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCFileProviderTypeWebDAV" id="qr5-Ji-isI">
                                         <rect key="frame" x="20" y="486" width="350" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qr5-Ji-isI" id="3Th-QI-auA">
@@ -265,9 +256,6 @@
                                                 <constraint firstItem="c7s-l3-t5v" firstAttribute="centerY" secondItem="3Th-QI-auA" secondAttribute="centerY" id="TaR-JV-2n4"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="1Tk-tU-uCs" kind="show" identifier="webdavSegue" id="9GI-J3-AuB"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -292,7 +280,7 @@
         <!--Connect Storage Web Dav Controller-->
         <scene sceneID="sFf-Jr-apz">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectStorageWebDavController" id="1Tk-tU-uCs" customClass="ASCConnectStorageWebDavController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectStorageWebDavController" id="1Tk-tU-uCs" customClass="ASCConnectStorageWebDavController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="Qei-5d-GFn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -468,7 +456,7 @@
         <!--Connect Storage Next Cloud Server Controller-->
         <scene sceneID="6IA-nl-84F">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectStorageNextCloudServerController" id="1qg-xC-CtZ" customClass="ASCConnectStorageNextCloudServerController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectStorageNextCloudServerController" id="1qg-xC-CtZ" customClass="ASCConnectStorageNextCloudServerController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="Byp-8B-lLD">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -575,9 +563,6 @@
             <point key="canvasLocation" x="1555" y="1684"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="kew-Ww-ZfA"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="cloud-append" width="36" height="36"/>

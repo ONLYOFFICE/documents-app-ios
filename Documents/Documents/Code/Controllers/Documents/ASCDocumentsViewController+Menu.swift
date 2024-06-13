@@ -342,7 +342,7 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         if actions.contains(.share) {
             commonActions.append(
                 UIAction(
@@ -354,7 +354,6 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-
 
         // Basic actions
 

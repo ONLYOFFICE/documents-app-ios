@@ -1912,7 +1912,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
-    
+
     func showShereFolderAlert(folder: ASCFolder) {
         let alert = UIAlertController(
             title: NSLocalizedString("Share folder", comment: ""),

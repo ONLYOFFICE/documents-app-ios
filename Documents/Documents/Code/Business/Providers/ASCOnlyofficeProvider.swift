@@ -1381,7 +1381,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isDocspace, folder.isRoom, !(folder.rootFolderType == .onlyofficeRoomArchived) {
                 entityActions.insert(.disableNotifications)
             }
-            
+
             if isDocspace, isUserCategory, canShare {
                 entityActions.insert(.share)
             }
@@ -1945,7 +1945,7 @@ extension ASCOnlyofficeProvider {
                 }
                 return
             }
-            
+
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
                 if let error {
                     continuation.resume(returning: .failure(error))

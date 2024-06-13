@@ -1801,7 +1801,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             strongDelegate?.presentShareController(provider: self, entity: file)
         }
         let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
-            guard let file = file else { complation(false); return }
+            guard let file else { complation(false); return }
 
             self.rename(file, to: title) { provider, result, success, error in
                 if let file = result as? ASCFile {
@@ -1886,17 +1886,28 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ASCConstants.FileExtensions.spreadsheets.contains(fileExt) ||
             ASCConstants.FileExtensions.presentations.contains(fileExt)
 
+        let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+        let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+            guard let file else { complation(false); return }
+
+            self.rename(file, to: title) { provider, result, success, error in
+                if let file = result as? ASCFile {
+                    complation(file.title.fileName() == title)
+                } else {
+                    complation(false)
+                }
+            }
+        }
+
         if isPdf {
-            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler)
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler, renameHandler: renameHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else if isAllowConvert {
             // TODO: !!! Convert me
         } else {
-            if let view = view {
-                let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+            if let view {
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }

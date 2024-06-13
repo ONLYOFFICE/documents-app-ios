@@ -25,6 +25,7 @@ extension ASCDocumentsViewController {
 
         var rootActions: [UIMenuElement] = []
         var topActions: [UIMenuElement] = []
+        var shareActions: [UIMenuElement] = []
         var middleActions: [UIMenuElement] = []
         var bottomActions: [UIMenuElement] = []
 
@@ -66,6 +67,33 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.download(cell: cell)
+                }
+            )
+        }
+
+        ///  Copy shared link action
+
+        if actions.contains(.copySharedLink) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Copy shared link", comment: ""),
+                    image: UIImage(systemName: "link")
+                ) { [unowned self] action in
+                    self.copySharedLink(file: file)
+                }
+            )
+        }
+
+        /// Share action
+
+        if actions.contains(.docspaceShare) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Share", comment: ""),
+                    image: UIImage(systemName: "square.and.arrow.up")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .sharedSettingsLink(file: file))
                 }
             )
         }
@@ -253,11 +281,12 @@ extension ASCDocumentsViewController {
         if #available(iOS 14.0, *) {
             return UIMenu(title: "", options: [.displayInline], children: [
                 UIMenu(title: "", options: .displayInline, children: topActions),
+                UIMenu(title: "", options: .displayInline, children: shareActions),
                 UIMenu(title: "", options: .displayInline, children: middleActions),
                 UIMenu(title: "", options: .displayInline, children: bottomActions),
             ])
         } else {
-            rootActions = [topActions, bottomActions, middleActions].reduce([], +)
+            rootActions = [topActions, shareActions, bottomActions, middleActions].reduce([], +)
             return UIMenu(title: "", children: rootActions)
         }
     }

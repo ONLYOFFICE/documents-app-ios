@@ -1335,7 +1335,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            entityActions.insert(.select)
+            if !folder.isEmpty {
+                entityActions.insert(.select)
+            }
 
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)

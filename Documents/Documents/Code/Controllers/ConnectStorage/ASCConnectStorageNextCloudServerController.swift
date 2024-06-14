@@ -80,13 +80,7 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
                     "password": password,
                 ]
 
-                var serverUrl = self.serverField?.text?.trimmed ?? ""
-
-                if serverUrl.count > 0, !serverUrl.matches(pattern: "^https?://") {
-                    serverUrl = serverUrl.withPrefix("https://")
-                }
-
-                params["url"] = serverUrl
+                params["url"] = urlString
 
                 self.complation?(params)
             } else if let error = info["error"] as? String {
@@ -104,12 +98,11 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
     }
 
     private func valid(portal: String, completion: @escaping (Bool) -> Void) {
-        guard !portal.isEmpty, let url = NSURL(string: portal) else {
-            completion(false)
-            return
+        if !portal.isEmpty, !portal.matches(pattern: "^https?://") {
+            urlString = portal.withPrefix("https://")
         }
 
-        guard UIApplication.shared.canOpenURL(url as URL) else {
+        guard let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) else {
             completion(false)
             return
         }

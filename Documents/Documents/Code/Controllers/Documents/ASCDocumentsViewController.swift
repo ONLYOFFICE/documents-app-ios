@@ -3202,7 +3202,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     @objc func onInfoSelected(_ sender: Any) {
-        guard let provider = provider, let folder = folder, selectedIds.count == 1 else { return }
+        guard let provider = provider,
+              let folder = tableData.first(where: {
+                  selectedIds.contains($0.uid)
+              }),
+              selectedIds.count == 1
+        else { return }
         presentShareController(provider: provider, entity: folder)
     }
 
@@ -3831,6 +3836,12 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     ///   - parent: Parent view controller
     ///   - entity: Entity to share
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
+        guard !entity.isRoom else {
+            if let room = entity as? ASCRoom {
+                navigator.navigate(to: .roomSharingLink(folder: room))
+            }
+            return
+        }
         let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
         let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
 

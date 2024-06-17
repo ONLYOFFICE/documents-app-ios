@@ -76,8 +76,6 @@ extension ASCEditorManager {
         if isCoauthoring {
             let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
 
-            configuration.supportShare = file.access == .readWrite || file.access == .none
-
             /// Enabling the Favorite function only on portals version 11 and higher
             /// and not DocSpace
             if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
@@ -89,9 +87,9 @@ extension ASCEditorManager {
                 configuration.denyDownload = file.denyDownload
             }
 
-            configuration = cloudEditor(config: configuration)
+            configuration = cloudEditor(config: configuration, file: file, provider: ASCFileManager.onlyofficeProvider)
         } else {
-            configuration = localEditor(config: configuration)
+            configuration = localEditor(config: configuration, file: file, provider: nil)
         }
 
         let document = EditorDocument(
@@ -109,14 +107,22 @@ extension ASCEditorManager {
 // MARK: - Methods
 
 extension ASCEditorManager {
-    func localEditor(config: EditorConfiguration) -> EditorConfiguration {
+    func localEditor(
+        config: EditorConfiguration,
+        file: ASCFile?,
+        provider: ASCFileProviderProtocol?
+    ) -> EditorConfiguration {
         ASCDIContainer.shared.resolve(type: ASCDocumentEditorConfigurationProtocol.self)?
-            .localEditor(config: config) ?? EditorConfiguration()
+            .localEditor(config: config, file: file, provider: provider) ?? EditorConfiguration()
     }
 
-    func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
+    func cloudEditor(
+        config: EditorConfiguration,
+        file: ASCFile?,
+        provider: ASCFileProviderProtocol?
+    ) -> EditorConfiguration {
         ASCDIContainer.shared.resolve(type: ASCDocumentEditorConfigurationProtocol.self)?
-            .cloudEditor(config: config) ?? EditorConfiguration()
+            .cloudEditor(config: config, file: file, provider: provider) ?? EditorConfiguration()
     }
 }
 

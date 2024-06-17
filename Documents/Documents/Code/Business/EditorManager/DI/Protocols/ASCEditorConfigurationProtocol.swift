@@ -15,16 +15,16 @@ protocol ASCEditorConfigurationProtocol {
 }
 
 protocol ASCDocumentEditorConfigurationProtocol: ASCEditorConfigurationProtocol {
-    func localEditor(config: DocumentEditor.EditorConfiguration) -> DocumentEditor.EditorConfiguration
-    func cloudEditor(config: DocumentEditor.EditorConfiguration) -> DocumentEditor.EditorConfiguration
+    func localEditor(config: DocumentEditor.EditorConfiguration, file: ASCFile?, provider: ASCFileProviderProtocol?) -> DocumentEditor.EditorConfiguration
+    func cloudEditor(config: DocumentEditor.EditorConfiguration, file: ASCFile?, provider: ASCFileProviderProtocol?) -> DocumentEditor.EditorConfiguration
 }
 
 protocol ASCSpreadsheetEditorConfigurationProtocol: ASCEditorConfigurationProtocol {
-    func localEditor(config: SpreadsheetEditor.EditorConfiguration) -> SpreadsheetEditor.EditorConfiguration
-    func cloudEditor(config: SpreadsheetEditor.EditorConfiguration) -> SpreadsheetEditor.EditorConfiguration
+    func localEditor(config: SpreadsheetEditor.EditorConfiguration, file: ASCFile?, provider: ASCFileProviderProtocol?) -> SpreadsheetEditor.EditorConfiguration
+    func cloudEditor(config: SpreadsheetEditor.EditorConfiguration, file: ASCFile?, provider: ASCFileProviderProtocol?) -> SpreadsheetEditor.EditorConfiguration
 }
 
 protocol ASCPresentationEditorConfigurationProtocol: ASCEditorConfigurationProtocol {
-    func localEditor(config: PresentationEditor.EditorConfiguration) -> PresentationEditor.EditorConfiguration
-    func cloudEditor(config: PresentationEditor.EditorConfiguration) -> PresentationEditor.EditorConfiguration
+    func localEditor(config: PresentationEditor.EditorConfiguration, file: ASCFile?, provider: ASCFileProviderProtocol?) -> PresentationEditor.EditorConfiguration
+    func cloudEditor(config: PresentationEditor.EditorConfiguration, file: ASCFile?, provider: ASCFileProviderProtocol?) -> PresentationEditor.EditorConfiguration
 }

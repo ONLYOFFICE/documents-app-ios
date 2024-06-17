@@ -35,11 +35,30 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
         ]
     }
 
-    func localEditor(config: DocumentEditor.EditorConfiguration) -> DocumentEditor.EditorConfiguration {
+    func localEditor(
+        config: DocumentEditor.EditorConfiguration,
+        file: ASCFile?,
+        provider: ASCFileProviderProtocol?
+    ) -> DocumentEditor.EditorConfiguration {
         config
     }
 
-    func cloudEditor(config: DocumentEditor.EditorConfiguration) -> DocumentEditor.EditorConfiguration {
-        config
+    func cloudEditor(
+        config: DocumentEditor.EditorConfiguration,
+        file: ASCFile?,
+        provider: ASCFileProviderProtocol?
+    ) -> DocumentEditor.EditorConfiguration {
+        var config = config
+
+        if let file, let folder = file.parent, let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
+            let canEdit = onlyofficeProvider.allowEdit(entity: file)
+            let canShare = onlyofficeProvider.allowShare(entity: file)
+            let canDownload = !file.denyDownload
+            let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+
+            config.supportShare = canEdit && canShare && !isProjects && canDownload && folder.roomType == nil
+        }
+
+        return config
     }
 }

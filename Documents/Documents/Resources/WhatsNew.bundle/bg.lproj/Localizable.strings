@@ -1,8 +1,8 @@
-"Improved compatibility with DocSpace" = "Подобрена съвместимост с DocSpace";
-"Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc." = "Влезте в своя DocSpace от всяко iOS устройство, за да създадете стаи, да поканите потребители, да добавите етикети и т.н.";
-"Changing text document language" = "Смяна на езика на текстовия документ";
-"Switch the language of the text document for correct spellchecking and hyphenation." = "Сменете езика на текстовия документ за правилен правопис и сричкопренасяне.";
-"Search for spreadsheet formulas" = "Търсене на формули за таблици";
-"Find necessary formulas in your worksheets using searching bar." = "Открийте необходимите формули в работния си лист, използвайки търсачката.";
-"Custom cell format" = "Персонализиран формат на клетките ";
-"Use custom cell format to display the value as a postal code, phone number or license plate." = "Използвайте персонален формат за клетките, за да представяте стойности като пощенски код, телефонен номер или регистрационен номер.";
+"Align text vertically in shapes inserted into your docs, sheets and slides" = "Подравнете текста вертикално във фигури, вкарани във вашите документи, таблици и слайдове";
+"Create new paragraph styles and delete the ones you have already created" = "Създайте нови параграфни стилове и изтрийте тези, които вече сте създали";
+"Improved integration with ONLYOFFICE DocSpace v2.5" = "Подобрена интеграция с ONLYOFFICE DocSpace v2.5";
+"More convenient navigation through form fields" = "По-удобна навигация през полетата на формуляра";
+"Navigation buttons for form fields are now located on the navigation panel" = "Бутоните за навигация за полетата на формуляра вече се намират на панела за навигация";
+"Paragraph styles management in the document editor" = "Управление на параграфните стилове в редактора на документи";
+"Sign in to your ONLYOFFICE DocSpace and access the new features of version 2.5" = "Влезте в своя ONLYOFFICE DocSpace и получете достъп до новите функции на версия 2.5";
+"Vertical text alignment in shapes in all the editors" = "Вертикално подравняване на текст във фигури във всичките редактори";

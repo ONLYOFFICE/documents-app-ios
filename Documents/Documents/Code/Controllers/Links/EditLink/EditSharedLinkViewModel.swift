@@ -70,7 +70,7 @@ final class EditSharedLinkViewModel: ObservableObject {
         self.onRemoveCompletion = onRemoveCompletion
         let linkInfo = inputLink.sharedTo
         isExpired = linkInfo.isExpired
-        linkAccess = linkInfo.isInternal ? .docspaceUserOnly : .anyoneWithLink
+        linkAccess = linkInfo.linkAccess
         sharingLinkURL = URL(string: linkInfo.shareLink)
         self.file = file
         selectedAccessRight = ASCShareAccess(inputLink.access)
@@ -89,7 +89,7 @@ final class EditSharedLinkViewModel: ObservableObject {
     private func setAccessRight(_ accessRight: ASCShareAccess) {
         changeLink(
             access: accessRight,
-            isInternal: linkAccess == .docspaceUserOnly
+            isInternal: linkAccess.isInternal
         )
     }
 
@@ -97,7 +97,7 @@ final class EditSharedLinkViewModel: ObservableObject {
         guard let link = link else { return }
         let linkInfo = link.sharedTo
         isExpired = linkInfo.isExpired
-        linkAccess = linkInfo.isInternal ? .docspaceUserOnly : .anyoneWithLink
+        linkAccess = linkInfo.linkAccess
         sharingLinkURL = URL(string: linkInfo.shareLink)
         selectedAccessRight = ASCShareAccess(link.access)
         selectedDate = {
@@ -115,12 +115,12 @@ final class EditSharedLinkViewModel: ObservableObject {
         setLinkLifeTime(option: .custom)
     }
 
-    func setLinkType() {
-        changeLink(isInternal: linkAccess == .docspaceUserOnly)
+    func setLinkType(linkAccess: LinkAccess) {
+        changeLink(isInternal: linkAccess.isInternal)
     }
 
     func removeLink(completion: @escaping () -> Void) {
-        changeLink(access: ASCShareAccess.none, isInternal: linkAccess == .docspaceUserOnly) {
+        changeLink(access: ASCShareAccess.none, isInternal: linkAccess.isInternal) {
             DispatchQueue.main.async { [weak self] in
                 self?.onRemoveCompletion?()
                 completion()
@@ -190,7 +190,7 @@ final class EditSharedLinkViewModel: ObservableObject {
             case let .success(result):
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
-                    linkAccess = result.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink
+                    linkAccess = result.sharedTo.linkAccess
                     sharingLinkURL = URL(string: result.sharedTo.shareLink)
                     selectedAccessRight = ASCShareAccess(rawValue: result.access) ?? .none
                     expirationDateString = result.sharedTo.expirationDate
@@ -226,7 +226,7 @@ final class EditSharedLinkViewModel: ObservableObject {
             }
         }
         updatelinkLifeTimeLimitString()
-        changeLink(isInternal: linkAccess == .docspaceUserOnly)
+        changeLink(isInternal: linkAccess.isInternal)
     }
 
     private func updatelinkLifeTimeLimitString() {

@@ -30,3 +30,10 @@ struct LinkInfo: Codable {
         case id, title, shareLink, expirationDate, linkType, denyDownload, isExpired, primary, requestToken
     }
 }
+
+extension LinkInfo {
+    
+    var linkAccess: LinkAccess {
+        isInternal ? .docspaceUserOnly : .anyoneWithLink
+    }
+}

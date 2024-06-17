@@ -11,6 +11,10 @@ import SwiftUI
 enum LinkAccess: String {
     case anyoneWithLink = "Anyone with the link"
     case docspaceUserOnly = "Docspace user only"
+    
+    var isInternal: Bool {
+        self == .docspaceUserOnly
+    }
 }
 
 struct SharedSettingsLinkRowModel: Identifiable {

@@ -86,10 +86,8 @@ struct EditSharedLinkView: View {
                 isChecked: viewModel.linkAccess == .anyoneWithLink,
                 isEnabled: !viewModel.isExpired,
                 onTapAction: {
-                    if viewModel.linkAccess == .docspaceUserOnly {
-                        viewModel.setLinkType()
-                    } else {
-                        return
+                    if viewModel.linkAccess != .anyoneWithLink {
+                        viewModel.setLinkType(linkAccess: .anyoneWithLink)
                     }
                 }
             ))
@@ -99,10 +97,8 @@ struct EditSharedLinkView: View {
                 isChecked: viewModel.linkAccess == .docspaceUserOnly,
                 isEnabled: !viewModel.isExpired,
                 onTapAction: {
-                    if viewModel.linkAccess == .anyoneWithLink {
-                        viewModel.setLinkType()
-                    } else {
-                        return
+                    if viewModel.linkAccess != .docspaceUserOnly {
+                        viewModel.setLinkType(linkAccess: .docspaceUserOnly)
                     }
                 }
             ))

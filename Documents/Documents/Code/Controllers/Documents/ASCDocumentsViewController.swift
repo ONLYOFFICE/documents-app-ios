@@ -3843,7 +3843,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             return
         }
 
-        if let file = entity as? ASCFile {
+        if let file = entity as? ASCFile, ASCOnlyofficeProvider.isDocspaceApi {
             let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
             sharedSettingsViewController.modalPresentationStyle = .formSheet
             sharedSettingsViewController.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize

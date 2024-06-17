@@ -122,7 +122,11 @@ final class ASCNavigator {
             }
         case let .sharedSettingsLink(file):
             let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
-            sharedSettingsViewController.modalPresentationStyle = .pageSheet
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                sharedSettingsViewController.modalPresentationStyle = .formSheet
+            } else {
+                sharedSettingsViewController.modalPresentationStyle = .pageSheet
+            }
             navigationController?.present(sharedSettingsViewController, animated: true)
 
         default:

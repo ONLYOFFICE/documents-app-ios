@@ -3842,16 +3842,26 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             }
             return
         }
-        let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
-        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
 
-        sharedNavigationVC.modalPresentationStyle = .formSheet
-        sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+        if let file = entity as? ASCFile {
+            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
+            sharedSettingsViewController.modalPresentationStyle = .formSheet
+            sharedSettingsViewController.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
-        parent.present(sharedNavigationVC, animated: true, completion: nil)
+            parent.present(sharedSettingsViewController, animated: true, completion: nil)
 
-        sharedViewController.setup(entity: entity)
-        sharedViewController.requestToLoadRightHolders()
+        } else {
+            let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
+            let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
+
+            sharedNavigationVC.modalPresentationStyle = .formSheet
+            sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+            parent.present(sharedNavigationVC, animated: true, completion: nil)
+
+            sharedViewController.setup(entity: entity)
+            sharedViewController.requestToLoadRightHolders()
+        }
     }
 }
 

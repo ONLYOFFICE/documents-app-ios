@@ -58,15 +58,18 @@ final class EditSharedLinkViewModel: ObservableObject {
     private var file: ASCFile
     private var service: NetworkManagerSharedSettingsProtocol = NetworkManagerSharedSettings()
     private var onRemoveCompletion: (() -> Void)?
+    @Binding var outputLink: SharedSettingsLinkResponceModel?
 
     // MARK: - init
 
     init(
         file: ASCFile,
         inputLink: SharedSettingsLinkResponceModel,
+        outputLink: Binding<SharedSettingsLinkResponceModel?>,
         onRemoveCompletion: (() -> Void)?
     ) {
         link = inputLink
+        _outputLink = outputLink
         self.onRemoveCompletion = onRemoveCompletion
         let linkInfo = inputLink.sharedTo
         isExpired = linkInfo.isExpired
@@ -194,6 +197,7 @@ final class EditSharedLinkViewModel: ObservableObject {
                     sharingLinkURL = URL(string: result.sharedTo.shareLink)
                     selectedAccessRight = ASCShareAccess(rawValue: result.access) ?? .none
                     expirationDateString = result.sharedTo.expirationDate
+                    outputLink = result
                     completion?()
                 }
             case let .failure(error):

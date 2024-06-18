@@ -103,6 +103,14 @@ final class SharedSettingsViewModel: ObservableObject {
         )
     }
 
+    func handleLinkOutChanges(link: SharedSettingsLinkResponceModel?) {
+        if let link, let index = flowModel.links.firstIndex(where: { $0.sharedTo.id == link.sharedTo.id }) {
+            selectdLink = link
+            flowModel.links[index] = link
+            buildViewModel()
+        }
+    }
+
     private func calculateExpirationInfo(expirationDateString: String?) -> String {
         guard let expirationDateString = expirationDateString,
               let expirationDate = SharedSettingsViewModel.dateFormatter.date(from: expirationDateString)

@@ -57,7 +57,7 @@ final class UserListViewModel: ObservableObject {
                         .map(self.mapToUserListUser)
                         .filter {
                             guard let ignoreUserId = self.ignoreUserId else { return true }
-                            return $0.id != self.ignoreUserId
+                            return $0.id != ignoreUserId
                         }
                 case let .failure(error):
                     log.error("Error fetching users: \(error)")

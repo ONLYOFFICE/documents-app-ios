@@ -32,7 +32,6 @@ struct LinkInfo: Codable {
 }
 
 extension LinkInfo {
-    
     var linkAccess: LinkAccess {
         isInternal ? .docspaceUserOnly : .anyoneWithLink
     }

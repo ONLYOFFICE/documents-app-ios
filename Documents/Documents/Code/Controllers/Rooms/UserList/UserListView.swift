@@ -64,17 +64,18 @@ struct UserRow: View {
                     .cornerRadius(20)
                     .clipped()
             }
-            VStack(alignment: .leading) {
+
+            VStack(alignment: .leading, spacing: 3) {
                 Text(user.name)
-                    .font(.headline)
-                Text("\(user.role) | \(user.email)")
                     .font(.subheadline)
+                Text("\(user.role) | \(user.email)")
+                    .font(.footnote)
                     .foregroundColor(.gray)
                     .lineLimit(1)
             }
-            Spacer()
+            .padding(.leading, 10)
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, 1)
     }
 }
 
@@ -101,6 +102,7 @@ struct SearchBar: UIViewRepresentable {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
         searchBar.backgroundImage = UIImage()
+        searchBar.isTranslucent = true
         return searchBar
     }
 
@@ -114,5 +116,19 @@ struct ContentView_Previews: PreviewProvider {
         NavigationView {
             UserListView(viewModel: UserListViewModel(selectedUser: .constant(nil), ignoreUserId: nil))
         }
+    }
+}
+
+struct UserRow_Previews: PreviewProvider {
+    static var previews: some View {
+        UserRow(
+            user: UserList.User(
+                id: "123",
+                name: "User name",
+                role: "Role",
+                email: "email@domain.com",
+                imageName: ""
+            )
+        )
     }
 }

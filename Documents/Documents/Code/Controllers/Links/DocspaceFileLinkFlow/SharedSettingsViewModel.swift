@@ -88,16 +88,57 @@ final class SharedSettingsViewModel: ObservableObject {
     }
 
     func mapToLinkViewModel(link: SharedSettingsLinkResponceModel) -> SharedSettingsLinkRowModel {
+        let expirationInfo = calculateExpirationInfo(expirationDateString: link.sharedTo.expirationDate)
         return SharedSettingsLinkRowModel(
             id: link.sharedTo.id,
             linkAccess: link.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink,
             expiredTo: "",
-            rights: "",
+            rights: ASCShareAccess(rawValue: link.access)?.title() ?? "",
             isExpired: link.sharedTo.isExpired,
+            expirationInfo: expirationInfo,
             onTapAction: { [weak self] in
                 guard let self else { return }
                 self.selectdLink = link
             }
         )
     }
+
+    private func calculateExpirationInfo(expirationDateString: String?) -> String {
+        guard let expirationDateString = expirationDateString,
+              let expirationDate = SharedSettingsViewModel.dateFormatter.date(from: expirationDateString)
+        else {
+            return NSLocalizedString("Unlimited", comment: "")
+        }
+
+        let now = Date()
+        let timeInterval = expirationDate.timeIntervalSince(now)
+
+        if timeInterval < 0 {
+            return NSLocalizedString("The link has expired", comment: "Expiration status")
+        } else if timeInterval < 24 * 60 * 60 {
+            let hours = Int(timeInterval / 3600)
+            return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
+        } else {
+            let days = Int(timeInterval / (24 * 60 * 60))
+            return String(format: NSLocalizedString("Expires after %d days", comment: "Days left"), days)
+        }
+    }
+}
+
+private extension SharedSettingsViewModel {
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }()
+
+    static let sendDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
 }

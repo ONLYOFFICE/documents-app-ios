@@ -222,7 +222,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FileKit
-  - FilesProvider (from `https://github.com/ayuzhin/FileProvider.git`)
+  - FilesProvider (from `https://github.com/ayuzhin/FileProvider.git`, commit `dac57676f5f5297f6a78a321bd9e4b6d3f892a39`)
   - Firebase
   - Firebase/Analytics
   - Firebase/Crashlytics
@@ -306,6 +306,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   FilesProvider:
+    :commit: dac57676f5f5297f6a78a321bd9e4b6d3f892a39
     :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
     :git: https://github.com/ayuzhin/MediaBrowser.git
@@ -318,7 +319,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FilesProvider:
-    :commit: 19f16c1e4993117592a1a4ee2e2f9cdb3db05413
+    :commit: dac57676f5f5297f6a78a321bd9e4b6d3f892a39
     :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
     :commit: 8411f5defa223c5edb8677c5af3707a38e75051a
@@ -389,6 +390,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: 1c474e67d629a706de008dc6c9395cc495a4257c
+PODFILE CHECKSUM: 587eb6444d9aebafa381a585807d61a937218cf4
 
 COCOAPODS: 1.15.2

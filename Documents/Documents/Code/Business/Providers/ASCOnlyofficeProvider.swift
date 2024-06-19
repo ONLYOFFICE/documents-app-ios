@@ -1363,7 +1363,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.delete)
             }
 
-            if isThirdParty {
+            if isThirdParty, !folder.isRoom {
                 entityActions.insert(.unmount)
             }
 

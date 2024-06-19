@@ -23,10 +23,11 @@ struct SharedSettingsLinkRowModel: Identifiable {
     var expiredTo: String
     var rights: String
     var isExpired: Bool
+    var expirationInfo: String
 
     var onTapAction: () -> Void
 
-    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", isExpired: false, onTapAction: {})
+    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", isExpired: false, expirationInfo: "", onTapAction: {})
 }
 
 struct SharedSettingsLinkRow: View {
@@ -42,9 +43,9 @@ struct SharedSettingsLinkRow: View {
                 .padding(10)
                 .background(Color(asset: Asset.Colors.tableCellSelected))
                 .cornerRadius(40)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(model.linkAccess.rawValue)
-                Text(model.isExpired ? NSLocalizedString("The link has expired", comment: "") : model.expiredTo)
+                Text(model.isExpired ? NSLocalizedString("The link has expired", comment: "") : model.expirationInfo)
                     .foregroundColor(model.isExpired ? .red : .secondaryLabel)
                     .font(.system(size: 13))
             }
@@ -53,8 +54,9 @@ struct SharedSettingsLinkRow: View {
 
             HStack(spacing: 12) {
                 Text(model.rights)
+                    .foregroundColor(.secondaryLabel)
                 Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondaryLabel)
             }
         }
         .contentShape(Rectangle())

@@ -2,6 +2,86 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d days</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>%d дня</string>
+			<key>many</key>
+			<string>%d дней</string>
+			<key>few</key>
+			<string>%d дня</string>
+			<key>one</key>
+			<string>%d день</string>
+		</dict>
+	</dict>
+	<key>%d hours</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>many</key>
+			<string>%d часов</string>
+			<key>few</key>
+			<string>%d часа</string>
+			<key>one</key>
+			<string>%d час</string>
+			<key>other</key>
+			<string>%d часа</string>
+		</dict>
+	</dict>
+	<key>Expires after %d days</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>Срок действия ссылки истекает через %d дней</string>
+			<key>few</key>
+			<string>Срок действия ссылки истекает через %d дня</string>
+			<key>one</key>
+			<string>Срок действия ссылки истекает через %d день</string>
+			<key>many</key>
+			<string>Срок действия ссылки истекает через %d дней</string>
+		</dict>
+	</dict>
+	<key>Expires after %d hours</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>Срок действия ссылки истекает через %d часов</string>
+			<key>one</key>
+			<string>Срок действия ссылки истекает через %d час</string>
+			<key>many</key>
+			<string>Срок действия ссылки истекает через %d часов</string>
+			<key>few</key>
+			<string>Срок действия ссылки истекает через %d часа</string>
+		</dict>
+	</dict>
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

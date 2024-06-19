@@ -20,6 +20,7 @@ final class SharedSettingsViewModel: ObservableObject {
     let linksLimit = 6
     private let networkService = NetworkManagerSharedSettings()
     private(set) var flowModel = LinksFlowModel()
+    private let expirationService = ExpirationLinkDateService()
 
     @Published var isShared: Bool
     @Published var links: [SharedSettingsLinkRowModel] = []
@@ -118,17 +119,17 @@ final class SharedSettingsViewModel: ObservableObject {
             return NSLocalizedString("Unlimited", comment: "")
         }
 
-        let now = Date()
-        let timeInterval = expirationDate.timeIntervalSince(now)
-
-        if timeInterval < 0 {
+        guard let interval = expirationService.getExpirationInterval(expirationDateString: expirationDateString) else {
+            return ""
+        }
+        
+        switch interval {
+        case .expired:
             return NSLocalizedString("The link has expired", comment: "Expiration status")
-        } else if timeInterval < 24 * 60 * 60 {
-            let hours = Int(timeInterval / 3600)
-            return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
-        } else {
-            let days = Int(timeInterval / (24 * 60 * 60))
+        case .days(let days):
             return String(format: NSLocalizedString("Expires after %d days", comment: "Days left"), days)
+        case .hours(let hours):
+            return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
         }
     }
 }

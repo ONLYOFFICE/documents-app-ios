@@ -187,6 +187,36 @@ und schön können Sie loslegen</target>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
+      <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>%d day</source>
+        <target>%d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>%d hour</source>
+        <target>%d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
@@ -325,6 +355,36 @@ und schön können Sie loslegen</target>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>%lu Ordner löschen</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d day</source>
+        <target>Expires after %d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d hour</source>
+        <target>Expires after %d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
         <note/>
       </trans-unit>
     </body>

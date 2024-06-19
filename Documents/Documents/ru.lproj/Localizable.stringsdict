@@ -8,18 +8,18 @@
 		<string>%#@days@</string>
 		<key>days</key>
 		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>%d дня</string>
-			<key>many</key>
-			<string>%d дней</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
 			<key>few</key>
-			<string>%d дня</string>
+			<string>%d days</string>
+			<key>many</key>
+			<string>%d days</string>
 			<key>one</key>
-			<string>%d день</string>
+			<string>%d day</string>
+			<key>other</key>
+			<string>%d days</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
@@ -28,58 +28,18 @@
 		<string>%#@hours@</string>
 		<key>hours</key>
 		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
-			<key>many</key>
-			<string>%d часов</string>
-			<key>few</key>
-			<string>%d часа</string>
-			<key>one</key>
-			<string>%d час</string>
-			<key>other</key>
-			<string>%d часа</string>
-		</dict>
-	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>Срок действия ссылки истекает через %d дней</string>
 			<key>few</key>
-			<string>Срок действия ссылки истекает через %d дня</string>
-			<key>one</key>
-			<string>Срок действия ссылки истекает через %d день</string>
+			<string>%d hours</string>
 			<key>many</key>
-			<string>Срок действия ссылки истекает через %d дней</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
+			<string>%d hours</string>
+			<key>one</key>
+			<string>%d hour</string>
 			<key>other</key>
-			<string>Срок действия ссылки истекает через %d часов</string>
-			<key>one</key>
-			<string>Срок действия ссылки истекает через %d час</string>
-			<key>many</key>
-			<string>Срок действия ссылки истекает через %d часов</string>
-			<key>few</key>
-			<string>Срок действия ссылки истекает через %d часа</string>
+			<string>%d hours</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
@@ -256,6 +216,46 @@
 			<string>Удалить %lu папок %2$#@lu_files@</string>
 			<key>zero</key>
 			<string>Удалить %2$#@lu_files@</string>
+		</dict>
+	</dict>
+	<key>Expires after %d days</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Expires after %d days</string>
+			<key>many</key>
+			<string>Expires after %d days</string>
+			<key>one</key>
+			<string>Expires after %d day</string>
+			<key>other</key>
+			<string>Expires after %d days</string>
+		</dict>
+	</dict>
+	<key>Expires after %d hours</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Expires after %d hours</string>
+			<key>many</key>
+			<string>Expires after %d hours</string>
+			<key>one</key>
+			<string>Expires after %d hour</string>
+			<key>other</key>
+			<string>Expires after %d hours</string>
 		</dict>
 	</dict>
 </dict>

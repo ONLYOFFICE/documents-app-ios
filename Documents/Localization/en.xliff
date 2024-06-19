@@ -2261,6 +2261,16 @@ organize your files.</target>
         <target>Expired</target>
         <note>Expiration status</note>
       </trans-unit>
+      <trans-unit id="Expires after %d days" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d hours" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>Expires after 7 days</target>
@@ -3780,7 +3790,7 @@ to the clipboard</target>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>The link has expired</target>
-        <note>No comment provided by engineer.</note>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>

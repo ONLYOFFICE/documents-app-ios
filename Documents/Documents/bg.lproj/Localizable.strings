@@ -1504,7 +1504,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Линкът за външен\nдостъп е копиран\nв клипборда";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Линкът изтече";
 
 /* No comment provided by engineer. */

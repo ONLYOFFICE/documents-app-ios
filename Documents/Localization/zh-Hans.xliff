@@ -2194,6 +2194,14 @@ organize your files.</source>
         <source>Expired</source>
         <note>Expiration status</note>
       </trans-unit>
+      <trans-unit id="Expires after %d days" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d hours" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>7天后过期</target>
@@ -3684,7 +3692,7 @@ to the clipboard</source>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>链接已过期</target>
-        <note>No comment provided by engineer.</note>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>

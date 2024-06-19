@@ -1504,7 +1504,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Der Link für den externen\nZugriff wird in die Zwischenablage\nkopiert";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Der Link ist abgelaufen";
 
 /* No comment provided by engineer. */

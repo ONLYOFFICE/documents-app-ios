@@ -1504,7 +1504,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "外部アクセス用の\nリンクがクリップボードに\nコピーされた";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "リンクが無効になりました";
 
 /* No comment provided by engineer. */

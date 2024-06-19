@@ -1504,7 +1504,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Срок действия ссылки истек";
 
 /* No comment provided by engineer. */

@@ -47,15 +47,6 @@
 "12 hours" = "12 ore";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Errore di conversione";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Impossibile scaricare il file.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Impossibile caricare il file.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Esiste già un file con un nome simile.";
 
 /* No comment provided by engineer. */
@@ -440,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Impossibile leggere dal file";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Impossibile salvare il file.";
-
 /* Description of file operation error */
 "Could not write to file" = "Impossibile salvare nel file";
 
@@ -476,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crea nuovi documenti, fogli di calcolo o presentazioni. Crea nuove cartelle per organizzare i tuoi file.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Crea una stanza";
 
 /* Caption of the process
@@ -1323,9 +1311,6 @@
 /* No comment provided by engineer. */
 "Save" = "Salva";
 
-/* No comment provided by engineer. */
-"Saved" = "Salvato";
-
 /* Caption of the processing */
 "Saving" = "Salvataggio";
 
@@ -1797,4 +1782,13 @@
 
 /* Data units */
 "Zero bytes" = "Zero byte";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Errore di conversione";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossibile caricare il file.";
 

@@ -2426,8 +2426,8 @@ organize your files.</source>
         <target>Anteprima dei file</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
-        <source>Files and folders uploaded by admins will appeared here.</source>
+      <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appear here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">

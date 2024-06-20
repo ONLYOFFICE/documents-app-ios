@@ -7,8 +7,14 @@
 /* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
 "3oc-kQ-msr.text" = "Ländercode";
 
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "3vf-pi-KmX"; */
+"3vf-pi-KmX.normalTitle" = "Schaltfläche";
+
 /* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
 "6Zd-HN-8wS.text" = "-";
+
+/* Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU"; */
+"9Ry-fz-MGU.text" = "Als LDAP-Benutzer anmelden";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
 "18Q-Kh-0cC.text" = "Detail";

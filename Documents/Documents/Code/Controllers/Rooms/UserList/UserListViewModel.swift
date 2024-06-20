@@ -67,10 +67,10 @@ final class UserListViewModel: ObservableObject {
     }
 
     private func mapToUserListUser(ascUser: ASCUser) -> User {
-        return User(
+        User(
             id: ascUser.userId ?? "",
             name: ascUser.displayName ?? "",
-            role: ascUser.userType.rawValue,
+            role: ascUser.userType.description,
             email: ascUser.email ?? "",
             imageName: ascUser.avatar ?? ""
         )

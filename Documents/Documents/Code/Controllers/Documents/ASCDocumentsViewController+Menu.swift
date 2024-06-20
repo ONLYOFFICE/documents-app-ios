@@ -343,7 +343,7 @@ extension ASCDocumentsViewController {
             )
         }
 
-        if actions.contains(.share) {
+        if actions.contains(.shareAsRoom) {
             commonActions.append(
                 UIAction(
                     title: NSLocalizedString("Share", comment: ""),

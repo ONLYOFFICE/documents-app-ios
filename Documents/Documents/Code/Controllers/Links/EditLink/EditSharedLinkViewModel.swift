@@ -115,7 +115,12 @@ final class EditSharedLinkViewModel: ObservableObject {
     }
 
     func didDateChangedManualy() {
-        setLinkLifeTime(option: .custom)
+        if selectedLinkLifeTimeOption == .custom {
+            if let selectedDate {
+                expirationDateString = Self.sendDateFormatter.string(from: selectedDate)
+                changeLink(isInternal: linkAccess.isInternal)
+            }
+        }
     }
 
     func setLinkType(linkAccess: LinkAccess) {
@@ -228,6 +233,8 @@ final class EditSharedLinkViewModel: ObservableObject {
             if let selectedDate {
                 expirationDateString = Self.sendDateFormatter.string(from: selectedDate)
             }
+            updatelinkLifeTimeLimitString()
+            return
         }
         updatelinkLifeTimeLimitString()
         changeLink(isInternal: linkAccess.isInternal)

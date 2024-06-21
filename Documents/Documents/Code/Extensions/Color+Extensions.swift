@@ -11,6 +11,7 @@ import SwiftUI
 extension Color {
     static let systemGroupedBackground = Color(UIColor.systemGroupedBackground)
     static let secondarySystemGroupedBackground = Color(UIColor.secondarySystemGroupedBackground)
+    static let label = Color(UIColor.label)
     static let secondaryLabel = Color(UIColor.secondaryLabel)
     static let separator = Color(UIColor.separator)
     static let clear = Color(UIColor.clear)

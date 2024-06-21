@@ -23,13 +23,14 @@ struct CheckmarkCellView: View {
     var body: some View {
         HStack {
             Text(model.text)
-                .foregroundColor(model.isEnabled ? .black : .secondaryLabel)
+                .foregroundColor(model.isEnabled ? .label : .secondaryLabel)
             Spacer()
             if model.isChecked {
                 Image(systemName: "checkmark")
                     .foregroundColor(model.isEnabled ? Asset.Colors.brend.swiftUIColor : .secondaryLabel)
             }
         }
+
         .contentShape(Rectangle())
         .onTapGesture {
             model.onTapAction()

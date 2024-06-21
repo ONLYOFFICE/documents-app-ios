@@ -21,7 +21,7 @@ struct ASCDetailedChevronUpDownCellView: View {
     var body: some View {
         HStack {
             Text(model.title)
-                .foregroundColor(.label)
+                .foregroundColor(model.isEnabled ? .label : .secondaryLabel)
             Spacer()
             HStack {
                 Text(model.detail)

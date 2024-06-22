@@ -776,7 +776,7 @@
 "Files" = "ファイル";
 
 /* No comment provided by engineer. */
-"Files and folders uploaded by admins will appeared here." = "管理者がアップロードしたファイルやフォルダはここに表示されます。";
+"Files and folders uploaded by admins will appear here." = "管理者がアップロードしたファイルやフォルダはここに表示されます。";
 
 /* No comment provided by engineer. */
 "Files Preview" = "ファイルのプレビュー";

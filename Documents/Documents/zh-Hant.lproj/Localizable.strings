@@ -776,7 +776,7 @@
 "Files" = "文件";
 
 /* No comment provided by engineer. */
-"Files and folders uploaded by admins will appeared here." = "管理員上傳的檔案及文件夾將顯示於此。";
+"Files and folders uploaded by admins will appear here." = "管理員上傳的檔案及文件夾將顯示於此。";
 
 /* No comment provided by engineer. */
 "Files Preview" = "文件预览";

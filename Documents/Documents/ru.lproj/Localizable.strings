@@ -776,7 +776,7 @@
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
-"Files and folders uploaded by admins will appeared here." = "Файлы и папки, загружаемые администраторами, будут отображаться здесь.";
+"Files and folders uploaded by admins will appear here." = "Файлы и папки, загружаемые администраторами, будут отображаться здесь.";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Предпросмотр файлов";

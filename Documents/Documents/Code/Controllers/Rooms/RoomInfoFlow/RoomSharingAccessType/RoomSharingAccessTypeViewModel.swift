@@ -15,7 +15,7 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
     @Published var accessModels: [ASCShareAccessRowModel] = []
     @Published var isAccessChanging: Bool = false
     @Published var error: String?
-    private let accesses: [ASCShareAccess] = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+    private var accesses: [ASCShareAccess] = []
     private let room: ASCFolder
     private let user: ASCUser
     private let onRemove: (UserIdentifier) -> Void
@@ -26,6 +26,7 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
         self.room = room
         self.user = user
         self.onRemove = onRemove
+        updateRoomAccesses()
         updateModels()
     }
 
@@ -41,6 +42,19 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
             self.updateModels()
             isAccessChanging = false
             self.onRemove(userId)
+        }
+    }
+
+    private func updateRoomAccesses() {
+        switch room.roomType {
+        case .colobaration:
+            accesses = [.roomManager, .powerUser, .editing, .read]
+        case .public:
+            accesses = [.roomManager, .powerUser]
+        case .custom:
+            accesses = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+        default:
+            accesses = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
         }
     }
 

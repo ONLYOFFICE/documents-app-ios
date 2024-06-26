@@ -21,6 +21,7 @@ final class EditSharedLinkViewModel: ObservableObject {
     @Published var selectedLinkLifeTimeOption: LinkLifeTimeOption = .sevenDays
 
     private let networkService = NetworkManagerSharedSettings()
+    private let expirationService = ExpirationLinkDateService()
 
     // MARK: - Public vars
 
@@ -247,26 +248,21 @@ final class EditSharedLinkViewModel: ObservableObject {
             }
             return
         }
-
-        let expirationString = expirationDateString
-        let now = Date()
-
-        let expirationDate = Self.dateFormatter.date(from: expirationString)
-
-        guard let timeInterval = expirationDate?.timeIntervalSince(now) else { return }
-
-        if timeInterval < 0 {
-            linkLifeTimeString = NSLocalizedString("Expired", comment: "Expiration status")
-            isExpired = true
-        } else if timeInterval < 24 * 60 * 60 {
-            let hours = Int(timeInterval / 3600)
-            linkLifeTimeString = String(format: NSLocalizedString("%d hours", comment: "Hours left"), hours)
-            isExpired = false
-        } else {
-            let days = Int(timeInterval / (24 * 60 * 60))
-            linkLifeTimeString = String(format: NSLocalizedString("%d days", comment: "Days left"), days)
-            isExpired = false
+        
+        guard let interval = expirationService.getExpirationInterval(expirationDateString: expirationDateString) else {
+            return
         }
+        
+        switch interval {
+        case .expired:
+            linkLifeTimeString = NSLocalizedString("Expired", comment: "Expiration status")
+        case .days(let days):
+            linkLifeTimeString = String(format: NSLocalizedString("%d days", comment: "Days left"), days)
+        case .hours(let hours):
+            linkLifeTimeString = String(format: NSLocalizedString("%d hours", comment: "Hours left"), hours)
+        }
+        
+        isExpired = interval == .expired
     }
 }
 

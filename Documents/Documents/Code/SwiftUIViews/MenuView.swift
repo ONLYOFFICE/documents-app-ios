@@ -11,6 +11,7 @@ import SwiftUI
 struct MenuViewItem: Identifiable {
     var id = UUID()
     var text: String
+    var customImage: Image?
     var systemImageName: String?
     var action: () -> Void
 }
@@ -54,7 +55,14 @@ struct MenuView<Content>: View where Content: View {
         Menu {
             ForEach(menuItems) { item in
                 Button(action: item.action) {
-                    Label(item.text, systemImage: item.systemImageName ?? "")
+                    HStack {
+                        if let customImage = item.customImage {
+                            customImage
+                        } else if let systemImageName = item.systemImageName {
+                            Image(systemName: systemImageName)
+                        }
+                        Text(item.text)
+                    }
                 }
             }
         } label: {

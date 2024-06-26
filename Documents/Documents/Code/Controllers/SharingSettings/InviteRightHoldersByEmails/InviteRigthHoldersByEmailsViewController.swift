@@ -35,14 +35,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         return UIMenu(title: "", children: menuItems)
     }
 
-    private lazy var keyboardToolbar: UIToolbar = {
-        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.width, height: 44))
-        bar.translatesAutoresizingMaskIntoConstraints = true
-        bar.items = makeToolbarItems()
-        bar.sizeToFit()
-        return bar
-    }()
-
     lazy var tagsView: WSTagsField = {
         let tagsField = WSTagsField()
         tagsField.layer.cornerRadius = 10
@@ -199,7 +191,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     @objc func showSureDismissAlert() {
         guard !tagsView.tags.isEmpty else {
-            navigationController?.popViewController(animated: true)
+            navigationController?.dismiss(animated: true)
             return
         }
         let title = NSLocalizedString("Cancel invitation?", comment: "")
@@ -220,10 +212,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     }
 
     func updateToolbars() {
-        if UIDevice.phone {
-            keyboardToolbar.items = makeToolbarItems()
-            tagsView.textField.inputAccessoryView = keyboardToolbar
-        }
         toolbarItems = makeToolbarItems()
     }
 

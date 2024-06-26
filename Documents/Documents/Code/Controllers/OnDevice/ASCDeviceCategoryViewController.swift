@@ -90,16 +90,20 @@ class ASCDeviceCategoryViewController: UITableViewController {
     }
 
     func select(category: ASCCategory, animated: Bool = false) {
-        if let splitVC = splitViewController,
-           let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main) as? ASCDocumentsNavigationController,
-           let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
-        {
+        if let splitVC = splitViewController {
+            let documentsVC: ASCDocumentsViewController = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+
             if animated {
-                splitVC.showDetailViewController(documentsNC, sender: self)
+                splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
             } else {
                 DispatchQueue.main.async {
                     UIView.performWithoutAnimation {
-                        splitVC.showDetailViewController(documentsNC, sender: self)
+                        if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController,
+                           let categoryVC = documentsNC.viewControllers.first
+                        {
+                            documentsNC.viewControllers = [categoryVC]
+                        }
+                        splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
                     }
                 }
             }

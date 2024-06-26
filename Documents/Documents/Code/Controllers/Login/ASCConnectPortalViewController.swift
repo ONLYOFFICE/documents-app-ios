@@ -109,6 +109,13 @@ class ASCConnectPortalViewController: ASCBaseViewController {
         super.didReceiveMemoryWarning()
     }
 
+    // MARK: - Public
+
+    func forceConnect(to address: String) {
+        addressField?.text = address
+        connect()
+    }
+
     // MARK: - Private
 
     private func ipAddress(of host: String) -> String? {
@@ -177,28 +184,44 @@ class ASCConnectPortalViewController: ASCBaseViewController {
                     validation(true, nil, capabilities)
                 } else {
                     let errorMessage = NSLocalizedString("Failed to check portal availability.", comment: "")
+                    var alertMessage: String? = ""
+                    var alertActions: [UIAlertAction] = []
 
                     if let error = error {
                         log.error(error)
-                    }
 
-                    if useProtocols.count > 0 {
+                        switch error {
+                        case .noInternet:
+                            alertMessage = error.errorDescription
+                            alertActions.append(UIAlertAction(title: "OK", style: .default) { _ in
+                                validation(false, nil, nil)
+                            })
+                        case .timeOut:
+                            alertMessage = error.errorDescription
+                            alertActions.append(UIAlertAction(title: "OK", style: .default) { _ in
+                                validation(false, nil, nil)
+                            })
+                        default:
+                            if useProtocols.count > 0 {
+                                alertMessage = String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: ""))
+                                alertActions.append(UIAlertAction(title: "OK", style: .default) { _ in
+                                    checkPortal?()
+                                })
+                                alertActions.append(UIAlertAction(title: "Cancel", style: .default) { _ in
+                                    validation(false, nil, nil)
+                                })
+                            } else {
+                                api.baseURL = nil
+                                validation(true, errorMessage, nil)
+                            }
+                        }
                         let alertController = UIAlertController.alert(
                             ASCLocalization.Common.error,
-                            message: String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: "")),
-                            actions: []
+                            message: alertMessage,
+                            actions: alertActions
                         )
-                        .okable { _ in
-                            checkPortal?()
-                        }
-                        .cancelable { _ in
-                            validation(false, nil, nil)
-                        }
 
                         strongSelf.present(alertController, animated: true, completion: nil)
-                    } else {
-                        api.baseURL = nil
-                        validation(true, errorMessage, nil)
                     }
                 }
             }
@@ -211,13 +234,7 @@ class ASCConnectPortalViewController: ASCBaseViewController {
         navigator.navigate(to: .onlyofficeSignIn(portal: addressField?.text?.trimmed))
     }
 
-    // MARK: - Actions
-
-    @IBAction func onClose(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func onContinue(_ sender: Any) {
+    private func connect() {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Connecting", comment: "Caption of the process")
 
@@ -253,6 +270,16 @@ class ASCConnectPortalViewController: ASCBaseViewController {
                 strongSelf.showSignIn()
             }
         }
+    }
+
+    // MARK: - Actions
+
+    @IBAction func onClose(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func onContinue(_ sender: Any) {
+        connect()
     }
 }
 

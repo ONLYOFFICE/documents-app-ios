@@ -20,8 +20,13 @@ final class RoomSharingViewModel: ObservableObject {
 
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
-    let additionalLinksLimit = 5
+    var isPossibleCreateNewLink: Bool {
+        room.roomType != .colobaration
+    }
+
+    let linksLimit = 6
     var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
+    var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived }
     private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false
@@ -31,15 +36,17 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
     @Published var invites: [ASCUserRowModel] = []
-    @Published var generalLinkModel: RoomSharingLinkRowModel?
-    @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
+    @Published var sharedLinksModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
 
     // MARK: Navigation published vars
 
-    @Published var selctedUser: ASCUser?
+    @Published var selectedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
     @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
+    @Published var isAddUsersScreenDisplaying: Bool = false
+    @Published var isDeleteAlertDisplaying: Bool = false
+    @Published var isRevokeAlertDisplaying: Bool = false
 
     // MARK: var input
 
@@ -53,6 +60,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
     private lazy var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
+    private var applyingDeletingLink: RoomLinkResponceModel?
     private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
@@ -70,19 +78,24 @@ final class RoomSharingViewModel: ObservableObject {
             .store(in: &cancelable)
     }
 
-    func loadData() {
+    func loadData(completion: (() -> Void)? = nil) {
         sharingRoomNetworkService.fetch(room: room) { [weak self] links, sharings in
             guard let self else { return }
             flowModel.links = links
             flowModel.sharings = sharings
             buildViewModel()
             isInitializing = false
+            completion?()
         }
     }
 
     // MARK: Handlers
 
     func shareButtonAction() {}
+
+    func addUsers() {
+        isAddUsersScreenDisplaying = true
+    }
 
     func createAddLinkAction() {
         isCreatingLinkScreenDisplaing = true
@@ -130,9 +143,29 @@ final class RoomSharingViewModel: ObservableObject {
         buildViewModel()
     }
 
-    func deleteAdditionalLink(indexSet: IndexSet) {
+    func onUserRemove(userId: String) {
+        flowModel.sharings.removeAll(where: { $0.user.userId == userId })
+        selectedUser = nil
+        buildViewModel()
+    }
+
+    func deleteSharedLink(indexSet: IndexSet) {
         for index in indexSet {
-            if let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == additionalLinkModels[safe: index]?.id }) {
+            if let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == sharedLinksModels[safe: index]?.id }) {
+                guard !deletingLink.isGeneral else {
+                    buildViewModel()
+                    applyingDeletingLink = deletingLink
+                    if room.roomType == .public {
+                        isRevokeAlertDisplaying = true
+                    } else {
+                        isDeleteAlertDisplaying = true
+                    }
+                    withAnimation {
+                        buildViewModel()
+                    }
+                    return
+                }
+
                 linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
                     title: deletingLink.linkInfo.title,
@@ -142,7 +175,7 @@ final class RoomSharingViewModel: ObservableObject {
                 ) { [weak self] error in
                     guard let self else { return }
                     if let error {
-                        self.additionalLinkModels.append(mapToLinkViewModel(link: deletingLink))
+                        self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
                         buildViewModel()
                         self.errorMessage = error.localizedDescription
                     } else {
@@ -152,30 +185,64 @@ final class RoomSharingViewModel: ObservableObject {
             }
         }
         withAnimation {
-            additionalLinkModels.remove(atOffsets: indexSet)
+            sharedLinksModels.remove(atOffsets: indexSet)
         }
     }
 
-    func deleteGeneralLink() {
-        if let generalLink = flowModel.links.first(where: { $0.isGeneral }) {
+    func proceedDeletingLink() {
+        guard let deletingLink = applyingDeletingLink else { return }
+        if deletingLink.isGeneral {
             linkAccessService.removeLink(
-                id: generalLink.linkInfo.id,
-                title: generalLink.linkInfo.title,
-                linkType: generalLink.linkInfo.linkType,
-                password: generalLink.linkInfo.password,
+                id: deletingLink.linkInfo.id,
+                title: deletingLink.linkInfo.title,
+                linkType: deletingLink.linkInfo.linkType,
+                password: deletingLink.linkInfo.password,
                 room: room
             ) { [weak self] error in
                 guard let self else { return }
                 if let error {
-                    self.generalLinkModel = mapToLinkViewModel(link: generalLink)
-                    self.buildViewModel()
+                    self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
+                    buildViewModel()
                     self.errorMessage = error.localizedDescription
                 } else {
-                    flowModel.links.removeAll(where: { $0.linkInfo.id == generalLink.linkInfo.id })
+                    flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
+                    if room.roomType == .public {
+                        isActivitiIndicatorDisplaying = true
+                        loadData { [weak self] in
+                            self?.resultModalModel = .init(
+                                result: .success,
+                                message: NSLocalizedString("The new shared link was created", comment: "")
+                            )
+                            self?.isActivitiIndicatorDisplaying = false
+                        }
+                    } else {
+                        buildViewModel()
+                    }
+                }
+            }
+        } else {
+            linkAccessService.removeLink(
+                id: deletingLink.linkInfo.id,
+                title: deletingLink.linkInfo.title,
+                linkType: deletingLink.linkInfo.linkType,
+                password: deletingLink.linkInfo.password,
+                room: room
+            ) { [weak self] error in
+                guard let self else { return }
+                if let error {
+                    self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
+                    buildViewModel()
+                    self.errorMessage = error.localizedDescription
+                } else {
+                    flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
                 }
             }
         }
-        generalLinkModel = nil
+    }
+
+    func declineRemoveLink() {
+        applyingDeletingLink = nil
+        buildViewModel()
     }
 }
 
@@ -201,10 +268,7 @@ private extension RoomSharingViewModel {
     }
 
     func buildViewModel() {
-        if let generalLink = flowModel.links.first(where: { $0.isGeneral }) {
-            generalLinkModel = mapToLinkViewModel(link: generalLink)
-        }
-        additionalLinkModels = flowModel.links.filter { !$0.isGeneral }.map { self.mapToLinkViewModel(link: $0) }
+        sharedLinksModels = flowModel.links.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
         users = flowModel.sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
         invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
@@ -217,8 +281,8 @@ private extension RoomSharingViewModel {
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,
             onTapAction: { [weak self] in
-                guard !sharing.user.isOwner, let self else { return }
-                selctedUser = sharing.user
+                guard let self, isUserSelectionAllow, !sharing.user.isOwner else { return }
+                selectedUser = sharing.user
             }
         )
     }
@@ -236,6 +300,7 @@ private extension RoomSharingViewModel {
             titleString: link.linkInfo.title,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
+            isGeneral: link.isGeneral,
             isSharingPossible: isSharingPossible,
             onTapAction: { [weak self] in
                 guard let self else { return }

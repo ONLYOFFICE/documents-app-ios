@@ -25,6 +25,7 @@ struct EditRoomModel {
     var room: ASCRoom
     var name: String
     var image: UIImage?
+    var ownerToChange: ASCUser?
     var tagsToAdd: [String]
     var tagsToDelete: [String]
 }
@@ -69,6 +70,10 @@ extension NetworkManagingRoomServiceImp {
                 }
                 group.enter()
                 self.uploadAndAttachImage(image: model.image, room: room) {
+                    group.leave()
+                }
+                group.enter()
+                self.changeOwner(newOwner: model.ownerToChange, room: room) {
                     group.leave()
                 }
                 group.notify(queue: .main) {
@@ -134,6 +139,20 @@ extension NetworkManagingRoomServiceImp {
         }
         let requestDeleteTagsModel = AttachTagsRequestModel(names: tags)
         networkService.request(OnlyofficeAPI.Endpoints.Tags.deleteFromRoom(folder: room), requestDeleteTagsModel.dictionary) { _, _ in
+            completion()
+        }
+    }
+
+    private func changeOwner(newOwner: ASCUser?, room: ASCRoom, completion: @escaping () -> Void) {
+        guard let userId = newOwner?.userId else {
+            completion()
+            return
+        }
+        let requestModel = ChangeRoomOwnerRequestModel(userId: userId, folderIds: [room.id])
+        networkService.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), requestModel.dictionary) { _, error in
+            if error == nil {
+                room.createdBy = newOwner
+            }
             completion()
         }
     }

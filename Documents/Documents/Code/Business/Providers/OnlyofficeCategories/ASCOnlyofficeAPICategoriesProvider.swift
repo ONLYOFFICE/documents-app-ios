@@ -19,36 +19,35 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
         }
 
         categoriesCurrentlyLoading = true
-        DispatchQueue.global(qos: .userInteractive).async {
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.roots) { [self] response, error in
 
-                guard error == nil else {
-                    log.error(error!)
-                    categoriesCurrentlyLoading = false
-                    DispatchQueue.main.async {
-                        completion(.failure(error!))
-                    }
-                    return
-                }
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.roots) { [self] response, error in
 
-                if let paths = response?.result {
-                    categories = paths.compactMap { path in
-                        if let current = path.current {
-                            return ASCOnlyofficeCategory(folder: current)
-                        }
-                        return nil
-                    }
-                    categories.sort { $0.sortWeight < $1.sortWeight }
-                }
-
-                setAppPriorityTitle(categories: categories)
-
-                DispatchQueue.main.async {
-                    completion(.success(categories))
-                }
-
+            if let error {
+                log.error(error)
                 categoriesCurrentlyLoading = false
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+                return
             }
+
+            if let paths = response?.result {
+                categories = paths.compactMap { path in
+                    if let current = path.current {
+                        return ASCOnlyofficeCategory(folder: current)
+                    }
+                    return nil
+                }
+                categories.sort { $0.sortWeight < $1.sortWeight }
+            }
+
+            setAppPriorityTitle(categories: categories)
+
+            DispatchQueue.main.async {
+                completion(.success(categories))
+            }
+
+            categoriesCurrentlyLoading = false
         }
     }
 

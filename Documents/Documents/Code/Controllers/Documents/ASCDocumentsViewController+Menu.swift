@@ -25,6 +25,7 @@ extension ASCDocumentsViewController {
 
         var rootActions: [UIMenuElement] = []
         var topActions: [UIMenuElement] = []
+        var shareActions: [UIMenuElement] = []
         var middleActions: [UIMenuElement] = []
         var bottomActions: [UIMenuElement] = []
 
@@ -66,6 +67,33 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.download(cell: cell)
+                }
+            )
+        }
+
+        ///  Copy shared link action
+
+        if actions.contains(.copySharedLink) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Copy shared link", comment: ""),
+                    image: UIImage(systemName: "link")
+                ) { [unowned self] action in
+                    self.copySharedLink(file: file)
+                }
+            )
+        }
+
+        /// Share action
+
+        if actions.contains(.docspaceShare) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Share", comment: ""),
+                    image: UIImage(systemName: "square.and.arrow.up")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .sharedSettingsLink(file: file))
                 }
             )
         }
@@ -253,11 +281,12 @@ extension ASCDocumentsViewController {
         if #available(iOS 14.0, *) {
             return UIMenu(title: "", options: [.displayInline], children: [
                 UIMenu(title: "", options: .displayInline, children: topActions),
+                UIMenu(title: "", options: .displayInline, children: shareActions),
                 UIMenu(title: "", options: .displayInline, children: middleActions),
                 UIMenu(title: "", options: .displayInline, children: bottomActions),
             ])
         } else {
-            rootActions = [topActions, bottomActions, middleActions].reduce([], +)
+            rootActions = [topActions, shareActions, bottomActions, middleActions].reduce([], +)
             return UIMenu(title: "", children: rootActions)
         }
     }
@@ -275,23 +304,26 @@ extension ASCDocumentsViewController {
 
         var commonActions: [UIMenuElement] = []
 
-        commonActions.append(
-            UIAction(
-                title: NSLocalizedString("Select", comment: "Button title"),
-                image: UIImage(systemName: "checkmark.circle")
-            ) { [weak self] action in
-                cell.hideSwipe(animated: true)
-                self?.setEditMode(true)
+        if actions.contains(.select) {
+            commonActions.append(
+                UIAction(
+                    title: NSLocalizedString("Select", comment: "Button title"),
+                    image: UIImage(systemName: "checkmark.circle")
+                ) { [weak self] action in
+                    cell.hideSwipe(animated: true)
+                    self?.setEditMode(true)
 
-                if let index = self?.tableView.indexPath(for: cell) {
-                    self?.tableView.selectRow(
-                        at: index,
-                        animated: true,
-                        scrollPosition: .none
-                    )
+                    if let index = self?.tableView.indexPath(for: cell) {
+                        self?.tableView.selectRow(
+                            at: index,
+                            animated: true,
+                            scrollPosition: .none
+                        )
+                        self?.updateSelectedItems(indexPath: index)
+                    }
                 }
-            }
-        )
+            )
+        }
 
         if actions.contains(.open), !tableView.isEditing {
             commonActions.append(
@@ -303,11 +335,22 @@ extension ASCDocumentsViewController {
 
                     guard
                         let self,
-                        let tableView = self.tableView,
                         let index = tableView.indexPath(for: cell)
                     else { return }
 
                     self.tableView(tableView, didSelectRowAt: index)
+                }
+            )
+        }
+
+        if actions.contains(.shareAsRoom) {
+            commonActions.append(
+                UIAction(
+                    title: NSLocalizedString("Share", comment: ""),
+                    image: UIImage(systemName: "square.and.arrow.up")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.showShereFolderAlert(folder: folder)
                 }
             )
         }
@@ -448,6 +491,24 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Disable notifications
+
+        if actions.contains(.disableNotifications) {
+            basicActions.append(
+                UIAction(
+                    title: folder.mute
+                        ? NSLocalizedString("Enable notifications", comment: "")
+                        : NSLocalizedString("Disable notifications", comment: ""),
+                    image: folder.mute
+                        ? UIImage(systemName: "bell")
+                        : UIImage(systemName: "bell.slash")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    disableNotifications(room: folder)
+                }
+            )
+        }
+
         // Transfer actions
 
         var transferActions: [UIMenuElement] = []
@@ -501,7 +562,10 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "arrow.up.bin")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.unarchive(cell: cell, folder: folder)
+                    self.showRestoreRoomAlert { [weak self] in
+                        guard let self else { return }
+                        self.unarchive(cell: cell, folder: folder)
+                    }
                 }
             )
         }

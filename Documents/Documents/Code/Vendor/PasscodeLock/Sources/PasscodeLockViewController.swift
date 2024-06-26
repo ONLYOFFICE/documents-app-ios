@@ -39,7 +39,6 @@
         open var successCallback: ((_ lock: PasscodeLockType) -> Void)?
         open var dismissCompletionCallback: (() -> Void)?
         open var animateOnDismiss: Bool
-        open var notificationCenter: NotificationCenter?
 
         let passcodeConfiguration: PasscodeLockConfigurationType
         var passcodeLock: PasscodeLockType
@@ -65,7 +64,6 @@
             touchIDButton?.setTitleColor(PasscodeLockStyles.textColor, for: .normal)
 
             passcodeLock.delegate = self
-            notificationCenter = NotificationCenter.default
         }
 
         public convenience init(state: LockState, configuration: PasscodeLockConfigurationType, animateOnDismiss: Bool = true) {
@@ -146,13 +144,13 @@
         // MARK: - Events
 
         fileprivate func setupEvents() {
-            notificationCenter?.addObserver(self, selector: #selector(PasscodeLockViewController.appWillEnterForegroundHandler(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
-            notificationCenter?.addObserver(self, selector: #selector(PasscodeLockViewController.appDidEnterBackgroundHandler(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(PasscodeLockViewController.appWillEnterForegroundHandler(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(PasscodeLockViewController.appDidEnterBackgroundHandler(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         }
 
         fileprivate func clearEvents() {
-            notificationCenter?.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
-            notificationCenter?.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
+            NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+            NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
         }
 
         @objc open func appWillEnterForegroundHandler(_ notification: Notification) {

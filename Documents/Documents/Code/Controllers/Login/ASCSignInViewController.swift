@@ -28,6 +28,7 @@ class ASCSignInViewController: ASCBaseViewController {
     private let googleSignInController = ASCGoogleSignInController()
     @available(iOS 13.0, *)
     private lazy var appleIdSignInController = ASCAppleIdSignInController()
+    private var signInWithLdap: Bool = false
 
     // MARK: - Outlets
 
@@ -42,6 +43,9 @@ class ASCSignInViewController: ASCBaseViewController {
     @IBOutlet var loginByLabel: UILabel!
     @IBOutlet var appleIdButton: UIButton!
     @IBOutlet var signInButtonsStack: UIStackView!
+    @IBOutlet var signInWithLdapStack: UIStackView!
+    @IBOutlet var signInWithLdapButton: UIButton!
+    @IBOutlet var signInWithLdapLabel: UILabel!
 
     // MARK: - Lifecycle Methods
 
@@ -56,11 +60,12 @@ class ASCSignInViewController: ASCBaseViewController {
         let capabilities = OnlyofficeApiClient.shared.capabilities
 
         if capabilities?.ldapEnabled ?? false {
-            emailField?.placeholder = NSLocalizedString("Login", comment: "")
+            emailField?.placeholder = NSLocalizedString("Email address", comment: "")
         } else {
             emailField?.placeholder = NSLocalizedString("Email", comment: "")
         }
         passwordField?.placeholder = NSLocalizedString("Password", comment: "")
+        signInWithLdapButton.setTitle("", for: .normal)
 
         for field in [emailField, passwordField] {
             field?.titleFont = UIFont.systemFont(ofSize: 12)
@@ -101,10 +106,12 @@ class ASCSignInViewController: ASCBaseViewController {
             let allowGoogle = capabilities.providers.contains(.google)
             let allowAppleId = capabilities.providers.contains(.appleid)
             let allowMicrosoft = capabilities.providers.contains(.microsoft)
+            let allowLdap = capabilities.ldapEnabled
 
             loginByLabel?.isHidden = !(allowFacebook || allowGoogle || allowAppleId || allowMicrosoft)
             facebookButton?.isHidden = !allowFacebook
             googleButton?.isHidden = !allowGoogle
+            signInWithLdapStack.isHidden = !allowLdap
 
             if #available(iOS 13.0, *) {
                 appleIdButton?.isHidden = !allowAppleId
@@ -184,6 +191,10 @@ class ASCSignInViewController: ASCBaseViewController {
     }
 
     private func valid(email: String) -> Bool {
+        if signInWithLdap {
+            return true
+        }
+
         if email.length < 1 {
             emailField?.errorMessage = NSLocalizedString("Email is empty", comment: "")
             emailField?.shake()
@@ -210,6 +221,16 @@ class ASCSignInViewController: ASCBaseViewController {
     }
 
     // MARK: - Actions
+
+    @IBAction func onSignInAsLdapUser(_ sender: Any) {
+        signInWithLdap.toggle()
+        signInWithLdapButton.setImage(signInWithLdap
+            ? UIImage(systemName: "checkmark.circle.fill")
+            : UIImage(systemName: "circle"), for: .normal)
+        emailField.placeholder = signInWithLdap
+            ? NSLocalizedString("User name", comment: "").uppercased()
+            : NSLocalizedString("Email address", comment: "").uppercased()
+    }
 
     @IBAction func onForgotPassword(_ sender: Any) {
         navigator.navigate(to: .recoveryPasswordByEmail)

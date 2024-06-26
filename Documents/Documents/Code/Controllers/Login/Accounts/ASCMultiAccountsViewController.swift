@@ -144,7 +144,7 @@ class ASCMultiAccountsViewController: UITableViewController {
                         self.dismiss(animated: true)
                     }
                 )
-            navigationController?.pushViewController(connectPortalVC, animated: true)
+            navigationController?.pushViewController(connectPortalVC, animated: false)
         }
     }
 

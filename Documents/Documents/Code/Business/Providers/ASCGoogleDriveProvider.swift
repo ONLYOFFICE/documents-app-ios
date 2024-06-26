@@ -525,7 +525,6 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         cancel()
 
         // Query metadata file info
-        let metadataFields = defaultObjectFields
         let queryMetadata = GTLRDriveQuery_FilesGet.query(withFileId: path)
         queryMetadata.fields = "id,name,mimeType,size,parents"
 
@@ -547,57 +546,44 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
                 let metadata = GTLRDrive_File()
                 metadata.name = (googleFileInfo.name ?? "") + (strongSelf.documementExtension(for: googleFileInfo) ?? "")
-                metadata.parents = googleFileInfo.parents ?? []
 
-                // Remove original
-                let queryDelete = GTLRDriveQuery_FilesDelete.query(withFileId: path)
-                strongSelf.googleDriveService.executeQuery(queryDelete) { ticket, file, error in
+                let uploadParameters = GTLRUploadParameters(data: data, mimeType: strongSelf.googleMimeToOpenXML(mimeType: mimeType) ?? mimeType)
+                let queryUpdate = GTLRDriveQuery_FilesUpdate.query(withObject: metadata, fileId: path, uploadParameters: uploadParameters)
+                queryUpdate.fields = strongSelf.defaultObjectFields
+
+                let ticket = strongSelf.googleDriveService.executeQuery(queryUpdate) { ticket, file, error in
                     DispatchQueue.main.async {
                         if let error = error {
                             processing(nil, 1.0, error)
-                            return
+                        } else if let fileObject = file as? GTLRDrive_File {
+                            let fileSize: UInt64 = max(0, UInt64(truncating: fileObject.size ?? NSNumber(value: data.count)))
+
+                            let parent = ASCFolder()
+                            parent.id = fileObject.parents?.first ?? ""
+
+                            let cloudFile = ASCFile()
+                            cloudFile.id = fileObject.identifier ?? ""
+                            cloudFile.rootFolderType = .googledriveAll
+                            cloudFile.title = fileObject.name ?? ""
+                            cloudFile.created = fileObject.createdTime?.date ?? Date()
+                            cloudFile.updated = fileObject.modifiedTime?.date ?? Date()
+                            cloudFile.createdBy = strongSelf.user
+                            cloudFile.updatedBy = strongSelf.user
+                            cloudFile.parent = parent
+                            cloudFile.viewUrl = fileObject.identifier ?? ""
+                            cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+                            cloudFile.pureContentLength = Int(fileSize)
+
+                            processing(cloudFile, 1.0, nil)
+                        } else {
+                            processing(nil, 1.0, nil)
                         }
-
-                        // Upload changes
-                        let uploadParameters = GTLRUploadParameters(data: data, mimeType: strongSelf.googleMimeToOpenXML(mimeType: mimeType) ?? mimeType)
-                        let queryCreate = GTLRDriveQuery_FilesCreate.query(withObject: metadata, uploadParameters: uploadParameters)
-                        queryMetadata.fields = metadataFields
-
-                        let ticket = strongSelf.googleDriveService.executeQuery(queryCreate) { ticket, file, error in
-                            DispatchQueue.main.async {
-                                if let error = error {
-                                    processing(nil, 1.0, error)
-                                } else if let fileObject = file as? GTLRDrive_File {
-                                    let fileSize: UInt64 = max(0, UInt64(truncating: fileObject.size ?? NSNumber(value: data.count)))
-
-                                    let parent = ASCFolder()
-                                    parent.id = fileObject.parents?.first ?? ""
-
-                                    let cloudFile = ASCFile()
-                                    cloudFile.id = fileObject.identifier ?? ""
-                                    cloudFile.rootFolderType = .googledriveAll
-                                    cloudFile.title = fileObject.name ?? ""
-                                    cloudFile.created = fileObject.createdTime?.date ?? Date()
-                                    cloudFile.updated = fileObject.modifiedTime?.date ?? Date()
-                                    cloudFile.createdBy = strongSelf.user
-                                    cloudFile.updatedBy = strongSelf.user
-                                    cloudFile.parent = parent
-                                    cloudFile.viewUrl = fileObject.identifier ?? ""
-                                    cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
-                                    cloudFile.pureContentLength = Int(fileSize)
-
-                                    processing(cloudFile, 1.0, nil)
-                                } else {
-                                    processing(nil, 1.0, nil)
-                                }
-                            }
-                        }
-                        ticket.objectFetcher?.sendProgressBlock = { bytesSent, totalBytesSent, totalBytesExpectedToSend in
-                            DispatchQueue.main.async {
-                                log.debug("progress: \(Double(totalBytesSent) / Double(max(1, totalBytesExpectedToSend)))")
-                                processing(nil, Double(totalBytesSent) / Double(max(1, totalBytesExpectedToSend)), nil)
-                            }
-                        }
+                    }
+                }
+                ticket.objectFetcher?.sendProgressBlock = { bytesSent, totalBytesSent, totalBytesExpectedToSend in
+                    DispatchQueue.main.async {
+                        log.debug("progress: \(Double(totalBytesSent) / Double(max(1, totalBytesExpectedToSend)))")
+                        processing(nil, Double(totalBytesSent) / Double(max(1, totalBytesExpectedToSend)), nil)
                     }
                 }
             }
@@ -1225,6 +1211,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             let canRead = allowRead(entity: folder)
             let canEdit = allowEdit(entity: folder)
             let canDelete = allowDelete(entity: folder)
+
+            entityActions.insert(.select)
 
             if canRead, canEdit {
                 entityActions.insert(.open)

@@ -379,17 +379,11 @@ extension ASCSharingAddRightHoldersView {
     func showSearchResultTable() {
         view.addSubview(searchResultsTable)
 
-        var bottomOffset: CGFloat = 0
-        let keyboradHeigh = (dispalayingKeyboardFrame?.height ?? 0)
-        if UIDevice.phone {
-            bottomOffset = keyboradHeigh
-        }
-
         NSLayoutConstraint.activate([
             searchResultsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchResultsTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             searchResultsTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset),
+            searchResultsTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 

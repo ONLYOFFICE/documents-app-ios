@@ -23,36 +23,24 @@ class ManagedAppConfigTest: XCTestCase {
     let configurationKey = "com.apple.configuration.managed"
     let feedbackKey = "com.apple.feedback.managed"
 
-    let newProvidersKey = "newProviders"
-    let provider1 = [
+    let sampleConfig1 = [
         "address": "https://webdav.example.com",
         "login": "user1",
         "password": "password1",
         "type": "ASCFileProviderTypeWebDAV",
     ]
 
-    let provider2 = [
+    let sampleConfig2 = [
         "address": "https://webdav.example.com",
         "login": "user2",
         "password": "password2",
         "type": "ASCFileProviderTypeWebDAV",
     ]
 
-    var sampleConfig1: [String: Any] = [:]
-    var sampleConfig2: [String: Any] = [:]
-
     var handler1: AppConfigHandlerMock?
     var handler2: AppConfigHandlerMock?
 
     override func setUpWithError() throws {
-        sampleConfig1 = [
-            newProvidersKey: [provider1],
-        ]
-
-        sampleConfig2 = [
-            newProvidersKey: [provider2],
-        ]
-
         handler1 = AppConfigHandlerMock()
         handler2 = AppConfigHandlerMock()
 
@@ -69,13 +57,15 @@ class ManagedAppConfigTest: XCTestCase {
     }
 
     func testReadProvider() throws {
-        let providers: [Any]? = manager.appConfig(newProvidersKey)
-        XCTAssertNotNil(providers)
+        let type: String? = manager.appConfig("type")
+        let address: String? = manager.appConfig("address")
+        let login: String? = manager.appConfig("login")
+        let password: String? = manager.appConfig("password")
 
-        let provider: [String: Any]? = providers?.first as? [String: Any]
-        XCTAssertNotNil(provider)
-
-        XCTAssertTrue(NSDictionary(dictionary: provider!).isEqual(to: provider1))
+        XCTAssertNotNil(type)
+        XCTAssertNotNil(address)
+        XCTAssertNotNil(login)
+        XCTAssertNotNil(password)
     }
 
     func testObservers() throws {
@@ -83,6 +73,7 @@ class ManagedAppConfigTest: XCTestCase {
         manager.add(observer: handler2)
 
         UserDefaults.standard.set(sampleConfig2, forKey: configurationKey)
+        ManagedAppConfig.shared.triggerHooks()
 
         var value1 = handler1?.value
         var value2 = handler2?.value
@@ -96,6 +87,7 @@ class ManagedAppConfigTest: XCTestCase {
         handler2 = nil
 
         UserDefaults.standard.set(sampleConfig1, forKey: configurationKey)
+        ManagedAppConfig.shared.triggerHooks()
 
         value1 = handler1?.value
         value2 = handler2?.value

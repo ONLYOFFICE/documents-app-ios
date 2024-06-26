@@ -179,9 +179,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .viewOnlyRoom,
                      .publicRoom,
                      .dropBox,
+                     .nextCloud,
                      .googleDrive,
                      .oneDrive,
-                     .box:
+                     .box,
+                     .tag:
                     return list
                 }
             }(commonList)
@@ -709,6 +711,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         return entityActions
     }
 
+    func isTrash(for folder: ASCFolder?) -> Bool {
+        folder?.rootFolderType == .deviceTrash
+    }
+
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
@@ -769,6 +775,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             if folder.rootFolderType == .deviceTrash {
                 return [.delete, .restore]
             }
+
+            entityActions.insert(.select)
 
             if canRead, canEdit {
                 entityActions.insert(.open)

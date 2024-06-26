@@ -431,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Nelze číst ze souboru";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Soubor se nepodařilo uložit";
-
 /* Description of file operation error */
 "Could not write to file" = "Nelze zapisovat do souboru";
 
@@ -467,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Vytvářejte nové dokumenty, tabulky nebo prezentace. Vytvořte nové složky pro uspořádání souborů.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Vytvořit místnost";
 
 /* Caption of the process
@@ -1314,9 +1311,6 @@
 /* No comment provided by engineer. */
 "Save" = "Uložit";
 
-/* No comment provided by engineer. */
-"Saved" = "Uloženo";
-
 /* Caption of the processing */
 "Saving" = "Uložení";
 
@@ -1495,7 +1489,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Odkaz pro externí\npřístup je zkopírován\ndo schránky";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Platnost odkazu vypršela";
 
 /* No comment provided by engineer. */

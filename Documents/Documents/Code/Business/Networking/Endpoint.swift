@@ -29,12 +29,12 @@ class Endpoint<Response> {
 }
 
 extension Endpoint {
-    static func make(
+    class func make(
         _ path: String,
         _ method: HTTPMethod = .get,
         _ parameterEncoding: ParameterEncoding? = nil
     ) -> Endpoint<Bool> {
-        return Endpoint<Bool>(
+        Endpoint<Bool>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding
@@ -43,12 +43,12 @@ extension Endpoint {
         }
     }
 
-    static func make(
+    class func make(
         _ path: String,
         _ method: HTTPMethod = .get,
         _ parameterEncoding: ParameterEncoding? = nil
     ) -> Endpoint<String> {
-        return Endpoint<String>(
+        Endpoint<String>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
@@ -58,12 +58,12 @@ extension Endpoint {
         )
     }
 
-    static func make(
+    class func make(
         _ path: String,
         _ method: HTTPMethod = .get,
         _ parameterEncoding: ParameterEncoding? = nil
     ) -> Endpoint<Parameters> {
-        return Endpoint<Parameters>(
+        Endpoint<Parameters>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
@@ -82,20 +82,19 @@ extension Endpoint {
         )
     }
 
-    static func make<Response: BaseMappable>(
+    class func make<T: BaseMappable>(
         _ path: String,
         _ method: HTTPMethod = .get,
         _ parameterEncoding: ParameterEncoding? = nil
-    ) -> Endpoint<Response> {
-        return Endpoint<Response>(
+    ) -> Endpoint<T> {
+        Endpoint<T>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
-            decode: { (data: Data) -> Response? in
-
+            decode: { (data: Data) -> T? in
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                        if let result = Mapper<Response>().map(JSON: json) {
+                        if let result = Mapper<T>().map(JSON: json) {
                             return result
                         }
                     }
@@ -109,26 +108,26 @@ extension Endpoint {
         )
     }
 
-    static func make<Response: BaseMappable>(
+    class func make<T: BaseMappable>(
         _ path: String,
         _ method: HTTPMethod = .get,
         _ parameterEncoding: ParameterEncoding? = nil,
         _ params: [String: Any]? = nil
-    ) -> Endpoint<[Response]> {
-        return Endpoint<[Response]>(
+    ) -> Endpoint<[T]> {
+        Endpoint<[T]>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
-            decode: { (data: Data) -> [Response]? in
+            decode: { (data: Data) -> [T]? in
 
-                var objects: [Response] = []
+                var objects: [T] = []
 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
 
                     if let list = json {
                         for element in list {
-                            if let readObject = Mapper<Response>().map(JSON: element as! [String: Any]) {
+                            if let readObject = Mapper<T>().map(JSON: element as! [String: Any]) {
                                 objects.append(readObject)
                             }
                         }
@@ -139,6 +138,22 @@ extension Endpoint {
                 }
 
                 return objects
+            }
+        )
+    }
+
+    class func make<T: Codable>(
+        _ path: String,
+        _ method: HTTPMethod = .get,
+        _ parameterEncoding: ParameterEncoding? = nil
+    ) -> Endpoint<T> {
+        return Endpoint<T>(
+            path: path,
+            method: method,
+            parameterEncoding: parameterEncoding,
+            decode: { (data: Data) -> T? in
+                let decoder = JSONDecoder()
+                return try? decoder.decode(T.self, from: data)
             }
         )
     }

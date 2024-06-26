@@ -104,8 +104,7 @@ class ASCIntroViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func onDone(_ sender: UIButton) {
-        complation?()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: complation)
     }
 
     @objc func pageControlSelectionAction(_ sender: UIPageControl) {

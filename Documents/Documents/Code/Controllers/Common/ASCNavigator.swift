@@ -16,10 +16,11 @@ enum Destination {
     case addUsers(entity: ASCEntity)
     case leaveRoom(entity: ASCEntity, handler: ASCEntityHandler?)
     case roomSharingLink(folder: ASCFolder)
+    case sharedSettingsLink(file: ASCFile)
 
     // MARK: - Login
 
-    case onlyofficeConnectPortal
+    case onlyofficeConnectPortal(portal: String?)
     case onlyofficeSignIn(portal: String?)
     case countryPhoneCodes
 
@@ -83,20 +84,11 @@ final class ASCNavigator {
                 navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
 
-        case let .addUsers(entity):
-            if let addUsersViewController = viewController as? ASCSharingInviteRightHoldersViewController {
-                let addUsersNavigationVC = ASCBaseNavigationController(rootASCViewController: addUsersViewController)
-
-                addUsersNavigationVC.modalPresentationStyle = .formSheet
-                addUsersNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-
-                navigationController?.present(addUsersNavigationVC, animated: true, completion: nil)
-
-                addUsersViewController.dataStore?.entity = entity
-                addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
-                addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
-            }
-
+        case .addUsers:
+            let nc = ASCBaseNavigationController(rootASCViewController: viewController)
+            nc.modalPresentationStyle = .formSheet
+            nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+            navigationController?.present(nc, animated: true, completion: nil)
         case let .leaveRoom(entity, handler):
             if let leaveRoomViewController = viewController as? ASCSharingChooseNewOwnerRightHoldersViewController {
                 let leaveRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: leaveRoomViewController)
@@ -111,8 +103,13 @@ final class ASCNavigator {
                 leaveRoomViewController.handler = handler
             }
 
-        case .onlyofficeConnectPortal:
-            navigationController?.viewControllers = [viewController]
+        case let .onlyofficeConnectPortal(portal):
+            if let connectPortalViewController = viewController as? ASCConnectPortalViewController {
+                navigationController?.viewControllers = [connectPortalViewController]
+                if let portal {
+                    connectPortalViewController.forceConnect(to: portal)
+                }
+            }
 
         case .roomSharingLink:
             if let shareRoomViewController = viewController as? RoomSharingRootViewController {
@@ -123,6 +120,14 @@ final class ASCNavigator {
 
                 navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
+        case let .sharedSettingsLink(file):
+            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                sharedSettingsViewController.modalPresentationStyle = .formSheet
+            } else {
+                sharedSettingsViewController.modalPresentationStyle = .pageSheet
+            }
+            navigationController?.present(sharedSettingsViewController, animated: true)
 
         default:
             navigationController?.pushViewController(viewController, animated: true)
@@ -139,10 +144,12 @@ final class ASCNavigator {
             return ASCSortViewController.instance()
         case .shareSettings:
             return ASCSharingOptionsViewController(sourceViewController: navigationController?.viewControllers.last)
-        case .addUsers:
-            let vc = ASCSharingInviteRightHoldersViewController()
-            vc.sourceViewController = navigationController?.viewControllers.last
-            return vc
+        case let .addUsers(folder):
+            if let folder = folder as? ASCFolder {
+                let vc = InviteUsersViewController(folder: folder)
+                return vc
+            }
+            return UIViewController()
         case .leaveRoom:
             let vc = ASCSharingChooseNewOwnerRightHoldersViewController()
             return vc
@@ -172,6 +179,8 @@ final class ASCNavigator {
             return ASCAppThemeViewController()
         case let .roomSharingLink(folder):
             return RoomSharingRootViewController(room: folder)
+        case let .sharedSettingsLink(file):
+            return SharedSettingsRootViewController(file: file)
         }
     }
 }

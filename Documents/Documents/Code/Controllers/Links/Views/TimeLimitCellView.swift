@@ -22,7 +22,7 @@ struct TimeLimitCellView: View {
                 model.title,
                 selection: model.$selectedDate,
                 in: minimumDate...,
-                displayedComponents: [.date, .hourAndMinute]
+                displayedComponents: model.displayedComponents
             )
         }
     }
@@ -31,4 +31,5 @@ struct TimeLimitCellView: View {
 struct TimeLimitCellModel {
     @Binding var selectedDate: Date
     var title = ""
+    var displayedComponents: DatePickerComponents
 }

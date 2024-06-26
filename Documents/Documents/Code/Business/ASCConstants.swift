@@ -213,6 +213,7 @@ class ASCConstants {
 
         enum Facebook {
             static let appId: String = ASCConstants.internalConstants["FacebookAppID"] as? String ?? ""
+            static let clientToken: String = ASCConstants.internalConstants["FacebookClientToken"] as? String ?? ""
         }
     }
 

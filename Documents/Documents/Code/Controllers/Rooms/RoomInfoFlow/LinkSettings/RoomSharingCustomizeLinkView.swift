@@ -14,6 +14,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
     @State private var showDeleteAlert = false
+    @State private var showRevokeAlert = false
 
     var body: some View {
         handleHUD()
@@ -41,6 +42,8 @@ struct RoomSharingCustomizeLinkView: View {
             protectedSection
             restrictionSection
             deleteSection
+            revokeSection
+                .alert(isPresented: $showRevokeAlert, content: revokeAlert)
         }
         .navigationBarTitle(Text(NSLocalizedString("General link", comment: "")))
     }
@@ -99,7 +102,8 @@ struct RoomSharingCustomizeLinkView: View {
             if viewModel.isTimeLimited {
                 TimeLimitCellView(model: TimeLimitCellModel(
                     selectedDate: $viewModel.selectedDate,
-                    title: NSLocalizedString("Valid through", comment: "")
+                    title: NSLocalizedString("Valid through", comment: ""),
+                    displayedComponents: [.date, .hourAndMinute]
                 ))
             }
         }
@@ -133,6 +137,24 @@ struct RoomSharingCustomizeLinkView: View {
     }
 
     @ViewBuilder
+    private var revokeSection: some View {
+        if viewModel.isRevokePossible {
+            Section {
+                ASCLabledCellView(
+                    model: ASCLabledCellModel(
+                        textString: NSLocalizedString("Revoke link", comment: ""),
+                        cellType: .deletable,
+                        textAlignment: .center,
+                        onTapAction: {
+                            showRevokeAlert = true
+                        }
+                    )
+                )
+            }
+        }
+    }
+
+    @ViewBuilder
     private var doneButton: some View {
         Button(
             NSLocalizedString("Done", comment: ""),
@@ -146,13 +168,15 @@ struct RoomSharingCustomizeLinkView: View {
     private func handleHUD() {
         MBProgressHUD.currentHUD?.hide(animated: false)
 
-        if viewModel.isSaving || viewModel.isDeleting {
+        if viewModel.isSaving || viewModel.isDeleting || viewModel.isRevoking {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
             if viewModel.isDeleting {
                 hud?.label.text = NSLocalizedString("Removing", comment: "") + "..."
             } else if viewModel.isSaving {
                 hud?.label.text = NSLocalizedString("Saving", comment: "") + "..."
+            } else if viewModel.isRevoking {
+                hud?.label.text = NSLocalizedString("Revoking", comment: "") + "..."
             }
         } else if let resultModalModel = viewModel.resultModalModel,
                   let hud = MBProgressHUD.showTopMost()
@@ -163,6 +187,8 @@ struct RoomSharingCustomizeLinkView: View {
                     hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
                 } else if viewModel.isSaved {
                     hud.setState(result: .success(resultModalModel.message))
+                } else if viewModel.isRevoked {
+                    hud.setState(result: .success(NSLocalizedString("Revoked", comment: "")))
                 }
             case .failure:
                 hud.setState(result: .failure(resultModalModel.message))
@@ -177,6 +203,17 @@ struct RoomSharingCustomizeLinkView: View {
             message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
             primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
                 viewModel.onDelete()
+            }),
+            secondaryButton: .cancel()
+        )
+    }
+
+    private func revokeAlert() -> Alert {
+        Alert(
+            title: Text(NSLocalizedString("Revoke link", comment: "")),
+            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
+            primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
+                viewModel.onRevoke()
             }),
             secondaryButton: .cancel()
         )

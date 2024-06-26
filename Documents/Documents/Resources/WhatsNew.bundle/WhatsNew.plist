@@ -10,33 +10,33 @@
 			<key>Image</key>
 			<string>whatsnew-onlyoffice</string>
 			<key>Title</key>
-			<string>Improved compatibility with DocSpace</string>
+			<string>Improved integration with ONLYOFFICE DocSpace v2.5</string>
 			<key>Subtitle</key>
-			<string>Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc.</string>
+			<string>Sign in to your ONLYOFFICE DocSpace and access the new features of version 2.5</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-language</string>
+			<string>whatsnew-paragraph</string>
 			<key>Title</key>
-			<string>Changing text document language</string>
+			<string>Paragraph styles management in the document editor</string>
 			<key>Subtitle</key>
-			<string>Switch the language of the text document for correct spellchecking and hyphenation.</string>
+			<string>Create new paragraph styles and delete the ones you have already created</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-formula-tips</string>
+			<string>whatsnew-vertical</string>
 			<key>Title</key>
-			<string>Search for spreadsheet formulas</string>
+			<string>Vertical text alignment in shapes in all the editors</string>
 			<key>Subtitle</key>
-			<string>Find necessary formulas in your worksheets using searching bar.</string>
+			<string>Align text vertically in shapes inserted into your docs, sheets and slides</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-custom-cell</string>
+			<string>whatsnew-form</string>
 			<key>Title</key>
-			<string>Custom cell format</string>
+			<string>More convenient navigation through form fields</string>
 			<key>Subtitle</key>
-			<string>Use custom cell format to display the value as a postal code, phone number or license plate.</string>
+			<string>Navigation buttons for form fields are now located on the navigation panel</string>
 		</dict>
 	</array>
 </dict>

@@ -187,6 +187,36 @@ und schön können Sie loslegen</target>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
+      <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>%d day</source>
+        <target>%d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>%d hour</source>
+        <target>%d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
@@ -327,6 +357,36 @@ und schön können Sie loslegen</target>
         <target>%lu Ordner löschen</target>
         <note/>
       </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d day</source>
+        <target>Expires after %d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d hour</source>
+        <target>Expires after %d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="de" datatype="plaintext">
@@ -351,6 +411,7 @@ und schön können Sie loslegen</target>
       </trans-unit>
       <trans-unit id="3vf-pi-KmX.normalTitle" xml:space="preserve">
         <source>Button</source>
+        <target>Schaltfläche</target>
         <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "3vf-pi-KmX";</note>
       </trans-unit>
       <trans-unit id="6Zd-HN-8wS.text" xml:space="preserve">
@@ -360,6 +421,7 @@ und schön können Sie loslegen</target>
       </trans-unit>
       <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
         <source>Sign in as LDAP User</source>
+        <target>Als LDAP-Benutzer anmelden</target>
         <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
       </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
@@ -1148,7 +1210,18 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
     <body>
       <trans-unit id="%@ | %@" xml:space="preserve">
         <source>%1$@ | %2$@</source>
+        <target>%1$@ | %2$@</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%d days" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d Tage</target>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="%d hours" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d Stunden</target>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
@@ -1233,6 +1306,11 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
         <target>Eine Datei mit einem ähnlichen Namen existiert bereits im Dokumentverzeichnis auf dem Gerät.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
+        <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
+        <target>Es wird ein neuer Raum erstellt und der gesamte Inhalt des ausgewählten Ordners wird dorthin kopiert. Anschließend können Sie andere Benutzer einladen, an den Dateien in einem Raum mitzuarbeiten.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1327,6 +1405,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Add manually" xml:space="preserve">
         <source>Add manually</source>
+        <target>Manuell hinzufügen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
@@ -1368,6 +1447,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Admin" xml:space="preserve">
         <source>Admin</source>
+        <target>Admin</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Administration" xml:space="preserve">
@@ -1402,6 +1482,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" xml:space="preserve">
         <source>All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?</source>
+        <target>Alle gemeinsam genutzten Links in diesem Raum werden aktiv, und der Inhalt ist für alle, die den Link haben, zugänglich. Möchten Sie den Raum wiederherstellen?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1502,6 +1583,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Business subscription expired" xml:space="preserve">
         <source>Business subscription expired</source>
+        <target>Business-Abonnement ist abgelaufen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
@@ -1561,6 +1643,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Change room's owner" xml:space="preserve">
         <source>Change room's owner</source>
+        <target>Besitzer des Raums ändern</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Change the Room Owner" xml:space="preserve">
@@ -1585,6 +1668,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
         <source>Choose from list</source>
+        <target>Aus Liste auswählen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1703,6 +1787,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
+        <target>Verbindung deinitialisiert</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
@@ -1739,6 +1824,11 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Copy link</source>
         <target>Link kopieren</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target>Freigegebenen Link kopieren</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
@@ -1912,11 +2002,14 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Create new files" xml:space="preserve">
         <source>Create new files</source>
+        <target>Neue Dateien erstellen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
         <source>Create new folders to 
 organize your files.</source>
+        <target>Erstellen Sie neue Ordner, 
+um Ihre Dateien zu organisieren.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -2037,6 +2130,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Disable notifications" xml:space="preserve">
         <source>Disable notifications</source>
+        <target>Benachrichtigungen deaktivieren</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -2084,6 +2178,11 @@ organize your files.</source>
         <source>Downloading</source>
         <target>Wird heruntergeladen</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="DoсSpace users only" xml:space="preserve">
+        <source>DoсSpace users only</source>
+        <target>Nur DoсSpace-Benutzer</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
@@ -2137,6 +2236,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Email address" xml:space="preserve">
         <source>Email address</source>
+        <target>E-Mail-Adresse</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
@@ -2171,6 +2271,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Enable notifications" xml:space="preserve">
         <source>Enable notifications</source>
+        <target>Benachrichtigungen einschalten</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
@@ -2218,6 +2319,19 @@ organize your files.</source>
         <target>Benutzer erwarten</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Expired" xml:space="preserve">
+        <source>Expired</source>
+        <target>Abgelaufen</target>
+        <note>Expiration status</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d days" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d hours" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>Läuft nach 7 Tagen ab</target>
@@ -2230,6 +2344,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="External link" xml:space="preserve">
         <source>External link</source>
+        <target>Externer Link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
@@ -2337,8 +2452,9 @@ organize your files.</source>
         <target>Dateivorschau</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
-        <source>Files and folders uploaded by admins will appeared here.</source>
+      <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appear here.</source>
+        <target>Von Administratoren hochgeladene Dateien und Ordner werden hier angezeigt.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2448,6 +2564,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
+        <target>Hier finden Sie eine Liste der zuletzt geöffneten Dateien, die Sie über einen externen Link erhalten haben.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2567,6 +2684,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Link" xml:space="preserve">
         <source>Link</source>
+        <target>Link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link and password&#10;successfully copied&#10;to clipboard" xml:space="preserve">
@@ -2609,6 +2727,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
+        <target>Wird geladen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Loading..." xml:space="preserve">
@@ -2778,6 +2897,11 @@ in die Zwischenablage kopiert</target>
         <target>Weiter</target>
         <note>Next step</note>
       </trans-unit>
+      <trans-unit id="NextCloud" xml:space="preserve">
+        <source>NextCloud</source>
+        <target>NextCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
@@ -2805,6 +2929,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
         <source>No archived rooms here yet</source>
+        <target>Noch keine archivierten Räume hier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -2819,10 +2944,12 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="No docs here yet" xml:space="preserve">
         <source>No docs here yet</source>
+        <target>Noch keine Dokumente vorhanden</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No files here yet" xml:space="preserve">
         <source>No files here yet</source>
+        <target>Noch keine Dateien vorhanden</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -2928,6 +3055,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
         <source>Only a room administrator or a DocSpace administrator can become the room owner.</source>
+        <target>Nur ein Raumadministrator oder ein DocSpace-Administrator kann Raumbesitzer werden.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Oops!" xml:space="preserve">
@@ -2987,6 +3115,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="PDF Form Sample" xml:space="preserve">
         <source>PDF Form Sample</source>
+        <target>PDF-Formularmuster</target>
         <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
@@ -3188,6 +3317,11 @@ in die Zwischenablage kopiert</target>
         <target>Schutz</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
+        <source>Provide access to the document and set the permission levels.</source>
+        <target>Ermöglichen Sie den Zugriff auf das Dokument und legen Sie die Berechtigungsstufen fest.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target>Ermöglichen Sie den allgemeinen Zugriff auf das Dokument durch Auswahl der gewünschten Berechtigungsstufe.</target>
@@ -3215,6 +3349,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Recently accessible via link" xml:space="preserve">
         <source>Recently accessible via link</source>
+        <target>Kürzlich zugänglich über Link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
@@ -3226,6 +3361,11 @@ in die Zwischenablage kopiert</target>
         <source>Recovery</source>
         <target>Wiederherstellung</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Regenerate link" xml:space="preserve">
+        <source>Regenerate link</source>
+        <target>Link neu generieren</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
@@ -3239,12 +3379,18 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Remove" xml:space="preserve">
         <source>Remove</source>
+        <target>Entfernen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
         <target>Von Favoriten entfernen</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Remove link" xml:space="preserve">
+        <source>Remove link</source>
+        <target>Link entfernen</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
@@ -3273,6 +3419,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Renew Business plan" xml:space="preserve">
         <source>Renew Business plan</source>
+        <target>Business-Abonnement erneuern</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Renewal" xml:space="preserve">
@@ -3307,6 +3454,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Restore room?" xml:space="preserve">
         <source>Restore room?</source>
+        <target>Raum wiederherstellen?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
@@ -3326,18 +3474,22 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Revoke link" xml:space="preserve">
         <source>Revoke link</source>
+        <target>Link widerrufen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Revoked" xml:space="preserve">
         <source>Revoked</source>
+        <target>Widerrufen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Revoking" xml:space="preserve">
         <source>Revoking</source>
+        <target>Wird widerrufen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
         <source>Roles</source>
+        <target>Rollen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3347,6 +3499,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
         <source>Room created!</source>
+        <target>Raum erstellt!</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
@@ -3481,6 +3634,16 @@ in die Zwischenablage kopiert</target>
         <target>Einstellungen und Sicherheit</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Freigeben</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share folder" xml:space="preserve">
+        <source>Share folder</source>
+        <target>Ordner freigeben</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>SharePoint-Verzeichnis</target>
@@ -3491,8 +3654,14 @@ in die Zwischenablage kopiert</target>
         <target>Gemeinsamer Zugriff</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Shared link" xml:space="preserve">
+        <source>Shared link</source>
+        <target>Geteilter Link</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
         <source>Shared links</source>
+        <target>Geteilte Links</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -3602,6 +3771,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Tags" xml:space="preserve">
         <source>Tags</source>
+        <target>Tags</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
@@ -3681,7 +3851,7 @@ kopiert</target>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>Der Link ist abgelaufen</target>
-        <note>No comment provided by engineer.</note>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>
@@ -3700,6 +3870,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="The new shared link was created" xml:space="preserve">
         <source>The new shared link was created</source>
+        <target>Der neue freigegebene Link wurde erstellt</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
@@ -3729,6 +3900,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="The previous link will become unavailable. A new shared link will be created." xml:space="preserve">
         <source>The previous link will become unavailable. A new shared link will be created.</source>
+        <target>Der vorherige Link wird nicht mehr verfügbar sein. Es wird ein neuer gemeinsamer Link erstellt.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The quota of users is almost exhausted. Сontact the portal administrator" xml:space="preserve">
@@ -3908,6 +4080,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="Unauthorized members will be able only to view the document." xml:space="preserve">
         <source>Unauthorized members will be able only to view the document.</source>
+        <target>Unbefugte Mitglieder können das Dokument nur einsehen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -4022,6 +4195,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="User name" xml:space="preserve">
         <source>User name</source>
+        <target>Nutzername</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
@@ -4152,6 +4326,7 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
       </trans-unit>
       <trans-unit id="You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." xml:space="preserve">
         <source>You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.</source>
+        <target>Sie können Räume, die Sie nicht benutzen, archivieren und jederzeit in Ihrem DocSpace wiederherstellen oder dauerhaft löschen. Diese Räume werden hier angezeigt.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@." xml:space="preserve">
@@ -4181,6 +4356,7 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
       </trans-unit>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
         <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
+        <target>Ihr aktueller Business-Tarifplan ist abgelaufen. Bitte erneuern Sie Ihr Abonnement in den Kontoeinstellungen, um Ihren DocSpace nutzen zu können. Wenn Sie Fragen haben, wenden Sie sich bitte an den Support.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">

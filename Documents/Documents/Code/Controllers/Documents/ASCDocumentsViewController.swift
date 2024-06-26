@@ -131,6 +131,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         $0.dropDelegate = self
         $0.dragInteractionEnabled = true
         $0.separatorStyle = .none
+        $0.allowsMultipleSelectionDuringEditing = true
         return $0
     }(UITableView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 500)), style: .plain))
 
@@ -1912,6 +1913,29 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func showShereFolderAlert(folder: ASCFolder) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("Share folder", comment: ""),
+            message: NSLocalizedString("A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.", comment: ""),
+            preferredStyle: .alert,
+            tintColor: nil
+        )
+
+        alert.addCancel()
+
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Create", comment: ""),
+                style: .default,
+                handler: { [unowned self] _ in
+                    self.transformToRoom(entities: [folder])
+                }
+            )
+        )
+
+        present(alert, animated: true, completion: nil)
+    }
+
     func transformToRoom(entities: [ASCEntity]) {
         let entitiesIsOnlyOneFolder: Bool = {
             guard entities.count == 1 else { return false }
@@ -2186,6 +2210,21 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         message: NSLocalizedString("Couldn't download the room.", comment: "")
                     )
                 }
+            }
+        }
+    }
+
+    func copySharedLink(file: ASCFile) {
+        NetworkManagerSharedSettings().createAndCopy(file: file) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                let hud = MBProgressHUD.showTopMost()
+                UIPasteboard.general.string = link.sharedTo.shareLink
+                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+            case let .failure(error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -3163,7 +3202,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     @objc func onInfoSelected(_ sender: Any) {
-        guard let provider = provider, let folder = folder, selectedIds.count == 1 else { return }
+        guard let provider = provider,
+              let folder = tableData.first(where: {
+                  selectedIds.contains($0.uid)
+              }),
+              selectedIds.count == 1
+        else { return }
         presentShareController(provider: provider, entity: folder)
     }
 
@@ -3498,6 +3542,10 @@ extension ASCDocumentsViewController: UITableViewDataSource, UITableViewDelegate
         return true
     }
 
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .none
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         77
     }
@@ -3788,16 +3836,32 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     ///   - parent: Parent view controller
     ///   - entity: Entity to share
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
-        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
+        guard !entity.isRoom else {
+            if let room = entity as? ASCRoom {
+                navigator.navigate(to: .roomSharingLink(folder: room))
+            }
+            return
+        }
 
-        sharedNavigationVC.modalPresentationStyle = .formSheet
-        sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+        if let file = entity as? ASCFile, ASCOnlyofficeProvider.isDocspaceApi {
+            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
+            sharedSettingsViewController.modalPresentationStyle = .formSheet
+            sharedSettingsViewController.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
-        parent.present(sharedNavigationVC, animated: true, completion: nil)
+            parent.present(sharedSettingsViewController, animated: true, completion: nil)
 
-        sharedViewController.setup(entity: entity)
-        sharedViewController.requestToLoadRightHolders()
+        } else {
+            let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
+            let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
+
+            sharedNavigationVC.modalPresentationStyle = .formSheet
+            sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+            parent.present(sharedNavigationVC, animated: true, completion: nil)
+
+            sharedViewController.setup(entity: entity)
+            sharedViewController.requestToLoadRightHolders()
+        }
     }
 }
 

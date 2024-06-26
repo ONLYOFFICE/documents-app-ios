@@ -16,6 +16,7 @@ enum Destination {
     case addUsers(entity: ASCEntity)
     case leaveRoom(entity: ASCEntity, handler: ASCEntityHandler?)
     case roomSharingLink(folder: ASCFolder)
+    case sharedSettingsLink(file: ASCFile)
 
     // MARK: - Login
 
@@ -119,6 +120,14 @@ final class ASCNavigator {
 
                 navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
+        case let .sharedSettingsLink(file):
+            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                sharedSettingsViewController.modalPresentationStyle = .formSheet
+            } else {
+                sharedSettingsViewController.modalPresentationStyle = .pageSheet
+            }
+            navigationController?.present(sharedSettingsViewController, animated: true)
 
         default:
             navigationController?.pushViewController(viewController, animated: true)
@@ -170,6 +179,8 @@ final class ASCNavigator {
             return ASCAppThemeViewController()
         case let .roomSharingLink(folder):
             return RoomSharingRootViewController(room: folder)
+        case let .sharedSettingsLink(file):
+            return SharedSettingsRootViewController(file: file)
         }
     }
 }

@@ -187,6 +187,56 @@ začněte používat vaší kancelář</target>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
+      <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/few:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/many:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>%d day</source>
+        <target>%d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/few:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/many:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>%d hour</source>
+        <target>%d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
@@ -415,6 +465,56 @@ začněte používat vaší kancelář</target>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>Vymazat %lu složku</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/few:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/many:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d day</source>
+        <target>Expires after %d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/few:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/many:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d hour</source>
+        <target>Expires after %d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
         <note/>
       </trans-unit>
     </body>
@@ -1237,6 +1337,14 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>%1$@ | %2$@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="%d days" xml:space="preserve">
+        <source>%d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="%d hours" xml:space="preserve">
+        <source>%d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
         <target>%d vybráno</target>
@@ -1320,6 +1428,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
         <target>Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
+        <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1827,6 +1939,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Kopírovat odkaz</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>Kopírování</target>
@@ -2172,6 +2288,10 @@ organize your files.</source>
         <target>Stahování</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="DoсSpace users only" xml:space="preserve">
+        <source>DoсSpace users only</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
         <target>Dropbox</target>
@@ -2305,6 +2425,18 @@ organize your files.</source>
         <target>Očekávat uživatele</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Expired" xml:space="preserve">
+        <source>Expired</source>
+        <note>Expiration status</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d days" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d hours" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>Platnost vyprší po 7 dnech</target>
@@ -2424,8 +2556,8 @@ organize your files.</source>
         <target>Náhled souborů</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
-        <source>Files and folders uploaded by admins will appeared here.</source>
+      <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appear here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2864,6 +2996,10 @@ zkopírován do schránky</target>
         <target>Další</target>
         <note>Next step</note>
       </trans-unit>
+      <trans-unit id="NextCloud" xml:space="preserve">
+        <source>NextCloud</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
@@ -3274,6 +3410,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Zabezpečení</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
+        <source>Provide access to the document and set the permission levels.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target>Zajistěte obecný přístup k dokumentu výběrem požadované úrovně oprávnění.</target>
@@ -3313,6 +3453,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Obnova</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regenerate link" xml:space="preserve">
+        <source>Regenerate link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Registrace</target>
@@ -3331,6 +3475,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <source>Remove from Favorites</source>
         <target>Odstranění z oblíbených položek</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Remove link" xml:space="preserve">
+        <source>Remove link</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
@@ -3567,6 +3715,14 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target>Nastavení a zabezpečení</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share folder" xml:space="preserve">
+        <source>Share folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>Adresář SharePoint</target>
@@ -3575,6 +3731,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target>Sdílený přístup</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared link" xml:space="preserve">
+        <source>Shared link</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
@@ -3767,7 +3927,7 @@ do schránky</target>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>Platnost odkazu vypršela</target>
-        <note>No comment provided by engineer.</note>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>

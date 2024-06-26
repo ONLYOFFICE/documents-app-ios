@@ -179,6 +179,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .viewOnlyRoom,
                      .publicRoom,
                      .dropBox,
+                     .nextCloud,
                      .googleDrive,
                      .oneDrive,
                      .box,

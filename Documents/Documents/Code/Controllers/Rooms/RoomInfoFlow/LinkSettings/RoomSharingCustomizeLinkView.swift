@@ -102,7 +102,8 @@ struct RoomSharingCustomizeLinkView: View {
             if viewModel.isTimeLimited {
                 TimeLimitCellView(model: TimeLimitCellModel(
                     selectedDate: $viewModel.selectedDate,
-                    title: NSLocalizedString("Valid through", comment: "")
+                    title: NSLocalizedString("Valid through", comment: ""),
+                    displayedComponents: [.date, .hourAndMinute]
                 ))
             }
         }

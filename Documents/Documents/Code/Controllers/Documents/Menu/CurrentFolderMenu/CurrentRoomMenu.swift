@@ -17,6 +17,15 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
 
         var entityActionsGroup: [UIMenuElement] = []
 
+        // Select
+        if actions.contains(.select) {
+            entityActionsGroup.append(
+                UIAction(title: NSLocalizedString("Select", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: { _ in
+                    viewController.onSelectAction()
+                })
+            )
+        }
+
         // Edit room
         if actions.contains(.edit) {
             entityActionsGroup.append(

@@ -187,6 +187,36 @@ start using your office</target>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
+      <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>%d day</source>
+        <target>%d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>%d hour</source>
+        <target>%d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
@@ -325,6 +355,36 @@ start using your office</target>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>Delete %lu Folders</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d day</source>
+        <target>Expires after %d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d hour</source>
+        <target>Expires after %d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
         <note/>
       </trans-unit>
     </body>
@@ -1150,6 +1210,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>%1$@ | %2$@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="%d days" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="%d hours" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
         <target>%d selected</target>
@@ -1233,6 +1303,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
         <target>A file with a similar name already exists in the document directory on the device.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
+        <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
+        <target>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1747,6 +1822,11 @@ others which use WebDAV protocol.</target>
         <target>Copy link</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target>Copy shared link</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>Copying</target>
@@ -2096,6 +2176,11 @@ organize your files.</target>
         <target>Downloading</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="DoсSpace users only" xml:space="preserve">
+        <source>DoсSpace users only</source>
+        <target>DoсSpace users only</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
         <target>Dropbox</target>
@@ -2231,6 +2316,21 @@ organize your files.</target>
         <target>Expect users</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Expired" xml:space="preserve">
+        <source>Expired</source>
+        <target>Expired</target>
+        <note>Expiration status</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d days" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d hours" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>Expires after 7 days</target>
@@ -2351,9 +2451,9 @@ organize your files.</target>
         <target>Files Preview</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
-        <source>Files and folders uploaded by admins will appeared here.</source>
-        <target>Files and folders uploaded by admins will appeared here.</target>
+      <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appear here.</source>
+        <target>Files and folders uploaded by admins will appear here.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2796,6 +2896,11 @@ copied to clipboard</target>
         <target>Next</target>
         <note>Next step</note>
       </trans-unit>
+      <trans-unit id="NextCloud" xml:space="preserve">
+        <source>NextCloud</source>
+        <target>NextCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
@@ -3211,6 +3316,11 @@ copied to clipboard</target>
         <target>Protection</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
+        <source>Provide access to the document and set the permission levels.</source>
+        <target>Provide access to the document and set the permission levels.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target>Provide general access to the document selecting the required permission level.</target>
@@ -3251,6 +3361,11 @@ copied to clipboard</target>
         <target>Recovery</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regenerate link" xml:space="preserve">
+        <source>Regenerate link</source>
+        <target>Regenerate link</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Registration</target>
@@ -3270,6 +3385,11 @@ copied to clipboard</target>
         <source>Remove from Favorites</source>
         <target>Remove from Favorites</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Remove link" xml:space="preserve">
+        <source>Remove link</source>
+        <target>Remove link</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
@@ -3513,6 +3633,16 @@ copied to clipboard</target>
         <target>Settings and Security</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Share</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share folder" xml:space="preserve">
+        <source>Share folder</source>
+        <target>Share folder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>SharePoint directory</target>
@@ -3521,6 +3651,11 @@ copied to clipboard</target>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target>Shared access</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared link" xml:space="preserve">
+        <source>Shared link</source>
+        <target>Shared link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
@@ -3715,7 +3850,7 @@ to the clipboard</target>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>The link has expired</target>
-        <note>No comment provided by engineer.</note>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>

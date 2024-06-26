@@ -153,7 +153,7 @@ class ASCDocumentsEmptyView: UIView {
         case .docspaceNoPermissions:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("No docs here yet", comment: "")
-            subtitleLabel?.text = NSLocalizedString("Files and folders uploaded by admins will appeared here.", comment: "")
+            subtitleLabel?.text = NSLocalizedString("Files and folders uploaded by admins will appear here.", comment: "")
             actionButton?.removeFromSuperview()
 
         case .search:

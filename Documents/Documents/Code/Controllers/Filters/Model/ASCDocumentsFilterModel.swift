@@ -115,6 +115,7 @@ enum ApiFilterType {
     case tag(String)
     /// third party resource
     case dropBox
+    case nextCloud
     case googleDrive
     case oneDrive
     case box
@@ -169,6 +170,8 @@ enum ApiFilterType {
             return "publicRoom"
         case .dropBox:
             return "dropBox"
+        case .nextCloud:
+            return "nextCloud"
         case .googleDrive:
             return "3"
         case .oneDrive:
@@ -226,6 +229,8 @@ enum ApiFilterType {
             return "6"
         case .dropBox:
             return "2"
+        case .nextCloud:
+            return "7"
         case .googleDrive:
             return "3"
         case .oneDrive:
@@ -285,6 +290,8 @@ extension ApiFilterType {
             self = .publicRoom
         case "dropBox":
             self = .dropBox
+        case "nextCloud":
+            self = .nextCloud
         case "googleDrive":
             self = .googleDrive
         case "oneDrive":
@@ -322,6 +329,7 @@ extension ApiFilterType: Equatable {
              (.viewOnlyRoom, .viewOnlyRoom),
              (.publicRoom, .publicRoom),
              (.dropBox, .dropBox),
+             (.nextCloud, .nextCloud),
              (.googleDrive, .googleDrive),
              (.oneDrive, .oneDrive),
              (.box, .box):
@@ -382,6 +390,7 @@ enum FiltersName: String, CaseIterable {
     case publicRoom
     /// third party resource
     case dropBox
+    case nextCloud
     case googleDrive
     case oneDrive
     case box
@@ -426,6 +435,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Public", comment: "")
         case .dropBox:
             return NSLocalizedString("Dropbox", comment: "")
+        case .nextCloud:
+            return NSLocalizedString("NextCloud", comment: "")
         case .googleDrive:
             return NSLocalizedString("Google Drive", comment: "")
         case .oneDrive:

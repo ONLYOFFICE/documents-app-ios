@@ -53,12 +53,7 @@ final class UserListViewModel: ObservableObject {
                 switch result {
                 case let .success(ascUsers):
                     self.allUsers = ascUsers
-                    self.users = ascUsers
-                        .map(self.mapToUserListUser)
-                        .filter {
-                            guard let ignoreUserId = self.ignoreUserId else { return true }
-                            return $0.id != self.ignoreUserId
-                        }
+                    self.users = self.filterUsers(ascUsers: ascUsers)
                 case let .failure(error):
                     log.error("Error fetching users: \(error)")
                 }
@@ -66,11 +61,20 @@ final class UserListViewModel: ObservableObject {
         }
     }
 
+    private func filterUsers(ascUsers: [ASCUser]) -> [User] {
+        return ascUsers
+            .filter { ascUser in
+                guard let ignoreUserId = ignoreUserId else { return true }
+                return ascUser.userId != ignoreUserId && (ascUser.userType == .roomAdmin || ascUser.userType == .docspaseAdmin)
+            }
+            .map(mapToUserListUser)
+    }
+
     private func mapToUserListUser(ascUser: ASCUser) -> User {
-        return User(
+        User(
             id: ascUser.userId ?? "",
             name: ascUser.displayName ?? "",
-            role: ascUser.userType.rawValue,
+            role: ascUser.userType.description,
             email: ascUser.email ?? "",
             imageName: ascUser.avatar ?? ""
         )

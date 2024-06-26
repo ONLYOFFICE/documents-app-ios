@@ -297,8 +297,12 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                         return .unknown(error: error)
                     }
                 }
+            case .sessionDeinitialized:
+                return .sessionDeinitialized
+
             case .explicitlyCancelled:
                 return .cancelled
+
             default:
                 break
             }

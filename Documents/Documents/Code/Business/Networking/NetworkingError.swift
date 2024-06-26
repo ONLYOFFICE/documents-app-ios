@@ -14,6 +14,7 @@ enum NetworkingError: LocalizedError {
     case noInternet
     case invalidUrl
     case invalidData
+    case sessionDeinitialized
     case statusCode(Int)
     case apiError(error: NetworkingServerError)
     case unknown(error: Error?)
@@ -30,6 +31,8 @@ enum NetworkingError: LocalizedError {
             return NSLocalizedString("Invalid Url", comment: "")
         case .invalidData:
             return NSLocalizedString("Invalid Data", comment: "")
+        case .sessionDeinitialized:
+            return NSLocalizedString("Connection deinitialized", comment: "")
         case let .statusCode(code):
             return String(format: NSLocalizedString("Error code: %ld", comment: ""), code)
         case let .apiError(error):

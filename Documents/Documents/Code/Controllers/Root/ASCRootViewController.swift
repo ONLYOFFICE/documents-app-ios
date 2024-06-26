@@ -65,6 +65,10 @@ class ASCRootViewController: ASCBaseTabBarController {
             } else {
                 deviceSC.tabBarItem.title = NSLocalizedString("On iPhone", comment: "")
                 deviceSC.tabBarItem.image = allowFaceId ? Asset.Images.tabIphoneX.image : Asset.Images.tabIphone.image
+
+                if Device.current.hasDynamicIsland {
+                    deviceSC.tabBarItem.image = Asset.Images.tabIphoneIsland.image
+                }
             }
         }
 
@@ -112,9 +116,7 @@ class ASCRootViewController: ASCBaseTabBarController {
     }
 
     private func navigateLocalProvider(to folder: ASCFolder?) {
-        if let index = viewControllers?.firstIndex(where: { $0 is ASCDeviceSplitViewController }) {
-            selectedIndex = index
-
+        if selectTab(ofType: ASCDeviceSplitViewController.self) {
             if let splitVC = selectedViewController as? ASCDeviceSplitViewController,
                let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
                let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
@@ -146,9 +148,7 @@ class ASCRootViewController: ASCBaseTabBarController {
     }
 
     private func navigateOnlyofficeProvider(to folder: ASCFolder?, inCategory categoryType: ASCFolderType? = nil) {
-        if let index = viewControllers?.firstIndex(where: { $0 is ASCOnlyofficeSplitViewController }) {
-            selectedIndex = index
-
+        if selectTab(ofType: ASCOnlyofficeSplitViewController.self) {
             if let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
                let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
                let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
@@ -185,9 +185,7 @@ class ASCRootViewController: ASCBaseTabBarController {
     }
 
     private func navigateiCloudProvider(to folder: ASCFolder?) {
-        if let index = viewControllers?.firstIndex(where: { $0 is ASCCloudsSplitViewController }) {
-            selectedIndex = index
-
+        if selectTab(ofType: ASCCloudsSplitViewController.self) {
             if let splitVC = selectedViewController as? ASCCloudsSplitViewController,
                let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
             {
@@ -196,6 +194,15 @@ class ASCRootViewController: ASCBaseTabBarController {
                 categoryVC.select(provider: cloudProvider, folder: folder ?? cloudProvider?.rootFolder)
             }
         }
+    }
+
+    @discardableResult
+    func selectTab<T>(ofType: T.Type) -> Bool {
+        if let tabIndex = viewControllers?.firstIndex(where: { $0 is T }) {
+            selectedIndex = tabIndex
+            return true
+        }
+        return false
     }
 
     func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?, inCategory categoryType: ASCFolderType? = nil) {
@@ -208,9 +215,7 @@ class ASCRootViewController: ASCBaseTabBarController {
         } else if provider.type == .icloud {
             navigateiCloudProvider(to: folder)
         } else {
-            if let index = viewControllers?.firstIndex(where: { $0 is ASCCloudsSplitViewController }) {
-                selectedIndex = index
-
+            if selectTab(ofType: ASCCloudsSplitViewController.self) {
                 if let splitVC = selectedViewController as? ASCCloudsSplitViewController,
                    let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
                 {
@@ -312,17 +317,10 @@ class ASCRootViewController: ASCBaseTabBarController {
         }
     }
 
-//    @objc func onOnlyofficeLoginCompleted(_ notification: Notification) {
-//        if let user = ASCFileManager.onlyofficeProvider?.user, user.isVisitor {
-//            display(provider: ASCFileManager.onlyofficeProvider, folder: ASCOnlyofficeCategory.folder(of: .onlyofficeShare))
-//        } else {
-//            display(provider: ASCFileManager.onlyofficeProvider, folder: ASCOnlyofficeCategory.folder(of: .onlyofficeUser))
-//        }
-//    }
-
-//    @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
-//        display(provider: ASCFileManager.localProvider, folder: nil)
-//    }
+    func checkMDMConfigInfo() {
+        ManagedAppConfig.shared.add(observer: self)
+        ManagedAppConfig.shared.triggerHooks()
+    }
 
     @objc
     private func networkStatusChanged() {

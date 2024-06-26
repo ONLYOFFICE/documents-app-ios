@@ -1,8 +1,8 @@
-"Improved compatibility with DocSpace" = "Բարելավված համատեղելիություն DocSpace-ի հետ";
-"Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc." = "Մուտք գործեք ձեր DocSpace ցանկացած iOS սարքում՝ սենյակներ ստեղծելու, օգտվողներին հրավիրելու, պիտակներ ավելացնելու և այլն:";
-"Changing text document language" = "Փոխել տեքստային փաստաթղթի լեզուն";
-"Switch the language of the text document for correct spellchecking and hyphenation." = "Փոխեք տեքստային փաստաթղթի լեզուն՝ ճիշտ ուղղագրության ստուգման և գծագրերի համար: ";
-"Search for spreadsheet formulas" = "Որոնել աղյուսակների բանաձևեր ";
-"Find necessary formulas in your worksheets using searching bar." = "Գտեք անհրաժեշտ բանաձևերը ձեր աշխատաթերթերում՝ օգտագործելով որոնման տողը: ";
-"Custom cell format" = "Անհատականացված բջջային ձևաչափ";
-"Use custom cell format to display the value as a postal code, phone number or license plate." = "Օգտագործեք անհատականացված բջջային ձևաչափ՝ արժեքը որպես փոստային ինդեքս, հեռախոսահամար կամ պետհամարանիշ ցուցադրելու համար: ";
+"Align text vertically in shapes inserted into your docs, sheets and slides" = "Համաձայնեցրեք տեքստը ուղղահայաց ձևերի մեջ, որոնք տեղադրված են ձեր փաստաթղթերում, աղյուսակներում և սլայդներում";
+"Create new paragraph styles and delete the ones you have already created" = "Ստեղծեք նոր պարբերությունների ոճեր և ջնջեք արդեն ստեղծված ոճերը";
+"Improved integration with ONLYOFFICE DocSpace v2.5" = "ONLYOFFICE DocSpace v2.5 բարելավված ինտեգրում";
+"More convenient navigation through form fields" = "Առավել հարմարավետ նավիգացիա ձևերի դաշտերում";
+"Navigation buttons for form fields are now located on the navigation panel" = "Նավիգացիայի կոճակները ձևերի դաշտերում այժմ գտնվում են նավիգացիոն վահանակում";
+"Paragraph styles management in the document editor" = "Պարբերության ոճերի կառավարում փաստաթղթերի խմբագրում";
+"Sign in to your ONLYOFFICE DocSpace and access the new features of version 2.5" = "Մուտք գործեք ձեր ONLYOFFICE DocSpace և օգտվեք նոր 2.5 տարբերակի հնարավորություններից";
+"Vertical text alignment in shapes in all the editors" = "Տեքստի ուղղահայաց հավասարեցում ձևերի մեջ բոլոր խմբագրիներում";

@@ -301,11 +301,23 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 self.loadedCategories = categories
                 completion()
             case let .failure(error):
-                guard
-                    let error = error as? NetworkingError, case .cancelled = error
-                else {
-                    UIAlertController.showError(in: self, message: error.localizedDescription)
+                guard let error = error as? NetworkingError else { return }
+
+                switch error {
+                case let .apiError(error):
+                    if let onlyofficeError = error as? OnlyofficeServerError {
+                        switch onlyofficeError {
+                        case .paymentRequired:
+                            return
+                        default:
+                            break
+                        }
+                    }
+
+                case .cancelled, .sessionDeinitialized:
                     return
+                default:
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             }
         }

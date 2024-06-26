@@ -29,6 +29,7 @@ class ASCFacebookSignInController {
         {
             // Initialize Facebook SDK
             Settings.shared.appID = ASCConstants.Clouds.Facebook.appId
+            Settings.shared.clientToken = ASCConstants.Clouds.Facebook.clientToken
             ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
 
             ASCFacebookSignInController.initializedSdk = true
@@ -79,6 +80,7 @@ class ASCFacebookSignInController {
         {
             // Initialize Facebook SDK
             Settings.shared.appID = ASCConstants.Clouds.Facebook.appId
+            Settings.shared.clientToken = ASCConstants.Clouds.Facebook.clientToken
             ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
 
             ASCFacebookSignInController.initializedSdk = true

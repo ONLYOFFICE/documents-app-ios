@@ -7,6 +7,15 @@
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
+/* No comment provided by engineer. */
+"%@ | %@" = "%1$@ | %2$@";
+
+/* Days left */
+"%d days" = "%d дней";
+
+/* Hours left */
+"%d hours" = "%d часов";
+
 /* Count of seclected rows: count + selected */
 "%d selected" = "Выбрано %d";
 
@@ -47,19 +56,13 @@
 "12 hours" = "12 часов";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Ошибка преобразования";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Файл с похожим именем уже существует.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
+
+/* No comment provided by engineer. */
+"A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." = "Будет создана новая комната, куда будет скопировано все содержимое выбранной папки. После этого вы можете пригласить других пользователей к совместной работе над файлами в комнате.";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "Пользователь или группа смогут только просматривать документ и добавлять комментарии, а также управлять ими.";
@@ -115,6 +118,9 @@
 /* No comment provided by engineer. */
 "Add account" = "Добавить аккаунт";
 
+/* No comment provided by engineer. */
+"Add manually" = "Добавить вручную";
+
 /* Sharing settings add notification message */
 "Add message" = "Добавить сообщение";
 
@@ -137,6 +143,9 @@
 "Address is empty" = "Адрес не заполнен";
 
 /* No comment provided by engineer. */
+"Admin" = "Администратор";
+
+/* No comment provided by engineer. */
 "Administration" = "Администрация";
 
 /* No comment provided by engineer. */
@@ -153,6 +162,9 @@
 
 /* No comment provided by engineer. */
 "All notifications" = "Все уведомления";
+
+/* No comment provided by engineer. */
+"All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" = "Все общие ссылки в этой комнате станут активными, и их содержимое будет доступно всем, у кого есть ссылка. Хотите восстановить комнату?";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Доступ по внешней ссылке";
@@ -213,6 +225,9 @@
 "Box directory" = "Папка Box";
 
 /* No comment provided by engineer. */
+"Business subscription expired" = "Срок действия подписки на тарифный план Business истек";
+
+/* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Создавая портал, вы соглашаетесь с нашей Политикой конфиденциальности и Условиями использования";
 
 /* Data units */
@@ -249,6 +264,9 @@
 "Change owner" = "Сменить владельца";
 
 /* No comment provided by engineer. */
+"Change room's owner" = "Сменить владельца комнаты";
+
+/* No comment provided by engineer. */
 "Change the Room Owner" = "Сменить владельца комнаты";
 
 /* No comment provided by engineer. */
@@ -259,6 +277,9 @@
 
 /* No comment provided by engineer. */
 "Choose Files" = "Выберите файлы";
+
+/* No comment provided by engineer. */
+"Choose from list" = "Выберите из списка";
 
 /* No comment provided by engineer. */
 "Choose room type" = "Выберите тип комнаты";
@@ -351,6 +372,9 @@
 "Connecting" = "Подключение";
 
 /* No comment provided by engineer. */
+"Connection deinitialized" = "Соединение деинициализировано";
+
+/* No comment provided by engineer. */
 "Console" = "Консоль";
 
 /* No comment provided by engineer. */
@@ -370,6 +394,9 @@
 
 /* Button title */
 "Copy link" = "Копировать ссылку";
+
+/* No comment provided by engineer. */
+"Copy shared link" = "Скопировать общую ссылку";
 
 /* Caption of the processing */
 "Copying" = "Копирование";
@@ -473,6 +500,12 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Создавайте новые документы, таблицы или презентации. Создавайте новые папки, чтобы упорядочивать файлы.";
 
+/* No comment provided by engineer. */
+"Create new files" = "Создать новые файлы";
+
+/* No comment provided by engineer. */
+"Create new folders to \norganize your files." = "Создавайте новые папки, чтобы \nсистематизировать ваши документы.";
+
 /* Button title */
 "Create room" = "Создать комнату";
 
@@ -543,6 +576,9 @@
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Отключите, если вы не хотите получать уведомления от %@";
 
+/* No comment provided by engineer. */
+"Disable notifications" = "Отключить уведомления";
+
 /* Button title */
 "Disconnect third party" = "Отсоединить сторонние сервисы";
 
@@ -570,6 +606,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Скачивание";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Только для пользователей DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -602,6 +641,9 @@
 "Email" = "Email";
 
 /* No comment provided by engineer. */
+"Email address" = "Адрес электронной почты";
+
+/* No comment provided by engineer. */
 "Email is empty" = "Поле Email не заполнено";
 
 /* No comment provided by engineer. */
@@ -618,6 +660,9 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Включите, если хотите получать уведомления от %@";
+
+/* No comment provided by engineer. */
+"Enable notifications" = "Включить уведомления";
 
 /* No comment provided by engineer. */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Включите этот параметр, чтобы отключить загрузку файлов и папок из этой комнаты, к которой предоставляется общий доступ по ссылке";
@@ -658,11 +703,17 @@
 /* No comment provided by engineer. */
 "Expect users" = "Ожидаемые пользователи";
 
+/* Expiration status */
+"Expired" = "Истек";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Истекает через 7 дней";
 
 /* Button title */
 "Export" = "Экспорт";
+
+/* No comment provided by engineer. */
+"External link" = "Внешняя ссылка";
 
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Ошибка службы онлайн-конвертации.";
@@ -723,6 +774,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "Файлы";
+
+/* No comment provided by engineer. */
+"Files and folders uploaded by admins will appear here." = "Файлы и папки, загружаемые администраторами, будут отображаться здесь.";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Предпросмотр файлов";
@@ -789,6 +843,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Группы";
+
+/* No comment provided by engineer. */
+"Here you will find a list of the recently opened files shared with you via an external link." = "Здесь вы найдете список недавно открытых файлов, которыми с вами поделились с помощью внешней ссылки.";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -872,6 +929,9 @@
 "Light" = "Светлая";
 
 /* No comment provided by engineer. */
+"Link" = "Ссылка";
+
+/* No comment provided by engineer. */
 "Link and password\nsuccessfully copied\nto clipboard" = "Ссылка и пароль\nуспешно скопированы\nв буфер обмена";
 
 /* No comment provided by engineer. */
@@ -888,6 +948,9 @@
 
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Ссылка с приглашением отправлена на почту";
+
+/* No comment provided by engineer. */
+"Loading" = "Загрузка";
 
 /* No comment provided by engineer. */
 "Loading..." = "Загрузка…";
@@ -997,13 +1060,25 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"NextCloud" = "NextCloud";
+
+/* No comment provided by engineer. */
 "Nextcloud directory" = "Каталог Nextcloud";
+
+/* No comment provided by engineer. */
+"No archived rooms here yet" = "Здесь пока нет заархивированных комнат";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "Нет идентификаторов приложения";
 
 /* No comment provided by engineer. */
 "No connection" = "Нет подключения";
+
+/* No comment provided by engineer. */
+"No docs here yet" = "Здесь пока нет документов";
+
+/* No comment provided by engineer. */
+"No files here yet" = "Здесь пока нет файлов";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Нет информации о профиле пользователя.";
@@ -1073,6 +1148,9 @@
 /* No comment provided by engineer. */
 "OneDrive for Business" = "OneDrive для бизнеса";
 
+/* No comment provided by engineer. */
+"Only a room administrator or a DocSpace administrator can become the room owner." = "Владельцем комнаты может стать только администратор комнаты или администратор DocSpace.";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1138,6 +1216,9 @@
 
 /* Data units */
 "Pb" = "Пб";
+
+/* Default title of sample document */
+"PDF Form Sample" = "Образец PDF-формы";
 
 /* No comment provided by engineer. */
 "Phone" = "Телефон";
@@ -1233,6 +1314,9 @@
 "Protection" = "Защита";
 
 /* No comment provided by engineer. */
+"Provide access to the document and set the permission levels." = "Предоставить доступ к документу и установить уровни доступа.";
+
+/* No comment provided by engineer. */
 "Provide general access to the document selecting the required permission level." = "Предоставьте общий доступ к документу, выбрав необходимый уровень разрешений.";
 
 /* No comment provided by engineer. */
@@ -1247,6 +1331,9 @@
 /* Category title */
 "Recent" = "Недавние";
 
+/* No comment provided by engineer. */
+"Recently accessible via link" = "Доступна по ссылке";
+
 /* Button title */
 "Recover here" = "Восстановить сюда";
 
@@ -1254,13 +1341,22 @@
 "Recovery" = "Восстановление";
 
 /* No comment provided by engineer. */
+"Regenerate link" = "Восстановить ссылку";
+
+/* No comment provided by engineer. */
 "Registration" = "Регистрация";
 
 /* No comment provided by engineer. */
 "Reload" = "Перезагрузить";
 
+/* No comment provided by engineer. */
+"Remove" = "Удалить";
+
 /* Button title */
 "Remove from Favorites" = "Удалить из избранного";
+
+/* No comment provided by engineer. */
+"Remove link" = "Удалить ссылку";
 
 /* Caption of the process */
 "Removing" = "Удаление";
@@ -1276,6 +1372,9 @@
 
 /* Caption of the processing */
 "Renaming" = "Переименование";
+
+/* No comment provided by engineer. */
+"Renew Business plan" = "Возобновить тарифный план Business";
 
 /* No comment provided by engineer. */
 "Renewal" = "Возобновить";
@@ -1295,6 +1394,9 @@
 /* Button title */
 "Restore" = "Восстановить";
 
+/* No comment provided by engineer. */
+"Restore room?" = "Восстановить комнату?";
+
 /* Caption of the processing */
 "Restoring" = "Восстановление";
 
@@ -1304,8 +1406,23 @@
 /* Share status */
 "Reviewer" = "Рецензирование";
 
+/* No comment provided by engineer. */
+"Revoke link" = "Отменить ссылку";
+
+/* No comment provided by engineer. */
+"Revoked" = "Отменено";
+
+/* No comment provided by engineer. */
+"Revoking" = "Отмена";
+
+/* No comment provided by engineer. */
+"Roles" = "Роли";
+
 /* Share status */
 "Room admin" = "Администратор группы";
+
+/* No comment provided by engineer. */
+"Room created!" = "Комната создана!";
 
 /* No comment provided by engineer. */
 "Room name" = "Название комнаты";
@@ -1385,7 +1502,19 @@
 "Settings and Security" = "Настройки и безопасность";
 
 /* No comment provided by engineer. */
+"Share" = "Совместный доступ";
+
+/* No comment provided by engineer. */
+"Share folder" = "Предоставить доступ к папке";
+
+/* No comment provided by engineer. */
 "Shared access" = "Общий доступ";
+
+/* No comment provided by engineer. */
+"Shared link" = "Общая ссылка";
+
+/* No comment provided by engineer. */
+"Shared links" = "Общие ссылки";
 
 /* Category title */
 "Shared with Me" = "Доступно для меня";
@@ -1457,6 +1586,9 @@
 "Tag" = "Тег";
 
 /* No comment provided by engineer. */
+"Tags" = "Теги";
+
+/* No comment provided by engineer. */
 "Take a Picture" = "Сделать снимок";
 
 /* No comment provided by engineer. */
@@ -1498,7 +1630,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Срок действия ссылки истек";
 
 /* No comment provided by engineer. */
@@ -1509,6 +1641,9 @@
 
 /* No comment provided by engineer. */
 "The list of users previously invited to DocSpace or separate rooms will appear here." = "Здесь появится список пользователей, ранее приглашенных в DocSpace или отдельные комнаты.";
+
+/* No comment provided by engineer. */
+"The new shared link was created" = "Создана новая общая ссылка";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Некорректные параметры";
@@ -1524,6 +1659,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Имя портала должно быть длиной от 6 до 50 символов";
+
+/* No comment provided by engineer. */
+"The previous link will become unavailable. A new shared link will be created." = "Предыдущая ссылка будет недоступна. Будет создана новая общая ссылка.";
 
 /* No comment provided by engineer. */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Ограничение на количество пользователей почти достигнуто. Свяжитесь с администратором портала";
@@ -1631,6 +1769,9 @@
 "Unarchiving failed." = "Не удалось разархивировать.";
 
 /* No comment provided by engineer. */
+"Unauthorized members will be able only to view the document." = "Неавторизованные участники смогут только просматривать документ.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Неавторизованные пользователи смогут только просматривать документ и добавлять комментарии, а также управлять ими.";
 
 /* No comment provided by engineer. */
@@ -1695,6 +1836,9 @@
 
 /* No comment provided by engineer. */
 "User authentication required" = "Требуется аутентификация пользователя";
+
+/* No comment provided by engineer. */
+"User name" = "Имя пользователя";
 
 /* No comment provided by engineer. */
 "User undefined" = "Пользователь не авторизован";
@@ -1769,6 +1913,9 @@
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Вы являетесь владельцем комнаты. Перед тем, как покинуть комнату, вы должны передать роль владельца другому пользователю.";
 
 /* No comment provided by engineer. */
+"You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." = "Вы можете заархивировать комнаты, которые вы не используете, и восстановить их в своем DocSpace в любой момент или удалить навсегда. Эти комнаты будут отображаться здесь.";
+
+/* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "К %@ можно подключить следующие аккаунты.";
 
 /* No comment provided by engineer. */
@@ -1784,6 +1931,9 @@
 "You have read-only access to this folder. You cannot create files or folders here." = "К этой папке у вас есть доступ только на чтение. Вы не можете создавать в ней файлы или папки.";
 
 /* No comment provided by engineer. */
+"Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Срок действия вашего текущего тарифного плана Business истек. Пожалуйста, возобновите подписку в настройках учетной записи, чтобы продолжать использовать DocSpace. Если у вас возникли вопросы, обратитесь в службу поддержки.";
+
+/* No comment provided by engineer. */
 "Your session has expired" = "Время сессии истекло";
 
 /* Data units */
@@ -1791,4 +1941,13 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Ошибка преобразования";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
 

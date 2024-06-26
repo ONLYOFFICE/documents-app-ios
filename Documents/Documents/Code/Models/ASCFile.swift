@@ -27,6 +27,7 @@ class ASCFile: ASCEntity {
     var parent: ASCFolder?
     var security: ASCFileSecurity = .init()
     var denyDownload: Bool = false
+    var editable: Bool = false
 
     override init() {
         super.init()

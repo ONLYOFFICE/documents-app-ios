@@ -7,6 +7,15 @@
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
+/* No comment provided by engineer. */
+"%@ | %@" = "%1$@ | %2$@";
+
+/* Days left */
+"%d days" = "%d giorni";
+
+/* Hours left */
+"%d hours" = "%d ore";
+
 /* Count of seclected rows: count + selected */
 "%d selected" = "%d selezionato";
 
@@ -47,19 +56,13 @@
 "12 hours" = "12 ore";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Errore di conversione";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Impossibile scaricare il file.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Impossibile caricare il file.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Esiste già un file con un nome simile.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Un file con un nome simile esiste già nella directory dei documenti sul dispositivo.";
+
+/* No comment provided by engineer. */
+"A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." = "Verrà creata una nuova stanza e tutto il contenuto della cartella selezionata verrà copiato lì. Successivamente, puoi invitare altri utenti a collaborare sui file all'interno di una stanza.";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "Un utente o un gruppo potrà solo visualizzare il documento e aggiungere commenti, nonché gestirli.";
@@ -115,6 +118,9 @@
 /* No comment provided by engineer. */
 "Add account" = "Aggiungere account";
 
+/* No comment provided by engineer. */
+"Add manually" = "Aggiungi manualmente";
+
 /* Sharing settings add notification message */
 "Add message" = "Aggiungere messaggio";
 
@@ -137,6 +143,9 @@
 "Address is empty" = "L'indirizzo è vuoto";
 
 /* No comment provided by engineer. */
+"Admin" = "Amministratore";
+
+/* No comment provided by engineer. */
 "Administration" = "Amministrazione";
 
 /* No comment provided by engineer. */
@@ -153,6 +162,9 @@
 
 /* No comment provided by engineer. */
 "All notifications" = "Tutte le notifiche";
+
+/* No comment provided by engineer. */
+"All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" = "Tutti i collegamenti condivisi in questa stanza diventeranno attivi e i suoi contenuti saranno disponibili a chiunque abbia il collegamento. Vuoi ripristinare la stanza?";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Consenti l'accesso tramite link esterno";
@@ -213,6 +225,9 @@
 "Box directory" = "Cartella di Box";
 
 /* No comment provided by engineer. */
+"Business subscription expired" = "L'abbonamento Business è scaduto";
+
+/* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Creando il portale accetti la nostra Informativa sulla privacy e i Termini di servizio";
 
 /* Data units */
@@ -249,6 +264,9 @@
 "Change owner" = "Cambia il proprietario";
 
 /* No comment provided by engineer. */
+"Change room's owner" = "Cambia il proprietario della stanza";
+
+/* No comment provided by engineer. */
 "Change the Room Owner" = "Cambia il proprietario della stanza";
 
 /* No comment provided by engineer. */
@@ -259,6 +277,9 @@
 
 /* No comment provided by engineer. */
 "Choose Files" = "Scegli i file";
+
+/* No comment provided by engineer. */
+"Choose from list" = "Scegli dall'elenco";
 
 /* No comment provided by engineer. */
 "Choose room type" = "Scegli la tipologia di camera";
@@ -351,6 +372,9 @@
 "Connecting" = "Connessione";
 
 /* No comment provided by engineer. */
+"Connection deinitialized" = "Connessione deinizializzata";
+
+/* No comment provided by engineer. */
 "Console" = "Console";
 
 /* No comment provided by engineer. */
@@ -370,6 +394,9 @@
 
 /* Button title */
 "Copy link" = "Copia il link";
+
+/* No comment provided by engineer. */
+"Copy shared link" = "Copia il link condiviso";
 
 /* Caption of the processing */
 "Copying" = "Copiatura";
@@ -473,6 +500,12 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crea nuovi documenti, fogli di calcolo o presentazioni. Crea nuove cartelle per organizzare i tuoi file.";
 
+/* No comment provided by engineer. */
+"Create new files" = "Crea nuovi file";
+
+/* No comment provided by engineer. */
+"Create new folders to \norganize your files." = "Crea nuove cartelle per \norganizzare i tuoi file.";
+
 /* Button title */
 "Create room" = "Crea una stanza";
 
@@ -543,6 +576,9 @@
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Disattiva se non desideri ricevere notifiche da %@";
 
+/* No comment provided by engineer. */
+"Disable notifications" = "Disattiva le notifiche";
+
 /* Button title */
 "Disconnect third party" = "Disconnettere i servizi di terze parti";
 
@@ -570,6 +606,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Scaricamento";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Solo utenti di DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -602,6 +641,9 @@
 "Email" = "Email";
 
 /* No comment provided by engineer. */
+"Email address" = "Indirizzo e-mail";
+
+/* No comment provided by engineer. */
 "Email is empty" = "Campo Email vuoto";
 
 /* No comment provided by engineer. */
@@ -618,6 +660,9 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Abilita se desideri ricevere notifiche da %@";
+
+/* No comment provided by engineer. */
+"Enable notifications" = "Attiva le notifiche";
 
 /* No comment provided by engineer. */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Abilita questa impostazione per disabilitare i download di file e cartelle da questa stanza condivisa tramite un link";
@@ -658,11 +703,17 @@
 /* No comment provided by engineer. */
 "Expect users" = "Aspetta gli utenti";
 
+/* Expiration status */
+"Expired" = "Scaduto";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Scade dopo 7 giorni";
 
 /* Button title */
 "Export" = "Esporta";
+
+/* No comment provided by engineer. */
+"External link" = "Link esterno";
 
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Servizio di conversione online è fallito.";
@@ -791,6 +842,9 @@
 "Groups" = "Gruppi";
 
 /* No comment provided by engineer. */
+"Here you will find a list of the recently opened files shared with you via an external link." = "Qui troverai un elenco dei file aperti di recente condivisi con te tramite un collegamento esterno.";
+
+/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -872,6 +926,9 @@
 "Light" = "Volo";
 
 /* No comment provided by engineer. */
+"Link" = "Link";
+
+/* No comment provided by engineer. */
 "Link and password\nsuccessfully copied\nto clipboard" = "Il link e la password\nsono stati copiati negli\nappunti con successo";
 
 /* No comment provided by engineer. */
@@ -888,6 +945,9 @@
 
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Il link con l'invito è stato inviato alla posta";
+
+/* No comment provided by engineer. */
+"Loading" = "Caricamento";
 
 /* No comment provided by engineer. */
 "Loading..." = "Caricamento...";
@@ -997,13 +1057,25 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"NextCloud" = "NextCloud";
+
+/* No comment provided by engineer. */
 "Nextcloud directory" = "Cartella di Nextcloud";
+
+/* No comment provided by engineer. */
+"No archived rooms here yet" = "Non ci sono ancora stanze archiviate qui";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "Nessun ID cliente dell'applicazione";
 
 /* No comment provided by engineer. */
 "No connection" = "Nessuna connessione";
+
+/* No comment provided by engineer. */
+"No docs here yet" = "Non ci sono ancora documenti qui";
+
+/* No comment provided by engineer. */
+"No files here yet" = "Non ci sono ancora file qui";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Nessuna informazione sul profilo utente.";
@@ -1073,6 +1145,9 @@
 /* No comment provided by engineer. */
 "OneDrive for Business" = "OneDrive for Business";
 
+/* No comment provided by engineer. */
+"Only a room administrator or a DocSpace administrator can become the room owner." = "Solo un amministratore della stanza o un amministratore di DocSpace può diventare il proprietario della stanza.";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1139,6 +1214,9 @@
 /* Data units */
 "Pb" = "Pb";
 
+/* Default title of sample document */
+"PDF Form Sample" = "Esempio di modulo PDF";
+
 /* No comment provided by engineer. */
 "Phone" = "Telefono";
 
@@ -1161,7 +1239,7 @@
 "Pin to top" = "Fissare in alto";
 
 /* No comment provided by engineer. */
-"Pinned failed." = "Impossibile bloccare";
+"Pinned failed." = "Impossibile bloccare.";
 
 /* Caption of the processing */
 "Pinning" = "Bloccaggio";
@@ -1233,6 +1311,9 @@
 "Protection" = "Protezione";
 
 /* No comment provided by engineer. */
+"Provide access to the document and set the permission levels." = "Concedi l'accesso al documento e imposta i livelli di autorizzazione.";
+
+/* No comment provided by engineer. */
 "Provide general access to the document selecting the required permission level." = "Fornisci accesso generale al documento selezionando il livello di autorizzazione richiesto.";
 
 /* No comment provided by engineer. */
@@ -1247,6 +1328,9 @@
 /* Category title */
 "Recent" = "Recente";
 
+/* No comment provided by engineer. */
+"Recently accessible via link" = "Recentemente accessibile tramite link";
+
 /* Button title */
 "Recover here" = "Recuperare qui";
 
@@ -1254,13 +1338,22 @@
 "Recovery" = "Recupero";
 
 /* No comment provided by engineer. */
+"Regenerate link" = "Rigenera link";
+
+/* No comment provided by engineer. */
 "Registration" = "Registrazione";
 
 /* No comment provided by engineer. */
 "Reload" = "Ricaricare";
 
+/* No comment provided by engineer. */
+"Remove" = "Rimuovi";
+
 /* Button title */
 "Remove from Favorites" = "Rimuovi dai preferiti";
+
+/* No comment provided by engineer. */
+"Remove link" = "Rimuovi link";
 
 /* Caption of the process */
 "Removing" = "Eliminazione";
@@ -1276,6 +1369,9 @@
 
 /* Caption of the processing */
 "Renaming" = "Ridenominazione";
+
+/* No comment provided by engineer. */
+"Renew Business plan" = "Rinnova il piano Business";
 
 /* No comment provided by engineer. */
 "Renewal" = "Rinnovo";
@@ -1295,6 +1391,9 @@
 /* Button title */
 "Restore" = "Recuperare";
 
+/* No comment provided by engineer. */
+"Restore room?" = "Ripristinare la stanza?";
+
 /* Caption of the processing */
 "Restoring" = "Recupero";
 
@@ -1304,8 +1403,23 @@
 /* Share status */
 "Reviewer" = "Recensore";
 
+/* No comment provided by engineer. */
+"Revoke link" = "Revoca link";
+
+/* No comment provided by engineer. */
+"Revoked" = "Revocato";
+
+/* No comment provided by engineer. */
+"Revoking" = "Revoca";
+
+/* No comment provided by engineer. */
+"Roles" = "Ruoli";
+
 /* Share status */
 "Room admin" = "Amministratore della stanza";
+
+/* No comment provided by engineer. */
+"Room created!" = "Stanza creata!";
 
 /* No comment provided by engineer. */
 "Room name" = "Nome della stanza";
@@ -1385,7 +1499,19 @@
 "Settings and Security" = "Impostazioni e sicurezza";
 
 /* No comment provided by engineer. */
+"Share" = "Condividere";
+
+/* No comment provided by engineer. */
+"Share folder" = "Condividi cartella";
+
+/* No comment provided by engineer. */
 "Shared access" = "Accesso condiviso";
+
+/* No comment provided by engineer. */
+"Shared link" = "Link condiviso";
+
+/* No comment provided by engineer. */
+"Shared links" = "Link condivisi";
 
 /* Category title */
 "Shared with Me" = "Condivisi con me";
@@ -1457,6 +1583,9 @@
 "Tag" = "Tag";
 
 /* No comment provided by engineer. */
+"Tags" = "Tag";
+
+/* No comment provided by engineer. */
 "Take a Picture" = "Scatta una foto";
 
 /* No comment provided by engineer. */
@@ -1498,7 +1627,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Il link per l'accesso esterno viene copiato negli appunti";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Il link è scaduto";
 
 /* No comment provided by engineer. */
@@ -1509,6 +1638,9 @@
 
 /* No comment provided by engineer. */
 "The list of users previously invited to DocSpace or separate rooms will appear here." = "L'elenco degli utenti precedentemente invitati su DocSpace o su stanze separate verrà visualizzato qui.";
+
+/* No comment provided by engineer. */
+"The new shared link was created" = "Il nuovo link condiviso è stato creato";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "I parametri non sono corretti.";
@@ -1524,6 +1656,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Il nome del portale deve avere una lunghezza compresa tra 6 e 50 caratteri";
+
+/* No comment provided by engineer. */
+"The previous link will become unavailable. A new shared link will be created." = "Il link precedente non sarà più disponibile. Verrà creato un nuovo link condiviso.";
 
 /* No comment provided by engineer. */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "La quota di utenti è quasi esaurita. Contatta l'amministratore del portale";
@@ -1631,6 +1766,9 @@
 "Unarchiving failed." = "Disarchiviazione fallita.";
 
 /* No comment provided by engineer. */
+"Unauthorized members will be able only to view the document." = "I membri non autorizzati potranno solo visualizzare il documento.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Gli utenti non autorizzati potranno solo visualizzare il documento e aggiungere commenti, oltre che gestirli.";
 
 /* No comment provided by engineer. */
@@ -1695,6 +1833,9 @@
 
 /* No comment provided by engineer. */
 "User authentication required" = "È richiesta l'autenticazione dell'utente";
+
+/* No comment provided by engineer. */
+"User name" = "Nome utente";
 
 /* No comment provided by engineer. */
 "User undefined" = "Utente indefinito";
@@ -1769,6 +1910,9 @@
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Tu sei il proprietario di questa stanza. Prima di lasciare la stanza, devi trasferire il ruolo di proprietario ad un altro utente.";
 
 /* No comment provided by engineer. */
+"You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." = "Puoi archiviare le stanze che non utilizzi e ripristinarle nel tuo DocSpace in qualsiasi momento o eliminarle definitivamente. Queste stanze appariranno qui.";
+
+/* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "È possibile collegare i seguenti account a %@.";
 
 /* No comment provided by engineer. */
@@ -1784,6 +1928,9 @@
 "You have read-only access to this folder. You cannot create files or folders here." = "Hai accesso a questa cartella in sola lettura. Non è possibile creare file o cartelle qui.";
 
 /* No comment provided by engineer. */
+"Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Il tuo attuale piano tariffario Business è scaduto. Rinnova l'abbonamento nelle impostazioni dell'account per poter utilizzare DocSpace. In caso di domande, ti preghiamo di contattare l'assistenza.";
+
+/* No comment provided by engineer. */
 "Your session has expired" = "La tua sessione è scaduta";
 
 /* Data units */
@@ -1791,4 +1938,13 @@
 
 /* Data units */
 "Zero bytes" = "Zero byte";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Errore di conversione";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossibile caricare il file.";
 

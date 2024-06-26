@@ -92,6 +92,8 @@ class OnlyofficeApiClient: NetworkingClient {
                     switch code {
                     case 401:
                         return .apiError(error: OnlyofficeServerError.unauthorized)
+                    case 402:
+                        return .apiError(error: OnlyofficeServerError.paymentRequired)
                     case 413:
                         return .apiError(error: OnlyofficeServerError.requestTooLarge)
                     default:

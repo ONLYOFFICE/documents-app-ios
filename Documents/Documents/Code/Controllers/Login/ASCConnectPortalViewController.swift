@@ -109,6 +109,13 @@ class ASCConnectPortalViewController: ASCBaseViewController {
         super.didReceiveMemoryWarning()
     }
 
+    // MARK: - Public
+
+    func forceConnect(to address: String) {
+        addressField?.text = address
+        connect()
+    }
+
     // MARK: - Private
 
     private func ipAddress(of host: String) -> String? {
@@ -227,13 +234,7 @@ class ASCConnectPortalViewController: ASCBaseViewController {
         navigator.navigate(to: .onlyofficeSignIn(portal: addressField?.text?.trimmed))
     }
 
-    // MARK: - Actions
-
-    @IBAction func onClose(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func onContinue(_ sender: Any) {
+    private func connect() {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Connecting", comment: "Caption of the process")
 
@@ -269,6 +270,16 @@ class ASCConnectPortalViewController: ASCBaseViewController {
                 strongSelf.showSignIn()
             }
         }
+    }
+
+    // MARK: - Actions
+
+    @IBAction func onClose(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func onContinue(_ sender: Any) {
+        connect()
     }
 }
 

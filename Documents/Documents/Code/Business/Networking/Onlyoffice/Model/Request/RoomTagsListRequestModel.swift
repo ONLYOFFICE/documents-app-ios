@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct RoomTagsListRequestModel: Codable {
     var startIndex: Int = 0
     var count: Int = 100

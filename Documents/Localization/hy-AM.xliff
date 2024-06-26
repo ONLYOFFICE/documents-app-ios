@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,9 +184,39 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
+      <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>%d day</source>
+        <target>%d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>%d hour</source>
+        <target>%d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d hours</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@իրեր@</target>
@@ -327,11 +357,41 @@ start using your office</source>
         <target>Ջնջել %lu թղթապանակները</target>
         <note/>
       </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@days@</source>
+        <target>%#@days@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d day</source>
+        <target>Expires after %d day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <target>Expires after %d days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@hours@</source>
+        <target>%#@hours@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
+        <source>Expires after %d hour</source>
+        <target>Expires after %d hour</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <target>Expires after %d hours</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -349,10 +409,20 @@ start using your office</source>
         <target>Երկրի կոդ</target>
         <note>Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr";</note>
       </trans-unit>
+      <trans-unit id="3vf-pi-KmX.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Կոճակ</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "3vf-pi-KmX";</note>
+      </trans-unit>
       <trans-unit id="6Zd-HN-8wS.text" xml:space="preserve">
         <source>-</source>
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS";</note>
+      </trans-unit>
+      <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
+        <source>Sign in as LDAP User</source>
+        <target>Մուտք գործել որպես LDAP օգտվող</target>
+        <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
       </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
         <source>Detail</source>
@@ -572,7 +642,7 @@ Authentication</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -675,11 +745,6 @@ Authentication</target>
         <target>iPad-ի վրա</target>
         <note>Class = "UINavigationController"; title = "On iPad"; ObjectID = "gvd-UQ-EFI";</note>
       </trans-unit>
-      <trans-unit id="iQZ-4u-7mL.title" xml:space="preserve">
-        <source>Documents</source>
-        <target>Փաստաթղթեր</target>
-        <note>Class = "UINavigationItem"; title = "Documents"; ObjectID = "iQZ-4u-7mL";</note>
-      </trans-unit>
       <trans-unit id="jRC-an-McY.text" xml:space="preserve">
         <source>Address</source>
         <target>Հասցե</target>
@@ -724,7 +789,7 @@ Authentication</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -805,7 +870,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -832,7 +897,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -869,7 +934,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -926,7 +991,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -949,6 +1014,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Հաստատել գաղտնաբառը</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
+      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
+        <source>Enter your passcode to proceed.</source>
+        <target>Շարունակելու համար մուտքագրեք ձեր ծածկագիրը:</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Մուտքագրեք գաղտնաբառ</target>
@@ -970,7 +1040,8 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose passcode to unlock app</source>
+        <source>Choose your passcode.</source>
+        <target>Ընտրեք ձեր ծածկագիրը:</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
@@ -992,7 +1063,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1074,7 +1145,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1131,9 +1202,24 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
+      <trans-unit id="%@ | %@" xml:space="preserve">
+        <source>%1$@ | %2$@</source>
+        <target>%1$@ | %2$@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%d days" xml:space="preserve">
+        <source>%d days</source>
+        <target>%d օրեր</target>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="%d hours" xml:space="preserve">
+        <source>%d hours</source>
+        <target>%d ժամեր</target>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
         <target>%d ընտրված</target>
@@ -1217,6 +1303,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
         <target>Նման անունով ֆայլ արդեն գոյություն ունի սարքի փաստաթղթերի գրացուցակում:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
+        <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
+        <target>Կստեղծվի նոր սենյակ, և ընտրված թղթապանակի ամբողջ բովանդակությունը կպատճենվի այնտեղ: Այնուհետև կարող եք հրավիրել այլ օգտատերերի՝ համագործակցելու սենյակի ֆայլերի շուրջ:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1309,6 +1400,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Հավելել հաշիվ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Add manually" xml:space="preserve">
+        <source>Add manually</source>
+        <target>Ավելացնել ձեռքով</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
         <source>Add message</source>
         <target>Ավելացնել հաղորդագրություն</target>
@@ -1348,6 +1444,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Admin" xml:space="preserve">
         <source>Admin</source>
+        <target>Ադմինիստրատոր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Administration" xml:space="preserve">
@@ -1382,6 +1479,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" xml:space="preserve">
         <source>All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?</source>
+        <target>Այս սենյակի բոլոր ընդհանուր հղումները կակտիվանան, և դրա բովանդակությունը հասանելի կլինի բոլորին, ովքեր ունեն հղումը: Ցանկանու՞մ եք վերականգնել սենյակը:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1480,6 +1578,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Տուփի գրացուցակ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Business subscription expired" xml:space="preserve">
+        <source>Business subscription expired</source>
+        <target>Բիզնես բաժանորդագրության ժամկետը սպառվել է</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
         <source>By creating the portal you agree with our Privacy Policy and Terms of Service</source>
         <target>Ստեղծելով պորտալը՝ դուք համաձայնում եք մեր Գաղտնիության քաղաքականությանը և Ծառայության պայմաններին</target>
@@ -1535,6 +1638,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Փոխել սեփականատիրոջը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Change room's owner" xml:space="preserve">
+        <source>Change room's owner</source>
+        <target>Փոխել սենյակի սեփականատիրոջը</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Change the Room Owner" xml:space="preserve">
         <source>Change the Room Owner</source>
         <target>Փոխեք սենյակի սեփականատիրոջը</target>
@@ -1553,6 +1661,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Choose Files" xml:space="preserve">
         <source>Choose Files</source>
         <target>Ընտրեք Ֆայլեր</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose from list" xml:space="preserve">
+        <source>Choose from list</source>
+        <target>Ընտրել ցանկից</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1669,6 +1782,11 @@ others which use WebDAV protocol.</source>
         <target>Միացում</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Connection deinitialized" xml:space="preserve">
+        <source>Connection deinitialized</source>
+        <target>Միացումն ապանույնականացվել է</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
         <target>Վահանակ</target>
@@ -1703,6 +1821,11 @@ others which use WebDAV protocol.</source>
         <source>Copy link</source>
         <target>Պատճենել հղումը</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target>Պատճենել ընդհանուր հղումը</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
@@ -1876,11 +1999,14 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new files" xml:space="preserve">
         <source>Create new files</source>
+        <target>Ստեղծել նոր ֆայլեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
         <source>Create new folders to 
 organize your files.</source>
+        <target>Ստեղծեք նոր թղթապանակներ՝ 
+ձեր ֆայլերը կազմակերպելու համար:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -2001,6 +2127,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Disable notifications" xml:space="preserve">
         <source>Disable notifications</source>
+        <target>Անջատել ծանուցումները</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -2048,6 +2175,11 @@ organize your files.</source>
         <source>Downloading</source>
         <target>Ներբեռնում</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="DoсSpace users only" xml:space="preserve">
+        <source>DoсSpace users only</source>
+        <target>Միայն DosSpace օգտվողների համար</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
@@ -2099,6 +2231,11 @@ organize your files.</source>
         <target>Էլ․ փոստ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Email address" xml:space="preserve">
+        <source>Email address</source>
+        <target>Էլեկտրոնային հասցե</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
         <source>Email is empty</source>
         <target>Հասցեն դատարկ է</target>
@@ -2131,6 +2268,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Enable notifications" xml:space="preserve">
         <source>Enable notifications</source>
+        <target>Միացնել ծանուցումները</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
@@ -2178,6 +2316,19 @@ organize your files.</source>
         <target>Սպասեք օգտվողներին</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Expired" xml:space="preserve">
+        <source>Expired</source>
+        <target>Ժամկետանց</target>
+        <note>Expiration status</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d days" xml:space="preserve">
+        <source>Expires after %d days</source>
+        <note>Days left</note>
+      </trans-unit>
+      <trans-unit id="Expires after %d hours" xml:space="preserve">
+        <source>Expires after %d hours</source>
+        <note>Hours left</note>
+      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>Ժամկետը լրանում է 7 օրից</target>
@@ -2187,6 +2338,11 @@ organize your files.</source>
         <source>Export</source>
         <target>Արտահանում</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="External link" xml:space="preserve">
+        <source>External link</source>
+        <target>Արտաքին հղում</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
@@ -2293,8 +2449,9 @@ organize your files.</source>
         <target>Ֆայլերի նախադիտում</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Files and folders uploaded by admins will appeared here." xml:space="preserve">
-        <source>Files and folders uploaded by admins will appeared here.</source>
+      <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
+        <source>Files and folders uploaded by admins will appear here.</source>
+        <target>Ադմինիստրատորների կողմից վերբեռնված ֆայլերը և թղթապանակները կհայտնվեն այստեղ:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2400,6 +2557,11 @@ organize your files.</source>
       <trans-unit id="Groups" xml:space="preserve">
         <source>Groups</source>
         <target>Խմբեր</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
+        <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
+        <target>Այստեղ դուք կգտնեք վերջերս բացված ֆայլերի ցանկը, որոնք ձեզ հետ կիսվել են արտաքին հղման միջոցով:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2517,6 +2679,11 @@ organize your files.</source>
         <target>Լույս</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Link" xml:space="preserve">
+        <source>Link</source>
+        <target>Հղում</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link and password&#10;successfully copied&#10;to clipboard" xml:space="preserve">
         <source>Link and password
 successfully copied
@@ -2553,6 +2720,11 @@ copied to clipboard</source>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
         <source>Link with the invitation has been sent to the mail</source>
         <target>Հղումը հրավերի հետ ուղարկվել էլ․ փոստին</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Loading" xml:space="preserve">
+        <source>Loading</source>
+        <target>Բեռնվում է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Loading..." xml:space="preserve">
@@ -2722,6 +2894,11 @@ copied to clipboard</source>
         <target>Հաջորդը</target>
         <note>Next step</note>
       </trans-unit>
+      <trans-unit id="NextCloud" xml:space="preserve">
+        <source>NextCloud</source>
+        <target>NextCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
@@ -2747,6 +2924,11 @@ copied to clipboard</source>
         <target>Որոնման արդյունք չկա</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No archived rooms here yet" xml:space="preserve">
+        <source>No archived rooms here yet</source>
+        <target>Այստեղ դեռ արխիվացված սենյակներ չկան</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
         <source>No client IDs of application</source>
         <target>Ծրագրի հաճախորդի ID-ներ չկան</target>
@@ -2759,6 +2941,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="No docs here yet" xml:space="preserve">
         <source>No docs here yet</source>
+        <target>Այստեղ դեռ փաստաթղթեր չկան</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No files here yet" xml:space="preserve">
+        <source>No files here yet</source>
+        <target>Այստեղ դեռ ֆայլեր չկան</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -2862,6 +3050,11 @@ copied to clipboard</source>
         <target>OneDrive բիզնեսի համար</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
+        <source>Only a room administrator or a DocSpace administrator can become the room owner.</source>
+        <target>Սենյակի սեփականատեր կարող է դառնալ միայն սենյակի ադմինիստրատորը կամ DocSpace-ի ադմինիստրատորը:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Oops!" xml:space="preserve">
         <source>Oops!</source>
         <target>Oops!</target>
@@ -2916,6 +3109,11 @@ copied to clipboard</source>
         <source>Owner</source>
         <target>Օգտատեր</target>
         <note>Table cell right holder acces text</note>
+      </trans-unit>
+      <trans-unit id="PDF Form Sample" xml:space="preserve">
+        <source>PDF Form Sample</source>
+        <target>PDF Ձևի Նմուշ</target>
+        <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
@@ -3116,6 +3314,11 @@ copied to clipboard</source>
         <target>Պաշտպանություն</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
+        <source>Provide access to the document and set the permission levels.</source>
+        <target>Տրամադրեք մուտք դեպի փաստաթուղթ և սահմանեք թույլտվության մակարդակները:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target>Տրամադրել ընդհանուր մուտք դեպի փաստաթուղթ՝ ընտրելով անհրաժեշտ թույլտվության մակարդակը:</target>
@@ -3141,6 +3344,11 @@ copied to clipboard</source>
         <target>Վերջերս</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Recently accessible via link" xml:space="preserve">
+        <source>Recently accessible via link</source>
+        <target>Վերջերս հասանելի հղման միջոցով</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
         <target>Վերականգնել այստեղ</target>
@@ -3150,6 +3358,11 @@ copied to clipboard</source>
         <source>Recovery</source>
         <target>Վերականգնում</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Regenerate link" xml:space="preserve">
+        <source>Regenerate link</source>
+        <target>Վերականգնել հղումը</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
@@ -3163,12 +3376,18 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Remove" xml:space="preserve">
         <source>Remove</source>
+        <target>Հեռացնել</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
         <target>Հեռացնել ընտրյալներից</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Remove link" xml:space="preserve">
+        <source>Remove link</source>
+        <target>Հեռացնել հղումը</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
@@ -3194,6 +3413,11 @@ copied to clipboard</source>
         <source>Renaming</source>
         <target>Անվանափոխում</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Renew Business plan" xml:space="preserve">
+        <source>Renew Business plan</source>
+        <target>Թարմացնել Բիզնես պլանը</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Renewal" xml:space="preserve">
         <source>Renewal</source>
@@ -3227,6 +3451,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Restore room?" xml:space="preserve">
         <source>Restore room?</source>
+        <target>Վերականգնե՞լ սենյակ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
@@ -3246,18 +3471,22 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Revoke link" xml:space="preserve">
         <source>Revoke link</source>
+        <target>Չեղարկել հղումը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Revoked" xml:space="preserve">
         <source>Revoked</source>
+        <target>Չեղարկված</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Revoking" xml:space="preserve">
         <source>Revoking</source>
+        <target>Չեղարկվում է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
         <source>Roles</source>
+        <target>Դերեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3267,6 +3496,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
         <source>Room created!</source>
+        <target>Սենյակը ստեղծվել է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
@@ -3401,6 +3631,16 @@ copied to clipboard</source>
         <target>Կարգավորումներ և անվտանգություն</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Կիսվել</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share folder" xml:space="preserve">
+        <source>Share folder</source>
+        <target>Համաօգտագործել թղթապանակը</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>SharePoint գրացուցակ</target>
@@ -3409,6 +3649,16 @@ copied to clipboard</source>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target>Համօգտագործվող մուտք</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared link" xml:space="preserve">
+        <source>Shared link</source>
+        <target>Համօգտագործված հղում</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared links" xml:space="preserve">
+        <source>Shared links</source>
+        <target>Համօգտագործված հղումներ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -3518,6 +3768,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Tags" xml:space="preserve">
         <source>Tags</source>
+        <target>Թեգեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
@@ -3597,7 +3848,7 @@ to the clipboard</source>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>Հղման ժամկետը սպառվել է</target>
-        <note>No comment provided by engineer.</note>
+        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>
@@ -3612,6 +3863,11 @@ to the clipboard</source>
       <trans-unit id="The list of users previously invited to DocSpace or separate rooms will appear here." xml:space="preserve">
         <source>The list of users previously invited to DocSpace or separate rooms will appear here.</source>
         <target>Այստեղ կհայտնվի նախկինում DocSpace կամ առանձին սենյակներ հրավիրված օգտատերերի ցանկը:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The new shared link was created" xml:space="preserve">
+        <source>The new shared link was created</source>
+        <target>Նոր համօգտագործվող հղումը ստեղծվել է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
@@ -3639,8 +3895,9 @@ to the clipboard</source>
         <target>Պորտալի անունը պետք է լինի 6-ից 50 նիշ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="The previous link will become unavailable. A new general link will be created." xml:space="preserve">
-        <source>The previous link will become unavailable. A new general link will be created.</source>
+      <trans-unit id="The previous link will become unavailable. A new shared link will be created." xml:space="preserve">
+        <source>The previous link will become unavailable. A new shared link will be created.</source>
+        <target>Նախորդ հղումն անհասանելի կդառնա: Նոր համօգտագործվող հղում կստեղծվի:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The quota of users is almost exhausted. Сontact the portal administrator" xml:space="preserve">
@@ -3820,6 +4077,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unauthorized members will be able only to view the document." xml:space="preserve">
         <source>Unauthorized members will be able only to view the document.</source>
+        <target>Չլիազորված անդամները կկարողանան միայն դիտել փաստաթուղթը:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -3930,6 +4188,11 @@ to the clipboard</source>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
         <target>Պահանջվում է օգտագործողի նույնականացում</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User name" xml:space="preserve">
+        <source>User name</source>
+        <target>Օգտագործողի անուն</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
@@ -4058,6 +4321,11 @@ then accessed from any other device.</source>
         <target>Դուք այս սենյակի սեփականատերն եք: Նախքան սենյակից դուրս գալը, դուք պետք է սեփականատիրոջ դերը փոխանցեք մեկ այլ օգտատիրոջ:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." xml:space="preserve">
+        <source>You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.</source>
+        <target>Դուք կարող եք արխիվացնել այն սենյակները, որոնք չեք օգտագործում և ցանկացած պահի վերականգնել դրանք ձեր DocSpace-ում կամ ընդմիշտ ջնջել: Այս սենյակները կհայտնվեն այստեղ:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@." xml:space="preserve">
         <source>You can connect the following accounts to the %@.</source>
         <target>Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին:</target>
@@ -4081,6 +4349,11 @@ then accessed from any other device.</source>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
         <source>You have read-only access to this folder. You cannot create files or folders here.</source>
         <target>Դուք միայն կարդալու մուտք ունեք այս թղթապանակ: Այստեղ դուք չեք կարող ֆայլեր կամ թղթապանակներ ստեղծել:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
+        <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
+        <target>Ձեր ընթացիկ սակագնային Բիզնես պլանի ժամկետը լրացել է: Խնդրում ենք թարմացնել ձեր բաժանորդագրությունը հաշվի կարգավորումներում, որպեսզի կարողանաք օգտագործել ձեր DocSpace-ը: Եթե ունեք հարցեր, խնդրում ենք դիմել աջակցության ծառայությունը:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -4243,7 +4516,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="hy-AM" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.1" build-num="15C65"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

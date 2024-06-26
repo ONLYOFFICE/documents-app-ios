@@ -7,6 +7,15 @@
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
+/* No comment provided by engineer. */
+"%@ | %@" = "%1$@ | %2$@";
+
+/* Days left */
+"%d days" = "%d օրեր";
+
+/* Hours left */
+"%d hours" = "%d ժամեր";
+
 /* Count of seclected rows: count + selected */
 "%d selected" = "%d ընտրված";
 
@@ -47,19 +56,13 @@
 "12 hours" = "12 ժամ";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Փոխակերպման սխալ";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Նման անունով ֆայլ արդեն գոյություն ունի:";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Նման անունով ֆայլ արդեն գոյություն ունի սարքի փաստաթղթերի գրացուցակում:";
+
+/* No comment provided by engineer. */
+"A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." = "Կստեղծվի նոր սենյակ, և ընտրված թղթապանակի ամբողջ բովանդակությունը կպատճենվի այնտեղ: Այնուհետև կարող եք հրավիրել այլ օգտատերերի՝ համագործակցելու սենյակի ֆայլերի շուրջ:";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "Օգտատերը կամ խումբը կկարողանա միայն դիտել փաստաթուղթը և ավելացնել մեկնաբանություններ, ինչպես նաև կառավարել դրանք:";
@@ -115,6 +118,9 @@
 /* No comment provided by engineer. */
 "Add account" = "Հավելել հաշիվ";
 
+/* No comment provided by engineer. */
+"Add manually" = "Ավելացնել ձեռքով";
+
 /* Sharing settings add notification message */
 "Add message" = "Ավելացնել հաղորդագրություն";
 
@@ -137,6 +143,9 @@
 "Address is empty" = "Հասցեն դատարկ է";
 
 /* No comment provided by engineer. */
+"Admin" = "Ադմինիստրատոր";
+
+/* No comment provided by engineer. */
 "Administration" = "Վարչություն";
 
 /* No comment provided by engineer. */
@@ -153,6 +162,9 @@
 
 /* No comment provided by engineer. */
 "All notifications" = "Բոլոր ծանուցումները";
+
+/* No comment provided by engineer. */
+"All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" = "Այս սենյակի բոլոր ընդհանուր հղումները կակտիվանան, և դրա բովանդակությունը հասանելի կլինի բոլորին, ովքեր ունեն հղումը: Ցանկանու՞մ եք վերականգնել սենյակը:";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Թույլատրել մուտքը արտաքին հղման միջոցով";
@@ -213,6 +225,9 @@
 "Box directory" = "Տուփի գրացուցակ";
 
 /* No comment provided by engineer. */
+"Business subscription expired" = "Բիզնես բաժանորդագրության ժամկետը սպառվել է";
+
+/* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Ստեղծելով պորտալը՝ դուք համաձայնում եք մեր Գաղտնիության քաղաքականությանը և Ծառայության պայմաններին";
 
 /* Data units */
@@ -249,6 +264,9 @@
 "Change owner" = "Փոխել սեփականատիրոջը";
 
 /* No comment provided by engineer. */
+"Change room's owner" = "Փոխել սենյակի սեփականատիրոջը";
+
+/* No comment provided by engineer. */
 "Change the Room Owner" = "Փոխեք սենյակի սեփականատիրոջը";
 
 /* No comment provided by engineer. */
@@ -259,6 +277,9 @@
 
 /* No comment provided by engineer. */
 "Choose Files" = "Ընտրեք Ֆայլեր";
+
+/* No comment provided by engineer. */
+"Choose from list" = "Ընտրել ցանկից";
 
 /* No comment provided by engineer. */
 "Choose room type" = "Ընտրեք սենյակի տեսակը";
@@ -351,6 +372,9 @@
 "Connecting" = "Միացում";
 
 /* No comment provided by engineer. */
+"Connection deinitialized" = "Միացումն ապանույնականացվել է";
+
+/* No comment provided by engineer. */
 "Console" = "Վահանակ";
 
 /* No comment provided by engineer. */
@@ -370,6 +394,9 @@
 
 /* Button title */
 "Copy link" = "Պատճենել հղումը";
+
+/* No comment provided by engineer. */
+"Copy shared link" = "Պատճենել ընդհանուր հղումը";
 
 /* Caption of the processing */
 "Copying" = "Պատճենում";
@@ -473,6 +500,12 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:";
 
+/* No comment provided by engineer. */
+"Create new files" = "Ստեղծել նոր ֆայլեր";
+
+/* No comment provided by engineer. */
+"Create new folders to \norganize your files." = "Ստեղծեք նոր թղթապանակներ՝ \nձեր ֆայլերը կազմակերպելու համար:";
+
 /* Button title */
 "Create room" = "Ստեղծել սենյակ";
 
@@ -543,6 +576,9 @@
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Անջատեք, եթե չեք ցանկանում ծանուցումներ ստանալ %@-ից";
 
+/* No comment provided by engineer. */
+"Disable notifications" = "Անջատել ծանուցումները";
+
 /* Button title */
 "Disconnect third party" = "Անջատեք երրորդ կողմը";
 
@@ -570,6 +606,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Ներբեռնում";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Միայն DosSpace օգտվողների համար";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -602,6 +641,9 @@
 "Email" = "Էլ․ փոստ";
 
 /* No comment provided by engineer. */
+"Email address" = "Էլեկտրոնային հասցե";
+
+/* No comment provided by engineer. */
 "Email is empty" = "Հասցեն դատարկ է";
 
 /* No comment provided by engineer. */
@@ -618,6 +660,9 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Միացնել, եթե ցանկանում եք ծանուցումներ ստանալ %@-ից";
+
+/* No comment provided by engineer. */
+"Enable notifications" = "Միացնել ծանուցումները";
 
 /* No comment provided by engineer. */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Միացրեք այս կարգավորումը՝ այս սենյակից ֆայլերի և պանակների ներբեռնումն անջատելու համար, որոնք համօգտագործվում են հղման միջոցով";
@@ -658,11 +703,17 @@
 /* No comment provided by engineer. */
 "Expect users" = "Սպասեք օգտվողներին";
 
+/* Expiration status */
+"Expired" = "Ժամկետանց";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Ժամկետը լրանում է 7 օրից";
 
 /* Button title */
 "Export" = "Արտահանում";
+
+/* No comment provided by engineer. */
+"External link" = "Արտաքին հղում";
 
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Չհաջողվեց առցանց փոխակերպման ծառայություն:";
@@ -723,6 +774,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "Ֆայլեր";
+
+/* No comment provided by engineer. */
+"Files and folders uploaded by admins will appear here." = "Ադմինիստրատորների կողմից վերբեռնված ֆայլերը և թղթապանակները կհայտնվեն այստեղ:";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Ֆայլերի նախադիտում";
@@ -789,6 +843,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Խմբեր";
+
+/* No comment provided by engineer. */
+"Here you will find a list of the recently opened files shared with you via an external link." = "Այստեղ դուք կգտնեք վերջերս բացված ֆայլերի ցանկը, որոնք ձեզ հետ կիսվել են արտաքին հղման միջոցով:";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -872,6 +929,9 @@
 "Light" = "Լույս";
 
 /* No comment provided by engineer. */
+"Link" = "Հղում";
+
+/* No comment provided by engineer. */
 "Link and password\nsuccessfully copied\nto clipboard" = "Հղումը և գաղտնաբառը\nհաջողությամբ պատճենվեցին\nclipboard-ում";
 
 /* No comment provided by engineer. */
@@ -888,6 +948,9 @@
 
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Հղումը հրավերի հետ ուղարկվել էլ․ փոստին";
+
+/* No comment provided by engineer. */
+"Loading" = "Բեռնվում է";
 
 /* No comment provided by engineer. */
 "Loading..." = "Բեռնվում է...";
@@ -997,13 +1060,25 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"NextCloud" = "NextCloud";
+
+/* No comment provided by engineer. */
 "Nextcloud directory" = "Nextcloud գրացուցակ";
+
+/* No comment provided by engineer. */
+"No archived rooms here yet" = "Այստեղ դեռ արխիվացված սենյակներ չկան";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "Ծրագրի հաճախորդի ID-ներ չկան";
 
 /* No comment provided by engineer. */
 "No connection" = "Կապ չկա";
+
+/* No comment provided by engineer. */
+"No docs here yet" = "Այստեղ դեռ փաստաթղթեր չկան";
+
+/* No comment provided by engineer. */
+"No files here yet" = "Այստեղ դեռ ֆայլեր չկան";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Օգտագործողի պրոֆիլի մասին տեղեկություններ չկան:";
@@ -1073,6 +1148,9 @@
 /* No comment provided by engineer. */
 "OneDrive for Business" = "OneDrive բիզնեսի համար";
 
+/* No comment provided by engineer. */
+"Only a room administrator or a DocSpace administrator can become the room owner." = "Սենյակի սեփականատեր կարող է դառնալ միայն սենյակի ադմինիստրատորը կամ DocSpace-ի ադմինիստրատորը:";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1138,6 +1216,9 @@
 
 /* Data units */
 "Pb" = "Pb";
+
+/* Default title of sample document */
+"PDF Form Sample" = "PDF Ձևի Նմուշ";
 
 /* No comment provided by engineer. */
 "Phone" = "Հեռախոս";
@@ -1233,6 +1314,9 @@
 "Protection" = "Պաշտպանություն";
 
 /* No comment provided by engineer. */
+"Provide access to the document and set the permission levels." = "Տրամադրեք մուտք դեպի փաստաթուղթ և սահմանեք թույլտվության մակարդակները:";
+
+/* No comment provided by engineer. */
 "Provide general access to the document selecting the required permission level." = "Տրամադրել ընդհանուր մուտք դեպի փաստաթուղթ՝ ընտրելով անհրաժեշտ թույլտվության մակարդակը:";
 
 /* No comment provided by engineer. */
@@ -1247,6 +1331,9 @@
 /* Category title */
 "Recent" = "Վերջերս";
 
+/* No comment provided by engineer. */
+"Recently accessible via link" = "Վերջերս հասանելի հղման միջոցով";
+
 /* Button title */
 "Recover here" = "Վերականգնել այստեղ";
 
@@ -1254,13 +1341,22 @@
 "Recovery" = "Վերականգնում";
 
 /* No comment provided by engineer. */
+"Regenerate link" = "Վերականգնել հղումը";
+
+/* No comment provided by engineer. */
 "Registration" = "Գրանցում";
 
 /* No comment provided by engineer. */
 "Reload" = "Վերբեռնել";
 
+/* No comment provided by engineer. */
+"Remove" = "Հեռացնել";
+
 /* Button title */
 "Remove from Favorites" = "Հեռացնել ընտրյալներից";
+
+/* No comment provided by engineer. */
+"Remove link" = "Հեռացնել հղումը";
 
 /* Caption of the process */
 "Removing" = "Հեռացնելով";
@@ -1276,6 +1372,9 @@
 
 /* Caption of the processing */
 "Renaming" = "Անվանափոխում";
+
+/* No comment provided by engineer. */
+"Renew Business plan" = "Թարմացնել Բիզնես պլանը";
 
 /* No comment provided by engineer. */
 "Renewal" = "Թարմացում";
@@ -1295,6 +1394,9 @@
 /* Button title */
 "Restore" = "Վերականգնել";
 
+/* No comment provided by engineer. */
+"Restore room?" = "Վերականգնե՞լ սենյակ";
+
 /* Caption of the processing */
 "Restoring" = "Վերականգնում";
 
@@ -1304,8 +1406,23 @@
 /* Share status */
 "Reviewer" = "Վերանայող";
 
+/* No comment provided by engineer. */
+"Revoke link" = "Չեղարկել հղումը";
+
+/* No comment provided by engineer. */
+"Revoked" = "Չեղարկված";
+
+/* No comment provided by engineer. */
+"Revoking" = "Չեղարկվում է";
+
+/* No comment provided by engineer. */
+"Roles" = "Դերեր";
+
 /* Share status */
 "Room admin" = "Սենյակի ադմին";
+
+/* No comment provided by engineer. */
+"Room created!" = "Սենյակը ստեղծվել է";
 
 /* No comment provided by engineer. */
 "Room name" = "Սենյակի անվանումը";
@@ -1385,7 +1502,19 @@
 "Settings and Security" = "Կարգավորումներ և անվտանգություն";
 
 /* No comment provided by engineer. */
+"Share" = "Կիսվել";
+
+/* No comment provided by engineer. */
+"Share folder" = "Համաօգտագործել թղթապանակը";
+
+/* No comment provided by engineer. */
 "Shared access" = "Համօգտագործվող մուտք";
+
+/* No comment provided by engineer. */
+"Shared link" = "Համօգտագործված հղում";
+
+/* No comment provided by engineer. */
+"Shared links" = "Համօգտագործված հղումներ";
 
 /* Category title */
 "Shared with Me" = "Կիսվել է ինձ հետ";
@@ -1457,6 +1586,9 @@
 "Tag" = "Նշել";
 
 /* No comment provided by engineer. */
+"Tags" = "Թեգեր";
+
+/* No comment provided by engineer. */
 "Take a Picture" = "Լուսանկարել";
 
 /* No comment provided by engineer. */
@@ -1498,7 +1630,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Հղում արտաքինի համար\nմուտքը պատճենված է\nդեպի clipboard";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Հղման ժամկետը սպառվել է";
 
 /* No comment provided by engineer. */
@@ -1509,6 +1641,9 @@
 
 /* No comment provided by engineer. */
 "The list of users previously invited to DocSpace or separate rooms will appear here." = "Այստեղ կհայտնվի նախկինում DocSpace կամ առանձին սենյակներ հրավիրված օգտատերերի ցանկը:";
+
+/* No comment provided by engineer. */
+"The new shared link was created" = "Նոր համօգտագործվող հղումը ստեղծվել է";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Պարամետրերը սխալ են։";
@@ -1524,6 +1659,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Պորտալի անունը պետք է լինի 6-ից 50 նիշ";
+
+/* No comment provided by engineer. */
+"The previous link will become unavailable. A new shared link will be created." = "Նախորդ հղումն անհասանելի կդառնա: Նոր համօգտագործվող հղում կստեղծվի:";
 
 /* No comment provided by engineer. */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Օգտատերերի չափաբաժինը գրեթե սպառվել է։ Կապվեք պորտալի ադմինիստրատորի հետ։";
@@ -1631,6 +1769,9 @@
 "Unarchiving failed." = "Ապաարխիվացումը ձախողվեց:";
 
 /* No comment provided by engineer. */
+"Unauthorized members will be able only to view the document." = "Չլիազորված անդամները կկարողանան միայն դիտել փաստաթուղթը:";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Չլիազորված օգտատերերը կկարողանան միայն դիտել փաստաթուղթը և ավելացնել մեկնաբանություններ, ինչպես նաև կառավարել դրանք։";
 
 /* No comment provided by engineer. */
@@ -1695,6 +1836,9 @@
 
 /* No comment provided by engineer. */
 "User authentication required" = "Պահանջվում է օգտագործողի նույնականացում";
+
+/* No comment provided by engineer. */
+"User name" = "Օգտագործողի անուն";
 
 /* No comment provided by engineer. */
 "User undefined" = "Օգտատերը չսահմանված է";
@@ -1769,6 +1913,9 @@
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Դուք այս սենյակի սեփականատերն եք: Նախքան սենյակից դուրս գալը, դուք պետք է սեփականատիրոջ դերը փոխանցեք մեկ այլ օգտատիրոջ:";
 
 /* No comment provided by engineer. */
+"You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." = "Դուք կարող եք արխիվացնել այն սենյակները, որոնք չեք օգտագործում և ցանկացած պահի վերականգնել դրանք ձեր DocSpace-ում կամ ընդմիշտ ջնջել: Այս սենյակները կհայտնվեն այստեղ:";
+
+/* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին:";
 
 /* No comment provided by engineer. */
@@ -1784,6 +1931,9 @@
 "You have read-only access to this folder. You cannot create files or folders here." = "Դուք միայն կարդալու մուտք ունեք այս թղթապանակ: Այստեղ դուք չեք կարող ֆայլեր կամ թղթապանակներ ստեղծել:";
 
 /* No comment provided by engineer. */
+"Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Ձեր ընթացիկ սակագնային Բիզնես պլանի ժամկետը լրացել է: Խնդրում ենք թարմացնել ձեր բաժանորդագրությունը հաշվի կարգավորումներում, որպեսզի կարողանաք օգտագործել ձեր DocSpace-ը: Եթե ունեք հարցեր, խնդրում ենք դիմել աջակցության ծառայությունը:";
+
+/* No comment provided by engineer. */
 "Your session has expired" = "Ձեր նստաշրջանի ժամկետն ավարտվել է";
 
 /* Data units */
@@ -1791,4 +1941,13 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Փոխակերպման սխալ";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
 

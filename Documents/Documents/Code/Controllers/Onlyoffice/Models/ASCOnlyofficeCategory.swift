@@ -30,7 +30,9 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func title(of type: ASCFolderType) -> String {
         switch type {
         case .onlyofficeUser:
-            return NSLocalizedString("My Documents", comment: "Category title")
+            return ASCOnlyofficeProvider.isDocspaceApi
+                ? NSLocalizedString("Documents", comment: "Category title")
+                : NSLocalizedString("My Documents", comment: "Category title")
         case .onlyofficeShare:
             return NSLocalizedString("Shared with Me", comment: "Category title")
         case .onlyofficeFavorites:
@@ -128,7 +130,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func isDocSpace(type: ASCFolderType) -> Bool {
         guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
-        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser:
+        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser, .onlyofficeRecent:
             return true
         default:
             return false
@@ -151,6 +153,8 @@ class ASCOnlyofficeCategory: ASCCategory {
             return "Active"
         case .onlyofficeRoomArchived:
             return "Archive"
+        case .onlyofficeRecent:
+            return "RecentByLinks"
         default: return nil
         }
     }

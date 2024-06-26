@@ -66,7 +66,7 @@ class ASCSharingChooseNewOwnerRightHoldersView {
 
     private lazy var usersNotFoundView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
-        view.type = .usersNotFound
+        view.type = .usersNotFoundForDocSpaceRoomOwner
         return view
     }()
 
@@ -339,7 +339,7 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
                 emptyView.imageView.image = nil
                 emptyView.frame = usersTableView.frame.offsetBy(dx: 0, dy: preferedContentHeight / 2 - 100)
             } else if emptyView.imageView.image == nil {
-                emptyView.type = .usersNotFound
+                emptyView.type = .usersNotFoundForDocSpaceRoomOwner
             }
 
             usersTableView.addSubview(emptyView)

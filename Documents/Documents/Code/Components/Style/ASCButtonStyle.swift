@@ -102,9 +102,9 @@ class ASCButtonStyle: UIButton {
             case .link:
                 backgroundColor = .clear
                 setTitleColorForAllStates(
-                    self.isHighlighted
-                    ? .systemBlue.lighten(by: 0.1)
-                    : .systemBlue
+                    isHighlighted
+                        ? .systemBlue.lighten(by: 0.1)
+                        : .systemBlue
                 )
             default:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
@@ -146,8 +146,8 @@ class ASCButtonStyle: UIButton {
                 backgroundColor = .clear
                 setTitleColorForAllStates(
                     isEnabled
-                    ? .systemBlue
-                    : .lightGray.lighten(by: 0.5)
+                        ? .systemBlue
+                        : .lightGray.lighten(by: 0.5)
                 )
             default:
                 backgroundColor = isEnabled ? Asset.Colors.brend.color : Asset.Colors.grayLight.color

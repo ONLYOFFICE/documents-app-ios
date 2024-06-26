@@ -1,8 +1,8 @@
-"Improved compatibility with DocSpace" = "增强的协作空间兼容性";
-"Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc." = "使用任何 iOS 设备登录协作空间，创建房间、邀请用户、添加标签等。";
-"Changing text document language" = "更改文本文档语言";
-"Switch the language of the text document for correct spellchecking and hyphenation." = "切换文本文档的语言，进行正确的拼写检查和连字符输入。";
-"Search for spreadsheet formulas" = "搜索电子表格公式";
-"Find necessary formulas in your worksheets using searching bar." = "使用搜索栏查找所需的公式。";
-"Custom cell format" = "自定义单元格格式";
-"Use custom cell format to display the value as a postal code, phone number or license plate." = "使用自定义的单元格格式，如邮政编码、电话号码或车牌。";
+"Align text vertically in shapes inserted into your docs, sheets and slides" = "在文本文档、电子表格和演示文稿中垂直对齐形状中的文本";
+"Create new paragraph styles and delete the ones you have already created" = "创建新的段落样式并删除以前的样式";
+"Improved integration with ONLYOFFICE DocSpace v2.5" = "ONLYOFFICE 协作空间 2.5 集成改进";
+"More convenient navigation through form fields" = "更简单地浏览表单字段 ";
+"Navigation buttons for form fields are now located on the navigation panel" = "在导航面板上快速使用表单字段的导航按钮";
+"Paragraph styles management in the document editor" = "文档编辑器中管理段落样式";
+"Sign in to your ONLYOFFICE DocSpace and access the new features of version 2.5" = "登录 ONLYOFFICE 协作空间，使用 2.5 版本所需的新功能";
+"Vertical text alignment in shapes in all the editors" = "所有编辑器中调整形状中的垂直文本对齐";

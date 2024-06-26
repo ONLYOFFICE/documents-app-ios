@@ -16,11 +16,30 @@ final class ASCPresentationEditorConfiguration: ASCPresentationEditorConfigurati
         ]
     }
 
-    func localEditor(config: PresentationEditor.EditorConfiguration) -> PresentationEditor.EditorConfiguration {
+    func localEditor(
+        config: PresentationEditor.EditorConfiguration,
+        file: ASCFile?,
+        provider: ASCFileProviderProtocol?
+    ) -> PresentationEditor.EditorConfiguration {
         config
     }
 
-    func cloudEditor(config: PresentationEditor.EditorConfiguration) -> PresentationEditor.EditorConfiguration {
-        config
+    func cloudEditor(
+        config: PresentationEditor.EditorConfiguration,
+        file: ASCFile?,
+        provider: ASCFileProviderProtocol?
+    ) -> PresentationEditor.EditorConfiguration {
+        var config = config
+
+        if let file, let folder = file.parent, let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
+            let canEdit = onlyofficeProvider.allowEdit(entity: file)
+            let canShare = onlyofficeProvider.allowShare(entity: file)
+            let canDownload = !file.denyDownload
+            let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+
+            config.supportShare = canEdit && canShare && !isProjects && canDownload && folder.roomType == nil
+        }
+
+        return config
     }
 }

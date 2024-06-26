@@ -9,9 +9,8 @@
 import Foundation
 
 class ASCDocSpaceRoomsFiltersController: ASCDocSpaceFiltersController {
-    
     private let networkService = OnlyofficeApiClient.shared
-    
+
     required init(
         builder: ASCFiltersCollectionViewModelBuilder,
         filtersViewController: ASCFiltersViewController,

@@ -152,7 +152,7 @@ class ASCFolderCell: MGSwipeTableCell {
             titleImage.image = Asset.Images.pin.image
         }
 
-        if let provider = folder?.providerType {
+        if let provider = folder?.providerType, folderInfo.roomType == nil {
             switch provider {
             case .boxNet:
                 icon.image = Asset.Images.listFolderBoxnet.image
@@ -229,6 +229,7 @@ class ASCFolderCell: MGSwipeTableCell {
             var color = Asset.Colors.roomDefault.color
 
             if folder?.rootFolderType == .onlyofficeRoomArchived {
+                setPublicRoomIcon()
                 color = Asset.Colors.roomArchive.color
             } else if let hexColor = folder?.logo?.color {
                 color = UIColor(hex: "#\(hexColor)")
@@ -242,7 +243,18 @@ class ASCFolderCell: MGSwipeTableCell {
 
     private func setPrivateIcon() {
         if let folder {
-            privateIcon.isHidden = !folder.isPrivate
+            if folder.isPublicRoom {
+                setPublicRoomIcon()
+            } else {
+                privateIcon.isHidden = !folder.isPrivate
+            }
+        }
+    }
+
+    private func setPublicRoomIcon() {
+        if let folder, folder.isPublicRoom {
+            privateIcon.image = Asset.Images.world.image
+            privateIcon.isHidden = false
         }
     }
 
@@ -257,4 +269,10 @@ class ASCFolderCell: MGSwipeTableCell {
 private enum Constants {
     static let imageSize: CGFloat = 36
     static let cornerRadius: CGFloat = 8
+}
+
+private extension ASCFolder {
+    var isPublicRoom: Bool {
+        return isRoom && roomType == .public
+    }
 }

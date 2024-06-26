@@ -23,13 +23,17 @@ private struct ItemDragInfo {
 
 extension ASCDocumentsViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        if tableView.cellForRow(at: indexPath) != nil, let providerId = provider?.id {
-            let documentItemProvider = ASCEntityItemProvider(providerId: providerId, entity: tableData[indexPath.row])
-            let itemProvider = NSItemProvider(object: documentItemProvider)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            return [dragItem]
+        guard
+            tableView.cellForRow(at: indexPath) != nil,
+            let providerId = provider?.id,
+            provider?.allowDragAndDrop(for: tableData[indexPath.row]) == true
+        else {
+            return []
         }
-        return []
+        let documentItemProvider = ASCEntityItemProvider(providerId: providerId, entity: tableData[indexPath.row])
+        let itemProvider = NSItemProvider(object: documentItemProvider)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        return [dragItem]
     }
 
     func tableView(_ tableView: UITableView, dragSessionWillBegin session: UIDragSession) {
@@ -175,7 +179,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                             srcDocumentsVC.provider?.remove(at: index)
                                         }
                                     }
-                                    srcDocumentsVC.tableView?.reloadData()
+                                    srcDocumentsVC.tableView.reloadData()
                                 }
                             } else {
                                 log.error("Items don't copied")
@@ -218,7 +222,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                         srcDocumentsVC.provider?.remove(at: index)
                                     }
                                 }
-                                srcDocumentsVC.tableView?.reloadData()
+                                srcDocumentsVC.tableView.reloadData()
                                 srcDocumentsVC.showEmptyView(srcDocumentsVC.total < 1)
                                 srcDocumentsVC.updateNavBar()
                             }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 enum ASCShareLinkType: Int, Codable {
@@ -95,34 +96,42 @@ enum ASCShareAccess: Int, CaseIterable {
     }
 
     func image() -> UIImage? {
+        imageAsset?.image
+    }
+
+    var swiftUIImage: Image? {
+        imageAsset?.swiftUIImage
+    }
+
+    private var imageAsset: ImageAsset? {
         if #available(iOS 13, *) {
             switch self {
             case .none:
                 return nil
             case .full:
-                return Asset.Images.menuFullAccess.image
+                return Asset.Images.menuFullAccess
             case .read:
-                return Asset.Images.menuViewOnly.image
+                return Asset.Images.menuViewOnly
             case .deny:
-                return Asset.Images.menuDenyAccess.image
+                return Asset.Images.menuDenyAccess
             case .varies:
 
                 return nil // MARK: - TODO
 
             case .review:
-                return Asset.Images.menuReview.image
+                return Asset.Images.menuReview
             case .comment:
-                return Asset.Images.menuComment.image
+                return Asset.Images.menuComment
             case .fillForms:
-                return Asset.Images.menuFormFilling.image
+                return Asset.Images.menuFormFilling
             case .userFilter:
-                return Asset.Images.menuCustomFilter.image
+                return Asset.Images.menuCustomFilter
             case .roomManager:
-                return Asset.Images.menuPerson.image
+                return Asset.Images.menuPerson
             case .editing:
-                return Asset.Images.menuFullAccess.image
+                return Asset.Images.menuFullAccess
             case .powerUser:
-                return Asset.Images.menuPersonStar.image
+                return Asset.Images.menuPersonStar
             }
         }
         return nil

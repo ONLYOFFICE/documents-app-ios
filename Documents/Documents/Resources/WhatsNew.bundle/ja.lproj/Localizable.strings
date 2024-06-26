@@ -1,8 +1,8 @@
-"Improved compatibility with DocSpace" = "DocSpaceとの互換性が向上";
-"Sign in to your DocSpace on any iOS device to create rooms, invite users, add tags, etc." = "iOSデバイスでDocSpaceにサインインして、ルームの作成、ユーザーの招待、タグの追加などができる。";
-"Changing text document language" = "テキスト文書の言語を変更する";
-"Switch the language of the text document for correct spellchecking and hyphenation." = "テキスト文書の言語を切り替えて、スペルチェックやハイフネーションを正しく行う。";
-"Search for spreadsheet formulas" = "スプレッドシートの数式を検索する";
-"Find necessary formulas in your worksheets using searching bar." = "検索バーを使用して、ワークシート内の必要な数式を検索する。";
-"Custom cell format" = "カスタムセル形式";
-"Use custom cell format to display the value as a postal code, phone number or license plate." = "カスタムセルフォーマットを使用して、値を郵便番号、電話番号、またはナンバープレートとして表示する。";
+"Align text vertically in shapes inserted into your docs, sheets and slides" = "ドキュメント、シート、スライドに挿入された図形内のテキストを垂直に整列";
+"Create new paragraph styles and delete the ones you have already created" = "新しい段落スタイルの作成と、作成済みの段落スタイルの削除";
+"Improved integration with ONLYOFFICE DocSpace v2.5" = "ONLYOFFICE DocSpace v2.5との連携強化";
+"More convenient navigation through form fields" = "フォームフィールドのナビゲーションがより便利に ";
+"Navigation buttons for form fields are now located on the navigation panel" = "フォームフィールドのナビゲーションボタンをナビゲーションパネルに配置";
+"Paragraph styles management in the document editor" = "ドキュメントエディタでの段落スタイル管理";
+"Sign in to your ONLYOFFICE DocSpace and access the new features of version 2.5" = "ONLYOFFICE DocSpaceにサインインし、バージョン2.5の新機能にアクセスする";
+"Vertical text alignment in shapes in all the editors" = "すべてのエディタで図形内のテキストを垂直に整列";

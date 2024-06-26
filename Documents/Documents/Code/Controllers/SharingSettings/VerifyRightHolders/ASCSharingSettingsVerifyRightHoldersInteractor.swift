@@ -13,7 +13,7 @@ protocol ASCSharingSettingsVerifyRightHoldersBusinessLogic {
     func makeRequest(requestType: ASCSharingSettingsVerifyRightHolders.Model.Request.RequestType)
 }
 
-protocol ASCSharingSettingsVerifyRightHoldersDataStore {
+protocol ASCSharingSettingsVerifyRightHoldersDataStore: AnyObject {
     var entity: ASCEntity? { get set }
     var doneCompletion: () -> Void { get set }
 

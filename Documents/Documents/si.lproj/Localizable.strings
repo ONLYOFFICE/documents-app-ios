@@ -47,15 +47,6 @@
 "12 hours" = "පැය 12";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "පරිවර්තන දෝෂය";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "දැනටමත් සමාන නමක් සහිත ගොනුවක් ඇත.";
 
 /* No comment provided by engineer. */
@@ -440,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "ගොනුවෙන් කියවීමට නොහැකි විය";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "ගොනුව සුරැකීමට නොහැකි විය.";
-
 /* Description of file operation error */
 "Could not write to file" = "ගොනුවට ලිවීමට නොහැකි විය";
 
@@ -476,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "නව ලේඛන, පැතුරුම්පත් හෝ සමර්පණ සාදන්න. ඔබගේ ගොනු සංවිධානය කිරීමට නව බහාලුම් සාදන්න.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "කාමරය සාදන්න";
 
 /* Caption of the process
@@ -1323,9 +1311,6 @@
 /* No comment provided by engineer. */
 "Save" = "සුරකින්න";
 
-/* No comment provided by engineer. */
-"Saved" = "සුරකින ලදී";
-
 /* Caption of the processing */
 "Saving" = "සුරැකෙමින්";
 
@@ -1504,7 +1489,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "බාහිර ප්‍රවේශය සඳහා\nසබැඳිය පසුරු පුවරුවට\nපිටපත් කර ඇත";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "සබැඳිය ඉකුත් වී ඇත";
 
 /* No comment provided by engineer. */
@@ -1797,4 +1782,13 @@
 
 /* Data units */
 "Zero bytes" = "බයිට ශූන්‍යයි";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "පරිවර්තන දෝෂය";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
 

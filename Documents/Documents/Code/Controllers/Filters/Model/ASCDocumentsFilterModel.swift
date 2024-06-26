@@ -115,10 +115,11 @@ enum ApiFilterType {
     case tag(String)
     /// third party resource
     case dropBox
+    case nextCloud
     case googleDrive
     case oneDrive
     case box
-    
+
     var rawValue: String {
         switch self {
         case .none:
@@ -169,6 +170,8 @@ enum ApiFilterType {
             return "publicRoom"
         case .dropBox:
             return "dropBox"
+        case .nextCloud:
+            return "nextCloud"
         case .googleDrive:
             return "3"
         case .oneDrive:
@@ -226,6 +229,8 @@ enum ApiFilterType {
             return "6"
         case .dropBox:
             return "2"
+        case .nextCloud:
+            return "7"
         case .googleDrive:
             return "3"
         case .oneDrive:
@@ -285,6 +290,8 @@ extension ApiFilterType {
             self = .publicRoom
         case "dropBox":
             self = .dropBox
+        case "nextCloud":
+            self = .nextCloud
         case "googleDrive":
             self = .googleDrive
         case "oneDrive":
@@ -298,35 +305,36 @@ extension ApiFilterType {
 }
 
 extension ApiFilterType: Equatable {
-    static func ==(lhs: ApiFilterType, rhs: ApiFilterType) -> Bool {
+    static func == (lhs: ApiFilterType, rhs: ApiFilterType) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none),
-            (.files, .files),
-            (.folders, .folders),
-            (.documents, .documents),
-            (.presentations, .presentations),
-            (.spreadsheets, .spreadsheets),
-            (.formTemplates, .formTemplates),
-            (.forms, .forms), (.images, .images),
-            (.me, .me),
-            (.user, .user),
-            (.group, .group),
-            (.archive, .archive),
-            (.byExtension, .byExtension),
-            (.media, .media),
-            (.excludeSubfolders, .excludeSubfolders),
-            (.customRoom, .customRoom),
-            (.fillingFormRoom, .fillingFormRoom),
-            (.collaborationRoom, .collaborationRoom),
-            (.reviewRoom, .reviewRoom),
-            (.viewOnlyRoom, .viewOnlyRoom),
-            (.publicRoom, .publicRoom),
-            (.dropBox, .dropBox),
-            (.googleDrive, .googleDrive),
-            (.oneDrive, .oneDrive),
-            (.box, .box):
+             (.files, .files),
+             (.folders, .folders),
+             (.documents, .documents),
+             (.presentations, .presentations),
+             (.spreadsheets, .spreadsheets),
+             (.formTemplates, .formTemplates),
+             (.forms, .forms), (.images, .images),
+             (.me, .me),
+             (.user, .user),
+             (.group, .group),
+             (.archive, .archive),
+             (.byExtension, .byExtension),
+             (.media, .media),
+             (.excludeSubfolders, .excludeSubfolders),
+             (.customRoom, .customRoom),
+             (.fillingFormRoom, .fillingFormRoom),
+             (.collaborationRoom, .collaborationRoom),
+             (.reviewRoom, .reviewRoom),
+             (.viewOnlyRoom, .viewOnlyRoom),
+             (.publicRoom, .publicRoom),
+             (.dropBox, .dropBox),
+             (.nextCloud, .nextCloud),
+             (.googleDrive, .googleDrive),
+             (.oneDrive, .oneDrive),
+             (.box, .box):
             return true
-        case (.tag(let leftTag), .tag(let rightTag)):
+        case let (.tag(leftTag), .tag(rightTag)):
             return leftTag == rightTag
         default:
             return false
@@ -382,6 +390,7 @@ enum FiltersName: String, CaseIterable {
     case publicRoom
     /// third party resource
     case dropBox
+    case nextCloud
     case googleDrive
     case oneDrive
     case box
@@ -426,6 +435,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Public", comment: "")
         case .dropBox:
             return NSLocalizedString("Dropbox", comment: "")
+        case .nextCloud:
+            return NSLocalizedString("NextCloud", comment: "")
         case .googleDrive:
             return NSLocalizedString("Google Drive", comment: "")
         case .oneDrive:

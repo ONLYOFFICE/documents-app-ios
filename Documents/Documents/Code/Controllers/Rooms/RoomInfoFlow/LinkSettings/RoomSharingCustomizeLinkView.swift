@@ -102,7 +102,8 @@ struct RoomSharingCustomizeLinkView: View {
             if viewModel.isTimeLimited {
                 TimeLimitCellView(model: TimeLimitCellModel(
                     selectedDate: $viewModel.selectedDate,
-                    title: NSLocalizedString("Valid through", comment: "")
+                    title: NSLocalizedString("Valid through", comment: ""),
+                    displayedComponents: [.date, .hourAndMinute]
                 ))
             }
         }
@@ -210,7 +211,7 @@ struct RoomSharingCustomizeLinkView: View {
     private func revokeAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Revoke link", comment: "")),
-            message: Text(NSLocalizedString("The previous link will become unavailable. A new general link will be created.", comment: "")),
+            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
             primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
                 viewModel.onRevoke()
             }),

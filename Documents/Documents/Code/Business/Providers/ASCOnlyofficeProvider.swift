@@ -316,7 +316,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
                 "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
             ]
-            if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType), let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
+            if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
+               let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
+            {
                 params["searchArea"] = searchArea
             }
 
@@ -328,7 +330,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Sort
-
             strongSelf.fetchInfo = parameters
 
             if let sort = parameters["sort"] as? [String: Any] {
@@ -1187,6 +1188,23 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return true
     }
 
+    func allowDragAndDrop(for entity: ASCEntity?) -> Bool {
+        let file = entity as? ASCFile
+        let folder = entity as? ASCFolder
+        let parentFolder = file?.parent ?? folder?.parent
+
+        if file != nil, parentFolder?.rootFolderType == .onlyofficeRoomArchived {
+            return false
+        }
+        if let folder, folder.rootFolderType == .onlyofficeRoomArchived {
+            return false
+        }
+        if let folder, folder.isRoom, folder.rootFolderType == .onlyofficeRoomShared {
+            return false
+        }
+        return true
+    }
+
     func actions(for entity: ASCEntity?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
@@ -1286,6 +1304,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if file.isNew {
                 entityActions.insert(.new)
             }
+
+            if isUserCategory, isDocspace, canShare {
+                entityActions.insert(.docspaceShare)
+                entityActions.insert(.copySharedLink)
+            }
         }
 
         return entityActions
@@ -1312,6 +1335,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
+            if !folder.isEmpty {
+                entityActions.insert(.select)
+            }
+
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
             }
@@ -1336,7 +1363,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.delete)
             }
 
-            if isThirdParty {
+            if isThirdParty, !folder.isRoom {
                 entityActions.insert(.unmount)
             }
 
@@ -1352,9 +1379,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canEdit, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
             }
-            
-            if isDocspace, folder.isRoom {
+
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .onlyofficeRoomArchived) {
                 entityActions.insert(.disableNotifications)
+            }
+
+            if isDocspace, isUserCategory, canShare {
+                entityActions.insert(.shareAsRoom)
             }
 
             if isRoomFolder, !isArchiveCategory {
@@ -1619,6 +1650,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///
     /// - Parameter error: Error
     func handleNetworkError(_ error: Error?) -> Bool {
+        // Internal reset session, do not handle
+        if let error = error as? NetworkingError {
+            switch error {
+            case .cancelled, .sessionDeinitialized:
+                return true
+            default:
+                break
+            }
+        }
+
         let endSessionLife = apiClient.expires == nil || Date() > apiClient.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
@@ -1633,6 +1674,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             case let .apiError(error):
                 if let error = error as? OnlyofficeServerError {
                     switch error {
+                    case .paymentRequired:
+                        return true
                     case .unauthorized:
                         errorFeedback(title: error.localizedDescription, message: NSLocalizedString("Please re-login to renew your session.", comment: ""))
                     case let .unknown(message):
@@ -1671,8 +1714,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if let onlyofficeError = error as? OnlyofficeServerError {
                     switch onlyofficeError {
                     case .paymentRequired:
-                        title = ASCLocalization.Error.paymentRequiredTitle
-                        message = ASCLocalization.Error.paymentRequiredMsg
+                        return
                     case .forbidden:
                         title = ASCLocalization.Error.forbiddenTitle
                         message = ASCLocalization.Error.forbiddenMsg
@@ -1680,6 +1722,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         message = error.localizedDescription
                     }
                 }
+
+            case .cancelled, .sessionDeinitialized:
+                return
+
             default:
                 break
             }
@@ -1743,100 +1789,100 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt) || file.editable
 
-        if allowOpen {
-            let strongDelegate = delegate
-            let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-            let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-            let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
-                if let editorFile = editorFile {
-                    self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
-                        if let portalFile = entity as? ASCFile {
-                            complation(portalFile.isFavorite)
-                        } else {
-                            complation(editorFile.isFavorite)
-                        }
-                    }
-                }
-            }
-            let shareHandler: ASCEditorManagerShareHandler = { file in
-                guard let file = file else { return }
-                strongDelegate?.presentShareController(provider: self, entity: file)
-            }
-            let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
-                guard let file = file else { complation(false); return }
+        guard allowOpen else { return }
 
-                self.rename(file, to: title) { provider, result, success, error in
-                    if let file = result as? ASCFile {
-                        complation(file.title.fileName() == title)
+        let strongDelegate = delegate
+        let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+        let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
+            if let editorFile = editorFile {
+                self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
+                    if let portalFile = entity as? ASCFile {
+                        complation(portalFile.isFavorite)
                     } else {
-                        complation(false)
+                        complation(editorFile.isFavorite)
                     }
                 }
             }
+        }
+        let shareHandler: ASCEditorManagerShareHandler = { file in
+            guard let file = file else { return }
+            strongDelegate?.presentShareController(provider: self, entity: file)
+        }
+        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+            guard let file = file else { complation(false); return }
 
-            if ASCEditorManager.shared.checkSDKVersion() {
-                ASCEditorManager.shared.editCloud(
-                    file,
-                    openMode: openMode,
-                    canEdit: canEdit,
-                    openHandler: openHandler,
-                    closeHandler: closeHandler,
-                    favoriteHandler: favoriteHandler,
-                    shareHandler: shareHandler,
-                    renameHandler: renameHandler
-                )
-            } else {
-                ASCEditorManager.shared.editFileLocally(
-                    for: self,
-                    file,
-                    openMode: openMode,
-                    canEdit: canEdit,
-                    handler: openHandler,
-                    closeHandler: closeHandler,
-                    renameHandler: renameHandler,
-                    lockedHandler: {
-                        delay(seconds: 0.3) {
-                            let isSpreadsheet = file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
-                            let isPresentation = file.title.fileExtension() == ASCConstants.FileExtensions.pptx
+            self.rename(file, to: title) { provider, result, success, error in
+                if let file = result as? ASCFile {
+                    complation(file.title.fileName() == title)
+                } else {
+                    complation(false)
+                }
+            }
+        }
 
-                            var message = String(format: NSLocalizedString("This document is being edited. Do you want open %@ to view only?", comment: ""), file.title)
+        if ASCEditorManager.shared.checkSDKVersion() {
+            ASCEditorManager.shared.editCloud(
+                file,
+                openMode: openMode,
+                canEdit: canEdit,
+                openHandler: openHandler,
+                closeHandler: closeHandler,
+                favoriteHandler: favoriteHandler,
+                shareHandler: shareHandler,
+                renameHandler: renameHandler
+            )
+        } else {
+            ASCEditorManager.shared.editFileLocally(
+                for: self,
+                file,
+                openMode: openMode,
+                canEdit: canEdit,
+                handler: openHandler,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler,
+                lockedHandler: {
+                    delay(seconds: 0.3) {
+                        let isSpreadsheet = file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
+                        let isPresentation = file.title.fileExtension() == ASCConstants.FileExtensions.pptx
 
-                            message = isSpreadsheet
-                                ? String(format: NSLocalizedString("This spreadsheet is being edited. Do you want open %@ to view only?", comment: ""), file.title)
-                                : message
-                            message = isPresentation
-                                ? String(format: NSLocalizedString("This presentation is being edited. Do you want open %@ to view only?", comment: ""), file.title)
-                                : message
+                        var message = String(format: NSLocalizedString("This document is being edited. Do you want open %@ to view only?", comment: ""), file.title)
 
-                            let alertController = UIAlertController.alert(
-                                ASCConstants.Name.appNameShort,
-                                message: message,
-                                actions: []
+                        message = isSpreadsheet
+                            ? String(format: NSLocalizedString("This spreadsheet is being edited. Do you want open %@ to view only?", comment: ""), file.title)
+                            : message
+                        message = isPresentation
+                            ? String(format: NSLocalizedString("This presentation is being edited. Do you want open %@ to view only?", comment: ""), file.title)
+                            : message
+
+                        let alertController = UIAlertController.alert(
+                            ASCConstants.Name.appNameShort,
+                            message: message,
+                            actions: []
+                        )
+                        .okable { _ in
+                            let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+                            let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+
+                            ASCEditorManager.shared.editFileLocally(
+                                for: self,
+                                file,
+                                openMode: openMode,
+                                canEdit: false,
+                                handler: openHandler,
+                                closeHandler: closeHandler
                             )
-                            .okable { _ in
-                                let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-                                let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                        }
+                        .cancelable()
 
-                                ASCEditorManager.shared.editFileLocally(
-                                    for: self,
-                                    file,
-                                    openMode: openMode,
-                                    canEdit: false,
-                                    handler: openHandler,
-                                    closeHandler: closeHandler
-                                )
-                            }
-                            .cancelable()
-
-                            if let topVC = ASCViewControllerManager.shared.topViewController {
-                                topVC.present(alertController, animated: true, completion: nil)
-                            }
+                        if let topVC = ASCViewControllerManager.shared.topViewController {
+                            topVC.present(alertController, animated: true, completion: nil)
                         }
                     }
-                )
-            }
+                }
+            )
         }
     }
 
@@ -1866,11 +1912,42 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
+
+    func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory] {
+        guard
+            let docspaceVersion = apiClient.serverVersion?.docSpace,
+            docspaceVersion.isVersion(greaterThanOrEqualTo: "2.5.1")
+        else { return [] }
+
+        if folder.isRoot, folder.rootFolderType == .onlyofficeUser {
+            let resentFolder = folder.copy()
+            resentFolder.rootFolderType = .onlyofficeRecent
+            resentFolder.id = OnlyofficeAPI.Path.Forlder.recentRaw
+
+            return [
+                ASCSegmentCategory(title: NSLocalizedString("My Documents", comment: ""), folder: folder),
+                ASCSegmentCategory(title: NSLocalizedString("Recently accessible via link", comment: ""), folder: resentFolder),
+            ]
+        }
+
+        return []
+    }
 }
 
 extension ASCOnlyofficeProvider {
     func generalLink(for room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
+            guard room.roomType != .colobaration else {
+                if let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
+                    let path = "%@/rooms/shared/filter?folder=%@"
+                    let urlStr = String(format: path, baseUrl, room.id)
+                    continuation.resume(returning: .success(urlStr))
+                } else {
+                    continuation.resume(returning: .failure(NetworkingError.invalidUrl))
+                }
+                return
+            }
+
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
                 if let error {
                     continuation.resume(returning: .failure(error))
@@ -1918,8 +1995,12 @@ private extension ASCFiltersControllerProtocol {
     }
 }
 
-private extension ASCOnlyofficeProvider {
+extension ASCOnlyofficeProvider {
     var isDocspace: Bool {
         apiClient.serverVersion?.docSpace != nil
+    }
+
+    static var isDocspaceApi: Bool {
+        ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
     }
 }

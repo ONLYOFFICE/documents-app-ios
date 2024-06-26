@@ -47,15 +47,6 @@
 "12 hours" = "12 часа";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Грешка при преобразуване";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Файлът не може да се изтегли.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Файлът не може да се качи.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Вече съществува файл с подобно име.";
 
 /* No comment provided by engineer. */
@@ -440,9 +431,6 @@
 /* Description of file operation error */
 "Could not read from file" = "Файлът не може да бъде прочетен";
 
-/* No comment provided by engineer. */
-"Could not save the file." = "Файлът не можа да бъде запазен.";
-
 /* Description of file operation error */
 "Could not write to file" = "Върху файлът не може да се пише";
 
@@ -476,7 +464,7 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Създавайте нови документи, таблици или презентации. Създайте нови папки, за да организирате файловете си.";
 
-/* No comment provided by engineer. */
+/* Button title */
 "Create room" = "Създай стая";
 
 /* Caption of the process
@@ -1323,9 +1311,6 @@
 /* No comment provided by engineer. */
 "Save" = "Запази";
 
-/* No comment provided by engineer. */
-"Saved" = "Записано";
-
 /* Caption of the processing */
 "Saving" = "Спестяване";
 
@@ -1504,7 +1489,7 @@
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Линкът за външен\nдостъп е копиран\nв клипборда";
 
-/* No comment provided by engineer. */
+/* Expiration status */
 "The link has expired" = "Линкът изтече";
 
 /* No comment provided by engineer. */
@@ -1797,4 +1782,13 @@
 
 /* Data units */
 "Zero bytes" = "Нулеви байтове";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Грешка при преобразуване";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Файлът не може да се изтегли.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Файлът не може да се качи.";
 

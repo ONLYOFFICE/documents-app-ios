@@ -1012,11 +1012,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Потвърдете паролата</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
-      <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
-        <source>Enter your passcode to proceed.</source>
-        <target>Въведете паролата си, за да продължите.</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
         <target>Въведете парола</target>
@@ -1038,8 +1033,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
-        <source>Choose your passcode.</source>
-        <target>Изберете паролата си.</target>
+        <source>Choose passcode to unlock app</source>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">

@@ -258,6 +258,7 @@
 
         open func passcodeLockDidSucceed(_ lock: PasscodeLockType) {
             deleteSignButton?.isEnabled = true
+            descriptionLabel?.textColor = titleLabel?.textColor
             animatePlaceholders(placeholders, toState: .inactive)
             dismissPasscodeLock(lock, completionHandler: { [weak self] in
                 self?.successCallback?(lock)
@@ -266,10 +267,13 @@
 
         open func passcodeLockDidFail(_ lock: PasscodeLockType) {
             animateWrongPassword()
+            descriptionLabel?.textColor = .red
+            descriptionLabel?.text = lock.state.description
         }
 
         open func passcodeLockDidChangeState(_ lock: PasscodeLockType) {
             updatePasscodeView()
+            descriptionLabel?.textColor = titleLabel?.textColor
             animatePlaceholders(placeholders, toState: .inactive)
             deleteSignButton?.isEnabled = false
         }

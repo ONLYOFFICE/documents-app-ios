@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Potvrďte přístupový kód";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "Zadejte přístupový kód a pokračujte.";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Zadejte přístupový kód";
 
@@ -25,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Zkuste znovu";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "Zvolte přístupový kód.";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Zadejte přístupový kód";
 
@@ -36,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Pro pokračování je třeba autorizace";
-
-/* Button title */
-"Use Face ID" = "Použít odemykání pomocí obličeje";
-
-/* Button title */
-"Use Touch ID" = "Použít odemykání pomocí otisku";
 

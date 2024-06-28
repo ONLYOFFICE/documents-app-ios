@@ -166,6 +166,9 @@
 		FC33FA932B0F595400688E17 /* ASCFolderLogoAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33FA922B0F595400688E17 /* ASCFolderLogoAvatarView.swift */; };
 		FC397E382B3591CF00830F43 /* HTMLString in Frameworks */ = {isa = PBXBuildFile; productRef = FC397E372B3591CF00830F43 /* HTMLString */; };
 		FC397E3C2B3596AF00830F43 /* ObservableSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FC397E3B2B3596AF00830F43 /* ObservableSwift */; };
+		FC4042522C2B0540002B6285 /* ASCEntityViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4042512C2B0540002B6285 /* ASCEntityViewCellProtocol.swift */; };
+		FC4042582C2B0602002B6285 /* ASCFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4042572C2B0602002B6285 /* ASCFolderViewCell.swift */; };
+		FC40425A2C2C17D5002B6285 /* ASCFileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4042592C2C17D5002B6285 /* ASCFileViewCell.swift */; };
 		FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4160FE290911E4006B5E4A /* ASCLinkTableViewHeaderFooterView.swift */; };
 		FC4639C12BFB2BF900DA603A /* ASCCategorySegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C02BFB2BF900DA603A /* ASCCategorySegmentControl.swift */; };
 		FC4639C42BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */; };
@@ -843,6 +846,9 @@
 		FC397E392B35968100830F43 /* Observable-Swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Observable-Swift"; sourceTree = "<group>"; };
 		FC3AF6B8217081DB004A96FD /* ASCNextCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProvider.swift; sourceTree = "<group>"; };
 		FC3AF6BA2170825B004A96FD /* ASCFileProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileProviderProtocol.swift; sourceTree = "<group>"; };
+		FC4042512C2B0540002B6285 /* ASCEntityViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityViewCellProtocol.swift; sourceTree = "<group>"; };
+		FC4042572C2B0602002B6285 /* ASCFolderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderViewCell.swift; sourceTree = "<group>"; };
+		FC4042592C2C17D5002B6285 /* ASCFileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileViewCell.swift; sourceTree = "<group>"; };
 		FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewController.swift; sourceTree = "<group>"; };
 		FC4160FE290911E4006B5E4A /* ASCLinkTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLinkTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		FC41D7FA2265B4AF00A155C2 /* ASC2FACodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FACodeViewController.swift; sourceTree = "<group>"; };
@@ -2443,6 +2449,8 @@
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
 				FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */,
 				FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */,
+				FC4042572C2B0602002B6285 /* ASCFolderViewCell.swift */,
+				FC4042592C2C17D5002B6285 /* ASCFileViewCell.swift */,
 			);
 			name = Views;
 			path = View;
@@ -2554,6 +2562,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4639C32BFB2C3900DA603A /* NavigationBarExtendPanelContentViewProtocol.swift */,
+				FC4042512C2B0540002B6285 /* ASCEntityViewCellProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -3760,6 +3769,7 @@
 				FC7DD79F2B502F7E0037405B /* TimeLimitCellView.swift in Sources */,
 				FC142A18289818B800EDE7CE /* ASCLocalFilterController.swift in Sources */,
 				FC7080DC2812E2260057FCD2 /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
+				FC40425A2C2C17D5002B6285 /* ASCFileViewCell.swift in Sources */,
 				FC7080DD2812E2260057FCD2 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */,
 				FC83D6032A974E2200C404CB /* UserDefaultsExtensions.swift in Sources */,
 				FC7080DE2812E2260057FCD2 /* ASCCreateEntity.swift in Sources */,
@@ -3785,6 +3795,7 @@
 				E87FF67E2BF74712000EFDE5 /* UserModel.swift in Sources */,
 				FC7DD79C2B502F7E0037405B /* PasswordCellView.swift in Sources */,
 				FC83D5FE2A974E2200C404CB /* UIViewController+Extensions.swift in Sources */,
+				FC4042522C2B0540002B6285 /* ASCEntityViewCellProtocol.swift in Sources */,
 				FC142A7328981A1F00EDE7CE /* ASCPasscodeLockPresenter.swift in Sources */,
 				FC7080F02812E2260057FCD2 /* OnlyofficeApiClient.swift in Sources */,
 				FC7080F22812E2260057FCD2 /* ASCCloudsNavigationController.swift in Sources */,
@@ -4056,6 +4067,7 @@
 				FC7081A12812E2260057FCD2 /* AppDelegate+Notifications.swift in Sources */,
 				FC7081A22812E2260057FCD2 /* NextcloudDataResult.swift in Sources */,
 				FC7081A32812E2260057FCD2 /* ASCConnectStorageWebDavController.swift in Sources */,
+				FC4042582C2B0602002B6285 /* ASCFolderViewCell.swift in Sources */,
 				FC83D60C2A974E2300C404CB /* Color+Extensions.swift in Sources */,
 				FC83D57B2A9742F000C404CB /* ManagedAppConfig.swift in Sources */,
 				1D8CFC4A290D7FF600F71071 /* ASCDocumentsEntityRemoverActionController.swift in Sources */,
@@ -4500,7 +4512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4522,7 +4534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4576,7 +4588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -4622,7 +4634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

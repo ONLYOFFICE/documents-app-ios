@@ -20,7 +20,7 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 image: UIImage(systemName: "checkmark.circle")
             ) { action in
-                viewController.setEditMode(!viewController.tableView.isEditing)
+                viewController.setEditMode(!viewController.collectionView.isEditing)
             }
         )
         let sortInfoOnRootFolderType = sortInfoOnRootFolderType
@@ -61,7 +61,7 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 style: .default,
                 handler: { [unowned viewController] action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
+                    viewController.setEditMode(!viewController.collectionView.isEditing)
                 }
             )
         )

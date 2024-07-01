@@ -28,7 +28,8 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     var provider: ASCFileProviderProtocol?
 
     private lazy var imageView: UIImageView = {
-        $0
+        $0.clipsToBounds = true
+        return $0
     }(UIImageView())
 
     private lazy var activityIndicator: UIActivityIndicatorView = {
@@ -122,31 +123,37 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         titleLabel.text = file.title
 
         if file.isEditing {
-            items.append(
-                UIImageView(image: UIImage(
-                    systemName: "pencil",
-                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
-                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage())
-            )
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(UIImageView(image: UIImage(
+                systemName: "pencil",
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+            )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage())))
         }
 
         if file.isFavorite {
-            items.append(
-                UIImageView(image: UIImage(
-                    systemName: "star.fill",
-                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
-                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage())
-            )
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(UIImageView(image: UIImage(
+                systemName: "star.fill",
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+            )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage())))
         }
 
         if file.isNew, let badgeNewImage = newBadge.screenshot {
-            items.append(
-                UIImageView(image: badgeNewImage)
-            )
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(UIImageView(image: badgeNewImage)))
         }
+
+        items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
 
         return {
             $0.axis = .horizontal
+            $0.spacing = 2
             return $0
         }(UIStackView(arrangedSubviews: items))
     }
@@ -237,6 +244,8 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         if ASCConstants.FileExtensions.images.contains(fileExt) {
             if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles) {
                 activityIndicator.isHidden = false
+                activityIndicator.startAnimating()
+
                 imageView.alpha = 0
                 imageView.image = Asset.Images.listFormatImage.image
 
@@ -252,6 +261,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                             self?.imageView.contentMode = .center
                         }
 
+                        self?.activityIndicator.stopAnimating()
                         self?.activityIndicator.isHidden = true
                         UIView.animate(withDuration: 0.2) { [weak self] in
                             self?.imageView.alpha = 1
@@ -283,7 +293,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             imageView.image = Asset.Images.listFormatUnknown.image
         }
 
-        imageView.anchor(widthConstant: 45)
+        imageView.anchor(
+            widthConstant: 45,
+            heightConstant: 50
+        )
 
         let parentView = UIView()
 

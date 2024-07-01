@@ -443,7 +443,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                 // Append new items to destination controller
                                 if let newItems = newItems, dstFolder.id == strongSelf.folder?.id {
                                     strongSelf.provider?.add(items: newItems, at: 0)
-                                    strongSelf.tableView.reloadData()
+                                    strongSelf.collectionView.reloadData()
 
                                     for index in 0 ..< newItems.count {
                                         if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
@@ -462,7 +462,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                             srcDocumentsVC.provider?.remove(at: index)
                                         }
                                     }
-                                    srcDocumentsVC.tableView.reloadData()
+                                    srcDocumentsVC.collectionView.reloadData()
                                 }
                             } else {
                                 log.error("Items don't copied")
@@ -505,7 +505,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                         srcDocumentsVC.provider?.remove(at: index)
                                     }
                                 }
-                                srcDocumentsVC.tableView.reloadData()
+                                srcDocumentsVC.collectionView.reloadData()
                                 srcDocumentsVC.showEmptyView(srcDocumentsVC.total < 1)
                                 srcDocumentsVC.updateNavBar()
                             }
@@ -576,7 +576,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
     }
 
     private func dragHighlight(cell: UITableViewCell? = nil) {
-        for cell in tableView.visibleCells {
+        for cell in collectionView.visibleCells {
             cell.backgroundColor = .systemBackground
         }
 

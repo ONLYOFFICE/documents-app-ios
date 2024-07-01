@@ -177,7 +177,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 style: .default,
                 handler: { [unowned viewController] action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
+                    viewController.setEditMode(!viewController.collectionView.isEditing)
                 }
             )
         )

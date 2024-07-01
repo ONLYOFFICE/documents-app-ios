@@ -20,7 +20,7 @@ final class CurrentLocalFolderMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 image: UIImage(systemName: "checkmark.circle")
             ) { action in
-                viewController.setEditMode(!viewController.tableView.isEditing)
+                viewController.setEditMode(!viewController.collectionView.isEditing)
             }
         )
 
@@ -59,7 +59,7 @@ final class CurrentLocalFolderMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 style: .default,
                 handler: { [unowned viewController] action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
+                    viewController.setEditMode(!viewController.collectionView.isEditing)
                 }
             )
         )

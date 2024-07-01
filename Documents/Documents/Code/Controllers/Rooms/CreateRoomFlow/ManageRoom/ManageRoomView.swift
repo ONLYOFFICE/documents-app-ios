@@ -28,6 +28,7 @@ struct ManageRoomView: View {
             roomImageAndNameSection
             roomTagsSection
             roomOwnerSection
+            thirdPartySection
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
@@ -125,12 +126,14 @@ struct ManageRoomView: View {
     }
     
     private var thirdPartySection: some View {
-        Section {
+        Section(footer: Text(NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: ""))) {
             Toggle(isOn: $isThirdPartyStorageEnabled) {
                 Text("Third party storage")
             }
+            .tintColor(Color(Asset.Colors.brend.color))
             if isThirdPartyStorageEnabled {
-                NavigationLink(destination: StorageSelectionView(selectedStorage: $selectedStorage)) {
+               // NavigationLink(destination: StorageSelectionView(selectedStorage: $selectedStorage)) {
+                NavigationLink(destination: ASCConnectCloudViewControllerRepresentable()) {
                     HStack {
                         Text("Storage")
                         Spacer()
@@ -149,9 +152,9 @@ struct ManageRoomView: View {
                 Toggle(isOn: $isCreateNewFolderEnabled) {
                     Text("Create new folder")
                 }
+                .tintColor(Color(Asset.Colors.brend.color))
             }
         }
-        .disabled(!isThirdPartyStorageEnabled)
     }
 
     private func handleHUD() {

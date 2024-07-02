@@ -21,6 +21,12 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
     var provider: ASCFileProviderProtocol?
 
+    var layoutType: ASCEntityViewLayoutType = .list {
+        didSet {
+            buildView()
+        }
+    }
+
     private lazy var titleLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -30,7 +36,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureView()
+        buildView()
     }
 
     @available(*, unavailable)
@@ -38,8 +44,13 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureView() {
+    private func buildView() {
 //        backgroundColor = .red
+
+        for view in contentView.subviews {
+            view.removeFromSuperview()
+        }
+
         contentView.addSubview(titleLabel)
         titleLabel.fillToSuperview()
     }

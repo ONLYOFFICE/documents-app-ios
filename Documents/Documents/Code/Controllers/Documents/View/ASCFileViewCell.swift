@@ -27,6 +27,12 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
     var provider: ASCFileProviderProtocol?
 
+    var layoutType: ASCEntityViewLayoutType = .list {
+        didSet {
+            buildView()
+        }
+    }
+
     private lazy var imageView: UIImageView = {
         $0.clipsToBounds = true
         return $0
@@ -75,6 +81,13 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter
+    }()
+
+    fileprivate lazy var dateTimeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
         formatter.timeStyle = .short
         return formatter
     }()
@@ -103,6 +116,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         updateSelected()
     }
 
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+    }
+
     private func buildView() {
 //        contentView.backgroundColor = .red
 
@@ -110,12 +127,17 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             view.removeFromSuperview()
         }
 
-        let itemView = buildListView()
+        let itemView = layoutType == .grid ? buildGridView() : buildListView()
         contentView.addSubview(itemView)
         itemView.fillToSuperview()
+
+        updateEditing()
+        updateSelected()
     }
 
-    private func buildTitleListView() -> UIView {
+    // MARK: - List Layout
+
+    private func buildListTitleView() -> UIView {
         guard let file = entity as? ASCFile else { return UIView() }
 
         var items: [UIView] = [titleLabel]
@@ -158,24 +180,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         }(UIStackView(arrangedSubviews: items))
     }
 
-    private func buildOwnerView() -> UIView? {
-        guard let file = entity as? ASCFile else { return nil }
-
-        if let rootFolderType = file.parent?.rootFolderType {
-            switch rootFolderType {
-            case .icloudAll:
-                return nil
-            default:
-                break
-            }
-        }
-
-        authorLabel.text = file.createdBy?.displayName
-
-        return authorLabel
-    }
-
-    private func buildDateSizeView() -> UIView? {
+    private func buildListDateSizeView() -> UIView? {
         guard let file = entity as? ASCFile else { return nil }
 
         let buildLabel: (() -> UILabel) = {
@@ -191,7 +196,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         let sizeLabel = buildLabel()
 
         if let date = file.updated {
-            dateLabel.text = dateFormatter.string(from: date)
+            dateLabel.text = dateTimeFormatter.string(from: date)
         } else {
             dateLabel.text = nil
         }
@@ -229,7 +234,167 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         }(UIStackView(arrangedSubviews: items))
     }
 
-    private func buildIconViewView() -> UIView {
+    private func buildListView() -> UIView {
+        var items = [UIView]()
+
+        let middleStackView = UIStackView(arrangedSubviews: [buildListTitleView()])
+        middleStackView.axis = .vertical
+        middleStackView.spacing = 1
+
+        if let ownerView = buildOwnerView() {
+            middleStackView.addArrangedSubview(ownerView)
+        }
+
+        if let dateSizeView = buildListDateSizeView() {
+            middleStackView.addArrangedSubview(dateSizeView)
+        }
+
+        items.append(checkmarkView)
+        items.append(buildIconView(preferredSize: CGSize(width: 45, height: 50)))
+        items.append(middleStackView)
+
+        checkmarkView.removeConstraints(checkmarkView.constraints)
+        checkmarkView.anchor(widthConstant: 16)
+        displayCheckmark(show: configurationState.isEditing)
+
+        let contentView = {
+            $0.axis = .horizontal
+            $0.alignment = .center
+            $0.distribution = .fillProportionally
+            $0.spacing = 10
+            return $0
+        }(UIStackView(arrangedSubviews: items))
+
+        let containerView = UIView()
+
+        containerView.addSubview(contentView)
+        containerView.addSubview(separatorView)
+
+        contentView.fillToSuperview(padding: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 5))
+        separatorView.removeConstraints(separatorView.constraints)
+        separatorView.anchor(
+            leading: middleStackView.leadingAnchor,
+            bottom: containerView.bottomAnchor,
+            trailing: containerView.trailingAnchor,
+            size: CGSize(width: 0, height: 1.0 / UIScreen.main.scale)
+        )
+
+        return containerView
+    }
+
+    // MARK: - Grid Layout
+
+    private func buildGridView() -> UIView {
+        guard let file = entity as? ASCFile else { return UIView() }
+
+        let iconView = buildIconView(preferredSize: CGSize(width: 90, height: 90))
+
+        let titleLabel = {
+            $0.font = UIFont.preferredFont(forTextStyle: .subheadline)
+            $0.textAlignment = .center
+            $0.numberOfLines = 2
+            $0.textColor = .label
+            $0.text = file.title
+            return $0
+        }(UILabel())
+
+        let dateLabel = {
+            $0.font = UIFont.preferredFont(forTextStyle: .caption2)
+            $0.textAlignment = .center
+            $0.numberOfLines = 1
+            $0.textColor = .secondaryLabel
+            $0.text = dateFormatter.string(from: file.updated ?? Date())
+            return $0
+        }(UILabel())
+
+        let sizeLabel = {
+            $0.font = UIFont.preferredFont(forTextStyle: .caption2)
+            $0.textAlignment = .center
+            $0.numberOfLines = 1
+            $0.textColor = .secondaryLabel
+            $0.text = file.displayContentLength
+            return $0
+        }(UILabel())
+
+        // Overlay markers
+        var overlays: [UIView] = []
+
+        if file.isNew, let badgeNewImage = newBadge.screenshot {
+            overlays.append(UIImageView(image: badgeNewImage))
+        }
+
+        if file.isEditing {
+            overlays.append(UIImageView(image: UIImage(
+                systemName: "pencil",
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+            )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()))
+        }
+
+        if file.isFavorite {
+            overlays.append(UIImageView(image: UIImage(
+                systemName: "star.fill",
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+            )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()))
+        }
+
+        let overlayView = {
+            $0.axis = .vertical
+            $0.alignment = .leading
+            $0.distribution = .fill
+            $0.spacing = 5
+            return $0
+        }(UIStackView(arrangedSubviews: overlays))
+
+        let contentView = {
+            $0.axis = .vertical
+            $0.alignment = .center
+            $0.distribution = .fill
+            $0.spacing = 2
+            return $0
+        }(UIStackView(arrangedSubviews: [
+            {
+                $0.anchor(heightConstant: 10)
+                return $0
+            }(UIView()),
+            iconView,
+            {
+                $0.anchor(heightConstant: 10)
+                return $0
+            }(UIView()),
+            titleLabel,
+            dateLabel,
+            sizeLabel,
+            UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: 100))),
+        ]))
+
+        let containerView = UIView()
+
+        containerView.addSubview(contentView)
+        contentView.fillToSuperview()
+
+        containerView.addSubview(overlayView)
+        overlayView.anchor(
+            top: contentView.topAnchor,
+            leading: contentView.leadingAnchor,
+            padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
+        )
+
+        checkmarkView.removeConstraints(checkmarkView.constraints)
+        containerView.addSubview(checkmarkView)
+        checkmarkView.anchor(
+            top: containerView.topAnchor,
+            trailing: containerView.trailingAnchor,
+            padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10),
+            size: CGSize(width: 16, height: 16)
+        )
+        displayCheckmark(show: configurationState.isEditing)
+
+        return containerView
+    }
+
+    // MARK: - Common Layout
+
+    private func buildIconView(preferredSize: CGSize) -> UIView {
         guard
             let file = entity as? ASCFile,
             let provider
@@ -293,9 +458,11 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             imageView.image = Asset.Images.listFormatUnknown.image
         }
 
+        imageView.removeConstraints(imageView.constraints)
+
         imageView.anchor(
-            widthConstant: 45,
-            heightConstant: 50
+            widthConstant: preferredSize.width,
+            heightConstant: preferredSize.height
         )
 
         let parentView = UIView()
@@ -309,58 +476,26 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         return parentView
     }
 
-    private func buildListView() -> UIView {
-        var items = [UIView]()
+    private func buildOwnerView() -> UIView? {
+        guard let file = entity as? ASCFile else { return nil }
 
-        let middleStackView = UIStackView(arrangedSubviews: [buildTitleListView()])
-        middleStackView.axis = .vertical
-        middleStackView.spacing = 1
-
-        if let ownerView = buildOwnerView() {
-            middleStackView.addArrangedSubview(ownerView)
+        if let rootFolderType = file.parent?.rootFolderType {
+            switch rootFolderType {
+            case .icloudAll:
+                return nil
+            default:
+                break
+            }
         }
 
-        if let dateSizeView = buildDateSizeView() {
-            middleStackView.addArrangedSubview(dateSizeView)
-        }
+        authorLabel.text = file.createdBy?.displayName
 
-        items.append(checkmarkView)
-        items.append(buildIconViewView())
-        items.append(middleStackView)
-
-        checkmarkView.anchor(widthConstant: 16)
-        displayCheckmark(show: configurationState.isEditing)
-
-        let contentView = {
-            $0.axis = .horizontal
-            $0.alignment = .center
-            $0.distribution = .fillProportionally
-            $0.spacing = 10
-            return $0
-        }(UIStackView(arrangedSubviews: items))
-
-        let containerView = UIView()
-
-        containerView.addSubview(contentView)
-        containerView.addSubview(separatorView)
-
-        contentView.fillToSuperview(padding: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 5))
-        separatorView.anchor(
-            leading: middleStackView.leadingAnchor,
-            bottom: containerView.bottomAnchor,
-            trailing: containerView.trailingAnchor,
-            size: CGSize(width: 0, height: 1.0 / UIScreen.main.scale)
-        )
-
-        return containerView
+        return authorLabel
     }
 
-    private func buildGridView() {
-        //
-    }
+    // MARK: - Handlers
 
     private func updateData() {
-//        guard let file = entity as? ASCFile else { return }
         buildView()
     }
 
@@ -369,6 +504,9 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             systemName: isSelected ? "star.fill" : "star",
             withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
         )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
+
+        contentView.backgroundColor = isSelected ? .systemGray5 : .clear
+        contentView.layerCornerRadius = layoutType == .grid ? 12 : 0
     }
 
     private func updateEditing() {

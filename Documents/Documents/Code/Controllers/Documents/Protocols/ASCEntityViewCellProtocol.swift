@@ -11,4 +11,5 @@ import UIKit
 protocol ASCEntityViewCellProtocol: UICollectionViewCell {
     var entity: ASCEntity? { get set }
     var provider: ASCFileProviderProtocol? { get set }
+    var layoutType: ASCEntityViewLayoutType { get set }
 }

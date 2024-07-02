@@ -21,10 +21,6 @@ typealias UnmovedEntities = [ASCEntity]
 class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
-    enum ItemsViewType {
-        case list, grid
-    }
-
     // MARK: - Public
 
     var folder: ASCFolder? {
@@ -55,7 +51,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         provider?.items ?? []
     }
 
-    var itemsViewType: ItemsViewType = .list {
+    var itemsViewType: ASCEntityViewLayoutType = .list {
         didSet {
             updateItemsViewType()
         }
@@ -526,9 +522,14 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func updateItemsViewType() {
         collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: true)
+
+        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
+        for cell in visibleCells {
+            cell.layoutType = itemsViewType
+        }
     }
 
-    private func collectionViewCompositionalLayout(by type: ItemsViewType) -> UICollectionViewCompositionalLayout {
+    private func collectionViewCompositionalLayout(by type: ASCEntityViewLayoutType) -> UICollectionViewCompositionalLayout {
         switch type {
         case .grid:
             return makeGridLayout()
@@ -1433,6 +1434,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             emptyView?.removeFromSuperview()
             searchEmptyView?.removeFromSuperview()
 
+            emptyView?.isHidden = true
+            searchEmptyView?.isHidden = true
+
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic
 
@@ -1448,6 +1452,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             if let _ = loadingView.superview {
                 return
             }
+
+            localEmptyView?.isHidden = false
 
             if searchController.isActive {
                 localEmptyView?.type = .search
@@ -3993,6 +3999,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     folderCell.provider = provider
                     folderCell.entity = folder
+                    folderCell.layoutType = itemsViewType
 
                     return folderCell
                 } else if let file = tableData[indexPath.row] as? ASCFile {
@@ -4002,6 +4009,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     fileCell.provider = provider
                     fileCell.entity = file
+                    fileCell.layoutType = itemsViewType
 
                     return fileCell
                 }

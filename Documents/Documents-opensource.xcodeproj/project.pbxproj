@@ -175,6 +175,7 @@
 		FC4639C72BFB33C400DA603A /* NavigationBarExtendPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */; };
 		FC4639C92BFCBF4B00DA603A /* ASCSegmentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */; };
 		FC4820862C2F026E00E22605 /* ASCLoaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4820852C2F026E00E22605 /* ASCLoaderViewCell.swift */; };
+		FC4820932C33D7F500E22605 /* ASCEntityViewLayoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4820922C33D7F500E22605 /* ASCEntityViewLayoutType.swift */; };
 		FC4DC3E6282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E4282BFB2F001060D6 /* ASCOAuthCredential.swift */; };
 		FC4DC3E9282BFBE7001060D6 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E7282BFBE7001060D6 /* DropBoxRequestInterceptor.swift */; };
 		FC5943242AE67567001BA2F9 /* ASCDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943222AE67567001BA2F9 /* ASCDIContainer.swift */; };
@@ -866,6 +867,7 @@
 		FC4639C62BFB33C400DA603A /* NavigationBarExtendPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtendPanelView.swift; sourceTree = "<group>"; };
 		FC4639C82BFCBF4B00DA603A /* ASCSegmentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSegmentCategory.swift; sourceTree = "<group>"; };
 		FC4820852C2F026E00E22605 /* ASCLoaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoaderViewCell.swift; sourceTree = "<group>"; };
+		FC4820922C33D7F500E22605 /* ASCEntityViewLayoutType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityViewLayoutType.swift; sourceTree = "<group>"; };
 		FC4D0A1C2494F5EA001EF1B5 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		FC4D0A1F2494F7C9001EF1B5 /* ASCDebugNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugNavigationController.swift; sourceTree = "<group>"; };
 		FC4D0A212494F807001EF1B5 /* ASCDebugConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugConsoleViewController.swift; sourceTree = "<group>"; };
@@ -2579,6 +2581,14 @@
 			path = NavigationBarExtendPanel;
 			sourceTree = "<group>";
 		};
+		FC4820912C33D7CF00E22605 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				FC4820922C33D7F500E22605 /* ASCEntityViewLayoutType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		FC4D0A1E2494F78B001EF1B5 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -3054,6 +3064,7 @@
 		FCA5B9211E48A26B00CD2EA9 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				FC4820912C33D7CF00E22605 /* Enums */,
 				1D8CFC50290D85E600F71071 /* Menu */,
 				1D8CFC45290D7FF600F71071 /* ActionControllers */,
 				FC65B17E21F9AE1D00AD5114 /* Models */,
@@ -4135,6 +4146,7 @@
 				FC03A6512BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift in Sources */,
 				FC5943B92AE6B3C4001BA2F9 /* ASCIntroPage.swift in Sources */,
 				FC83D60D2A974E2300C404CB /* UIWindow+Extensions.swift in Sources */,
+				FC4820932C33D7F500E22605 /* ASCEntityViewLayoutType.swift in Sources */,
 				FC7081CB2812E2260057FCD2 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
 				FC7081CC2812E2260057FCD2 /* UPCarouselFlowLayout.swift in Sources */,
 				FC7081CD2812E2260057FCD2 /* ASCUserProfileViewController.swift in Sources */,

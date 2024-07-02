@@ -24,6 +24,7 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
+    @Published var isStorageSelectionPresenting = false
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
@@ -87,6 +88,10 @@ class ManageRoomViewModel: ObservableObject {
         } else {
             createRoom()
         }
+    }
+    
+    func didTapStorageSelectionCell() {
+        isStorageSelectionPresenting = true
     }
 }
 

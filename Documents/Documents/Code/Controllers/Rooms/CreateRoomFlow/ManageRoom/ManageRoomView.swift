@@ -33,6 +33,7 @@ struct ManageRoomView: View {
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
+        .navigateToStorageSelection(isActive: $viewModel.isStorageSelectionPresenting, viewModel: viewModel)
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
@@ -132,15 +133,7 @@ struct ManageRoomView: View {
             }
             .tintColor(Color(Asset.Colors.brend.color))
             if isThirdPartyStorageEnabled {
-               // NavigationLink(destination: StorageSelectionView(selectedStorage: $selectedStorage)) {
-                NavigationLink(destination: ASCConnectCloudViewControllerRepresentable()) {
-                    HStack {
-                        Text("Storage")
-                        Spacer()
-                        Text(selectedStorage)
-                            .foregroundColor(.gray)
-                    }
-                }
+                storageSelectionCell
                 NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
                     HStack {
                         Text("Location")
@@ -154,6 +147,23 @@ struct ManageRoomView: View {
                 }
                 .tintColor(Color(Asset.Colors.brend.color))
             }
+        }
+    }
+    
+    private var storageSelectionCell: some View {
+        HStack(spacing: 4) {
+            Text("Storage")
+            Spacer()
+            Text(selectedStorage)
+                .foregroundColor(.gray)
+            Image(systemName: "chevron.right")
+                .font(.subheadline)
+                .foregroundColor(Color.separator)
+                .flipsForRightToLeftLayoutDirection(true)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.didTapStorageSelectionCell()
         }
     }
 
@@ -246,6 +256,14 @@ private extension View {
                     ignoreUserId: viewModel.ignoreUserId
                 )
             )
+        })
+    }
+    
+    func navigateToStorageSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            ASCConnectCloudViewControllerRepresentable() { provider in
+                viewModel.isStorageSelectionPresenting = false
+            }
         })
     }
 

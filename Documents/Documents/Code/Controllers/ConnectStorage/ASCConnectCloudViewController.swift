@@ -16,6 +16,7 @@ class ASCConnectCloudViewController: UITableViewController {
     // MARK: - Properies
 
     var complation: ((ASCFileProviderProtocol) -> Void)?
+    var dismissOnCompetion: Bool = true
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
         switch type {
@@ -177,9 +178,14 @@ class ASCConnectCloudViewController: UITableViewController {
                     ASCFileManager.cloudProviders.insert(provider, at: 0)
                     ASCFileManager.storeProviders()
                 }
-
-                self?.complation?(provider)
-                self?.dismiss(animated: true, completion: nil)
+                
+                guard let self else {
+                    return
+                }
+                complation?(provider)
+                if dismissOnCompetion {
+                    dismiss(animated: true, completion: nil)
+                }
             } else {
                 if let topViewController = UIApplication.topViewController() {
                     UIAlertController.showError(

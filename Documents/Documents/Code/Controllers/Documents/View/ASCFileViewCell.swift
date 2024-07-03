@@ -128,6 +128,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         }
 
         let itemView = layoutType == .grid ? buildGridView() : buildListView()
+
         contentView.addSubview(itemView)
         itemView.fillToSuperview()
 
@@ -150,7 +151,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 return $0
             }(UIImageView(image: UIImage(
                 systemName: "pencil",
-                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .black))
             )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage())))
         }
 
@@ -160,7 +161,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 return $0
             }(UIImageView(image: UIImage(
                 systemName: "star.fill",
-                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .black))
             )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage())))
         }
 
@@ -250,11 +251,11 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         }
 
         items.append(checkmarkView)
-        items.append(buildIconView(preferredSize: CGSize(width: 45, height: 50)))
+        items.append(buildIconView(preferredSize: iconSize))
         items.append(middleStackView)
 
         checkmarkView.removeConstraints(checkmarkView.constraints)
-        checkmarkView.anchor(widthConstant: 16)
+        checkmarkView.anchor(widthConstant: Constants.checkmarkSize)
         displayCheckmark(show: configurationState.isEditing)
 
         let contentView = {
@@ -287,7 +288,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     private func buildGridView() -> UIView {
         guard let file = entity as? ASCFile else { return UIView() }
 
-        let iconView = buildIconView(preferredSize: CGSize(width: 90, height: 90))
+        let iconView = buildIconView(preferredSize: iconSize)
 
         let titleLabel = {
             $0.font = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -326,14 +327,14 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         if file.isEditing {
             overlays.append(UIImageView(image: UIImage(
                 systemName: "pencil",
-                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .black))
             )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()))
         }
 
         if file.isFavorite {
             overlays.append(UIImageView(image: UIImage(
                 systemName: "star.fill",
-                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .black))
             )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()))
         }
 
@@ -376,7 +377,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         overlayView.anchor(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
-            padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
+            padding: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 0)
         )
 
         checkmarkView.removeConstraints(checkmarkView.constraints)
@@ -384,8 +385,8 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         checkmarkView.anchor(
             top: containerView.topAnchor,
             trailing: containerView.trailingAnchor,
-            padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10),
-            size: CGSize(width: 16, height: 16)
+            padding: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 10),
+            size: CGSize(width: Constants.checkmarkSize, height: Constants.checkmarkSize)
         )
         displayCheckmark(show: configurationState.isEditing)
 
@@ -502,11 +503,11 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     private func updateSelected() {
         checkmarkView.image = UIImage(
             systemName: isSelected ? "star.fill" : "star",
-            withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
+            withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .medium))
         )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
 
         contentView.backgroundColor = isSelected ? .systemGray5 : .clear
-        contentView.layerCornerRadius = layoutType == .grid ? 12 : 0
+        contentView.layerCornerRadius = cornerRadius
     }
 
     private func updateEditing() {
@@ -520,6 +521,25 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         checkmarkView.alpha = show ? 1 : 0
         checkmarkView.isHidden = !show
     }
+}
+
+extension ASCFileViewCell {
+    private var cornerRadius: CGFloat {
+        layoutType == .grid ? Constants.gridCornerRadius : Constants.listCornerRadius
+    }
+
+    private var iconSize: CGSize {
+        layoutType == .grid ? Constants.gridIconSize : Constants.listIconSize
+    }
+}
+
+private enum Constants {
+    static let checkmarkSize: CGFloat = 16
+    static let gridCornerRadius: CGFloat = 12
+    static let listCornerRadius: CGFloat = 0
+    static let overlayBagesFontSize: CGFloat = 13
+    static let listIconSize = CGSize(width: 45, height: 50)
+    static let gridIconSize = CGSize(width: 80, height: 80)
 }
 
 // @available(iOS 17, *)

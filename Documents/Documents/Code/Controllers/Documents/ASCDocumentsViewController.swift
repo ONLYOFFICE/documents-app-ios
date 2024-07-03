@@ -521,12 +521,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func updateItemsViewType() {
-        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: true)
+        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: false)
 
-        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
-        for cell in visibleCells {
-            cell.layoutType = itemsViewType
-        }
+//        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
+//        for cell in visibleCells {
+//            cell.layoutType = itemsViewType
+//        }
+
+        // TODO: - Fix the animation case
+        collectionView.reloadData()
     }
 
     private func collectionViewCompositionalLayout(by type: ASCEntityViewLayoutType) -> UICollectionViewCompositionalLayout {

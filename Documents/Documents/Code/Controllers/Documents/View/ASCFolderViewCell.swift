@@ -393,30 +393,30 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
                     }
                 )
             }
-            imageView.layerCornerRadius = layoutType == .list ? 8 : 17
+            imageView.layerCornerRadius = roomIconRadius
         } else {
-            imageView.image = Asset.Images.listFolder.image
+            imageView.image = iconFolder
         }
 
         if let provider = folder.providerType, folder.roomType == nil {
             switch provider {
             case .boxNet:
-                imageView.image = Asset.Images.listFolderBoxnet.image
+                imageView.image = iconFolderBoxnet
             case .dropBox:
-                imageView.image = Asset.Images.listFolderDropbox.image
+                imageView.image = iconFolderDropbox
             case .google,
                  .googleDrive:
-                imageView.image = Asset.Images.listFolderGoogledrive.image
+                imageView.image = iconFolderGoogledrive
             case .sharePoint,
                  .skyDrive,
                  .oneDrive:
-                imageView.image = Asset.Images.listFolderOnedrive.image
+                imageView.image = iconFolderOnedrive
             case .webDav:
-                imageView.image = Asset.Images.listFolderWebdav.image
+                imageView.image = iconFolderWebdav
             case .yandex:
-                imageView.image = Asset.Images.listFolderYandexdisk.image
+                imageView.image = iconFolderYandexdisk
             case .kDrive:
-                imageView.image = Asset.Images.listFolderKdrive.image
+                imageView.image = iconFolderKdrive
             default:
                 break
             }
@@ -477,20 +477,13 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
     }
 
     private func updateSelected() {
-        checkmarkView.image = UIImage(
-            systemName: isSelected ? "star.fill" : "star",
-            withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .medium))
-        )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
-
+        checkmarkView.image = isSelected ? Asset.Images.select.image : Asset.Images.unselect.image
         contentView.backgroundColor = isSelected ? .systemGray5 : .clear
         contentView.layerCornerRadius = cornerRadius
     }
 
     private func updateEditing() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let self else { return }
-            self.displayCheckmark(show: self.configurationState.isEditing)
-        }
+        displayCheckmark(show: configurationState.isEditing)
     }
 
     private func displayCheckmark(show: Bool) {
@@ -522,6 +515,38 @@ extension ASCFolderViewCell {
     private var roomIconRadius: CGFloat {
         layoutType == .grid ? Constants.gridRoomIconRadius : Constants.listRoomIconRadius
     }
+
+    private var iconFolder: UIImage {
+        layoutType == .list ? Asset.Images.listFolder.image : Asset.Images.gridFolder.image
+    }
+
+    private var iconFolderBoxnet: UIImage {
+        layoutType == .list ? Asset.Images.listFolderBoxnet.image : Asset.Images.gridFolderBoxnet.image
+    }
+
+    private var iconFolderDropbox: UIImage {
+        layoutType == .list ? Asset.Images.listFolderDropbox.image : Asset.Images.gridFolderDropbox.image
+    }
+
+    private var iconFolderGoogledrive: UIImage {
+        layoutType == .list ? Asset.Images.listFolderGoogledrive.image : Asset.Images.gridFolderGoogledrive.image
+    }
+
+    private var iconFolderOnedrive: UIImage {
+        layoutType == .list ? Asset.Images.listFolderOnedrive.image : Asset.Images.gridFolderOnedrive.image
+    }
+
+    private var iconFolderWebdav: UIImage {
+        layoutType == .list ? Asset.Images.listFolderWebdav.image : Asset.Images.gridFolderWebdav.image
+    }
+
+    private var iconFolderYandexdisk: UIImage {
+        layoutType == .list ? Asset.Images.listFolderYandexdisk.image : Asset.Images.gridFolderYandexdisk.image
+    }
+
+    private var iconFolderKdrive: UIImage {
+        layoutType == .list ? Asset.Images.listFolderKdrive.image : Asset.Images.gridFolderKdrive.image
+    }
 }
 
 private enum Constants {
@@ -535,4 +560,5 @@ private enum Constants {
     static let gridRoomIconSize = CGSize(width: 80, height: 80)
     static let listRoomIconRadius: CGFloat = 8
     static let gridRoomIconRadius: CGFloat = 18
+    static let listIconRadius: CGFloat = 8
 }

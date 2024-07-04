@@ -21,6 +21,12 @@ typealias UnmovedEntities = [ASCEntity]
 class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
+    static var itemsViewType: ASCEntityViewLayoutType = .list {
+        didSet {
+            NotificationCenter.default.post(name: ASCConstants.Notifications.updateDocumentsViewLayoutType, object: itemsViewType)
+        }
+    }
+
     // MARK: - Public
 
     var folder: ASCFolder? {
@@ -49,12 +55,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     var tableData: [ASCEntity] {
         provider?.items ?? []
-    }
-
-    var itemsViewType: ASCEntityViewLayoutType = .list {
-        didSet {
-            updateItemsViewType()
-        }
     }
 
     // MARK: - Private
@@ -270,6 +270,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         addObserver(ASCConstants.Notifications.updateSizeClass, #selector(onUpdateSizeClass(_:)))
         addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
         addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
+        addObserver(ASCConstants.Notifications.updateDocumentsViewLayoutType, #selector(updateDocumentsViewLayoutType(_:)))
         addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
         addObserver(UIApplication.didEnterBackgroundNotification, #selector(onAppDidEnterBackground))
 
@@ -487,7 +488,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         delay(seconds: 0.1) { [weak self] in
             guard let self else { return }
             self.viewIsAppearing(true)
-            self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: self.itemsViewType), animated: true)
+            self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
         }
     }
 
@@ -521,7 +522,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func updateItemsViewType() {
-        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: false)
+        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: false)
 
 //        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
 //        for cell in visibleCells {
@@ -853,14 +854,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 rightBarBtnItems.append(addBarBtn)
             }
 
-            // DEBUG
-
-            rightBarBtnItems.append(
-                UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, closure: { [weak self] in
-                    self?.itemsViewType = self?.itemsViewType == .grid ? .list : .grid
-                })
-            )
-
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
@@ -897,7 +890,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         )
 
         let count = Int(view.width / 110.0)
-        print("makeGridLayout count - \(count)")
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: count)
         group.interItemSpacing = .fixed(groupSpacing)
 
@@ -1600,6 +1592,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     @objc func onReloadData(_ notification: Notification) {
         collectionView.reloadData()
+    }
+
+    @objc
+    private func updateDocumentsViewLayoutType(_ notification: Notification) {
+        updateItemsViewType()
+        configureNavigationBar()
     }
 
     @objc func onAppMovedToBackground() {
@@ -4002,7 +4000,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     folderCell.provider = provider
                     folderCell.entity = folder
-                    folderCell.layoutType = itemsViewType
+                    folderCell.layoutType = ASCDocumentsViewController.itemsViewType
 
                     return folderCell
                 } else if let file = tableData[indexPath.row] as? ASCFile {
@@ -4012,7 +4010,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     fileCell.provider = provider
                     fileCell.entity = file
-                    fileCell.layoutType = itemsViewType
+                    fileCell.layoutType = ASCDocumentsViewController.itemsViewType
 
                     return fileCell
                 }

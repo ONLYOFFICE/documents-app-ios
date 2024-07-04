@@ -157,6 +157,7 @@ class ASCConstants {
         static let appDidBecomeActive = Notification.Name("ASCEventAppDidBecomeActive")
         static let pushInfo = Notification.Name("ASCEventPushInfo")
         static let reloadData = Notification.Name("ASCEventReloadData")
+        static let updateDocumentsViewLayoutType = Notification.Name("ASCEventUpdateDocumentsViewLayoutType")
     }
 
     enum FileExtensions {

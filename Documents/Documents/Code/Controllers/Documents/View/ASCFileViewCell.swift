@@ -413,12 +413,12 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 activityIndicator.startAnimating()
 
                 imageView.alpha = 0
-                imageView.image = Asset.Images.listFormatImage.image
+                imageView.image = iconFormatImage
 
                 imageView.kf.setProviderImage(
                     with: provider.absoluteUrl(from: file.viewUrl),
                     for: provider,
-                    placeholder: Asset.Images.listFormatImage.image,
+                    placeholder: iconFormatImage,
                     completionHandler: { [weak self] result in
                         switch result {
                         case .success:
@@ -435,28 +435,28 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                     }
                 )
             } else {
-                imageView.image = Asset.Images.listFormatImage.image
+                imageView.image = iconFormatImage
             }
         } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
-            imageView.image = Asset.Images.listFormatDocument.image
+            imageView.image = iconFormatDocument
         } else if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
-            imageView.image = Asset.Images.listFormatSpreadsheet.image
+            imageView.image = iconFormatSpreadsheet
         } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
-            imageView.image = Asset.Images.listFormatPresentation.image
+            imageView.image = iconFormatPresentation
         } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
-            imageView.image = Asset.Images.listFormatVideo.image
+            imageView.image = iconFormatVideo
         } else if ASCConstants.FileExtensions.forms.contains(fileExt) {
             if fileExt == ASCConstants.FileExtensions.docxf {
-                imageView.image = Asset.Images.listFormatDocxf.image
+                imageView.image = iconFormatDocxf
             } else if fileExt == ASCConstants.FileExtensions.oform {
-                imageView.image = Asset.Images.listFormatOform.image
+                imageView.image = iconFormatOform
             } else {
-                imageView.image = Asset.Images.listFormatUnknown.image
+                imageView.image = iconFormatUnknown
             }
         } else if fileExt == ASCConstants.FileExtensions.pdf {
-            imageView.image = Asset.Images.listFormatPdf.image
+            imageView.image = iconFormatPdf
         } else {
-            imageView.image = Asset.Images.listFormatUnknown.image
+            imageView.image = iconFormatUnknown
         }
 
         imageView.removeConstraints(imageView.constraints)
@@ -501,20 +501,13 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     }
 
     private func updateSelected() {
-        checkmarkView.image = UIImage(
-            systemName: isSelected ? "star.fill" : "star",
-            withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .medium))
-        )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
-
+        checkmarkView.image = isSelected ? Asset.Images.select.image : Asset.Images.unselect.image
         contentView.backgroundColor = isSelected ? .systemGray5 : .clear
         contentView.layerCornerRadius = cornerRadius
     }
 
     private func updateEditing() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let self else { return }
-            self.displayCheckmark(show: self.configurationState.isEditing)
-        }
+        displayCheckmark(show: configurationState.isEditing)
     }
 
     private func displayCheckmark(show: Bool) {
@@ -530,6 +523,42 @@ extension ASCFileViewCell {
 
     private var iconSize: CGSize {
         layoutType == .grid ? Constants.gridIconSize : Constants.listIconSize
+    }
+
+    private var iconFormatImage: UIImage {
+        layoutType == .list ? Asset.Images.listFormatImage.image : Asset.Images.gridFormatImage.image
+    }
+
+    private var iconFormatDocument: UIImage {
+        layoutType == .list ? Asset.Images.listFormatDocument.image : Asset.Images.gridFormatDocument.image
+    }
+
+    private var iconFormatSpreadsheet: UIImage {
+        layoutType == .list ? Asset.Images.listFormatSpreadsheet.image : Asset.Images.gridFormatSpreadsheet.image
+    }
+
+    private var iconFormatPresentation: UIImage {
+        layoutType == .list ? Asset.Images.listFormatPresentation.image : Asset.Images.gridFormatPresentation.image
+    }
+
+    private var iconFormatVideo: UIImage {
+        layoutType == .list ? Asset.Images.listFormatVideo.image : Asset.Images.gridFormatVideo.image
+    }
+
+    private var iconFormatDocxf: UIImage {
+        layoutType == .list ? Asset.Images.listFormatDocxf.image : Asset.Images.gridFormatDocxf.image
+    }
+
+    private var iconFormatOform: UIImage {
+        layoutType == .list ? Asset.Images.listFormatOform.image : Asset.Images.gridFormatOform.image
+    }
+
+    private var iconFormatUnknown: UIImage {
+        layoutType == .list ? Asset.Images.listFormatUnknown.image : Asset.Images.gridFormatUnknown.image
+    }
+
+    private var iconFormatPdf: UIImage {
+        layoutType == .list ? Asset.Images.listFormatPdf.image : Asset.Images.gridFormatPdf.image
     }
 }
 

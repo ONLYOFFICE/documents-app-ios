@@ -21,6 +21,8 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
+    
+    @Published var selectedStorage: String?
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
@@ -47,12 +49,17 @@ class ManageRoomViewModel: ObservableObject {
     var isSaveBtnEnabled: Bool {
         roomName.isEmpty || isSaving
     }
+    
+    var isThirdPartyStorageEnabled: Bool {
+        provider != nil
+    }
 
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
     private let editingRoom: ASCRoom?
+    private var provider: ASCFileProviderProtocol?
 
     // MARK: - Init
 
@@ -92,6 +99,11 @@ class ManageRoomViewModel: ObservableObject {
     
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
+    }
+    
+    func didCloudProviderLoad(provider: ASCFileProviderProtocol) {
+        self.provider = provider
+        self.selectedStorage = provider.externalProviderName()
     }
 }
 

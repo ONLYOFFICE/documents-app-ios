@@ -17,7 +17,6 @@ struct ManageRoomView: View {
     
     @State private var isThirdPartyStorageEnabled: Bool = false
     @State private var isCreateNewFolderEnabled: Bool = false
-    @State private var selectedStorage: String = "Google Drive"
     @State private var selectedLocation: String = "/Files for test"
 
     var body: some View {
@@ -128,11 +127,13 @@ struct ManageRoomView: View {
     
     private var thirdPartySection: some View {
         Section(footer: Text(NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: ""))) {
-            Toggle(isOn: $isThirdPartyStorageEnabled) {
+            Toggle(isOn: Binding(
+                get: { viewModel.isThirdPartyStorageEnabled },
+                set: { value in viewModel.isStorageSelectionPresenting = value } )) {
                 Text("Third party storage")
             }
             .tintColor(Color(Asset.Colors.brend.color))
-            if isThirdPartyStorageEnabled {
+            if viewModel.isThirdPartyStorageEnabled {
                 storageSelectionCell
                 NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
                     HStack {
@@ -154,7 +155,7 @@ struct ManageRoomView: View {
         HStack(spacing: 4) {
             Text("Storage")
             Spacer()
-            Text(selectedStorage)
+            Text(viewModel.selectedStorage ?? "")
                 .foregroundColor(.gray)
             Image(systemName: "chevron.right")
                 .font(.subheadline)
@@ -261,9 +262,7 @@ private extension View {
     
     func navigateToStorageSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         navigation(isActive: isActive, destination: {
-            ASCConnectCloudViewControllerRepresentable() { provider in
-                viewModel.isStorageSelectionPresenting = false
-            }
+            ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
         })
     }
 

@@ -434,6 +434,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
 
             localProvider.delegate = operationDelegate
+            localProvider.credentialType = provider.credentialType
 
             do {
                 if FileManager.default.fileExists(atPath: destinationURL.path) {
@@ -444,7 +445,6 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 processing(nil, 1.0, error)
                 return
             }
-
             downloadProgress = localProvider.copyItem(path: path, toLocalURL: destinationURL, completionHandler: { error in
                 if let error = error {
                     log.error(error.localizedDescription)

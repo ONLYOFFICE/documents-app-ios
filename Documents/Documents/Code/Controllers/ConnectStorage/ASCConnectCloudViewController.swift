@@ -9,6 +9,7 @@
 import MBProgressHUD
 import SwiftyDropbox
 import UIKit
+import YandexLoginSDK
 
 class ASCConnectCloudViewController: UITableViewController {
     static let identifier = String(describing: ASCConnectCloudViewController.self)
@@ -143,6 +144,8 @@ class ASCConnectCloudViewController: UITableViewController {
                     presentProviderConnection(by: providerType, animated: true)
                 case .kdrive:
                     presentProviderConnection(by: providerType, animated: true)
+                case .yandex:
+                    presentProviderConnection(by: providerType, animated: true)
                 case .webdav:
                     presentProviderConnection(by: providerType, animated: true)
                 default:
@@ -271,16 +274,13 @@ class ASCConnectCloudViewController: UITableViewController {
                 connectionVC = viewController
             }
         case .yandex:
-            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
-                    provider: .yandex,
-                    needServer: false,
-                    logo: providerImage(type),
-                    title: providerName(type),
-                    instruction: NSLocalizedString("<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>", comment: ""),
-                    complation: authComplation(info:)
-                )
+            let yandexConnectController = ASCConnectStorageYandexController()
+            yandexConnectController.complation = { [weak self] info in
+                self?.authComplation(info: info)
+                _ = yandexConnectController
+            }
+            delay(seconds: 0.1) {
+                yandexConnectController.signIn(parentVC: self)
             }
         case .webdav:
             let viewController = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)

@@ -187,7 +187,7 @@ class ASCConstants {
 
     enum Clouds {
         static let defaultConnectFolderProviders: [ASCFolderProviderType] = [.sharePoint, .nextCloud, .ownCloud, .kDrive, .webDav] // default portal storage set
-        static let defaultConnectCloudProviders: [ASCFileProviderType] = [.nextcloud, .owncloud, .googledrive, .dropbox, .onedrive, .kdrive, .webdav] // external clouds set
+        static let defaultConnectCloudProviders: [ASCFileProviderType] = [.nextcloud, .owncloud, .googledrive, .dropbox, .onedrive, .kdrive, .yandex, .webdav] // external clouds set
         static let preferredOrderCloudProviders: [ASCFolderProviderType] = [
             .nextCloud, .ownCloud, .google, .googleDrive, .dropBox, .skyDrive,
             .oneDrive, .sharePoint, .boxNet, .yandex, .kDrive, .webDav,
@@ -214,6 +214,10 @@ class ASCConstants {
         enum Facebook {
             static let appId: String = ASCConstants.internalConstants["FacebookAppID"] as? String ?? ""
             static let clientToken: String = ASCConstants.internalConstants["FacebookClientToken"] as? String ?? ""
+        }
+
+        enum Yandex {
+            static let appId: String = ASCConstants.internalConstants["YandexAppId"] as? String ?? ""
         }
     }
 

@@ -289,6 +289,14 @@
 				<string>db-qunx5fv62hf63gy</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>YandexLoginSDK</string>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>99999</string>
@@ -304,6 +312,8 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>secondaryyandexloginsdk</string>
+		<string>primaryyandexloginsdk</string>
 		<string>oodocuments</string>
 		<string>fb</string>
 		<string>twitter</string>

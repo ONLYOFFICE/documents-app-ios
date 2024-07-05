@@ -8,6 +8,7 @@
 
 import FilesProvider
 import UIKit
+import YandexLoginSDK
 
 class ASCYandexFileProvider: ASCWebDAVProvider {
     override var type: ASCFileProviderType {
@@ -24,6 +25,7 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
     }
 
     private let baseUrl = URL(string: "https://webdav.yandex.ru")!
+    private let apiURL = URL(string: "https://login.yandex.ru/info")!
 
     override init() {
         super.init()
@@ -31,7 +33,13 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
 
     init(credential: URLCredential) {
         super.init(baseURL: baseUrl, credential: credential)
-        provider?.credentialType = .basic
+        provider?.credentialType = .oAuth1
+
+        if let token = credential.password {
+            DispatchQueue.main.async {
+                self.userInfo(apiURL: self.apiURL, token: token)
+            }
+        }
     }
 
     override func copy() -> ASCFileProviderProtocol {
@@ -48,14 +56,12 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
 
     override func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
-            let login = info["login"] as? String,
-            let password = info["password"] as? String
+            let token = info["token"] as? String
         else {
             complation(false, nil)
             return
         }
-
-        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let credential = URLCredential(user: "", password: token, persistence: .permanent)
         let yandexCloudProvider = ASCYandexFileProvider(credential: credential)
         let rootFolder: ASCFolder = {
             $0.title = NSLocalizedString("All Files", comment: "Category title")
@@ -66,6 +72,11 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
 
         yandexCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
             DispatchQueue.main.async {
+                do {
+                    try YandexLoginSDK.shared.logout()
+                } catch {
+                    print("failed to logout")
+                }
                 complation(success, success ? yandexCloudProvider : nil)
             }
         }
@@ -79,14 +90,49 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
 
             if
                 let password = json["password"] as? String,
-                let user = user,
-                let userId = user.userId
+                let userName = user?.displayName
             {
-                let credential = URLCredential(user: userId, password: password, persistence: .permanent)
+                let credential = URLCredential(user: userName, password: password, persistence: .permanent)
                 provider = WebDAVFileProvider(baseURL: baseUrl, credential: credential)
-                provider?.credentialType = .basic
+                provider?.credentialType = .oAuth1
             }
         }
+    }
+
+    func userInfo(apiURL: URL, token: String) {
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = "GET"
+        request.setValue("OAuth \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = provider?.session.dataTask(with: request, completionHandler: { data, response, error in
+            let status = (response as? HTTPURLResponse)?.statusCode ?? 400
+            if status >= 400, let code = FileProviderHTTPErrorCode(rawValue: status) {
+                let errorDesc = data.flatMap { String(data: $0, encoding: .utf8) }
+                return
+            }
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let login = json["login"] as? String,
+                       let id = json["id"] as? String,
+                       let firstName = json["first_name"] as? String,
+                       let lastName = json["last_name"] as? String,
+                       let realName = json["real_name"] as? String
+                    {
+                        self.user = ASCUser()
+                        self.user?.displayName = login
+                        self.user?.userId = id
+                        self.user?.department = NSLocalizedString("Yandex Disk", comment: "")
+                        return
+                    } else {
+                        return
+                    }
+                } catch {
+                    return
+                }
+            }
+        })
+        task?.resume()
     }
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.

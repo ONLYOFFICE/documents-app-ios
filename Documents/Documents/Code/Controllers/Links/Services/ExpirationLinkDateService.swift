@@ -9,7 +9,6 @@
 import Foundation
 
 class ExpirationLinkDateService {
-    
     func getExpirationInterval(expirationDateString: String?) -> Interval? {
         guard let expirationDateString else { return nil }
 
@@ -22,21 +21,21 @@ class ExpirationLinkDateService {
             let hours = 1 + Int(timeInterval / 3600)
             return .hours(hours)
         } else {
-            let days =  1 + Int(timeInterval / (24 * 60 * 60))
+            let days = 1 + Int(timeInterval / (24 * 60 * 60))
             return .days(days)
         }
     }
-    
+
     enum Interval: Equatable {
         case days(Int)
         case hours(Int)
         case expired
-        
+
         static func == (lhs: Interval, rhs: Interval) -> Bool {
             switch (lhs, rhs) {
-            case (.days(let lhsValue), .days(let rhsValue)):
+            case let (.days(lhsValue), .days(rhsValue)):
                 return lhsValue == rhsValue
-            case (.hours(let lhsValue), .hours(let rhsValue)):
+            case let (.hours(lhsValue), .hours(rhsValue)):
                 return lhsValue == rhsValue
             case (.expired, .expired):
                 return true
@@ -45,7 +44,7 @@ class ExpirationLinkDateService {
             }
         }
     }
-    
+
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"

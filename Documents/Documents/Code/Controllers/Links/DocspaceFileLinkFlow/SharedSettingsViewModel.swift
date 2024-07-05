@@ -122,13 +122,13 @@ final class SharedSettingsViewModel: ObservableObject {
         guard let interval = expirationService.getExpirationInterval(expirationDateString: expirationDateString) else {
             return ""
         }
-        
+
         switch interval {
         case .expired:
             return NSLocalizedString("The link has expired", comment: "Expiration status")
-        case .days(let days):
+        case let .days(days):
             return String(format: NSLocalizedString("Expires after %d days", comment: "Days left"), days)
-        case .hours(let hours):
+        case let .hours(hours):
             return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
         }
     }

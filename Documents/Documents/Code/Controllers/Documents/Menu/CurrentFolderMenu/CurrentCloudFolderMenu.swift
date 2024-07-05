@@ -13,6 +13,7 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
 
     func contextMenu(for folder: ASCFolder, in viewController: ASCDocumentsViewController) -> UIMenu {
         var selectActions: [UIMenuElement] = []
+        var viewActions: [UIMenuElement] = []
         var sortActions: [UIMenuElement] = []
 
         selectActions.append(
@@ -20,9 +21,30 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 image: UIImage(systemName: "checkmark.circle")
             ) { action in
-                viewController.setEditMode(!viewController.tableView.isEditing)
+                viewController.setEditMode(!viewController.collectionView.isEditing)
             }
         )
+
+        viewActions.append(
+            UIAction(
+                title: NSLocalizedString("Icons", comment: "Button title"),
+                image: UIImage(systemName: "square.grid.2x2"),
+                state: ASCDocumentsViewController.itemsViewType == .grid ? .on : .off
+            ) { action in
+                ASCDocumentsViewController.itemsViewType = .grid
+            }
+        )
+
+        viewActions.append(
+            UIAction(
+                title: NSLocalizedString("List", comment: "Button title"),
+                image: UIImage(systemName: "list.bullet"),
+                state: ASCDocumentsViewController.itemsViewType == .list ? .on : .off
+            ) { action in
+                ASCDocumentsViewController.itemsViewType = .list
+            }
+        )
+
         let sortInfoOnRootFolderType = sortInfoOnRootFolderType
         let (sortType, sortAscending) = sortDetails(sortInfo: sortInfo(forRootFolderType: folder))
         let sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
@@ -40,9 +62,11 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
         }
 
         let selectMenu = UIMenu(title: "", options: .displayInline, children: selectActions)
+        let viewMenu = UIMenu(title: "", options: .displayInline, children: viewActions)
         let sortMenu = UIMenu(title: "", options: .displayInline, children: sortActions)
         var menus: [UIMenuElement] = [sortMenu]
 
+        menus.insert(viewMenu, at: 0)
         menus.insert(selectMenu, at: 0)
 
         return UIMenu(title: "", options: [.displayInline], children: menus)
@@ -61,7 +85,7 @@ final class CurrentCloudFolderMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 style: .default,
                 handler: { [unowned viewController] action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
+                    viewController.setEditMode(!viewController.collectionView.isEditing)
                 }
             )
         )

@@ -19,24 +19,23 @@ private struct ItemDragInfo {
     var lastDropPosition: LastDropPosition?
 }
 
-// MARK: - UITableViewDragDelegate
+// MARK: - UICollectionViewDragDelegate
 
-extension ASCDocumentsViewController: UITableViewDragDelegate {
-    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+extension ASCDocumentsViewController: UICollectionViewDragDelegate {
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: any UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         guard
-            tableView.cellForRow(at: indexPath) != nil,
+            collectionView.cellForItem(at: indexPath) != nil,
             let providerId = provider?.id,
             provider?.allowDragAndDrop(for: tableData[indexPath.row]) == true
-        else {
-            return []
-        }
+        else { return [] }
+
         let documentItemProvider = ASCEntityItemProvider(providerId: providerId, entity: tableData[indexPath.row])
         let itemProvider = NSItemProvider(object: documentItemProvider)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         return [dragItem]
     }
 
-    func tableView(_ tableView: UITableView, dragSessionWillBegin session: UIDragSession) {
+    func collectionView(_ collectionView: UICollectionView, dragSessionWillBegin session: any UIDragSession) {
         guard let folder else { return }
 
         session.localContext = ItemDragInfo(
@@ -48,10 +47,10 @@ extension ASCDocumentsViewController: UITableViewDragDelegate {
     }
 }
 
-// MARK: - UITableViewDropDelegate
+// MARK: - UICollectionViewDropDelegate
 
-extension ASCDocumentsViewController: UITableViewDropDelegate {
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+extension ASCDocumentsViewController: UICollectionViewDropDelegate {
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: any UICollectionViewDropCoordinator) {
         var srcFolder: ASCFolder?
         var dstFolder = folder
         var srcProvider: ASCFileProviderProtocol?
@@ -160,10 +159,10 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                 // Append new items to destination controller
                                 if let newItems = newItems, dstFolder.id == strongSelf.folder?.id {
                                     strongSelf.provider?.add(items: newItems, at: 0)
-                                    strongSelf.tableView.reloadData()
+                                    strongSelf.collectionView.reloadData()
 
                                     for index in 0 ..< newItems.count {
-                                        if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+                                        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) {
                                             strongSelf.highlight(cell: cell)
                                         }
                                     }
@@ -179,7 +178,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                             srcDocumentsVC.provider?.remove(at: index)
                                         }
                                     }
-                                    srcDocumentsVC.tableView.reloadData()
+                                    srcDocumentsVC.collectionView.reloadData()
                                 }
                             } else {
                                 log.error("Items don't copied")
@@ -222,7 +221,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                         srcDocumentsVC.provider?.remove(at: index)
                                     }
                                 }
-                                srcDocumentsVC.tableView.reloadData()
+                                srcDocumentsVC.collectionView.reloadData()
                                 srcDocumentsVC.showEmptyView(srcDocumentsVC.total < 1)
                                 srcDocumentsVC.updateNavBar()
                             }
@@ -233,7 +232,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, canHandle session: any UIDropSession) -> Bool {
         if session.canLoadObjects(ofClass: ASCEntityItemProvider.self), let folder {
             if let provider, provider.allowEdit(entity: folder), !isTrash(folder) {
                 return true
@@ -242,17 +241,17 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
         return false
     }
 
-    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: any UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         if session.localDragSession != nil {
-            dragHighlight()
+            dragHighlightItem()
 
             if let provider, provider.allowEdit(entity: folder) {
                 if let indexPath = destinationIndexPath, indexPath.row < tableData.count, tableData[indexPath.row] is ASCFolder {
-                    let targetCell = tableView.cellForRow(at: indexPath)
-                    dragHighlight(cell: targetCell)
+                    let targetCell = collectionView.cellForItem(at: indexPath)
+                    dragHighlightItem(targetCell)
 
                     if let localContext = session.localDragSession?.localContext as? ItemDragInfo {
-                        if let targetFolder = (targetCell as? ASCFolderCell)?.folder {
+                        if let targetFolder = (targetCell as? ASCFolderViewCell)?.entity as? ASCFolder {
                             if let lastDropPosition = localContext.lastDropPosition {
                                 if Date().secondsSince(lastDropPosition.time) > 2 {
                                     var newDropInfo = localContext
@@ -272,7 +271,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                         }
                     }
 
-                    return UITableViewDropProposal(operation: .copy, intent: .insertIntoDestinationIndexPath)
+                    return UICollectionViewDropProposal(operation: .copy, intent: .insertIntoDestinationIndexPath)
                 }
 
                 // Check if not source folder
@@ -280,20 +279,20 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                    let srcFolder = contextInfo.srcFolder,
                    srcFolder.uid != folder?.uid
                 {
-                    return UITableViewDropProposal(operation: .copy)
+                    return UICollectionViewDropProposal(operation: .copy)
                 }
             }
         }
-        return UITableViewDropProposal(operation: .forbidden)
+        return UICollectionViewDropProposal(operation: .forbidden)
     }
 
-    func tableView(_ tableView: UITableView, dropSessionDidEnd session: any UIDropSession) {
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidEnd session: any UIDropSession) {
         session.localDragSession?.localContext = nil
-        dragHighlight()
+        dragHighlightItem()
     }
 
-    private func dragHighlight(cell: UITableViewCell? = nil) {
-        for cell in tableView.visibleCells {
+    private func dragHighlightItem(_ cell: UICollectionViewCell? = nil) {
+        for cell in collectionView.visibleCells {
             cell.backgroundColor = .systemBackground
         }
 

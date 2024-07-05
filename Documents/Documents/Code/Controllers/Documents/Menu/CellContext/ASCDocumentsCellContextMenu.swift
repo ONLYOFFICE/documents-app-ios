@@ -6,11 +6,10 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
-import MGSwipeTableCell
+import UIKit
 
 protocol ASCDocumentsCellContextMenu {
     typealias InterfaceInteractable = () -> Bool
-    @available(iOS 13.0, *)
-    func buildCellMenu(cell: MGSwipeTableCell, interfaceInteractable: @escaping InterfaceInteractable) -> UIMenu?
+
+    func buildCellMenu(cell: UICollectionView, interfaceInteractable: @escaping InterfaceInteractable) -> UIMenu?
 }

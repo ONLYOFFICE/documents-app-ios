@@ -490,6 +490,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             self.viewIsAppearing(true)
             self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
         }
+
+        collectionView.reloadSections(IndexSet(integer: 0))
     }
 
     private func cleanup() {
@@ -522,15 +524,14 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func updateItemsViewType() {
-        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: false)
+        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
 
-//        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
-//        for cell in visibleCells {
-//            cell.layoutType = itemsViewType
-//        }
+        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
+        for cell in visibleCells {
+            cell.layoutType = ASCDocumentsViewController.itemsViewType
+        }
 
-        // TODO: - Fix the animation case
-        collectionView.reloadData()
+        collectionView.reloadSections(IndexSet(integer: 0))
     }
 
     private func collectionViewCompositionalLayout(by type: ASCEntityViewLayoutType) -> UICollectionViewCompositionalLayout {

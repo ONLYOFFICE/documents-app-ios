@@ -59,6 +59,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     private lazy var dateRightLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        $0.textAlignment = .right
         $0.textColor = .secondaryLabel
         return $0
     }(UILabel())
@@ -97,6 +98,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         return $0
     }(UIImageView())
 
+    private var isCompact: Bool {
+        frame.width < Constants.transformWidth
+    }
+
     // MARK: - Lifecycle Methods
 
     override init(frame: CGRect) {
@@ -121,8 +126,6 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
     }
 
     private func buildView() {
-//        contentView.backgroundColor = .red
-
         for view in contentView.subviews {
             view.removeFromSuperview()
         }
@@ -198,8 +201,14 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         if let date = file.updated {
             dateLabel.text = dateTimeFormatter.string(from: date)
+            dateRightLabel.text = dateTimeFormatter.string(from: date)
+
+            if !isCompact {
+                dateLabel.text = nil
+            }
         } else {
             dateLabel.text = nil
+            dateRightLabel.text = nil
         }
 
         var items = [UIView]()
@@ -210,6 +219,11 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         if items.contains(dateLabel) {
             separateLabel.text = "•"
+
+            if !isCompact {
+                separateLabel.text = nil
+            }
+
             items.append(separateLabel)
         }
 
@@ -253,15 +267,21 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         items.append(checkmarkView)
         items.append(buildIconView(preferredSize: iconSize))
         items.append(middleStackView)
+        items.append(dateRightLabel)
+        items.append({
+            $0.anchor(widthConstant: 20)
+            return $0
+        }(UIView()))
 
         checkmarkView.removeConstraints(checkmarkView.constraints)
         checkmarkView.anchor(widthConstant: Constants.checkmarkSize)
         displayCheckmark(show: configurationState.isEditing)
+        displayRightInfo(show: !isCompact)
 
         let contentView = {
             $0.axis = .horizontal
             $0.alignment = .center
-            $0.distribution = .fillProportionally
+            $0.distribution = .fill
             $0.spacing = 10
             return $0
         }(UIStackView(arrangedSubviews: items))
@@ -514,6 +534,11 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         checkmarkView.alpha = show ? 1 : 0
         checkmarkView.isHidden = !show
     }
+
+    private func displayRightInfo(show: Bool) {
+        dateRightLabel.alpha = show ? 1 : 0
+        dateRightLabel.isHidden = !show
+    }
 }
 
 extension ASCFileViewCell {
@@ -563,6 +588,7 @@ extension ASCFileViewCell {
 }
 
 private enum Constants {
+    static let transformWidth: CGFloat = 450
     static let checkmarkSize: CGFloat = 16
     static let gridCornerRadius: CGFloat = 12
     static let listCornerRadius: CGFloat = 0

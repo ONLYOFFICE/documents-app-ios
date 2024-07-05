@@ -55,6 +55,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
     private lazy var dateRightLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        $0.textAlignment = .right
         $0.textColor = .secondaryLabel
         return $0
     }(UILabel())
@@ -92,6 +93,10 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         $0.contentMode = .center
         return $0
     }(UIImageView())
+
+    private var isCompact: Bool {
+        frame.width < Constants.transformWidth
+    }
 
     // MARK: - Lifecycle Methods
 
@@ -174,21 +179,27 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             middleStackView.addArrangedSubview(ownerView)
         }
 
+        // Right info
+        dateRightLabel.text = nil
         if let createdDate = folder.created {
             middleStackView.addArrangedSubview({
                 $0.font = UIFont.preferredFont(forTextStyle: .caption1)
                 $0.textColor = .secondaryLabel
-                $0.text = dateFormatter.string(from: createdDate)
+                $0.text = isCompact ? dateFormatter.string(from: createdDate) : nil
                 return $0
             }(UILabel()))
+
+            dateRightLabel.text = dateTimeFormatter.string(from: createdDate)
         }
+        displayRightInfo(show: !isCompact)
 
         items.append(checkmarkView)
         items.append(iconView)
         items.append(middleStackView)
+        items.append(dateRightLabel)
         items.append({
             $0.contentMode = .center
-            $0.anchor(widthConstant: 30)
+            $0.anchor(widthConstant: 20)
             return $0
         }(UIImageView(image: UIImage(
             systemName: "chevron.forward",
@@ -497,6 +508,11 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
             .uppercased()
     }
+
+    private func displayRightInfo(show: Bool) {
+        dateRightLabel.alpha = show ? 1 : 0
+        dateRightLabel.isHidden = !show
+    }
 }
 
 extension ASCFolderViewCell {
@@ -550,6 +566,7 @@ extension ASCFolderViewCell {
 }
 
 private enum Constants {
+    static let transformWidth: CGFloat = 450
     static let checkmarkSize: CGFloat = 16
     static let gridCornerRadius: CGFloat = 12
     static let listCornerRadius: CGFloat = 0

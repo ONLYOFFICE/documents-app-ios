@@ -179,7 +179,6 @@ PODS:
   - MediaBrowser (2.1.2):
     - SDWebImage
     - UICircularProgressRing
-  - MGSwipeTableCell (1.6.14)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -235,7 +234,6 @@ DEPENDENCIES:
   - Kingfisher
   - MBProgressHUD
   - MediaBrowser (from `https://github.com/ayuzhin/MediaBrowser.git`)
-  - MGSwipeTableCell
   - ObjectMapper
   - PhoneNumberKit
   - ReCaptcha (from `https://github.com/fjcaetano/ReCaptcha.git`)
@@ -286,7 +284,6 @@ SPEC REPOS:
     - KeychainSwift
     - Kingfisher
     - MBProgressHUD
-    - MGSwipeTableCell
     - nanopb
     - ObjectMapper
     - PhoneNumberKit
@@ -369,7 +366,6 @@ SPEC CHECKSUMS:
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MediaBrowser: 6d830e6aff5446dbe8d002738abf4daa498e2ae7
-  MGSwipeTableCell: d99ed6466f393b71cd488c6f798ba112ff5d1d01
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   ObjectMapper: e6e4d91ff7f2861df7aecc536c92d8363f4c9677
   PhoneNumberKit: 3d9a20cfe8ee68f35c2a3ae9474093133f72a8a1
@@ -390,6 +386,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: 587eb6444d9aebafa381a585807d61a937218cf4
+PODFILE CHECKSUM: c45639a7d4c48f5e3097b54c72d940f29fad4da7
 
 COCOAPODS: 1.15.2

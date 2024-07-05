@@ -9,7 +9,6 @@
 import Alamofire
 import FileKit
 import MBProgressHUD
-import MGSwipeTableCell
 import ObjectMapper
 import SwiftMessages
 import SwiftRater
@@ -1919,15 +1918,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             let provider,
             let entity = (cell as? ASCEntityViewCellProtocol)?.entity
         else { return }
-//
-//        var file: ASCFile?
-//        var folder: ASCFolder?
-//
-//        if let fileCell = cell as? ASCFileCell {
-//            file = fileCell.file
-//        } else if let folderCell = cell as? ASCFolderCell {
-//            folder = folderCell.folder
-//        }
 
         var hud: MBProgressHUD?
 

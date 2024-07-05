@@ -19,6 +19,11 @@ enum ASCAppSettings {
         set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.compressImage) }
     }
 
+    static var gridLayoutFiles: Bool {
+        get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.gridLayoutFiles) }
+        set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.gridLayoutFiles) }
+    }
+
     enum Feature {
         // Hide the searchbar in the navigationbar if the list of documents is empty
         static var hideSearchbarIfEmpty: Bool {

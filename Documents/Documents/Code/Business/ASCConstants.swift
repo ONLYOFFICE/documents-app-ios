@@ -66,6 +66,7 @@ class ASCConstants {
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"
+        static let gridLayoutFiles = "asc-grid-layout-files"
 
         // Debug
         static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"

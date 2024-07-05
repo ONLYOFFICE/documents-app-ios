@@ -21,9 +21,13 @@ typealias UnmovedEntities = [ASCEntity]
 class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
-    static var itemsViewType: ASCEntityViewLayoutType = .list {
-        didSet {
-            NotificationCenter.default.post(name: ASCConstants.Notifications.updateDocumentsViewLayoutType, object: itemsViewType)
+    static var itemsViewType: ASCEntityViewLayoutType {
+        get {
+            ASCAppSettings.gridLayoutFiles ? .grid : .list
+        }
+        set {
+            ASCAppSettings.gridLayoutFiles = newValue == .grid
+            NotificationCenter.default.post(name: ASCConstants.Notifications.updateDocumentsViewLayoutType, object: newValue)
         }
     }
 

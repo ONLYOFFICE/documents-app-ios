@@ -269,7 +269,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         authorLabel.text = [roomTypeDescription, folder.createdBy?.displayName]
             .compactMap { $0 }
-            .joined(separator: " | ")
+            .joined(separator: " • ")
 
         if authorLabel.text?.isEmpty == true {
             return nil
@@ -372,6 +372,11 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             let provider
         else { return UIView() }
 
+        let badgeImageView: UIImageView = {
+            $0.contentMode = .center
+            return $0
+        }(UIImageView())
+
         let roomPlaceholderImage = UIImage(
             color: .clear,
             size: preferredSize
@@ -379,6 +384,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         imageView.layerCornerRadius = 0
 
+        // Set icon image
         if let _ = folder.roomType {
             if folder.rootFolderType == .onlyofficeRoomArchived {
                 imageView.image = roomImageDefault()
@@ -433,6 +439,18 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             }
         }
 
+        // Set badge icon image if neede
+
+        if folder.isPublicRoom {
+            badgeImageView.image = iconWorld
+        }
+
+        if folder.isPrivate {
+            badgeImageView.image = iconSecurity
+        }
+
+        // Layout
+
         imageView.removeConstraints(imageView.constraints)
 
         imageView.anchor(
@@ -444,6 +462,15 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         parentView.addSubview(imageView)
         imageView.fillToSuperview()
+
+        if badgeImageView.image != nil {
+            parentView.addSubview(badgeImageView)
+            badgeImageView.anchor(
+                bottom: parentView.bottomAnchor,
+                trailing: parentView.trailingAnchor,
+                padding: badgeInsets()
+            )
+        }
 
         parentView.addSubview(activityIndicator)
         activityIndicator.anchorCenterSuperview()
@@ -513,6 +540,24 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         dateRightLabel.alpha = show ? 1 : 0
         dateRightLabel.isHidden = !show
     }
+
+    private func badgeInsets() -> UIEdgeInsets {
+        guard let folder = entity as? ASCFolder else { return .zero }
+
+        if folder.isPublicRoom {
+            return layoutType == .grid
+                ? UIEdgeInsets(top: 0, left: 0, bottom: -7, right: -7)
+                : UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0)
+        }
+
+        if folder.isPrivate {
+            return layoutType == .grid
+                ? UIEdgeInsets(top: 0, left: 0, bottom: -7, right: -7)
+                : UIEdgeInsets(top: 0, left: 0, bottom: 3, right: -3)
+        }
+
+        return .zero
+    }
 }
 
 extension ASCFolderViewCell {
@@ -562,6 +607,14 @@ extension ASCFolderViewCell {
 
     private var iconFolderKdrive: UIImage {
         layoutType == .list ? Asset.Images.listFolderKdrive.image : Asset.Images.gridFolderKdrive.image
+    }
+
+    private var iconWorld: UIImage {
+        layoutType == .list ? Asset.Images.world.image : Asset.Images.worldLarge.image
+    }
+
+    private var iconSecurity: UIImage {
+        layoutType == .list ? Asset.Images.security.image : Asset.Images.securityLarge.image
     }
 }
 

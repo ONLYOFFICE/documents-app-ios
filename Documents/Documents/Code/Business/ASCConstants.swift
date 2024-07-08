@@ -75,6 +75,7 @@ class ASCConstants {
         static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
         static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
         static let debugForceRtl = "asc-debug-force-rtl"
+        static let debugHideCloudsCategory = "asc-debug-hide-clouds-category"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])

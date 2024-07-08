@@ -31,6 +31,12 @@ enum ASCAppSettings {
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
         }
 
+        // Allow external clouds category
+        static var hideCloudsCategory: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideCloudsCategory) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideCloudsCategory) }
+        }
+        
         // Allow iCloud provider
         static var allowiCloud: Bool {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }

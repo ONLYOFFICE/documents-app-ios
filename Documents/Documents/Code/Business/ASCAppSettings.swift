@@ -33,8 +33,8 @@ enum ASCAppSettings {
 
         // Allow external clouds category
         static var hideCloudsCategory: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideCloudsCategory) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideCloudsCategory) }
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.hideCloudsCategory) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.hideCloudsCategory) }
         }
         
         // Allow iCloud provider

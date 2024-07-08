@@ -67,6 +67,7 @@ class ASCConstants {
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"
         static let gridLayoutFiles = "asc-grid-layout-files"
+        static let hideCloudsCategory = "asc-hide-clouds-category"
 
         // Debug
         static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
@@ -75,7 +76,6 @@ class ASCConstants {
         static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
         static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
         static let debugForceRtl = "asc-debug-force-rtl"
-        static let debugHideCloudsCategory = "asc-debug-hide-clouds-category"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])

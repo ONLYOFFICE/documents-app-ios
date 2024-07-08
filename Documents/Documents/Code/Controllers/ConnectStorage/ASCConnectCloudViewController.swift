@@ -10,12 +10,16 @@ import MBProgressHUD
 import SwiftyDropbox
 import UIKit
 
+typealias ConnectCloudFolderDetailsCompletion = (ASCFileProviderProtocol, ASCFolder, [String: Any]) -> Void
+
 class ASCConnectCloudViewController: UITableViewController {
+    
     static let identifier = String(describing: ASCConnectCloudViewController.self)
 
     // MARK: - Properies
 
     var complation: ((ASCFileProviderProtocol) -> Void)?
+    var folderDetailsCompletion: ConnectCloudFolderDetailsCompletion?
     var dismissOnCompetion: Bool = true
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
@@ -181,6 +185,27 @@ class ASCConnectCloudViewController: UITableViewController {
                 
                 guard let self else {
                     return
+                }
+
+                if let folderDetailsCompletion {
+                    var info = info
+                    info["customerTitle"] = info["providerKey"]
+                    let hud = MBProgressHUD.showTopMost()
+                    OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, info) { [weak self] response, error in
+                        guard let self else { return }
+                        var provider = provider
+                        if let error = error {
+                            log.error(error)
+                        } else {
+                            if let folder = response?.result {
+                                folderDetailsCompletion(provider, folder, info)
+                                if dismissOnCompetion {
+                                    dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        }
+                        hud?.hide(animated: false)
+                    }
                 }
                 complation?(provider)
                 if dismissOnCompetion {

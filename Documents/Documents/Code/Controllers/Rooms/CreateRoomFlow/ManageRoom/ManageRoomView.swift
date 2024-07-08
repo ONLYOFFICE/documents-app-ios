@@ -16,7 +16,6 @@ struct ManageRoomView: View {
     @ObservedObject var viewModel: ManageRoomViewModel
     
     @State private var isThirdPartyStorageEnabled: Bool = false
-    @State private var isCreateNewFolderEnabled: Bool = false
     @State private var selectedLocation: String = "/Files for test"
 
     var body: some View {
@@ -125,30 +124,32 @@ struct ManageRoomView: View {
             .disabled(viewModel.isSaving)
     }
     
+    @ViewBuilder
     private var thirdPartySection: some View {
-        Section(footer: Text(NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: ""))) {
-            Toggle(isOn: Binding(
-                get: { viewModel.isThirdPartyStorageEnabled },
-                set: { value in viewModel.isStorageSelectionPresenting = value } )) {
-                Text("Third party storage")
-            }
-            .tintColor(Color(Asset.Colors.brend.color))
-            if viewModel.isThirdPartyStorageEnabled {
-                storageSelectionCell
-                NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
-                    HStack {
-                        Text("Location")
-                        Spacer()
-                        Text(selectedLocation)
-                            .foregroundColor(.gray)
-                    }
+        if viewModel.selectedRoomType.type == .publicRoom {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: "")
+                )
+            ) {
+                thirdPartyToggleCell
+                if viewModel.isThirdPartyStorageEnabled {
+                    storageSelectionCell
+                    // folderSelectionCell
+                    createNewFolderCell
                 }
-                Toggle(isOn: $isCreateNewFolderEnabled) {
-                    Text("Create new folder")
-                }
-                .tintColor(Color(Asset.Colors.brend.color))
             }
         }
+    }
+    
+    private var thirdPartyToggleCell: some View {
+        Toggle(isOn: Binding(
+            get: { viewModel.isThirdPartyStorageEnabled },
+            set: { viewModel.didTapThirdPartyStorageSwitch(isOn: $0) }
+        )) {
+            Text("Third party storage")
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
     }
     
     private var storageSelectionCell: some View {
@@ -166,6 +167,24 @@ struct ManageRoomView: View {
         .onTapGesture {
             viewModel.didTapStorageSelectionCell()
         }
+    }
+    
+    private var folderSelectionCell: some View {
+        NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
+            HStack {
+                Text("Location")
+                Spacer()
+                Text(selectedLocation)
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+    
+    private var createNewFolderCell: some View {
+        Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
+            Text("Create new folder")
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
     }
 
     private func handleHUD() {
@@ -291,28 +310,6 @@ private extension String {
     func removeForbiddenCharacters() -> String {
         let forbiddenCharacters = "*+:\"<>?|/\\"
         return filter { !forbiddenCharacters.contains($0) }
-    }
-}
-
-struct StorageSelectionView: View {
-    @Binding var selectedStorage: String
-
-    var body: some View {
-        List {
-            Button(action: {
-                selectedStorage = "Google Drive"
-            }) {
-                Text("Google Drive")
-                    .foregroundColor(selectedStorage == "Google Drive" ? .blue : .primary)
-            }
-            Button(action: {
-                selectedStorage = "Dropbox"
-            }) {
-                Text("Dropbox")
-                    .foregroundColor(selectedStorage == "Dropbox" ? .blue : .primary)
-            }
-        }
-        .navigationBarTitle("Select Storage", displayMode: .inline)
     }
 }
 

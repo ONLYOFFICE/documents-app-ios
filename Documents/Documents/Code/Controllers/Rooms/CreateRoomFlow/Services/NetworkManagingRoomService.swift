@@ -18,6 +18,7 @@ struct CreatingRoomModel {
     var name: String
     var image: UIImage?
     var tags: [String]
+    var createAsNewFolder: Bool = false
 }
 
 struct EditRoomModel {
@@ -90,7 +91,7 @@ extension NetworkManagingRoomServiceImp {
             completion(.success(room))
             return
         }
-        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name)
+        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name, createAsNewFolder: false)
         networkService.request(
             OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
             requestModel.dictionary

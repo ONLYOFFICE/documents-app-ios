@@ -23,6 +23,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var tags: Set<String> = []
     
     @Published var selectedStorage: String?
+    @Published var isCreateNewFolderEnabled: Bool = false
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
@@ -60,6 +61,7 @@ class ManageRoomViewModel: ObservableObject {
     private var onCreate: (ASCFolder) -> Void
     private let editingRoom: ASCRoom?
     private var provider: ASCFileProviderProtocol?
+    private var thirdPartyFolder: ASCFolder?
 
     // MARK: - Init
 
@@ -101,9 +103,19 @@ class ManageRoomViewModel: ObservableObject {
         isStorageSelectionPresenting = true
     }
     
-    func didCloudProviderLoad(provider: ASCFileProviderProtocol) {
+    func didCloudProviderLoad(provider: ASCFileProviderProtocol, folder: ASCFolder, info: [String: Any]) {
         self.provider = provider
+        self.thirdPartyFolder = folder
         self.selectedStorage = provider.externalProviderName()
+    }
+    
+    func didTapThirdPartyStorageSwitch(isOn: Bool) {
+        if isOn {
+            isStorageSelectionPresenting = true
+        } else {
+            provider = nil
+            isStorageSelectionPresenting = false
+        }
     }
 }
 
@@ -112,11 +124,13 @@ class ManageRoomViewModel: ObservableObject {
 private extension ManageRoomViewModel {
     func createRoom() {
         creatingRoomService.createRoom(
-            model: .init(
+            model: CreatingRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
                 name: roomName,
                 image: selectedImage,
-                tags: tags.map { $0 }
+                tags: tags.map { $0 },
+                createAsNewFolder: isCreateNewFolderEnabled,
+                thirdPartyFolderId: thirdPartyFolder?.id
             )
         ) { [weak self] result in
             self?.isSaving = false

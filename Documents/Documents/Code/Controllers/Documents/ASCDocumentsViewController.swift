@@ -1485,13 +1485,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let localEmptyView, localEmptyView.superview == nil
             else { return }
 
-            collectionView.backgroundView = localEmptyView
-            localEmptyView.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: collectionView.width,
-                height: collectionView.contentSize.height
-            )
+            view.insertSubview(localEmptyView, aboveSubview: collectionView)
+            localEmptyView.fillToSuperview()
         }
     }
 
@@ -1533,13 +1528,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let errorView, errorView.superview == nil
             else { return }
 
-            collectionView.backgroundView = errorView
-            errorView.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: collectionView.width,
-                height: collectionView.contentSize.height
-            )
+            view.insertSubview(errorView, aboveSubview: collectionView)
+            errorView.fillToSuperview()
         }
     }
 

@@ -1,6 +1,6 @@
 //
 //  EditSharedLinkViewModel.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Lolita Chernysheva on 05.06.2024.
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
@@ -248,20 +248,20 @@ final class EditSharedLinkViewModel: ObservableObject {
             }
             return
         }
-        
+
         guard let interval = expirationService.getExpirationInterval(expirationDateString: expirationDateString) else {
             return
         }
-        
+
         switch interval {
         case .expired:
             linkLifeTimeString = NSLocalizedString("Expired", comment: "Expiration status")
-        case .days(let days):
+        case let .days(days):
             linkLifeTimeString = String(format: NSLocalizedString("%d days", comment: "Days left"), days)
-        case .hours(let hours):
+        case let .hours(hours):
             linkLifeTimeString = String(format: NSLocalizedString("%d hours", comment: "Hours left"), hours)
         }
-        
+
         isExpired = interval == .expired
     }
 }

@@ -67,6 +67,8 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     // MARK: - Lifecycle Methods
 
     func initialize(_ complation: ((Bool) -> Void)? = nil) {
+        let semaphore = DispatchSemaphore(value: 0)
+
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else {
                 complation?(false)
@@ -75,11 +77,15 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
             strongSelf.provider = CloudFileProvider(containerId: strongSelf.identifier, scope: .documents)
 
-            DispatchQueue.main.async {
-                strongSelf.userInfo { success, error in
-                    DispatchQueue.main.async {
-                        complation?(success)
-                    }
+            semaphore.signal()
+        }
+
+        semaphore.wait()
+
+        DispatchQueue.main.async {
+            self.userInfo { success, error in
+                DispatchQueue.main.async {
+                    complation?(success)
                 }
             }
         }

@@ -180,8 +180,8 @@ enum OnlyofficeAPI {
 
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
-            
-            static func createThirdparty(providerId: String) ->  Endpoint<OnlyofficeResponse<ASCFolder>> {
+
+            static func createThirdparty(providerId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomsThirdparty, providerId), .post)
             }
 

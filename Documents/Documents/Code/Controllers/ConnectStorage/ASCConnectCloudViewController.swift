@@ -13,7 +13,6 @@ import UIKit
 typealias ConnectCloudFolderDetailsCompletion = (ASCFileProviderProtocol, ASCFolder, [String: Any]) -> Void
 
 class ASCConnectCloudViewController: UITableViewController {
-    
     static let identifier = String(describing: ASCConnectCloudViewController.self)
 
     // MARK: - Properies
@@ -182,7 +181,7 @@ class ASCConnectCloudViewController: UITableViewController {
                     ASCFileManager.cloudProviders.insert(provider, at: 0)
                     ASCFileManager.storeProviders()
                 }
-                
+
                 guard let self else {
                     return
                 }

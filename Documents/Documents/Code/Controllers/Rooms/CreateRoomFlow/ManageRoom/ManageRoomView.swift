@@ -14,7 +14,7 @@ struct ManageRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: ManageRoomViewModel
-    
+
     @State private var isThirdPartyStorageEnabled: Bool = false
     @State private var selectedLocation: String = "/Files for test"
 
@@ -123,7 +123,7 @@ struct ManageRoomView: View {
             .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isSaving)
     }
-    
+
     @ViewBuilder
     private var thirdPartySection: some View {
         if viewModel.selectedRoomType.type == .publicRoom {
@@ -141,7 +141,7 @@ struct ManageRoomView: View {
             }
         }
     }
-    
+
     private var thirdPartyToggleCell: some View {
         Toggle(isOn: Binding(
             get: { viewModel.isThirdPartyStorageEnabled },
@@ -151,7 +151,7 @@ struct ManageRoomView: View {
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
-    
+
     private var storageSelectionCell: some View {
         HStack(spacing: 4) {
             Text("Storage")
@@ -168,7 +168,7 @@ struct ManageRoomView: View {
             viewModel.didTapStorageSelectionCell()
         }
     }
-    
+
     private var folderSelectionCell: some View {
         NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
             HStack {
@@ -179,7 +179,7 @@ struct ManageRoomView: View {
             }
         }
     }
-    
+
     private var createNewFolderCell: some View {
         Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
             Text("Create new folder")
@@ -278,7 +278,7 @@ private extension View {
             )
         })
     }
-    
+
     func navigateToStorageSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         navigation(isActive: isActive, destination: {
             ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)

@@ -163,7 +163,6 @@ extension NetworkManagingRoomServiceImp {
 // MARK: - Create
 
 extension NetworkManagingRoomServiceImp {
-    
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         let requestModel = CreateRoomRequestModel(
             roomType: model.roomType.rawValue,

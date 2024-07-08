@@ -9,15 +9,14 @@
 import SwiftUI
 
 struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable {
-    
     var completion: ConnectCloudFolderDetailsCompletion
-    
+
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
-    
+
     func makeUIViewController(context: Context) -> some UIViewController {
         let connectStorageVC = ASCConnectCloudViewController.instantiate(from: Storyboard.connectStorage)
         let navigationVC = UINavigationController(rootViewController: connectStorageVC)
-        
+
         if #available(iOS 15.0, *) {
             if let sheet = navigationVC.sheetPresentationController {
                 sheet.detents = [.medium(), .large()]
@@ -29,13 +28,13 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
         } else {
             navigationVC.modalPresentationStyle = .pageSheet
         }
-        
+
         connectStorageVC.dismissOnCompetion = false
-        connectStorageVC.folderDetailsCompletion = { provider, folder, info  in
+        connectStorageVC.folderDetailsCompletion = { provider, folder, info in
             completion(provider, folder, info)
             navigationVC.navigationController?.popToRootViewController(animated: false)
         }
-        
+
         return navigationVC
     }
 }

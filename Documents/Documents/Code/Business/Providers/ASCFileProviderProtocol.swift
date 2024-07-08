@@ -273,7 +273,6 @@ enum ConflictResolveType: Int {
 // MARK: External provider name
 
 extension ASCFileProviderProtocol {
-    
     func externalProviderName() -> String {
         let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
             switch type {
@@ -299,7 +298,7 @@ extension ASCFileProviderProtocol {
                 return NSLocalizedString("Unknown", comment: "")
             }
         }
-        
-        return providerName(self.type)
+
+        return providerName(type)
     }
 }

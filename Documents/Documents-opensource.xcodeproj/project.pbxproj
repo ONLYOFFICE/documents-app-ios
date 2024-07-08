@@ -24,6 +24,7 @@
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
 		E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */; };
+		E827EEEC2C3C856100BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827EEEB2C3C856000BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */; };
 		E83125CE2B249A4E006016F1 /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */; };
 		E83125D02B249AC7006016F1 /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CF2B249AC7006016F1 /* TagsFieldView.swift */; };
 		E83125D42B28B20A006016F1 /* ASCAttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */; };
@@ -666,6 +667,7 @@
 		A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_opensource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
 		E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		E827EEEB2C3C856000BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
 		E83125CF2B249AC7006016F1 /* TagsFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
 		E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAttachmentManager.swift; sourceTree = "<group>"; };
@@ -2078,6 +2080,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF8472722CB39ED00ABC3B4 /* Views */,
+				E827EEEB2C3C856000BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */,
 				F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */,
 				FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */,
 				FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */,
@@ -3995,6 +3998,7 @@
 				FC1429FB2898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
 				FC70816F2812E2260057FCD2 /* ASCConstants.swift in Sources */,
 				FC7081712812E2260057FCD2 /* ASCSwitchRowViewModel.swift in Sources */,
+				E827EEEC2C3C856100BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */,
 				FC7081722812E2260057FCD2 /* ASCProgressAlert.swift in Sources */,
 				FC1765012BA332F300D6B6F0 /* RoomSharingRootViewController.swift in Sources */,
 				FC379D592C380C5900B120D9 /* ASCDocSpaceLinkView.swift in Sources */,

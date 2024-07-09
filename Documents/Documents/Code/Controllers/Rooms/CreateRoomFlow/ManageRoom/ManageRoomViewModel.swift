@@ -16,6 +16,8 @@ class ManageRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
     @Published var roomOwnerName: String = ""
     @Published var isSaving = false
+    @Published var isConnecting = false
+    @Published var hideHud = false
     @Published var isSavedSuccessfully = false
     @Published var errorMessage: String?
     @Published var selectedRoomType: RoomTypeModel
@@ -103,10 +105,22 @@ class ManageRoomViewModel: ObservableObject {
         isStorageSelectionPresenting = true
     }
 
-    func didCloudProviderLoad(provider: ASCFileProviderProtocol, folder: ASCFolder, info: [String: Any]) {
-        self.provider = provider
-        thirdPartyFolder = folder
-        selectedStorage = provider.externalProviderName()
+    func didCloudProviderLoad(provider: ASCFileProviderProtocol, info: [String: Any]) {
+        var info = info
+        info["customerTitle"] = info["providerKey"]
+        isConnecting = true
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, info) { [weak self] response, error in
+            guard let self else { return }
+            var provider = provider
+            if let error = error {
+                log.error(error)
+            } else if let folder = response?.result {
+                self.provider = provider
+                selectedStorage = provider.externalProviderName()
+                thirdPartyFolder = folder
+            }
+            isConnecting = false
+        }
     }
 
     func didTapThirdPartyStorageSwitch(isOn: Bool) {

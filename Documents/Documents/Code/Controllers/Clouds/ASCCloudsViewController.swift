@@ -151,7 +151,7 @@ class ASCCloudsViewController: UITableViewController {
         login.append(ASCCategory())
     }
 
-    func onConnectComplete(provider: ASCFileProviderProtocol) {
+    func onConnectComplete(provider: ASCFileProviderProtocol, info: [String: Any]) {
         // Reload list info
         connectProvider(provider)
         select(provider: provider)

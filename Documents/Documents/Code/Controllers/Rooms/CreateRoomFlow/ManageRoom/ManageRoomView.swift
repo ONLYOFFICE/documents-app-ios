@@ -31,7 +31,9 @@ struct ManageRoomView: View {
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
-        .navigateToStorageSelection(isActive: $viewModel.isStorageSelectionPresenting, viewModel: viewModel)
+        .sheet(isPresented:  $viewModel.isStorageSelectionPresenting, content: {
+            ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
+        })
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
@@ -198,6 +200,11 @@ struct ManageRoomView: View {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
             hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the processing")
+        } else if viewModel.isConnecting {
+            MBProgressHUD.currentHUD?.hide(animated: false)
+            let hud = MBProgressHUD.showTopMost()
+            hud?.mode = .indeterminate
+            hud?.label.text = NSLocalizedString("Connecting", comment: "Caption of the processing")
         } else if let hud = MBProgressHUD.currentHUD {
             if let _ = viewModel.errorMessage {
                 hud.hide(animated: true)
@@ -276,12 +283,6 @@ private extension View {
                     ignoreUserId: viewModel.ignoreUserId
                 )
             )
-        })
-    }
-
-    func navigateToStorageSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
-        navigation(isActive: isActive, destination: {
-            ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
         })
     }
 

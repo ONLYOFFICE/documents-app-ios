@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable {
-    var completion: ConnectCloudFolderDetailsCompletion
+    var completion: (ASCFileProviderProtocol, [String: Any]) -> Void
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 
@@ -29,11 +29,8 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
             navigationVC.modalPresentationStyle = .pageSheet
         }
 
-        connectStorageVC.dismissOnCompetion = false
-        connectStorageVC.folderDetailsCompletion = { provider, folder, info in
-            completion(provider, folder, info)
-            navigationVC.navigationController?.popToRootViewController(animated: false)
-        }
+        connectStorageVC.setConnectedToCloudsList = false
+        connectStorageVC.complation = completion
 
         return navigationVC
     }

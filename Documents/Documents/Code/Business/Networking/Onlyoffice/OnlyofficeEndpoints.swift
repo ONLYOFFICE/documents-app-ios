@@ -62,7 +62,6 @@ enum OnlyofficeAPI {
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
         public static let paymentQuota = "api/\(version)/portal/payment/quota"
         public static let rooms = "api/\(version)/files/rooms"
-        public static let roomsThirdparty = "api/\(version)/files/rooms/thirdparty/%@"
         public static let room = "api/\(version)/files/rooms/%@"
         public static let roomPin = "api/\(version)/files/rooms/%@/pin"
         public static let roomUnpin = "api/\(version)/files/rooms/%@/unpin"
@@ -180,10 +179,6 @@ enum OnlyofficeAPI {
 
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
-
-            static func createThirdparty(providerId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomsThirdparty, providerId), .post)
-            }
 
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)

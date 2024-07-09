@@ -80,7 +80,6 @@
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		E800AD6C2B4ED9A600AE880D /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */; };
 		E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82715762B5EBA66004137F3 /* KFImageView.swift */; };
-		E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */; };
 		E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
@@ -696,7 +695,6 @@
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		E82715762B5EBA66004137F3 /* KFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
-		E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationLinkDateService.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
@@ -1929,7 +1927,6 @@
 			isa = PBXGroup;
 			children = (
 				FCF8472722CB39ED00ABC3B4 /* Views */,
-				E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */,
 				F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */,
 				FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */,
 				FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */,
@@ -4370,7 +4367,6 @@
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
 				FC35D4642A987DFC00C6383F /* UIDevice+DeviceKit.swift in Sources */,
 				FC759C3C2C00614D00510096 /* RoomSharingRootViewController.swift in Sources */,
-				E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */,
 				FC2882B928EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				FC759C332C00614D00510096 /* RoomSharingCustomizeLinkView.swift in Sources */,

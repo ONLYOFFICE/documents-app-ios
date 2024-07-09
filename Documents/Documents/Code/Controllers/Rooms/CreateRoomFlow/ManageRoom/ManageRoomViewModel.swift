@@ -22,8 +22,12 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
 
+    @Published var selectedStorage: String?
+    @Published var isCreateNewFolderEnabled: Bool = false
+
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
+    @Published var isStorageSelectionPresenting = false
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
@@ -47,11 +51,17 @@ class ManageRoomViewModel: ObservableObject {
         roomName.isEmpty || isSaving
     }
 
+    var isThirdPartyStorageEnabled: Bool {
+        provider != nil
+    }
+
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
     private let editingRoom: ASCRoom?
+    private var provider: ASCFileProviderProtocol?
+    private var thirdPartyFolder: ASCFolder?
 
     // MARK: - Init
 
@@ -88,6 +98,25 @@ class ManageRoomViewModel: ObservableObject {
             createRoom()
         }
     }
+
+    func didTapStorageSelectionCell() {
+        isStorageSelectionPresenting = true
+    }
+
+    func didCloudProviderLoad(provider: ASCFileProviderProtocol, folder: ASCFolder, info: [String: Any]) {
+        self.provider = provider
+        thirdPartyFolder = folder
+        selectedStorage = provider.externalProviderName()
+    }
+
+    func didTapThirdPartyStorageSwitch(isOn: Bool) {
+        if isOn {
+            isStorageSelectionPresenting = true
+        } else {
+            provider = nil
+            isStorageSelectionPresenting = false
+        }
+    }
 }
 
 // MARK: - Private func
@@ -95,11 +124,13 @@ class ManageRoomViewModel: ObservableObject {
 private extension ManageRoomViewModel {
     func createRoom() {
         creatingRoomService.createRoom(
-            model: .init(
+            model: CreatingRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
                 name: roomName,
                 image: selectedImage,
-                tags: tags.map { $0 }
+                tags: tags.map { $0 },
+                createAsNewFolder: isCreateNewFolderEnabled,
+                thirdPartyFolderId: thirdPartyFolder?.id
             )
         ) { [weak self] result in
             self?.isSaving = false

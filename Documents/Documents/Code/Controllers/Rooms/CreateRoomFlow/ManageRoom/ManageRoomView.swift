@@ -15,6 +15,9 @@ struct ManageRoomView: View {
 
     @ObservedObject var viewModel: ManageRoomViewModel
 
+    @State private var isThirdPartyStorageEnabled: Bool = false
+    @State private var selectedLocation: String = "/Files for test"
+
     var body: some View {
         handleHUD()
 
@@ -23,10 +26,12 @@ struct ManageRoomView: View {
             roomImageAndNameSection
             roomTagsSection
             roomOwnerSection
+            thirdPartySection
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
+        .navigateToStorageSelection(isActive: $viewModel.isStorageSelectionPresenting, viewModel: viewModel)
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
@@ -117,6 +122,69 @@ struct ManageRoomView: View {
             .padding()
             .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isSaving)
+    }
+
+    @ViewBuilder
+    private var thirdPartySection: some View {
+        if viewModel.selectedRoomType.type == .publicRoom {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: "")
+                )
+            ) {
+                thirdPartyToggleCell
+                if viewModel.isThirdPartyStorageEnabled {
+                    storageSelectionCell
+                    // folderSelectionCell
+                    createNewFolderCell
+                }
+            }
+        }
+    }
+
+    private var thirdPartyToggleCell: some View {
+        Toggle(isOn: Binding(
+            get: { viewModel.isThirdPartyStorageEnabled },
+            set: { viewModel.didTapThirdPartyStorageSwitch(isOn: $0) }
+        )) {
+            Text("Third party storage")
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+    }
+
+    private var storageSelectionCell: some View {
+        HStack(spacing: 4) {
+            Text("Storage")
+            Spacer()
+            Text(viewModel.selectedStorage ?? "")
+                .foregroundColor(.gray)
+            Image(systemName: "chevron.right")
+                .font(.subheadline)
+                .foregroundColor(Color.separator)
+                .flipsForRightToLeftLayoutDirection(true)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.didTapStorageSelectionCell()
+        }
+    }
+
+    private var folderSelectionCell: some View {
+        NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
+            HStack {
+                Text("Location")
+                Spacer()
+                Text(selectedLocation)
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+
+    private var createNewFolderCell: some View {
+        Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
+            Text("Create new folder")
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
     }
 
     private func handleHUD() {
@@ -211,6 +279,12 @@ private extension View {
         })
     }
 
+    func navigateToStorageSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
+        })
+    }
+
     @ViewBuilder
     func insetGroupedListStyle() -> some View {
         if #available(iOS 14.0, *) {
@@ -236,5 +310,27 @@ private extension String {
     func removeForbiddenCharacters() -> String {
         let forbiddenCharacters = "*+:\"<>?|/\\"
         return filter { !forbiddenCharacters.contains($0) }
+    }
+}
+
+struct LocationSelectionView: View {
+    @Binding var selectedLocation: String
+
+    var body: some View {
+        List {
+            Button(action: {
+                selectedLocation = "/Files for test"
+            }) {
+                Text("/Files for test")
+                    .foregroundColor(selectedLocation == "/Files for test" ? .blue : .primary)
+            }
+            Button(action: {
+                selectedLocation = "/Documents"
+            }) {
+                Text("/Documents")
+                    .foregroundColor(selectedLocation == "/Documents" ? .blue : .primary)
+            }
+        }
+        .navigationBarTitle("Select Location", displayMode: .inline)
     }
 }

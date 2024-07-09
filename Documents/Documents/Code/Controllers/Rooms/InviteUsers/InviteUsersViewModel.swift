@@ -128,6 +128,7 @@ final class InviteUsersViewModel: ObservableObject {
                         self.isExternalLinkSwitchActive = false
                     }
                 case let .failure(error):
+                    print("===", error.localizedDescription)
                     self.preventToggleAction = true
                     self.isExternalLinkSwitchActive.toggle()
                     log.error(error.localizedDescription, error)

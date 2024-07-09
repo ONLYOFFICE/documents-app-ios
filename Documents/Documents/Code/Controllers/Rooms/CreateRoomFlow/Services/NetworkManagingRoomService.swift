@@ -18,8 +18,6 @@ struct CreatingRoomModel {
     var name: String
     var image: UIImage?
     var tags: [String]
-    var createAsNewFolder: Bool = false
-    var thirdPartyFolderId: String?
 }
 
 struct EditRoomModel {
@@ -92,7 +90,7 @@ extension NetworkManagingRoomServiceImp {
             completion(.success(room))
             return
         }
-        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name, createAsNewFolder: false)
+        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name)
         networkService.request(
             OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
             requestModel.dictionary
@@ -164,30 +162,13 @@ extension NetworkManagingRoomServiceImp {
 
 extension NetworkManagingRoomServiceImp {
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
-        let requestModel = CreateRoomRequestModel(
-            roomType: model.roomType.rawValue,
-            title: model.name,
-            createAsNewFolder: model.createAsNewFolder
-        )
-        if let thirdPartyFolderId = model.thirdPartyFolderId {
-            networkService.request(
-                OnlyofficeAPI.Endpoints.Rooms.createThirdparty(providerId: thirdPartyFolderId),
-                requestModel.dictionary
-            ) { response, error in
-                guard let room = response?.result, error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-                completion(.success(room))
+        let requestModel = CreateRoomRequestModel(roomType: model.roomType.rawValue, title: model.name)
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
+            guard let room = response?.result, error == nil else {
+                completion(.failure(error!))
+                return
             }
-        } else {
-            networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
-                guard let room = response?.result, error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-                completion(.success(room))
-            }
+            completion(.success(room))
         }
     }
 

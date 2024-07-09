@@ -75,7 +75,7 @@ class ASCRootViewController: ASCBaseTabBarController {
         if let onlyofficeSC = viewControllers?.first(where: { $0 is ASCOnlyofficeSplitViewController }) {
             onlyofficeSC.tabBarItem.title = ASCConstants.Name.appNameShort
         }
-        
+
         if ASCAppSettings.Feature.hideCloudsCategory {
             if let cloudsSC = viewControllers?.first(where: { $0 is ASCCloudsSplitViewController }) {
                 if let cloudsSCIndex = viewControllers?.firstIndex(of: cloudsSC) {

@@ -582,7 +582,7 @@ extension ASCFolderViewCell {
     }
 
     private var iconFolderBoxnet: UIImage {
-        layoutType == .list ? Asset.Images.listFolderBoxnet.image : Asset.Images.gridFolderBoxnet.image
+        layoutType == .list ? Asset.Images.listFolderBox.image : Asset.Images.gridFolderBox.image
     }
 
     private var iconFolderDropbox: UIImage {

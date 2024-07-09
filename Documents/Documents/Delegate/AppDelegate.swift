@@ -58,13 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             DropboxClientsManager.setupWithAppKey(ASCConstants.Clouds.Dropbox.appId)
 
-            do {
-                let clientID = ASCConstants.Clouds.Yandex.appId
-                try YandexLoginSDK.shared.activate(with: clientID)
-            } catch {
-                print("YandexLoginSDK activation error")
-            }
-
+            ASCYandexManager.activateYandexLoginSDK()
             // Initialize searchable promo
             searchablePromoInit()
         #endif
@@ -105,11 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             log.debug("Selected Identifier: \(selectedIdentifier)")
         }
 
-        do {
-            try YandexLoginSDK.shared.handleUserActivity(userActivity)
-        } catch {
-            print("YandexLoginSDK handleActivityError")
-        }
+        ASCYandexManager.handleUserActivity(userActivity: userActivity)
 
         return true
     }
@@ -139,11 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        do {
-            try YandexLoginSDK.shared.handleOpenURL(url)
-        } catch {
-            print("YandexLoginSDK url error")
-        }
+        ASCYandexManager.handleURL(url: url)
 
         if url.isFileURL {
             return ASCViewControllerManager.shared.route(by: url, options: options)

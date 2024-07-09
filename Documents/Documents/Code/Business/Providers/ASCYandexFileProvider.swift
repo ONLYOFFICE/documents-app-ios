@@ -72,11 +72,7 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
 
         yandexCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
             DispatchQueue.main.async {
-                do {
-                    try YandexLoginSDK.shared.logout()
-                } catch {
-                    print("failed to logout")
-                }
+                ASCYandexManager.logout()
                 complation(success, success ? yandexCloudProvider : nil)
             }
         }
@@ -114,10 +110,7 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let login = json["login"] as? String,
-                       let id = json["id"] as? String,
-                       let firstName = json["first_name"] as? String,
-                       let lastName = json["last_name"] as? String,
-                       let realName = json["real_name"] as? String
+                       let id = json["id"] as? String
                     {
                         self.user = ASCUser()
                         self.user?.displayName = login

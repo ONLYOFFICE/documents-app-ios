@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2221BA2C3D7C8F002AF355 /* ASCYandexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2221B92C3D7C8F002AF355 /* ASCYandexManager.swift */; };
 		0F98320E2C314577009D847B /* YandexLoginSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 0F98320D2C314577009D847B /* YandexLoginSDK */; };
 		0F9832102C314D99009D847B /* ASCConnectStorageYandexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98320F2C314D99009D847B /* ASCConnectStorageYandexController.swift */; };
 		0FA5C7A02B03B98300380510 /* ASCFolderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */; };
@@ -716,6 +717,7 @@
 
 /* Begin PBXFileReference section */
 		051F20752774A7A1DE291FB1 /* Pods-Documents-develop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-develop.release.xcconfig"; path = "Target Support Files/Pods-Documents-develop/Pods-Documents-develop.release.xcconfig"; sourceTree = "<group>"; };
+		0F2221B92C3D7C8F002AF355 /* ASCYandexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCYandexManager.swift; sourceTree = "<group>"; };
 		0F98320F2C314D99009D847B /* ASCConnectStorageYandexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageYandexController.swift; sourceTree = "<group>"; };
 		0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderLogo.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
@@ -1514,6 +1516,7 @@
 				FC7DC8F52861FED400E61C69 /* ASCDropboxSDKWrapper.swift */,
 				FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */,
 				FC41FE6928C789020049F20F /* ASCConnectStorageWebDavControllerConfiguration.swift */,
+				0F2221B92C3D7C8F002AF355 /* ASCYandexManager.swift */,
 			);
 			path = ConnectStorage;
 			sourceTree = "<group>";
@@ -4220,6 +4223,7 @@
 				FC759BDE2C00611000510096 /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				FC7D997A2729966300410795 /* ASCBaseNavigationController.swift in Sources */,
 				FC9EF02A2BFB208800A66DE8 /* OnlyofficeCapabilities.swift in Sources */,
+				0F2221BA2C3D7C8F002AF355 /* ASCYandexManager.swift in Sources */,
 				FCCE507E2C1AF74D00102056 /* PasswordCellView.swift in Sources */,
 				FC83D54A2A973E2100C404CB /* UITableView+Extensions.swift in Sources */,
 				FC7DC8F42861FE8E00E61C69 /* ASCSettingsNotificationCell.swift in Sources */,

@@ -6,8 +6,6 @@
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
-import Alamofire
-import Foundation
 import UIKit
 import YandexLoginSDK
 

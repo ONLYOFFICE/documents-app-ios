@@ -107,16 +107,17 @@ class ManageRoomViewModel: ObservableObject {
 
     func didCloudProviderLoad(provider: ASCFileProviderProtocol, info: [String: Any]) {
         var info = info
-        info["customerTitle"] = info["providerKey"]
         isConnecting = true
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, info) { [weak self] response, error in
             guard let self else { return }
-            var provider = provider
             if let error = error {
                 log.error(error)
+                selectedStorage = nil
+                thirdPartyFolder = nil
+                errorMessage = error.localizedDescription
             } else if let folder = response?.result {
                 self.provider = provider
-                selectedStorage = provider.externalProviderName()
+                selectedStorage = info["providerKey"] as? String ?? folder.title
                 thirdPartyFolder = folder
             }
             isConnecting = false

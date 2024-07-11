@@ -22,10 +22,8 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = false
-        }
-
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
         fetchProviders()
     }
 
@@ -41,7 +39,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         tableView.reloadData()
         tableView.isUserInteractionEnabled = false
 
-        let activity = UIActivityIndicatorView(style: .gray)
+        let activity = UIActivityIndicatorView(style: .medium)
         activity.startAnimating()
         tableView.addSubview(activity)
         activity.anchorCenterSuperview()

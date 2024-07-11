@@ -2563,6 +2563,10 @@ organizar seus arquivos.</target>
         <target>Aqui você encontrará uma lista dos arquivos abertos recentemente compartilhados com você por meio de um link externo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>Se existir um usuário com o e-mail %@, uma instrução para alterar a senha foi enviada para este endereço.</target>
@@ -2719,6 +2723,10 @@ Copiado para a área de transferência</target>
         <source>Link with the invitation has been sent to the mail</source>
         <target>O link com o convite foi enviado para o e-mail</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
@@ -4116,7 +4124,7 @@ para a área de transferência</target>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>Desconhecido</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4458,12 +4466,6 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
         <source>new</source>
         <target>novo</target>
         <note>Badge of file in file list</note>
-      </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>nenhum</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>

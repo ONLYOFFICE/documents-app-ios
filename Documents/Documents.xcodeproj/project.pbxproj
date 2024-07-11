@@ -1067,6 +1067,20 @@
 		FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomHighlightButton.swift; sourceTree = "<group>"; };
 		FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceSplitViewController.swift; sourceTree = "<group>"; };
+		FC83A9B82C3FFE680030B732 /* ar-SA.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ar-SA.xliff"; sourceTree = "<group>"; };
+		FC83A9B92C3FFE7D0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FC83A9BA2C3FFE7F0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Main.strings"; sourceTree = "<group>"; };
+		FC83A9BB2C3FFE7F0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Login.strings"; sourceTree = "<group>"; };
+		FC83A9BC2C3FFE7F0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Sort.strings"; sourceTree = "<group>"; };
+		FC83A9BD2C3FFE7F0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Transfer.strings"; sourceTree = "<group>"; };
+		FC83A9BE2C3FFE7F0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Intro.strings"; sourceTree = "<group>"; };
+		FC83A9BF2C3FFE800030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/ConnectStorage.strings"; sourceTree = "<group>"; };
+		FC83A9C02C3FFE800030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Settings.strings"; sourceTree = "<group>"; };
+		FC83A9C12C3FFE800030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/UserProfile.strings"; sourceTree = "<group>"; };
+		FC83A9C22C3FFE800030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
+		FC83A9C32C3FFE800030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FC83A9C42C3FFE800030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "ar-SA"; path = "ar-SA.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		FC83A9C52C3FFEA70030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCProgressAlert.swift; sourceTree = "<group>"; };
 		FC8650391ED3232B00C73AEF /* ASCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAboutViewController.swift; sourceTree = "<group>"; };
 		FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeSplitViewController.swift; sourceTree = "<group>"; };
@@ -2273,6 +2287,7 @@
 		FC5CE53A26B437B70066901E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				FC83A9B82C3FFE680030B732 /* ar-SA.xliff */,
 				FCB844572768B7B000A3F918 /* bg.xliff */,
 				FCB8445B2768B7B000A3F918 /* cs.xliff */,
 				FCB8445C2768B7B000A3F918 /* de.xliff */,
@@ -3638,6 +3653,7 @@
 				"zh-Hant",
 				"hy-AM",
 				si,
+				"ar-SA",
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
@@ -4577,6 +4593,7 @@
 				FC09998628195EF10063BB08 /* zh-Hant */,
 				FC7DC8D42860B2D700E61C69 /* hy-AM */,
 				FC8A5B792A41E35500998EB6 /* si */,
+				FC83A9BF2C3FFE800030B732 /* ar-SA */,
 			);
 			name = ConnectStorage.storyboard;
 			sourceTree = "<group>";
@@ -4598,6 +4615,7 @@
 				FC09998828195EF10063BB08 /* zh-Hant */,
 				FC7DC8D32860B2D700E61C69 /* hy-AM */,
 				FC8A5B782A41E35500998EB6 /* si */,
+				FC83A9BE2C3FFE7F0030B732 /* ar-SA */,
 			);
 			name = Intro.storyboard;
 			sourceTree = "<group>";
@@ -4619,6 +4637,7 @@
 				FC09998A28195EF10063BB08 /* zh-Hant */,
 				FC7DC8D02860B2D600E61C69 /* hy-AM */,
 				FC8A5B752A41E35400998EB6 /* si */,
+				FC83A9BB2C3FFE7F0030B732 /* ar-SA */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -4640,6 +4659,7 @@
 				FC09998C28195EF10063BB08 /* zh-Hant */,
 				FC7DC8D52860B2D700E61C69 /* hy-AM */,
 				FC8A5B7A2A41E35500998EB6 /* si */,
+				FC83A9C02C3FFE800030B732 /* ar-SA */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -4661,6 +4681,7 @@
 				FC09998F28195EF10063BB08 /* zh-Hant */,
 				FC7DC8D62860B2D800E61C69 /* hy-AM */,
 				FC8A5B7B2A41E35500998EB6 /* si */,
+				FC83A9C12C3FFE800030B732 /* ar-SA */,
 			);
 			name = UserProfile.storyboard;
 			sourceTree = "<group>";
@@ -4682,6 +4703,7 @@
 				FCE4225628A104490073E2BB /* hy-AM */,
 				FC3D857D298BB997004B24E1 /* en */,
 				FC8A5B802A41E35600998EB6 /* si */,
+				FC83A9C32C3FFE800030B732 /* ar-SA */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4703,6 +4725,7 @@
 				FC09998728195EF10063BB08 /* zh-Hant */,
 				FC7DC8D72860B2D800E61C69 /* hy-AM */,
 				FC8A5B7C2A41E35600998EB6 /* si */,
+				FC83A9C22C3FFE800030B732 /* ar-SA */,
 			);
 			name = CreatePortal.storyboard;
 			sourceTree = "<group>";
@@ -4724,6 +4747,7 @@
 				FC09998D28195EF10063BB08 /* zh-Hant */,
 				FC7DC8D12860B2D600E61C69 /* hy-AM */,
 				FC8A5B762A41E35400998EB6 /* si */,
+				FC83A9BC2C3FFE7F0030B732 /* ar-SA */,
 			);
 			name = Sort.storyboard;
 			sourceTree = "<group>";
@@ -4745,6 +4769,7 @@
 				FC09998E28195EF10063BB08 /* zh-Hant */,
 				FC7DC8D22860B2D700E61C69 /* hy-AM */,
 				FC8A5B772A41E35500998EB6 /* si */,
+				FC83A9BD2C3FFE7F0030B732 /* ar-SA */,
 			);
 			name = Transfer.storyboard;
 			sourceTree = "<group>";
@@ -4765,6 +4790,7 @@
 				FC7DC87E285B3AB800E61C69 /* zh-Hant */,
 				FCE4225428A104490073E2BB /* hy-AM */,
 				FC2660F72A4318670036F5BA /* si */,
+				FC83A9C52C3FFEA70030B732 /* ar-SA */,
 			);
 			name = "Documents-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -4807,6 +4833,7 @@
 				FC7DC8CF2860B2D600E61C69 /* hy-AM */,
 				FC3D857C298BB997004B24E1 /* en */,
 				FC8A5B742A41E35400998EB6 /* si */,
+				FC83A9BA2C3FFE7F0030B732 /* ar-SA */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -4828,6 +4855,7 @@
 				FC09998928195EF10063BB08 /* zh-Hant */,
 				FC7DC8DB2860B2D900E61C69 /* hy-AM */,
 				FC8A5B812A41E35600998EB6 /* si */,
+				FC83A9C42C3FFE800030B732 /* ar-SA */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -4846,6 +4874,7 @@
 				FCE6247426F874B200EFAE7C /* pt-BR */,
 				FC7DC8CE2860B2D600E61C69 /* hy-AM */,
 				FC8A5B732A41E35300998EB6 /* si */,
+				FC83A9B92C3FFE7D0030B732 /* ar-SA */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -4889,7 +4918,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -5063,7 +5092,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -5109,7 +5138,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

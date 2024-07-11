@@ -970,6 +970,19 @@
 		FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomHighlightButton.swift; sourceTree = "<group>"; };
 		FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceSplitViewController.swift; sourceTree = "<group>"; };
+		FC83A9C62C3FFF530030B732 /* ar-SA.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ar-SA.xliff"; sourceTree = "<group>"; };
+		FC83A9C72C3FFF610030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FC83A9C82C3FFF610030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Main.strings"; sourceTree = "<group>"; };
+		FC83A9C92C3FFF610030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Login.strings"; sourceTree = "<group>"; };
+		FC83A9CA2C3FFF620030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Sort.strings"; sourceTree = "<group>"; };
+		FC83A9CB2C3FFF620030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Transfer.strings"; sourceTree = "<group>"; };
+		FC83A9CC2C3FFF620030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Intro.strings"; sourceTree = "<group>"; };
+		FC83A9CD2C3FFF620030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/ConnectStorage.strings"; sourceTree = "<group>"; };
+		FC83A9CE2C3FFF620030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Settings.strings"; sourceTree = "<group>"; };
+		FC83A9CF2C3FFF620030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/UserProfile.strings"; sourceTree = "<group>"; };
+		FC83A9D02C3FFF630030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
+		FC83A9D12C3FFF6D0030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "ar-SA"; path = "ar-SA.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		FC83A9D22C3FFF700030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC83D5532A9742EA00C404CB /* ASCStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCStyles.swift; sourceTree = "<group>"; };
 		FC83D5552A9742EB00C404CB /* WhatsNewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FC83D5562A9742EB00C404CB /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -2650,6 +2663,7 @@
 		FC5CE53A26B437B70066901E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				FC83A9C62C3FFF530030B732 /* ar-SA.xliff */,
 				FCB844572768B7B000A3F918 /* bg.xliff */,
 				FCB8445B2768B7B000A3F918 /* cs.xliff */,
 				FCB8445C2768B7B000A3F918 /* de.xliff */,
@@ -3435,13 +3449,14 @@
 				"pt-BR",
 				ja,
 				"zh-Hans",
+				"ar-SA",
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */,
-				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */,
-				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
+				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
+				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
 				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -4247,6 +4262,7 @@
 				FCE6247A26F874B200EFAE7C /* pt-BR */,
 				FC6E84C82775CDE700028965 /* ja */,
 				FC6E84D72775CE0300028965 /* zh-Hans */,
+				FC83A9CD2C3FFF620030B732 /* ar-SA */,
 			);
 			name = ConnectStorage.storyboard;
 			sourceTree = "<group>";
@@ -4265,6 +4281,7 @@
 				FCE6247926F874B200EFAE7C /* pt-BR */,
 				FC6E84CA2775CDE700028965 /* ja */,
 				FC6E84D92775CE0300028965 /* zh-Hans */,
+				FC83A9CC2C3FFF620030B732 /* ar-SA */,
 			);
 			name = Intro.storyboard;
 			sourceTree = "<group>";
@@ -4283,6 +4300,7 @@
 				FCE6247626F874B200EFAE7C /* pt-BR */,
 				FC6E84CC2775CDE700028965 /* ja */,
 				FC6E84DB2775CE0300028965 /* zh-Hans */,
+				FC83A9C92C3FFF610030B732 /* ar-SA */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -4301,6 +4319,7 @@
 				FCE6247B26F874B300EFAE7C /* pt-BR */,
 				FC6E84CE2775CDE700028965 /* ja */,
 				FC6E84DD2775CE0300028965 /* zh-Hans */,
+				FC83A9CE2C3FFF620030B732 /* ar-SA */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -4319,6 +4338,7 @@
 				FCE6247C26F874B300EFAE7C /* pt-BR */,
 				FC6E84D12775CDE700028965 /* ja */,
 				FC6E84E02775CE0300028965 /* zh-Hans */,
+				FC83A9CF2C3FFF620030B732 /* ar-SA */,
 			);
 			name = UserProfile.storyboard;
 			sourceTree = "<group>";
@@ -4336,6 +4356,7 @@
 				FCE6248226F874B300EFAE7C /* pt-BR */,
 				FC6E84D52775CDE700028965 /* ja */,
 				FC029A3B27BCF2FC00E5341B /* zh-Hans */,
+				FC83A9D22C3FFF700030B732 /* ar-SA */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4354,6 +4375,7 @@
 				FCE6247D26F874B300EFAE7C /* pt-BR */,
 				FC6E84C92775CDE700028965 /* ja */,
 				FC6E84D82775CE0300028965 /* zh-Hans */,
+				FC83A9D02C3FFF630030B732 /* ar-SA */,
 			);
 			name = CreatePortal.storyboard;
 			sourceTree = "<group>";
@@ -4372,6 +4394,7 @@
 				FCE6247726F874B200EFAE7C /* pt-BR */,
 				FC6E84CF2775CDE700028965 /* ja */,
 				FC6E84DE2775CE0300028965 /* zh-Hans */,
+				FC83A9CA2C3FFF620030B732 /* ar-SA */,
 			);
 			name = Sort.storyboard;
 			sourceTree = "<group>";
@@ -4390,6 +4413,7 @@
 				FCE6247826F874B200EFAE7C /* pt-BR */,
 				FC6E84D02775CDE700028965 /* ja */,
 				FC6E84DF2775CE0300028965 /* zh-Hans */,
+				FC83A9CB2C3FFF620030B732 /* ar-SA */,
 			);
 			name = Transfer.storyboard;
 			sourceTree = "<group>";
@@ -4428,6 +4452,7 @@
 				FCE6247526F874B200EFAE7C /* pt-BR */,
 				FC6E84CD2775CDE700028965 /* ja */,
 				FC6E84DC2775CE0300028965 /* zh-Hans */,
+				FC83A9C82C3FFF610030B732 /* ar-SA */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -4446,6 +4471,7 @@
 				FCE6248326F874B300EFAE7C /* pt-BR */,
 				FC6E84CB2775CDE700028965 /* ja */,
 				FC6E84DA2775CE0300028965 /* zh-Hans */,
+				FC83A9D12C3FFF6D0030B732 /* ar-SA */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -4462,6 +4488,7 @@
 				FCF3B47C22CA2FF400BBCD94 /* bg */,
 				FCE6246126F8749F00EFAE7C /* it */,
 				FCE6247426F874B200EFAE7C /* pt-BR */,
+				FC83A9C72C3FFF610030B732 /* ar-SA */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -4634,15 +4661,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */ = {
+		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
+		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
+		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};

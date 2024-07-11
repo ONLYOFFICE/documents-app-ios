@@ -2566,6 +2566,11 @@ organize your files.</target>
         <target>Here you will find a list of the recently opened files shared with you via an external link.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <target>Icons</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</target>
@@ -2723,6 +2728,11 @@ copied to clipboard</target>
         <source>Link with the invitation has been sent to the mail</source>
         <target>Link with the invitation has been sent to the mail</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <target>List</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
@@ -4120,7 +4130,7 @@ to the clipboard</target>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>Unknown</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4462,12 +4472,6 @@ then accessed from any other device.</target>
         <source>new</source>
         <target>new</target>
         <note>Badge of file in file list</note>
-      </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>none</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>

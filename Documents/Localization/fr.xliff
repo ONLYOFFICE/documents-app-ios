@@ -2563,6 +2563,10 @@ organize your files.</source>
         <target>Vous y trouverez une liste des fichiers récemment ouverts qui ont été partagés avec vous par le lien externe.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>Si l'utilisateur avec le mail %@ existe, l'instruction pour changer le mot de passe a été envoyée à cet e-mail.</target>
@@ -2720,6 +2724,10 @@ dans le presse-papiers</target>
         <source>Link with the invitation has been sent to the mail</source>
         <target>Le lien avec l'invitation a été envoyé par e-mail</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
@@ -4117,7 +4125,7 @@ dans le presse-papiers</target>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>Inconnu(e)</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4459,12 +4467,6 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <source>new</source>
         <target>nouveau</target>
         <note>Badge of file in file list</note>
-      </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>aucun</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>

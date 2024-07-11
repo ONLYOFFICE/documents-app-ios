@@ -9,7 +9,7 @@
 import Foundation
 import YandexLoginSDK
 
-public class ASCYandexManager {
+public final class ASCYandexManager {
     static func activateYandexLoginSDK() {
         do {
             let clientID = ASCConstants.Clouds.Yandex.appId

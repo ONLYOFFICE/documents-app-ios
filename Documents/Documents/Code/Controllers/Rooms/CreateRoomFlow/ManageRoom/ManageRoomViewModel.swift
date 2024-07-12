@@ -107,20 +107,29 @@ class ManageRoomViewModel: ObservableObject {
 
     func didCloudProviderLoad(provider: ASCFileProviderProtocol, info: [String: Any]) {
         var info = info
+        let providerType: ASCFolderProviderType? = {
+            guard let providerKey = info["providerKey"] as? String else { return nil }
+            return ASCFolderProviderType(rawValue: providerKey)
+        }()
+        if let providerType, ASCConnectPortalThirdPartyViewController.webDavProviderTypes.contains(providerType) {
+            info["providerKey"] = ASCFolderProviderType.webDav.rawValue
+        }
         isConnecting = true
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, info) { [weak self] response, error in
-            guard let self else { return }
-            if let error = error {
-                log.error(error)
-                selectedStorage = nil
-                thirdPartyFolder = nil
-                errorMessage = error.localizedDescription
-            } else if let folder = response?.result {
-                self.provider = provider
-                selectedStorage = info["providerKey"] as? String ?? folder.title
-                thirdPartyFolder = folder
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                if let error = error {
+                    log.error(error)
+                    selectedStorage = nil
+                    thirdPartyFolder = nil
+                    errorMessage = error.localizedDescription
+                } else if let folder = response?.result {
+                    self.provider = provider
+                    self.selectedStorage = providerType?.rawValue ?? folder.title
+                    thirdPartyFolder = folder
+                }
+                isConnecting = false
             }
-            isConnecting = false
         }
     }
 

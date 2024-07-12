@@ -19,6 +19,11 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
     
     var captureAuthCompletion: (([String: Any]) -> Void)?
     
+    static var webDavProviderTypes: [ASCFolderProviderType] {
+        [
+            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud, .kDrive
+        ]
+    }
 
     // MARK: - Lifecycle Methods
 

@@ -67,6 +67,7 @@ class ASCTransferViewController: UITableViewController {
     // MARK: - Public
 
     var provider: ASCFileProviderProtocol?
+    var enableFillRootFolders: Bool = true
     var folder: ASCFolder? {
         didSet {
             if oldValue == nil {
@@ -168,6 +169,7 @@ class ASCTransferViewController: UITableViewController {
     // MARK: - Private
 
     private func fillRootFolders() {
+        guard enableFillRootFolders else { return }
         tableData = []
 
         // Local Documents
@@ -302,6 +304,9 @@ class ASCTransferViewController: UITableViewController {
         case .recover:
             navigationItem.prompt = NSLocalizedString("Select the folder to recover the items", comment: "One line. Max 50 charasters")
             actionButton?.title = NSLocalizedString("Recover here", comment: "Button title")
+        case .select:
+            navigationItem.prompt = NSLocalizedString("Choose location with templates", comment: "One line. Max 50 charasters")
+            actionButton?.title = NSLocalizedString("Select location", comment: "Button title")
         }
     }
 

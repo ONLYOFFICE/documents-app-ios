@@ -16,7 +16,6 @@ struct ManageRoomView: View {
     @ObservedObject var viewModel: ManageRoomViewModel
 
     @State private var isThirdPartyStorageEnabled: Bool = false
-    @State private var selectedLocation: String = "/Files for test"
 
     var body: some View {
         handleHUD()
@@ -33,6 +32,15 @@ struct ManageRoomView: View {
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
         .sheet(isPresented:  $viewModel.isStorageSelectionPresenting, content: {
             ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
+        })
+        .sheet(isPresented:  $viewModel.isFolderSelectionPresenting, content: {
+            if let provider = viewModel.provider, let rootFolder = viewModel.thirdPartyFolder {
+                ASCTransferViewControllerRepresentable(
+                    provider: provider,
+                    rootFolder: rootFolder,
+                    completion: viewModel.selectFolder(subfolder:)
+                )
+            }
         })
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
@@ -134,7 +142,7 @@ struct ManageRoomView: View {
                 thirdPartyToggleCell
                 if viewModel.isThirdPartyStorageEnabled {
                     storageSelectionCell
-                    // folderSelectionCell
+                    folderSelectionCell
                     createNewFolderCell
                 }
             }
@@ -146,14 +154,14 @@ struct ManageRoomView: View {
             get: { viewModel.isThirdPartyStorageEnabled },
             set: { viewModel.didTapThirdPartyStorageSwitch(isOn: $0) }
         )) {
-            Text("Third party storage")
+            Text(NSLocalizedString("Third party storage", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
 
     private var storageSelectionCell: some View {
         HStack(spacing: 4) {
-            Text("Storage")
+            Text(NSLocalizedString("Storage", comment: ""))
             Spacer()
             Text(viewModel.selectedStorage ?? "")
                 .foregroundColor(.gray)
@@ -166,19 +174,22 @@ struct ManageRoomView: View {
     }
 
     private var folderSelectionCell: some View {
-        NavigationLink(destination: LocationSelectionView(selectedLocation: $selectedLocation)) {
-            HStack {
-                Text("Location")
-                Spacer()
-                Text(selectedLocation)
-                    .foregroundColor(.gray)
-            }
+        HStack {
+            Text(NSLocalizedString("Location", comment: ""))
+            Spacer()
+            Text(viewModel.selectedLocation)
+                .foregroundColor(.gray)
+            ChevronRightView()
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.didTapSelectedFolderCell()
         }
     }
 
     private var createNewFolderCell: some View {
         Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
-            Text("Create new folder")
+            Text(NSLocalizedString("Create new folder", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }

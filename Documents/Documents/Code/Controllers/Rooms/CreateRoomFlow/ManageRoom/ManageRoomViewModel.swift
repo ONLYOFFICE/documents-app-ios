@@ -26,6 +26,7 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var selectedStorage: String?
     @Published var isCreateNewFolderEnabled: Bool = false
+    @Published var selectedLocation: String = NSLocalizedString("Root folder", comment: "")
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
@@ -63,8 +64,9 @@ class ManageRoomViewModel: ObservableObject {
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
     private let editingRoom: ASCRoom?
-    private var provider: ASCFileProviderProtocol?
-    private var thirdPartyFolder: ASCFolder?
+    private(set) var provider: ASCFileProviderProtocol?
+    private(set) var thirdPartyFolder: ASCFolder?
+    private var selectedSubfolder: ASCFolder?
 
     // MARK: - Init
 
@@ -141,6 +143,17 @@ class ManageRoomViewModel: ObservableObject {
             }
         }
     }
+    
+    func selectFolder(subfolder: ASCFolder?) {
+        guard let subfolder, let thirdPartyFolder else { return }
+        if subfolder.id == thirdPartyFolder.id {
+            selectedLocation = NSLocalizedString("Root folder", comment: "")
+            selectedSubfolder = nil
+        } else {
+            selectedLocation = subfolder.title
+            selectedSubfolder = subfolder
+        }
+    }
 
     func didTapThirdPartyStorageSwitch(isOn: Bool) {
         if isOn {
@@ -163,7 +176,7 @@ private extension ManageRoomViewModel {
                 image: selectedImage,
                 tags: tags.map { $0 },
                 createAsNewFolder: isCreateNewFolderEnabled,
-                thirdPartyFolderId: thirdPartyFolder?.id
+                thirdPartyFolderId: selectedSubfolder?.id ?? thirdPartyFolder?.id
             )
         ) { [weak self] result in
             self?.isSaving = false

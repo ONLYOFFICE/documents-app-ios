@@ -254,3 +254,35 @@ private extension ManageRoomViewModel {
         return nil
     }
 }
+
+private extension ASCFolderProviderType {
+    
+    var fileProviderType: ASCFileProviderType {
+        switch self {
+        case .boxNet:
+                .webdav
+        case .dropBox:
+                .dropbox
+        case .google, .googleDrive:
+                .googledrive
+        case .sharePoint:
+                .webdav
+        case .skyDrive:
+                .webdav
+        case .oneDrive:
+                .onedrive
+        case .webDav:
+                .webdav
+        case .yandex:
+                .yandex
+        case .nextCloud:
+                .nextcloud
+        case .ownCloud:
+                .owncloud
+        case .iCloud:
+                .icloud
+        case .kDrive:
+                .kdrive
+        }
+    }
+}

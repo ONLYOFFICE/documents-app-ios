@@ -129,6 +129,10 @@ class ManageRoomViewModel: ObservableObject {
                     thirdPartyFolder = nil
                     errorMessage = error.localizedDescription
                 } else if let folder = response?.result {
+                    let provider = ASCThirdpartySelectFolderProvider(
+                        rootFolder: folder,
+                        type: providerType?.fileProviderType ?? .webdav
+                    )
                     self.provider = provider
                     self.selectedStorage = providerType?.rawValue ?? folder.title
                     thirdPartyFolder = folder

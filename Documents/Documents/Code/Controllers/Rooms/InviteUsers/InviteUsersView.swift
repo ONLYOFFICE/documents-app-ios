@@ -102,10 +102,7 @@ struct InviteUsersView: View {
         HStack {
             Text(NSLocalizedString("Invite people by email", comment: ""))
             Spacer()
-            Image(systemName: "chevron.right")
-                .font(.subheadline)
-                .foregroundColor(Color.separator)
-                .flipsForRightToLeftLayoutDirection(true)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {
@@ -117,10 +114,7 @@ struct InviteUsersView: View {
         HStack {
             Text(NSLocalizedString("Choose from list", comment: ""))
             Spacer()
-            Image(systemName: "chevron.right")
-                .font(.subheadline)
-                .foregroundColor(Color.separator)
-                .flipsForRightToLeftLayoutDirection(true)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {

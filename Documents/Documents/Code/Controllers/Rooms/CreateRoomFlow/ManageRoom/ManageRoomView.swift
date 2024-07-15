@@ -79,10 +79,7 @@ struct ManageRoomView: View {
                     Spacer()
                     Text(viewModel.roomOwnerName)
                         .foregroundColor(.secondary)
-                    Image(systemName: "chevron.right")
-                        .font(.subheadline)
-                        .foregroundColor(Color.separator)
-                        .flipsForRightToLeftLayoutDirection(true)
+                    ChevronRightView()
                 }
                 .onTapGesture {
                     viewModel.isUserSelectionPresenting = true
@@ -160,10 +157,7 @@ struct ManageRoomView: View {
             Spacer()
             Text(viewModel.selectedStorage ?? "")
                 .foregroundColor(.gray)
-            Image(systemName: "chevron.right")
-                .font(.subheadline)
-                .foregroundColor(Color.separator)
-                .flipsForRightToLeftLayoutDirection(true)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {

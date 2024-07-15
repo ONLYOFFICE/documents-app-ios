@@ -30,6 +30,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
     @Published var isStorageSelectionPresenting = false
+    @Published var isFolderSelectionPresenting = false
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
@@ -103,6 +104,10 @@ class ManageRoomViewModel: ObservableObject {
 
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
+    }
+    
+    func didTapSelectedFolderCell() {
+        isFolderSelectionPresenting = true
     }
 
     func didCloudProviderLoad(info: [String: Any]) {

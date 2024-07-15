@@ -77,9 +77,46 @@ final class ASCThirdpartySelectFolderProvider: ASCFileProviderProtocol {
     }
     
     func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder)) { [self] response, error in
-            
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder)) { [weak self] response, error in
+            guard let self else {
+                return
+            }
+
+            var currentFolder = folder
+
+            if let path = response?.result {
+                self.total = path.total
+
+                if let current = path.current {
+                    currentFolder = current
+                }
+
+                if self.page == 0 {
+                    self.items.removeAll()
+                }
+
+                let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
+                    if let folder = entitie as? ASCFolder {
+                        folder.parent = currentFolder
+                        return folder
+                    } else if let file = entitie as? ASCFile {
+                        file.parent = currentFolder
+                        return file
+                    }
+                    return entitie
+                }
+
+                self.items += entities
+
+                completeon?(self, currentFolder, true, nil)
+            } else {
+                completeon?(self, currentFolder, false, error)
+            }
         }
+    }
+    
+    func allowEdit(entity: AnyObject?) -> Bool {
+        true
     }
 }
 

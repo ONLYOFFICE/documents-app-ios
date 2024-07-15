@@ -7,3 +7,29 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct ASCTransferViewControllerRepresentable: UIViewControllerRepresentable {
+    var provider: ASCFileProviderProtocol
+    var rootFolder: ASCFolder
+    var completion: (ASCFolder?) -> Void
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let vc = ASCTransferViewController.instantiate(from: Storyboard.transfer)
+        vc.enableFillRootFolders = false
+        vc.provider = provider
+        vc.folder = rootFolder
+        vc.actionButton.isEnabled = true
+        
+        let nc = ASCTransferNavigationController(rootASCViewController: vc)
+        nc.transferType = .select
+        nc.doneHandler = { _, folder in
+            completion(folder)
+        }
+        nc.modalPresentationStyle = .formSheet
+        nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+        return nc
+    }
+}

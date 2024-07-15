@@ -105,7 +105,7 @@ class ManageRoomViewModel: ObservableObject {
         isStorageSelectionPresenting = true
     }
 
-    func didCloudProviderLoad(provider: ASCFileProviderProtocol, info: [String: Any]) {
+    func didCloudProviderLoad(info: [String: Any]) {
         var info = info
         let providerType: ASCFolderProviderType? = {
             guard let providerKey = info["providerKey"] as? String else { return nil }

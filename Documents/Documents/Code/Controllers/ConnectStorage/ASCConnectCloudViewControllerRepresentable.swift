@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable {
-    var completion: (ASCFileProviderProtocol, [String: Any]) -> Void
+    var completion: ([String: Any]) -> Void
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 
@@ -17,7 +17,7 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
         
         let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
         connectStorageVC.captureAuthCompletion = {
-            self.completion(ASCLocalProvider(), $0)
+            self.completion($0)
         }
         let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
 

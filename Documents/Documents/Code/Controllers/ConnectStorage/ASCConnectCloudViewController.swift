@@ -176,7 +176,7 @@ class ASCConnectCloudViewController: UITableViewController {
                 guard let self else {
                     return
                 }
-                
+
                 if isNewProvider {
                     ASCFileManager.cloudProviders.insert(provider, at: 0)
                     ASCFileManager.storeProviders()

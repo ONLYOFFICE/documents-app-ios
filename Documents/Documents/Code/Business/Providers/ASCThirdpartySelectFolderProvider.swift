@@ -10,32 +10,31 @@ import Foundation
 import UIKit
 
 final class ASCThirdpartySelectFolderProvider: ASCFileProviderProtocol {
-    
     var id: String?
-    
+
     var type: ASCFileProviderType
-    
+
     var rootFolder: ASCFolder
-    
+
     var user: ASCUser?
-    
+
     var items: [ASCEntity] = []
-    
+
     var page: Int = 0
-    
+
     var total: Int = 0
-    
+
     var authorization: String?
-    
+
     var delegate: (any ASCProviderDelegate)?
-    
+
     var filterController: (any ASCFiltersControllerProtocol)?
-    
+
     init(rootFolder: ASCFolder, type: ASCFileProviderType) {
         self.rootFolder = rootFolder
         self.type = type
     }
-    
+
     func copy() -> any ASCFileProviderProtocol {
         let copy = ASCThirdpartySelectFolderProvider(
             rootFolder: rootFolder,
@@ -50,12 +49,12 @@ final class ASCThirdpartySelectFolderProvider: ASCFileProviderProtocol {
 
         return copy
     }
-    
+
     func reset() {
         total = 0
         items.removeAll()
     }
-    
+
     func add(item: ASCEntity, at index: Int) {
         if !items.contains(where: { $0.uid == item.uid }) {
             items.insert(item, at: index)
@@ -75,8 +74,8 @@ final class ASCThirdpartySelectFolderProvider: ASCFileProviderProtocol {
         items.remove(at: index)
         total -= 1
     }
-    
-    func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
+
+    func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder)) { [weak self] response, error in
             guard let self else {
                 return
@@ -114,7 +113,7 @@ final class ASCThirdpartySelectFolderProvider: ASCFileProviderProtocol {
             }
         }
     }
-    
+
     func allowEdit(entity: AnyObject?) -> Bool {
         true
     }
@@ -123,11 +122,10 @@ final class ASCThirdpartySelectFolderProvider: ASCFileProviderProtocol {
 // MARK: - Unsupported funcs
 
 extension ASCThirdpartySelectFolderProvider {
-    
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         log.error(#function, " doesn't supported")
     }
-    
+
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         log.error(#function, " doesn't supported")
     }

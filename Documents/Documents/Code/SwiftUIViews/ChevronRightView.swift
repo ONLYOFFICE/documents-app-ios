@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ChevronRightView: View {
-    
     var body: some View {
         Image(systemName: "chevron.right")
             .font(.subheadline)

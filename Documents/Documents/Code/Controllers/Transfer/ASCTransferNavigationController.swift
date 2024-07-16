@@ -17,6 +17,7 @@ enum ASCTransferType: Int {
     case copy
     case move
     case recover
+    case select
 }
 
 class ASCTransferNavigationController: ASCBaseNavigationController {

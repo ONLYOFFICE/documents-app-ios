@@ -16,14 +16,22 @@ class ManageRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
     @Published var roomOwnerName: String = ""
     @Published var isSaving = false
+    @Published var isConnecting = false
+    @Published var hideHud = false
     @Published var isSavedSuccessfully = false
     @Published var errorMessage: String?
     @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
 
+    @Published var selectedStorage: String?
+    @Published var isCreateNewFolderEnabled: Bool = false
+    @Published var selectedLocation: String = NSLocalizedString("Root folder", comment: "")
+
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
+    @Published var isStorageSelectionPresenting = false
+    @Published var isFolderSelectionPresenting = false
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
@@ -47,11 +55,18 @@ class ManageRoomViewModel: ObservableObject {
         roomName.isEmpty || isSaving
     }
 
+    var isThirdPartyStorageEnabled: Bool {
+        provider != nil
+    }
+
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
     private let editingRoom: ASCRoom?
+    private(set) var provider: ASCFileProviderProtocol?
+    private(set) var thirdPartyFolder: ASCFolder?
+    private var selectedSubfolder: ASCFolder?
 
     // MARK: - Init
 
@@ -88,6 +103,66 @@ class ManageRoomViewModel: ObservableObject {
             createRoom()
         }
     }
+
+    func didTapStorageSelectionCell() {
+        isStorageSelectionPresenting = true
+    }
+
+    func didTapSelectedFolderCell() {
+        isFolderSelectionPresenting = true
+    }
+
+    func didCloudProviderLoad(info: [String: Any]) {
+        var info = info
+        let providerType: ASCFolderProviderType? = {
+            guard let providerKey = info["providerKey"] as? String else { return nil }
+            return ASCFolderProviderType(rawValue: providerKey)
+        }()
+        if let providerType, ASCConnectPortalThirdPartyViewController.webDavProviderTypes.contains(providerType) {
+            info["providerKey"] = ASCFolderProviderType.webDav.rawValue
+        }
+        isConnecting = true
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, info) { [weak self] response, error in
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                if let error = error {
+                    log.error(error)
+                    selectedStorage = nil
+                    thirdPartyFolder = nil
+                    errorMessage = error.localizedDescription
+                } else if let folder = response?.result {
+                    let provider = ASCThirdpartySelectFolderProvider(
+                        rootFolder: folder,
+                        type: providerType?.fileProviderType ?? .webdav
+                    )
+                    self.provider = provider
+                    self.selectedStorage = providerType?.rawValue ?? folder.title
+                    thirdPartyFolder = folder
+                }
+                isConnecting = false
+            }
+        }
+    }
+
+    func selectFolder(subfolder: ASCFolder?) {
+        guard let subfolder, let thirdPartyFolder else { return }
+        if subfolder.id == thirdPartyFolder.id {
+            selectedLocation = NSLocalizedString("Root folder", comment: "")
+            selectedSubfolder = nil
+        } else {
+            selectedLocation = subfolder.title
+            selectedSubfolder = subfolder
+        }
+    }
+
+    func didTapThirdPartyStorageSwitch(isOn: Bool) {
+        if isOn {
+            isStorageSelectionPresenting = true
+        } else {
+            provider = nil
+            isStorageSelectionPresenting = false
+        }
+    }
 }
 
 // MARK: - Private func
@@ -95,11 +170,13 @@ class ManageRoomViewModel: ObservableObject {
 private extension ManageRoomViewModel {
     func createRoom() {
         creatingRoomService.createRoom(
-            model: .init(
+            model: CreatingRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
                 name: roomName,
                 image: selectedImage,
-                tags: tags.map { $0 }
+                tags: tags.map { $0 },
+                createAsNewFolder: isCreateNewFolderEnabled,
+                thirdPartyFolderId: selectedSubfolder?.id ?? thirdPartyFolder?.id
             )
         ) { [weak self] result in
             self?.isSaving = false
@@ -197,5 +274,36 @@ private extension ManageRoomViewModel {
             return topController
         }
         return nil
+    }
+}
+
+private extension ASCFolderProviderType {
+    var fileProviderType: ASCFileProviderType {
+        switch self {
+        case .boxNet:
+            .webdav
+        case .dropBox:
+            .dropbox
+        case .google, .googleDrive:
+            .googledrive
+        case .sharePoint:
+            .webdav
+        case .skyDrive:
+            .webdav
+        case .oneDrive:
+            .onedrive
+        case .webDav:
+            .webdav
+        case .yandex:
+            .yandex
+        case .nextCloud:
+            .nextcloud
+        case .ownCloud:
+            .owncloud
+        case .iCloud:
+            .icloud
+        case .kDrive:
+            .kdrive
+        }
     }
 }

@@ -77,10 +77,7 @@ struct RoomSharingLinkRow: View {
                             model.onShareAction()
                         }
                 }
-                Image(systemName: "chevron.right")
-                    .font(.subheadline)
-                    .foregroundColor(Color.separator)
-                    .flipsForRightToLeftLayoutDirection(true)
+                ChevronRightView()
             }
         }
         .contentShape(Rectangle())

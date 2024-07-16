@@ -36,10 +36,7 @@ struct RoomTypeViewRow: View {
 
             Spacer()
             if roomTypeModel.showDisclosureIndicator {
-                Image(systemName: "chevron.right")
-                    .font(.subheadline)
-                    .foregroundColor(Color.separator)
-                    .flipsForRightToLeftLayoutDirection(true)
+                ChevronRightView()
             }
         }
     }

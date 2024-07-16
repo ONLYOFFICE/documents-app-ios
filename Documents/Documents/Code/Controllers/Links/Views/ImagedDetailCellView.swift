@@ -24,8 +24,7 @@ struct ImagedDetailCellView: View {
             Spacer()
             Image(uiImage: model.image)
                 .foregroundColor(Asset.Colors.grayLight.swiftUIColor)
-            Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {

@@ -55,8 +55,7 @@ struct SharedSettingsLinkRow: View {
             HStack(spacing: 12) {
                 Text(model.rights)
                     .foregroundColor(.secondaryLabel)
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.secondaryLabel)
+                ChevronRightView()
             }
         }
         .contentShape(Rectangle())

@@ -38,7 +38,7 @@ struct ManageRoomView: View {
                 ASCTransferViewControllerRepresentable(
                     provider: provider,
                     rootFolder: rootFolder,
-                    completion: viewModel.selectFolder(subfolder:)
+                    completion: viewModel.selectFolder
                 )
             }
         })

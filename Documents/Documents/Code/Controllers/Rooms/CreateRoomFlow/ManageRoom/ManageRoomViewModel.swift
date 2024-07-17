@@ -144,13 +144,13 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
     
-    func selectFolder(subfolder: ASCFolder?) {
+    func selectFolder(subfolder: ASCFolder?, path: String?) {
         guard let subfolder, let thirdPartyFolder else { return }
         if subfolder.id == thirdPartyFolder.id {
             selectedLocation = NSLocalizedString("Root folder", comment: "")
             selectedSubfolder = nil
         } else {
-            selectedLocation = subfolder.title
+            selectedLocation = path ?? subfolder.title
             selectedSubfolder = subfolder
         }
     }

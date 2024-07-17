@@ -12,7 +12,7 @@ import SwiftUI
 struct ASCTransferViewControllerRepresentable: UIViewControllerRepresentable {
     var provider: ASCFileProviderProtocol
     var rootFolder: ASCFolder
-    var completion: (ASCFolder?) -> Void
+    var completion: (ASCFolder?, String?) -> Void
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 
@@ -25,9 +25,10 @@ struct ASCTransferViewControllerRepresentable: UIViewControllerRepresentable {
         
         let nc = ASCTransferNavigationController(rootASCViewController: vc)
         nc.transferType = .select
-        nc.doneHandler = { _, folder in
-            completion(folder)
+        nc.doneHandler = { _, folder, path in
+            completion(folder, path)
         }
+        nc.displayActionButtonOnRootVC = true
         nc.modalPresentationStyle = .formSheet
         nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
         return nc

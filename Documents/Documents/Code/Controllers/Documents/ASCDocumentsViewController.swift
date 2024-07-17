@@ -2744,7 +2744,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             transferNavigationVC.sourceProvider = provider
             transferNavigationVC.sourceFolder = folder
             transferNavigationVC.sourceItems = entities
-            transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder in
+            transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder, _ in
                 guard
                     let strongSelf = self,
                     let provider = destProvider,

@@ -68,6 +68,7 @@ class ASCTransferViewController: UITableViewController {
 
     var provider: ASCFileProviderProtocol?
     var enableFillRootFolders: Bool = true
+    var path: String = "/"
     var folder: ASCFolder? {
         didSet {
             if oldValue == nil {
@@ -435,6 +436,7 @@ class ASCTransferViewController: UITableViewController {
         let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)
 
         transferVC.provider = itemInfo.provider?.copy()
+        transferVC.path = path.appendingPathComponent(itemInfo.folder.title)
         transferVC.folder = itemInfo.folder
 
         navigationController?.pushViewController(transferVC, animated: true)
@@ -449,7 +451,7 @@ class ASCTransferViewController: UITableViewController {
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         if let navigationController = navigationController as? ASCTransferNavigationController {
             dismiss(animated: true, completion: nil)
-            navigationController.doneHandler?(provider, folder)
+            navigationController.doneHandler?(provider, folder, path)
         }
     }
 }

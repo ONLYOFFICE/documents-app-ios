@@ -107,7 +107,7 @@ class ManageRoomViewModel: ObservableObject {
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
     }
-
+    
     func didTapSelectedFolderCell() {
         isFolderSelectionPresenting = true
     }
@@ -143,14 +143,14 @@ class ManageRoomViewModel: ObservableObject {
             }
         }
     }
-
-    func selectFolder(subfolder: ASCFolder?) {
+    
+    func selectFolder(subfolder: ASCFolder?, path: String?) {
         guard let subfolder, let thirdPartyFolder else { return }
         if subfolder.id == thirdPartyFolder.id {
             selectedLocation = NSLocalizedString("Root folder", comment: "")
             selectedSubfolder = nil
         } else {
-            selectedLocation = subfolder.title
+            selectedLocation = path ?? subfolder.title
             selectedSubfolder = subfolder
         }
     }
@@ -278,32 +278,33 @@ private extension ManageRoomViewModel {
 }
 
 private extension ASCFolderProviderType {
+    
     var fileProviderType: ASCFileProviderType {
         switch self {
         case .boxNet:
-            .webdav
+                .webdav
         case .dropBox:
-            .dropbox
+                .dropbox
         case .google, .googleDrive:
-            .googledrive
+                .googledrive
         case .sharePoint:
-            .webdav
+                .webdav
         case .skyDrive:
-            .webdav
+                .webdav
         case .oneDrive:
-            .onedrive
+                .onedrive
         case .webDav:
-            .webdav
+                .webdav
         case .yandex:
-            .yandex
+                .yandex
         case .nextCloud:
-            .nextcloud
+                .nextcloud
         case .ownCloud:
-            .owncloud
+                .owncloud
         case .iCloud:
-            .icloud
+                .icloud
         case .kDrive:
-            .kdrive
+                .kdrive
         }
     }
 }

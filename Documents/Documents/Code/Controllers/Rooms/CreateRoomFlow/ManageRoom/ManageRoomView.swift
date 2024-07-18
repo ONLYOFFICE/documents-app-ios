@@ -133,7 +133,7 @@ struct ManageRoomView: View {
 
     @ViewBuilder
     private var thirdPartySection: some View {
-        if viewModel.selectedRoomType.type == .publicRoom {
+        if viewModel.selectedRoomType.type == .publicRoom && !viewModel.isEditMode {
             Section(
                 footer: Text(
                     NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: "")

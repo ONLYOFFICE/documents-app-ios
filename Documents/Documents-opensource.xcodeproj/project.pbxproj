@@ -42,6 +42,9 @@
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
 		E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */; };
 		E8BE285F2B2435E5007F5942 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE285E2B2435E4007F5942 /* MenuView.swift */; };
+		E8BF61852C492CEB004EB8E6 /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF61842C492CEB004EB8E6 /* ASCTransferViewControllerRepresentable.swift */; };
+		E8BF61872C492E05004EB8E6 /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF61862C492E05004EB8E6 /* ChevronRightView.swift */; };
+		E8BF61892C492E34004EB8E6 /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF61882C492E34004EB8E6 /* ASCThirdpartySelectFolderProvider.swift */; };
 		E8D50B832BF9441A00741BB8 /* InviteUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B822BF9441A00741BB8 /* InviteUsersViewModel.swift */; };
 		E8D50B852BFAA08F00741BB8 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B842BFAA08F00741BB8 /* InviteUsersView.swift */; };
 		E8D50B872BFBEC9800741BB8 /* ChevronUpDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B862BFBEC9700741BB8 /* ChevronUpDownView.swift */; };
@@ -685,6 +688,9 @@
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E8BE285E2B2435E4007F5942 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		E8BF61842C492CEB004EB8E6 /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		E8BF61862C492E05004EB8E6 /* ChevronRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
+		E8BF61882C492E34004EB8E6 /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
 		E8D50B822BF9441A00741BB8 /* InviteUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersViewModel.swift; sourceTree = "<group>"; };
 		E8D50B842BFAA08F00741BB8 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		E8D50B862BFBEC9700741BB8 /* ChevronUpDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronUpDownView.swift; sourceTree = "<group>"; };
@@ -1959,6 +1965,7 @@
 		E8BE28582B1C6CAF007F5942 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8BF61862C492E05004EB8E6 /* ChevronRightView.swift */,
 				E83125CC2B249A30006016F1 /* Representable */,
 				E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */,
 				E8BE285E2B2435E4007F5942 /* MenuView.swift */,
@@ -2119,6 +2126,7 @@
 				FCAE112D26A800E60013B475 /* ASCKdriveFileProvider.swift */,
 				1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */,
 				1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */,
+				E8BF61882C492E34004EB8E6 /* ASCThirdpartySelectFolderProvider.swift */,
 				1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */,
 			);
 			path = Providers;
@@ -2748,6 +2756,7 @@
 				FCF3AA891EF919F800DF63BA /* Views */,
 				FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */,
 				FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */,
+				E8BF61842C492CEB004EB8E6 /* ASCTransferViewControllerRepresentable.swift */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -3873,6 +3882,7 @@
 				E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */,
 				E87FF6752BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift in Sources */,
 				FC142A37289819B400EDE7CE /* ASCFolder.swift in Sources */,
+				E8BF61892C492E34004EB8E6 /* ASCThirdpartySelectFolderProvider.swift in Sources */,
 				FC83D6052A974E2200C404CB /* UIControl+Extension.swift in Sources */,
 				FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
 				FCE993662B7A09DD009A0CC8 /* TimeInterval+Extensions.swift in Sources */,
@@ -3984,6 +3994,7 @@
 				FC7081622812E2260057FCD2 /* KingfisherWrapper+Onlyoffice.swift in Sources */,
 				FC7081632812E2260057FCD2 /* ASCBaseTabBarController.swift in Sources */,
 				FC1764E22BA332AD00D6B6F0 /* CreatingRoomType.swift in Sources */,
+				E8BF61852C492CEB004EB8E6 /* ASCTransferViewControllerRepresentable.swift in Sources */,
 				1D8CFC5C290D85E600F71071 /* ASCDocumentsCellSwipeMenu.swift in Sources */,
 				FC142A1C289818B800EDE7CE /* ASCGroupTableViewDataModelItem.swift in Sources */,
 				FC7081642812E2260057FCD2 /* ASCBanner.swift in Sources */,
@@ -4101,6 +4112,7 @@
 				FC7081BC2812E2260057FCD2 /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
 				FC7081BD2812E2260057FCD2 /* ASCTextStyle.swift in Sources */,
 				E87FF67B2BF74712000EFDE5 /* UserListNetworkService.swift in Sources */,
+				E8BF61872C492E05004EB8E6 /* ChevronRightView.swift in Sources */,
 				FC5943DD2AE6D254001BA2F9 /* ASCDocumentEditorConfiguration.swift in Sources */,
 				FC142A3D289819B400EDE7CE /* ASCCategory.swift in Sources */,
 				FC5943B82AE6B3C4001BA2F9 /* ASCIntroPageStore.swift in Sources */,

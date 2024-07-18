@@ -33,7 +33,7 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         updateToolBar()
     }
@@ -55,7 +55,7 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
 
         return viewcontroller
     }
-    
+
     private func updateToolBar() {
         setToolbarHidden(viewControllers.count < 2 && !displayActionButtonOnRootVC, animated: true)
     }

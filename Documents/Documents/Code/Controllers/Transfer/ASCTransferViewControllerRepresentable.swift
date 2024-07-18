@@ -22,7 +22,7 @@ struct ASCTransferViewControllerRepresentable: UIViewControllerRepresentable {
         vc.provider = provider
         vc.folder = rootFolder
         vc.actionButton.isEnabled = true
-        
+
         let nc = ASCTransferNavigationController(rootASCViewController: vc)
         nc.transferType = .select
         nc.doneHandler = { _, folder, path in

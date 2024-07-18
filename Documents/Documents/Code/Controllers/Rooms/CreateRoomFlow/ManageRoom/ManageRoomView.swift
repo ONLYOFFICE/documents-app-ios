@@ -30,10 +30,10 @@ struct ManageRoomView: View {
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
-        .sheet(isPresented:  $viewModel.isStorageSelectionPresenting, content: {
+        .sheet(isPresented: $viewModel.isStorageSelectionPresenting, content: {
             ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
         })
-        .sheet(isPresented:  $viewModel.isFolderSelectionPresenting, content: {
+        .sheet(isPresented: $viewModel.isFolderSelectionPresenting, content: {
             if let provider = viewModel.provider, let rootFolder = viewModel.thirdPartyFolder {
                 ASCTransferViewControllerRepresentable(
                     provider: provider,

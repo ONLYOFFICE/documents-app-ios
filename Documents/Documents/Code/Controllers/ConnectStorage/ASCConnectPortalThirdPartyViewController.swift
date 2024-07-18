@@ -16,12 +16,12 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
     private var providers: [(provider: ASCFolderProviderType, info: [String: String])] = []
     private var defaultProviders: [ASCFolderProviderType] = ASCConstants.Clouds.defaultConnectFolderProviders
-    
+
     var captureAuthCompletion: (([String: Any]) -> Void)?
-    
+
     static var webDavProviderTypes: [ASCFolderProviderType] {
         [
-            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud, .kDrive
+            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud, .kDrive,
         ]
     }
 
@@ -31,7 +31,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         super.viewDidLoad()
 
         navigationController?.navigationBar.prefersLargeTitles = false
-        
+
         fetchProviders()
     }
 
@@ -138,7 +138,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 captureAuthCompletion(params)
                 return
             }
-            
+
             let alertController = UIAlertController(
                 title: NSLocalizedString("Folder title", comment: ""),
                 message: nil,

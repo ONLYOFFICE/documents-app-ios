@@ -14,7 +14,6 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 
     func makeUIViewController(context: Context) -> some UIViewController {
-        
         let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
         connectStorageVC.captureAuthCompletion = {
             self.completion($0)

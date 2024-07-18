@@ -93,14 +93,14 @@ class ManageRoomViewModel: ObservableObject {
         } else {
             self.roomName = roomName
         }
-        
+
         $isCreateNewFolderEnabled
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.configureSelectedLocation()
             })
             .store(in: &cancelable)
-        
+
         $roomName
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
@@ -123,7 +123,7 @@ class ManageRoomViewModel: ObservableObject {
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
     }
-    
+
     func didTapSelectedFolderCell() {
         isFolderSelectionPresenting = true
     }
@@ -159,7 +159,7 @@ class ManageRoomViewModel: ObservableObject {
             }
         }
     }
-    
+
     func selectFolder(subfolder: ASCFolder?, path: String?) {
         guard let subfolder, let thirdPartyFolder else { return }
         if subfolder.id == thirdPartyFolder.id {
@@ -173,18 +173,16 @@ class ManageRoomViewModel: ObservableObject {
         }
         configureSelectedLocation()
     }
-    
+
     func configureSelectedLocation() {
-        let basePath: String = {
-            selectedLocationPath.isEmpty
+        let basePath: String = selectedLocationPath.isEmpty
             ? NSLocalizedString("Root folder", comment: "")
             : selectedLocationPath
-        }()
         var location = basePath
         if isCreateNewFolderEnabled {
             let newFolderName = roomName.isEmpty
-            ? NSLocalizedString("New folder", comment: "")
-            : roomName
+                ? NSLocalizedString("New folder", comment: "")
+                : roomName
             location = location.appendingPathComponent(newFolderName)
         }
         selectedLocation = location
@@ -313,33 +311,32 @@ private extension ManageRoomViewModel {
 }
 
 private extension ASCFolderProviderType {
-    
     var fileProviderType: ASCFileProviderType {
         switch self {
         case .boxNet:
-                .webdav
+            .webdav
         case .dropBox:
-                .dropbox
+            .dropbox
         case .google, .googleDrive:
-                .googledrive
+            .googledrive
         case .sharePoint:
-                .webdav
+            .webdav
         case .skyDrive:
-                .webdav
+            .webdav
         case .oneDrive:
-                .onedrive
+            .onedrive
         case .webDav:
-                .webdav
+            .webdav
         case .yandex:
-                .yandex
+            .yandex
         case .nextCloud:
-                .nextcloud
+            .nextcloud
         case .ownCloud:
-                .owncloud
+            .owncloud
         case .iCloud:
-                .icloud
+            .icloud
         case .kDrive:
-                .kdrive
+            .kdrive
         }
     }
 }

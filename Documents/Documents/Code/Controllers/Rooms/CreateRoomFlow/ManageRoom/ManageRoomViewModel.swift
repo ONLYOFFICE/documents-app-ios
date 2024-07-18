@@ -149,10 +149,29 @@ class ManageRoomViewModel: ObservableObject {
         if subfolder.id == thirdPartyFolder.id {
             selectedLocation = NSLocalizedString("Root folder", comment: "")
             selectedSubfolder = nil
+            selectedLocationPath = ""
         } else {
+            selectedLocationPath = path ?? ""
             selectedLocation = path ?? subfolder.title
             selectedSubfolder = subfolder
         }
+        configureSelectedLocation()
+    }
+    
+    func configureSelectedLocation() {
+        let basePath: String = {
+            selectedLocationPath.isEmpty
+            ? NSLocalizedString("Root folder", comment: "")
+            : selectedLocationPath
+        }()
+        var location = basePath
+        if isCreateNewFolderEnabled {
+            let newFolderName = roomName.isEmpty
+            ? NSLocalizedString("New folder", comment: "")
+            : roomName
+            location = location.appendingPathComponent(newFolderName)
+        }
+        selectedLocation = location
     }
 
     func didTapThirdPartyStorageSwitch(isOn: Bool) {

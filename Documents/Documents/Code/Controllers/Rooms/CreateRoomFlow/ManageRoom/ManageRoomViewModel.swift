@@ -67,6 +67,8 @@ class ManageRoomViewModel: ObservableObject {
     private(set) var provider: ASCFileProviderProtocol?
     private(set) var thirdPartyFolder: ASCFolder?
     private var selectedSubfolder: ASCFolder?
+    private var selectedLocationPath: String = ""
+    private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
 
@@ -91,6 +93,20 @@ class ManageRoomViewModel: ObservableObject {
         } else {
             self.roomName = roomName
         }
+
+        $isCreateNewFolderEnabled
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.configureSelectedLocation()
+            })
+            .store(in: &cancelable)
+
+        $roomName
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.configureSelectedLocation()
+            })
+            .store(in: &cancelable)
     }
 
     // MARK: - Public func
@@ -144,15 +160,32 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
-    func selectFolder(subfolder: ASCFolder?) {
+    func selectFolder(subfolder: ASCFolder?, path: String?) {
         guard let subfolder, let thirdPartyFolder else { return }
         if subfolder.id == thirdPartyFolder.id {
             selectedLocation = NSLocalizedString("Root folder", comment: "")
             selectedSubfolder = nil
+            selectedLocationPath = ""
         } else {
-            selectedLocation = subfolder.title
+            selectedLocationPath = path ?? ""
+            selectedLocation = path ?? subfolder.title
             selectedSubfolder = subfolder
         }
+        configureSelectedLocation()
+    }
+
+    func configureSelectedLocation() {
+        let basePath: String = selectedLocationPath.isEmpty
+            ? NSLocalizedString("Root folder", comment: "")
+            : selectedLocationPath
+        var location = basePath
+        if isCreateNewFolderEnabled {
+            let newFolderName = roomName.isEmpty
+                ? NSLocalizedString("New folder", comment: "")
+                : roomName
+            location = location.appendingPathComponent(newFolderName)
+        }
+        selectedLocation = location
     }
 
     func didTapThirdPartyStorageSwitch(isOn: Bool) {

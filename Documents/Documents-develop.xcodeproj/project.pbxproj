@@ -35,6 +35,9 @@
 		E8674B7B2B2B15C200CDA5DC /* ASCAttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B742B2B15C100CDA5DC /* ASCAttachmentManager.swift */; };
 		E8674BA42B2B166800CDA5DC /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674BA22B2B166700CDA5DC /* NavigationLink+Extensions.swift */; };
 		E8674BA52B2B166800CDA5DC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674BA32B2B166700CDA5DC /* View+Extensions.swift */; };
+		E8BF61932C492F47004EB8E6 /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF61922C492F47004EB8E6 /* ASCThirdpartySelectFolderProvider.swift */; };
+		E8BF61952C492F69004EB8E6 /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF61942C492F69004EB8E6 /* ChevronRightView.swift */; };
+		E8BF61972C492F7D004EB8E6 /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF61962C492F7C004EB8E6 /* ASCTransferViewControllerRepresentable.swift */; };
 		FC029A0127B6436A00E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC029A0027B6436A00E5341B /* ASCWebKitViewController.swift */; };
 		FC0377D52BDD1D4100DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377D12BDD1D4100DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377D62BDD1D4100DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377D22BDD1D4100DDB2EF /* DocumentServerVersionResponse.swift */; };
@@ -749,6 +752,9 @@
 		E8674B742B2B15C100CDA5DC /* ASCAttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAttachmentManager.swift; sourceTree = "<group>"; };
 		E8674BA22B2B166700CDA5DC /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8674BA32B2B166700CDA5DC /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		E8BF61922C492F47004EB8E6 /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
+		E8BF61942C492F69004EB8E6 /* ChevronRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
+		E8BF61962C492F7C004EB8E6 /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		FC029A0027B6436A00E5341B /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		FC0377D12BDD1D4100DDB2EF /* DocumentServerVersionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentServerVersionRequest.swift; sourceTree = "<group>"; };
 		FC0377D22BDD1D4100DDB2EF /* DocumentServerVersionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentServerVersionResponse.swift; sourceTree = "<group>"; };
@@ -1438,6 +1444,7 @@
 				E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */,
 				E8674B702B2B15C100CDA5DC /* ActivityIndicatorView.swift */,
 				E8674B712B2B15C100CDA5DC /* MenuView.swift */,
+				E8BF61942C492F69004EB8E6 /* ChevronRightView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -1536,6 +1543,7 @@
 				FC6852162683572600D830EC /* ASCOneDriveFileProvider.swift */,
 				FCA1D4F32B4FD2B000904A30 /* ServicesProvider.swift */,
 				FC6852172683572600D830EC /* ASCOneDriveProvider.swift */,
+				E8BF61922C492F47004EB8E6 /* ASCThirdpartySelectFolderProvider.swift */,
 				FCAE113D26A836D40013B475 /* ASCKdriveFileProvider.swift */,
 				FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */,
 				8AF0B3652360B28900383610 /* ASCDropboxProvider.swift */,
@@ -2077,6 +2085,7 @@
 				FCF3AA891EF919F800DF63BA /* Views */,
 				FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */,
 				FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */,
+				E8BF61962C492F7C004EB8E6 /* ASCTransferViewControllerRepresentable.swift */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -3892,6 +3901,7 @@
 				FC83D54B2A973E2100C404CB /* UITextField+Extensions.swift in Sources */,
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
 				FC759BE12C00611000510096 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
+				E8BF61932C492F47004EB8E6 /* ASCThirdpartySelectFolderProvider.swift in Sources */,
 				FC759BCB2C00611000510096 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FC7D9984272996D600410795 /* UIButton+Style.swift in Sources */,
 				FC7D998B272997B500410795 /* OnedriveEndpoints.swift in Sources */,
@@ -3924,6 +3934,7 @@
 				FC7B801B2AFA294E00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				FC7DC871285A2D3400E61C69 /* ASCLocalFilterController.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
+				E8BF61972C492F7D004EB8E6 /* ASCTransferViewControllerRepresentable.swift in Sources */,
 				FC759B532C00608600510096 /* InviteUsersViewModel.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
@@ -4319,6 +4330,7 @@
 				FC83D53A2A973E2100C404CB /* Dictionary+Extension.swift in Sources */,
 				FC56A3712A38712D000EA058 /* EditorViewControllerProtocol.swift in Sources */,
 				FC83D5452A973E2100C404CB /* UIDevice+Extension.swift in Sources */,
+				E8BF61952C492F69004EB8E6 /* ChevronRightView.swift in Sources */,
 				FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */,
 				FC41D80E2265DADC00A155C2 /* ASCFileProviderType.swift in Sources */,
 				FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */,

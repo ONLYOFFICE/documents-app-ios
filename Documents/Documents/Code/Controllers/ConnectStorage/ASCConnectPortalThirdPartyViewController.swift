@@ -18,6 +18,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
     private var defaultProviders: [ASCFolderProviderType] = ASCConstants.Clouds.defaultConnectFolderProviders
 
     var captureAuthCompletion: (([String: Any]) -> Void)?
+    var disabledProviderTypes = Set<ASCFolderProviderType>()
 
     static var webDavProviderTypes: [ASCFolderProviderType] {
         [
@@ -53,10 +54,10 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         activity.anchorCenterSuperview()
 
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.capabilities) { [weak self] response, error in
-            guard let strongSelf = self else { return }
+            guard let self else { return }
 
             activity.removeFromSuperview()
-            strongSelf.tableView.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
 
             var localProviders: [(provider: ASCFolderProviderType, info: [String: String])] = []
 
@@ -73,16 +74,20 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                             }
                         }
 
-                        localProviders.append((provider: type, info: info))
+                        if !disabledProviderTypes.contains(type) {
+                            localProviders.append((provider: type, info: info))
+                        }
                     }
                 }
             }
 
-            for type in strongSelf.defaultProviders {
+            for type in defaultProviders {
                 if let defaultProviderIndex = localProviders.firstIndex(where: { $0.provider == type }) {
                     localProviders.remove(at: defaultProviderIndex)
                 }
-                localProviders.append((provider: type, info: [:]))
+                if !disabledProviderTypes.contains(type) {
+                    localProviders.append((provider: type, info: [:]))
+                }
             }
 
             /// Override the list according to preference.
@@ -94,8 +99,8 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 }
             }
 
-            strongSelf.providers = orderedProviders
-            strongSelf.tableView.reloadData()
+            providers = orderedProviders
+            tableView.reloadData()
         }
     }
 

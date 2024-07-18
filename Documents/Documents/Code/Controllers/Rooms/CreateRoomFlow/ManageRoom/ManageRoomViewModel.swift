@@ -67,6 +67,8 @@ class ManageRoomViewModel: ObservableObject {
     private(set) var provider: ASCFileProviderProtocol?
     private(set) var thirdPartyFolder: ASCFolder?
     private var selectedSubfolder: ASCFolder?
+    private var selectedLocationPath: String = ""
+    private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
 
@@ -91,6 +93,20 @@ class ManageRoomViewModel: ObservableObject {
         } else {
             self.roomName = roomName
         }
+        
+        $isCreateNewFolderEnabled
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.configureSelectedLocation()
+            })
+            .store(in: &cancelable)
+        
+        $roomName
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.configureSelectedLocation()
+            })
+            .store(in: &cancelable)
     }
 
     // MARK: - Public func

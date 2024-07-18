@@ -202,6 +202,7 @@ class ManageRoomViewModel: ObservableObject {
 
 private extension ManageRoomViewModel {
     func createRoom() {
+        let roomName = roomName
         creatingRoomService.createRoom(
             model: CreatingRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
@@ -214,8 +215,9 @@ private extension ManageRoomViewModel {
         ) { [weak self] result in
             self?.isSaving = false
             switch result {
-            case let .success(room):
+            case var .success(room):
                 self?.isSavedSuccessfully = true
+                room.title = roomName
                 self?.onCreate(room)
             case let .failure(error):
                 self?.errorMessage = error.localizedDescription

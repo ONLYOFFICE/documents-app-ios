@@ -538,6 +538,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
             let file = ASCFile()
             file.id = filePath.rawValue
+            file.viewUrl = filePath.rawValue
             file.title = filePath.fileName
             file.created = filePath.creationDate
             file.updated = filePath.modificationDate

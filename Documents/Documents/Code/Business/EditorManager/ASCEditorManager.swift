@@ -564,7 +564,8 @@ class ASCEditorManager: NSObject {
     func browsePdfLocal(
         _ pdf: ASCFile,
         openHandler: ASCEditorManagerOpenHandler? = nil,
-        closeHandler: ASCEditorManagerCloseHandler? = nil
+        closeHandler: ASCEditorManagerCloseHandler? = nil,
+        renameHandler: ASCEditorManagerRenameHandler? = nil
     ) {
         var cancel = false
         let isDocumentOformPdf = ASCOformPdfChecker.checkLocal(url: URL(fileURLWithPath: pdf.id))
@@ -575,7 +576,7 @@ class ASCEditorManager: NSObject {
 
         if pdf.device {
             if isDocumentOformPdf {
-                editLocal(pdf, closeHandler: closeHandler)
+                editLocal(pdf, closeHandler: closeHandler, renameHandler: renameHandler)
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                     ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
@@ -595,7 +596,8 @@ class ASCEditorManager: NSObject {
         for provider: ASCFileProviderProtocol,
         _ pdf: ASCFile,
         openHandler: ASCEditorManagerOpenHandler? = nil,
-        closeHandler: ASCEditorManagerCloseHandler? = nil
+        closeHandler: ASCEditorManagerCloseHandler? = nil,
+        renameHandler: ASCEditorManagerRenameHandler? = nil
     ) {
         var cancel = false
 
@@ -637,7 +639,8 @@ class ASCEditorManager: NSObject {
                             self.browsePdfLocal(
                                 localPdf,
                                 openHandler: openHandler,
-                                closeHandler: closeHandler
+                                closeHandler: closeHandler,
+                                renameHandler: renameHandler
                             )
 
                             openHandler?(.end, 1, nil, &cancel)

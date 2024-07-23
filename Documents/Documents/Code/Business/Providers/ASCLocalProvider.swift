@@ -817,24 +817,23 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt) || ASCConstants.FileExtensions.forms.contains(fileExt)
 
-        if isPdf {
-            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler)
-        } else if allowOpen {
-            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-            let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
-                guard let file = file else { complation(false); return }
+        let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+        let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+            guard let file else { complation(false); return }
 
-                self.rename(file, to: title) { provider, result, success, error in
-                    if let file = result as? ASCFile {
-                        complation(file.title.fileName() == title)
-                    } else {
-                        complation(false)
-                    }
+            self.rename(file, to: title) { provider, result, success, error in
+                if let file = result as? ASCFile {
+                    complation(file.title.fileName() == title)
+                } else {
+                    complation(false)
                 }
             }
+        }
 
+        if isPdf {
+            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler, renameHandler: renameHandler)
+        } else if allowOpen {
             ASCEditorManager.shared.editLocal(
                 file,
                 openMode: openMode,
@@ -853,9 +852,21 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
+        let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+            guard let file else { complation(false); return }
+
+            self.rename(file, to: title) { provider, result, success, error in
+                if let file = result as? ASCFile {
+                    complation(file.title.fileName() == title)
+                } else {
+                    complation(false)
+                }
+            }
+        }
+
         if isPdf {
-            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler)
+            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler, renameHandler: renameHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>DefaultValue</key>
-			<string>8.1.1 (999)</string>
+			<string>8.1.1 (1000)</string>
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>

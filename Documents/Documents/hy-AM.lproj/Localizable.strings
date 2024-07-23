@@ -368,7 +368,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Միացեք ձեր %@ ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի վրա իրական ժամանակում համագործակցելու համար";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Միացում";
 
 /* No comment provided by engineer. */

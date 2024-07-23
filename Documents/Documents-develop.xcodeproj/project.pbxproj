@@ -490,6 +490,7 @@
 		FCC0D9A22BCE81E70025DC02 /* engine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC0D9A12BCE81E70025DC02 /* engine.xcframework */; };
 		FCC0D9A32BCE81F40025DC02 /* engine.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCC0D9A12BCE81E70025DC02 /* engine.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FCC0D9D72BCE9B9F0025DC02 /* SDKCoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */; };
+		FCC27E782C4FA85A0024DD3D /* PersonalMigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC27E772C4FA85A0024DD3D /* PersonalMigrationViewController.swift */; };
 		FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD122D379DD00F500C3 /* ASCFolderProviderType.swift */; };
 		FCC38BD722D37A9D00F500C3 /* ASCConnectStorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD622D37A9D00F500C3 /* ASCConnectStorageCell.swift */; };
 		FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC3963F1ECDC6890016BB10 /* Settings.storyboard */; };
@@ -1186,6 +1187,7 @@
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSDWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
 		FCC0D9A12BCE81E70025DC02 /* engine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = engine.xcframework; path = "../../editors-ios/build/SDK/lib/engine.xcframework"; sourceTree = "<group>"; };
+		FCC27E772C4FA85A0024DD3D /* PersonalMigrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMigrationViewController.swift; sourceTree = "<group>"; };
 		FCC38BD122D379DD00F500C3 /* ASCFolderProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderProviderType.swift; sourceTree = "<group>"; };
 		FCC38BD622D37A9D00F500C3 /* ASCConnectStorageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageCell.swift; sourceTree = "<group>"; };
 		FCC3963E1ECDC6890016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -2158,6 +2160,7 @@
 				FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */,
 				FC68399121B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift */,
 				FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */,
+				FCC27E772C4FA85A0024DD3D /* PersonalMigrationViewController.swift */,
 			);
 			path = Onlyoffice;
 			sourceTree = "<group>";
@@ -3869,7 +3872,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n--swiftversion ${SWIFT_VERSION} \\\n--exclude Pods,**/Generated \\\n--lintonly unusedArguments,redundantType\n";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n--swiftversion ${SWIFT_VERSION} \\\n--exclude Pods,**/Generated \\\n--lintonly unusedArguments,redundantType,numberFormatting\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4297,6 +4300,7 @@
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC759B462C00608600510096 /* RoomSelectionView.swift in Sources */,
 				FC759BD12C00611000510096 /* OnlyofficeShareItemRequestModel.swift in Sources */,
+				FCC27E782C4FA85A0024DD3D /* PersonalMigrationViewController.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
 				FC759BCC2C00611000510096 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */,
 				FC379D232C37ED7000B120D9 /* SharedSettingsLinkResponceModel.swift in Sources */,

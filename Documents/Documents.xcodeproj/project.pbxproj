@@ -300,6 +300,7 @@
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
 		FC6F5F2A2BAAFB7000F109CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */; };
 		FC72B0C92AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */; };
+		FC740E8F2C4FE41C005995CB /* PersonalMigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC740E8E2C4FE41C005995CB /* PersonalMigrationViewController.swift */; };
 		FC759C252C00614D00510096 /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BF42C00614D00510096 /* RoomSelectionView.swift */; };
 		FC759C262C00614D00510096 /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BF52C00614D00510096 /* RoomSelectionViewModel.swift */; };
 		FC759C272C00614D00510096 /* ManageRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BF72C00614D00510096 /* ManageRoomView.swift */; };
@@ -951,6 +952,7 @@
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
 		FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCRightAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC740E8E2C4FE41C005995CB /* PersonalMigrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalMigrationViewController.swift; sourceTree = "<group>"; };
 		FC759BF42C00614D00510096 /* RoomSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
 		FC759BF52C00614D00510096 /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
 		FC759BF72C00614D00510096 /* ManageRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRoomView.swift; sourceTree = "<group>"; };
@@ -2399,6 +2401,7 @@
 				FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */,
 				FC68399121B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift */,
 				FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */,
+				FC740E8E2C4FE41C005995CB /* PersonalMigrationViewController.swift */,
 			);
 			path = Onlyoffice;
 			sourceTree = "<group>";
@@ -4456,6 +4459,7 @@
 				FC35D44B2A987DFB00C6383F /* UIView+Extension.swift in Sources */,
 				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				FC68529926837B7300D830EC /* DropboxApiClient.swift in Sources */,
+				FC740E8F2C4FE41C005995CB /* PersonalMigrationViewController.swift in Sources */,
 				FC25B44F284F67F70075D6C2 /* ASCNotificationWarningCell.swift in Sources */,
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC759CC32C00615E00510096 /* ASCSharingOptionsPresenter.swift in Sources */,

@@ -524,6 +524,7 @@
 		FCA3E7002B35C89000C5EDEC /* PasscodeLock in Frameworks */ = {isa = PBXBuildFile; productRef = FCA3E6FF2B35C89000C5EDEC /* PasscodeLock */; };
 		FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
 		FCB4CE7629FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */; };
+		FCC27E7A2C4FB4630024DD3D /* PersonalMigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC27E792C4FB4630024DD3D /* PersonalMigrationViewController.swift */; };
 		FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64FAB291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift */; };
 		FCC9E8D62B4EC59500012746 /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */; };
 		FCE886D12A828B050064F79D /* ASCCreateEntityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886D02A828B050064F79D /* ASCCreateEntityUI.swift */; };
@@ -1088,6 +1089,7 @@
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseSplitViewController.swift; sourceTree = "<group>"; };
+		FCC27E792C4FB4630024DD3D /* PersonalMigrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalMigrationViewController.swift; sourceTree = "<group>"; };
 		FCC3963E1ECDC6890016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		FCC396411ECDC68C0016BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
 		FCC396451ECDC6BD0016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserProfile.storyboard; sourceTree = "<group>"; };
@@ -2837,6 +2839,7 @@
 				FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */,
 				FC68399121B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift */,
 				FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */,
+				FCC27E792C4FB4630024DD3D /* PersonalMigrationViewController.swift */,
 			);
 			path = Onlyoffice;
 			sourceTree = "<group>";
@@ -3612,7 +3615,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n--swiftversion ${SWIFT_VERSION} \\\n--exclude Pods,**/Generated \\\n--lintonly unusedArguments,redundantType\n";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n--swiftversion ${SWIFT_VERSION} \\\n--exclude Pods,**/Generated \\\n--lintonly unusedArguments,redundantType,numberFormatting\n";
 		};
 		FC7082462812E2260057FCD2 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3773,6 +3776,7 @@
 			files = (
 				FC142A6F28981A1F00EDE7CE /* ASCPasscodeLockConfiguration.swift in Sources */,
 				FC7080D52812E2260057FCD2 /* ASCSharingSettingsAccessViewModel.swift in Sources */,
+				FCC27E7A2C4FB4630024DD3D /* PersonalMigrationViewController.swift in Sources */,
 				FC7080D62812E2260057FCD2 /* ASCNavigator.swift in Sources */,
 				FC7080D72812E2260057FCD2 /* OnlyofficeEndpoints.swift in Sources */,
 				FC142A7128981A1F00EDE7CE /* ASCUserDefaultsPasscodeRepository.swift in Sources */,

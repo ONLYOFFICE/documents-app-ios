@@ -368,7 +368,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "连接到您的 %@ 云端，在线存储文件并实时协作处理文件";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "正在链接中";
 
 /* No comment provided by engineer. */
@@ -487,6 +488,9 @@
 
 /* No comment provided by engineer. */
 "Create" = "创建";
+
+/* No comment provided by engineer. */
+"Create a free account" = "创建免费账户";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "建立附加連結，以不同存取權限共用該文件。";
@@ -1156,6 +1160,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE文档";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "我们将停用 ONLYOFFICE Personal";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "请注意：我们将于2024年9月1日停止使用 ONLYOFFICE Personal，并强烈建议您改用 ONLYOFFICE 协作空间云端版。";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "ONLYOFFICE入口網站";

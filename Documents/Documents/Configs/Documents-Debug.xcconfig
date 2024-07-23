@@ -13,3 +13,5 @@ PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents
 PRODUCT_NAME = Documents
 INFOPLIST_FILE = Documents/Documents.dev.plist
 CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements
+SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO
+OTHER_SWIFT_FLAGS=$(inherited) -Xfrontend -no-serialize-debugging-options

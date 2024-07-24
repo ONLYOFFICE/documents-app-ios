@@ -19,6 +19,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
     var captureAuthCompletion: (([String: Any]) -> Void)?
     var disabledProviderTypes = Set<ASCFolderProviderType>()
+    var presentWebDavAsOthersProviders = true
 
     static var webDavProviderTypes: [ASCFolderProviderType] {
         [
@@ -412,7 +413,12 @@ extension ASCConnectPortalThirdPartyViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCConnectStorageCell.identifier, for: indexPath) as? ASCConnectStorageCell {
-            cell.type = providers[indexPath.row].provider
+            cell.type = {
+                if providers[indexPath.row].provider == .webDav, presentWebDavAsOthersProviders {
+                    return .others
+                }
+                return providers[indexPath.row].provider.connectionStorageCellType
+            }()
             return cell
         }
         return UITableViewCell()

@@ -16,6 +16,7 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
     func makeUIViewController(context: Context) -> some UIViewController {
         let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
         connectStorageVC.disabledProviderTypes.insert(.sharePoint)
+        connectStorageVC.presentWebDavAsOthersProviders = false
         connectStorageVC.captureAuthCompletion = {
             self.completion($0)
         }

@@ -16,7 +16,7 @@ class ASCConnectStorageCell: UITableViewCell {
     @IBOutlet var logoImageView: UIImageView!
     @IBOutlet var captionLabel: UILabel!
 
-    var type: ASCFolderProviderType? {
+    var type: CellType? {
         didSet {
             updateInfo()
         }
@@ -56,9 +56,6 @@ class ASCConnectStorageCell: UITableViewCell {
         case .skyDrive,
              .oneDrive:
             logoImageView?.image = Asset.Images.logoOnedriveLarge.image
-        case .webDav:
-            logoImageView?.image = nil
-            captionLabel?.text = NSLocalizedString("Other", comment: "")
         case .yandex:
             if Locale.preferredLanguages.first?.lowercased().contains("ru") ?? false {
                 logoImageView?.image = Asset.Images.logoYandexdiskRuLarge.image
@@ -73,6 +70,50 @@ class ASCConnectStorageCell: UITableViewCell {
             logoImageView?.image = Asset.Images.logoKdriveLarge.image
         case .iCloud:
             logoImageView?.image = UIImage(named: "logo-icloud-large") // TODO: check!
+        case .webDav:
+            logoImageView?.image = Asset.Images.logoWebdavLarge.image
+        case .others:
+            logoImageView?.image = nil
+            captionLabel?.text = NSLocalizedString("Other", comment: "")
+        }
+    }
+}
+
+extension ASCConnectStorageCell {
+    enum CellType {
+        case boxNet
+        case dropBox
+        case google
+        case googleDrive
+        case sharePoint
+        case skyDrive
+        case oneDrive
+        case webDav
+        case yandex
+        case nextCloud
+        case ownCloud
+        case iCloud
+        case kDrive
+        case others
+    }
+}
+
+extension ASCFolderProviderType {
+    var connectionStorageCellType: ASCConnectStorageCell.CellType {
+        switch self {
+        case .boxNet: .boxNet
+        case .dropBox: .dropBox
+        case .google: .google
+        case .googleDrive: .googleDrive
+        case .sharePoint: .sharePoint
+        case .skyDrive: .skyDrive
+        case .oneDrive: .oneDrive
+        case .webDav: .webDav
+        case .yandex: .yandex
+        case .nextCloud: .nextCloud
+        case .ownCloud: .ownCloud
+        case .iCloud: .iCloud
+        case .kDrive: .kDrive
         }
     }
 }

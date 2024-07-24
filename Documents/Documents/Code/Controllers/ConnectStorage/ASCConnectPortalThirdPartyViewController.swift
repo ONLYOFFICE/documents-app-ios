@@ -19,6 +19,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
     var captureAuthCompletion: (([String: Any]) -> Void)?
     var disabledProviderTypes = Set<ASCFolderProviderType>()
+    var footerText: String = String.localizedStringWithFormat(NSLocalizedString("You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.", comment: ""), ASCConstants.Name.appNameFull)
 
     static var webDavProviderTypes: [ASCFolderProviderType] {
         [
@@ -397,7 +398,7 @@ extension ASCConnectPortalThirdPartyViewController {
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0, providers.count > 0 {
-            return String.localizedStringWithFormat(NSLocalizedString("You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.", comment: ""), ASCConstants.Name.appNameFull)
+            return footerText
         }
         return nil
     }

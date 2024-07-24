@@ -9,7 +9,7 @@
 import Foundation
 
 struct RoomNotificationsRequestModel: Codable {
-    let roomsID: Int
+    let roomsID: String
     let mute: Bool
 
     enum CodingKeys: String, CodingKey {

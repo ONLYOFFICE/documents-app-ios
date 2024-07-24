@@ -1223,17 +1223,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/br&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/p&gt;&lt;p&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;本サービスをご利用いただくには、有償版のプレーヤーが必要です。&lt;/p&gt;&lt;p&gt;二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;詳細情報&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1927,7 +1927,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
-        <target state="translated">無料アカウントを登録</target>
+        <target>無料アカウントを登録</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2691,7 +2691,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
-        <target state="translated">場所</target>
+        <target>場所</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2848,7 +2848,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
-        <target state="translated">新しいフォルダ</target>
+        <target>新しいフォルダ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -2989,12 +2989,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
-        <target state="translated">ONLYOFFICE Personal終了のお知らせ</target>
+        <target>ONLYOFFICE Personal終了のお知らせ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
         <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
-        <target state="translated">ONLYOFFICE Personalは、2024年9月1日をもちましてサービスを終了いたします。無料のONLYOFFICE DocSpace Cloudへの移行をお勧めします。</target>
+        <target>ONLYOFFICE Personalは、2024年9月1日をもちましてサービスを終了いたします。無料のONLYOFFICE DocSpace Cloudへの移行をお勧めします。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
@@ -3489,7 +3489,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
-        <target state="translated">ルート フォルダ</target>
+        <target>ルート フォルダ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3545,7 +3545,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
-        <target state="translated">地域を選択</target>
+        <target>地域を選択</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -4326,6 +4326,10 @@ then accessed from any other device.</source>
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
         <target>次のアカウントを %@ に接続できます。これらのアカウントは「私の文書」フォルダーで表示され、すべて一か所でポータルから編集、保存できます。’</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

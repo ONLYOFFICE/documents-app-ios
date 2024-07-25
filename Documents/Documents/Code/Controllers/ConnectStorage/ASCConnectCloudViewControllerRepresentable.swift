@@ -20,6 +20,7 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
         connectStorageVC.captureAuthCompletion = {
             self.completion($0)
         }
+        connectStorageVC.footerText = NSLocalizedString("You can connect the following accounts to the DocSpace rooms", comment: "")
         let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
 
         connectStorageNavigationVC.modalPresentationStyle = .formSheet

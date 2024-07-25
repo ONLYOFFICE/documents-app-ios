@@ -56,6 +56,15 @@
 "12 hours" = "12時間";
 
 /* No comment provided by engineer. */
+"Сonversion error" = "変換エラー";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "このファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "ファイルをアップロードできませんでした。";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exist." = "類似した名前のファイルが既に存在します。";
 
 /* No comment provided by engineer. */
@@ -590,6 +599,9 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "本当にこのルームを退室しますか？退室してから、ルームの管理者からの新しい招待があれば、再び参加することができます。";
 
 /* No comment provided by engineer. */
+"DoсSpace users only" = "DoсSpaceユーザーのみ";
+
+/* No comment provided by engineer. */
 "DocSpace admin" = "DocSpaceの管理者";
 
 /* No comment provided by engineer. */
@@ -610,9 +622,6 @@
 
 /* Caption of the processing */
 "Downloading" = "ダウンロード中";
-
-/* No comment provided by engineer. */
-"DoсSpace users only" = "DoсSpaceユーザーのみ";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1963,13 +1972,4 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "変換エラー";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "このファイルをダウンロードできませんでした。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "ファイルをアップロードできませんでした。";
 

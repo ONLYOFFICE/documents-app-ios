@@ -4334,6 +4334,10 @@ then accessed from any other device.</source>
         <target>Можете да свържете следните сметки с документите %@. Те ще бъдат показани в папката "Моите документи" и ще можете да ги редактирате и запазвате направо на портала на едно място.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Напуснахте стаята</target>

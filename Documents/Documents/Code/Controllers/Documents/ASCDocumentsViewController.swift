@@ -1147,12 +1147,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             .filter { $0 is ASCFolder }
             .filter { selectedIds.contains($0.uid) }
             .count
+        let roomsCount = tableData
+            .filter { $0 is ASCFolder }
+            .filter { selectedIds.contains($0.uid) }
+            .filter { $0.isRoom }
+            .count
 
         if fileCount + folderCount > 0 {
             if UIDevice.phone {
                 title = String(format: NSLocalizedString("Selected: %ld", comment: ""), fileCount + folderCount)
             } else {
-                if folderCount > 0, fileCount > 0 {
+                if roomsCount > 0 {
+                    title = String(format: NSLocalizedString("Selected: %ld", comment: ""), roomsCount)
+                } else if folderCount > 0, fileCount > 0 {
                     title = String.localizedStringWithFormat(NSLocalizedString("%lu Folder and %lu File selected", comment: ""), folderCount, fileCount)
                 } else if folderCount > 0 {
                     title = String.localizedStringWithFormat(NSLocalizedString("%lu Folder selected", comment: ""), folderCount)
@@ -2810,7 +2817,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             transferNavigationVC.sourceProvider = provider
             transferNavigationVC.sourceFolder = folder
             transferNavigationVC.sourceItems = entities
-            transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder in
+            transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder, _ in
                 guard
                     let strongSelf = self,
                     let provider = destProvider,

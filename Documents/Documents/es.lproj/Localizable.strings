@@ -368,7 +368,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Conéctese a su nube %@ para almacenar archivos en línea y colaborar en documentos en tiempo real";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Conectando";
 
 /* No comment provided by engineer. */

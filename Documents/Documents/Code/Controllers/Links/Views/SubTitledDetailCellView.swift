@@ -23,8 +23,7 @@ struct SubTitledDetailCellView: View {
             Spacer()
             Text(model.subtitle)
                 .foregroundColor(Asset.Colors.textSubtitle.swiftUIColor)
-            Image(systemName: "chevron.right")
-                .foregroundColor(Asset.Colors.textSubtitle.swiftUIColor)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {

@@ -79,7 +79,12 @@
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		E800AD6C2B4ED9A600AE880D /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */; };
 		E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82715762B5EBA66004137F3 /* KFImageView.swift */; };
+		E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */; };
+		E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
+		E8DE98372C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */; };
+		E8DE98392C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */; };
+		E8DE983B2C459617007401EF /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE983A2C459617007401EF /* ChevronRightView.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		F35933212B305CAF00449F33 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933202B305CAF00449F33 /* View+Extensions.swift */; };
@@ -292,6 +297,7 @@
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
 		FC6F5F2A2BAAFB7000F109CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */; };
 		FC72B0C92AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */; };
+		FC740E8F2C4FE41C005995CB /* PersonalMigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC740E8E2C4FE41C005995CB /* PersonalMigrationViewController.swift */; };
 		FC759C252C00614D00510096 /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BF42C00614D00510096 /* RoomSelectionView.swift */; };
 		FC759C262C00614D00510096 /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BF52C00614D00510096 /* RoomSelectionViewModel.swift */; };
 		FC759C272C00614D00510096 /* ManageRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759BF72C00614D00510096 /* ManageRoomView.swift */; };
@@ -690,7 +696,12 @@
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		E82715762B5EBA66004137F3 /* KFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
+		E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationLinkDateService.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
+		E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		E8DE983A2C459617007401EF /* ChevronRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F35933202B305CAF00449F33 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -935,6 +946,7 @@
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
 		FC6F5F292BAAFB7000F109CD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCRightAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		FC740E8E2C4FE41C005995CB /* PersonalMigrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalMigrationViewController.swift; sourceTree = "<group>"; };
 		FC759BF42C00614D00510096 /* RoomSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
 		FC759BF52C00614D00510096 /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
 		FC759BF72C00614D00510096 /* ManageRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRoomView.swift; sourceTree = "<group>"; };
@@ -1833,6 +1845,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E8B0F6DA2C2322C700D63389 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		F336546027E48FF400ABBEB3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1916,6 +1936,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF8472722CB39ED00ABC3B4 /* Views */,
+				E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */,
 				F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */,
 				FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */,
 				FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */,
@@ -1955,6 +1976,7 @@
 				1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */,
 				1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */,
 				F36E4DBE2B3DBA2B00910772 /* ServicesProvider.swift */,
+				E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -2319,6 +2341,7 @@
 				FCF3AA891EF919F800DF63BA /* Views */,
 				FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */,
 				FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */,
+				E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -2383,6 +2406,7 @@
 				FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */,
 				FC68399121B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift */,
 				FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */,
+				FC740E8E2C4FE41C005995CB /* PersonalMigrationViewController.swift */,
 			);
 			path = Onlyoffice;
 			sourceTree = "<group>";
@@ -3283,6 +3307,7 @@
 		FCCE50A12C1AF79000102056 /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				E8B0F6DA2C2322C700D63389 /* Services */,
 				FCCE50852C1AF79000102056 /* CreatelLink */,
 				FCCE508F2C1AF79000102056 /* DocspaceFileLinkFlow */,
 				FCCE50922C1AF79000102056 /* EditLink */,
@@ -3372,6 +3397,7 @@
 				FCE9F6DB2B2B56A30056E420 /* TagsFieldView.swift */,
 				FCE9F6DF2B2B56A30056E420 /* ActivityIndicatorView.swift */,
 				FCE9F6E02B2B56A30056E420 /* MenuView.swift */,
+				E8DE983A2C459617007401EF /* ChevronRightView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -4171,6 +4197,7 @@
 				FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
+				E8DE98372C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift in Sources */,
 				FCD5F46C2B4EF4BA00C04D91 /* Toggle+Extension.swift in Sources */,
 				FC9EEFA72BFB201700A66DE8 /* RoomNotificationsRequestModel.swift in Sources */,
 				FC759CCF2C00615E00510096 /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
@@ -4283,6 +4310,7 @@
 				FC759CC72C00615E00510096 /* ASCTextViewTableViewCell.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
 				FC759C422C00614D00510096 /* UserListViewModel.swift in Sources */,
+				E8DE98392C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift in Sources */,
 				FC68527326837B7300D830EC /* NetworkingError.swift in Sources */,
 				FC759CA42C00615E00510096 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC759CA82C00615E00510096 /* ASCSwitchTableViewCell.swift in Sources */,
@@ -4293,6 +4321,7 @@
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
 				FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
+				E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCED8F4E23E8355500EC1DAC /* ASCFloatingLabelTextField.swift in Sources */,
 				FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */,
@@ -4356,6 +4385,7 @@
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
 				FC35D4642A987DFC00C6383F /* UIDevice+DeviceKit.swift in Sources */,
 				FC759C3C2C00614D00510096 /* RoomSharingRootViewController.swift in Sources */,
+				E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */,
 				FC2882B928EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				FC759C332C00614D00510096 /* RoomSharingCustomizeLinkView.swift in Sources */,
@@ -4398,6 +4428,7 @@
 				FCCE50B42C1AF79000102056 /* ASCLinkCell.swift in Sources */,
 				FC68399821B7EF3200251CEA /* ASCOnlyofficeCategoryCell.swift in Sources */,
 				FC68529F26837B7300D830EC /* Endpoint.swift in Sources */,
+				E8DE983B2C459617007401EF /* ChevronRightView.swift in Sources */,
 				FCF694B22631C10400808644 /* ASCBaseTableViewController.swift in Sources */,
 				FC9EEF9F2BFB201700A66DE8 /* AttachLogoRequestModel.swift in Sources */,
 				FC759C3A2C00614D00510096 /* RoomSharingLinkRow.swift in Sources */,
@@ -4430,6 +4461,7 @@
 				FC35D44B2A987DFB00C6383F /* UIView+Extension.swift in Sources */,
 				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				FC68529926837B7300D830EC /* DropboxApiClient.swift in Sources */,
+				FC740E8F2C4FE41C005995CB /* PersonalMigrationViewController.swift in Sources */,
 				FC25B44F284F67F70075D6C2 /* ASCNotificationWarningCell.swift in Sources */,
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC759CC32C00615E00510096 /* ASCSharingOptionsPresenter.swift in Sources */,

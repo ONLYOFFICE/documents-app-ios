@@ -1260,6 +1260,14 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="/Documents" xml:space="preserve">
+        <source>/Documents</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/Files for test" xml:space="preserve">
+        <source>/Files for test</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 jour</target>
@@ -1280,17 +1288,17 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilisez le mot de passe créé dans &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Des instructions de connexion plus détaillées peuvent être trouvées dans le &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;centre d'aide&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilisez le mot de passe créé dans &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Des instructions de connexion plus détaillées peuvent être trouvées dans le &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;centre d'aide&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Pour utiliser ce service, il faut disposer d'une version payante du lecteur.&lt;/p&gt;&lt;p&gt;Si vous avez activé l'authentification à deux facteurs, veuillez générer une demande MDP à partir du gestionnaire Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;En savoir plus...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1668,6 +1676,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Choisir dans la liste</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Choose location with templates" xml:space="preserve">
+        <source>Choose location with templates</source>
+        <note>One line. Max 50 charasters</note>
+      </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
         <source>Choose room type</source>
         <target>Choisir le type de salle</target>
@@ -1780,7 +1792,8 @@ d'autres via le protocole WebDAV.</target>
       <trans-unit id="Connecting" xml:space="preserve">
         <source>Connecting</source>
         <target>Connexion</target>
-        <note>Caption of the process</note>
+        <note>Caption of the process
+   Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1977,6 +1990,11 @@ d'autres via le protocole WebDAV.</target>
         <target>Créer</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create a free account" xml:space="preserve">
+        <source>Create a free account</source>
+        <target state="translated">Créer un compte gratuit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
         <source>Create additional links to share the document with different access rights.</source>
         <target>Créez des liens supplémentaires pour partager le document avec différents droits d'accès.</target>
@@ -2000,6 +2018,11 @@ d'autres via le protocole WebDAV.</target>
       <trans-unit id="Create new files" xml:space="preserve">
         <source>Create new files</source>
         <target>Créer de nouveaux fichiers</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folder" xml:space="preserve">
+        <source>Create new folder</source>
+        <target state="translated">Créer un dossier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2739,6 +2762,11 @@ dans le presse-papiers</target>
         <target>Chargement...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Location" xml:space="preserve">
+        <source>Location</source>
+        <target state="translated">Emplacement</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Connexion</target>
@@ -2891,6 +2919,11 @@ dans le presse-papiers</target>
         <target>Nouvelle feuille de calcul</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New folder" xml:space="preserve">
+        <source>New folder</source>
+        <target state="translated">Nouveau dossier</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
         <target>Nouveaux utilisateurs</target>
@@ -3026,6 +3059,16 @@ dans le presse-papiers</target>
         <source>ONLYOFFICE Documents</source>
         <target>ONLYOFFICE Documents</target>
         <note>Full App Name</note>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
+        <source>ONLYOFFICE Personal is wrapping up</source>
+        <target state="translated">ONLYOFFICE Personal se termine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
+        <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <target state="translated">Veuillez noter : ONLYOFFICE Personal sera arrêté le 1er septembre 2024. Nous vous recommandons de passer au service gratuit ONLYOFFICE DocSpace Cloud.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
@@ -3517,6 +3560,10 @@ dans le presse-papiers</target>
         <note>Category title
    DocSpace rooms</note>
       </trans-unit>
+      <trans-unit id="Root folder" xml:space="preserve">
+        <source>Root folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
         <target>IGNORER</target>
@@ -3567,6 +3614,11 @@ dans le presse-papiers</target>
         <source>Select group</source>
         <target>Sélectionner un groupe</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select location" xml:space="preserve">
+        <source>Select location</source>
+        <target state="translated">Sélectionner le lieu</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
@@ -3947,6 +3999,10 @@ dans le presse-papiers</target>
         <target>Ressources tierces</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Third party storage" xml:space="preserve">
+        <source>Third party storage</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
         <source>Third-party storage</source>
         <target>Le stockage tiers</target>
@@ -4181,6 +4237,10 @@ dans le presse-papiers</target>
         <source>Uploading</source>
         <target>Téléchargement</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
+        <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
         <source>User</source>

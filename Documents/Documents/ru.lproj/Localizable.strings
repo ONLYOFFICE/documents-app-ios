@@ -8,6 +8,12 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"/Documents" = "/Документы";
+
+/* No comment provided by engineer. */
+"/Files for test" = "/ Файлы для тестирования";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Days left */
@@ -281,6 +287,9 @@
 /* No comment provided by engineer. */
 "Choose from list" = "Выберите из списка";
 
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Выберите местоположение с помощью шаблонов";
+
 /* No comment provided by engineer. */
 "Choose room type" = "Выберите тип комнаты";
 
@@ -368,7 +377,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Подключение";
 
 /* No comment provided by engineer. */
@@ -489,6 +499,9 @@
 "Create" = "Создать";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Создать бесплатный аккаунт";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Создайте дополнительные ссылки, чтобы поделиться документом с разными правами доступа.";
 
 /* No comment provided by engineer. */
@@ -502,6 +515,9 @@
 
 /* No comment provided by engineer. */
 "Create new files" = "Создать новые файлы";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Создать новую папку";
 
 /* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "Создавайте новые папки, чтобы \nсистематизировать ваши документы.";
@@ -705,6 +721,12 @@
 
 /* Expiration status */
 "Expired" = "Истек";
+
+/* Days left */
+"Expires after %d days" = "Истекает через %d дней";
+
+/* Hours left */
+"Expires after %d hours" = "Истекает через %d часов";
 
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Истекает через 7 дней";
@@ -955,6 +977,9 @@
 /* No comment provided by engineer. */
 "Loading..." = "Загрузка…";
 
+/* No comment provided by engineer. */
+"Location" = "Местоположение";
+
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
 
@@ -1040,6 +1065,9 @@
 
 /* No comment provided by engineer. */
 "New Document" = "Новый документ";
+
+/* No comment provided by engineer. */
+"New folder" = "Новая папка";
 
 /* No comment provided by engineer. */
 "New Folder" = "Новая папка";
@@ -1156,6 +1184,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Документы";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal завершает работу";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "Пожалуйста, обратите внимание: поддержка ONLYOFFICE Personal прекращается 1 сентября 2024 года. Рекомендуем перейти на бесплатный ONLYOFFICE DocSpace Cloud.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "Портал ONLYOFFICE";
@@ -1432,6 +1466,9 @@
 "Rooms" = "Комнаты";
 
 /* No comment provided by engineer. */
+"Root folder" = "Корневая директроия";
+
+/* No comment provided by engineer. */
 "Same as system" = "Системная";
 
 /* No comment provided by engineer. */
@@ -1455,6 +1492,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Группы";
+
+/* Button title */
+"Select location" = "Выберите местоположение";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Выбрать фото";
@@ -1687,6 +1727,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Сторонний ресурс";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Стороннее хранилище";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Стороннее хранилище";
 
@@ -1827,6 +1870,9 @@
 
 /* Caption of the process */
 "Uploading" = "Загрузка";
+
+/* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Используйте сторонние сервисы в качестве хранилища данных для этой комнаты. В подключенном хранилище будет создана новая папка для хранения данных этой комнаты";
 
 /* No comment provided by engineer. */
 "User" = "Пользователь";

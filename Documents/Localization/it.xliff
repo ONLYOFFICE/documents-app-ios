@@ -1260,6 +1260,14 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="/Documents" xml:space="preserve">
+        <source>/Documents</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/Files for test" xml:space="preserve">
+        <source>/Files for test</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 giorno</target>
@@ -1280,17 +1288,17 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/br&gt;Istruzioni di connessione più dettagliate sono disponibili in &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Istruzioni di connessione più dettagliate sono disponibili nella &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Devi avere una versione a pagamento del lettore per utilizzare questo servizio.&lt;/p&gt;&lt;p&gt;Se hai attivato la doppia autenticazione, genera un'applicazione CDM dal gestore di Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Altro...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1668,6 +1676,10 @@ possibilità di leggere, rivedere o modificare i documenti.</target>
         <target>Scegli dall'elenco</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Choose location with templates" xml:space="preserve">
+        <source>Choose location with templates</source>
+        <note>One line. Max 50 charasters</note>
+      </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
         <source>Choose room type</source>
         <target>Scegli la tipologia di camera</target>
@@ -1780,7 +1792,8 @@ altri che utilizzano il protocollo WebDAV.</target>
       <trans-unit id="Connecting" xml:space="preserve">
         <source>Connecting</source>
         <target>Connessione</target>
-        <note>Caption of the process</note>
+        <note>Caption of the process
+   Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1977,6 +1990,11 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target>Creare</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create a free account" xml:space="preserve">
+        <source>Create a free account</source>
+        <target state="translated">Crea un account gratuito</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
         <source>Create additional links to share the document with different access rights.</source>
         <target>Crea link aggiuntivi per condividere il documento con diritti di accesso diversi.</target>
@@ -2000,6 +2018,11 @@ altri che utilizzano il protocollo WebDAV.</target>
       <trans-unit id="Create new files" xml:space="preserve">
         <source>Create new files</source>
         <target>Crea nuovi file</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folder" xml:space="preserve">
+        <source>Create new folder</source>
+        <target state="translated">Crea un account gratuito</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2738,6 +2761,11 @@ appunti con successo</target>
         <target>Caricamento...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Location" xml:space="preserve">
+        <source>Location</source>
+        <target state="translated">Luogo</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Accesso in corso</target>
@@ -2890,6 +2918,11 @@ appunti con successo</target>
         <target>Nuovo foglio di calcolo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New folder" xml:space="preserve">
+        <source>New folder</source>
+        <target state="translated">Nuova cartella</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
         <target>Nuovi utenti</target>
@@ -3025,6 +3058,16 @@ appunti con successo</target>
         <source>ONLYOFFICE Documents</source>
         <target>ONLYOFFICE Documents</target>
         <note>Full App Name</note>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
+        <source>ONLYOFFICE Personal is wrapping up</source>
+        <target state="translated">ONLYOFFICE Personal sta per concludersi.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
+        <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <target state="translated">Tieni presente: ONLYOFFICE Personal verrà interrotto il 1° settembre 2024. Ti consigliamo di passare alla versione gratuita di ONLYOFFICE DocSpace Cloud.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
@@ -3516,6 +3559,11 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
         <note>Category title
    DocSpace rooms</note>
       </trans-unit>
+      <trans-unit id="Root folder" xml:space="preserve">
+        <source>Root folder</source>
+        <target state="translated">Cartella Principale</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
         <target>Saltare</target>
@@ -3566,6 +3614,11 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
         <source>Select group</source>
         <target>Selezionare gruppo</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select location" xml:space="preserve">
+        <source>Select location</source>
+        <target state="translated">Seleziona la località</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
@@ -3944,6 +3997,10 @@ to the clipboard</source>
         <target>Risorsa di terze parti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Third party storage" xml:space="preserve">
+        <source>Third party storage</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
         <source>Third-party storage</source>
         <target>Spazio di archiviazione di terze parti</target>
@@ -4178,6 +4235,10 @@ to the clipboard</source>
         <source>Uploading</source>
         <target>Caricamento</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
+        <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
         <source>User</source>

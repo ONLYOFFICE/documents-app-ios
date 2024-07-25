@@ -1260,6 +1260,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="/Documents" xml:space="preserve">
+        <source>/Documents</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/Files for test" xml:space="preserve">
+        <source>/Files for test</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 օր</target>
@@ -1668,6 +1676,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Ընտրել ցանկից</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Choose location with templates" xml:space="preserve">
+        <source>Choose location with templates</source>
+        <note>One line. Max 50 charasters</note>
+      </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
         <source>Choose room type</source>
         <target>Ընտրեք սենյակի տեսակը</target>
@@ -1780,7 +1792,8 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Connecting" xml:space="preserve">
         <source>Connecting</source>
         <target>Միացում</target>
-        <note>Caption of the process</note>
+        <note>Caption of the process
+   Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1977,6 +1990,10 @@ others which use WebDAV protocol.</source>
         <target>Ստեղծել</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create a free account" xml:space="preserve">
+        <source>Create a free account</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
         <source>Create additional links to share the document with different access rights.</source>
         <target>Ստեղծեք լրացուցիչ հղումներ՝ փաստաթուղթը հասանելիության տարբեր իրավունքներով համօգտագործելու համար:</target>
@@ -2000,6 +2017,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Create new files" xml:space="preserve">
         <source>Create new files</source>
         <target>Ստեղծել նոր ֆայլեր</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create new folder" xml:space="preserve">
+        <source>Create new folder</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2740,6 +2761,10 @@ copied to clipboard</source>
         <target>Բեռնվում է...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Location" xml:space="preserve">
+        <source>Location</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Մուտք գործեք</target>
@@ -2892,6 +2917,10 @@ copied to clipboard</source>
         <target>Նոր աղյուսակ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New folder" xml:space="preserve">
+        <source>New folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
         <target>Նոր օգտվողներ</target>
@@ -3027,6 +3056,14 @@ copied to clipboard</source>
         <source>ONLYOFFICE Documents</source>
         <target>ONLYOFFICE Փաստաթղթեր</target>
         <note>Full App Name</note>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
+        <source>ONLYOFFICE Personal is wrapping up</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
+        <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
@@ -3518,6 +3555,10 @@ copied to clipboard</source>
         <note>Category title
    DocSpace rooms</note>
       </trans-unit>
+      <trans-unit id="Root folder" xml:space="preserve">
+        <source>Root folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
         <target>ՑԱՏԿԵԼ</target>
@@ -3568,6 +3609,10 @@ copied to clipboard</source>
         <source>Select group</source>
         <target>Ընտրեք խումբ</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select location" xml:space="preserve">
+        <source>Select location</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
@@ -3948,6 +3993,10 @@ to the clipboard</source>
         <target>Երրորդ կողմի ռեսուրս</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Third party storage" xml:space="preserve">
+        <source>Third party storage</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
         <source>Third-party storage</source>
         <target>Երրորդ կողմի պահեստավորում</target>
@@ -4182,6 +4231,10 @@ to the clipboard</source>
         <source>Uploading</source>
         <target>Վերբեռնում</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
+        <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
         <source>User</source>

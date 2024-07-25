@@ -32,6 +32,160 @@ extension Date {
         return Calendar(identifier: Calendar.current.identifier) // Workaround to segfault on corelibs foundation https://bugs.swift.org/browse/SR-10147
     }
 
+    /// Era.
+    ///
+    ///        Date().era -> 1
+    ///
+    var era: Int {
+        return calendar.component(.era, from: self)
+    }
+
+    /// Year.
+    ///
+    ///        Date().year -> 2017
+    ///
+    ///        var someDate = Date()
+    ///        someDate.year = 2000 // sets someDate's year to 2000
+    ///
+    var year: Int {
+        get {
+            return calendar.component(.year, from: self)
+        }
+        set {
+            guard newValue > 0 else { return }
+            let currentYear = calendar.component(.year, from: self)
+            let yearsToAdd = newValue - currentYear
+            if let date = calendar.date(byAdding: .year, value: yearsToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    /// Month.
+    ///
+    ///     Date().month -> 1
+    ///
+    ///     var someDate = Date()
+    ///     someDate.month = 10 // sets someDate's month to 10.
+    ///
+    var month: Int {
+        get {
+            return calendar.component(.month, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .month, in: .year, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentMonth = calendar.component(.month, from: self)
+            let monthsToAdd = newValue - currentMonth
+            if let date = calendar.date(byAdding: .month, value: monthsToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    /// Day.
+    ///
+    ///     Date().day -> 12
+    ///
+    ///     var someDate = Date()
+    ///     someDate.day = 1 // sets someDate's day of month to 1.
+    ///
+    var day: Int {
+        get {
+            return calendar.component(.day, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .day, in: .month, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentDay = calendar.component(.day, from: self)
+            let daysToAdd = newValue - currentDay
+            if let date = calendar.date(byAdding: .day, value: daysToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    /// Weekday.
+    ///
+    /// The weekday units are the numbers 1 through N (where for the Gregorian calendar N=7 and 1 is Sunday).
+    ///
+    ///     Date().weekday -> 5 // fifth day in the current week, e.g. Thursday in the Gregorian calendar
+    ///
+    var weekday: Int {
+        calendar.component(.weekday, from: self)
+    }
+
+    /// Hour.
+    ///
+    ///     Date().hour -> 17 // 5 pm
+    ///
+    ///     var someDate = Date()
+    ///     someDate.hour = 13 // sets someDate's hour to 1 pm.
+    ///
+    var hour: Int {
+        get {
+            return calendar.component(.hour, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .hour, in: .day, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentHour = calendar.component(.hour, from: self)
+            let hoursToAdd = newValue - currentHour
+            if let date = calendar.date(byAdding: .hour, value: hoursToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    /// Minutes.
+    ///
+    ///     Date().minute -> 39
+    ///
+    ///     var someDate = Date()
+    ///     someDate.minute = 10 // sets someDate's minutes to 10.
+    ///
+    var minute: Int {
+        get {
+            return calendar.component(.minute, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .minute, in: .hour, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentMinutes = calendar.component(.minute, from: self)
+            let minutesToAdd = newValue - currentMinutes
+            if let date = calendar.date(byAdding: .minute, value: minutesToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    /// Seconds.
+    ///
+    ///     Date().second -> 55
+    ///
+    ///     var someDate = Date()
+    ///     someDate.second = 15 // sets someDate's seconds to 15.
+    ///
+    var second: Int {
+        get {
+            return calendar.component(.second, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .second, in: .minute, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentSeconds = calendar.component(.second, from: self)
+            let secondsToAdd = newValue - currentSeconds
+            if let date = calendar.date(byAdding: .second, value: secondsToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
     /// Nanoseconds.
     ///
     ///     Date().nanosecond -> 981379985
@@ -169,5 +323,87 @@ extension Date {
             return startDate.compare(self).rawValue * compare(endDate).rawValue >= 0
         }
         return startDate.compare(self).rawValue * compare(endDate).rawValue > 0
+    }
+}
+
+// MARK: - Initializers
+
+extension Date {
+    /// Create a new date form calendar components.
+    ///
+    ///     let date = Date(year: 2010, month: 1, day: 12) // "Jan 12, 2010, 7:45 PM"
+    ///
+    /// - Parameters:
+    ///   - calendar: Calendar (default is current).
+    ///   - timeZone: TimeZone (default is current).
+    ///   - era: Era (default is current era).
+    ///   - year: Year (default is current year).
+    ///   - month: Month (default is current month).
+    ///   - day: Day (default is today).
+    ///   - hour: Hour (default is current hour).
+    ///   - minute: Minute (default is current minute).
+    ///   - second: Second (default is current second).
+    ///   - nanosecond: Nanosecond (default is current nanosecond).
+    init?(
+        calendar: Calendar? = Calendar.current,
+        timeZone: TimeZone? = NSTimeZone.default,
+        era: Int? = Date().era,
+        year: Int? = Date().year,
+        month: Int? = Date().month,
+        day: Int? = Date().day,
+        hour: Int? = Date().hour,
+        minute: Int? = Date().minute,
+        second: Int? = Date().second,
+        nanosecond: Int? = Date().nanosecond
+    ) {
+        var components = DateComponents()
+        components.calendar = calendar
+        components.timeZone = timeZone
+        components.era = era
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        components.nanosecond = nanosecond
+
+        guard let date = calendar?.date(from: components) else { return nil }
+        self = date
+    }
+
+    /// Create date object from ISO8601 string.
+    ///
+    ///     let date = Date(iso8601String: "2017-01-12T16:48:00.959Z") // "Jan 12, 2017, 7:48 PM"
+    ///
+    /// - Parameter iso8601String: ISO8601 string of format (yyyy-MM-dd'T'HH:mm:ss.SSSZ).
+    init?(iso8601String: String) {
+        // https://github.com/justinmakaila/NSDate-ISO-8601/blob/master/NSDateISO8601.swift
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        guard let date = dateFormatter.date(from: iso8601String) else { return nil }
+        self = date
+    }
+
+    /// Create new date object from UNIX timestamp.
+    ///
+    ///     let date = Date(unixTimestamp: 1484239783.922743) // "Jan 12, 2017, 7:49 PM"
+    ///
+    /// - Parameter unixTimestamp: UNIX timestamp.
+    init(unixTimestamp: Double) {
+        self.init(timeIntervalSince1970: unixTimestamp)
+    }
+
+    /// Create date object from Int literal.
+    ///
+    ///     let date = Date(integerLiteral: 2017_12_25) // "2017-12-25 00:00:00 +0000"
+    /// - Parameter value: Int value, e.g. 20171225, or 2017_12_25 etc.
+    init?(integerLiteral value: Int) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        guard let date = formatter.date(from: String(value)) else { return nil }
+        self = date
     }
 }

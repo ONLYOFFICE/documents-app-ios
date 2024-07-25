@@ -67,6 +67,8 @@ class ASCTransferViewController: UITableViewController {
     // MARK: - Public
 
     var provider: ASCFileProviderProtocol?
+    var enableFillRootFolders: Bool = true
+    var path: String = "/"
     var folder: ASCFolder? {
         didSet {
             if oldValue == nil {
@@ -168,6 +170,7 @@ class ASCTransferViewController: UITableViewController {
     // MARK: - Private
 
     private func fillRootFolders() {
+        guard enableFillRootFolders else { return }
         tableData = []
 
         // Local Documents
@@ -302,6 +305,9 @@ class ASCTransferViewController: UITableViewController {
         case .recover:
             navigationItem.prompt = NSLocalizedString("Select the folder to recover the items", comment: "One line. Max 50 charasters")
             actionButton?.title = NSLocalizedString("Recover here", comment: "Button title")
+        case .select:
+            navigationItem.prompt = NSLocalizedString("Choose location with templates", comment: "One line. Max 50 charasters")
+            actionButton?.title = NSLocalizedString("Select location", comment: "Button title")
         }
     }
 
@@ -430,6 +436,7 @@ class ASCTransferViewController: UITableViewController {
         let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)
 
         transferVC.provider = itemInfo.provider?.copy()
+        transferVC.path = path.appendingPathComponent(itemInfo.folder.title)
         transferVC.folder = itemInfo.folder
 
         navigationController?.pushViewController(transferVC, animated: true)
@@ -444,7 +451,7 @@ class ASCTransferViewController: UITableViewController {
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         if let navigationController = navigationController as? ASCTransferNavigationController {
             dismiss(animated: true, completion: nil)
-            navigationController.doneHandler?(provider, folder)
+            navigationController.doneHandler?(provider, folder, path)
         }
     }
 }

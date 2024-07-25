@@ -368,7 +368,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connettiti al tuo cloud %@ per archiviare i file online e collaborare ai documenti in tempo reale";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Connessione";
 
 /* No comment provided by engineer. */
@@ -489,6 +490,9 @@
 "Create" = "Creare";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Crea un account gratuito";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Crea link aggiuntivi per condividere il documento con diritti di accesso diversi.";
 
 /* No comment provided by engineer. */
@@ -502,6 +506,9 @@
 
 /* No comment provided by engineer. */
 "Create new files" = "Crea nuovi file";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Crea un account gratuito";
 
 /* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "Crea nuove cartelle per \norganizzare i tuoi file.";
@@ -952,6 +959,9 @@
 /* No comment provided by engineer. */
 "Loading..." = "Caricamento...";
 
+/* No comment provided by engineer. */
+"Location" = "Luogo";
+
 /* Caption of the process */
 "Logging in" = "Accesso in corso";
 
@@ -1037,6 +1047,9 @@
 
 /* No comment provided by engineer. */
 "New Document" = "Nuovo documento";
+
+/* No comment provided by engineer. */
+"New folder" = "Nuova cartella";
 
 /* No comment provided by engineer. */
 "New Folder" = "Nuova cartella";
@@ -1153,6 +1166,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal sta per concludersi.";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "Tieni presente: ONLYOFFICE Personal verrà interrotto il 1° settembre 2024. Ti consigliamo di passare alla versione gratuita di ONLYOFFICE DocSpace Cloud.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "Portale ONLYOFFICE";
@@ -1429,6 +1448,9 @@
 "Rooms" = "Stanze";
 
 /* No comment provided by engineer. */
+"Root folder" = "Cartella Principale";
+
+/* No comment provided by engineer. */
 "Same as system" = "Uguale al sistema";
 
 /* No comment provided by engineer. */
@@ -1452,6 +1474,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Selezionare gruppo";
+
+/* Button title */
+"Select location" = "Seleziona la località";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Selezionare foto";

@@ -338,7 +338,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Připojování";
 
 /* No comment provided by engineer. */

@@ -173,13 +173,17 @@ class ASCConnectCloudViewController: UITableViewController {
             if success, let provider = provider {
                 let isNewProvider = (ASCFileManager.cloudProviders.first(where: { $0.id == provider.id }) == nil)
 
+                guard let self else {
+                    return
+                }
+
                 if isNewProvider {
                     ASCFileManager.cloudProviders.insert(provider, at: 0)
                     ASCFileManager.storeProviders()
                 }
 
-                self?.complation?(provider)
-                self?.dismiss(animated: true, completion: nil)
+                complation?(provider)
+                dismiss(animated: true, completion: nil)
             } else {
                 if let topViewController = UIApplication.topViewController() {
                     UIAlertController.showError(

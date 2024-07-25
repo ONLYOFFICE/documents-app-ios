@@ -338,7 +338,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Свързване";
 
 /* No comment provided by engineer. */

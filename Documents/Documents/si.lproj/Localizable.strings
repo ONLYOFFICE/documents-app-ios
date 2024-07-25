@@ -338,7 +338,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "ගොනු මාර්ගගතව ගබඩා කිරීමට සහ තථ්‍ය කාලීනව සහයෝගයෙන් ලේඛන කටයුතු \nසිදු කිරීමට ඔබගේ %@ මේඝයට සම්බන්ධ වන්න";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "සම්බන්ධ වෙමින්";
 
 /* No comment provided by engineer. */

@@ -15,6 +15,7 @@ protocol ASCMultiAccountPresenterProtocol: AnyObject {
     func setup()
     func deleteFromDevice(account: ASCAccount?, completion: () -> Void)
     func renewal(by account: ASCAccount, animated: Bool)
+    func createPortal(animated: Bool)
 }
 
 class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
@@ -77,6 +78,11 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         signinViewController.portal = account.portal
         signinViewController.email = account.email
         view?.navigationController?.pushViewController(signinViewController, animated: animated)
+    }
+
+    func createPortal(animated: Bool = false) {
+        let createPortalVC = StoryboardScene.CreatePortal.createPortalStepOneController.instantiate()
+        view?.navigationController?.pushViewController(createPortalVC, animated: animated)
     }
 
     func login(by account: ASCAccount, completion: @escaping () -> Void) {

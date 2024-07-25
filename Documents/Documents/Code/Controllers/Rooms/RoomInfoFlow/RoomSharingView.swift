@@ -303,10 +303,7 @@ struct ASCUserRow: View {
                 .multilineTextAlignment(.trailing)
 
             if !model.isOwner {
-                Image(systemName: "chevron.right")
-                    .font(.subheadline)
-                    .foregroundColor(Color.separator)
-                    .flipsForRightToLeftLayoutDirection(true)
+                ChevronRightView()
             }
         }
         .contentShape(Rectangle())

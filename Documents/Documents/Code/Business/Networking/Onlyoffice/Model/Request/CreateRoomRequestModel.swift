@@ -11,4 +11,5 @@ import Foundation
 struct CreateRoomRequestModel: Codable {
     var roomType: Int
     var title: String
+    var createAsNewFolder: Bool
 }

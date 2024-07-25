@@ -17,14 +17,21 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
     private var providers: [(provider: ASCFolderProviderType, info: [String: String])] = []
     private var defaultProviders: [ASCFolderProviderType] = ASCConstants.Clouds.defaultConnectFolderProviders
 
+    var captureAuthCompletion: (([String: Any]) -> Void)?
+    var disabledProviderTypes = Set<ASCFolderProviderType>()
+
+    static var webDavProviderTypes: [ASCFolderProviderType] {
+        [
+            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud, .kDrive,
+        ]
+    }
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = false
-        }
+        navigationController?.navigationBar.prefersLargeTitles = false
 
         fetchProviders()
     }
@@ -41,16 +48,16 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         tableView.reloadData()
         tableView.isUserInteractionEnabled = false
 
-        let activity = UIActivityIndicatorView(style: .gray)
+        let activity = UIActivityIndicatorView(style: .medium)
         activity.startAnimating()
         tableView.addSubview(activity)
         activity.anchorCenterSuperview()
 
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.capabilities) { [weak self] response, error in
-            guard let strongSelf = self else { return }
+            guard let self else { return }
 
             activity.removeFromSuperview()
-            strongSelf.tableView.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
 
             var localProviders: [(provider: ASCFolderProviderType, info: [String: String])] = []
 
@@ -67,16 +74,20 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                             }
                         }
 
-                        localProviders.append((provider: type, info: info))
+                        if !disabledProviderTypes.contains(type) {
+                            localProviders.append((provider: type, info: info))
+                        }
                     }
                 }
             }
 
-            for type in strongSelf.defaultProviders {
+            for type in defaultProviders {
                 if let defaultProviderIndex = localProviders.firstIndex(where: { $0.provider == type }) {
                     localProviders.remove(at: defaultProviderIndex)
                 }
-                localProviders.append((provider: type, info: [:]))
+                if !disabledProviderTypes.contains(type) {
+                    localProviders.append((provider: type, info: [:]))
+                }
             }
 
             /// Override the list according to preference.
@@ -88,8 +99,8 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 }
             }
 
-            strongSelf.providers = orderedProviders
-            strongSelf.tableView.reloadData()
+            providers = orderedProviders
+            tableView.reloadData()
         }
     }
 
@@ -126,6 +137,13 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         }
 
         dismiss(animated: true) {
+            if let captureAuthCompletion = self.captureAuthCompletion {
+                var params = info
+                params["customerTitle"] = folderName
+                captureAuthCompletion(params)
+                return
+            }
+
             let alertController = UIAlertController(
                 title: NSLocalizedString("Folder title", comment: ""),
                 message: nil,

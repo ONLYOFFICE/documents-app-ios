@@ -368,7 +368,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connectez-vous au cloud %@ pour stocker vos fichiers en ligne et collaborer sur documents en temps réel";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Connexion";
 
 /* No comment provided by engineer. */
@@ -489,6 +490,9 @@
 "Create" = "Créer";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Créer un compte gratuit";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Créez des liens supplémentaires pour partager le document avec différents droits d'accès.";
 
 /* No comment provided by engineer. */
@@ -502,6 +506,9 @@
 
 /* No comment provided by engineer. */
 "Create new files" = "Créer de nouveaux fichiers";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Créer un dossier";
 
 /* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "Créez de nouveaux dossiers pour organiser vos fichiers.";
@@ -955,6 +962,9 @@
 /* No comment provided by engineer. */
 "Loading..." = "Chargement...";
 
+/* No comment provided by engineer. */
+"Location" = "Emplacement";
+
 /* Caption of the process */
 "Logging in" = "Connexion";
 
@@ -1040,6 +1050,9 @@
 
 /* No comment provided by engineer. */
 "New Document" = "Nouveau document";
+
+/* No comment provided by engineer. */
+"New folder" = "Nouveau dossier";
 
 /* No comment provided by engineer. */
 "New Folder" = "Nouveau dossier";
@@ -1156,6 +1169,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal se termine";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "Veuillez noter : ONLYOFFICE Personal sera arrêté le 1er septembre 2024. Nous vous recommandons de passer au service gratuit ONLYOFFICE DocSpace Cloud.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "Portail ONLYOFFICE";
@@ -1455,6 +1474,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Sélectionner un groupe";
+
+/* Button title */
+"Select location" = "Sélectionner le lieu";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Sélectionner les photos";

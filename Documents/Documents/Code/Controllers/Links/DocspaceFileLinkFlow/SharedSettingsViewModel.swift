@@ -1,6 +1,6 @@
 //
 //  SharedSettingsViewModel.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Lolita Chernysheva on 01.06.2024.
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
@@ -20,6 +20,7 @@ final class SharedSettingsViewModel: ObservableObject {
     let linksLimit = 6
     private let networkService = NetworkManagerSharedSettings()
     private(set) var flowModel = LinksFlowModel()
+    private let expirationService = ExpirationLinkDateService()
 
     @Published var isShared: Bool
     @Published var links: [SharedSettingsLinkRowModel] = []
@@ -118,17 +119,17 @@ final class SharedSettingsViewModel: ObservableObject {
             return NSLocalizedString("Unlimited", comment: "")
         }
 
-        let now = Date()
-        let timeInterval = expirationDate.timeIntervalSince(now)
+        guard let interval = expirationService.getExpirationInterval(expirationDateString: expirationDateString) else {
+            return ""
+        }
 
-        if timeInterval < 0 {
+        switch interval {
+        case .expired:
             return NSLocalizedString("The link has expired", comment: "Expiration status")
-        } else if timeInterval < 24 * 60 * 60 {
-            let hours = Int(timeInterval / 3600)
-            return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
-        } else {
-            let days = Int(timeInterval / (24 * 60 * 60))
+        case let .days(days):
             return String(format: NSLocalizedString("Expires after %d days", comment: "Days left"), days)
+        case let .hours(hours):
+            return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
         }
     }
 }

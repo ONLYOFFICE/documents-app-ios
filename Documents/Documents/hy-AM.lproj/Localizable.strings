@@ -56,15 +56,6 @@
 "12 hours" = "12 ժամ";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Փոխակերպման սխալ";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Նման անունով ֆայլ արդեն գոյություն ունի:";
 
 /* No comment provided by engineer. */
@@ -596,9 +587,6 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Իսկապե՞ս ուզում եք լքել այս սենյակը: Դուք կկարողանաք կրկին միանալ դրան՝ սենյակի ադմինիստրատորի նոր հրավերի միջոցով:";
 
 /* No comment provided by engineer. */
-"DoсSpace users only" = "Միայն DosSpace օգտվողների համար";
-
-/* No comment provided by engineer. */
 "DocSpace admin" = "DocSpace-ի ադմինիստրատոր";
 
 /* No comment provided by engineer. */
@@ -619,6 +607,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Ներբեռնում";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Միայն DosSpace օգտվողների համար";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1951,4 +1942,13 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Փոխակերպման սխալ";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
 

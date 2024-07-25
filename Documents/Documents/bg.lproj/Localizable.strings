@@ -47,15 +47,6 @@
 "12 hours" = "12 часа";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Грешка при преобразуване";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Файлът не може да се изтегли.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Файлът не може да се качи.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Вече съществува файл с подобно име.";
 
 /* No comment provided by engineer. */
@@ -1792,4 +1783,13 @@
 
 /* Data units */
 "Zero bytes" = "Нулеви байтове";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Грешка при преобразуване";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Файлът не може да се изтегли.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Файлът не може да се качи.";
 

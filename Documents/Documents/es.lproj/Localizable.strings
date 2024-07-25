@@ -56,15 +56,6 @@
 "12 hours" = "12 horas";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Error de conversión";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "No se pudo descargar el archivo.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "No se pudo subir el archivo.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Ya existe un archivo con un nombre similar.";
 
 /* No comment provided by engineer. */
@@ -499,6 +490,9 @@
 "Create" = "Crear";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Cree una cuenta gratis";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Cree enlaces adicionales para compartir el documento con diferentes permisos de acceso.";
 
 /* No comment provided by engineer. */
@@ -596,9 +590,6 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "¿Desea realmente salir de esta sala? Podrá volver a entrar a través de una nueva invitación de un administrador de la sala.";
 
 /* No comment provided by engineer. */
-"DoсSpace users only" = "Solo usuarios de DoсSpace";
-
-/* No comment provided by engineer. */
 "DocSpace admin" = "Administrador de DocSpace";
 
 /* No comment provided by engineer. */
@@ -619,6 +610,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Descargando";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Solo usuarios de DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1166,6 +1160,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal dejará de funcionar";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "ONLYOFFICE Personal se descontinuará el 1 de septiembre de 2024. Le recomendamos que pase al servicio gratuito ONLYOFFICE DocSpace Cloud.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "Portal de ONLYOFFICE";
@@ -1951,4 +1951,13 @@
 
 /* Data units */
 "Zero bytes" = "Cero bytes";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Error de conversión";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "No se pudo descargar el archivo.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "No se pudo subir el archivo.";
 

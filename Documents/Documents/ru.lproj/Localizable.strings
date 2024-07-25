@@ -8,12 +8,6 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
-"/Documents" = "/Документы";
-
-/* No comment provided by engineer. */
-"/Files for test" = "/ Файлы для тестирования";
-
-/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Days left */
@@ -60,15 +54,6 @@
 
 /* No comment provided by engineer. */
 "12 hours" = "12 часов";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Ошибка преобразования";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Файл с похожим именем уже существует.";
@@ -611,9 +596,6 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Вы действительно хотите покинуть эту комнату? Вы сможете присоединиться к ней снова по новому приглашению администратора комнаты.";
 
 /* No comment provided by engineer. */
-"DoсSpace users only" = "Только для пользователей DoсSpace";
-
-/* No comment provided by engineer. */
 "DocSpace admin" = "Администратор DocSpace";
 
 /* No comment provided by engineer. */
@@ -634,6 +616,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Скачивание";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Только для пользователей DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1977,6 +1962,9 @@
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "К %@ можно подключить следующие аккаунты. Они будут отображаться в папке 'Мои документы', и вы сможете редактировать и сохранять их прямо на портале в едином пространстве.";
 
 /* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Вы можете подключить следующие аккаунты к комнатам DocSpace";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Вы вышли из комнаты";
 
 /* No comment provided by engineer. */
@@ -1996,4 +1984,13 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Ошибка преобразования";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
 

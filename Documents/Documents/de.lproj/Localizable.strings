@@ -8,9 +8,6 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
-"/Documents" = "/Dokumente";
-
-/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Days left */
@@ -57,15 +54,6 @@
 
 /* No comment provided by engineer. */
 "12 hours" = "12 Stunden";
-
-/* No comment provided by engineer. */
-"Сonversion error" = "Umrechnungsfehler";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Datei kann nicht heruntergeladen werden.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Datei kann nicht hochgeladen werden.";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exist." = "Eine Datei mit einem ähnlichen Namen existiert bereits.";
@@ -605,9 +593,6 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Möchten Sie diesen Raum wirklich verlassen? Sie können ihm wieder beitreten, wenn Sie eine neue Einladung von einem Raumadministrator erhalten.";
 
 /* No comment provided by engineer. */
-"DoсSpace users only" = "Nur DoсSpace-Benutzer";
-
-/* No comment provided by engineer. */
 "DocSpace admin" = "DocSpace-Administrator";
 
 /* No comment provided by engineer. */
@@ -628,6 +613,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Wird heruntergeladen";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Nur DoсSpace-Benutzer";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1975,4 +1963,13 @@
 
 /* Data units */
 "Zero bytes" = "Null Bytes";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Umrechnungsfehler";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Datei kann nicht heruntergeladen werden.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Datei kann nicht hochgeladen werden.";
 

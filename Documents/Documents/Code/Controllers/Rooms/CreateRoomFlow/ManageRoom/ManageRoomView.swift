@@ -327,13 +327,13 @@ struct LocationSelectionView: View {
             Button(action: {
                 selectedLocation = "/Files for test"
             }) {
-                Text("/Files for test")
+                Text(verbatim: "/Files for test")
                     .foregroundColor(selectedLocation == "/Files for test" ? .blue : .primary)
             }
             Button(action: {
                 selectedLocation = "/Documents"
             }) {
-                Text("/Documents")
+                Text(verbatim: "/Documents")
                     .foregroundColor(selectedLocation == "/Documents" ? .blue : .primary)
             }
         }

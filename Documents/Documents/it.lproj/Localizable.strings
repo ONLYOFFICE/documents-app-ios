@@ -56,15 +56,6 @@
 "12 hours" = "12 ore";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "Errore di conversione";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Impossibile scaricare il file.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Impossibile caricare il file.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "Esiste già un file con un nome simile.";
 
 /* No comment provided by engineer. */
@@ -602,9 +593,6 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Vuoi davvero lasciare questa stanza? Potrai unirti di nuovo tramite un nuovo link d'invito da parte di un amministratore della stanza.";
 
 /* No comment provided by engineer. */
-"DoсSpace users only" = "Solo utenti di DoсSpace";
-
-/* No comment provided by engineer. */
 "DocSpace admin" = "Amministratore di DocSpace";
 
 /* No comment provided by engineer. */
@@ -625,6 +613,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Scaricamento";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Solo utenti di DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1972,4 +1963,13 @@
 
 /* Data units */
 "Zero bytes" = "Zero byte";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "Errore di conversione";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossibile caricare il file.";
 

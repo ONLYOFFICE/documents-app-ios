@@ -56,15 +56,6 @@
 "12 hours" = "12小時";
 
 /* No comment provided by engineer. */
-"Сonversion error" = "轉換錯誤";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "无法下载文件。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "无法上转文件。";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exist." = "已存在相似名稱的檔案。";
 
 /* No comment provided by engineer. */
@@ -599,9 +590,6 @@
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "您確定要離開此房間嗎？您可以透過由房間管理員發送的新邀請再次加入。";
 
 /* No comment provided by engineer. */
-"DoсSpace users only" = "僅限DocSpace使用者";
-
-/* No comment provided by engineer. */
 "DocSpace admin" = "DocSpace管理員";
 
 /* No comment provided by engineer. */
@@ -622,6 +610,9 @@
 
 /* Caption of the processing */
 "Downloading" = "正在下载";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "僅限DocSpace使用者";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -1960,4 +1951,13 @@
 
 /* Data units */
 "Zero bytes" = "零字节";
+
+/* No comment provided by engineer. */
+"Сonversion error" = "轉換錯誤";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "无法下载文件。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "无法上转文件。";
 

@@ -13,6 +13,14 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
 
     private var renewAccount: ASCAccount?
 
+    fileprivate var personalMigrationDidPresent = false
+
+    private var isPersonal: Bool {
+        ASCPortalTypeDefinderByCurrentConnection().definePortalType() == .personal
+    }
+
+    fileprivate lazy var personalMigrationDeadline = Date(integerLiteral: 2024_09_01) ?? Date()
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
@@ -50,11 +58,21 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
                 ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
             }
         }
+
+        delay(seconds: 0.01) {
+            self.displayPersonalMigrationIfNeeded()
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     // MARK: - Notifications
 
     @objc func onOnlyofficeLogInCompleted(_ notification: Notification) {
+        personalMigrationDidPresent = false
+
         ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: nil)
 
         delay(seconds: 0.1) {
@@ -64,6 +82,8 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
 //        showDetailViewController(UINavigationController(rootASCViewController: ASCBaseViewController()), sender: self)
+
+        personalMigrationDidPresent = false
 
         if let userInfo = notification.userInfo,
            let account = userInfo["account"] as? ASCAccount
@@ -78,5 +98,51 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
         } else {
             viewWillAppear(false)
         }
+    }
+
+    // MARK: - Private
+
+    private func displayPersonalMigrationIfNeeded() {
+        if personalMigrationDidPresent || !isPersonal {
+            return
+        }
+
+        personalMigrationDidPresent = true
+
+        let personalMigrationVC = PersonalMigrationViewController()
+        let personalMigrationNC = ASCBaseNavigationController(rootASCViewController: personalMigrationVC)
+
+        personalMigrationNC.setNavigationBarHidden(true, animated: false)
+        personalMigrationNC.modalTransitionStyle = .crossDissolve
+        personalMigrationNC.modalPresentationStyle = .fullScreen
+
+        personalMigrationVC.allowClose = Date() < personalMigrationDeadline
+        personalMigrationVC.onClose = {
+            personalMigrationNC.dismiss(animated: true)
+        }
+        personalMigrationVC.onCreate = { [weak self] in
+            guard let self else { return }
+
+            personalMigrationNC.dismiss(animated: false) { [weak self] in
+                guard let self else { return }
+
+                let accountsVC = ASCMultiAccountsViewController(style: .insetGrouped)
+                let presenter = ASCMultiAccountPresenter(view: accountsVC)
+                accountsVC.presenter = presenter
+
+                let accountsNavigationVC = ASCBaseNavigationController(rootASCViewController: accountsVC)
+
+                accountsVC.presenter?.createPortal(animated: false)
+
+                accountsNavigationVC.modalTransitionStyle = .crossDissolve
+                accountsNavigationVC.modalPresentationStyle = .fullScreen
+
+                present(accountsNavigationVC, animated: false) {
+                    ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
+                }
+            }
+        }
+
+        present(personalMigrationNC, animated: false)
     }
 }

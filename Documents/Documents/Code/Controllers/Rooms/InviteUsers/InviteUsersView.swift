@@ -1,6 +1,6 @@
 //
 //  InviteUsersView.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 19.05.2024.
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
@@ -102,10 +102,7 @@ struct InviteUsersView: View {
         HStack {
             Text(NSLocalizedString("Invite people by email", comment: ""))
             Spacer()
-            Image(systemName: "chevron.right")
-                .font(.subheadline)
-                .foregroundColor(Color.separator)
-                .flipsForRightToLeftLayoutDirection(true)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {
@@ -117,10 +114,7 @@ struct InviteUsersView: View {
         HStack {
             Text(NSLocalizedString("Choose from list", comment: ""))
             Spacer()
-            Image(systemName: "chevron.right")
-                .font(.subheadline)
-                .foregroundColor(Color.separator)
-                .flipsForRightToLeftLayoutDirection(true)
+            ChevronRightView()
         }
         .contentShape(Rectangle())
         .onTapGesture {

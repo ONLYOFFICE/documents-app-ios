@@ -269,3 +269,36 @@ enum ConflictResolveType: Int {
     case overwrite = 1
     case duplicate = 2
 }
+
+// MARK: External provider name
+
+extension ASCFileProviderProtocol {
+    func externalProviderName() -> String {
+        let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
+            switch type {
+            case .googledrive:
+                return NSLocalizedString("Google Drive", comment: "")
+            case .dropbox:
+                return NSLocalizedString("Dropbox", comment: "")
+            case .nextcloud:
+                return NSLocalizedString("Nextcloud", comment: "")
+            case .owncloud:
+                return NSLocalizedString("ownCloud", comment: "")
+            case .yandex:
+                return NSLocalizedString("Yandex Disk", comment: "")
+            case .webdav:
+                return NSLocalizedString("WebDAV", comment: "")
+            case .icloud:
+                return NSLocalizedString("iCloud", comment: "")
+            case .onedrive:
+                return NSLocalizedString("OneDrive", comment: "")
+            case .kdrive:
+                return NSLocalizedString("kDrive", comment: "")
+            default:
+                return NSLocalizedString("Unknown", comment: "")
+            }
+        }
+
+        return providerName(type)
+    }
+}

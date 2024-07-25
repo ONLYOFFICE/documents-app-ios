@@ -17,6 +17,7 @@ enum ASCTransferType: Int {
     case copy
     case move
     case recover
+    case select
 }
 
 class ASCTransferNavigationController: ASCBaseNavigationController {
@@ -26,10 +27,15 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
     var sourceProvider: ASCFileProviderProtocol?
     var sourceFolder: ASCFolder?
     var sourceItems: [ASCEntity]?
-    var doneHandler: ((ASCFileProviderProtocol?, ASCFolder?) -> Void)?
+    var doneHandler: ((ASCFileProviderProtocol?, ASCFolder?, String?) -> Void)?
+    var displayActionButtonOnRootVC: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        updateToolBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,14 +45,18 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
 
-        setToolbarHidden(viewControllers.count < 2, animated: true)
+        updateToolBar()
     }
 
     override func popViewController(animated: Bool) -> UIViewController? {
         let viewcontroller = super.popViewController(animated: animated)
 
-        setToolbarHidden(viewControllers.count < 2, animated: true)
+        updateToolBar()
 
         return viewcontroller
+    }
+
+    private func updateToolBar() {
+        setToolbarHidden(viewControllers.count < 2 && !displayActionButtonOnRootVC, animated: true)
     }
 }

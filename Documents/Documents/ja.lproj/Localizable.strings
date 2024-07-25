@@ -368,7 +368,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存し、リアルタイムでドキュメントを共同編集します。";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "接続中";
 
 /* No comment provided by engineer. */
@@ -487,6 +488,9 @@
 
 /* No comment provided by engineer. */
 "Create" = "作成";
+
+/* No comment provided by engineer. */
+"Create a free account" = "無料アカウントを登録";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "異なるアクセス権でドキュメントを共有するための追加リンクを作成します。";
@@ -955,6 +959,9 @@
 /* No comment provided by engineer. */
 "Loading..." = "読み込み中...";
 
+/* No comment provided by engineer. */
+"Location" = "場所";
+
 /* Caption of the process */
 "Logging in" = "ログイン中";
 
@@ -1040,6 +1047,9 @@
 
 /* No comment provided by engineer. */
 "New Document" = "新規ドキュメント";
+
+/* No comment provided by engineer. */
+"New folder" = "新しいフォルダ";
 
 /* No comment provided by engineer. */
 "New Folder" = "新規フォルダー";
@@ -1156,6 +1166,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal終了のお知らせ";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "ONLYOFFICE Personalは、2024年9月1日をもちましてサービスを終了いたします。無料のONLYOFFICE DocSpace Cloudへの移行をお勧めします。";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "ONLYOFFICEのポータル";
@@ -1432,6 +1448,9 @@
 "Rooms" = "ルーム";
 
 /* No comment provided by engineer. */
+"Root folder" = "ルート フォルダ";
+
+/* No comment provided by engineer. */
 "Same as system" = "システム設定と同じ";
 
 /* No comment provided by engineer. */
@@ -1455,6 +1474,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "グループを選択する";
+
+/* Button title */
+"Select location" = "地域を選択";
 
 /* No comment provided by engineer. */
 "Select Photos" = "画像を選択する";

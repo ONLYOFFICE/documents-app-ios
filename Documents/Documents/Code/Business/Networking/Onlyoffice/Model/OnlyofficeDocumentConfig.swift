@@ -98,9 +98,12 @@ struct OnlyofficeDocumentEditorConfig: Codable {
 struct OnlyofficeDocumentCustomization: Codable {
     var logo: OnlyofficeDocumentLogo?
     var about: Bool?
+    var anonymous: OnlyofficeDocumentAnonymous?
     var feedback: OnlyofficeDocumentFeedback?
+    var forcesave: Bool?
     var mentionShare: Bool?
     var uiTheme: String?
+    var submitForm: Bool?
 }
 
 // MARK: - OnlyofficeDocumentFeedback
@@ -113,11 +116,19 @@ struct OnlyofficeDocumentFeedback: Codable {
 // MARK: - OnlyofficeDocumentLogo
 
 struct OnlyofficeDocumentLogo: Codable {
-    var image, imageDark: String?
+    var image, imageDark, imageEmbedded, url: String?
+    var visible: Bool?
 }
 
 // MARK: - OnlyofficeDocumentUser
 
 struct OnlyofficeDocumentUser: Codable {
     var id, name: String?
+}
+
+// MARK: - OnlyofficeDocumentAnonymous
+
+struct OnlyofficeDocumentAnonymous: Codable {
+    var request: Bool?
+    var label: String?
 }

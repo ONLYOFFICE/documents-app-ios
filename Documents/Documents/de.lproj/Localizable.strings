@@ -8,6 +8,9 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"/Documents" = "/Dokumente";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Days left */
@@ -368,7 +371,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Verbinden Sie sich mit Ihrer %@ Cloud, um Dateien online zu speichern und Dokumente in Echtzeit gemeinsam zu bearbeiten";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Connecting" = "Verbindung wird hergestellt";
 
 /* No comment provided by engineer. */
@@ -489,6 +493,9 @@
 "Create" = "Erstellen";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Kostenloses Konto erstellen";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Erstellen Sie zusätzliche Links, um das Dokument mit unterschiedlichen Zugriffsrechten zu teilen.";
 
 /* No comment provided by engineer. */
@@ -502,6 +509,9 @@
 
 /* No comment provided by engineer. */
 "Create new files" = "Neue Dateien erstellen";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Neuen Ordner erstellen";
 
 /* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "Erstellen Sie neue Ordner, \num Ihre Dateien zu organisieren.";
@@ -1042,6 +1052,9 @@
 "New Document" = "Neues Dokument";
 
 /* No comment provided by engineer. */
+"New folder" = "Neuer Ordner";
+
+/* No comment provided by engineer. */
 "New Folder" = "Neuer Ordner";
 
 /* No comment provided by engineer. */
@@ -1156,6 +1169,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Dokumente";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal schließt ab";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "Bitte beachten Sie: ONLYOFFICE Personal wird am 1. September 2024 auslaufen. Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "ONLYOFFICE-Portal";
@@ -1432,6 +1451,9 @@
 "Rooms" = "Räume";
 
 /* No comment provided by engineer. */
+"Root folder" = "Root-Verzeichnis";
+
+/* No comment provided by engineer. */
 "Same as system" = "Wie im System";
 
 /* No comment provided by engineer. */
@@ -1455,6 +1477,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Gruppe auswählen";
+
+/* Button title */
+"Select location" = "Standort auswählen";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Fotos auswählen";

@@ -4463,6 +4463,10 @@ Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
         <target>Do %@ můžete připojit následující účty. Zobrazí se ve složce "Moje Dokumenty" a budete je moci upravovat a ukládat přímo na portálu, všechny na jednom místě.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Opustili jste místnost</target>

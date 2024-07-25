@@ -4389,6 +4389,10 @@ then accessed from any other device.</source>
         <target>Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին: Դրանք կցուցադրվեն «Իմ փաստաթղթերը» թղթապանակում, և դուք կկարողանաք խմբագրել և պահպանել դրանք անմիջապես պորտալում՝ բոլորը մեկ տեղում:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Դուք դուրս եք եկել սենյակից</target>

@@ -4382,6 +4382,10 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
         <target>Usted puede conectar las cuentas siguientes al %@. Ellas se visualizarán en la carpeta 'Mis Documentos' y usted podrá editar y guardarlos directamente en el portal en un solo lugar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Ha salido de la sala</target>

@@ -4387,6 +4387,10 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
         <target>Você pode conectar as seguintes contas ao %@. Elas serão exibidas na pasta 'Meus Documentos' e você poderá editá-las e salvá-las diretamente no portal em um só lugar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Você saiu da sala</target>

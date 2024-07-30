@@ -24,7 +24,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
     static var webDavProviderTypes: [ASCFolderProviderType] {
         [
-            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud, .kDrive,
+            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud,
         ]
     }
 

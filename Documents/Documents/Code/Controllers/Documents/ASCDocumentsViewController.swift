@@ -1472,9 +1472,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
                     } else if folder.isRoom {
-                        localEmptyView?.type = .room
-                        if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView?.type = .docspaceNoPermissions
+                        if folder.roomType == .fillingForm {
+                            localEmptyView?.type = .formFillingRoom
+                        } else {
+                            localEmptyView?.type = .room
+                            if !(provider.allowEdit(entity: folder)) {
+                                localEmptyView?.type = .docspaceNoPermissions
+                            }
                         }
                     } else if isDocRecently {
                         localEmptyView?.type = .recentlyAccessibleViaLink

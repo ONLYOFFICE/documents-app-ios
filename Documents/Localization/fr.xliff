@@ -1670,6 +1670,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>Choisir l'emplacement avec des modèles</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -2337,10 +2338,12 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Expires after %d days" xml:space="preserve">
         <source>Expires after %d days</source>
+        <target>Expire dans %d jours</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="Expires after %d hours" xml:space="preserve">
         <source>Expires after %d hours</source>
+        <target>Expire dans %d heures</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
@@ -3546,6 +3549,7 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
+        <target>Dossier racine</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3985,6 +3989,7 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>Le stockage tiers</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4224,6 +4229,7 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>Utilisez des services tiers pour stocker les données de cette salle. Un nouveau dossier pour le stockage des données de cette salle sera créé dans l'espace de stockage connecté</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4389,6 +4395,7 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>Vous pouvez connecter les comptes suivants aux salles DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

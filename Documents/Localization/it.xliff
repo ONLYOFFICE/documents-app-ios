@@ -1670,6 +1670,7 @@ possibilità di leggere, rivedere o modificare i documenti.</target>
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>Scegli la posizione con i modelli</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -2338,10 +2339,12 @@ organizzare i tuoi file.</target>
       </trans-unit>
       <trans-unit id="Expires after %d days" xml:space="preserve">
         <source>Expires after %d days</source>
+        <target>Scade tra %d giorni</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="Expires after %d hours" xml:space="preserve">
         <source>Expires after %d hours</source>
+        <target>Scade tra %d ore</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
@@ -2466,6 +2469,7 @@ organizzare i tuoi file.</target>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
         <source>Files and folders uploaded by admins will appear here.</source>
+        <target>I file e le cartelle caricati dagli amministratori appariranno qui.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -3983,6 +3987,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>Spazio di archiviazione di terze parti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4222,6 +4227,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>Utilizza servizi di terze parti per l'archiviazione dei dati di questa stanza. Nello spazio di archiviazione collegato verrà creata una nuova cartella per l'archiviazione dei dati di questa stanza.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4387,6 +4393,7 @@ poi accedergli da qualsiasi dispositivo.</target>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>Puoi collegare i seguenti account alle stanze DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

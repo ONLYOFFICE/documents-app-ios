@@ -281,6 +281,9 @@
 /* No comment provided by engineer. */
 "Choose from list" = "Elegir de la lista";
 
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Elija la ubicación con plantillas";
+
 /* No comment provided by engineer. */
 "Choose room type" = "Elija el tipo de sala";
 
@@ -508,6 +511,9 @@
 "Create new files" = "Crear nuevos archivos";
 
 /* No comment provided by engineer. */
+"Create new folder" = "Crear nueva carpeta";
+
+/* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "Cree nuevas carpetas para organizar sus archivos.";
 
 /* Button title */
@@ -709,6 +715,12 @@
 
 /* Expiration status */
 "Expired" = "Expirado";
+
+/* Days left */
+"Expires after %d days" = "Expira dentro de %d días";
+
+/* Hours left */
+"Expires after %d hours" = "Expira dentro de %d horas";
 
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Expira dentro de 7 días";
@@ -959,6 +971,9 @@
 /* No comment provided by engineer. */
 "Loading..." = "Cargando...";
 
+/* No comment provided by engineer. */
+"Location" = "Ubicación";
+
 /* Caption of the process */
 "Logging in" = "Iniciando sesión";
 
@@ -1044,6 +1059,9 @@
 
 /* No comment provided by engineer. */
 "New Document" = "Nuevo documento";
+
+/* No comment provided by engineer. */
+"New folder" = "Nueva carpeta";
 
 /* No comment provided by engineer. */
 "New Folder" = "Nueva carpeta";
@@ -1442,6 +1460,9 @@
 "Rooms" = "Salas";
 
 /* No comment provided by engineer. */
+"Root folder" = "Carpeta raíz";
+
+/* No comment provided by engineer. */
 "Same as system" = "Igual que el sistema";
 
 /* No comment provided by engineer. */
@@ -1465,6 +1486,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Seleccionar grupo";
+
+/* Button title */
+"Select location" = "Seleccionar ubicación";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Seleccionar fotos";
@@ -1697,6 +1721,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Recurso de terceros";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Almacenamiento de terceros";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Almacenamiento de terceros";
 
@@ -1839,6 +1866,9 @@
 "Uploading" = "Cargando";
 
 /* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Utilice servicios de terceros como almacenamiento de datos para esta sala. Se creará una nueva carpeta para almacenar los datos de esta sala en el almacenamiento conectado";
+
+/* No comment provided by engineer. */
 "User" = "Usuario";
 
 /* No comment provided by engineer. */
@@ -1930,6 +1960,9 @@
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Usted puede conectar las cuentas siguientes al %@. Ellas se visualizarán en la carpeta 'Mis Documentos' y usted podrá editar y guardarlos directamente en el portal en un solo lugar.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Puede conectar las siguientes cuentas a las salas de DocSpace";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Ha salido de la sala";

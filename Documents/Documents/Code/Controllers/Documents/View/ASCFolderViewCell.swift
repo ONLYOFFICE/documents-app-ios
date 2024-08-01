@@ -441,7 +441,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         // Set badge icon image if neede
 
-        if folder.isPublicRoom {
+        if folder.isPublicRoom || folder.roomType == .fillingForm {
             badgeImageView.image = iconWorld
         }
 

@@ -263,6 +263,8 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             roomTypeDescription = CreatingRoomType.publicRoom.name
         case .colobaration:
             roomTypeDescription = CreatingRoomType.collaboration.name
+        case .fillingForm:
+            roomTypeDescription = CreatingRoomType.formFilling.name
         default:
             roomTypeDescription = nil
         }

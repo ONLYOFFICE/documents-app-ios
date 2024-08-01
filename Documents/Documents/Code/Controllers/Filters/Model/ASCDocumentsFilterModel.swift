@@ -388,6 +388,7 @@ enum FiltersName: String, CaseIterable {
     case customRoom
     case collaborationRoom
     case publicRoom
+    case fillingFormRoom
     /// third party resource
     case dropBox
     case nextCloud
@@ -443,6 +444,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("OneDrive", comment: "")
         case .box:
             return NSLocalizedString("Box", comment: "")
+        case .fillingFormRoom:
+            return NSLocalizedString("Form Filling", comment: "")
         }
     }
 }

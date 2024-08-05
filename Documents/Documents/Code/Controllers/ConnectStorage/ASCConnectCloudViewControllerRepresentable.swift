@@ -16,9 +16,11 @@ struct ASCConnectCloudViewControllerRepresentable: UIViewControllerRepresentable
     func makeUIViewController(context: Context) -> some UIViewController {
         let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
         connectStorageVC.disabledProviderTypes.insert(.sharePoint)
+        connectStorageVC.presentWebDavAsOthersProviders = false
         connectStorageVC.captureAuthCompletion = {
             self.completion($0)
         }
+        connectStorageVC.footerText = NSLocalizedString("You can connect the following accounts to the DocSpace rooms", comment: "")
         let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
 
         connectStorageNavigationVC.modalPresentationStyle = .formSheet

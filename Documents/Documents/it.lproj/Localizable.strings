@@ -281,6 +281,9 @@
 /* No comment provided by engineer. */
 "Choose from list" = "Scegli dall'elenco";
 
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Scegli la posizione con i modelli";
+
 /* No comment provided by engineer. */
 "Choose room type" = "Scegli la tipologia di camera";
 
@@ -713,6 +716,12 @@
 /* Expiration status */
 "Expired" = "Scaduto";
 
+/* Days left */
+"Expires after %d days" = "Scade tra %d giorni";
+
+/* Hours left */
+"Expires after %d hours" = "Scade tra %d ore";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Scade dopo 7 giorni";
 
@@ -781,6 +790,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "File";
+
+/* No comment provided by engineer. */
+"Files and folders uploaded by admins will appear here." = "I file e le cartelle caricati dagli amministratori appariranno qui.";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Anteprima dei file";
@@ -1709,6 +1721,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Risorsa di terze parti";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Spazio di archiviazione di terze parti";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Spazio di archiviazione di terze parti";
 
@@ -1851,6 +1866,9 @@
 "Uploading" = "Caricamento";
 
 /* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Utilizza servizi di terze parti per l'archiviazione dei dati di questa stanza. Nello spazio di archiviazione collegato verrà creata una nuova cartella per l'archiviazione dei dati di questa stanza.";
+
+/* No comment provided by engineer. */
 "User" = "Utente";
 
 /* No comment provided by engineer. */
@@ -1942,6 +1960,9 @@
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "È possibile collegare i seguenti account a %@. Saranno visualizzati nella cartella \"I miei documenti\" e potrai modificarli e salvarli direttamente sul portale in un unico posto.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Puoi collegare i seguenti account alle stanze DocSpace";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Hai lasciato la stanza";

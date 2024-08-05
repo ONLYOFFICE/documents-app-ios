@@ -8,12 +8,6 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
-"/Documents" = "/Документы";
-
-/* No comment provided by engineer. */
-"/Files for test" = "/ Файлы для тестирования";
-
-/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Days left */
@@ -1966,6 +1960,9 @@
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "К %@ можно подключить следующие аккаунты. Они будут отображаться в папке 'Мои документы', и вы сможете редактировать и сохранять их прямо на портале в едином пространстве.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Вы можете подключить следующие аккаунты к комнатам DocSpace";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Вы вышли из комнаты";

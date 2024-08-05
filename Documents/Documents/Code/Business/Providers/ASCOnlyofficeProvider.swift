@@ -1330,6 +1330,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isUserCategory = folder.rootFolderType == .onlyofficeUser
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
+            let canDuplicateRoom = folder.isRoom && !folder.isThirdParty && !isArchiveCategory
 
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]
@@ -1386,6 +1387,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if isDocspace, isUserCategory, canShare {
                 entityActions.insert(.shareAsRoom)
+            }
+            
+            if isDocspace, canDuplicateRoom {
+                entityActions.insert(.duplicate)
             }
 
             if isRoomFolder, !isArchiveCategory {

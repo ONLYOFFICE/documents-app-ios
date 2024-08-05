@@ -1989,6 +1989,17 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
+    
+    func duplicateRoom(room: ASCFolder) {
+        RoomSharingNetworkService().duplicateRoom(room: room) { result in
+            switch result {
+            case let .success(responce):
+                print("=====responce", responce)
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     func showShereFolderAlert(folder: ASCFolder) {
         let alert = UIAlertController(

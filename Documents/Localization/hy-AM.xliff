@@ -1260,14 +1260,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Documents" xml:space="preserve">
-        <source>/Documents</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Files for test" xml:space="preserve">
-        <source>/Files for test</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 օր</target>
@@ -1678,6 +1670,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>Ընտրել վայրը ձևանմուշներով</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1992,6 +1985,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
+        <target>Ստեղծել անվճար հաշիվ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2021,6 +2015,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
+        <target>Ստեղծել նոր թղթապանակ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2344,10 +2339,12 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Expires after %d days" xml:space="preserve">
         <source>Expires after %d days</source>
+        <target>Սպառվում է %d օր հետո</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="Expires after %d hours" xml:space="preserve">
         <source>Expires after %d hours</source>
+        <target>Սպառվում է %d ժամ հետո</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
@@ -2755,6 +2752,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
+        <target>Տեղ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2911,6 +2909,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
+        <target>Նոր թղթապանակ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3051,10 +3050,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
+        <target>ONLYOFFICE Personal-ի աշխատանքը դադրեցվում է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
         <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <target>ONLYOFFICE Personal-ի աշխատանքը կդադարեցվի 2024 թվականի սեպտեմբերի 1-ին: Խորհուրդ ենք տալիս տեղափոխվել անվճար ONLYOFFICE DocSpace Cloud:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
@@ -3549,6 +3550,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
+        <target>Հիմնական թղթապանակ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3604,6 +3606,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
+        <target>Ընտրել գտնվելու վայրը</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -3987,6 +3990,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>Երրորդ կողմի պահեստավորում</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4226,6 +4230,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>Օգտագործել երրորդ կողմի ծառայությունները՝ որպես այս սենյակի տվյալների պահեստ: Այս սենյակի տվյալները պահելու համար միացված պահեստում  կստեղծվի նոր պանակ։</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4387,6 +4392,11 @@ then accessed from any other device.</source>
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
         <target>Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին: Դրանք կցուցադրվեն «Իմ փաստաթղթերը» թղթապանակում, և դուք կկարողանաք խմբագրել և պահպանել դրանք անմիջապես պորտալում՝ բոլորը մեկ տեղում:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>Դուք կարող եք միացնել հետևյալ հաշիվները DocSpace սենյակներին</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

@@ -8,9 +8,6 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
-"/Documents" = "/Dokumente";
-
-/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Days left */
@@ -283,6 +280,9 @@
 
 /* No comment provided by engineer. */
 "Choose from list" = "Aus Liste auswählen";
+
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Standort mit Vorlagen auswählen";
 
 /* No comment provided by engineer. */
 "Choose room type" = "Raumtyp auswählen";
@@ -716,6 +716,12 @@
 /* Expiration status */
 "Expired" = "Abgelaufen";
 
+/* Days left */
+"Expires after %d days" = "Läuft nach %d Tagen ab";
+
+/* Hours left */
+"Expires after %d hours" = "Läuft nach %d Stunden ab";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Läuft nach 7 Tagen ab";
 
@@ -964,6 +970,9 @@
 
 /* No comment provided by engineer. */
 "Loading..." = "Wird geladen...";
+
+/* No comment provided by engineer. */
+"Location" = "Standort";
 
 /* Caption of the process */
 "Logging in" = "Anmeldung";
@@ -1712,6 +1721,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Ressource von Dritten";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Speicher von Drittanbietern";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Speicher von Drittanbietern";
 
@@ -1854,6 +1866,9 @@
 "Uploading" = "Wird hochgeladen";
 
 /* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Verwenden Sie Drittanbieterdienste als Datenspeicher für diesen Raum. Ein neuer Ordner zum Speichern der Daten dieses Raums wird im verbundenen Speicher erstellt";
+
+/* No comment provided by engineer. */
 "User" = "Benutzer";
 
 /* No comment provided by engineer. */
@@ -1945,6 +1960,9 @@
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Sie können die folgenden Konten mit %@ verbinden. Sie werden im Ordner \"Meine Dokumente\" angezeigt und können diese direkt auf dem Portal an einem Ort bearbeiten und speichern.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Sie können die folgenden Konten mit den DocSpace-Räumen verbinden";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Sie haben den Raum verlassen";

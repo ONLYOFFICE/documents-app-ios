@@ -1385,14 +1385,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Documents" xml:space="preserve">
-        <source>/Documents</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Files for test" xml:space="preserve">
-        <source>/Files for test</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 den</target>
@@ -2108,6 +2100,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
+        <target>Založte si účet zdarma</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -3157,10 +3150,12 @@ zkopírován do schránky</target>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
+        <target>ONLYOFFICE Personal končí</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
         <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <target>Služba ONLYOFFICE Personal bude ukončena 1. září 2024. Doporučujeme vám přejít na bezplatnou službu ONLYOFFICE DocSpace.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
@@ -4469,6 +4464,10 @@ Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
         <target>Do %@ můžete připojit následující účty. Zobrazí se ve složce "Moje Dokumenty" a budete je moci upravovat a ukládat přímo na portálu, všechny na jednom místě.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

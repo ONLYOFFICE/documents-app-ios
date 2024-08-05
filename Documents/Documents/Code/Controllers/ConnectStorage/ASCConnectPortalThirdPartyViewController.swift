@@ -19,10 +19,12 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
     var captureAuthCompletion: (([String: Any]) -> Void)?
     var disabledProviderTypes = Set<ASCFolderProviderType>()
+    var footerText: String = String.localizedStringWithFormat(NSLocalizedString("You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.", comment: ""), ASCConstants.Name.appNameFull)
+    var presentWebDavAsOthersProviders = true
 
     static var webDavProviderTypes: [ASCFolderProviderType] {
         [
-            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud, .kDrive,
+            .webDav, .yandex, .sharePoint, .nextCloud, .ownCloud,
         ]
     }
 
@@ -397,7 +399,7 @@ extension ASCConnectPortalThirdPartyViewController {
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0, providers.count > 0 {
-            return String.localizedStringWithFormat(NSLocalizedString("You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.", comment: ""), ASCConstants.Name.appNameFull)
+            return footerText
         }
         return nil
     }
@@ -412,7 +414,12 @@ extension ASCConnectPortalThirdPartyViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCConnectStorageCell.identifier, for: indexPath) as? ASCConnectStorageCell {
-            cell.type = providers[indexPath.row].provider
+            cell.type = {
+                if providers[indexPath.row].provider == .webDav, presentWebDavAsOthersProviders {
+                    return .others
+                }
+                return providers[indexPath.row].provider.connectionStorageCellType
+            }()
             return cell
         }
         return UITableViewCell()

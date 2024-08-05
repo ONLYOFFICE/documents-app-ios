@@ -2585,6 +2585,10 @@ um Ihre Dateien zu organisieren.</target>
         <target>Hier finden Sie eine Liste der zuletzt geöffneten Dateien, die Sie über einen externen Link erhalten haben.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>Wenn es einen Benutzer mit der E-Mail %@ gibt, wurden die Anweisungen zum Ändern des Passworts an diese E-Mail-Adresse verschickt.</target>
@@ -2742,6 +2746,10 @@ in die Zwischenablage kopiert</target>
         <source>Link with the invitation has been sent to the mail</source>
         <target>Einladungslink wurde per E-Mail gesendet</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
@@ -4174,7 +4182,7 @@ kopiert</target>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>Unbekannt</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4526,12 +4534,6 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
         <source>new</source>
         <target>neu</target>
         <note>Badge of file in file list</note>
-      </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>keine</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>

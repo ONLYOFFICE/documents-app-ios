@@ -148,3 +148,9 @@ extension ASCFolder {
         ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: rootFolderType) && !isRoomListFolder
     }
 }
+
+extension ASCFolder {
+    var isPublicRoom: Bool {
+        return isRoom && roomType == .public
+    }
+}

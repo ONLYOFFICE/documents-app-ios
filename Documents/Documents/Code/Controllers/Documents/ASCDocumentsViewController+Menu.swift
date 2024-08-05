@@ -7,19 +7,16 @@
 //
 
 import MBProgressHUD
-import MGSwipeTableCell
 import UIKit
 
 extension ASCDocumentsViewController {
     // MARK: - Item context menu
 
-    func buildFileContextMenu(for cell: ASCFileCell) -> UIMenu? {
+    func buildFileContextMenu(for cell: ASCFileViewCell) -> UIMenu? {
         guard
-            let file = cell.file,
-            let provider = provider
-        else {
-            return nil
-        }
+            let file = cell.entity as? ASCFile,
+            let provider
+        else { return nil }
 
         let actions = provider.actions(for: file)
 
@@ -37,7 +34,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Preview", comment: "Button title"),
                     image: UIImage(systemName: "eye")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.open(file: file, viewMode: true)
                 }
             )
@@ -51,7 +47,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Edit", comment: "Button title"),
                     image: UIImage(systemName: "pencil")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.open(file: file)
                 }
             )
@@ -65,7 +60,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Download", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.down")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.download(cell: cell)
                 }
             )
@@ -92,7 +86,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Share", comment: ""),
                     image: UIImage(systemName: "square.and.arrow.up")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     navigator.navigate(to: .sharedSettingsLink(file: file))
                 }
             )
@@ -110,7 +103,6 @@ extension ASCDocumentsViewController {
                         ? UIImage(systemName: "star.fill")
                         : UIImage(systemName: "star")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.favorite(cell: cell, favorite: !file.isFavorite)
                 }
             )
@@ -124,7 +116,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Mark as Read", comment: "Button title"),
                     image: UIImage(systemName: "envelope.open")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.markAsRead(cell: cell)
                 }
             )
@@ -138,7 +129,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Rename", comment: "Button title"),
                     image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.rename(cell: cell)
                 }
             )
@@ -152,7 +142,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Create room", comment: "Button title"),
                     image: Asset.Images.menuRectanglesAdd.image
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     transformToRoom(entities: [file])
                 }
             )
@@ -164,7 +153,6 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Copy", comment: "Button title"),
             image: UIImage(systemName: "doc.on.doc")
         ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
             self.copy(cell: cell)
         }
 
@@ -174,7 +162,6 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Duplicate", comment: "Button title"),
             image: UIImage(systemName: "plus.rectangle.on.rectangle")
         ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
             self.duplicate(cell: cell)
         }
 
@@ -184,7 +171,6 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Move", comment: "Button title"),
             image: UIImage(systemName: "folder")
         ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
             self.move(cell: cell)
         }
 
@@ -214,7 +200,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Restore", comment: "Button title"),
                     image: UIImage(systemName: "arrow.2.circlepath")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.recover(cell: cell)
                 }
             )
@@ -229,7 +214,6 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "trash"),
                     attributes: .destructive
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.delete(cell: cell)
                 }
             )
@@ -244,7 +228,6 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "trash"),
                     attributes: .destructive
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.delete(cell: cell)
                 }
             )
@@ -258,7 +241,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: UIImage(systemName: "person.2")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     navigator.navigate(to: .shareSettings(entity: file))
                 }
             )
@@ -272,7 +254,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Export", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.up")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.export(cell: cell)
                 }
             )
@@ -291,13 +272,11 @@ extension ASCDocumentsViewController {
         }
     }
 
-    func buildFolderContextMenu(for cell: ASCFolderCell) -> UIMenu? {
+    func buildFolderContextMenu(for cell: ASCFolderViewCell) -> UIMenu? {
         guard
-            let folder = cell.folder,
-            let provider = provider
-        else {
-            return nil
-        }
+            let folder = cell.entity as? ASCFolder,
+            let provider
+        else { return nil }
         let actions = provider.actions(for: folder)
 
         // Common actions
@@ -310,14 +289,13 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Select", comment: "Button title"),
                     image: UIImage(systemName: "checkmark.circle")
                 ) { [weak self] action in
-                    cell.hideSwipe(animated: true)
                     self?.setEditMode(true)
 
-                    if let index = self?.tableView.indexPath(for: cell) {
-                        self?.tableView.selectRow(
+                    if let index = self?.collectionView.indexPath(for: cell) {
+                        self?.collectionView.selectItem(
                             at: index,
                             animated: true,
-                            scrollPosition: .none
+                            scrollPosition: .centeredHorizontally
                         )
                         self?.updateSelectedItems(indexPath: index)
                     }
@@ -325,20 +303,19 @@ extension ASCDocumentsViewController {
             )
         }
 
-        if actions.contains(.open), !tableView.isEditing {
+        if actions.contains(.open), !collectionView.isEditing {
             commonActions.append(
                 UIAction(
                     title: NSLocalizedString("Open", comment: "Button title"),
                     image: UIImage(systemName: "arrow.triangle.turn.up.right.circle")
                 ) { [weak self] action in
-                    cell.hideSwipe(animated: true)
 
                     guard
                         let self,
-                        let index = tableView.indexPath(for: cell)
+                        let index = collectionView.indexPath(for: cell)
                     else { return }
 
-                    self.tableView(tableView, didSelectRowAt: index)
+                    self.collectionView(collectionView, didSelectItemAt: index)
                 }
             )
         }
@@ -349,7 +326,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Share", comment: ""),
                     image: UIImage(systemName: "square.and.arrow.up")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.showShereFolderAlert(folder: folder)
                 }
             )
@@ -367,7 +343,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Mark as Read", comment: "Button title"),
                     image: UIImage(systemName: "envelope.open")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.markAsRead(cell: cell)
                 }
             )
@@ -381,7 +356,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Rename", comment: "Button title"),
                     image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.rename(cell: cell)
                 }
             )
@@ -395,7 +369,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Edit room", comment: "Button title"),
                     image: UIImage(systemName: "gear")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.editRoom(folder: folder)
                 }
             )
@@ -409,7 +382,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Invite users", comment: "Button title"),
                     image: UIImage(systemName: "person.badge.plus")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     navigator.navigate(to: .addUsers(entity: folder))
                 }
             )
@@ -425,7 +397,6 @@ extension ASCDocumentsViewController {
                         : NSLocalizedString("Copy general link", comment: "Button title"),
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.copyGeneralLinkToClipboard(room: folder)
                 }
             )
@@ -439,7 +410,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Info", comment: "Button title"),
                     image: UIImage(systemName: "info.circle")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     if folder.isRoom {
                         navigator.navigate(to: .roomSharingLink(folder: folder))
                     } else {
@@ -457,7 +427,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Pin to top", comment: "Button title"),
                     image: UIImage(systemName: "pin")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.pinToggle(cell: cell)
                 }
             )
@@ -471,7 +440,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Unpin", comment: "Button title"),
                     image: UIImage(systemName: "pin.fill")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.pinToggle(cell: cell)
                 }
             )
@@ -485,7 +453,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: UIImage(systemName: "person.2")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     navigator.navigate(to: .shareSettings(entity: folder))
                 }
             )
@@ -503,7 +470,6 @@ extension ASCDocumentsViewController {
                         ? UIImage(systemName: "bell")
                         : UIImage(systemName: "bell.slash")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     disableNotifications(room: folder)
                 }
             )
@@ -521,7 +487,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Create room", comment: "Button title"),
                     image: Asset.Images.menuRectanglesAdd.image
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     transformToRoom(entities: [folder])
                 }
             )
@@ -535,7 +500,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Download", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.down")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.download(cell: cell)
                 }
             )
@@ -549,7 +513,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Move to archive", comment: "Button title"),
                     image: UIImage(systemName: "archivebox")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.archive(cell: cell, folder: folder)
                 }
             )
@@ -561,7 +524,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Move from archive", comment: "Button title"),
                     image: UIImage(systemName: "arrow.up.bin")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.showRestoreRoomAlert { [weak self] in
                         guard let self else { return }
                         self.unarchive(cell: cell, folder: folder)
@@ -576,7 +538,6 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Copy", comment: "Button title"),
             image: UIImage(systemName: "doc.on.doc")
         ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
             self.copy(cell: cell)
         }
 
@@ -586,7 +547,6 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Move", comment: "Button title"),
             image: UIImage(systemName: "folder")
         ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
             self.move(cell: cell)
         }
 
@@ -613,7 +573,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Restore", comment: "Button title"),
                     image: UIImage(systemName: "arrow.2.circlepath")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.recover(cell: cell)
                 }
             )
@@ -627,7 +586,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Leave the room", comment: "Button title"),
                     image: UIImage(systemName: "arrow.right.square")
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.leaveRoom(cell: cell, folder: folder)
                 }
             )
@@ -642,7 +600,6 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "trash"),
                     attributes: .destructive
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.delete(cell: cell)
                 }
             )
@@ -657,7 +614,6 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "trash"),
                     attributes: .destructive
                 ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
                     self.delete(cell: cell)
                 }
             )
@@ -674,93 +630,81 @@ extension ASCDocumentsViewController {
 
     // MARK: - Cell menu
 
-    func buildFileCellMenu(for cell: ASCFileCell) -> [MGSwipeButton]? {
-        guard
-            let file = cell.file,
-            let provider = provider,
-            view.isUserInteractionEnabled
-        else {
-            return nil
+    func buildCellMenu(for cell: ASCEntityViewCellProtocol) -> [UIContextualAction] {
+        if let fileCell = cell as? ASCFileViewCell {
+            return buildFileCellMenu(for: fileCell)
+        } else if let folderCell = cell as? ASCFolderViewCell {
+            return buildFolderCellMenu(for: folderCell)
         }
+        return []
+    }
+
+    func buildFileCellMenu(for cell: ASCFileViewCell) -> [UIContextualAction] {
+        guard
+            let file = cell.entity as? ASCFile,
+            let provider,
+            view.isUserInteractionEnabled
+        else { return [] }
 
         let actions = provider.actions(for: file)
 
         // Restore
-        let restore = MGSwipeButton(
-            title: NSLocalizedString("Restore", comment: "Button title"),
-            icon: Asset.Images.listMenuRestore.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let restore = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.recover(cell: cell)
-            return true
+            actionPerformed(true)
         }
+        restore.image = swipeLayout(icon: Asset.Images.listMenuRestore.image, text: NSLocalizedString("Restore", comment: "Button title"))
+        restore.backgroundColor = ASCConstants.Colors.grey
 
         // Delete
-        let delete = MGSwipeButton(
-            title: NSLocalizedString("Delete", comment: "Button title"),
-            icon: Asset.Images.listMenuTrash.image,
-            backgroundColor: ASCConstants.Colors.red
-        )
-        delete.callback = { [unowned self] cell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
+        let delete = UIContextualAction(style: .destructive, title: nil) { [unowned self] action, sourceView, actionPerformed in
+            guard view.isUserInteractionEnabled else { return }
 
-            self.deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
-                guard let cell = cell as? MGSwipeTableCell else { return }
-
-                cell.hideSwipe(animated: true)
-
+            self.deleteIfNeeded(cell: cell, menuButton: cell) { cell, allowDelete in
                 if allowDelete {
                     self.delete(cell: cell)
                 }
             }
-            return false
+
+            actionPerformed(true)
         }
+        delete.image = swipeLayout(icon: Asset.Images.listMenuTrash.image, text: NSLocalizedString("Delete", comment: "Button title"))
+        delete.backgroundColor = ASCConstants.Colors.red
 
         // Download
-        let download = MGSwipeButton(
-            title: NSLocalizedString("Download", comment: "Button title"),
-            icon: Asset.Images.listMenuDownload.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let download = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.download(cell: cell)
-            return true
+            actionPerformed(true)
         }
+        download.image = swipeLayout(icon: Asset.Images.listMenuDownload.image, text: NSLocalizedString("Download", comment: "Button title"))
+        download.backgroundColor = ASCConstants.Colors.grey
 
         // Rename
-        let rename = MGSwipeButton(
-            title: NSLocalizedString("Rename", comment: "Button title"),
-            icon: Asset.Images.listMenuRename.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let rename = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.rename(cell: cell)
-            return true
+            actionPerformed(true)
         }
+        rename.image = swipeLayout(icon: Asset.Images.listMenuRename.image, text: NSLocalizedString("Rename", comment: "Button title"))
+        rename.backgroundColor = ASCConstants.Colors.grey
 
         // Copy
-        let copy = MGSwipeButton(
-            title: NSLocalizedString("Copy", comment: "Button title"),
-            icon: Asset.Images.listMenuCopy.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let copy = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.copy(cell: cell)
-            return true
+            actionPerformed(true)
         }
+        copy.image = swipeLayout(icon: Asset.Images.listMenuCopy.image, text: NSLocalizedString("Copy", comment: "Button title"))
+        copy.backgroundColor = ASCConstants.Colors.grey
 
         // More
-        let more = MGSwipeButton(
-            title: NSLocalizedString("More", comment: "Button title"),
-            icon: Asset.Images.listMenuMore.image,
-            backgroundColor: ASCConstants.Colors.lightGrey
-        )
-        more.callback = { [unowned self] swipedCell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
-            self.more(cell: cell, menuButton: more)
-            return false
+        let more = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+            guard view.isUserInteractionEnabled else { return }
+            self.more(cell: cell, menuButton: cell)
+            actionPerformed(true)
         }
+        more.image = swipeLayout(icon: Asset.Images.listMenuMore.image, text: NSLocalizedString("More", comment: "Button title"))
+        more.backgroundColor = ASCConstants.Colors.lightGrey
 
-        cell.swipeBackgroundColor = ASCConstants.Colors.lighterGrey
-
-        var items: [MGSwipeButton] = []
+        var items: [UIContextualAction] = []
 
         if actions.contains(.delete) { items.append(delete) }
         if actions.contains(.restore) { items.append(restore) }
@@ -773,157 +717,99 @@ extension ASCDocumentsViewController {
             items.append(more)
         }
 
-        return decorate(menu: items)
+        return items
     }
 
-    func buildFolderCellMenu(for cell: ASCFolderCell) -> [MGSwipeButton]? {
+    func buildFolderCellMenu(for cell: ASCFolderViewCell) -> [UIContextualAction] {
         guard
-            let folder = cell.folder,
-            let provider = provider,
+            let folder = cell.entity as? ASCFolder,
+            let provider,
             view.isUserInteractionEnabled
-        else {
-            return nil
-        }
+        else { return [] }
 
         let actions = provider.actions(for: folder)
 
         // Restore
-        let restore = MGSwipeButton(
-            title: NSLocalizedString("Restore", comment: "Button title"),
-            icon: Asset.Images.listMenuRestore.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let restore = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.recover(cell: cell)
-            return true
+            actionPerformed(true)
         }
+        restore.image = swipeLayout(icon: Asset.Images.listMenuRestore.image, text: NSLocalizedString("Restore", comment: "Button title"))
+        restore.backgroundColor = ASCConstants.Colors.grey
 
         // Delete
-        let delete = MGSwipeButton(
-            title: NSLocalizedString("Delete", comment: "Button title"),
-            icon: Asset.Images.listMenuTrash.image,
-            backgroundColor: ASCConstants.Colors.red
-        )
-        delete.callback = { [unowned self] cell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
+        let delete = UIContextualAction(style: .destructive, title: nil) { [unowned self] action, sourceView, actionPerformed in
+            guard view.isUserInteractionEnabled else { return }
 
-            deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
-                guard let cell = cell as? MGSwipeTableCell else { return }
-
-                cell.hideSwipe(animated: true)
-
+            self.deleteIfNeeded(cell: cell, menuButton: cell) { cell, allowDelete in
                 if allowDelete {
                     self.delete(cell: cell)
                 }
             }
 
-            return false
+            actionPerformed(true)
         }
+        delete.image = swipeLayout(icon: Asset.Images.listMenuTrash.image, text: NSLocalizedString("Delete", comment: "Button title"))
+        delete.backgroundColor = ASCConstants.Colors.red
 
         // Rename
-        let rename = MGSwipeButton(
-            title: NSLocalizedString("Rename", comment: "Button title"),
-            icon: Asset.Images.listMenuRename.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let rename = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.rename(cell: cell)
-            return true
+            actionPerformed(true)
         }
+        rename.image = swipeLayout(icon: Asset.Images.listMenuRename.image, text: NSLocalizedString("Rename", comment: "Button title"))
+        rename.backgroundColor = ASCConstants.Colors.grey
 
         // Copy
-        let copy = MGSwipeButton(
-            title: NSLocalizedString("Copy", comment: "Button title"),
-            icon: Asset.Images.listMenuCopy.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
+        let copy = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             self.copy(cell: cell)
-            return true
+            actionPerformed(true)
         }
-
-        // Archive
-        let archive = MGSwipeButton(
-            title: NSLocalizedString("Archive", comment: "Button title"),
-            icon: Asset.Images.categoryArchived.image.withTintColor(.white),
-            backgroundColor: Asset.Colors.brend.color
-        ) { [unowned self] cell -> Bool in
-            self.archive(cell: cell, folder: folder)
-            return true
-        }
+        copy.image = swipeLayout(icon: Asset.Images.listMenuCopy.image, text: NSLocalizedString("Copy", comment: "Button title"))
+        copy.backgroundColor = ASCConstants.Colors.grey
 
         // More
-        let more = MGSwipeButton(
-            title: NSLocalizedString("More", comment: "Button title"),
-            icon: Asset.Images.listMenuMore.image,
-            backgroundColor: ASCConstants.Colors.lightGrey
-        )
-        more.callback = { [unowned self] swipedCell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
-            self.more(cell: cell, menuButton: more)
-            return false
+        let more = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+            guard view.isUserInteractionEnabled else { return }
+            self.more(cell: cell, menuButton: cell)
+            actionPerformed(true)
         }
+        more.image = swipeLayout(icon: Asset.Images.listMenuMore.image, text: NSLocalizedString("More", comment: "Button title"))
+        more.backgroundColor = ASCConstants.Colors.lightGrey
 
-        // Info
-        let info = MGSwipeButton(
-            title: NSLocalizedString("Info", comment: "Button title"),
-            icon: Asset.Images.barInfo.image.withTintColor(.white),
-            backgroundColor: ASCConstants.Colors.lightGrey
-        ) { [unowned self] cell -> Bool in
-            cell.hideSwipe(animated: true)
-            navigator.navigate(to: .shareSettings(entity: folder))
-            return true
-        }
-
-        cell.swipeBackgroundColor = ASCConstants.Colors.lighterGrey
-
-        var items: [MGSwipeButton] = []
+        var items: [UIContextualAction] = []
 
         if actions.contains(.unmount) || actions.contains(.delete) { items.append(delete) }
         if actions.contains(.restore) { items.append(restore) }
         if actions.contains(.rename) { items.append(rename) }
         if actions.contains(.copy) { items.append(copy) }
-        if actions.contains(.archive) { items.append(archive) }
-        if actions.contains(.info) { items.append(info) }
 
         if items.count > 2 {
             items = Array(items[..<2])
             items.append(more)
         }
 
-        return decorate(menu: items)
-    }
-
-    private func decorate(menu buttons: [MGSwipeButton]) -> [MGSwipeButton] {
-        for button in buttons {
-            button.buttonWidth = 75
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            button.horizontalCenterIconOverText()
-            if ASCCommon.isRTL {
-                button.semanticContentAttribute = .forceLeftToRight
-            }
-        }
-
-        return buttons
+        return items
     }
 
     // MARK: - Action menu
 
-    func buildActionMenu(for cell: UITableViewCell) -> UIAlertController? {
-        if cell is ASCFileCell {
+    func buildActionMenu(for cell: UICollectionViewCell) -> UIAlertController? {
+        if cell is ASCFileViewCell {
             return buildFileActionMenu(for: cell)
-        } else if cell is ASCFolderCell {
+        } else if cell is ASCFolderViewCell {
             return buildFolderActionMenu(for: cell)
         }
         return nil
     }
 
-    func buildFileActionMenu(for cell: UITableViewCell) -> UIAlertController? {
+    func buildFileActionMenu(for cell: UICollectionViewCell) -> UIAlertController? {
         guard
-            let cell = cell as? ASCFileCell,
-            let file = cell.file,
-            let provider = provider,
+            let cell = cell as? ASCFileViewCell,
+            let file = cell.entity as? ASCFile,
+            let provider,
             view.isUserInteractionEnabled
-        else {
-            return nil
-        }
+        else { return nil }
 
         let actions = provider.actions(for: file)
 
@@ -940,7 +826,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Preview", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.open(file: file, viewMode: true)
                     }
                 )
@@ -953,7 +838,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Edit", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.open(file: file)
                     }
                 )
@@ -966,7 +850,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Download", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.download(cell: cell)
                     }
                 )
@@ -979,7 +862,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Rename", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.rename(cell: cell)
                     }
                 )
@@ -992,7 +874,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Copy", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.copy(cell: cell)
                     }
                 )
@@ -1005,7 +886,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Duplicate", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.duplicate(cell: cell)
                     }
                 ))
@@ -1017,7 +897,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Move", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.move(cell: cell)
                     }
                 )
@@ -1032,7 +911,6 @@ extension ASCDocumentsViewController {
                         : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.favorite(cell: cell, favorite: !file.isFavorite)
                     }
                 )
@@ -1045,7 +923,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Mark as Read", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.markAsRead(cell: cell)
                     }
                 )
@@ -1058,7 +935,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         navigator.navigate(to: .shareSettings(entity: file))
                     }
                 )
@@ -1071,7 +947,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Export", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.export(cell: cell)
                     }
                 )
@@ -1084,7 +959,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Delete", comment: "Button title"),
                     style: .destructive,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.delete(cell: cell)
                     }
                 )
@@ -1097,7 +971,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
                     style: .destructive,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.delete(cell: cell)
                     }
                 )
@@ -1110,7 +983,6 @@ extension ASCDocumentsViewController {
                     title: ASCLocalization.Common.cancel,
                     style: .cancel,
                     handler: { action in
-                        cell.hideSwipe(animated: true)
                     }
                 )
             )
@@ -1119,15 +991,13 @@ extension ASCDocumentsViewController {
         return actionAlertController
     }
 
-    func buildFolderActionMenu(for cell: UITableViewCell) -> UIAlertController? {
+    func buildFolderActionMenu(for cell: UICollectionViewCell) -> UIAlertController? {
         guard
-            let cell = cell as? ASCFolderCell,
-            let folder = cell.folder,
-            let provider = provider,
+            let cell = cell as? ASCFolderViewCell,
+            let folder = cell.entity as? ASCFolder,
+            let provider,
             view.isUserInteractionEnabled
-        else {
-            return nil
-        }
+        else { return nil }
 
         let actions = provider.actions(for: folder)
 
@@ -1144,7 +1014,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Rename", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.rename(cell: cell)
                     }
                 )
@@ -1157,7 +1026,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Pin to top", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.pinToggle(cell: cell)
                     }
                 )
@@ -1170,7 +1038,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Unpin", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.pinToggle(cell: cell)
                     }
                 )
@@ -1183,7 +1050,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Archive", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.archive(cell: cell, folder: folder)
                     }
                 )
@@ -1196,7 +1062,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Move from archive", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.archive(cell: cell, folder: folder)
                     }
                 )
@@ -1209,7 +1074,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Copy", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.copy(cell: cell)
                     }
                 )
@@ -1222,7 +1086,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Move", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.move(cell: cell)
                     }
                 )
@@ -1235,7 +1098,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Mark as Read", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.markAsRead(cell: cell)
                     }
                 )
@@ -1248,7 +1110,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         navigator.navigate(to: .shareSettings(entity: folder))
                     }
                 )
@@ -1261,7 +1122,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Add users", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         navigator.navigate(to: .addUsers(entity: folder))
                     }
                 )
@@ -1274,7 +1134,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Info", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         navigator.navigate(to: .shareSettings(entity: folder))
                     }
                 )
@@ -1287,7 +1146,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Delete", comment: "Button title"),
                     style: .destructive,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.delete(cell: cell)
                     }
                 )
@@ -1300,7 +1158,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
                     style: .destructive,
                     handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
                         self.delete(cell: cell)
                     }
                 )
@@ -1313,7 +1170,6 @@ extension ASCDocumentsViewController {
                     title: ASCLocalization.Common.cancel,
                     style: .cancel,
                     handler: { action in
-                        cell.hideSwipe(animated: true)
                     }
                 )
             )
@@ -1321,31 +1177,32 @@ extension ASCDocumentsViewController {
 
         return actionAlertController
     }
-}
 
-// MARK: - MGSwipeTableCellDelegate
+    private func swipeLayout(icon: UIImage, text: String) -> UIImage {
+        let canvasSize = CGSize(width: 60, height: 60)
+        let img = icon.withTintColor(.white, renderingMode: .alwaysOriginal)
 
-extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
-    func swipeTableCell(_ cell: MGSwipeTableCell,
-                        canSwipe direction: MGSwipeDirection,
-                        from point: CGPoint) -> Bool
-    {
-        ASCCommon.isRTL ? direction == .leftToRight : direction == .rightToLeft
-    }
+        let imageView = UIImageView(frame: .init(x: 0, y: 8, width: canvasSize.width, height: canvasSize.height * 0.4))
+        imageView.image = img
+        imageView.contentMode = .center
 
-    func swipeTableCell(_ cell: MGSwipeTableCell,
-                        swipeButtonsFor direction: MGSwipeDirection,
-                        swipeSettings: MGSwipeSettings,
-                        expansionSettings: MGSwipeExpansionSettings) -> [UIView]?
-    {
-        swipeSettings.transition = .border
+        let label = UILabel(frame: .init(x: 0, y: canvasSize.height * 0.5 + 5, width: canvasSize.width, height: canvasSize.height * 0.5 - 5))
+        label.font = UIFont.preferredFont(forTextStyle: .caption1).bold()
+        label.textColor = .white
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.6
+        label.text = text
 
-        if let fileCell = cell as? ASCFileCell {
-            return buildFileCellMenu(for: fileCell)
-        } else if let folderCell = cell as? ASCFolderCell {
-            return buildFolderCellMenu(for: folderCell)
+        let tempView = UIView(frame: CGRect(origin: .zero, size: canvasSize))
+        tempView.addSubview(imageView)
+        tempView.addSubview(label)
+
+        let renderer = UIGraphicsImageRenderer(bounds: tempView.bounds)
+        let image = renderer.image { rendererContext in
+            tempView.layer.render(in: rendererContext.cgContext)
         }
-
-        return nil
+        return image
     }
 }

@@ -1,0 +1,30 @@
+/* Bundle name */
+"CFBundleName" = "المستندات";
+
+/* (No Comment) */
+"New Document" = "مستند جديد";
+
+/* (No Comment) */
+"New Presentation" = "عرض تقديمي جديد";
+
+/* (No Comment) */
+"New Spreadsheet" = "جدول بيانات جديد";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "يتطلب هذا التطبيق الوصول إلى الكاميرا، حتى تتمكن من التقاط صورة وتحميلها في التطبيق.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "يتطلب هذا التطبيق إذن \"بصمة الوجه\" للمصادقة باستخدام التعرف على الوجه.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "يتطلب هذا التطبيق الوصول إلى مكتبة الصور، حتى تتمكن من تحميل صورك في التطبيق.";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "يتطلب هذا التطبيق الوصول إلى مكتبة الصور، حتى تتمكن من تحميل صورك في التطبيق.";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE نموذج قابل للتعبئة (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "ONLYOFFICE قالب النموذج (.docxf)";
+

@@ -66,6 +66,8 @@ class ASCConstants {
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"
+        static let gridLayoutFiles = "asc-grid-layout-files"
+        static let hideCloudsCategory = "asc-hide-clouds-category"
 
         // Debug
         static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
@@ -157,6 +159,7 @@ class ASCConstants {
         static let appDidBecomeActive = Notification.Name("ASCEventAppDidBecomeActive")
         static let pushInfo = Notification.Name("ASCEventPushInfo")
         static let reloadData = Notification.Name("ASCEventReloadData")
+        static let updateDocumentsViewLayoutType = Notification.Name("ASCEventUpdateDocumentsViewLayoutType")
     }
 
     enum FileExtensions {

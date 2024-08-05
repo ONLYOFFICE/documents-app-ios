@@ -2512,6 +2512,10 @@ organize your files.</source>
         <target>您可以在此处查看近期打开的、通过外部链接与您共享的文件列表。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>如果存在拥有 %@ 电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
@@ -2668,6 +2672,10 @@ copied to clipboard</source>
         <source>Link with the invitation has been sent to the mail</source>
         <target>邀请函的链接已发送至邮箱</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
@@ -4095,7 +4103,7 @@ to the clipboard</source>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>未知</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4445,12 +4453,6 @@ then accessed from any other device.</source>
         <source>new</source>
         <target>新</target>
         <note>Badge of file in file list</note>
-      </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>无</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>

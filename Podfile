@@ -42,7 +42,6 @@ def common_pods
   pod 'WhatsNewKit'
   pod 'PhoneNumberKit'
   pod 'SwiftMessages'
-  pod 'MGSwipeTableCell'
   pod 'ReCaptcha', :git => 'https://github.com/fjcaetano/ReCaptcha.git'
   pod "WSTagsField", :git => 'https://github.com/ayuzhin/WSTagsField.git'
 

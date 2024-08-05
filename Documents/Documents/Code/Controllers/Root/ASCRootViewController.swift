@@ -76,6 +76,14 @@ class ASCRootViewController: ASCBaseTabBarController {
             onlyofficeSC.tabBarItem.title = ASCConstants.Name.appNameShort
         }
 
+        if ASCAppSettings.Feature.hideCloudsCategory {
+            if let cloudsSC = viewControllers?.first(where: { $0 is ASCCloudsSplitViewController }) {
+                if let cloudsSCIndex = viewControllers?.firstIndex(of: cloudsSC) {
+                    viewControllers?.remove(at: cloudsSCIndex)
+                }
+            }
+        }
+
         if #available(iOS 15.0, *), UIDevice.pad {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()

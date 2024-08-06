@@ -1435,7 +1435,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Pinned failed.", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.", comment: "")))
             }
         }
     }

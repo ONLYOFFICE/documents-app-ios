@@ -154,3 +154,9 @@ extension ASCFolder {
         return isRoom && roomType == .public
     }
 }
+
+extension ASCFolder {
+    var isFillingFormRoom: Bool {
+        return isRoom && roomType == .fillingForm
+    }
+}

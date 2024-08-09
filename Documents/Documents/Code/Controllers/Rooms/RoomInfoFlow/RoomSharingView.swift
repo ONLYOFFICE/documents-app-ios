@@ -28,20 +28,36 @@ struct RoomSharingView: View {
             .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
     }
-
+    
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
-            List {
-                sharedLinksSection
-                adminSection
-                usersSection
-                invitesSection
+            VStack {
+                roomDescriptionText
+                List {
+                    sharedLinksSection
+                    adminSection
+                    usersSection
+                    invitesSection
+                }
             }
+            .background(Color.systemGroupedBackground)
         } else {
             VStack {
                 ActivityIndicatorView()
             }
+        }
+    }
+    
+    @ViewBuilder
+    private var roomDescriptionText: some View {
+        if viewModel.room.roomType != .colobaration {
+            Text(viewModel.roomTypeDescription)
+                .multilineTextAlignment(.center)
+                .padding(.top, Constants.descriptionTopPadding)
+                .padding(.horizontal, Constants.horizontalAlignment)
+                .font(.caption)
+                .foregroundColor(.secondaryLabel)
         }
     }
 
@@ -340,4 +356,9 @@ struct ASCUserRow: View {
                 .frame(width: 40, height: 40)
         }
     }
+}
+
+private struct Constants {
+    static let horizontalAlignment: CGFloat = 16
+    static let descriptionTopPadding: CGFloat = 20
 }

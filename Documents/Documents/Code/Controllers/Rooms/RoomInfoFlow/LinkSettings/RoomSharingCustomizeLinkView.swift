@@ -109,12 +109,15 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
+    @ViewBuilder
     private var restrictionSection: some View {
-        Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
-            Toggle(isOn: $viewModel.isRestrictCopyOn) {
-                Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+        if viewModel.roomType != .fillingForm {
+            Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
+                Toggle(isOn: $viewModel.isRestrictCopyOn) {
+                    Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+                }
+                .tintColor(Color(Asset.Colors.brend.color))
             }
-            .tintColor(Color(Asset.Colors.brend.color))
         }
     }
 

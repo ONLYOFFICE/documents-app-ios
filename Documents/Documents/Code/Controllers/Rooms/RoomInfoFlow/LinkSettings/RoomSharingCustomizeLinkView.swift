@@ -45,7 +45,7 @@ struct RoomSharingCustomizeLinkView: View {
             revokeSection
                 .alert(isPresented: $showRevokeAlert, content: revokeAlert)
         }
-        .navigationBarTitle(Text(NSLocalizedString("General link", comment: "")))
+        .navigationBarTitle(Text(NSLocalizedString("Edit link", comment: "")))
     }
 
     var additionalLinkView: some View {
@@ -57,11 +57,11 @@ struct RoomSharingCustomizeLinkView: View {
             deleteSection
                 .alert(isPresented: $showDeleteAlert, content: deleteAlert)
         }
-        .navigationBarTitle(Text(NSLocalizedString("Additional links", comment: "")))
+        .navigationBarTitle(Text(NSLocalizedString("Edit link", comment: "")))
     }
 
     private var generalSection: some View {
-        Section(header: Text(NSLocalizedString("General", comment: ""))) {
+        Section(header: Text(NSLocalizedString("Link name", comment: ""))) {
             TextField("Link name", text: $viewModel.linkName)
         }
     }

@@ -9,8 +9,9 @@
 import UIKit
 
 enum CreatingRoomType: CaseIterable {
-    case collaboration
     case publicRoom
+    case formFilling
+    case collaboration
     case custom
 
     var id: Int {
@@ -20,6 +21,8 @@ enum CreatingRoomType: CaseIterable {
         case .publicRoom:
             return ascRoomType.rawValue
         case .custom:
+            return ascRoomType.rawValue
+        case .formFilling:
             return ascRoomType.rawValue
         }
     }
@@ -32,6 +35,8 @@ enum CreatingRoomType: CaseIterable {
             return NSLocalizedString("Public room", comment: "")
         case .custom:
             return NSLocalizedString("Custom room", comment: "")
+        case .formFilling:
+            return NSLocalizedString("Form Filling Room", comment: "")
         }
     }
 
@@ -43,6 +48,8 @@ enum CreatingRoomType: CaseIterable {
             return NSLocalizedString("Invite users via shared links to view documents without registration. You can also embed this room into any web interface.", comment: "")
         case .custom:
             return NSLocalizedString("Apply your own settings to use this room for any custom purpose", comment: "")
+        case .formFilling:
+            return NSLocalizedString("Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.", comment: "")
         }
     }
 
@@ -53,6 +60,8 @@ enum CreatingRoomType: CaseIterable {
         case .publicRoom:
             return ascRoomType.image
         case .custom:
+            return ascRoomType.image
+        case .formFilling:
             return ascRoomType.image
         }
     }
@@ -65,6 +74,8 @@ enum CreatingRoomType: CaseIterable {
             return .public
         case .custom:
             return .custom
+        case .formFilling:
+            return .fillingForm
         }
     }
 }

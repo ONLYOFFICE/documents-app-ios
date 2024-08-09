@@ -1472,9 +1472,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
                     } else if folder.isRoom {
-                        localEmptyView?.type = .room
-                        if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView?.type = .docspaceNoPermissions
+                        if folder.roomType == .fillingForm {
+                            localEmptyView?.type = .formFillingRoom
+                        } else {
+                            localEmptyView?.type = .room
+                            if !(provider.allowEdit(entity: folder)) {
+                                localEmptyView?.type = .docspaceNoPermissions
+                            }
                         }
                     } else if isDocRecently {
                         localEmptyView?.type = .recentlyAccessibleViaLink
@@ -1980,6 +1984,17 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 } else {
                     room.mute = false
                 }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func duplicateRoom(room: ASCFolder) {
+        RoomSharingNetworkService().duplicateRoom(room: room) { result in
+            switch result {
+            case let .success(responce):
+                print("=====responce", responce)
             case let .failure(error):
                 print(error.localizedDescription)
             }

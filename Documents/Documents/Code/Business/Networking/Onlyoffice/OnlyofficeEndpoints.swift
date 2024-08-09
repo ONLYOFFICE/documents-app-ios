@@ -74,6 +74,7 @@ enum OnlyofficeAPI {
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
+        public static let duplicateRoom = "api/\(version)/files/fileops/duplicate"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -239,6 +240,10 @@ enum OnlyofficeAPI {
 
             static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
+            }
+            
+            static func duplicateRoom(room: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>>  {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.duplicateRoom), .put)
             }
         }
 

@@ -20,7 +20,7 @@ enum ASCRoomType: Int {
     var image: UIImage {
         switch self {
         case .fillingForm:
-            return Asset.Images.listRoomFillingForms.image
+            return Asset.Images.listRoomFillingFormsBlue.image
         case .colobaration:
             return Asset.Images.listRoomCollaboration.image
         case .review:
@@ -30,7 +30,7 @@ enum ASCRoomType: Int {
         case .custom:
             return Asset.Images.listRoomCustom.image
         case .public:
-            return Asset.Images.listRoomPublic.image
+            return Asset.Images.listRoomPublicPlanet.image
         }
     }
 }

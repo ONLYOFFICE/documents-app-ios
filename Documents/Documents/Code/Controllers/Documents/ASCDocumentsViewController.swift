@@ -1474,6 +1474,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if folder.isRoom {
                         if folder.roomType == .fillingForm {
                             localEmptyView?.type = .formFillingRoom
+                            localEmptyView?.onAction = { [weak self] in
+                                guard let self,
+                                      let button = localEmptyView?.actionButton as? UIButton
+                                else { return }
+                                self.uploadPDFFormAction(button: button)
+                            }
                         } else {
                             localEmptyView?.type = .room
                             if !(provider.allowEdit(entity: folder)) {
@@ -1542,6 +1548,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             view.insertSubview(errorView, aboveSubview: collectionView)
             errorView.fillToSuperview()
         }
+    }
+    
+    private func uploadPDFFormAction(button: UIButton) {
+        let menu = UIMenu(title: "", children: [
+            UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                print("Selected 'From DocSpace'")
+            },
+            UIAction(title: NSLocalizedString("From device", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                print("Selected 'From device'")
+            }
+        ])
+        
+        button.menu = menu
+        button.showsMenuAsPrimaryAction = true
     }
 
     @objc func updateFileInfo(_ notification: Notification) {

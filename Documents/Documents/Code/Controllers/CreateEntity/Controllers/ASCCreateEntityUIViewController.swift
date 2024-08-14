@@ -14,14 +14,17 @@ class ASCCreateEntityUIViewController: UIHostingController<ASCCreateEntityUI> {
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder,
-            rootView: ASCCreateEntityUI(allowClouds: .constant(true), onAction: .constant { type in })
+            rootView: ASCCreateEntityUI(allowClouds: .constant(true), 
+                                        allowForms: .constant(true), 
+                                        onAction: .constant { type in })
         )
     }
 
-    init(allowClouds: Bool, onAction: @escaping (CreateEntityUIType) -> Void) {
+    init(allowClouds: Bool, allowForms: Bool, onAction: @escaping (CreateEntityUIType) -> Void) {
         super.init(
             rootView: ASCCreateEntityUI(
-                allowClouds: .constant(allowClouds),
+                allowClouds: .constant(allowClouds), 
+                allowForms: .constant(allowForms),
                 onAction: .constant(onAction)
             )
         )

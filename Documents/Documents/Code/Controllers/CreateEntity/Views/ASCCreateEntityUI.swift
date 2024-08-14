@@ -12,60 +12,91 @@ struct ASCCreateEntityUI: View {
     // MARK: - Properties
 
     @Binding var allowClouds: Bool
+    @Binding var allowForms: Bool
     @Binding var onAction: ((CreateEntityUIType) -> Void)?
 
     private var createEntities: [CreateEntityViewModel] {
-        [
-            .init(
-                type: .folder,
-                caption: NSLocalizedString("New Folder", comment: ""),
-                icon: Image(uiImage: Asset.Images.createFolder.image),
-                action: { type in
-                    onAction?(type)
-                }
-            ),
-            .init(
-                type: .importFile,
-                caption: NSLocalizedString("Import File", comment: ""),
-                icon: Image(uiImage: Asset.Images.createImport.image),
-                action: { type in
-                    onAction?(type)
-                }
-            ),
-            .init(
-                type: .importImage,
-                caption: NSLocalizedString("Import Image", comment: ""),
-                icon: Image(uiImage: Asset.Images.createPicture.image),
-                action: { type in
-                    onAction?(type)
-                }
-            ),
-            .init(
-                type: .makePicture,
-                caption: NSLocalizedString("Take a Picture", comment: ""),
-                icon: Image(uiImage: Asset.Images.createCamera.image),
-                action: { type in
-                    onAction?(type)
-                }
-            ),
-            allowClouds
-                ? .init(
-                    type: .connectCloud,
-                    caption: NSLocalizedString("Connect Storage", comment: ""),
-                    icon: Image(uiImage: Asset.Images.createIcloud.image),
+        if allowForms {
+            return [
+                .init(
+                    type: .folder,
+                    caption: NSLocalizedString("New Folder", comment: ""),
+                    icon: Image(uiImage: Asset.Images.createFolder.image),
+                    action: { type in
+                        onAction?(type)
+                    }
+                ),
+                .init(
+                    type: .pdfDocspace,
+                    caption: NSLocalizedString("Upload PDF form from DocSpace", comment: ""),
+                    icon: Image(uiImage: UIImage(systemName: "square.and.arrow.up") ?? UIImage()),
+                    action: { type in
+                        onAction?(type)
+                    }
+                ),
+                .init(
+                    type: .pdfDevice,
+                    caption: NSLocalizedString("Upload PDF form from device", comment: ""),
+                    icon: Image(uiImage: UIImage(systemName: "square.and.arrow.up") ?? UIImage()),
                     action: { type in
                         onAction?(type)
                     }
                 )
-                : nil,
-        ].compactMap { $0 }
+            ].compactMap { $0 }
+        } else {
+            return [
+                .init(
+                    type: .folder,
+                    caption: NSLocalizedString("New Folder", comment: ""),
+                    icon: Image(uiImage: Asset.Images.createFolder.image),
+                    action: { type in
+                        onAction?(type)
+                    }
+                ),
+                .init(
+                    type: .importFile,
+                    caption: NSLocalizedString("Import File", comment: ""),
+                    icon: Image(uiImage: Asset.Images.createImport.image),
+                    action: { type in
+                        onAction?(type)
+                    }
+                ),
+                .init(
+                    type: .importImage,
+                    caption: NSLocalizedString("Import Image", comment: ""),
+                    icon: Image(uiImage: Asset.Images.createPicture.image),
+                    action: { type in
+                        onAction?(type)
+                    }
+                ),
+                .init(
+                    type: .makePicture,
+                    caption: NSLocalizedString("Take a Picture", comment: ""),
+                    icon: Image(uiImage: Asset.Images.createCamera.image),
+                    action: { type in
+                        onAction?(type)
+                    }
+                ),
+                allowClouds
+                    ? .init(
+                        type: .connectCloud,
+                        caption: NSLocalizedString("Connect Storage", comment: ""),
+                        icon: Image(uiImage: Asset.Images.createIcloud.image),
+                        action: { type in
+                            onAction?(type)
+                        }
+                    )
+                    : nil,
+            ].compactMap { $0 }
+        }
     }
 
     // MARK: - Lifecycle Methods
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack {
+            if !allowForms {
+                HStack {
                 Spacer()
                     .frame(width: 10)
 
@@ -112,10 +143,11 @@ struct ASCCreateEntityUI: View {
                 Spacer()
                     .frame(width: 10)
             }
-            .fixedSize(horizontal: false, vertical: true)
-            .background(Color(UIColor.secondarySystemGroupedBackground))
-            .cornerRadius(14)
-            .padding(16)
+                .fixedSize(horizontal: false, vertical: true)
+                .background(Color(UIColor.secondarySystemGroupedBackground))
+                .cornerRadius(14)
+                .padding(16)
+        }
 
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(Array(createEntities.enumerated()), id: \.offset) { index, item in
@@ -133,6 +165,7 @@ struct ASCCreateEntityUI: View {
             .background(Color(UIColor.secondarySystemGroupedBackground))
             .cornerRadius(14)
             .padding([.leading, .trailing, .bottom], 16)
+            .padding(.top, allowForms ? 16 : 0)
         }
         .background(Color(Asset.Colors.createPanel.color))
     }
@@ -200,6 +233,7 @@ struct CreateEntityButtonStyle: ButtonStyle {
 #Preview {
     ASCCreateEntityUI(
         allowClouds: .constant(true),
+        allowForms: .constant(true),
         onAction: .constant { type in
             print("\(type)")
         }

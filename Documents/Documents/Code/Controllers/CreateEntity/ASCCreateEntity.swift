@@ -36,12 +36,22 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             else { return false }
             return provider.apiClient.active
         }()
+        
+        let allowForms = {
+            guard let provider = provider as? ASCOnlyofficeProvider,
+                  let folder = provider.folder,
+                  provider.apiClient.serverVersion?.docSpace != nil
+            else { return false }
+            
+            return folder.isRoom && folder.roomType == .fillingForm
+        }()
 
         var createEntityVC: ASCCreateEntityUIViewController!
 
         if ASCViewControllerManager.shared.phoneLayout {
             createEntityVC = ASCCreateEntityUIViewController(
-                allowClouds: allowClouds,
+                allowClouds: allowClouds, 
+                allowForms: allowForms,
                 onAction: { type in
                     SwiftMessages.hide()
                     self.createEntity(type, in: viewController)
@@ -76,7 +86,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             }
 
             createEntityVC = ASCCreateEntityUIViewController(
-                allowClouds: allowClouds,
+                allowClouds: allowClouds, 
+                allowForms: allowForms,
                 onAction: { type in
                     createEntityVC.dismiss(animated: true) {
                         self.createEntity(type, in: viewController)
@@ -133,6 +144,10 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
             viewController.present(connectStorageNavigationVC, animated: true, completion: nil)
+        case .pdfDocspace:
+            uploadPDFFromDocspace(viewController: viewController)
+        case .pdfDevice:
+            uploadPDFFromDevice(viewController: viewController)
         }
     }
 
@@ -280,6 +295,16 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         } else {
             showCamera()
         }
+    }
+    
+    func uploadPDFFromDocspace(viewController: ASCDocumentsViewController) {
+        //TODO: -
+        print("uploadPDFFromDocspace")
+    }
+    
+    func uploadPDFFromDevice(viewController: ASCDocumentsViewController) {
+        //TODO: -
+        print("uploadPDFFromDevice")
     }
 
     // MARK: - Private

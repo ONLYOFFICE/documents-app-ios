@@ -36,6 +36,7 @@
 		E87FF67C2BF74712000EFDE5 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6772BF74712000EFDE5 /* UserListView.swift */; };
 		E87FF67D2BF74712000EFDE5 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6782BF74712000EFDE5 /* UserListViewModel.swift */; };
 		E87FF67E2BF74712000EFDE5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6792BF74712000EFDE5 /* UserModel.swift */; };
+		E8A4F3C92C73FFF5002168DA /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */; };
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
@@ -680,6 +681,7 @@
 		E87FF6772BF74712000EFDE5 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		E87FF6782BF74712000EFDE5 /* UserListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		E87FF6792BF74712000EFDE5 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
@@ -2030,6 +2032,7 @@
 		FC03A62F2BDA7F67005E8FFB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */,
 				E87FF6732BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift */,
 				E87FF6722BF746F8000EFDE5 /* PeopleFilterRequestModel.swift */,
 				FC03A6272BDA7F67005E8FFB /* AttachLogoRequestModel.swift */,
@@ -3907,6 +3910,7 @@
 				FC70812A2812E2260057FCD2 /* ASCTextViewTableViewCell.swift in Sources */,
 				FC03A6492BDA7F67005E8FFB /* OnlyofficeDocumentConfig.swift in Sources */,
 				FC70812B2812E2260057FCD2 /* ASCDateTransform.swift in Sources */,
+				E8A4F3C92C73FFF5002168DA /* RoomDuplicateRequestModel.swift in Sources */,
 				FC1764E12BA332AD00D6B6F0 /* ManageRoomViewModel.swift in Sources */,
 				FC70812D2812E2260057FCD2 /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC70812E2812E2260057FCD2 /* ASCOnDeviceNavigationController.swift in Sources */,
@@ -4128,7 +4132,6 @@
 				FC7081C92812E2260057FCD2 /* DropboxApiClient.swift in Sources */,
 				FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FC7081CA2812E2260057FCD2 /* ASCEntityAccess.swift in Sources */,
-				FC7DD7A12B502F7E0037405B /* ASCDocSpaceLinkView.swift in Sources */,
 				FC4820862C2F026E00E22605 /* ASCLoaderViewCell.swift in Sources */,
 				FC83D6192A974E2300C404CB /* Data+Extension.swift in Sources */,
 				FC142A3F289819B400EDE7CE /* ASCAccount.swift in Sources */,

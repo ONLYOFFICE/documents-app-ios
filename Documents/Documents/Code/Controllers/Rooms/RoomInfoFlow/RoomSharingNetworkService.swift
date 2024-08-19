@@ -91,7 +91,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             completion(.success(responce))
         }
     }
-    
+
     func duplicateRoom(room: ASCFolder, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         let requestModel = RoomDuplicateRequestModel(folderIds: [room.id], fileIds: [])
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.duplicateRoom(room: room), requestModel.dictionary) { responce, error in

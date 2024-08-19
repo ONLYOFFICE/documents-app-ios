@@ -23,8 +23,8 @@ final class RoomSharingViewModel: ObservableObject {
     var isPossibleCreateNewLink: Bool {
         room.roomType != .colobaration
     }
-    
-   var canAddLink: Bool {
+
+    var canAddLink: Bool {
         sharedLinksModels.count < linksLimit && isSharingPossible
     }
 

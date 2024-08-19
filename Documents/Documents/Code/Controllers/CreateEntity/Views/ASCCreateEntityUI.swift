@@ -41,7 +41,7 @@ struct ASCCreateEntityUI: View {
                     action: { type in
                         onAction?(type)
                     }
-                )
+                ),
             ].compactMap { $0 }
         } else {
             return [
@@ -97,57 +97,57 @@ struct ASCCreateEntityUI: View {
         VStack(alignment: .leading, spacing: 0) {
             if !allowForms {
                 HStack {
-                Spacer()
-                    .frame(width: 10)
+                    Spacer()
+                        .frame(width: 10)
 
-                Button(NSLocalizedString("Document", comment: "")) {
-                    onAction?(.document)
-                }
-                .buttonStyle(
-                    CreateDocumentButtonStyle(
-                        color: Color(Asset.Colors.documentEditor.color)
-                            .opacity(0.1),
-                        icon: Image(uiImage: Asset.Images.createDocument.image)
+                    Button(NSLocalizedString("Document", comment: "")) {
+                        onAction?(.document)
+                    }
+                    .buttonStyle(
+                        CreateDocumentButtonStyle(
+                            color: Color(Asset.Colors.documentEditor.color)
+                                .opacity(0.1),
+                            icon: Image(uiImage: Asset.Images.createDocument.image)
+                        )
                     )
-                )
-                .padding(16)
+                    .padding(16)
 
-                Spacer()
+                    Spacer()
 
-                Button(NSLocalizedString("Spreadsheet", comment: "")) {
-                    onAction?(.spreadsheet)
-                }
-                .buttonStyle(
-                    CreateDocumentButtonStyle(
-                        color: Color(Asset.Colors.spreadsheetEditor.color)
-                            .opacity(0.1),
-                        icon: Image(uiImage: Asset.Images.createSpreadsheet.image)
+                    Button(NSLocalizedString("Spreadsheet", comment: "")) {
+                        onAction?(.spreadsheet)
+                    }
+                    .buttonStyle(
+                        CreateDocumentButtonStyle(
+                            color: Color(Asset.Colors.spreadsheetEditor.color)
+                                .opacity(0.1),
+                            icon: Image(uiImage: Asset.Images.createSpreadsheet.image)
+                        )
                     )
-                )
-                .padding(16)
+                    .padding(16)
 
-                Spacer()
+                    Spacer()
 
-                Button(NSLocalizedString("Presentation", comment: "")) {
-                    onAction?(.presentation)
-                }
-                .buttonStyle(
-                    CreateDocumentButtonStyle(
-                        color: Color(Asset.Colors.presentationEditor.color)
-                            .opacity(0.1),
-                        icon: Image(uiImage: Asset.Images.createPresentation.image)
+                    Button(NSLocalizedString("Presentation", comment: "")) {
+                        onAction?(.presentation)
+                    }
+                    .buttonStyle(
+                        CreateDocumentButtonStyle(
+                            color: Color(Asset.Colors.presentationEditor.color)
+                                .opacity(0.1),
+                            icon: Image(uiImage: Asset.Images.createPresentation.image)
+                        )
                     )
-                )
-                .padding(16)
+                    .padding(16)
 
-                Spacer()
-                    .frame(width: 10)
-            }
+                    Spacer()
+                        .frame(width: 10)
+                }
                 .fixedSize(horizontal: false, vertical: true)
                 .background(Color(UIColor.secondarySystemGroupedBackground))
                 .cornerRadius(14)
                 .padding(16)
-        }
+            }
 
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(Array(createEntities.enumerated()), id: \.offset) { index, item in

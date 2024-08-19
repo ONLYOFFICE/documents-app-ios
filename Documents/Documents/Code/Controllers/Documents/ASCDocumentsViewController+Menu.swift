@@ -491,15 +491,15 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Duplicate room
-        
+
         if actions.contains(.duplicate) {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Duplicate", comment: ""),
                     image: UIImage(systemName: "doc.on.doc")
-                ) {  [unowned self] _ in
+                ) { [unowned self] _ in
                     self.duplicateRoom(room: folder)
                 }
             )

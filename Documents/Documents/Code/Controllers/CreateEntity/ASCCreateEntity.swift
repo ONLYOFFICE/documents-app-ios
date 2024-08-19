@@ -36,13 +36,13 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             else { return false }
             return provider.apiClient.active
         }()
-        
+
         let allowForms = {
             guard let provider = provider as? ASCOnlyofficeProvider,
                   let folder = provider.folder,
                   provider.apiClient.serverVersion?.docSpace != nil
             else { return false }
-            
+
             return folder.isRoom && folder.roomType == .fillingForm
         }()
 
@@ -50,7 +50,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
         if ASCViewControllerManager.shared.phoneLayout {
             createEntityVC = ASCCreateEntityUIViewController(
-                allowClouds: allowClouds, 
+                allowClouds: allowClouds,
                 allowForms: allowForms,
                 onAction: { type in
                     SwiftMessages.hide()
@@ -86,7 +86,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             }
 
             createEntityVC = ASCCreateEntityUIViewController(
-                allowClouds: allowClouds, 
+                allowClouds: allowClouds,
                 allowForms: allowForms,
                 onAction: { type in
                     createEntityVC.dismiss(animated: true) {
@@ -296,14 +296,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             showCamera()
         }
     }
-    
+
     func uploadPDFFromDocspace(viewController: ASCDocumentsViewController) {
-        //TODO: -
+        // TODO: -
         print("uploadPDFFromDocspace")
     }
-    
+
     func uploadPDFFromDevice(viewController: ASCDocumentsViewController) {
-        //TODO: -
+        // TODO: -
         print("uploadPDFFromDevice")
     }
 

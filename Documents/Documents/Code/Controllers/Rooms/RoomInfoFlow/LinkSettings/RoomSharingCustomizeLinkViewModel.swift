@@ -58,7 +58,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     var isPossibleToSave: Bool {
         !linkName.isEmpty && selectedDate > Date() && !isSaving
     }
-    
+
     var roomType: ASCRoomType?
 
     private var cancelable = Set<AnyCancellable>()
@@ -81,7 +81,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     ) {
         link = inputLink
         self.room = room
-        self.roomType = room.roomType
+        roomType = room.roomType
         _outputLink = outputLink
         let linkInfo = link?.linkInfo
         selectedDate = {

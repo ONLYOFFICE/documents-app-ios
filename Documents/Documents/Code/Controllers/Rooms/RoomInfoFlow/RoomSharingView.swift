@@ -28,7 +28,7 @@ struct RoomSharingView: View {
             .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
     }
-    
+
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
@@ -48,7 +48,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var roomDescriptionText: some View {
         if viewModel.room.roomType != .colobaration {
@@ -145,13 +145,11 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     private var sharedLinksTitle: String {
         let title = NSLocalizedString("Shared links", comment: "")
         return "\(title) (\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))"
     }
-
-
 
     private var addButton: some View {
         Button {
@@ -376,7 +374,7 @@ struct ASCUserRow: View {
     }
 }
 
-private struct Constants {
+private enum Constants {
     static let horizontalAlignment: CGFloat = 16
     static let descriptionTopPadding: CGFloat = 20
 }

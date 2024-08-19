@@ -216,14 +216,14 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let folder = strongSelf.folder,
                 let provider = strongSelf.provider
             else { return }
-            
+
             switch view.type {
             case .formFillingRoom:
                 strongSelf.uploadPDFFormAction(button: view.actionButton)
             default:
                 strongSelf.createFirstItem(view.actionButton)
             }
-            
+
             view.actionButton.isHidden = !provider.allowEdit(entity: folder)
         }
         return view
@@ -1549,7 +1549,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             errorView.fillToSuperview()
         }
     }
-    
+
     private func uploadPDFFormAction(button: UIButton) {
         let menu = UIMenu(title: "", children: [
             UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { action in
@@ -1557,9 +1557,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             },
             UIAction(title: NSLocalizedString("From device", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { action in
                 print("Selected 'From device'")
-            }
+            },
         ])
-        
+
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
     }
@@ -2009,13 +2009,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
-    
+
     func duplicateRoom(room: ASCFolder) {
         RoomSharingNetworkService().duplicateRoom(room: room) { result in
             switch result {
             case let .success(responce):
                 log.info("Room duplicated successfully", responce)
-                //TODO: - add progress
+            // TODO: - add progress
             case let .failure(error):
                 print(error.localizedDescription)
             }

@@ -1388,7 +1388,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isDocspace, isUserCategory, canShare {
                 entityActions.insert(.shareAsRoom)
             }
-            
+
             if isDocspace, canDuplicateRoom {
                 entityActions.insert(.duplicate)
             }

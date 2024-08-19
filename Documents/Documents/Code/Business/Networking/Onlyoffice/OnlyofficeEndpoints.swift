@@ -241,8 +241,8 @@ enum OnlyofficeAPI {
             static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }
-            
-            static func duplicateRoom(room: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>>  {
+
+            static func duplicateRoom(room: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.duplicateRoom), .put)
             }
         }

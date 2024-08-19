@@ -2014,7 +2014,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         RoomSharingNetworkService().duplicateRoom(room: room) { result in
             switch result {
             case let .success(responce):
-                print("=====responce", responce)
+                log.info("Room duplicated successfully", responce)
+                //TODO: - add progress
             case let .failure(error):
                 print(error.localizedDescription)
             }

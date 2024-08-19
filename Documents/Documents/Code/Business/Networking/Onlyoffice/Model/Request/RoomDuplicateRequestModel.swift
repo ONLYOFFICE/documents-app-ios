@@ -9,6 +9,6 @@
 import Foundation
 
 struct RoomDuplicateRequestModel: Codable {
-    let folderIds: [Int]
-    let fileIds: [Int]
+    let folderIds: [String]
+    let fileIds: [String]
 }

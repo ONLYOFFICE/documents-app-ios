@@ -126,21 +126,39 @@ struct RoomSharingView: View {
     @ViewBuilder
     private var sharedLinksSectionHeader: some View {
         if viewModel.room.isFillingFormRoom {
-            Text(NSLocalizedString("Public link", comment: ""))
+            formRoomHeader
         } else {
-            HStack {
-                Text(NSLocalizedString("Shared links", comment: ""))
-                Text("(\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))")
-                Spacer()
-                if viewModel.sharedLinksModels.count < viewModel.linksLimit && viewModel.isSharingPossible {
-                    Button {
-                        viewModel.createAddLinkAction()
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                    }
-                }
+            sharedLinksHeader
+        }
+    }
+
+    private var formRoomHeader: some View {
+        Text(NSLocalizedString("Public link", comment: ""))
+    }
+
+    private var sharedLinksHeader: some View {
+        HStack {
+            Text(sharedLinksTitle)
+            Spacer()
+            if viewModel.canAddLink {
+                addButton
             }
+        }
+    }
+    
+    private var sharedLinksTitle: String {
+        let title = NSLocalizedString("Shared links", comment: "")
+        return "\(title) (\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))"
+    }
+
+
+
+    private var addButton: some View {
+        Button {
+            viewModel.createAddLinkAction()
+        } label: {
+            Image(systemName: "plus")
+                .foregroundColor(Asset.Colors.brend.swiftUIColor)
         }
     }
 

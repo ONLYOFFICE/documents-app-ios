@@ -23,6 +23,10 @@ final class RoomSharingViewModel: ObservableObject {
     var isPossibleCreateNewLink: Bool {
         room.roomType != .colobaration
     }
+    
+   var canAddLink: Bool {
+        sharedLinksModels.count < linksLimit && isSharingPossible
+    }
 
     let linksLimit = 6
     var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }

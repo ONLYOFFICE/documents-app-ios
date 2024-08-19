@@ -216,8 +216,14 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let folder = strongSelf.folder,
                 let provider = strongSelf.provider
             else { return }
-
-            strongSelf.createFirstItem(view.actionButton)
+            
+            switch view.type {
+            case .formFillingRoom:
+                strongSelf.uploadPDFFormAction(button: view.actionButton)
+            default:
+                strongSelf.createFirstItem(view.actionButton)
+            }
+            
             view.actionButton.isHidden = !provider.allowEdit(entity: folder)
         }
         return view
@@ -1474,12 +1480,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if folder.isRoom {
                         if folder.roomType == .fillingForm {
                             localEmptyView?.type = .formFillingRoom
-                            localEmptyView?.onAction = { [weak self] in
-                                guard let self,
-                                      let button = localEmptyView?.actionButton as? UIButton
-                                else { return }
-                                self.uploadPDFFormAction(button: button)
-                            }
                         } else {
                             localEmptyView?.type = .room
                             if !(provider.allowEdit(entity: folder)) {

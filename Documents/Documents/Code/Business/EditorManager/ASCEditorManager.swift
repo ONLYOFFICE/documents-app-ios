@@ -54,6 +54,7 @@ typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @es
 typealias ASCEditorManagerRenameHandler = (_ file: ASCFile?, _ title: String, _ complation: @escaping (Bool) -> Void) -> Void
 typealias ASCEditorManagerShareHandler = (_ file: ASCFile?) -> Void
 typealias ASCEditorManagerLockedHandler = () -> Void
+typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ complation: @escaping (Bool) -> Void) -> Void
 
 class ASCEditorManager: NSObject {
     public static let shared = ASCEditorManager()
@@ -67,6 +68,7 @@ class ASCEditorManager: NSObject {
     private var favoriteHandler: ASCEditorManagerFavoriteHandler?
     private var shareHandler: ASCEditorManagerShareHandler?
     private var renameHandler: ASCEditorManagerRenameHandler?
+    private var fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler?
     private var documentInteractionController: UIDocumentInteractionController?
     var documentServiceURL: String?
     private var documentKeyForTrack: String?
@@ -494,7 +496,8 @@ class ASCEditorManager: NSObject {
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
         shareHandler: ASCEditorManagerShareHandler? = nil,
-        renameHandler: ASCEditorManagerRenameHandler? = nil
+        renameHandler: ASCEditorManagerRenameHandler? = nil,
+        fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler? = nil
     ) {
         var cancel = false
 
@@ -502,6 +505,7 @@ class ASCEditorManager: NSObject {
         self.favoriteHandler = nil
         self.shareHandler = nil
         self.renameHandler = nil
+        self.fillFormDidSendHandler = nil
 
         let fetchAndOpen = { [weak self] in
             guard let self else { return }
@@ -523,6 +527,7 @@ class ASCEditorManager: NSObject {
                     self.favoriteHandler = favoriteHandler
                     self.shareHandler = shareHandler
                     self.renameHandler = renameHandler
+                    self.fillFormDidSendHandler = fillFormDidSendHandler
 
                     self.openEditorInCollaboration(
                         file: file,
@@ -625,7 +630,7 @@ class ASCEditorManager: NSObject {
                             return
                         }
 
-                        if error != nil {
+                        if let error {
                             openHandler?(.error, Float(progress), error, &cancel)
                         } else if result != nil {
                             let localPdf = ASCFile()
@@ -1427,6 +1432,23 @@ extension ASCEditorManager {
             complation(.failure(
                 ASCEditorManagerError(
                     msg: NSLocalizedString("Couldn't rename the file", comment: "")
+                )
+            ))
+        }
+    }
+
+    func fillFormDidSend(_ controller: DocumentEditorViewController, complation: @escaping ((Result<Bool, any Error>) -> Void)) {
+        if
+            let file = openedCopy ? openedlocallyFile : openedFile,
+            let fillFormDidSendHandler
+        {
+            fillFormDidSendHandler(file) { success in
+                complation(.success(true))
+            }
+        } else {
+            complation(.failure(
+                ASCEditorManagerError(
+                    msg: NSLocalizedString("Failed to submit the form", comment: "")
                 )
             ))
         }

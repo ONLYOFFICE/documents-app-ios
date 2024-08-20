@@ -1437,7 +1437,7 @@ extension ASCEditorManager {
         }
     }
 
-    func fillFormDidSend(_ controller: DocumentEditorViewController, complation: @escaping ((Result<Bool, any Error>) -> Void)) {
+    func editorFillFormDidSend(_ controller: EditorViewControllerProtocol, complation: @escaping ((Result<Bool, any Error>) -> Void)) {
         if
             let file = openedCopy ? openedlocallyFile : openedFile,
             let fillFormDidSendHandler

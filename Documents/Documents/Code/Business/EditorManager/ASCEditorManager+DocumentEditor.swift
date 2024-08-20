@@ -168,4 +168,8 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
     func documentRename(_ controller: DocumentEditor.DocumentEditorViewController, title: String, complation: @escaping ((Result<Bool, Error>) -> Void)) {
         editorDocumentRename(controller, title: title, complation: complation)
     }
+
+    func fillFormDidSend(_ controller: DocumentEditor.DocumentEditorViewController, complation: @escaping ((Result<Bool, Error>) -> Void)) {
+        editorFillFormDidSend(controller, complation: complation)
+    }
 }

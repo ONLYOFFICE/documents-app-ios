@@ -303,8 +303,16 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
 
     func uploadPDFFromDevice(viewController: ASCDocumentsViewController) {
-        // TODO: -
-        print("uploadPDFFromDevice")
+        ASCCreateEntityDocumentDelegate.shared.documentsViewController = viewController
+        ASCCreateEntityDocumentDelegate.shared.provider = provider
+        let documentPicker = UIDocumentPickerViewController(
+            documentTypes: [
+                String(kUTTypePDF),
+            ],
+            in: .import
+        )
+        documentPicker.delegate = ASCCreateEntityDocumentDelegate.shared
+        viewController.present(documentPicker, animated: true)
     }
 
     // MARK: - Private

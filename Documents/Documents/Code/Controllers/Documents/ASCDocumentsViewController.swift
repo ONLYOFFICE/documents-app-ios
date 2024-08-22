@@ -2011,13 +2011,27 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func duplicateRoom(room: ASCFolder) {
-        RoomSharingNetworkService().duplicateRoom(room: room) { result in
-            switch result {
-            case let .success(responce):
-                log.info("Room duplicated successfully", responce)
-            // TODO: - add progress
-            case let .failure(error):
-                print(error.localizedDescription)
+        var hud: MBProgressHUD?
+
+        RoomSharingNetworkService().duplicateRoom(room: room) { [ unowned self ] status, progress, result, error, cancel in
+            
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.mode = .annularDeterminate
+                hud?.progress = 0
+                hud?.label.text = NSLocalizedString("Duplication", comment: "Caption of the processing")
+            } else if status == .progress {
+                hud?.progress = progress
+            } else if status == .error {
+                hud?.hide(animated: true)
+                UIAlertController.showError(
+                    in: self,
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not duplicate the room.", comment: "")
+                )
+            } else if status == .end {
+                hud?.setSuccessState()
+                hud?.hide(animated: false, afterDelay: .standardDelay)
+                loadFirstPage()
             }
         }
     }

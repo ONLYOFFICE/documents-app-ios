@@ -96,6 +96,7 @@
 		F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
 		F391DE5D280964AF00C93648 /* ASCUserTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */; };
 		F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
+		F39306A52C74ECBC0034691F /* OnlyofficeRoomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */; };
 		F3A4E3992ABC6E4E00001CB9 /* ASCUserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4E3982ABC6E4E00001CB9 /* ASCUserTest.swift */; };
 		F3AAEFC328241179008ED772 /* ASCFiltersCollectionViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */; };
 		F3AAEFC528241917008ED772 /* ASCOnlyOfficeFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */; };
@@ -714,6 +715,7 @@
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserViewController.swift; sourceTree = "<group>"; };
+		F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomOperation.swift; sourceTree = "<group>"; };
 		F3A4E3982ABC6E4E00001CB9 /* ASCUserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTest.swift; sourceTree = "<group>"; };
 		F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFiltersCollectionViewModelBuilder.swift; sourceTree = "<group>"; };
 		F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyOfficeFiltersController.swift; sourceTree = "<group>"; };
@@ -3013,6 +3015,7 @@
 			isa = PBXGroup;
 			children = (
 				FC9EEF902BFB201700A66DE8 /* Request */,
+				F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */,
 				FC9EEF912BFB201700A66DE8 /* LogoUploadResult.swift */,
 				FC9EEF922BFB201700A66DE8 /* OnlyofficeAuth.swift */,
 				FC9EEF932BFB201700A66DE8 /* OnlyofficeCapabilities.swift */,
@@ -4127,6 +4130,7 @@
 				FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */,
 				FC759C252C00614D00510096 /* RoomSelectionView.swift in Sources */,
 				FCCE50AA2C1AF79000102056 /* SharedSettingsRootViewController.swift in Sources */,
+				F39306A52C74ECBC0034691F /* OnlyofficeRoomOperation.swift in Sources */,
 				F36E4DBF2B3DBA2B00910772 /* ServicesProvider.swift in Sources */,
 				FC25B438284F670D0075D6C2 /* ASCPushNotificationManager.swift in Sources */,
 				1D299155274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift in Sources */,

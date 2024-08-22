@@ -36,6 +36,7 @@ enum OnlyofficeAPI {
         public static let operationMove = "api/\(version)/files/fileops/move"
         public static let operationDelete = "api/\(version)/files/fileops/delete"
         public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
+        public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -74,7 +75,6 @@ enum OnlyofficeAPI {
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
-        public static let duplicateRoom = "api/\(version)/files/fileops/duplicate"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -241,10 +241,6 @@ enum OnlyofficeAPI {
             static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }
-
-            static func duplicateRoom(room: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.duplicateRoom), .put)
-            }
         }
 
         // MARK: Files
@@ -351,6 +347,7 @@ enum OnlyofficeAPI {
             static let terminate: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationsTerminate)
             static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
+            static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
         }
 
         // MARK: Third-Party Integration

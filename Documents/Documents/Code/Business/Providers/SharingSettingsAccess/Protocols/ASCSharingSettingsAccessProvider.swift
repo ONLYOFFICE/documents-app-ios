@@ -9,11 +9,11 @@
 import Foundation
 
 protocol ASCSharingSettingsAccessProvider {
-    func get() -> [ASCShareAccess]
+    func get(rightHoldersTableType: RightHoldersTableType?) -> [ASCShareAccess]
 }
 
 extension ASCSharingSettingsAccessProvider {
-    func get() -> [ASCShareAccess] {
+    func get(rightHoldersTableType: RightHoldersTableType? = nil) -> [ASCShareAccess] {
         [.full, .read, .deny]
     }
 }

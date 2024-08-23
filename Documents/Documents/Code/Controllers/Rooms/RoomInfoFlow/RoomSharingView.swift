@@ -310,8 +310,9 @@ struct RoomSharingView_Previews: PreviewProvider {
 struct ASCUserRowModel: Identifiable {
     var id = UUID()
     var image: ImageSourceType
-    var title: String
-    var subtitle: String
+    var userName: String
+    var accessString: String
+    var emailString: String
     var isOwner: Bool
     var onTapAction: () -> Void
 
@@ -325,15 +326,22 @@ struct ASCUserRow: View {
     var model: ASCUserRowModel
 
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             imageView(for: model.image)
-            Text(model.title)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
+            
+            VStack(alignment: .leading) {
+                Text(model.userName)
+                    .lineLimit(1)
+                    .font(.callout)
+                Text([model.accessString, model.emailString].joined(separator: " | "))
+                    .lineLimit(1)
+                    .foregroundColor(.secondaryLabel)
+                    .font(.caption)
+            }
 
             Spacer()
 
-            Text(model.subtitle)
+            Text(model.accessString)
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)

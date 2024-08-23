@@ -281,8 +281,9 @@ private extension RoomSharingViewModel {
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
             image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
-            title: sharing.user.displayName ?? "",
-            subtitle: sharing.user.accessValue.title(),
+            userName: sharing.user.displayName ?? "",
+            accessString: sharing.user.accessValue.title(),
+            emailString: sharing.user.email ?? "",
             isOwner: sharing.user.isOwner,
             onTapAction: { [weak self] in
                 guard let self, isUserSelectionAllow, !sharing.user.isOwner else { return }

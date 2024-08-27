@@ -8,25 +8,9 @@
 
 import UIKit
 
-// enum ASCTransferMode: Int {
-//    case local
-//    case cloud
-// }
-
-enum ASCTransferType: Int {
-    case copy
-    case move
-    case recover
-    case select
-}
-
 class ASCTransferNavigationController: ASCBaseNavigationController {
     static let identifier = String(describing: ASCTransferNavigationController.self)
 
-    var transferType: ASCTransferType = .copy
-    var sourceProvider: ASCFileProviderProtocol?
-    var sourceFolder: ASCFolder?
-    var sourceItems: [ASCEntity]?
     var doneHandler: ((ASCFileProviderProtocol?, ASCFolder?, String?) -> Void)?
     var displayActionButtonOnRootVC: Bool = false
 

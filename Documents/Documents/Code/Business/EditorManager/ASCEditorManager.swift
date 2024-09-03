@@ -76,7 +76,6 @@ class ASCEditorManager: NSObject {
     private var documentToken: String?
     private var documentCommonConfig: String?
     private var editorWindow: UIWindow?
-    private let converterKey = ASCConstants.Keys.converterKey
     private let trackingReadyForLocking = 10000
     private var timer: Timer?
     private var trackingFileStatus: Int = 0

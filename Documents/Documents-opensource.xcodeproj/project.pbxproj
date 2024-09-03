@@ -460,7 +460,6 @@
 		FC83D5742A9742F000C404CB /* ASCDebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D55C2A9742EC00C404CB /* ASCDebugManager.swift */; };
 		FC83D5752A9742F000C404CB /* ASCSDWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D55D2A9742ED00C404CB /* ASCSDWebImageDownloaderOperation.swift */; };
 		FC83D5762A9742F000C404CB /* ASCLogIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D55E2A9742ED00C404CB /* ASCLogIntercepter.swift */; };
-		FC83D5772A9742F000C404CB /* ASCDocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D55F2A9742ED00C404CB /* ASCDocumentService.swift */; };
 		FC83D5792A9742F000C404CB /* ASCViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D5612A9742ED00C404CB /* ASCViewControllerManager.swift */; };
 		FC83D57A2A9742F000C404CB /* ASCSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D5622A9742EE00C404CB /* ASCSignInController.swift */; };
 		FC83D57B2A9742F000C404CB /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83D5632A9742EE00C404CB /* ManagedAppConfig.swift */; };
@@ -1005,7 +1004,6 @@
 		FC83D55C2A9742EC00C404CB /* ASCDebugManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDebugManager.swift; sourceTree = "<group>"; };
 		FC83D55D2A9742ED00C404CB /* ASCSDWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSDWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
 		FC83D55E2A9742ED00C404CB /* ASCLogIntercepter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLogIntercepter.swift; sourceTree = "<group>"; };
-		FC83D55F2A9742ED00C404CB /* ASCDocumentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentService.swift; sourceTree = "<group>"; };
 		FC83D5612A9742ED00C404CB /* ASCViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCViewControllerManager.swift; sourceTree = "<group>"; };
 		FC83D5622A9742EE00C404CB /* ASCSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSignInController.swift; sourceTree = "<group>"; };
 		FC83D5632A9742EE00C404CB /* ManagedAppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
@@ -3157,7 +3155,6 @@
 				FC83D5672A9742EF00C404CB /* ASCAppSettings.swift */,
 				FC83D5572A9742EB00C404CB /* ASCConstants.swift */,
 				FC83D55C2A9742EC00C404CB /* ASCDebugManager.swift */,
-				FC83D55F2A9742ED00C404CB /* ASCDocumentService.swift */,
 				FC83D5662A9742EF00C404CB /* ASCEntityManager.swift */,
 				FC83D5642A9742EE00C404CB /* ASCFileManager.swift */,
 				FC83D5682A9742EF00C404CB /* ASCLocalFileHelper.swift */,
@@ -4128,7 +4125,6 @@
 				FC7081C92812E2260057FCD2 /* DropboxApiClient.swift in Sources */,
 				FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FC7081CA2812E2260057FCD2 /* ASCEntityAccess.swift in Sources */,
-				FC7DD7A12B502F7E0037405B /* ASCDocSpaceLinkView.swift in Sources */,
 				FC4820862C2F026E00E22605 /* ASCLoaderViewCell.swift in Sources */,
 				FC83D6192A974E2300C404CB /* Data+Extension.swift in Sources */,
 				FC142A3F289819B400EDE7CE /* ASCAccount.swift in Sources */,
@@ -4150,7 +4146,6 @@
 				FC83D5752A9742F000C404CB /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				1D8CFC41290D7F5000F71071 /* ASCShareSettingsRoomsAPIWorker.swift in Sources */,
 				FC7081CF2812E2260057FCD2 /* ASCOnlyofficeProvider.swift in Sources */,
-				FC83D5772A9742F000C404CB /* ASCDocumentService.swift in Sources */,
 				FC7081D12812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FC379D6E2C380C5900B120D9 /* ImagedDetailCellView.swift in Sources */,
 				FC5943DE2AE6D254001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */,

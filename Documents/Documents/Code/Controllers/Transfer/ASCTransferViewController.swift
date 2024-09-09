@@ -45,6 +45,7 @@ class ASCTransferViewController: UITableViewController {
         tableView.backgroundView = UIView()
         tableView.tableFooterView = UIView()
 
+        showLoadingPage(true)
         presenter.viewDidLoad()
 
         if let refreshControl = refreshControl {
@@ -175,7 +176,10 @@ extension ASCTransferViewController: ASCTransferView {
     private func updateTableData(_ tableData: TableData) {
         self.tableData = tableData
         refreshControl?.endRefreshing()
-        showLoadingPage(false)
-        showEmptyView(self.tableData.cells.isEmpty)
+        if !presenter.isLoading {
+            showLoadingPage(false)
+            showEmptyView(self.tableData.cells.isEmpty)
+        }
+        tableView.reloadData()
     }
 }

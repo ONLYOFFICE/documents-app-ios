@@ -43,7 +43,7 @@ final class ASCTransferPresenter {
     private let enableFillRootFolders: Bool
     private var items: [ASCTransferViewType] = []
     private var isActionButtonLocked: Bool = true
-    private var path: String = "/"
+    private let path: String
     private let needLoadFirstPage: Bool
 
     private let idOnlyofficeRoot = "id-onlyoffice-root"
@@ -63,6 +63,7 @@ final class ASCTransferPresenter {
         transferType: ASCTransferType,
         enableFillRootFolders: Bool = true,
         folder: ASCFolder? = nil,
+        path: String = "/",
         flowModel: ASCTransferFlowModel? = nil,
         needLoadFirstPage: Bool = true
     ) {
@@ -71,6 +72,7 @@ final class ASCTransferPresenter {
         self.transferType = transferType
         self.enableFillRootFolders = enableFillRootFolders
         self.folder = folder
+        self.path = path
         self.flowModel = flowModel
         self.needLoadFirstPage = needLoadFirstPage
     }
@@ -403,6 +405,7 @@ private extension ASCTransferPresenter {
             transferType: transferType,
             enableFillRootFolders: enableFillRootFolders,
             folder: folder,
+            path: path,
             flowModel: flowModel,
             needLoadFirstPage: true
         )

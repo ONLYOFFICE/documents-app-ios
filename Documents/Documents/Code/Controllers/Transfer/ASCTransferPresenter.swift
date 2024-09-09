@@ -26,6 +26,12 @@ protocol ASCTransferPresenterProtocol {
     func onClose()
 }
 
+struct ASCTransferFlowModel {
+    let sourceFolder: ASCFolder?
+    let sourceProvider: ASCFileProviderProtocol?
+    let sourceItems: [ASCEntity]?
+}
+
 final class ASCTransferPresenter {
     // MARK: Private vars
 
@@ -41,10 +47,8 @@ final class ASCTransferPresenter {
     private let idOnlyofficeRoot = "id-onlyoffice-root"
     private lazy var onlyofficeCategoryProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
 
-    var folder: ASCFolder?
-    private let sourceFolder: ASCFolder?
-    private let sourceProvider: ASCFileProviderProtocol?
-    private let sourceItems: [ASCEntity]?
+    private let folder: ASCFolder?
+    private let flowModel: ASCTransferFlowModel?
 
     // MARK: Lifecycle
 
@@ -234,8 +238,8 @@ private extension ASCTransferPresenter {
     }
 
     var isActionButtonEnabled: Bool {
-        guard sourceFolder != nil else { return true }
-        return (sourceFolder?.id != folder?.id || sourceProvider?.id != provider?.id)
+        guard flowModel?.sourceFolder != nil else { return true }
+        return (flowModel?.sourceFolder?.id != folder?.id || flowModel?.sourceProvider?.id != provider?.id)
             && provider?.allowEdit(entity: folder) ?? false
             && !isActionButtonLocked
     }
@@ -243,13 +247,14 @@ private extension ASCTransferPresenter {
     // MARK: Build
 
     func build() {
+        let tableData = mapTableData()
         DispatchQueue.main.async { [self] in
             view?.updateViewData(
                 data: ASCTransferViewData(
                     title: folder?.title,
                     navPrompt: navPrompt,
                     actionButtonTitle: actionButtonTitle,
-                    tableData: mapTableData(),
+                    tableData: tableData,
                     isActionButtonEnabled: isActionButtonEnabled
                 )
             )
@@ -381,7 +386,7 @@ private extension ASCTransferPresenter {
     }
 
     func isFolderInteractable(_ folder: ASCFolder) -> Bool {
-        guard let sourceItems = sourceItems else { return true }
+        guard let sourceItems = flowModel?.sourceItems else { return true }
         return sourceItems.first(where: { $0.id == folder.id }) == nil
     }
 
@@ -392,9 +397,7 @@ private extension ASCTransferPresenter {
             transferType: transferType,
             enableFillRootFolders: enableFillRootFolders,
             folder: folder,
-            sourceFolder: sourceFolder,
-            sourceProvider: sourceProvider,
-            sourceItems: sourceItems,
+            flowModel: flowModel,
             needLoadFirstPage: true
         )
     }

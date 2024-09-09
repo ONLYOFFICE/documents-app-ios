@@ -130,7 +130,7 @@ class ASCTransferViewController: UITableViewController {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellFolderCellId, for: indexPath) as? ASCTransferViewCell else {
                     return UITableViewCell()
                 }
-                cell.folderView.image = viewModel.image
+                cell.leftImageView.image = viewModel.image
                 cell.titleLabel.text = viewModel.title
                 cell.isUserInteractionEnabled = viewModel.isInteractable
                 cell.contentView.alpha = viewModel.isInteractable ? 1 : 0.5

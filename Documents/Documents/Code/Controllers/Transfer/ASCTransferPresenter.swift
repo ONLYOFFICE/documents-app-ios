@@ -271,7 +271,8 @@ private extension ASCTransferPresenter {
                             guard let self else { return }
                             let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)
                             let presenter: ASCTransferPresenterProtocol = self.copy(
-                                forProvider: provider?.copy(),
+                                view: transferVC,
+                                provider: provider?.copy(),
                                 folder: folder,
                                 path: path.appendingPathComponent(folder.title)
                             )
@@ -384,7 +385,7 @@ private extension ASCTransferPresenter {
         return sourceItems.first(where: { $0.id == folder.id }) == nil
     }
 
-    func copy(forProvider provider: ASCFileProviderProtocol?, folder: ASCFolder, path: String) -> ASCTransferPresenter {
+    func copy(view: ASCTransferView, provider: ASCFileProviderProtocol?, folder: ASCFolder, path: String) -> ASCTransferPresenter {
         ASCTransferPresenter(
             view: view,
             provider: provider,

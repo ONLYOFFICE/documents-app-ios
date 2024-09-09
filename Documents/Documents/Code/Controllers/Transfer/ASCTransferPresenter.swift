@@ -298,7 +298,9 @@ private extension ASCTransferPresenter {
     // MARK: Support funcs
 
     func getImage(forFolder folder: ASCFolder, provider: ASCFileProviderProtocol?) -> UIImage? {
-        guard folder.parent == nil else { return nil }
+        guard folder.parent == nil else {
+            return Asset.Images.listFolder.image
+        }
         var folderImage: UIImage?
 
         if let provider = provider {

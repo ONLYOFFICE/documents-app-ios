@@ -102,6 +102,10 @@
 		F3AAEFC528241917008ED772 /* ASCOnlyOfficeFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */; };
 		F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */; };
 		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
+		F3D3850E2C8F472E002889EE /* FormCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850D2C8F472E002889EE /* FormCompletedView.swift */; };
+		F3D385102C8F473E002889EE /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */; };
+		F3D385152C8F5439002889EE /* ASCFormCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D385142C8F5439002889EE /* ASCFormCellView.swift */; };
+		F3D385172C8F7B40002889EE /* ASCUserWithEmailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D385162C8F7B40002889EE /* ASCUserWithEmailRowView.swift */; };
 		F3DA8957280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */; };
 		F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */; };
 		F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */; };
@@ -721,6 +725,10 @@
 		F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyOfficeFiltersController.swift; sourceTree = "<group>"; };
 		F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFiltersViewController.swift; sourceTree = "<group>"; };
 		F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFilterModel.swift; sourceTree = "<group>"; };
+		F3D3850D2C8F472E002889EE /* FormCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedView.swift; sourceTree = "<group>"; };
+		F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
+		F3D385142C8F5439002889EE /* ASCFormCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFormCellView.swift; sourceTree = "<group>"; };
+		F3D385162C8F7B40002889EE /* ASCUserWithEmailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserWithEmailRowView.swift; sourceTree = "<group>"; };
 		F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGroupTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectGroupViewController.swift; sourceTree = "<group>"; };
 		F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalFilterController.swift; sourceTree = "<group>"; };
@@ -1909,6 +1917,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F3D3850C2C8F4668002889EE /* FormCompletedFlow */ = {
+			isa = PBXGroup;
+			children = (
+				F3D385112C8F53F6002889EE /* View */,
+				F3D3850D2C8F472E002889EE /* FormCompletedView.swift */,
+				F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */,
+			);
+			path = FormCompletedFlow;
+			sourceTree = "<group>";
+		};
+		F3D385112C8F53F6002889EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3D385142C8F5439002889EE /* ASCFormCellView.swift */,
+				F3D385162C8F7B40002889EE /* ASCUserWithEmailRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FC0377A12BDB8D6500DDB2EF /* DocumentServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2688,6 +2715,7 @@
 		FC759C242C00614D00510096 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				F3D3850C2C8F4668002889EE /* FormCompletedFlow */,
 				FC759C002C00614D00510096 /* CreateRoomFlow */,
 				FC759C022C00614D00510096 /* EditRoomFlow */,
 				FC759C042C00614D00510096 /* Enums */,
@@ -4188,6 +4216,7 @@
 				FCCE50BA2C1AF79000102056 /* TimeLimitCellView.swift in Sources */,
 				FCB8A39721C29D4900CF74FA /* ASCBaseSplitViewController.swift in Sources */,
 				FC7E456929226A35006C4CA1 /* ASCGroup.swift in Sources */,
+				F3D385102C8F473E002889EE /* FormCompletedViewModel.swift in Sources */,
 				FCECDDCF264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC68526B26837B7300D830EC /* NextcloudApiClient.swift in Sources */,
 				FC68398721B7DC0D00251CEA /* ASCRootViewController.swift in Sources */,
@@ -4418,6 +4447,7 @@
 				1D8DF02F2639B6B10054B2F9 /* ASCOneDriveProvider.swift in Sources */,
 				FCE835192A84CAF100EFA839 /* CreateEntityViewModel.swift in Sources */,
 				FC759CD72C00687A00510096 /* DispatchQueueExtensions.swift in Sources */,
+				F3D385172C8F7B40002889EE /* ASCUserWithEmailRowView.swift in Sources */,
 				FC759C2E2C00614D00510096 /* Rooms.swift in Sources */,
 				FC7B80212AFA299D00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
@@ -4558,6 +4588,7 @@
 				FC68399621B7EF1000251CEA /* ASCOnlyofficeCategory.swift in Sources */,
 				FC1984982805559D002057B2 /* ASCFiltersCollectionViewCell.swift in Sources */,
 				FC759CAF2C00615E00510096 /* OnlyofficeInviteItemRequestModel.swift in Sources */,
+				F3D3850E2C8F472E002889EE /* FormCompletedView.swift in Sources */,
 				FC5943612AE6816E001BA2F9 /* EditorViewControllerProtocol.swift in Sources */,
 				FCE9F7022B2B56EC0056E420 /* ASCAttachmentManager.swift in Sources */,
 				FC759C312C00614D00510096 /* InviteUsersView.swift in Sources */,
@@ -4581,6 +4612,7 @@
 				FCECDDE126430BD3006CD7B9 /* ASCResponsePassword.swift in Sources */,
 				FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */,
 				FCCE50B62C1AF79000102056 /* ImagedDetailCellView.swift in Sources */,
+				F3D385152C8F5439002889EE /* ASCFormCellView.swift in Sources */,
 				FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */,
 				FCCE50AD2C1AF79000102056 /* EditSharedLinkView.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,

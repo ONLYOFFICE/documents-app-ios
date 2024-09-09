@@ -83,3 +83,65 @@ public extension UIImage {
         }
     }
 }
+
+extension UIImage {
+    static func getFileExtensionBasedImage(fileExt: String, layoutType: ASCEntityViewLayoutType) -> UIImage {
+        if ASCConstants.FileExtensions.documents.contains(fileExt) {
+            return iconFormatDocument(for: layoutType)
+        } else if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
+            return iconFormatSpreadsheet(for: layoutType)
+        } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
+            return iconFormatPresentation(for: layoutType)
+        } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
+            return iconFormatVideo(for: layoutType)
+        } else if ASCConstants.FileExtensions.forms.contains(fileExt) {
+            if fileExt == ASCConstants.FileExtensions.docxf {
+                return iconFormatDocxf(for: layoutType)
+            } else if fileExt == ASCConstants.FileExtensions.oform {
+                return iconFormatOform(for: layoutType)
+            } else {
+                return iconFormatUnknown(for: layoutType)
+            }
+        } else if fileExt == ASCConstants.FileExtensions.pdf {
+            return iconFormatPdf(for: layoutType)
+        } else {
+            return iconFormatUnknown(for: layoutType)
+        }
+    }
+
+    private static func iconFormatImage(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatImage.image : Asset.Images.gridFormatImage.image
+    }
+
+    private static func iconFormatDocument(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatDocument.image : Asset.Images.gridFormatDocument.image
+    }
+
+    private static func iconFormatSpreadsheet(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatSpreadsheet.image : Asset.Images.gridFormatSpreadsheet.image
+    }
+
+    private static func iconFormatPresentation(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatPresentation.image : Asset.Images.gridFormatPresentation.image
+    }
+
+    private static func iconFormatVideo(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatVideo.image : Asset.Images.gridFormatVideo.image
+    }
+
+    private static func iconFormatDocxf(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatDocxf.image : Asset.Images.gridFormatDocxf.image
+    }
+
+    private static func iconFormatOform(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatOform.image : Asset.Images.gridFormatOform.image
+    }
+
+    private static func iconFormatUnknown(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatUnknown.image : Asset.Images.gridFormatUnknown.image
+    }
+
+    private static func iconFormatPdf(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatPdf.image : Asset.Images.gridFormatPdf.image
+    }
+}

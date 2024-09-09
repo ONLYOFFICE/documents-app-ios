@@ -457,26 +457,8 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             } else {
                 imageView.image = iconFormatImage
             }
-        } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
-            imageView.image = iconFormatDocument
-        } else if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
-            imageView.image = iconFormatSpreadsheet
-        } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
-            imageView.image = iconFormatPresentation
-        } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
-            imageView.image = iconFormatVideo
-        } else if ASCConstants.FileExtensions.forms.contains(fileExt) {
-            if fileExt == ASCConstants.FileExtensions.docxf {
-                imageView.image = iconFormatDocxf
-            } else if fileExt == ASCConstants.FileExtensions.oform {
-                imageView.image = iconFormatOform
-            } else {
-                imageView.image = iconFormatUnknown
-            }
-        } else if fileExt == ASCConstants.FileExtensions.pdf {
-            imageView.image = iconFormatPdf
         } else {
-            imageView.image = iconFormatUnknown
+            imageView.image = .getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
         }
 
         imageView.removeConstraints(imageView.constraints)

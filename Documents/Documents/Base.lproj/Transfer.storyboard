@@ -81,7 +81,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="folderView" destination="WsF-2g-ZCJ" id="8lY-BT-oCm"/>
+                                    <outlet property="leftImageView" destination="WsF-2g-ZCJ" id="8lY-BT-oCm"/>
                                     <outlet property="titleLabel" destination="lcP-TZ-iV7" id="FCi-GG-H0M"/>
                                 </connections>
                             </tableViewCell>

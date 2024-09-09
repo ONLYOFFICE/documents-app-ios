@@ -476,6 +476,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
+    func fillFormDidSubmit(_ entity: ASCEntity, completeon: ASCProviderCompletionHandler?) {
+        guard let file = entity as? ASCFile else {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+            return
+        }
+        print("TODO: - Add logic for fillForm did submit here")
+        completeon?(self, file, true, nil)
+    }
+
     func markAsRead(_ entities: [ASCEntity], completeon: ASCProviderCompletionHandler?) {
         var params: [String: [String]] = [:]
 
@@ -1827,6 +1836,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         }
+        let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, complation in
+            guard let file else { complation(false); return }
+
+            self.fillFormDidSubmit(file) { provider, result, success, error in
+                complation(success)
+            }
+        }
 
         if ASCEditorManager.shared.checkSDKVersion() {
             ASCEditorManager.shared.editCloud(
@@ -1837,7 +1853,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 closeHandler: closeHandler,
                 favoriteHandler: favoriteHandler,
                 shareHandler: shareHandler,
-                renameHandler: renameHandler
+                renameHandler: renameHandler,
+                fillFormDidSendHandler: fillFormDidSendHandler
             )
         } else {
             ASCEditorManager.shared.editFileLocally(
@@ -1917,7 +1934,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler, renameHandler: renameHandler)
+            ASCEditorManager.shared.browsePdfCloud(
+                for: self,
+                file,
+                openHandler: openHandler,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
+            )
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else if isAllowConvert {

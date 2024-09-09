@@ -281,6 +281,9 @@
 /* No comment provided by engineer. */
 "Choose from list" = "Choisir dans la liste";
 
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Choisir l'emplacement avec des modèles";
+
 /* No comment provided by engineer. */
 "Choose room type" = "Choisir le type de salle";
 
@@ -712,6 +715,12 @@
 
 /* Expiration status */
 "Expired" = "Expiré";
+
+/* Days left */
+"Expires after %d days" = "Expire dans %d jours";
+
+/* Hours left */
+"Expires after %d hours" = "Expire dans %d heures";
 
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Expire dans les 7 jours";
@@ -1451,6 +1460,9 @@
 "Rooms" = "Salles";
 
 /* No comment provided by engineer. */
+"Root folder" = "Dossier racine";
+
+/* No comment provided by engineer. */
 "Same as system" = "Identique à système";
 
 /* No comment provided by engineer. */
@@ -1709,6 +1721,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Ressources tierces";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Le stockage tiers";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Le stockage tiers";
 
@@ -1851,6 +1866,9 @@
 "Uploading" = "Téléchargement";
 
 /* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Utilisez des services tiers pour stocker les données de cette salle. Un nouveau dossier pour le stockage des données de cette salle sera créé dans l'espace de stockage connecté";
+
+/* No comment provided by engineer. */
 "User" = "Utilisateur";
 
 /* No comment provided by engineer. */
@@ -1942,6 +1960,9 @@
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Vous pouvez connecter les comptes suivants au %@. Ils seront affichés dans le dossier 'Mes documents' et vous pourrez les éditer et les enregistrer directement sur le portail en un seul endroit.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Vous pouvez connecter les comptes suivants aux salles DocSpace";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Vous avez quitté la salle";

@@ -315,10 +315,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func configureView() {
         view.backgroundColor = .systemBackground
-
-//        view.addSubview(tableView)
-//        tableView.fillToSuperview()
-
         view.addSubview(collectionView)
         collectionView.fillToSuperview()
 
@@ -2005,7 +2001,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     room.mute = false
                 }
             case let .failure(error):
-                print(error.localizedDescription)
+                log.error(error)
+
+                UIAlertController.showError(
+                    in: self,
+                    message: NSLocalizedString("Something wrong", comment: "")
+                )
             }
         }
     }
@@ -2864,9 +2865,22 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
             present(transferNavigationVC, animated: true, completion: nil)
 
-            transferNavigationVC.sourceProvider = provider
-            transferNavigationVC.sourceFolder = folder
-            transferNavigationVC.sourceItems = entities
+            if let transferViewController = transferNavigationVC.topViewController as? ASCTransferViewController {
+                let presenter = ASCTransferPresenter(
+                    view: transferViewController,
+                    provider: nil,
+                    transferType: isTrash(folder) ? .recover : (move ? .move : .copy),
+                    enableFillRootFolders: true,
+                    folder: nil,
+                    flowModel: ASCTransferFlowModel(
+                        sourceFolder: folder,
+                        sourceProvider: provider,
+                        sourceItems: entities
+                    )
+                )
+                transferViewController.presenter = presenter
+            }
+
             transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder, _ in
                 guard
                     let strongSelf = self,
@@ -2972,11 +2986,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         )
                     }
                 }
-            }
-
-            if let transferViewController = transferNavigationVC.topViewController as? ASCTransferViewController {
-                transferNavigationVC.transferType = isTrash(folder) ? .recover : (move ? .move : .copy)
-                transferViewController.folder = nil
             }
         }
 

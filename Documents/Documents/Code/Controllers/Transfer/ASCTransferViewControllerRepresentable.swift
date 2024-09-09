@@ -18,13 +18,18 @@ struct ASCTransferViewControllerRepresentable: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> some UIViewController {
         let vc = ASCTransferViewController.instantiate(from: Storyboard.transfer)
-        vc.enableFillRootFolders = false
-        vc.provider = provider
-        vc.folder = rootFolder
+        let presenter = ASCTransferPresenter(
+            view: vc,
+            provider: provider,
+            transferType: .select,
+            enableFillRootFolders: false,
+            folder: rootFolder
+        )
+        vc.presenter = presenter
+
         vc.actionButton.isEnabled = true
 
         let nc = ASCTransferNavigationController(rootASCViewController: vc)
-        nc.transferType = .select
         nc.doneHandler = { _, folder, path in
             completion(folder, path)
         }

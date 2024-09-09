@@ -264,7 +264,6 @@
 		FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */; };
 		FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */; };
 		FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */; };
-		FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */; };
 		FC68398721B7DC0D00251CEA /* ASCRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */; };
 		FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398921B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift */; };
 		FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */; };
@@ -900,7 +899,6 @@
 		FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFacebookSignInController.swift; sourceTree = "<group>"; };
 		FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCGoogleSignInController.swift; sourceTree = "<group>"; };
 		FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityItemProvider.swift; sourceTree = "<group>"; };
-		FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentService.swift; sourceTree = "<group>"; };
 		FC65B6BA1EBA0AEB00AE73BB /* Documents-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Documents-Bridging-Header.h"; sourceTree = "<group>"; };
 		FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRootViewController.swift; sourceTree = "<group>"; };
 		FC68398921B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnDeviceNavigationController.swift; sourceTree = "<group>"; };
@@ -3192,7 +3190,6 @@
 				FCC3E9BD214006B1001B216C /* ASCLocalization.swift */,
 				FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */,
 				FCCC527120ADB68E000BD819 /* ASCSignInController.swift */,
-				FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */,
 				FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */,
 				FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */,
 				FC3AF6BC21709259004A96FD /* ASCFileManager.swift */,
@@ -4281,7 +4278,6 @@
 				FCB4CE7429FAC5B5009C1E2E /* DetailImageStyleTabelViewCell.swift in Sources */,
 				FC5943E92AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */,
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
-				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
 				FC35D4482A987DFB00C6383F /* UIStoryboard+Extensions.swift in Sources */,
 				FC9EEFAC2BFB201700A66DE8 /* OnlyofficeDocumentConfig.swift in Sources */,
 				FC35D4672A987DFC00C6383F /* Data+Extension.swift in Sources */,

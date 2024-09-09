@@ -454,6 +454,9 @@
 "Create" = "Vytvořit";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Založte si účet zdarma";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Vytvoření dalších odkazů pro sdílení dokumentu s různými přístupovými právy.";
 
 /* No comment provided by engineer. */
@@ -1070,6 +1073,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal končí";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "Služba ONLYOFFICE Personal bude ukončena 1. září 2024. Doporučujeme vám přejít na bezplatnou službu ONLYOFFICE DocSpace.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "Portál ONLYOFFICE";

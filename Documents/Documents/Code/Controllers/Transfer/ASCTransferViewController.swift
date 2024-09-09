@@ -134,6 +134,15 @@ class ASCTransferViewController: UITableViewController {
                 cell.titleLabel.text = viewModel.title
                 cell.isUserInteractionEnabled = viewModel.isInteractable
                 cell.contentView.alpha = viewModel.isInteractable ? 1 : 0.5
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            case let .file(viewModel):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: cellFolderCellId, for: indexPath) as? ASCTransferViewCell else {
+                    return UITableViewCell()
+                }
+                cell.leftImageView.image = viewModel.image
+                cell.titleLabel.text = viewModel.title
+                cell.accessoryType = .none
                 return cell
             }
         }
@@ -149,6 +158,8 @@ class ASCTransferViewController: UITableViewController {
         switch cell {
         case let .folder(viewModel):
             guard viewModel.isInteractable else { return }
+            viewModel.onTapAction()
+        case let .file(viewModel):
             viewModel.onTapAction()
         }
     }
@@ -168,8 +179,12 @@ extension ASCTransferViewController: ASCTransferView {
     func updateViewData(data: ASCTransferViewData) {
         title = title ?? data.title
         navigationItem.prompt = data.navPrompt
-        actionButton?.title = data.actionButtonTitle
-        actionButton?.isEnabled = data.isActionButtonEnabled
+        if !data.actionButtonTitle.isEmpty {
+            actionButton?.title = data.actionButtonTitle
+            actionButton?.isEnabled = data.isActionButtonEnabled
+        } else {
+            setToolbarItems([], animated: false)
+        }
         updateTableData(data.tableData)
     }
 

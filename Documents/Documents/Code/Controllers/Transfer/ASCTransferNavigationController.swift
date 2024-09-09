@@ -13,6 +13,7 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
 
     var doneHandler: ((ASCFileProviderProtocol?, ASCFolder?, String?) -> Void)?
     var displayActionButtonOnRootVC: Bool = false
+    var onFileSelection: ((ASCFile) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()

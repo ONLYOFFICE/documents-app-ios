@@ -17,6 +17,9 @@ enum ASCTransferType: Int {
 }
 
 protocol ASCTransferPresenterProtocol {
+    var transferType: ASCTransferType { get }
+    var isLoading: Bool { get }
+
     func viewDidLoad()
     func fillRootFoldersWithProviders()
     func fetchData()
@@ -35,20 +38,22 @@ struct ASCTransferFlowModel {
 final class ASCTransferPresenter {
     // MARK: Private vars
 
-    private var view: ASCTransferView?
-    private var provider: ASCFileProviderProtocol?
-    private var transferType: ASCTransferType
-    private var enableFillRootFolders: Bool
+    private let view: ASCTransferView?
+    private let provider: ASCFileProviderProtocol?
+    private let enableFillRootFolders: Bool
     private var items: [ASCTransferViewType] = []
     private var isActionButtonLocked: Bool = true
     private var path: String = "/"
-    private var needLoadFirstPage: Bool
+    private let needLoadFirstPage: Bool
 
     private let idOnlyofficeRoot = "id-onlyoffice-root"
     private lazy var onlyofficeCategoryProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
 
     private let folder: ASCFolder?
     private let flowModel: ASCTransferFlowModel?
+
+    private(set) var isLoading: Bool = false
+    let transferType: ASCTransferType
 
     // MARK: Lifecycle
 
@@ -58,9 +63,7 @@ final class ASCTransferPresenter {
         transferType: ASCTransferType,
         enableFillRootFolders: Bool = true,
         folder: ASCFolder? = nil,
-        sourceFolder: ASCFolder?,
-        sourceProvider: ASCFileProviderProtocol?,
-        sourceItems: [ASCEntity]?,
+        flowModel: ASCTransferFlowModel? = nil,
         needLoadFirstPage: Bool = true
     ) {
         self.view = view
@@ -68,9 +71,7 @@ final class ASCTransferPresenter {
         self.transferType = transferType
         self.enableFillRootFolders = enableFillRootFolders
         self.folder = folder
-        self.sourceFolder = sourceFolder
-        self.sourceProvider = sourceProvider
-        self.sourceItems = sourceItems
+        self.flowModel = flowModel
         self.needLoadFirstPage = needLoadFirstPage
     }
 }
@@ -133,6 +134,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
 
     func fetchData() {
         guard let provider = provider, let folder = folder else { return }
+        isLoading = true
         if provider.id == ASCFileManager.onlyofficeProvider?.id,
            folder.id == idOnlyofficeRoot
         {
@@ -161,6 +163,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                                 }
                                 if folder.id == categorFolders.last?.id {
                                     self?.items = items
+                                    self?.isLoading = false
                                     self?.build()
                                 }
                                 semaphore.signal()
@@ -171,6 +174,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
 
                     isActionButtonLocked = true
                 case let .failure(error):
+                    isLoading = false
                     build()
                     if let view = view {
                         UIAlertController.showError(in: view, message: error.localizedDescription)
@@ -184,13 +188,13 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
             ]
             provider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
                 guard let self else {
-                    self?.build()
                     return
                 }
                 if let foldersOnly = (provider.items.filter { $0 is ASCFolder }) as? [ASCFolder] {
                     items = foldersOnly.map { (provider, $0) }
                 }
                 isActionButtonLocked = false
+                isLoading = false
                 build()
             }
         }

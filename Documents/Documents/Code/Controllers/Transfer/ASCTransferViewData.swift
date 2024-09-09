@@ -23,6 +23,7 @@ struct ASCTransferViewData {
 
     enum Cell {
         case folder(ASCTransferFolderModel)
+        case file(ASCTransferFileModel)
     }
 }
 
@@ -32,6 +33,13 @@ struct ASCTransferFolderModel {
     var image: UIImage?
     var title: String
     var isInteractable: Bool
+
+    var onTapAction: () -> Void
+}
+
+struct ASCTransferFileModel {
+    var image: UIImage?
+    var title: String
 
     var onTapAction: () -> Void
 }

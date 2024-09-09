@@ -14,6 +14,7 @@ enum ASCTransferType: Int {
     case move
     case recover
     case select
+    case selectFillForms
 }
 
 protocol ASCTransferPresenterProtocol {
@@ -184,16 +185,31 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 }
             }
         } else {
+            let filterType: Int = {
+                switch transferType {
+                case .selectFillForms: return ASCFilterType.onlyFillingForms.rawValue
+                default: return ASCFilterType.foldersOnly.rawValue
+                }
+            }()
             let params: [String: Any] = [
                 "count": 1000,
-                "filterType": ASCFilterType.foldersOnly.rawValue,
+                "filterType": filterType,
             ]
+            let displayFoldersOnly = transferType != .selectFillForms
             provider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
                 guard let self else {
                     return
                 }
-                if let foldersOnly = (provider.items.filter { $0 is ASCFolder }) as? [ASCFolder] {
+                if displayFoldersOnly, let foldersOnly = (provider.items.filter { $0 is ASCFolder }) as? [ASCFolder] {
                     items = foldersOnly.map { (provider, $0) }
+                } else if !displayFoldersOnly {
+                    items = provider.items.compactMap {
+                        if self.transferType == .selectFillForms, let file = $0 as? ASCFile {
+                            return file.isForm ? (provider, $0) : nil
+                        } else {
+                            return (provider, $0)
+                        }
+                    }
                 }
                 isActionButtonLocked = false
                 isLoading = false
@@ -227,6 +243,8 @@ private extension ASCTransferPresenter {
             NSLocalizedString("Select the folder to recover the items", comment: "One line. Max 50 charasters")
         case .select:
             NSLocalizedString("Choose location with templates", comment: "One line. Max 50 charasters")
+        case .selectFillForms:
+            NSLocalizedString("Select a PDF Form", comment: "One line. Max 50 charasters")
         }
     }
 
@@ -240,6 +258,8 @@ private extension ASCTransferPresenter {
             NSLocalizedString("Recover here", comment: "Button title")
         case .select:
             NSLocalizedString("Select location", comment: "Button title")
+        case .selectFillForms:
+            ""
         }
     }
 
@@ -290,6 +310,23 @@ private extension ASCTransferPresenter {
                             transferVC.presenter = presenter
                             view?.navigationController?.pushViewController(transferVC, animated: true)
                         }
+                    )
+                } else if let file = entity as? ASCFile {
+                    return .file(
+                        ASCTransferFileModel(
+                            image: .getFileExtensionBasedImage(
+                                fileExt: file.title.fileExtension().lowercased(),
+                                layoutType: .list
+                            ),
+                            title: file.title,
+                            onTapAction: { [weak self] in
+                                guard let self else { return }
+                                if let nc = view?.navigationController as? ASCTransferNavigationController {
+                                    nc.onFileSelection?(file)
+                                }
+                                view?.dismiss(animated: true, completion: nil)
+                            }
+                        )
                     )
                 }
                 return nil

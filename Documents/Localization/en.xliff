@@ -1260,16 +1260,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Documents" xml:space="preserve">
-        <source>/Documents</source>
-        <target>/Documents</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Files for test" xml:space="preserve">
-        <source>/Files for test</source>
-        <target>/Files for test</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 day</target>
@@ -4412,6 +4402,11 @@ then accessed from any other device.</target>
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
         <target>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>You can connect the following accounts to the DocSpace rooms</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

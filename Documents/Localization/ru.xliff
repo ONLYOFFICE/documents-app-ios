@@ -1391,16 +1391,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Documents" xml:space="preserve">
-        <source>/Documents</source>
-        <target state="translated">/Документы</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Files for test" xml:space="preserve">
-        <source>/Files for test</source>
-        <target state="translated">/ Файлы для тестирования</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 день</target>
@@ -1421,17 +1411,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Используйте пароль, созданный в &lt;a href="https://yandex.ru/id/about"&gt;Яндекс ID&lt;/a&gt;.&lt;/br&gt;Более подробные инструкции по подключению можно найти в разделе &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;"Справка"&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Используйте пароль, созданный в &lt;a href="https://yandex.ru/id/about"&gt;Яндекс ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Более подробные инструкции по подключению можно найти в разделе &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;"Справка"&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.&lt;/p&gt;&lt;p&gt;Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).&lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Подробнее...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1811,7 +1801,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
-        <target state="translated">Выберите местоположение с помощью шаблонов</target>
+        <target>Выберите местоположение с помощью шаблонов</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -2126,7 +2116,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
-        <target state="translated">Создать бесплатный аккаунт</target>
+        <target>Создать бесплатный аккаунт</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2156,7 +2146,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
-        <target state="translated">Создать новую папку</target>
+        <target>Создать новую папку</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2480,12 +2470,12 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Expires after %d days" xml:space="preserve">
         <source>Expires after %d days</source>
-        <target state="translated">Истекает через %d дней</target>
+        <target>Истекает через %d дней</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="Expires after %d hours" xml:space="preserve">
         <source>Expires after %d hours</source>
-        <target state="translated">Истекает через %d часов</target>
+        <target>Истекает через %d часов</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
@@ -2901,7 +2891,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
-        <target state="translated">Местоположение</target>
+        <target>Местоположение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -3058,7 +3048,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
-        <target state="translated">Новая папка</target>
+        <target>Новая папка</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3199,12 +3189,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
-        <target state="translated">ONLYOFFICE Personal завершает работу</target>
+        <target>ONLYOFFICE Personal завершает работу</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
         <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
-        <target state="translated">Пожалуйста, обратите внимание: поддержка ONLYOFFICE Personal прекращается 1 сентября 2024 года. Рекомендуем перейти на бесплатный ONLYOFFICE DocSpace Cloud.</target>
+        <target>Пожалуйста, обратите внимание: поддержка ONLYOFFICE Personal прекращается 1 сентября 2024 года. Рекомендуем перейти на бесплатный ONLYOFFICE DocSpace Cloud.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
@@ -3699,7 +3689,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
-        <target state="translated">Корневая директроия</target>
+        <target>Корневая директроия</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3755,7 +3745,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
-        <target state="translated">Выберите местоположение</target>
+        <target>Выберите местоположение</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -4139,7 +4129,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
-        <target state="translated">Стороннее хранилище</target>
+        <target>Стороннее хранилище</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4379,7 +4369,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
-        <target state="translated">Используйте сторонние сервисы в качестве хранилища данных для этой комнаты. В подключенном хранилище будет создана новая папка для хранения данных этой комнаты</target>
+        <target>Используйте сторонние сервисы в качестве хранилища данных для этой комнаты. В подключенном хранилище будет создана новая папка для хранения данных этой комнаты</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4541,6 +4531,11 @@ then accessed from any other device.</source>
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
         <target>К %@ можно подключить следующие аккаунты. Они будут отображаться в папке 'Мои документы', и вы сможете редактировать и сохранять их прямо на портале в едином пространстве.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>Вы можете подключить следующие аккаунты к комнатам DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

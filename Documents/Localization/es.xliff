@@ -1258,14 +1258,6 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Documents" xml:space="preserve">
-        <source>/Documents</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Files for test" xml:space="preserve">
-        <source>/Files for test</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
         <target>1 día</target>
@@ -1676,6 +1668,7 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>Elija la ubicación con plantillas</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1990,6 +1983,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
+        <target>Cree una cuenta gratis</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2019,6 +2013,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
+        <target>Crear nueva carpeta</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2341,10 +2336,12 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Expires after %d days" xml:space="preserve">
         <source>Expires after %d days</source>
+        <target>Expira dentro de %d días</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="Expires after %d hours" xml:space="preserve">
         <source>Expires after %d hours</source>
+        <target>Expira dentro de %d horas</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
@@ -2759,6 +2756,7 @@ con éxito al portapapeles</target>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
+        <target>Ubicación</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2915,6 +2913,7 @@ con éxito al portapapeles</target>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
+        <target>Nueva carpeta</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3055,10 +3054,12 @@ con éxito al portapapeles</target>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
+        <target>ONLYOFFICE Personal dejará de funcionar</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
         <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <target>ONLYOFFICE Personal se descontinuará el 1 de septiembre de 2024. Le recomendamos que pase al servicio gratuito ONLYOFFICE DocSpace Cloud.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
@@ -3553,6 +3554,7 @@ Si el problema persiste, contáctenos y mencione este código de error: SSO - %@
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
+        <target>Carpeta raíz</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3608,6 +3610,7 @@ Si el problema persiste, contáctenos y mencione este código de error: SSO - %@
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
+        <target>Seleccionar ubicación</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -3989,6 +3992,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>Almacenamiento de terceros</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4228,6 +4232,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>Utilice servicios de terceros como almacenamiento de datos para esta sala. Se creará una nueva carpeta para almacenar los datos de esta sala en el almacenamiento conectado</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4388,6 +4393,11 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
         <target>Usted puede conectar las cuentas siguientes al %@. Ellas se visualizarán en la carpeta 'Mis Documentos' y usted podrá editar y guardarlos directamente en el portal en un solo lugar.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
+        <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>Puede conectar las siguientes cuentas a las salas de DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">

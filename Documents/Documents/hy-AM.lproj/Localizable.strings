@@ -281,6 +281,9 @@
 /* No comment provided by engineer. */
 "Choose from list" = "Ընտրել ցանկից";
 
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Ընտրել վայրը ձևանմուշներով";
+
 /* No comment provided by engineer. */
 "Choose room type" = "Ընտրեք սենյակի տեսակը";
 
@@ -490,6 +493,9 @@
 "Create" = "Ստեղծել";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Ստեղծել անվճար հաշիվ";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Ստեղծեք լրացուցիչ հղումներ՝ փաստաթուղթը հասանելիության տարբեր իրավունքներով համօգտագործելու համար:";
 
 /* No comment provided by engineer. */
@@ -503,6 +509,9 @@
 
 /* No comment provided by engineer. */
 "Create new files" = "Ստեղծել նոր ֆայլեր";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Ստեղծել նոր թղթապանակ";
 
 /* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "Ստեղծեք նոր թղթապանակներ՝ \nձեր ֆայլերը կազմակերպելու համար:";
@@ -706,6 +715,12 @@
 
 /* Expiration status */
 "Expired" = "Ժամկետանց";
+
+/* Days left */
+"Expires after %d days" = "Սպառվում է %d օր հետո";
+
+/* Hours left */
+"Expires after %d hours" = "Սպառվում է %d ժամ հետո";
 
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Ժամկետը լրանում է 7 օրից";
@@ -956,6 +971,9 @@
 /* No comment provided by engineer. */
 "Loading..." = "Բեռնվում է...";
 
+/* No comment provided by engineer. */
+"Location" = "Տեղ";
+
 /* Caption of the process */
 "Logging in" = "Մուտք գործեք";
 
@@ -1041,6 +1059,9 @@
 
 /* No comment provided by engineer. */
 "New Document" = "Նոր փաստաթուղթ";
+
+/* No comment provided by engineer. */
+"New folder" = "Նոր թղթապանակ";
 
 /* No comment provided by engineer. */
 "New Folder" = "Նոր թղթապանակ";
@@ -1157,6 +1178,12 @@
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Փաստաթղթեր";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal-ի աշխատանքը դադրեցվում է";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "ONLYOFFICE Personal-ի աշխատանքը կդադարեցվի 2024 թվականի սեպտեմբերի 1-ին: Խորհուրդ ենք տալիս տեղափոխվել անվճար ONLYOFFICE DocSpace Cloud:";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "ONLYOFFICE պորտալ";
@@ -1433,6 +1460,9 @@
 "Rooms" = "Սսենյակներ";
 
 /* No comment provided by engineer. */
+"Root folder" = "Հիմնական թղթապանակ";
+
+/* No comment provided by engineer. */
 "Same as system" = "Նույնը, ինչ համակարգը";
 
 /* No comment provided by engineer. */
@@ -1456,6 +1486,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Ընտրեք խումբ";
+
+/* Button title */
+"Select location" = "Ընտրել գտնվելու վայրը";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Ընտրեք Լուսանկարներ";
@@ -1688,6 +1721,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Երրորդ կողմի ռեսուրս";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Երրորդ կողմի պահեստավորում";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Երրորդ կողմի պահեստավորում";
 
@@ -1830,6 +1866,9 @@
 "Uploading" = "Վերբեռնում";
 
 /* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Օգտագործել երրորդ կողմի ծառայությունները՝ որպես այս սենյակի տվյալների պահեստ: Այս սենյակի տվյալները պահելու համար միացված պահեստում  կստեղծվի նոր պանակ։";
+
+/* No comment provided by engineer. */
 "User" = "Օգտատեր";
 
 /* No comment provided by engineer. */
@@ -1921,6 +1960,9 @@
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին: Դրանք կցուցադրվեն «Իմ փաստաթղթերը» թղթապանակում, և դուք կկարողանաք խմբագրել և պահպանել դրանք անմիջապես պորտալում՝ բոլորը մեկ տեղում:";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Դուք կարող եք միացնել հետևյալ հաշիվները DocSpace սենյակներին";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Դուք դուրս եք եկել սենյակից";

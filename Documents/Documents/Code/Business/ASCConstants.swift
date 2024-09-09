@@ -20,9 +20,6 @@ class ASCConstants {
 
     enum Keys {
         static let portalRegistration = ASCConstants.internalConstants["KeysPortalRegistration"] as? String ?? ""
-        static let ascDocumentServiceKey = ASCConstants.internalConstants["KeysAscDocumentServiceKey"] as? String ?? ""
-        static let ascDocumentServiceKeyId = ASCConstants.internalConstants["KeysAscDocumentServiceKeyId"] as? String ?? ""
-        static let converterKey = ASCConstants.internalConstants["KeysConverterKey"] as? String ?? "{95874338-e6dc-4965-9791-b7802f22aa67}"
         static let recaptcha = ASCConstants.internalConstants["ReCaptcha"] as? String ?? ""
         static let recaptchaInfo = ASCConstants.internalConstants["ReCaptchaInfo"] as? String ?? ""
         static let licenseName = "F8D434904F7142C49EB3E4CD738CFE01"

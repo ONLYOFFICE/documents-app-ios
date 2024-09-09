@@ -13,7 +13,17 @@ import Foundation
 struct OnlyofficeDocumentConfig: Codable {
     var document: OnlyofficeDocument?
     var editorConfig: OnlyofficeDocumentEditorConfig?
-    var token, documentType, type: String?
+    var token: String?
+    var documentType: String?
+    var type: String?
+    var startFilling: Bool?
+    var fillingSessionId: String?
+    var url: String?
+    var size: Int?
+    var updated: Int?
+    var fileId: String?
+    var canShareable: Bool?
+    var editorType: Int?
 }
 
 // MARK: - OnlyofficeDocument

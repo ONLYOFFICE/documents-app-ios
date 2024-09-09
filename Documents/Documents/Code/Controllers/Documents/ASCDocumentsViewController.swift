@@ -2001,7 +2001,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     room.mute = false
                 }
             case let .failure(error):
-                print(error.localizedDescription)
+                log.error(error)
+
+                UIAlertController.showError(
+                    in: self,
+                    message: NSLocalizedString("Something wrong", comment: "")
+                )
             }
         }
     }

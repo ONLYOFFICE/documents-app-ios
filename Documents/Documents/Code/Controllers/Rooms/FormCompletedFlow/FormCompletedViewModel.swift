@@ -18,5 +18,9 @@ final class FormCompletedViewModel: ObservableObject {
     init(form: ASCFile) {
         self.form = form
     }
+    
+    func checkReadyForm() {
+        
+    }
 }
 

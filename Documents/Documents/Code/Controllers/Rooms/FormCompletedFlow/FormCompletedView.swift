@@ -13,21 +13,55 @@ struct FormCompletedView: View {
     @ObservedObject var viewModel: FormCompletedViewModel
     
     var body: some View {
-        VStack {
-            screenHeader
-            List {
-                formSection
-                formNumberSection
-                ownerSection
+        NavigationView {
+            VStack {
+                screenHeader
+                List {
+                    formSection
+                    formNumberSection
+                    ownerSection
+                }
+            }
+            .background(Color.systemGroupedBackground)
+            .ignoresSafeArea(edges: .top)
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    VStack(spacing: 0) {
+                        
+                        Divider()
+                            .background(Color.gray)
+                            .frame(height: Constants.deviderHeight)
+                        HStack {
+                            Button(action: {
+                                //TODO: - back to room action
+                            }) {
+                                Text(NSLocalizedString("Back to room", comment: ""))
+                            }
+                            Spacer()
+                            Button(action: {
+                                viewModel.checkReadyForm()
+                            }) {
+                                Text(NSLocalizedString("Check ready form", comment: ""))
+                                    .font(.headline)
+                            }
+                            .background(Color.blue)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(Constants.toolbarButtonCornerRadius)
+                        }
+                        .padding()
+                    }
+                    .background(Color.white)
+                    .padding(.horizontal, -16)
+                }
+                
+                
             }
         }
-        .background(Color.systemGroupedBackground)
-        .ignoresSafeArea()
     }
-    
+
     @ViewBuilder
     private var screenHeader: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: Constants.screenHedaerInsets) {
             Asset.Images.checkmarkGreenCircle.swiftUIImage
             Text(NSLocalizedString("Form completed successfully", comment: ""))
                 .font(.title2)
@@ -37,8 +71,8 @@ struct FormCompletedView: View {
                 .foregroundColor(.secondaryLabel)
                 .multilineTextAlignment(.center)
         }
-        .padding(.horizontal,18)
-        .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top ?? 16)
+        .padding(.horizontal, Constants.screenHeaderHorizontalPadding)
+        .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top ?? Constants.screenHeaderDefaultTopInsets)
     }
     
     @ViewBuilder
@@ -80,4 +114,11 @@ struct FormCompletedView_Previews: PreviewProvider {
     }
 }
 
+fileprivate struct Constants {
+    static let toolbarButtonCornerRadius: CGFloat = 14.0
+    static let screenHedaerInsets: CGFloat = 16.0
+    static let screenHeaderHorizontalPadding: CGFloat = 18.0
+    static let screenHeaderDefaultTopInsets: CGFloat = 16.0
+    static let deviderHeight: CGFloat = 1.0
+}
 

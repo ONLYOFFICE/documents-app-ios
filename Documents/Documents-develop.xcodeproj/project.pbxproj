@@ -24,6 +24,8 @@
 		8AFBA30B23E872750052F6E9 /* ASCCustomHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBA30A23E872750052F6E9 /* ASCCustomHighlightButton.swift */; };
 		8AFBA30D23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBA30C23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift */; };
 		E827EEF62C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827EEF52C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */; };
+		E83F6A0B2C930B2E00A5560B /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F6A092C930B2E00A5560B /* ASCTransferPresenter.swift */; };
+		E83F6A0C2C930B2E00A5560B /* ASCTransferViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F6A0A2C930B2E00A5560B /* ASCTransferViewData.swift */; };
 		E8674B752B2B15C200CDA5DC /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */; };
 		E8674B762B2B15C200CDA5DC /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B6E2B2B15C100CDA5DC /* WSTagsFieldRepresentable.swift */; };
 		E8674B782B2B15C200CDA5DC /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B702B2B15C100CDA5DC /* ActivityIndicatorView.swift */; };
@@ -735,6 +737,8 @@
 		B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_develop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEA9E68A9DE5AF9099F7F723 /* Pods-Documents-develop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-develop.debug.xcconfig"; path = "Target Support Files/Pods-Documents-develop/Pods-Documents-develop.debug.xcconfig"; sourceTree = "<group>"; };
 		E827EEF52C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		E83F6A092C930B2E00A5560B /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
+		E83F6A0A2C930B2E00A5560B /* ASCTransferViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewData.swift; sourceTree = "<group>"; };
 		E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
 		E8674B6E2B2B15C100CDA5DC /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
 		E8674B702B2B15C100CDA5DC /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -2079,6 +2083,8 @@
 				FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */,
 				FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */,
 				FC00CC012C4664EA00D3344D /* ASCTransferViewControllerRepresentable.swift */,
+				E83F6A092C930B2E00A5560B /* ASCTransferPresenter.swift */,
+				E83F6A0A2C930B2E00A5560B /* ASCTransferViewData.swift */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -4165,6 +4171,7 @@
 				FC18290B2A24E9D8005D9220 /* ASCDetailCell.swift in Sources */,
 				FC7D996B2729952400410795 /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
 				FC881E7729AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
+				E83F6A0C2C930B2E00A5560B /* ASCTransferViewData.swift in Sources */,
 				FC41D80C2265DA8700A155C2 /* ASCFilterType.swift in Sources */,
 				FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */,
 				FC379D302C37ED7000B120D9 /* ASCLinkCell.swift in Sources */,
@@ -4189,6 +4196,7 @@
 				FC379D242C37ED7000B120D9 /* SharedSettingsLinkRow.swift in Sources */,
 				FC7D997C2729966300410795 /* ASCBaseSplitViewController.swift in Sources */,
 				FCF6963C2637143E00808644 /* ASCIntroPage.swift in Sources */,
+				E83F6A0B2C930B2E00A5560B /* ASCTransferPresenter.swift in Sources */,
 				FC759B572C00608600510096 /* LinkModel.swift in Sources */,
 				FC759BEE2C00611000510096 /* ASCSharingSettingsVerifyRightHoldersRouter.swift in Sources */,
 				FC8A5A8D2565712700D08037 /* ASCDocumentsToolbar.swift in Sources */,

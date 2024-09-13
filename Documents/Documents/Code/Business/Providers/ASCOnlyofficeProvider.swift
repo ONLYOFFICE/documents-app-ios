@@ -1290,6 +1290,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
+            if file.isForm, isDocspace, isUserCategory {
+                entityActions.insert(.fillForm)
+            }
+
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }

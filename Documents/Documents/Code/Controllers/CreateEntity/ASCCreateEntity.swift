@@ -298,9 +298,6 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
 
     func uploadPDFFromDocspace(viewController: ASCDocumentsViewController) {
-        // TODO: -
-        print("uploadPDFFromDocspace")
-
         let vc = ASCTransferViewController.instantiate(from: Storyboard.transfer)
 
         let presenter = ASCTransferPresenter(
@@ -314,8 +311,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         vc.actionButton.isEnabled = false
 
         let nc = ASCTransferNavigationController(rootASCViewController: vc)
-        nc.onFileSelection = { [self, provider, weak viewController] file in
-            copyFileInsideProvider(
+        nc.onFileSelection = { [provider, weak viewController] file in
+            ServicesProvider.shared.copyFileInsideProviderService.copyFileInsideProvider(
                 provider: provider,
                 file: file,
                 viewController: viewController
@@ -325,53 +322,6 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         nc.modalPresentationStyle = .formSheet
         nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
         viewController.present(nc, animated: true)
-    }
-
-    private func copyFileInsideProvider(
-        provider: ASCFileProviderProtocol?,
-        file: ASCFile,
-        viewController: ASCDocumentsViewController?
-    ) {
-        guard let srcProvider = provider,
-              let destProvider = provider,
-              let viewController,
-              let destFolder = viewController.folder
-        else { return }
-        var forceCancel = false
-        let transferAlert = ASCProgressAlert(
-            title: .copying,
-            message: nil,
-            handler: { cancel in
-                forceCancel = cancel
-            }
-        )
-        transferAlert.show()
-        transferAlert.progress = 0
-
-        ASCEntityManager.shared.transfer(
-            from: (items: [file], provider: srcProvider),
-            to: (folder: destFolder, provider: destProvider),
-            move: false
-        ) { progress, complate, success, newItems, error, cancel in
-            if forceCancel {
-                cancel = forceCancel
-            }
-            DispatchQueue.main.async { [viewController] in
-                if complate {
-                    transferAlert.hide()
-                    if success {
-                        viewController.loadFirstPage()
-                    }
-                    if !ASCNetworkReachability.shared.isReachable {
-                        UIAlertController.showError(in: viewController, message: .checkInternetConnection)
-                    } else if !success, let error = error {
-                        UIAlertController.showError(in: viewController, message: error.localizedDescription)
-                    }
-                } else {
-                    transferAlert.progress = progress
-                }
-            }
-        }
     }
 
     func uploadPDFFromDevice(viewController: ASCDocumentsViewController) {
@@ -557,15 +507,5 @@ class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, U
         if let topVC = ASCViewControllerManager.shared.topViewController {
             UIAlertController.showError(in: topVC, message: message)
         }
-    }
-}
-
-private extension String {
-    static var checkInternetConnection: String {
-        NSLocalizedString("Check your internet connection", comment: "")
-    }
-
-    static var copying: String {
-        NSLocalizedString("Copying", comment: "Caption of the processing")
     }
 }

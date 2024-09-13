@@ -12,6 +12,7 @@ import MBProgressHUD
 import ObjectMapper
 import SwiftMessages
 import SwiftRater
+import SwiftUI
 import UIKit
 
 typealias MovedEntities = [ASCEntity]
@@ -2014,8 +2015,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func duplicateRoom(room: ASCFolder) {
         var hud: MBProgressHUD?
 
-        RoomSharingNetworkService().duplicateRoom(room: room) { [ unowned self ] status, progress, result, error, cancel in
-            
+        RoomSharingNetworkService().duplicateRoom(room: room) { [unowned self] status, progress, result, error, cancel in
+
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
                 hud?.mode = .annularDeterminate
@@ -2058,6 +2059,44 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         )
 
         present(alert, animated: true, completion: nil)
+    }
+
+    func fillForm(file: ASCFile) {
+        guard file.isForm else { return }
+        let fillFormMenuScreen = FillFormMenuScreenRepresentable(
+            onOpenTapped: { [weak self] in
+                self?.open(file: file)
+            },
+            onShareTapped: { [weak self] in
+                guard let self else { return }
+                let vc = ASCTransferViewController.instantiate(from: Storyboard.transfer)
+
+                let presenter = ASCTransferPresenter(
+                    view: vc,
+                    provider: provider,
+                    transferType: .copy,
+                    enableFillRootFolders: true,
+                    folder: ASCFolder.onlyofficeRoomSharedFolder
+                )
+                vc.presenter = presenter
+
+                let nc = ASCTransferNavigationController(rootASCViewController: vc)
+                nc.doneHandler = { [provider, weak self] _, _, _ in
+                    ServicesProvider.shared.copyFileInsideProviderService.copyFileInsideProvider(
+                        provider: provider,
+                        file: file,
+                        viewController: self
+                    )
+                }
+                nc.displayActionButtonOnRootVC = false
+                nc.modalPresentationStyle = .formSheet
+                nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+                present(nc, animated: true)
+            }
+        )
+
+        let hostingController = UIHostingController(rootView: fillFormMenuScreen)
+        present(hostingController, animated: true, completion: nil)
     }
 
     func transformToRoom(entities: [ASCEntity]) {

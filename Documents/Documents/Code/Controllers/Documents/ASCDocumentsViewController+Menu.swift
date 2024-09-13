@@ -26,6 +26,19 @@ extension ASCDocumentsViewController {
         var middleActions: [UIMenuElement] = []
         var bottomActions: [UIMenuElement] = []
 
+        /// Fill pdf form
+
+        if actions.contains(.fillForm) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Fill", comment: "Fill form Button title"),
+                    image: UIImage(systemName: "square.and.pencil")
+                ) { [unowned self] action in
+                    self.fillForm(file: file)
+                }
+            )
+        }
+
         /// Preview action
 
         if actions.contains(.open) {

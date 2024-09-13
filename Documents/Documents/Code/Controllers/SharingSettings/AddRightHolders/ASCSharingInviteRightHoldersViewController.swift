@@ -50,13 +50,13 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         guard let room = dataStore?.entity as? ASCRoom else {
             return .read
         }
-        
+
         if room.roomType == .fillingForm {
             return .fillForms
         }
-        
+
         let accessList = accessProvider.get()
-        
+
         guard accessList.contains(.read) else {
             return accessList.first ?? .read
         }

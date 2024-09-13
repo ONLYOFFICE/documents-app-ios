@@ -328,7 +328,7 @@ struct ASCUserRow: View {
     var body: some View {
         HStack(alignment: .center) {
             imageView(for: model.image)
-            
+
             VStack(alignment: .leading) {
                 Text(model.userName)
                     .lineLimit(1)

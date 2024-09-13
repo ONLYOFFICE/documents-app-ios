@@ -16,9 +16,9 @@ final class OnlyofficeRoomOperation: Mappable {
     var error: String?
     var processed: String?
     var finished: Bool = false
-    
+
     required init?(map: Map) {}
-    
+
     func mapping(map: Map) {
         id <- map["id"]
         operation <- map["Operation"]

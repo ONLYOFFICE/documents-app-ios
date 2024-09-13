@@ -16,12 +16,12 @@ protocol RoomSharingNetworkServiceProtocol {
 
 final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
-    
+
     func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponceModel], [RoomUsersResponceModel]) -> Void) {
         let group = DispatchGroup()
         var links = [RoomLinkResponceModel]()
         var users = [RoomUsersResponceModel]()
-        
+
         group.enter()
         fetchRoomLinks(room: room) { result in
             if case let .success(loadedLinks) = result {
@@ -29,7 +29,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             }
             group.leave()
         }
-        
+
         group.enter()
         fetchRoomUsers(room: room) { result in
             if case let .success(loadedUsers) = result {
@@ -37,19 +37,19 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             }
             group.leave()
         }
-        
+
         group.notify(queue: .main) {
             completion(links, users)
         }
     }
-    
+
     func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponceModel], Error>) -> Void) {
         // TODO: - room type
-        
+
         let requestModel = RoomLinksRequestModel(type: 1)
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.getLinks(room: room), requestModel.dictionary) { response, error in
-            
+
             guard let links = response?.result else {
                 if let error {
                     completion(.failure(error))
@@ -61,7 +61,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             completion(.success(links))
         }
     }
-    
+
     func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void) {
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.users(room: room)) { responce, error in
             guard let users = responce?.result else {
@@ -76,7 +76,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             completion(.success(users))
         }
     }
-    
+
     func toggleRoomNotifications(room: ASCFolder, completion: @escaping (Result<RoomNotificationsResponceModel, Error>) -> Void) {
         let requestModel = RoomNotificationsRequestModel(roomsID: room.id, mute: !room.mute)
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.toggleRoomNotifications(room: room), requestModel.dictionary) { responce, error in
@@ -91,16 +91,16 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             completion(.success(responce))
         }
     }
-    
+
     func duplicateRoom(room: ASCFolder, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         let requestModel = RoomDuplicateRequestModel(folderIds: [room.id], fileIds: [])
-        
-        networkService.request(OnlyofficeAPI.Endpoints.Operations.duplicateRoom, requestModel.dictionary) {  response, error in
-            
+
+        networkService.request(OnlyofficeAPI.Endpoints.Operations.duplicateRoom, requestModel.dictionary) { response, error in
+
             if let error = error {
                 handler?(.error, 1, nil, error, &cancel)
             } else {

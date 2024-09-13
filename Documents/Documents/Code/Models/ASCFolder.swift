@@ -166,3 +166,14 @@ extension ASCFolder {
         return isRoom && roomType == .custom
     }
 }
+
+extension ASCFolder {
+    /// Идентична сатегории "комнаты"
+    static var onlyofficeRoomSharedFolder: ASCFolder {
+        let folder = ASCFolder()
+        folder.rootFolderType = .onlyofficeRoomShared
+        folder.id = "rooms"
+        folder.title = NSLocalizedString("Rooms", comment: "")
+        return folder
+    }
+}

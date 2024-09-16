@@ -289,7 +289,6 @@
 		FC68529F26837B7300D830EC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526826837B7300D830EC /* Endpoint.swift */; };
 		FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC692BD72BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift */; };
 		FC6A754D29910FB80056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754C29910FB80056262F /* Pulse */; };
-		FC6A754F29910FB80056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754E29910FB80056262F /* PulseLogHandler */; };
 		FC6A755129910FB80056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A755029910FB80056262F /* PulseUI */; };
 		FC6D9A512355CDC100A970C6 /* ASCDropboxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A502355CDC100A970C6 /* ASCDropboxProvider.swift */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
@@ -1415,7 +1414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC87B43D2BBAE06B00DBDBDD /* PresentationEditor in Frameworks */,
-				FC6A754F29910FB80056262F /* PulseLogHandler in Frameworks */,
 				FC2B7F0F2B4E83760064DDDA /* ObservableSwift in Frameworks */,
 				FC2B7F0C2B4E83620064DDDA /* HTMLString in Frameworks */,
 				FC7DD7AA2B503B980037405B /* PasscodeLock in Frameworks */,
@@ -3605,7 +3603,6 @@
 			name = Documents;
 			packageProductDependencies = (
 				FC6A754C29910FB80056262F /* Pulse */,
-				FC6A754E29910FB80056262F /* PulseLogHandler */,
 				FC6A755029910FB80056262F /* PulseUI */,
 				FC2B7EF72B4E7E0C0064DDDA /* HTMLString */,
 				FC2B7F0B2B4E83620064DDDA /* HTMLString */,
@@ -5278,7 +5275,7 @@
 			repositoryURL = "https://github.com/kean/Pulse/";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.5;
+				version = 4.2.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -5300,11 +5297,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC6A754B29910FB80056262F /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = Pulse;
-		};
-		FC6A754E29910FB80056262F /* PulseLogHandler */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC6A754B29910FB80056262F /* XCRemoteSwiftPackageReference "Pulse" */;
-			productName = PulseLogHandler;
 		};
 		FC6A755029910FB80056262F /* PulseUI */ = {
 			isa = XCSwiftPackageProductDependency;

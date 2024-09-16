@@ -215,7 +215,6 @@
 		FC5943DF2AE6D254001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943DC2AE6D254001BA2F9 /* ASCPresentationEditorConfiguration.swift */; };
 		FC5943E12AE6D2F3001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E02AE6D2F3001BA2F9 /* ASCEditorConfigurationProtocol.swift */; };
 		FC6A757029915CE10056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756F29915CE10056262F /* Pulse */; };
-		FC6A757229915CE10056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A757129915CE10056262F /* PulseLogHandler */; };
 		FC6A757429915CE10056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A757329915CE10056262F /* PulseUI */; };
 		FC6F5F392BAB010300F109CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FC6F5F382BAB010200F109CD /* PrivacyInfo.xcprivacy */; };
 		FC7080D52812E2260057FCD2 /* ASCSharingSettingsAccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC43EE926A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift */; };
@@ -1292,7 +1291,6 @@
 				FCA3E7002B35C89000C5EDEC /* PasscodeLock in Frameworks */,
 				FC87B46A2BBBEBD900DBDBDD /* PresentationEditor in Frameworks */,
 				FC87B4682BBBEBD900DBDBDD /* DocumentEditor in Frameworks */,
-				FC6A757229915CE10056262F /* PulseLogHandler in Frameworks */,
 				FC7082242812E2260057FCD2 /* CloudKit.framework in Frameworks */,
 				FC87B46C2BBBEBD900DBDBDD /* SpreadsheetEditor in Frameworks */,
 				FC6A757029915CE10056262F /* Pulse in Frameworks */,
@@ -3424,7 +3422,6 @@
 			name = "Documents-opensource";
 			packageProductDependencies = (
 				FC6A756F29915CE10056262F /* Pulse */,
-				FC6A757129915CE10056262F /* PulseLogHandler */,
 				FC6A757329915CE10056262F /* PulseUI */,
 				FC397E372B3591CF00830F43 /* HTMLString */,
 				FC397E3B2B3596AF00830F43 /* ObservableSwift */,
@@ -4709,7 +4706,7 @@
 			repositoryURL = "https://github.com/kean/Pulse/";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.5;
+				version = 4.2.7;
 			};
 		};
 		FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */ = {
@@ -4735,11 +4732,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = Pulse;
-		};
-		FC6A757129915CE10056262F /* PulseLogHandler */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */;
-			productName = PulseLogHandler;
 		};
 		FC6A757329915CE10056262F /* PulseUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -47,7 +47,7 @@
 		E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */; };
 		E8BE285F2B2435E5007F5942 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE285E2B2435E4007F5942 /* MenuView.swift */; };
 		E8CBF1D02C7E72D0003804FF /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */; };
-		E8CBF1D22C7E73C9003804FF /* ASCTransferViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1D12C7E73C9003804FF /* ASCTransferViewData.swift */; };
+		E8CBF1D22C7E73C9003804FF /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */; };
 		E8D50B832BF9441A00741BB8 /* InviteUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B822BF9441A00741BB8 /* InviteUsersViewModel.swift */; };
 		E8D50B852BFAA08F00741BB8 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B842BFAA08F00741BB8 /* InviteUsersView.swift */; };
 		E8D50B872BFBEC9800741BB8 /* ChevronUpDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B862BFBEC9700741BB8 /* ChevronUpDownView.swift */; };
@@ -697,7 +697,7 @@
 		E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E8BE285E2B2435E4007F5942 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
-		E8CBF1D12C7E73C9003804FF /* ASCTransferViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewData.swift; sourceTree = "<group>"; };
+		E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
 		E8D50B822BF9441A00741BB8 /* InviteUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersViewModel.swift; sourceTree = "<group>"; };
 		E8D50B842BFAA08F00741BB8 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		E8D50B862BFBEC9700741BB8 /* ChevronUpDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronUpDownView.swift; sourceTree = "<group>"; };
@@ -2788,7 +2788,7 @@
 				FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */,
 				FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */,
 				E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */,
-				E8CBF1D12C7E73C9003804FF /* ASCTransferViewData.swift */,
+				E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */,
 				FC00CBF52C4661A600D3344D /* ASCTransferViewControllerRepresentable.swift */,
 			);
 			path = Transfer;
@@ -3802,7 +3802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC142A6F28981A1F00EDE7CE /* ASCPasscodeLockConfiguration.swift in Sources */,
-				E8CBF1D22C7E73C9003804FF /* ASCTransferViewData.swift in Sources */,
+				E8CBF1D22C7E73C9003804FF /* ASCTransferViewModel.swift in Sources */,
 				FC7080D52812E2260057FCD2 /* ASCSharingSettingsAccessViewModel.swift in Sources */,
 				FCC27E7A2C4FB4630024DD3D /* PersonalMigrationViewController.swift in Sources */,
 				FC7080D62812E2260057FCD2 /* ASCNavigator.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ASCTransferViewData {
+struct ASCTransferViewModel {
     var title: String?
     var navPrompt: String
     var actionButtonTitle: String

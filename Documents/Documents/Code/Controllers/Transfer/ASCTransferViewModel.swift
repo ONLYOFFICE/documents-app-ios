@@ -1,5 +1,5 @@
 //
-//  ASCTransferViewData.swift
+//  ASCTransferViewModel.swift
 //  Documents-opensource
 //
 //  Created by Pavel Chernyshev on 24.08.2024.
@@ -11,9 +11,8 @@ import UIKit
 struct ASCTransferViewModel {
     var title: String?
     var navPrompt: String
-    var actionButtonTitle: String
+    var toolBarItems: [BarButtonItem]
     var tableData: TableData
-    var isActionButtonEnabled: Bool
 
     struct TableData {
         var cells: [Cell]
@@ -24,6 +23,18 @@ struct ASCTransferViewModel {
     enum Cell {
         case folder(ASCTransferFolderModel)
         case file(ASCTransferFileModel)
+    }
+
+    struct BarButtonItem {
+        var title: String
+        var type: BarButtonItemType
+        var isEnabled: Bool
+        var onTapHandler: () -> Void
+    }
+
+    enum BarButtonItemType {
+        case capsule
+        case plain
     }
 }
 

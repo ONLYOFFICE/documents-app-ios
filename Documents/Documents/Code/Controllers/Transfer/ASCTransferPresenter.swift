@@ -447,4 +447,32 @@ private extension ASCTransferPresenter {
             needLoadFirstPage: true
         )
     }
+
+    func createFolder() {
+        guard let provider, let viewController = view else { return }
+        var hud: MBProgressHUD?
+
+        ASCEntityManager.shared.createFolder(for: provider, in: folder, handler: { [weak self] status, entity, error in
+            guard let self else { return }
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
+            } else if status == .error {
+                hud?.hide(animated: true)
+
+                if let error {
+                    UIAlertController.showError(in: viewController, message: error.localizedDescription)
+                }
+            } else if status == .end {
+                if let entity = entity as? ASCEntity {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: .standardDelay)
+                    items.insert((provider, entity), at: 0)
+                    build()
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        })
+    }
 }

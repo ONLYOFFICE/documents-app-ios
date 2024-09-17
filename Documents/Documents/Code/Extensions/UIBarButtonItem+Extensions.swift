@@ -39,4 +39,24 @@ extension UIBarButtonItem {
         action = #selector(UIBarButtonItemClosure.invoke)
         objc_setAssociatedObject(self, String(format: "[%d]", arc4random()), sleeve, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
+
+    static func makeCapsuleBarButtonItem(
+        title: String,
+        isEnabled: Bool = true,
+        _ clousure: @escaping UIControlClosureType
+    ) -> UIBarButtonItem {
+        let btn = ASCButtonStyle()
+        btn.styleType = .capsule
+        btn.setTitleForAllStates(title)
+        btn.isEnabled = isEnabled
+        btn.add(for: .touchUpInside, clousure)
+
+        Task { @MainActor [weak btn] in
+            btn?.iq.enableMode = isEnabled ? .enabled : .disabled
+        }
+
+        let barItem = UIBarButtonItem(customView: btn)
+        barItem.isEnabled = isEnabled
+        return barItem
+    }
 }

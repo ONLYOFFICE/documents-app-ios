@@ -7,6 +7,7 @@
 //
 
 import FileKit
+import MBProgressHUD
 import UIKit
 
 enum ASCTransferType: Int {
@@ -276,19 +277,59 @@ private extension ASCTransferPresenter {
         let tableData = mapTableData()
         DispatchQueue.main.async { [self] in
             view?.updateViewData(
-                data: ASCTransferViewData(
+                data: ASCTransferViewModel(
                     title: folder?.title,
                     navPrompt: navPrompt,
-                    actionButtonTitle: actionButtonTitle,
-                    tableData: tableData,
-                    isActionButtonEnabled: isActionButtonEnabled
+                    toolBarItems: buildToolBarItems(),
+                    tableData: tableData
                 )
             )
         }
     }
 
-    func mapTableData() -> ASCTransferViewData.TableData {
-        ASCTransferViewData.TableData(
+    func buildToolBarItems() -> [ASCTransferViewModel.BarButtonItem] {
+        var items = [ASCTransferViewModel.BarButtonItem]()
+        if enableDisplayNewFolderBarButton {
+            items.append(
+                ASCTransferViewModel.BarButtonItem(
+                    title: NSLocalizedString("New folder", comment: ""),
+                    type: .plain,
+                    isEnabled: (provider?.allowAdd(toFolder: folder) ?? false) && folder?.isRoomListFolder != true,
+                    onTapHandler: { [weak self] in
+                        self?.createFolder()
+                    }
+                )
+            )
+        }
+        if enableDisplayCreateFillFormRoomBarButton {
+            items.append(
+                ASCTransferViewModel.BarButtonItem(
+                    title: NSLocalizedString("New room", comment: ""),
+                    type: .plain,
+                    isEnabled: folder?.isRoomListFolder ?? false,
+                    onTapHandler: { [weak self] in
+                        
+                    }
+                )
+            )
+        }
+        if !actionButtonTitle.isEmpty {
+            items.append(
+                ASCTransferViewModel.BarButtonItem(
+                    title: actionButtonTitle,
+                    type: .plain,
+                    isEnabled: isActionButtonEnabled,
+                    onTapHandler: { [weak self] in
+                        self?.onDone()
+                    }
+                )
+            )
+        }
+        return items
+    }
+
+    func mapTableData() -> ASCTransferViewModel.TableData {
+        ASCTransferViewModel.TableData(
             cells: items.compactMap { provider, entity in
                 if let folder = entity as? ASCFolder {
                     return .folder(

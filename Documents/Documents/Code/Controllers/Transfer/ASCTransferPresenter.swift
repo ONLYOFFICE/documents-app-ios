@@ -271,6 +271,12 @@ private extension ASCTransferPresenter {
     }
 
     var isActionButtonEnabled: Bool {
+        if transferType == .selectFillForms {
+            return (folder?.isRoomListSubfolder ?? false) && !isActionButtonLocked
+        }
+        if folder?.isRoomListFolder == true {
+            return false
+        }
         guard flowModel?.sourceFolder != nil else { return true }
         return (flowModel?.sourceFolder?.id != folder?.id || flowModel?.sourceProvider?.id != provider?.id)
             && provider?.allowEdit(entity: folder) ?? false

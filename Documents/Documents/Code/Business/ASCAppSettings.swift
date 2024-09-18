@@ -66,5 +66,11 @@ enum ASCAppSettings {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugForceRtl) }
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugForceRtl) }
         }
+
+        // Disable check of sdk version
+        static var disableSdkVersionCheck: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
+        }
     }
 }

@@ -420,6 +420,8 @@ private extension ASCTransferPresenter {
             folderImage = Asset.Images.categoryCommon.image
         case .onlyofficeBunch, .onlyofficeProjects:
             folderImage = Asset.Images.categoryProjects.image
+        case .onlyofficeRoomShared:
+            folderImage = Asset.Images.categoryRoom.image
         default:
             break
         }

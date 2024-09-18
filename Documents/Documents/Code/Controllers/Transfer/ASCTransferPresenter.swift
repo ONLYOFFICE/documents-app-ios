@@ -43,6 +43,8 @@ final class ASCTransferPresenter {
     private let view: ASCTransferView?
     private let provider: ASCFileProviderProtocol?
     private let enableFillRootFolders: Bool
+    private let enableDisplayNewFolderBarButton: Bool
+    private let enableDisplayCreateFillFormRoomBarButton: Bool
     private var items: [ASCTransferViewType] = []
     private var isActionButtonLocked: Bool = true
     private let path: String
@@ -64,6 +66,8 @@ final class ASCTransferPresenter {
         provider: ASCFileProviderProtocol? = nil,
         transferType: ASCTransferType,
         enableFillRootFolders: Bool = true,
+        enableDisplayNewFolderBarButton: Bool = true,
+        enableDisplayCreateFillFormRoomBarButton: Bool = false,
         folder: ASCFolder? = nil,
         path: String = "/",
         flowModel: ASCTransferFlowModel? = nil,
@@ -73,6 +77,8 @@ final class ASCTransferPresenter {
         self.provider = provider
         self.transferType = transferType
         self.enableFillRootFolders = enableFillRootFolders
+        self.enableDisplayNewFolderBarButton = enableDisplayNewFolderBarButton
+        self.enableDisplayCreateFillFormRoomBarButton = enableDisplayCreateFillFormRoomBarButton
         self.folder = folder
         self.path = path
         self.flowModel = flowModel

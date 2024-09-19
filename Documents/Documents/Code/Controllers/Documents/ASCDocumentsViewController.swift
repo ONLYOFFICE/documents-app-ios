@@ -2076,6 +2076,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     provider: provider,
                     transferType: .copy,
                     enableFillRootFolders: true,
+                    enableDisplayNewFolderBarButton: false,
+                    enableDisplayCreateFillFormRoomBarButton: true,
                     folder: ASCFolder.onlyofficeRoomSharedFolder
                 )
                 vc.presenter = presenter
@@ -2088,7 +2090,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         viewController: self
                     )
                 }
-                nc.displayActionButtonOnRootVC = false
+                nc.displayActionButtonOnRootVC = true
                 nc.modalPresentationStyle = .formSheet
                 nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
                 present(nc, animated: true)

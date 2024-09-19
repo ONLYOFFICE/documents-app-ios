@@ -13,7 +13,9 @@ struct ASCFormCellModel {
     var author: String
     var date: String
     
-    static var empty = ASCFormCellModel(title: "", author: "", date: "")
+    var onLinkAction: () -> Void
+    
+    static var empty = ASCFormCellModel(title: "", author: "", date: "", onLinkAction: {})
 }
 
 struct ASCFormCellView: View {
@@ -41,12 +43,9 @@ struct ASCFormCellView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 24, height: 24)
                 .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                .onTapGesture {
+                    model.onLinkAction()
+                }
         }
-    }
-}
-
-struct ASCFormCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        ASCFormCellView(model: ASCFormCellModel(title: "1 - Terry Dorwart - 2021", author: "Terry Dorwart", date: "04.06.2021"))
     }
 }

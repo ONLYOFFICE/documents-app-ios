@@ -12,6 +12,8 @@ import MessageUI
 struct FormCompletedView: View {
     
     @ObservedObject var viewModel: FormCompletedViewModel
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var isShowingMailView = false
     @State private var mailData = ComposeMailData(
         subject: "",
@@ -41,15 +43,16 @@ struct FormCompletedView: View {
                             .frame(height: Constants.deviderHeight)
                         HStack {
                             Button(action: {
-                                //TODO: - back to room action
+                                presentationMode.wrappedValue.dismiss()
                             }) {
-                                Text(NSLocalizedString("Back to room", comment: ""))
+                                Text(TextConstants.backToRoom)
                             }
+                            .foregroundColor(.blue)
                             Spacer()
                             Button(action: {
-                                viewModel.checkReadyForm()
+                                presentationMode.wrappedValue.dismiss()
                             }) {
-                                Text(NSLocalizedString("Check ready form", comment: ""))
+                                Text(TextConstants.checkReadyForm)
                                     .font(.headline)
                             }
                             .background(Color.blue)
@@ -58,11 +61,8 @@ struct FormCompletedView: View {
                         }
                         .padding()
                     }
-                    .background(Color.white)
-                    .padding(.horizontal, -16)
+                    .padding(.horizontal, Constants.toolbarHorizontalPadding)
                 }
-                
-                
             }
         }
         .onAppear {
@@ -79,10 +79,10 @@ struct FormCompletedView: View {
     private var screenHeader: some View {
         VStack(spacing: Constants.screenHedaerInsets) {
             Asset.Images.checkmarkGreenCircle.swiftUIImage
-            Text(NSLocalizedString("Form completed successfully", comment: ""))
+            Text(TextConstants.formCompletedSuccessfully)
                 .font(.title2)
                 .foregroundColor(.primary)
-            Text(NSLocalizedString("The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number.", comment: ""))
+            Text(TextConstants.formSaved)
                 .font(.subheadline)
                 .foregroundColor(.secondaryLabel)
                 .multilineTextAlignment(.center)
@@ -94,7 +94,14 @@ struct FormCompletedView: View {
     @ViewBuilder
     private var formSection: some View {
         Section {
-            ASCFormCellView(model: ASCFormCellModel(title: "1 - Terry Dorwart - 2021", author: "Terry Dorwart", date: "04.06.2021")) //TODO: - from viewModel.form
+            ASCFormCellView(model: ASCFormCellModel(
+                title: viewModel.form.title,
+                author: viewModel.author?.displayName ?? "",
+                date: viewModel.form.created?.string() ?? "",
+                onLinkAction: {
+                    viewModel.onCopyLink()
+                })
+            )
         }
     }
     
@@ -102,11 +109,11 @@ struct FormCompletedView: View {
     private var formNumberSection: some View {
         Section {
             HStack {
-                Text(NSLocalizedString("Form number", comment: ""))
+                Text(TextConstants.formNumber)
                     .font(.subheadline)
                     .foregroundColor(.primary)
                 Spacer()
-                Text("1") //TODO: -
+                Text("\(viewModel.formNumber)")
                     .font(.body)
                     .foregroundColor(.secondaryLabel)
             }
@@ -145,5 +152,14 @@ fileprivate struct Constants {
     static let screenHeaderHorizontalPadding: CGFloat = 18.0
     static let screenHeaderDefaultTopInsets: CGFloat = 16.0
     static let deviderHeight: CGFloat = 1.0
+    static let toolbarHorizontalPadding: CGFloat = -16.0
 }
 
+fileprivate struct TextConstants {
+    static let formCompletedSuccessfully: String = NSLocalizedString("Form completed successfully", comment: "")
+    static let formSaved: String = NSLocalizedString("The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number.", comment: "")
+    static let backToRoom: String = NSLocalizedString("Back to room", comment: "")
+    static let checkReadyForm: String = NSLocalizedString("Check ready form", comment: "")
+    static let formNumber: String = NSLocalizedString("Form number", comment: "")
+    static let formOwner: String = NSLocalizedString("Form owner", comment: "")
+}

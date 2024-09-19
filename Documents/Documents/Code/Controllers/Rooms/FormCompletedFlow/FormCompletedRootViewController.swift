@@ -1,0 +1,23 @@
+//
+//  FormCompletedRootViewController.swift
+//  Documents
+//
+//  Created by Lolita Chernysheva on 13.09.2024.
+//  Copyright © 2024 Ascensio System SIA. All rights reserved.
+//
+
+import Foundation
+import SwiftUI
+
+class CreateFormCompletedRootViewController: UIHostingController<FormCompletedView> {
+    
+    // MARK: - Lifecycle Methods
+
+    init(form: ASCFile, formNumber: Int) {
+        super.init(rootView: FormCompletedView(viewModel: FormCompletedViewModel(form: form, formNumber: formNumber)))
+    }
+    
+    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

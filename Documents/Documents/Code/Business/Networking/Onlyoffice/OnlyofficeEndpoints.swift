@@ -75,6 +75,7 @@ enum OnlyofficeAPI {
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
+        public static let fillFormDidSend =  "api/\(version)/files/file/fillresult"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -246,6 +247,10 @@ enum OnlyofficeAPI {
         // MARK: Files
 
         enum Files {
+            
+            static func fillFormDidSend() -> Endpoint<OnlyofficeResponseCodable<CompletedFormResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<CompletedFormResponceModel>>.make(String(format: Path.fillFormDidSend), .get, URLEncoding.queryString)
+            }
             static func info(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id))
             }

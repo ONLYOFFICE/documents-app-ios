@@ -86,7 +86,9 @@
 		E8DE98392C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */; };
 		E8DE983B2C459617007401EF /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE983A2C459617007401EF /* ChevronRightView.swift */; };
 		F3099B4C2C6100BB0017CE49 /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3099B4B2C6100BB0017CE49 /* RoomDuplicateRequestModel.swift */; };
+		F30BCE312C94BDA300900E07 /* FormCompletedRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE302C94BDA300900E07 /* FormCompletedRootViewController.swift */; };
 		F30BCE332C94C53C00900E07 /* CompleteFormMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE322C94C53B00900E07 /* CompleteFormMailView.swift */; };
+		F30BCE352C94D6CD00900E07 /* FormCompleteNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE342C94D6CC00900E07 /* FormCompleteNetworkService.swift */; };
 		F30BCE382C9B6FE600900E07 /* CompletedFormResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE372C9B6FE600900E07 /* CompletedFormResponceModel.swift */; };
 		F30BCE3A2C9CC22800900E07 /* CompleteFormRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE392C9CC22800900E07 /* CompleteFormRequestModel.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
@@ -713,7 +715,9 @@
 		E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E8DE983A2C459617007401EF /* ChevronRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
 		F3099B4B2C6100BB0017CE49 /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
+		F30BCE302C94BDA300900E07 /* FormCompletedRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedRootViewController.swift; sourceTree = "<group>"; };
 		F30BCE322C94C53B00900E07 /* CompleteFormMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFormMailView.swift; sourceTree = "<group>"; };
+		F30BCE342C94D6CC00900E07 /* FormCompleteNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompleteNetworkService.swift; sourceTree = "<group>"; };
 		F30BCE372C9B6FE600900E07 /* CompletedFormResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedFormResponceModel.swift; sourceTree = "<group>"; };
 		F30BCE392C9CC22800900E07 /* CompleteFormRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFormRequestModel.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
@@ -1940,6 +1944,8 @@
 				F3D385112C8F53F6002889EE /* View */,
 				F3D3850D2C8F472E002889EE /* FormCompletedView.swift */,
 				F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */,
+				F30BCE302C94BDA300900E07 /* FormCompletedRootViewController.swift */,
+				F30BCE342C94D6CC00900E07 /* FormCompleteNetworkService.swift */,
 			);
 			path = FormCompletedFlow;
 			sourceTree = "<group>";
@@ -4539,6 +4545,7 @@
 				FC5943632AE6816E001BA2F9 /* ASCEditorManager+PresentationEditor.swift in Sources */,
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
 				FC33FAA22B0F59E700688E17 /* ASCFolderLogoAvatarView.swift in Sources */,
+				F30BCE312C94BDA300900E07 /* FormCompletedRootViewController.swift in Sources */,
 				FC759CC02C00615E00510096 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
 				FC759CA12C00615E00510096 /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC759CC42C00615E00510096 /* ASCSharingOptionsRouter.swift in Sources */,
@@ -4553,6 +4560,7 @@
 				FC35D45C2A987DFC00C6383F /* Encodable+Extensions.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
+				F30BCE352C94D6CD00900E07 /* FormCompleteNetworkService.swift in Sources */,
 				F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */,
 				FC7E456529226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */,
 				F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */,

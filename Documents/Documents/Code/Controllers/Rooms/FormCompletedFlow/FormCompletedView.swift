@@ -7,10 +7,18 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct FormCompletedView: View {
     
     @ObservedObject var viewModel: FormCompletedViewModel
+    @State private var isShowingMailView = false
+    @State private var mailData = ComposeMailData(
+        subject: "",
+        recipients: [""],
+        messageBody: "",
+        isHtml: false
+    )
     
     var body: some View {
         NavigationView {
@@ -57,6 +65,14 @@ struct FormCompletedView: View {
                 
             }
         }
+        .onAppear {
+            self.mailData = ComposeMailData(
+                subject: viewModel.form.title,
+                recipients: [viewModel.author?.email ?? ""],
+                messageBody: "",
+                isHtml: false
+            )
+        }
     }
 
     @ViewBuilder
@@ -99,18 +115,27 @@ struct FormCompletedView: View {
     
     @ViewBuilder
     private var ownerSection: some View {
-        Section(header: Text(NSLocalizedString("Form owner", comment: ""))) {
-            ASCUserWithEmailRowView(model: ASCUserWithEmailRowViewModel(image: .url(""), userName: "Dmitry Go", email: "name.surename@gmail.com", onEmailAction: {
-                //TODO: - email action
-                print("===== show email screen")
-            }))
+        Section(header: Text(TextConstants.formOwner)) {
+            ASCUserWithEmailRowView(model: ASCUserWithEmailRowViewModel(
+                image: .url(viewModel.author?.avatar ?? ""),
+                userName: viewModel.author?.displayName ?? "",
+                email: viewModel.author?.email ?? "",
+                onEmailAction: {
+                    self.isShowingMailView = true
+                }
+            ))
+        }
+        .sheet(isPresented: $isShowingMailView) {
+            CompleteFormMailView(data: $mailData) { result in
+                print(result)
+            }
         }
     }
 }
 
 struct FormCompletedView_Previews: PreviewProvider {
     static var previews: some View {
-        FormCompletedView(viewModel: FormCompletedViewModel(form: ASCFile()))
+        FormCompletedView(viewModel: FormCompletedViewModel(form: ASCFile(), formNumber: 0))
     }
 }
 

@@ -86,6 +86,7 @@
 		E8DE98392C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */; };
 		E8DE983B2C459617007401EF /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE983A2C459617007401EF /* ChevronRightView.swift */; };
 		F3099B4C2C6100BB0017CE49 /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3099B4B2C6100BB0017CE49 /* RoomDuplicateRequestModel.swift */; };
+		F30BCE332C94C53C00900E07 /* CompleteFormMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE322C94C53B00900E07 /* CompleteFormMailView.swift */; };
 		F30BCE382C9B6FE600900E07 /* CompletedFormResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE372C9B6FE600900E07 /* CompletedFormResponceModel.swift */; };
 		F30BCE3A2C9CC22800900E07 /* CompleteFormRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE392C9CC22800900E07 /* CompleteFormRequestModel.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
@@ -712,6 +713,7 @@
 		E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E8DE983A2C459617007401EF /* ChevronRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
 		F3099B4B2C6100BB0017CE49 /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
+		F30BCE322C94C53B00900E07 /* CompleteFormMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFormMailView.swift; sourceTree = "<group>"; };
 		F30BCE372C9B6FE600900E07 /* CompletedFormResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedFormResponceModel.swift; sourceTree = "<group>"; };
 		F30BCE392C9CC22800900E07 /* CompleteFormRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFormRequestModel.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
@@ -1947,6 +1949,7 @@
 			children = (
 				F3D385142C8F5439002889EE /* ASCFormCellView.swift */,
 				F3D385162C8F7B40002889EE /* ASCUserWithEmailRowView.swift */,
+				F30BCE322C94C53B00900E07 /* CompleteFormMailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4480,6 +4483,7 @@
 				1D14AAD126962CD1009E48AD /* ASCSharingSettingsAccessDefaultProvider.swift in Sources */,
 				FCA0E5342542EF98008DDE78 /* ASCDocumentsToolbar.swift in Sources */,
 				FC759CB02C00615E00510096 /* OnlyofficeShareItemRequestModel.swift in Sources */,
+				F30BCE332C94C53C00900E07 /* CompleteFormMailView.swift in Sources */,
 				FC54E804271F04BE00195CFD /* ASCCreatePortal.swift in Sources */,
 				FC4639CE2BFE10FF00DA603A /* NavigationBarExtendPanelView.swift in Sources */,
 				FCCE50B42C1AF79000102056 /* ASCLinkCell.swift in Sources */,

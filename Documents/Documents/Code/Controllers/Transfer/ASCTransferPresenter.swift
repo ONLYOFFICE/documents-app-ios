@@ -320,7 +320,7 @@ private extension ASCTransferPresenter {
                     type: .plain,
                     isEnabled: folder?.isRoomListFolder ?? false,
                     onTapHandler: { [weak self] in
-                        
+                        self?.createFillFormRoom()
                     }
                 )
             )
@@ -529,5 +529,76 @@ private extension ASCTransferPresenter {
                 }
             }
         })
+    }
+
+    func createFillFormRoom() {
+        let roomName = NSLocalizedString("New form filling", comment: "Suggested a room name when create a new one")
+
+        let alertController = UIAlertController(title: NSLocalizedString("New form filling room", comment: ""), message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { action in
+            if let textField = alertController.textFields?.first {
+                textField.selectedTextRange = nil
+            }
+        }
+        var hud: MBProgressHUD?
+        let createAction = UIAlertAction(title: NSLocalizedString("Create", comment: "")) { action in
+            if let textField = alertController.textFields?.first {
+                textField.selectedTextRange = nil
+
+                if var folderTitle = textField.text?.validPathName {
+                    if folderTitle.isEmpty {
+                        folderTitle = roomName
+                    }
+
+                    hud = MBProgressHUD.showTopMost()
+                    hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
+
+                    ServicesProvider.shared.roomCreateService.createRoom(
+                        model: CreatingRoomModel(
+                            roomType: .fillingForm,
+                            name: folderTitle,
+                            tags: []
+                        )
+                    ) { [weak self] result in
+                        guard let self else { return }
+                        switch result {
+                        case let .success(folder):
+                            hud?.setSuccessState()
+                            hud?.hide(animated: false, afterDelay: .standardDelay)
+                            items.insert((provider, folder), at: 0)
+                            build()
+                        case let .failure(error):
+                            hud?.hide(animated: false)
+                            if let view {
+                                UIAlertController.showError(in: view, message: error.localizedDescription)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(createAction)
+        alertController.addTextField { textField in
+            textField.delegate = ASCEntityManager.shared
+            textField.text = roomName
+
+            textField.add(for: .editingChanged) {
+                let name = (textField.text ?? "").trimmed
+                let isEnabled = !name.isEmpty && !(name == "." || name == "..")
+
+                createAction.isEnabled = isEnabled
+            }
+
+            delay(seconds: 0.3) {
+                textField.selectAll(nil)
+            }
+        }
+
+        if let topVC = ASCViewControllerManager.shared.topViewController {
+            alertController.view.tintColor = Asset.Colors.brend.color
+            topVC.present(alertController, animated: true, completion: nil)
+        }
     }
 }

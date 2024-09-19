@@ -54,7 +54,7 @@ typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @es
 typealias ASCEditorManagerRenameHandler = (_ file: ASCFile?, _ title: String, _ complation: @escaping (Bool) -> Void) -> Void
 typealias ASCEditorManagerShareHandler = (_ file: ASCFile?) -> Void
 typealias ASCEditorManagerLockedHandler = () -> Void
-typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ complation: @escaping (Bool) -> Void) -> Void
+typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ fillingSessionId: String?, _ complation: @escaping (Bool) -> Void) -> Void
 
 class ASCEditorManager: NSObject {
     public static let shared = ASCEditorManager()
@@ -75,6 +75,7 @@ class ASCEditorManager: NSObject {
     private var documentURLForTrack: String?
     private var documentToken: String?
     private var documentCommonConfig: String?
+    private var documentFillingSessionId: String?
     private var editorWindow: UIWindow?
     private let trackingReadyForLocking = 10000
     private var timer: Timer?
@@ -180,7 +181,7 @@ class ASCEditorManager: NSObject {
                     self.documentKeyForTrack = config.document?.key
                     self.documentURLForTrack = config.document?.url
                     self.documentToken = config.token
-
+                    self.documentFillingSessionId = config.fillingSessionId
                     if !(config.document?.key?.isEmpty ?? true), !(config.document?.url?.isEmpty ?? true) {
                         continuation.resume(returning: .success(config))
                         return
@@ -206,6 +207,7 @@ class ASCEditorManager: NSObject {
                 self.documentKeyForTrack = config.document?.key
                 self.documentURLForTrack = config.document?.url
                 self.documentToken = config.token
+                self.documentFillingSessionId = config.fillingSessionId
 
                 if !(config.document?.key?.isEmpty ?? true), !(config.document?.url?.isEmpty ?? true) {
                     return complation(.success(config))
@@ -1441,7 +1443,7 @@ extension ASCEditorManager {
             let file = openedCopy ? openedlocallyFile : openedFile,
             let fillFormDidSendHandler
         {
-            fillFormDidSendHandler(file) { success in
+            fillFormDidSendHandler(file, documentFillingSessionId) { success in
                 complation(.success(true))
             }
         } else {

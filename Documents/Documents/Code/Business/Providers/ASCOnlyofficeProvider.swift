@@ -10,6 +10,7 @@ import Alamofire
 import FileKit
 import Firebase
 import UIKit
+import MBProgressHUD
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     var category: ASCCategory?
@@ -476,13 +477,30 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func fillFormDidSubmit(_ entity: ASCEntity, completeon: ASCProviderCompletionHandler?) {
+    func fillFormDidSubmit(_ entity: ASCEntity, fillingSessionId: String, completeon: ASCProviderCompletionHandler?) {
         guard let file = entity as? ASCFile else {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
-        print("TODO: - Add logic for fillForm did submit here")
+        
         completeon?(self, file, true, nil)
+        
+        let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
+            guard let responce = result?.result else {
+                return
+            }
+            
+            if let topVC = UIApplication.topViewController() {
+                MBProgressHUD.hide(for: topVC.view, animated: true)
+                let vc = CreateFormCompletedRootViewController(form: file, formNumber: responce.formNumber)
+                topVC.present(vc, animated: true)
+            }
+        }
+        if let topVC = UIApplication.topViewController() {
+            MBProgressHUD.showAdded(to: topVC.view, animated: true)
+        }
+        
     }
 
     func markAsRead(_ entities: [ASCEntity], completeon: ASCProviderCompletionHandler?) {
@@ -1836,10 +1854,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         }
-        let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, complation in
-            guard let file else { complation(false); return }
+        let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, fillingSessionId, complation in
+            guard let file, let fillingSessionId else { complation(false); return }
 
-            self.fillFormDidSubmit(file) { provider, result, success, error in
+            self.fillFormDidSubmit(file, fillingSessionId: fillingSessionId) { provider, result, success, error in
                 complation(success)
             }
         }

@@ -2073,8 +2073,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                 let presenter = ASCTransferPresenter(
                     view: vc,
-                    provider: provider,
-                    transferType: .copy,
+                    provider: provider?.copy(),
+                    transferType: .selectFillFormRoom,
                     enableFillRootFolders: true,
                     enableDisplayNewFolderBarButton: false,
                     enableDisplayCreateFillFormRoomBarButton: true,

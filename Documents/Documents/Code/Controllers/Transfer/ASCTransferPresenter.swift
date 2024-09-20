@@ -16,6 +16,7 @@ enum ASCTransferType: Int {
     case recover
     case select
     case selectFillForms
+    case selectFillFormRoom
 }
 
 protocol ASCTransferPresenterProtocol {
@@ -203,14 +204,23 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 "filterType": filterType,
             ]
             let displayFoldersOnly = transferType != .selectFillForms
-            provider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
+            provider.fetch(for: folder, parameters: params) { [weak self] provider, _, success, error in
                 guard let self else {
                     return
                 }
-                if displayFoldersOnly, let foldersOnly = (provider.items.filter { $0 is ASCFolder }) as? [ASCFolder] {
+                var entities = provider.items
+
+                if folder.isRoomListFolder, transferType == .selectFillFormRoom {
+                    entities = entities.filter {
+                        guard let folder = $0 as? ASCFolder else { return true }
+                        return folder.roomType == .fillingForm
+                    }
+                }
+
+                if displayFoldersOnly, let foldersOnly = (entities.filter { $0 is ASCFolder }) as? [ASCFolder] {
                     items = foldersOnly.map { (provider, $0) }
                 } else if !displayFoldersOnly {
-                    items = provider.items.compactMap {
+                    items = entities.compactMap {
                         if self.transferType == .selectFillForms, let file = $0 as? ASCFile {
                             return file.isForm ? (provider, $0) : nil
                         } else {
@@ -252,12 +262,14 @@ private extension ASCTransferPresenter {
             NSLocalizedString("Choose location with templates", comment: "One line. Max 50 charasters")
         case .selectFillForms:
             NSLocalizedString("Select a PDF Form", comment: "One line. Max 50 charasters")
+        case .selectFillFormRoom:
+            NSLocalizedString("Choose Form filling room or create new", comment: "One line. Max 50 charasters")
         }
     }
 
     var actionButtonTitle: String {
         switch transferType {
-        case .copy:
+        case .copy, .selectFillFormRoom:
             NSLocalizedString("Copy here", comment: "Button title")
         case .move:
             NSLocalizedString("Move here", comment: "Button title")

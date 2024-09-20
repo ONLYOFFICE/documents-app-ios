@@ -67,14 +67,14 @@ struct FormCompletedView: View {
         }
         .onAppear {
             self.mailData = ComposeMailData(
-                subject: viewModel.form.title,
-                recipients: [viewModel.author?.email ?? ""],
+                subject: viewModel.formModel.form.title,
+                recipients: [viewModel.formModel.authorEmail],
                 messageBody: "",
                 isHtml: false
             )
         }
     }
-
+    
     @ViewBuilder
     private var screenHeader: some View {
         VStack(spacing: Constants.screenHedaerInsets) {
@@ -95,9 +95,9 @@ struct FormCompletedView: View {
     private var formSection: some View {
         Section {
             ASCFormCellView(model: ASCFormCellModel(
-                title: viewModel.form.title,
-                author: viewModel.author?.displayName ?? "",
-                date: viewModel.form.created?.string() ?? "",
+                title: viewModel.formModel.form.title,
+                author: viewModel.formModel.authorName,
+                date: viewModel.formModel.form.created?.string() ?? "",
                 onLinkAction: {
                     viewModel.onCopyLink()
                 })
@@ -113,7 +113,7 @@ struct FormCompletedView: View {
                     .font(.subheadline)
                     .foregroundColor(.primary)
                 Spacer()
-                Text("\(viewModel.formNumber)")
+                Text("\(viewModel.formModel.formNumber)")
                     .font(.body)
                     .foregroundColor(.secondaryLabel)
             }
@@ -123,26 +123,26 @@ struct FormCompletedView: View {
     @ViewBuilder
     private var ownerSection: some View {
         Section(header: Text(TextConstants.formOwner)) {
-            ASCUserWithEmailRowView(model: ASCUserWithEmailRowViewModel(
-                image: .url(viewModel.author?.avatar ?? ""),
-                userName: viewModel.author?.displayName ?? "",
-                email: viewModel.author?.email ?? "",
-                onEmailAction: {
-                    self.isShowingMailView = true
-                }
-            ))
+            ASCUserWithEmailRowView(
+                model: ASCUserWithEmailRowViewModel(
+                    image: .uiImage(
+                        UIImage(base64String: viewModel.formModel.authorAvatar)
+                        ?? UIImage(asset: Asset.Images.avatarDefault)
+                        ?? UIImage()
+                    ),
+                    userName: viewModel.formModel.authorName,
+                    email: viewModel.formModel.authorEmail,
+                    onEmailAction: {
+                        self.isShowingMailView = true
+                    }
+                )
+            )
         }
         .sheet(isPresented: $isShowingMailView) {
             CompleteFormMailView(data: $mailData) { result in
                 print(result)
             }
         }
-    }
-}
-
-struct FormCompletedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FormCompletedView(viewModel: FormCompletedViewModel(form: ASCFile(), formNumber: 0))
     }
 }
 
@@ -162,4 +162,14 @@ fileprivate struct TextConstants {
     static let checkReadyForm: String = NSLocalizedString("Check ready form", comment: "")
     static let formNumber: String = NSLocalizedString("Form number", comment: "")
     static let formOwner: String = NSLocalizedString("Form owner", comment: "")
+}
+
+private extension UIImage {
+    convenience init?(base64String: String) {
+        guard let data = Data(base64Encoded: base64String.replacingOccurrences(of: "data:image/png;base64,", with: "")),
+              let _ = UIImage(data: data) else {
+            return nil
+        }
+        self.init(data: data)
+    }
 }

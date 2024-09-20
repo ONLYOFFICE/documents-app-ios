@@ -17,6 +17,7 @@ struct ASCUserWithEmailRowViewModel {
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
+        case uiImage(UIImage)
     }
 }
 
@@ -68,6 +69,12 @@ struct ASCUserWithEmailRowView: View {
             Image(asset: asset)
                 .resizable()
                 .frame(width: 40, height: 40)
+        case let .uiImage(image):
+            Image(uiImage: image)
+                .resizable()
+                .frame(width: 40, height: 40)
+                .cornerRadius(20)
+                .clipped()
         }
     }
 }

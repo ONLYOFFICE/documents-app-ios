@@ -486,14 +486,20 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         completeon?(self, file, true, nil)
         
         let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
+
         apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
-            guard let responce = result?.result else {
-                return
-            }
+            guard let responce = result?.result else {return}
             
             if let topVC = UIApplication.topViewController() {
                 MBProgressHUD.hide(for: topVC.view, animated: true)
-                let vc = CreateFormCompletedRootViewController(form: file, formNumber: responce.formNumber)
+                let vc = CreateFormCompletedRootViewController(
+                    formModel: FormModel(
+                        form: file,
+                        authorName: responce.manager.displayName ,
+                        authorEmail: responce.manager.email,
+                        formNumber: responce.formNumber,
+                        authorAvatar: responce.manager.avatar)
+                )
                 topVC.present(vc, animated: true)
             }
         }

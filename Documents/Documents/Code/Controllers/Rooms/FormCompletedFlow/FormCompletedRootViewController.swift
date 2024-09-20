@@ -13,8 +13,14 @@ class CreateFormCompletedRootViewController: UIHostingController<FormCompletedVi
     
     // MARK: - Lifecycle Methods
 
-    init(form: ASCFile, formNumber: Int) {
-        super.init(rootView: FormCompletedView(viewModel: FormCompletedViewModel(form: form, formNumber: formNumber)))
+    init(formModel: FormModel) {
+        super.init(
+            rootView: FormCompletedView(
+                viewModel: FormCompletedViewModel(
+                    formModel: formModel
+                )
+            )
+        )
     }
     
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {

@@ -14,17 +14,12 @@ final class FormCompletedViewModel: ObservableObject {
     
     typealias FormSharingLinkModel = RoomSharingLinkModel
     
-    @Published var author: ASCUser?
-    
-    var form: ASCFile
-    var formNumber: Int
+    var formModel: FormModel
     
     //MARK: - Published vars
     
-    init(form: ASCFile, formNumber: Int) {
-        self.form = form
-        self.formNumber = formNumber
-        self.author = form.createdBy
+    init(formModel: FormModel) {
+        self.formModel = formModel
     }
     
     func checkReadyForm() {
@@ -32,7 +27,7 @@ final class FormCompletedViewModel: ObservableObject {
     }
     
     func onCopyLink() {
-        FormCompleteNetworkService().copyFormLink(form: form) { result in
+        FormCompleteNetworkService().copyFormLink(form: formModel.form) { result in
             switch result {
             case let .success(link):
                 let hud = MBProgressHUD.showTopMost()

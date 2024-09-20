@@ -80,6 +80,10 @@
 		E800AD6C2B4ED9A600AE880D /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */; };
 		E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82715762B5EBA66004137F3 /* KFImageView.swift */; };
 		E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */; };
+		E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */; };
+		E87CCAE42C9DCBB000C43968 /* CopyFileInsideProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */; };
+		E87CCAE82C9DCC2500C43968 /* FillFormMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */; };
+		E87CCAE92C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */; };
 		E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
 		E8DE98372C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */; };
@@ -97,7 +101,6 @@
 		F391DE5D280964AF00C93648 /* ASCUserTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */; };
 		F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
 		F39306A52C74ECBC0034691F /* OnlyofficeRoomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */; };
-		F3A484192C909A71007A57B2 /* ASCTransferViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A484172C909A71007A57B2 /* ASCTransferViewData.swift */; };
 		F3A4841A2C909A71007A57B2 /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A484182C909A71007A57B2 /* ASCTransferPresenter.swift */; };
 		F3A4E3992ABC6E4E00001CB9 /* ASCUserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4E3982ABC6E4E00001CB9 /* ASCUserTest.swift */; };
 		F3AAEFC328241179008ED772 /* ASCFiltersCollectionViewModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */; };
@@ -704,6 +707,10 @@
 		E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		E82715762B5EBA66004137F3 /* KFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
 		E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
+		E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyFileInsideProviderService.swift; sourceTree = "<group>"; };
+		E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreen.swift; sourceTree = "<group>"; };
+		E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreenRepresentable.swift; sourceTree = "<group>"; };
 		E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationLinkDateService.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
@@ -721,7 +728,6 @@
 		F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserViewController.swift; sourceTree = "<group>"; };
 		F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomOperation.swift; sourceTree = "<group>"; };
-		F3A484172C909A71007A57B2 /* ASCTransferViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewData.swift; sourceTree = "<group>"; };
 		F3A484182C909A71007A57B2 /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
 		F3A4E3982ABC6E4E00001CB9 /* ASCUserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTest.swift; sourceTree = "<group>"; };
 		F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFiltersCollectionViewModelBuilder.swift; sourceTree = "<group>"; };
@@ -1669,6 +1675,7 @@
 		1D667A4C28D3A987009BD85D /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				E87CCAE72C9DCC2500C43968 /* FillFormMenu */,
 				FCE9F7A92B3045420056E420 /* CurrentFolderMenu */,
 				1D667A5128D3AB28009BD85D /* CellContext */,
 			);
@@ -1857,6 +1864,23 @@
 				97AF4777D687CAB5646E1F07 /* Pods-DocumentsTests.documents-alpha.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E87CCAE32C9DCBB000C43968 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E87CCAE72C9DCC2500C43968 /* FillFormMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */,
+				E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */,
+			);
+			path = FillFormMenu;
 			sourceTree = "<group>";
 		};
 		E8B0F6DA2C2322C700D63389 /* Services */ = {
@@ -2371,8 +2395,9 @@
 		FC60A6421E9F5F7E000598C2 /* Transfer */ = {
 			isa = PBXGroup;
 			children = (
+				E87CCAE32C9DCBB000C43968 /* Services */,
+				E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */,
 				F3A484182C909A71007A57B2 /* ASCTransferPresenter.swift */,
-				F3A484172C909A71007A57B2 /* ASCTransferViewData.swift */,
 				FCF3AA891EF919F800DF63BA /* Views */,
 				FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */,
 				FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */,
@@ -4272,6 +4297,7 @@
 				FC759CA62C00615E00510096 /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				F35933232B305CB600449F33 /* NavigationLink+Extensions.swift in Sources */,
+				E87CCAE42C9DCBB000C43968 /* CopyFileInsideProviderService.swift in Sources */,
 				E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */,
 				FC5943E52AE6D328001BA2F9 /* ASCDocumentEditorConfiguration.swift in Sources */,
 				FC35D4402A987DFB00C6383F /* UIDevice+Extension.swift in Sources */,
@@ -4287,10 +4313,10 @@
 				FC35D4482A987DFB00C6383F /* UIStoryboard+Extensions.swift in Sources */,
 				FC9EEFAC2BFB201700A66DE8 /* OnlyofficeDocumentConfig.swift in Sources */,
 				FC35D4672A987DFC00C6383F /* Data+Extension.swift in Sources */,
+				E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */,
 				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
 				FC9EEFAF2BFB201700A66DE8 /* OnlyofficeResponse.swift in Sources */,
 				FC35D4542A987DFC00C6383F /* UIBarButtonItem+Extensions.swift in Sources */,
-				F3A484192C909A71007A57B2 /* ASCTransferViewData.swift in Sources */,
 				FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */,
 				FC1765062BA3335A00D6B6F0 /* ASCDocumentsViewController+DragDrop.swift in Sources */,
 				FCCE50B82C1AF79000102056 /* SelectableLabledCellView.swift in Sources */,
@@ -4556,6 +4582,7 @@
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				FC7E456B29226A35006C4CA1 /* ASCEntity.swift in Sources */,
 				FC5943C52AE6B422001BA2F9 /* ASCIntroPageController.swift in Sources */,
+				E87CCAE92C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift in Sources */,
 				1D9820012631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
 				FC68529526837B7300D830EC /* OnlyofficeServerError.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,
@@ -4627,6 +4654,7 @@
 				F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */,
 				FCF695872632E3A300808644 /* UILabel+Style.swift in Sources */,
 				FC9EEFA02BFB201700A66DE8 /* AttachTagsRequestModel.swift in Sources */,
+				E87CCAE82C9DCC2500C43968 /* FillFormMenuScreen.swift in Sources */,
 				FC759C3D2C00614D00510096 /* RoomSharingView.swift in Sources */,
 				E800AD6C2B4ED9A600AE880D /* Toggle+Extension.swift in Sources */,
 				FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */,

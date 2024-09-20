@@ -580,6 +580,8 @@ private extension ASCTransferPresenter {
                         case let .success(folder):
                             hud?.setSuccessState()
                             hud?.hide(animated: false, afterDelay: .standardDelay)
+                            var folder = folder
+                            folder.parent = self.folder?.parent
                             items.insert((provider, folder), at: 0)
                             build()
                         case let .failure(error):

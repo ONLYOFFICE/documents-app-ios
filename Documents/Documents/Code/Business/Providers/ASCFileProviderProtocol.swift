@@ -40,6 +40,7 @@ struct ASCEntityActions: OptionSet {
     static let docspaceShare = ASCEntityActions(rawValue: 1 << 26)
     static let copySharedLink = ASCEntityActions(rawValue: 1 << 27)
     static let shareAsRoom = ASCEntityActions(rawValue: 1 << 28)
+    static let fillForm = ASCEntityActions(rawValue: 1 << 29)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

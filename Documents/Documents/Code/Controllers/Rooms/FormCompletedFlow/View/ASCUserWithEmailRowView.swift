@@ -13,7 +13,7 @@ struct ASCUserWithEmailRowViewModel {
     var userName: String
     var email: String
     var onEmailAction: () -> Void
-    
+
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
@@ -23,11 +23,11 @@ struct ASCUserWithEmailRowViewModel {
 
 struct ASCUserWithEmailRowView: View {
     var model: ASCUserWithEmailRowViewModel
-    
+
     var body: some View {
         HStack(alignment: .center) {
             imageView(for: model.image)
-            
+
             VStack(alignment: .leading) {
                 Text(model.userName)
                     .lineLimit(1)
@@ -39,7 +39,7 @@ struct ASCUserWithEmailRowView: View {
             }
 
             Spacer()
-            
+
             Asset.Images.barEnvelope.swiftUIImage
                 .onTapGesture {
                     model.onEmailAction()

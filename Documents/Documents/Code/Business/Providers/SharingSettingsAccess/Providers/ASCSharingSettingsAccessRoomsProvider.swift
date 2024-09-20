@@ -10,7 +10,7 @@ import Foundation
 
 class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
     let roomType: ASCRoomType
-    
+
     init(roomType: ASCRoomType) {
         self.roomType = roomType
     }
@@ -21,7 +21,7 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
             switch rightHoldersTableType {
             case .users, .none:
                 return [.roomManager, .powerUser, .fillForms]
-            case . groups:
+            case .groups:
                 return [.fillForms]
             }
         case .colobaration:

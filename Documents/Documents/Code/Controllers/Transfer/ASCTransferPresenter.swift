@@ -7,6 +7,7 @@
 //
 
 import FileKit
+import MBProgressHUD
 import UIKit
 
 enum ASCTransferType: Int {
@@ -15,6 +16,7 @@ enum ASCTransferType: Int {
     case recover
     case select
     case selectFillForms
+    case selectFillFormRoom
 }
 
 protocol ASCTransferPresenterProtocol {
@@ -42,6 +44,8 @@ final class ASCTransferPresenter {
     private let view: ASCTransferView?
     private let provider: ASCFileProviderProtocol?
     private let enableFillRootFolders: Bool
+    private let enableDisplayNewFolderBarButton: Bool
+    private let enableDisplayCreateFillFormRoomBarButton: Bool
     private var items: [ASCTransferViewType] = []
     private var isActionButtonLocked: Bool = true
     private let path: String
@@ -63,6 +67,8 @@ final class ASCTransferPresenter {
         provider: ASCFileProviderProtocol? = nil,
         transferType: ASCTransferType,
         enableFillRootFolders: Bool = true,
+        enableDisplayNewFolderBarButton: Bool = true,
+        enableDisplayCreateFillFormRoomBarButton: Bool = false,
         folder: ASCFolder? = nil,
         path: String = "/",
         flowModel: ASCTransferFlowModel? = nil,
@@ -72,6 +78,8 @@ final class ASCTransferPresenter {
         self.provider = provider
         self.transferType = transferType
         self.enableFillRootFolders = enableFillRootFolders
+        self.enableDisplayNewFolderBarButton = enableDisplayNewFolderBarButton
+        self.enableDisplayCreateFillFormRoomBarButton = enableDisplayCreateFillFormRoomBarButton
         self.folder = folder
         self.path = path
         self.flowModel = flowModel
@@ -196,14 +204,23 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 "filterType": filterType,
             ]
             let displayFoldersOnly = transferType != .selectFillForms
-            provider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
+            provider.fetch(for: folder, parameters: params) { [weak self] provider, _, success, error in
                 guard let self else {
                     return
                 }
-                if displayFoldersOnly, let foldersOnly = (provider.items.filter { $0 is ASCFolder }) as? [ASCFolder] {
+                var entities = provider.items
+
+                if folder.isRoomListFolder, transferType == .selectFillFormRoom {
+                    entities = entities.filter {
+                        guard let folder = $0 as? ASCFolder else { return true }
+                        return folder.roomType == .fillingForm
+                    }
+                }
+
+                if displayFoldersOnly, let foldersOnly = (entities.filter { $0 is ASCFolder }) as? [ASCFolder] {
                     items = foldersOnly.map { (provider, $0) }
                 } else if !displayFoldersOnly {
-                    items = provider.items.compactMap {
+                    items = entities.compactMap {
                         if self.transferType == .selectFillForms, let file = $0 as? ASCFile {
                             return file.isForm ? (provider, $0) : nil
                         } else {
@@ -245,12 +262,14 @@ private extension ASCTransferPresenter {
             NSLocalizedString("Choose location with templates", comment: "One line. Max 50 charasters")
         case .selectFillForms:
             NSLocalizedString("Select a PDF Form", comment: "One line. Max 50 charasters")
+        case .selectFillFormRoom:
+            NSLocalizedString("Choose Form filling room or create new", comment: "One line. Max 50 charasters")
         }
     }
 
     var actionButtonTitle: String {
         switch transferType {
-        case .copy:
+        case .copy, .selectFillFormRoom:
             NSLocalizedString("Copy here", comment: "Button title")
         case .move:
             NSLocalizedString("Move here", comment: "Button title")
@@ -264,6 +283,12 @@ private extension ASCTransferPresenter {
     }
 
     var isActionButtonEnabled: Bool {
+        if transferType == .selectFillForms {
+            return (folder?.isRoomListSubfolder ?? false) && !isActionButtonLocked
+        }
+        if folder?.isRoomListFolder == true {
+            return false
+        }
         guard flowModel?.sourceFolder != nil else { return true }
         return (flowModel?.sourceFolder?.id != folder?.id || flowModel?.sourceProvider?.id != provider?.id)
             && provider?.allowEdit(entity: folder) ?? false
@@ -276,19 +301,59 @@ private extension ASCTransferPresenter {
         let tableData = mapTableData()
         DispatchQueue.main.async { [self] in
             view?.updateViewData(
-                data: ASCTransferViewData(
+                data: ASCTransferViewModel(
                     title: folder?.title,
                     navPrompt: navPrompt,
-                    actionButtonTitle: actionButtonTitle,
-                    tableData: tableData,
-                    isActionButtonEnabled: isActionButtonEnabled
+                    toolBarItems: buildToolBarItems(),
+                    tableData: tableData
                 )
             )
         }
     }
 
-    func mapTableData() -> ASCTransferViewData.TableData {
-        ASCTransferViewData.TableData(
+    func buildToolBarItems() -> [ASCTransferViewModel.BarButtonItem] {
+        var items = [ASCTransferViewModel.BarButtonItem]()
+        if enableDisplayNewFolderBarButton {
+            items.append(
+                ASCTransferViewModel.BarButtonItem(
+                    title: NSLocalizedString("New folder", comment: ""),
+                    type: .plain,
+                    isEnabled: (provider?.allowAdd(toFolder: folder) ?? false) && folder?.isRoomListFolder != true,
+                    onTapHandler: { [weak self] in
+                        self?.createFolder()
+                    }
+                )
+            )
+        }
+        if enableDisplayCreateFillFormRoomBarButton {
+            items.append(
+                ASCTransferViewModel.BarButtonItem(
+                    title: NSLocalizedString("New room", comment: ""),
+                    type: .plain,
+                    isEnabled: folder?.isRoomListFolder ?? false,
+                    onTapHandler: { [weak self] in
+                        self?.createFillFormRoom()
+                    }
+                )
+            )
+        }
+        if !actionButtonTitle.isEmpty {
+            items.append(
+                ASCTransferViewModel.BarButtonItem(
+                    title: actionButtonTitle,
+                    type: .plain,
+                    isEnabled: isActionButtonEnabled,
+                    onTapHandler: { [weak self] in
+                        self?.onDone()
+                    }
+                )
+            )
+        }
+        return items
+    }
+
+    func mapTableData() -> ASCTransferViewModel.TableData {
+        ASCTransferViewModel.TableData(
             cells: items.compactMap { provider, entity in
                 if let folder = entity as? ASCFolder {
                     return .folder(
@@ -338,6 +403,9 @@ private extension ASCTransferPresenter {
 
     func getImage(forFolder folder: ASCFolder, provider: ASCFileProviderProtocol?) -> UIImage? {
         guard folder.parent == nil else {
+            if folder.isRoom {
+                return folder.roomType?.image ?? Asset.Images.listFolder.image
+            }
             return Asset.Images.listFolder.image
         }
         var folderImage: UIImage?
@@ -367,6 +435,8 @@ private extension ASCTransferPresenter {
             folderImage = Asset.Images.categoryCommon.image
         case .onlyofficeBunch, .onlyofficeProjects:
             folderImage = Asset.Images.categoryProjects.image
+        case .onlyofficeRoomShared:
+            folderImage = Asset.Images.categoryRoom.image
         default:
             break
         }
@@ -446,5 +516,106 @@ private extension ASCTransferPresenter {
             flowModel: flowModel,
             needLoadFirstPage: true
         )
+    }
+
+    func createFolder() {
+        guard let provider, let viewController = view else { return }
+        var hud: MBProgressHUD?
+
+        ASCEntityManager.shared.createFolder(for: provider, in: folder, handler: { [weak self] status, entity, error in
+            guard let self else { return }
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
+            } else if status == .error {
+                hud?.hide(animated: true)
+
+                if let error {
+                    UIAlertController.showError(in: viewController, message: error.localizedDescription)
+                }
+            } else if status == .end {
+                if let entity = entity as? ASCEntity {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: .standardDelay)
+                    items.insert((provider, entity), at: 0)
+                    build()
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        })
+    }
+
+    func createFillFormRoom() {
+        let roomName = NSLocalizedString("New form filling", comment: "Suggested a room name when create a new one")
+
+        let alertController = UIAlertController(title: NSLocalizedString("New form filling room", comment: ""), message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { action in
+            if let textField = alertController.textFields?.first {
+                textField.selectedTextRange = nil
+            }
+        }
+        var hud: MBProgressHUD?
+        let createAction = UIAlertAction(title: NSLocalizedString("Create", comment: "")) { action in
+            if let textField = alertController.textFields?.first {
+                textField.selectedTextRange = nil
+
+                if var folderTitle = textField.text?.validPathName {
+                    if folderTitle.isEmpty {
+                        folderTitle = roomName
+                    }
+
+                    hud = MBProgressHUD.showTopMost()
+                    hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
+
+                    ServicesProvider.shared.roomCreateService.createRoom(
+                        model: CreatingRoomModel(
+                            roomType: .fillingForm,
+                            name: folderTitle,
+                            tags: []
+                        )
+                    ) { [weak self] result in
+                        guard let self else { return }
+                        switch result {
+                        case let .success(folder):
+                            hud?.setSuccessState()
+                            hud?.hide(animated: false, afterDelay: .standardDelay)
+                            var folder = folder
+                            folder.parent = self.folder?.parent
+                            items.insert((provider, folder), at: 0)
+                            build()
+                        case let .failure(error):
+                            hud?.hide(animated: false)
+                            if let view {
+                                UIAlertController.showError(in: view, message: error.localizedDescription)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(createAction)
+        alertController.addTextField { textField in
+            textField.delegate = ASCEntityManager.shared
+            textField.text = roomName
+
+            textField.add(for: .editingChanged) {
+                let name = (textField.text ?? "").trimmed
+                let isEnabled = !name.isEmpty && !(name == "." || name == "..")
+
+                createAction.isEnabled = isEnabled
+            }
+
+            delay(seconds: 0.3) {
+                textField.selectAll(nil)
+            }
+        }
+
+        if let topVC = ASCViewControllerManager.shared.topViewController {
+            alertController.view.tintColor = Asset.Colors.brend.color
+            topVC.present(alertController, animated: true, completion: nil)
+        }
     }
 }

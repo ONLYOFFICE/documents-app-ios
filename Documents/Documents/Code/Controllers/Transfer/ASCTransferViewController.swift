@@ -12,12 +12,12 @@ import UIKit
 typealias ASCTransferViewType = (provider: ASCFileProviderProtocol?, entity: ASCEntity)
 
 protocol ASCTransferView: UIViewController {
-    func updateViewData(data: ASCTransferViewData)
+    func updateViewData(data: ASCTransferViewModel)
     func showLoadingPage(_ show: Bool)
 }
 
 class ASCTransferViewController: UITableViewController {
-    typealias TableData = ASCTransferViewData.TableData
+    typealias TableData = ASCTransferViewModel.TableData
 
     // MARK: - Public
 
@@ -176,15 +176,10 @@ class ASCTransferViewController: UITableViewController {
 }
 
 extension ASCTransferViewController: ASCTransferView {
-    func updateViewData(data: ASCTransferViewData) {
+    func updateViewData(data: ASCTransferViewModel) {
         title = title ?? data.title
         navigationItem.prompt = data.navPrompt
-        if !data.actionButtonTitle.isEmpty {
-            actionButton?.title = data.actionButtonTitle
-            actionButton?.isEnabled = data.isActionButtonEnabled
-        } else {
-            setToolbarItems([], animated: false)
-        }
+        configureToolBar(items: data.toolBarItems)
         updateTableData(data.tableData)
     }
 
@@ -196,5 +191,38 @@ extension ASCTransferViewController: ASCTransferView {
             showEmptyView(self.tableData.cells.isEmpty)
         }
         tableView.reloadData()
+    }
+
+    private func configureToolBar(items: [ASCTransferViewModel.BarButtonItem]) {
+        let barButtonItems: [UIBarButtonItem] = items.map { item in
+            switch item.type {
+            case .capsule:
+                return UIBarButtonItem.makeCapsuleBarButtonItem(
+                    title: item.title,
+                    isEnabled: item.isEnabled,
+                    item.onTapHandler
+                )
+            case .plain:
+                let barItem = UIBarButtonItem(
+                    title: item.title,
+                    style: .plain,
+                    closure: item.onTapHandler
+                )
+                barItem.isEnabled = item.isEnabled
+                return barItem
+            }
+        }
+        /// add space between bar buttons
+        var resultButtonItems: [UIBarButtonItem] = []
+
+        for (index, button) in barButtonItems.enumerated() {
+            resultButtonItems.append(button)
+            /// do not add in the end
+            if index != barButtonItems.count - 1 {
+                resultButtonItems.append(.flexibleSpace())
+            }
+        }
+
+        setToolbarItems(resultButtonItems, animated: false)
     }
 }

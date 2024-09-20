@@ -488,19 +488,12 @@ extension ASCSharingAddRightHoldersView {
     }
 
     private func makeNextBarBtn() -> UIBarButtonItem {
-        let nextBtn = ASCButtonStyle()
-        nextBtn.styleType = .capsule
-        nextBtn.setTitleForAllStates(NSLocalizedString("Next", comment: "").uppercased())
-        nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
-        nextBtn.isEnabled = isNextBarBtnEnabled
-
-        Task { @MainActor [weak nextBtn] in
-            nextBtn?.iq.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
+        .makeCapsuleBarButtonItem(
+            title: NSLocalizedString("Next", comment: "").uppercased(),
+            isEnabled: isNextBarBtnEnabled
+        ) { [weak self] in
+            self?.onNextButtonTapped()
         }
-
-        let barItem = UIBarButtonItem(customView: nextBtn)
-        barItem.isEnabled = isNextBarBtnEnabled
-        return barItem
     }
 
     public func updateToolbars() {

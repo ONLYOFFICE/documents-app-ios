@@ -19,9 +19,8 @@ struct ASCFormCellModel {
 }
 
 struct ASCFormCellView: View {
-    
     var model: ASCFormCellModel
-    
+
     var body: some View {
         HStack(spacing: 15) {
             Asset.Images.listFormatPdf.swiftUIImage
@@ -37,7 +36,7 @@ struct ASCFormCellView: View {
                     .foregroundColor(.secondaryLabel)
             }
             Spacer()
-            
+
             Image(systemName: "link")
                 .resizable()
                 .aspectRatio(contentMode: .fit)

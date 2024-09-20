@@ -1914,9 +1914,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ASCConstants.FileExtensions.spreadsheets.contains(fileExt) ||
             ASCConstants.FileExtensions.presentations.contains(fileExt)
 
-        let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-        let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+        lazy var openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+        lazy var closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        lazy var renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
             guard let file else { complation(false); return }
 
             self.rename(file, to: title) { provider, result, success, error in

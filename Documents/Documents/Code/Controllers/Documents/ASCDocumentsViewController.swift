@@ -1896,7 +1896,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             .compactMap { $0 as? ASCFolder }
             .forEach {
                 guard
-//                    let entity = $0,
                     let indexPath = indexPath(by: $0),
                     let cell = collectionView.cellForItem(at: indexPath)
                 else { return }

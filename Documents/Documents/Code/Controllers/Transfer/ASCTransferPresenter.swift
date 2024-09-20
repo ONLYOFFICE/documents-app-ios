@@ -403,6 +403,9 @@ private extension ASCTransferPresenter {
 
     func getImage(forFolder folder: ASCFolder, provider: ASCFileProviderProtocol?) -> UIImage? {
         guard folder.parent == nil else {
+            if folder.isRoom {
+                return folder.roomType?.image ?? Asset.Images.listFolder.image
+            }
             return Asset.Images.listFolder.image
         }
         var folderImage: UIImage?

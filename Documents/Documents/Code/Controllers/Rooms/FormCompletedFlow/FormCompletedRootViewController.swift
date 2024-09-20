@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 class CreateFormCompletedRootViewController: UIHostingController<FormCompletedView> {
-    
     // MARK: - Lifecycle Methods
 
     init(formModel: FormModel) {
@@ -22,8 +21,9 @@ class CreateFormCompletedRootViewController: UIHostingController<FormCompletedVi
             )
         )
     }
-    
-    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+
+    @available(*, unavailable)
+    @MainActor dynamic required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

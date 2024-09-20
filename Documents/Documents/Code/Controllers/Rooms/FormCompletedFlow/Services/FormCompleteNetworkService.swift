@@ -13,9 +13,8 @@ protocol FormCompleteNetworkServiceProtocol {
 }
 
 final class FormCompleteNetworkService: FormCompleteNetworkServiceProtocol {
-    
     private var networkService = OnlyofficeApiClient.shared
-    
+
     func copyFormLink(form: ASCFile, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void) {
         networkService.request(OnlyofficeAPI.Endpoints.Files.createAndCopyLink(file: form)) { result, error in
             guard let link = result?.result else {

@@ -12,9 +12,9 @@ struct ASCFormCellModel {
     var title: String
     var author: String
     var date: String
-    
+
     var onLinkAction: () -> Void
-    
+
     static var empty = ASCFormCellModel(title: "", author: "", date: "", onLinkAction: {})
 }
 

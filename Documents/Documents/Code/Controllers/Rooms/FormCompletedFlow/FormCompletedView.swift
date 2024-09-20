@@ -6,14 +6,13 @@
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import MessageUI
+import SwiftUI
 
 struct FormCompletedView: View {
-    
     @ObservedObject var viewModel: FormCompletedViewModel
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State private var isShowingMailView = false
     @State private var mailData = ComposeMailData(
         subject: "",
@@ -21,7 +20,7 @@ struct FormCompletedView: View {
         messageBody: "",
         isHtml: false
     )
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -37,7 +36,6 @@ struct FormCompletedView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     VStack(spacing: 0) {
-                        
                         Divider()
                             .background(Color.gray)
                             .frame(height: Constants.deviderHeight)
@@ -74,7 +72,7 @@ struct FormCompletedView: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var screenHeader: some View {
         VStack(spacing: Constants.screenHedaerInsets) {
@@ -90,7 +88,7 @@ struct FormCompletedView: View {
         .padding(.horizontal, Constants.screenHeaderHorizontalPadding)
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top ?? Constants.screenHeaderDefaultTopInsets)
     }
-    
+
     @ViewBuilder
     private var formSection: some View {
         Section {
@@ -100,11 +98,12 @@ struct FormCompletedView: View {
                 date: viewModel.formModel.form.created?.string() ?? "",
                 onLinkAction: {
                     viewModel.onCopyLink()
-                })
+                }
+            )
             )
         }
     }
-    
+
     @ViewBuilder
     private var formNumberSection: some View {
         Section {
@@ -119,7 +118,7 @@ struct FormCompletedView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var ownerSection: some View {
         Section(header: Text(TextConstants.formOwner)) {
@@ -127,8 +126,8 @@ struct FormCompletedView: View {
                 model: ASCUserWithEmailRowViewModel(
                     image: .uiImage(
                         UIImage(base64String: viewModel.formModel.authorAvatar)
-                        ?? UIImage(asset: Asset.Images.avatarDefault)
-                        ?? UIImage()
+                            ?? UIImage(asset: Asset.Images.avatarDefault)
+                            ?? UIImage()
                     ),
                     userName: viewModel.formModel.authorName,
                     email: viewModel.formModel.authorEmail,
@@ -146,7 +145,7 @@ struct FormCompletedView: View {
     }
 }
 
-fileprivate struct Constants {
+private enum Constants {
     static let toolbarButtonCornerRadius: CGFloat = 14.0
     static let screenHedaerInsets: CGFloat = 16.0
     static let screenHeaderHorizontalPadding: CGFloat = 18.0
@@ -155,7 +154,7 @@ fileprivate struct Constants {
     static let toolbarHorizontalPadding: CGFloat = -16.0
 }
 
-fileprivate struct TextConstants {
+private enum TextConstants {
     static let formCompletedSuccessfully: String = NSLocalizedString("Form completed successfully", comment: "")
     static let formSaved: String = NSLocalizedString("The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number.", comment: "")
     static let backToRoom: String = NSLocalizedString("Back to room", comment: "")
@@ -167,7 +166,8 @@ fileprivate struct TextConstants {
 private extension UIImage {
     convenience init?(base64String: String) {
         guard let data = Data(base64Encoded: base64String.replacingOccurrences(of: "data:image/png;base64,", with: "")),
-              let _ = UIImage(data: data) else {
+              let _ = UIImage(data: data)
+        else {
             return nil
         }
         self.init(data: data)

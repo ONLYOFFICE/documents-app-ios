@@ -11,21 +11,18 @@ import Foundation
 import MBProgressHUD
 
 final class FormCompletedViewModel: ObservableObject {
-    
     typealias FormSharingLinkModel = RoomSharingLinkModel
-    
+
     var formModel: FormModel
-    
-    //MARK: - Published vars
-    
+
+    // MARK: - Published vars
+
     init(formModel: FormModel) {
         self.formModel = formModel
     }
-    
-    func checkReadyForm() {
-        
-    }
-    
+
+    func checkReadyForm() {}
+
     func onCopyLink() {
         FormCompleteNetworkService().copyFormLink(form: formModel.form) { result in
             switch result {
@@ -41,4 +38,3 @@ final class FormCompletedViewModel: ObservableObject {
         }
     }
 }
-

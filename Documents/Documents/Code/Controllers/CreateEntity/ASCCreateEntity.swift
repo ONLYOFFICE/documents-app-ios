@@ -37,11 +37,21 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             return provider.apiClient.active
         }()
 
+        let allowForms = {
+            guard let provider = provider as? ASCOnlyofficeProvider,
+                  let folder = provider.folder,
+                  provider.apiClient.serverVersion?.docSpace != nil
+            else { return false }
+
+            return folder.isRoom && folder.roomType == .fillingForm
+        }()
+
         var createEntityVC: ASCCreateEntityUIViewController!
 
         if ASCViewControllerManager.shared.phoneLayout {
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
+                allowForms: allowForms,
                 onAction: { type in
                     SwiftMessages.hide()
                     self.createEntity(type, in: viewController)
@@ -77,6 +87,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
+                allowForms: allowForms,
                 onAction: { type in
                     createEntityVC.dismiss(animated: true) {
                         self.createEntity(type, in: viewController)
@@ -133,6 +144,10 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
             viewController.present(connectStorageNavigationVC, animated: true, completion: nil)
+        case .pdfDocspace:
+            uploadPDFFromDocspace(viewController: viewController)
+        case .pdfDevice:
+            uploadPDFFromDevice(viewController: viewController)
         }
     }
 
@@ -280,6 +295,46 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         } else {
             showCamera()
         }
+    }
+
+    func uploadPDFFromDocspace(viewController: ASCDocumentsViewController) {
+        let vc = ASCTransferViewController.instantiate(from: Storyboard.transfer)
+
+        let presenter = ASCTransferPresenter(
+            view: vc,
+            provider: provider,
+            transferType: .selectFillForms,
+            enableFillRootFolders: false,
+            folder: provider?.rootFolder
+        )
+        vc.presenter = presenter
+        vc.actionButton.isEnabled = false
+
+        let nc = ASCTransferNavigationController(rootASCViewController: vc)
+        nc.onFileSelection = { [provider, weak viewController] file in
+            ServicesProvider.shared.copyFileInsideProviderService.copyFileInsideProvider(
+                provider: provider,
+                file: file,
+                viewController: viewController
+            )
+        }
+        nc.displayActionButtonOnRootVC = true
+        nc.modalPresentationStyle = .formSheet
+        nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+        viewController.present(nc, animated: true)
+    }
+
+    func uploadPDFFromDevice(viewController: ASCDocumentsViewController) {
+        ASCCreateEntityDocumentDelegate.shared.documentsViewController = viewController
+        ASCCreateEntityDocumentDelegate.shared.provider = provider
+        let documentPicker = UIDocumentPickerViewController(
+            documentTypes: [
+                String(kUTTypePDF),
+            ],
+            in: .import
+        )
+        documentPicker.delegate = ASCCreateEntityDocumentDelegate.shared
+        viewController.present(documentPicker, animated: true)
     }
 
     // MARK: - Private

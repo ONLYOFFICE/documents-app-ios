@@ -9,7 +9,7 @@
 import UIKit
 
 class ASCTransferViewCell: UITableViewCell {
-    @IBOutlet var folderView: UIImageView!
+    @IBOutlet var leftImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
 
     override func awakeFromNib() {

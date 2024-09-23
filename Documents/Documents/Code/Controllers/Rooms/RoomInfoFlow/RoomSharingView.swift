@@ -32,16 +32,32 @@ struct RoomSharingView: View {
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
-            List {
-                sharedLinksSection
-                adminSection
-                usersSection
-                invitesSection
+            VStack {
+                roomDescriptionText
+                List {
+                    sharedLinksSection
+                    adminSection
+                    usersSection
+                    invitesSection
+                }
             }
+            .background(Color.systemGroupedBackground)
         } else {
             VStack {
                 ActivityIndicatorView()
             }
+        }
+    }
+
+    @ViewBuilder
+    private var roomDescriptionText: some View {
+        if viewModel.room.roomType != .colobaration {
+            Text(viewModel.roomTypeDescription)
+                .multilineTextAlignment(.center)
+                .padding(.top, Constants.descriptionTopPadding)
+                .padding(.horizontal, Constants.horizontalAlignment)
+                .font(.caption)
+                .foregroundColor(.secondaryLabel)
         }
     }
 
@@ -107,19 +123,40 @@ struct RoomSharingView: View {
         }
     }
 
+    @ViewBuilder
     private var sharedLinksSectionHeader: some View {
+        if viewModel.room.isFillingFormRoom {
+            formRoomHeader
+        } else {
+            sharedLinksHeader
+        }
+    }
+
+    private var formRoomHeader: some View {
+        Text(NSLocalizedString("Public link", comment: ""))
+    }
+
+    private var sharedLinksHeader: some View {
         HStack {
-            Text(NSLocalizedString("Shared links", comment: ""))
-            Text("(\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))")
+            Text(sharedLinksTitle)
             Spacer()
-            if viewModel.sharedLinksModels.count < viewModel.linksLimit && viewModel.isSharingPossible {
-                Button {
-                    viewModel.createAddLinkAction()
-                } label: {
-                    Image(systemName: "plus")
-                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                }
+            if viewModel.canAddLink {
+                addButton
             }
+        }
+    }
+
+    private var sharedLinksTitle: String {
+        let title = NSLocalizedString("Shared links", comment: "")
+        return "\(title) (\(viewModel.sharedLinksModels.count)/\(viewModel.linksLimit))"
+    }
+
+    private var addButton: some View {
+        Button {
+            viewModel.createAddLinkAction()
+        } label: {
+            Image(systemName: "plus")
+                .foregroundColor(Asset.Colors.brend.swiftUIColor)
         }
     }
 
@@ -273,8 +310,9 @@ struct RoomSharingView_Previews: PreviewProvider {
 struct ASCUserRowModel: Identifiable {
     var id = UUID()
     var image: ImageSourceType
-    var title: String
-    var subtitle: String
+    var userName: String
+    var accessString: String
+    var emailString: String
     var isOwner: Bool
     var onTapAction: () -> Void
 
@@ -288,15 +326,22 @@ struct ASCUserRow: View {
     var model: ASCUserRowModel
 
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             imageView(for: model.image)
-            Text(model.title)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
+
+            VStack(alignment: .leading) {
+                Text(model.userName)
+                    .lineLimit(1)
+                    .font(.callout)
+                Text([model.accessString, model.emailString].joined(separator: " | "))
+                    .lineLimit(1)
+                    .foregroundColor(.secondaryLabel)
+                    .font(.caption)
+            }
 
             Spacer()
 
-            Text(model.subtitle)
+            Text(model.accessString)
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)
@@ -317,22 +362,30 @@ struct ASCUserRow: View {
         switch imageType {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
-               !string.contains("/default_user_photo_size_"),
+               !string.contains(String.defaultUserPhotoSize),
                let url = URL(string: portal + string)
             {
                 KFImageView(url: url)
-                    .frame(width: 40, height: 40)
-                    .cornerRadius(20)
+                    .frame(width: Constants.imageWidth, height: Constants.imageHeight)
+                    .cornerRadius(Constants.imageCornerRadius)
                     .clipped()
             } else {
                 Image(asset: Asset.Images.avatarDefault)
                     .resizable()
-                    .frame(width: 40, height: 40)
+                    .frame(width: Constants.imageWidth, height: Constants.imageHeight)
             }
         case let .asset(asset):
             Image(asset: asset)
                 .resizable()
-                .frame(width: 40, height: 40)
+                .frame(width: Constants.imageWidth, height: Constants.imageHeight)
         }
     }
+}
+
+private enum Constants {
+    static let horizontalAlignment: CGFloat = 16
+    static let descriptionTopPadding: CGFloat = 20
+    static let imageWidth: CGFloat = 40
+    static let imageHeight: CGFloat = 40
+    static let imageCornerRadius: CGFloat = 20
 }

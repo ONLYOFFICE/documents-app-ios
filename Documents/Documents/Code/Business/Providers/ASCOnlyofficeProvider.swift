@@ -9,6 +9,7 @@
 import Alamofire
 import FileKit
 import Firebase
+import MBProgressHUD
 import UIKit
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
@@ -476,13 +477,48 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func fillFormDidSubmit(_ entity: ASCEntity, completeon: ASCProviderCompletionHandler?) {
+    func fillFormDidSubmit(_ entity: ASCEntity, fillingSessionId: String, completeon: ASCProviderCompletionHandler?) {
         guard let file = entity as? ASCFile else {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
-        print("TODO: - Add logic for fillForm did submit here")
+
         completeon?(self, file, true, nil)
+
+        let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
+        
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
+            guard let topVC = UIApplication.topViewController() else { return }
+            MBProgressHUD.hide(for: topVC.view, animated: true)
+            
+            if let error = error {
+                topVC.showAlert(
+                    title: NSLocalizedString("Error", comment: ""),
+                    message: error.localizedDescription
+                )
+                return
+            }
+            
+            guard let responce = result?.result else {
+                return
+            }
+            
+            let vc = CreateFormCompletedRootViewController(
+                formModel: FormModel(
+                    form: file,
+                    authorName: responce.manager?.displayName ?? "",
+                    authorEmail: responce.manager?.email ?? "",
+                    formNumber: responce.formNumber,
+                    authorAvatar: responce.manager?.avatar ?? ""
+                )
+            )
+            
+            topVC.present(vc, animated: true)
+        }
+        
+        if let topVC = UIApplication.topViewController() {
+            MBProgressHUD.showAdded(to: topVC.view, animated: true)
+        }
     }
 
     func markAsRead(_ entities: [ASCEntity], completeon: ASCProviderCompletionHandler?) {
@@ -1290,6 +1326,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
+            if file.isForm, isDocspace, isUserCategory {
+                entityActions.insert(.fillForm)
+            }
+
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
@@ -1339,6 +1379,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isUserCategory = folder.rootFolderType == .onlyofficeUser
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
+            let canDuplicateRoom = folder.isRoom && !folder.isThirdParty && !isArchiveCategory
 
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]
@@ -1397,6 +1438,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.shareAsRoom)
             }
 
+            if isDocspace, canDuplicateRoom {
+                entityActions.insert(.duplicate)
+            }
+
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
@@ -1439,7 +1484,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Pinned failed.", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.", comment: "")))
             }
         }
     }
@@ -1831,10 +1876,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         }
-        let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, complation in
-            guard let file else { complation(false); return }
+        let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, fillingSessionId, complation in
+            guard let file, let fillingSessionId else { complation(false); return }
 
-            self.fillFormDidSubmit(file) { provider, result, success, error in
+            self.fillFormDidSubmit(file, fillingSessionId: fillingSessionId) { provider, result, success, error in
                 complation(success)
             }
         }

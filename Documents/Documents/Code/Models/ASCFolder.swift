@@ -153,4 +153,27 @@ extension ASCFolder {
     var isPublicRoom: Bool {
         return isRoom && roomType == .public
     }
+
+    var isFillingFormRoom: Bool {
+        return isRoom && roomType == .fillingForm
+    }
+
+    var isCollaborationRoom: Bool {
+        return isRoom && roomType == .colobaration
+    }
+
+    var isCustomRoom: Bool {
+        return isRoom && roomType == .custom
+    }
+}
+
+extension ASCFolder {
+    /// Идентична сатегории "комнаты"
+    static var onlyofficeRoomSharedFolder: ASCFolder {
+        let folder = ASCFolder()
+        folder.rootFolderType = .onlyofficeRoomShared
+        folder.id = "rooms"
+        folder.title = NSLocalizedString("Rooms", comment: "")
+        return folder
+    }
 }

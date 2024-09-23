@@ -402,6 +402,7 @@ extension ASCDocSpaceFiltersController {
             ASCDocumentsFilterModel(filterName: FiltersName.customRoom.localizedString(), isSelected: false, filterType: .customRoom),
             ASCDocumentsFilterModel(filterName: FiltersName.collaborationRoom.localizedString(), isSelected: false, filterType: .collaborationRoom),
             ASCDocumentsFilterModel(filterName: FiltersName.publicRoom.localizedString(), isSelected: false, filterType: .publicRoom),
+            ASCDocumentsFilterModel(filterName: FiltersName.fillingFormRoom.localizedString(), isSelected: false, filterType: .fillingFormRoom),
         ]
 
         private static let docTypeFilters = [

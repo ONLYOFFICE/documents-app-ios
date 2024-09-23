@@ -15,10 +15,15 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
         self.roomType = roomType
     }
 
-    func get() -> [ASCShareAccess] {
+    func get(rightHoldersTableType: RightHoldersTableType? = nil) -> [ASCShareAccess] {
         switch roomType {
         case .fillingForm:
-            return [.roomManager, .powerUser, .fillForms, .read]
+            switch rightHoldersTableType {
+            case .users, .none:
+                return [.roomManager, .powerUser, .fillForms]
+            case .groups:
+                return [.fillForms]
+            }
         case .colobaration:
             return [.roomManager, .powerUser, .editing, .read]
         case .review:

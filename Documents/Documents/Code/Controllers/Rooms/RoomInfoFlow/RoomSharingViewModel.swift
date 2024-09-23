@@ -24,6 +24,10 @@ final class RoomSharingViewModel: ObservableObject {
         room.roomType != .colobaration
     }
 
+    var canAddLink: Bool {
+        sharedLinksModels.count < linksLimit && isSharingPossible
+    }
+
     let linksLimit = 6
     var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
     var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived }
@@ -277,8 +281,9 @@ private extension RoomSharingViewModel {
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
             image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
-            title: sharing.user.displayName ?? "",
-            subtitle: sharing.user.accessValue.title(),
+            userName: sharing.user.displayName ?? "",
+            accessString: sharing.user.accessValue.title(),
+            emailString: sharing.user.email ?? "",
             isOwner: sharing.user.isOwner,
             onTapAction: { [weak self] in
                 guard let self, isUserSelectionAllow, !sharing.user.isOwner else { return }
@@ -348,4 +353,22 @@ private extension RoomSharingViewModel {
 private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
+    static let fillingFormRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files.", comment: "")
+    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
+    static let customRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
+}
+
+extension RoomSharingViewModel {
+    var roomTypeDescription: String {
+        switch room.roomType {
+        case .fillingForm:
+            return .fillingFormRoomDescription
+        case .public:
+            return .publicRoomDescription
+        case .custom:
+            return .customRoomDescription
+        default:
+            return ""
+        }
+    }
 }

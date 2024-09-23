@@ -47,7 +47,16 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     }
 
     lazy var defaultAccess: ASCShareAccess = {
+        guard let room = dataStore?.entity as? ASCRoom else {
+            return .read
+        }
+
+        if room.roomType == .fillingForm {
+            return .fillForms
+        }
+
         let accessList = accessProvider.get()
+
         guard accessList.contains(.read) else {
             return accessList.first ?? .read
         }
@@ -327,7 +336,8 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 
 extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersViewDelegate {
     func getAccessList() -> ([ASCShareAccess]) {
-        return accessProvider.get()
+        let type = getSelectedTableType()
+        return accessProvider.get(rightHoldersTableType: type)
     }
 
     func getCurrentAccess() -> ASCShareAccess {
@@ -486,6 +496,8 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
+        let accessList = accessProvider.get(rightHoldersTableType: tableType)
+        sharingAddRightHoldersView?.updateToolbars()
         sharingAddRightHoldersView?.showTable(tableType: tableType)
     }
 }

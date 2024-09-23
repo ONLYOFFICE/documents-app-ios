@@ -25,6 +25,7 @@ class ASCDocumentsEmptyView: UIView {
         case paymentRequired
         case docspaceArchive
         case recentlyAccessibleViaLink
+        case formFillingRoom
     }
 
     // MARK: - Properties
@@ -206,6 +207,11 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel?.text = NSLocalizedString("No files here yet", comment: "")
             subtitleLabel?.text = NSLocalizedString("Here you will find a list of the recently opened files shared with you via an external link.", comment: "")
             actionButton?.removeFromSuperview()
+        case .formFillingRoom:
+            imageView.image = Asset.Images.emptyFolder.image
+            titleLabel.text = NSLocalizedString("Welcome to the Form filling room ", comment: "")
+            subtitleLabel.text = NSLocalizedString("Get started with quick actions: ", comment: "")
+            actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
 
         default:
             imageView?.image = Asset.Images.emptyFolder.image

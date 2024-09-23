@@ -12,6 +12,7 @@ import MBProgressHUD
 import ObjectMapper
 import SwiftMessages
 import SwiftRater
+import SwiftUI
 import UIKit
 
 typealias MovedEntities = [ASCEntity]
@@ -217,7 +218,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let provider = strongSelf.provider
             else { return }
 
-            strongSelf.createFirstItem(view.actionButton)
+            switch view.type {
+            case .formFillingRoom:
+                strongSelf.uploadPDFFormAction(button: view.actionButton)
+            default:
+                strongSelf.createFirstItem(view.actionButton)
+            }
+
             view.actionButton.isHidden = !provider.allowEdit(entity: folder)
         }
         return view
@@ -1469,9 +1476,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
                     } else if folder.isRoom {
-                        localEmptyView?.type = .room
-                        if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView?.type = .docspaceNoPermissions
+                        if folder.roomType == .fillingForm {
+                            localEmptyView?.type = .formFillingRoom
+                        } else {
+                            localEmptyView?.type = .room
+                            if !(provider.allowEdit(entity: folder)) {
+                                localEmptyView?.type = .docspaceNoPermissions
+                            }
                         }
                     } else if isDocRecently {
                         localEmptyView?.type = .recentlyAccessibleViaLink
@@ -1535,6 +1546,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             view.insertSubview(errorView, aboveSubview: collectionView)
             errorView.fillToSuperview()
         }
+    }
+
+    private func uploadPDFFormAction(button: UIButton) {
+        let menu = UIMenu(title: "", children: [
+            UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                print("Selected 'From DocSpace'")
+            },
+            UIAction(title: NSLocalizedString("From device", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                print("Selected 'From device'")
+            },
+        ])
+
+        button.menu = menu
+        button.showsMenuAsPrimaryAction = true
     }
 
     @objc func updateFileInfo(_ notification: Notification) {
@@ -1987,6 +2012,32 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func duplicateRoom(room: ASCFolder) {
+        var hud: MBProgressHUD?
+
+        RoomSharingNetworkService().duplicateRoom(room: room) { [unowned self] status, progress, result, error, cancel in
+
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.mode = .annularDeterminate
+                hud?.progress = 0
+                hud?.label.text = NSLocalizedString("Duplication", comment: "Caption of the processing")
+            } else if status == .progress {
+                hud?.progress = progress
+            } else if status == .error {
+                hud?.hide(animated: true)
+                UIAlertController.showError(
+                    in: self,
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not duplicate the room.", comment: "")
+                )
+            } else if status == .end {
+                hud?.setSuccessState()
+                hud?.hide(animated: false, afterDelay: .standardDelay)
+                loadFirstPage()
+            }
+        }
+    }
+
     func showShereFolderAlert(folder: ASCFolder) {
         let alert = UIAlertController(
             title: NSLocalizedString("Share folder", comment: ""),
@@ -2008,6 +2059,46 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         )
 
         present(alert, animated: true, completion: nil)
+    }
+
+    func fillForm(file: ASCFile) {
+        guard file.isForm else { return }
+        let fillFormMenuScreen = FillFormMenuScreenRepresentable(
+            onOpenTapped: { [weak self] in
+                self?.open(file: file)
+            },
+            onShareTapped: { [weak self] in
+                guard let self else { return }
+                let vc = ASCTransferViewController.instantiate(from: Storyboard.transfer)
+
+                let presenter = ASCTransferPresenter(
+                    view: vc,
+                    provider: provider?.copy(),
+                    transferType: .selectFillFormRoom,
+                    enableFillRootFolders: true,
+                    enableDisplayNewFolderBarButton: false,
+                    enableDisplayCreateFillFormRoomBarButton: true,
+                    folder: ASCFolder.onlyofficeRoomSharedFolder
+                )
+                vc.presenter = presenter
+
+                let nc = ASCTransferNavigationController(rootASCViewController: vc)
+                nc.doneHandler = { [provider, weak self] _, _, _ in
+                    ServicesProvider.shared.copyFileInsideProviderService.copyFileInsideProvider(
+                        provider: provider,
+                        file: file,
+                        viewController: self
+                    )
+                }
+                nc.displayActionButtonOnRootVC = true
+                nc.modalPresentationStyle = .formSheet
+                nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+                present(nc, animated: true)
+            }
+        )
+
+        let hostingController = UIHostingController(rootView: fillFormMenuScreen)
+        present(hostingController, animated: true, completion: nil)
     }
 
     func transformToRoom(entities: [ASCEntity]) {
@@ -2814,9 +2905,22 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
             present(transferNavigationVC, animated: true, completion: nil)
 
-            transferNavigationVC.sourceProvider = provider
-            transferNavigationVC.sourceFolder = folder
-            transferNavigationVC.sourceItems = entities
+            if let transferViewController = transferNavigationVC.topViewController as? ASCTransferViewController {
+                let presenter = ASCTransferPresenter(
+                    view: transferViewController,
+                    provider: nil,
+                    transferType: isTrash(folder) ? .recover : (move ? .move : .copy),
+                    enableFillRootFolders: true,
+                    folder: nil,
+                    flowModel: ASCTransferFlowModel(
+                        sourceFolder: folder,
+                        sourceProvider: provider,
+                        sourceItems: entities
+                    )
+                )
+                transferViewController.presenter = presenter
+            }
+
             transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder, _ in
                 guard
                     let strongSelf = self,
@@ -2922,11 +3026,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         )
                     }
                 }
-            }
-
-            if let transferViewController = transferNavigationVC.topViewController as? ASCTransferViewController {
-                transferNavigationVC.transferType = isTrash(folder) ? .recover : (move ? .move : .copy)
-                transferViewController.folder = nil
             }
         }
 

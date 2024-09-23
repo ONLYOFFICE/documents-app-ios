@@ -365,7 +365,8 @@ struct ASCUserRow: View {
                !string.contains(String.defaultUserPhotoSize),
                let url = URL(string: portal + string)
             {
-                KFImageView(url: url)
+                KFImage(url)
+                    .resizable()
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .cornerRadius(Constants.imageCornerRadius)
                     .clipped()

@@ -236,7 +236,6 @@
 		FC692BD62BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC692BD52BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift */; };
 		FC6A691125C83C1D007F1FD6 /* ASCFileProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */; };
 		FC6A756229915B530056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756129915B530056262F /* Pulse */; };
-		FC6A756429915B530056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756329915B530056262F /* PulseLogHandler */; };
 		FC6A756629915B530056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756529915B530056262F /* PulseUI */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
 		FC6E927D2B5FB18E005E0A72 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6E927C2B5FB18E005E0A72 /* KFImageView.swift */; };
@@ -1398,7 +1397,6 @@
 				FC4293BA294A684A00DC3932 /* HtmlFile2.xcframework in Frameworks */,
 				FC4293C2294A684C00DC3932 /* PdfFile.xcframework in Frameworks */,
 				FC2B7F262B4E87070064DDDA /* PasscodeLock in Frameworks */,
-				FC6A756429915B530056262F /* PulseLogHandler in Frameworks */,
 				FC2B7F202B4E86EA0064DDDA /* HTMLString in Frameworks */,
 				FC4293BE294A684B00DC3932 /* kernel_network.xcframework in Frameworks */,
 				FC4293B4294A684900DC3932 /* EpubFile.xcframework in Frameworks */,
@@ -3491,7 +3489,6 @@
 			name = "Documents-develop";
 			packageProductDependencies = (
 				FC6A756129915B530056262F /* Pulse */,
-				FC6A756329915B530056262F /* PulseLogHandler */,
 				FC6A756529915B530056262F /* PulseUI */,
 				FC2B7F1F2B4E86EA0064DDDA /* HTMLString */,
 				FC2B7F222B4E86F90064DDDA /* ObservableSwift */,
@@ -4970,7 +4967,7 @@
 			repositoryURL = "https://github.com/kean/Pulse/";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.5;
+				version = 4.2.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -4992,11 +4989,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = Pulse;
-		};
-		FC6A756329915B530056262F /* PulseLogHandler */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */;
-			productName = PulseLogHandler;
 		};
 		FC6A756529915B530056262F /* PulseUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -30,11 +30,7 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
     // MARK: - Lifecycle Methods
 
     init() {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
+        super.init(style: .insetGrouped)
     }
 
     required init?(coder: NSCoder) {
@@ -138,6 +134,13 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                     valueChanged: { isOn in
                         ASCAppSettings.Feature.forceRtl = isOn
                         ASCStyles.updateSemanticContentAttribute()
+                    }
+                )),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: "Disable SDK Version check (false)",
+                    isOn: ASCAppSettings.Feature.disableSdkVersionCheck,
+                    valueChanged: { isOn in
+                        ASCAppSettings.Feature.disableSdkVersionCheck = isOn
                     }
                 )),
             ],

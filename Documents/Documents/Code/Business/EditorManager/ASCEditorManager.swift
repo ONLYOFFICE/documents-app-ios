@@ -857,6 +857,8 @@ class ASCEditorManager: NSObject {
     }
 
     func checkSDKVersion() -> Bool {
+        if ASCAppSettings.Feature.disableSdkVersionCheck { return true }
+
         if let version = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String {
             let webSDK = version.components(separatedBy: ".")
             let localSDK = localSDKVersion()

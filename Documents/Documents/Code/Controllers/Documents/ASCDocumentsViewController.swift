@@ -316,6 +316,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func configureView() {
         view.backgroundColor = .systemBackground
+
         view.addSubview(collectionView)
         collectionView.fillToSuperview()
 
@@ -1920,7 +1921,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             .compactMap { $0 as? ASCFolder }
             .forEach {
                 guard
-//                    let entity = $0,
                     let indexPath = indexPath(by: $0),
                     let cell = collectionView.cellForItem(at: indexPath)
                 else { return }
@@ -2500,7 +2500,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     func editRoom(folder: ASCFolder) {
         let vc = EditRoomViewController(folder: folder) { _ in
-//            if let refreshControl = self.tableView.refreshControl {
             if let refreshControl = self.collectionView.refreshControl {
                 self.refresh(refreshControl)
                 if let viewControllers = self.navigationController?.viewControllers,
@@ -3874,7 +3873,6 @@ extension ASCDocumentsViewController {
         var newItemsData = provider?.items ?? []
         provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
 
-//        if let refreshControl = tableView.refreshControl {
         if let refreshControl = collectionView.refreshControl {
             refresh(refreshControl)
         }

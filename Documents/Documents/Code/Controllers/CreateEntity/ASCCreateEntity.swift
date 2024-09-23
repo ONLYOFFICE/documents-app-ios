@@ -17,6 +17,15 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
     private var provider: ASCFileProviderProtocol?
 
+    override init() {
+        super.init()
+    }
+
+    init(provider: ASCFileProviderProtocol?) {
+        self.provider = provider
+        super.init()
+    }
+
     // MARK: - Lifecycle Methods
 
     func showCreateController(for provider: ASCFileProviderProtocol, in viewController: ASCDocumentsViewController, sender: Any? = nil) {

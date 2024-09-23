@@ -448,3 +448,9 @@ public extension String {
         strings.contains { contains($0) }
     }
 }
+
+// MARK: - Constants
+
+public extension String {
+    static let defaultUserPhotoSize = "/default_user_photo_size_"
+}

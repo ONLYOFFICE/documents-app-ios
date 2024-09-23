@@ -92,14 +92,15 @@ struct FormCompletedView: View {
     @ViewBuilder
     private var formSection: some View {
         Section {
-            ASCFormCellView(model: ASCFormCellModel(
-                title: viewModel.formModel.form.title,
-                author: viewModel.formModel.authorName,
-                date: viewModel.formModel.form.created?.string() ?? "",
-                onLinkAction: {
-                    viewModel.onCopyLink()
-                }
-            )
+            ASCFormCellView(
+                model: ASCFormCellModel(
+                    title: viewModel.formModel.form.title,
+                    author: viewModel.formModel.authorName,
+                    date: viewModel.formModel.form.created?.string() ?? "",
+                    onLinkAction: {
+                        viewModel.onCopyLink()
+                    }
+                )
             )
         }
     }

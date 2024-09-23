@@ -12,7 +12,7 @@ import SwiftUI
 struct FormCompletedView: View {
     @ObservedObject var viewModel: FormCompletedViewModel
     @Environment(\.presentationMode) var presentationMode
-
+    
     @State private var isShowingMailView = false
     @State private var mailData = ComposeMailData(
         subject: "",
@@ -20,7 +20,7 @@ struct FormCompletedView: View {
         messageBody: "",
         isHtml: false
     )
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -72,7 +72,7 @@ struct FormCompletedView: View {
             )
         }
     }
-
+    
     @ViewBuilder
     private var screenHeader: some View {
         VStack(spacing: Constants.screenHedaerInsets) {
@@ -88,7 +88,7 @@ struct FormCompletedView: View {
         .padding(.horizontal, Constants.screenHeaderHorizontalPadding)
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top ?? Constants.screenHeaderDefaultTopInsets)
     }
-
+    
     @ViewBuilder
     private var formSection: some View {
         Section {
@@ -104,7 +104,7 @@ struct FormCompletedView: View {
             )
         }
     }
-
+    
     @ViewBuilder
     private var formNumberSection: some View {
         Section {
@@ -119,7 +119,7 @@ struct FormCompletedView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private var ownerSection: some View {
         Section(header: Text(TextConstants.formOwner)) {
@@ -127,13 +127,17 @@ struct FormCompletedView: View {
                 model: ASCUserWithEmailRowViewModel(
                     image: .uiImage(
                         UIImage(base64String: viewModel.formModel.authorAvatar)
-                            ?? UIImage(asset: Asset.Images.avatarDefault)
-                            ?? UIImage()
+                        ?? UIImage(asset: Asset.Images.avatarDefault)
+                        ?? UIImage()
                     ),
                     userName: viewModel.formModel.authorName,
                     email: viewModel.formModel.authorEmail,
                     onEmailAction: {
-                        self.isShowingMailView = true
+                        if MFMailComposeViewController.canSendMail() {
+                            self.isShowingMailView = true
+                        } else {
+                            showSendMailErrorAlert()
+                        }
                     }
                 )
             )
@@ -142,6 +146,19 @@ struct FormCompletedView: View {
             CompleteFormMailView(data: $mailData) { result in
                 print(result)
             }
+        }
+    }
+    
+    private func showSendMailErrorAlert() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("Could Not Send Email", comment: ""),
+            message: NSLocalizedString("Your device could not send e-mail. Please check e-mail configuration and try again.", comment: ""),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        if let topVC = UIApplication.topViewController() {
+            topVC.present(alert, animated: true, completion: nil)
         }
     }
 }

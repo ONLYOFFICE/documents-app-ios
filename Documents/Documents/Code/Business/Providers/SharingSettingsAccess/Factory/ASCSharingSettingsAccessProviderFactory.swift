@@ -21,7 +21,11 @@ class ASCSharingSettingsAccessProviderFactory {
         ASCConstants.FileExtensions.pdf: { ASCSharingSettingsAccessOFormProvider() },
     ]
 
-    func get(entity: ASCEntity, isAccessExternal: Bool) -> ASCSharingSettingsAccessProvider {
+    func get(
+        entity: ASCEntity,
+        isAccessExternal: Bool,
+        rightHoldersTableType: RightHoldersTableType? = nil
+    ) -> ASCSharingSettingsAccessProvider {
         if let file = entity as? ASCFile,
            let porviderContainer = providerContainersByExtension[file.title.fileExtension()]
         {
@@ -34,6 +38,9 @@ class ASCSharingSettingsAccessProviderFactory {
                 : ASCSharingSettingsAccessDefaultProvider()
         }
 
-        return ASCSharingSettingsAccessRoomsProvider(roomType: roomType)
+        return ASCSharingSettingsAccessRoomsProvider(
+            roomType: roomType,
+            rightHoldersTableType: rightHoldersTableType
+        )
     }
 }

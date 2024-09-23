@@ -76,6 +76,20 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
             return result + 1
         }
     }
+    
+    func updateAccessProvider(rightHoldersTableType: RightHoldersTableType) {
+        guard let entity = dataStore?.entity else { return }
+        let accessProvider = ASCSharingSettingsAccessProviderFactory().get(
+            entity: entity,
+            isAccessExternal: false,
+            rightHoldersTableType: rightHoldersTableType
+        )
+        let accessList = accessProvider.get()
+        if !accessList.contains(selectedAccess) {
+            selectedAccess = accessList.first ?? selectedAccess
+        }
+        self.accessProvider = accessProvider
+    }
 
     private var isSearchBarEmpty: Bool {
         guard let text = sharingAddRightHoldersView?.searchController.searchBar.text else {
@@ -337,7 +351,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersViewDelegate {
     func getAccessList() -> ([ASCShareAccess]) {
         let type = getSelectedTableType()
-        return accessProvider.get(rightHoldersTableType: type)
+        return accessProvider.get()
     }
 
     func getCurrentAccess() -> ASCShareAccess {
@@ -496,7 +510,8 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
-        let accessList = accessProvider.get(rightHoldersTableType: tableType)
+        updateAccessProvider(rightHoldersTableType: tableType)
+        let accessList = accessProvider.get()
         sharingAddRightHoldersView?.updateToolbars()
         sharingAddRightHoldersView?.showTable(tableType: tableType)
     }

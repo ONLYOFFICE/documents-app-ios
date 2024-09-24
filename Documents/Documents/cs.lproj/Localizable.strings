@@ -1,26 +1,11 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d vybráno";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i z %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu vybraných souborů";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu složek a %2$lu souborů vybráno";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu složek vybráno";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu položek se stejným názvem již ve složce existuj '%2$@'. Přepsat položky?";
@@ -119,9 +104,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Přidejte uživatele nebo skupiny a dejte jim právo \nčíst, prohlížet nebo upravovat dokumenty.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Stav dalšího odkazu";
-
-/* No comment provided by engineer. */
 "Additional links" = "Další odkazy";
 
 /* No comment provided by engineer. */
@@ -164,7 +146,7 @@
 "Applying" = "Použití stránky";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Archiv";
 
 /* No comment provided by engineer. */
@@ -227,7 +209,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Soubor nelze duplikovat.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Zrušit";
 
 /* No comment provided by engineer. */
@@ -339,7 +321,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Připojování";
 
 /* No comment provided by engineer. */
@@ -424,9 +406,6 @@
 "Could not open file." = "Soubor se nepodařilo otevřít.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Nelze přečíst data ze souboru.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Nelze přečíst data ze souboru.";
 
 /* Description of file operation error */
@@ -472,7 +451,7 @@
 "Create room" = "Vytvořit místnost";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Vytváření";
 
 /* No comment provided by engineer. */
@@ -492,15 +471,6 @@
 
 /* Button title */
 "Delete" = "Vymazat";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Vymazat %lu soubor";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Vymazat %lu složku";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Vymazat %1$lu složku a %2$lu soubor";
 
 /* Button title */
 "Delete File" = "Vymazat soubor";
@@ -557,7 +527,7 @@
 "Documents" = "Dokumenty";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Hotovo";
 
 /* Button title */
@@ -604,9 +574,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "E-mail je neplatný";
-
-/* No comment provided by engineer. */
-"Empty file." = "Prázdný soubor";
 
 /* No comment provided by engineer. */
 "Empty name." = "Prázdný název.";
@@ -660,9 +627,6 @@
 "Export" = "Exportovat";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Služba online konverze se nezdařila.";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "Nepodařilo se zkontrolovat dostupnost portálu.";
 
 /* No comment provided by engineer. */
@@ -691,15 +655,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Nepodařilo se odeslat zpětnou vazbu poštou. Zkuste napsat svůj požadavek na naše fórum.";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Nepodařilo se odeslat zdrojový soubor do služby online konverze.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Stahování souboru z portálu selhalo";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Stahování výsledku ze služby online konverze selhalo";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Nepodařilo se připravit archiv";
@@ -754,12 +709,6 @@
 
 /* No comment provided by engineer. */
 "General" = "Obecný";
-
-/* No comment provided by engineer. */
-"General link" = "Obecný odkaz";
-
-/* No comment provided by engineer. */
-"General link State" = "Stav obecného odkazu";
 
 /* No comment provided by engineer. */
 "General links" = "Obecné odkazy";
@@ -884,9 +833,6 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Odkaz s pozvánkou byl zaslán na mail";
 
-/* No comment provided by engineer. */
-"Loading..." = "Načítání...";
-
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
 
@@ -900,7 +846,7 @@
 "Login is empty" = "Přihlášení je prázdné";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Odhlášení";
 
 /* Button title */
@@ -916,7 +862,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Já";
 
 /* No comment provided by engineer. */
@@ -1007,9 +953,6 @@
 "No Internet connection" = "Žádné připojení k internetu";
 
 /* No comment provided by engineer. */
-"No Links State" = "Žádný stav odkazů";
-
-/* No comment provided by engineer. */
 "No network" = "Žádná síť";
 
 /* No comment provided by engineer. */
@@ -1027,12 +970,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Nebyli nalezeni žádní uživatelé";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "žádný";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Žádný";
 
 /* No comment provided by engineer. */
@@ -1160,9 +1099,6 @@
 
 /* Button title */
 "Pin to top" = "Připnout na začátek";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "Připnutí se nezdařilo.";
 
 /* Caption of the processing */
 "Pinning" = "Připnutí";
@@ -1312,7 +1248,7 @@
 "Room name" = "Název místnosti";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Místnosti";
 
 /* No comment provided by engineer. */
@@ -1328,7 +1264,7 @@
 "Search" = "Hledat";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Vybrat";
 
 /* No comment provided by engineer. */
@@ -1650,9 +1586,6 @@
 "Unauthorized users will not have access to the document." = "Neoprávnění uživatelé nebudou mít k dokumentu přístup.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Neočekávaná odezva ze služby.";
-
-/* Invalid entity name */
 "Unknown" = "Neznámý";
 
 /* No comment provided by engineer. */

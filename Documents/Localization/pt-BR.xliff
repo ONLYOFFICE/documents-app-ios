@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ comece a usar seu office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,214 +184,214 @@ comece a usar seu office</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>%d day</source>
         <target>%d day</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>%d days</source>
         <target>%d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>%d hour</source>
         <target>%d hour</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>%d hours</source>
         <target>%d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d selecionado</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d selecionado</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
         <source>%lu File selected</source>
         <target>%lu arquivo selecionado</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
         <target>%lu arquivos selecionados</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File selected</source>
         <target>e %lu arquivo selecionado</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
         <target>e %lu arquivos selecionado</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder %2$#@lu_files@</source>
         <target>%lu pasta %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
         <target>%lu pastas %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%2$#@lu_files@</source>
         <target>%2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder selected</source>
         <target>%lu pasta selecionada</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
         <target>%lu pastas selecionadas</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu File</source>
         <target>Excluir %lu arquivo</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
         <target>Excluir %lu arquivos</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File</source>
         <target>e %lu arquivo</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files</source>
         <target>e %lu arquivos</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
         <target/>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder %2$#@lu_files@</source>
         <target>Excluir %lu pasta %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
         <target>Excluir %lu pastas %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
         <target>Excluir %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder</source>
         <target>Excluir %lu pasta</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>Excluir %lu pastas</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d day</source>
         <target>Expires after %d day</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
         <target>Expires after %d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d hour</source>
         <target>Expires after %d hour</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
         <target>Expires after %d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -642,7 +642,7 @@ dois fatores</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -789,7 +789,7 @@ dois fatores</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -870,7 +870,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -897,7 +897,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -934,7 +934,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -991,7 +991,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1063,7 +1063,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1145,7 +1145,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1202,48 +1202,46 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="%@ | %@" xml:space="preserve">
         <source>%1$@ | %2$@</source>
         <target>%1$@ | %2$@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="%d days" xml:space="preserve">
+      <trans-unit id="%d days" translate="no" xml:space="preserve">
         <source>%d days</source>
-        <target>%d dias</target>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d hours" xml:space="preserve">
+      <trans-unit id="%d hours" translate="no" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d horas</target>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d selected" xml:space="preserve">
+      <trans-unit id="%d selected" translate="no" xml:space="preserve">
         <source>%d selected</source>
-        <target>%d selecionado</target>
-        <note>Count of seclected rows: count + selected</note>
+        <note>Count of seclected rows: count + selected (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%1$i de %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
-      <trans-unit id="%lu File selected" xml:space="preserve">
+      <trans-unit id="%lu File selected" translate="no" xml:space="preserve">
         <source>%lu File selected</source>
-        <target>%lu arquivo selecionado</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
+      <trans-unit id="%lu Folder and %lu File selected" translate="no" xml:space="preserve">
         <source>%1$lu Folder and %2$lu File selected</source>
-        <target>%1$lu pasta e %2$lu arquivo selecionado</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder selected" xml:space="preserve">
+      <trans-unit id="%lu Folder selected" translate="no" xml:space="preserve">
         <source>%lu Folder selected</source>
-        <target>%lu pasta selecionada</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
@@ -1273,11 +1271,6 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       <trans-unit id="12 hours" xml:space="preserve">
         <source>12 hours</source>
         <target>12 horas</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
-        <source>: "%@"</source>
-        <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
@@ -1426,11 +1419,6 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Adicione usuários ou grupos e conceda a eles permissão para ler, revisar ou editar documentos.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Additional link State" xml:space="preserve">
-        <source>Additional link State</source>
-        <target>Estado do link adicional</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target>Links adicionais</target>
@@ -1515,7 +1503,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <source>Archive</source>
         <target>Arquivos</target>
         <note>Button title
-   Category title</note>
+Category title</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
@@ -1555,6 +1543,10 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       <trans-unit id="Back" xml:space="preserve">
         <source>Back</source>
         <target>Voltar</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Back to room" xml:space="preserve">
+        <source>Back to room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1620,7 +1612,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target>Cancelar</target>
-        <note>No comment provided by engineer.</note>
+        <note>Cancel button</note>
       </trans-unit>
       <trans-unit id="Cancel invitation?" xml:space="preserve">
         <source>Cancel invitation?</source>
@@ -1652,6 +1644,10 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Alterando o acesso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Check ready form" xml:space="preserve">
+        <source>Check ready form</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
         <target>Checar sua conexão de Internet</target>
@@ -1661,6 +1657,10 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <source>Choose Files</source>
         <target>Escolher os arquivos</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
+        <source>Choose Form filling room or create new</source>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
         <source>Choose from list</source>
@@ -1785,7 +1785,7 @@ outros que usam o protocolo WebDAV.</target>
         <source>Connecting</source>
         <target>Conectando</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1836,6 +1836,10 @@ outros que usam o protocolo WebDAV.</target>
         <source>Copying</source>
         <target>Copiando</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Could Not Send Email" xml:space="preserve">
+        <source>Could Not Send Email</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
         <source>Could not change file attributes</source>
@@ -1917,6 +1921,10 @@ outros que usam o protocolo WebDAV.</target>
         <target>Não foi possível duplicar o arquivo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not duplicate the room." xml:space="preserve">
+        <source>Could not duplicate the room.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>Não foi possível exportar o arquivo.</target>
@@ -1930,11 +1938,6 @@ outros que usam o protocolo WebDAV.</target>
       <trans-unit id="Could not open file." xml:space="preserve">
         <source>Could not open file.</source>
         <target>Não foi possível abrir o arquivo.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Could not read data from file." xml:space="preserve">
-        <source>Could not read data from file.</source>
-        <target>Não foi possível ler os dados do arquivo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read data from the file." xml:space="preserve">
@@ -2033,7 +2036,7 @@ organizar seus arquivos.</target>
         <source>Creating</source>
         <target>Criando</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -2065,20 +2068,17 @@ organizar seus arquivos.</target>
         <target>Excluir</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Delete %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu File" translate="no" xml:space="preserve">
         <source>Delete %lu File</source>
-        <target>Excluir %lu arquivo</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder" translate="no" xml:space="preserve">
         <source>Delete %lu Folder</source>
-        <target>Excluir %lu pasta</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder and %lu File" translate="no" xml:space="preserve">
         <source>Delete %1$lu Folder and %2$lu File</source>
-        <target>Excluir %1$lu pasta e %2$lu arquivo</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Delete File" xml:space="preserve">
         <source>Delete File</source>
@@ -2179,7 +2179,7 @@ organizar seus arquivos.</target>
         <source>Done</source>
         <target>Concluído</target>
         <note>Button title
-   Operation completed</note>
+Operation completed</note>
       </trans-unit>
       <trans-unit id="Download" xml:space="preserve">
         <source>Download</source>
@@ -2231,6 +2231,10 @@ organizar seus arquivos.</target>
         <target>Editar documentos localmente</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Edit link" xml:space="preserve">
+        <source>Edit link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
         <target>Editar sala</target>
@@ -2264,11 +2268,6 @@ organizar seus arquivos.</target>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>E-mail não é válido</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Empty file." xml:space="preserve">
-        <source>Empty file.</source>
-        <target>Arquivo vazio.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
@@ -2336,15 +2335,13 @@ organizar seus arquivos.</target>
         <target>Expirado</target>
         <note>Expiration status</note>
       </trans-unit>
-      <trans-unit id="Expires after %d days" xml:space="preserve">
+      <trans-unit id="Expires after %d days" translate="no" xml:space="preserve">
         <source>Expires after %d days</source>
-        <target>Expira após %d dias</target>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Expires after %d hours" xml:space="preserve">
+      <trans-unit id="Expires after %d hours" translate="no" xml:space="preserve">
         <source>Expires after %d hours</source>
-        <target>Expira após %d horas</target>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2359,11 +2356,6 @@ organizar seus arquivos.</target>
       <trans-unit id="External link" xml:space="preserve">
         <source>External link</source>
         <target>Link externo</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failed online conversion service." xml:space="preserve">
-        <source>Failed online conversion service.</source>
-        <target>Falha no serviço de conversão online.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
@@ -2416,19 +2408,8 @@ organizar seus arquivos.</target>
         <target>Falha ao enviar feedback por e-mail. Tente escrever sua solicitação em nosso fórum.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
-        <source>Failed upload source file to conversion online service.</source>
-        <target>Falha no upload do arquivo de origem para o serviço online de conversão.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download file from portal." xml:space="preserve">
-        <source>Failure to download file from portal.</source>
-        <target>Falha ao baixar o arquivo do portal.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
-        <source>Failure to download result from conversion online service.</source>
-        <target>Falha ao baixar o resultado do serviço online de conversão.</target>
+      <trans-unit id="Failed to submit the form" xml:space="preserve">
+        <source>Failed to submit the form</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2471,6 +2452,22 @@ organizar seus arquivos.</target>
         <target>Arquivos e pastas enviados por administradores aparecerão aqui.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Fill" xml:space="preserve">
+        <source>Fill</source>
+        <note>Fill form Button title</note>
+      </trans-unit>
+      <trans-unit id="Fill in as" xml:space="preserve">
+        <source>Fill in as</source>
+        <note>Title for fill-in options screen</note>
+      </trans-unit>
+      <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
+        <source>Fill in the fields of the original form in the editor window.</source>
+        <note>Subtitle for form filling</note>
+      </trans-unit>
+      <trans-unit id="Fill out the form yourself" xml:space="preserve">
+        <source>Fill out the form yourself</source>
+        <note>Title for opening form filling</note>
+      </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
         <target>Preenchimento de formulário</target>
@@ -2501,6 +2498,26 @@ organizar seus arquivos.</target>
         <target>Preenchedor de formulário</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Form Filling" xml:space="preserve">
+        <source>Form Filling</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form Filling Room" xml:space="preserve">
+        <source>Form Filling Room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form completed successfully" xml:space="preserve">
+        <source>Form completed successfully</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form number" xml:space="preserve">
+        <source>Form number</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form owner" xml:space="preserve">
+        <source>Form owner</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
         <target>Modelos de formulário</target>
@@ -2509,6 +2526,14 @@ organizar seus arquivos.</target>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
         <target>Formulários</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From DocSpace" xml:space="preserve">
+        <source>From DocSpace</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From device" xml:space="preserve">
+        <source>From device</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2531,16 +2556,6 @@ organizar seus arquivos.</target>
         <target>Geral</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="General link" xml:space="preserve">
-        <source>General link</source>
-        <target>Ligação geral</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="General link State" xml:space="preserve">
-        <source>General link State</source>
-        <target>Estado do link geral</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
         <source>General links</source>
         <target>Links gerais</target>
@@ -2549,6 +2564,10 @@ organizar seus arquivos.</target>
       <trans-unit id="Get started" xml:space="preserve">
         <source>Get started</source>
         <target>Introdução</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Get started with quick actions: " xml:space="preserve">
+        <source>Get started with quick actions: </source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2725,6 +2744,10 @@ to the clipboard</source>
         <target>Tempo de vida do link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Link name" xml:space="preserve">
+        <source>Link name</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
         <target>Nome do link %@</target>
@@ -2749,11 +2772,6 @@ Copiado para a área de transferência</target>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
         <target>Loading</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Loading..." xml:space="preserve">
-        <source>Loading...</source>
-        <target>Baixando...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
@@ -2785,7 +2803,7 @@ Copiado para a área de transferência</target>
         <source>Logout</source>
         <target>Sair</target>
         <note>Button title
-   Caption of the process</note>
+Caption of the process</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
@@ -2811,7 +2829,7 @@ Copiado para a área de transferência</target>
         <source>Me</source>
         <target>Me</target>
         <note>Author or member of a document
-   If current user name is not set</note>
+If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
@@ -2918,6 +2936,18 @@ Copiado para a área de transferência</target>
         <target>Nova pasta</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New form filling" xml:space="preserve">
+        <source>New form filling</source>
+        <note>Suggested a room name when create a new one</note>
+      </trans-unit>
+      <trans-unit id="New form filling room" xml:space="preserve">
+        <source>New form filling room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New room" xml:space="preserve">
+        <source>New room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
         <target>Novos usuários</target>
@@ -2946,11 +2976,6 @@ Copiado para a área de transferência</target>
       <trans-unit id="No Internet connection" xml:space="preserve">
         <source>No Internet connection</source>
         <target>Sem conexão com a Internet</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="No Links State" xml:space="preserve">
-        <source>No Links State</source>
-        <target>Nenhum estado de links</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -3017,7 +3042,7 @@ Copiado para a área de transferência</target>
         <source>None</source>
         <target>Nenhum</target>
         <note>If the cache is empty
-   Share status</note>
+Share status</note>
       </trans-unit>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
@@ -3214,11 +3239,6 @@ Copiado para a área de transferência</target>
         <target>Fixar no topo</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Pinned failed." xml:space="preserve">
-        <source>Pinned failed.</source>
-        <target>Fixado falhou.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Pinning" xml:space="preserve">
         <source>Pinning</source>
         <target>Fixando</target>
@@ -3371,6 +3391,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       <trans-unit id="Public" xml:space="preserve">
         <source>Public</source>
         <target>Público</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Public link" xml:space="preserve">
+        <source>Public link</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3552,7 +3576,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <source>Rooms</source>
         <target>Salas</target>
         <note>Category title
-   DocSpace rooms</note>
+DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
@@ -3588,12 +3612,16 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <source>Select</source>
         <target>Selecionar</target>
         <note>Button title
-   Navigation bar button title</note>
+Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>Selecionar fotos</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select a PDF Form" xml:space="preserve">
+        <source>Select a PDF Form</source>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
         <source>Select all</source>
@@ -3690,10 +3718,18 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>Forma</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share &amp; collect" xml:space="preserve">
+        <source>Share &amp; collect</source>
+        <note>Title for sharing and collecting form</note>
+      </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
         <source>Share folder</source>
         <target>Compartilhar pasta</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
+        <source>Share your form and collect responses via a Form filling room.</source>
+        <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
@@ -3880,6 +3916,12 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>O arquivo será excluído de forma irreversível. Esta ação é irreversível.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The filled PDF form is saved and available to you&#10; in the Complete folder. To check the status,&#10; contact the form owner providing the assigned number." xml:space="preserve">
+        <source>The filled PDF form is saved and available to you
+ in the Complete folder. To check the status,
+ contact the form owner providing the assigned number.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>O servidor %@ não está disponível.</target>
@@ -4029,6 +4071,18 @@ para a área de transferência</target>
         <target>Esta apresentação está sendo editada. Você deseja abrir %@ apenas para visualização?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have Form Filler permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have Form Filler permission
+ for all the files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have View Only permission
+ for all the files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target>Esta planilha está sendo editada. Você deseja abrir %@ apenas para visualização?</target>
@@ -4169,11 +4223,6 @@ para a área de transferência</target>
         <target>Usuários não autorizados não terão acesso ao documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Unexpected response from the service." xml:space="preserve">
-        <source>Unexpected response from the service.</source>
-        <target>Resposta inesperada do serviço.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>Desconhecido</target>
@@ -4228,6 +4277,22 @@ para a área de transferência</target>
         <source>Unpinning</source>
         <target>Desafixar</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
+        <source>Upload PDF form from DocSpace</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from device" xml:space="preserve">
+        <source>Upload PDF form from device</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
+        <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload a ready PDF form" xml:space="preserve">
+        <source>Upload a ready PDF form</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
@@ -4336,6 +4401,10 @@ Swipe to learn more about the app.</source>
 Deslize para saber mais sobre o aplicativo.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
+        <source>Welcome to the Form filling room </source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
         <target>Novidades</target>
@@ -4405,6 +4474,10 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
         <target>Você pode conectar as seguintes contas às salas do DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
+        <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Você saiu da sala</target>
@@ -4423,6 +4496,10 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
         <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
         <target>Seu atual plano tarifário Business expirou. Por favor, renove sua assinatura nas configurações da conta para poder usar seu DocSpace. Se você tiver alguma dúvida, entre em contato com o suporte.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
+        <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -4579,7 +4656,7 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

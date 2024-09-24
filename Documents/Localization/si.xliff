@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,244 +184,244 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>%d day</source>
         <target>%d day</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>%d days</source>
         <target>%d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>%d hour</source>
         <target>%d hour</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>%d hours</source>
         <target>%d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d ක් තෝරා ඇත</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d ක් තෝරා ඇත</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/zero:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d ක් තෝරා ඇත</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
         <source>%lu File selected</source>
         <target>ගොනු %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
         <target>ගොනු %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/zero:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
         <target>ගොනු %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File selected</source>
         <target>සහ ගොනු %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
         <target>ගොනු %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
         <target>ගොනු %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder %2$#@lu_files@</source>
         <target>බහාලුම් %lu %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
         <target>බහාලුම් %lu %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%2$#@lu_files@</source>
         <target>%2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder selected</source>
         <target>බහාලුම් %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
         <target>බහාලුම් %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
         <target>බහාලුම් %lu ක් තෝරා ඇත</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu File</source>
         <target>ගොනු %lu ක් මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
         <target>ගොනු %lu ක් මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
         <target>ගොනු %lu ක් මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File</source>
         <target>සහ ගොනු %lu</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files</source>
         <target>සහ ගොනු %lu</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
         <target/>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder %2$#@lu_files@</source>
         <target>බහාලුම් %lu ක් %2$#@lu_files@ මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
         <target>බහාලුම් %lu ක් %2$#@lu_files@ මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
         <target>%2$#@lu_files@ මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder</source>
         <target>බහාලුම් %lu ක් මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>බහාලුම් %lu ක් මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>බහාලුම් %lu ක් මකන්න</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d day</source>
         <target>Expires after %d day</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
         <target>Expires after %d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d hour</source>
         <target>Expires after %d hour</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
         <target>Expires after %d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -671,7 +671,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -818,7 +818,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -899,7 +899,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -926,7 +926,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -963,7 +963,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1020,7 +1020,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1092,7 +1092,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1174,7 +1174,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1231,45 +1231,45 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="%@ | %@" xml:space="preserve">
         <source>%1$@ | %2$@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="%d days" xml:space="preserve">
+      <trans-unit id="%d days" translate="no" xml:space="preserve">
         <source>%d days</source>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d hours" xml:space="preserve">
+      <trans-unit id="%d hours" translate="no" xml:space="preserve">
         <source>%d hours</source>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d selected" xml:space="preserve">
+      <trans-unit id="%d selected" translate="no" xml:space="preserve">
         <source>%d selected</source>
-        <target>%d ක් තෝරා ඇත</target>
-        <note>Count of seclected rows: count + selected</note>
+        <note>Count of seclected rows: count + selected (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%2$i න් %1$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
-      <trans-unit id="%lu File selected" xml:space="preserve">
+      <trans-unit id="%lu File selected" translate="no" xml:space="preserve">
         <source>%lu File selected</source>
-        <target>ගොනු %lu ක් තෝරා ඇත</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
+      <trans-unit id="%lu Folder and %lu File selected" translate="no" xml:space="preserve">
         <source>%1$lu Folder and %2$lu File selected</source>
-        <target>බහාලුම් %1$lu ක් හා ගොනු %2$lu ක් තෝරා ඇත</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder selected" xml:space="preserve">
+      <trans-unit id="%lu Folder selected" translate="no" xml:space="preserve">
         <source>%lu Folder selected</source>
-        <target>බහාලුම් %lu ක් තෝරා ඇත</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
@@ -1299,11 +1299,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="12 hours" xml:space="preserve">
         <source>12 hours</source>
         <target>පැය 12</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
-        <source>: "%@"</source>
-        <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
@@ -1451,11 +1446,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
  සමාලෝචනයට හෝ සංස්කරණයට ඉඩ දෙන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Additional link State" xml:space="preserve">
-        <source>Additional link State</source>
-        <target>අතිරේක සබැඳි තත්‍වය</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target>අතිරේක සබැඳි</target>
@@ -1538,7 +1528,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Archive</source>
         <target>සංරක්‍ෂණය</target>
         <note>Button title
-   Category title</note>
+Category title</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
@@ -1578,6 +1568,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Back" xml:space="preserve">
         <source>Back</source>
         <target>ආපසු</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Back to room" xml:space="preserve">
+        <source>Back to room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1642,7 +1636,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target>අවලංගු</target>
-        <note>No comment provided by engineer.</note>
+        <note>Cancel button</note>
       </trans-unit>
       <trans-unit id="Cancel invitation?" xml:space="preserve">
         <source>Cancel invitation?</source>
@@ -1673,6 +1667,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>ප්‍රවේශය සංශෝධනය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Check ready form" xml:space="preserve">
+        <source>Check ready form</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
         <target>ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්‍ෂා කරන්න</target>
@@ -1682,6 +1680,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Choose Files</source>
         <target>ගොනු තෝරන්න</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
+        <source>Choose Form filling room or create new</source>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
         <source>Choose from list</source>
@@ -1805,7 +1807,7 @@ others which use WebDAV protocol.</source>
         <source>Connecting</source>
         <target>සම්බන්ධ වෙමින්</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1854,6 +1856,10 @@ others which use WebDAV protocol.</source>
         <source>Copying</source>
         <target>පිටපත් වෙමින්</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Could Not Send Email" xml:space="preserve">
+        <source>Could Not Send Email</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
         <source>Could not change file attributes</source>
@@ -1935,6 +1941,10 @@ others which use WebDAV protocol.</source>
         <target>ගොනුවෙහි අනුපිටපත් සෑදීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not duplicate the room." xml:space="preserve">
+        <source>Could not duplicate the room.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>ගොනුව නිර්යාතයට නොහැකි විය.</target>
@@ -1948,11 +1958,6 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Could not open file." xml:space="preserve">
         <source>Could not open file.</source>
         <target>ගොනුව ඇරීමට නොහැකි විය.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Could not read data from file." xml:space="preserve">
-        <source>Could not read data from file.</source>
-        <target>ගොනුවෙන් දත්ත කියවීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read data from the file." xml:space="preserve">
@@ -2046,7 +2051,7 @@ organize your files.</source>
         <source>Creating</source>
         <target>සෑදෙමින්</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -2078,20 +2083,17 @@ organize your files.</source>
         <target>මකන්න</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Delete %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu File" translate="no" xml:space="preserve">
         <source>Delete %lu File</source>
-        <target>ගොනු %lu ක් මකන්න</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder" translate="no" xml:space="preserve">
         <source>Delete %lu Folder</source>
-        <target>බහාලුම් %lu ක් මකන්න</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder and %lu File" translate="no" xml:space="preserve">
         <source>Delete %1$lu Folder and %2$lu File</source>
-        <target>බහාලුම් %1$lu ක් හා ගොනු %2$lu ක් මකන්න</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Delete File" xml:space="preserve">
         <source>Delete File</source>
@@ -2191,7 +2193,7 @@ organize your files.</source>
         <source>Done</source>
         <target>අහවරයි</target>
         <note>Button title
-   Operation completed</note>
+Operation completed</note>
       </trans-unit>
       <trans-unit id="Download" xml:space="preserve">
         <source>Download</source>
@@ -2242,6 +2244,10 @@ organize your files.</source>
         <target>ස්ථානීයව ලේඛන සංස්කරණය</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Edit link" xml:space="preserve">
+        <source>Edit link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
         <target>කාමරය සංශෝධනය</target>
@@ -2274,11 +2280,6 @@ organize your files.</source>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>වි-තැපෑල වලංගු නොවේ</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Empty file." xml:space="preserve">
-        <source>Empty file.</source>
-        <target>හිස් ගොනුවකි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
@@ -2344,13 +2345,13 @@ organize your files.</source>
         <source>Expired</source>
         <note>Expiration status</note>
       </trans-unit>
-      <trans-unit id="Expires after %d days" xml:space="preserve">
+      <trans-unit id="Expires after %d days" translate="no" xml:space="preserve">
         <source>Expires after %d days</source>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Expires after %d hours" xml:space="preserve">
+      <trans-unit id="Expires after %d hours" translate="no" xml:space="preserve">
         <source>Expires after %d hours</source>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2364,11 +2365,6 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="External link" xml:space="preserve">
         <source>External link</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failed online conversion service." xml:space="preserve">
-        <source>Failed online conversion service.</source>
-        <target>මාර්ගගත අනුවර්තන සේවාව අසාර්ථක විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
@@ -2421,19 +2417,8 @@ organize your files.</source>
         <target>තැපෑලෙන් ප්‍රතිපෝෂණ යැවීමට අසමත් විය. ඔබගේ ඉල්ලීම අපගේ සංසදයේ ලිවීමට උත්සාහ කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
-        <source>Failed upload source file to conversion online service.</source>
-        <target>මූලාශ්‍ර ගොනුව මාර්ගගත අනුවර්තන සේවාවට උඩුගත කිරීමට අසමත් විය.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download file from portal." xml:space="preserve">
-        <source>Failure to download file from portal.</source>
-        <target>ද්වාරයෙන් ගොනුව බාගැනීමට අසමත් විය.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
-        <source>Failure to download result from conversion online service.</source>
-        <target>මාර්ගගත අනුවර්තන සේවාවෙන් ප්‍රතිඵල බාගැනීමට අසමත් විය.</target>
+      <trans-unit id="Failed to submit the form" xml:space="preserve">
+        <source>Failed to submit the form</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2475,6 +2460,22 @@ organize your files.</source>
         <source>Files and folders uploaded by admins will appear here.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Fill" xml:space="preserve">
+        <source>Fill</source>
+        <note>Fill form Button title</note>
+      </trans-unit>
+      <trans-unit id="Fill in as" xml:space="preserve">
+        <source>Fill in as</source>
+        <note>Title for fill-in options screen</note>
+      </trans-unit>
+      <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
+        <source>Fill in the fields of the original form in the editor window.</source>
+        <note>Subtitle for form filling</note>
+      </trans-unit>
+      <trans-unit id="Fill out the form yourself" xml:space="preserve">
+        <source>Fill out the form yourself</source>
+        <note>Title for opening form filling</note>
+      </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
         <target>පුරවන ආකෘතිපත්‍රය</target>
@@ -2505,6 +2506,26 @@ organize your files.</source>
         <target>ආකෘතිපත්‍ර පිරවුම</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Form Filling" xml:space="preserve">
+        <source>Form Filling</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form Filling Room" xml:space="preserve">
+        <source>Form Filling Room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form completed successfully" xml:space="preserve">
+        <source>Form completed successfully</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form number" xml:space="preserve">
+        <source>Form number</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form owner" xml:space="preserve">
+        <source>Form owner</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
         <target>ආකෘතිපත්‍ර අච්චු</target>
@@ -2513,6 +2534,14 @@ organize your files.</source>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
         <target>ආකෘතිපත්‍ර</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From DocSpace" xml:space="preserve">
+        <source>From DocSpace</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From device" xml:space="preserve">
+        <source>From device</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2535,16 +2564,6 @@ organize your files.</source>
         <target>සාමාන්‍ය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="General link" xml:space="preserve">
-        <source>General link</source>
-        <target>සාමාන්‍ය සබැඳිය</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="General link State" xml:space="preserve">
-        <source>General link State</source>
-        <target>සාමාන්‍ය සබැඳියේ තත්‍වය</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
         <source>General links</source>
         <target>සාමාන්‍ය සබැඳි</target>
@@ -2553,6 +2572,10 @@ organize your files.</source>
       <trans-unit id="Get started" xml:space="preserve">
         <source>Get started</source>
         <target>පටන් ගන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Get started with quick actions: " xml:space="preserve">
+        <source>Get started with quick actions: </source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2728,6 +2751,10 @@ to the clipboard</source>
         <target>සබැඳියේ ආයු කාලය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Link name" xml:space="preserve">
+        <source>Link name</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
         <target>සබැඳියේ නම %@</target>
@@ -2751,11 +2778,6 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Loading..." xml:space="preserve">
-        <source>Loading...</source>
-        <target>පූරණය වෙමින්...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
@@ -2786,7 +2808,7 @@ copied to clipboard</source>
         <source>Logout</source>
         <target>නික්මෙන්න</target>
         <note>Button title
-   Caption of the process</note>
+Caption of the process</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
@@ -2812,7 +2834,7 @@ copied to clipboard</source>
         <source>Me</source>
         <target>මට</target>
         <note>Author or member of a document
-   If current user name is not set</note>
+If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
@@ -2918,6 +2940,18 @@ copied to clipboard</source>
         <source>New folder</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New form filling" xml:space="preserve">
+        <source>New form filling</source>
+        <note>Suggested a room name when create a new one</note>
+      </trans-unit>
+      <trans-unit id="New form filling room" xml:space="preserve">
+        <source>New form filling room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New room" xml:space="preserve">
+        <source>New room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
         <target>නව පරිශ්‍රීලකයින්</target>
@@ -2945,11 +2979,6 @@ copied to clipboard</source>
       <trans-unit id="No Internet connection" xml:space="preserve">
         <source>No Internet connection</source>
         <target>අන්තර්ජාල සම්බන්ධතාවයක් නැත</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="No Links State" xml:space="preserve">
-        <source>No Links State</source>
-        <target>සබැඳි නැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -3013,7 +3042,7 @@ copied to clipboard</source>
         <source>None</source>
         <target>කිසිත් නැත</target>
         <note>If the cache is empty
-   Share status</note>
+Share status</note>
       </trans-unit>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
@@ -3206,11 +3235,6 @@ copied to clipboard</source>
         <target>මුදුනට අමුණන්න</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Pinned failed." xml:space="preserve">
-        <source>Pinned failed.</source>
-        <target>ඇමිණීමට අසමත් විය.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Pinning" xml:space="preserve">
         <source>Pinning</source>
         <target>අමුණමින්</target>
@@ -3362,6 +3386,10 @@ copied to clipboard</source>
       <trans-unit id="Public" xml:space="preserve">
         <source>Public</source>
         <target>ප්‍රසිද්ධ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Public link" xml:space="preserve">
+        <source>Public link</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3532,7 +3560,7 @@ copied to clipboard</source>
         <source>Rooms</source>
         <target>කාමර</target>
         <note>Category title
-   DocSpace rooms</note>
+DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
@@ -3567,12 +3595,16 @@ copied to clipboard</source>
         <source>Select</source>
         <target>තෝරන්න</target>
         <note>Button title
-   Navigation bar button title</note>
+Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>ඡායාරූප තෝරන්න</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select a PDF Form" xml:space="preserve">
+        <source>Select a PDF Form</source>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
         <source>Select all</source>
@@ -3667,9 +3699,17 @@ copied to clipboard</source>
         <source>Share</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share &amp; collect" xml:space="preserve">
+        <source>Share &amp; collect</source>
+        <note>Title for sharing and collecting form</note>
+      </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
         <source>Share folder</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
+        <source>Share your form and collect responses via a Form filling room.</source>
+        <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
@@ -3853,6 +3893,12 @@ copied to clipboard</source>
         <target>ගොනුව නැවත ලද නොහැකි ලෙස මකා දැමෙනු ඇත. මෙම ක්‍රියාමාර්ගය අප්‍රතිවර්ත්‍යයි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The filled PDF form is saved and available to you&#10; in the Complete folder. To check the status,&#10; contact the form owner providing the assigned number." xml:space="preserve">
+        <source>The filled PDF form is saved and available to you
+ in the Complete folder. To check the status,
+ contact the form owner providing the assigned number.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>කුණු කූඩයේ තිබෙන ගොනුව ඇරීමට නොහැකිය.</target>
@@ -3999,6 +4045,18 @@ to the clipboard</source>
         <target>මෙම සමර්පණය සංස්කරණය වෙමින් පවතී. දැකීමට පමණක් %@ විවෘත කිරීමට අවශ්‍යද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have Form Filler permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have Form Filler permission
+ for all the files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have View Only permission
+ for all the files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target>මෙම පැතුරුම්පත සංස්කරණය වෙමින් පවතී. දැකීමට පමණක් %@ විවෘත කිරීමට අවශ්‍යද?</target>
@@ -4138,11 +4196,6 @@ to the clipboard</source>
         <target>බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය වෙත ප්‍රවේශය නොලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Unexpected response from the service." xml:space="preserve">
-        <source>Unexpected response from the service.</source>
-        <target>සේවාවෙන් අනපේක්‍ෂිත ප්‍රතිචාරයකි.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>නොදන්නා</target>
@@ -4197,6 +4250,22 @@ to the clipboard</source>
         <source>Unpinning</source>
         <target>ගැළවෙමින්</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
+        <source>Upload PDF form from DocSpace</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from device" xml:space="preserve">
+        <source>Upload PDF form from device</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
+        <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload a ready PDF form" xml:space="preserve">
+        <source>Upload a ready PDF form</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
@@ -4303,6 +4372,10 @@ Swipe to learn more about the app.</source>
 යෙදුම ගැන තව දැන ගැනීමට තල්ලු කරන්න.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
+        <source>Welcome to the Form filling room </source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
         <target>මොනවාද අළුත්</target>
@@ -4370,6 +4443,10 @@ then accessed from any other device.</source>
         <source>You can connect the following accounts to the DocSpace rooms</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
+        <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>ඔබ කාමරය හැර ගොස් ඇත</target>
@@ -4387,6 +4464,10 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
         <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
+        <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -4543,7 +4624,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

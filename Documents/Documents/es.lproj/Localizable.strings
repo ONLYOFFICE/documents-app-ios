@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
@@ -10,26 +7,8 @@
 /* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
-/* Days left */
-"%d days" = "%d días";
-
-/* Hours left */
-"%d hours" = "%d horas";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d seleccionado";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i de %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu archivo seleccionado";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu carpeta y %2$lu archivo seleccionado";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu carpeta seleccionada";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu objetos con el mismo nombre ya existen en la carpeta '%2$@'. ¿Sobrescribir los objetos?";
@@ -134,9 +113,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Añada usuarios o grupos y concédales permiso para\nleer, revisar o editar documentos.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Estado del enlace adicional";
-
-/* No comment provided by engineer. */
 "Additional links" = "Enlaces adicionales";
 
 /* No comment provided by engineer. */
@@ -185,7 +161,7 @@
 "Applying" = "Aplicando";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Archivo";
 
 /* No comment provided by engineer. */
@@ -251,7 +227,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "No se puede duplicar el archivo.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
@@ -372,7 +348,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Conéctese a su nube %@ para almacenar archivos en línea y colaborar en documentos en tiempo real";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Conectando";
 
 /* No comment provided by engineer. */
@@ -463,9 +439,6 @@
 "Could not open file." = "No se puede abrir el archivo.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "No se puede leer los datos del archivo.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "No se puede leer los datos del archivo.";
 
 /* Description of file operation error */
@@ -520,7 +493,7 @@
 "Create room" = "Crear sala";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Creando";
 
 /* No comment provided by engineer. */
@@ -540,15 +513,6 @@
 
 /* Button title */
 "Delete" = "Eliminar";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Eliminar %lu archivo";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Eliminar %lu carpeta";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Eliminar %1$lu carpeta y %2$lu archivo";
 
 /* Button title */
 "Delete File" = "Eliminar archivo";
@@ -608,7 +572,7 @@
 "Documents" = "Documentos";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Hecho";
 
 /* Button title */
@@ -663,9 +627,6 @@
 "Email is not valid" = "El correo electrónico no es válido";
 
 /* No comment provided by engineer. */
-"Empty file." = "Archivo vacío.";
-
-/* No comment provided by engineer. */
 "Empty name." = "Nombre vacío.";
 
 /* No comment provided by engineer. */
@@ -716,12 +677,6 @@
 /* Expiration status */
 "Expired" = "Expirado";
 
-/* Days left */
-"Expires after %d days" = "Expira dentro de %d días";
-
-/* Hours left */
-"Expires after %d hours" = "Expira dentro de %d horas";
-
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Expira dentro de 7 días";
 
@@ -730,9 +685,6 @@
 
 /* No comment provided by engineer. */
 "External link" = "Enlace externo";
-
-/* No comment provided by engineer. */
-"Failed online conversion service." = "Servicio de conversión en línea fracasado.";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Error al verificar la disponibilidad de portal.";
@@ -763,15 +715,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "No se pudo enviar la información por correo. Intente escribir su solicitud en nuestro foro.";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Error al cargar el archivo de origen al servicio de conversión en línea.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Error al descargar el archivo del portal.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Error al descargar el resultado del servicio de conversión en línea.";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Error al preparar el archivo";
@@ -829,12 +772,6 @@
 
 /* No comment provided by engineer. */
 "General" = "General";
-
-/* No comment provided by engineer. */
-"General link" = "Enlace general";
-
-/* No comment provided by engineer. */
-"General link State" = "Estado de enlace general";
 
 /* No comment provided by engineer. */
 "General links" = "Enlaces generales";
@@ -969,9 +906,6 @@
 "Loading" = "Cargando";
 
 /* No comment provided by engineer. */
-"Loading..." = "Cargando...";
-
-/* No comment provided by engineer. */
 "Location" = "Ubicación";
 
 /* Caption of the process */
@@ -987,7 +921,7 @@
 "Login is empty" = "El login está vacío";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Cerrar sesión";
 
 /* Button title */
@@ -1003,7 +937,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Yo";
 
 /* No comment provided by engineer. */
@@ -1109,9 +1043,6 @@
 "No Internet connection" = "No hay conexión a Internet";
 
 /* No comment provided by engineer. */
-"No Links State" = "No hay estado de enlaces";
-
-/* No comment provided by engineer. */
 "No network" = "No hay red";
 
 /* No comment provided by engineer. */
@@ -1129,12 +1060,8 @@
 /* No comment provided by engineer. */
 "No users found" = "No se han encontrado usuarios";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "ninguno";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Ninguno";
 
 /* No comment provided by engineer. */
@@ -1268,9 +1195,6 @@
 
 /* Button title */
 "Pin to top" = "Anclar al principio";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "Error al anclar.";
 
 /* Caption of the processing */
 "Pinning" = "Anclando";
@@ -1456,7 +1380,7 @@
 "Room name" = "Nombre de sala";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Salas";
 
 /* No comment provided by engineer. */
@@ -1475,7 +1399,7 @@
 "Search" = "Buscar";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Seleccionar";
 
 /* No comment provided by engineer. */
@@ -1827,9 +1751,6 @@
 "Unauthorized users will not have access to the document." = "Los usuarios no autorizados no tendrán acceso al documento.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Respuesta inesperada del servicio.";
-
-/* Invalid entity name */
 "Unknown" = "Desconocido";
 
 /* No comment provided by engineer. */

@@ -1,66 +1,53 @@
-
 /* Class = "UILabel"; text = "Connect to Cloud"; ObjectID = "0Hf-aP-smp"; */
-"0Hf-aP-smp.text" = "Connect to Cloud";
+"0Hf-aP-smp.text" = "ربط بالسحابة";
 
 /* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "6qd-Sb-ejT"; */
-"6qd-Sb-ejT.title" = "Clouds";
+"6qd-Sb-ejT.title" = "السحب";
 
 /* Class = "UIBarButtonItem"; title = "Clouds"; ObjectID = "9bV-HI-h8F"; */
-"9bV-HI-h8F.title" = "Clouds";
-
-/* Class = "UILabel"; text = "Name"; ObjectID = "EbX-7l-0KP"; Note = "Do not translate"; */
-"EbX-7l-0KP.text" = "Name";
-
-/* Class = "UILabel"; text = "Category"; ObjectID = "FAC-qi-qFR"; Note = "Do not translate"; */
-"FAC-qi-qFR.text" = "Category";
-
-/* Class = "UILabel"; text = "Other Cloud"; ObjectID = "FkK-jc-e1U"; */
-"FkK-jc-e1U.text" = "Other Cloud";
-
-/* Class = "UILabel"; text = "Category"; ObjectID = "GcW-AI-d08"; Note = "Do not translate"; */
-"GcW-AI-d08.text" = "Category";
-
-/* Class = "UILabel"; text = "Address"; ObjectID = "Jg5-fy-5tz"; Note = "Do not translate"; */
-"Jg5-fy-5tz.text" = "Address";
-
-/* Class = "UITableViewController"; title = "On iPad"; ObjectID = "Kfl-YE-c7u"; */
-"Kfl-YE-c7u.title" = "On iPad";
-
-/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Ksc-pZ-Sdz"; */
-"Ksc-pZ-Sdz.title" = "Settings";
-
-/* Class = "UINavigationItem"; title = "Clouds"; ObjectID = "Lg6-aq-s31"; */
-"Lg6-aq-s31.title" = "Clouds";
-
-/* Class = "UILabel"; text = "Loading..."; ObjectID = "Mcf-gv-2zL"; */
-"Mcf-gv-2zL.text" = "Loading...";
-
-/* Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2"; */
-"WIL-sg-dk2.title" = "Choose Cloud";
-
-/* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "WLM-Ff-ccz"; */
-"WLM-Ff-ccz.title" = "ONLYOFFICE";
-
-/* Class = "UINavigationController"; title = "Clouds"; ObjectID = "WM5-Ng-sRj"; */
-"WM5-Ng-sRj.title" = "Clouds";
-
-/* Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2"; */
-"WQV-WX-BW2.text" = "Select another cloud to connect to Nextcloud, ownCloud and others are supported.";
+"9bV-HI-h8F.title" = "السحب";
 
 /* Class = "UINavigationController"; title = "ONLYOFFICE"; ObjectID = "cGA-Zo-QiU"; */
 "cGA-Zo-QiU.title" = "ONLYOFFICE";
 
 /* Class = "UITabBarItem"; title = "On iPad"; ObjectID = "d8B-af-U9v"; */
-"d8B-af-U9v.title" = "On iPad";
+"d8B-af-U9v.title" = "على iPad";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "EbX-7l-0KP"; Note = "Do not translate"; */
+"EbX-7l-0KP.text" = "الاسم";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "FAC-qi-qFR"; Note = "Do not translate"; */
+"FAC-qi-qFR.text" = "الفئة";
+
+/* Class = "UILabel"; text = "Other Cloud"; ObjectID = "FkK-jc-e1U"; */
+"FkK-jc-e1U.text" = "سحابة أخرى";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "GcW-AI-d08"; Note = "Do not translate"; */
+"GcW-AI-d08.text" = "الفئة";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "gTQ-Nt-RDQ"; Note = "Do not translate"; */
-"gTQ-Nt-RDQ.text" = "Name";
+"gTQ-Nt-RDQ.text" = "الاسم";
 
 /* Class = "UINavigationController"; title = "On iPad"; ObjectID = "gvd-UQ-EFI"; */
-"gvd-UQ-EFI.title" = "On iPad";
+"gvd-UQ-EFI.title" = "على iPad";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Jg5-fy-5tz"; Note = "Do not translate"; */
+"Jg5-fy-5tz.text" = "العنوان";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "jRC-an-McY"; Note = "Do not translate"; */
-"jRC-an-McY.text" = "Address";
+"jRC-an-McY.text" = "العنوان";
+
+/* Class = "UITableViewController"; title = "On iPad"; ObjectID = "Kfl-YE-c7u"; */
+"Kfl-YE-c7u.title" = "على iPad";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Ksc-pZ-Sdz"; */
+"Ksc-pZ-Sdz.title" = "إعدادات";
+
+/* Class = "UINavigationItem"; title = "Clouds"; ObjectID = "Lg6-aq-s31"; */
+"Lg6-aq-s31.title" = "السحب";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "Mcf-gv-2zL"; */
+"Mcf-gv-2zL.text" = "جارِ التحميل...";
 
 /* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "nQn-Gz-R0Z"; */
 "nQn-Gz-R0Z.title" = "ONLYOFFICE";
@@ -69,16 +56,29 @@
 "oRP-oW-6D9.title" = "ONLYOFFICE";
 
 /* Class = "UIViewController"; title = "Choose Cloud"; ObjectID = "pM4-zR-Xil"; */
-"pM4-zR-Xil.title" = "Choose Cloud";
+"pM4-zR-Xil.title" = "اختر سحابة";
 
 /* Class = "UINavigationItem"; title = "ONLYOFFICE"; ObjectID = "rZi-T5-tyI"; */
 "rZi-T5-tyI.title" = "ONLYOFFICE";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "s1a-WZ-ro9"; Note = "Do not translate"; */
-"s1a-WZ-ro9.text" = "Name";
+"s1a-WZ-ro9.text" = "الاسم";
 
 /* Class = "UINavigationItem"; title = "On iPad"; ObjectID = "w18-Ta-54p"; */
-"w18-Ta-54p.title" = "On iPad";
+"w18-Ta-54p.title" = "على iPad";
 
 /* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "wcS-gn-5AV"; */
-"wcS-gn-5AV.title" = "Clouds";
+"wcS-gn-5AV.title" = "السحب";
+
+/* Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2"; */
+"WIL-sg-dk2.title" = "اختر سحابة";
+
+/* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "WLM-Ff-ccz"; */
+"WLM-Ff-ccz.title" = "ONLYOFFICE";
+
+/* Class = "UINavigationController"; title = "Clouds"; ObjectID = "WM5-Ng-sRj"; */
+"WM5-Ng-sRj.title" = "السحب";
+
+/* Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2"; */
+"WQV-WX-BW2.text" = "حدد سحابة أخرى للاتصال بـ Nextcloud و ownCloud وغيرها من الخدمات المدعومة.";
+

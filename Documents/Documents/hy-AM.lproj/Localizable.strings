@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
@@ -10,26 +7,8 @@
 /* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
-/* Days left */
-"%d days" = "%d օրեր";
-
-/* Hours left */
-"%d hours" = "%d ժամեր";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d ընտրված";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i -ի %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu ֆայլն ընտրված է";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu Թղթապանակը և %2$lu Ֆայլն ընտրված են";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "Ընտրված է %lu թղթապանակ";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "Նույն անունով %1$lu տարր արդեն գոյություն ունի «%2$@» պանակում: Վերագրե՞լ տարրերը:";
@@ -134,9 +113,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Ավելացրեք օգտվողներ կամ խմբեր և թույլ տվեք նրանց\n կարդալ, վերանայել կամ խմբագրել փաստաթղթերը:";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Լրացուցիչ հղման վիճակ";
-
-/* No comment provided by engineer. */
 "Additional links" = "Լրացուցիչ հղումներ";
 
 /* No comment provided by engineer. */
@@ -185,7 +161,7 @@
 "Applying" = "Դիմում";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Արխիվ";
 
 /* No comment provided by engineer. */
@@ -251,7 +227,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Հնարավոր չէ կրկնօրինակել ֆայլը:";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Չեղարկել";
 
 /* No comment provided by engineer. */
@@ -372,7 +348,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Միացեք ձեր %@ ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի վրա իրական ժամանակում համագործակցելու համար";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Միացում";
 
 /* No comment provided by engineer. */
@@ -463,9 +439,6 @@
 "Could not open file." = "Չհաջողվեց բացել ֆայլը:";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Չհաջողվեց կարդալ տվյալները ֆայլից:";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Չհաջողվեց կարդալ ֆայլից տվյալները:";
 
 /* Description of file operation error */
@@ -520,7 +493,7 @@
 "Create room" = "Ստեղծել սենյակ";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Ստեղծելով";
 
 /* No comment provided by engineer. */
@@ -540,15 +513,6 @@
 
 /* Button title */
 "Delete" = "Ջնջել";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Ջնջել %lu ֆայլը";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Ջնջել %lu թղթապանակը";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Ջնջել %1$lu թղթապանակը և %2$lu ֆայլը";
 
 /* Button title */
 "Delete File" = "Ջնջել Ֆայլը";
@@ -608,7 +572,7 @@
 "Documents" = "Փաստաթղթեր";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Կատարած";
 
 /* Button title */
@@ -663,9 +627,6 @@
 "Email is not valid" = "Էլփոստը վավեր չէ";
 
 /* No comment provided by engineer. */
-"Empty file." = "Դատարկ ֆայլ։";
-
-/* No comment provided by engineer. */
 "Empty name." = "Դատարկ անուն.";
 
 /* No comment provided by engineer. */
@@ -716,12 +677,6 @@
 /* Expiration status */
 "Expired" = "Ժամկետանց";
 
-/* Days left */
-"Expires after %d days" = "Սպառվում է %d օր հետո";
-
-/* Hours left */
-"Expires after %d hours" = "Սպառվում է %d ժամ հետո";
-
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Ժամկետը լրանում է 7 օրից";
 
@@ -730,9 +685,6 @@
 
 /* No comment provided by engineer. */
 "External link" = "Արտաքին հղում";
-
-/* No comment provided by engineer. */
-"Failed online conversion service." = "Չհաջողվեց առցանց փոխակերպման ծառայություն:";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Չհաջողվեց ստուգել պորտալի առկայությունը:";
@@ -763,15 +715,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Չհաջողվեց հետադարձ կապ ուղարկել փոստով: Փորձեք գրել ձեր հարցումը մեր ֆորումում:";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Չհաջողվեց վերբեռնել աղբյուրի ֆայլը փոխակերպման առցանց ծառայություն:";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Չհաջողվեց ներբեռնել ֆայլը պորտալից:";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Չհաջողվեց ներբեռնել արդյունքը փոխակերպման առցանց ծառայությունից:";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Արխիվի պատրաստման ձախողում";
@@ -829,12 +772,6 @@
 
 /* No comment provided by engineer. */
 "General" = "Գեներալ";
-
-/* No comment provided by engineer. */
-"General link" = "Ընդհանուր հղում";
-
-/* No comment provided by engineer. */
-"General link State" = "Ընդհանուր հղման վիճակը";
 
 /* No comment provided by engineer. */
 "General links" = "Ընդհանուր հղումներ";
@@ -969,9 +906,6 @@
 "Loading" = "Բեռնվում է";
 
 /* No comment provided by engineer. */
-"Loading..." = "Բեռնվում է...";
-
-/* No comment provided by engineer. */
 "Location" = "Տեղ";
 
 /* Caption of the process */
@@ -987,7 +921,7 @@
 "Login is empty" = "Մուտքը դատարկ է";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Դուրս գալ";
 
 /* Button title */
@@ -1003,7 +937,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Ես";
 
 /* No comment provided by engineer. */
@@ -1109,9 +1043,6 @@
 "No Internet connection" = "Ինտերնետ կապ չկա";
 
 /* No comment provided by engineer. */
-"No Links State" = "Հղումների վիճակ չի գտնվել";
-
-/* No comment provided by engineer. */
 "No network" = "Ցանց չկա";
 
 /* No comment provided by engineer. */
@@ -1129,12 +1060,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Ոչ մի օգտվող չի գտնվել";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "Ոչ ոք.";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Ոչ ոք";
 
 /* No comment provided by engineer. */
@@ -1268,9 +1195,6 @@
 
 /* Button title */
 "Pin to top" = "Ամրացնել վերևում";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "Ամրացումը ձախողվեց։";
 
 /* Caption of the processing */
 "Pinning" = "Ամրացվող";
@@ -1456,7 +1380,7 @@
 "Room name" = "Սենյակի անվանումը";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Սսենյակներ";
 
 /* No comment provided by engineer. */
@@ -1475,7 +1399,7 @@
 "Search" = "Որոնել";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Ընտրել";
 
 /* No comment provided by engineer. */
@@ -1827,9 +1751,6 @@
 "Unauthorized users will not have access to the document." = "Չլիազորված օգտատերերին մուտք չի լինի փաստաթուղթը:";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Անսպասելի արձագանք ծառայության կողմից.";
-
-/* Invalid entity name */
 "Unknown" = "Անհայտ";
 
 /* No comment provided by engineer. */

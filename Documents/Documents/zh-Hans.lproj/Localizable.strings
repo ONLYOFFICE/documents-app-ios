@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
@@ -10,26 +7,8 @@
 /* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
-/* Days left */
-"%d days" = "%d 天";
-
-/* Hours left */
-"%d hours" = "%d 小时";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d 已选定";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i / %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu 文件已选定";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu 文件夹和 %2$lu 文件选定的";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu 文件夹已选定";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "在 '%2$@' 文件夹中已经存在同名的 %1$lu 项目。覆盖这些项目？";
@@ -134,9 +113,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "添加用户或团队允许他们 \n阅读、审查或编辑文件。";
 
 /* No comment provided by engineer. */
-"Additional link State" = "附加链接状态";
-
-/* No comment provided by engineer. */
 "Additional links" = "附加链接";
 
 /* No comment provided by engineer. */
@@ -185,7 +161,7 @@
 "Applying" = "正在应用中";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "備份";
 
 /* No comment provided by engineer. */
@@ -251,7 +227,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "无法复制该文件。";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
@@ -369,7 +345,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "连接到您的 %@ 云端，在线存储文件并实时协作处理文件";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "正在链接中";
 
 /* No comment provided by engineer. */
@@ -460,9 +436,6 @@
 "Could not open file." = "无法打开文件。";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "无法读取文件的数据。";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "无法读取该文件的数据。";
 
 /* Description of file operation error */
@@ -514,7 +487,7 @@
 "Create room" = "创建房间";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "正在创建";
 
 /* No comment provided by engineer. */
@@ -534,15 +507,6 @@
 
 /* Button title */
 "Delete" = "删除";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "删除 %lu File";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "删除 %lu 文件夹";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "删除 %1$lu 文件夹和 %2$lu 文件";
 
 /* Button title */
 "Delete File" = "删除文件";
@@ -602,7 +566,7 @@
 "Documents" = "文档";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "已完成";
 
 /* Button title */
@@ -655,9 +619,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "邮箱无效";
-
-/* No comment provided by engineer. */
-"Empty file." = "空文件。";
 
 /* No comment provided by engineer. */
 "Empty name." = "空名称。";
@@ -720,9 +681,6 @@
 "External link" = "外部链接";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "在线转换服务失败。";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "检查门户可用性失败。";
 
 /* No comment provided by engineer. */
@@ -751,15 +709,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "通过邮箱发送反馈信息失败。请尝试在我们的论坛上写下您的请求。";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "上传源文件到在线转换服务失败。";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "无法从门户网站下载文件。";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "无法从在线转换服务中下载结果。";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "整理归档失败";
@@ -817,12 +766,6 @@
 
 /* No comment provided by engineer. */
 "General" = "通用";
-
-/* No comment provided by engineer. */
-"General link" = "通用链接";
-
-/* No comment provided by engineer. */
-"General link State" = "通用链接状态";
 
 /* No comment provided by engineer. */
 "General links" = "通用链接";
@@ -956,9 +899,6 @@
 /* No comment provided by engineer. */
 "Loading" = "正在加载";
 
-/* No comment provided by engineer. */
-"Loading..." = "正在加载...";
-
 /* Caption of the process */
 "Logging in" = "正在登录";
 
@@ -972,7 +912,7 @@
 "Login is empty" = "登录为空";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "登出";
 
 /* Button title */
@@ -988,7 +928,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "我";
 
 /* No comment provided by engineer. */
@@ -1091,9 +1031,6 @@
 "No Internet connection" = "无互联网连接";
 
 /* No comment provided by engineer. */
-"No Links State" = "无链接状态";
-
-/* No comment provided by engineer. */
 "No network" = "无网络";
 
 /* No comment provided by engineer. */
@@ -1111,12 +1048,8 @@
 /* No comment provided by engineer. */
 "No users found" = "未找到用户";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "无";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "无";
 
 /* No comment provided by engineer. */
@@ -1250,9 +1183,6 @@
 
 /* Button title */
 "Pin to top" = "置顶";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "置顶失败。";
 
 /* Caption of the processing */
 "Pinning" = "正在置顶中";
@@ -1438,7 +1368,7 @@
 "Room name" = "房间名称";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "房间";
 
 /* No comment provided by engineer. */
@@ -1454,7 +1384,7 @@
 "Search" = "搜索";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "选择";
 
 /* No comment provided by engineer. */
@@ -1800,9 +1730,6 @@
 "Unauthorized users will not have access to the document." = "未经授权的用户无法访问文件。";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "服务意外响应。";
-
-/* Invalid entity name */
 "Unknown" = "未知";
 
 /* No comment provided by engineer. */

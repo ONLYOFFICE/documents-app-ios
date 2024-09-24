@@ -1,26 +1,11 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d избрани ";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i на %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu Файлът е избран";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu папка и %2$lu избрани";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu Избрана папка";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu елементи със същото име вече съществуват в папката '%2$@'. Презапишете елементите?";
@@ -119,9 +104,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Добавяне на потребители и групи и им позволете\nда четат, преглеждат или редактират документи.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Допълнителен линк за Състояние";
-
-/* No comment provided by engineer. */
 "Additional links" = "Допълнителни линкове";
 
 /* No comment provided by engineer. */
@@ -164,7 +146,7 @@
 "Applying" = "Прилагане";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Архив";
 
 /* No comment provided by engineer. */
@@ -227,7 +209,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Файлът не може да се дублира.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Отказ";
 
 /* No comment provided by engineer. */
@@ -339,7 +321,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Свързване";
 
 /* No comment provided by engineer. */
@@ -424,9 +406,6 @@
 "Could not open file." = "Файлът не можа да се отвори.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Данните от файл не можаха да бъдат прочетени.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Данните от файла не можаха да бъдат прочетени.";
 
 /* Description of file operation error */
@@ -469,7 +448,7 @@
 "Create room" = "Създай стая";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Създаване";
 
 /* No comment provided by engineer. */
@@ -489,15 +468,6 @@
 
 /* Button title */
 "Delete" = "Изтрий";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Изтриване на %lu файл";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Изтриване на %lu папка";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Изтриване на папката %1$lu и %2$lu";
 
 /* Button title */
 "Delete File" = "Изтрий файла";
@@ -554,7 +524,7 @@
 "Documents" = "Документи";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Завършен";
 
 /* Button title */
@@ -601,9 +571,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Имейлът не е валиден";
-
-/* No comment provided by engineer. */
-"Empty file." = "Празен файл.";
 
 /* No comment provided by engineer. */
 "Empty name." = "Празно име.";
@@ -657,9 +624,6 @@
 "Export" = "Изнеси";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Неуспешно онлайн конвертиране.";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "Неуспешно проверяване на достъпността на портала.";
 
 /* No comment provided by engineer. */
@@ -688,15 +652,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Неуспешно изпращане на обратна връзка по пощата. Опитайте да напишете заявката си в нашия форум";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Неуспешно качване на изходния файл към онлайн услугата за реализация.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Неуспешно изтегляне на файл от портала.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Неуспехът да изтеглите резултат от онлайн услугата за преобразуване.";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Грешка при подготвяне на архив";
@@ -751,12 +706,6 @@
 
 /* No comment provided by engineer. */
 "General" = "Общ";
-
-/* No comment provided by engineer. */
-"General link" = "Главен линк";
-
-/* No comment provided by engineer. */
-"General link State" = "Главен линк за Състояние";
 
 /* No comment provided by engineer. */
 "General links" = "Главни линкове";
@@ -881,9 +830,6 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Връзката с поканата е изпратена на пощата";
 
-/* No comment provided by engineer. */
-"Loading..." = "Зареждане...";
-
 /* Caption of the process */
 "Logging in" = "Влизане в системата";
 
@@ -897,7 +843,7 @@
 "Login is empty" = "Входът е празен";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Излез от профила си";
 
 /* Button title */
@@ -913,7 +859,7 @@
 "Mb" = "Мб";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Аз";
 
 /* No comment provided by engineer. */
@@ -1004,9 +950,6 @@
 "No Internet connection" = "Няма интернет връзка";
 
 /* No comment provided by engineer. */
-"No Links State" = "Няма Линкове за Състояние";
-
-/* No comment provided by engineer. */
 "No network" = "Няма мрежа";
 
 /* No comment provided by engineer. */
@@ -1024,12 +967,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Няма намерени потребители";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "няма";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Няма";
 
 /* No comment provided by engineer. */
@@ -1151,9 +1090,6 @@
 
 /* Button title */
 "Pin to top" = "Закачете отгоре";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "Закачането не бе успешно.";
 
 /* Caption of the processing */
 "Pinning" = "Закачане";
@@ -1303,7 +1239,7 @@
 "Room name" = "Име на стаята";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Стаи";
 
 /* No comment provided by engineer. */
@@ -1319,7 +1255,7 @@
 "Search" = "Търсене";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Изберете";
 
 /* No comment provided by engineer. */
@@ -1641,9 +1577,6 @@
 "Unauthorized users will not have access to the document." = "Неоторизираните потребители няма да имат достъп до документа.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Неочакван отговор от услугата.";
-
-/* Invalid entity name */
 "Unknown" = "Неизвестен";
 
 /* No comment provided by engineer. */

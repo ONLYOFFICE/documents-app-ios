@@ -1,26 +1,11 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d محدد";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i من %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%تم اختيار ملف";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$والمجلد %2$تم تحديد الملف";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%تم تحديد المجلد";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$العناصر التي تحمل نفس الاسم موجودة بالفعل في المجلد '%2$@'. هل تريد استبدال العناصر؟";
@@ -116,9 +101,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "إضافة مستخدمين أو مجموعات والسماح لهم \n  بقراءة أو مراجعة أو تحرير المستندات.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "حالة الرابط الإضافي";
-
-/* No comment provided by engineer. */
 "Additional links" = "روابط إضافية";
 
 /* No comment provided by engineer. */
@@ -161,7 +143,7 @@
 "Applying" = "تطبيق";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "الأرشيف";
 
 /* No comment provided by engineer. */
@@ -224,7 +206,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "لا يمكن تكرار الملف.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "إلغاء";
 
 /* No comment provided by engineer. */
@@ -332,7 +314,8 @@
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "اتصل بسحابة %@ الخاصة بك لتخزين الملفات عبر الإنترنت والتعاون في المستندات في الوقت الفعلي";
 
-/* Caption of the process */
+/* Caption of the process
+Caption of the processing */
 "Connecting" = "يتم الربط";
 
 /* No comment provided by engineer. */
@@ -417,9 +400,6 @@
 "Could not open file." = "تعذر فتح الملف.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "تعذر قراءة البيانات من الملف.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "تعذر قراءة البيانات من الملف.";
 
 /* Description of file operation error */
@@ -462,7 +442,7 @@
 "Create room" = "إنشاء غرفة";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "يتم الإنشاء";
 
 /* No comment provided by engineer. */
@@ -482,15 +462,6 @@
 
 /* Button title */
 "Delete" = "حذف";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "حذف %الملف";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "حذف %المجلد";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "حذف %1$والمجلد %2$الملف";
 
 /* Button title */
 "Delete File" = "حذف الملف";
@@ -547,7 +518,7 @@
 "Documents" = "المستندات";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "تم";
 
 /* Button title */
@@ -594,9 +565,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "البريد الالكتروني غير صالح";
-
-/* No comment provided by engineer. */
-"Empty file." = "ملف فارغ.";
 
 /* No comment provided by engineer. */
 "Empty name." = "اسم فارغ.";
@@ -650,9 +618,6 @@
 "Export" = "تصدير";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "فشل خدمة التحويل عبر الإنترنت.";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "فشل في التحقق من توفر البوابة.";
 
 /* No comment provided by engineer. */
@@ -681,15 +646,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "فشل إرسال التعليقات عبر البريد. حاول كتابة طلبك في منتدانا.";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "فشل تحميل الملف المصدر إلى خدمة التحويل عبر الإنترنت.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "فشل في تنزيل الملف من البوابة.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "فشل تنزيل النتيجة من خدمة التحويل عبر الإنترنت.";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "فشل في إعداد الأرشيف";
@@ -744,12 +700,6 @@
 
 /* No comment provided by engineer. */
 "General" = "عام";
-
-/* No comment provided by engineer. */
-"General link" = "رابط عام";
-
-/* No comment provided by engineer. */
-"General link State" = "حالة الرابط العام";
 
 /* No comment provided by engineer. */
 "General links" = "روابط عامة";
@@ -874,9 +824,6 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "تم إرسال رابط الدعوة إلى البريد";
 
-/* No comment provided by engineer. */
-"Loading..." = "جارِ التحميل...";
-
 /* Caption of the process */
 "Logging in" = "تسجيل الدخول";
 
@@ -890,7 +837,7 @@
 "Login is empty" = "تسجيل الدخول فارغ";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "تسجيل الخروج";
 
 /* Button title */
@@ -906,7 +853,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "أنا";
 
 /* No comment provided by engineer. */
@@ -997,9 +944,6 @@
 "No Internet connection" = "لا يتوفر اتصال بالانترنت";
 
 /* No comment provided by engineer. */
-"No Links State" = "حالة عدم وجود روابط";
-
-/* No comment provided by engineer. */
 "No network" = "لا تتوفر شبكة";
 
 /* No comment provided by engineer. */
@@ -1018,7 +962,7 @@
 "No users found" = "لم يتم العثور على مستخدمين";
 
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "لا يوجد";
 
 /* No comment provided by engineer. */
@@ -1140,9 +1084,6 @@
 
 /* Button title */
 "Pin to top" = "تثبيت في الأعلى";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "فشل التثبيت.";
 
 /* Caption of the processing */
 "Pinning" = "يتم التثبيت";
@@ -1292,7 +1233,7 @@
 "Room name" = "اسم الغرفة";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "الغرف";
 
 /* No comment provided by engineer. */
@@ -1308,7 +1249,7 @@
 "Search" = "بحث";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "تحديد";
 
 /* No comment provided by engineer. */
@@ -1631,9 +1572,6 @@
 
 /* No comment provided by engineer. */
 "Unauthorized users will not have access to the document." = "لن يتمكن المستخدمون غير المصرح لهم من الوصول إلى المستند.";
-
-/* No comment provided by engineer. */
-"Unexpected response from the service." = "استجابة غير متوقعة من الخدمة.";
 
 /* No comment provided by engineer. */
 "Unknown" = "غير معروف";

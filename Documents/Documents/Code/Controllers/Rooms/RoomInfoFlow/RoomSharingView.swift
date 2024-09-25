@@ -41,7 +41,7 @@ struct RoomSharingView: View {
                     invitesSection
                 }
             }
-            .background(Color.systemGroupedBackground)
+            .background(Color.systemGroupedBackground.ignoresSafeArea())
         } else {
             VStack {
                 ActivityIndicatorView()

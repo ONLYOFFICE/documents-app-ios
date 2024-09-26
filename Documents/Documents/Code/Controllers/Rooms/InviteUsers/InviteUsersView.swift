@@ -89,7 +89,7 @@ struct InviteUsersView: View {
                 viewModel.shareLink()
             }) {
                 Image(systemName: "square.and.arrow.up")
-                    .foregroundColor(.blue)
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         }
         .contentShape(Rectangle())

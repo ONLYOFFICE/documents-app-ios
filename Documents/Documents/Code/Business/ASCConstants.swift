@@ -67,12 +67,10 @@ class ASCConstants {
         static let hideCloudsCategory = "asc-hide-clouds-category"
 
         // Debug
-        static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
         static let debugAllowiCloud = "asc-debug-allowicloud"
         static let debugAllowCategoriesSkeleton = "asc-debug-allowcategoriesskeleton"
         static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
         static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
-        static let debugForceRtl = "asc-debug-force-rtl"
         static let debugDisableSdkVersionCheck = "asc-debug-disablesdkversioncheck"
 
         static func setupDefaults() {
@@ -82,7 +80,6 @@ class ASCConstants {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
 
             // Debug
-            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowiCloud: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])

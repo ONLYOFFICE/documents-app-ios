@@ -13,7 +13,6 @@ import UIKit
 
 typealias AppleIdAuthorizationCode = String
 
-@available(iOS 13.0, *)
 class ASCAppleIdSignInController: NSObject {
     private lazy var viewController: UIViewController = UIViewController()
     private var completionHandler: (Result<AppleIdAuthorizationCode, Error>) -> Void = { _ in }
@@ -34,16 +33,14 @@ class ASCAppleIdSignInController: NSObject {
     }
 }
 
-@available(iOS 13.0, *)
 extension ASCAppleIdSignInController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         viewController.view.window!
     }
 }
 
-@available(iOS 13.0, *)
 extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
-    @available(iOS 13.0, *)
+
     public func authorizationController(
         controller: ASAuthorizationController,
         didCompleteWithAuthorization authorization: ASAuthorization
@@ -59,7 +56,6 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
         completionHandler(.success(codeStr))
     }
 
-    @available(iOS 13.0, *)
     public func authorizationController(
         controller: ASAuthorizationController,
         didCompleteWithError error: Error
@@ -68,7 +64,6 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
     }
 }
 
-@available(iOS 13.0, *)
 extension ASCAppleIdSignInController {
     enum Errors: Error, LocalizedError {
         case appleIdAuthFailed

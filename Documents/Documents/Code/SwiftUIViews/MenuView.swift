@@ -50,7 +50,6 @@ struct MenuView<Content>: View where Content: View {
             }
     }
 
-    @available(iOS 14.0, *)
     var menu: some View {
         Menu {
             ForEach(menuItems) { item in

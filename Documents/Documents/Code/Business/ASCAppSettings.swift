@@ -25,12 +25,6 @@ enum ASCAppSettings {
     }
 
     enum Feature {
-        // Hide the searchbar in the navigationbar if the list of documents is empty
-        static var hideSearchbarIfEmpty: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-        }
-
         // Allow external clouds category
         static var hideCloudsCategory: Bool {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.hideCloudsCategory) }
@@ -59,12 +53,6 @@ enum ASCAppSettings {
         static var openViewModeByDefault: Bool {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
-        }
-
-        // Force RTL
-        static var forceRtl: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugForceRtl) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugForceRtl) }
         }
 
         // Disable check of sdk version

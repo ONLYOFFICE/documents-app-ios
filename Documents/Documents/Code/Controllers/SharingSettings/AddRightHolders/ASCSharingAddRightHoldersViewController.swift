@@ -318,7 +318,6 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
         return selectedAccess
     }
 
-    @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         onAccessSheetSelectAction(shareAccessRaw: shareAccessRaw)
     }

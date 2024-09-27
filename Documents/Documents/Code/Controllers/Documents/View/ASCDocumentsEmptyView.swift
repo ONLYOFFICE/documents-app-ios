@@ -31,6 +31,7 @@ class ASCDocumentsEmptyView: UIView {
     // MARK: - Properties
 
     public var onAction: (() -> Void)?
+    public var menuForType: [EmptyViewState: UIMenu] = [:]
     public var type: EmptyViewState = .default {
         didSet {
             updateType()
@@ -212,13 +213,16 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel.text = NSLocalizedString("Welcome to the Form filling room ", comment: "")
             subtitleLabel.text = NSLocalizedString("Get started with quick actions: ", comment: "")
             actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
-
         default:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.removeFromSuperview()
         }
+        
+        let menu = menuForType[type]
+        actionButton.menu = menu
+        actionButton.showsMenuAsPrimaryAction = menu != nil
 
         actionButton.styleType = type.actionButtonStyleType
     }

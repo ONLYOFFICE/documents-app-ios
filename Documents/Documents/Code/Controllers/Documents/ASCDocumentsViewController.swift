@@ -210,20 +210,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private lazy var emptyView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
-
+        
+        view.menuForType[.formFillingRoom] = makePDFFormAction()
         view.onAction = { [weak self] in
             guard
-                let strongSelf = self,
-                let folder = strongSelf.folder,
-                let provider = strongSelf.provider
+                let self,
+                let folder = folder,
+                let provider = provider
             else { return }
 
-            switch view.type {
-            case .formFillingRoom:
-                strongSelf.uploadPDFFormAction(button: view.actionButton)
-            default:
-                strongSelf.createFirstItem(view.actionButton)
-            }
+            createFirstItem(view.actionButton)
 
             view.actionButton.isHidden = !provider.allowEdit(entity: folder)
         }
@@ -1548,7 +1544,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    private func uploadPDFFormAction(button: UIButton) {
+    private func makePDFFormAction() -> UIMenu{
         let menu = UIMenu(title: "", children: [
             UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] action in
                 guard let self else { return }
@@ -1562,8 +1558,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             },
         ])
 
-        button.menu = menu
-        button.showsMenuAsPrimaryAction = true
+        return menu
     }
 
     @objc func updateFileInfo(_ notification: Notification) {

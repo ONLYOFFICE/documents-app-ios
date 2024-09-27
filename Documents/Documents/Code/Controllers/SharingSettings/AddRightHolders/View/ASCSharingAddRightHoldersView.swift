@@ -204,7 +204,6 @@ class ASCSharingAddRightHoldersView {
 // MARK: - @OBJC func delegate
 
 extension ASCSharingAddRightHoldersView {
-
     @objc func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         delegate?.onAccessMenuSelectAction(action: action, shareAccessRaw: shareAccessRaw)
         updateToolbars()

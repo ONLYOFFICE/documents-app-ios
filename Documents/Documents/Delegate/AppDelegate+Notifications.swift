@@ -11,7 +11,6 @@ import FirebaseMessaging
 import UIKit
 
 extension AppDelegate {
-
     func checkNotifications() {
         let center = UNUserNotificationCenter.current()
 

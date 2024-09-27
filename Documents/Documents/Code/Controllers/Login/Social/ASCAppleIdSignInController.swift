@@ -40,7 +40,6 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerPresentationConte
 }
 
 extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
-
     public func authorizationController(
         controller: ASAuthorizationController,
         didCompleteWithAuthorization authorization: ASAuthorization

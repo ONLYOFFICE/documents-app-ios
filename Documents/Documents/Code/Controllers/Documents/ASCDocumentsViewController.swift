@@ -418,6 +418,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             UserDefaults.standard.set(folderAsString, forKey: ASCConstants.SettingsKeys.lastFolder)
         }
 
+        navigationItem.searchController = tableData.isEmpty ? nil : searchController
         navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty
         navigationItem.largeTitleDisplayMode = !tableData.isEmpty ? .automatic : .never
     }

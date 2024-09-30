@@ -486,11 +486,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         completeon?(self, file, true, nil)
 
         let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
-        
+
         apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
             guard let topVC = UIApplication.topViewController() else { return }
             MBProgressHUD.hide(for: topVC.view, animated: true)
-            
+
             if let error = error {
                 topVC.showAlert(
                     title: NSLocalizedString("Error", comment: ""),
@@ -498,11 +498,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 )
                 return
             }
-            
+
             guard let responce = result?.result else {
                 return
             }
-            
+
             let vc = CreateFormCompletedRootViewController(
                 formModel: FormModel(
                     form: file,
@@ -512,10 +512,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     authorAvatar: responce.manager?.avatar ?? ""
                 )
             )
-            
+
             topVC.present(vc, animated: true)
         }
-        
+
         if let topVC = UIApplication.topViewController() {
             MBProgressHUD.showAdded(to: topVC.view, animated: true)
         }

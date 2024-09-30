@@ -116,7 +116,7 @@ struct ManageRoomView: View {
                 .overlay(
                     Image(systemName: "photo")
                         .frame(width: 24, height: 24)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 )
         }
     }
@@ -328,13 +328,13 @@ struct LocationSelectionView: View {
                 selectedLocation = "/Files for test"
             }) {
                 Text(verbatim: "/Files for test")
-                    .foregroundColor(selectedLocation == "/Files for test" ? .blue : .primary)
+                    .foregroundColor(selectedLocation == "/Files for test" ? Asset.Colors.brend.swiftUIColor : .primary)
             }
             Button(action: {
                 selectedLocation = "/Documents"
             }) {
                 Text(verbatim: "/Documents")
-                    .foregroundColor(selectedLocation == "/Documents" ? .blue : .primary)
+                    .foregroundColor(selectedLocation == "/Documents" ? Asset.Colors.brend.swiftUIColor : .primary)
             }
         }
         .navigationBarTitle("Select Location", displayMode: .inline)

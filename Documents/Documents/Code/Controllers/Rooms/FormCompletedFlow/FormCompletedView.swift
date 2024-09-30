@@ -12,7 +12,7 @@ import SwiftUI
 struct FormCompletedView: View {
     @ObservedObject var viewModel: FormCompletedViewModel
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State private var isShowingMailView = false
     @State private var mailData = ComposeMailData(
         subject: "",
@@ -20,7 +20,7 @@ struct FormCompletedView: View {
         messageBody: "",
         isHtml: false
     )
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -45,16 +45,17 @@ struct FormCompletedView: View {
                             }) {
                                 Text(TextConstants.backToRoom)
                             }
-                            .foregroundColor(.blue)
+                            .foregroundColor(Asset.Colors.brend.swiftUIColor)
                             Spacer()
                             Button(action: {
                                 presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text(TextConstants.checkReadyForm)
-                                    .font(.headline)
+                                    .font(.body)
+                                    .fontWeight(.semibold)
                             }
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
+                            .background(Asset.Colors.brend.swiftUIColor)
+                            .foregroundColor(Color.label)
                             .cornerRadius(Constants.toolbarButtonCornerRadius)
                         }
                         .padding()
@@ -72,7 +73,7 @@ struct FormCompletedView: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var screenHeader: some View {
         VStack(spacing: Constants.screenHedaerInsets) {
@@ -88,7 +89,7 @@ struct FormCompletedView: View {
         .padding(.horizontal, Constants.screenHeaderHorizontalPadding)
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top ?? Constants.screenHeaderDefaultTopInsets)
     }
-    
+
     @ViewBuilder
     private var formSection: some View {
         Section {
@@ -104,7 +105,7 @@ struct FormCompletedView: View {
             )
         }
     }
-    
+
     @ViewBuilder
     private var formNumberSection: some View {
         Section {
@@ -119,7 +120,7 @@ struct FormCompletedView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var ownerSection: some View {
         Section(header: Text(TextConstants.formOwner)) {
@@ -127,8 +128,8 @@ struct FormCompletedView: View {
                 model: ASCUserWithEmailRowViewModel(
                     image: .uiImage(
                         UIImage(base64String: viewModel.formModel.authorAvatar)
-                        ?? UIImage(asset: Asset.Images.avatarDefault)
-                        ?? UIImage()
+                            ?? UIImage(asset: Asset.Images.avatarDefault)
+                            ?? UIImage()
                     ),
                     userName: viewModel.formModel.authorName,
                     email: viewModel.formModel.authorEmail,
@@ -148,7 +149,7 @@ struct FormCompletedView: View {
             }
         }
     }
-    
+
     private func showSendMailErrorAlert() {
         let alert = UIAlertController(
             title: NSLocalizedString("Could Not Send Email", comment: ""),
@@ -156,7 +157,7 @@ struct FormCompletedView: View {
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default))
-        
+
         if let topVC = UIApplication.topViewController() {
             topVC.present(alert, animated: true, completion: nil)
         }

@@ -22,7 +22,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         !tagsView.tags.isEmpty
     }
 
-    @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
         let accessList = viewModel.accessProvides()
         let menuItems = accessList

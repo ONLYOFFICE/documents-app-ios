@@ -12,7 +12,6 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
 
-    @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int)
     func onAccessSheetSelectAction(shareAccessRaw: Int)
     func onUpdateToolbarItems(_ items: [UIBarButtonItem]?)
@@ -107,7 +106,6 @@ class ASCSharingAddRightHoldersView {
         }
     }
 
-    @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
         let accessList = delegate?.getAccessList() ?? []
         let menuItems = accessList
@@ -206,7 +204,6 @@ class ASCSharingAddRightHoldersView {
 // MARK: - @OBJC func delegate
 
 extension ASCSharingAddRightHoldersView {
-    @available(iOS 14.0, *)
     @objc func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         delegate?.onAccessMenuSelectAction(action: action, shareAccessRaw: shareAccessRaw)
         updateToolbars()

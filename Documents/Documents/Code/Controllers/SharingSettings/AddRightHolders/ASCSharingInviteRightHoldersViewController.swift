@@ -76,7 +76,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
             return result + 1
         }
     }
-    
+
     func updateAccessProvider(rightHoldersTableType: RightHoldersTableType) {
         guard let entity = dataStore?.entity else { return }
         let accessProvider = ASCSharingSettingsAccessProviderFactory().get(
@@ -358,7 +358,6 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
         return selectedAccess
     }
 
-    @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         onAccessSheetSelectAction(shareAccessRaw: shareAccessRaw)
     }

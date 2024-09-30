@@ -11,7 +11,6 @@ import FirebaseMessaging
 import UIKit
 
 extension AppDelegate {
-    @available(iOS 10.0, *)
     func checkNotifications() {
         let center = UNUserNotificationCenter.current()
 
@@ -96,7 +95,6 @@ extension AppDelegate {
     }
 }
 
-@available(iOS 10, *)
 extension AppDelegate: UNUserNotificationCenterDelegate {
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,

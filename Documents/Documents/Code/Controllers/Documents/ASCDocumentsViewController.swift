@@ -161,7 +161,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             navigationItem.preferredSearchBarPlacement = .stacked
         } else {
             navigationItem.searchController = nil
-            navigationItem.hidesSearchBarWhenScrolling = featureLargeTitle
+            navigationItem.hidesSearchBarWhenScrolling = true
         }
         return $0
     }(UISearchController(searchResultsController: nil))
@@ -191,9 +191,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     // Interaction Controller
     fileprivate lazy var documentInteraction: UIDocumentInteractionController = UIDocumentInteractionController()
-
-    // Features
-    private let featureLargeTitle = true
 
     // Sort
     private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
@@ -282,12 +279,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
 
-        if !featureLargeTitle {
-            navigationController?.navigationBar.prefersLargeTitles = false
-            navigationItem.largeTitleDisplayMode = .never
-            navigationItem.searchController = searchController
-        }
-
         configureNavigationItem()
         configureView()
         viewDidLayoutSubviews()
@@ -358,12 +349,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             loadFirstPage()
         }
 
-        if !featureLargeTitle {
-            navigationController?.navigationBar.prefersLargeTitles = false
-            navigationItem.largeTitleDisplayMode = .never
-            navigationItem.searchController = searchController
-        }
-
         if UIDevice.phone, let navigationController = navigationController {
             if navigationController.viewControllers.count > 1 {
                 navigationItem.leftBarButtonItem = nil
@@ -429,30 +414,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             UserDefaults.standard.set(folderAsString, forKey: ASCConstants.SettingsKeys.lastFolder)
         }
 
-        if #available(iOS 11.0, *), featureLargeTitle {
-            DispatchQueue.main.async { [weak self] in
-                if let searchController = self?.searchController {
-                    searchController.searchBar.alpha = 0
-                    self?.navigationItem.searchController = searchController
-
-                    UIView.animate(withDuration: 0.3, animations: {
-                        searchController.searchBar.alpha = 1
-                    })
-                }
-                self?.viewDidLayoutSubviews()
-            }
-        }
-
-        navigationController?.navigationBar.prefersLargeTitles = tableData.count > 0
-        navigationItem.largeTitleDisplayMode = tableData.count > 0 ? .automatic : .never
+        navigationItem.searchController = tableData.isEmpty ? nil : searchController
+        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty
+        navigationItem.largeTitleDisplayMode = !tableData.isEmpty ? .automatic : .never
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = nil
-        }
+        navigationItem.searchController = nil
 
         if parent == nil {
             cleanup()
@@ -598,9 +568,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
-                    if ASCAppSettings.Feature.hideSearchbarIfEmpty {
-                        self.searchController.searchBar.isHidden = false
-                    }
+                    self.navigationItem.searchController = self.searchController
                     self.collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredVertically, animated: true)
                     self.collectionView.setNeedsLayout()
 
@@ -633,10 +601,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.uid == folder.uid }) {
-                    if ASCAppSettings.Feature.hideSearchbarIfEmpty {
-                        self.searchController.searchBar.isHidden = false
-                    }
-
+                    self.navigationItem.searchController = self.searchController
                     self.collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredVertically, animated: true)
                     self.collectionView.setNeedsLayout()
 
@@ -861,10 +826,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
-        if #available(iOS 11.0, *), featureLargeTitle {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .automatic
-        }
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 
     private func makeTableLayout() -> UICollectionViewCompositionalLayout {
@@ -1351,7 +1314,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func loadFirstPage(_ completeon: ((_ success: Bool) -> Void)? = nil) {
-        provider?.page = 0
+//        provider?.page = 0
+
+        provider?.cancel()
+        provider?.reset()
+        collectionView.reloadData()
 
         setEditMode(false)
         showLoadingPage(true)
@@ -1360,9 +1327,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             searchController.isActive = false
         }
 
-        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
-            searchController.searchBar.isHidden = true
-        }
+        navigationItem.searchController = nil
 
         addBarButton?.isEnabled = false // Disable create entity while loading first page
 
@@ -1386,15 +1351,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 // Fire callback
                 completeon?(success)
 
+                self.navigationItem.searchController = self.tableData.isEmpty ? nil : self.searchController
                 self.viewDidLayoutSubviews()
 
                 // Highlight entity if needed
                 self.highlight(entity: self.highlightEntity)
-
-                // Scroll to top
-                if self.collectionView.visibleCells.count > 0 && self.highlightEntity == nil {
-                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-                }
 
                 // Check network
                 if !success &&
@@ -1430,11 +1391,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func showEmptyView(_ show: Bool) {
-        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
-            if !searchController.isActive {
-                searchController.searchBar.isHidden = show
-            }
-        }
+        navigationItem.searchController = show ? nil : searchController
 
         if !show {
             emptyView?.removeFromSuperview()
@@ -1645,13 +1602,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         filterBarButton?.isEnabled = !hasError && total > 0
     }
 
-    @available(iOS 14.0, *)
     private func correntFolderActionMenu(for button: UIButton) -> UIMenu? {
         guard let folder else { return nil }
         return CurrentFolderMenu().contextMenu(for: folder, in: self)
     }
 
-    @available(iOS 14.0, *)
     private func selectAllMenu() -> UIMenu? {
         let uiActions: [UIAction] = {
             var uiActions = [UIAction]()
@@ -1775,11 +1730,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         cell.contentView.insertSubview(highlightView, at: 0)
 
         UIView.animate(withDuration: 0.5, animations: {
-            if #available(iOS 13.0, *) {
-                highlightView.backgroundColor = .tertiarySystemGroupedBackground
-            } else {
-                highlightView.backgroundColor = .groupTableViewBackground
-            }
+            highlightView.backgroundColor = .tertiarySystemGroupedBackground
         }) { finished in
             UIView.animate(withDuration: 0.5, animations: {
                 highlightView.backgroundColor = originalBgColor
@@ -3571,30 +3522,7 @@ extension ASCDocumentsViewController: UIScrollViewDelegate {
 
 extension ASCDocumentsViewController: UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
-        if #available(iOS 11.0, *) {
-            //
-        } else {
-            searchBackground.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: searchController.searchBar.frame.size.width,
-                height: searchController.searchBar.frame.size.height + ASCCommon.statusBarHeight
-            )
-            searchController.view?.insertSubview(searchBackground, at: 0)
-
-            searchSeparator.frame = CGRect(
-                x: 0,
-                y: searchController.searchBar.frame.size.height + ASCCommon.statusBarHeight,
-                width: searchController.searchBar.frame.size.width,
-                height: UIDevice.screenPixel
-            )
-            searchSeparator.alpha = 1
-            searchController.view?.insertSubview(searchSeparator, at: 0)
-        }
-
-        navigationBarExtendPanelView.isHidden = true
-        viewDidLayoutSubviews()
-        configureNavigationItem()
+        //
     }
 
     func willDismissSearchController(_ searchController: UISearchController) {

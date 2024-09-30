@@ -26,7 +26,6 @@ class ASCSignInViewController: ASCBaseViewController {
 
     private let facebookSignInController = ASCFacebookSignInController()
     private let googleSignInController = ASCGoogleSignInController()
-    @available(iOS 13.0, *)
     private lazy var appleIdSignInController = ASCAppleIdSignInController()
     private var signInWithLdap: Bool = false
 
@@ -372,7 +371,6 @@ class ASCSignInViewController: ASCBaseViewController {
         }
     }
 
-    @available(iOS 13, *)
     @IBAction func onAppleIdLogin(_ sender: UIButton) {
         appleIdSignInController.signIn(controller: self) { result in
             switch result {

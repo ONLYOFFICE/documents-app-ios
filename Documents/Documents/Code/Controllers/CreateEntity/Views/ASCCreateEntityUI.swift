@@ -29,7 +29,7 @@ struct ASCCreateEntityUI: View {
                 .init(
                     type: .pdfDocspace,
                     caption: NSLocalizedString("Upload PDF form from DocSpace", comment: ""),
-                    icon: Image(uiImage: UIImage(systemName: "square.and.arrow.up") ?? UIImage()),
+                    icon: Asset.Images.createExport.swiftUIImage,
                     action: { type in
                         onAction?(type)
                     }
@@ -37,7 +37,7 @@ struct ASCCreateEntityUI: View {
                 .init(
                     type: .pdfDevice,
                     caption: NSLocalizedString("Upload PDF form from device", comment: ""),
-                    icon: Image(uiImage: UIImage(systemName: "square.and.arrow.up") ?? UIImage()),
+                    icon: Asset.Images.createExport.swiftUIImage,
                     action: { type in
                         onAction?(type)
                     }

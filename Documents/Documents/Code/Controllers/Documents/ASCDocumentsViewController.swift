@@ -1503,12 +1503,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func makePDFFormAction() -> UIMenu {
         let menu = UIMenu(title: "", children: [
-            UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] action in
+            UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: Asset.Images.createExport.image) { [weak self] action in
                 guard let self else { return }
                 let createEntity = ASCCreateEntity(provider: provider)
                 createEntity.uploadPDFFromDocspace(viewController: self)
             },
-            UIAction(title: NSLocalizedString("From device", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] action in
+            UIAction(title: NSLocalizedString("From device", comment: ""), image: Asset.Images.createExport.image) { [weak self] action in
                 guard let self else { return }
                 let createEntity = ASCCreateEntity(provider: provider)
                 createEntity.uploadPDFFromDevice(viewController: self)

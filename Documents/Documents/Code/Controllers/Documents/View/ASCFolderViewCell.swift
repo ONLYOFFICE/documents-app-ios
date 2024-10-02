@@ -440,6 +440,17 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
                 break
             }
         }
+        
+        if let fillFormFolderType = folder.type {
+            switch fillFormFolderType {
+            case .fillFormDone:
+                imageView.image = iconFillFormRoomFolderDone
+            case .fillFormInProgress:
+                imageView.image = iconFillFormRoomFolderInProgress
+            default:
+                break
+            }
+        }
 
         // Set badge icon image if neede
 
@@ -617,6 +628,14 @@ extension ASCFolderViewCell {
 
     private var iconSecurity: UIImage {
         layoutType == .list ? Asset.Images.security.image : Asset.Images.securityLarge.image
+    }
+    
+    private var iconFillFormRoomFolderInProgress: UIImage {
+        layoutType == .list ? Asset.Images.listRoomInprogress.image : Asset.Images.gridRoomInprogress.image
+    }
+    
+    private var iconFillFormRoomFolderDone: UIImage {
+        layoutType == .list ? Asset.Images.listRoomComplete.image : Asset.Images.gridRoomComplete.image
     }
 }
 

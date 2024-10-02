@@ -27,6 +27,7 @@ class ASCFolder: ASCEntity {
     var mute: Bool = false
     var roomType: ASCRoomType?
     var isPrivate: Bool = false
+    var type: ASCFolderType?
     var isCanLeaveRoom: Bool = false
     var rootFolderType: ASCFolderType = .unknown
     var updated: Date?
@@ -70,6 +71,7 @@ class ASCFolder: ASCEntity {
         mute <- map["mute"]
         roomType <- (map["roomType"], EnumTransform())
         isPrivate <- map["private"]
+        type <- (map["type"], EnumTransform())
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]

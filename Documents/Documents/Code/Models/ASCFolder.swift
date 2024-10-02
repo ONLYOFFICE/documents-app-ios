@@ -178,4 +178,11 @@ extension ASCFolder {
         folder.title = NSLocalizedString("Rooms", comment: "")
         return folder
     }
+    
+    static var onlyofficeRootFolder: ASCFolder {
+        let folder = ASCFolder()
+        folder.id = "id-onlyoffice-root"
+        folder.title = NSLocalizedString("DocSpace", comment: "")
+        return folder
+    }
 }

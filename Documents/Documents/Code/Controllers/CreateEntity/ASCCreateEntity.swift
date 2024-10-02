@@ -314,7 +314,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             provider: provider,
             transferType: .selectFillForms,
             enableFillRootFolders: false,
-            folder: provider?.rootFolder
+            folder: .onlyofficeRootFolder
         )
         vc.presenter = presenter
         vc.actionButton.isEnabled = false

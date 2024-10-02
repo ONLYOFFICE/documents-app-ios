@@ -8,6 +8,7 @@
 
 import FileKit
 import UIKit
+import Kingfisher
 
 typealias ASCTransferViewType = (provider: ASCFileProviderProtocol?, entity: ASCEntity)
 
@@ -130,7 +131,39 @@ class ASCTransferViewController: UITableViewController {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: cellFolderCellId, for: indexPath) as? ASCTransferViewCell else {
                     return UITableViewCell()
                 }
-                cell.leftImageView.image = viewModel.image
+                switch viewModel.image {
+                case let .image(image):
+                    cell.leftImageView.image = image
+                case let .kfImage(
+                    url,
+                    provider,
+                    placeholder,
+                    defaultImage,
+                    cornerRadius,
+                    targetSize
+                ):
+                    let processor = RoundCornerImageProcessor(
+                        cornerRadius: cornerRadius,
+                        targetSize: targetSize
+                    )
+                    cell.leftImageView.kf.setProviderImage(
+                        with: url,
+                        for: provider,
+                        placeholder: placeholder,
+                        options: [
+                            .processor(processor),
+                        ],
+                        completionHandler: { [weak cell] result in
+                            switch result {
+                            case .success:
+                                break
+                            case .failure:
+                                cell?.leftImageView.image = defaultImage
+                            }
+                        }
+                    )
+                    cell.leftImageView.layerCornerRadius = cornerRadius
+                }
                 cell.titleLabel.text = viewModel.title
                 cell.isUserInteractionEnabled = viewModel.isInteractable
                 cell.contentView.alpha = viewModel.isInteractable ? 1 : 0.5

@@ -41,11 +41,23 @@ struct ASCTransferViewModel {
 struct ASCTransferFolderModel {
     var provider: ASCFileProviderProtocol?
     var folder: ASCFolder
-    var image: UIImage?
+    var image: ImageModel
     var title: String
     var isInteractable: Bool
 
     var onTapAction: () -> Void
+    
+    enum ImageModel {
+        case image(UIImage?)
+        case kfImage(
+            URL?,
+            ASCFileProviderProtocol,
+            placeholder: UIImage?,
+            defaultImage: UIImage?,
+            cornerRadius: CGFloat,
+            targetSize: CGSize
+        )
+    }
 }
 
 struct ASCTransferFileModel {

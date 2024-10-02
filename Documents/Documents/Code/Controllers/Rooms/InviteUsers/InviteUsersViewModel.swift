@@ -30,10 +30,16 @@ final class InviteUsersViewModel: ObservableObject {
 
     let room: ASCRoom
     var accessMenuItems: [MenuViewItem] {
-        [
-            ASCShareAccess.roomManager,
-            ASCShareAccess.powerUser,
-        ].map { access in
+        var accessList: [ASCShareAccess] = [
+            .roomManager,
+            .powerUser,
+        ]
+        
+        if room.isFillingFormRoom {
+            accessList.append(.fillForms)
+        }
+            
+        return accessList.map { access in
             MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
                 setAccessRight(access)
             }

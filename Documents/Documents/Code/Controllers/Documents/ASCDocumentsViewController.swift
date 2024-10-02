@@ -2675,7 +2675,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func transfer(cell: UICollectionViewCell, move: Bool = false) {
         if let file = (cell as? ASCFileViewCell)?.entity as? ASCFile {
             transfer(indexes: [file.uid], move: move)
-        } else if let folder = (cell as? ASCFileViewCell)?.entity as? ASCFolder {
+        } else if let folder = (cell as? ASCFolderViewCell)?.entity as? ASCFolder {
             transfer(indexes: [folder.uid], move: move)
         }
     }
@@ -2841,7 +2841,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         func transferViaManager(items: [ASCEntity], completion: ((UnmovedEntities?) -> Void)? = nil) {
-            if items.count < 1 {
+            guard !items.isEmpty else {
                 completion?(nil)
                 return
             }

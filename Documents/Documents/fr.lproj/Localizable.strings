@@ -5,6 +5,9 @@
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
 /* Presentation Viewer */
@@ -189,6 +192,9 @@ Category title */
 "Back" = "Retour";
 
 /* No comment provided by engineer. */
+"Back to room" = "Retour à la salle";
+
+/* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Étant propriétaire de ce DocSpace, vous devez transférer la propriété à un autre utilisateur avant de pouvoir supprimer votre compte. Veuillez choisir un nouveau propriétaire pour continuer.";
 
 /* No comment provided by engineer. */
@@ -249,10 +255,16 @@ Category title */
 "Changing access" = "Changement d'accès";
 
 /* No comment provided by engineer. */
+"Check ready form" = "Vérifier le formulaire prêt";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Vérifiez votre connexion internet";
 
 /* No comment provided by engineer. */
 "Choose Files" = "Choisir des fichiers";
+
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "Sélectionnez Salle de remplissage de formulaires ou créez-en une nouvelle";
 
 /* No comment provided by engineer. */
 "Choose from list" = "Choisir dans la liste";
@@ -430,6 +442,9 @@ Caption of the processing */
 "Could not duplicate the file." = "Impossible de dupliquer le fichier.";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "Impossible de dupliquer la salle.";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "Impossible d’exporter le fichier.";
 
 /* Description of file operation error */
@@ -443,6 +458,9 @@ Caption of the processing */
 
 /* Description of file operation error */
 "Could not read from file" = "Impossible de lire le fichier";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "Impossible d'envoyer un e-mail";
 
 /* Description of file operation error */
 "Could not write to file" = "Impossible d'écrire dans le fichier";
@@ -605,6 +623,9 @@ Operation completed */
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Modifier les documents localement";
 
+/* No comment provided by engineer. */
+"Edit link" = "Modifier le lien";
+
 /* Button title */
 "Edit room" = "Modifier la salle";
 
@@ -717,6 +738,9 @@ Operation completed */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Impossible d'envoyer un commentaire par e-mail. Essayez de laisser votre demande sur notre forum.";
 
 /* No comment provided by engineer. */
+"Failed to submit the form" = "Impossible de soumettre le formulaire";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "Impossible de créer une archive";
 
 /* Category title */
@@ -740,6 +764,18 @@ Operation completed */
 /* No comment provided by engineer. */
 "Files Preview" = "Aperçu des fichiers";
 
+/* Fill form Button title */
+"Fill" = "Remplir";
+
+/* Title for fill-in options screen */
+"Fill in as" = "Remplir en tant que";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "Remplir les champs du formulaire original dans la fenêtre de l'éditeur.";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "Remplir le formulaire vous-même";
+
 /* No comment provided by engineer. */
 "Filling form" = "Remplissage de formulaire";
 
@@ -755,14 +791,35 @@ Operation completed */
 /* No comment provided by engineer. */
 "Folders" = "Dossiers";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "Formulaire rempli avec succès";
+
 /* Share status */
 "Form Filler" = "Remplisseur de formulaires";
+
+/* No comment provided by engineer. */
+"Form Filling" = "Remplissage de formulaires";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "Salle de remplissage de formulaires";
+
+/* No comment provided by engineer. */
+"Form number" = "Numéro du formulaire";
+
+/* No comment provided by engineer. */
+"Form owner" = "Propriétaire du formulaire";
 
 /* No comment provided by engineer. */
 "Form templates" = "Modèles de formulaire";
 
 /* No comment provided by engineer. */
 "Forms" = "Formulaires";
+
+/* No comment provided by engineer. */
+"From device" = "De l'appareil";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "De DocSpace";
 
 /* Share status */
 "Full Access" = "Accès complet";
@@ -778,6 +835,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Get started" = "Commencer";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "Commencez par des actions rapides :";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "COMMENCER !";
@@ -805,6 +865,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "Icônes";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Si l'utilisateur avec le mail %@ existe, l'instruction pour changer le mot de passe a été envoyée à cet e-mail.";
@@ -894,6 +957,9 @@ Operation completed */
 "Link life time" = "Durée de vie du lien";
 
 /* No comment provided by engineer. */
+"Link name" = "Nom de lien";
+
+/* No comment provided by engineer. */
 "Link name %@" = "Nom du lien %@";
 
 /* Button title */
@@ -901,6 +967,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Le lien avec l'invitation a été envoyé par e-mail";
+
+/* Button title */
+"List" = "Liste";
 
 /* No comment provided by engineer. */
 "Loading" = "Chargement";
@@ -1000,8 +1069,17 @@ If current user name is not set */
 /* No comment provided by engineer. */
 "New Folder" = "Nouveau dossier";
 
+/* Suggested a room name when create a new one */
+"New form filling" = "Nouveau remplissage de formulaire";
+
+/* No comment provided by engineer. */
+"New form filling room" = "Nouvelle salle de remplissage de formulaires";
+
 /* No comment provided by engineer. */
 "New Presentation" = "Nouvelle présentation";
+
+/* No comment provided by engineer. */
+"New room" = "Nouvelle salle";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nouvelle feuille de calcul";
@@ -1275,6 +1353,9 @@ Share status */
 "Public" = "Publique";
 
 /* No comment provided by engineer. */
+"Public link" = "Lien public";
+
+/* No comment provided by engineer. */
 "Public room" = "Salle publique";
 
 /* No comment provided by engineer. */
@@ -1402,6 +1483,9 @@ DocSpace rooms */
 Navigation bar button title */
 "Select" = "Sélectionner";
 
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "Sélectionner un formulaire PDF";
+
 /* No comment provided by engineer. */
 "Select all" = "Sélectionner tout";
 
@@ -1462,8 +1546,14 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "Share" = "Partager";
 
+/* Title for sharing and collecting form */
+"Share & collect" = "Partager et collecter";
+
 /* No comment provided by engineer. */
 "Share folder" = "Partager le dossier";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "Partagez votre formulaire et recueillez les réponses via une salle de remplissage de formulaires.";
 
 /* No comment provided by engineer. */
 "Shared access" = "Accès partagé";
@@ -1580,6 +1670,9 @@ Navigation bar button title */
 "The file will be irretrievably deleted. This action is irreversible." = "Le fichier sera irrémédiablement supprimé. Cette action est irréversible.";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "Le formulaire PDF rempli est sauvegardé et disponible\ndans le dossier Complet. Pour vérifier l'état du formulaire,\ncontactez le propriétaire du formulaire en lui communiquant le numéro qui lui a été attribué.";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Le dossier dans la corbeille ne peut pas être ouvert.";
 
 /* No comment provided by engineer. */
@@ -1665,6 +1758,12 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Cette présentation est en cours de modification. Voulez-vous ouvrir %@ pour la lecture seule ?";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "Cette salle est accessible à toute personne possédant le lien.\nLes utilisateurs externes auront l'autorisation de remplir les formulaires\npour tous les fichiers.";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "Cette salle est accessible à toute personne possédant le lien.\nLes utilisateurs externes auront l'autorisation de voir uniquement\ntous les fichiers.";
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Cette feuille de calcul est en cours de modification. Voulez-vous ouvrir %@ pour la lecture seule ?";
@@ -1783,6 +1882,18 @@ Navigation bar button title */
 /* Caption of the processing */
 "Unpning" = "Désépinglage";
 
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "Télécharger un formulaire PDF prêt à l'emploi";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "Télécharger un formulaire PDF de l'appareil";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "Télécharger un formulaire PDF de DocSpace";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Téléchargez des formulaires PDF dans la salle. Invitez les utilisateurs à remplir un formulaire PDF. Examinez les formulaires remplis et analysez les données collectées automatiquement dans une feuille de calcul.";
+
 /* Caption of the process */
 "Uploading" = "Téléchargement";
 
@@ -1847,6 +1958,9 @@ Navigation bar button title */
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Bienvenue dans la suite bureautique mobile %@ !\nBalayez pour en savoir plus sur l'application.";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "Bienvenue dans la salle de remplissage de formulaires";
+
+/* No comment provided by engineer. */
 "What's New" = "Quoi de neuf";
 
 /* Introduction Step Four - Description */
@@ -1886,6 +2000,9 @@ Navigation bar button title */
 "You can connect the following accounts to the DocSpace rooms" = "Vous pouvez connecter les comptes suivants aux salles DocSpace";
 
 /* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Vous ne pouvez pas épingler plus de 10 salles en haut de la page. Désépinglez celles qui sont déjà épinglées.";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Vous avez quitté la salle";
 
 /* No comment provided by engineer. */
@@ -1896,6 +2013,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Votre plan tarifaire actuel a expiré. Veuillez renouveler votre abonnement dans les paramètres du compte pour pouvoir utiliser votre DocSpace. Si vous avez des questions, veuillez contacter le support.";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "Votre appareil n'a pas pu envoyer d'e-mail. Veuillez vérifier la configuration de l'e-mail et réessayer.";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Votre session a expiré";

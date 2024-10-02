@@ -5,7 +5,7 @@
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
+		<string>%#@dnů@</string>
 		<key>days</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -13,19 +13,19 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d days</string>
+			<string>%d dní</string>
 			<key>many</key>
-			<string>%d days</string>
+			<string>%d dní</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>%d den</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d dní</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
+		<string>%#@hodin@</string>
 		<key>hours</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -33,13 +33,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d hours</string>
+			<string>%d hodin</string>
 			<key>many</key>
-			<string>%d hours</string>
+			<string>%d hodin</string>
 			<key>one</key>
-			<string>%d hour</string>
+			<string>%d hodina</string>
 			<key>other</key>
-			<string>%d hours</string>
+			<string>%d hodin</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
@@ -65,7 +65,7 @@
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@souborů@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -122,7 +122,7 @@
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
+		<string>%#@složek@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -142,7 +142,7 @@
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@souborů@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -221,7 +221,7 @@
 	<key>Expires after %d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
+		<string>%#@dnů@</string>
 		<key>days</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -229,19 +229,19 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Expires after %d days</string>
+			<string>Platnost vyprší po %d dnech</string>
 			<key>many</key>
-			<string>Expires after %d days</string>
+			<string>Platnost vyprší po %d dnech</string>
 			<key>one</key>
-			<string>Expires after %d day</string>
+			<string>Platnost vyprší po %d dni</string>
 			<key>other</key>
-			<string>Expires after %d days</string>
+			<string>Platnost vyprší po %d dnech</string>
 		</dict>
 	</dict>
 	<key>Expires after %d hours</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
+		<string>%#@hodin@</string>
 		<key>hours</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -249,13 +249,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Expires after %d hours</string>
+			<string>Platnost vyprší po %d hodinách</string>
 			<key>many</key>
-			<string>Expires after %d hours</string>
+			<string>Platnost vyprší po %d hodinách</string>
 			<key>one</key>
-			<string>Expires after %d hour</string>
+			<string>Platnost vyprší p %d hodině</string>
 			<key>other</key>
-			<string>Expires after %d hours</string>
+			<string>Platnost vyprší po %d hodinách</string>
 		</dict>
 	</dict>
 </dict>

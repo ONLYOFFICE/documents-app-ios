@@ -1142,6 +1142,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
+        <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%@ | %@" xml:space="preserve">
@@ -1483,6 +1484,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Back to room" xml:space="preserve">
         <source>Back to room</source>
+        <target>返回房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1582,6 +1584,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Check ready form" xml:space="preserve">
         <source>Check ready form</source>
+        <target>檢查已準備的表格</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1596,6 +1599,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
         <source>Choose Form filling room or create new</source>
+        <target>選擇表格填寫房間或建立新的</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
@@ -1605,6 +1609,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>選擇帶有範本的位置</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1774,6 +1779,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could Not Send Email" xml:space="preserve">
         <source>Could Not Send Email</source>
+        <target>無法發送電子郵件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
@@ -1858,6 +1864,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could not duplicate the room." xml:space="preserve">
         <source>Could not duplicate the room.</source>
+        <target>無法複製房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
@@ -1922,7 +1929,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
-        <target>创建免费账户</target>
+        <target>建立免費帳號</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -1952,6 +1959,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
+        <target>建立新資料夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2166,6 +2174,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit link" xml:space="preserve">
         <source>Edit link</source>
+        <target>編輯連結</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
@@ -2343,6 +2352,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Failed to submit the form" xml:space="preserve">
         <source>Failed to submit the form</source>
+        <target>提交表格失敗</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2387,18 +2397,22 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Fill" xml:space="preserve">
         <source>Fill</source>
+        <target>填寫</target>
         <note>Fill form Button title</note>
       </trans-unit>
       <trans-unit id="Fill in as" xml:space="preserve">
         <source>Fill in as</source>
+        <target>填寫為</target>
         <note>Title for fill-in options screen</note>
       </trans-unit>
       <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
         <source>Fill in the fields of the original form in the editor window.</source>
+        <target>在編輯器視窗中填入原始表格的欄位</target>
         <note>Subtitle for form filling</note>
       </trans-unit>
       <trans-unit id="Fill out the form yourself" xml:space="preserve">
         <source>Fill out the form yourself</source>
+        <target>自己填寫表格</target>
         <note>Title for opening form filling</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2433,22 +2447,27 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Form Filling" xml:space="preserve">
         <source>Form Filling</source>
+        <target>表格填寫</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form Filling Room" xml:space="preserve">
         <source>Form Filling Room</source>
+        <target>表格填寫房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
         <source>Form completed successfully</source>
+        <target>表格已成功完成</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
         <source>Form number</source>
+        <target>表格編號</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form owner" xml:space="preserve">
         <source>Form owner</source>
+        <target>表格擁有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2463,10 +2482,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
+        <target>來自DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From device" xml:space="preserve">
         <source>From device</source>
+        <target>來自裝置</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2501,6 +2522,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Get started with quick actions: " xml:space="preserve">
         <source>Get started with quick actions: </source>
+        <target>開始使用快速操作：</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2535,6 +2557,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Icons" xml:space="preserve">
         <source>Icons</source>
+        <target>圖示</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2678,6 +2701,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link name" xml:space="preserve">
         <source>Link name</source>
+        <target>連結名稱</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
@@ -2698,6 +2722,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="List" xml:space="preserve">
         <source>List</source>
+        <target>清單</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
@@ -2707,6 +2732,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
+        <target>位置</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2863,18 +2889,22 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
+        <target>新資料夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New form filling" xml:space="preserve">
         <source>New form filling</source>
+        <target>新表格填寫</target>
         <note>Suggested a room name when create a new one</note>
       </trans-unit>
       <trans-unit id="New form filling room" xml:space="preserve">
         <source>New form filling room</source>
+        <target>新表格填寫房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
+        <target>新房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3010,7 +3040,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
-        <target>我们将停用 ONLYOFFICE Personal</target>
+        <target>ONLYOFFICE個人版即將結束</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
@@ -3324,6 +3354,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Public link" xml:space="preserve">
         <source>Public link</source>
+        <target>公開連結</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3509,6 +3540,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
+        <target>根資料夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3549,6 +3581,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select a PDF Form" xml:space="preserve">
         <source>Select a PDF Form</source>
+        <target>選擇PDF表格</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
@@ -3568,6 +3601,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
+        <target>選擇位置</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -3647,6 +3681,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
+        <target>分享與收集</target>
         <note>Title for sharing and collecting form</note>
       </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
@@ -3656,6 +3691,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
         <source>Share your form and collect responses via a Form filling room.</source>
+        <target>分享您的表格並通過表格填寫房間收集回應</target>
         <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -3847,6 +3883,9 @@ Navigation bar button title</note>
         <source>The filled PDF form is saved and available to you
  in the Complete folder. To check the status,
  contact the form owner providing the assigned number.</source>
+        <target>已填寫的PDF表格已儲存並可在完成資料夾中使用。
+若要檢查狀態，
+請聯繫表格擁有者並提供已指派的編號。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
@@ -3965,6 +4004,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>第三方存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4001,12 +4041,16 @@ to the clipboard</source>
         <source>This room is available to anyone with the link.
  External users will have Form Filler permission
  for all the files.</source>
+        <target>此房間對任何擁有連結的人可用。
+外部使用者對所有檔案有表格填寫權限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
         <source>This room is available to anyone with the link.
  External users will have View Only permission
  for all the files.</source>
+        <target>此房間對任何擁有連結的人可用。
+外部使用者對所有檔案僅有檢視權限。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -4206,18 +4250,22 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
         <source>Upload PDF form from DocSpace</source>
+        <target>從DocSpace上傳PDF表格</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF form from device" xml:space="preserve">
         <source>Upload PDF form from device</source>
+        <target>從裝置上傳PDF表格</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
         <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <target>將PDF表格上傳到房間。邀請使用者填寫PDF表格。檢查已完成的表格並分析試算表中自動收集的資料。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload a ready PDF form" xml:space="preserve">
         <source>Upload a ready PDF form</source>
+        <target>上傳已準備好的PDF表格</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -4227,6 +4275,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>使用第三方服務作為此房間的資料儲存。連接的儲存空間中會建立一個新的資料夾，用來儲存這個房間的資料。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4328,6 +4377,7 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
+        <target>歡迎來到表格填寫房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
@@ -4396,10 +4446,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>您可以將以下帳號連接到DocSpace房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <target>頂部釘選無法超過10個房間。請取消釘選一些目前已釘選的房間。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
@@ -4424,6 +4476,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
         <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
+        <target>您的裝置無法傳送電子郵件。請檢查電子郵件設定並重試。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">

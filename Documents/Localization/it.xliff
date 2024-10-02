@@ -1207,6 +1207,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
     <body>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
+        <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%@ | %@" xml:space="preserve">
@@ -1548,6 +1549,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Back to room" xml:space="preserve">
         <source>Back to room</source>
+        <target>Torna alla stanza</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1647,6 +1649,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Check ready form" xml:space="preserve">
         <source>Check ready form</source>
+        <target>Controlla i moduli pronti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1661,6 +1664,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
         <source>Choose Form filling room or create new</source>
+        <target>Scegli la stanza di compilazione dei moduli o crea un nuovo modulo</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
@@ -1840,6 +1844,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could Not Send Email" xml:space="preserve">
         <source>Could Not Send Email</source>
+        <target>Impossibile mandare l’email</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
@@ -1924,6 +1929,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could not duplicate the room." xml:space="preserve">
         <source>Could not duplicate the room.</source>
+        <target>Impossibile duplicare la stanza.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
@@ -2234,6 +2240,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit link" xml:space="preserve">
         <source>Edit link</source>
+        <target>Modificare link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
@@ -2411,6 +2418,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Failed to submit the form" xml:space="preserve">
         <source>Failed to submit the form</source>
+        <target>Impossibile inviare il modulo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2455,18 +2463,22 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Fill" xml:space="preserve">
         <source>Fill</source>
+        <target>Riempire</target>
         <note>Fill form Button title</note>
       </trans-unit>
       <trans-unit id="Fill in as" xml:space="preserve">
         <source>Fill in as</source>
+        <target>Compila come</target>
         <note>Title for fill-in options screen</note>
       </trans-unit>
       <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
         <source>Fill in the fields of the original form in the editor window.</source>
+        <target>Compila i campi del modulo originale nella finestra dell’editor.</target>
         <note>Subtitle for form filling</note>
       </trans-unit>
       <trans-unit id="Fill out the form yourself" xml:space="preserve">
         <source>Fill out the form yourself</source>
+        <target>Compila tu stesso</target>
         <note>Title for opening form filling</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2501,22 +2513,27 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Form Filling" xml:space="preserve">
         <source>Form Filling</source>
+        <target>Compilazione del modulo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form Filling Room" xml:space="preserve">
         <source>Form Filling Room</source>
+        <target>Stanza di compilazione del modulo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
         <source>Form completed successfully</source>
+        <target>Il modulo è stato completato correttamente</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
         <source>Form number</source>
+        <target>Numero di modulo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form owner" xml:space="preserve">
         <source>Form owner</source>
+        <target>Proprietario del modulo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2531,10 +2548,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
+        <target>Da DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From device" xml:space="preserve">
         <source>From device</source>
+        <target>Da dispositivo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2569,6 +2588,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Get started with quick actions: " xml:space="preserve">
         <source>Get started with quick actions: </source>
+        <target>Comincia con azioni veloci:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2603,6 +2623,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Icons" xml:space="preserve">
         <source>Icons</source>
+        <target>Icone</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2747,6 +2768,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link name" xml:space="preserve">
         <source>Link name</source>
+        <target>Nome del link</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
@@ -2768,6 +2790,7 @@ appunti con successo</target>
       </trans-unit>
       <trans-unit id="List" xml:space="preserve">
         <source>List</source>
+        <target>Elenco</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
@@ -2939,14 +2962,17 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New form filling" xml:space="preserve">
         <source>New form filling</source>
+        <target>Nuova compilazione modulo</target>
         <note>Suggested a room name when create a new one</note>
       </trans-unit>
       <trans-unit id="New form filling room" xml:space="preserve">
         <source>New form filling room</source>
+        <target>Nuova stanza di compilazione</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
+        <target>Nuova stanza</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3396,6 +3422,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Public link" xml:space="preserve">
         <source>Public link</source>
+        <target>Link pubblico</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3622,6 +3649,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select a PDF Form" xml:space="preserve">
         <source>Select a PDF Form</source>
+        <target>Seleziona un modulo PDF</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
@@ -3721,6 +3749,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
+        <target>Condividi e raccogli</target>
         <note>Title for sharing and collecting form</note>
       </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
@@ -3730,6 +3759,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
         <source>Share your form and collect responses via a Form filling room.</source>
+        <target>Condividi il tuo modulo e raccogli le risposte con una stanza di compilazione dei moduli</target>
         <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -3921,6 +3951,9 @@ Navigation bar button title</note>
         <source>The filled PDF form is saved and available to you
  in the Complete folder. To check the status,
  contact the form owner providing the assigned number.</source>
+        <target>Il modulo PDF compilato viene salvato e reso disponibile
+nella cartella Completa. Per controllare lo stato,
+contatta il proprietario del modulo fornendo il numero assegnato.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
@@ -4074,12 +4107,18 @@ to the clipboard</source>
         <source>This room is available to anyone with the link.
  External users will have Form Filler permission
  for all the files.</source>
+        <target>Questa stanza è disponibile per chiunque abbia il link.
+Gli utenti esterni avranno l'autorizzazione
+a compilare i moduli per tutti i file.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
         <source>This room is available to anyone with the link.
  External users will have View Only permission
  for all the files.</source>
+        <target>Questa stanza è disponibile per chiunque abbia il link.
+Gli utenti esterni avranno l'autorizzazione di sola visualizzazione
+per tutti i file.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -4279,18 +4318,22 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
         <source>Upload PDF form from DocSpace</source>
+        <target>Carica modulo PDF da DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF form from device" xml:space="preserve">
         <source>Upload PDF form from device</source>
+        <target>Carica modulo PDF da dispositivo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
         <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <target>Carica moduli PDF nella stanza. Invita gli utenti a compilare un modulo PDF. Esamina i moduli compilati e analizza i dati raccolti automaticamente in un foglio di calcolo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload a ready PDF form" xml:space="preserve">
         <source>Upload a ready PDF form</source>
+        <target>Carica un modulo PDF pronto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -4402,6 +4445,7 @@ Scorri per saperne di più.</target>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
+        <target>Benvenuto nella stanza di compilazione dei moduli</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
@@ -4475,6 +4519,7 @@ poi accedergli da qualsiasi dispositivo.</target>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <target>Non è possibile appuntare più di 10 stanze in alto. Rimuovi le stanze attualmente appuntate.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
@@ -4499,6 +4544,7 @@ poi accedergli da qualsiasi dispositivo.</target>
       </trans-unit>
       <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
         <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
+        <target>Il dispositivo non è in grado di inviare e-mail. Controlla la configurazione della posta elettronica e riprova.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">

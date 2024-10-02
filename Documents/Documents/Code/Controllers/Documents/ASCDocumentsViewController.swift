@@ -207,7 +207,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private lazy var emptyView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
-        
+
         view.menuForType[.formFillingRoom] = makePDFFormAction()
         view.onAction = { [weak self] in
             guard
@@ -1501,7 +1501,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    private func makePDFFormAction() -> UIMenu{
+    private func makePDFFormAction() -> UIMenu {
         let menu = UIMenu(title: "", children: [
             UIAction(title: NSLocalizedString("From DocSpace", comment: ""), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] action in
                 guard let self else { return }

@@ -136,7 +136,14 @@ class ASCCloudsViewController: UITableViewController {
     func updateLoginClouds() {
         login = []
 
-        for type in ASCConstants.Clouds.defaultConnectCloudProviders {
+        var correctDefaultConnectCloudProviders = ASCConstants.Clouds.defaultConnectCloudProviders
+        let allowGoogleDrive = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowGoogleDrive)?.boolValue ?? true
+
+        if !allowGoogleDrive {
+            correctDefaultConnectCloudProviders.removeAll(.googledrive)
+        }
+
+        for type in correctDefaultConnectCloudProviders {
             if !connected.contains(where: { $0.provider?.type == type }) {
                 login.append({
                     $0.title = providerName(type)

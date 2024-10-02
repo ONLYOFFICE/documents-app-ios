@@ -16,11 +16,7 @@ class ASCAppThemeViewController: ASCBaseTableViewController {
     // MARK: - Lifecycle Methods
 
     init() {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
+        super.init(style: .insetGrouped)
     }
 
     required init?(coder: NSCoder) {
@@ -32,6 +28,7 @@ class ASCAppThemeViewController: ASCBaseTableViewController {
 
         title = NSLocalizedString("Theme", comment: "")
         view.backgroundColor = .systemGroupedBackground
+        tableView.cellLayoutMarginsFollowReadableWidth = true
 
         build()
     }

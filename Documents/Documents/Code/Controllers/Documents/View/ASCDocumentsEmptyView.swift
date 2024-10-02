@@ -219,7 +219,7 @@ class ASCDocumentsEmptyView: UIView {
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.removeFromSuperview()
         }
-        
+
         let menu = menuForType[type]
         actionButton.menu = menu
         actionButton.showsMenuAsPrimaryAction = menu != nil

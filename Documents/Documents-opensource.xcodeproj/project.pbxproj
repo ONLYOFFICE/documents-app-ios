@@ -568,6 +568,7 @@
 		FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */; };
 		FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF258D2978190200522A3A /* WhatsNew.bundle */; };
 		FCF779BE2B4ED77600E5C2DC /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF779BD2B4ED77600E5C2DC /* ResultViewModel.swift */; };
+		FCFAEEF82CAD48B700FB3E19 /* ASCConnectStorageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFAEEF72CAD48B700FB3E19 /* ASCConnectStorageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1308,6 +1309,7 @@
 		FCF8651D1E4E0D1C003E47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCF916C91ED44F3A0032C135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCF916CB1ED44F430032C135 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		FCFAEEF72CAD48B700FB3E19 /* ASCConnectStorageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCConnectStorageCell.xib; sourceTree = "<group>"; };
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
 		FCFDAA971E48A10C007A240C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FCFDAA9A1E48A10C007A240C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -3454,6 +3456,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */,
+				FCFAEEF72CAD48B700FB3E19 /* ASCConnectStorageCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3597,6 +3600,7 @@
 				FC70822C2812E2260057FCD2 /* Debug.storyboard in Resources */,
 				FC6F5F392BAB010300F109CD /* PrivacyInfo.xcprivacy in Resources */,
 				FC70822E2812E2260057FCD2 /* Images.xcassets in Resources */,
+				FCFAEEF82CAD48B700FB3E19 /* ASCConnectStorageCell.xib in Resources */,
 				FC70822F2812E2260057FCD2 /* sample in Resources */,
 				FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */,
 				FC7082302812E2260057FCD2 /* Settings.bundle in Resources */,

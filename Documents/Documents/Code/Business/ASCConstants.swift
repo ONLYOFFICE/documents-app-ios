@@ -100,6 +100,7 @@ class ASCConstants {
         static let recaptchaForPortalRegistration = "recaptcha_for_portal_registration"
         static let privacyPolicyLink = "link_privacy_policy"
         static let termsOfServiceLink = "link_terms_of_service"
+        static let allowGoogleDrive = "allow_google_drive"
 
         static func setupDefaults() {
             let defaultValues: [String: NSObject] = [
@@ -108,6 +109,7 @@ class ASCConstants {
                 recaptchaForPortalRegistration: NSNumber(value: true),
                 privacyPolicyLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0"),
                 termsOfServiceLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048471&doc=bXJ6UmJacDVnVDMxV01oMHhrUlpwaGFBcXJUUUE3VHRuTGZrRUF5a1NKVT0_IjUwNDg0NzEi0"),
+                allowGoogleDrive: NSNumber(value: true),
             ]
 
             #if !OPEN_SOURCE

@@ -401,12 +401,22 @@ private extension ASCTransferPresenter {
 
     // MARK: Support funcs
 
-    func getImage(forFolder folder: ASCFolder, provider: ASCFileProviderProtocol?) -> UIImage? {
+    func getImage(forFolder folder: ASCFolder, provider: ASCFileProviderProtocol?) -> ASCTransferFolderModel.ImageModel {
         guard folder.parent == nil else {
-            if folder.isRoom {
-                return folder.roomType?.image ?? Asset.Images.listFolder.image
+            if folder.isRoom, let provider = provider {
+                return .kfImage(
+                    provider.absoluteUrl(from: folder.logo?.large ?? ""),
+                    provider,
+                    placeholder: UIImage(
+                        color: .clear,
+                        size: CGSize(width: 45, height: 50)
+                    ),
+                    defaultImage: folder.defaultRoomImage(layoutType: .list),
+                    cornerRadius: folder.roomIconRadius(layoutType: .list),
+                    targetSize: folder.roomIconSize(layoutType: .list)
+                )
             }
-            return Asset.Images.listFolder.image
+            return .image(Asset.Images.listFolder.image)
         }
         var folderImage: UIImage?
 
@@ -441,7 +451,7 @@ private extension ASCTransferPresenter {
             break
         }
 
-        return folderImage
+        return .image(folderImage)
     }
 
     func getTitle(forFolder folder: ASCFolder, provider: ASCFileProviderProtocol?) -> String {

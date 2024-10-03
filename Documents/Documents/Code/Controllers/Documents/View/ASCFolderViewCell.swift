@@ -392,8 +392,8 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
                 imageView.image = roomImageDefault()
             } else {
                 let processor = RoundCornerImageProcessor(
-                    cornerRadius: roomIconRadius,
-                    targetSize: roomIconSize
+                    cornerRadius: folder.roomIconRadius(layoutType: layoutType),
+                    targetSize: folder.roomIconSize(layoutType: layoutType)
                 )
                 imageView.kf.setProviderImage(
                     with: provider.absoluteUrl(from: folder.logo?.large ?? ""),
@@ -412,7 +412,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
                     }
                 )
             }
-            imageView.layerCornerRadius = roomIconRadius
+            imageView.layerCornerRadius = folder.roomIconRadius(layoutType: layoutType)
         } else {
             imageView.image = iconFolder
         }
@@ -495,32 +495,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
     private func roomImageDefault() -> UIImage? {
         guard let folder = entity as? ASCFolder else { return UIImage() }
-
-        let size = roomIconSize
-        var color = Asset.Colors.roomDefault.color
-
-        if folder.rootFolderType == .onlyofficeRoomArchived {
-            color = Asset.Colors.roomArchive.color
-        } else if let hexColor = folder.logo?.color {
-            color = UIColor(hex: "#\(hexColor)")
-        }
-
-        let canvasView = UIView(frame: CGRect(origin: .zero, size: size))
-        canvasView.backgroundColor = UIColor(light: color, dark: color.withAlphaComponent(0.2))
-        let literalLabel = {
-            $0.font = UIFont.systemFont(ofSize: layoutType == .grid ? 36 : 17, weight: .semibold)
-            $0.textColor = traitCollection.userInterfaceStyle == .dark ? color.withAlphaComponent(1.0) : .white
-            $0.textAlignment = .center
-            $0.text = formatFolderName(folderName: folder.title)
-            return $0
-        }(UILabel(frame: canvasView.frame))
-
-        canvasView.addSubview(literalLabel)
-        literalLabel.anchorCenterSuperview()
-        canvasView.layerCornerRadius = roomIconRadius
-        canvasView.layoutSubviews()
-
-        return canvasView.screenshot
+        return folder.defaultRoomImage(layoutType: layoutType)
     }
 
     private func updateData() {
@@ -540,13 +515,6 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
     private func displayCheckmark(show: Bool) {
         checkmarkView.alpha = show ? 1 : 0
         checkmarkView.isHidden = !show
-    }
-
-    private func formatFolderName(folderName: String) -> String {
-        folderName.components(separatedBy: " ")
-            .filter { !$0.isEmpty }
-            .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
-            .uppercased()
     }
 
     private func displayRightInfo(show: Bool) {
@@ -580,14 +548,6 @@ extension ASCFolderViewCell {
 
     private var iconSize: CGSize {
         layoutType == .grid ? Constants.gridIconSize : Constants.listIconSize
-    }
-
-    private var roomIconSize: CGSize {
-        layoutType == .grid ? Constants.gridRoomIconSize : Constants.listRoomIconSize
-    }
-
-    private var roomIconRadius: CGFloat {
-        layoutType == .grid ? Constants.gridRoomIconRadius : Constants.listRoomIconRadius
     }
 
     private var iconFolder: UIImage {
@@ -647,9 +607,5 @@ private enum Constants {
     static let overlayBagesFontSize: CGFloat = 13
     static let listIconSize = CGSize(width: 45, height: 50)
     static let gridIconSize = CGSize(width: 80, height: 80)
-    static let listRoomIconSize = CGSize(width: 36, height: 36)
-    static let gridRoomIconSize = CGSize(width: 80, height: 80)
-    static let listRoomIconRadius: CGFloat = 8
-    static let gridRoomIconRadius: CGFloat = 18
     static let listIconRadius: CGFloat = 8
 }

@@ -6,7 +6,8 @@
 //  Copyright (c) 2017 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
+import Kingfisher
+import UIKit
 import ObjectMapper
 
 protocol FolderHolder: AnyObject {
@@ -186,3 +187,64 @@ extension ASCFolder {
         return folder
     }
 }
+
+extension ASCFolder {
+    
+    func defaultRoomImage(layoutType: ASCEntityViewLayoutType) -> UIImage? {
+        let folder = self
+
+        let size = roomIconSize(layoutType: layoutType)
+        var color = Asset.Colors.roomDefault.color
+
+        if folder.rootFolderType == .onlyofficeRoomArchived {
+            color = Asset.Colors.roomArchive.color
+        } else if let hexColor = folder.logo?.color {
+            color = UIColor(hex: "#\(hexColor)")
+        }
+
+        let canvasView = UIView(frame: CGRect(origin: .zero, size: size))
+        canvasView.backgroundColor = UIColor(light: color, dark: color.withAlphaComponent(0.2))
+        let literalLabel = {
+            $0.font = UIFont.systemFont(ofSize: layoutType == .grid ? 36 : 17, weight: .semibold)
+            $0.textColor = UITraitCollection.current.userInterfaceStyle == .dark ? color.withAlphaComponent(1.0) : .white
+            $0.textAlignment = .center
+            $0.text = formatFolderName(folderName: folder.title)
+            return $0
+        }(UILabel(frame: canvasView.frame))
+
+        canvasView.addSubview(literalLabel)
+        literalLabel.anchorCenterSuperview()
+        canvasView.layerCornerRadius = roomIconRadius(layoutType: layoutType)
+        canvasView.layoutSubviews()
+
+        return canvasView.screenshot
+    }
+    
+    func roomIconSize(layoutType: ASCEntityViewLayoutType) -> CGSize {
+        layoutType == .grid ? Constants.gridRoomIconSize : Constants.listRoomIconSize
+    }
+    
+    func roomIconRadius(layoutType: ASCEntityViewLayoutType) -> CGFloat {
+        layoutType == .grid ? Constants.gridRoomIconRadius : Constants.listRoomIconRadius
+    }
+    
+    private func formatFolderName(folderName: String) -> String {
+        folderName.components(separatedBy: " ")
+            .filter { !$0.isEmpty }
+            .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+            .uppercased()
+    }
+    
+    
+}
+
+extension ASCFolder {
+    
+    enum Constants {
+        static let listRoomIconSize = CGSize(width: 36, height: 36)
+        static let gridRoomIconSize = CGSize(width: 80, height: 80)
+        static let listRoomIconRadius: CGFloat = 8
+        static let gridRoomIconRadius: CGFloat = 18
+    }
+}
+

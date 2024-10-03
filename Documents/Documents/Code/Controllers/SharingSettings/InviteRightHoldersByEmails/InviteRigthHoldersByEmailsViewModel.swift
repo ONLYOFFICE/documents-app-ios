@@ -50,6 +50,9 @@ class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewMode
         self.entity = entity
         self.nextTapClosure = nextTapClosure
         accessProvides = { accessProvider.get() }
+        if !accessProvides().contains(currentAccess) {
+            self.currentAccess = accessProvides().first ?? .read
+        }
     }
 
     func loadPaymentQouta(completion: @escaping () -> Void) {

@@ -89,6 +89,10 @@ class ASCCloudsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
+
         if ASCViewControllerManager.shared.rootController?.isEditing == true {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
@@ -99,6 +103,7 @@ class ASCCloudsViewController: UITableViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
     }
 
     deinit {
@@ -274,14 +279,18 @@ class ASCCloudsViewController: UITableViewController {
                 if animated {
                     splitVC.showDetailViewController(documentsNC, sender: self)
                 } else {
-                    DispatchQueue.main.async {
+                    if UIDevice.pad {
                         UIView.performWithoutAnimation {
                             splitVC.showDetailViewController(documentsNC, sender: self)
                         }
+                    } else {
+                        DispatchQueue.main.async {
+                            UIView.performWithoutAnimation {
+                                splitVC.showDetailViewController(documentsNC, sender: self)
+                            }
+                        }
                     }
                 }
-
-                splitVC.hideMasterController()
 
                 // Open root folder if needed
                 if folder.id == rootFolder.id {

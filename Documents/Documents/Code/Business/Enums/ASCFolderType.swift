@@ -21,7 +21,7 @@ enum ASCFolderType: Int {
     case onlyofficeRecent = 11
     case onlyofficeRoomShared = 14
     case onlyofficeRoomArchived = 20
-    
+
     case fillFormDone = 25
     case fillFormInProgress = 26
 

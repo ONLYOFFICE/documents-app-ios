@@ -34,11 +34,11 @@ final class InviteUsersViewModel: ObservableObject {
             .roomManager,
             .powerUser,
         ]
-        
+
         if room.isFillingFormRoom {
             accessList.append(.fillForms)
         }
-            
+
         return accessList.map { access in
             MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
                 setAccessRight(access)

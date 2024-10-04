@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "audio-light.pdf"
+            "filename" : "list-format-audio-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "audio-dark.pdf",
+            "filename" : "list-format-audio-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

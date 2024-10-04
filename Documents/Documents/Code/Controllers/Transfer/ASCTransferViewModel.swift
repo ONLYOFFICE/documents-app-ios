@@ -46,7 +46,7 @@ struct ASCTransferFolderModel {
     var isInteractable: Bool
 
     var onTapAction: () -> Void
-    
+
     enum ImageModel {
         case image(UIImage?)
         case kfImage(

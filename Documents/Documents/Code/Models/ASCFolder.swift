@@ -7,8 +7,8 @@
 //
 
 import Kingfisher
-import UIKit
 import ObjectMapper
+import UIKit
 
 protocol FolderHolder: AnyObject {
     var folder: ASCFolder? { get set }
@@ -179,7 +179,7 @@ extension ASCFolder {
         folder.title = NSLocalizedString("Rooms", comment: "")
         return folder
     }
-    
+
     static var onlyofficeRootFolder: ASCFolder {
         let folder = ASCFolder()
         folder.id = "id-onlyoffice-root"
@@ -189,7 +189,6 @@ extension ASCFolder {
 }
 
 extension ASCFolder {
-    
     func defaultRoomImage(layoutType: ASCEntityViewLayoutType) -> UIImage? {
         let folder = self
 
@@ -219,27 +218,24 @@ extension ASCFolder {
 
         return canvasView.screenshot
     }
-    
+
     func roomIconSize(layoutType: ASCEntityViewLayoutType) -> CGSize {
         layoutType == .grid ? Constants.gridRoomIconSize : Constants.listRoomIconSize
     }
-    
+
     func roomIconRadius(layoutType: ASCEntityViewLayoutType) -> CGFloat {
         layoutType == .grid ? Constants.gridRoomIconRadius : Constants.listRoomIconRadius
     }
-    
+
     private func formatFolderName(folderName: String) -> String {
         folderName.components(separatedBy: " ")
             .filter { !$0.isEmpty }
             .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
             .uppercased()
     }
-    
-    
 }
 
 extension ASCFolder {
-    
     enum Constants {
         static let listRoomIconSize = CGSize(width: 36, height: 36)
         static let gridRoomIconSize = CGSize(width: 80, height: 80)
@@ -247,4 +243,3 @@ extension ASCFolder {
         static let gridRoomIconRadius: CGFloat = 18
     }
 }
-

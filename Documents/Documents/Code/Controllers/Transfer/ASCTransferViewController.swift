@@ -7,8 +7,8 @@
 //
 
 import FileKit
-import UIKit
 import Kingfisher
+import UIKit
 
 typealias ASCTransferViewType = (provider: ASCFileProviderProtocol?, entity: ASCEntity)
 

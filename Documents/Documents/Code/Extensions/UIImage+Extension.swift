@@ -102,6 +102,8 @@ extension UIImage {
             } else {
                 return iconFormatUnknown(for: layoutType)
             }
+        } else if ASCConstants.FileExtensions.audios.contains(fileExt) {
+            return iconFormatAudio(for: layoutType)
         } else if fileExt == ASCConstants.FileExtensions.pdf {
             return iconFormatPdf(for: layoutType)
         } else {
@@ -127,6 +129,10 @@ extension UIImage {
 
     private static func iconFormatVideo(for layoutType: ASCEntityViewLayoutType) -> UIImage {
         return layoutType == .list ? Asset.Images.listFormatVideo.image : Asset.Images.gridFormatVideo.image
+    }
+
+    private static func iconFormatAudio(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        return layoutType == .list ? Asset.Images.listFormatAudio.image : Asset.Images.gridFormatAudio.image
     }
 
     private static func iconFormatDocxf(for layoutType: ASCEntityViewLayoutType) -> UIImage {

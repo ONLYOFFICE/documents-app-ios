@@ -54,6 +54,8 @@ private extension ASCFolder {
             return RoomTypeModel.make(fromRoomType: .custom)
         case .public:
             return RoomTypeModel.make(fromRoomType: .publicRoom)
+        case .fillingForm:
+            return RoomTypeModel.make(fromRoomType: .formFilling)
         default:
             return RoomTypeModel.make(fromRoomType: .collaboration)
         }

@@ -54,6 +54,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         tagsField.enableScrolling = true
         tagsField.isScrollEnabled = true
         tagsField.showsVerticalScrollIndicator = true
+        tagsField.inputFieldAccessoryView = UIView()
 
         tagsField.onDidAddTag = { [weak self] field, tag in
             field.tagViews.forEach { $0.tintColor = Asset.Colors.systemFillQuarternary.color }

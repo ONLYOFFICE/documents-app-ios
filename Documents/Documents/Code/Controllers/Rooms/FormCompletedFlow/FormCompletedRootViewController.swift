@@ -12,11 +12,12 @@ import SwiftUI
 class CreateFormCompletedRootViewController: UIHostingController<FormCompletedView> {
     // MARK: - Lifecycle Methods
 
-    init(formModel: FormModel) {
+    init(formModel: FormModel, onCheckReadyForm: @escaping () -> Void) {
         super.init(
             rootView: FormCompletedView(
                 viewModel: FormCompletedViewModel(
-                    formModel: formModel
+                    formModel: formModel, 
+                    onCheckReadyForm: onCheckReadyForm
                 )
             )
         )

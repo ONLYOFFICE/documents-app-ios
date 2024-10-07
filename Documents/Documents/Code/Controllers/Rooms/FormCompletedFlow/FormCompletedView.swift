@@ -33,6 +33,9 @@ struct FormCompletedView: View {
             }
             .background(Color.systemGroupedBackground)
             .ignoresSafeArea(edges: .top)
+            .onDisappear() {
+                viewModel.checkReadyForm()
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     VStack(spacing: 0) {
@@ -55,7 +58,7 @@ struct FormCompletedView: View {
                                     .fontWeight(.semibold)
                             }
                             .background(Asset.Colors.brend.swiftUIColor)
-                            .foregroundColor(Color.label)
+                            .foregroundColor(.white)
                             .cornerRadius(Constants.toolbarButtonCornerRadius)
                         }
                         .padding()

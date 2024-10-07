@@ -502,6 +502,30 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             guard let responce = result?.result else {
                 return
             }
+            
+            let checkRedyFormHandler = { [ weak self ] in
+                guard let self else { return }
+                
+                let doneFolder = items
+                    .compactMap { $0 as? ASCFolder }
+                    .first(where: { $0.type == .fillFormDone })
+                
+                guard let doneFolder,
+                      let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
+                      let topController = topMostViewController as? ASCDocumentsViewController
+                else {
+                    return
+                }
+                let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+                topController.navigationController?.pushViewController(documentsVC, animated: true)
+                
+                documentsVC.provider = self.copy()
+                documentsVC.provider?.cancel()
+                documentsVC.provider?.reset()
+                documentsVC.folder = doneFolder
+                documentsVC.title = doneFolder.title
+            }
+            
 
             let vc = CreateFormCompletedRootViewController(
                 formModel: FormModel(
@@ -510,7 +534,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     authorEmail: responce.manager?.email ?? "",
                     formNumber: responce.formNumber,
                     authorAvatar: responce.manager?.avatar ?? ""
-                )
+                ),
+                onCheckReadyForm: checkRedyFormHandler
             )
 
             topVC.present(vc, animated: true)

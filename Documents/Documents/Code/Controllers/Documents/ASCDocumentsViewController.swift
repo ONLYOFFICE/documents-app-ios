@@ -1429,7 +1429,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
                     } else if folder.isRoom {
-                        if folder.roomType == .fillingForm {
+                        if folder.roomType == .fillingForm && (provider.allowEdit(entity: folder))  {
                             localEmptyView?.type = .formFillingRoom
                         } else {
                             localEmptyView?.type = .room

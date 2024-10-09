@@ -938,7 +938,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         if let error = error {
                             handler?(.error, 1, nil, error, &cancel)
                         } else if let operation = result?.result?.first, let progress = operation.progress {
-                            if progress >= 100 {
+                            if let error = operation.error, !error.isEmpty {
+                                handler?(.error, 1, nil, StringError(error), &cancel)
+                            } else if progress >= 100 {
                                 handler?(.end, 1, nil, nil, &cancel)
                             } else {
                                 Thread.sleep(forTimeInterval: 1)
@@ -2106,5 +2108,17 @@ extension ASCOnlyofficeProvider {
 
     static var isDocspaceApi: Bool {
         ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
+    }
+}
+
+struct StringError: LocalizedError {
+    let message: String
+
+    init(_ message: String) {
+        self.message = message
+    }
+
+    var errorDescription: String? {
+        return message
     }
 }

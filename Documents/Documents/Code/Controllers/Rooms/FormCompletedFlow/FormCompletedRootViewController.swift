@@ -16,7 +16,7 @@ class CreateFormCompletedRootViewController: UIHostingController<FormCompletedVi
         super.init(
             rootView: FormCompletedView(
                 viewModel: FormCompletedViewModel(
-                    formModel: formModel, 
+                    formModel: formModel,
                     onCheckReadyForm: onCheckReadyForm
                 )
             )

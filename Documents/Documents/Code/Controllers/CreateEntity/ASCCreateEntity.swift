@@ -52,7 +52,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                   provider.apiClient.serverVersion?.docSpace != nil
             else { return false }
 
-            return folder.isRoom && folder.roomType == .fillingForm
+            return folder.parentsFoldersOrCurrentContains(roomType: .fillingForm)
         }()
 
         var createEntityVC: ASCCreateEntityUIViewController!
@@ -315,7 +315,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
         let presenter = ASCTransferPresenter(
             view: vc,
-            provider: provider,
+            provider: provider?.copy(),
             transferType: .selectFillForms,
             enableFillRootFolders: false,
             folder: .onlyofficeRootFolder

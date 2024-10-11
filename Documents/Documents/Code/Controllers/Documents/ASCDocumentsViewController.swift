@@ -209,6 +209,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
 
         view.menuForType[.formFillingRoom] = makePDFFormAction()
+        view.menuForType[.formFillingRoomSubfolder] = makePDFFormAction()
         view.onAction = { [weak self] in
             guard
                 let self,
@@ -1428,8 +1429,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
+                    } else if let provider = provider as? ASCOnlyofficeProvider,
+                              !folder.isRoom,
+                              folder.isRoomListSubfolder,
+                              let folder = provider.folder,
+                              folder.parentsFoldersOrCurrentContains(roomType: .fillingForm),
+                              provider.allowEdit(entity: folder)
+                    {
+                        localEmptyView?.type = .formFillingRoomSubfolder
                     } else if folder.isRoom {
-                        if folder.roomType == .fillingForm && (provider.allowEdit(entity: folder))  {
+                        if folder.roomType == .fillingForm, provider.allowEdit(entity: folder) {
                             localEmptyView?.type = .formFillingRoom
                         } else {
                             localEmptyView?.type = .room

@@ -33,7 +33,7 @@ struct FormCompletedView: View {
             }
             .background(Color.systemGroupedBackground)
             .ignoresSafeArea(edges: .top)
-            .onDisappear() {
+            .onDisappear {
                 viewModel.checkReadyForm()
             }
             .toolbar {

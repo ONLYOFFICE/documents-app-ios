@@ -14,7 +14,7 @@ final class FormCompletedViewModel: ObservableObject {
     typealias FormSharingLinkModel = RoomSharingLinkModel
 
     var formModel: FormModel
-    
+
     var onCheckReadyForm: () -> Void
 
     // MARK: - Published vars

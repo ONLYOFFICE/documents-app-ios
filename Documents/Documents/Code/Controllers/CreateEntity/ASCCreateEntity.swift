@@ -106,7 +106,11 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
             if let senderView {
                 createEntityVC.modalPresentationStyle = .popover
-                createEntityVC.preferredContentSize = CGSize(width: 375, height: 420 - (allowClouds ? 0 : 50))
+                if allowForms {
+                    createEntityVC.preferredContentSize = CGSize(width: 375, height: 200)
+                } else {
+                    createEntityVC.preferredContentSize = CGSize(width: 375, height: 420 - (allowClouds ? 0 : 50))
+                }
                 createEntityVC.popoverPresentationController?.backgroundColor = .systemGroupedBackground
                 createEntityVC.popoverPresentationController?.sourceView = senderView
                 createEntityVC.popoverPresentationController?.sourceRect = senderView.bounds

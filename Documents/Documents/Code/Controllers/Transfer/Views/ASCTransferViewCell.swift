@@ -11,7 +11,8 @@ import UIKit
 class ASCTransferViewCell: UITableViewCell {
     @IBOutlet var leftImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
-
+    @IBOutlet weak var badgeImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

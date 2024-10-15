@@ -362,7 +362,8 @@ private extension ASCTransferPresenter {
                             folder: folder,
                             image: getImage(forFolder: folder, provider: provider),
                             title: getTitle(forFolder: folder, provider: provider),
-                            isInteractable: isFolderInteractable(folder)
+                            isInteractable: isFolderInteractable(folder),
+                            badgeImage: getBadgeImage(for: folder)
                         ) { [weak self] in
                             guard let self else { return }
                             let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)
@@ -461,6 +462,14 @@ private extension ASCTransferPresenter {
             return folder.parent != nil
                 ? folder.title
                 : provider?.user?.displayName ?? folder.title
+        }
+    }
+    
+    func getBadgeImage(for folder: ASCFolder) -> Image? {
+        if folder.isPublicRoom || folder.isFillingFormRoom {
+            return Asset.Images.world.image
+        } else {
+            return nil
         }
     }
 

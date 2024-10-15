@@ -44,6 +44,7 @@ struct ASCTransferFolderModel {
     var image: ImageModel
     var title: String
     var isInteractable: Bool
+    var badgeImage: UIImage?
 
     var onTapAction: () -> Void
 

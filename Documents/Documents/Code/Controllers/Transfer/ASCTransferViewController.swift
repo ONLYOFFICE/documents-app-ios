@@ -165,6 +165,7 @@ class ASCTransferViewController: UITableViewController {
                     cell.leftImageView.layerCornerRadius = cornerRadius
                 }
                 cell.titleLabel.text = viewModel.title
+                cell.badgeImageView.image = viewModel.badgeImage
                 cell.isUserInteractionEnabled = viewModel.isInteractable
                 cell.contentView.alpha = viewModel.isInteractable ? 1 : 0.5
                 cell.accessoryType = .disclosureIndicator

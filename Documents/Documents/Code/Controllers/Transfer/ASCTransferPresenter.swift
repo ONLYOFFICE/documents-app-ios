@@ -464,7 +464,7 @@ private extension ASCTransferPresenter {
                 : provider?.user?.displayName ?? folder.title
         }
     }
-    
+
     func getBadgeImage(for folder: ASCFolder) -> Image? {
         if folder.isPublicRoom || folder.isFillingFormRoom {
             return Asset.Images.world.image

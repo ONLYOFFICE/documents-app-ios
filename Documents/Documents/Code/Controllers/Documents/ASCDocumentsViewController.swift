@@ -542,24 +542,24 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         provider?.page = 0
 
         fetchData { [weak self] success in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 refreshControl.endRefreshing()
 
-                guard let strongSelf = self else { return }
+                guard let self else { return }
 
-                strongSelf.showErrorView(!success)
+                self.showErrorView(!success)
 
                 if success {
-                    strongSelf.showEmptyView(strongSelf.total < 1)
+                    self.showEmptyView(self.total < 1)
                 }
 
-                strongSelf.updateNavBar()
+                self.updateNavBar()
             }
         }
     }
 
     func add(entity: Any, open: Bool = true) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
 
         if let file = entity as? ASCFile {
             provider.add(item: file, at: 0)
@@ -1175,7 +1175,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func fetchData(_ completeon: ((Bool) -> Void)? = nil) {
-        guard let provider = provider else {
+        guard let provider else {
             completeon?(false)
             return
         }
@@ -1473,6 +1473,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         } else if tableData.count < 1 {
             showLoadingPage(false)
             showEmptyView(false)
+
+            errorView?.type = .error
+            errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "")"
 
             if let error = error as? NetworkingError {
                 switch error {
@@ -4063,9 +4066,9 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
             fetchData { [weak self] success in
                 if !success {
-                    guard let strongSelf = self else { return }
+                    guard let self else { return }
 
-                    strongSelf.provider?.page -= 1
+                    self.provider?.page -= 1
                     delay(seconds: 0.6) {
                         cell.isHidden = true
                     }

@@ -209,16 +209,19 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel?.text = NSLocalizedString("No files here yet", comment: "")
             subtitleLabel?.text = NSLocalizedString("Here you will find a list of the recently opened files shared with you via an external link.", comment: "")
             actionButton?.removeFromSuperview()
+
         case .formFillingRoom:
             imageView.image = Asset.Images.emptyFolder.image
             titleLabel.text = NSLocalizedString("Welcome to the Form filling room ", comment: "")
             subtitleLabel.text = NSLocalizedString("Get started with quick actions: ", comment: "")
             actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
+
         case .formFillingRoomSubfolder:
             imageView.image = Asset.Images.emptyFolder.image
             titleLabel.text = NSLocalizedString("No forms here yet ", comment: "")
             subtitleLabel.text = NSLocalizedString("Upload PDF forms from DocSpace or device.", comment: "")
             actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
+
         default:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")

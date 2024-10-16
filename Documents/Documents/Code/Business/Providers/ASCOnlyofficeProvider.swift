@@ -310,13 +310,25 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
-            guard let strongSelf = self else { return }
+            guard let self else { return }
+
+            let page = (parameters["page"] as? Int) ?? self.page + 1
+            let startIndex = (parameters["startIndex"] as? Int) ?? self.page * self.pageSize
+            let count = (parameters["count"] as? Int) ?? self.pageSize
+            let total = (parameters["total"] as? Int) ?? self.total
+
+            if total < startIndex {
+                self.total = self.items.count
+                completeon?(self, self.folder, false, ASCProviderError(msg: NSLocalizedString("Invalid server data.", comment: "")))
+                return
+            }
 
             var params: [String: Any] = [
-                "page": (parameters["page"] as? Int) ?? strongSelf.page + 1,
-                "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
-                "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
+                "page": page,
+                "startIndex": startIndex,
+                "count": count,
             ]
+
             if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
                let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
             {
@@ -331,7 +343,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Sort
-            strongSelf.fetchInfo = parameters
+            self.fetchInfo = parameters
 
             if let sort = parameters["sort"] as? [String: Any] {
                 if let sortBy = sort["type"] as? String, sortBy.length > 0 {
@@ -357,29 +369,26 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return OnlyofficeAPI.Endpoints.Folders.roomsPath()
             }()
 
-            strongSelf.apiClient.request(endpoint, params) { [weak self] response, error in
-                guard let strongSelf = self else {
-                    completeon?(strongSelf, folder, false, error)
-                    return
-                }
+            self.apiClient.request(endpoint, params) { [weak self] response, error in
+                guard let self else { return }
 
                 var currentFolder = folder
 
                 if let path = response?.result {
-                    strongSelf.total = path.total
+                    self.total = path.total
 
                     if let current = path.current {
                         currentFolder = current
                     }
 
-                    if strongSelf.page == 0 {
-                        strongSelf.items.removeAll()
+                    if self.page == 0 {
+                        self.items.removeAll()
                     }
 
                     let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
                         if let folder = entitie as? ASCFolder {
                             folder.parent = currentFolder
-                            strongSelf.allowLeave(folder: folder) { isAllowed in
+                            self.allowLeave(folder: folder) { isAllowed in
                                 if isAllowed {
                                     folder.isCanLeaveRoom = true
                                 }
@@ -392,11 +401,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         return entitie
                     }
 
-                    strongSelf.items += entities
+                    self.items += entities
 
-                    completeon?(strongSelf, currentFolder, true, nil)
+                    completeon?(self, currentFolder, true, nil)
                 } else {
-                    completeon?(strongSelf, currentFolder, false, error)
+                    completeon?(self, currentFolder, false, error)
                 }
             }
         }
@@ -408,8 +417,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if success {
                     fetch(completeon)
                 } else {
-                    guard let strongSelf = self else { return }
-                    completeon?(strongSelf, folder, false, error)
+                    guard let self else { return }
+                    completeon?(self, folder, false, error)
                 }
             }
         }

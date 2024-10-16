@@ -74,7 +74,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var contentTypes: [ASCFiletProviderContentType] {
         let defaultTypes: [ASCFiletProviderContentType] = [.files, .folders, .documents, .spreadsheets, .presentations, .images]
         if let folder = folder, isRoot(folder: folder), ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: folder.rootFolderType) {
-            return [.public, .custom, .collaboration]
+            return [.public, .custom, .collaboration, .fillingForms]
         }
         return isRecentCategory ? defaultTypes.filter { $0 != .folders } : defaultTypes
     }

@@ -802,6 +802,24 @@ extension ASCDocumentsViewController {
         }
         more.image = swipeLayout(icon: Asset.Images.listMenuMore.image, text: NSLocalizedString("More", comment: "Button title"))
         more.backgroundColor = ASCConstants.Colors.lightGrey
+        
+        // Archive
+        let archive = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+            guard view.isUserInteractionEnabled else { return }
+            self.archive(cell: cell, folder: folder)
+            actionPerformed(true)
+        }
+        archive.image = swipeLayout(icon: Asset.Images.categoryArchived.image.withTintColor(.white), text: NSLocalizedString("Archive", comment: "Button title"))
+        archive.backgroundColor = Asset.Colors.brend.color
+        
+        // Info
+        let info = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+            guard view.isUserInteractionEnabled else { return }
+            navigator.navigate(to: .shareSettings(entity: folder))
+            actionPerformed(true)
+        }
+        info.image = swipeLayout(icon: Asset.Images.barInfo.image.withTintColor(.white), text: NSLocalizedString("Info", comment: "Button title"))
+        info.backgroundColor = ASCConstants.Colors.lighterGrey
 
         var items: [UIContextualAction] = []
 
@@ -809,6 +827,8 @@ extension ASCDocumentsViewController {
         if actions.contains(.restore) { items.append(restore) }
         if actions.contains(.rename) { items.append(rename) }
         if actions.contains(.copy) { items.append(copy) }
+        if actions.contains(.archive) {items.append(archive)}
+        if actions.contains(.info) {items.append(info)}
 
         if items.count > 2 {
             items = Array(items[..<2])

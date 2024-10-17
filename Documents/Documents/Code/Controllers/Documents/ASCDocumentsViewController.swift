@@ -3144,9 +3144,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         updateSelectedInfo()
-
-        collectionView.reloadSections([0])
-
+        collectionView.reloadSections(IndexSet(integer: 0))
         events.trigger(eventName: "item:didSelect")
     }
 
@@ -4060,7 +4058,6 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if cell.tag == kPageLoadingCellTag {
-//            cell.configurationState.isEditing = false
             cell.isHidden = false
             provider?.page += 1
 
@@ -4087,9 +4084,17 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
                 isSelected = selectedIds.contains(file.uid)
             }
 
+            if let fileCell = cell as? ASCFileViewCell {
+                fileCell.isSelected = isSelected
+            }
+
+            if let folderCell = cell as? ASCFolderViewCell {
+                folderCell.isSelected = isSelected
+            }
+
             if isSelected {
                 self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-                self.collectionView(collectionView, didDeselectItemAt: indexPath)
+                self.collectionView(collectionView, didSelectItemAt: indexPath)
             }
         }
     }

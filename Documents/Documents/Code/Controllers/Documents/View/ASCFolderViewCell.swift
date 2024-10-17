@@ -130,8 +130,6 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
     }
 
     private func buildView() {
-//        backgroundColor = .red
-
         for view in contentView.subviews {
             view.removeFromSuperview()
         }
@@ -139,7 +137,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         let itemView = layoutType == .grid ? buildGridView() : buildListView()
 
         contentView.addSubview(itemView)
-//        itemView.fillToSuperview()
+
         itemView.anchor(
             top: contentView.topAnchor,
             leading: contentView.safeAreaLayoutGuide.leadingAnchor,

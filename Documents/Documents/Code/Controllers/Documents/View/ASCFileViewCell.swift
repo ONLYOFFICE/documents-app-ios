@@ -13,12 +13,6 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
     // MARK: - Properties
 
-    override var isSelected: Bool {
-        didSet {
-            updateSelected()
-        }
-    }
-
     var entity: ASCEntity? {
         didSet {
             updateData()

@@ -321,6 +321,8 @@
 		<string>dbapi-8-emm</string>
 		<string>dbapi-2</string>
 	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>

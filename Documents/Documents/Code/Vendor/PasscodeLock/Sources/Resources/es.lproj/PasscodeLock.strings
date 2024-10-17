@@ -10,9 +10,6 @@
 /* Confirm Passcode State */
 "PasscodeLockConfirmTitle" = "Confirmar contraseña";
 
-/* (No Comment) */
-"PasscodeLockEnterDescription" = "Introduzca su contraseña para proceder.";
-
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "Introduzca contraseña";
 
@@ -25,9 +22,6 @@
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Intente de nuevo";
 
-/* (No Comment) */
-"PasscodeLockSetDescription" = "Seleccione su contraseña.";
-
 /* Set Passcode State */
 "PasscodeLockSetTitle" = "Introduzca una contraseña";
 
@@ -36,10 +30,4 @@
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Se requiere autenticación para proceder";
-
-/* Button title */
-"Use Face ID" = "Usar Face ID";
-
-/* Button title */
-"Use Touch ID" = "Usar Touch ID";
 

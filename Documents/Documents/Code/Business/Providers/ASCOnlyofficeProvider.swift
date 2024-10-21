@@ -1414,7 +1414,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isUserCategory = folder.rootFolderType == .onlyofficeUser
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
-            let canDuplicateRoom = folder.isRoom && !folder.isThirdParty && !isArchiveCategory
+            let canDuplicateRoom = folder.isRoom
+                && !folder.isThirdParty
+                && !isArchiveCategory
+                && canCopy
 
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]

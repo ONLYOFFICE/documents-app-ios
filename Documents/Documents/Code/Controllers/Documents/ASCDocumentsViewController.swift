@@ -4068,6 +4068,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
                     self.provider?.page -= 1
                     delay(seconds: 0.6) {
                         cell.isHidden = true
+                        collectionView.reloadData()
                     }
                 }
             }

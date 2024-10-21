@@ -66,6 +66,11 @@ struct FormCompletedView: View {
                     .padding(.horizontal, Constants.toolbarHorizontalPadding)
                 }
             }
+            .sheet(isPresented: $isShowingMailView) {
+                CompleteFormMailView(data: $mailData) { result in
+                    print(result)
+                }
+            }
         }
         .onAppear {
             self.mailData = ComposeMailData(
@@ -145,11 +150,6 @@ struct FormCompletedView: View {
                     }
                 )
             )
-        }
-        .sheet(isPresented: $isShowingMailView) {
-            CompleteFormMailView(data: $mailData) { result in
-                print(result)
-            }
         }
     }
 

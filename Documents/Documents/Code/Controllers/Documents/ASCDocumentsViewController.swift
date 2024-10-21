@@ -3358,6 +3358,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let hud = MBProgressHUD.showTopMost()
         let isSelectedItemsPinned = isSelectedItemsPinned()
         let action: ASCEntityActions = isSelectedItemsPinned ? .unpin : .pin
+        var lastError: Error?
+
         hud?.label.text = isSelectedItemsPinned
             ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
             : NSLocalizedString("Pinning", comment: "Caption of the processing")
@@ -3366,22 +3368,32 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             .forEach {
                 guard let indexPath = indexPath(by: $0) else { return }
                 dispatchGroup.enter()
-                provider.handle(action: action, folder: $0) { status, _, _ in
+                provider.handle(action: action, folder: $0) { status, result, error in
                     if status == .end {
                         indexPathes.append(indexPath)
                     }
                     if status == .end || status == .error {
+                        if status == .error {
+                            lastError = error
+                        }
                         dispatchGroup.leave()
                     }
                 }
             }
 
         dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             self.updateNavBar()
             self.setEditMode(false)
             hud?.hide(animated: true, afterDelay: .oneSecondDelay)
             self.loadFirstPage()
+
+            if let lastError {
+                UIAlertController.showError(
+                    in: self,
+                    message: lastError.localizedDescription
+                )
+            }
         }
     }
 

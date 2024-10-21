@@ -208,7 +208,13 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 guard let self else {
                     return
                 }
-                var entities = provider.items
+                let denyedToTransferFoldersTypes = Set([ASCFolderType.fillFormDone, .fillFormInProgress])
+                var entities = provider.items.filter {
+                    if let folder = $0 as? ASCFolder, let folderType = folder.type {
+                        return !denyedToTransferFoldersTypes.contains(folderType)
+                    }
+                    return true
+                }
 
                 if folder.isRoomListFolder, transferType == .selectFillFormRoom {
                     entities = entities.filter {

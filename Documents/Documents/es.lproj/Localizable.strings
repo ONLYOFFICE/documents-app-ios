@@ -137,7 +137,7 @@
 "All Files" = "Todos los archivos";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "Todos los elementos archivados se eliminarán para siempre. No podrá restaurarlos.";
+"All items from Archived will be deleted forever. You won't be able to restore them." = "Todos los elementos archivados se eliminarán para siempre. No podrá restaurarlos.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Todas las notificaciones";
@@ -1982,7 +1982,7 @@ Navigation bar button title */
 "Yb" = "Yb";
 
 /* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "Está a punto de eliminar esta sala. No podrá restaurarla.";
+"You are about to delete this room. You won't be able to restore them." = "Está a punto de eliminar esta sala. No podrá restaurarla.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Usted es el propietario de esta sala. Antes de salir de la sala, debe transferir el rol de propietario a otro usuario.";

@@ -1075,7 +1075,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         // Remove all rooms
         if isDocSpaceArchive, canRemoveAllItems() {
-            let deleteButton = UIBarButtonItem(image: Asset.Images.barDelete.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms))
+            let deleteButton = UIBarButtonItem(
+                image: Asset.Images.barDelete.image,
+                style: .plain,
+                target: self,
+                action: #selector(onRemoveArchivedRooms)
+            )
             deleteButton.tintColor = .red
 
             items.append(deleteButton)
@@ -1848,7 +1853,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
             self.removerActionController.delete(indexes: [folder.uid])
         }
-        alertController.message = NSLocalizedString("You are about to delete this room. You won’t be able to restore them.", comment: "")
+        alertController.message = NSLocalizedString("You are about to delete this room. You won't be able to restore them.", comment: "")
 
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
@@ -3248,8 +3253,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    @objc func onRemoveAllArchivedRooms(_ sender: Any) {
-        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender, notificationType: .alert)
+    @objc func onRemoveArchivedRooms(_ sender: Any) {
+        let message = {
+            if selectedIds.count == 1 {
+                return NSLocalizedString("You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?", comment: "")
+            } else {
+                return NSLocalizedString("You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?", comment: "")
+            }
+        }()
+        onTrash(
+            ids: selectedIds,
+            sender,
+            notificationType: .deleteforeverAlert(message)
+        )
     }
 
     @objc func onTrashSelected(_ sender: Any) {
@@ -3332,8 +3348,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 showDeafultRomoveNotification(folderCount: folderCount, fileCount: fileCount, sender: sender) { [unowned self] in
                     self.removerActionController.delete(indexes: ids)
                 }
-            case .alert:
-                showRemoveAlert { [unowned self] in
+            case let .deleteforeverAlert(message):
+                showRemoveAlert(message: message) { [unowned self] in
                     self.removerActionController.delete(indexes: ids)
                 }
             }
@@ -3475,10 +3491,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         present(deleteController, animated: true, completion: nil)
     }
 
-    private func showRemoveAlert(handler: @escaping () -> Void) {
+    private func showRemoveAlert(message: String, handler: @escaping () -> Void) {
         let alertDelete = UIAlertController(
-            title: NSLocalizedString("Delete", comment: ""),
-            message: NSLocalizedString("All items from Archived will be deleted forever. You won’t be able to restore them.", comment: ""),
+            title: NSLocalizedString("Delete forever?", comment: ""),
+            message: message,
             preferredStyle: .alert,
             tintColor: nil
         )
@@ -3487,7 +3503,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         alertDelete.addAction(
             UIAlertAction(
-                title: NSLocalizedString("Delete forever", comment: ""),
+                title: NSLocalizedString("Delete", comment: ""),
                 style: .destructive,
                 handler: { _ in
                     handler()
@@ -3902,7 +3918,8 @@ extension ASCDocumentsViewController {
 
 extension ASCDocumentsViewController {
     enum NotificationType {
-        case `default`, alert
+        case `default`
+        case deleteforeverAlert(String)
     }
 
     func getLocalAndCloudItems(indexes: Set<String>) -> (localItems: [ASCEntity], cloudItems: [ASCEntity]) {

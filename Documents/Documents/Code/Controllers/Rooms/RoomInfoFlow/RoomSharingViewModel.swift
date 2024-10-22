@@ -29,8 +29,8 @@ final class RoomSharingViewModel: ObservableObject {
     }
 
     let linksLimit = 6
-    var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
-    var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived }
+    var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived && room.security.editAccess }
+    var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived && room.security.editAccess }
     private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false
@@ -279,16 +279,16 @@ private extension RoomSharingViewModel {
     }
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
-        ASCUserRowModel(
+        let onTapAction: (() -> Void)? = isUserSelectionAllow && !sharing.user.isOwner
+            ? { [weak self] in self?.selectedUser = sharing.user }
+            : nil
+        return ASCUserRowModel(
             image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
             userName: sharing.user.displayName ?? "",
             accessString: sharing.user.accessValue.title(),
             emailString: sharing.user.email ?? "",
             isOwner: sharing.user.isOwner,
-            onTapAction: { [weak self] in
-                guard let self, isUserSelectionAllow, !sharing.user.isOwner else { return }
-                selectedUser = sharing.user
-            }
+            onTapAction: onTapAction
         )
     }
 

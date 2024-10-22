@@ -58,8 +58,15 @@ class ASCFolderSecurity: Mappable {
     var moveTo: Bool = false
     var move: Bool = false
     var pin: Bool = false
+    var mute: Bool = false
     var editAccess: Bool = false
     var duplicate: Bool = false
+    var download: Bool = false
+    var copySharedLink: Bool = false
+    var reconnect: Bool = false
+    var createRoomFrom: Bool = false
+    var copyLink: Bool = false
+    var embed: Bool = false
 
     init() {}
 
@@ -76,7 +83,14 @@ class ASCFolderSecurity: Mappable {
         moveTo <- map["MoveTo"]
         move <- map["Move"]
         pin <- map["Pin"]
+        mute <- map["Mute"]
         editAccess <- map["EditAccess"]
         duplicate <- map["Duplicate"]
+        download <- map["Download"]
+        copySharedLink <- map["CopySharedLink"]
+        reconnect <- map["Reconnect"]
+        createRoomFrom <- map["CreateRoomFrom"]
+        copyLink <- map["CopyLink"]
+        embed <- map["Embed"]
     }
 }

@@ -314,7 +314,7 @@ struct ASCUserRowModel: Identifiable {
     var accessString: String
     var emailString: String
     var isOwner: Bool
-    var onTapAction: () -> Void
+    var onTapAction: (() -> Void)?
 
     enum ImageSourceType {
         case url(String)
@@ -347,13 +347,13 @@ struct ASCUserRow: View {
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.trailing)
 
-            if !model.isOwner {
+            if !model.isOwner, model.onTapAction != nil {
                 ChevronRightView()
             }
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            model.onTapAction()
+            model.onTapAction?()
         }
     }
 

@@ -1397,7 +1397,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func showEmptyView(_ show: Bool) {
-        navigationItem.searchController = show ? nil : searchController
+        if !searchController.isActive {
+            navigationItem.searchController = show ? nil : searchController
+        }
 
         if !show {
             emptyView?.removeFromSuperview()

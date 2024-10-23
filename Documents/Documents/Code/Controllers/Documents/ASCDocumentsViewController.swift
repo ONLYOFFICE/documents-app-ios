@@ -2058,12 +2058,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 vc.presenter = presenter
 
                 let nc = ASCTransferNavigationController(rootASCViewController: vc)
-                nc.doneHandler = { [provider, weak self] _, _, _ in
-                    ServicesProvider.shared.copyFileInsideProviderService.copyFileInsideProvider(
-                        provider: provider,
-                        file: file,
-                        viewController: self
-                    )
+                let items = [file]
+                nc.doneHandler = { [weak self] provider, folder, _ in
+                    guard let self, let folder else { return }
+                    self.insideCheckTransfer(items: items, to: folder, move: false) { conflictResolveType, cancel in
+                        guard !cancel else {
+                            return
+                        }
+
+                        self.insideTransfer(
+                            items: items,
+                            to: folder,
+                            move: false,
+                            conflictResolveType: conflictResolveType
+                        ) { movedEntities in
+                            guard movedEntities != nil else { return }
+
+                            if let destVC = self.getLoadedViewController(
+                                byFolderId: folder.id,
+                                andProviderId: provider?.id
+                            ) {
+                                destVC.loadFirstPage()
+                            }
+                        }
+                    }
                 }
                 nc.displayActionButtonOnRootVC = true
                 nc.modalPresentationStyle = .formSheet
@@ -2921,7 +2939,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                             completion?(nil)
 
-                            if let destVC = getLoadedViewController(byFolderId: folder.id, andProviderId: provider.id) {
+                            if let destVC = strongSelf.getLoadedViewController(byFolderId: folder.id, andProviderId: provider.id) {
                                 destVC.loadFirstPage()
                             }
                         }
@@ -2965,7 +2983,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                                         if success {
                                             completion?(nil)
 
-                                            if !items.isEmpty, let destVC = getLoadedViewController(byFolderId: destFolder.id, andProviderId: destProvider.id) {
+                                            if !items.isEmpty, let destVC = self?.getLoadedViewController(byFolderId: destFolder.id, andProviderId: destProvider.id) {
                                                 if let transfers = newItems, items.count == transfers.count {
                                                     insert(transferedItems: transfers, toLoadedViewController: destVC)
                                                 } else {
@@ -3045,23 +3063,23 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             viewController.showErrorView(false)
             viewController.updateNavBar()
         }
+    }
 
-        func getLoadedViewController(byFolderId folderId: String?, andProviderId providerId: String?) -> ASCDocumentsViewController? {
-            guard let folderId = folderId, !folderId.isEmpty,
-                  let providerId = providerId, !providerId.isEmpty
-            else {
-                return nil
-            }
-
-            let request = ASCLoadedVCFinderModels.DocumentsVC.Request(folderId: folderId, providerId: providerId)
-            let response = loadedDocumentsViewControllerFinder.find(requestModel: request)
-
-            guard let destinationVC = response.viewController else {
-                return nil
-            }
-
-            return destinationVC
+    func getLoadedViewController(byFolderId folderId: String?, andProviderId providerId: String?) -> ASCDocumentsViewController? {
+        guard let folderId = folderId, !folderId.isEmpty,
+              let providerId = providerId, !providerId.isEmpty
+        else {
+            return nil
         }
+
+        let request = ASCLoadedVCFinderModels.DocumentsVC.Request(folderId: folderId, providerId: providerId)
+        let response = loadedDocumentsViewControllerFinder.find(requestModel: request)
+
+        guard let destinationVC = response.viewController else {
+            return nil
+        }
+
+        return destinationVC
     }
 
     func emptyTrash() {

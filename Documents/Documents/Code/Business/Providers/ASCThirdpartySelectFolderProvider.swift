@@ -126,7 +126,7 @@ extension ASCThirdpartySelectFolderProvider {
         log.error(#function, " doesn't supported")
     }
 
-    func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
+    func preview(file: ASCFile, openMode: ASCDocumentOpenMode = .view, files: [ASCFile]?, in view: UIView?) {
         log.error(#function, " doesn't supported")
     }
 }

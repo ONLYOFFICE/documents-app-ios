@@ -1233,7 +1233,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
 
-    func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {
+    func preview(file: ASCFile, openMode: ASCDocumentOpenMode = .view, files: [ASCFile]? = nil, in view: UIView? = nil) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let isPdf = fileExt == ASCConstants.FileExtensions.pdf
@@ -1255,7 +1255,14 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler, renameHandler: renameHandler)
+            ASCEditorManager.shared.browsePdfCloud(
+                for: self,
+                file,
+                openMode: openMode,
+                openHandler: openHandler,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
+            )
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

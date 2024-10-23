@@ -569,6 +569,7 @@ class ASCEditorManager: NSObject {
 
     func browsePdfLocal(
         _ pdf: ASCFile,
+        openMode: ASCDocumentOpenMode = .fillform,
         openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         renameHandler: ASCEditorManagerRenameHandler? = nil
@@ -582,7 +583,12 @@ class ASCEditorManager: NSObject {
 
         if pdf.device {
             if isDocumentOformPdf {
-                editLocal(pdf, closeHandler: closeHandler, renameHandler: renameHandler)
+                editLocal(
+                    pdf,
+                    openMode: openMode,
+                    closeHandler: closeHandler,
+                    renameHandler: renameHandler
+                )
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                     ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
@@ -601,6 +607,7 @@ class ASCEditorManager: NSObject {
     func browsePdfCloud(
         for provider: ASCFileProviderProtocol,
         _ pdf: ASCFile,
+        openMode: ASCDocumentOpenMode? = .view,
         openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         renameHandler: ASCEditorManagerRenameHandler? = nil
@@ -621,7 +628,7 @@ class ASCEditorManager: NSObject {
 
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-                        provider.open(file: pdf, openMode: .view, canEdit: true)
+                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: true)
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
@@ -953,7 +960,8 @@ extension ASCEditorManager {
             document:
             OnlyofficeDocument(
                 permissions: OnlyofficeDocumentPermissions(
-                    edit: canEdit && UIDevice.allowEditor
+                    edit: canEdit && UIDevice.allowEditor,
+                    fillForms: openMode == .fillform
                 ),
                 fileType: fileExt
             )

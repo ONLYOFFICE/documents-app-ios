@@ -47,7 +47,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Preview", comment: "Button title"),
                     image: UIImage(systemName: "eye")
                 ) { [unowned self] action in
-                    self.open(file: file, viewMode: true)
+                    self.open(file: file, openMode: .view)
                 }
             )
         }
@@ -60,7 +60,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Edit", comment: "Button title"),
                     image: UIImage(systemName: "pencil")
                 ) { [unowned self] action in
-                    self.open(file: file)
+                    self.open(file: file, openMode: .edit)
                 }
             )
         }
@@ -872,7 +872,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Preview", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        self.open(file: file, viewMode: true)
+                        self.open(file: file, openMode: .view)
                     }
                 )
             )
@@ -884,7 +884,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Edit", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        self.open(file: file)
+                        self.open(file: file, openMode: .edit)
                     }
                 )
             )

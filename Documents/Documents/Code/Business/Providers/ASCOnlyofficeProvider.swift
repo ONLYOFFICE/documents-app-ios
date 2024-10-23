@@ -1361,7 +1361,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
-            if file.isForm, isDocspace, isUserCategory {
+            if file.isForm, isDocspace, isUserCategory || file.parent?.roomType == .fillingForm {
                 entityActions.insert(.fillForm)
             }
 
@@ -1986,7 +1986,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
+    func preview(file: ASCFile, openMode: ASCDocumentOpenMode = .view, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let isPdf = fileExt == ASCConstants.FileExtensions.pdf
@@ -1998,6 +1998,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ASCConstants.FileExtensions.presentations.contains(fileExt)
 
         lazy var openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+        lazy var openPdfHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
         lazy var closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
         lazy var renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
             guard let file else { complation(false); return }
@@ -2015,7 +2016,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ASCEditorManager.shared.browsePdfCloud(
                 for: self,
                 file,
-                openHandler: openHandler,
+                openMode: openMode,
+                openHandler: openPdfHandler,
                 closeHandler: closeHandler,
                 renameHandler: renameHandler
             )

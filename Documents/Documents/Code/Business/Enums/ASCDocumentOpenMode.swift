@@ -7,5 +7,5 @@
 //
 
 enum ASCDocumentOpenMode {
-    case view, edit, create
+    case view, edit, create, fillform
 }

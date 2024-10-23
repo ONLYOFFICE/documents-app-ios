@@ -1786,7 +1786,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     // MARK: - Open files
 
-    func open(file: ASCFile, viewMode: Bool = false) {
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode = .edit) {
         let title = file.title,
             fileExt = title.fileExtension().lowercased(),
             allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
@@ -1801,7 +1801,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         if allowOpen {
             provider?.delegate = self
-            provider?.open(file: file, openMode: viewMode ? .view : .edit, canEdit: provider?.allowEdit(entity: file) ?? false)
+            provider?.open(file: file, openMode: openMode, canEdit: provider?.allowEdit(entity: file) ?? false)
             searchController.isActive = false
         } else {
             var cell: UICollectionViewCell? = nil
@@ -1809,7 +1809,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0))
             }
             provider?.delegate = self
-            provider?.preview(file: file, files: (tableData.filter { $0 is ASCFile }) as? [ASCFile], in: cell)
+            provider?.preview(file: file, openMode: openMode, files: (tableData.filter { $0 is ASCFile }) as? [ASCFile], in: cell)
         }
 
         // Reset as New
@@ -2031,10 +2031,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func fillForm(file: ASCFile) {
+        if file.device {
+            open(file: file, openMode: .fillform)
+            return
+        }
+
         guard file.isForm else { return }
+
         let fillFormMenuScreen = FillFormMenuScreenRepresentable(
             onOpenTapped: { [weak self] in
-                self?.open(file: file)
+                self?.open(file: file, openMode: .fillform)
             },
             onShareTapped: { [weak self] in
                 guard let self else { return }
@@ -3981,12 +3987,14 @@ extension ASCDocumentsViewController: UICollectionViewDelegate {
                     fileExt = title.fileExtension().lowercased()
 
                 if ASCConstants.FileExtensions.documents.contains(fileExt) {
-                    open(file: file, viewMode: true)
+                    open(file: file, openMode: .view)
+                } else if ASCConstants.FileExtensions.pdf == fileExt {
+                    open(file: file, openMode: .fillform)
                 } else {
-                    open(file: file, viewMode: !(provider.allowEdit(entity: file) || provider.allowComment(entity: file)))
+                    open(file: file, openMode: !(provider.allowEdit(entity: file) || provider.allowComment(entity: file)) ? .view : .edit)
                 }
             } else {
-                open(file: file, viewMode: !provider.allowEdit(entity: file))
+                open(file: file, openMode: !provider.allowEdit(entity: file) ? .view : .edit)
             }
         }
     }

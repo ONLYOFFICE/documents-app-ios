@@ -51,7 +51,7 @@ struct FillFormMenuScreen: View {
                 VStack(alignment: .leading) {
                     Text(title)
                         .font(.body)
-                        .foregroundColor(.black)
+                        .foregroundColor(.label)
                     Text(subtitle)
                         .font(.footnote)
                         .foregroundColor(.secondary)

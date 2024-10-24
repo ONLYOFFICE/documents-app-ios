@@ -156,39 +156,49 @@ class ASCRootViewController: ASCBaseTabBarController {
     }
 
     private func navigateOnlyofficeProvider(to folder: ASCFolder?, inCategory categoryType: ASCFolderType? = nil) {
-        if selectTab(ofType: ASCOnlyofficeSplitViewController.self) {
-            if let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
-               let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-               let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
-            {
-                isFirstOpenOnlyofficeCategory = true
+        guard selectTab(ofType: ASCOnlyofficeSplitViewController.self),
+              let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
+              let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
+              let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
+        else { return }
 
-                if let folder = folder {
-                    let category: ASCOnlyofficeCategory = {
-                        guard let categoryType,
-                              let category = categoryVC.category(ofType: categoryType)
-                        else { return ASCOnlyofficeCategory(folder: folder) }
-                        return category
-                    }()
+        isFirstOpenOnlyofficeCategory = true
 
-                    /// Display root folder of category
-                    categoryVC.select(category: category)
-
-                    /// Display stored folder if needed
-                    delay(seconds: 0.01) {
-                        if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
-                            if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController {
-                                let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                                documentsVC.provider = ASCFileManager.onlyofficeProvider
-                                documentsVC.folder = folder
-                                documentsNC.pushViewController(documentsVC, animated: false)
-                            }
-                        }
-                    }
-                } else {
-                    categoryVC.select(category: categoryVC.entrypointCategory())
-                }
+        let category: ASCOnlyofficeCategory = {
+            if let categoryType = categoryType,
+               let existingCategory = categoryVC.category(ofType: categoryType) {
+                return existingCategory
+            } else if let folder = folder {
+                return ASCOnlyofficeCategory(folder: folder)
+            } else {
+                return categoryVC.entrypointCategory()
             }
+        }()
+
+        /// Display root folder of category
+        categoryVC.select(category: category)
+
+        guard let folder = folder else {
+            categoryVC.select(category: categoryVC.entrypointCategory())
+            return
+        }
+
+        /// Display stored folder if needed
+        delay(seconds: 0.01) {
+            guard let onlyofficeProvider = ASCFileManager.onlyofficeProvider,
+                  !onlyofficeProvider.isRoot(folder: folder) else { return }
+
+            let documentsNC = (splitVC.detailViewController as? ASCBaseNavigationController)
+                ?? (splitVC.primaryViewController as? ASCBaseNavigationController)
+
+            let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+            documentsVC.provider = ASCFileManager.onlyofficeProvider
+            documentsVC.folder = folder
+            if let parentDocumentVC = documentsNC?.viewControllers.last as? ASCDocumentsViewController {
+                parentDocumentVC.loadFirstPage()
+            }
+
+            documentsNC?.pushViewController(documentsVC, animated: false)
         }
     }
 

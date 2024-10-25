@@ -29,6 +29,7 @@ class ASCFile: ASCEntity {
     var security: ASCFileSecurity = .init()
     var denyDownload: Bool = false
     var editable: Bool = false
+    var canShare: Bool = false
 
     override init() {
         super.init()
@@ -103,6 +104,7 @@ class ASCFile: ASCEntity {
         device <- map["device"]
         denyDownload <- map["denyDownload"]
         security <- map["security"]
+        canShare <- map["canShare"]
 
         // Internal
         device <- map["device"]

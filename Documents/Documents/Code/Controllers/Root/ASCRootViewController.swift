@@ -166,7 +166,8 @@ class ASCRootViewController: ASCBaseTabBarController {
 
         let category: ASCOnlyofficeCategory = {
             if let categoryType = categoryType,
-               let existingCategory = categoryVC.category(ofType: categoryType) {
+               let existingCategory = categoryVC.category(ofType: categoryType)
+            {
                 return existingCategory
             } else if let folder = folder {
                 return ASCOnlyofficeCategory(folder: folder)

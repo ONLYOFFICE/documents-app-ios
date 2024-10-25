@@ -1265,6 +1265,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if let file, !file.canShare {
+            return false
+        }
+
         return true
     }
 
@@ -1304,7 +1308,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let file = file, apiClient.active {
+        if let file, apiClient.active {
             let fileExtension = file.title.fileExtension().lowercased()
             let canRead = allowRead(entity: file)
             let canEdit = allowEdit(entity: file)

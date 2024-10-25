@@ -4056,10 +4056,10 @@ extension ASCDocumentsViewController: UICollectionViewDelegate {
         }
     }
 
-//    func collectionView(_ collectionView: UICollectionView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
-//        setEditMode(true)
-//        return true
-//    }
+    func collectionView(_ collectionView: UICollectionView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        setEditMode(true)
+        return true
+    }
 }
 
 // MARK: - UICollectionViewDataSource

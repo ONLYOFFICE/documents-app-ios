@@ -12,6 +12,8 @@ Thumbs.db
 *.ipa
 .swiftpm
 .build/
+.bundle/
+local_gems/
 
 Pods
 fastlane/report.xml
@@ -19,8 +21,6 @@ fastlane/test_output
 fastlane/Preview.html
 fastlane/metadata
 fastlane/screenshots
-
-local_gems/
 
 fastlane/.env.secret
 Documents/Documents/Services/GoogleService-Info-dev.plist

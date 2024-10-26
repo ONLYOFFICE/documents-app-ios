@@ -20,6 +20,8 @@ fastlane/Preview.html
 fastlane/metadata
 fastlane/screenshots
 
+local_gems/
+
 fastlane/.env.secret
 Documents/Documents/Services/GoogleService-Info-dev.plist
 Documents/Documents/Services/GoogleService-Info-prod.plist

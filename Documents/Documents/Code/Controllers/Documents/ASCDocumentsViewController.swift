@@ -3115,10 +3115,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func copyGeneralLinkToClipboard(room: ASCFolder) {
+        
         if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
             let hud = MBProgressHUD.showTopMost()
             Task {
-                let generalLinkResult = await onlyofficeProvider.generalLink(for: room)
+                let generalLinkResult = await onlyofficeProvider.generalLink(forFolder: room)
 
                 await MainActor.run {
                     switch generalLinkResult {

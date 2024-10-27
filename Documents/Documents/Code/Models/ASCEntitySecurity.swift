@@ -24,6 +24,12 @@ class ASCFileSecurity: Mappable {
     var copy: Bool = false
     var move: Bool = false
     var duplicate: Bool = false
+    var submitToFormGallery: Bool = false
+    var download: Bool = false
+    var convert: Bool = false
+    var createRoomFrom: Bool = false
+    var copyLink: Bool = false
+    var embed: Bool = false
 
     init() {}
 
@@ -44,6 +50,12 @@ class ASCFileSecurity: Mappable {
         copy <- map["Copy"]
         move <- map["Move"]
         duplicate <- map["Duplicate"]
+        submitToFormGallery <- map["SubmitToFormGallery"]
+        download <- map["Download"]
+        convert <- map["Convert"]
+        createRoomFrom <- map["CreateRoomFrom"]
+        copyLink <- map["CopyLink"]
+        embed <- map["Embed"]
     }
 }
 

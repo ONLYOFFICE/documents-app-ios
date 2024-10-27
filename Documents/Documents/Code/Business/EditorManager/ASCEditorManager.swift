@@ -1450,7 +1450,7 @@ extension ASCEditorManager {
 
     func editorFillFormDidSend(_ controller: EditorViewControllerProtocol, complation: @escaping ((Result<Bool, any Error>) -> Void)) {
         if
-            let file = openedCopy ? openedlocallyFile : openedFile,
+            let file = openedFile ?? openedlocallyFile,
             let fillFormDidSendHandler
         {
             fillFormDidSendHandler(file, documentFillingSessionId) { success in

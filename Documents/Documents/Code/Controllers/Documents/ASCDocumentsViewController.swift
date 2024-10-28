@@ -2038,6 +2038,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         guard file.isForm else { return }
 
+        if file.parent?.roomType == .fillingForm && file.security.fillForms {
+            open(file: file, openMode: .fillform)
+            return
+        }
+
         let fillFormMenuScreen = FillFormMenuScreenRepresentable(
             onOpenTapped: { [weak self] in
                 self?.open(file: file, openMode: .fillform)
@@ -3115,7 +3120,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func copyGeneralLinkToClipboard(room: ASCFolder) {
-        
         if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
             let hud = MBProgressHUD.showTopMost()
             Task {

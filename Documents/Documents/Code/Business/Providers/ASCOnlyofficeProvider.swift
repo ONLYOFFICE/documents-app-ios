@@ -1398,7 +1398,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.docspaceShare)
                 entityActions.insert(.copySharedLink)
             }
-            
+
             if isRoomsCategory, isDocspace, file.security.copyLink {
                 entityActions.insert(.copySharedLink)
             }
@@ -1489,7 +1489,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isDocspace, canDuplicateRoom {
                 entityActions.insert(.duplicate)
             }
-            
+
             if isDocspace, isRoomsCategory {
                 entityActions.insert(.link)
             }
@@ -2068,20 +2068,19 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 }
 
 extension ASCOnlyofficeProvider {
-    
     func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {
         if folder.isRoom {
             let result = await generalLink(forRoom: folder)
             return result
         }
-        
+
         if folder.isRoomListSubfolder, let link = generalLink(forRoomSubfolder: folder) {
             return .success(link)
         }
-        
+
         return .failure(NetworkingError.invalidUrl)
     }
-    
+
     private func generalLink(forRoom room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
             guard room.roomType != .colobaration else {
@@ -2119,7 +2118,7 @@ extension ASCOnlyofficeProvider {
             }
         }
     }
-    
+
     private func generalLink(forRoomSubfolder folder: ASCFolder) -> String? {
         guard folder.isRoomListSubfolder,
               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString

@@ -1,35 +1,17 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
-
-/* Days left */
-"%d days" = "%d giorni";
-
-/* Hours left */
-"%d hours" = "%d ore";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d selezionato";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i di %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu file selezionato";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu cartelle e %2$lu file selezionati";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%1$lu cartelle selezionati";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu elementi con lo stesso nome esistono già nella cartella '%2$@'. Sovrascrivere gli elementi?";
@@ -134,9 +116,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Aggiungi utenti o gruppi e assegna le loro\npossibilità di leggere, rivedere o modificare i documenti.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Stato del collegamento aggiuntivo";
-
-/* No comment provided by engineer. */
 "Additional links" = "Collegamenti aggiuntivi";
 
 /* No comment provided by engineer. */
@@ -185,7 +164,7 @@
 "Applying" = "Applicare";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Archivio";
 
 /* No comment provided by engineer. */
@@ -211,6 +190,9 @@
 
 /* No comment provided by engineer. */
 "Back" = "Indietro";
+
+/* No comment provided by engineer. */
+"Back to room" = "Torna alla stanza";
 
 /* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "In qualità di proprietario di questo DocSpace, devi trasferire la proprietà a un altro utente prima di eliminare il tuo account. Scegli un nuovo proprietario per procedere.";
@@ -251,7 +233,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Impossibile duplicare il file.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Eliminare";
 
 /* No comment provided by engineer. */
@@ -273,10 +255,16 @@
 "Changing access" = "Modifica dell'accesso";
 
 /* No comment provided by engineer. */
+"Check ready form" = "Controlla i moduli pronti";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Controlla la tua connessione Internet";
 
 /* No comment provided by engineer. */
 "Choose Files" = "Scegli i file";
+
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "Scegli la stanza di compilazione dei moduli o crea un nuovo modulo";
 
 /* No comment provided by engineer. */
 "Choose from list" = "Scegli dall'elenco";
@@ -372,7 +360,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connettiti al tuo cloud %@ per archiviare i file online e collaborare ai documenti in tempo reale";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Connessione";
 
 /* No comment provided by engineer. */
@@ -454,6 +442,9 @@
 "Could not duplicate the file." = "Impossibile duplicare il file.";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "Impossibile duplicare la stanza.";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "Impossibile esportare il file.";
 
 /* Description of file operation error */
@@ -463,13 +454,13 @@
 "Could not open file." = "Impossibile aprire il file.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Impossibile leggere i dati dal file.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Impossibile leggere i dati dal file.";
 
 /* Description of file operation error */
 "Could not read from file" = "Impossibile leggere dal file";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "Impossibile mandare l’email";
 
 /* Description of file operation error */
 "Could not write to file" = "Impossibile salvare nel file";
@@ -520,7 +511,7 @@
 "Create room" = "Crea una stanza";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Creazione";
 
 /* No comment provided by engineer. */
@@ -540,15 +531,6 @@
 
 /* Button title */
 "Delete" = "Eliminare";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Eliminare %lu file";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Eliminare %lu cartella";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Eliminare %1$lu cartella e %2$lu file";
 
 /* Button title */
 "Delete File" = "Eliminare file";
@@ -608,7 +590,7 @@
 "Documents" = "Documenti";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Fatto";
 
 /* Button title */
@@ -641,6 +623,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Modificare i documenti a livello locale";
 
+/* No comment provided by engineer. */
+"Edit link" = "Modificare link";
+
 /* Button title */
 "Edit room" = "Modifica la stanza";
 
@@ -661,9 +646,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Email non valida";
-
-/* No comment provided by engineer. */
-"Empty file." = "File vuoto.";
 
 /* No comment provided by engineer. */
 "Empty name." = "Nome vuoto.";
@@ -716,12 +698,6 @@
 /* Expiration status */
 "Expired" = "Scaduto";
 
-/* Days left */
-"Expires after %d days" = "Scade tra %d giorni";
-
-/* Hours left */
-"Expires after %d hours" = "Scade tra %d ore";
-
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Scade dopo 7 giorni";
 
@@ -730,9 +706,6 @@
 
 /* No comment provided by engineer. */
 "External link" = "Link esterno";
-
-/* No comment provided by engineer. */
-"Failed online conversion service." = "Servizio di conversione online è fallito.";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Impossibile verificare la disponibilità del portale.";
@@ -765,13 +738,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "Impossibile inviare feedback per posta. Prova a scrivere la tua richiesta sul nostro forum.";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Impossibile caricare il file sorgente al servizio di conversione online.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Impossibile scaricare il file dal portale.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Impossibile scaricare il risultato dal servizio di conversione online.";
+"Failed to submit the form" = "Impossibile inviare il modulo";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Impossibile preparare l'archivio";
@@ -797,6 +764,18 @@
 /* No comment provided by engineer. */
 "Files Preview" = "Anteprima dei file";
 
+/* Fill form Button title */
+"Fill" = "Riempire";
+
+/* Title for fill-in options screen */
+"Fill in as" = "Compila come";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "Compila i campi del modulo originale nella finestra dell’editor.";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "Compila tu stesso";
+
 /* No comment provided by engineer. */
 "Filling form" = "Compilazione del modulo";
 
@@ -812,14 +791,35 @@
 /* No comment provided by engineer. */
 "Folders" = "Cartelle";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "Il modulo è stato completato correttamente";
+
 /* Share status */
 "Form Filler" = "Compilatore di moduli";
+
+/* No comment provided by engineer. */
+"Form Filling" = "Compilazione del modulo";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "Stanza di compilazione del modulo";
+
+/* No comment provided by engineer. */
+"Form number" = "Numero di modulo";
+
+/* No comment provided by engineer. */
+"Form owner" = "Proprietario del modulo";
 
 /* No comment provided by engineer. */
 "Form templates" = "Modelli di moduli";
 
 /* No comment provided by engineer. */
 "Forms" = "Moduli";
+
+/* No comment provided by engineer. */
+"From device" = "Da dispositivo";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "Da DocSpace";
 
 /* Share status */
 "Full Access" = "Accesso completo";
@@ -831,16 +831,13 @@
 "General" = "Generale";
 
 /* No comment provided by engineer. */
-"General link" = "Link generale";
-
-/* No comment provided by engineer. */
-"General link State" = "Stato del link generale";
-
-/* No comment provided by engineer. */
 "General links" = "Link generali";
 
 /* No comment provided by engineer. */
 "Get started" = "Inizia";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "Comincia con azioni veloci:";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "INIZIA!";
@@ -868,6 +865,9 @@
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "Icone";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Se esiste un utente con la posta %@, a questo indirizzo è stata inviata un'istruzione per modificare la password.";
@@ -957,6 +957,9 @@
 "Link life time" = "Durata del link";
 
 /* No comment provided by engineer. */
+"Link name" = "Nome del link";
+
+/* No comment provided by engineer. */
 "Link name %@" = "Nome del link %@";
 
 /* Button title */
@@ -965,11 +968,11 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Il link con l'invito è stato inviato alla posta";
 
-/* No comment provided by engineer. */
-"Loading" = "Caricamento";
+/* Button title */
+"List" = "Elenco";
 
 /* No comment provided by engineer. */
-"Loading..." = "Caricamento...";
+"Loading" = "Caricamento";
 
 /* No comment provided by engineer. */
 "Location" = "Luogo";
@@ -987,7 +990,7 @@
 "Login is empty" = "Accesso vuoto";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Logout";
 
 /* Button title */
@@ -1003,7 +1006,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Me";
 
 /* No comment provided by engineer. */
@@ -1066,8 +1069,17 @@
 /* No comment provided by engineer. */
 "New Folder" = "Nuova cartella";
 
+/* Suggested a room name when create a new one */
+"New form filling" = "Nuova compilazione modulo";
+
+/* No comment provided by engineer. */
+"New form filling room" = "Nuova stanza di compilazione";
+
 /* No comment provided by engineer. */
 "New Presentation" = "Nuova presentazione";
+
+/* No comment provided by engineer. */
+"New room" = "Nuova stanza";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nuovo foglio di calcolo";
@@ -1109,9 +1121,6 @@
 "No Internet connection" = "Nessuna connessione internet";
 
 /* No comment provided by engineer. */
-"No Links State" = "Nessuno stato dei link";
-
-/* No comment provided by engineer. */
 "No network" = "Nessuna rete";
 
 /* No comment provided by engineer. */
@@ -1129,12 +1138,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Nessun utente trovato";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "nessuno";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Nessuno";
 
 /* No comment provided by engineer. */
@@ -1269,9 +1274,6 @@
 /* Button title */
 "Pin to top" = "Fissare in alto";
 
-/* No comment provided by engineer. */
-"Pinned failed." = "Impossibile bloccare.";
-
 /* Caption of the processing */
 "Pinning" = "Bloccaggio";
 
@@ -1349,6 +1351,9 @@
 
 /* No comment provided by engineer. */
 "Public" = "Pubblico";
+
+/* No comment provided by engineer. */
+"Public link" = "Link pubblico";
 
 /* No comment provided by engineer. */
 "Public room" = "Stanza pubblica";
@@ -1456,7 +1461,7 @@
 "Room name" = "Nome della stanza";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Stanze";
 
 /* No comment provided by engineer. */
@@ -1475,8 +1480,11 @@
 "Search" = "Ricerca";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Selezionare";
+
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "Seleziona un modulo PDF";
 
 /* No comment provided by engineer. */
 "Select all" = "Seleziona tutto";
@@ -1538,8 +1546,14 @@
 /* No comment provided by engineer. */
 "Share" = "Condividere";
 
+/* Title for sharing and collecting form */
+"Share & collect" = "Condividi e raccogli";
+
 /* No comment provided by engineer. */
 "Share folder" = "Condividi cartella";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "Condividi il tuo modulo e raccogli le risposte con una stanza di compilazione dei moduli";
 
 /* No comment provided by engineer. */
 "Shared access" = "Accesso condiviso";
@@ -1656,6 +1670,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Il file sarà irrimediabilmente eliminato. Quest'azione è irreversibile.";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "Il modulo PDF compilato viene salvato e reso disponibile\nnella cartella Completa. Per controllare lo stato,\ncontatta il proprietario del modulo fornendo il numero assegnato.";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "La cartella nel Cestino non può essere aperta.";
 
 /* No comment provided by engineer. */
@@ -1743,6 +1760,12 @@
 "This presentation is being edited. Do you want open %@ to view only?" = "Questa presentazione è in corso di elaborazione. Vuoi aprire %@ in sola lettura?";
 
 /* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "Questa stanza è disponibile per chiunque abbia il link.\nGli utenti esterni avranno l'autorizzazione\na compilare i moduli per tutti i file.";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "Questa stanza è disponibile per chiunque abbia il link.\nGli utenti esterni avranno l'autorizzazione di sola visualizzazione\nper tutti i file.";
+
+/* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Questo foglio di calcolo è in corso di elaborazione. Vuoi aprire %@ in sola lettura?";
 
 /* No comment provided by engineer. */
@@ -1827,9 +1850,6 @@
 "Unauthorized users will not have access to the document." = "Gli utenti non autorizzati non avranno accesso al documento.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Risposta inaspettata del servizio.";
-
-/* Invalid entity name */
 "Unknown" = "Sconosciuto";
 
 /* No comment provided by engineer. */
@@ -1861,6 +1881,18 @@
 
 /* Caption of the processing */
 "Unpning" = "Rimuovere";
+
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "Carica un modulo PDF pronto";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "Carica modulo PDF da dispositivo";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "Carica modulo PDF da DocSpace";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Carica moduli PDF nella stanza. Invita gli utenti a compilare un modulo PDF. Esamina i moduli compilati e analizza i dati raccolti automaticamente in un foglio di calcolo.";
 
 /* Caption of the process */
 "Uploading" = "Caricamento";
@@ -1926,6 +1958,9 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Benvenuto alla suite mobile %@!\nScorri per saperne di più.";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "Benvenuto nella stanza di compilazione dei moduli";
+
+/* No comment provided by engineer. */
 "What's New" = "Novità";
 
 /* Introduction Step Four - Description */
@@ -1965,6 +2000,9 @@
 "You can connect the following accounts to the DocSpace rooms" = "Puoi collegare i seguenti account alle stanze DocSpace";
 
 /* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Non è possibile appuntare più di 10 stanze in alto. Rimuovi le stanze attualmente appuntate.";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Hai lasciato la stanza";
 
 /* No comment provided by engineer. */
@@ -1975,6 +2013,9 @@
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Il tuo attuale piano tariffario Business è scaduto. Rinnova l'abbonamento nelle impostazioni dell'account per poter utilizzare DocSpace. In caso di domande, ti preghiamo di contattare l'assistenza.";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "Il dispositivo non è in grado di inviare e-mail. Controlla la configurazione della posta elettronica e riprova.";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "La tua sessione è scaduta";

@@ -248,7 +248,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>8.1.2</string>
+	<string>8.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -293,7 +293,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1004</string>
+	<string>1030</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>
@@ -323,6 +323,8 @@
 		<string>dbapi-8-emm</string>
 		<string>dbapi-2</string>
 	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>

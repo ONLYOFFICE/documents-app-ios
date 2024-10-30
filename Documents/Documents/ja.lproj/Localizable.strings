@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
@@ -10,26 +7,8 @@
 /* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
 
-/* Days left */
-"%d days" = " %d 日";
-
-/* Hours left */
-"%d hours" = " %d 時間";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d が選択されました";
-
 /* Presentation Viewer */
 "%i of %i" = "%2$i の %1$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu ファイルが選択されました";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu フォルダーと %2$lu ファイルが選択された";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu フォルダーが選択されました";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "同じ名前の %1$lu 個のアイテムがフォルダー '%2$@’ に存在します。このアイテムを上書きしますか?";
@@ -134,9 +113,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "ユーザーやグループを追加して、\n文書の閲覧、レビュー、編集を許可することができます。";
 
 /* No comment provided by engineer. */
-"Additional link State" = "追加リンクの状態";
-
-/* No comment provided by engineer. */
 "Additional links" = "追加リンク";
 
 /* No comment provided by engineer. */
@@ -185,7 +161,7 @@
 "Applying" = "適用";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "アーカイブ";
 
 /* No comment provided by engineer. */
@@ -251,7 +227,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "このファイルをコピーできません。";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "キャンセル";
 
 /* No comment provided by engineer. */
@@ -369,7 +345,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存し、リアルタイムでドキュメントを共同編集します。";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "接続中";
 
 /* No comment provided by engineer. */
@@ -460,9 +436,6 @@
 "Could not open file." = "ファイルを開始できませんでした。";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "ファイルからデータを読み取ることができませんでした。";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "このファイルからデータを読み取ることができませんでした。";
 
 /* Description of file operation error */
@@ -514,7 +487,7 @@
 "Create room" = "ルームの作成";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "作成中";
 
 /* No comment provided by engineer. */
@@ -534,15 +507,6 @@
 
 /* Button title */
 "Delete" = "削除する";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "%lu ファイルを削除する";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "%lu フォルダーを削除する";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "%1$lu ファルダーと %2$lu ファイルを削除する";
 
 /* Button title */
 "Delete File" = "ファイルを削除する";
@@ -602,7 +566,7 @@
 "Documents" = "ドキュメント";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "完了";
 
 /* Button title */
@@ -655,9 +619,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "メールが無効です";
-
-/* No comment provided by engineer. */
-"Empty file." = "空のファイル。";
 
 /* No comment provided by engineer. */
 "Empty name." = "空の名前。";
@@ -720,9 +681,6 @@
 "External link" = "外部リンク";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "オンライン変換サービスのエラーが発生しました。";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "ポータルの可用性を確認できませんでした。";
 
 /* No comment provided by engineer. */
@@ -751,15 +709,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "メールでのフィードバック送信に失敗しました。フォーラムに要望を書き込んでみてください。";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "オンライン変換サービスへのソースファイルのアップロードに失敗しました。";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "ポータルからファイルをダウンロードできませんでした。";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "変換オンラインサービスから結果をダウンロードできませんでした。";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "アーカイブの作成に失敗しました";
@@ -817,12 +766,6 @@
 
 /* No comment provided by engineer. */
 "General" = "標準";
-
-/* No comment provided by engineer. */
-"General link" = "一般リンク";
-
-/* No comment provided by engineer. */
-"General link State" = "一般リンクの状態";
 
 /* No comment provided by engineer. */
 "General links" = "一般リンク";
@@ -957,9 +900,6 @@
 "Loading" = "読み込み中";
 
 /* No comment provided by engineer. */
-"Loading..." = "読み込み中...";
-
-/* No comment provided by engineer. */
 "Location" = "場所";
 
 /* Caption of the process */
@@ -975,7 +915,7 @@
 "Login is empty" = "ログインが空です";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "ログアウト";
 
 /* Button title */
@@ -991,7 +931,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "私";
 
 /* No comment provided by engineer. */
@@ -1097,9 +1037,6 @@
 "No Internet connection" = "インターネット接続がありません";
 
 /* No comment provided by engineer. */
-"No Links State" = "リンク状態なし";
-
-/* No comment provided by engineer. */
 "No network" = "ネットワークがありません";
 
 /* No comment provided by engineer. */
@@ -1117,12 +1054,8 @@
 /* No comment provided by engineer. */
 "No users found" = "該当するユーザーが見つかりません";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "なし";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "なし";
 
 /* No comment provided by engineer. */
@@ -1256,9 +1189,6 @@
 
 /* Button title */
 "Pin to top" = "先頭にピン留め";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "ピン留めに失敗しました。";
 
 /* Caption of the processing */
 "Pinning" = "ピン留め中";
@@ -1444,7 +1374,7 @@
 "Room name" = "ルーム名";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "ルーム";
 
 /* No comment provided by engineer. */
@@ -1463,7 +1393,7 @@
 "Search" = "検索";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "選択";
 
 /* No comment provided by engineer. */
@@ -1812,9 +1742,6 @@
 "Unauthorized users will not have access to the document." = "未承認ユーザーは、ドキュメントへのアクセスができません。";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "サーバーからの予期しない応答を受信しました。";
-
-/* Invalid entity name */
 "Unknown" = "未知";
 
 /* No comment provided by engineer. */

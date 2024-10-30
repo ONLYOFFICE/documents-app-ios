@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AQY-rc-hpo" customClass="ASCConnectStorageCell" customModule="Documents_dev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AQY-rc-hpo" id="NYV-V1-U91">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud-append" translatesAutoresizingMaskIntoConstraints="NO" id="lAm-ME-FgH">
+                        <rect key="frame" x="157" y="22" width="36" height="36"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg1-XU-KZP">
+                        <rect key="frame" x="175" y="40" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <color key="textColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Mg1-XU-KZP" firstAttribute="centerX" secondItem="NYV-V1-U91" secondAttribute="centerX" id="D9F-Ka-Yn1"/>
+                    <constraint firstItem="lAm-ME-FgH" firstAttribute="centerY" secondItem="NYV-V1-U91" secondAttribute="centerY" id="RNb-e3-C9A"/>
+                    <constraint firstItem="Mg1-XU-KZP" firstAttribute="centerY" secondItem="NYV-V1-U91" secondAttribute="centerY" id="S48-eK-4wg"/>
+                    <constraint firstItem="lAm-ME-FgH" firstAttribute="centerX" secondItem="NYV-V1-U91" secondAttribute="centerX" id="oAT-dF-OWZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="captionLabel" destination="Mg1-XU-KZP" id="WwU-ba-V40"/>
+                <outlet property="logoImageView" destination="lAm-ME-FgH" id="GCH-Zp-Axe"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="124"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cloud-append" width="36" height="36"/>
+    </resources>
+</document>

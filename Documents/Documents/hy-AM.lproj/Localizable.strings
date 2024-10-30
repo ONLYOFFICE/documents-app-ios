@@ -1,35 +1,17 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
-
-/* Days left */
-"%d days" = "%d օրեր";
-
-/* Hours left */
-"%d hours" = "%d ժամեր";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d ընտրված";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i -ի %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu ֆայլն ընտրված է";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu Թղթապանակը և %2$lu Ֆայլն ընտրված են";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "Ընտրված է %lu թղթապանակ";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "Նույն անունով %1$lu տարր արդեն գոյություն ունի «%2$@» պանակում: Վերագրե՞լ տարրերը:";
@@ -134,9 +116,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Ավելացրեք օգտվողներ կամ խմբեր և թույլ տվեք նրանց\n կարդալ, վերանայել կամ խմբագրել փաստաթղթերը:";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Լրացուցիչ հղման վիճակ";
-
-/* No comment provided by engineer. */
 "Additional links" = "Լրացուցիչ հղումներ";
 
 /* No comment provided by engineer. */
@@ -185,7 +164,7 @@
 "Applying" = "Դիմում";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Արխիվ";
 
 /* No comment provided by engineer. */
@@ -211,6 +190,9 @@
 
 /* No comment provided by engineer. */
 "Back" = "Հետ";
+
+/* No comment provided by engineer. */
+"Back to room" = "Վերադարձ դեպի սենյակ";
 
 /* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Լինելով այս DocSpace-ի սեփականատերը՝ դուք պետք է սեփականության իրավունքը փոխանցեք մեկ այլ օգտատիրոջ՝ նախքան ձեր հաշիվը ջնջելը: Շարունակելու համար խնդրում ենք ընտրել նոր սեփականատեր:";
@@ -251,7 +233,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Հնարավոր չէ կրկնօրինակել ֆայլը:";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Չեղարկել";
 
 /* No comment provided by engineer. */
@@ -273,10 +255,16 @@
 "Changing access" = "Մուտքի փոփոխություն";
 
 /* No comment provided by engineer. */
+"Check ready form" = "Ստուգել պատրաստի ձևը";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Ստուգեք ձեր ինտերնետային կապը";
 
 /* No comment provided by engineer. */
 "Choose Files" = "Ընտրեք Ֆայլեր";
+
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "Ընտրել Ձևաթղթերի լրացման սենյակ կամ ստեղծել նորը";
 
 /* No comment provided by engineer. */
 "Choose from list" = "Ընտրել ցանկից";
@@ -372,7 +360,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Միացեք ձեր %@ ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի վրա իրական ժամանակում համագործակցելու համար";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Միացում";
 
 /* No comment provided by engineer. */
@@ -454,6 +442,9 @@
 "Could not duplicate the file." = "Հնարավոր չէ կրկնօրինակել ֆայլը:";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "Չհաջողվեց կրկնօրինակել սենյակը";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "Չհաջողվեց արտահանել ֆայլը:";
 
 /* Description of file operation error */
@@ -463,13 +454,13 @@
 "Could not open file." = "Չհաջողվեց բացել ֆայլը:";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Չհաջողվեց կարդալ տվյալները ֆայլից:";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Չհաջողվեց կարդալ ֆայլից տվյալները:";
 
 /* Description of file operation error */
 "Could not read from file" = "Չհաջողվեց կարդալ ֆայլից";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "Չհաջողվեց ուղարկել էլ․փոստին";
 
 /* Description of file operation error */
 "Could not write to file" = "Չհաջողվեց գրել ֆայլին";
@@ -520,7 +511,7 @@
 "Create room" = "Ստեղծել սենյակ";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Ստեղծելով";
 
 /* No comment provided by engineer. */
@@ -540,15 +531,6 @@
 
 /* Button title */
 "Delete" = "Ջնջել";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Ջնջել %lu ֆայլը";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Ջնջել %lu թղթապանակը";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Ջնջել %1$lu թղթապանակը և %2$lu ֆայլը";
 
 /* Button title */
 "Delete File" = "Ջնջել Ֆայլը";
@@ -608,7 +590,7 @@
 "Documents" = "Փաստաթղթեր";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Կատարած";
 
 /* Button title */
@@ -641,6 +623,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Խմբագրել փաստաթղթերը տեղում";
 
+/* No comment provided by engineer. */
+"Edit link" = "Խմբագրել հղումը";
+
 /* Button title */
 "Edit room" = "Խմբագրել սենյակը";
 
@@ -661,9 +646,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Էլփոստը վավեր չէ";
-
-/* No comment provided by engineer. */
-"Empty file." = "Դատարկ ֆայլ։";
 
 /* No comment provided by engineer. */
 "Empty name." = "Դատարկ անուն.";
@@ -716,12 +698,6 @@
 /* Expiration status */
 "Expired" = "Ժամկետանց";
 
-/* Days left */
-"Expires after %d days" = "Սպառվում է %d օր հետո";
-
-/* Hours left */
-"Expires after %d hours" = "Սպառվում է %d ժամ հետո";
-
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Ժամկետը լրանում է 7 օրից";
 
@@ -730,9 +706,6 @@
 
 /* No comment provided by engineer. */
 "External link" = "Արտաքին հղում";
-
-/* No comment provided by engineer. */
-"Failed online conversion service." = "Չհաջողվեց առցանց փոխակերպման ծառայություն:";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Չհաջողվեց ստուգել պորտալի առկայությունը:";
@@ -765,13 +738,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "Չհաջողվեց հետադարձ կապ ուղարկել փոստով: Փորձեք գրել ձեր հարցումը մեր ֆորումում:";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Չհաջողվեց վերբեռնել աղբյուրի ֆայլը փոխակերպման առցանց ծառայություն:";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Չհաջողվեց ներբեռնել ֆայլը պորտալից:";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Չհաջողվեց ներբեռնել արդյունքը փոխակերպման առցանց ծառայությունից:";
+"Failed to submit the form" = "Չհաջողվեց հաստատել ձևը";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Արխիվի պատրաստման ձախողում";
@@ -797,6 +764,18 @@
 /* No comment provided by engineer. */
 "Files Preview" = "Ֆայլերի նախադիտում";
 
+/* Fill form Button title */
+"Fill" = "Լրացնել";
+
+/* Title for fill-in options screen */
+"Fill in as" = "Լրացրել որպես՝";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "Խմբագրի պատուհանում լրացրեք բնօրինակ ձևի դաշտերը:";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "Լրացրեք ձևը ինքներդ";
+
 /* No comment provided by engineer. */
 "Filling form" = "Լրացման ձև";
 
@@ -812,14 +791,35 @@
 /* No comment provided by engineer. */
 "Folders" = "Թղթապանակներ";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "Ձևը հաջողությամբ ավարտվեց";
+
 /* Share status */
 "Form Filler" = "Ձևի լցոնիչ";
+
+/* No comment provided by engineer. */
+"Form Filling" = "Ձևաթղթերի Լրացում";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "Ձևաթղթերի Լրացման սենյակ";
+
+/* No comment provided by engineer. */
+"Form number" = "Ձևի համար";
+
+/* No comment provided by engineer. */
+"Form owner" = "Ձևի սեփականատեր";
 
 /* No comment provided by engineer. */
 "Form templates" = "Ձևի ձևանմուշներ";
 
 /* No comment provided by engineer. */
 "Forms" = "Ձևաթղթեր";
+
+/* No comment provided by engineer. */
+"From device" = "Սարքից";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "DocSpace-ից";
 
 /* Share status */
 "Full Access" = "Ամբողջական մուտք";
@@ -831,16 +831,13 @@
 "General" = "Գեներալ";
 
 /* No comment provided by engineer. */
-"General link" = "Ընդհանուր հղում";
-
-/* No comment provided by engineer. */
-"General link State" = "Ընդհանուր հղման վիճակը";
-
-/* No comment provided by engineer. */
 "General links" = "Ընդհանուր հղումներ";
 
 /* No comment provided by engineer. */
 "Get started" = "ՍԿՍԵԼ!";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "Սկսել արագ գործողություններից";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "ՍԿՍԵԼ!";
@@ -868,6 +865,9 @@
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "Նշաններ";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Եթե %@ փոստով օգտվող կա, ապա այս հասցեին ուղարկվել է գաղտնաբառը փոխելու հրահանգ:";
@@ -957,6 +957,9 @@
 "Link life time" = "Հղման ժամանակը";
 
 /* No comment provided by engineer. */
+"Link name" = "Հղման անվանում";
+
+/* No comment provided by engineer. */
 "Link name %@" = "Հղման անվանումը";
 
 /* Button title */
@@ -965,11 +968,11 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Հղումը հրավերի հետ ուղարկվել էլ․ փոստին";
 
-/* No comment provided by engineer. */
-"Loading" = "Բեռնվում է";
+/* Button title */
+"List" = "Ցուցակ";
 
 /* No comment provided by engineer. */
-"Loading..." = "Բեռնվում է...";
+"Loading" = "Բեռնվում է";
 
 /* No comment provided by engineer. */
 "Location" = "Տեղ";
@@ -987,7 +990,7 @@
 "Login is empty" = "Մուտքը դատարկ է";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Դուրս գալ";
 
 /* Button title */
@@ -1003,7 +1006,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Ես";
 
 /* No comment provided by engineer. */
@@ -1066,8 +1069,17 @@
 /* No comment provided by engineer. */
 "New Folder" = "Նոր թղթապանակ";
 
+/* Suggested a room name when create a new one */
+"New form filling" = "Նոր ձևի լրացում";
+
+/* No comment provided by engineer. */
+"New form filling room" = "Նոր ձևաթղթերի լրացման սենյակ";
+
 /* No comment provided by engineer. */
 "New Presentation" = "Նոր պրեզենտացիա";
+
+/* No comment provided by engineer. */
+"New room" = "Նոր սենյակ";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Նոր աղյուսակ";
@@ -1109,9 +1121,6 @@
 "No Internet connection" = "Ինտերնետ կապ չկա";
 
 /* No comment provided by engineer. */
-"No Links State" = "Հղումների վիճակ չի գտնվել";
-
-/* No comment provided by engineer. */
 "No network" = "Ցանց չկա";
 
 /* No comment provided by engineer. */
@@ -1129,12 +1138,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Ոչ մի օգտվող չի գտնվել";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "Ոչ ոք.";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Ոչ ոք";
 
 /* No comment provided by engineer. */
@@ -1269,9 +1274,6 @@
 /* Button title */
 "Pin to top" = "Ամրացնել վերևում";
 
-/* No comment provided by engineer. */
-"Pinned failed." = "Ամրացումը ձախողվեց։";
-
 /* Caption of the processing */
 "Pinning" = "Ամրացվող";
 
@@ -1349,6 +1351,9 @@
 
 /* No comment provided by engineer. */
 "Public" = "Հանրային";
+
+/* No comment provided by engineer. */
+"Public link" = "Հանրային հղում";
 
 /* No comment provided by engineer. */
 "Public room" = "Հասարակական սենյակ";
@@ -1456,7 +1461,7 @@
 "Room name" = "Սենյակի անվանումը";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Սսենյակներ";
 
 /* No comment provided by engineer. */
@@ -1475,8 +1480,11 @@
 "Search" = "Որոնել";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Ընտրել";
+
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "Ընտրեl PDF ձևը";
 
 /* No comment provided by engineer. */
 "Select all" = "Ընտրել բոլորը";
@@ -1538,8 +1546,14 @@
 /* No comment provided by engineer. */
 "Share" = "Կիսվել";
 
+/* Title for sharing and collecting form */
+"Share & collect" = "Կիսվեl և հավաքեl";
+
 /* No comment provided by engineer. */
 "Share folder" = "Համաօգտագործել թղթապանակը";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "Կիսվեք ձեր ձևով և հավաքեք պատասխանները Ձևաթղթերի լրացման սենյակի միջոցով:";
 
 /* No comment provided by engineer. */
 "Shared access" = "Համօգտագործվող մուտք";
@@ -1656,6 +1670,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Ֆայլն անդառնալիորեն կջնջվի: Այս գործողությունն անշրջելի է։";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "Լրացված PDF ձևը պահպանված է և հասանելի է ձեզ Ամբողջական թղթապանակում:\nԿարգավիճակը ստուգելու համար՝ կապվեք ձևատիրոջ հետ՝ տրամադրելով հանձնարարված համարը:";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Աղբարկղում գտնվող թղթապանակը հնարավոր չէ բացել:";
 
 /* No comment provided by engineer. */
@@ -1743,6 +1760,12 @@
 "This presentation is being edited. Do you want open %@ to view only?" = "Այս ներկայացումը խմբագրվում է: Ցանկանու՞մ եք բացել %@-ը միայն դիտելու համար:";
 
 /* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "Այս սենյակը հասանելի է բոլորին, ովքեր ունեն հղումը:\nԱրտաքին օգտվողները կունենան Ձևաթղթերի լրացման թույլտվություն բոլոր ֆայլերի համար:";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "Այս սենյակը հասանելի է բոլորին, ովքեր ունեն հղումը:\nԱրտաքին օգտվողները կունենան Միայն դիտման թույլտվություն բոլոր ֆայլերի համար:";
+
+/* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Այս աղյուսակը խմբագրվում է: Ցանկանու՞մ եք բացել %@-ը միայն դիտելու համար:";
 
 /* No comment provided by engineer. */
@@ -1827,9 +1850,6 @@
 "Unauthorized users will not have access to the document." = "Չլիազորված օգտատերերին մուտք չի լինի փաստաթուղթը:";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Անսպասելի արձագանք ծառայության կողմից.";
-
-/* Invalid entity name */
 "Unknown" = "Անհայտ";
 
 /* No comment provided by engineer. */
@@ -1861,6 +1881,18 @@
 
 /* Caption of the processing */
 "Unpning" = "Ապամրացում";
+
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "Վերբեռնել պատրաստ PDF ձևը";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "Վերբեռնել PDF ձևը սարքից";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "Վերբեռնեք PDF ձևը DocSpace-ից";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Վերբեռնել PDF ձևերի սենյակը: Հրավիրեք օգտատրերերին լրացնել PDF ձևը: Վերանայել լրացված ձևերը և վերլուծել աղյուսակում ավտոմատ հավաքագրված տվյալները:";
 
 /* Caption of the process */
 "Uploading" = "Վերբեռնում";
@@ -1926,6 +1958,9 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Բարի գալուստ %@ բջջային խմբագրման փաթեթ:\nՀավելվածի մասին ավելին իմանալու համար սահեցրեք:";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "Բարի գալուստ Ձևաթղթերի լրացման սենյակ";
+
+/* No comment provided by engineer. */
 "What's New" = "Ինչ նորություն կա";
 
 /* Introduction Step Four - Description */
@@ -1965,6 +2000,9 @@
 "You can connect the following accounts to the DocSpace rooms" = "Դուք կարող եք միացնել հետևյալ հաշիվները DocSpace սենյակներին";
 
 /* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Դուք չեք կարող 10-ից ավելի սենյակ ամրացնել վերևում: Ապամրացրեք որոշները, որոնք ներկայումս ամրացված են:";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Դուք դուրս եք եկել սենյակից";
 
 /* No comment provided by engineer. */
@@ -1975,6 +2013,9 @@
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Ձեր ընթացիկ սակագնային Բիզնես պլանի ժամկետը լրացել է: Խնդրում ենք թարմացնել ձեր բաժանորդագրությունը հաշվի կարգավորումներում, որպեսզի կարողանաք օգտագործել ձեր DocSpace-ը: Եթե ունեք հարցեր, խնդրում ենք դիմել աջակցության ծառայությունը:";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "Ձեր սարքը չկարողացավ ուղարկել էլ.փոստը: Խնդրում ենք ստուգել էլ․փոստի կոնֆիգուրացիան և նորից փորձել:";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Ձեր նստաշրջանի ժամկետն ավարտվել է";

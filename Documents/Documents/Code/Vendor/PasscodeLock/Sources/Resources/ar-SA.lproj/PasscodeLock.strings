@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "أدخل رمز المرور القديم الخاص بك.";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "أدخل رمز المرور القديم";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "أدخل رمز المرور مرة أخرى.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "تأكيد رمز المرور";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "أدخل رمز المرور للمتابعة.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "أدخل رمز المرور";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "أدخل رمز المرور";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "رموز المرور لا تتطابق.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "حاول مرة أخرى";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "اختر رمز المرور.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "أدخل رمز المرور";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "أدخل رمز المرور";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "المصادقة مطلوبة لمتابعة الإجراء";
+

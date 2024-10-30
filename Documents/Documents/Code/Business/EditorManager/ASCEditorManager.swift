@@ -54,6 +54,7 @@ typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @es
 typealias ASCEditorManagerRenameHandler = (_ file: ASCFile?, _ title: String, _ complation: @escaping (Bool) -> Void) -> Void
 typealias ASCEditorManagerShareHandler = (_ file: ASCFile?) -> Void
 typealias ASCEditorManagerLockedHandler = () -> Void
+typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ fillingSessionId: String?, _ complation: @escaping (Bool) -> Void) -> Void
 
 class ASCEditorManager: NSObject {
     public static let shared = ASCEditorManager()
@@ -67,14 +68,15 @@ class ASCEditorManager: NSObject {
     private var favoriteHandler: ASCEditorManagerFavoriteHandler?
     private var shareHandler: ASCEditorManagerShareHandler?
     private var renameHandler: ASCEditorManagerRenameHandler?
+    private var fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler?
     private var documentInteractionController: UIDocumentInteractionController?
     var documentServiceURL: String?
     private var documentKeyForTrack: String?
     private var documentURLForTrack: String?
     private var documentToken: String?
     private var documentCommonConfig: String?
+    private var documentFillingSessionId: String?
     private var editorWindow: UIWindow?
-    private let converterKey = ASCConstants.Keys.converterKey
     private let trackingReadyForLocking = 10000
     private var timer: Timer?
     private var trackingFileStatus: Int = 0
@@ -179,7 +181,7 @@ class ASCEditorManager: NSObject {
                     self.documentKeyForTrack = config.document?.key
                     self.documentURLForTrack = config.document?.url
                     self.documentToken = config.token
-
+                    self.documentFillingSessionId = config.fillingSessionId
                     if !(config.document?.key?.isEmpty ?? true), !(config.document?.url?.isEmpty ?? true) {
                         continuation.resume(returning: .success(config))
                         return
@@ -205,6 +207,7 @@ class ASCEditorManager: NSObject {
                 self.documentKeyForTrack = config.document?.key
                 self.documentURLForTrack = config.document?.url
                 self.documentToken = config.token
+                self.documentFillingSessionId = config.fillingSessionId
 
                 if !(config.document?.key?.isEmpty ?? true), !(config.document?.url?.isEmpty ?? true) {
                     return complation(.success(config))
@@ -494,7 +497,8 @@ class ASCEditorManager: NSObject {
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
         shareHandler: ASCEditorManagerShareHandler? = nil,
-        renameHandler: ASCEditorManagerRenameHandler? = nil
+        renameHandler: ASCEditorManagerRenameHandler? = nil,
+        fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler? = nil
     ) {
         var cancel = false
 
@@ -502,6 +506,7 @@ class ASCEditorManager: NSObject {
         self.favoriteHandler = nil
         self.shareHandler = nil
         self.renameHandler = nil
+        self.fillFormDidSendHandler = nil
 
         let fetchAndOpen = { [weak self] in
             guard let self else { return }
@@ -523,6 +528,7 @@ class ASCEditorManager: NSObject {
                     self.favoriteHandler = favoriteHandler
                     self.shareHandler = shareHandler
                     self.renameHandler = renameHandler
+                    self.fillFormDidSendHandler = fillFormDidSendHandler
 
                     self.openEditorInCollaboration(
                         file: file,
@@ -563,6 +569,7 @@ class ASCEditorManager: NSObject {
 
     func browsePdfLocal(
         _ pdf: ASCFile,
+        openMode: ASCDocumentOpenMode = .fillform,
         openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         renameHandler: ASCEditorManagerRenameHandler? = nil
@@ -576,7 +583,12 @@ class ASCEditorManager: NSObject {
 
         if pdf.device {
             if isDocumentOformPdf {
-                editLocal(pdf, closeHandler: closeHandler, renameHandler: renameHandler)
+                editLocal(
+                    pdf,
+                    openMode: openMode,
+                    closeHandler: closeHandler,
+                    renameHandler: renameHandler
+                )
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                     ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
@@ -595,6 +607,7 @@ class ASCEditorManager: NSObject {
     func browsePdfCloud(
         for provider: ASCFileProviderProtocol,
         _ pdf: ASCFile,
+        openMode: ASCDocumentOpenMode? = .view,
         openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         renameHandler: ASCEditorManagerRenameHandler? = nil
@@ -615,7 +628,7 @@ class ASCEditorManager: NSObject {
 
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-                        provider.open(file: pdf, openMode: .edit, canEdit: true)
+                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: true)
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
@@ -625,7 +638,7 @@ class ASCEditorManager: NSObject {
                             return
                         }
 
-                        if error != nil {
+                        if let error {
                             openHandler?(.error, Float(progress), error, &cancel)
                         } else if result != nil {
                             let localPdf = ASCFile()
@@ -851,6 +864,8 @@ class ASCEditorManager: NSObject {
     }
 
     func checkSDKVersion() -> Bool {
+        if ASCAppSettings.Feature.disableSdkVersionCheck { return true }
+
         if let version = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String {
             let webSDK = version.components(separatedBy: ".")
             let localSDK = localSDKVersion()
@@ -945,7 +960,8 @@ extension ASCEditorManager {
             document:
             OnlyofficeDocument(
                 permissions: OnlyofficeDocumentPermissions(
-                    edit: canEdit && UIDevice.allowEditor
+                    edit: canEdit && UIDevice.allowEditor,
+                    fillForms: openMode == .fillform
                 ),
                 fileType: fileExt
             )
@@ -1427,6 +1443,23 @@ extension ASCEditorManager {
             complation(.failure(
                 ASCEditorManagerError(
                     msg: NSLocalizedString("Couldn't rename the file", comment: "")
+                )
+            ))
+        }
+    }
+
+    func editorFillFormDidSend(_ controller: EditorViewControllerProtocol, complation: @escaping ((Result<Bool, any Error>) -> Void)) {
+        if
+            let file = openedFile ?? openedlocallyFile,
+            let fillFormDidSendHandler
+        {
+            fillFormDidSendHandler(file, documentFillingSessionId) { success in
+                complation(.success(true))
+            }
+        } else {
+            complation(.failure(
+                ASCEditorManagerError(
+                    msg: NSLocalizedString("Failed to submit the form", comment: "")
                 )
             ))
         }

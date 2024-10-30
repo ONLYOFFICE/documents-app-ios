@@ -30,8 +30,8 @@ final class SharedSettingsViewModel: ObservableObject {
     init(file: ASCFile) {
         self.file = file
         isShared = file.shared
-        loadLinks()
         buildViewModel()
+        loadLinks()
     }
 
     func createAndCopySharedLink() {
@@ -42,6 +42,7 @@ final class SharedSettingsViewModel: ObservableObject {
                 self.flowModel.links = [link]
                 DispatchQueue.main.async {
                     self.isShared = true
+                    self.file.shared = true
                     self.buildViewModel()
                 }
                 let hud = MBProgressHUD.showTopMost()

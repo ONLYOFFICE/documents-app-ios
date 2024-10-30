@@ -1,26 +1,11 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d ක් තෝරා ඇත";
-
 /* Presentation Viewer */
 "%i of %i" = "%2$i න් %1$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "ගොනු %lu ක් තෝරා ඇත";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "බහාලුම් %1$lu ක් හා ගොනු %2$lu ක් තෝරා ඇත";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "බහාලුම් %lu ක් තෝරා ඇත";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "සමාන නමක් සහිත අථක %1$lu ක් දැනටමත් '%2$@' බහාලුමේ පවතී. උඩින් ලියන්නද?";
@@ -119,9 +104,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "පරිශ්‍රීලකයින් හෝ සමූහ එක් කර ලේඛන කියවීමට, \n සමාලෝචනයට හෝ සංස්කරණයට ඉඩ දෙන්න.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "අතිරේක සබැඳි තත්‍වය";
-
-/* No comment provided by engineer. */
 "Additional links" = "අතිරේක සබැඳි";
 
 /* No comment provided by engineer. */
@@ -164,7 +146,7 @@
 "Applying" = "යෙදෙමින්";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "සංරක්‍ෂණය";
 
 /* No comment provided by engineer. */
@@ -227,7 +209,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "ගොනුවෙහි අනුපිටපත් සෑදීමට නොහැකිය.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "අවලංගු";
 
 /* No comment provided by engineer. */
@@ -339,7 +321,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "ගොනු මාර්ගගතව ගබඩා කිරීමට සහ තථ්‍ය කාලීනව සහයෝගයෙන් ලේඛන කටයුතු \nසිදු කිරීමට ඔබගේ %@ මේඝයට සම්බන්ධ වන්න";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "සම්බන්ධ වෙමින්";
 
 /* No comment provided by engineer. */
@@ -424,9 +406,6 @@
 "Could not open file." = "ගොනුව ඇරීමට නොහැකි විය.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "ගොනුවෙන් දත්ත කියවීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "ගොනුවෙන් දත්ත කියවීමට නොහැකි විය.";
 
 /* Description of file operation error */
@@ -469,7 +448,7 @@
 "Create room" = "කාමරය සාදන්න";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "සෑදෙමින්";
 
 /* No comment provided by engineer. */
@@ -489,15 +468,6 @@
 
 /* Button title */
 "Delete" = "මකන්න";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "ගොනු %lu ක් මකන්න";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "බහාලුම් %lu ක් මකන්න";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "බහාලුම් %1$lu ක් හා ගොනු %2$lu ක් මකන්න";
 
 /* Button title */
 "Delete File" = "ගොනුව මකන්න";
@@ -554,7 +524,7 @@
 "Documents" = "ලේඛන";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "අහවරයි";
 
 /* Button title */
@@ -601,9 +571,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "වි-තැපෑල වලංගු නොවේ";
-
-/* No comment provided by engineer. */
-"Empty file." = "හිස් ගොනුවකි.";
 
 /* No comment provided by engineer. */
 "Empty name." = "හිස් නමකි.";
@@ -657,9 +624,6 @@
 "Export" = "නිර්යාතය";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "මාර්ගගත අනුවර්තන සේවාව අසාර්ථක විය.";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "ද්වාරය තිබේදැයි පරීක්‍ෂා කිරීමට අසමත් විය.";
 
 /* No comment provided by engineer. */
@@ -688,15 +652,6 @@
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "තැපෑලෙන් ප්‍රතිපෝෂණ යැවීමට අසමත් විය. ඔබගේ ඉල්ලීම අපගේ සංසදයේ ලිවීමට උත්සාහ කරන්න.";
-
-/* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "මූලාශ්‍ර ගොනුව මාර්ගගත අනුවර්තන සේවාවට උඩුගත කිරීමට අසමත් විය.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "ද්වාරයෙන් ගොනුව බාගැනීමට අසමත් විය.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "මාර්ගගත අනුවර්තන සේවාවෙන් ප්‍රතිඵල බාගැනීමට අසමත් විය.";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "සංරක්‍ෂිතය සූදානම් කිරීමට අසමත් විය";
@@ -751,12 +706,6 @@
 
 /* No comment provided by engineer. */
 "General" = "සාමාන්‍ය";
-
-/* No comment provided by engineer. */
-"General link" = "සාමාන්‍ය සබැඳිය";
-
-/* No comment provided by engineer. */
-"General link State" = "සාමාන්‍ය සබැඳියේ තත්‍වය";
 
 /* No comment provided by engineer. */
 "General links" = "සාමාන්‍ය සබැඳි";
@@ -881,9 +830,6 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "ආරාධනය සමඟ සබැඳිය තැපෑලට යවා ඇත";
 
-/* No comment provided by engineer. */
-"Loading..." = "පූරණය වෙමින්...";
-
 /* Caption of the process */
 "Logging in" = "පිවිසීමට";
 
@@ -897,7 +843,7 @@
 "Login is empty" = "පිවිසීම හිස්ය";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "නික්මෙන්න";
 
 /* Button title */
@@ -913,7 +859,7 @@
 "Mb" = "මෙ.බ.";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "මට";
 
 /* No comment provided by engineer. */
@@ -1004,9 +950,6 @@
 "No Internet connection" = "අන්තර්ජාල සම්බන්ධතාවයක් නැත";
 
 /* No comment provided by engineer. */
-"No Links State" = "සබැඳි නැත";
-
-/* No comment provided by engineer. */
 "No network" = "ජාලයක් නැත";
 
 /* No comment provided by engineer. */
@@ -1024,12 +967,8 @@
 /* No comment provided by engineer. */
 "No users found" = "කිසිවෙක් හමු නොවිණි";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "කිසිත් නැත";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "කිසිත් නැත";
 
 /* No comment provided by engineer. */
@@ -1151,9 +1090,6 @@
 
 /* Button title */
 "Pin to top" = "මුදුනට අමුණන්න";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "ඇමිණීමට අසමත් විය.";
 
 /* Caption of the processing */
 "Pinning" = "අමුණමින්";
@@ -1303,7 +1239,7 @@
 "Room name" = "කාමරයේ නම";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "කාමර";
 
 /* No comment provided by engineer. */
@@ -1319,7 +1255,7 @@
 "Search" = "සොයන්න";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "තෝරන්න";
 
 /* No comment provided by engineer. */
@@ -1641,9 +1577,6 @@
 "Unauthorized users will not have access to the document." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය වෙත ප්‍රවේශය නොලැබේ.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "සේවාවෙන් අනපේක්‍ෂිත ප්‍රතිචාරයකි.";
-
-/* Invalid entity name */
 "Unknown" = "නොදන්නා";
 
 /* No comment provided by engineer. */

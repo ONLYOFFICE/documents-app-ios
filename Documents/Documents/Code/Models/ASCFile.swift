@@ -15,6 +15,7 @@ class ASCFile: ASCEntity {
     var pureContentLength: Int = 0
     var fileStatus: ASCFileStatus = .none
     var viewUrl: String?
+    var isForm: Bool = false
     var title: String = ""
     var access: ASCEntityAccess = .none
     var shared: Bool = false
@@ -28,6 +29,7 @@ class ASCFile: ASCEntity {
     var security: ASCFileSecurity = .init()
     var denyDownload: Bool = false
     var editable: Bool = false
+    var canShare: Bool = false
 
     override init() {
         super.init()
@@ -90,6 +92,7 @@ class ASCFile: ASCEntity {
         pureContentLength <- map["pureContentLength"]
         fileStatus <- map["fileStatus"]
         viewUrl <- map["viewUrl"]
+        isForm <- map["isForm"]
         title <- (map["title"], ASCStringTransform())
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
@@ -101,6 +104,7 @@ class ASCFile: ASCEntity {
         device <- map["device"]
         denyDownload <- map["denyDownload"]
         security <- map["security"]
+        canShare <- map["canShare"]
 
         // Internal
         device <- map["device"]

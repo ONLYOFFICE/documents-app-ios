@@ -9,6 +9,7 @@
 import Alamofire
 import FileKit
 import Firebase
+import MBProgressHUD
 import UIKit
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
@@ -73,7 +74,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var contentTypes: [ASCFiletProviderContentType] {
         let defaultTypes: [ASCFiletProviderContentType] = [.files, .folders, .documents, .spreadsheets, .presentations, .images]
         if let folder = folder, isRoot(folder: folder), ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: folder.rootFolderType) {
-            return [.public, .custom, .collaboration]
+            return [.public, .custom, .collaboration, .fillingForms]
         }
         return isRecentCategory ? defaultTypes.filter { $0 != .folders } : defaultTypes
     }
@@ -309,13 +310,25 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
-            guard let strongSelf = self else { return }
+            guard let self else { return }
+
+            let page = (parameters["page"] as? Int) ?? self.page + 1
+            let startIndex = (parameters["startIndex"] as? Int) ?? self.page * self.pageSize
+            let count = (parameters["count"] as? Int) ?? self.pageSize
+            let total = (parameters["total"] as? Int) ?? self.total
+
+            if total < startIndex {
+                self.total = self.items.count
+                completeon?(self, self.folder, false, ASCProviderError(msg: NSLocalizedString("Invalid server data.", comment: "")))
+                return
+            }
 
             var params: [String: Any] = [
-                "page": (parameters["page"] as? Int) ?? strongSelf.page + 1,
-                "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
-                "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
+                "page": page,
+                "startIndex": startIndex,
+                "count": count,
             ]
+
             if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
                let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
             {
@@ -330,7 +343,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Sort
-            strongSelf.fetchInfo = parameters
+            self.fetchInfo = parameters
 
             if let sort = parameters["sort"] as? [String: Any] {
                 if let sortBy = sort["type"] as? String, sortBy.length > 0 {
@@ -356,29 +369,26 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return OnlyofficeAPI.Endpoints.Folders.roomsPath()
             }()
 
-            strongSelf.apiClient.request(endpoint, params) { [weak self] response, error in
-                guard let strongSelf = self else {
-                    completeon?(strongSelf, folder, false, error)
-                    return
-                }
+            self.apiClient.request(endpoint, params) { [weak self] response, error in
+                guard let self else { return }
 
                 var currentFolder = folder
 
                 if let path = response?.result {
-                    strongSelf.total = path.total
+                    self.total = path.total
 
                     if let current = path.current {
                         currentFolder = current
                     }
 
-                    if strongSelf.page == 0 {
-                        strongSelf.items.removeAll()
+                    if self.page == 0 {
+                        self.items.removeAll()
                     }
 
                     let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
                         if let folder = entitie as? ASCFolder {
                             folder.parent = currentFolder
-                            strongSelf.allowLeave(folder: folder) { isAllowed in
+                            self.allowLeave(folder: folder) { isAllowed in
                                 if isAllowed {
                                     folder.isCanLeaveRoom = true
                                 }
@@ -391,11 +401,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         return entitie
                     }
 
-                    strongSelf.items += entities
+                    self.items += entities
 
-                    completeon?(strongSelf, currentFolder, true, nil)
+                    completeon?(self, currentFolder, true, nil)
                 } else {
-                    completeon?(strongSelf, currentFolder, false, error)
+                    completeon?(self, currentFolder, false, error)
                 }
             }
         }
@@ -407,8 +417,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if success {
                     fetch(completeon)
                 } else {
-                    guard let strongSelf = self else { return }
-                    completeon?(strongSelf, folder, false, error)
+                    guard let self else { return }
+                    completeon?(self, folder, false, error)
                 }
             }
         }
@@ -473,6 +483,74 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
                 }
             }
+        }
+    }
+
+    func fillFormDidSubmit(_ entity: ASCEntity, fillingSessionId: String, completeon: ASCProviderCompletionHandler?) {
+        guard let file = entity as? ASCFile else {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+            return
+        }
+
+        completeon?(self, file, true, nil)
+
+        let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
+            guard let topVC = UIApplication.topViewController() else { return }
+            MBProgressHUD.hide(for: topVC.view, animated: true)
+
+            if let error = error {
+                topVC.showAlert(
+                    title: NSLocalizedString("Error", comment: ""),
+                    message: error.localizedDescription
+                )
+                return
+            }
+
+            guard let responce = result?.result else {
+                return
+            }
+
+            let checkRedyFormHandler = { [weak self] in
+                guard let self else { return }
+
+                let doneFolder = items
+                    .compactMap { $0 as? ASCFolder }
+                    .first(where: { $0.type == .fillFormDone })
+
+                guard let doneFolder,
+                      let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
+                      let topController = topMostViewController as? ASCDocumentsViewController
+                else {
+                    return
+                }
+                let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+                topController.navigationController?.pushViewController(documentsVC, animated: true)
+
+                documentsVC.provider = self.copy()
+                documentsVC.provider?.cancel()
+                documentsVC.provider?.reset()
+                documentsVC.folder = doneFolder
+                documentsVC.title = doneFolder.title
+            }
+
+            let vc = CreateFormCompletedRootViewController(
+                formModel: FormModel(
+                    form: file,
+                    authorName: responce.manager?.displayName ?? "",
+                    authorEmail: responce.manager?.email ?? "",
+                    formNumber: responce.formNumber,
+                    authorAvatar: responce.manager?.avatar ?? ""
+                ),
+                onCheckReadyForm: checkRedyFormHandler
+            )
+
+            topVC.present(vc, animated: true)
+        }
+
+        if let topVC = UIApplication.topViewController() {
+            MBProgressHUD.showAdded(to: topVC.view, animated: true)
         }
     }
 
@@ -868,7 +946,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         if let error = error {
                             handler?(.error, 1, nil, error, &cancel)
                         } else if let operation = result?.result?.first, let progress = operation.progress {
-                            if progress >= 100 {
+                            if let error = operation.error, !error.isEmpty {
+                                handler?(.error, 1, nil, StringError(error), &cancel)
+                            } else if progress >= 100 {
                                 handler?(.end, 1, nil, nil, &cancel)
                             } else {
                                 Thread.sleep(forTimeInterval: 1)
@@ -1185,6 +1265,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if let file, !file.canShare {
+            return false
+        }
+
         return true
     }
 
@@ -1224,7 +1308,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let file = file, apiClient.active {
+        if let file, apiClient.active {
             let fileExtension = file.title.fileExtension().lowercased()
             let canRead = allowRead(entity: file)
             let canEdit = allowEdit(entity: file)
@@ -1235,6 +1319,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDownload = !file.denyDownload
             let canRename = allowRename(entity: file)
             let isUserCategory = file.rootFolderType == .onlyofficeUser
+            let isRoomsCategory = file.rootFolderType == .onlyofficeRoomShared
             let isTrash = file.rootFolderType == .onlyofficeTrash
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
@@ -1281,6 +1366,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
+            if file.isForm, isDocspace, isUserCategory || file.parent?.roomType == .fillingForm {
+                entityActions.insert(.fillForm)
+            }
+
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
@@ -1289,7 +1378,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.download)
             }
 
-            if canEdit, isDocspace, isUserCategory {
+            if canCopy, isDocspace, isUserCategory {
                 entityActions.insert(.transformToRoom)
             }
 
@@ -1307,6 +1396,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if isUserCategory, isDocspace, canShare {
                 entityActions.insert(.docspaceShare)
+                entityActions.insert(.copySharedLink)
+            }
+
+            if isRoomsCategory, isDocspace, file.security.copyLink {
                 entityActions.insert(.copySharedLink)
             }
         }
@@ -1330,6 +1423,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isUserCategory = folder.rootFolderType == .onlyofficeUser
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
+            let isRoomsCategory = folder.rootFolderType == .onlyofficeRoomShared
+            let canDuplicateRoom = folder.isRoom
+                && !folder.isThirdParty
+                && !isArchiveCategory
+                && canCopy
 
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]
@@ -1388,6 +1486,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.shareAsRoom)
             }
 
+            if isDocspace, canDuplicateRoom {
+                entityActions.insert(.duplicate)
+            }
+
+            if isDocspace, isRoomsCategory {
+                entityActions.insert(.link)
+            }
+
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
@@ -1430,7 +1536,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Pinned failed.", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.", comment: "")))
             }
         }
     }
@@ -1822,6 +1928,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         }
+        let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, fillingSessionId, complation in
+            guard let file, let fillingSessionId else { complation(false); return }
+
+            self.fillFormDidSubmit(file, fillingSessionId: fillingSessionId) { provider, result, success, error in
+                complation(success)
+            }
+        }
 
         if ASCEditorManager.shared.checkSDKVersion() {
             ASCEditorManager.shared.editCloud(
@@ -1832,7 +1945,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 closeHandler: closeHandler,
                 favoriteHandler: favoriteHandler,
                 shareHandler: shareHandler,
-                renameHandler: renameHandler
+                renameHandler: renameHandler,
+                fillFormDidSendHandler: fillFormDidSendHandler
             )
         } else {
             ASCEditorManager.shared.editFileLocally(
@@ -1886,7 +2000,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
+    func preview(file: ASCFile, openMode: ASCDocumentOpenMode = .view, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let isPdf = fileExt == ASCConstants.FileExtensions.pdf
@@ -1897,9 +2011,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ASCConstants.FileExtensions.spreadsheets.contains(fileExt) ||
             ASCConstants.FileExtensions.presentations.contains(fileExt)
 
-        let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-        let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+        lazy var openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+        lazy var openPdfHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+        lazy var closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        lazy var renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
             guard let file else { complation(false); return }
 
             self.rename(file, to: title) { provider, result, success, error in
@@ -1912,7 +2027,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler, renameHandler: renameHandler)
+            ASCEditorManager.shared.browsePdfCloud(
+                for: self,
+                file,
+                openMode: openMode,
+                openHandler: openPdfHandler,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
+            )
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else if isAllowConvert {
@@ -1946,7 +2068,20 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 }
 
 extension ASCOnlyofficeProvider {
-    func generalLink(for room: ASCFolder) async -> Result<String, Error> {
+    func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {
+        if folder.isRoom {
+            let result = await generalLink(forRoom: folder)
+            return result
+        }
+
+        if folder.isRoomListSubfolder, let link = generalLink(forRoomSubfolder: folder) {
+            return .success(link)
+        }
+
+        return .failure(NetworkingError.invalidUrl)
+    }
+
+    private func generalLink(forRoom room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
             guard room.roomType != .colobaration else {
                 if let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
@@ -1983,6 +2118,15 @@ extension ASCOnlyofficeProvider {
             }
         }
     }
+
+    private func generalLink(forRoomSubfolder folder: ASCFolder) -> String? {
+        guard folder.isRoomListSubfolder,
+              let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
+        else { return nil }
+        let path = "%@/rooms/shared/%@/filter?folder=%@"
+        let urlStr = String(format: path, baseUrl, folder.id, folder.id)
+        return urlStr
+    }
 }
 
 private extension ASCOnlyofficeProvider {
@@ -2013,5 +2157,17 @@ extension ASCOnlyofficeProvider {
 
     static var isDocspaceApi: Bool {
         ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
+    }
+}
+
+struct StringError: LocalizedError {
+    let message: String
+
+    init(_ message: String) {
+        self.message = message
+    }
+
+    var errorDescription: String? {
+        return message
     }
 }

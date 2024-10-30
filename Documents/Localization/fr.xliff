@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,214 +184,214 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>%d day</source>
         <target>%d day</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>%d days</source>
         <target>%d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>%d hour</source>
         <target>%d hour</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>%d hours</source>
         <target>%d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d séléctionné</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d séléctionné</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@fichiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
         <source>%lu File selected</source>
         <target>%lu fichier séléctionné</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
         <target>%lu fichiers séléctionnés</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_dossiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File selected</source>
         <target>et %lu fichier séléctionné</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
         <target>et %lu fichiers séléctionnés</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder %2$#@lu_files@</source>
         <target>%lu dossier %2$#@lu_fichiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
         <target>%lu dossiers %2$#@lu_fichiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%2$#@lu_files@</source>
         <target>%2$#@lu_fichiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@dossiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder selected</source>
         <target>%lu dossier séléctionné</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
         <target>%lu dossiers séléctionnés</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@fichiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu File</source>
         <target>Supprimer %lu fichier</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
         <target>Supprimer %lu fichiers</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_dossiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File</source>
         <target>et %lu fichier</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files</source>
         <target>et %lu fichiers</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
         <target/>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder %2$#@lu_files@</source>
         <target>Supprimer %lu dossier %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
         <target>Supprimer %lu dossiers %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
         <target>Supprimer %2$#@lu_fichiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@dossiers@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder</source>
         <target>Supprimer %lu dossier</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>Supprimer %lu dossiers</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d day</source>
         <target>Expires after %d day</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
         <target>Expires after %d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d hour</source>
         <target>Expires after %d hour</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
         <target>Expires after %d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -642,7 +642,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -789,7 +789,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -870,7 +870,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -897,7 +897,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -934,7 +934,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -991,7 +991,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1063,7 +1063,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1145,7 +1145,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1202,48 +1202,47 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="%@ | %@" xml:space="preserve">
         <source>%1$@ | %2$@</source>
         <target>%1$@ | %2$@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="%d days" xml:space="preserve">
+      <trans-unit id="%d days" translate="no" xml:space="preserve">
         <source>%d days</source>
-        <target>%d jours</target>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d hours" xml:space="preserve">
+      <trans-unit id="%d hours" translate="no" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d heures</target>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d selected" xml:space="preserve">
+      <trans-unit id="%d selected" translate="no" xml:space="preserve">
         <source>%d selected</source>
-        <target>%d sélectionné</target>
-        <note>Count of seclected rows: count + selected</note>
+        <note>Count of seclected rows: count + selected (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%1$i de %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
-      <trans-unit id="%lu File selected" xml:space="preserve">
+      <trans-unit id="%lu File selected" translate="no" xml:space="preserve">
         <source>%lu File selected</source>
-        <target>%lu Fichier sélectionné</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
+      <trans-unit id="%lu Folder and %lu File selected" translate="no" xml:space="preserve">
         <source>%1$lu Folder and %2$lu File selected</source>
-        <target>%1$lu Dossier et %2$lu Fichier sélectionnés</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder selected" xml:space="preserve">
+      <trans-unit id="%lu Folder selected" translate="no" xml:space="preserve">
         <source>%lu Folder selected</source>
-        <target>%lu Dossier sélectionné</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
@@ -1273,11 +1272,6 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="12 hours" xml:space="preserve">
         <source>12 hours</source>
         <target>12 heures</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
-        <source>: "%@"</source>
-        <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
@@ -1427,11 +1421,6 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
  le droit d'accès à la lecture, révision ou modification des documents.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Additional link State" xml:space="preserve">
-        <source>Additional link State</source>
-        <target>Lien supplémentaire État</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target>Liens supplémentaires</target>
@@ -1516,7 +1505,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <source>Archive</source>
         <target>Archive</target>
         <note>Button title
-   Category title</note>
+Category title</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
@@ -1556,6 +1545,11 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="Back" xml:space="preserve">
         <source>Back</source>
         <target>Retour</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Back to room" xml:space="preserve">
+        <source>Back to room</source>
+        <target>Retour à la salle</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1621,7 +1615,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target>Annuler</target>
-        <note>No comment provided by engineer.</note>
+        <note>Cancel button</note>
       </trans-unit>
       <trans-unit id="Cancel invitation?" xml:space="preserve">
         <source>Cancel invitation?</source>
@@ -1653,6 +1647,11 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Changement d'accès</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Check ready form" xml:space="preserve">
+        <source>Check ready form</source>
+        <target>Vérifier le formulaire prêt</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
         <target>Vérifiez votre connexion internet</target>
@@ -1662,6 +1661,11 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <source>Choose Files</source>
         <target>Choisir des fichiers</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
+        <source>Choose Form filling room or create new</source>
+        <target>Sélectionnez Salle de remplissage de formulaires ou créez-en une nouvelle</target>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
         <source>Choose from list</source>
@@ -1786,7 +1790,7 @@ d'autres via le protocole WebDAV.</target>
         <source>Connecting</source>
         <target>Connexion</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1837,6 +1841,11 @@ d'autres via le protocole WebDAV.</target>
         <source>Copying</source>
         <target>Copie en cours</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Could Not Send Email" xml:space="preserve">
+        <source>Could Not Send Email</source>
+        <target>Impossible d'envoyer un e-mail</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
         <source>Could not change file attributes</source>
@@ -1918,6 +1927,11 @@ d'autres via le protocole WebDAV.</target>
         <target>Impossible de dupliquer le fichier.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not duplicate the room." xml:space="preserve">
+        <source>Could not duplicate the room.</source>
+        <target>Impossible de dupliquer la salle.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>Impossible d’exporter le fichier.</target>
@@ -1931,11 +1945,6 @@ d'autres via le protocole WebDAV.</target>
       <trans-unit id="Could not open file." xml:space="preserve">
         <source>Could not open file.</source>
         <target>Impossible d’ouvrir le fichier.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Could not read data from file." xml:space="preserve">
-        <source>Could not read data from file.</source>
-        <target>Impossible de lire les données à partir du fichier.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read data from the file." xml:space="preserve">
@@ -2033,7 +2042,7 @@ organize your files.</source>
         <source>Creating</source>
         <target>Création</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -2065,20 +2074,17 @@ organize your files.</source>
         <target>Supprimer</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Delete %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu File" translate="no" xml:space="preserve">
         <source>Delete %lu File</source>
-        <target>Supprimer le fichier %lu</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder" translate="no" xml:space="preserve">
         <source>Delete %lu Folder</source>
-        <target>Supprimer le dossier %lu</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder and %lu File" translate="no" xml:space="preserve">
         <source>Delete %1$lu Folder and %2$lu File</source>
-        <target>Supprimer le dossier %1$lu et le fichier %2$lu</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Delete File" xml:space="preserve">
         <source>Delete File</source>
@@ -2179,7 +2185,7 @@ organize your files.</source>
         <source>Done</source>
         <target>Terminé</target>
         <note>Button title
-   Operation completed</note>
+Operation completed</note>
       </trans-unit>
       <trans-unit id="Download" xml:space="preserve">
         <source>Download</source>
@@ -2231,6 +2237,11 @@ organize your files.</source>
         <target>Modifier les documents localement</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Edit link" xml:space="preserve">
+        <source>Edit link</source>
+        <target>Modifier le lien</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
         <target>Modifier la salle</target>
@@ -2264,11 +2275,6 @@ organize your files.</source>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>L'e-mail n'est pas valide</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Empty file." xml:space="preserve">
-        <source>Empty file.</source>
-        <target>Fichier vide.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
@@ -2336,15 +2342,13 @@ organize your files.</source>
         <target>Expiré</target>
         <note>Expiration status</note>
       </trans-unit>
-      <trans-unit id="Expires after %d days" xml:space="preserve">
+      <trans-unit id="Expires after %d days" translate="no" xml:space="preserve">
         <source>Expires after %d days</source>
-        <target>Expire dans %d jours</target>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Expires after %d hours" xml:space="preserve">
+      <trans-unit id="Expires after %d hours" translate="no" xml:space="preserve">
         <source>Expires after %d hours</source>
-        <target>Expire dans %d heures</target>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2359,11 +2363,6 @@ organize your files.</source>
       <trans-unit id="External link" xml:space="preserve">
         <source>External link</source>
         <target>Lien externe</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failed online conversion service." xml:space="preserve">
-        <source>Failed online conversion service.</source>
-        <target>Conversion en ligne échouée.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
@@ -2416,19 +2415,9 @@ organize your files.</source>
         <target>Impossible d'envoyer un commentaire par e-mail. Essayez de laisser votre demande sur notre forum.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
-        <source>Failed upload source file to conversion online service.</source>
-        <target>Échec du téléchargement du fichier source vers le service de conversion en ligne.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download file from portal." xml:space="preserve">
-        <source>Failure to download file from portal.</source>
-        <target>Échec du téléchargement du fichier à partir du portail.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
-        <source>Failure to download result from conversion online service.</source>
-        <target>Échec du téléchargement du résultat de la conversion du service en ligne.</target>
+      <trans-unit id="Failed to submit the form" xml:space="preserve">
+        <source>Failed to submit the form</source>
+        <target>Impossible de soumettre le formulaire</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2471,6 +2460,26 @@ organize your files.</source>
         <target>Les fichiers et dossiers téléchargés par les administrateurs apparaissent ici.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Fill" xml:space="preserve">
+        <source>Fill</source>
+        <target>Remplir</target>
+        <note>Fill form Button title</note>
+      </trans-unit>
+      <trans-unit id="Fill in as" xml:space="preserve">
+        <source>Fill in as</source>
+        <target>Remplir en tant que</target>
+        <note>Title for fill-in options screen</note>
+      </trans-unit>
+      <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
+        <source>Fill in the fields of the original form in the editor window.</source>
+        <target>Remplir les champs du formulaire original dans la fenêtre de l'éditeur.</target>
+        <note>Subtitle for form filling</note>
+      </trans-unit>
+      <trans-unit id="Fill out the form yourself" xml:space="preserve">
+        <source>Fill out the form yourself</source>
+        <target>Remplir le formulaire vous-même</target>
+        <note>Title for opening form filling</note>
+      </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
         <target>Remplissage de formulaire</target>
@@ -2501,6 +2510,31 @@ organize your files.</source>
         <target>Remplisseur de formulaires</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Form Filling" xml:space="preserve">
+        <source>Form Filling</source>
+        <target>Remplissage de formulaires</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form Filling Room" xml:space="preserve">
+        <source>Form Filling Room</source>
+        <target>Salle de remplissage de formulaires</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form completed successfully" xml:space="preserve">
+        <source>Form completed successfully</source>
+        <target>Formulaire rempli avec succès</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form number" xml:space="preserve">
+        <source>Form number</source>
+        <target>Numéro du formulaire</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form owner" xml:space="preserve">
+        <source>Form owner</source>
+        <target>Propriétaire du formulaire</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
         <target>Modèles de formulaire</target>
@@ -2509,6 +2543,16 @@ organize your files.</source>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
         <target>Formulaires</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From DocSpace" xml:space="preserve">
+        <source>From DocSpace</source>
+        <target>De DocSpace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From device" xml:space="preserve">
+        <source>From device</source>
+        <target>De l'appareil</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2531,16 +2575,6 @@ organize your files.</source>
         <target>Général</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="General link" xml:space="preserve">
-        <source>General link</source>
-        <target>Lien général</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="General link State" xml:space="preserve">
-        <source>General link State</source>
-        <target>Lien général État</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
         <source>General links</source>
         <target>Liens généraux</target>
@@ -2549,6 +2583,11 @@ organize your files.</source>
       <trans-unit id="Get started" xml:space="preserve">
         <source>Get started</source>
         <target>Commencer</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Get started with quick actions: " xml:space="preserve">
+        <source>Get started with quick actions: </source>
+        <target>Commencez par des actions rapides :</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2580,6 +2619,11 @@ organize your files.</source>
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
         <target>Vous y trouverez une liste des fichiers récemment ouverts qui ont été partagés avec vous par le lien externe.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <target>Icônes</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
@@ -2722,6 +2766,11 @@ est copié dans le Presse-papiers</target>
         <target>Durée de vie du lien</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Link name" xml:space="preserve">
+        <source>Link name</source>
+        <target>Nom de lien</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
         <target>Nom du lien %@</target>
@@ -2739,14 +2788,14 @@ dans le presse-papiers</target>
         <target>Le lien avec l'invitation a été envoyé par e-mail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <target>Liste</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
         <target>Chargement</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Loading..." xml:space="preserve">
-        <source>Loading...</source>
-        <target>Chargement...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
@@ -2778,7 +2827,7 @@ dans le presse-papiers</target>
         <source>Logout</source>
         <target>Déconnexion</target>
         <note>Button title
-   Caption of the process</note>
+Caption of the process</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
@@ -2804,7 +2853,7 @@ dans le presse-papiers</target>
         <source>Me</source>
         <target>Moi</target>
         <note>Author or member of a document
-   If current user name is not set</note>
+If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
@@ -2911,6 +2960,21 @@ dans le presse-papiers</target>
         <target>Nouveau dossier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New form filling" xml:space="preserve">
+        <source>New form filling</source>
+        <target>Nouveau remplissage de formulaire</target>
+        <note>Suggested a room name when create a new one</note>
+      </trans-unit>
+      <trans-unit id="New form filling room" xml:space="preserve">
+        <source>New form filling room</source>
+        <target>Nouvelle salle de remplissage de formulaires</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New room" xml:space="preserve">
+        <source>New room</source>
+        <target>Nouvelle salle</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
         <target>Nouveaux utilisateurs</target>
@@ -2939,11 +3003,6 @@ dans le presse-papiers</target>
       <trans-unit id="No Internet connection" xml:space="preserve">
         <source>No Internet connection</source>
         <target>Pas de connexion Internet</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="No Links State" xml:space="preserve">
-        <source>No Links State</source>
-        <target>Pas de liens État</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -3010,7 +3069,7 @@ dans le presse-papiers</target>
         <source>None</source>
         <target>Aucun</target>
         <note>If the cache is empty
-   Share status</note>
+Share status</note>
       </trans-unit>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
@@ -3207,11 +3266,6 @@ dans le presse-papiers</target>
         <target>Épingler en haut</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Pinned failed." xml:space="preserve">
-        <source>Pinned failed.</source>
-        <target>L'épinglage a échoué.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Pinning" xml:space="preserve">
         <source>Pinning</source>
         <target>Épinglage</target>
@@ -3364,6 +3418,11 @@ dans le presse-papiers</target>
       <trans-unit id="Public" xml:space="preserve">
         <source>Public</source>
         <target>Publique</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Public link" xml:space="preserve">
+        <source>Public link</source>
+        <target>Lien public</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3545,7 +3604,7 @@ dans le presse-papiers</target>
         <source>Rooms</source>
         <target>Salles</target>
         <note>Category title
-   DocSpace rooms</note>
+DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
@@ -3581,12 +3640,17 @@ dans le presse-papiers</target>
         <source>Select</source>
         <target>Sélectionner</target>
         <note>Button title
-   Navigation bar button title</note>
+Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>Sélectionner les photos</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select a PDF Form" xml:space="preserve">
+        <source>Select a PDF Form</source>
+        <target>Sélectionner un formulaire PDF</target>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
         <source>Select all</source>
@@ -3683,10 +3747,20 @@ dans le presse-papiers</target>
         <target>Partager</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share &amp; collect" xml:space="preserve">
+        <source>Share &amp; collect</source>
+        <target>Partager et collecter</target>
+        <note>Title for sharing and collecting form</note>
+      </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
         <source>Share folder</source>
         <target>Partager le dossier</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
+        <source>Share your form and collect responses via a Form filling room.</source>
+        <target>Partagez votre formulaire et recueillez les réponses via une salle de remplissage de formulaires.</target>
+        <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
@@ -3873,6 +3947,15 @@ dans le presse-papiers</target>
         <target>Le fichier sera irrémédiablement supprimé. Cette action est irréversible.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The filled PDF form is saved and available to you&#10; in the Complete folder. To check the status,&#10; contact the form owner providing the assigned number." xml:space="preserve">
+        <source>The filled PDF form is saved and available to you
+ in the Complete folder. To check the status,
+ contact the form owner providing the assigned number.</source>
+        <target>Le formulaire PDF rempli est sauvegardé et disponible
+dans le dossier Complet. Pour vérifier l'état du formulaire,
+contactez le propriétaire du formulaire en lui communiquant le numéro qui lui a été attribué.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>Le dossier dans la corbeille ne peut pas être ouvert.</target>
@@ -4022,6 +4105,24 @@ dans le presse-papiers</target>
         <target>Cette présentation est en cours de modification. Voulez-vous ouvrir %@ pour la lecture seule ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have Form Filler permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have Form Filler permission
+ for all the files.</source>
+        <target>Cette salle est accessible à toute personne possédant le lien.
+Les utilisateurs externes auront l'autorisation de remplir les formulaires
+pour tous les fichiers.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have View Only permission
+ for all the files.</source>
+        <target>Cette salle est accessible à toute personne possédant le lien.
+Les utilisateurs externes auront l'autorisation de voir uniquement
+tous les fichiers.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target>Cette feuille de calcul est en cours de modification. Voulez-vous ouvrir %@ pour la lecture seule ?</target>
@@ -4162,15 +4263,10 @@ dans le presse-papiers</target>
         <target>Les utilisateurs non autorisés n'auront pas accès au document.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Unexpected response from the service." xml:space="preserve">
-        <source>Unexpected response from the service.</source>
-        <target>Réponse inattendue du service.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>Inconnu(e)</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4221,6 +4317,26 @@ dans le presse-papiers</target>
         <source>Unpinning</source>
         <target>Désépinglage</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
+        <source>Upload PDF form from DocSpace</source>
+        <target>Télécharger un formulaire PDF de DocSpace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from device" xml:space="preserve">
+        <source>Upload PDF form from device</source>
+        <target>Télécharger un formulaire PDF de l'appareil</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
+        <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <target>Téléchargez des formulaires PDF dans la salle. Invitez les utilisateurs à remplir un formulaire PDF. Examinez les formulaires remplis et analysez les données collectées automatiquement dans une feuille de calcul.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload a ready PDF form" xml:space="preserve">
+        <source>Upload a ready PDF form</source>
+        <target>Télécharger un formulaire PDF prêt à l'emploi</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
@@ -4329,6 +4445,11 @@ Swipe to learn more about the app.</source>
 Balayez pour en savoir plus sur l'application.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
+        <source>Welcome to the Form filling room </source>
+        <target>Bienvenue dans la salle de remplissage de formulaires</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
         <target>Quoi de neuf</target>
@@ -4398,6 +4519,11 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <target>Vous pouvez connecter les comptes suivants aux salles DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
+        <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <target>Vous ne pouvez pas épingler plus de 10 salles en haut de la page. Désépinglez celles qui sont déjà épinglées.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Vous avez quitté la salle</target>
@@ -4416,6 +4542,11 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
         <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
         <target>Votre plan tarifaire actuel a expiré. Veuillez renouveler votre abonnement dans les paramètres du compte pour pouvoir utiliser votre DocSpace. Si vous avez des questions, veuillez contacter le support.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
+        <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
+        <target>Votre appareil n'a pas pu envoyer d'e-mail. Veuillez vérifier la configuration de l'e-mail et réessayer.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -4523,12 +4654,6 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <target>nouveau</target>
         <note>Badge of file in file list</note>
       </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>aucun</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
-      </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>
         <target>de</target>
@@ -4578,7 +4703,7 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

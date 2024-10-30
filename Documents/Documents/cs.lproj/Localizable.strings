@@ -1,26 +1,17 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d vybráno";
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@ | %@" = "%1$@ | %2$@";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i z %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu vybraných souborů";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu složek a %2$lu souborů vybráno";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu složek vybráno";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu položek se stejným názvem již ve složce existuj '%2$@'. Přepsat položky?";
@@ -51,6 +42,9 @@
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.";
+
+/* No comment provided by engineer. */
+"A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." = "Vytvoří se nová místnost a zkopíruje se do ní veškerý obsah vybrané složky. Poté můžete ke spolupráci na souborech v místnosti přizvat další uživatele.";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "Uživatel nebo skupina bude moci dokument pouze prohlížet, přidávat k němu komentáře a spravovat jej.";
@@ -106,6 +100,9 @@
 /* No comment provided by engineer. */
 "Add account" = "Přidat účet";
 
+/* No comment provided by engineer. */
+"Add manually" = "Ruční přidání";
+
 /* Sharing settings add notification message */
 "Add message" = "Přidat zprávu";
 
@@ -119,13 +116,13 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Přidejte uživatele nebo skupiny a dejte jim právo \nčíst, prohlížet nebo upravovat dokumenty.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Stav dalšího odkazu";
-
-/* No comment provided by engineer. */
 "Additional links" = "Další odkazy";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Adresa je prázdná";
+
+/* No comment provided by engineer. */
+"Admin" = "Administrátor";
 
 /* No comment provided by engineer. */
 "Administration" = "Správa";
@@ -140,10 +137,13 @@
 "All Files" = "Všechny soubory";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "Všechny položky z archivu budou navždy odstraněny. Nebudete je moci obnovit.";
+"All items from Archived will be deleted forever. You won't be able to restore them." = "Všechny položky z archivu budou navždy odstraněny. Nebudete je moci obnovit.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Všechna oznámení";
+
+/* No comment provided by engineer. */
+"All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" = "Všechny sdílené odkazy v této místnosti se stanou aktivními a její obsah bude k dispozici všem, kteří mají odkaz. Chcete místnost obnovit?";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Povolit přístup přes externí odkaz";
@@ -164,7 +164,7 @@
 "Applying" = "Použití stránky";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Archiv";
 
 /* No comment provided by engineer. */
@@ -192,6 +192,9 @@
 "Back" = "Zpět";
 
 /* No comment provided by engineer. */
+"Back to room" = "Zpět do místnosti";
+
+/* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Jako vlastník tohoto prostoru DocSpace musíte před odstraněním účtu převést vlastnictví na jiného uživatele. Chcete-li pokračovat, zvolte prosím nového vlastníka.";
 
 /* No comment provided by engineer. */
@@ -202,6 +205,9 @@
 
 /* No comment provided by engineer. */
 "Box directory" = "Adresář schránky";
+
+/* No comment provided by engineer. */
+"Business subscription expired" = "Vypršela platnost firemního předplatného";
 
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Vytvořením portálu souhlasíte s našimi zásadami ochrany osobních údajů a podmínkami služby.";
@@ -227,7 +233,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Soubor nelze duplikovat.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Zrušit";
 
 /* No comment provided by engineer. */
@@ -240,16 +246,31 @@
 "Change owner" = "Změna vlastníka";
 
 /* No comment provided by engineer. */
+"Change room's owner" = "Změna vlastníka místnosti";
+
+/* No comment provided by engineer. */
 "Change the Room Owner" = "Změna vlastníka místnosti";
 
 /* No comment provided by engineer. */
 "Changing access" = "Změna přístupu";
 
 /* No comment provided by engineer. */
+"Check ready form" = "Zkontrolujte připravený formulář";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Zkontrolujte vaše připojení k internetu";
 
 /* No comment provided by engineer. */
 "Choose Files" = "Výběr souborů";
+
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "Vyberte místnost pro vyplňování formulářů nebo vytvořte nový";
+
+/* No comment provided by engineer. */
+"Choose from list" = "Vyberte ze seznamu";
+
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Výběr umístění pomocí šablon";
 
 /* No comment provided by engineer. */
 "Choose room type" = "Výběr typu místnosti";
@@ -339,8 +360,11 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Připojování";
+
+/* No comment provided by engineer. */
+"Connection deinitialized" = "Spojení deinicializováno";
 
 /* No comment provided by engineer. */
 "Console" = "Konzola";
@@ -362,6 +386,9 @@
 
 /* Button title */
 "Copy link" = "Kopírovat odkaz";
+
+/* No comment provided by engineer. */
+"Copy shared link" = "Zkopírovat sdílený odkaz";
 
 /* Caption of the processing */
 "Copying" = "Kopírování";
@@ -415,6 +442,9 @@
 "Could not duplicate the file." = "Soubor se nepodařilo duplikovat.";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "Nepodařilo se duplikovat místnost.";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "Soubor se nepodařilo odeslat.";
 
 /* Description of file operation error */
@@ -424,13 +454,13 @@
 "Could not open file." = "Soubor se nepodařilo otevřít.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Nelze přečíst data ze souboru.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Nelze přečíst data ze souboru.";
 
 /* Description of file operation error */
 "Could not read from file" = "Nelze číst ze souboru";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "Nelze odeslat e-mail";
 
 /* Description of file operation error */
 "Could not write to file" = "Nelze zapisovat do souboru";
@@ -468,11 +498,20 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Vytvářejte nové dokumenty, tabulky nebo prezentace. Vytvořte nové složky pro uspořádání souborů.";
 
+/* No comment provided by engineer. */
+"Create new files" = "Vytvořit nové soubory";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Vytvoření nové složky";
+
+/* No comment provided by engineer. */
+"Create new folders to \norganize your files." = "Vytvořit nové složky do \nuspořádat své soubory.";
+
 /* Button title */
 "Create room" = "Vytvořit místnost";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Vytváření";
 
 /* No comment provided by engineer. */
@@ -492,15 +531,6 @@
 
 /* Button title */
 "Delete" = "Vymazat";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Vymazat %lu soubor";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Vymazat %lu složku";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Vymazat %1$lu složku a %2$lu soubor";
 
 /* Button title */
 "Delete File" = "Vymazat soubor";
@@ -538,6 +568,9 @@
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Zakázat, pokud nechcete dostávat oznámení z %@";
 
+/* No comment provided by engineer. */
+"Disable notifications" = "Zakázat oznámení";
+
 /* Button title */
 "Disconnect third party" = "Odpojit třetí stranu";
 
@@ -557,7 +590,7 @@
 "Documents" = "Dokumenty";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Hotovo";
 
 /* Button title */
@@ -565,6 +598,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Stahování";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Pouze pro uživatele DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -587,6 +623,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Upravujte dokumenty lokálně";
 
+/* No comment provided by engineer. */
+"Edit link" = "Upravit odkaz";
+
 /* Button title */
 "Edit room" = "Upravit místnost";
 
@@ -595,6 +634,9 @@
 
 /* No comment provided by engineer. */
 "Email" = "E-mail";
+
+/* No comment provided by engineer. */
+"Email address" = "E-mailová adresa";
 
 /* No comment provided by engineer. */
 "Email is empty" = "E-mail je prázdný";
@@ -606,13 +648,13 @@
 "Email is not valid" = "E-mail je neplatný";
 
 /* No comment provided by engineer. */
-"Empty file." = "Prázdný soubor";
-
-/* No comment provided by engineer. */
 "Empty name." = "Prázdný název.";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Povolit, pokud chcete dostávat oznámení z %@";
+
+/* No comment provided by engineer. */
+"Enable notifications" = "Povolit oznámení";
 
 /* No comment provided by engineer. */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Povolením tohoto nastavení zakážete stahování souborů a složek z této místnosti sdílených prostřednictvím odkazu.";
@@ -653,6 +695,9 @@
 /* No comment provided by engineer. */
 "Expect users" = "Očekávat uživatele";
 
+/* Expiration status */
+"Expired" = "Vypršela platnost";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Platnost vyprší po 7 dnech";
 
@@ -660,7 +705,7 @@
 "Export" = "Exportovat";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Služba online konverze se nezdařila.";
+"External link" = "Externí odkaz";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Nepodařilo se zkontrolovat dostupnost portálu.";
@@ -693,13 +738,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "Nepodařilo se odeslat zpětnou vazbu poštou. Zkuste napsat svůj požadavek na naše fórum.";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Nepodařilo se odeslat zdrojový soubor do služby online konverze.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Stahování souboru z portálu selhalo";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Stahování výsledku ze služby online konverze selhalo";
+"Failed to submit the form" = "Nepodařilo se odeslat formulář";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Nepodařilo se připravit archiv";
@@ -720,7 +759,22 @@
 "Files" = "Soubory";
 
 /* No comment provided by engineer. */
+"Files and folders uploaded by admins will appear here." = "Zde se zobrazí soubory a složky nahrané správci.";
+
+/* No comment provided by engineer. */
 "Files Preview" = "Náhled souborů";
+
+/* Fill form Button title */
+"Fill" = "Výplň";
+
+/* Title for fill-in options screen */
+"Fill in as" = "Vyplnit jako";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "Vyplňte pole původního formuláře v okně editoru.";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "Vyplňte formulář sami";
 
 /* No comment provided by engineer. */
 "Filling form" = "Vyplnění formuláře";
@@ -737,14 +791,35 @@
 /* No comment provided by engineer. */
 "Folders" = "Složky";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "Formulář byl úspěšně vyplněn";
+
 /* Share status */
 "Form Filler" = "Vyplňovač formulářů";
+
+/* No comment provided by engineer. */
+"Form Filling" = "Vyplnění formuláře";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "Místnost pro vyplňování formulářů";
+
+/* No comment provided by engineer. */
+"Form number" = "Číslo formuláře";
+
+/* No comment provided by engineer. */
+"Form owner" = "Vlastník formuláře";
 
 /* No comment provided by engineer. */
 "Form templates" = "Šablony formulářů";
 
 /* No comment provided by engineer. */
 "Forms" = "Formuláře";
+
+/* No comment provided by engineer. */
+"From device" = "Ze zařízení";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "Z DocSpace";
 
 /* Share status */
 "Full Access" = "Plný přístup";
@@ -756,16 +831,13 @@
 "General" = "Obecný";
 
 /* No comment provided by engineer. */
-"General link" = "Obecný odkaz";
-
-/* No comment provided by engineer. */
-"General link State" = "Stav obecného odkazu";
-
-/* No comment provided by engineer. */
 "General links" = "Obecné odkazy";
 
 /* No comment provided by engineer. */
 "Get started" = "Začít";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "Začněte s rychlými akcemi:";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "ZAČÍT!";
@@ -786,10 +858,16 @@
 "Groups" = "Skupiny";
 
 /* No comment provided by engineer. */
+"Here you will find a list of the recently opened files shared with you via an external link." = "Zde naleznete seznam nedávno otevřených souborů sdílených s vámi prostřednictvím externího odkazu.";
+
+/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "Ikony";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Pokud uživatel s e-mailovou adresou %@ existuje, byl na tuto adresu zaslán pokyn ke změně hesla.";
@@ -867,6 +945,9 @@
 "Light" = "Světlé";
 
 /* No comment provided by engineer. */
+"Link" = "Odkaz";
+
+/* No comment provided by engineer. */
 "Link and password\nsuccessfully copied\nto clipboard" = "Odkaz a heslo\núspěšně zkopírovány\ndo schránky";
 
 /* No comment provided by engineer. */
@@ -874,6 +955,9 @@
 
 /* No comment provided by engineer. */
 "Link life time" = "Doba životnosti odkazu";
+
+/* No comment provided by engineer. */
+"Link name" = "Název odkazu";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Název odkazu %@";
@@ -884,8 +968,14 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Odkaz s pozvánkou byl zaslán na mail";
 
+/* Button title */
+"List" = "Seznam";
+
 /* No comment provided by engineer. */
-"Loading..." = "Načítání...";
+"Loading" = "Načítání";
+
+/* No comment provided by engineer. */
+"Location" = "Umístění";
 
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
@@ -900,7 +990,7 @@
 "Login is empty" = "Přihlášení je prázdné";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Odhlášení";
 
 /* Button title */
@@ -916,7 +1006,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Já";
 
 /* No comment provided by engineer. */
@@ -974,10 +1064,22 @@
 "New Document" = "Nový dokument";
 
 /* No comment provided by engineer. */
+"New folder" = "Nová složka";
+
+/* No comment provided by engineer. */
 "New Folder" = "Nová složka";
+
+/* Suggested a room name when create a new one */
+"New form filling" = "Vyplnění nového formuláře";
+
+/* No comment provided by engineer. */
+"New form filling room" = "Nová místnost pro vyplňování formulářů";
 
 /* No comment provided by engineer. */
 "New Presentation" = "Nová prezentace";
+
+/* No comment provided by engineer. */
+"New room" = "Nová místnost";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nová tabulka";
@@ -992,7 +1094,13 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"NextCloud" = "NextCloud";
+
+/* No comment provided by engineer. */
 "Nextcloud directory" = "Adresář Nextcloud";
+
+/* No comment provided by engineer. */
+"No archived rooms here yet" = "Zatím zde nejsou žádné archivované místnosti";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "Žádné ID klienta aplikace";
@@ -1001,13 +1109,16 @@
 "No connection" = "Bez připojení";
 
 /* No comment provided by engineer. */
+"No docs here yet" = "Zatím zde nejsou žádné dokumenty";
+
+/* No comment provided by engineer. */
+"No files here yet" = "Zatím zde nejsou žádné soubory";
+
+/* No comment provided by engineer. */
 "No information about the user profile." = "Žádné informace o profilu uživatele.";
 
 /* No comment provided by engineer. */
 "No Internet connection" = "Žádné připojení k internetu";
-
-/* No comment provided by engineer. */
-"No Links State" = "Žádný stav odkazů";
 
 /* No comment provided by engineer. */
 "No network" = "Žádná síť";
@@ -1027,12 +1138,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Nebyli nalezeni žádní uživatelé";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "žádný";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Žádný";
 
 /* No comment provided by engineer. */
@@ -1067,6 +1174,9 @@
 
 /* No comment provided by engineer. */
 "OneDrive for Business" = "OneDrive pro Obchod";
+
+/* No comment provided by engineer. */
+"Only a room administrator or a DocSpace administrator can become the room owner." = "Vlastníkem místnosti se může stát pouze správce místnosti nebo správce DocSpace.";
 
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
@@ -1140,6 +1250,9 @@
 /* Data units */
 "Pb" = "Pb";
 
+/* Default title of sample document */
+"PDF Form Sample" = "Vzor formuláře PDF";
+
 /* No comment provided by engineer. */
 "Phone" = "Telefon";
 
@@ -1160,9 +1273,6 @@
 
 /* Button title */
 "Pin to top" = "Připnout na začátek";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "Připnutí se nezdařilo.";
 
 /* Caption of the processing */
 "Pinning" = "Připnutí";
@@ -1234,10 +1344,16 @@
 "Protection" = "Zabezpečení";
 
 /* No comment provided by engineer. */
+"Provide access to the document and set the permission levels." = "Zajistěte přístup k dokumentu a nastavte úrovně oprávnění.";
+
+/* No comment provided by engineer. */
 "Provide general access to the document selecting the required permission level." = "Zajistěte obecný přístup k dokumentu výběrem požadované úrovně oprávnění.";
 
 /* No comment provided by engineer. */
 "Public" = "Veřejné";
+
+/* No comment provided by engineer. */
+"Public link" = "Veřejný odkaz";
 
 /* No comment provided by engineer. */
 "Public room" = "Veřejná místnost";
@@ -1248,6 +1364,9 @@
 /* Category title */
 "Recent" = "Nedávné";
 
+/* No comment provided by engineer. */
+"Recently accessible via link" = "Nedávno přístupné prostřednictvím odkazu";
+
 /* Button title */
 "Recover here" = "Obnovit zde";
 
@@ -1255,13 +1374,22 @@
 "Recovery" = "Obnova";
 
 /* No comment provided by engineer. */
+"Regenerate link" = "Přegenerovat odkaz";
+
+/* No comment provided by engineer. */
 "Registration" = "Registrace";
 
 /* No comment provided by engineer. */
 "Reload" = "Nahrát znovu";
 
+/* No comment provided by engineer. */
+"Remove" = "Odstranění";
+
 /* Button title */
 "Remove from Favorites" = "Odstranění z oblíbených položek";
+
+/* No comment provided by engineer. */
+"Remove link" = "Odstranit odkaz";
 
 /* Caption of the process */
 "Removing" = "Odstranění";
@@ -1277,6 +1405,9 @@
 
 /* Caption of the processing */
 "Renaming" = "Přejmenování";
+
+/* No comment provided by engineer. */
+"Renew Business plan" = "Obnovit obchodní plán";
 
 /* No comment provided by engineer. */
 "Renewal" = "Obnovení";
@@ -1296,6 +1427,9 @@
 /* Button title */
 "Restore" = "Obnovit";
 
+/* No comment provided by engineer. */
+"Restore room?" = "Obnovit místnost?";
+
 /* Caption of the processing */
 "Restoring" = "Obnovení";
 
@@ -1305,15 +1439,33 @@
 /* Share status */
 "Reviewer" = "Recenzent";
 
+/* No comment provided by engineer. */
+"Revoke link" = "Zrušit odkaz";
+
+/* No comment provided by engineer. */
+"Revoked" = "Zrušeno";
+
+/* No comment provided by engineer. */
+"Revoking" = "Odvolání";
+
+/* No comment provided by engineer. */
+"Roles" = "Role";
+
 /* Share status */
 "Room admin" = "Správce místnosti";
+
+/* No comment provided by engineer. */
+"Room created!" = "Místnost vytvořena!";
 
 /* No comment provided by engineer. */
 "Room name" = "Název místnosti";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Místnosti";
+
+/* No comment provided by engineer. */
+"Root folder" = "Kořenová složka";
 
 /* No comment provided by engineer. */
 "Same as system" = "Stejné jako systémové";
@@ -1328,8 +1480,11 @@
 "Search" = "Hledat";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Vybrat";
+
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "Výběr formuláře PDF";
 
 /* No comment provided by engineer. */
 "Select all" = "Vybrat vše";
@@ -1339,6 +1494,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Vybrat skupinu";
+
+/* Button title */
+"Select location" = "Výběr umístění";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Vybrat fotky";
@@ -1386,7 +1544,25 @@
 "Settings and Security" = "Nastavení a zabezpečení";
 
 /* No comment provided by engineer. */
+"Share" = "Sdílet";
+
+/* Title for sharing and collecting form */
+"Share & collect" = "Sdílet a sbírat";
+
+/* No comment provided by engineer. */
+"Share folder" = "Sdílet složku";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "Sdílejte formulář a sbírejte odpovědi prostřednictvím místnosti pro vyplňování formulářů.";
+
+/* No comment provided by engineer. */
 "Shared access" = "Sdílený přístup";
+
+/* No comment provided by engineer. */
+"Shared link" = "Sdílený odkaz";
+
+/* No comment provided by engineer. */
+"Shared links" = "Sdílené odkazy";
 
 /* Category title */
 "Shared with Me" = "Sdíleno se mnou";
@@ -1458,6 +1634,9 @@
 "Tag" = "Štítek";
 
 /* No comment provided by engineer. */
+"Tags" = "Štítky";
+
+/* No comment provided by engineer. */
 "Take a Picture" = "Vyfotit";
 
 /* No comment provided by engineer. */
@@ -1491,6 +1670,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Soubor bude nenávratně smazán. Tato akce je nevratná.";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "Vyplněný PDF formulář se uloží a je vám\nk dispozici ve složce Kompletní. Chcete-li zkontrolovat stav,\nkontaktujte vlastníka formuláře a uveďte přidělené číslo.";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Složku v koši nelze otevřít.";
 
 /* No comment provided by engineer. */
@@ -1512,6 +1694,9 @@
 "The list of users previously invited to DocSpace or separate rooms will appear here." = "Zobrazí se zde seznam uživatelů, kteří byli dříve pozváni do prostoru DocSpace nebo do samostatných místností.";
 
 /* No comment provided by engineer. */
+"The new shared link was created" = "Byl vytvořen nový sdílený odkaz";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "Parametry jsou nesprávné.";
 
 /* No comment provided by engineer. */
@@ -1525,6 +1710,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Název portálu musí mít délku od 6 do 50 znaků";
+
+/* No comment provided by engineer. */
+"The previous link will become unavailable. A new shared link will be created." = "Předchozí odkaz se stane nedostupným. Bude vytvořen nový sdílený odkaz.";
 
 /* No comment provided by engineer. */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Kvóta uživatelů je téměř vyčerpána. Kontaktujte správce portálu";
@@ -1550,6 +1738,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Zdroj třetí strany";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Úložiště třetí strany";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Úložiště třetí strany";
 
@@ -1567,6 +1758,12 @@
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Tato prezentace je aktuálně upravována. Chcete otevřít %@ pouze k prohlížení?";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "Tato místnost je k dispozici každému, kdo má odkaz.\nExterní uživatelé budou mít oprávnění pro vyplňování formulářů\npro všechny soubory.";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "Tato místnost je k dispozici každému, kdo má odkaz.\nExterní uživatelé budou mít ke všem souborům oprávnění pouze\nk zobrazení.";
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Tato tabulka je aktuálně upravována. Chcete otevřít %@ pouze k prohlížení?";
@@ -1632,6 +1829,9 @@
 "Unarchiving failed." = "Zrušení archivace se nezdařilo.";
 
 /* No comment provided by engineer. */
+"Unauthorized members will be able only to view the document." = "Neoprávnění členové budou moci dokument pouze zobrazit.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Neoprávnění uživatelé budou moci dokument pouze prohlížet a přidávat k němu komentáře a také jej spravovat.";
 
 /* No comment provided by engineer. */
@@ -1650,9 +1850,6 @@
 "Unauthorized users will not have access to the document." = "Neoprávnění uživatelé nebudou mít k dokumentu přístup.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Neočekávaná odezva ze služby.";
-
-/* Invalid entity name */
 "Unknown" = "Neznámý";
 
 /* No comment provided by engineer. */
@@ -1685,8 +1882,23 @@
 /* Caption of the processing */
 "Unpning" = "Odpojení";
 
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "Nahrání připraveného formuláře PDF";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "Nahrání PDF formuláře ze zařízení";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "Nahrání formuláře PDF ze služby DocSpace";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Nahrání formulářů PDF do místnosti. Vyzvěte uživatele, aby vyplnili formulář PDF. Prohlížejte vyplněné formuláře a analyzujte automaticky shromážděná data v tabulce.";
+
 /* Caption of the process */
 "Uploading" = "Nahrávání";
+
+/* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Jako datové úložiště pro tuto místnost použijte služby třetích stran. V připojeném úložišti bude vytvořena nová složka pro ukládání dat této místnosti";
 
 /* No comment provided by engineer. */
 "User" = "Uživatel";
@@ -1696,6 +1908,9 @@
 
 /* No comment provided by engineer. */
 "User authentication required" = "Požadované ověření uživatele";
+
+/* No comment provided by engineer. */
+"User name" = "Jméno uživatele";
 
 /* No comment provided by engineer. */
 "User undefined" = "Uživatel není definován";
@@ -1743,6 +1958,9 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Vítejte v sadě pro mobilní editaci % @!\nPřetáhněte prstem a zjistěte více o aplikaci.";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "Vítejte v místnosti pro vyplňování formulářů";
+
+/* No comment provided by engineer. */
 "What's New" = "Novinky";
 
 /* Introduction Step Four - Description */
@@ -1764,16 +1982,25 @@
 "Yb" = "Yb";
 
 /* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "Chystáte se odstranit tuto místnost. Nebudete je moci obnovit.";
+"You are about to delete this room. You won't be able to restore them." = "Chystáte se odstranit tuto místnost. Nebudete je moci obnovit.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Jste vlastníkem této místnosti. Než místnost opustíte, musíte roli vlastníka převést na jiného uživatele.";
+
+/* No comment provided by engineer. */
+"You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." = "Nepoužívané místnosti můžete kdykoli archivovat a obnovit je ve svém prostoru DocSpace nebo je trvale odstranit. Tyto místnosti se zobrazí zde.";
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "Do %@ můžete připojit následující účty.";
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Do %@ můžete připojit následující účty. Zobrazí se ve složce \"Moje Dokumenty\" a budete je moci upravovat a ukládat přímo na portálu, všechny na jednom místě.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "K místnostem DocSpace můžete připojit následující účty";
+
+/* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Na začátek nelze připnout více než 10 místností. Některé z místností, které jsou aktuálně připnuté, můžete připnutí zrušit.";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Opustili jste místnost";
@@ -1783,6 +2010,12 @@
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "Do tohoto adresáře máte přístup pouze ke čtení. Zde nemůžete vytvářet soubory ani adresáře.";
+
+/* No comment provided by engineer. */
+"Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Váš aktuální tarifní plán Business vypršel. Obnovte si prosím předplatné v nastavení účtu, abyste mohli svůj prostor DocSpace používat. V případě jakýchkoli dotazů se obraťte na podporu.";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "Vaše zařízení nemohlo odeslat e-mail. Zkontrolujte prosím konfiguraci e-mailu a zkuste to znovu.";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Vaše relace vypršela";

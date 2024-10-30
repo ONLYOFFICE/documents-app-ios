@@ -1,0 +1,1722 @@
+/* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
+"(%@/%@)" = "(%1$@/%2$@)";
+
+/* Presentation Viewer */
+"%i of %i" = "%1$i من %2$i";
+
+/* No comment provided by engineer. */
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$العناصر التي تحمل نفس الاسم موجودة بالفعل في المجلد '%2$@'. هل تريد استبدال العناصر؟";
+
+/* No comment provided by engineer. */
+"© Ascensio System SIA %d" = "© Ascensio System SIA %d";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>استخدم كلمة المرور التي تم إنشاؤها في <a href=\"https://yandex.ru/id/about\">Yandex معرف</a>.</br>يمكن العثور على تعليمات ربط أكثر تفصيلاً في <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">مساعدة</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>استخدم كلمة المرور التي تم إنشاؤها في <a href=\"https://yandex.ru/id/about\">معرف Yandex</a>.</p><p>يمكن العثور على تعليمات ربط أكثر تفصيلاً في <p> a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">مساعدة</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>يجب أن يكون لديك نسخة مدفوعة من المشغل لاستخدام هذه الخدمة.</p><p>إذا قمت بتنشيط المصادقة المزدوجة، فيرجى إنشاء طلب للحصول على شهادة CDM من مدير إنفومانياك. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">المزيد...</a></p>";
+
+/* No comment provided by engineer. */
+"1 day" = "1 يوم";
+
+/* No comment provided by engineer. */
+"7 days" = "7 أيام";
+
+/* No comment provided by engineer. */
+"12 hours" = "12 ساعة";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "يوجد ملف يحمل نفس الاسم بالفعل في دليل المستندات الموجود على الجهاز.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "لن يتمكن المستخدم أو المجموعة إلا من عرض المستند وإضافة التعليقات، بالإضافة إلى إدارتها.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "لن يتمكن المستخدم أو المجموعة إلا من عرض المستند وملء النماذج المدرجة في المستند.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "سيتمكن المستخدم أو المجموعة من عرض المستند فقط.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "سيتمكن المستخدم أو المجموعة من عرض وتغيير المستند دون تعديله بشكل فعلي، ولكن سيتم تسجيل جميع التغييرات التي يقوم بها المراجع وعرضها لمالك الملف (أو الشخص الذي يمتلك حق الوصول الكامل إلى الملف) بحيث يكون بإمكانه قبولها أو رفضها.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "سيتمكن المستخدم أو المجموعة من عرض المستند وتحريره بالإضافة إلى مشاركة هذا المستند.";
+
+/* Format info */
+"A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
+
+/* Format info */
+"A1 (59,4%@ x 84,1%@)" = "A1 (59,4%1$@ x 84,1%2$@)";
+
+/* Format info */
+"A2 (42%@ x 59,4%@)" = "A2 (42%1$@ x 59,4%2$@)";
+
+/* Format info */
+"A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"About" = "عن";
+
+/* No comment provided by engineer. */
+"Access by external link" = "الوصول بواسطة رابط خارجي";
+
+/* No comment provided by engineer. */
+"Access rights" = "حقوق الوصول";
+
+/* No comment provided by engineer. */
+"Access settings" = "إعدادات الوصول";
+
+/* No comment provided by engineer. */
+"Access type" = "نوع الوصول";
+
+/* No comment provided by engineer. */
+"Account name is empty" = "اسم الحساب فارغ";
+
+/* No comment provided by engineer. */
+"Account name is not valid" = "اسم الحساب غير صالح";
+
+/* No comment provided by engineer. */
+"Accounts" = "الحسابات";
+
+/* No comment provided by engineer. */
+"Add account" = "إضافة حساب";
+
+/* Sharing settings add notification message */
+"Add message" = "إضافة رسالة";
+
+/* placeholder */
+"Add tag" = "إضافة إشارة";
+
+/* Button title */
+"Add users" = "إضافة مستخدمين";
+
+/* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "إضافة مستخدمين أو مجموعات والسماح لهم \n  بقراءة أو مراجعة أو تحرير المستندات.";
+
+/* No comment provided by engineer. */
+"Additional links" = "روابط إضافية";
+
+/* No comment provided by engineer. */
+"Address is empty" = "العنوان فارغ";
+
+/* No comment provided by engineer. */
+"Administration" = "إدارة";
+
+/* No comment provided by engineer. */
+"All" = "الكل";
+
+/* No comment provided by engineer. */
+"All files" = "كافة الملفات";
+
+/* Category title */
+"All Files" = "كافة الملفات";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "سيتم حذف كافة العناصر من المؤرشفة إلى الأبد. لن تتمكن من استعادتها.";
+
+/* No comment provided by engineer. */
+"All notifications" = "كافة الإشعارات";
+
+/* No comment provided by engineer. */
+"Allow access via external link" = "السماح بالوصول بواسطة رابط خارجي";
+
+/* No comment provided by engineer. */
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "لقد حدث خطأ غير متوقع. الرجاء معاودة المحاولة في وقت لاحق. عذرا.";
+
+/* No comment provided by engineer. */
+"Anyone with the link" = "أي شخص لديه الرابط";
+
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "فشلت مصادقة معرف Apple";
+
+/* No comment provided by engineer. */
+"Apply your own settings to use this room for any custom purpose" = "قم بتطبيق الإعدادات الخاصة بك لاستخدام هذه الغرفة لأي غرض مخصص";
+
+/* Caption of the process */
+"Applying" = "تطبيق";
+
+/* Button title
+Category title */
+"Archive" = "الأرشيف";
+
+/* No comment provided by engineer. */
+"Archives" = "الأرشفة";
+
+/* Caption of the processing */
+"Archiving" = "الأرشفة";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "فشلت الأرشفة.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "هل أنت متأكد أنك تريد حذف الحساب %@ من هذا الجهاز؟";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "هل أنت متأكد أنك تريد مغادرة هذا الحساب؟";
+
+/* No comment provided by engineer. */
+"Assign Owner" = "تعيين مالك";
+
+/* No comment provided by engineer. */
+"Author" = "مؤلف";
+
+/* No comment provided by engineer. */
+"Back" = "للخلف";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "كونك مالكًا لـ DocSpace، يجب عليك نقل الملكية إلى مستخدم آخر قبل أن تتمكن من حذف حسابك. الرجاء اختيار مالك جديد للمتابعة.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "كونك مالكًا لهذه البوابة، يجب عليك نقل الملكية إلى مستخدم آخر قبل أن تتمكن من حذف حسابك. الرجاء اختيار مالك جديد للمتابعة.";
+
+/* No comment provided by engineer. */
+"Box" = "Box";
+
+/* No comment provided by engineer. */
+"Box directory" = "Box دليل";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "من خلال إنشاء البوابة فإنك توافق على سياسة الخصوصية وشروط الخدمة الخاصة بنا";
+
+/* Data units */
+"bytes" = "بايتس";
+
+/* No comment provided by engineer. */
+"Cache" = "Cache";
+
+/* No comment provided by engineer. */
+"Camera Unavailable" = "الكاميرا غير متاحة";
+
+/* No comment provided by engineer. */
+"Can not create file in the folder." = "لا يمكن إنشاء ملف في المجلد.";
+
+/* No comment provided by engineer. */
+"Can not create file with this name." = "لا يمكن إنشاء ملف بهذا الاسم.";
+
+/* No comment provided by engineer. */
+"Can not create folder with this name." = "لا يمكن إنشاء مجلد بهذا الاسم.";
+
+/* No comment provided by engineer. */
+"Can not duplicate the file." = "لا يمكن تكرار الملف.";
+
+/* Cancel button */
+"Cancel" = "إلغاء";
+
+/* No comment provided by engineer. */
+"Cancel invitation?" = "إلغاء الدعوة؟";
+
+/* No comment provided by engineer. */
+"Canceled" = "تم الإلغاء";
+
+/* No comment provided by engineer. */
+"Change owner" = "تغيير المالك";
+
+/* No comment provided by engineer. */
+"Change the Room Owner" = "تغيير مالك الغرفة";
+
+/* No comment provided by engineer. */
+"Changing access" = "تغيير الوصول";
+
+/* No comment provided by engineer. */
+"Check your internet connection" = "فحص الاتصال بالانترنت";
+
+/* No comment provided by engineer. */
+"Choose Files" = "اختر ملفات";
+
+/* No comment provided by engineer. */
+"Choose room type" = "اختر نوع الغرفة";
+
+/* Caption of the processing */
+"Cleanup" = "تنظيف";
+
+/* Button title */
+"Clear Cache" = "مسح الذاكرة المؤقتة";
+
+/* Button title */
+"Clear Cache?" = "هل تريد مسح الذاكرة المؤقتة؟";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "هل تريد مسح التحديدات؟";
+
+/* Caption of the processing */
+"Clearing" = "مسح";
+
+/* Close view */
+"Close" = "إغلاق";
+
+/* No comment provided by engineer. */
+"Close the document before opening a new one." = "أغلق المستند قبل فتح مستند جديد.";
+
+/* Default external storage name */
+"Cloud directory" = "دليل السحابة";
+
+/* Cut from centimeters */
+"cm" = "cm";
+
+/* No comment provided by engineer. */
+"Collaborate on one or multiple documents with your team" = "تعاون في مستند واحد أو عدة وثائق مع فريقك";
+
+/* Introduction Step Five - Title */
+"Collaborate with your team" = "تعاون مع فريقك";
+
+/* No comment provided by engineer. */
+"Collaboration" = "تعاون";
+
+/* No comment provided by engineer. */
+"Collaboration room" = "غرفة التعاون";
+
+/* Share status */
+"Commentator" = "المعلق";
+
+/* Category title */
+"Common Documents" = "المستندات المشتركة";
+
+/* Cancel */
+"common.cancel" = "إلغاء";
+
+/* Error */
+"common.error" = "خلل";
+
+/* Myself */
+"common.me" = "أنا";
+
+/* OK */
+"common.ok" = "حسنا";
+
+/* Payment required message */
+"common.paymentRequiredMsg" = "انتهت الفترة المدفوعة";
+
+/* Payment required title */
+"common.paymentRequiredTitle" = "الدفع مطلوب";
+
+/* No comment provided by engineer. */
+"Compress Images" = "ضغط الصور";
+
+/* Button title */
+"Connect" = "ربط";
+
+/* No comment provided by engineer. */
+"Connect Clouds" = "ربط السحابات";
+
+/* No comment provided by engineer. */
+"Connect Storage" = "ربط التخزين";
+
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "قم بتوصيل وحدة تخزين الطرف الثالث\nمثل Nextcloud و ownCloud و Yandex Disk و\nالآخرين الذين يستخدمون بروتوكول WebDAV.";
+
+/* Footer text */
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "اتصل بسحابة %@ الخاصة بك لتخزين الملفات عبر الإنترنت والتعاون في المستندات في الوقت الفعلي";
+
+/* Caption of the process
+Caption of the processing */
+"Connecting" = "يتم الربط";
+
+/* No comment provided by engineer. */
+"Console" = "وحدة التحكم";
+
+/* No comment provided by engineer. */
+"Continue anyway" = "المتابعة على كل حال";
+
+/* No comment provided by engineer. */
+"Converter" = "محول";
+
+/* Button title */
+"Copy" = "نسخ";
+
+/* Button title */
+"Copy general link" = "نسخ الرابط العام";
+
+/* Button title */
+"Copy here" = "انسخ هنا";
+
+/* Button title */
+"Copy link" = "نسخ الرابط";
+
+/* Caption of the processing */
+"Copying" = "يتم النسخ";
+
+/* Description of file operation error */
+"Could not change file attributes" = "لا يمكن تغيير سمات الملف";
+
+/* Description of file operation error */
+"Could not change the directory" = "لا يمكن تغيير الدليل";
+
+/* Description of file operation error */
+"Could not copy file" = "لا يمكن نسخ الملف";
+
+/* No comment provided by engineer. */
+"Could not copy." = "تعذر النسخ.";
+
+/* Description of file operation error */
+"Could not create a directory" = "تعذر إنشاء مجلد";
+
+/* Description of file operation error */
+"Could not create a hard link" = "تعذر إنشاء رابط ثابت";
+
+/* Description of file operation error */
+"Could not create file" = "تعذر إنشاء ملف";
+
+/* Description of file operation error */
+"Could not create symlink from" = "تعذر إنشاء رابط رمزي من";
+
+/* Description of file operation error */
+"Could not delete file" = "تعذر حذف ملف";
+
+/* No comment provided by engineer. */
+"Could not delete the file." = "تعذر حذف الملف.";
+
+/* No comment provided by engineer. */
+"Could not delete the folder." = "تعذر حذف المجلد.";
+
+/* No comment provided by engineer. */
+"Could not delete." = "تعذر الحذف.";
+
+/* No comment provided by engineer. */
+"Could not download file." = "تعذر تحميل الملف.";
+
+/* No comment provided by engineer. */
+"Could not download object." = "تعذر تحميل المحتوى.";
+
+/* No comment provided by engineer. */
+"Could not download the file." = "تعذر تحميل الملف.";
+
+/* No comment provided by engineer. */
+"Could not duplicate the file." = "تعذر تكرار الملف.";
+
+/* No comment provided by engineer. */
+"Could not export the file." = "تعذر تصدير الملف.";
+
+/* Description of file operation error */
+"Could not move file" = "تعذر نقل الملف";
+
+/* No comment provided by engineer. */
+"Could not open file." = "تعذر فتح الملف.";
+
+/* No comment provided by engineer. */
+"Could not read data from the file." = "تعذر قراءة البيانات من الملف.";
+
+/* Description of file operation error */
+"Could not read from file" = "تعذر القراءة من الملف";
+
+/* Description of file operation error */
+"Could not write to file" = "تعذر كتابة الملف";
+
+/* No comment provided by engineer. */
+"Couldn't change the owner." = "تعذر تغيير المالك.";
+
+/* No comment provided by engineer. */
+"Couldn't download the room." = "تعذر تحميل الغرفة.";
+
+/* No comment provided by engineer. */
+"Couldn't leave the room" = "تعذر مغادرة الغرفة";
+
+/* No comment provided by engineer. */
+"Couldn't rename the file" = "تعذر إعادة تسمية الملف";
+
+/* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "تعذر حفظ التغييرات على الخادم. تم حفظ المستند المعدل في وحدة التخزين المحلية باسم %@";
+
+/* No comment provided by engineer. */
+"Create" = "إنشاء";
+
+/* No comment provided by engineer. */
+"Create additional links to share the document with different access rights." = "قم بإنشاء روابط إضافية لمشاركة المستند بحقوق وصول مختلفة.";
+
+/* No comment provided by engineer. */
+"Create and copy" = "إنشاء ونسخ";
+
+/* Introduction Step Two - Description */
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "إنشاء المستندات وتحريرها باستخدام شريط الأدوات الشامل الخاص بنا: تعامل مع الكائنات المعقدة في المستندات النصية، وقم بإجراء عمليات حسابية مكثفة في جداول البيانات، وقم بإنشاء عروض تقديمية مذهلة وعرض ملفات PDF دون فقدان التنسيق.";
+
+/* No comment provided by engineer. */
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "إنشاء مستندات أو جداول بيانات أو عروض تقديمية جديدة. قم بإنشاء مجلدات جديدة لتنظيم ملفاتك.";
+
+/* Button title */
+"Create room" = "إنشاء غرفة";
+
+/* Caption of the process
+Caption of the processing */
+"Creating" = "يتم الإنشاء";
+
+/* No comment provided by engineer. */
+"Custom" = "تخصيص";
+
+/* Share status */
+"Custom filter" = "تصفية مخصصة";
+
+/* No comment provided by engineer. */
+"Custom room" = "غرفة مخصصة";
+
+/* No comment provided by engineer. */
+"Dark" = "مظلم";
+
+/* No comment provided by engineer. */
+"Date" = "التاريخ";
+
+/* Button title */
+"Delete" = "حذف";
+
+/* Button title */
+"Delete File" = "حذف الملف";
+
+/* No comment provided by engineer. */
+"Delete Folder" = "حذف المجلد";
+
+/* No comment provided by engineer. */
+"Delete forever" = "حذف نهائي";
+
+/* No comment provided by engineer. */
+"Delete forever?" = "حذف نهائي؟";
+
+/* No comment provided by engineer. */
+"Delete from device" = "حذف من الجهاز";
+
+/* No comment provided by engineer. */
+"Delete link" = "حذف الرابط";
+
+/* No comment provided by engineer. */
+"Deleted" = "تم الحذف";
+
+/* Caption of the processing */
+"Deleting" = "يتم الحذف";
+
+/* Share status */
+"Deny Access" = "يمنع الدخول";
+
+/* No comment provided by engineer. */
+"Deselect all" = "إلغاء تحديد الكل";
+
+/* No comment provided by engineer. */
+"Developer options" = "خيارات للمطور";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "قم بالتعطيل إذا كنت لا تريد تلقي إشعارات من %@";
+
+/* Button title */
+"Disconnect third party" = "فك ربط الطرف الثالث";
+
+/* No comment provided by engineer. */
+"Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "هل تريد حقًا مغادرة هذه الغرفة؟ ستتمكن من الانضمام إليها مرة أخرى عبر دعوة جديدة من مشرف الغرفة.";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "DocSpace مشرف";
+
+/* No comment provided by engineer. */
+"Document" = "مستند";
+
+/* Default title of sample document */
+"Document Sample" = "نموذج المستند";
+
+/* Category title */
+"Documents" = "المستندات";
+
+/* Button title
+Operation completed */
+"Done" = "تم";
+
+/* Button title */
+"Download" = "تحميل";
+
+/* Caption of the processing */
+"Downloading" = "جاري التحميل";
+
+/* No comment provided by engineer. */
+"Dropbox" = "Dropbox";
+
+/* No comment provided by engineer. */
+"Dropbox directory" = "Dropbox دليل";
+
+/* Button title */
+"Duplicate" = "تكرار";
+
+/* Caption of the processing */
+"Duplication" = "الازدواجية";
+
+/* Data units */
+"Eb" = "Eb";
+
+/* Button title */
+"Edit" = "تعديل";
+
+/* Introduction Step Four - Title */
+"Edit documents locally" = "تعديل المستندات محليا";
+
+/* Button title */
+"Edit room" = "تعديل الغرفة";
+
+/* Share status */
+"Editor" = "المحرر";
+
+/* No comment provided by engineer. */
+"Email" = "بريد الكتروني";
+
+/* No comment provided by engineer. */
+"Email is empty" = "البريد الالكتروني فارغ";
+
+/* No comment provided by engineer. */
+"Email is incorrect." = "البريد الالكتروني خاطئ.";
+
+/* No comment provided by engineer. */
+"Email is not valid" = "البريد الالكتروني غير صالح";
+
+/* No comment provided by engineer. */
+"Empty name." = "اسم فارغ.";
+
+/* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "قم بالتمكين إذا كنت تريد تلقي إشعارات من %@";
+
+/* No comment provided by engineer. */
+"Enable this setting to disable downloads of files and folders from this room shared via a link" = "قم بتمكين هذا الإعداد لتعطيل تنزيلات الملفات والمجلدات من هذه الغرفة المشتركة عبر رابط";
+
+/* No comment provided by engineer. */
+"Enable time limit" = "تمكين الحد الزمني";
+
+/* Presentation Viewer */
+"End Slide Show" = "إنهاء عرض الشرائح";
+
+/* placeholder */
+"Enter email" = "أدخل البريد الالكتروني";
+
+/* No comment provided by engineer. */
+"Enter Portal Address" = "أدخل عنوان البوابة";
+
+/* No comment provided by engineer. */
+"Error" = "خلل";
+
+/* No comment provided by engineer. */
+"Error code: %ld" = "خلل في الرمز: %المعرف";
+
+/* Access is Forbidden message */
+"error.errorForbiddenMsg" = "اتصل بمسؤول البوابة الإلكترونية للوصول إلى المورد.";
+
+/* Access is Forbidden title */
+"error.errorForbiddenTitle" = "ممنوع الوصول";
+
+/* The resource can not be found Title */
+"error.errorNotFoundMsg" = "لا يمكن إيجاد المصدر";
+
+/* Unknown Server Error */
+"error.errorServerTitle" = "خلل في الخادم";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "استبعاد المجلدات الفرعية";
+
+/* No comment provided by engineer. */
+"Expect users" = "توقع المستخدمين";
+
+/* No comment provided by engineer. */
+"Expires after 7 days" = "تنتهي الصلاحية بعد 7 أيام";
+
+/* Button title */
+"Export" = "تصدير";
+
+/* No comment provided by engineer. */
+"Failed to check portal availability." = "فشل في التحقق من توفر البوابة.";
+
+/* No comment provided by engineer. */
+"Failed to check the name of the portal" = "فشل في التحقق من اسم البوابة";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "فشل في ربط المجلد.";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "فشل في النسخ: %@";
+
+/* No comment provided by engineer. */
+"Failed to get file information from the server." = "فشل في الحصول على معلومات الملف من الخادم.";
+
+/* No comment provided by engineer. */
+"Failed to get file list." = "فشل في الحصول على قائمة الملف.";
+
+/* No comment provided by engineer. */
+"Failed to get information about the file." = "تعذر الحصول على معلومات عن الملف.";
+
+/* No comment provided by engineer. */
+"Failed to get the address of the document server." = "فشل في الحصول على عنوان خادم المستندات.";
+
+/* No comment provided by engineer. */
+"Failed to move: %@" = "تعذر النقل: %@";
+
+/* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "فشل إرسال التعليقات عبر البريد. حاول كتابة طلبك في منتدانا.";
+
+/* No comment provided by engineer. */
+"Failure to prepare the archive" = "فشل في إعداد الأرشيف";
+
+/* Category title */
+"Favorites" = "المفضلات";
+
+/* No comment provided by engineer. */
+"Features" = "الميزات";
+
+/* Description of file operation error */
+"File already exists" = "الملف موجود بالفعل";
+
+/* Description of file operation error */
+"File does not exist" = "الملف غير موجود";
+
+/* No comment provided by engineer. */
+"Files" = "ملفات";
+
+/* No comment provided by engineer. */
+"Files Preview" = "معاينة الملفات";
+
+/* No comment provided by engineer. */
+"Filling form" = "تعبئة النموذج";
+
+/* No comment provided by engineer. */
+"Filters" = "تصفيات";
+
+/* No comment provided by engineer. */
+"First name is incorrect" = "الاسم الأول غير صحيح";
+
+/* No comment provided by engineer. */
+"Folder title" = "عنوان المجلد";
+
+/* No comment provided by engineer. */
+"Folders" = "المجلدات";
+
+/* Share status */
+"Form Filler" = "تعبئة النموذج";
+
+/* No comment provided by engineer. */
+"Form templates" = "قوالب النموذج";
+
+/* No comment provided by engineer. */
+"Forms" = "النماذج";
+
+/* Share status */
+"Full Access" = "الوصول الكامل";
+
+/* Data units */
+"Gb" = "Gb";
+
+/* No comment provided by engineer. */
+"General" = "عام";
+
+/* No comment provided by engineer. */
+"General links" = "روابط عامة";
+
+/* No comment provided by engineer. */
+"Get started" = "إبدء الآن";
+
+/* No comment provided by engineer. */
+"GET STARTED!" = "إبدء الآن!";
+
+/* Introduction Step One - Title */
+"Getting started" = "ابدء";
+
+/* No comment provided by engineer. */
+"Go to forum" = "الذهاب للمنتدى";
+
+/* No comment provided by engineer. */
+"Google directory" = "Google دليل";
+
+/* No comment provided by engineer. */
+"Google Drive" = "Google Drive";
+
+/* No comment provided by engineer. */
+"Groups" = "مجموعات";
+
+/* No comment provided by engineer. */
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "في حالة وجود مستخدم لديه البريد %@، فسيتم إرسال تعليمات لتغيير كلمة المرور إلى هذا العنوان.";
+
+/* No comment provided by engineer. */
+"Images" = "صور";
+
+/* No comment provided by engineer. */
+"Import File" = "استيراد ملف";
+
+/* No comment provided by engineer. */
+"Import Image" = "استيراد صورة";
+
+/* Introduction Step Five - Description */
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "في وضع الاتصال بالإنترنت، استخدم ميزات التحرير المشترك في الوقت الفعلي لـ %@ للعمل على المستندات مع أعضاء البوابة الإلكترونية ومشاركة المستندات وإنشاء مجلدات تخزين مشتركة.";
+
+/* No comment provided by engineer. */
+"Incorrect portal address" = "عنوان بوابة غير صحيح";
+
+/* Button title */
+"Info" = "معلومات";
+
+/* No comment provided by engineer. */
+"Information" = "معلومات";
+
+/* No comment provided by engineer. */
+"Instructions had been sent to your email" = "تم إرسال التعليمات للبريد الالكتروني الخاص بك";
+
+/* No comment provided by engineer. */
+"Invalid Country Code" = "رمز الدولة غير صالح";
+
+/* No comment provided by engineer. */
+"Invalid Data" = "بيانات غير صالحة";
+
+/* No comment provided by engineer. */
+"Invalid folder" = "مجلد غير صالح";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "رابط غير فعّال";
+
+/* No comment provided by engineer. */
+"Invite" = "دعوة";
+
+/* No comment provided by engineer. */
+"Invite people" = "دعوة أشخاص";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "دعوة أشخاص بواسطة الإيميل";
+
+/* Button title */
+"Invite users" = "دعوة مستخدمين";
+
+/* No comment provided by engineer. */
+"Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "قم بدعوة المستخدمين عبر الروابط المشتركة لعرض المستندات دون تسجيل. يمكنك أيضًا تضمين هذه الغرفة في أي واجهة ويب.";
+
+/* Data units */
+"Kb" = "Kb";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "kDrive directory";
+
+/* No comment provided by engineer. */
+"Last name is empty" = "الاسم الأخير فارغ";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "الاسم الأخير غير صحيح";
+
+/* Button title */
+"Leave the room" = "مغادرة الغرفة";
+
+/* No comment provided by engineer. */
+"Light" = "فاتح";
+
+/* No comment provided by engineer. */
+"Link and password\nsuccessfully copied\nto clipboard" = "الرابط وكلمة المرور\nتم نسخها بنجاح\nإلى الحافظة";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "تم نسخ الرابط\nإلى الحافظة";
+
+/* No comment provided by engineer. */
+"Link life time" = "مدة حياة الرابط";
+
+/* No comment provided by engineer. */
+"Link name %@" = "اسم الرابط %@";
+
+/* Button title */
+"Link successfully\ncopied to clipboard" = "تم نسخ الرابط بنجاح\nإلى الحافظة";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "تم إرسال رابط الدعوة إلى البريد";
+
+/* Caption of the process */
+"Logging in" = "تسجيل الدخول";
+
+/* No comment provided by engineer. */
+"Login" = "تسجيل الدخول";
+
+/* No comment provided by engineer. */
+"Login by %@" = "تسجيل الدخول بواسطة %@";
+
+/* No comment provided by engineer. */
+"Login is empty" = "تسجيل الدخول فارغ";
+
+/* Button title
+Caption of the process */
+"Logout" = "تسجيل الخروج";
+
+/* Button title */
+"Mark as Favorite" = "إضافة للمفضلة";
+
+/* Button title */
+"Mark as Read" = "وضع علامة مقروء";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "فشل وضع علامة للقراءة.";
+
+/* Data units */
+"Mb" = "Mb";
+
+/* Author or member of a document
+If current user name is not set */
+"Me" = "أنا";
+
+/* No comment provided by engineer. */
+"Media" = "وسائط";
+
+/* No comment provided by engineer. */
+"Member" = "عضو";
+
+/* Button title */
+"More" = "المزيد";
+
+/* Button title */
+"Move" = "نقل";
+
+/* Button title */
+"Move from archive" = "نقل من الأرشيف";
+
+/* Button title */
+"Move here" = "نقل هنا";
+
+/* Button title */
+"Move or Copy" = "نقل أو نسخ";
+
+/* Button title */
+"Move to archive" = "نقل إلى الأرشيف";
+
+/* Caption of the processing */
+"Moving" = "يتم النقل";
+
+/* Caption of the processing */
+"Moving from archive" = "يتم النقل من الأرشيف";
+
+/* Category title */
+"My archived" = "أرشفتي";
+
+/* No comment provided by engineer. */
+"My Clouds" = "سحابات";
+
+/* Category title */
+"My Documents" = "مستنداتي";
+
+/* No comment provided by engineer. */
+"My Drive" = "محرك الأقراص الخاص بي";
+
+/* No comment provided by engineer. */
+"Name is empty" = "الاسم فارغ";
+
+/* Badge of file in file list */
+"new" = "جديد";
+
+/* No comment provided by engineer. */
+"New" = "جديد";
+
+/* No comment provided by engineer. */
+"New Document" = "مستند جديد";
+
+/* No comment provided by engineer. */
+"New Folder" = "مجلد جديد";
+
+/* No comment provided by engineer. */
+"New Presentation" = "عرض تقديمي جديد";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "جدول بيانات جديد";
+
+/* No comment provided by engineer. */
+"New users" = "مستخدمين جدد";
+
+/* Next step */
+"Next" = "التالي";
+
+/* No comment provided by engineer. */
+"Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"Nextcloud directory" = "Nextcloud دليل";
+
+/* No comment provided by engineer. */
+"No client IDs of application" = "لا توجد معرفات العميل للتطبيق";
+
+/* No comment provided by engineer. */
+"No connection" = "لا يتوفر اتصال بالانترنت";
+
+/* No comment provided by engineer. */
+"No information about the user profile." = "لا توجد معلومات حول ملف تعريف المستخدم.";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "لا يتوفر اتصال بالانترنت";
+
+/* No comment provided by engineer. */
+"No network" = "لا تتوفر شبكة";
+
+/* No comment provided by engineer. */
+"No network connection can be found. Please check the connection and reload the page." = "لا يمكن العثور على اتصال بالشبكة. يرجى التحقق من الاتصال وإعادة تحميل الصفحة.";
+
+/* No comment provided by engineer. */
+"No results matching your search could be found. Please try another phrase." = "لا يمكن العثور على نتائج مطابقة لبحثك. من فضلك حاول عبارة أخرى.";
+
+/* No comment provided by engineer. */
+"No search result" = "لا يوجد نتائج بحث";
+
+/* No comment provided by engineer. */
+"No Search Result" = "لا يوجد نتائج بحث";
+
+/* No comment provided by engineer. */
+"No users found" = "لم يتم العثور على مستخدمين";
+
+/* If the cache is empty
+Share status */
+"None" = "لا يوجد";
+
+/* No comment provided by engineer. */
+"Note: removal from your account can not be undone." = "ملاحظة: لا يمكن التراجع عن عملية الإزالة من حسابك.";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "لا شيء لعرضه";
+
+/* No comment provided by engineer. */
+"Notifications" = "الاشعارات";
+
+/* Sharing settings switcher */
+"Notify by Email" = "إشعار بواسطة البريد";
+
+/* Used in the context: 'Showing 1 of 3 items' */
+"of" = "من";
+
+/* No comment provided by engineer. */
+"OK" = "حسنا";
+
+/* Category title */
+"On iPad" = "على iPad";
+
+/* Category title */
+"On iPhone" = "على iPhone";
+
+/* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive directory" = "OneDrive دليل";
+
+/* No comment provided by engineer. */
+"OneDrive for Business" = "OneDrive للأعمال";
+
+/* Short App Name */
+"ONLYOFFICE" = "ONLYOFFICE";
+
+/* Full App Name */
+"ONLYOFFICE Documents" = "ONLYOFFICE مستندات";
+
+/* Full App Name */
+"ONLYOFFICE portal" = "ONLYOFFICE بوابة";
+
+/* No comment provided by engineer. */
+"Oops!" = "عفوًا!";
+
+/* Button title */
+"Open" = "فتح";
+
+/* No comment provided by engineer. */
+"Open Document" = "فتح المستند";
+
+/* No comment provided by engineer. */
+"Open Folder" = "فتح المجلد";
+
+/* Caption of the processing */
+"Opening" = "يفتح";
+
+/* No comment provided by engineer. */
+"Options" = "خيارات";
+
+/* No comment provided by engineer. */
+"Order" = "طلب";
+
+/* No comment provided by engineer. */
+"Other" = "أخرى";
+
+/* Button title */
+"Overwrite" = "استبدال";
+
+/* Button title */
+"Overwrite confirmation" = "تأكيد الاستبدال";
+
+/* No comment provided by engineer. */
+"ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"ownCloud directory" = "ownCloud دليل";
+
+/* Table cell right holder acces text */
+"Owner" = "المالك";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "قفل رمز المرور";
+
+/* No comment provided by engineer. */
+"Password" = "كلمة المرور";
+
+/* No comment provided by engineer. */
+"Password access" = "الوصول لكلمة المرور";
+
+/* No comment provided by engineer. */
+"Password is empty" = "كلمة المرور فارغة";
+
+/* No comment provided by engineer. */
+"Passwords do not match" = "كلمات المرور غير متطابقة";
+
+/* Data units */
+"Pb" = "Pb";
+
+/* No comment provided by engineer. */
+"Phone" = "هاتف";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "الهاتف غير صحيح";
+
+/* Used in the context: '1 photo' */
+"photo" = "صورة";
+
+/* No comment provided by engineer. */
+"Photo Library" = "مكتبة الصور";
+
+/* No comment provided by engineer. */
+"Photo Library Unavailable" = "مكتبة الصو غير متوفرة";
+
+/* Used in the context: '3 photos' */
+"photos" = "صور";
+
+/* Button title */
+"Pin to top" = "تثبيت في الأعلى";
+
+/* Caption of the processing */
+"Pinning" = "يتم التثبيت";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the camera for this app to use this feature." = "يرجى الانتقال إلى الإعدادات وتمكين الكاميرا لهذا التطبيق لاستخدام هذه الميزة.";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the photo library for this app to use this feature." = "يرجى الانتقال إلى الإعدادات وتمكين مكتبة الصور لهذا التطبيق لاستخدام هذه الميزة.";
+
+/* No comment provided by engineer. */
+"Please re-login to renew your session." = "يرجى إعادة تسجيل الدخول لتجديد جلستك.";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "الرجاء اعادة المحاولة.\n\n  إذا استمرت المشكلة اتصل بنا واذكر رمز الخطأ هذا: Box - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "الرجاء اعادة المحاولة.\n\n إذا استمرت المشكلة، اتصل بنا واذكر رمز الخطأ هذا: Dropbox - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "الرجاء اعادة المحاولة.\n\n إذا استمرت المشكلة اتصل بنا واذكر رمز الخطأ هذا: Google - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "الرجاء اعادة المحاولة.\n\n إذا استمرت المشكلة، اتصل بنا واذكر رمز الخطأ هذا: Microsoft - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "الرجاء اعادة المحاولة.\n\n  إذا استمرت المشكلة، فاتصل بنا واذكر رمز الخطأ هذا: OneDrive - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "الرجاء اعادة المحاولة.\n\n  إذا استمرت المشكلة، فاتصل بنا واذكر رمز الخطأ هذا: SSO - %@";
+
+/* No comment provided by engineer. */
+"Portal Address" = "عنوان البوابة";
+
+/* No comment provided by engineer. */
+"Portal is unavailable." = "البوابة غير متاحة.";
+
+/* Share status */
+"Pover user" = "مستخدم قوي";
+
+/* Share status */
+"Power user" = "مستخدم قوي";
+
+/* No comment provided by engineer. */
+"Presentation" = "عرض تقديمي";
+
+/* Default title of sample document */
+"Presentation Sample" = "نموذج العرض التقديمي";
+
+/* No comment provided by engineer. */
+"Presentations" = "عروض تقديمية";
+
+/* Button title */
+"Preview" = "معاينة";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "سياية الخصوصية";
+
+/* Caption of the processing */
+"Processing" = "العملية جارية";
+
+/* No comment provided by engineer. */
+"Profile" = "ملف شخصي";
+
+/* Category title */
+"Project Documents" = "مستندات المشروع";
+
+/* No comment provided by engineer. */
+"Protection" = "حماية";
+
+/* No comment provided by engineer. */
+"Provide general access to the document selecting the required permission level." = "قم بتوفير الوصول العام إلى المستند مع تحديد مستوى الإذن المطلوب.";
+
+/* No comment provided by engineer. */
+"Public" = "عام";
+
+/* No comment provided by engineer. */
+"Public room" = "غرفة عامة";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "تم تعطيل الإشعارات";
+
+/* Category title */
+"Recent" = "حديث";
+
+/* Button title */
+"Recover here" = "استعادة هنا";
+
+/* Caption of the processing */
+"Recovery" = "استعادة";
+
+/* No comment provided by engineer. */
+"Registration" = "تسجيل";
+
+/* No comment provided by engineer. */
+"Reload" = "إعادة رفع";
+
+/* Button title */
+"Remove from Favorites" = "إزالة من المفضلة";
+
+/* Caption of the process */
+"Removing" = "يتم الإزالة";
+
+/* Button title */
+"Rename" = "إعادة التسمية";
+
+/* No comment provided by engineer. */
+"Rename failed." = "فشل إعادة التسمية.";
+
+/* No comment provided by engineer. */
+"Rename failed. An object with such a similar name exists." = "فشلت إعادة التسمية. يوجد كائن بهذا الاسم المشابه.";
+
+/* Caption of the processing */
+"Renaming" = "جاري إعادة التسمية";
+
+/* No comment provided by engineer. */
+"Renewal" = "تجديد";
+
+/* No comment provided by engineer. */
+"Request canceled" = "تم إلغاء الطلب";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "محتوى الطلب كبير جدا";
+
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "لم يكن للطلب نطاقات مصادقة كافية";
+
+/* No comment provided by engineer. */
+"Reset" = "إعادة تعيين";
+
+/* Button title */
+"Restore" = "استعادة";
+
+/* Caption of the processing */
+"Restoring" = "يتم الاستعادة";
+
+/* No comment provided by engineer. */
+"Restrict file content copy, file download and printing" = "تقييد نسخ محتوى الملف وتنزيل الملف وطباعته";
+
+/* Share status */
+"Reviewer" = "المراجع";
+
+/* Share status */
+"Room admin" = "مشرف الغرفة";
+
+/* No comment provided by engineer. */
+"Room name" = "اسم الغرفة";
+
+/* Category title
+DocSpace rooms */
+"Rooms" = "الغرف";
+
+/* No comment provided by engineer. */
+"Same as system" = "مشابه للنظام";
+
+/* No comment provided by engineer. */
+"Save" = "حفظ";
+
+/* Caption of the processing */
+"Saving" = "يحفظ";
+
+/* No comment provided by engineer. */
+"Search" = "بحث";
+
+/* Button title
+Navigation bar button title */
+"Select" = "تحديد";
+
+/* No comment provided by engineer. */
+"Select all" = "تحديد الكل";
+
+/* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "حدد سحابة أخرى للاتصال بـ Nextcloud و ownCloud وغيرها من الخدمات المدعومة.";
+
+/* No comment provided by engineer. */
+"Select group" = "تحديد مجموعة";
+
+/* No comment provided by engineer. */
+"Select Photos" = "تحديد الصور";
+
+/* One line. Max 50 charasters */
+"Select the folder to copy the items" = "تحديد المجلد لنسخ العناصر";
+
+/* One line. Max 50 charasters */
+"Select the folder to move the items" = "تحديد المجلد لنقل العناصر";
+
+/* One line. Max 50 charasters */
+"Select the folder to recover the items" = "تحديد المجلد لاستعادة العناصر";
+
+/* No comment provided by engineer. */
+"Select user" = "تحديد المستخدم";
+
+/* No comment provided by engineer. */
+"Selected provider is not available" = "المزود المحدد غير متوفر";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "لن تتم دعوة المستخدمين المحددين إلى الغرفة";
+
+/* No comment provided by engineer. */
+"Selected: %ld" = "محدد: %معرف";
+
+/* No comment provided by engineer. */
+"Selecting access rights" = "اختيار حقوق الوصول";
+
+/* No comment provided by engineer. */
+"Send" = "إرسال";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "أرسل تعليمات حذف الملف الشخصي إلى عنوان البريد الإلكتروني %@؟";
+
+/* Caption of the process */
+"Sending" = "يرسل";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "فشل تعيين المفضلة.";
+
+/* No comment provided by engineer. */
+"Settings" = "إعدادات";
+
+/* No comment provided by engineer. */
+"Settings and Security" = "إعدادت وأمان";
+
+/* No comment provided by engineer. */
+"Share" = "مشاركة";
+
+/* No comment provided by engineer. */
+"Shared access" = "الوصول المشترك";
+
+/* Category title */
+"Shared with Me" = "تم مشاركته معي";
+
+/* No comment provided by engineer. */
+"SharePoint directory" = "SharePoint دليل";
+
+/* Caption of the process */
+"Sharing" = "المشاركة";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "إعدادات المشاركة";
+
+/* Button title */
+"Sharing Settings" = "إعدادات المشاركة";
+
+/* No comment provided by engineer. */
+"Show %d results" = "عرض %d النتائج";
+
+/* No comment provided by engineer. */
+"Show notifications" = "عرض الإشعارات";
+
+/* No comment provided by engineer. */
+"Sign in" = "تسجيل دخول";
+
+/* No comment provided by engineer. */
+"Single Sign-on" = "تسجيل الدخول الموحّد";
+
+/* No comment provided by engineer. */
+"Size" = "الحجم";
+
+/* Button title */
+"Skip" = "تخطي";
+
+/* No comment provided by engineer. */
+"SKIP" = "تخطي";
+
+/* Presentation Viewer */
+"Slide %i of %i" = "ششريحة %1$i من %2$i";
+
+/* No comment provided by engineer. */
+"Something went wrong, try again" = "حدث خلل، حاول مرة أخرى";
+
+/* No comment provided by engineer. */
+"Something wrong" = "حدث خلل ما";
+
+/* Button title */
+"Sort" = "ترتيب";
+
+/* No comment provided by engineer. */
+"Spreadsheet" = "جدول بيانات";
+
+/* Default title of sample document */
+"Spreadsheet Sample" = "نموذج جدول البيانات";
+
+/* No comment provided by engineer. */
+"Spreadsheets" = "جداول البيانات";
+
+/* No comment provided by engineer. */
+"Storage" = "تخزين";
+
+/* No comment provided by engineer. */
+"Support" = "دعم فني";
+
+/* No comment provided by engineer. */
+"Switch" = "تحويل";
+
+/* No comment provided by engineer. */
+"Tag" = "إشارة";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "أخذ صورة";
+
+/* No comment provided by engineer. */
+"Take Photo" = "أخذ صورة";
+
+/* Data units */
+"Tb" = "Tb";
+
+/* No comment provided by engineer. */
+"Terminate account" = "انهاء حساب";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "شروط الخدمة";
+
+/* Notification title */
+"Text copied" = "تم نسخ النص";
+
+/* No comment provided by engineer. */
+"The %@ server is not available." = "الخادم %@ غير متاح.";
+
+/* No comment provided by engineer. */
+"The account name must be between 6 and 50 characters long" = "يجب أن يتراوح طول اسم الحساب بين 6 و50 حرفًا";
+
+/* No comment provided by engineer. */
+"The deleted files go to the trash. You can either restore or delete them forever." = "الملفات المحذوفة تذهب إلى سلة المهملات. ويمكنك إما استعادتها أو حذفها إلى الأبد.";
+
+/* No comment provided by engineer. */
+"The file in the Trash can not be viewed." = "لا يمكن عرض الملف الموجود في سلة المهملات.";
+
+/* No comment provided by engineer. */
+"The file will be irretrievably deleted. This action is irreversible." = "سيتم حذف الملف بشكل لا رجعة فيه. هذا الإجراء لا رجعة فيه.";
+
+/* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "لا يمكن فتح المجلد الموجود في سلة المهملات.";
+
+/* No comment provided by engineer. */
+"The item with the name '%@' already exists in the folder '%@'." = "العنصر الذي يحمل الاسم '%1$@' موجود بالفعل في المجلد '%2$@'.";
+
+/* No comment provided by engineer. */
+"The link for external\naccess is copied\nto the clipboard" = "تم نسخ حقوق الوصول\nللروابط الخارجية\nإلى الحافظة";
+
+/* Expiration status */
+"The link has expired" = "تم انتهاء صلاحية الرابط";
+
+/* No comment provided by engineer. */
+"The link has expired and has been disabled" = "لقد انتهت صلاحية الرابط وتم تعطيله";
+
+/* No comment provided by engineer. */
+"The link will be deleted permanently. You will not be able to undo this action." = "سيتم حذف الرابط نهائيا لن تتمكن من التراجع عن هذا الإجراء.";
+
+/* No comment provided by engineer. */
+"The list of users previously invited to DocSpace or separate rooms will appear here." = "ستظهر هنا قائمة المستخدمين الذين تمت دعوتهم مسبقًا إلى DocSpace أو الغرف المنفصلة.";
+
+/* No comment provided by engineer. */
+"The parameters are incorrect." = "العوامل غير صحيحة.";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 8 characters" = "كلمة المرور غير صحيحة. يجب أن يحتوي على 8 أحرف";
+
+/* No comment provided by engineer. */
+"The portal address is invalid" = "عنوان البوابة غير صالح";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "البوابة غير متوفرة";
+
+/* No comment provided by engineer. */
+"The portal name must be between 6 and 50 characters long" = "يجب أن يتراوح طول اسم البوابة الإلكترونية بين 6 و50 حرفًا";
+
+/* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "حصة المستخدمين قد استنفدت تقريبًا. اتصل بمسؤول البوابة";
+
+/* No comment provided by engineer. */
+"The request timed out." = "انتهت مهلة الطلب.";
+
+/* No comment provided by engineer. */
+"The server is not available." = "الخادم غير متوفر.";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "سيكون الإعداد متاحًا عند الحصول على ترخيص على %@.";
+
+/* No comment provided by engineer. */
+"The trash is empty" = "سلة المهملات فارغة";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "تم الوصول إلى الحد الأقصى للمستخدم. اتصل بمسؤول البوابة";
+
+/* No comment provided by engineer. */
+"Theme" = "الثيم";
+
+/* No comment provided by engineer. */
+"Third party resource" = "مورد من طرف ثالث";
+
+/* Introduction Step Three - Title */
+"Third-party storage" = "تخزين طرف ثالث";
+
+/* No comment provided by engineer. */
+"This document is being edited. Do you want open %@ to view only?" = "يتم تحرير هذه الوثيقة. هل تريد فتح %@ للعرض فقط؟";
+
+/* No comment provided by engineer. */
+"This folder is empty" = "المجلد فارغ";
+
+/* No comment provided by engineer. */
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "ستؤدي هذه العملية إلى توفير مساحة على جهازك عن طريق حذف الملفات المؤقتة. لن تتم إزالة ملفاتك وبياناتك الشخصية غير المتصلة بالإنترنت.";
+
+/* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "يُستخدم هذا الخيار لمنع الوصول الممنوح مسبقًا لمستخدم أو مجموعة.";
+
+/* No comment provided by engineer. */
+"This presentation is being edited. Do you want open %@ to view only?" = "يتم الآن تحرير هذا العرض التقديمي. هل تريد فتح %@ للعرض فقط؟";
+
+/* No comment provided by engineer. */
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "يجري تحرير جدول البيانات هذا. هل تريد فتح %@ للعرض فقط؟";
+
+/* No comment provided by engineer. */
+"Time limit" = "الحد الزمني";
+
+/* No comment provided by engineer. */
+"Title" = "العنوان";
+
+/* No comment provided by engineer. */
+"To open a document, you must go to portal %@ under your account." = "لفتح مستند، يجب عليك الذهاب إلى البوابة %@ ضمن حسابك.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "لفتح مجلد، يجب عليك الخروج من المستند الحالي.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "لفتح مجلد، يجب عليك الذهاب إلى البوابة %@ ضمن حسابك.";
+
+/* No comment provided by engineer. */
+"To open a new document, you must exit the current document." = "لفتح مستند جديد، يجب عليك الخروج من المستند الحالي.";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "لتلقي إشعارات الدفع من تطبيق %@، يتعين عليك السماح بتلقي إشعارات لهذا التطبيق في إعدادات iOS";
+
+/* Category title */
+"Trash" = "سلة المهملات";
+
+/* No comment provided by engineer. */
+"Try again" = "حاول مرة أخرى";
+
+/* No comment provided by engineer. */
+"Try Again" = "حاول مرة أخرى";
+
+/* No comment provided by engineer. */
+"Try to connect via another protocol?" = "حاول الاتصال بواسطة بوابة أخرى؟";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "تفعيل الإعدادت";
+
+/* No comment provided by engineer. */
+"Turn Passcode Off" = "إيقاف رمز المرور";
+
+/* No comment provided by engineer. */
+"Turn Passcode On" = "تشغيل رمز المرور";
+
+/* No comment provided by engineer. */
+"Type" = "النوع";
+
+/* No comment provided by engineer. */
+"Unable delete items" = "لا يمكن حذف العناصر";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "لا يمكن فصل ربط الطرف الثالث";
+
+/* No comment provided by engineer. */
+"Unable to get information about the portal" = "لا يمكن الحصول على معلومات عن البوابة";
+
+/* No comment provided by engineer. */
+"Unable to get information about the user." = "لا يمكن الحصول على معلومات عن المستخدم.";
+
+/* No comment provided by engineer. */
+"Unarchiving failed." = "فشل إلغاء الأرشفة.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "لن يتمكن المستخدمون غير المصرح لهم إلا من عرض المستند وإضافة التعليقات، بالإضافة إلى إدارتها.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "لن يتمكن المستخدمون غير المصرح لهم إلا من عرض المستند وملء النماذج المدرجة في المستند.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "لن يتمكن المستخدمون غير المصرح لهم إلا من عرض المستند.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "سيتمكن المستخدمون غير المصرح لهم من عرض المستند وتغييره دون تحريره فعليًا، ولكن سيتم تسجيل جميع التغييرات التي أجراها المراجع وعرضها على مالك الملف (أو الشخص الذي لديه حق الوصول الكامل إلى الملف) حتى يتمكن من ذلك سيكون قادرًا على قبولها أو رفضها.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "سيتمكن المستخدمون غير المصرح لهم من عرض المستند وتحريره بالإضافة إلى مشاركة هذا المستند.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "لن يتمكن المستخدمون غير المصرح لهم من الوصول إلى المستند.";
+
+/* No comment provided by engineer. */
+"Unknown" = "غير معروف";
+
+/* No comment provided by engineer. */
+"Unknown error" = "خلل غير معروف";
+
+/* No comment provided by engineer. */
+"Unknown file provider" = "مزود ملف غير معروف";
+
+/* No comment provided by engineer. */
+"Unknown item type." = "نوع ملف غير معروف.";
+
+/* No comment provided by engineer. */
+"Unlimited" = "غير محدود";
+
+/* No comment provided by engineer. */
+"Unlock with Face ID" = "فتح باستخدام بصمة الوجه";
+
+/* No comment provided by engineer. */
+"Unlock with Touch ID" = "فتح باستخدام بصمة اليد";
+
+/* Button title */
+"Unpin" = "إزالة التثبيت";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "فشل إزالة التثبيت.";
+
+/* Caption of the processing */
+"Unpinning" = "إزالة التثبيت";
+
+/* Caption of the processing */
+"Unpning" = "إزالة التثبيت";
+
+/* Caption of the process */
+"Uploading" = "رفع";
+
+/* No comment provided by engineer. */
+"User" = "مستخدم";
+
+/* No comment provided by engineer. */
+"User authentication failed" = "فشل مصادقة المستخدم";
+
+/* No comment provided by engineer. */
+"User authentication required" = "مطلوب مصادقة المستخدم";
+
+/* No comment provided by engineer. */
+"User undefined" = "المستخدم غير محدد";
+
+/* No comment provided by engineer. */
+"Users" = "المستخدمين";
+
+/* No comment provided by engineer. */
+"Users in room" = "المستخدمين في غرفة";
+
+/* No comment provided by engineer. */
+"Valid through" = "صالحة من خلال";
+
+/* Caption of the process */
+"Validation" = "صلاحية";
+
+/* Share status */
+"Varies" = "يختلف";
+
+/* No comment provided by engineer. */
+"Version" = "نسخة";
+
+/* No comment provided by engineer. */
+"View-only" = "للمشاهدة فقط";
+
+/* Share status */
+"Viewer" = "مشاهد";
+
+/* No comment provided by engineer. */
+"Warning" = "تحذير";
+
+/* No comment provided by engineer. */
+"We are sorry, this portal name is already taken" = "عذرًا، اسم البوابة هذا مأخوذ بالفعل";
+
+/* No comment provided by engineer. */
+"We have sent you an SMS with a code to the number %@" = "لقد أرسلنا لك رسالة نصية تحتوي على الرمز على الرقم %@";
+
+/* No comment provided by engineer. */
+"WebDAV" = "WebDAV";
+
+/* No comment provided by engineer. */
+"WebDAV directory" = "WebDAV دليل";
+
+/* Introduction Step One - Description */
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "مرحبًا بك في %@ مجموعة تحرير الهاتف المحمول!\nاسحب لمعرفة المزيد عن التطبيق.";
+
+/* No comment provided by engineer. */
+"What's New" = "ما الجديد";
+
+/* Introduction Step Four - Description */
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "العمل مع المستندات دون اتصال بالإنترنت.\nيمكن لاحقًا تحميل الملفات التي تم إنشاؤها إلى البوابة الإلكترونية و\nثم الوصول إليها من أي جهاز آخر.";
+
+/* Introduction Step Two - Title */
+"Work with office files" = "العمل مع ملفات المكتب";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "خادم خاطئ، تسجيل الدخول أو كلمة المرور.";
+
+/* No comment provided by engineer. */
+"Yandex directory" = "Yandex دليل";
+
+/* No comment provided by engineer. */
+"Yandex Disk" = "Yandex مكتب";
+
+/* Data units */
+"Yb" = "Yb";
+
+/* No comment provided by engineer. */
+"You are about to delete this room. You won’t be able to restore them." = "أنت على وشك حذف هذه الغرفة. لن تتمكن من استعادتها.";
+
+/* No comment provided by engineer. */
+"You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "أنت مالك هذه الغرفة. قبل أن تغادر الغرفة، يجب عليك نقل دور المالك إلى مستخدم آخر.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@." = "يمكنك ربط الحسابات التالية بـ %@.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "يمكنك ربط الحسابات التالية بـ %@. سيتم عرضها في مجلد \"المستندات\" وستتمكن من تحريرها وحفظها مباشرة على البوابة، كل ذلك في مكان واحد.";
+
+/* No comment provided by engineer. */
+"You have left the room" = "تمت مغادرة الغرفة";
+
+/* No comment provided by engineer. */
+"You have left the room and appointed a new owner" = "لقد غادرت الغرفة وعينت مالكًا جديدًا";
+
+/* No comment provided by engineer. */
+"You have read-only access to this folder. You cannot create files or folders here." = "لديك حق الوصول للقراءة فقط إلى هذا المجلد. لا يمكنك إنشاء ملفات أو مجلدات هنا.";
+
+/* No comment provided by engineer. */
+"Your session has expired" = "انتهت صلاحية جلسة العمل الخاصة بك";
+
+/* Data units */
+"Zb" = "زيرو بايت";
+
+/* Data units */
+"Zero bytes" = "زيرو بايتس";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "لا يمكن تحميل الملف.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "لا يمكن رفع الملف.";
+

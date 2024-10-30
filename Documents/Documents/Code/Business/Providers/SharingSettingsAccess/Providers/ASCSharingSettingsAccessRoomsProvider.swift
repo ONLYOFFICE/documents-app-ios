@@ -10,15 +10,22 @@ import Foundation
 
 class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
     let roomType: ASCRoomType
+    let rightHoldersTableType: RightHoldersTableType?
 
-    init(roomType: ASCRoomType) {
+    init(roomType: ASCRoomType, rightHoldersTableType: RightHoldersTableType?) {
         self.roomType = roomType
+        self.rightHoldersTableType = rightHoldersTableType
     }
 
     func get() -> [ASCShareAccess] {
         switch roomType {
         case .fillingForm:
-            return [.roomManager, .powerUser, .fillForms, .read]
+            switch rightHoldersTableType {
+            case .users, .none:
+                return [.roomManager, .powerUser, .fillForms]
+            case .groups:
+                return [.fillForms]
+            }
         case .colobaration:
             return [.roomManager, .powerUser, .editing, .read]
         case .review:

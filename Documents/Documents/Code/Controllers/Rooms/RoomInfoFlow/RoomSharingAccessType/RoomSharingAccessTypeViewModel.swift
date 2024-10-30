@@ -53,6 +53,8 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
             accesses = [.roomManager, .powerUser]
         case .custom:
             accesses = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+        case .fillingForm:
+            accesses = [.roomManager, .powerUser, .fillForms]
         default:
             accesses = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
         }

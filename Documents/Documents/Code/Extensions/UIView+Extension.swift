@@ -261,7 +261,6 @@ extension UIView {
     /// Anchor center X into current view's superview with a constant margin value.
     ///
     /// - Parameter constant: constant of the anchor constraint (default is 0).
-    @available(iOS 9, *)
     func anchorCenterXToSuperview(constant: CGFloat = 0) {
         // https://videos.letsbuildthatapp.com/
         translatesAutoresizingMaskIntoConstraints = false
@@ -273,7 +272,6 @@ extension UIView {
     /// Anchor center Y into current view's superview with a constant margin value.
     ///
     /// - Parameter withConstant: constant of the anchor constraint (default is 0).
-    @available(iOS 9, *)
     func anchorCenterYToSuperview(constant: CGFloat = 0) {
         // https://videos.letsbuildthatapp.com/
         translatesAutoresizingMaskIntoConstraints = false
@@ -283,7 +281,6 @@ extension UIView {
     }
 
     /// Anchor center X and Y into current view's superview
-    @available(iOS 9, *)
     func anchorCenterSuperview() {
         // https://videos.letsbuildthatapp.com/
         anchorCenterXToSuperview()
@@ -291,7 +288,6 @@ extension UIView {
     }
 
     /// Anchor all sides of the view into it's superview.
-    @available(iOS 9, *)
     func fillToSuperview() {
         // https://videos.letsbuildthatapp.com/
         translatesAutoresizingMaskIntoConstraints = false

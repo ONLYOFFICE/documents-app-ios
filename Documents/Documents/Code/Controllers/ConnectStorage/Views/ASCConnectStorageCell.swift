@@ -29,7 +29,6 @@ class ASCConnectStorageCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,7 +38,7 @@ class ASCConnectStorageCell: UITableViewCell {
     }
 
     private func updateInfo() {
-        guard let type = type else { return }
+        guard let type else { return }
 
         captionLabel?.text = ""
 

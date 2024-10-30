@@ -38,7 +38,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isReadyToDismissed: Bool = false
 
     var isDeletePossible: Bool {
-        if room.roomType == .public, link?.isGeneral == true {
+        if (room.roomType == .public && link?.isGeneral == true) || room.roomType == .fillingForm {
             return false
         }
         if sharingLink == nil {
@@ -48,7 +48,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     }
 
     var isRevokePossible: Bool {
-        if room.roomType == .public, link?.isGeneral == true {
+        if (room.roomType == .public && link?.isGeneral == true) || room.roomType == .fillingForm {
             return true
         } else {
             return false
@@ -58,6 +58,8 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     var isPossibleToSave: Bool {
         !linkName.isEmpty && selectedDate > Date() && !isSaving
     }
+
+    var roomType: ASCRoomType?
 
     private var cancelable = Set<AnyCancellable>()
 
@@ -79,6 +81,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     ) {
         link = inputLink
         self.room = room
+        roomType = room.roomType
         _outputLink = outputLink
         let linkInfo = link?.linkInfo
         selectedDate = {

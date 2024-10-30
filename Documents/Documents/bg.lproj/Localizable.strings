@@ -1,26 +1,17 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d избрани ";
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@ | %@" = "%1$@ | %2$@";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i на %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu Файлът е избран";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu папка и %2$lu избрани";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu Избрана папка";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu елементи със същото име вече съществуват в папката '%2$@'. Презапишете елементите?";
@@ -51,6 +42,9 @@
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с подобно име вече съществува в директорията на документа на устройството.";
+
+/* No comment provided by engineer. */
+"A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." = "Ще бъде създадена нова стая и цялото съдържание на избраната папка ще бъде копирано там. След това може да поканите други потребители да си сътрудничат по файловете в стаята.";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "Потребител или група ще могат само да преглеждат документа и да добавят коментари, както и да ги управляват.";
@@ -106,6 +100,9 @@
 /* No comment provided by engineer. */
 "Add account" = "Добавяне на профил";
 
+/* No comment provided by engineer. */
+"Add manually" = "Добави ръчно";
+
 /* Sharing settings add notification message */
 "Add message" = "Добавяне на съобщение";
 
@@ -119,13 +116,13 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Добавяне на потребители и групи и им позволете\nда четат, преглеждат или редактират документи.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Допълнителен линк за Състояние";
-
-/* No comment provided by engineer. */
 "Additional links" = "Допълнителни линкове";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адресът е празен";
+
+/* No comment provided by engineer. */
+"Admin" = "Администратор";
 
 /* No comment provided by engineer. */
 "Administration" = "Администрация";
@@ -146,6 +143,9 @@
 "All notifications" = "Всички известия";
 
 /* No comment provided by engineer. */
+"All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" = "Всички споделени връзки в тази стая ще станат активни и съдържанието й ще бъде достъпно за всеки с връзката. Искате ли да възстановите стаята?";
+
+/* No comment provided by engineer. */
 "Allow access via external link" = "Позволете достъп чрез външен линк";
 
 /* No comment provided by engineer. */
@@ -164,7 +164,7 @@
 "Applying" = "Прилагане";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Архив";
 
 /* No comment provided by engineer. */
@@ -192,6 +192,9 @@
 "Back" = "Обратно";
 
 /* No comment provided by engineer. */
+"Back to room" = "Обратно към стаята";
+
+/* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Като собственик на този DocSpace, трябва да прехвърлите собствеността на друг потребител, преди да можете да изтриете акаунта си. Моля, изберете нов собственик, за да продължите.";
 
 /* No comment provided by engineer. */
@@ -202,6 +205,9 @@
 
 /* No comment provided by engineer. */
 "Box directory" = "Поле за директория";
+
+/* No comment provided by engineer. */
+"Business subscription expired" = "Бизнес абонаментът е изтекъл";
 
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Чрез създаването на портала се съгласявате с нашите Политика за поверителност и Условия за ползване";
@@ -227,7 +233,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Файлът не може да се дублира.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Отказ";
 
 /* No comment provided by engineer. */
@@ -240,16 +246,31 @@
 "Change owner" = "Смяна на собственика";
 
 /* No comment provided by engineer. */
+"Change room's owner" = "Промени собственика на стаята";
+
+/* No comment provided by engineer. */
 "Change the Room Owner" = "Промени Собственика на стаята";
 
 /* No comment provided by engineer. */
 "Changing access" = "Смяна на достъп";
 
 /* No comment provided by engineer. */
+"Check ready form" = "Провери готов формуляр";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Проверете връзката си с интернет";
 
 /* No comment provided by engineer. */
 "Choose Files" = "Избери файлове";
+
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "Изберете Стая за попълване на формуляри или създайте нова";
+
+/* No comment provided by engineer. */
+"Choose from list" = "Избери от списък";
+
+/* One line. Max 50 charasters */
+"Choose location with templates" = "Изберете местоположение с шаблони";
 
 /* No comment provided by engineer. */
 "Choose room type" = "Избери тип на стаята";
@@ -339,8 +360,11 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Свързване";
+
+/* No comment provided by engineer. */
+"Connection deinitialized" = "Връзката е деинициализирана";
 
 /* No comment provided by engineer. */
 "Console" = "Конзола";
@@ -362,6 +386,9 @@
 
 /* Button title */
 "Copy link" = "Копирай линк";
+
+/* No comment provided by engineer. */
+"Copy shared link" = "Копирай споделен линк";
 
 /* Caption of the processing */
 "Copying" = "Копиране";
@@ -415,6 +442,9 @@
 "Could not duplicate the file." = "Файлът не можа да се дублира.";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "Неуспешно дублиране на стая.";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "Файлът не можа да бъде експортиран.";
 
 /* Description of file operation error */
@@ -424,13 +454,13 @@
 "Could not open file." = "Файлът не можа да се отвори.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Данните от файл не можаха да бъдат прочетени.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Данните от файла не можаха да бъдат прочетени.";
 
 /* Description of file operation error */
 "Could not read from file" = "Файлът не може да бъде прочетен";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "Неуспешно изпращане на имейл";
 
 /* Description of file operation error */
 "Could not write to file" = "Върху файлът не може да се пише";
@@ -454,6 +484,9 @@
 "Create" = "Създай";
 
 /* No comment provided by engineer. */
+"Create a free account" = "Създайте безплатен профил";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Създайте допълнителни линкове за споделяне на документа с различни права на достъп.";
 
 /* No comment provided by engineer. */
@@ -465,11 +498,20 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Създавайте нови документи, таблици или презентации. Създайте нови папки, за да организирате файловете си.";
 
+/* No comment provided by engineer. */
+"Create new files" = "Създай нови файлове";
+
+/* No comment provided by engineer. */
+"Create new folder" = "Създайте нова папка";
+
+/* No comment provided by engineer. */
+"Create new folders to \norganize your files." = "Създайте нови папки \nзаорганизиране на файловете ви.";
+
 /* Button title */
 "Create room" = "Създай стая";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Създаване";
 
 /* No comment provided by engineer. */
@@ -489,15 +531,6 @@
 
 /* Button title */
 "Delete" = "Изтрий";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Изтриване на %lu файл";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Изтриване на %lu папка";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Изтриване на папката %1$lu и %2$lu";
 
 /* Button title */
 "Delete File" = "Изтрий файла";
@@ -535,6 +568,9 @@
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Деактивирайте, ако не искате да получавате известия от %@";
 
+/* No comment provided by engineer. */
+"Disable notifications" = "Изключи известия";
+
 /* Button title */
 "Disconnect third party" = "Преказнете връзката с трета страна";
 
@@ -554,7 +590,7 @@
 "Documents" = "Документи";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Завършен";
 
 /* Button title */
@@ -562,6 +598,9 @@
 
 /* Caption of the processing */
 "Downloading" = "Изтеглянето";
+
+/* No comment provided by engineer. */
+"DoсSpace users only" = "Само за потребители на DoсSpace";
 
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
@@ -584,6 +623,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Редактирайте документи на местно ниво";
 
+/* No comment provided by engineer. */
+"Edit link" = "Редактирай линк";
+
 /* Button title */
 "Edit room" = "Редактирай стая";
 
@@ -592,6 +634,9 @@
 
 /* No comment provided by engineer. */
 "Email" = "Електронна поща";
+
+/* No comment provided by engineer. */
+"Email address" = "Имейл адрес";
 
 /* No comment provided by engineer. */
 "Email is empty" = "Имейлът е празен";
@@ -603,13 +648,13 @@
 "Email is not valid" = "Имейлът не е валиден";
 
 /* No comment provided by engineer. */
-"Empty file." = "Празен файл.";
-
-/* No comment provided by engineer. */
 "Empty name." = "Празно име.";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Активирайте, ако искате да получавате известия от %@";
+
+/* No comment provided by engineer. */
+"Enable notifications" = "Включи известия";
 
 /* No comment provided by engineer. */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Активирайте тази настройка, за да изключите изтеглянето на файлове и папки от тази стая, споделени чрез линк";
@@ -650,6 +695,9 @@
 /* No comment provided by engineer. */
 "Expect users" = "Очаквайте потребители";
 
+/* Expiration status */
+"Expired" = "Изтекъл";
+
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Изтича след 7 дни";
 
@@ -657,7 +705,7 @@
 "Export" = "Изнеси";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Неуспешно онлайн конвертиране.";
+"External link" = "Външен линк";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Неуспешно проверяване на достъпността на портала.";
@@ -690,13 +738,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "Неуспешно изпращане на обратна връзка по пощата. Опитайте да напишете заявката си в нашия форум";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Неуспешно качване на изходния файл към онлайн услугата за реализация.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Неуспешно изтегляне на файл от портала.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Неуспехът да изтеглите резултат от онлайн услугата за преобразуване.";
+"Failed to submit the form" = "Неуспешно подаване на формуляр";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Грешка при подготвяне на архив";
@@ -717,7 +759,22 @@
 "Files" = "Файлове";
 
 /* No comment provided by engineer. */
+"Files and folders uploaded by admins will appear here." = "Файлове и папки, качени от администратори, ще се показват тук.";
+
+/* No comment provided by engineer. */
 "Files Preview" = "Преглед на файлове";
+
+/* Fill form Button title */
+"Fill" = "Напълнете";
+
+/* Title for fill-in options screen */
+"Fill in as" = "Попълни като";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "Попълни полетата на оригиналния формуляр в прозореца на редактора.";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "Попълнете формуляра сами";
 
 /* No comment provided by engineer. */
 "Filling form" = "Формуляр за попълване";
@@ -734,14 +791,35 @@
 /* No comment provided by engineer. */
 "Folders" = "Папки";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "Формулярът е попълнен успешно";
+
 /* Share status */
 "Form Filler" = "Попълващ формулярa";
+
+/* No comment provided by engineer. */
+"Form Filling" = "Попълване на формуляр";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "Стая за попълване на формуляри";
+
+/* No comment provided by engineer. */
+"Form number" = "Номер на формуляр";
+
+/* No comment provided by engineer. */
+"Form owner" = "Собственик на формуляр";
 
 /* No comment provided by engineer. */
 "Form templates" = "Шаблони за формуляри";
 
 /* No comment provided by engineer. */
 "Forms" = "Формуляри";
+
+/* No comment provided by engineer. */
+"From device" = "От устройство";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "От DocSpace";
 
 /* Share status */
 "Full Access" = "Пълен достъп";
@@ -753,16 +831,13 @@
 "General" = "Общ";
 
 /* No comment provided by engineer. */
-"General link" = "Главен линк";
-
-/* No comment provided by engineer. */
-"General link State" = "Главен линк за Състояние";
-
-/* No comment provided by engineer. */
 "General links" = "Главни линкове";
 
 /* No comment provided by engineer. */
 "Get started" = "Първи стъпки";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "Започнете с бързи команди:";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "ПЪРВИ СТЪПКИ!";
@@ -783,10 +858,16 @@
 "Groups" = "Групи";
 
 /* No comment provided by engineer. */
+"Here you will find a list of the recently opened files shared with you via an external link." = "Тук ще намерите списък с наскоро отворените файлове, споделени с вас чрез външна връзка.";
+
+/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "Икони";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Ако потребител с имейл %@ съществува, инструкции за смяна на паролата ще бъдат изпратени на този имейл адрес.";
@@ -864,6 +945,9 @@
 "Light" = "Светла";
 
 /* No comment provided by engineer. */
+"Link" = "Връзка";
+
+/* No comment provided by engineer. */
 "Link and password\nsuccessfully copied\nto clipboard" = "Линкът и паролата\nса копирани успешно\nв клипборда";
 
 /* No comment provided by engineer. */
@@ -871,6 +955,9 @@
 
 /* No comment provided by engineer. */
 "Link life time" = "Давност на линка";
+
+/* No comment provided by engineer. */
+"Link name" = "Име на линк";
 
 /* No comment provided by engineer. */
 "Link name %@" = "Име на линка %@";
@@ -881,8 +968,14 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Връзката с поканата е изпратена на пощата";
 
+/* Button title */
+"List" = "Списък";
+
 /* No comment provided by engineer. */
-"Loading..." = "Зареждане...";
+"Loading" = "Зареждане";
+
+/* No comment provided by engineer. */
+"Location" = "Местоположение";
 
 /* Caption of the process */
 "Logging in" = "Влизане в системата";
@@ -897,7 +990,7 @@
 "Login is empty" = "Входът е празен";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Излез от профила си";
 
 /* Button title */
@@ -913,7 +1006,7 @@
 "Mb" = "Мб";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Аз";
 
 /* No comment provided by engineer. */
@@ -971,10 +1064,22 @@
 "New Document" = "Нов документ";
 
 /* No comment provided by engineer. */
+"New folder" = "Нова папка";
+
+/* No comment provided by engineer. */
 "New Folder" = "Нова папка";
+
+/* Suggested a room name when create a new one */
+"New form filling" = "Попълване на нов формуляр";
+
+/* No comment provided by engineer. */
+"New form filling room" = "Стая за попълване на нов формуляр";
 
 /* No comment provided by engineer. */
 "New Presentation" = "Нова презентация";
+
+/* No comment provided by engineer. */
+"New room" = "Нова стая";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Нова електронна таблица";
@@ -989,7 +1094,13 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"NextCloud" = "NextCloud";
+
+/* No comment provided by engineer. */
 "Nextcloud directory" = "Nextcloud директория";
+
+/* No comment provided by engineer. */
+"No archived rooms here yet" = "Тук все още няма архивирани стаи";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "Няма клиентска идентификация на приложението";
@@ -998,13 +1109,16 @@
 "No connection" = "Няма връзка";
 
 /* No comment provided by engineer. */
+"No docs here yet" = "Тук все още няма документи";
+
+/* No comment provided by engineer. */
+"No files here yet" = "Тук все още няма файлове";
+
+/* No comment provided by engineer. */
 "No information about the user profile." = "Няма информация за потребителския профил.";
 
 /* No comment provided by engineer. */
 "No Internet connection" = "Няма интернет връзка";
-
-/* No comment provided by engineer. */
-"No Links State" = "Няма Линкове за Състояние";
 
 /* No comment provided by engineer. */
 "No network" = "Няма мрежа";
@@ -1024,12 +1138,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Няма намерени потребители";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "няма";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Няма";
 
 /* No comment provided by engineer. */
@@ -1065,11 +1175,20 @@
 /* No comment provided by engineer. */
 "OneDrive for Business" = "OneDrive for Business";
 
+/* No comment provided by engineer. */
+"Only a room administrator or a DocSpace administrator can become the room owner." = "Само администратор на стая или администратор на DocSpace може да стане собственик на стаята.";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE документи";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal is wrapping up" = "ONLYOFFICE Personal приключва работа";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." = "ONLYOFFICE Personal ще бъде спрян на 1-ви септември 2024 г. Препоръчваме да се преместите в безплатния ONLYOFFICE DocSpace облак.";
 
 /* Full App Name */
 "ONLYOFFICE portal" = "Портал ONLYOFFICE";
@@ -1131,6 +1250,9 @@
 /* Data units */
 "Pb" = "Пб";
 
+/* Default title of sample document */
+"PDF Form Sample" = "Мостра за PDF формуляр";
+
 /* No comment provided by engineer. */
 "Phone" = "Телефон";
 
@@ -1151,9 +1273,6 @@
 
 /* Button title */
 "Pin to top" = "Закачете отгоре";
-
-/* No comment provided by engineer. */
-"Pinned failed." = "Закачането не бе успешно.";
 
 /* Caption of the processing */
 "Pinning" = "Закачане";
@@ -1225,10 +1344,16 @@
 "Protection" = "Защита";
 
 /* No comment provided by engineer. */
+"Provide access to the document and set the permission levels." = "Осигурете достъп до документа и задайте нивата на разрешение.";
+
+/* No comment provided by engineer. */
 "Provide general access to the document selecting the required permission level." = "Осигурете цялостен достъп до документа, избирайки необходимото ниво на разрешение.";
 
 /* No comment provided by engineer. */
 "Public" = "Обществен";
+
+/* No comment provided by engineer. */
+"Public link" = "Обществен линк";
 
 /* No comment provided by engineer. */
 "Public room" = "Обществена стая";
@@ -1239,6 +1364,9 @@
 /* Category title */
 "Recent" = "Скорошни";
 
+/* No comment provided by engineer. */
+"Recently accessible via link" = "Достъпен отскоро чрез линк";
+
 /* Button title */
 "Recover here" = "Възстановяване тук";
 
@@ -1246,13 +1374,22 @@
 "Recovery" = "Възстановяване";
 
 /* No comment provided by engineer. */
+"Regenerate link" = "Генерирайте повторно линк";
+
+/* No comment provided by engineer. */
 "Registration" = "Регистрация";
 
 /* No comment provided by engineer. */
 "Reload" = "Презареждане";
 
+/* No comment provided by engineer. */
+"Remove" = "Премахни";
+
 /* Button title */
 "Remove from Favorites" = "Премахни от Любими";
+
+/* No comment provided by engineer. */
+"Remove link" = "Премахнете линк";
 
 /* Caption of the process */
 "Removing" = "Премахване ";
@@ -1268,6 +1405,9 @@
 
 /* Caption of the processing */
 "Renaming" = "Преименуването";
+
+/* No comment provided by engineer. */
+"Renew Business plan" = "Подновете Бизнес план";
 
 /* No comment provided by engineer. */
 "Renewal" = "Подновяване";
@@ -1287,6 +1427,9 @@
 /* Button title */
 "Restore" = "Възстанови";
 
+/* No comment provided by engineer. */
+"Restore room?" = "Възстановяване на стая?";
+
 /* Caption of the processing */
 "Restoring" = "Възстановяване";
 
@@ -1296,15 +1439,33 @@
 /* Share status */
 "Reviewer" = "Рецензент";
 
+/* No comment provided by engineer. */
+"Revoke link" = "Отменете линк";
+
+/* No comment provided by engineer. */
+"Revoked" = "Отменен";
+
+/* No comment provided by engineer. */
+"Revoking" = "Отмяна";
+
+/* No comment provided by engineer. */
+"Roles" = "Роли";
+
 /* Share status */
 "Room admin" = "Администратор на стаята";
+
+/* No comment provided by engineer. */
+"Room created!" = "Стаята е създадена!";
 
 /* No comment provided by engineer. */
 "Room name" = "Име на стаята";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Стаи";
+
+/* No comment provided by engineer. */
+"Root folder" = "Основна папка";
 
 /* No comment provided by engineer. */
 "Same as system" = "Същото като системата";
@@ -1319,8 +1480,11 @@
 "Search" = "Търсене";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Изберете";
+
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "Изберете PDF формуляр";
 
 /* No comment provided by engineer. */
 "Select all" = "Избери всички";
@@ -1330,6 +1494,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "Избери група";
+
+/* Button title */
+"Select location" = "Изберете локация";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Изберете снимки";
@@ -1377,7 +1544,25 @@
 "Settings and Security" = "Настройки и сигурност";
 
 /* No comment provided by engineer. */
+"Share" = "Сподели";
+
+/* Title for sharing and collecting form */
+"Share & collect" = "Сподели и Събери";
+
+/* No comment provided by engineer. */
+"Share folder" = "Споделете папка";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "Споделете формуляра си и събирайте отговори чрез Стая за попълване на формуляри.";
+
+/* No comment provided by engineer. */
 "Shared access" = "Споделен достъп";
+
+/* No comment provided by engineer. */
+"Shared link" = "Споделен линк";
+
+/* No comment provided by engineer. */
+"Shared links" = "Споделени линкове";
 
 /* Category title */
 "Shared with Me" = "Споделено с мен";
@@ -1449,6 +1634,9 @@
 "Tag" = "Етикет";
 
 /* No comment provided by engineer. */
+"Tags" = "Етикети";
+
+/* No comment provided by engineer. */
 "Take a Picture" = "Направи снимка";
 
 /* No comment provided by engineer. */
@@ -1482,6 +1670,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Файлът ще бъде безвъзвратно изтрит. Това действие е необратимо.";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "Попълненият PDF формуляр се запазва и е наличен за Вас\nв папката Завършени. За да проверите статуса,\nсвържете се със собственика на формуляра, осигурявайки назначения му номер.";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Папката в КОшчето не може да бъде отворена.";
 
 /* No comment provided by engineer. */
@@ -1503,6 +1694,9 @@
 "The list of users previously invited to DocSpace or separate rooms will appear here." = "Списъкът с потребители, добавени предварително в DocSpace или в отделни стаи, ще се появи тук.";
 
 /* No comment provided by engineer. */
+"The new shared link was created" = "Новата споделена връзка беше създадена";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "Параметрите не са правилни.";
 
 /* No comment provided by engineer. */
@@ -1516,6 +1710,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Име на портала трябва да е между 6 и 50 символа";
+
+/* No comment provided by engineer. */
+"The previous link will become unavailable. A new shared link will be created." = "Предишната връзка ще стане недостъпна. Ще бъде създадена нова споделена връзка.";
 
 /* No comment provided by engineer. */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Квотата от потребители е почти изчерпана. Свържете се с администратора на портала";
@@ -1541,6 +1738,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "Ресурс на трета страна";
 
+/* No comment provided by engineer. */
+"Third party storage" = "Хранилище от трета страна";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "Памет за трети страни";
 
@@ -1558,6 +1758,12 @@
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Тази презентация се редактира. Искате ли да отворите %@ само за преглеждане?";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "Тази стая е достъпна за всеки с линк.\nВъншни потребители ще имат разрешение\nза Попълване на формуляр за всички файлове.";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "Тази стая е достъпна за всеки с линк.\nВъншни потребители ще имат разрешение\nСамо за преглед за всички файлове.";
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Тази таблица се редактира. Искате ли да отворите %@ само за преглеждане?";
@@ -1623,6 +1829,9 @@
 "Unarchiving failed." = "Разархивирането беше неуспешно.";
 
 /* No comment provided by engineer. */
+"Unauthorized members will be able only to view the document." = "Неоторизираните членове ще могат само да преглеждат документа.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Неоторизираните потребители ще могат само да преглеждат документа и да добавят коментари, както и да ги управляват.";
 
 /* No comment provided by engineer. */
@@ -1641,9 +1850,6 @@
 "Unauthorized users will not have access to the document." = "Неоторизираните потребители няма да имат достъп до документа.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Неочакван отговор от услугата.";
-
-/* Invalid entity name */
 "Unknown" = "Неизвестен";
 
 /* No comment provided by engineer. */
@@ -1676,8 +1882,23 @@
 /* Caption of the processing */
 "Unpning" = "Откачване";
 
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "Качи готов PDF формуляр";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "Качи PDF формуляр от устройство";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "Качи PDF формуляр от DocSpace";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Качвайте PDF формуляри в стаята. Канете потребителите да попълнят PDF формуляр. Преглеждайте попълнените формуляри и анализирайте данните, събрани автоматично в електронна таблица.";
+
 /* Caption of the process */
 "Uploading" = "Качване";
+
+/* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Използвайте услуги на трети страни като хранилище на данни за тази стая. В свързаното хранилище ще бъде създадена нова папка за съхраняване на данните от тази стая";
 
 /* No comment provided by engineer. */
 "User" = "Потребител";
@@ -1687,6 +1908,9 @@
 
 /* No comment provided by engineer. */
 "User authentication required" = "Изисква се удостоверяване на потребителя";
+
+/* No comment provided by engineer. */
+"User name" = "Потребителско име";
 
 /* No comment provided by engineer. */
 "User undefined" = "Не е определен потребител";
@@ -1734,6 +1958,9 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Добре дошли в %@ мобилен пакет за редактиране!\nПлъзнете, за да научите повече за приложението.";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "Добре дошли в Стаята за попълване на формуляри";
+
+/* No comment provided by engineer. */
 "What's New" = "Какво е новото";
 
 /* Introduction Step Four - Description */
@@ -1761,10 +1988,19 @@
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Вие сте собственик на тази стая. Преди да я напуснете, трябва да прехвърлите ролята на собственик на друг потребител.";
 
 /* No comment provided by engineer. */
+"You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." = "Можете да архивирате стаи, които не използвате, и да ги възстановите във вашия DocSpace по всяко време, или да ги изтриете за постоянно. Тези стаи ще се появят тук.";
+
+/* No comment provided by engineer. */
 "You can connect the following accounts to the %@." = "Можете да свържете следните сметки с документите %@.";
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Можете да свържете следните сметки с документите %@. Те ще бъдат показани в папката \"Моите документи\" и ще можете да ги редактирате и запазвате направо на портала на едно място.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "Можете да свържете следните профили към DocSpace стаите";
+
+/* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Не можете да закачите повече от 10 стаи горе. Откачете някои, които в момента са закачени.";
 
 /* No comment provided by engineer. */
 "You have left the room" = "Напуснахте стаята";
@@ -1774,6 +2010,12 @@
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "Имате достъп само за четене до тази папка. Не можете да създавате файлове или папки тук.";
+
+/* No comment provided by engineer. */
+"Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Текущият ви тарифен план Business изтече. Моля, подновете абонамента си от настройките на профила, за да можете да използвате своя DocSpace. Ако имате някакви въпроси, моля, свържете се с поддръжката.";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "Устройството ви не успя да изпрати имейл. Моля, проверете имейл конфигурацията и опитайте отново.";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Сесията ви е изтекла";

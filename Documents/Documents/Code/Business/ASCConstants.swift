@@ -20,9 +20,6 @@ class ASCConstants {
 
     enum Keys {
         static let portalRegistration = ASCConstants.internalConstants["KeysPortalRegistration"] as? String ?? ""
-        static let ascDocumentServiceKey = ASCConstants.internalConstants["KeysAscDocumentServiceKey"] as? String ?? ""
-        static let ascDocumentServiceKeyId = ASCConstants.internalConstants["KeysAscDocumentServiceKeyId"] as? String ?? ""
-        static let converterKey = ASCConstants.internalConstants["KeysConverterKey"] as? String ?? "{95874338-e6dc-4965-9791-b7802f22aa67}"
         static let recaptcha = ASCConstants.internalConstants["ReCaptcha"] as? String ?? ""
         static let recaptchaInfo = ASCConstants.internalConstants["ReCaptchaInfo"] as? String ?? ""
         static let licenseName = "F8D434904F7142C49EB3E4CD738CFE01"
@@ -66,14 +63,15 @@ class ASCConstants {
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"
+        static let gridLayoutFiles = "asc-grid-layout-files"
+        static let hideCloudsCategory = "asc-hide-clouds-category"
 
         // Debug
-        static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
         static let debugAllowiCloud = "asc-debug-allowicloud"
         static let debugAllowCategoriesSkeleton = "asc-debug-allowcategoriesskeleton"
         static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
         static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
-        static let debugForceRtl = "asc-debug-force-rtl"
+        static let debugDisableSdkVersionCheck = "asc-debug-disablesdkversioncheck"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
@@ -82,7 +80,6 @@ class ASCConstants {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
 
             // Debug
-            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowiCloud: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])
@@ -103,6 +100,7 @@ class ASCConstants {
         static let recaptchaForPortalRegistration = "recaptcha_for_portal_registration"
         static let privacyPolicyLink = "link_privacy_policy"
         static let termsOfServiceLink = "link_terms_of_service"
+        static let allowGoogleDrive = "allow_google_drive"
 
         static func setupDefaults() {
             let defaultValues: [String: NSObject] = [
@@ -111,6 +109,7 @@ class ASCConstants {
                 recaptchaForPortalRegistration: NSNumber(value: true),
                 privacyPolicyLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0"),
                 termsOfServiceLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048471&doc=bXJ6UmJacDVnVDMxV01oMHhrUlpwaGFBcXJUUUE3VHRuTGZrRUF5a1NKVT0_IjUwNDg0NzEi0"),
+                allowGoogleDrive: NSNumber(value: true),
             ]
 
             #if !OPEN_SOURCE
@@ -157,6 +156,7 @@ class ASCConstants {
         static let appDidBecomeActive = Notification.Name("ASCEventAppDidBecomeActive")
         static let pushInfo = Notification.Name("ASCEventPushInfo")
         static let reloadData = Notification.Name("ASCEventReloadData")
+        static let updateDocumentsViewLayoutType = Notification.Name("ASCEventUpdateDocumentsViewLayoutType")
     }
 
     enum FileExtensions {
@@ -166,7 +166,8 @@ class ASCConstants {
         static let formTemplates = ["docxf"]
         static let forms = ["docxf", "oform"]
         static let images = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
-        static let videos = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
+        static let videos = ["mov", "mp4", "mpg4", "m4v", "mqv", "mpg", "mpeg", "avi", "vfw", "3g2", "3gp", "3gp2", "3gpp", "qt"]
+        static let audios = ["mp1", "mp2", "mp3", "mpa", "mpga", "m1a", "m2a", "m4a", "m4b", "m4p", "m4r", "aac", "snd", "caf", "aa", "aax", "adts", "aif", "aifc", "aiff", "au", "flac", "amr", "wav", "wave", "bwf", "ac3", "eac3", "ec3", "cdda"]
         static let archives = ["zip", "tar", "gz"]
         static let allowEdit = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform"]
         static let editorImportDocuments = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]

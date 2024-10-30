@@ -21,7 +21,7 @@ extension UserList {
         var imageUrl: URL? {
             let urlStr = imageName
             if !urlStr.isEmpty,
-               !urlStr.contains("/default_user_photo_size_"),
+               !urlStr.contains(String.defaultUserPhotoSize),
                let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed
             {
                 return URL(string: portal + urlStr)

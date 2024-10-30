@@ -1,35 +1,17 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
-
-/* Days left */
-"%d days" = "%d дней";
-
-/* Hours left */
-"%d hours" = "%d часов";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "Выбрано %d";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i из %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu Файлов выбрано";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu Папок и %2$lu файлов выбрано";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu папок выбрано";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu файлов с одинаковым именем находятся в папке '%2$@'. Перезаписать эти файлы?";
@@ -134,9 +116,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Добавьте пользователей или группы и дайте им\n возможность читать, просматривать или редактировать документы.";
 
 /* No comment provided by engineer. */
-"Additional link State" = "Дополнительная ссылка";
-
-/* No comment provided by engineer. */
 "Additional links" = "Дополнительные ссылки";
 
 /* No comment provided by engineer. */
@@ -158,7 +137,7 @@
 "All Files" = "Все файлы";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "Все элементы из архива будут удалены навсегда. Вы не сможете их восстановить.";
+"All items from Archived will be deleted forever. You won't be able to restore them." = "Все элементы из архива будут удалены навсегда. Вы не сможете их восстановить.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Все уведомления";
@@ -185,7 +164,7 @@
 "Applying" = "Применение";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "Архив";
 
 /* No comment provided by engineer. */
@@ -211,6 +190,9 @@
 
 /* No comment provided by engineer. */
 "Back" = "Назад";
+
+/* No comment provided by engineer. */
+"Back to room" = "В комнату";
 
 /* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Поскольку вы являетесь владельцем данного DocSpace, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.";
@@ -251,7 +233,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Невозможно скопировать файл.";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "Отмена";
 
 /* No comment provided by engineer. */
@@ -273,10 +255,16 @@
 "Changing access" = "Изменение доступа";
 
 /* No comment provided by engineer. */
+"Check ready form" = "Проверить формы";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Проверьте интернет-соединение";
 
 /* No comment provided by engineer. */
 "Choose Files" = "Выберите файлы";
+
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "Выберите комнату для заполнения формы или создайте новую";
 
 /* No comment provided by engineer. */
 "Choose from list" = "Выберите из списка";
@@ -372,7 +360,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "Подключение";
 
 /* No comment provided by engineer. */
@@ -454,6 +442,9 @@
 "Could not duplicate the file." = "Невозможно скопировать файл.";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "Не удалось продублировать комнату.";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "Невозможно экспортировать файл.";
 
 /* Description of file operation error */
@@ -463,13 +454,13 @@
 "Could not open file." = "Невозможно открыть файл.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "Невозможно прочитать данные из файла.";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "Невозможно прочитать данные из файла.";
 
 /* Description of file operation error */
 "Could not read from file" = "Невозможно прочитать из файла";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "Не удалось отправить электронное письмо";
 
 /* Description of file operation error */
 "Could not write to file" = "Не удалось записать в файл";
@@ -520,7 +511,7 @@
 "Create room" = "Создать комнату";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "Создание";
 
 /* No comment provided by engineer. */
@@ -540,15 +531,6 @@
 
 /* Button title */
 "Delete" = "Удалить";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "Удалить %lu файлов";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "Удалить %lu папок";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Удалить %1$lu папок и %2$lu файлов";
 
 /* Button title */
 "Delete File" = "Удалить файл";
@@ -608,7 +590,7 @@
 "Documents" = "Документы";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "Готово";
 
 /* Button title */
@@ -641,6 +623,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Редактируйте документ локально";
 
+/* No comment provided by engineer. */
+"Edit link" = "Редактировать ссылку";
+
 /* Button title */
 "Edit room" = "Редактировать комнату";
 
@@ -661,9 +646,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Некорректный e-mail";
-
-/* No comment provided by engineer. */
-"Empty file." = "Пустой файл.";
 
 /* No comment provided by engineer. */
 "Empty name." = "Пустое имя.";
@@ -716,12 +698,6 @@
 /* Expiration status */
 "Expired" = "Истек";
 
-/* Days left */
-"Expires after %d days" = "Истекает через %d дней";
-
-/* Hours left */
-"Expires after %d hours" = "Истекает через %d часов";
-
 /* No comment provided by engineer. */
 "Expires after 7 days" = "Истекает через 7 дней";
 
@@ -730,9 +706,6 @@
 
 /* No comment provided by engineer. */
 "External link" = "Внешняя ссылка";
-
-/* No comment provided by engineer. */
-"Failed online conversion service." = "Ошибка службы онлайн-конвертации.";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Не удалось проверить доступность портала.";
@@ -765,13 +738,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Ошибка загрузки исходного файла в службу онлайн-конвертации.";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "Ошибка скачивания файла с портала.";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
+"Failed to submit the form" = "Не удалось отправить форму";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Не удалось подготовить архив";
@@ -797,6 +764,18 @@
 /* No comment provided by engineer. */
 "Files Preview" = "Предпросмотр файлов";
 
+/* Fill form Button title */
+"Fill" = "Заполнить";
+
+/* Title for fill-in options screen */
+"Fill in as" = "Заполните как";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "Заполните поля исходной формы в окне редактора.";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "Заполните форму самостоятельно";
+
 /* No comment provided by engineer. */
 "Filling form" = "Заполнение форм";
 
@@ -812,14 +791,35 @@
 /* No comment provided by engineer. */
 "Folders" = "Папки";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "Форма успешно заполнена";
+
 /* Share status */
 "Form Filler" = "Заполнение форм";
+
+/* No comment provided by engineer. */
+"Form Filling" = "Заполнение форм";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "Комната заполнения форм";
+
+/* No comment provided by engineer. */
+"Form number" = "Номер формы";
+
+/* No comment provided by engineer. */
+"Form owner" = "Владелец формы";
 
 /* No comment provided by engineer. */
 "Form templates" = "Шаблоны форм";
 
 /* No comment provided by engineer. */
 "Forms" = "Формы";
+
+/* No comment provided by engineer. */
+"From device" = "С устройства";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "Из DocSpace";
 
 /* Share status */
 "Full Access" = "Полный доступ";
@@ -831,16 +831,13 @@
 "General" = "Общие";
 
 /* No comment provided by engineer. */
-"General link" = "Общая ссылка";
-
-/* No comment provided by engineer. */
-"General link State" = "Статус общей ссылки";
-
-/* No comment provided by engineer. */
 "General links" = "Общие ссылки";
 
 /* No comment provided by engineer. */
 "Get started" = "Начать";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "Приступайте к работе с помощью быстрых действий:";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "НАЧАТЬ!";
@@ -868,6 +865,9 @@
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "Значки";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Если пользователь с почтой %@ существует, то на этот адрес была отправлена инструкция по смене пароля.";
@@ -957,6 +957,9 @@
 "Link life time" = "Срок службы ссылки";
 
 /* No comment provided by engineer. */
+"Link name" = "Название ссылки";
+
+/* No comment provided by engineer. */
 "Link name %@" = "Название ссылки %@";
 
 /* Button title */
@@ -965,11 +968,11 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Ссылка с приглашением отправлена на почту";
 
-/* No comment provided by engineer. */
-"Loading" = "Загрузка";
+/* Button title */
+"List" = "Список";
 
 /* No comment provided by engineer. */
-"Loading..." = "Загрузка…";
+"Loading" = "Загрузка";
 
 /* No comment provided by engineer. */
 "Location" = "Местоположение";
@@ -987,7 +990,7 @@
 "Login is empty" = "Пустой логин";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "Выход";
 
 /* Button title */
@@ -1003,7 +1006,7 @@
 "Mb" = "Мб";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "Я";
 
 /* No comment provided by engineer. */
@@ -1066,8 +1069,17 @@
 /* No comment provided by engineer. */
 "New Folder" = "Новая папка";
 
+/* Suggested a room name when create a new one */
+"New form filling" = "Новая форма";
+
+/* No comment provided by engineer. */
+"New form filling room" = "Новая комната для заполнения форм";
+
 /* No comment provided by engineer. */
 "New Presentation" = "Новая презентация";
+
+/* No comment provided by engineer. */
+"New room" = "Новая комната";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Новая таблица";
@@ -1109,9 +1121,6 @@
 "No Internet connection" = "Нет соединения с интернетом";
 
 /* No comment provided by engineer. */
-"No Links State" = "Нет ссылок";
-
-/* No comment provided by engineer. */
 "No network" = "Нет сети";
 
 /* No comment provided by engineer. */
@@ -1129,12 +1138,8 @@
 /* No comment provided by engineer. */
 "No users found" = "Пользователи не найдены";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "нет";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "Нет";
 
 /* No comment provided by engineer. */
@@ -1269,9 +1274,6 @@
 /* Button title */
 "Pin to top" = "Закрепить вверху";
 
-/* No comment provided by engineer. */
-"Pinned failed." = "Не удалось закрепить.";
-
 /* Caption of the processing */
 "Pinning" = "Закрепление";
 
@@ -1349,6 +1351,9 @@
 
 /* No comment provided by engineer. */
 "Public" = "Публичный";
+
+/* No comment provided by engineer. */
+"Public link" = "Публичная ссылка";
 
 /* No comment provided by engineer. */
 "Public room" = "Публичная комната";
@@ -1456,7 +1461,7 @@
 "Room name" = "Название комнаты";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "Комнаты";
 
 /* No comment provided by engineer. */
@@ -1475,8 +1480,11 @@
 "Search" = "Поиск";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "Выбрать";
+
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "Выберите форму PDF";
 
 /* No comment provided by engineer. */
 "Select all" = "Выбрать все";
@@ -1538,8 +1546,14 @@
 /* No comment provided by engineer. */
 "Share" = "Совместный доступ";
 
+/* Title for sharing and collecting form */
+"Share & collect" = "Поделиться и собрать";
+
 /* No comment provided by engineer. */
 "Share folder" = "Предоставить доступ к папке";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "Поделитесь своей формой и собирайте ответы с помощью комнаты заполнения форм.";
 
 /* No comment provided by engineer. */
 "Shared access" = "Общий доступ";
@@ -1656,6 +1670,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "Заполненная форма PDF сохраняется и становится доступной для вас в папке Готово. Чтобы проверить статус, свяжитесь с владельцем формы, указав присвоенный ему номер.";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Невозможно открыть папку, находящийся в корзине.";
 
 /* No comment provided by engineer. */
@@ -1743,6 +1760,12 @@
 "This presentation is being edited. Do you want open %@ to view only?" = "Эта презентация редактируется. Вы хотите открыть %@ только на просмотр?";
 
 /* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "Эта комната доступна всем, у кого есть ссылка.\nВнешние пользователи будут иметь разрешение “Заполнение форм” для всех файлов.";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "Эта комната доступна всем, у кого есть ссылка.\nВнешние пользователи будут иметь разрешение \"Только просмотр” для всех файлов.";
+
+/* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Эта таблица редактируется. Вы хотите открыть %@ только на просмотр?";
 
 /* No comment provided by engineer. */
@@ -1827,9 +1850,6 @@
 "Unauthorized users will not have access to the document." = "Неавторизованные пользователи не будут иметь доступа к документу.";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "Неожиданный ответ от службы.";
-
-/* Invalid entity name */
 "Unknown" = "Неизвестно";
 
 /* No comment provided by engineer. */
@@ -1861,6 +1881,18 @@
 
 /* Caption of the processing */
 "Unpning" = "Открепление";
+
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "Загрузите готовую форму в формате PDF";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "Загрузка PDF-формы с устройства";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "Загрузка PDF-формы из DocSpace";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Загрузите PDF-формы в комнату. Предложите пользователям заполнить PDF-форму. Просмотр заполненных форм и анализ данных, автоматически собранных в электронную таблицу.";
 
 /* Caption of the process */
 "Uploading" = "Загрузка";
@@ -1926,6 +1958,9 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Добро пожаловать в мобильный редактор %@!\nПроведите пальцем для дополнительной информации о приложении.";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "Добро пожаловать в комнату для заполнения форм";
+
+/* No comment provided by engineer. */
 "What's New" = "Что нового";
 
 /* Introduction Step Four - Description */
@@ -1947,7 +1982,7 @@
 "Yb" = "Иб";
 
 /* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "Вы собираетесь удалить эту комнату. Вы не сможете восстановить ее.";
+"You are about to delete this room. You won't be able to restore them." = "Вы собираетесь удалить эту комнату. Вы не сможете восстановить ее.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Вы являетесь владельцем комнаты. Перед тем, как покинуть комнату, вы должны передать роль владельца другому пользователю.";
@@ -1965,6 +2000,9 @@
 "You can connect the following accounts to the DocSpace rooms" = "Вы можете подключить следующие аккаунты к комнатам DocSpace";
 
 /* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Вы не можете прикрепить более 10 комнат. Открепите некоторые из них, которые уже прикреплены.";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Вы вышли из комнаты";
 
 /* No comment provided by engineer. */
@@ -1975,6 +2013,9 @@
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Срок действия вашего текущего тарифного плана Business истек. Пожалуйста, возобновите подписку в настройках учетной записи, чтобы продолжать использовать DocSpace. Если у вас возникли вопросы, обратитесь в службу поддержки.";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "Ваше устройство не смогло отправить электронную почту. Проверьте конфигурацию электронной почты и повторите попытку.";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Время сессии истекло";

@@ -25,11 +25,14 @@ class ASCDocumentsEmptyView: UIView {
         case paymentRequired
         case docspaceArchive
         case recentlyAccessibleViaLink
+        case formFillingRoom
+        case formFillingRoomSubfolder
     }
 
     // MARK: - Properties
 
     public var onAction: (() -> Void)?
+    public var menuForType: [EmptyViewState: UIMenu] = [:]
     public var type: EmptyViewState = .default {
         didSet {
             updateType()
@@ -207,12 +210,28 @@ class ASCDocumentsEmptyView: UIView {
             subtitleLabel?.text = NSLocalizedString("Here you will find a list of the recently opened files shared with you via an external link.", comment: "")
             actionButton?.removeFromSuperview()
 
+        case .formFillingRoom:
+            imageView.image = Asset.Images.emptyFolder.image
+            titleLabel.text = NSLocalizedString("Welcome to the Form filling room ", comment: "")
+            subtitleLabel.text = NSLocalizedString("Get started with quick actions: ", comment: "")
+            actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
+
+        case .formFillingRoomSubfolder:
+            imageView.image = Asset.Images.emptyFolder.image
+            titleLabel.text = NSLocalizedString("No forms here yet ", comment: "")
+            subtitleLabel.text = NSLocalizedString("Upload PDF forms from DocSpace or device.", comment: "")
+            actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
+
         default:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.removeFromSuperview()
         }
+
+        let menu = menuForType[type]
+        actionButton.menu = menu
+        actionButton.showsMenuAsPrimaryAction = menu != nil
 
         actionButton.styleType = type.actionButtonStyleType
     }

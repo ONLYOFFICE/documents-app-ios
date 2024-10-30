@@ -20,17 +20,17 @@ enum ASCRoomType: Int {
     var image: UIImage {
         switch self {
         case .fillingForm:
-            return Asset.Images.roomFillingForms.image
+            return Asset.Images.listRoomFillingFormsBlue.image
         case .colobaration:
-            return Asset.Images.roomCollaboration.image
+            return Asset.Images.listRoomCollaboration.image
         case .review:
-            return Asset.Images.roomReview.image
+            return Asset.Images.listRoomReview.image
         case .viewOnly:
-            return Asset.Images.roomViewOnly.image
+            return Asset.Images.listRoomViewOnly.image
         case .custom:
-            return Asset.Images.roomCustom.image
+            return Asset.Images.listRoomCustom.image
         case .public:
-            return Asset.Images.roomPublic.image
+            return Asset.Images.listRoomPublicPlanet.image
         }
     }
 }

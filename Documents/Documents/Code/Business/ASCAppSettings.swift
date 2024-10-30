@@ -19,11 +19,16 @@ enum ASCAppSettings {
         set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.compressImage) }
     }
 
+    static var gridLayoutFiles: Bool {
+        get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.gridLayoutFiles) }
+        set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.gridLayoutFiles) }
+    }
+
     enum Feature {
-        // Hide the searchbar in the navigationbar if the list of documents is empty
-        static var hideSearchbarIfEmpty: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
+        // Allow external clouds category
+        static var hideCloudsCategory: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.hideCloudsCategory) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.hideCloudsCategory) }
         }
 
         // Allow iCloud provider
@@ -50,10 +55,10 @@ enum ASCAppSettings {
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
         }
 
-        // Force RTL
-        static var forceRtl: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugForceRtl) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugForceRtl) }
+        // Disable check of sdk version
+        static var disableSdkVersionCheck: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
         }
     }
 }

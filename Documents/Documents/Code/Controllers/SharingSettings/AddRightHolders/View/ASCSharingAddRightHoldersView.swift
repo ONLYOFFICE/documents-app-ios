@@ -12,7 +12,6 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
 
-    @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int)
     func onAccessSheetSelectAction(shareAccessRaw: Int)
     func onUpdateToolbarItems(_ items: [UIBarButtonItem]?)
@@ -107,7 +106,6 @@ class ASCSharingAddRightHoldersView {
         }
     }
 
-    @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
         let accessList = delegate?.getAccessList() ?? []
         let menuItems = accessList
@@ -206,7 +204,6 @@ class ASCSharingAddRightHoldersView {
 // MARK: - @OBJC func delegate
 
 extension ASCSharingAddRightHoldersView {
-    @available(iOS 14.0, *)
     @objc func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         delegate?.onAccessMenuSelectAction(action: action, shareAccessRaw: shareAccessRaw)
         updateToolbars()
@@ -488,19 +485,12 @@ extension ASCSharingAddRightHoldersView {
     }
 
     private func makeNextBarBtn() -> UIBarButtonItem {
-        let nextBtn = ASCButtonStyle()
-        nextBtn.styleType = .capsule
-        nextBtn.setTitleForAllStates(NSLocalizedString("Next", comment: "").uppercased())
-        nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
-        nextBtn.isEnabled = isNextBarBtnEnabled
-
-        Task { @MainActor [weak nextBtn] in
-            nextBtn?.iq.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
+        .makeCapsuleBarButtonItem(
+            title: NSLocalizedString("Next", comment: "").uppercased(),
+            isEnabled: isNextBarBtnEnabled
+        ) { [weak self] in
+            self?.onNextButtonTapped()
         }
-
-        let barItem = UIBarButtonItem(customView: nextBtn)
-        barItem.isEnabled = isNextBarBtnEnabled
-        return barItem
     }
 
     public func updateToolbars() {

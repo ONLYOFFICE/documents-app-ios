@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,149 +184,149 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>%d days</source>
         <target>%d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>%d hours</source>
         <target>%d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
         <source>%d selected</source>
         <target>%d 已选定</target>
-        <note/>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
         <target>%lu 文件已选定</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
         <target>和 %lu 文件已选定</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
         <target>%lu 文件夹 %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%2$#@lu_files@</source>
         <target>%2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
         <target>%lu 文件夹已选定</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
         <target>删除 %lu 文件</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
         <target>%1$#@lu_folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files</source>
         <target>和 %lu 文件</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
         <target/>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
         <target>删除 %lu 文件夹 %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
         <target>删除 %2$#@lu_files@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
         <target>%#@folders@</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>删除 %lu 文件夹</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
         <target>Expires after %d days</target>
-        <note/>
+        <note>Days left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
         <target>Expires after %d hours</target>
-        <note/>
+        <note>Hours left</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -577,7 +577,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -724,7 +724,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -805,7 +805,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -832,7 +832,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -869,7 +869,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -926,7 +926,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -998,7 +998,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1080,7 +1080,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1137,48 +1137,47 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="%@ | %@" xml:space="preserve">
         <source>%1$@ | %2$@</source>
         <target>%1$@ | %2$@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="%d days" xml:space="preserve">
+      <trans-unit id="%d days" translate="no" xml:space="preserve">
         <source>%d days</source>
-        <target>%d 天</target>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d hours" xml:space="preserve">
+      <trans-unit id="%d hours" translate="no" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d 小时</target>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%d selected" xml:space="preserve">
+      <trans-unit id="%d selected" translate="no" xml:space="preserve">
         <source>%d selected</source>
-        <target>%d 已选定</target>
-        <note>Count of seclected rows: count + selected</note>
+        <note>Count of seclected rows: count + selected (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%1$i / %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
-      <trans-unit id="%lu File selected" xml:space="preserve">
+      <trans-unit id="%lu File selected" translate="no" xml:space="preserve">
         <source>%lu File selected</source>
-        <target>%lu 文件已选定</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
+      <trans-unit id="%lu Folder and %lu File selected" translate="no" xml:space="preserve">
         <source>%1$lu Folder and %2$lu File selected</source>
-        <target>%1$lu 文件夹和 %2$lu 文件选定的</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="%lu Folder selected" xml:space="preserve">
+      <trans-unit id="%lu Folder selected" translate="no" xml:space="preserve">
         <source>%lu Folder selected</source>
-        <target>%lu 文件夹已选定</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
@@ -1208,11 +1207,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="12 hours" xml:space="preserve">
         <source>12 hours</source>
         <target>12小时</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
-        <source>: "%@"</source>
-        <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
@@ -1362,11 +1356,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
 阅读、审查或编辑文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Additional link State" xml:space="preserve">
-        <source>Additional link State</source>
-        <target>附加链接状态</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target>附加链接</target>
@@ -1451,7 +1440,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Archive</source>
         <target>備份</target>
         <note>Button title
-   Category title</note>
+Category title</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
@@ -1491,6 +1480,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Back" xml:space="preserve">
         <source>Back</source>
         <target>返回</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Back to room" xml:space="preserve">
+        <source>Back to room</source>
+        <target>返回房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1556,7 +1550,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target>取消</target>
-        <note>No comment provided by engineer.</note>
+        <note>Cancel button</note>
       </trans-unit>
       <trans-unit id="Cancel invitation?" xml:space="preserve">
         <source>Cancel invitation?</source>
@@ -1588,6 +1582,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>更改访问权限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Check ready form" xml:space="preserve">
+        <source>Check ready form</source>
+        <target>检查准备好的表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
         <target>请检查您的网络连接并重试</target>
@@ -1598,6 +1597,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>选择文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
+        <source>Choose Form filling room or create new</source>
+        <target>选择或创建新的表单填写房间</target>
+        <note>One line. Max 50 charasters</note>
+      </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
         <source>Choose from list</source>
         <target>从列表中选择</target>
@@ -1605,6 +1609,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>选择模板位置</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1720,7 +1725,7 @@ others which use WebDAV protocol.</source>
         <source>Connecting</source>
         <target>正在链接中</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -1771,6 +1776,11 @@ others which use WebDAV protocol.</source>
         <source>Copying</source>
         <target>正在复制</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Could Not Send Email" xml:space="preserve">
+        <source>Could Not Send Email</source>
+        <target>无法发送电子邮件</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
         <source>Could not change file attributes</source>
@@ -1852,6 +1862,11 @@ others which use WebDAV protocol.</source>
         <target>无法复制该文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not duplicate the room." xml:space="preserve">
+        <source>Could not duplicate the room.</source>
+        <target>无法复制房间。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>无法导出该文件。</target>
@@ -1865,11 +1880,6 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Could not open file." xml:space="preserve">
         <source>Could not open file.</source>
         <target>无法打开文件。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Could not read data from file." xml:space="preserve">
-        <source>Could not read data from file.</source>
-        <target>无法读取文件的数据。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read data from the file." xml:space="preserve">
@@ -1949,6 +1959,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
+        <target>创建新文件夹</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -1966,7 +1977,7 @@ organize your files.</source>
         <source>Creating</source>
         <target>正在创建</target>
         <note>Caption of the process
-   Caption of the processing</note>
+Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -1998,20 +2009,17 @@ organize your files.</source>
         <target>删除</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Delete %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu File" translate="no" xml:space="preserve">
         <source>Delete %lu File</source>
-        <target>删除 %lu File</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder" translate="no" xml:space="preserve">
         <source>Delete %lu Folder</source>
-        <target>删除 %lu 文件夹</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
+      <trans-unit id="Delete %lu Folder and %lu File" translate="no" xml:space="preserve">
         <source>Delete %1$lu Folder and %2$lu File</source>
-        <target>删除 %1$lu 文件夹和 %2$lu 文件</target>
-        <note>No comment provided by engineer.</note>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Delete File" xml:space="preserve">
         <source>Delete File</source>
@@ -2112,7 +2120,7 @@ organize your files.</source>
         <source>Done</source>
         <target>已完成</target>
         <note>Button title
-   Operation completed</note>
+Operation completed</note>
       </trans-unit>
       <trans-unit id="Download" xml:space="preserve">
         <source>Download</source>
@@ -2164,6 +2172,11 @@ organize your files.</source>
         <target>在本地编辑文档</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Edit link" xml:space="preserve">
+        <source>Edit link</source>
+        <target>编辑链接</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
         <target>编辑房间</target>
@@ -2197,11 +2210,6 @@ organize your files.</source>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>邮箱无效</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Empty file." xml:space="preserve">
-        <source>Empty file.</source>
-        <target>空文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
@@ -2269,13 +2277,13 @@ organize your files.</source>
         <target>已过期</target>
         <note>Expiration status</note>
       </trans-unit>
-      <trans-unit id="Expires after %d days" xml:space="preserve">
+      <trans-unit id="Expires after %d days" translate="no" xml:space="preserve">
         <source>Expires after %d days</source>
-        <note>Days left</note>
+        <note>Days left (Key in .stringsdict)</note>
       </trans-unit>
-      <trans-unit id="Expires after %d hours" xml:space="preserve">
+      <trans-unit id="Expires after %d hours" translate="no" xml:space="preserve">
         <source>Expires after %d hours</source>
-        <note>Hours left</note>
+        <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2290,11 +2298,6 @@ organize your files.</source>
       <trans-unit id="External link" xml:space="preserve">
         <source>External link</source>
         <target>外部链接</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failed online conversion service." xml:space="preserve">
-        <source>Failed online conversion service.</source>
-        <target>在线转换服务失败。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
@@ -2347,19 +2350,9 @@ organize your files.</source>
         <target>通过邮箱发送反馈信息失败。请尝试在我们的论坛上写下您的请求。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
-        <source>Failed upload source file to conversion online service.</source>
-        <target>上传源文件到在线转换服务失败。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download file from portal." xml:space="preserve">
-        <source>Failure to download file from portal.</source>
-        <target>无法从门户网站下载文件。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
-        <source>Failure to download result from conversion online service.</source>
-        <target>无法从在线转换服务中下载结果。</target>
+      <trans-unit id="Failed to submit the form" xml:space="preserve">
+        <source>Failed to submit the form</source>
+        <target>提交表单失败</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2402,6 +2395,26 @@ organize your files.</source>
         <target>管理员上传的文件和文件夹将显示在此处。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Fill" xml:space="preserve">
+        <source>Fill</source>
+        <target>填写</target>
+        <note>Fill form Button title</note>
+      </trans-unit>
+      <trans-unit id="Fill in as" xml:space="preserve">
+        <source>Fill in as</source>
+        <target>填写为</target>
+        <note>Title for fill-in options screen</note>
+      </trans-unit>
+      <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
+        <source>Fill in the fields of the original form in the editor window.</source>
+        <target>在编辑器窗口中填写原始表单的字段。</target>
+        <note>Subtitle for form filling</note>
+      </trans-unit>
+      <trans-unit id="Fill out the form yourself" xml:space="preserve">
+        <source>Fill out the form yourself</source>
+        <target>自己填写表单</target>
+        <note>Title for opening form filling</note>
+      </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
         <target>填写表单</target>
@@ -2432,6 +2445,31 @@ organize your files.</source>
         <target>表单填写者</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Form Filling" xml:space="preserve">
+        <source>Form Filling</source>
+        <target>表单填写</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form Filling Room" xml:space="preserve">
+        <source>Form Filling Room</source>
+        <target>表单填写房间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form completed successfully" xml:space="preserve">
+        <source>Form completed successfully</source>
+        <target>已成功填写表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form number" xml:space="preserve">
+        <source>Form number</source>
+        <target>表单编号</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form owner" xml:space="preserve">
+        <source>Form owner</source>
+        <target>表单所有者</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
         <target>表单模板</target>
@@ -2440,6 +2478,16 @@ organize your files.</source>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
         <target>表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From DocSpace" xml:space="preserve">
+        <source>From DocSpace</source>
+        <target>从协作空间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From device" xml:space="preserve">
+        <source>From device</source>
+        <target>从设备</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2462,16 +2510,6 @@ organize your files.</source>
         <target>通用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="General link" xml:space="preserve">
-        <source>General link</source>
-        <target>通用链接</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="General link State" xml:space="preserve">
-        <source>General link State</source>
-        <target>通用链接状态</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
         <source>General links</source>
         <target>通用链接</target>
@@ -2480,6 +2518,11 @@ organize your files.</source>
       <trans-unit id="Get started" xml:space="preserve">
         <source>Get started</source>
         <target>开始</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Get started with quick actions: " xml:space="preserve">
+        <source>Get started with quick actions: </source>
+        <target>使用快速操作：</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2511,6 +2554,11 @@ organize your files.</source>
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
         <target>您可以在此处查看近期打开的、通过外部链接与您共享的文件列表。</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Icons" xml:space="preserve">
+        <source>Icons</source>
+        <target>图标</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
@@ -2653,6 +2701,11 @@ to the clipboard</source>
         <target>链接有效期</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Link name" xml:space="preserve">
+        <source>Link name</source>
+        <target>链接名称</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
         <target>链接名称 %@ </target>
@@ -2669,18 +2722,19 @@ copied to clipboard</source>
         <target>邀请函的链接已发送至邮箱</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="List" xml:space="preserve">
+        <source>List</source>
+        <target>列表</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
         <target>正在加载</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Loading..." xml:space="preserve">
-        <source>Loading...</source>
-        <target>正在加载...</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
+        <target>地址</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2707,7 +2761,7 @@ copied to clipboard</source>
         <source>Logout</source>
         <target>登出</target>
         <note>Button title
-   Caption of the process</note>
+Caption of the process</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
@@ -2733,7 +2787,7 @@ copied to clipboard</source>
         <source>Me</source>
         <target>我</target>
         <note>Author or member of a document
-   If current user name is not set</note>
+If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
@@ -2837,6 +2891,22 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
+        <target>新建文件夹</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New form filling" xml:space="preserve">
+        <source>New form filling</source>
+        <target>新表单填写</target>
+        <note>Suggested a room name when create a new one</note>
+      </trans-unit>
+      <trans-unit id="New form filling room" xml:space="preserve">
+        <source>New form filling room</source>
+        <target>新表单填写房间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New room" xml:space="preserve">
+        <source>New room</source>
+        <target>新房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -2867,11 +2937,6 @@ copied to clipboard</source>
       <trans-unit id="No Internet connection" xml:space="preserve">
         <source>No Internet connection</source>
         <target>无互联网连接</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="No Links State" xml:space="preserve">
-        <source>No Links State</source>
-        <target>无链接状态</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -2938,7 +3003,7 @@ copied to clipboard</source>
         <source>None</source>
         <target>无</target>
         <note>If the cache is empty
-   Share status</note>
+Share status</note>
       </trans-unit>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
@@ -3135,11 +3200,6 @@ copied to clipboard</source>
         <target>置顶</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Pinned failed." xml:space="preserve">
-        <source>Pinned failed.</source>
-        <target>置顶失败。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Pinning" xml:space="preserve">
         <source>Pinning</source>
         <target>正在置顶中</target>
@@ -3292,6 +3352,11 @@ copied to clipboard</source>
       <trans-unit id="Public" xml:space="preserve">
         <source>Public</source>
         <target>公共</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Public link" xml:space="preserve">
+        <source>Public link</source>
+        <target>公开链接</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3473,10 +3538,11 @@ copied to clipboard</source>
         <source>Rooms</source>
         <target>房间</target>
         <note>Category title
-   DocSpace rooms</note>
+DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
+        <target>根文件夹</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3508,12 +3574,17 @@ copied to clipboard</source>
         <source>Select</source>
         <target>选择</target>
         <note>Button title
-   Navigation bar button title</note>
+Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>选择照片</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select a PDF Form" xml:space="preserve">
+        <source>Select a PDF Form</source>
+        <target>选择 PDF 表单</target>
+        <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
         <source>Select all</source>
@@ -3532,6 +3603,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
+        <target>选择位置</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -3609,10 +3681,20 @@ copied to clipboard</source>
         <target>分享</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Share &amp; collect" xml:space="preserve">
+        <source>Share &amp; collect</source>
+        <target>分享 &amp; 收集</target>
+        <note>Title for sharing and collecting form</note>
+      </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
         <source>Share folder</source>
         <target>共享文件夹</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
+        <source>Share your form and collect responses via a Form filling room.</source>
+        <target>通过表单填写房间，分享您的表单并收集数据。</target>
+        <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
@@ -3799,6 +3881,15 @@ copied to clipboard</source>
         <target>该文件将无可挽回地删除。此操作不可逆。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The filled PDF form is saved and available to you&#10; in the Complete folder. To check the status,&#10; contact the form owner providing the assigned number." xml:space="preserve">
+        <source>The filled PDF form is saved and available to you
+ in the Complete folder. To check the status,
+ contact the form owner providing the assigned number.</source>
+        <target>填写的 PDF 表单已保存，
+您可以在“完成”文件夹中查看。
+若要检查状态，请联系表单所有者提供指定编号。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>无法打开垃圾桶中的文件夹。</target>
@@ -3915,6 +4006,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>第三方存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -3945,6 +4037,24 @@ to the clipboard</source>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This presentation is being edited. Do you want open %@ to view only?</source>
         <target>此演示文稿正在编辑中。您想打开 %@ 只查看吗？</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have Form Filler permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have Form Filler permission
+ for all the files.</source>
+        <target>任何有链接的人都可以进入这个房间。
+外部用户拥有所有文件的“表单填写”
+权限。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+ External users will have View Only permission
+ for all the files.</source>
+        <target>任何有链接的人都可以进入这个房间。
+外部用户对所有文件只有“仅查看”
+权限。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -4087,15 +4197,10 @@ to the clipboard</source>
         <target>未经授权的用户无法访问文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Unexpected response from the service." xml:space="preserve">
-        <source>Unexpected response from the service.</source>
-        <target>服务意外响应。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
         <target>未知</target>
-        <note>Invalid entity name</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
@@ -4147,6 +4252,26 @@ to the clipboard</source>
         <target>取消置顶</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
+        <source>Upload PDF form from DocSpace</source>
+        <target>从协作空间上传 PDF 表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF form from device" xml:space="preserve">
+        <source>Upload PDF form from device</source>
+        <target>从设备上传 PDF 表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
+        <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <target>将 PDF 表单上传到房间。邀请用户填写 PDF 表单。查看已完成的表单并分析电子表格中自动收集的数据。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Upload a ready PDF form" xml:space="preserve">
+        <source>Upload a ready PDF form</source>
+        <target>上传准备好的 PDF 表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
         <target>正在上转</target>
@@ -4154,6 +4279,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>使用第三方服务存储此房间的数据。在连接的存储中将新建一个文件夹，用于存储此房间数据</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4253,6 +4379,11 @@ Swipe to learn more about the app.</source>
 轻扫以了解更多关于该应用程序的信息。</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
+        <source>Welcome to the Form filling room </source>
+        <target>欢迎来到表单填写房间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
         <target>新增功能</target>
@@ -4319,6 +4450,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>您可以将以下帐户连接到协作空间房间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
+        <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <target>不能置顶超过 10 个房间。请取消置顶的部分房间。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
@@ -4339,6 +4476,11 @@ then accessed from any other device.</source>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
         <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
         <target>您当前的专员资费计划已过期。请在帐户设置中续订订阅，以便能够使用协作空间。如果您有任何疑问，请联系支持人员。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
+        <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
+        <target>您的设备无法发送电子邮件。请检查电子邮件配置并重试。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -4446,12 +4588,6 @@ then accessed from any other device.</source>
         <target>新</target>
         <note>Badge of file in file list</note>
       </trans-unit>
-      <trans-unit id="none" xml:space="preserve">
-        <source>none</source>
-        <target>无</target>
-        <note>Invalid entity date
-   Invalid entity owner</note>
-      </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>
         <target>/</target>
@@ -4501,7 +4637,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.4" build-num="15F31d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

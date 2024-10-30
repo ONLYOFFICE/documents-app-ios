@@ -30,7 +30,10 @@ struct InviteRigthHoldersByEmailsRepresentable: UIViewControllerRepresentable {
             entity: entity,
             currentAccess: .read,
             apiWorker: apiWorker,
-            accessProvider: ASCSharingSettingsAccessDefaultProvider()
+            accessProvider: ASCSharingSettingsAccessRoomsProvider(
+                roomType: (entity as? ASCFolder)?.roomType ?? .public,
+                rightHoldersTableType: .users
+            )
         ) { [weak navigationController] emails, access in
             let verifyVC = ASCSharingSettingsVerifyRightHoldersViewController()
             let dataStore = verifyVC.router?.dataStore

@@ -15,6 +15,16 @@ class ASCConnectCloudViewController: UITableViewController {
 
     // MARK: - Properies
 
+    private var connectCloudProviders: [ASCFileProviderType] {
+        var correctDefaultConnectCloudProviders = ASCConstants.Clouds.defaultConnectCloudProviders
+        let allowGoogleDrive = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowGoogleDrive)?.boolValue ?? true
+
+        if !allowGoogleDrive {
+            correctDefaultConnectCloudProviders.removeAll(.googledrive)
+        }
+        return correctDefaultConnectCloudProviders
+    }
+
     var complation: ((ASCFileProviderProtocol) -> Void)?
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
@@ -38,6 +48,8 @@ class ASCConnectCloudViewController: UITableViewController {
 
     fileprivate let providerImage: ((_ type: ASCFileProviderType) -> UIImage?) = { type in
         switch type {
+        case .googledrive:
+            return Asset.Images.logoGoogledriveLarge.image
         case .nextcloud:
             return Asset.Images.logoNextcloudLarge.image
         case .owncloud:
@@ -110,6 +122,14 @@ class ASCConnectCloudViewController: UITableViewController {
         super.viewDidLoad()
     }
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        connectCloudProviders.count
+    }
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
@@ -124,27 +144,57 @@ class ASCConnectCloudViewController: UITableViewController {
         return nil
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            if let identifier = cell.reuseIdentifier {
-                let providerType = ASCFileProviderType(rawValue: identifier) ?? .unknown
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = ASCConnectStorageCell.createForTableView(tableView) as? ASCConnectStorageCell else { return UITableViewCell() }
 
-                switch providerType {
-                case .nextcloud:
-                    presentProviderConnection(by: providerType, animated: true)
-                case .owncloud:
-                    presentProviderConnection(by: providerType, animated: true)
-                case .googledrive:
+        cell.type = {
+            switch connectCloudProviders[indexPath.row] {
+            case .webdav:
+                return .webDav
+            case .nextcloud:
+                return .nextCloud
+            case .owncloud:
+                return .ownCloud
+            case .yandex:
+                return .yandex
+            case .dropbox:
+                return .dropBox
+            case .googledrive:
+                return .googleDrive
+            case .onedrive:
+                return .oneDrive
+            case .kdrive:
+                return .kDrive
+            default:
+                return .others
+            }
+        }()
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 78
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? ASCConnectStorageCell {
+            if let type = cell.type {
+                switch type {
+                case .nextCloud:
+                    presentProviderConnection(by: .nextcloud, animated: true)
+                case .ownCloud:
+                    presentProviderConnection(by: .owncloud, animated: true)
+                case .googleDrive:
                     tableView.deselectRow(at: indexPath, animated: true)
-                    presentProviderConnection(by: providerType)
-                case .dropbox:
-                    presentProviderConnection(by: providerType, animated: true)
-                case .onedrive:
-                    presentProviderConnection(by: providerType, animated: true)
-                case .kdrive:
-                    presentProviderConnection(by: providerType, animated: true)
-                case .webdav:
-                    presentProviderConnection(by: providerType, animated: true)
+                    presentProviderConnection(by: .googledrive)
+                case .dropBox:
+                    presentProviderConnection(by: .dropbox, animated: true)
+                case .oneDrive:
+                    presentProviderConnection(by: .onedrive, animated: true)
+                case .kDrive:
+                    presentProviderConnection(by: .kdrive, animated: true)
+                case .webDav:
+                    presentProviderConnection(by: .webdav, animated: true)
                 default:
                     tableView.deselectRow(at: indexPath, animated: true)
                 }

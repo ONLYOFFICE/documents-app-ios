@@ -6,20 +6,11 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
-import MGSwipeTableCell
+import UIKit
 
 enum ASCStyles {
     static let initialize: Void = {
-        // Appearances
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18, weight: .bold)
-//        ]
-//
-//        UITableView.appearance().backgroundColor = ASCConstants.Colors.tableViewBackground
-//        UIView.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).backgroundColor = ASCConstants.Colors.tableViewBackground
-
-        ASCStyles.updateSemanticContentAttribute()
+        //
     }()
 
     static var barFixedSpace: UIBarButtonItem = {
@@ -27,16 +18,6 @@ enum ASCStyles {
         spacer.width = UIDevice.phone ? -10 : 0
         return spacer
     }()
-
-    static func decorate(menu buttons: [MGSwipeButton]) -> [MGSwipeButton] {
-        for button in buttons {
-            button.buttonWidth = 75
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-            button.centerIconOverText()
-        }
-
-        return buttons
-    }
 
     static func createBarButton(image: UIImage?, target: Any?, action: Selector, color: UIColor? = nil) -> UIBarButtonItem {
         let buttonSize = UIDevice.phone
@@ -57,16 +38,7 @@ enum ASCStyles {
         return UIBarButtonItem(title: title, style: .plain, target: target, action: action)
     }
 
-    @available(iOS 14.0, *)
     static func createBarButton(title: String, menu: UIMenu?) -> UIBarButtonItem {
         return UIBarButtonItem(title: title, image: nil, primaryAction: nil, menu: menu)
-    }
-
-    static func updateSemanticContentAttribute() {
-        if ASCAppSettings.Feature.forceRtl {
-            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-        } else {
-            UIView.appearance().semanticContentAttribute = .unspecified
-        }
     }
 }

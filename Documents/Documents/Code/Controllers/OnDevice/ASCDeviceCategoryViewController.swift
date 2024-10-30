@@ -73,13 +73,14 @@ class ASCDeviceCategoryViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-
         if ASCViewControllerManager.shared.rootController?.isEditing == true {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
         updateLargeTitlesSize()
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +88,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
     }
 
     func select(category: ASCCategory, animated: Bool = false) {
@@ -96,19 +98,26 @@ class ASCDeviceCategoryViewController: UITableViewController {
             if animated {
                 splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
             } else {
-                DispatchQueue.main.async {
+                let selectVC: (() -> Void) = { [weak self] in
+                    if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController,
+                       let categoryVC = documentsNC.viewControllers.first
+                    {
+                        documentsNC.viewControllers = [categoryVC]
+                    }
+                    splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
+                }
+                if UIDevice.pad {
                     UIView.performWithoutAnimation {
-                        if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController,
-                           let categoryVC = documentsNC.viewControllers.first
-                        {
-                            documentsNC.viewControllers = [categoryVC]
+                        selectVC()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        UIView.performWithoutAnimation {
+                            selectVC()
                         }
-                        splitVC.showDetailViewController(ASCBaseNavigationController(rootASCViewController: documentsVC), sender: self)
                     }
                 }
             }
-
-            splitVC.hideMasterController()
 
             documentsVC.provider = category.provider
             documentsVC.folder = category.folder

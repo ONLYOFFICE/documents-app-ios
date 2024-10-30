@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,37 +32,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCConnectStorageCell" id="fPw-5H-qxK" customClass="ASCConnectStorageCell" customModule="Documents_dev" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.333332061767578" width="350" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fPw-5H-qxK" id="iLZ-1I-1O0">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud-append" translatesAutoresizingMaskIntoConstraints="NO" id="K2Z-KC-HuV">
-                                            <rect key="frame" x="157" y="22" width="36" height="36"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmd-0T-td8">
-                                            <rect key="frame" x="175" y="40" width="0.0" height="0.0"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="0.1764705882352941" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Jmd-0T-td8" firstAttribute="centerY" secondItem="iLZ-1I-1O0" secondAttribute="centerY" id="5Ba-Ed-fRa"/>
-                                        <constraint firstItem="Jmd-0T-td8" firstAttribute="centerX" secondItem="iLZ-1I-1O0" secondAttribute="centerX" id="Yo3-mT-1lt"/>
-                                        <constraint firstItem="K2Z-KC-HuV" firstAttribute="centerX" secondItem="iLZ-1I-1O0" secondAttribute="centerX" id="fBY-fY-Rev"/>
-                                        <constraint firstItem="K2Z-KC-HuV" firstAttribute="centerY" secondItem="iLZ-1I-1O0" secondAttribute="centerY" id="pVF-6R-bbQ"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="captionLabel" destination="Jmd-0T-td8" id="Sf8-kI-D4J"/>
-                                    <outlet property="logoImageView" destination="K2Z-KC-HuV" id="MMA-dJ-2eq"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="atj-gF-cBt" id="iCJ-hM-gXI"/>
                             <outlet property="delegate" destination="atj-gF-cBt" id="tLl-dD-zwQ"/>
@@ -565,7 +534,6 @@
     </scenes>
     <color key="tintColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
-        <image name="cloud-append" width="36" height="36"/>
         <image name="logo-dropbox-large" width="136" height="50"/>
         <image name="logo-googledrive-large" width="163" height="50"/>
         <image name="logo-kdrive-large" width="142" height="50"/>

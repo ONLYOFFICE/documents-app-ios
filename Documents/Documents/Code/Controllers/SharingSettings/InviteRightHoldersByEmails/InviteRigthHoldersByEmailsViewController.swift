@@ -22,7 +22,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         !tagsView.tags.isEmpty
     }
 
-    @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
         let accessList = viewModel.accessProvides()
         let menuItems = accessList
@@ -55,6 +54,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         tagsField.enableScrolling = true
         tagsField.isScrollEnabled = true
         tagsField.showsVerticalScrollIndicator = true
+        tagsField.inputFieldAccessoryView = UIView()
 
         tagsField.onDidAddTag = { [weak self] field, tag in
             field.tagViews.forEach { $0.tintColor = Asset.Colors.systemFillQuarternary.color }

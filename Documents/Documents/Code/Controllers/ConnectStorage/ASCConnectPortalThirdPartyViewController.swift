@@ -413,16 +413,15 @@ extension ASCConnectPortalThirdPartyViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: ASCConnectStorageCell.identifier, for: indexPath) as? ASCConnectStorageCell {
-            cell.type = {
-                if providers[indexPath.row].provider == .webDav, presentWebDavAsOthersProviders {
-                    return .others
-                }
-                return providers[indexPath.row].provider.connectionStorageCellType
-            }()
-            return cell
-        }
-        return UITableViewCell()
+        guard let cell = ASCConnectStorageCell.createForTableView(tableView) as? ASCConnectStorageCell else { return UITableViewCell() }
+
+        cell.type = {
+            if providers[indexPath.row].provider == .webDav, presentWebDavAsOthersProviders {
+                return .others
+            }
+            return providers[indexPath.row].provider.connectionStorageCellType
+        }()
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

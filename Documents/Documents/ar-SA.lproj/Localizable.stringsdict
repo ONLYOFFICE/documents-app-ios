@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%d days</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d days</string>
+			<key>many</key>
+			<string>%d days</string>
+			<key>one</key>
+			<string>%d day</string>
+			<key>other</key>
+			<string>%d days</string>
+			<key>two</key>
+			<string>%d days</string>
+			<key>zero</key>
+			<string>%d days</string>
+		</dict>
+	</dict>
+	<key>%d hours</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d hours</string>
+			<key>many</key>
+			<string>%d hours</string>
+			<key>one</key>
+			<string>%d hour</string>
+			<key>other</key>
+			<string>%d hours</string>
+			<key>two</key>
+			<string>%d hours</string>
+			<key>zero</key>
+			<string>%d hours</string>
+		</dict>
+	</dict>
+	<key>%d selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@عناصر@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d selected</string>
+			<key>many</key>
+			<string>%d selected</string>
+			<key>one</key>
+			<string>%d محدد</string>
+			<key>other</key>
+			<string>%d محدد</string>
+			<key>two</key>
+			<string>%d selected</string>
+			<key>zero</key>
+			<string>%d selected</string>
+		</dict>
+	</dict>
+	<key>%lu File selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@ملفات@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>%lu Files selected</string>
+			<key>many</key>
+			<string>%lu Files selected</string>
+			<key>one</key>
+			<string>%lu تم اختيار ملف</string>
+			<key>other</key>
+			<string>%lu تم اختيار ملفات</string>
+			<key>two</key>
+			<string>%lu Files selected</string>
+			<key>zero</key>
+			<string>%lu Files selected</string>
+		</dict>
+	</dict>
+	<key>%lu Folder and %lu File selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@lu_folders@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>and %lu Files selected</string>
+			<key>many</key>
+			<string>and %lu Files selected</string>
+			<key>one</key>
+			<string>و %lu تم اختيار ملف</string>
+			<key>other</key>
+			<string>و %lu تم اختيار ملفات</string>
+			<key>two</key>
+			<string>and %lu Files selected</string>
+			<key>zero</key>
+			<string>and %lu Files selected</string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>%lu Folders %2$#@lu_files@</string>
+			<key>many</key>
+			<string>%lu Folders %2$#@lu_files@</string>
+			<key>one</key>
+			<string>%المجلد %2$#@الملفات@</string>
+			<key>other</key>
+			<string>%المجلدات %2$#@الملفات@</string>
+			<key>two</key>
+			<string>%lu Folders %2$#@lu_files@</string>
+			<key>zero</key>
+			<string>%2$#@الملفات@</string>
+		</dict>
+	</dict>
+	<key>%lu Folder selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@المجلدات@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>%lu Folders selected</string>
+			<key>many</key>
+			<string>%lu Folders selected</string>
+			<key>one</key>
+			<string>%تم تحديد المجلد</string>
+			<key>other</key>
+			<string>%تم تحديد المجلدات</string>
+			<key>two</key>
+			<string>%lu Folders selected</string>
+			<key>zero</key>
+			<string>%lu Folders selected</string>
+		</dict>
+	</dict>
+	<key>Delete %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@ملفات@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>Delete %lu Files</string>
+			<key>many</key>
+			<string>Delete %lu Files</string>
+			<key>one</key>
+			<string>حذف %الملف</string>
+			<key>other</key>
+			<string>حذف %الملفات</string>
+			<key>two</key>
+			<string>Delete %lu Files</string>
+			<key>zero</key>
+			<string>Delete %lu Files</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@المجلدات@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>Delete %lu Folders</string>
+			<key>many</key>
+			<string>Delete %lu Folders</string>
+			<key>one</key>
+			<string>حذف %المجلد</string>
+			<key>other</key>
+			<string>حذف %المجلدات</string>
+			<key>two</key>
+			<string>Delete %lu Folders</string>
+			<key>zero</key>
+			<string>Delete %lu Folders</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder and %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@المجلدات@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>and %lu Files</string>
+			<key>many</key>
+			<string>and %lu Files</string>
+			<key>one</key>
+			<string>و %الملف</string>
+			<key>other</key>
+			<string>و %الملفات</string>
+			<key>two</key>
+			<string>and %lu Files</string>
+			<key>zero</key>
+			<string></string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<key>many</key>
+			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<key>one</key>
+			<string>حذف %المجلد %2$#@الملفات@</string>
+			<key>other</key>
+			<string>حذف %المجلدات %2$#@الملفات@</string>
+			<key>two</key>
+			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<key>zero</key>
+			<string>حذف %2$#@الملفات@</string>
+		</dict>
+	</dict>
+	<key>Expires after %d days</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Expires after %d days</string>
+			<key>many</key>
+			<string>Expires after %d days</string>
+			<key>one</key>
+			<string>Expires after %d day</string>
+			<key>other</key>
+			<string>Expires after %d days</string>
+			<key>two</key>
+			<string>Expires after %d days</string>
+			<key>zero</key>
+			<string>Expires after %d days</string>
+		</dict>
+	</dict>
+	<key>Expires after %d hours</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@hours@</string>
+		<key>hours</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Expires after %d hours</string>
+			<key>many</key>
+			<string>Expires after %d hours</string>
+			<key>one</key>
+			<string>Expires after %d hour</string>
+			<key>other</key>
+			<string>Expires after %d hours</string>
+			<key>two</key>
+			<string>Expires after %d hours</string>
+			<key>zero</key>
+			<string>Expires after %d hours</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

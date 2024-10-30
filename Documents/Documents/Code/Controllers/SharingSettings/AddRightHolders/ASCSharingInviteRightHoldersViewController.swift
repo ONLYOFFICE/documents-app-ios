@@ -47,7 +47,16 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     }
 
     lazy var defaultAccess: ASCShareAccess = {
+        guard let room = dataStore?.entity as? ASCRoom else {
+            return .read
+        }
+
+        if room.roomType == .fillingForm {
+            return .fillForms
+        }
+
         let accessList = accessProvider.get()
+
         guard accessList.contains(.read) else {
             return accessList.first ?? .read
         }
@@ -66,6 +75,20 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
             guard selectedModel.isSelected else { return result }
             return result + 1
         }
+    }
+
+    func updateAccessProvider(rightHoldersTableType: RightHoldersTableType) {
+        guard let entity = dataStore?.entity else { return }
+        let accessProvider = ASCSharingSettingsAccessProviderFactory().get(
+            entity: entity,
+            isAccessExternal: false,
+            rightHoldersTableType: rightHoldersTableType
+        )
+        let accessList = accessProvider.get()
+        if !accessList.contains(selectedAccess) {
+            selectedAccess = accessList.first ?? selectedAccess
+        }
+        self.accessProvider = accessProvider
     }
 
     private var isSearchBarEmpty: Bool {
@@ -327,6 +350,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 
 extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersViewDelegate {
     func getAccessList() -> ([ASCShareAccess]) {
+        let type = getSelectedTableType()
         return accessProvider.get()
     }
 
@@ -334,7 +358,6 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
         return selectedAccess
     }
 
-    @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         onAccessSheetSelectAction(shareAccessRaw: shareAccessRaw)
     }
@@ -486,6 +509,9 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
+        updateAccessProvider(rightHoldersTableType: tableType)
+        let accessList = accessProvider.get()
+        sharingAddRightHoldersView?.updateToolbars()
         sharingAddRightHoldersView?.showTable(tableType: tableType)
     }
 }

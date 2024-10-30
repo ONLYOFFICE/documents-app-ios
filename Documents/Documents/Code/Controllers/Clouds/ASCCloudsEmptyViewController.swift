@@ -18,6 +18,16 @@ class ASCCloudsEmptyViewController: ASCBaseViewController {
 
     var onAddService: ((_ type: ASCFileProviderType) -> Void)?
 
+    private var connectCloudProviders: [ASCFileProviderType] {
+        var correctDefaultConnectCloudProviders = ASCConstants.Clouds.defaultConnectCloudProviders
+        let allowGoogleDrive = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowGoogleDrive)?.boolValue ?? true
+
+        if !allowGoogleDrive {
+            correctDefaultConnectCloudProviders.removeAll(.googledrive)
+        }
+        return correctDefaultConnectCloudProviders
+    }
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
@@ -26,7 +36,7 @@ class ASCCloudsEmptyViewController: ASCBaseViewController {
         subtitleLabel?.text = NSLocalizedString("Select another cloud to connect to Nextcloud, ownCloud and others are supported.", comment: "")
         cloudButtons?.forEach { button in
             if let restorationId = button.restorationIdentifier {
-                if !ASCConstants.Clouds.defaultConnectCloudProviders.contains(ASCFileProviderType(rawValue: restorationId) ?? .unknown) {
+                if !connectCloudProviders.contains(ASCFileProviderType(rawValue: restorationId) ?? .unknown) {
                     button.removeFromSuperview()
                 }
             }

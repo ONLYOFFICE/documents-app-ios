@@ -89,6 +89,10 @@ class ASCCloudsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
+
         if ASCViewControllerManager.shared.rootController?.isEditing == true {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
@@ -99,6 +103,7 @@ class ASCCloudsViewController: UITableViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
     }
 
     deinit {
@@ -136,7 +141,14 @@ class ASCCloudsViewController: UITableViewController {
     func updateLoginClouds() {
         login = []
 
-        for type in ASCConstants.Clouds.defaultConnectCloudProviders {
+        var correctDefaultConnectCloudProviders = ASCConstants.Clouds.defaultConnectCloudProviders
+        let allowGoogleDrive = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowGoogleDrive)?.boolValue ?? true
+
+        if !allowGoogleDrive {
+            correctDefaultConnectCloudProviders.removeAll(.googledrive)
+        }
+
+        for type in correctDefaultConnectCloudProviders {
             if !connected.contains(where: { $0.provider?.type == type }) {
                 login.append({
                     $0.title = providerName(type)
@@ -267,14 +279,18 @@ class ASCCloudsViewController: UITableViewController {
                 if animated {
                     splitVC.showDetailViewController(documentsNC, sender: self)
                 } else {
-                    DispatchQueue.main.async {
+                    if UIDevice.pad {
                         UIView.performWithoutAnimation {
                             splitVC.showDetailViewController(documentsNC, sender: self)
                         }
+                    } else {
+                        DispatchQueue.main.async {
+                            UIView.performWithoutAnimation {
+                                splitVC.showDetailViewController(documentsNC, sender: self)
+                            }
+                        }
                     }
                 }
-
-                splitVC.hideMasterController()
 
                 // Open root folder if needed
                 if folder.id == rootFolder.id {

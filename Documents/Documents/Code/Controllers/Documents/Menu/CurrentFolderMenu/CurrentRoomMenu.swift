@@ -15,16 +15,42 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         guard let provider = viewController.provider else { return UIMenu() }
         let actions = provider.actions(for: folder)
 
-        var entityActionsGroup: [UIMenuElement] = []
+        var selectGroup: [UIMenuElement] = []
 
         // Select
         if actions.contains(.select) {
-            entityActionsGroup.append(
+            selectGroup.append(
                 UIAction(title: NSLocalizedString("Select", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: { _ in
                     viewController.onSelectAction()
                 })
             )
         }
+
+        // View
+
+        var viewGroup: [UIMenuElement] = []
+
+        viewGroup.append(
+            UIAction(
+                title: NSLocalizedString("Icons", comment: "Button title"),
+                image: UIImage(systemName: "square.grid.2x2"),
+                state: ASCDocumentsViewController.itemsViewType == .grid ? .on : .off
+            ) { action in
+                ASCDocumentsViewController.itemsViewType = .grid
+            }
+        )
+
+        viewGroup.append(
+            UIAction(
+                title: NSLocalizedString("List", comment: "Button title"),
+                image: UIImage(systemName: "list.bullet"),
+                state: ASCDocumentsViewController.itemsViewType == .list ? .on : .off
+            ) { action in
+                ASCDocumentsViewController.itemsViewType = .list
+            }
+        )
+
+        var entityActionsGroup: [UIMenuElement] = []
 
         // Edit room
         if actions.contains(.edit) {
@@ -151,11 +177,15 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             }
         }
 
+        let selectMenu = UIMenu(title: "", options: .displayInline, children: selectGroup)
+        let viewMenu = UIMenu(title: "", options: .displayInline, children: viewGroup)
         let entityActionsMenu = UIMenu(title: "", options: .displayInline, children: entityActionsGroup)
         let entityOperationsMenu = UIMenu(title: "", options: .displayInline, children: entityOperationsGroup)
         let sortMenu = UIMenu(title: "", options: .displayInline, children: sortGroup)
 
         let menus: [UIMenuElement] = [
+            selectMenu,
+            viewMenu,
             entityActionsMenu,
             entityOperationsMenu,
             sortMenu,
@@ -177,7 +207,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 title: NSLocalizedString("Select", comment: "Button title"),
                 style: .default,
                 handler: { [unowned viewController] action in
-                    viewController.setEditMode(!viewController.tableView.isEditing)
+                    viewController.setEditMode(!viewController.collectionView.isEditing)
                 }
             )
         )

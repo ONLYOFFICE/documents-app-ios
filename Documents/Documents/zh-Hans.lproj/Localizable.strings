@@ -1,35 +1,17 @@
 /* No comment provided by engineer. */
-": \"%@\"" = ": \"%@\"";
-
-/* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
 /* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
 "%@ | %@" = "%1$@ | %2$@";
-
-/* Days left */
-"%d days" = "%d 天";
-
-/* Hours left */
-"%d hours" = "%d 小时";
-
-/* Count of seclected rows: count + selected */
-"%d selected" = "%d 已选定";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i / %2$i";
-
-/* No comment provided by engineer. */
-"%lu File selected" = "%lu 文件已选定";
-
-/* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu 文件夹和 %2$lu 文件选定的";
-
-/* No comment provided by engineer. */
-"%lu Folder selected" = "%lu 文件夹已选定";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "在 '%2$@' 文件夹中已经存在同名的 %1$lu 项目。覆盖这些项目？";
@@ -134,9 +116,6 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "添加用户或团队允许他们 \n阅读、审查或编辑文件。";
 
 /* No comment provided by engineer. */
-"Additional link State" = "附加链接状态";
-
-/* No comment provided by engineer. */
 "Additional links" = "附加链接";
 
 /* No comment provided by engineer. */
@@ -185,7 +164,7 @@
 "Applying" = "正在应用中";
 
 /* Button title
-   Category title */
+Category title */
 "Archive" = "備份";
 
 /* No comment provided by engineer. */
@@ -211,6 +190,9 @@
 
 /* No comment provided by engineer. */
 "Back" = "返回";
+
+/* No comment provided by engineer. */
+"Back to room" = "返回房间";
 
 /* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "作为该协作空间的所有者，您必须先将所有权转让给其他用户，然后才能删除您的帐户。 请先选择一个新的所有者。";
@@ -251,7 +233,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "无法复制该文件。";
 
-/* No comment provided by engineer. */
+/* Cancel button */
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
@@ -273,13 +255,22 @@
 "Changing access" = "更改访问权限";
 
 /* No comment provided by engineer. */
+"Check ready form" = "检查准备好的表单";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "请检查您的网络连接并重试";
 
 /* No comment provided by engineer. */
 "Choose Files" = "选择文件";
 
+/* One line. Max 50 charasters */
+"Choose Form filling room or create new" = "选择或创建新的表单填写房间";
+
 /* No comment provided by engineer. */
 "Choose from list" = "从列表中选择";
+
+/* One line. Max 50 charasters */
+"Choose location with templates" = "选择模板位置";
 
 /* No comment provided by engineer. */
 "Choose room type" = "选择房间类型";
@@ -369,7 +360,7 @@
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "连接到您的 %@ 云端，在线存储文件并实时协作处理文件";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Connecting" = "正在链接中";
 
 /* No comment provided by engineer. */
@@ -451,6 +442,9 @@
 "Could not duplicate the file." = "无法复制该文件。";
 
 /* No comment provided by engineer. */
+"Could not duplicate the room." = "无法复制房间。";
+
+/* No comment provided by engineer. */
 "Could not export the file." = "无法导出该文件。";
 
 /* Description of file operation error */
@@ -460,13 +454,13 @@
 "Could not open file." = "无法打开文件。";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "无法读取文件的数据。";
-
-/* No comment provided by engineer. */
 "Could not read data from the file." = "无法读取该文件的数据。";
 
 /* Description of file operation error */
 "Could not read from file" = "无法读取文件";
+
+/* No comment provided by engineer. */
+"Could Not Send Email" = "无法发送电子邮件";
 
 /* Description of file operation error */
 "Could not write to file" = "无法写入文件";
@@ -508,13 +502,16 @@
 "Create new files" = "创建新文件";
 
 /* No comment provided by engineer. */
+"Create new folder" = "创建新文件夹";
+
+/* No comment provided by engineer. */
 "Create new folders to \norganize your files." = "创建新文件夹以组织您的文件。";
 
 /* Button title */
 "Create room" = "创建房间";
 
 /* Caption of the process
-   Caption of the processing */
+Caption of the processing */
 "Creating" = "正在创建";
 
 /* No comment provided by engineer. */
@@ -534,15 +531,6 @@
 
 /* Button title */
 "Delete" = "删除";
-
-/* No comment provided by engineer. */
-"Delete %lu File" = "删除 %lu File";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder" = "删除 %lu 文件夹";
-
-/* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "删除 %1$lu 文件夹和 %2$lu 文件";
 
 /* Button title */
 "Delete File" = "删除文件";
@@ -602,7 +590,7 @@
 "Documents" = "文档";
 
 /* Button title
-   Operation completed */
+Operation completed */
 "Done" = "已完成";
 
 /* Button title */
@@ -635,6 +623,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "在本地编辑文档";
 
+/* No comment provided by engineer. */
+"Edit link" = "编辑链接";
+
 /* Button title */
 "Edit room" = "编辑房间";
 
@@ -655,9 +646,6 @@
 
 /* No comment provided by engineer. */
 "Email is not valid" = "邮箱无效";
-
-/* No comment provided by engineer. */
-"Empty file." = "空文件。";
 
 /* No comment provided by engineer. */
 "Empty name." = "空名称。";
@@ -720,9 +708,6 @@
 "External link" = "外部链接";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "在线转换服务失败。";
-
-/* No comment provided by engineer. */
 "Failed to check portal availability." = "检查门户可用性失败。";
 
 /* No comment provided by engineer. */
@@ -753,13 +738,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "通过邮箱发送反馈信息失败。请尝试在我们的论坛上写下您的请求。";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "上传源文件到在线转换服务失败。";
-
-/* No comment provided by engineer. */
-"Failure to download file from portal." = "无法从门户网站下载文件。";
-
-/* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "无法从在线转换服务中下载结果。";
+"Failed to submit the form" = "提交表单失败";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "整理归档失败";
@@ -785,6 +764,18 @@
 /* No comment provided by engineer. */
 "Files Preview" = "文件预览";
 
+/* Fill form Button title */
+"Fill" = "填写";
+
+/* Title for fill-in options screen */
+"Fill in as" = "填写为";
+
+/* Subtitle for form filling */
+"Fill in the fields of the original form in the editor window." = "在编辑器窗口中填写原始表单的字段。";
+
+/* Title for opening form filling */
+"Fill out the form yourself" = "自己填写表单";
+
 /* No comment provided by engineer. */
 "Filling form" = "填写表单";
 
@@ -800,14 +791,35 @@
 /* No comment provided by engineer. */
 "Folders" = "文件夹";
 
+/* No comment provided by engineer. */
+"Form completed successfully" = "已成功填写表单";
+
 /* Share status */
 "Form Filler" = "表单填写者";
+
+/* No comment provided by engineer. */
+"Form Filling" = "表单填写";
+
+/* No comment provided by engineer. */
+"Form Filling Room" = "表单填写房间";
+
+/* No comment provided by engineer. */
+"Form number" = "表单编号";
+
+/* No comment provided by engineer. */
+"Form owner" = "表单所有者";
 
 /* No comment provided by engineer. */
 "Form templates" = "表单模板";
 
 /* No comment provided by engineer. */
 "Forms" = "表单";
+
+/* No comment provided by engineer. */
+"From device" = "从设备";
+
+/* No comment provided by engineer. */
+"From DocSpace" = "从协作空间";
 
 /* Share status */
 "Full Access" = "完全访问权限";
@@ -819,16 +831,13 @@
 "General" = "通用";
 
 /* No comment provided by engineer. */
-"General link" = "通用链接";
-
-/* No comment provided by engineer. */
-"General link State" = "通用链接状态";
-
-/* No comment provided by engineer. */
 "General links" = "通用链接";
 
 /* No comment provided by engineer. */
 "Get started" = "开始";
+
+/* No comment provided by engineer. */
+"Get started with quick actions: " = "使用快速操作：";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "开始使用！";
@@ -856,6 +865,9 @@
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Button title */
+"Icons" = "图标";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "如果存在拥有 %@ 电子邮件的用户，密码修改指令已经发送到该电子邮件地址。";
@@ -945,6 +957,9 @@
 "Link life time" = "链接有效期";
 
 /* No comment provided by engineer. */
+"Link name" = "链接名称";
+
+/* No comment provided by engineer. */
 "Link name %@" = "链接名称 %@ ";
 
 /* Button title */
@@ -953,11 +968,14 @@
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "邀请函的链接已发送至邮箱";
 
+/* Button title */
+"List" = "列表";
+
 /* No comment provided by engineer. */
 "Loading" = "正在加载";
 
 /* No comment provided by engineer. */
-"Loading..." = "正在加载...";
+"Location" = "地址";
 
 /* Caption of the process */
 "Logging in" = "正在登录";
@@ -972,7 +990,7 @@
 "Login is empty" = "登录为空";
 
 /* Button title
-   Caption of the process */
+Caption of the process */
 "Logout" = "登出";
 
 /* Button title */
@@ -988,7 +1006,7 @@
 "Mb" = "Mb";
 
 /* Author or member of a document
-   If current user name is not set */
+If current user name is not set */
 "Me" = "我";
 
 /* No comment provided by engineer. */
@@ -1046,10 +1064,22 @@
 "New Document" = "新建文档";
 
 /* No comment provided by engineer. */
+"New folder" = "新建文件夹";
+
+/* No comment provided by engineer. */
 "New Folder" = "新建文件夹";
+
+/* Suggested a room name when create a new one */
+"New form filling" = "新表单填写";
+
+/* No comment provided by engineer. */
+"New form filling room" = "新表单填写房间";
 
 /* No comment provided by engineer. */
 "New Presentation" = "新建演示文稿";
+
+/* No comment provided by engineer. */
+"New room" = "新房间";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "新建电子表格";
@@ -1091,9 +1121,6 @@
 "No Internet connection" = "无互联网连接";
 
 /* No comment provided by engineer. */
-"No Links State" = "无链接状态";
-
-/* No comment provided by engineer. */
 "No network" = "无网络";
 
 /* No comment provided by engineer. */
@@ -1111,12 +1138,8 @@
 /* No comment provided by engineer. */
 "No users found" = "未找到用户";
 
-/* Invalid entity date
-   Invalid entity owner */
-"none" = "无";
-
 /* If the cache is empty
-   Share status */
+Share status */
 "None" = "无";
 
 /* No comment provided by engineer. */
@@ -1251,9 +1274,6 @@
 /* Button title */
 "Pin to top" = "置顶";
 
-/* No comment provided by engineer. */
-"Pinned failed." = "置顶失败。";
-
 /* Caption of the processing */
 "Pinning" = "正在置顶中";
 
@@ -1331,6 +1351,9 @@
 
 /* No comment provided by engineer. */
 "Public" = "公共";
+
+/* No comment provided by engineer. */
+"Public link" = "公开链接";
 
 /* No comment provided by engineer. */
 "Public room" = "公共房间";
@@ -1438,8 +1461,11 @@
 "Room name" = "房间名称";
 
 /* Category title
-   DocSpace rooms */
+DocSpace rooms */
 "Rooms" = "房间";
+
+/* No comment provided by engineer. */
+"Root folder" = "根文件夹";
 
 /* No comment provided by engineer. */
 "Same as system" = "和系统一致";
@@ -1454,8 +1480,11 @@
 "Search" = "搜索";
 
 /* Button title
-   Navigation bar button title */
+Navigation bar button title */
 "Select" = "选择";
+
+/* One line. Max 50 charasters */
+"Select a PDF Form" = "选择 PDF 表单";
 
 /* No comment provided by engineer. */
 "Select all" = "全选";
@@ -1465,6 +1494,9 @@
 
 /* No comment provided by engineer. */
 "Select group" = "選擇群組";
+
+/* Button title */
+"Select location" = "选择位置";
 
 /* No comment provided by engineer. */
 "Select Photos" = "选择照片";
@@ -1514,8 +1546,14 @@
 /* No comment provided by engineer. */
 "Share" = "分享";
 
+/* Title for sharing and collecting form */
+"Share & collect" = "分享 & 收集";
+
 /* No comment provided by engineer. */
 "Share folder" = "共享文件夹";
+
+/* Subtitle for sharing form */
+"Share your form and collect responses via a Form filling room." = "通过表单填写房间，分享您的表单并收集数据。";
 
 /* No comment provided by engineer. */
 "Shared access" = "共享访问";
@@ -1632,6 +1670,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "该文件将无可挽回地删除。此操作不可逆。";
 
 /* No comment provided by engineer. */
+"The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." = "填写的 PDF 表单已保存，\n您可以在“完成”文件夹中查看。\n若要检查状态，请联系表单所有者提供指定编号。";
+
+/* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "无法打开垃圾桶中的文件夹。";
 
 /* No comment provided by engineer. */
@@ -1697,6 +1738,9 @@
 /* No comment provided by engineer. */
 "Third party resource" = "第三方资源";
 
+/* No comment provided by engineer. */
+"Third party storage" = "第三方存储";
+
 /* Introduction Step Three - Title */
 "Third-party storage" = "第三方存储";
 
@@ -1714,6 +1758,12 @@
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "此演示文稿正在编辑中。您想打开 %@ 只查看吗？";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." = "任何有链接的人都可以进入这个房间。\n外部用户拥有所有文件的“表单填写”\n权限。";
+
+/* No comment provided by engineer. */
+"This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." = "任何有链接的人都可以进入这个房间。\n外部用户对所有文件只有“仅查看”\n权限。";
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "此电子表格正在编辑中。您想打开 %@ 只查看吗？";
@@ -1800,9 +1850,6 @@
 "Unauthorized users will not have access to the document." = "未经授权的用户无法访问文件。";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "服务意外响应。";
-
-/* Invalid entity name */
 "Unknown" = "未知";
 
 /* No comment provided by engineer. */
@@ -1835,8 +1882,23 @@
 /* Caption of the processing */
 "Unpning" = "取消置顶";
 
+/* No comment provided by engineer. */
+"Upload a ready PDF form" = "上传准备好的 PDF 表单";
+
+/* No comment provided by engineer. */
+"Upload PDF form from device" = "从设备上传 PDF 表单";
+
+/* No comment provided by engineer. */
+"Upload PDF form from DocSpace" = "从协作空间上传 PDF 表单";
+
+/* No comment provided by engineer. */
+"Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "将 PDF 表单上传到房间。邀请用户填写 PDF 表单。查看已完成的表单并分析电子表格中自动收集的数据。";
+
 /* Caption of the process */
 "Uploading" = "正在上转";
+
+/* No comment provided by engineer. */
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "使用第三方服务存储此房间的数据。在连接的存储中将新建一个文件夹，用于存储此房间数据";
 
 /* No comment provided by engineer. */
 "User" = "用户";
@@ -1896,6 +1958,9 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "欢迎来到 %@ 移动编辑套件!\n轻扫以了解更多关于该应用程序的信息。";
 
 /* No comment provided by engineer. */
+"Welcome to the Form filling room " = "欢迎来到表单填写房间";
+
+/* No comment provided by engineer. */
 "What's New" = "新增功能";
 
 /* Introduction Step Four - Description */
@@ -1932,6 +1997,12 @@
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "您可以将以下账户连接到 %@。文件将显示在 \"我的文档 \"文件夹中，您可以在门户网站上直接编辑并保存文件。";
 
 /* No comment provided by engineer. */
+"You can connect the following accounts to the DocSpace rooms" = "您可以将以下帐户连接到协作空间房间";
+
+/* No comment provided by engineer. */
+"You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "不能置顶超过 10 个房间。请取消置顶的部分房间。";
+
+/* No comment provided by engineer. */
 "You have left the room" = "您已离开房间";
 
 /* No comment provided by engineer. */
@@ -1942,6 +2013,9 @@
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "您当前的专员资费计划已过期。请在帐户设置中续订订阅，以便能够使用协作空间。如果您有任何疑问，请联系支持人员。";
+
+/* No comment provided by engineer. */
+"Your device could not send e-mail. Please check e-mail configuration and try again." = "您的设备无法发送电子邮件。请检查电子邮件配置并重试。";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "您的会话已过期";

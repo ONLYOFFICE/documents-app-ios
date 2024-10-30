@@ -1233,16 +1233,16 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
 
-    func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {
+    func preview(file: ASCFile, openMode: ASCDocumentOpenMode = .view, files: [ASCFile]? = nil, in view: UIView? = nil) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
-        let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
-        let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-        let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+        lazy var openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+        lazy var closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+        lazy var renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
             guard let file else { complation(false); return }
 
             self.rename(file, to: title) { provider, result, success, error in
@@ -1255,7 +1255,14 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfCloud(for: self, file, openHandler: openHandler, closeHandler: closeHandler, renameHandler: renameHandler)
+            ASCEditorManager.shared.browsePdfCloud(
+                for: self,
+                file,
+                openMode: openMode,
+                openHandler: openHandler,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
+            )
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

@@ -128,9 +128,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-
         title = ASCConstants.Name.appNameShort
         navigationItem.backBarButtonItem?.title = ASCConstants.Name.appNameShort
         navigationItem.title = ASCConstants.Name.appNameShort
@@ -139,6 +136,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
         updateLargeTitlesSize()
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
 
         if categories.isEmpty {
             showActivityIndicator()
@@ -150,6 +151,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
 
         fetchUpdateUserInfo()
     }
@@ -455,17 +457,21 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if animated {
                 splitVC.showDetailViewController(documentsNC, sender: self)
             } else {
-                DispatchQueue.main.async {
+                if UIDevice.pad {
                     UIView.performWithoutAnimation {
                         splitVC.showDetailViewController(documentsNC, sender: self)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        UIView.performWithoutAnimation {
+                            splitVC.showDetailViewController(documentsNC, sender: self)
+                        }
                     }
                 }
             }
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
-
-            splitVC.hideMasterController()
 
             if loadedCategories.isEmpty {
                 currentlySelectedFolderType = documentsVC.folder?.rootFolderType

@@ -689,6 +689,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         return isDevice && !isInTrash
     }
 
+    func allowFillForm(entity: AnyObject?) -> Bool {
+        guard let file = entity as? ASCFile else { return false }
+        return ASCOformPdfChecker.checkLocal(url: URL(fileURLWithPath: file.id))
+    }
+
     func allowDelete(entity: AnyObject?) -> Bool {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
@@ -719,11 +724,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let file = file {
+        if let file {
             let fileExtension = file.title.fileExtension().lowercased()
             let canRead = allowRead(entity: file)
             let canEdit = allowEdit(entity: file)
             let canDelete = allowDelete(entity: file)
+            let canFillForm = allowFillForm(entity: file)
             let isTrash = file.rootFolderType == .deviceTrash
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
@@ -755,6 +761,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
             if canEdit, canOpenEditor, UIDevice.allowEditor {
                 entityActions.insert(.edit)
+            }
+
+            if canFillForm {
+                entityActions.insert(.edit)
+                entityActions.insert(.fillForm)
             }
 
             if ASCFileManager.onlyofficeProvider?.apiClient.active ?? false, !isTrash {
@@ -832,7 +843,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler, renameHandler: renameHandler)
+            ASCEditorManager.shared.browsePdfLocal(
+                file,
+                openMode: openMode,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
+            )
         } else if allowOpen {
             ASCEditorManager.shared.editLocal(
                 file,
@@ -845,7 +861,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
     }
 
-    func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
+    func preview(file: ASCFile, openMode: ASCDocumentOpenMode = .view, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let isPdf = fileExt == ASCConstants.FileExtensions.pdf
@@ -866,7 +882,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
 
         if isPdf {
-            ASCEditorManager.shared.browsePdfLocal(file, closeHandler: closeHandler, renameHandler: renameHandler)
+            ASCEditorManager.shared.browsePdfLocal(
+                file,
+                openMode: openMode,
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
+            )
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {

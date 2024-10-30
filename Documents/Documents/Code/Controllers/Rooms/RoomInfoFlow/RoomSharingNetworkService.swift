@@ -91,6 +91,40 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
             completion(.success(responce))
         }
     }
+
+    func duplicateRoom(room: ASCFolder, handler: ASCEntityProgressHandler?) {
+        var cancel = false
+
+        handler?(.begin, 0, nil, nil, &cancel)
+
+        let requestModel = RoomDuplicateRequestModel(folderIds: [room.id], fileIds: [])
+
+        networkService.request(OnlyofficeAPI.Endpoints.Operations.duplicateRoom, requestModel.dictionary) { response, error in
+
+            if let error = error {
+                handler?(.error, 1, nil, error, &cancel)
+            } else {
+                var checkOperation: (() -> Void)?
+                checkOperation = {
+                    self.networkService.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                        if let error = error {
+                            handler?(.error, 1, nil, error, &cancel)
+                        } else if let operation = result?.result?.first, let progress = operation.progress {
+                            if progress >= 100 {
+                                handler?(.end, 1, nil, nil, &cancel)
+                            } else {
+                                Thread.sleep(forTimeInterval: 1)
+                                checkOperation?()
+                            }
+                        } else {
+                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
+                        }
+                    }
+                }
+                checkOperation?()
+            }
+        }
+    }
 }
 
 extension RoomSharingNetworkService {

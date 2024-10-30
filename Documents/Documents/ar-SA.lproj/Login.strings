@@ -1,0 +1,138 @@
+/* Class = "UILabel"; text = "Copy the code"; ObjectID = "00r-ek-IVa"; */
+"00r-ek-IVa.text" = "نسخ الرمز";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0X2-Xg-z5B"; */
+"0X2-Xg-z5B.text" = "العنوان";
+
+/* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
+"3oc-kQ-msr.text" = "رمز الدولة";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
+"6Zd-HN-8wS.text" = "-";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
+"18Q-Kh-0cC.text" = "تفاصيل";
+
+/* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
+"51s-1D-raN.normalTitle" = "تسجيل الدخول بواسطة";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
+"76Y-EB-F07.text" = "رقم الهاتف";
+
+/* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
+"78r-Ca-NKv.normalTitle" = "هل نسيت؟";
+
+/* Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate"; */
+"AqB-m0-2UQ.text" = "في حالة وجود مستخدم لديه البريد الإلكتروني، فقد تم إرسال تعليمات تغيير كلمة المرور إلى عنوان البريد الإلكتروني هذا.";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
+"AqJ-b9-XQV.normalTitle" = "استمرار";
+
+/* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
+"B8R-KD-Lml.text" = "قم بإعداد تطبيق لإنشاء رموز المصادقة";
+
+/* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
+"bLE-8U-AOX.text" = "استعادة كلمة المرور";
+
+/* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
+"cb0-ic-tPA.text" = "لم تستلم الرمز?";
+
+/* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
+"cBn-x1-r5A.text" = "بوابة";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
+"DK4-QO-Jde.text" = "المصادقة\nالثنائية";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
+"e1X-0t-hcs.normalTitle" = "التالي";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
+"Eb4-3w-0Jf.text" = "المصادقة\nالثنائية";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
+"ePY-rM-AOE.normalTitle" = "إرسال";
+
+/* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
+"G99-FE-uk4.normalTitle" = "إنشاء سحابة";
+
+/* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
+"GFx-Ry-9GC.text" = "اتصل بسحابة ONLYOFFICE الخاصة بك لتخزين الملفات عبر الإنترنت والتعاون في المستندات في الوقت الفعلي";
+
+/* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
+"hRN-W6-nA0.title" = "تسجيل الدخول عبر الخدمة الفردية";
+
+/* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
+"K5M-Of-QAk.text" = "انسخ المفتاح والصقه في تطبيق Google Authenticator";
+
+/* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
+"LwV-Os-V4m.text" = "قم بتشغيل تطبيق Google Authenticator";
+
+/* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
+"Mbh-dU-7po.text" = "الرجاء إدخال البريد الإلكتروني الذي استخدمته أثناء التسجيل في البوابة. سيتم إرسال تعليمات استعادة كلمة المرور إلى عنوان البريد الإلكتروني هذا.";
+
+/* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
+"MNA-z2-ITx.text" = "أدخل رقم الهاتف الذي يمكن استخدامه للتحقق من هويتك";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
+"MUG-TG-NlP.title" = "للخلف";
+
+/* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
+"NBg-dA-b3o.title" = "الدولة";
+
+/* Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj"; */
+"OHG-hv-GGj.normalTitle" = "الرجوع لتسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
+"OnI-QD-xeI.placeholder" = "رمز";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
+"QAn-vu-xMR.normalTitle" = "تسجيل دخول";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
+"qEs-UQ-wWd.placeholder" = "رمز";
+
+/* Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j"; */
+"R2F-fc-11j.text" = "قم بتشغيل التطبيق واضغط على أيقونة الحساب الجديد";
+
+/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
+"RDr-pH-MKV.normalTitle" = "فتح";
+
+/* Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze"; */
+"SH2-Fd-5Ze.text" = "افتح تطبيق المصادقة وانسخ الرمز من هناك";
+
+/* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
+"szM-hs-ncG.text" = "تسجيل الدخول بواسطة";
+
+/* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
+"tnK-je-flS.placeholder" = "سري";
+
+/* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
+"ttx-IC-XrN.text" = "الحصول على المزيد من المعلومات";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69"; */
+"twm-cB-W69.title" = "التالي";
+
+/* Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl"; */
+"vgV-fF-jOl.text" = "انسخ الرمز الذي تم إنشاؤه بواسطة تطبيق Google Authenticator وأدخله في الحقل";
+
+/* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
+"vlQ-jV-iFo.text" = "يرجى إعداد تطبيق لإنشاء رموز الوصول إلى البوابة (مثل Google Authenticator) لمواصلة العمل في البوابة";
+
+/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
+"w2U-Ci-R7v.placeholder" = "رقم الهاتف";
+
+/* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
+"W8Q-CO-c0L.text" = "لقد أرسلنا لك رسالة نصية تحتوي على الرمز على الرقم %@";
+
+/* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
+"WuZ-wI-3aH.text" = "إضافة مفتاح سري";
+
+/* Class = "UITextField"; text = "+"; ObjectID = "x6G-qW-5Pq"; */
+"x6G-qW-5Pq.text" = "+";
+
+/* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
+"XsM-aD-o1I.text" = "ربط بالسحابة";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
+"ZWV-Q1-HY9.placeholder" = "رمز";
+

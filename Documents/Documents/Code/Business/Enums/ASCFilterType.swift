@@ -18,4 +18,5 @@ enum ASCFilterType: Int {
     case imagesOnly = 7
     case byUser = 8
     case byDepartment = 9
+    case onlyFillingForms = 23
 }

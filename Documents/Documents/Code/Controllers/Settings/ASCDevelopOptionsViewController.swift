@@ -30,11 +30,7 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
     // MARK: - Lifecycle Methods
 
     init() {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
+        super.init(style: .insetGrouped)
     }
 
     required init?(coder: NSCoder) {
@@ -112,13 +108,6 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
-                    title: "Hide Searchbar if empty screen (false)",
-                    isOn: ASCAppSettings.Feature.hideSearchbarIfEmpty,
-                    valueChanged: { isOn in
-                        ASCAppSettings.Feature.hideSearchbarIfEmpty = isOn
-                    }
-                )),
-                .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Connect Dropbox via SDK (true)",
                     isOn: ASCAppSettings.Feature.dropboxSDKLogin,
                     valueChanged: { isOn in
@@ -133,11 +122,10 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
-                    title: "Force RTL UI (false)",
-                    isOn: ASCAppSettings.Feature.forceRtl,
+                    title: "Disable SDK Version check (false)",
+                    isOn: ASCAppSettings.Feature.disableSdkVersionCheck,
                     valueChanged: { isOn in
-                        ASCAppSettings.Feature.forceRtl = isOn
-                        ASCStyles.updateSemanticContentAttribute()
+                        ASCAppSettings.Feature.disableSdkVersionCheck = isOn
                     }
                 )),
             ],

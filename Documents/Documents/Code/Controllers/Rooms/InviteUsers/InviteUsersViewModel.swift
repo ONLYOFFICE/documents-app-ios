@@ -30,10 +30,7 @@ final class InviteUsersViewModel: ObservableObject {
 
     let room: ASCRoom
     var accessMenuItems: [MenuViewItem] {
-        [
-            ASCShareAccess.roomManager,
-            ASCShareAccess.powerUser,
-        ].map { access in
+        accessProvider.get().map { access in
             MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
                 setAccessRight(access)
             }
@@ -48,6 +45,10 @@ final class InviteUsersViewModel: ObservableObject {
 
     private var cancelable = Set<AnyCancellable>()
     private var service: InviteUsersService = InviteUsersServiceImp()
+    private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessRoomsProvider(
+        roomType: room.roomType ?? .viewOnly,
+        rightHoldersTableType: .users
+    )
 
     private var preventToggleAction: Bool = false
 

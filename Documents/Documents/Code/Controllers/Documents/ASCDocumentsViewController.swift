@@ -2379,16 +2379,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func copySharedLink(file: ASCFile) {
-        NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+        let hud = MBProgressHUD.showTopMost()
+        let successMessage = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
+
+        let handleResult: (Result<String, Error>) -> Void = { result in
             switch result {
             case let .success(link):
-                let hud = MBProgressHUD.showTopMost()
-                UIPasteboard.general.string = link.sharedTo.shareLink
-                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
-                hud?.hide(animated: true, afterDelay: .standardDelay)
-
+                UIPasteboard.general.string = link
+                hud?.setState(result: .success(successMessage))
             case let .failure(error):
-                print(error.localizedDescription)
+                hud?.setState(result: .failure(error.localizedDescription))
+            }
+            hud?.hide(animated: true, afterDelay: .standardDelay)
+        }
+        
+        if let provider = provider as? ASCOnlyofficeProvider {
+            Task {
+                let result = await provider.generalFileLink(file: file)
+                await MainActor.run {
+                    handleResult(result)
+                }
+            }
+        } else {
+            NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                handleResult(result.map { $0.sharedTo.shareLink })
             }
         }
     }

@@ -1322,9 +1322,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func loadFirstPage(_ completeon: ((_ success: Bool) -> Void)? = nil) {
 //        provider?.page = 0
 
-        provider?.cancel()
-        provider?.reset()
-        collectionView.reloadData()
+        if needsToLoadFirstPageOnAppear {
+            provider?.cancel()
+            provider?.reset()
+            collectionView.reloadData()
+        }
 
         setEditMode(false)
         showLoadingPage(true)

@@ -576,7 +576,7 @@ class ASCViewControllerManager {
                 if let resultFolder = response?.result {
                     folder = resultFolder
                 } else {
-                    folder = rootSharedFolder
+                    folder.id = ""
                 }
             }
 
@@ -589,8 +589,6 @@ class ASCViewControllerManager {
 
                     if let resultFile = response?.result {
                         file = resultFile
-                    } else {
-                        file?.id = ""
                     }
                 }
             }
@@ -624,13 +622,13 @@ class ASCViewControllerManager {
                         }
                     }
 
-                    if let file = file, !file.id.isEmpty {
+                    if let file, !file.id.isEmpty {
                         delay(seconds: 0.3) {
                             if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
                                let documentVC = topMostViewController as? ASCDocumentsViewController
                             {
                                 // Open target folder if not root folder
-                                if !(documentVC.folder == folder), folder.parentId != nil {
+                                if !folder.id.isEmpty, !(documentVC.folder == folder), folder.parentId != nil {
                                     let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
                                     documentVC.navigationController?.pushViewController(controller, animated: false)
 

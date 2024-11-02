@@ -2068,28 +2068,27 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 }
 
 extension ASCOnlyofficeProvider {
-    
     func generalFileLink(file: ASCFile) async -> Result<String, Error> {
         guard file.rootFolderType == .onlyofficeRoomShared,
-               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
-         else {
-             return await withCheckedContinuation { continuation in
-                 NetworkManagerSharedSettings().createAndCopy(file: file) { result in
-                     switch result {
-                     case let .success(link):
-                         continuation.resume(returning: .success(link.sharedTo.shareLink))
-                     case let .failure(error):
-                         continuation.resume(returning: .failure(error))
-                     }
-                 }
-             }
-         }
-         
-         let path = "%@/doceditor?fileId=%@"
-         let urlStr = String(format: path, baseUrl, file.id)
-         return .success(urlStr)
+              let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
+        else {
+            return await withCheckedContinuation { continuation in
+                NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                    switch result {
+                    case let .success(link):
+                        continuation.resume(returning: .success(link.sharedTo.shareLink))
+                    case let .failure(error):
+                        continuation.resume(returning: .failure(error))
+                    }
+                }
+            }
+        }
+        
+        let path = "%@/doceditor?fileId=%@"
+        let urlStr = String(format: path, baseUrl, file.id)
+        return .success(urlStr)
     }
-    
+
     func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {
         if folder.isRoom {
             let result = await generalLink(forRoom: folder)

@@ -1442,7 +1442,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                               !folder.isRoom,
                               folder.isRoomListSubfolder,
                               let folder = provider.folder,
-                              folder.parentsFoldersOrCurrentContains(roomType: .fillingForm),
+                              folder.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm),
                               provider.allowEdit(entity: folder)
                     {
                         localEmptyView?.type = .formFillingRoomSubfolder
@@ -2394,7 +2394,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
             hud?.hide(animated: true, afterDelay: .standardDelay)
         }
-        
+
         if let provider = provider as? ASCOnlyofficeProvider {
             Task {
                 let result = await provider.generalFileLink(file: file)

@@ -151,12 +151,11 @@ extension ASCFolder {
         ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: rootFolderType) && !isRoomListFolder
     }
 
-    func parentsFoldersContains(roomType: ASCRoomType) -> Bool {
-        guard isRoomListSubfolder else { return false }
+    func parentsFoldersContains<Value>(keyPath: KeyPath<ASCFolder, Value>, value: Value) -> Bool where Value: Equatable {
         var currentFolder = self
 
         while let parentFolder = currentFolder.parent {
-            if parentFolder.roomType == roomType {
+            if parentFolder[keyPath: keyPath] == value {
                 return true
             }
             currentFolder = parentFolder
@@ -165,8 +164,8 @@ extension ASCFolder {
         return false
     }
 
-    func parentsFoldersOrCurrentContains(roomType: ASCRoomType) -> Bool {
-        self.roomType == roomType || parentsFoldersContains(roomType: roomType)
+    func parentsFoldersOrCurrentContains<Value>(keyPath: KeyPath<ASCFolder, Value>, value: Value) -> Bool where Value: Equatable {
+        self[keyPath: keyPath] == value || parentsFoldersContains(keyPath: keyPath, value: value)
     }
 }
 

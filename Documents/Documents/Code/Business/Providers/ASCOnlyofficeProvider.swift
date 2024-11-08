@@ -1317,6 +1317,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDelete = allowDelete(entity: file)
             let canShare = allowShare(entity: file)
             let canDownload = !file.denyDownload
+            let canMove = file.security.move
             let canRename = allowRename(entity: file)
             let isUserCategory = file.rootFolderType == .onlyofficeUser
             let isRoomsCategory = file.rootFolderType == .onlyofficeRoomShared
@@ -1351,7 +1352,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if canDelete {
-                if canDownload {
+                if canMove {
                     entityActions.insert([.delete, .move])
                 } else {
                     entityActions.insert([.delete])
@@ -1366,7 +1367,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
-            if file.isForm, isDocspace, isUserCategory || file.parent?.roomType == .fillingForm {
+            if file.isForm, isDocspace, isUserCategory
+                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
+                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .fillFormInProgress) == true
+                || file.security.fillForms
+            {
                 entityActions.insert(.fillForm)
             }
 
@@ -2083,7 +2088,7 @@ extension ASCOnlyofficeProvider {
                 }
             }
         }
-        
+
         let path = "%@/doceditor?fileId=%@"
         let urlStr = String(format: path, baseUrl, file.id)
         return .success(urlStr)

@@ -1175,7 +1175,7 @@ extension ASCEditorManager {
                !file.device,
                provider?.allowEdit(entity: file) ?? false
             {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": false]) { response, error in
                     if let error = error {
                         log.error(error)
                     }

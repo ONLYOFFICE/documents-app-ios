@@ -1328,10 +1328,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview = canOpenEditor ||
+            var canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == ASCConstants.FileExtensions.pdf
+
+            // Workaround to disable the preview action in the fillform room
+            if file.isForm, let roomType = file.parent?.roomType, roomType == .fillingForm {
+                canPreview = false
+            }
 
             let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
 
@@ -1373,6 +1378,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 || file.security.fillForms
             {
                 entityActions.insert(.fillForm)
+
+                if canEdit {
+                    entityActions.insert(.edit)
+                }
             }
 
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {

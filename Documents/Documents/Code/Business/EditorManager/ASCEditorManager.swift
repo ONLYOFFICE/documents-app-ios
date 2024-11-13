@@ -168,9 +168,24 @@ class ASCEditorManager: NSObject {
         editorWindow = nil
     }
 
-    private func fetchDocumentInfo(_ file: ASCFile, viewMode: Bool = false) async -> Result<OnlyofficeDocumentConfig, Error> {
+    private func fetchDocumentInfo(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit) async -> Result<OnlyofficeDocumentConfig, Error> {
         await withCheckedContinuation { continuation in
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.openEdit(file: file)) { response, error in
+            var params: [String: Any] = [:]
+
+            let key: String? = {
+                switch openMode {
+                case .edit: return "edit"
+                case .view: return "view"
+                case .fillform: return "fill"
+                default: return nil
+                }
+            }()
+
+            if let key {
+                params[key] = "true"
+            }
+
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
                 if let error {
                     continuation.resume(returning: .failure(error))
                     return
@@ -196,8 +211,23 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    private func fetchDocumentInfoLegacy(_ file: ASCFile, viewMode: Bool = false, complation: @escaping (Result<OnlyofficeDocumentConfig, Error>) -> Void) {
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.openEdit(file: file)) { response, error in
+    private func fetchDocumentInfoLegacy(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit, complation: @escaping (Result<OnlyofficeDocumentConfig, Error>) -> Void) {
+        var params: [String: Any] = [:]
+
+        let key: String? = {
+            switch openMode {
+            case .edit: return "edit"
+            case .view: return "view"
+            case .fillform: return "fill"
+            default: return nil
+            }
+        }()
+
+        if let key {
+            params[key] = "true"
+        }
+
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
             if let error {
                 complation(.failure(error))
             }
@@ -284,7 +314,7 @@ class ASCEditorManager: NSObject {
         self.lockedHandler = lockedHandler
 
         if provider is ASCOnlyofficeProvider {
-            fetchDocumentInfoLegacy(file, viewMode: !canEdit) { result in
+            fetchDocumentInfoLegacy(file, openMode: (openMode == .view && canEdit) ? .edit : openMode) { result in
                 if cancel {
                     handler?(.end, 1, nil, &cancel)
                     return
@@ -511,7 +541,7 @@ class ASCEditorManager: NSObject {
         let fetchAndOpen = { [weak self] in
             guard let self else { return }
 
-            self.fetchDocumentInfoLegacy(file, viewMode: openMode == .view) { result in
+            self.fetchDocumentInfoLegacy(file, openMode: (openMode == .view && canEdit) ? .edit : openMode) { result in
                 if cancel {
                     openHandler?(.end, 1, nil, &cancel)
                     return
@@ -628,7 +658,7 @@ class ASCEditorManager: NSObject {
 
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: true)
+                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: pdf.security.edit)
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in

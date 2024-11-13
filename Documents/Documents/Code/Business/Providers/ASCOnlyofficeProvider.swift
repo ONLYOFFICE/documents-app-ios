@@ -1265,7 +1265,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
-        if let file, !file.canShare {
+        if let file, isDocspace, !file.canShare {
             return false
         }
 

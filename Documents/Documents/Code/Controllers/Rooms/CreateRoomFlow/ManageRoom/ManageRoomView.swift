@@ -26,6 +26,7 @@ struct ManageRoomView: View {
             roomTagsSection
             roomOwnerSection
             thirdPartySection
+            automaticIndexationSection
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
@@ -149,6 +150,19 @@ struct ManageRoomView: View {
         }
     }
 
+    @ViewBuilder
+    private var automaticIndexationSection: some View {
+        if viewModel.selectedRoomType.type == .virtualData {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.", comment: "")
+                )
+            ) {
+                automaticIndexingCell
+            }
+        }
+    }
+
     private var thirdPartyToggleCell: some View {
         Toggle(isOn: Binding(
             get: { viewModel.isThirdPartyStorageEnabled },
@@ -190,6 +204,13 @@ struct ManageRoomView: View {
     private var createNewFolderCell: some View {
         Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
             Text(NSLocalizedString("Create new folder", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+    }
+
+    private var automaticIndexingCell: some View {
+        Toggle(isOn: $viewModel.isAutomaticIndexing) {
+            Text(NSLocalizedString("Automatic indexing", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }

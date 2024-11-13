@@ -56,7 +56,7 @@ enum CreatingRoomType: CaseIterable {
         case .formFilling:
             return NSLocalizedString("Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.", comment: "")
         case .virtualData:
-            return NSLocalizedString("Invite users via shared links to view documents without registration. You can also embed this room into any web interface.", comment: "")
+            return NSLocalizedString("Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying.", comment: "")
         }
     }
 

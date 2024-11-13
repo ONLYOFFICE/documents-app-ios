@@ -20,6 +20,7 @@ struct CreatingRoomModel {
     var tags: [String]
     var createAsNewFolder: Bool = false
     var thirdPartyFolderId: String?
+    var isAutomaticIndexing: Bool = false
 }
 
 struct EditRoomModel {
@@ -92,7 +93,12 @@ extension NetworkManagingRoomServiceImp {
             completion(.success(room))
             return
         }
-        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name, createAsNewFolder: false)
+        let requestModel = CreateRoomRequestModel(
+            roomType: roomType,
+            title: name,
+            createAsNewFolder: false,
+            indexing: false // TODO: docspace 3.0
+        )
         networkService.request(
             OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
             requestModel.dictionary
@@ -167,7 +173,8 @@ extension NetworkManagingRoomServiceImp {
         let requestModel = CreateRoomRequestModel(
             roomType: model.roomType.rawValue,
             title: model.name,
-            createAsNewFolder: model.createAsNewFolder
+            createAsNewFolder: model.createAsNewFolder,
+            indexing: model.isAutomaticIndexing
         )
         if let thirdPartyFolderId = model.thirdPartyFolderId {
             networkService.request(

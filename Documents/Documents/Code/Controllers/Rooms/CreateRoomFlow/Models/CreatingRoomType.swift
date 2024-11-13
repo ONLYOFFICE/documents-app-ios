@@ -40,6 +40,8 @@ enum CreatingRoomType: CaseIterable {
             return NSLocalizedString("Custom room", comment: "")
         case .formFilling:
             return NSLocalizedString("Form Filling Room", comment: "")
+        case .virtualData:
+            return NSLocalizedString("Virtual Data Room", comment: "")
         }
     }
 
@@ -53,6 +55,8 @@ enum CreatingRoomType: CaseIterable {
             return NSLocalizedString("Apply your own settings to use this room for any custom purpose", comment: "")
         case .formFilling:
             return NSLocalizedString("Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.", comment: "")
+        case .virtualData:
+            return NSLocalizedString("Invite users via shared links to view documents without registration. You can also embed this room into any web interface.", comment: "")
         }
     }
 
@@ -65,6 +69,8 @@ enum CreatingRoomType: CaseIterable {
         case .custom:
             return ascRoomType.image
         case .formFilling:
+            return ascRoomType.image
+        case .virtualData:
             return ascRoomType.image
         }
     }
@@ -79,6 +85,8 @@ enum CreatingRoomType: CaseIterable {
             return .custom
         case .formFilling:
             return .fillingForm
+        case .virtualData:
+            return .virtualData
         }
     }
 }

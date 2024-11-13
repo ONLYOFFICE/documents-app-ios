@@ -292,7 +292,7 @@ enum OnlyofficeAPI {
             }
 
             static func openEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<OnlyofficeDocumentConfig>> {
-                return Endpoint<OnlyofficeResponseCodable<OnlyofficeDocumentConfig>>.make(String(format: Path.openEditFile, file.id))
+                return Endpoint<OnlyofficeResponseCodable<OnlyofficeDocumentConfig>>.make(String(format: Path.openEditFile, file.id), .get, URLEncoding.default)
             }
 
             static func startEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {

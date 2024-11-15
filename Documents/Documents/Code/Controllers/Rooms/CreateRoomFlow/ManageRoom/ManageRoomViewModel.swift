@@ -27,6 +27,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedStorage: String?
     @Published var isCreateNewFolderEnabled: Bool = false
     @Published var isAutomaticIndexing: Bool = false
+    @Published var isRestrictContentCopy: Bool = false
     @Published var selectedLocation: String = NSLocalizedString("Root folder", comment: "")
 
     @Published var isRoomSelectionPresenting = false

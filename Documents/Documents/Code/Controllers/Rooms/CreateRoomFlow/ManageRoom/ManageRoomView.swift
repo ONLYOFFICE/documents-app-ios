@@ -163,6 +163,19 @@ struct ManageRoomView: View {
         }
     }
 
+    @ViewBuilder
+    private var restrictContentCopySection: some View {
+        if viewModel.selectedRoomType.type == .virtualData {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Enable this seting to disable downloads, printing, and content copying for users with the “Viewer” role", comment: "")
+                )
+            ) {
+                restrictContentCopyCell
+            }
+        }
+    }
+
     private var thirdPartyToggleCell: some View {
         Toggle(isOn: Binding(
             get: { viewModel.isThirdPartyStorageEnabled },
@@ -211,6 +224,13 @@ struct ManageRoomView: View {
     private var automaticIndexingCell: some View {
         Toggle(isOn: $viewModel.isAutomaticIndexing) {
             Text(NSLocalizedString("Automatic indexing", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+    }
+
+    private var restrictContentCopyCell: some View {
+        Toggle(isOn: $viewModel.isRestrictContentCopy) {
+            Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }

@@ -13,4 +13,5 @@ struct CreateRoomRequestModel: Codable {
     var title: String
     var createAsNewFolder: Bool
     var indexing: Bool
+    var denyDownload: Bool
 }

@@ -213,7 +213,8 @@ private extension ManageRoomViewModel {
                 tags: tags.map { $0 },
                 createAsNewFolder: isCreateNewFolderEnabled,
                 thirdPartyFolderId: selectedSubfolder?.id ?? thirdPartyFolder?.id,
-                isAutomaticIndexing: isAutomaticIndexing
+                isAutomaticIndexing: isAutomaticIndexing,
+                isRestrictContentCopy: isRestrictContentCopy
             )
         ) { [weak self] result in
             self?.isSaving = false

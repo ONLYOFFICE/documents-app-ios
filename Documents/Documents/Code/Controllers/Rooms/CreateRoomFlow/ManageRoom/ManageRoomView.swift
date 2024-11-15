@@ -27,6 +27,7 @@ struct ManageRoomView: View {
             roomOwnerSection
             thirdPartySection
             automaticIndexationSection
+            restrictContentCopySection
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)

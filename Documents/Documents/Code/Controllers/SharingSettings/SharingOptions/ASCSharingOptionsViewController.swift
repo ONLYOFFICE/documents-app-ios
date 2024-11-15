@@ -115,7 +115,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         self.entity = entity
         if !isModuleConfigurated {
             let viewController = self
-            let interactor = ASCSharingOptionsInteractor(entityLinkMaker: ASCOnlyofficeFileInternalLinkMaker(),
+            let interactor = ASCSharingOptionsInteractor(entityLinkMaker: ASCOnlyofficeEntityInternalLinkMaker(),
                                                          entity: entity,
                                                          apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: portalDefinder.definePortalType()),
                                                          networkingRequestManager: OnlyofficeApiClient.shared)

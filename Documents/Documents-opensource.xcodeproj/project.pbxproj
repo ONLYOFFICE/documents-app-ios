@@ -54,6 +54,7 @@
 		E8D50B892BFE236600741BB8 /* InviteRigthHoldersByEmailsRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B882BFE236600741BB8 /* InviteRigthHoldersByEmailsRepresentable.swift */; };
 		E8D50B8B2BFE5DE300741BB8 /* InviteUsersUIHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B8A2BFE5DE300741BB8 /* InviteUsersUIHostingController.swift */; };
 		E8D50B8D2BFE7BCA00741BB8 /* InviteUsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B8C2BFE7BCA00741BB8 /* InviteUsersService.swift */; };
+		E8D70A3F2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D70A3E2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift */; };
 		F3772FE82C9DEEAD002B33A8 /* CompletedFormResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FDA2C9DEEAD002B33A8 /* CompletedFormResponceModel.swift */; };
 		F3772FE92C9DEEAD002B33A8 /* CompleteFormRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FDB2C9DEEAD002B33A8 /* CompleteFormRequestModel.swift */; };
 		F3772FEA2C9DEEAD002B33A8 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FDC2C9DEEAD002B33A8 /* FormModel.swift */; };
@@ -381,7 +382,6 @@
 		FC7081C82812E2260057FCD2 /* ASCDocumentSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696402637E73000808644 /* ASCDocumentSortType.swift */; };
 		FC7081C92812E2260057FCD2 /* DropboxApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526426837B7300D830EC /* DropboxApiClient.swift */; };
 		FC7081CA2812E2260057FCD2 /* ASCEntityAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8072265D9DD00A155C2 /* ASCEntityAccess.swift */; };
-		FC7081CB2812E2260057FCD2 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAC32694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift */; };
 		FC7081CC2812E2260057FCD2 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */; };
 		FC7081CD2812E2260057FCD2 /* ASCUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3964A1ECDD9A10016BB10 /* ASCUserProfileViewController.swift */; };
 		FC7081CF2812E2260057FCD2 /* ASCOnlyofficeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */; };
@@ -577,8 +577,6 @@
 		1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
 		1D14AABE268E0B62009E48AD /* ASCSharingRightHolderViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModelProtocol.swift; sourceTree = "<group>"; };
 		1D14AAC02694EFE4009E48AD /* ASCEntityLinkMakerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityLinkMakerProtocol.swift; sourceTree = "<group>"; };
-		1D14AAC32694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeFileInternalLinkMaker.swift; sourceTree = "<group>"; };
-		1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeFileInternalLinkMakerTests.swift; sourceTree = "<group>"; };
 		1D14AAC826958F87009E48AD /* ASCSharingRightHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolder.swift; sourceTree = "<group>"; };
 		1D14AACA269595C2009E48AD /* ASCSharingOprionsExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOprionsExternalLink.swift; sourceTree = "<group>"; };
 		1D14AACE26962BF7009E48AD /* ASCSharingSettingsAccessProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessProvider.swift; sourceTree = "<group>"; };
@@ -714,6 +712,8 @@
 		E8D50B882BFE236600741BB8 /* InviteRigthHoldersByEmailsRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteRigthHoldersByEmailsRepresentable.swift; sourceTree = "<group>"; };
 		E8D50B8A2BFE5DE300741BB8 /* InviteUsersUIHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersUIHostingController.swift; sourceTree = "<group>"; };
 		E8D50B8C2BFE7BCA00741BB8 /* InviteUsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersService.swift; sourceTree = "<group>"; };
+		E8D70A3E2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMaker.swift; sourceTree = "<group>"; };
+		E8D70A402CE7534D00BE07E2 /* ASCOnlyofficeEntityInternalLinkMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMakerTests.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F3772FDA2C9DEEAD002B33A8 /* CompletedFormResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedFormResponceModel.swift; sourceTree = "<group>"; };
@@ -1357,7 +1357,7 @@
 		1D14AAC22694F01D009E48AD /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				1D14AAC32694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift */,
+				E8D70A3E2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift */,
 				FC7F71FB299410D60004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift */,
 				1D299158274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */,
 			);
@@ -1367,7 +1367,7 @@
 		1D14AAC52694F0AF009E48AD /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */,
+				E8D70A402CE7534D00BE07E2 /* ASCOnlyofficeEntityInternalLinkMakerTests.swift */,
 				1D29915D274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift */,
 			);
 			path = Workers;
@@ -3898,6 +3898,7 @@
 				E8D50B872BFBEC9800741BB8 /* ChevronUpDownView.swift in Sources */,
 				FC1764E02BA332AD00D6B6F0 /* ManageRoomView.swift in Sources */,
 				FCE9F6422B2B49D60056E420 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
+				E8D70A3F2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */,
 				E87FF67E2BF74712000EFDE5 /* UserModel.swift in Sources */,
 				FC83D5FE2A974E2200C404CB /* UIViewController+Extensions.swift in Sources */,
 				FC4042522C2B0540002B6285 /* ASCEntityViewCellProtocol.swift in Sources */,
@@ -4248,7 +4249,6 @@
 				FC4820932C33D7F500E22605 /* ASCEntityViewLayoutType.swift in Sources */,
 				FC379D692C380C5900B120D9 /* ASCCreateLinkCellView.swift in Sources */,
 				FC379D5B2C380C5900B120D9 /* ASCDocSpaceLinkViewModel.swift in Sources */,
-				FC7081CB2812E2260057FCD2 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
 				FC7081CC2812E2260057FCD2 /* UPCarouselFlowLayout.swift in Sources */,
 				F3772FEE2C9DEEAD002B33A8 /* CompleteFormMailView.swift in Sources */,
 				FC379D602C380C5900B120D9 /* SharedSettingsLinkRow.swift in Sources */,

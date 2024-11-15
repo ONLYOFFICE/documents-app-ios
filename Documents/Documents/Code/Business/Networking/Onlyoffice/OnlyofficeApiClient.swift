@@ -12,8 +12,10 @@ import SwiftyJSON
 
 class OnlyofficeTokenAdapter: RequestAdapter {
     private let accessToken: String
+    private let client: OnlyofficeApiClient
 
-    init(accessToken: String) {
+    init(client: OnlyofficeApiClient, accessToken: String) {
+        self.client = client
         self.accessToken = accessToken
     }
 
@@ -21,10 +23,10 @@ class OnlyofficeTokenAdapter: RequestAdapter {
         var urlRequest = urlRequest
 
         if !accessToken.isEmpty {
-            if OnlyofficeApiClient.shared.isHttp2 {
+            if client.isHttp2 {
                 urlRequest.headers.update(.authorization(bearerToken: accessToken))
             } else {
-                urlRequest.headers.update(.authorization(accessToken)) // Legacy portals
+                urlRequest.headers.update(.authorization(accessToken))
             }
         }
         completion(.success(urlRequest))
@@ -55,6 +57,12 @@ class OnlyofficeApiClient: NetworkingClient {
         super.init()
     }
 
+    public init(apiClient: NetworkingClient) {
+        super.init()
+        super.configure(url: apiClient.baseURL?.absoluteString ?? "")
+        headers = apiClient.headers
+    }
+
     convenience init(url: String, token: String) {
         self.init()
         configure(url: url, token: token)
@@ -69,7 +77,7 @@ class OnlyofficeApiClient: NetworkingClient {
         configuration.timeoutIntervalForResource = defaultTimeoutIntervalForResource
         configuration.headers = .default
 
-        let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
+        let adapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
 
         manager = Session(
             configuration: configuration,
@@ -122,12 +130,12 @@ class OnlyofficeApiClient: NetworkingClient {
         return networkingError
     }
 
-    class func reset() {
-        OnlyofficeApiClient.shared.baseURL = nil
-        OnlyofficeApiClient.shared.token = nil
-        OnlyofficeApiClient.shared.serverVersion = nil
-        OnlyofficeApiClient.shared.capabilities = nil
-        OnlyofficeApiClient.shared.configure()
+    func reset() {
+        baseURL = nil
+        token = nil
+        serverVersion = nil
+        capabilities = nil
+        configure()
     }
 
     func download(
@@ -136,7 +144,7 @@ class OnlyofficeApiClient: NetworkingClient {
         _ range: Range<Int64>? = nil,
         _ processing: @escaping NetworkProgressHandler
     ) {
-        guard let url = OnlyofficeApiClient.absoluteUrl(from: URL(string: path)) else {
+        guard let url = OnlyofficeApiClient.shared.absoluteUrl(from: URL(string: path)) else {
             processing(nil, 1, NetworkingError.invalidUrl)
             return
         }
@@ -178,7 +186,7 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         )
 
-        let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
+        let adapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
         let downloadManager = Alamofire.Session(
             configuration: {
                 $0.timeoutIntervalForRequest = 600
@@ -261,7 +269,7 @@ class OnlyofficeApiClient: NetworkingClient {
             urlComponents.queryItems = queryItems
 
             if let uploadUrl = urlComponents.url {
-                let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
+                let adapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
                 let uploadManager = Alamofire.Session(
                     configuration: {
                         $0.timeoutIntervalForRequest = 600
@@ -319,6 +327,17 @@ class OnlyofficeApiClient: NetworkingClient {
         }
     }
 
+    func absoluteUrl(from url: URL?) -> URL? {
+        if let url = url {
+            if let _ = url.host {
+                return url
+            } else {
+                return URL(string: (baseURL?.absoluteString ?? "") + url.absoluteString)
+            }
+        }
+        return nil
+    }
+
     // MARK: - Private
 
     private func fetchServerVersion(completion: NetworkCompletionHandler?) {
@@ -355,16 +374,5 @@ extension OnlyofficeApiClient {
     ) {
         NetworkingClient.clearCookies(for: OnlyofficeApiClient.shared.url(path: endpoint.path))
         OnlyofficeApiClient.shared.request(endpoint, parameters, apply, completion)
-    }
-
-    class func absoluteUrl(from url: URL?) -> URL? {
-        if let url = url {
-            if let _ = url.host {
-                return url
-            } else {
-                return URL(string: (OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "") + url.absoluteString)
-            }
-        }
-        return nil
     }
 }

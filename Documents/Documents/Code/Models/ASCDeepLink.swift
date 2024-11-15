@@ -15,6 +15,10 @@ class ASCDeepLink: Mappable {
     var originalUrl: String?
     var file: ASCFile?
     var folder: ASCFolder?
+    var requestToken: String? {
+        guard let originalUrl else { return nil }
+        return originalUrl.urlQuery(by: "share")
+    }
 
     init() {
         //

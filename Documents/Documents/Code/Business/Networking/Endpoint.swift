@@ -14,16 +14,19 @@ class Endpoint<Response> {
     let method: HTTPMethod
     let path: String
     let parameterEncoding: ParameterEncoding?
+    let headers: HTTPHeaders?
     let decode: (Data) throws -> Response?
 
     init(path: String,
          method: HTTPMethod = .get,
          parameterEncoding: ParameterEncoding? = nil,
+         headers: HTTPHeaders? = nil,
          decode: @escaping (Data) throws -> Response?)
     {
         self.method = method
         self.path = path
         self.parameterEncoding = parameterEncoding
+        self.headers = headers
         self.decode = decode
     }
 }
@@ -32,12 +35,14 @@ extension Endpoint {
     class func make(
         _ path: String,
         _ method: HTTPMethod = .get,
+        _ headers: HTTPHeaders? = nil,
         _ parameterEncoding: ParameterEncoding? = nil
     ) -> Endpoint<Bool> {
         Endpoint<Bool>(
             path: path,
             method: method,
-            parameterEncoding: parameterEncoding
+            parameterEncoding: parameterEncoding,
+            headers: headers
         ) { data in
             String(data: data, encoding: .utf8).flatMap(Bool.init)
         }
@@ -46,12 +51,14 @@ extension Endpoint {
     class func make(
         _ path: String,
         _ method: HTTPMethod = .get,
+        _ headers: HTTPHeaders? = nil,
         _ parameterEncoding: ParameterEncoding? = nil
     ) -> Endpoint<String> {
         Endpoint<String>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
+            headers: headers,
             decode: { (data: Data) -> String? in
                 String(data: data, encoding: .utf8)
             }
@@ -61,12 +68,14 @@ extension Endpoint {
     class func make(
         _ path: String,
         _ method: HTTPMethod = .get,
+        _ headers: HTTPHeaders? = nil,
         _ parameterEncoding: ParameterEncoding? = nil
     ) -> Endpoint<Parameters> {
         Endpoint<Parameters>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
+            headers: headers,
             decode: { (data: Data) -> Parameters? in
                 do {
                     if let result = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -85,12 +94,14 @@ extension Endpoint {
     class func make<T: BaseMappable>(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameterEncoding: ParameterEncoding? = nil
+        _ parameterEncoding: ParameterEncoding? = nil,
+        _ headers: HTTPHeaders? = nil
     ) -> Endpoint<T> {
         Endpoint<T>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
+            headers: headers,
             decode: { (data: Data) -> T? in
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -112,12 +123,14 @@ extension Endpoint {
         _ path: String,
         _ method: HTTPMethod = .get,
         _ parameterEncoding: ParameterEncoding? = nil,
+        _ headers: HTTPHeaders? = nil,
         _ params: [String: Any]? = nil
     ) -> Endpoint<[T]> {
         Endpoint<[T]>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
+            headers: headers,
             decode: { (data: Data) -> [T]? in
 
                 var objects: [T] = []
@@ -145,12 +158,14 @@ extension Endpoint {
     class func make<T: Codable>(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameterEncoding: ParameterEncoding? = nil
+        _ parameterEncoding: ParameterEncoding? = nil,
+        _ headers: HTTPHeaders? = nil
     ) -> Endpoint<T> {
         return Endpoint<T>(
             path: path,
             method: method,
             parameterEncoding: parameterEncoding,
+            headers: headers,
             decode: { (data: Data) -> T? in
                 let decoder = JSONDecoder()
                 return try? decoder.decode(T.self, from: data)

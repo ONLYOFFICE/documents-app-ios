@@ -136,14 +136,12 @@ class ASCUserProfileViewController: UITableViewController {
         ASCPushNotificationManager.requestClearRegister()
 
         // Cleanup auth info
-        OnlyofficeApiClient.reset()
-
-        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.collaborationService)
+        OnlyofficeApiClient.shared.reset()
 
         // Cleanup ONLYOFFICE provider
         ASCFileManager.onlyofficeProvider?.reset()
         ASCFileManager.onlyofficeProvider = nil
-        OnlyofficeApiClient.reset()
+        OnlyofficeApiClient.shared.reset()
         ASCFileManager.storeProviders()
 
         var userInfo: [String: Any]?
@@ -166,10 +164,12 @@ class ASCUserProfileViewController: UITableViewController {
             emailLabel?.text = user.email
 
             if let avatar = user.avatarRetina ?? user.avatar,
-               let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar))
+               let avatarUrl = OnlyofficeApiClient.shared.absoluteUrl(from: URL(string: avatar))
             {
-                avatarView?.kf.apiSetImage(with: avatarUrl,
-                                           placeholder: Asset.Images.avatarDefault.image)
+                avatarView?.kf.apiSetImage(
+                    with: avatarUrl,
+                    placeholder: Asset.Images.avatarDefault.image
+                )
             }
         }
     }

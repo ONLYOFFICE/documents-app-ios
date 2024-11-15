@@ -44,7 +44,6 @@ class ASCConstants {
 
     enum SettingsKeys {
         static let sortDocuments = "asc-sort-documents"
-        static let collaborationService = "asc-collaboration-service"
         static let appVersion = "asc-documents-version"
         static let lastFolder = "asc-last-folder"
         static let compressImage = "asc-settings-compress-image"
@@ -59,7 +58,6 @@ class ASCConstants {
         static let pushDeviceToken = "asc-push-device-token"
         static let pushFCMToken = "asc-push-fcm-token"
         static let pushUserInfo = "asc-push-user-info"
-        static let sdkVersion = "asc-sdk-version"
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"

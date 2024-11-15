@@ -562,8 +562,6 @@ class ASCEditorManager: NSObject {
         self.fillFormDidSendHandler = nil
 
         let fetchAndOpen = {
-//            guard let self else { return }
-
             self.fetchDocumentInfoLegacy(file, openMode: (openMode == .view && canEdit) ? .edit : openMode) { result in
                 if cancel {
                     openHandler?(.end, 1, nil, &cancel)
@@ -673,7 +671,14 @@ class ASCEditorManager: NSObject {
 
             Task {
                 var cancel = false
-                let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
+                
+                var isDocumentOformPdf = false
+                
+                if pdf.isForm {
+                    isDocumentOformPdf = true
+                } else {
+                    isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
+                }
 
                 if isDocumentOformPdf {
                     pdf.editable = true // Force allow edit the file

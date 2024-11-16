@@ -26,8 +26,13 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var selectedStorage: String?
     @Published var isCreateNewFolderEnabled: Bool = false
+    
+    // Virtual data room only props
     @Published var isAutomaticIndexing: Bool = false
+    @Published var isFileLifetimeEnabled: Bool = false
     @Published var isRestrictContentCopy: Bool = false
+    
+    /// Public room only props
     @Published var selectedLocation: String = NSLocalizedString("Root folder", comment: "")
 
     @Published var isRoomSelectionPresenting = false

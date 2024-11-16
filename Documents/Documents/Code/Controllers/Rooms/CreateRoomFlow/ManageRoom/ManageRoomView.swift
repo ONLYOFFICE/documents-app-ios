@@ -27,6 +27,7 @@ struct ManageRoomView: View {
             roomOwnerSection
             thirdPartySection
             automaticIndexationSection
+            fileLifetimeSection
             restrictContentCopySection
         }
         .insetGroupedListStyle()
@@ -221,6 +222,29 @@ struct ManageRoomView: View {
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
+    
+    // MARK: - VDR file lifetime section
+    
+    @ViewBuilder
+    private var fileLifetimeSection: some View {
+        if viewModel.selectedRoomType.type == .virtualData {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.", comment: "")
+                )
+            ) {
+                fileLifetimeCell
+            }
+        }
+    }
+    
+    private var fileLifetimeCell: some View {
+        Toggle(isOn: $viewModel.isFileLifetimeEnabled) {
+            Text(NSLocalizedString("File lifetime", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+    }
+    
     // MARK: - VDR restrict content copy section
 
     @ViewBuilder

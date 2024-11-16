@@ -59,6 +59,11 @@ typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ fillingS
 class ASCEditorManager: NSObject {
     public static let shared = ASCEditorManager()
 
+    /// The ASCEditorManager Configuration
+    struct Configuration {
+        var onlyofficeClient: OnlyofficeApiClient?
+    }
+
     // MARK: - Private
 
     private var openedFile: ASCFile?
@@ -88,6 +93,12 @@ class ASCEditorManager: NSObject {
     private var encoding: Int?
     private var delimiter: Int?
     private var resolvedFilePath: Path!
+    private var configuration: Configuration?
+    private var apiClient: OnlyofficeApiClient {
+        configuration?.onlyofficeClient ?? OnlyofficeApiClient.shared
+    }
+
+    private var documentServiceVersion: String?
 
     var allowForm: Bool {
         ASCDIContainer.shared.resolve(ASCEditorManagerOptionsProtocol.self)?.allowForm ?? false
@@ -141,6 +152,11 @@ class ASCEditorManager: NSObject {
         prepareFonts()
     }
 
+    init(config: ASCEditorManager.Configuration) {
+        super.init()
+        configuration = config
+    }
+
     private func createEditorWindow() -> UIWindow? {
         cleanupEditorWindow()
 
@@ -168,6 +184,15 @@ class ASCEditorManager: NSObject {
         editorWindow = nil
     }
 
+    private func clientRequest<Response>(
+        _ endpoint: Endpoint<Response>,
+        _ parameters: [String: Any]? = nil,
+        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil
+    ) {
+        NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
+        apiClient.request(endpoint, parameters, completion)
+    }
+
     private func fetchDocumentInfo(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit) async -> Result<OnlyofficeDocumentConfig, Error> {
         await withCheckedContinuation { continuation in
             var params: [String: Any] = [:]
@@ -185,7 +210,7 @@ class ASCEditorManager: NSObject {
                 params[key] = "true"
             }
 
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
+            clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
                 if let error {
                     continuation.resume(returning: .failure(error))
                     return
@@ -227,7 +252,7 @@ class ASCEditorManager: NSObject {
             params[key] = "true"
         }
 
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
+        clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
             if let error {
                 complation(.failure(error))
             }
@@ -249,15 +274,14 @@ class ASCEditorManager: NSObject {
 
     public func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
         let documentServerVersionRequest = DocumentServerVersionRequest(version: .true)
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.documentService, documentServerVersionRequest.dictionary) { response, error in
+        clientRequest(OnlyofficeAPI.Endpoints.Settings.documentService, documentServerVersionRequest.dictionary) { response, error in
 
             let removePath = "/web-apps/apps/api/documents/api.js"
 
             if let results = response?.result as? String {
-                if let url = OnlyofficeApiClient.absoluteUrl(from: URL(string: results)) {
+                if let url = self.apiClient.absoluteUrl(from: URL(string: results)) {
                     let baseUrl = url.absoluteString.replacingOccurrences(of: removePath, with: "")
 
-                    UserDefaults.standard.set(baseUrl, forKey: ASCConstants.SettingsKeys.collaborationService)
                     self.documentServiceURL = baseUrl
 
                     handler(baseUrl, "", nil)
@@ -271,12 +295,11 @@ class ASCEditorManager: NSObject {
                    let docService = documentServerVersion.docServiceUrlApi,
                    let version = documentServerVersion.version
                 {
-                    UserDefaults.standard.set(version, forKey: ASCConstants.SettingsKeys.sdkVersion)
+                    self.documentServiceVersion = version
 
-                    if let url = OnlyofficeApiClient.absoluteUrl(from: URL(string: docService)) {
+                    if let url = self.apiClient.absoluteUrl(from: URL(string: docService)) {
                         let baseUrl = url.absoluteString.replacingOccurrences(of: removePath, with: "")
 
-                        UserDefaults.standard.set(baseUrl, forKey: ASCConstants.SettingsKeys.collaborationService)
                         self.documentServiceURL = baseUrl
 
                         handler(baseUrl, version, nil)
@@ -368,7 +391,7 @@ class ASCEditorManager: NSObject {
         if timer != nil {
             if let file = openedlocallyFile {
                 if let key = documentKeyForTrack {
-                    OnlyofficeApiClient.request(
+                    apiClient.request(
                         OnlyofficeAPI.Endpoints.Files.trackEdit(file: file),
                         [
                             "docKeyForTrack": key,
@@ -437,7 +460,7 @@ class ASCEditorManager: NSObject {
            let key = documentKeyForTrack
         {
             if trackingReadyForLocking == trackingFileStatus {
-                OnlyofficeApiClient.request(
+                clientRequest(
                     OnlyofficeAPI.Endpoints.Files.trackEdit(file: file), ["docKeyForTrack": key]
                 ) { response, error in
                     if let error {
@@ -455,7 +478,7 @@ class ASCEditorManager: NSObject {
                     }
                 }
             } else {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
+                clientRequest(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
 
                     if let error {
                         if let status = response?.status,
@@ -538,9 +561,7 @@ class ASCEditorManager: NSObject {
         self.renameHandler = nil
         self.fillFormDidSendHandler = nil
 
-        let fetchAndOpen = { [weak self] in
-            guard let self else { return }
-
+        let fetchAndOpen = {
             self.fetchDocumentInfoLegacy(file, openMode: (openMode == .view && canEdit) ? .edit : openMode) { result in
                 if cancel {
                     openHandler?(.end, 1, nil, &cancel)
@@ -572,8 +593,7 @@ class ASCEditorManager: NSObject {
 
         openHandler?(.progress, 0.3, nil, &cancel)
 
-        if let url = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.collaborationService) as? String {
-            documentServiceURL = url
+        if let _ = documentServiceURL {
             fetchAndOpen()
         } else {
             fetchDocumentService { url, version, error in
@@ -621,7 +641,7 @@ class ASCEditorManager: NSObject {
                 )
             } else {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
-                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.portal: apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: !pdf.id.contains(Path.userTemporary.rawValue),
                 ])
                 documentInteractionController = UIDocumentInteractionController(url: URL(fileURLWithPath: pdf.id))
@@ -651,7 +671,14 @@ class ASCEditorManager: NSObject {
 
             Task {
                 var cancel = false
-                let isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
+                
+                var isDocumentOformPdf = false
+                
+                if pdf.isForm {
+                    isDocumentOformPdf = true
+                } else {
+                    isDocumentOformPdf = await ASCOformPdfChecker.checkCloud(url: URL(string: viewUrl), for: provider)
+                }
 
                 if isDocumentOformPdf {
                     pdf.editable = true // Force allow edit the file
@@ -797,7 +824,7 @@ class ASCEditorManager: NSObject {
                 }
 
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openMedia, parameters: [
-                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.portal: self.apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: file.device,
                 ])
 
@@ -815,7 +842,7 @@ class ASCEditorManager: NSObject {
 
         if file.device {
             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openExternal, parameters: [
-                ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                ASCAnalytics.Event.Key.portal: apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                 ASCAnalytics.Event.Key.onDevice: !file.id.contains(Path.userTemporary.rawValue),
             ])
             documentInteractionController = UIDocumentInteractionController(url: URL(fileURLWithPath: file.id))
@@ -862,7 +889,7 @@ class ASCEditorManager: NSObject {
     func compareCloudSdk(with localSdkString: String?) -> Bool {
         guard
             let localSdkString,
-            let documentServerVersionString = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String
+            let documentServerVersionString = documentServiceVersion
         else { return false }
 
         let documentServerVersion = documentServerVersionString.components(separatedBy: ".")
@@ -895,34 +922,7 @@ class ASCEditorManager: NSObject {
 
     func checkSDKVersion() -> Bool {
         if ASCAppSettings.Feature.disableSdkVersionCheck { return true }
-
-        if let version = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String {
-            let webSDK = version.components(separatedBy: ".")
-            let localSDK = localSDKVersion()
-
-            let allowCoauthoring = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowCoauthoring)?.boolValue ?? true
-            let checkSdkFully = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.checkSdkFully)?.boolValue ?? true
-
-            if !allowCoauthoring {
-                return false
-            }
-
-            var maxVersionIndex = 2
-
-            if !checkSdkFully {
-                maxVersionIndex = 1
-            }
-
-            if localSDK.count > maxVersionIndex, webSDK.count > maxVersionIndex {
-                for i in 0 ... maxVersionIndex {
-                    if localSDK[i] != webSDK[i] {
-                        return false
-                    }
-                }
-                return true
-            }
-        }
-        return false
+        return compareCloudSdk(with: localSDKVersion().joined(separator: "."))
     }
 
     private func removeAutosave(at path: Path) {
@@ -1022,7 +1022,7 @@ extension ASCEditorManager {
             UserDefaults.standard.set(file.toJSONString(), forKey: ASCConstants.SettingsKeys.openedDocumentFile)
 
             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
-                ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                ASCAnalytics.Event.Key.portal: self.apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                 ASCAnalytics.Event.Key.type: isDocument
                     ? ASCAnalytics.Event.Value.document
                     : (isSpreadsheet
@@ -1103,7 +1103,7 @@ extension ASCEditorManager {
             UserDefaults.standard.set(file.toJSONString(), forKey: ASCConstants.SettingsKeys.openedDocumentFile)
 
             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
-                ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                ASCAnalytics.Event.Key.portal: self.apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                 ASCAnalytics.Event.Key.type: isDocument
                     ? ASCAnalytics.Event.Value.document
                     : (isSpreadsheet
@@ -1130,7 +1130,6 @@ extension ASCEditorManager {
     /// - Returns: Array of numbers of version
     func localSDKVersion() -> [String] {
         if let sdkVersion = DocumentEditorViewController.sdkVersionString {
-            log.info("SDK Version:", sdkVersion)
             return sdkVersion.components(separatedBy: ".")
         }
         return []
@@ -1205,7 +1204,7 @@ extension ASCEditorManager {
                !file.device,
                provider?.allowEdit(entity: file) ?? false
             {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": false]) { response, error in
+                clientRequest(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": false]) { response, error in
                     if let error = error {
                         log.error(error)
                     }
@@ -1383,7 +1382,7 @@ extension ASCEditorManager {
                     closeHandler(.begin, 0, file, nil, &cancel)
                     removeAutosave(at: Path.userAutosavedInformation + file.title)
 
-                    OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                    clientRequest(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
                         if let newFile = response?.result {
                             closeHandler(.end, 1, newFile, nil, &cancel)
                         } else {

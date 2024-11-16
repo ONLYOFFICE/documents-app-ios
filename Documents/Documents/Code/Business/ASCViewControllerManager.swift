@@ -468,6 +468,11 @@ class ASCViewControllerManager {
                 introViewController.dismiss(animated: true, completion: nil)
             }
 
+            if deepLink.requestToken != nil {
+                self?.routeOpenExternalEntity(deepLink: deepLink)
+                return
+            }
+
             let withoutScheme: (String?) -> String? = { domain in
                 domain?
                     .replacingOccurrences(of: "https://", with: "")
@@ -475,11 +480,10 @@ class ASCViewControllerManager {
             }
 
             let onlyofficeProvider = ASCFileManager.onlyofficeProvider
+            let isCurrentPortal = (withoutScheme(onlyofficeProvider?.apiClient.baseURL?.absoluteString) ?? "").contains(withoutScheme(portal) ?? "")
+            let isCurrentEmail = email == onlyofficeProvider?.user?.email
 
-            if onlyofficeProvider == nil ||
-                !(withoutScheme(onlyofficeProvider?.apiClient.baseURL?.absoluteString) ?? "").contains(withoutScheme(portal) ?? "") ||
-                email != onlyofficeProvider?.user?.email
-            {
+            if onlyofficeProvider == nil || !isCurrentPortal || !isCurrentEmail {
                 let account = ASCAccountsManager.shared.get(by: portal, email: email)
                 let alertController = UIAlertController(
                     title: isOpenFile
@@ -661,5 +665,26 @@ class ASCViewControllerManager {
         } else {
             processAndOpenFile()
         }
+    }
+
+    private func routeOpenExternalEntity(deepLink: ASCDeepLink) {
+        guard
+            let requestToken = deepLink.requestToken,
+            let originalUrl = deepLink.originalUrl,
+            let portal = URL(string: originalUrl)?.dropPathAndQuery().absoluteString,
+            let file = deepLink.file
+        else { return }
+
+        file.editable = true
+        file.requestToken = deepLink.requestToken
+
+        let isPdf = file.extension?.contains(ASCConstants.FileExtensions.pdf) ?? false
+
+        let client = NetworkingClient()
+        client.configure(url: portal)
+        client.headers.add(name: "Request-Token", value: requestToken)
+
+        let onlyofficeProvider = ASCOnlyofficeProvider(apiClient: OnlyofficeApiClient(apiClient: client))
+        onlyofficeProvider.open(file: file, openMode: isPdf ? .fillform : .edit, canEdit: onlyofficeProvider.allowEdit(entity: file))
     }
 }

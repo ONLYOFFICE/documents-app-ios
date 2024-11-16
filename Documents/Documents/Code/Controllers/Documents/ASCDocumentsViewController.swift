@@ -66,6 +66,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private lazy var loadedDocumentsViewControllerFinder: ASCLoadedViewControllerFinderProtocol = ASCLoadedDocumentViewControllerByProviderAndFolderFinder()
     private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
+    private let swipeToPreviousFolderGestureRecognizerName = "swipeRight"
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
     private var needsToLoadFirstPageOnAppear = false
@@ -363,7 +364,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         if folder?.parent == nil {
             splitViewController?.presentsWithGesture = true
-            let gesture = view.gestureRecognizers?.filter { $0.name == "swipeRight" }
+            let gesture = view.gestureRecognizers?.filter { $0.name == swipeToPreviousFolderGestureRecognizerName }
             gesture?.first?.isEnabled = false
         } else {
             splitViewController?.presentsWithGesture = false
@@ -1782,7 +1783,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private func configureSwipeGesture() {
         let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
         swipeToPreviousFolder.direction = .right
-        swipeToPreviousFolder.name = "swipeRight"
+        swipeToPreviousFolder.name = swipeToPreviousFolderGestureRecognizerName
         view.addGestureRecognizer(swipeToPreviousFolder)
     }
 

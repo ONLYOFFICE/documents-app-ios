@@ -48,6 +48,8 @@ struct ManageRoomView: View {
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
     }
+    
+    // MARK: - All rooms sections
 
     private var roomTypeSection: some View {
         Section {
@@ -132,6 +134,8 @@ struct ManageRoomView: View {
             .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isSaving)
     }
+    
+    // MARK: - Public room third part section
 
     @ViewBuilder
     private var thirdPartySection: some View {
@@ -150,33 +154,7 @@ struct ManageRoomView: View {
             }
         }
     }
-
-    @ViewBuilder
-    private var automaticIndexationSection: some View {
-        if viewModel.selectedRoomType.type == .virtualData {
-            Section(
-                footer: Text(
-                    NSLocalizedString("Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.", comment: "")
-                )
-            ) {
-                automaticIndexingCell
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var restrictContentCopySection: some View {
-        if viewModel.selectedRoomType.type == .virtualData {
-            Section(
-                footer: Text(
-                    NSLocalizedString("Enable this seting to disable downloads, printing, and content copying for users with the “Viewer” role", comment: "")
-                )
-            ) {
-                restrictContentCopyCell
-            }
-        }
-    }
-
+    
     private var thirdPartyToggleCell: some View {
         Toggle(isOn: Binding(
             get: { viewModel.isThirdPartyStorageEnabled },
@@ -221,12 +199,41 @@ struct ManageRoomView: View {
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
+    
+    // MARK: - VDR indexing section
 
+    @ViewBuilder
+    private var automaticIndexationSection: some View {
+        if viewModel.selectedRoomType.type == .virtualData {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.", comment: "")
+                )
+            ) {
+                automaticIndexingCell
+            }
+        }
+    }
+    
     private var automaticIndexingCell: some View {
         Toggle(isOn: $viewModel.isAutomaticIndexing) {
             Text(NSLocalizedString("Automatic indexing", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
+    }
+    // MARK: - VDR restrict content copy section
+
+    @ViewBuilder
+    private var restrictContentCopySection: some View {
+        if viewModel.selectedRoomType.type == .virtualData {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Enable this seting to disable downloads, printing, and content copying for users with the “Viewer” role", comment: "")
+                )
+            ) {
+                restrictContentCopyCell
+            }
+        }
     }
 
     private var restrictContentCopyCell: some View {
@@ -236,6 +243,8 @@ struct ManageRoomView: View {
         .tintColor(Color(Asset.Colors.brend.color))
     }
 
+    // MARK: - HUD
+    
     private func handleHUD() {
         if viewModel.isSavedSuccessfully {
             if let hud = MBProgressHUD.currentHUD, viewModel.hideActivityOnSuccess {

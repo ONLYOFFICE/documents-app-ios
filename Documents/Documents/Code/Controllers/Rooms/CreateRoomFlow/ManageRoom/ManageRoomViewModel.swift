@@ -66,6 +66,20 @@ class ManageRoomViewModel: ObservableObject {
         provider != nil
     }
 
+    // MARK: Virtual data room menu vars
+
+    private(set) var selectedTemePeriod: FilesTimePeriod = .days
+    var filesTimePeriodMenuItems: [MenuViewItem] {
+        FilesTimePeriod.allCases.map { value in
+            MenuViewItem(
+                text: value.localizedDesc,
+                systemImageName: selectedTemePeriod == value ? "checkmark" : nil
+            ) { [unowned self] in
+                selectedTemePeriod = value
+            }
+        }
+    }
+
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService

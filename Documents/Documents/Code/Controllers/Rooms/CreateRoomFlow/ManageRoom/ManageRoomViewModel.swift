@@ -351,3 +351,22 @@ private extension ASCFolderProviderType {
         }
     }
 }
+
+extension ManageRoomViewModel {
+    enum FilesTimePeriod: CaseIterable {
+        case days
+        case months
+        case years
+
+        var localizedDesc: String {
+            switch self {
+            case .days:
+                NSLocalizedString("Days", comment: "")
+            case .months:
+                NSLocalizedString("Months", comment: "")
+            case .years:
+                NSLocalizedString("Years", comment: "")
+            }
+        }
+    }
+}

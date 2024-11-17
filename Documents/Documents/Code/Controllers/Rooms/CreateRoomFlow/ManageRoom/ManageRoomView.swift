@@ -245,6 +245,22 @@ struct ManageRoomView: View {
         .tintColor(Color(Asset.Colors.brend.color))
     }
     
+    @ViewBuilder
+    private var filesTimePeriodCell: some View {
+        if viewModel.isFileLifetimeEnabled {
+            MenuView(menuItems: viewModel.filesTimePeriodMenuItems) {
+                HStack {
+                    Text(NSLocalizedString("Time period", comment: ""))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(viewModel.selectedTemePeriod.localizedDesc)
+                        .foregroundColor(.gray)
+                    ChevronUpDownView()
+                }
+            }
+        }
+    }
+
     // MARK: - VDR restrict content copy section
 
     @ViewBuilder

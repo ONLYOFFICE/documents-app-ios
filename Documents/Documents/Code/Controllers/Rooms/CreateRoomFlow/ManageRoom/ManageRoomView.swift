@@ -233,18 +233,34 @@ struct ManageRoomView: View {
                     NSLocalizedString("Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.", comment: "")
                 )
             ) {
-                fileLifetimeCell
+                filesLifetimeCell
+                filesOlderThanCell
+                filesTimePeriodCell
             }
         }
     }
-    
-    private var fileLifetimeCell: some View {
+
+    private var filesLifetimeCell: some View {
         Toggle(isOn: $viewModel.isFileLifetimeEnabled) {
             Text(NSLocalizedString("File lifetime", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
-    
+
+    @ViewBuilder
+    private var filesOlderThanCell: some View {
+        if viewModel.isFileLifetimeEnabled {
+            HStack {
+                Text(NSLocalizedString("Files older than", comment: ""))
+                Spacer()
+                TextField("", value: $viewModel.fileAge, formatter: viewModel.fileAgeNumberFormatter)
+                    .frame(width: 80)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+        }
+    }
+
     @ViewBuilder
     private var filesTimePeriodCell: some View {
         if viewModel.isFileLifetimeEnabled {

@@ -87,6 +87,17 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
+    var actionOnFilesMenuItems: [MenuViewItem] {
+        ActionOnFile.allCases.map { value in
+            MenuViewItem(
+                text: value.localizedDesc,
+                systemImageName: actionOnFiles == value ? "checkmark" : nil
+            ) { [unowned self] in
+                actionOnFiles = value
+            }
+        }
+    }
+
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
@@ -387,6 +398,20 @@ extension ManageRoomViewModel {
                 NSLocalizedString("Months", comment: "")
             case .years:
                 NSLocalizedString("Years", comment: "")
+            }
+        }
+    }
+
+    enum ActionOnFile: CaseIterable {
+        case trash
+        case remove
+
+        var localizedDesc: String {
+            switch self {
+            case .trash:
+                NSLocalizedString("Move to trash", comment: "")
+            case .remove:
+                NSLocalizedString("Delete permanently", comment: "")
             }
         }
     }

@@ -239,6 +239,7 @@ struct ManageRoomView: View {
                 filesLifetimeCell
                 filesOlderThanCell
                 filesTimePeriodCell
+                actionOnFilesCell
             }
         }
     }
@@ -273,6 +274,22 @@ struct ManageRoomView: View {
                         .foregroundColor(.primary)
                     Spacer()
                     Text(viewModel.selectedTemePeriod.localizedDesc)
+                        .foregroundColor(.gray)
+                    ChevronUpDownView()
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var actionOnFilesCell: some View {
+        if viewModel.isFileLifetimeEnabled {
+            MenuView(menuItems: viewModel.actionOnFilesMenuItems) {
+                HStack {
+                    Text(NSLocalizedString("Action on files", comment: ""))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(viewModel.actionOnFiles.localizedDesc)
                         .foregroundColor(.gray)
                     ChevronUpDownView()
                 }
@@ -448,5 +465,11 @@ struct LocationSelectionView: View {
             }
         }
         .navigationBarTitle("Select Location", displayMode: .inline)
+    }
+}
+
+private extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

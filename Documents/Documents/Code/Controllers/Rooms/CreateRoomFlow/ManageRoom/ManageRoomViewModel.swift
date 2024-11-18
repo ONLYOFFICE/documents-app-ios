@@ -44,6 +44,13 @@ class ManageRoomViewModel: ObservableObject {
     var ignoreUserId: String?
 
     // MARK: - Public vars
+    @Published var fileAge = 12
+    var fileAgeNumberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = false
+        formatter.minimum = 1
+        return formatter
+    }()
 
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
     let hideActivityOnSuccess: Bool

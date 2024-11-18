@@ -30,9 +30,12 @@ class ManageRoomViewModel: ObservableObject {
     // Virtual data room only props
     @Published var isAutomaticIndexing: Bool = false
     @Published var isFileLifetimeEnabled: Bool = false
+    @Published var fileAge = 12
+    @Published var selectedTemePeriod: FilesTimePeriod = .days
+    @Published var actionOnFiles: ActionOnFile = .trash
     @Published var isRestrictContentCopy: Bool = false
-    
-    /// Public room only props
+
+    // Public room only props
     @Published var selectedLocation: String = NSLocalizedString("Root folder", comment: "")
 
     @Published var isRoomSelectionPresenting = false
@@ -75,7 +78,13 @@ class ManageRoomViewModel: ObservableObject {
 
     // MARK: Virtual data room menu vars
 
-    private(set) var selectedTemePeriod: FilesTimePeriod = .days
+    private(set) var fileAgeNumberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = false
+        formatter.minimum = 1
+        return formatter
+    }()
+
     var filesTimePeriodMenuItems: [MenuViewItem] {
         FilesTimePeriod.allCases.map { value in
             MenuViewItem(

@@ -30,6 +30,9 @@ struct ManageRoomView: View {
             fileLifetimeSection
             restrictContentCopySection
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)

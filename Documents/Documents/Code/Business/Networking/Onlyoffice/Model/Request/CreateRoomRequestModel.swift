@@ -14,4 +14,23 @@ struct CreateRoomRequestModel: Codable {
     var createAsNewFolder: Bool
     var indexing: Bool
     var denyDownload: Bool
+    var lifetime: FileLifetime?
+
+    struct FileLifetime: Codable {
+        var fileAge: Int
+        var deletePermanently: Bool
+        var periodType: PeriodType
+
+        enum CodingKeys: String, CodingKey {
+            case fileAge = "value"
+            case deletePermanently
+            case periodType = "period"
+        }
+
+        enum PeriodType: Int, Codable {
+            case days = 0
+            case months
+            case years
+        }
+    }
 }

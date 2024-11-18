@@ -260,12 +260,13 @@ private extension ManageRoomViewModel {
                 createAsNewFolder: isCreateNewFolderEnabled,
                 thirdPartyFolderId: selectedSubfolder?.id ?? thirdPartyFolder?.id,
                 isAutomaticIndexing: isAutomaticIndexing,
-                isRestrictContentCopy: isRestrictContentCopy
+                isRestrictContentCopy: isRestrictContentCopy,
+                fileLifetime: makeFileLifetimeModel()
             )
         ) { [weak self] result in
             self?.isSaving = false
             switch result {
-            case var .success(room):
+            case let .success(room):
                 self?.isSavedSuccessfully = true
                 room.title = roomName
                 self?.onCreate(room)
@@ -273,6 +274,17 @@ private extension ManageRoomViewModel {
                 self?.errorMessage = error.localizedDescription
             }
         }
+    }
+
+    func makeFileLifetimeModel() -> CreateRoomRequestModel.FileLifetime? {
+        guard isFileLifetimeEnabled else { return nil }
+        return CreateRoomRequestModel.FileLifetime(
+            fileAge: fileAge,
+            deletePermanently: actionOnFiles == .remove,
+            periodType: CreateRoomRequestModel.FileLifetime.PeriodType(
+                rawValue: selectedTemePeriod.rawValue
+            ) ?? .days
+        )
     }
 
     func updateRoom() {
@@ -394,7 +406,7 @@ private extension ASCFolderProviderType {
 }
 
 extension ManageRoomViewModel {
-    enum FilesTimePeriod: CaseIterable {
+    enum FilesTimePeriod: Int, CaseIterable {
         case days
         case months
         case years

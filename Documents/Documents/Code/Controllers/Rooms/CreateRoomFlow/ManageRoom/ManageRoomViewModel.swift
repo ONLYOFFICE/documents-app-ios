@@ -26,7 +26,7 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var selectedStorage: String?
     @Published var isCreateNewFolderEnabled: Bool = false
-    
+
     // Virtual data room only props
     @Published var isAutomaticIndexing: Bool = false
     @Published var isFileLifetimeEnabled: Bool = false
@@ -43,17 +43,10 @@ class ManageRoomViewModel: ObservableObject {
     @Published var isStorageSelectionPresenting = false
     @Published var isFolderSelectionPresenting = false
 
+    // MARK: - Public vars
+
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
-
-    // MARK: - Public vars
-    @Published var fileAge = 12
-    var fileAgeNumberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.allowsFloats = false
-        formatter.minimum = 1
-        return formatter
-    }()
 
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
     let hideActivityOnSuccess: Bool

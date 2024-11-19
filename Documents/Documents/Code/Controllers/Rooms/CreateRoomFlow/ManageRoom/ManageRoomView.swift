@@ -52,7 +52,7 @@ struct ManageRoomView: View {
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
     }
-    
+
     // MARK: - All rooms sections
 
     private var roomTypeSection: some View {
@@ -138,7 +138,7 @@ struct ManageRoomView: View {
             .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isSaving)
     }
-    
+
     // MARK: - Public room third part section
 
     @ViewBuilder
@@ -158,7 +158,7 @@ struct ManageRoomView: View {
             }
         }
     }
-    
+
     private var thirdPartyToggleCell: some View {
         Toggle(isOn: Binding(
             get: { viewModel.isThirdPartyStorageEnabled },
@@ -203,7 +203,7 @@ struct ManageRoomView: View {
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
-    
+
     // MARK: - VDR indexing section
 
     @ViewBuilder
@@ -218,16 +218,16 @@ struct ManageRoomView: View {
             }
         }
     }
-    
+
     private var automaticIndexingCell: some View {
         Toggle(isOn: $viewModel.isAutomaticIndexing) {
             Text(NSLocalizedString("Automatic indexing", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
-    
+
     // MARK: - VDR file lifetime section
-    
+
     @ViewBuilder
     private var fileLifetimeSection: some View {
         if viewModel.selectedRoomType.type == .virtualData {
@@ -320,7 +320,7 @@ struct ManageRoomView: View {
     }
 
     // MARK: - HUD
-    
+
     private func handleHUD() {
         if viewModel.isSavedSuccessfully {
             if let hud = MBProgressHUD.currentHUD, viewModel.hideActivityOnSuccess {

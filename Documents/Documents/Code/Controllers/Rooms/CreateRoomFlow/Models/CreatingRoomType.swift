@@ -12,22 +12,11 @@ enum CreatingRoomType: CaseIterable {
     case publicRoom
     case formFilling
     case collaboration
-    case custom
     case virtualData
+    case custom
 
     var id: Int {
-        switch self {
-        case .collaboration:
-            return ascRoomType.rawValue
-        case .publicRoom:
-            return ascRoomType.rawValue
-        case .custom:
-            return ascRoomType.rawValue
-        case .formFilling:
-            return ascRoomType.rawValue
-        case .virtualData:
-            return ascRoomType.rawValue
-        }
+        ascRoomType.rawValue
     }
 
     var name: String {

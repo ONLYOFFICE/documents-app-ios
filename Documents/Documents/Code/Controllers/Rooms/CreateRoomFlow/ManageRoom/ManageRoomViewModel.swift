@@ -429,4 +429,18 @@ extension ManageRoomViewModel {
             }
         }
     }
+
+    enum WatermarkType: CaseIterable {
+        case viewerInfo
+        case image
+
+        var localizedDesc: String {
+            switch self {
+            case .viewerInfo:
+                return NSLocalizedString("Viewer info", comment: "Watermark Type")
+            case .image:
+                return NSLocalizedString("Image", comment: "Watermark Type")
+            }
+        }
+    }
 }

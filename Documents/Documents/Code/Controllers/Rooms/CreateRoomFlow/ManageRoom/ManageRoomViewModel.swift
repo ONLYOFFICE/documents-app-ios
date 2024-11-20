@@ -100,6 +100,17 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
+    var watermarkTypeMenuItems: [MenuViewItem] {
+        WatermarkType.allCases.map { type in
+            MenuViewItem(
+                text: type.localizedDesc,
+                systemImageName: selectedWatermarkType == type ? "checkmark" : nil
+            ) { [unowned self] in
+                selectedWatermarkType = type
+            }
+        }
+    }
+
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService

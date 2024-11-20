@@ -29,6 +29,7 @@ struct ManageRoomView: View {
             automaticIndexationSection
             fileLifetimeSection
             restrictContentCopySection
+            watermarkSection
         }
         .onTapGesture {
             hideKeyboard()
@@ -315,6 +316,27 @@ struct ManageRoomView: View {
     private var restrictContentCopyCell: some View {
         Toggle(isOn: $viewModel.isRestrictContentCopy) {
             Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+    }
+
+    // MARK: - VDR watermark section
+
+    @ViewBuilder
+    private var watermarkSection: some View {
+        Section(
+            footer: Text(
+                NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")
+            )
+        ) {
+            watermarkToggleCell
+            watermarkTypeCell
+        }
+    }
+
+    private var watermarkToggleCell: some View {
+        Toggle(isOn: $viewModel.isWatermarkEnabled) {
+            Text(NSLocalizedString("Add watermarks to documents", comment: ""))
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }

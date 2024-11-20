@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 class ManageRoomViewModel: ObservableObject {
-    // MARK: - Published vars
+    // MARK: Published vars
 
     @Published var roomName: String = ""
     @Published var roomOwnerName: String = ""
@@ -24,19 +24,30 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
 
-    @Published var selectedStorage: String?
-    @Published var isCreateNewFolderEnabled: Bool = false
+    // MARK: Published Virtual data room only vars
 
-    // Virtual data room only props
+    // File lifetime
     @Published var isAutomaticIndexing: Bool = false
     @Published var isFileLifetimeEnabled: Bool = false
     @Published var fileAge = 12
     @Published var selectedTemePeriod: FilesTimePeriod = .days
+
     @Published var actionOnFiles: ActionOnFile = .trash
+
     @Published var isRestrictContentCopy: Bool = false
 
-    // Public room only props
+    // Watermark
+    @Published var isWatermarkEnabled: Bool = false
+    @Published var selectedWatermarkType: WatermarkType = .viewerInfo
+
+    // MARK: Published Public room only vars
+
+    // Thirdpart
+    @Published var selectedStorage: String?
+    @Published var isCreateNewFolderEnabled: Bool = false
     @Published var selectedLocation: String = NSLocalizedString("Root folder", comment: "")
+
+    // MARK: Published Navigation vars
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false

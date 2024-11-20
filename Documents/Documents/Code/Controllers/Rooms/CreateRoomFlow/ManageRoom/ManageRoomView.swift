@@ -319,6 +319,23 @@ struct ManageRoomView: View {
         .tintColor(Color(Asset.Colors.brend.color))
     }
 
+    @ViewBuilder
+    private var watermarkTypeCell: some View {
+        if viewModel.isWatermarkEnabled {
+            HStack {
+                Text(NSLocalizedString("Watermark type", comment: ""))
+                Spacer()
+                MenuView(menuItems: viewModel.watermarkTypeMenuItems) {
+                    HStack {
+                        Text(viewModel.selectedWatermarkType.localizedDesc)
+                            .foregroundColor(.gray)
+                        ChevronUpDownView()
+                    }
+                }
+            }
+        }
+    }
+
     // MARK: - HUD
 
     private func handleHUD() {

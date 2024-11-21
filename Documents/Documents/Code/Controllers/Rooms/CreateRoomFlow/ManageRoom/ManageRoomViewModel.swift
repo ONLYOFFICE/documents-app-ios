@@ -40,6 +40,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var isWatermarkEnabled: Bool = false
     @Published var selectedWatermarkType: WatermarkType = .viewerInfo
     @Published var selectedWatermarkPosition: WatermarkPosition = .diagonal
+    @Published var watermarkStaticText: String = ""
 
     // MARK: Published Public room only vars
 

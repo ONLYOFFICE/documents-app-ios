@@ -358,6 +358,19 @@ struct ManageRoomView: View {
         }
     }
     @ViewBuilder
+    private var watermarkStaticTextSection: some View {
+        if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
+            Section {
+                HStack {
+                    TextField(NSLocalizedString("Add static text", comment: ""), text: $viewModel.watermarkStaticText)
+                        .foregroundColor(.gray)
+                        .disabled(viewModel.isSaving)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
     private var watermarkPositionSection: some View {
         if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
             Section(

@@ -39,6 +39,7 @@ class ManageRoomViewModel: ObservableObject {
     // Watermark
     @Published var isWatermarkEnabled: Bool = false
     @Published var selectedWatermarkType: WatermarkType = .viewerInfo
+    @Published var selectedWatermarkPosition: WatermarkPosition = .diagonal
 
     // MARK: Published Public room only vars
 
@@ -118,6 +119,17 @@ class ManageRoomViewModel: ObservableObject {
                 systemImageName: selectedWatermarkType == type ? "checkmark" : nil
             ) { [unowned self] in
                 selectedWatermarkType = type
+            }
+        }
+    }
+
+    var watermarkPositionMenuItems: [MenuViewItem] {
+        WatermarkPosition.allCases.map { position in
+            MenuViewItem(
+                text: position.localizedDesc,
+                systemImageName: selectedWatermarkPosition == position ? "checkmark" : nil
+            ) { [unowned self] in
+                selectedWatermarkPosition = position
             }
         }
     }

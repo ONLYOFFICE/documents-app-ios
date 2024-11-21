@@ -326,13 +326,15 @@ struct ManageRoomView: View {
 
     @ViewBuilder
     private var watermarkSection: some View {
-        Section(
-            footer: Text(
-                NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")
-            )
-        ) {
-            watermarkToggleCell
-            watermarkTypeCell
+        if viewModel.selectedRoomType.type == .virtualData {
+            Section(
+                footer: viewModel.isWatermarkEnabled
+                    ? AnyView(EmptyView())
+                    : AnyView(Text(NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")))
+            ) {
+                watermarkToggleCell
+                watermarkTypeCell
+            }
         }
     }
 

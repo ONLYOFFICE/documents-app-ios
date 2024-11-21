@@ -465,4 +465,18 @@ extension ManageRoomViewModel {
             }
         }
     }
+
+    enum WatermarkPosition: CaseIterable {
+        case diagonal
+        case horizontal
+
+        var localizedDesc: String {
+            switch self {
+            case .diagonal:
+                return NSLocalizedString("Diagonal", comment: "Watermark Position")
+            case .horizontal:
+                return NSLocalizedString("Horizontal", comment: "Watermark Position")
+            }
+        }
+    }
 }

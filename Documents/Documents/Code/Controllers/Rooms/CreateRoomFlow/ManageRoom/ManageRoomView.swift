@@ -357,6 +357,28 @@ struct ManageRoomView: View {
             }
         }
     }
+    @ViewBuilder
+    private var watermarkPositionSection: some View {
+        if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")
+                )
+            ) {
+                HStack {
+                    Text(NSLocalizedString("Position", comment: ""))
+                    Spacer()
+                    MenuView(menuItems: viewModel.watermarkPositionMenuItems) {
+                        HStack {
+                            Text(viewModel.selectedWatermarkPosition.localizedDesc)
+                                .foregroundColor(.gray)
+                            ChevronUpDownView()
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // MARK: - HUD
 

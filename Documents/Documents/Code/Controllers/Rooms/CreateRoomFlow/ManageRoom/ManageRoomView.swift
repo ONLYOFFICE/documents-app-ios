@@ -30,6 +30,8 @@ struct ManageRoomView: View {
             fileLifetimeSection
             restrictContentCopySection
             watermarkSection
+            watermarkStaticTextSection
+            watermarkPositionSection
         }
         .onTapGesture {
             hideKeyboard()

@@ -866,6 +866,18 @@ extension ASCDocumentsViewController {
             tintColor: nil
         )
 
+        if actions.contains(.fillForm) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Fill", comment: "Fill form Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        self.fillForm(file: file)
+                    }
+                )
+            )
+        }
+
         if actions.contains(.open) {
             actionAlertController.addAction(
                 UIAlertAction(

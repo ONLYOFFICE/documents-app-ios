@@ -66,8 +66,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var fetchInfo: [String: Any?]?
 
     var apiClient: OnlyofficeApiClient {
-        return OnlyofficeApiClient.shared
+        return externalApiClient ?? OnlyofficeApiClient.shared
     }
+
+    private var externalApiClient: OnlyofficeApiClient?
 
     var isRecentCategory: Bool { category?.folder?.rootFolderType == .onlyofficeRecent }
 
@@ -86,7 +88,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     init() {
         reset()
-        OnlyofficeApiClient.reset()
+        apiClient.reset()
     }
 
     init(baseUrl: String, token: String) {
@@ -98,6 +100,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.baseURL = URL(string: baseUrl)
         apiClient.token = token
+    }
+
+    init(apiClient: OnlyofficeApiClient) {
+        externalApiClient = apiClient
     }
 
     func title(folder: ASCFolder?) -> String? {
@@ -774,11 +780,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let fileTitle = name + "." + fileExtension
 
         apiClient.request(OnlyofficeAPI.Endpoints.Files.create(in: folder), ["title": fileTitle]) { result, error in
-            if let error = error {
+            if let error {
                 completeon?(self, nil, false, error)
             } else if let file = result?.result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.portal: self.apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
                     ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased(),
@@ -819,10 +825,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             "title": name,
         ]
 
-        upload(folder.id, data: data, overwrite: false, params: params) { result, progress, error in
+        upload(folder.id, data: data, overwrite: false, params: params) { [weak self] result, progress, error in
             if let _ = result as? ASCFile {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.portal: self?.apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
                     ASCAnalytics.Event.Key.fileExt: name.fileExtension(),
@@ -843,7 +849,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 completeon?(self, nil, false, error)
             } else if let createdFolder = result?.result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.portal: self.apiClient.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
                 ])
@@ -1265,7 +1271,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
-        if let file, !file.canShare {
+        if let file, isDocspace, !file.canShare {
             return false
         }
 
@@ -1317,6 +1323,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDelete = allowDelete(entity: file)
             let canShare = allowShare(entity: file)
             let canDownload = !file.denyDownload
+            let canMove = file.security.move
             let canRename = allowRename(entity: file)
             let isUserCategory = file.rootFolderType == .onlyofficeUser
             let isRoomsCategory = file.rootFolderType == .onlyofficeRoomShared
@@ -1327,10 +1334,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview = canOpenEditor ||
+            var canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == ASCConstants.FileExtensions.pdf
+
+            // Workaround to disable the preview action in the fillform room
+            if file.isForm, let roomType = file.parent?.roomType, roomType == .fillingForm {
+                canPreview = false
+            }
 
             let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
 
@@ -1351,7 +1363,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if canDelete {
-                if canDownload {
+                if canMove {
                     entityActions.insert([.delete, .move])
                 } else {
                     entityActions.insert([.delete])
@@ -1366,8 +1378,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
-            if file.isForm, isDocspace, isUserCategory || file.parent?.roomType == .fillingForm {
+            if file.isForm, isDocspace, isUserCategory
+                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
+                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .fillFormInProgress) == true
+                || file.security.fillForms
+            {
                 entityActions.insert(.fillForm)
+
+                if canEdit {
+                    entityActions.insert(.edit)
+                }
             }
 
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {
@@ -1735,7 +1755,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     // MARK: - Helpers
 
     func absoluteUrl(from string: String?) -> URL? {
-        return OnlyofficeApiClient.absoluteUrl(from: URL(string: string ?? ""))
+        return apiClient.absoluteUrl(from: URL(string: string ?? ""))
     }
 
     private func errorInfo(by response: Any) -> [String: Any]? {
@@ -1936,7 +1956,22 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
 
-        if ASCEditorManager.shared.checkSDKVersion() {
+        let isShareFile = file.requestToken != nil
+
+        if isShareFile {
+            let editorManager = ASCEditorManager(config: ASCEditorManager.Configuration(onlyofficeClient: apiClient))
+            editorManager.editCloud(
+                file,
+                openMode: openMode,
+                canEdit: canEdit,
+                openHandler: openHandler,
+                closeHandler: closeHandler,
+                favoriteHandler: favoriteHandler,
+                shareHandler: shareHandler,
+                renameHandler: renameHandler,
+                fillFormDidSendHandler: fillFormDidSendHandler
+            )
+        } else if ASCEditorManager.shared.checkSDKVersion() {
             ASCEditorManager.shared.editCloud(
                 file,
                 openMode: openMode,
@@ -2068,6 +2103,27 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 }
 
 extension ASCOnlyofficeProvider {
+    func generalFileLink(file: ASCFile) async -> Result<String, Error> {
+        guard file.rootFolderType == .onlyofficeRoomShared,
+              let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
+        else {
+            return await withCheckedContinuation { continuation in
+                NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                    switch result {
+                    case let .success(link):
+                        continuation.resume(returning: .success(link.sharedTo.shareLink))
+                    case let .failure(error):
+                        continuation.resume(returning: .failure(error))
+                    }
+                }
+            }
+        }
+
+        let path = "%@/doceditor?fileId=%@"
+        let urlStr = String(format: path, baseUrl, file.id)
+        return .success(urlStr)
+    }
+
     func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {
         if folder.isRoom {
             let result = await generalLink(forRoom: folder)
@@ -2094,13 +2150,13 @@ extension ASCOnlyofficeProvider {
                 return
             }
 
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
+            apiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
                 if let error {
                     continuation.resume(returning: .failure(error))
                     return
                 }
 
-                var urlComponets = URLComponents(string: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "")
+                var urlComponets = URLComponents(string: self.apiClient.baseURL?.absoluteString ?? "")
                 urlComponets?.path = "/\(OnlyofficeAPI.Path.defaultGeneralLink)"
                 urlComponets?.queryItems = [
                     URLQueryItem(name: "folder", value: room.id),

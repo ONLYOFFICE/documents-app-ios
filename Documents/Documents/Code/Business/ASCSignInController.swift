@@ -80,11 +80,10 @@ class ASCSignInController {
 
         OnlyofficeApiClient.shared.cancelAll()
         ASCPushNotificationManager.requestClearRegister()
-        OnlyofficeApiClient.reset()
-        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.collaborationService)
+        OnlyofficeApiClient.shared.reset()
         ASCFileManager.onlyofficeProvider?.reset()
         ASCFileManager.onlyofficeProvider = nil
-        OnlyofficeApiClient.reset()
+        OnlyofficeApiClient.shared.reset()
 
         let api = OnlyofficeApiClient.shared
 

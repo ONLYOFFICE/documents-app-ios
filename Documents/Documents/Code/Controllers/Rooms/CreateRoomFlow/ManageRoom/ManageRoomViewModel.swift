@@ -492,4 +492,27 @@ extension ManageRoomViewModel {
             }
         }
     }
+
+    enum WatermarkElement: CaseIterable {
+        case userName
+        case userEmail
+        case ipAddress
+        case currentDate
+        case roomName
+
+        var localizedDesc: String {
+            switch self {
+            case .userName:
+                return NSLocalizedString("User Name", comment: "Watermark Element")
+            case .userEmail:
+                return NSLocalizedString("User Email", comment: "Watermark Element")
+            case .ipAddress:
+                return NSLocalizedString("Use IP Address", comment: "Watermark Element")
+            case .currentDate:
+                return NSLocalizedString("Current Date", comment: "Watermark Element")
+            case .roomName:
+                return NSLocalizedString("Room Name", comment: "Watermark Element")
+            }
+        }
+    }
 }

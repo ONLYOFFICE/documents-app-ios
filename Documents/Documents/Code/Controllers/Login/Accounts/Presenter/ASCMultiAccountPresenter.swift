@@ -146,7 +146,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self
                     else {
-                        OnlyofficeApiClient.reset()
+                        OnlyofficeApiClient.shared.reset()
                         hud?.hide(animated: true)
                         completion()
                         return

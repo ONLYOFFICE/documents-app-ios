@@ -100,6 +100,11 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }
 
         var params: Parameters = [:]
+        var headers = headers
+
+        if let endpointHeaders = endpoint.headers {
+            headers = HTTPHeaders(headers.dictionary + endpointHeaders.dictionary)
+        }
 
         if let keys = parameters?.keys {
             for key in keys {
@@ -158,6 +163,11 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }
 
         let params: Parameters = parameters ?? [:]
+        var headers = headers
+
+        if let endpointHeaders = endpoint.headers {
+            headers = HTTPHeaders(headers.dictionary + endpointHeaders.dictionary)
+        }
 
         let uploadManager = Alamofire.Session(
             configuration: {

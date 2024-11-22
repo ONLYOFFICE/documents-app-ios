@@ -30,6 +30,8 @@ class ASCFile: ASCEntity {
     var denyDownload: Bool = false
     var editable: Bool = false
     var canShare: Bool = false
+    var requestToken: String?
+    var `extension`: String?
 
     override init() {
         super.init()
@@ -105,6 +107,7 @@ class ASCFile: ASCEntity {
         denyDownload <- map["denyDownload"]
         security <- map["security"]
         canShare <- map["canShare"]
+        `extension` <- map["extension"]
 
         // Internal
         device <- map["device"]

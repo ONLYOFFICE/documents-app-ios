@@ -449,6 +449,15 @@ public extension String {
     }
 }
 
+// MARK: - URLComponents extensions
+
+public extension String {
+    func urlQuery(by name: String) -> String? {
+        guard let url = URLComponents(string: self) else { return nil }
+        return url.queryItems?.first(where: { $0.name == name })?.value
+    }
+}
+
 // MARK: - Constants
 
 public extension String {

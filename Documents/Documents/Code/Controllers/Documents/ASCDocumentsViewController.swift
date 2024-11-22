@@ -66,6 +66,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private lazy var loadedDocumentsViewControllerFinder: ASCLoadedViewControllerFinderProtocol = ASCLoadedDocumentViewControllerByProviderAndFolderFinder()
     private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
+    private let swipeToPreviousFolderGestureRecognizerName = "swipeRight"
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
     private var needsToLoadFirstPageOnAppear = false
@@ -363,7 +364,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         if folder?.parent == nil {
             splitViewController?.presentsWithGesture = true
-            let gesture = view.gestureRecognizers?.filter { $0.name == "swipeRight" }
+            let gesture = view.gestureRecognizers?.filter { $0.name == swipeToPreviousFolderGestureRecognizerName }
             gesture?.first?.isEnabled = false
         } else {
             splitViewController?.presentsWithGesture = false
@@ -1322,9 +1323,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func loadFirstPage(_ completeon: ((_ success: Bool) -> Void)? = nil) {
 //        provider?.page = 0
 
-        provider?.cancel()
-        provider?.reset()
-        collectionView.reloadData()
+        if needsToLoadFirstPageOnAppear {
+            provider?.cancel()
+            provider?.reset()
+            collectionView.reloadData()
+        }
 
         setEditMode(false)
         showLoadingPage(true)
@@ -1440,7 +1443,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                               !folder.isRoom,
                               folder.isRoomListSubfolder,
                               let folder = provider.folder,
-                              folder.parentsFoldersOrCurrentContains(roomType: .fillingForm),
+                              folder.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm),
                               provider.allowEdit(entity: folder)
                     {
                         localEmptyView?.type = .formFillingRoomSubfolder
@@ -1780,7 +1783,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private func configureSwipeGesture() {
         let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
         swipeToPreviousFolder.direction = .right
-        swipeToPreviousFolder.name = "swipeRight"
+        swipeToPreviousFolder.name = swipeToPreviousFolderGestureRecognizerName
         view.addGestureRecognizer(swipeToPreviousFolder)
     }
 
@@ -2379,16 +2382,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func copySharedLink(file: ASCFile) {
-        NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+        let hud = MBProgressHUD.showTopMost()
+        let successMessage = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
+
+        let handleResult: (Result<String, Error>) -> Void = { result in
             switch result {
             case let .success(link):
-                let hud = MBProgressHUD.showTopMost()
-                UIPasteboard.general.string = link.sharedTo.shareLink
-                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
-                hud?.hide(animated: true, afterDelay: .standardDelay)
-
+                UIPasteboard.general.string = link
+                hud?.setState(result: .success(successMessage))
             case let .failure(error):
-                print(error.localizedDescription)
+                hud?.setState(result: .failure(error.localizedDescription))
+            }
+            hud?.hide(animated: true, afterDelay: .standardDelay)
+        }
+
+        if let provider = provider as? ASCOnlyofficeProvider {
+            Task {
+                let result = await provider.generalFileLink(file: file)
+                await MainActor.run {
+                    handleResult(result)
+                }
+            }
+        } else {
+            NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                handleResult(result.map { $0.sharedTo.shareLink })
             }
         }
     }
@@ -4009,7 +4026,9 @@ extension ASCDocumentsViewController: UICollectionViewDelegate {
                 let title = file.title,
                     fileExt = title.fileExtension().lowercased()
 
-                if ASCConstants.FileExtensions.documents.contains(fileExt) {
+                if file.isForm {
+                    fillForm(file: file)
+                } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
                     open(file: file, openMode: .view)
                 } else if ASCConstants.FileExtensions.pdf == fileExt {
                     open(file: file, openMode: .fillform)

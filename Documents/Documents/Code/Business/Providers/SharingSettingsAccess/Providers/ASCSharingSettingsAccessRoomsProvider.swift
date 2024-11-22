@@ -26,16 +26,24 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
             case .groups:
                 return [.fillForms]
             }
+
         case .colobaration:
             return [.roomManager, .powerUser, .editing, .read]
+
         case .review:
             return [.roomManager, .powerUser, .review, .comment, .read]
+
         case .viewOnly:
             return [.roomManager, .powerUser, .read]
+
         case .custom:
             return [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+
         case .public:
             return [.roomManager, .powerUser]
+
+        default:
+            return []
         }
     }
 }

@@ -671,9 +671,9 @@ class ASCEditorManager: NSObject {
 
             Task {
                 var cancel = false
-                
+
                 var isDocumentOformPdf = false
-                
+
                 if pdf.isForm {
                     isDocumentOformPdf = true
                 } else {

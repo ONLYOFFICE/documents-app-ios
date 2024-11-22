@@ -1135,12 +1135,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let fileSecurity = file?.security
 
         let securityAllowEdit: Bool = {
-            guard folder != nil else {
-                return fileSecurity?.edit == true
+            if let fileSecurity {
+                return fileSecurity.edit || fileSecurity.comment || fileSecurity.fillForms || fileSecurity.review
+            } else {
+                guard folder != nil else {
+                    return fileSecurity?.edit == true
+                }
+                return folderSecurity?.read == true
+                    && folderSecurity?.rename == true
+                    && folderSecurity?.create == true
             }
-            return folderSecurity?.read == true
-                && folderSecurity?.rename == true
-                && folderSecurity?.create == true
         }()
 
         if isInRoom, !securityAllowEdit, folder?.rootFolderType != .onlyofficeUser {

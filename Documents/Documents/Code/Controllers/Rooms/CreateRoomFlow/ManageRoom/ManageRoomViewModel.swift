@@ -135,6 +135,10 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
+    var watermarkElementButtons: [WatermarkElement] {
+        WatermarkElement.allCases
+    }
+
     // MARK: - Private vars
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService

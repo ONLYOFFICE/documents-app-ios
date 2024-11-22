@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D12D35E265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */; };
-		1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */; };
+		1D14AAC72694F0C4009E48AD /* ASCOnlyofficeEntityInternalLinkMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAC62694F0C4009E48AD /* ASCOnlyofficeEntityInternalLinkMakerTests.swift */; };
 		1D14AACF26962BF7009E48AD /* ASCSharingSettingsAccessProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AACE26962BF7009E48AD /* ASCSharingSettingsAccessProvider.swift */; };
 		1D14AAD126962CD1009E48AD /* ASCSharingSettingsAccessDefaultProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAD026962CD1009E48AD /* ASCSharingSettingsAccessDefaultProvider.swift */; };
 		1D14AAD426962D7C009E48AD /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAD326962D7C009E48AD /* ASCSharingSettingsAccessDocumentProvider.swift */; };
@@ -387,7 +387,7 @@
 		FC759CBD2C00615E00510096 /* ASCCentredLabelHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C782C00615E00510096 /* ASCCentredLabelHeaderFooterView.swift */; };
 		FC759CBE2C00615E00510096 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C7A2C00615E00510096 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */; };
 		FC759CBF2C00615E00510096 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C7B2C00615E00510096 /* ASCAccessToAddRightHoldersRoomChecker.swift */; };
-		FC759CC02C00615E00510096 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C7C2C00615E00510096 /* ASCOnlyofficeFileInternalLinkMaker.swift */; };
+		FC759CC02C00615E00510096 /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C7C2C00615E00510096 /* ASCOnlyofficeEntityInternalLinkMaker.swift */; };
 		FC759CC12C00615E00510096 /* ASCSharingOptionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C7E2C00615E00510096 /* ASCSharingOptionsInteractor.swift */; };
 		FC759CC22C00615E00510096 /* ASCSharingOptionsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C7F2C00615E00510096 /* ASCSharingOptionsModels.swift */; };
 		FC759CC32C00615E00510096 /* ASCSharingOptionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC759C802C00615E00510096 /* ASCSharingOptionsPresenter.swift */; };
@@ -631,7 +631,7 @@
 		1B32667722AD980849E124F1 /* Pods_Documents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B402BC0B41F5EA0B160A88F /* Pods-Documents-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
-		1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeFileInternalLinkMakerTests.swift; sourceTree = "<group>"; };
+		1D14AAC62694F0C4009E48AD /* ASCOnlyofficeEntityInternalLinkMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMakerTests.swift; sourceTree = "<group>"; };
 		1D14AACE26962BF7009E48AD /* ASCSharingSettingsAccessProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessProvider.swift; sourceTree = "<group>"; };
 		1D14AAD026962CD1009E48AD /* ASCSharingSettingsAccessDefaultProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDefaultProvider.swift; sourceTree = "<group>"; };
 		1D14AAD326962D7C009E48AD /* ASCSharingSettingsAccessDocumentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDocumentProvider.swift; sourceTree = "<group>"; };
@@ -1053,7 +1053,7 @@
 		FC759C782C00615E00510096 /* ASCCentredLabelHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCentredLabelHeaderFooterView.swift; sourceTree = "<group>"; };
 		FC759C7A2C00615E00510096 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift; sourceTree = "<group>"; };
 		FC759C7B2C00615E00510096 /* ASCAccessToAddRightHoldersRoomChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersRoomChecker.swift; sourceTree = "<group>"; };
-		FC759C7C2C00615E00510096 /* ASCOnlyofficeFileInternalLinkMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeFileInternalLinkMaker.swift; sourceTree = "<group>"; };
+		FC759C7C2C00615E00510096 /* ASCOnlyofficeEntityInternalLinkMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMaker.swift; sourceTree = "<group>"; };
 		FC759C7E2C00615E00510096 /* ASCSharingOptionsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsInteractor.swift; sourceTree = "<group>"; };
 		FC759C7F2C00615E00510096 /* ASCSharingOptionsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsModels.swift; sourceTree = "<group>"; };
 		FC759C802C00615E00510096 /* ASCSharingOptionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsPresenter.swift; sourceTree = "<group>"; };
@@ -1479,7 +1479,7 @@
 		1D14AAC52694F0AF009E48AD /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */,
+				1D14AAC62694F0C4009E48AD /* ASCOnlyofficeEntityInternalLinkMakerTests.swift */,
 				1D29915D274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift */,
 			);
 			path = Workers;
@@ -2928,7 +2928,7 @@
 			children = (
 				FC759C7A2C00615E00510096 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */,
 				FC759C7B2C00615E00510096 /* ASCAccessToAddRightHoldersRoomChecker.swift */,
-				FC759C7C2C00615E00510096 /* ASCOnlyofficeFileInternalLinkMaker.swift */,
+				FC759C7C2C00615E00510096 /* ASCOnlyofficeEntityInternalLinkMaker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -4149,7 +4149,7 @@
 				1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */,
 				1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */,
 				1DDC7B29280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift in Sources */,
-				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */,
+				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeEntityInternalLinkMakerTests.swift in Sources */,
 				FCCF2EFC2922857500E2C647 /* ASCEntityAccess.swift in Sources */,
 				FC2882BB28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				1D1A2E412661018100D0335B /* Assets.swift in Sources */,
@@ -4585,7 +4585,7 @@
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
 				FC33FAA22B0F59E700688E17 /* ASCFolderLogoAvatarView.swift in Sources */,
 				F30BCE312C94BDA300900E07 /* FormCompletedRootViewController.swift in Sources */,
-				FC759CC02C00615E00510096 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
+				FC759CC02C00615E00510096 /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */,
 				FC759CA12C00615E00510096 /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC759CC42C00615E00510096 /* ASCSharingOptionsRouter.swift in Sources */,
 				FCCE50A72C1AF79000102056 /* NetworkManagerSharedSettings.swift in Sources */,

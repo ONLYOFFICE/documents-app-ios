@@ -17,7 +17,7 @@ extension XCTestCase {
     typealias ASCFile = Documents.ASCFile
     typealias ASCFolder = Documents.ASCFolder
     typealias ASCGroup = Documents.ASCGroup
-    typealias ASCOnlyofficeFileInternalLinkMaker = Documents.ASCOnlyofficeFileInternalLinkMaker
+    typealias ASCOnlyofficeEntityInternalLinkMaker = Documents.ASCOnlyofficeEntityInternalLinkMaker
     typealias ASCShareAccess = Documents.ASCShareAccess
     typealias ASCShareSettingsAPIWorkerProtocol = Documents.ASCShareSettingsAPIWorkerProtocol
     typealias ASCSharingAddRightHoldersInteractor = Documents.ASCSharingAddRightHoldersInteractor

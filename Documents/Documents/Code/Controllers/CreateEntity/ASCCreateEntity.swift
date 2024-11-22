@@ -52,7 +52,10 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                   provider.apiClient.serverVersion?.docSpace != nil
             else { return false }
 
-            return folder.parentsFoldersOrCurrentContains(roomType: .fillingForm)
+            return folder.isRoomListSubfolder && folder.parentsFoldersOrCurrentContains(
+                keyPath: \.roomType,
+                value: .fillingForm
+            )
         }()
 
         var createEntityVC: ASCCreateEntityUIViewController!

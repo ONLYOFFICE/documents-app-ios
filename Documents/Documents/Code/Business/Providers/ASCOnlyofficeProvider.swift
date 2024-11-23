@@ -1514,10 +1514,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.duplicate)
             }
 
-            if isDocspace, isRoomsCategory {
-                entityActions.insert(.link)
-            }
-
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)

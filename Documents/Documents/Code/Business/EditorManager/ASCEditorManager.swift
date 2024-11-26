@@ -358,7 +358,7 @@ class ASCEditorManager: NSObject {
 
                     let canEdit = (allowEdit || (!allowEdit && (allowReview || allowComment || allowFillForms))) && canEdit
 
-                    if openMode == .view {
+                    if openMode == .view && !canEdit {
                         var cancel = false
                         self.downloadAndOpenFile(for: provider, file, openMode: openMode, canEdit: canEdit, &cancel)
                     } else {
@@ -495,6 +495,10 @@ class ASCEditorManager: NSObject {
                         self.stopLocallyEditing(false)
 
                     } else {
+                        if let result = response?.result {
+                            self.documentKeyForTrack = result
+                        }
+                        
                         if let provider = ASCFileManager.onlyofficeProvider {
                             self.trackingFileStatus = self.trackingReadyForLocking
                             self.downloadAndOpenFile(

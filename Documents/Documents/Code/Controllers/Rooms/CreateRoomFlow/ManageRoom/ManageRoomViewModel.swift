@@ -173,6 +173,9 @@ class ManageRoomViewModel: ObservableObject {
             self.roomName = roomName
         }
 
+        selectedWatermarkElements.insert(.userName)
+        setupWatermarkElementButtons()
+
         $isCreateNewFolderEnabled
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in

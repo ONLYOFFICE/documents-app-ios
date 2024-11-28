@@ -11,3 +11,9 @@ import SwiftUI
 struct ToggleButtonCollectionView: View {
     
 }
+
+// MARK: - Constants
+
+private extension CGFloat {
+    static let spaceBetweenItems: CGFloat = 16
+}

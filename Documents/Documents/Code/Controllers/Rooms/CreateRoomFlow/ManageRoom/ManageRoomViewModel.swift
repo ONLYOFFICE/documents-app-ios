@@ -281,6 +281,18 @@ class ManageRoomViewModel: ObservableObject {
 // MARK: - Private func
 
 private extension ManageRoomViewModel {
+
+    func handleWatermarkElementTap(element: WatermarkElement) {
+        if selectedWatermarkElements.contains(element) {
+            selectedWatermarkElements.remove(element)
+        } else {
+            selectedWatermarkElements.insert(element)
+        }
+        if let index = watermarkElementButtons.firstIndex(where: { $0.id == String(element.id) }) {
+            watermarkElementButtons[index].isActive = selectedWatermarkElements.contains(element)
+        }
+    }
+
     func createRoom() {
         let roomName = roomName
         creatingRoomService.createRoom(

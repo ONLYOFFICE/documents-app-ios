@@ -40,6 +40,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var isWatermarkEnabled: Bool = false
     @Published var selectedWatermarkType: WatermarkType = .viewerInfo
     @Published var selectedWatermarkPosition: WatermarkPosition = .diagonal
+    @Published var watermarkElementButtons: [ToggleButtonView.ViewModel] = []
     @Published var watermarkStaticText: String = ""
 
     // MARK: Published Public room only vars
@@ -135,9 +136,7 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
-    var watermarkElementButtons: [WatermarkElement] {
-        WatermarkElement.allCases
-    }
+    var selectedWatermarkElements: Set<WatermarkElement> = []
 
     // MARK: - Private vars
 

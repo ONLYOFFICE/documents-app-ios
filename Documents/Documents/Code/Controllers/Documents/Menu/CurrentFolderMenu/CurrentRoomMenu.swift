@@ -164,7 +164,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
 
         let (sortType, sortAscending) = sortDetails(sortInfo: sortInfo(forRootFolderType: folder))
         let sortStates: [ASCDocumentSortStateType] = sortTypes.map { ($0, $0 == sortType) }
-        if !folder.isEmpty {
+
+        if !folder.isEmpty || folder.roomType == nil {
             for sort in sortStates {
                 sortGroup.append(
                     Self.buildUIAction(

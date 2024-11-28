@@ -33,3 +33,9 @@ extension ToggleButtonView {
         }
     }
 }
+
+// MARK: - Constants
+
+private extension CGFloat {
+    static let horizontalPadding: CGFloat = 12
+}

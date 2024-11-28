@@ -280,6 +280,20 @@ class ManageRoomViewModel: ObservableObject {
 // MARK: - Private func
 
 private extension ManageRoomViewModel {
+    func setupWatermarkElementButtons() {
+        watermarkElementButtons = WatermarkElement.allCases.map { element in
+            ToggleButtonView.ViewModel(
+                id: String(element.id),
+                title: element.localizedDesc,
+                isActive: selectedWatermarkElements.contains(element),
+                tapHandler: { [weak self] id in
+                    if let id = Int(id), let element = WatermarkElement(rawValue: id) {
+                        self?.handleWatermarkElementTap(element: element)
+                    }
+                }
+            )
+        }
+    }
 
     func handleWatermarkElementTap(element: WatermarkElement) {
         if selectedWatermarkElements.contains(element) {

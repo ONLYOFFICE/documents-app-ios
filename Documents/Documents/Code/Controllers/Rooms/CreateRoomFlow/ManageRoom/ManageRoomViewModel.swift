@@ -497,8 +497,8 @@ extension ManageRoomViewModel {
         }
     }
 
-    enum WatermarkElement: CaseIterable {
-        case userName
+    enum WatermarkElement: Int, CaseIterable {
+        case userName = 0
         case userEmail
         case ipAddress
         case currentDate
@@ -517,6 +517,10 @@ extension ManageRoomViewModel {
             case .roomName:
                 return NSLocalizedString("Room Name", comment: "Watermark Element")
             }
+        }
+
+        var id: Int {
+            rawValue
         }
     }
 }

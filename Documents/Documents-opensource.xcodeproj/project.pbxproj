@@ -40,6 +40,7 @@
 		E87FF67C2BF74712000EFDE5 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6772BF74712000EFDE5 /* UserListView.swift */; };
 		E87FF67D2BF74712000EFDE5 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6782BF74712000EFDE5 /* UserListViewModel.swift */; };
 		E87FF67E2BF74712000EFDE5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6792BF74712000EFDE5 /* UserModel.swift */; };
+		E89750172CF7ECD000D3EC4C /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89750162CF7ECCD00D3EC4C /* ToggleButtonView.swift */; };
 		E8A4F3C92C73FFF5002168DA /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */; };
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
@@ -698,6 +699,7 @@
 		E87FF6772BF74712000EFDE5 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		E87FF6782BF74712000EFDE5 /* UserListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		E87FF6792BF74712000EFDE5 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E89750162CF7ECCD00D3EC4C /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
 		E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
@@ -2013,6 +2015,7 @@
 				FC00CBF12C46613C00D3344D /* ChevronRightView.swift */,
 				E8BE285E2B2435E4007F5942 /* MenuView.swift */,
 				E83125CF2B249AC7006016F1 /* TagsFieldView.swift */,
+				E89750162CF7ECCD00D3EC4C /* ToggleButtonView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -3998,6 +4001,7 @@
 				FC7081222812E2260057FCD2 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				FC7081232812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC142A7728981A1F00EDE7CE /* ASCNotificationSettingsViewController.swift in Sources */,
+				E89750172CF7ECD000D3EC4C /* ToggleButtonView.swift in Sources */,
 				FC7081242812E2260057FCD2 /* NetworkingServerError.swift in Sources */,
 				E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */,
 				E856CED02B5904D8003E4C3D /* RoomTypeViewRow.swift in Sources */,

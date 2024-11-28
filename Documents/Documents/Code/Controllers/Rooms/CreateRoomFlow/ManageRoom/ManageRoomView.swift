@@ -30,6 +30,7 @@ struct ManageRoomView: View {
             fileLifetimeSection
             restrictContentCopySection
             watermarkSection
+            watermarkElementsSection
             watermarkStaticTextSection
             watermarkPositionSection
         }
@@ -361,6 +362,22 @@ struct ManageRoomView: View {
             }
         }
     }
+
+    @ViewBuilder
+    private var watermarkElementsSection: some View {
+        if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
+            Section(header: Text(NSLocalizedString("Add watermark elements", comment: ""))) {
+                ToggleButtonCollectionView(
+                    buttonModels: viewModel.watermarkElementButtons,
+                    width: UIScreen.main.bounds.width - 4 * 20
+                )
+                .padding(.top, 4)
+            }
+            .listRowInsets(.init(top: 0, leading: 20, bottom: 0, trailing: 20))
+            .listRowBackground(Color.clear)
+        }
+    }
+
     @ViewBuilder
     private var watermarkStaticTextSection: some View {
         if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {

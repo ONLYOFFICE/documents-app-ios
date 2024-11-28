@@ -25,6 +25,12 @@ struct ToggleButtonView: View {
         .cornerRadius(16)
         .buttonStyle(PlainButtonStyle())
     }
+
+    static func calculateWidth(for title: String, font: UIFont = UIFont.preferredFont(forTextStyle: .subheadline)) -> CGFloat {
+        let adjustedFont = UIFontMetrics.default.scaledFont(for: font)
+        let textWidth = (title as NSString).size(withAttributes: [.font: adjustedFont]).width
+        return textWidth + 2 * .horizontalPadding
+    }
 }
 
 // MARK: - View Model

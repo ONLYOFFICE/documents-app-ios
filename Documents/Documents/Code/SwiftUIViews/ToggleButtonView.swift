@@ -9,6 +9,22 @@
 import SwiftUI
 
 struct ToggleButtonView: View {
+    let model: ViewModel
+
+    var body: some View {
+        return Button(action: {
+            model.tapHandler(model.id)
+        }, label: {
+            Text(model.title)
+                .font(.subheadline)
+                .foregroundColor(model.isActive ? Color.white : .black)
+                .padding(.horizontal, .horizontalPadding)
+                .padding(.vertical, 6)
+        })
+        .background(model.isActive ? Asset.Colors.brend.swiftUIColor : .white)
+        .cornerRadius(16)
+        .buttonStyle(PlainButtonStyle())
+    }
 }
 
 // MARK: - View Model

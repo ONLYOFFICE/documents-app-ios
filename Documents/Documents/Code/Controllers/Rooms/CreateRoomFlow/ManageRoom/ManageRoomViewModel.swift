@@ -511,9 +511,9 @@ extension ManageRoomViewModel {
         }
     }
 
-    enum WatermarkPosition: CaseIterable {
-        case diagonal
-        case horizontal
+    enum WatermarkPosition: Int, CaseIterable {
+        case diagonal = -45
+        case horizontal = 0
 
         var localizedDesc: String {
             switch self {

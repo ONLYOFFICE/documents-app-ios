@@ -526,11 +526,11 @@ extension ManageRoomViewModel {
     }
 
     enum WatermarkElement: Int, CaseIterable {
-        case userName = 0
-        case userEmail
-        case ipAddress
-        case currentDate
-        case roomName
+        case userName = 1
+        case userEmail = 2
+        case ipAddress = 4
+        case currentDate = 8
+        case roomName = 16
 
         var localizedDesc: String {
             switch self {

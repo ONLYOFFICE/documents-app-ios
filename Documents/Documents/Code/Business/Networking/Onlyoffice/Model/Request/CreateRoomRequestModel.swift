@@ -15,6 +15,7 @@ struct CreateRoomRequestModel: Codable {
     var indexing: Bool
     var denyDownload: Bool
     var lifetime: FileLifetime?
+    var watermark: Watermark?
 
     struct FileLifetime: Codable {
         var fileAge: Int
@@ -32,5 +33,12 @@ struct CreateRoomRequestModel: Codable {
             case months
             case years
         }
+    }
+    
+    struct Watermark: Codable {
+        var rotate: Int
+        var text: String
+        /// Watermark elements
+        var additions: Int
     }
 }

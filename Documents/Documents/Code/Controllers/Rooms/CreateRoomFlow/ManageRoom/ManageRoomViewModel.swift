@@ -308,6 +308,8 @@ private extension ManageRoomViewModel {
             watermarkElementButtons[index].isActive = selectedWatermarkElements.contains(element)
         }
     }
+    
+    // MARK: Create room
 
     func createRoom() {
         let roomName = roomName
@@ -321,7 +323,8 @@ private extension ManageRoomViewModel {
                 thirdPartyFolderId: selectedSubfolder?.id ?? thirdPartyFolder?.id,
                 isAutomaticIndexing: isAutomaticIndexing,
                 isRestrictContentCopy: isRestrictContentCopy,
-                fileLifetime: makeFileLifetimeModel()
+                fileLifetime: makeFileLifetimeModel(),
+                watermark: markWatermarkRequestModel()
             )
         ) { [weak self] result in
             self?.isSaving = false
@@ -346,6 +349,16 @@ private extension ManageRoomViewModel {
             ) ?? .days
         )
     }
+    
+    func markWatermarkRequestModel() -> CreateRoomRequestModel.Watermark? {
+        guard isWatermarkEnabled else { return nil }
+        return CreateRoomRequestModel.Watermark(
+            rotate: selectedWatermarkPosition.rawValue,
+            text: watermarkStaticText,
+            additions: selectedWatermarkElements.map(\.rawValue).reduce(0, +))
+    }
+    
+    // MARK: Update room
 
     func updateRoom() {
         guard let room = editingRoom else {

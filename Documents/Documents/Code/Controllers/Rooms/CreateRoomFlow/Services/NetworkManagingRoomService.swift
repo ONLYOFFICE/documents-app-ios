@@ -23,6 +23,7 @@ struct CreatingRoomModel {
     var isAutomaticIndexing: Bool = false
     var isRestrictContentCopy: Bool = false
     var fileLifetime: CreateRoomRequestModel.FileLifetime?
+    var watermark: CreateRoomRequestModel.Watermark?
 }
 
 struct EditRoomModel {

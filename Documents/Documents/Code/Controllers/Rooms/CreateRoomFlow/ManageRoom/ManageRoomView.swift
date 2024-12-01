@@ -414,6 +414,21 @@ struct ManageRoomView: View {
         }
     }
 
+
+    @ViewBuilder
+    private var sizeQuotaCell: some View {
+        if viewModel.isStorateQuotaEnabled {
+            HStack {
+                Text(NSLocalizedString("Size quota", comment: ""))
+                Spacer()
+                TextField("", value: $viewModel.sizeQuota, formatter: viewModel.sizeQuotaFormatter)
+                    .frame(width: 80)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+        }
+    }
+
     @ViewBuilder
     private var quotaSizeUnitCell: some View {
         if viewModel.isStorateQuotaEnabled {

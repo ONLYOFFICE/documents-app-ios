@@ -414,6 +414,22 @@ struct ManageRoomView: View {
         }
     }
 
+    @ViewBuilder
+    private var quotaSizeUnitCell: some View {
+        if viewModel.isStorateQuotaEnabled {
+            MenuView(menuItems: viewModel.quotaSizeUnitMenuItems) {
+                HStack {
+                    Text(NSLocalizedString("Measurement unit", comment: ""))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text(viewModel.selectedSizeUnit.localizedDesc)
+                        .foregroundColor(.gray)
+                    ChevronUpDownView()
+                }
+            }
+        }
+    }
+
     // MARK: - HUD
 
     private func handleHUD() {

@@ -415,6 +415,13 @@ struct ManageRoomView: View {
     }
 
 
+    private var srotageQuotaCell: some View {
+        Toggle(isOn: $viewModel.isStorateQuotaEnabled) {
+            Text(NSLocalizedString("Storage quota", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+    }
+
     @ViewBuilder
     private var sizeQuotaCell: some View {
         if viewModel.isStorateQuotaEnabled {

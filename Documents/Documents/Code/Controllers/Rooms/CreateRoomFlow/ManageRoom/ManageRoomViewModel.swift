@@ -71,6 +71,7 @@ class ManageRoomViewModel: ObservableObject {
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = false
+        formatter.usesGroupingSeparator = false
         formatter.minimum = 1
         return formatter
     }()
@@ -112,6 +113,7 @@ class ManageRoomViewModel: ObservableObject {
     private(set) var fileAgeNumberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = false
+        formatter.usesGroupingSeparator = false
         formatter.minimum = 1
         return formatter
     }()

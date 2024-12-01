@@ -564,4 +564,27 @@ extension ManageRoomViewModel {
             rawValue
         }
     }
+
+    enum SizeUnit: CaseIterable {
+        case bytes
+        case kb
+        case mb
+        case gb
+        case tb
+
+        var localizedDesc: String {
+            switch self {
+            case .bytes:
+                return NSLocalizedString("bytes", comment: "Measurement unit")
+            case .kb:
+                return NSLocalizedString("KB", comment: "Measurement unit")
+            case .mb:
+                return NSLocalizedString("MB", comment: "Measurement unit")
+            case .gb:
+                return NSLocalizedString("GB", comment: "Measurement unit")
+            case .tb:
+                return NSLocalizedString("TB", comment: "Measurement unit")
+            }
+        }
+    }
 }

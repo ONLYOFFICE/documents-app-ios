@@ -61,6 +61,12 @@ class ManageRoomViewModel: ObservableObject {
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
+    private(set) var sizeQuotaFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = false
+        formatter.minimum = 1
+        return formatter
+    }()
 
     var quotaSizeUnitMenuItems: [MenuViewItem] {
         SizeUnit.allCases.map { value in

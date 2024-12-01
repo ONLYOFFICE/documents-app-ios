@@ -24,6 +24,11 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
 
+    // Stroage quota
+    @Published var isStorateQuotaEnabled: Bool = false
+    @Published var sizeQuota = 40
+    @Published var selectedSizeUnit: SizeUnit = .mb
+
     // MARK: Published Virtual data room only vars
 
     // File lifetime
@@ -61,6 +66,8 @@ class ManageRoomViewModel: ObservableObject {
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
+    let allowChangeStorageQuota: Bool
+
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = false
@@ -179,6 +186,7 @@ class ManageRoomViewModel: ObservableObject {
         self.selectedRoomType = selectedRoomType
         self.hideActivityOnSuccess = hideActivityOnSuccess
         self.onCreate = onCreate
+        allowChangeStorageQuota = true // TODO: Docspace 3.0
 
         if let editingRoom {
             self.selectedRoomType.showDisclosureIndicator = false
@@ -325,7 +333,7 @@ private extension ManageRoomViewModel {
             watermarkElementButtons[index].isActive = selectedWatermarkElements.contains(element)
         }
     }
-    
+
     // MARK: Create room
 
     func createRoom() {
@@ -366,15 +374,16 @@ private extension ManageRoomViewModel {
             ) ?? .days
         )
     }
-    
+
     func markWatermarkRequestModel() -> CreateRoomRequestModel.Watermark? {
         guard isWatermarkEnabled else { return nil }
         return CreateRoomRequestModel.Watermark(
             rotate: selectedWatermarkPosition.rawValue,
             text: watermarkStaticText,
-            additions: selectedWatermarkElements.map(\.rawValue).reduce(0, +))
+            additions: selectedWatermarkElements.map(\.rawValue).reduce(0, +)
+        )
     }
-    
+
     // MARK: Update room
 
     func updateRoom() {

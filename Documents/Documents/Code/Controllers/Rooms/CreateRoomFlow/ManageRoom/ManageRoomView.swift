@@ -33,6 +33,7 @@ struct ManageRoomView: View {
             watermarkElementsSection
             watermarkStaticTextSection
             watermarkPositionSection
+            storageQuotaSection
         }
         .onTapGesture {
             hideKeyboard()
@@ -414,6 +415,22 @@ struct ManageRoomView: View {
         }
     }
 
+    // MARK: - Storage quota section
+
+    @ViewBuilder
+    private var storageQuotaSection: some View {
+        if viewModel.allowChangeStorageQuota {
+            Section(
+                footer: Text(
+                    NSLocalizedString("Storage quota set per room. You can change this value or turn off stroage limit.", comment: "")
+                )
+            ) {
+                srotageQuotaCell
+                sizeQuotaCell
+                quotaSizeUnitCell
+            }
+        }
+    }
 
     private var srotageQuotaCell: some View {
         Toggle(isOn: $viewModel.isStorateQuotaEnabled) {

@@ -62,6 +62,17 @@ class ManageRoomViewModel: ObservableObject {
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
 
+    var quotaSizeUnitMenuItems: [MenuViewItem] {
+        SizeUnit.allCases.map { value in
+            MenuViewItem(
+                text: value.localizedDesc,
+                systemImageName: selectedSizeUnit == value ? "checkmark" : nil
+            ) { [unowned self] in
+                selectedSizeUnit = value
+            }
+        }
+    }
+
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
     let hideActivityOnSuccess: Bool
     var isEditMode: Bool { editingRoom != nil }

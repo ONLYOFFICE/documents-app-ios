@@ -166,6 +166,18 @@ class ManageRoomViewModel: ObservableObject {
     }
 
     var selectedWatermarkElements: Set<WatermarkElement> = []
+    var watermarkImageRotationMenuItems: [MenuViewItem] {
+        WatermarkImageRotationAngle.allCases.map { angle in
+            MenuViewItem(
+                text: angle.localizedDesc,
+                systemImageName: selectedWatermarkImageRotationAngle == angle ? "checkmark" : nil
+            ) { [unowned self] in
+                selectedWatermarkImageRotationAngle = angle
+            }
+        }
+    }
+
+    @Published var selectedWatermarkElements: Set<WatermarkElement> = []
 
     // MARK: - Private vars
 

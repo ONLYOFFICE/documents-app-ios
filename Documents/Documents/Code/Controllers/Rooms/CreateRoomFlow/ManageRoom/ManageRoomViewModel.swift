@@ -334,6 +334,16 @@ extension ManageRoomViewModel {
             isStorageSelectionPresenting = false
         }
     }
+
+    func didTapWatermarkImage() {
+        imageFromLibraryAction { [weak self] in
+            self?.watermarkImage = $0
+        }
+    }
+
+    func didTapRemoveWatemarkImage() {
+        watermarkImage = nil
+    }
 }
 
 // MARK: - Private func

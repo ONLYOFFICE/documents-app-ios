@@ -47,6 +47,9 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedWatermarkPosition: WatermarkPosition = .diagonal
     @Published var watermarkElementButtons: [ToggleButtonView.ViewModel] = []
     @Published var watermarkStaticText: String = ""
+    @Published var watermarkImage: UIImage?
+    @Published var selectedWatermarkImageScale: WatermarkImageScale = .x1
+    @Published var selectedWatermarkImageRotationAngle: WatermarkImageRotationAngle = .a0
 
     // MARK: Published Public room only vars
 

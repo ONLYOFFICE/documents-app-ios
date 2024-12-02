@@ -457,18 +457,26 @@ private extension ManageRoomViewModel {
 
     func makeImageMenuItems() -> [MenuViewItem] {
         [
-            .init(text: NSLocalizedString("Photo Library", comment: ""), systemImageName: "photo", action: imageFromLibraryAction),
+            .init(
+                text: NSLocalizedString("Photo Library", comment: ""),
+                systemImageName: "photo",
+                action: { [weak self] in
+                    self?.imageFromLibraryAction { [weak self] in
+                        self?.selectedImage = $0
+                    }
+                }
+            ),
             .init(text: NSLocalizedString("Take Photo", comment: ""), systemImageName: "camera", action: imageFromCameraAction),
             .init(text: NSLocalizedString("Choose Files", comment: ""), systemImageName: "folder", action: imageFromFilesAction),
         ]
     }
 
-    func imageFromLibraryAction() {
+    func imageFromLibraryAction(completion: @escaping (UIImage?) -> Void) {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
         attachManager.storeFromLibrary(in: topController, to: temporaryFolderName) { [weak self] result in
-            self?.handleImageSelection(result)
+            self?.handleImageSelection(result, imageCompletion: completion)
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
@@ -478,7 +486,9 @@ private extension ManageRoomViewModel {
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
         attachManager.storeFromCamera(in: topController, to: temporaryFolderName) { [weak self] result in
-            self?.handleImageSelection(result)
+            self?.handleImageSelection(result) {
+                self?.selectedImage = $0
+            }
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
@@ -488,20 +498,23 @@ private extension ManageRoomViewModel {
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
         attachManager.storeFromFiles(in: topController, to: temporaryFolderName) { [weak self] result in
-            self?.handleImageSelection(result)
+            self?.handleImageSelection(result) {
+                self?.selectedImage = $0
+            }
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
 
-    func handleImageSelection(_ result: Result<URL, Error>) {
+    func handleImageSelection(_ result: Result<URL, Error>, imageCompletion: (UIImage?) -> Void) {
         switch result {
         case let .success(url):
-            selectedImage = UIImage(contentsOfFile: url.path)
+            imageCompletion(UIImage(contentsOfFile: url.path))
         case let .failure(error):
             if let error = error as? ASCAttachmentManagerError, error == .canceled {
                 return
             }
             errorMessage = error.localizedDescription
+            imageCompletion(nil)
         }
     }
 

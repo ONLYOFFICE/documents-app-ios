@@ -34,7 +34,7 @@ struct CreateRoomRequestModel: Codable {
             case years
         }
     }
-    
+
     struct Watermark: Codable {
         var rotate: Int
         var text: String

@@ -229,6 +229,25 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
+    func configureSelectedLocation() {
+        let basePath: String = selectedLocationPath.isEmpty
+            ? NSLocalizedString("Root folder", comment: "")
+            : selectedLocationPath
+        var location = basePath
+        if isCreateNewFolderEnabled {
+            let newFolderName = roomName.isEmpty
+                ? NSLocalizedString("New folder", comment: "")
+                : roomName
+            location = location.appendingPathComponent(newFolderName)
+        }
+        selectedLocation = location
+    }
+}
+
+// MARK: - Handlers
+
+private extension ManageRoomViewModel {
+    
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
     }
@@ -282,21 +301,7 @@ class ManageRoomViewModel: ObservableObject {
         }
         configureSelectedLocation()
     }
-
-    func configureSelectedLocation() {
-        let basePath: String = selectedLocationPath.isEmpty
-            ? NSLocalizedString("Root folder", comment: "")
-            : selectedLocationPath
-        var location = basePath
-        if isCreateNewFolderEnabled {
-            let newFolderName = roomName.isEmpty
-                ? NSLocalizedString("New folder", comment: "")
-                : roomName
-            location = location.appendingPathComponent(newFolderName)
-        }
-        selectedLocation = location
-    }
-
+    
     func didTapThirdPartyStorageSwitch(isOn: Bool) {
         if isOn {
             isStorageSelectionPresenting = true
@@ -413,6 +418,8 @@ private extension ManageRoomViewModel {
             self?.isSaving = false
         }
     }
+    
+    // MARK: Room image
 
     func makeImageMenuItems() -> [MenuViewItem] {
         [
@@ -475,6 +482,8 @@ private extension ManageRoomViewModel {
     }
 }
 
+// MARK: - Extension ASCFolderProviderType
+
 private extension ASCFolderProviderType {
     var fileProviderType: ASCFileProviderType {
         switch self {
@@ -505,6 +514,8 @@ private extension ASCFolderProviderType {
         }
     }
 }
+
+// MARK: - Extension types
 
 extension ManageRoomViewModel {
     enum FilesTimePeriod: Int, CaseIterable {

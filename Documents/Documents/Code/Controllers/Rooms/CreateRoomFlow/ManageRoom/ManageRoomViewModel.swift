@@ -603,6 +603,18 @@ extension ManageRoomViewModel {
         }
     }
 
+    enum WatermarkImageScale: Double, CaseIterable {
+        case x1 = 100
+        case x2 = 200
+        case x3 = 300
+        case x4 = 400
+        case x5 = 500
+
+        var localizedDesc: String {
+            "\(Int(rawValue))%"
+        }
+    }
+
     enum WatermarkImageRotationAngle: Double, CaseIterable {
         case a0 = 0
         case a30 = 30

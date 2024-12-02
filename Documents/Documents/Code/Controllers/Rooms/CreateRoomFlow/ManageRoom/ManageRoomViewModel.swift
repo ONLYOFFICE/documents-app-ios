@@ -246,8 +246,7 @@ class ManageRoomViewModel: ObservableObject {
 
 // MARK: - Handlers
 
-private extension ManageRoomViewModel {
-    
+extension ManageRoomViewModel {
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
     }
@@ -301,7 +300,7 @@ private extension ManageRoomViewModel {
         }
         configureSelectedLocation()
     }
-    
+
     func didTapThirdPartyStorageSwitch(isOn: Bool) {
         if isOn {
             isStorageSelectionPresenting = true
@@ -418,7 +417,7 @@ private extension ManageRoomViewModel {
             self?.isSaving = false
         }
     }
-    
+
     // MARK: Room image
 
     func makeImageMenuItems() -> [MenuViewItem] {

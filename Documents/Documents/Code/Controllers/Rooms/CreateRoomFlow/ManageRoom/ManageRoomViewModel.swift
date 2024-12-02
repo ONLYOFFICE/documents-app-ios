@@ -165,7 +165,17 @@ class ManageRoomViewModel: ObservableObject {
         }
     }
 
-    var selectedWatermarkElements: Set<WatermarkElement> = []
+    var watermarkImageScaleMenuItems: [MenuViewItem] {
+        WatermarkImageScale.allCases.map { scale in
+            MenuViewItem(
+                text: scale.localizedDesc,
+                systemImageName: selectedWatermarkImageScale == scale ? "checkmark" : nil
+            ) { [unowned self] in
+                selectedWatermarkImageScale = scale
+            }
+        }
+    }
+
     var watermarkImageRotationMenuItems: [MenuViewItem] {
         WatermarkImageRotationAngle.allCases.map { angle in
             MenuViewItem(

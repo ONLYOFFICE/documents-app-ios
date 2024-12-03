@@ -24,4 +24,17 @@ struct WatermarkImageEditorView: View {
                 )
         }
     }
+
+    private var scaleCell: some View {
+        MenuView(menuItems: viewModel.watermarkImageScaleMenuItems) {
+            HStack {
+                Text(NSLocalizedString("Scale", comment: ""))
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(viewModel.selectedWatermarkImageScale.localizedDesc)
+                    .foregroundColor(.gray)
+                ChevronUpDownView()
+            }
+        }
+    }
 }

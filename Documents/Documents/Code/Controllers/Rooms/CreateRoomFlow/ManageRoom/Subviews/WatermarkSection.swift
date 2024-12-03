@@ -14,17 +14,20 @@ struct WatermarkSection: View {
     var body: some View {
         if viewModel.selectedRoomType.type == .virtualData {
             Section(
-                footer: viewModel.isWatermarkEnabled
-                    ? AnyView(EmptyView())
-                    : AnyView(Text(NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")))
+                footer: !viewModel.isWatermarkEnabled || viewModel.selectedWatermarkType == .image
+                    ? AnyView(Text(NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")))
+                    : AnyView(EmptyView())
             ) {
                 watermarkToggleCell
                 watermarkTypeCell
+                selectImageCell
             }
 
             watermarkElementsSection
             watermarkStaticTextSection
             watermarkPositionSection
+
+            watermarkImageSection
         }
     }
 }
@@ -57,6 +60,26 @@ extension WatermarkSection {
     }
 
     @ViewBuilder
+    private var selectImageCell: some View {
+        if viewModel.selectedWatermarkType == .image {
+            HStack {
+                Text(NSLocalizedString("Select image", comment: ""))
+                    .foregroundColor(Color(Asset.Colors.brend.color))
+                Spacer()
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                viewModel.didTapWatermarkImage()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var watermarkImageSection: some View {
+        WatermarkImageEditorView(viewModel: viewModel)
+    }
+
+    @ViewBuilder
     private var watermarkElementsSection: some View {
         if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
             Section(header: Text(NSLocalizedString("Add watermark elements", comment: ""))) {
@@ -64,6 +87,7 @@ extension WatermarkSection {
                     buttonModels: viewModel.watermarkElementButtons,
                     width: UIScreen.main.bounds.width - 4 * 20
                 )
+                .contentShape(Rectangle())
                 .padding(.top, 4)
             }
             .listRowInsets(.init(top: 0, leading: 20, bottom: 0, trailing: 20))

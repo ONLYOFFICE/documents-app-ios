@@ -49,6 +49,7 @@
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
 		E8B8C8A02CFDE32D00BEDD51 /* AutomaticIndexationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */; };
 		E8B8C8A22CFDE43700BEDD51 /* ThirdPartySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */; };
+		E8B8C8A42CFDFA6400BEDD51 /* WatermarkImageEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */; };
 		E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */; };
 		E8BE285F2B2435E5007F5942 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE285E2B2435E4007F5942 /* MenuView.swift */; };
 		E8CBF1D02C7E72D0003804FF /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */; };
@@ -715,6 +716,7 @@
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
 		E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartySection.swift; sourceTree = "<group>"; };
+		E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
 		E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E8BE285E2B2435E4007F5942 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
@@ -2014,6 +2016,7 @@
 		E897501C2CFDC30F00D3EC4C /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */,
 				E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */,
 				E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */,
 				E8D437262CFDDB7B006FC550 /* StorageQuotaSection.swift */,
@@ -4180,6 +4183,7 @@
 				FC03A6402BDA7F67005E8FFB /* CreateRoomRequestModel.swift in Sources */,
 				FC7081822812E2260057FCD2 /* ASC2FACodeViewController.swift in Sources */,
 				FC7F71FC299410D60004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
+				E8B8C8A42CFDFA6400BEDD51 /* WatermarkImageEditorView.swift in Sources */,
 				E83125D02B249AC7006016F1 /* TagsFieldView.swift in Sources */,
 				FC03A64A2BDA7F67005E8FFB /* OnlyofficeFileOperation.swift in Sources */,
 				FC379D5D2C380C5900B120D9 /* EditSharedLinkRequestModel.swift in Sources */,

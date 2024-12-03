@@ -37,4 +37,17 @@ struct WatermarkImageEditorView: View {
             }
         }
     }
+
+    private var rotateCell: some View {
+        MenuView(menuItems: viewModel.watermarkImageRotationMenuItems) {
+            HStack {
+                Text(NSLocalizedString("Rotate", comment: ""))
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(viewModel.selectedWatermarkImageRotationAngle.localizedDesc)
+                    .foregroundColor(.gray)
+                ChevronUpDownView()
+            }
+        }
+    }
 }

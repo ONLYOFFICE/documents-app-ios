@@ -9,7 +9,21 @@
 import SwiftUI
 
 struct WatermarkImageEditorView: View {
-    
+    @ObservedObject var viewModel: ManageRoomViewModel
+
+    var body: some View {
+        if viewModel.selectedWatermarkType == .image, let image = viewModel.watermarkImage {
+            Section(
+                footer: Text(NSLocalizedString("This image preview roughly shows how the watermark will be displayed in your files.", comment: ""))
+            ) {
+                imageCell(image: image)
+                scaleCell
+                rotateCell
+                deleteCell
+            }
+        }
+    }
+
     private func imageCell(image: UIImage) -> some View {
         VStack {
             Image(uiImage: viewModel.watermarkImage ?? UIImage())
@@ -48,6 +62,20 @@ struct WatermarkImageEditorView: View {
                     .foregroundColor(.gray)
                 ChevronUpDownView()
             }
+        }
+    }
+
+    private var deleteCell: some View {
+        HStack {
+            Text(
+                NSLocalizedString("Remove", comment: "")
+            )
+            .foregroundColor(.red)
+            Spacer()
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            viewModel.didTapRemoveWatemarkImage()
         }
     }
 }

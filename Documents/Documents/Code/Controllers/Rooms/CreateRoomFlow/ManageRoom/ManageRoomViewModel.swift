@@ -390,7 +390,8 @@ private extension ManageRoomViewModel {
                 isAutomaticIndexing: isAutomaticIndexing,
                 isRestrictContentCopy: isRestrictContentCopy,
                 fileLifetime: makeFileLifetimeModel(),
-                watermark: markWatermarkRequestModel()
+                watermark: markWatermarkRequestModel(),
+                watermarkImage: selectedWatermarkType == .image ? watermarkImage : nil
             )
         ) { [weak self] result in
             self?.isSaving = false
@@ -418,11 +419,19 @@ private extension ManageRoomViewModel {
 
     func markWatermarkRequestModel() -> CreateRoomRequestModel.Watermark? {
         guard isWatermarkEnabled else { return nil }
-        return CreateRoomRequestModel.Watermark(
-            rotate: selectedWatermarkPosition.rawValue,
-            text: watermarkStaticText,
-            additions: selectedWatermarkElements.map(\.rawValue).reduce(0, +)
-        )
+        if selectedWatermarkType == .viewerInfo {
+            return CreateRoomRequestModel.Watermark(
+                rotate: selectedWatermarkPosition.rawValue,
+                text: watermarkStaticText,
+                additions: selectedWatermarkElements.map(\.rawValue).reduce(0, +)
+            )
+        } else if selectedWatermarkType == .image {
+            return CreateRoomRequestModel.Watermark(
+                rotate: selectedWatermarkPosition.rawValue,
+                imageScale: Int(selectedWatermarkImageScale.rawValue)
+            )
+        }
+        return nil
     }
 
     // MARK: Update room

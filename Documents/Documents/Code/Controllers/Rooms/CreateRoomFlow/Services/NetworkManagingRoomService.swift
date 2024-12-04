@@ -24,6 +24,7 @@ struct CreatingRoomModel {
     var isRestrictContentCopy: Bool = false
     var fileLifetime: CreateRoomRequestModel.FileLifetime?
     var watermark: CreateRoomRequestModel.Watermark?
+    var watermarkImage: UIImage?
 }
 
 struct EditRoomModel {
@@ -175,13 +176,14 @@ extension NetworkManagingRoomServiceImp {
 
 extension NetworkManagingRoomServiceImp {
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
-        let requestModel = CreateRoomRequestModel(
+        var requestModel = CreateRoomRequestModel(
             roomType: model.roomType.rawValue,
             title: model.name,
             createAsNewFolder: model.createAsNewFolder,
             indexing: model.isAutomaticIndexing,
             denyDownload: model.isRestrictContentCopy,
-            lifetime: model.fileLifetime
+            lifetime: model.fileLifetime,
+            watermark: model.watermark
         )
         if let thirdPartyFolderId = model.thirdPartyFolderId {
             networkService.request(
@@ -195,12 +197,33 @@ extension NetworkManagingRoomServiceImp {
                 completion(.success(room))
             }
         } else {
-            networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
-                guard let room = response?.result, error == nil else {
-                    completion(.failure(error!))
-                    return
+            let roomCreator: (CreateRoomRequestModel) -> Void = { [networkService] requestModel in
+                networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
+                    guard let room = response?.result, error == nil else {
+                        completion(.failure(error!))
+                        return
+                    }
+                    completion(.success(room))
                 }
-                completion(.success(room))
+            }
+
+            if let watermarkImage = model.watermarkImage, model.watermark != nil {
+                uploadImage(image: watermarkImage, fileName: "watermark") { uploadResult in
+                    switch uploadResult {
+                    case let .success(logoMetaData):
+                        var watermark = requestModel.watermark
+                        watermark?.imageHeight = Int(watermarkImage.size.height)
+                        watermark?.imageWidth = Int(watermarkImage.size.width)
+                        watermark?.imageUrl = logoMetaData.tmpFileUrl
+                        requestModel.watermark = watermark
+                        roomCreator(requestModel)
+                    case let .failure(error):
+                        log.error(error.localizedDescription)
+                        roomCreator(requestModel)
+                    }
+                }
+            } else {
+                roomCreator(requestModel)
             }
         }
     }
@@ -256,7 +279,7 @@ extension NetworkManagingRoomServiceImp {
             completion()
             return
         }
-        uploadImage(image: image, room: room) { result in
+        uploadImage(image: image, fileName: room.title) { result in
             switch result {
             case let .success(logoUploadResult):
                 let imageWidth = Int(image.size.width)
@@ -271,13 +294,13 @@ extension NetworkManagingRoomServiceImp {
         }
     }
 
-    private func uploadImage(image: UIImage, room: ASCFolder, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
+    private func uploadImage(image: UIImage, fileName: String, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.7) else {
             completion(.failure(CreatingRoomServiceError.unableGetImageData))
             return
         }
 
-        let fileName = "\(room.title).jpg"
+        let fileName = "\(fileName).jpg"
         let mimeType = "image/jpeg"
 
         networkService.request(OnlyofficeAPI.Endpoints.Uploads.logos()) { multipartFormData in

@@ -665,10 +665,10 @@ extension ManageRoomViewModel {
 
     enum WatermarkImageRotationAngle: Double, CaseIterable {
         case a0 = 0
-        case a30 = 30
-        case a45 = 45
-        case a60 = 60
-        case a90 = 90
+        case a30 = -30
+        case a45 = -45
+        case a60 = -60
+        case a90 = -90
 
         var localizedDesc: String {
             "\(Int(rawValue))°"

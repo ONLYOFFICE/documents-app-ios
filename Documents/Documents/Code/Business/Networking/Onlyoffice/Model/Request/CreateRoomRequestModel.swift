@@ -37,8 +37,13 @@ struct CreateRoomRequestModel: Codable {
 
     struct Watermark: Codable {
         var rotate: Int
-        var text: String
+        var text: String?
         /// Watermark elements
-        var additions: Int
+        var additions: Int?
+
+        var imageScale: Int?
+        var imageUrl: String?
+        var imageWidth: Int?
+        var imageHeight: Int?
     }
 }

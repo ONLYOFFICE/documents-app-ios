@@ -61,7 +61,7 @@ extension WatermarkSection {
 
     @ViewBuilder
     private var selectImageCell: some View {
-        if viewModel.selectedWatermarkType == .image {
+        if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .image {
             HStack {
                 Text(NSLocalizedString("Select image", comment: ""))
                     .foregroundColor(Color(Asset.Colors.brend.color))

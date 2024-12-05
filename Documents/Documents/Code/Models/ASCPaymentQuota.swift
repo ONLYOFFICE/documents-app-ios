@@ -42,6 +42,7 @@ struct ASCPaymentQuotaFeatures: Mappable {
     static let restoreId = "restore"
     static let auditId = "audit"
     static let usersInRoomId = "usersInRoom"
+    static let statistic = "statistic"
 
     var id: String?
     var value: Int?

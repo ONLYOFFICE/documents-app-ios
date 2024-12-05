@@ -25,6 +25,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var tags: Set<String> = []
 
     // Stroage quota
+    @Published var allowChangeStorageQuota: Bool = false
     @Published var isStorateQuotaEnabled: Bool = false
     @Published var sizeQuota = 40
     @Published var selectedSizeUnit: SizeUnit = .mb
@@ -69,7 +70,6 @@ class ManageRoomViewModel: ObservableObject {
 
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
-    let allowChangeStorageQuota: Bool
 
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -191,7 +191,6 @@ class ManageRoomViewModel: ObservableObject {
 
     // MARK: - Private vars
 
-    private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
     private let editingRoom: ASCRoom?
     private(set) var provider: ASCFileProviderProtocol?
@@ -199,6 +198,9 @@ class ManageRoomViewModel: ObservableObject {
     private var selectedSubfolder: ASCFolder?
     private var selectedLocationPath: String = ""
     private var cancelable = Set<AnyCancellable>()
+
+    private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
+    private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
 
     // MARK: - Init
 
@@ -213,7 +215,6 @@ class ManageRoomViewModel: ObservableObject {
         self.selectedRoomType = selectedRoomType
         self.hideActivityOnSuccess = hideActivityOnSuccess
         self.onCreate = onCreate
-        allowChangeStorageQuota = true // TODO: Docspace 3.0
 
         if let editingRoom {
             self.selectedRoomType.showDisclosureIndicator = false
@@ -241,6 +242,10 @@ class ManageRoomViewModel: ObservableObject {
                 self?.configureSelectedLocation()
             })
             .store(in: &cancelable)
+
+        Task { @MainActor in
+            allowChangeStorageQuota = await roomQuotaNetworkService.loadPaymentQouta()
+        }
     }
 
     // MARK: - Public func

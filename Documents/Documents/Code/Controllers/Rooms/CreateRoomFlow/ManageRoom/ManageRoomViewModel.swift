@@ -27,7 +27,7 @@ class ManageRoomViewModel: ObservableObject {
     // Stroage quota
     @Published var allowChangeStorageQuota: Bool = false
     @Published var isStorateQuotaEnabled: Bool = false
-    @Published var sizeQuota = 40
+    @Published var sizeQuota: Double = 40
     @Published var selectedSizeUnit: SizeUnit = .mb
 
     // MARK: Published Virtual data room only vars
@@ -73,7 +73,8 @@ class ManageRoomViewModel: ObservableObject {
 
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.allowsFloats = false
+        formatter.allowsFloats = true
+        formatter.maximumFractionDigits = 2
         formatter.usesGroupingSeparator = false
         formatter.minimum = 1
         return formatter
@@ -198,6 +199,7 @@ class ManageRoomViewModel: ObservableObject {
     private var selectedSubfolder: ASCFolder?
     private var selectedLocationPath: String = ""
     private var cancelable = Set<AnyCancellable>()
+    private var roomQuota: ASCPaymentQuotaSettings?
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
@@ -244,7 +246,16 @@ class ManageRoomViewModel: ObservableObject {
             .store(in: &cancelable)
 
         Task { @MainActor in
-            allowChangeStorageQuota = await roomQuotaNetworkService.loadPaymentQouta()
+            if let roomQuota = await roomQuotaNetworkService.loadRoomsQouta(),
+               let quota = roomQuota.defaultQuota
+            {
+                let (size, unit) = SizeUnit.formatBytes(quota)
+                isStorateQuotaEnabled = roomQuota.enableQuota == true
+                sizeQuota = size
+                selectedSizeUnit = unit
+                allowChangeStorageQuota = true
+                self.roomQuota = roomQuota
+            }
         }
     }
 

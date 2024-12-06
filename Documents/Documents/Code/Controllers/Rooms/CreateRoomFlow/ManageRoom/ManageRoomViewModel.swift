@@ -730,4 +730,19 @@ private extension ManageRoomViewModel.SizeUnit {
 
         return (value: value, unit: unit)
     }
+
+    static func bytes(from value: Double, unit: SizeUnit) -> Double {
+        switch unit {
+        case .bytes:
+            return value
+        case .kb:
+            return value * 1024
+        case .mb:
+            return value * pow(1024, 2)
+        case .gb:
+            return value * pow(1024, 3)
+        case .tb:
+            return value * pow(1024, 4)
+        }
+    }
 }

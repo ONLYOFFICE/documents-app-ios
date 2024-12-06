@@ -712,3 +712,22 @@ extension ManageRoomViewModel {
         }
     }
 }
+private extension ManageRoomViewModel.SizeUnit {
+    typealias SizeUnit = ManageRoomViewModel.SizeUnit
+
+    static func formatBytes(_ bytes: Double) -> (value: Double, unit: SizeUnit) {
+        let units: [SizeUnit] = [.bytes, .kb, .mb, .gb, .tb]
+        var value = bytes
+        var unit = SizeUnit.bytes
+
+        for nextUnit in units {
+            if value < 1024 || nextUnit == .tb {
+                unit = nextUnit
+                break
+            }
+            value /= 1024
+        }
+
+        return (value: value, unit: unit)
+    }
+}

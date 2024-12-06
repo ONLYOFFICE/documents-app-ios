@@ -268,6 +268,7 @@ class ManageRoomViewModel: ObservableObject {
         } else {
             createRoom()
         }
+        saveQuotaChanges()
     }
 
     func configureSelectedLocation() {
@@ -448,6 +449,22 @@ private extension ManageRoomViewModel {
             )
         }
         return nil
+    }
+
+    // MARK: Quota changes
+
+    func saveQuotaChanges() {
+        let quotaSizeInBytes = SizeUnit.bytes(from: sizeQuota, unit: selectedSizeUnit)
+        let screenStateRoomQuota = ASCPaymentQuotaSettings(
+            enableQuota: isStorateQuotaEnabled,
+            defaultQuota: quotaSizeInBytes,
+            lastRecalculateDate: roomQuota?.lastRecalculateDate
+        )
+        guard screenStateRoomQuota != roomQuota else { return }
+
+        Task { [roomQuotaNetworkService] in
+            await roomQuotaNetworkService.setupRoomsQuota(model: screenStateRoomQuota)
+        }
     }
 
     // MARK: Update room
@@ -723,6 +740,7 @@ extension ManageRoomViewModel {
         }
     }
 }
+
 private extension ManageRoomViewModel.SizeUnit {
     typealias SizeUnit = ManageRoomViewModel.SizeUnit
 

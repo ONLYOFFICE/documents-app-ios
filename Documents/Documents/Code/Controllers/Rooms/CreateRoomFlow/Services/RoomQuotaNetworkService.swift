@@ -11,15 +11,26 @@ import Foundation
 final class RoomQuotaNetworkService {
     private var networkService = OnlyofficeApiClient.shared
 
-    func loadPaymentQouta() async -> Bool {
+    func loadRoomsQouta() async -> ASCPaymentQuotaSettings? {
         return await withCheckedContinuation { continuation in
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.paymentQuota) { response, error in
                 guard let statisticQouta = response?.result?.features.first(where: { $0.id == ASCPaymentQuotaFeatures.statistic }) else {
-                    continuation.resume(returning: false)
+                    continuation.resume(returning: nil)
                     return
                 }
-                continuation.resume(returning: statisticQouta.value == 1)
+                continuation.resume(
+                    returning: statisticQouta.value == 1
+                        ? response?.result?.roomsQuota
+                        : nil
+                )
             }
         }
+    }
+
+    func setupRoomsQuota(model: ASCPaymentQuotaSettings) async -> ASCPaymentQuotaSettings? {
+        try? await OnlyofficeApiClient.request(
+            OnlyofficeAPI.Endpoints.Rooms.roomQuotaSettings,
+            model.toJSON()
+        )?.result
     }
 }

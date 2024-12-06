@@ -108,6 +108,7 @@ enum ApiFilterType {
     /// rooms
     case customRoom
     case fillingFormRoom
+    case virtualDataRoom
     case collaborationRoom
     case publicRoom
     case reviewRoom
@@ -160,6 +161,8 @@ enum ApiFilterType {
             return "customRoom"
         case .fillingFormRoom:
             return "fillingFormRoom"
+        case .virtualDataRoom:
+            return "virtualDataRoom"
         case .collaborationRoom:
             return "collaborationRoom"
         case .reviewRoom:
@@ -219,6 +222,8 @@ enum ApiFilterType {
             return "5"
         case .fillingFormRoom:
             return "1"
+        case .virtualDataRoom:
+            return "8"
         case .collaborationRoom:
             return "2"
         case .reviewRoom:
@@ -389,6 +394,7 @@ enum FiltersName: String, CaseIterable {
     case collaborationRoom
     case publicRoom
     case fillingFormRoom
+    case virtualDataRoom
     /// third party resource
     case dropBox
     case nextCloud
@@ -446,6 +452,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Box", comment: "")
         case .fillingFormRoom:
             return NSLocalizedString("Form Filling", comment: "")
+        case .virtualDataRoom:
+            return NSLocalizedString("Virtual data room", comment: "Rooms filter")
         }
     }
 }

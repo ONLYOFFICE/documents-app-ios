@@ -491,6 +491,9 @@ private extension ManageRoomViewModel {
                 ownerToChange: newRoomOwner,
                 tagsToAdd: Array(tags.subtracting(room.tags ?? [])),
                 tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags))
+                tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags)),
+                isAutomaticIndexing: isAutomaticIndexing,
+                isRestrictContentCopy: isRestrictContentCopy,
             )
         ) { [weak self] result in
             switch result {

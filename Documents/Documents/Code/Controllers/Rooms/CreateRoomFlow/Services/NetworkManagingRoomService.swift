@@ -36,6 +36,7 @@ struct EditRoomModel {
     var tagsToAdd: [String]
     var tagsToDelete: [String]
     var isAutomaticIndexing: Bool = false
+    var isRestrictContentCopy: Bool = false
 }
 
 class NetworkManagingRoomServiceImp: ManagingRoomService {
@@ -102,9 +103,9 @@ extension NetworkManagingRoomServiceImp {
             roomType: roomType,
             title: name,
             createAsNewFolder: false,
-            denyDownload: false, // TODO: docspace 3.0
             lifetime: nil // TODO: docspace 3.0
             indexing: indexing,
+            denyDownload: denyDownload,
         )
         networkService.request(
             OnlyofficeAPI.Endpoints.Rooms.update(folder: room),

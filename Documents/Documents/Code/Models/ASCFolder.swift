@@ -43,6 +43,7 @@ class ASCFolder: ASCEntity {
     var logo: ASCFolderLogo?
     var tags: [String]?
     var security: ASCFolderSecurity = .init()
+    var indexing: Bool = false
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -84,6 +85,7 @@ class ASCFolder: ASCEntity {
         tags <- map["tags"]
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]
+        indexing <- map["indexing"]
         // Internal
         device <- map["device"]
     }

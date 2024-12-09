@@ -224,6 +224,14 @@ class ManageRoomViewModel: ObservableObject {
             roomOwnerName = editingRoom.createdBy?.displayName ?? ""
             ignoreUserId = editingRoom.createdBy?.userId
             tags = Set(editingRoom.tags ?? [])
+            isAutomaticIndexing = editingRoom.indexing
+            isRestrictContentCopy = editingRoom.denyDownload
+            isFileLifetimeEnabled = editingRoom.lifetime != nil
+            fileAge = editingRoom.lifetime?.value ?? fileAge
+            selectedTemePeriod = FilesTimePeriod(
+                rawValue: editingRoom.lifetime?.period ?? selectedTemePeriod.rawValue
+            ) ?? selectedTemePeriod
+            actionOnFiles = editingRoom.lifetime?.deletePermanently == true ? .remove : .trash
         } else {
             self.roomName = roomName
         }

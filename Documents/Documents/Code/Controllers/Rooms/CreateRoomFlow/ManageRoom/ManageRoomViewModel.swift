@@ -32,12 +32,12 @@ class ManageRoomViewModel: ObservableObject {
 
     // MARK: Published Virtual data room only vars
 
-    // File lifetime
     @Published var isAutomaticIndexing: Bool = false
+    
+    // File lifetime
     @Published var isFileLifetimeEnabled: Bool = false
     @Published var fileAge = 12
     @Published var selectedTemePeriod: FilesTimePeriod = .days
-
     @Published var actionOnFiles: ActionOnFile = .trash
 
     @Published var isRestrictContentCopy: Bool = false
@@ -490,10 +490,10 @@ private extension ManageRoomViewModel {
                 image: selectedImage,
                 ownerToChange: newRoomOwner,
                 tagsToAdd: Array(tags.subtracting(room.tags ?? [])),
-                tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags))
                 tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags)),
                 isAutomaticIndexing: isAutomaticIndexing,
                 isRestrictContentCopy: isRestrictContentCopy,
+                fileLifetime: makeFileLifetimeModel()
             )
         ) { [weak self] result in
             switch result {

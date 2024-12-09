@@ -45,6 +45,7 @@ class ASCFolder: ASCEntity {
     var security: ASCFolderSecurity = .init()
     var indexing: Bool = false
     var denyDownload: Bool = false
+    var lifetime: LifeTime?
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -88,6 +89,7 @@ class ASCFolder: ASCEntity {
         security <- map["security"]
         indexing <- map["indexing"]
         denyDownload <- map["denyDownload"]
+        lifetime <- map["lifetime"]
         // Internal
         device <- map["device"]
     }
@@ -120,6 +122,28 @@ class ASCFolder: ASCEntity {
         }
 
         return folder
+    }
+}
+
+// MARK: - Subtypes
+
+extension ASCFolder {
+    
+    final class LifeTime: Mappable {
+
+        var deletePermanently: Bool = false
+        var period: Int?
+        var value: Int?
+        
+        init?(map: ObjectMapper.Map) { }
+        
+        init() {}
+        
+        func mapping(map: ObjectMapper.Map) {
+            deletePermanently <- map["deletePermanently"]
+            period <- map["period"]
+            value <- map["value"]
+        }
     }
 }
 

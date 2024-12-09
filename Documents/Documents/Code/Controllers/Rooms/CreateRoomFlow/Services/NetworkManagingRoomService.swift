@@ -37,6 +37,7 @@ struct EditRoomModel {
     var tagsToDelete: [String]
     var isAutomaticIndexing: Bool = false
     var isRestrictContentCopy: Bool = false
+    var fileLifetime: CreateRoomRequestModel.FileLifetime?
 }
 
 class NetworkManagingRoomServiceImp: ManagingRoomService {
@@ -69,7 +70,14 @@ class NetworkManagingRoomServiceImp: ManagingRoomService {
 
 extension NetworkManagingRoomServiceImp {
     func editRoom(model: EditRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
-        updateRoom(room: model.room, name: model.name, roomType: model.roomType.rawValue) { [self] result in
+        updateRoom(
+            room: model.room,
+            name: model.name,
+            roomType: model.roomType.rawValue,
+            indexing: model.isAutomaticIndexing,
+            denyDownload: model.isRestrictContentCopy,
+            lifetime: model.fileLifetime
+        ) { [self] result in
             switch result {
             case let .success(room):
                 let group = DispatchGroup()
@@ -94,7 +102,15 @@ extension NetworkManagingRoomServiceImp {
         }
     }
 
-    private func updateRoom(room: ASCRoom, name: String, roomType: Int, completion: @escaping (Result<ASCRoom, Error>) -> Void) {
+    private func updateRoom(
+        room: ASCRoom,
+        name: String,
+        roomType: Int,
+        indexing: Bool,
+        denyDownload: Bool,
+        lifetime: CreateRoomRequestModel.FileLifetime?,
+        completion: @escaping (Result<ASCRoom, Error>) -> Void
+    ) {
         guard room.title != name else {
             completion(.success(room))
             return
@@ -103,9 +119,9 @@ extension NetworkManagingRoomServiceImp {
             roomType: roomType,
             title: name,
             createAsNewFolder: false,
-            lifetime: nil // TODO: docspace 3.0
             indexing: indexing,
             denyDownload: denyDownload,
+            lifetime: lifetime
         )
         networkService.request(
             OnlyofficeAPI.Endpoints.Rooms.update(folder: room),

@@ -232,6 +232,11 @@ class ManageRoomViewModel: ObservableObject {
                 rawValue: editingRoom.lifetime?.period ?? selectedTemePeriod.rawValue
             ) ?? selectedTemePeriod
             actionOnFiles = editingRoom.lifetime?.deletePermanently == true ? .remove : .trash
+                    if let additions = watermark.additions {
+                        for selectedElement in WatermarkElement.selectedElements(from: additions) {
+                            selectedWatermarkElements.insert(selectedElement)
+                        }
+                    }
         } else {
             self.roomName = roomName
         }
@@ -783,6 +788,14 @@ private extension ManageRoomViewModel.SizeUnit {
             return value * pow(1024, 3)
         case .tb:
             return value * pow(1024, 4)
+        }
+    }
+}
+
+extension ManageRoomViewModel.WatermarkElement {
+    static func selectedElements(from value: Int) -> [ManageRoomViewModel.WatermarkElement] {
+        ManageRoomViewModel.WatermarkElement.allCases.filter { element in
+            (value & element.rawValue) != 0
         }
     }
 }

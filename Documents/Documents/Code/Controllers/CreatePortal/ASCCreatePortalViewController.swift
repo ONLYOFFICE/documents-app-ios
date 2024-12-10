@@ -9,6 +9,7 @@
 import Alamofire
 import Firebase
 import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 import MBProgressHUD
 import PhoneNumberKit
 import ReCaptcha
@@ -23,7 +24,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     var isInfoPortal = false
 
     fileprivate let infoPortalSuffix = ".teamlab.info"
-    fileprivate let phoneNumberKit = PhoneNumberKit()
+    fileprivate let phoneNumberUtility = PhoneNumberUtility()
 
     fileprivate lazy var phoneCodeLabel: UILabel = {
         $0.textStyle = .underlineField
@@ -90,7 +91,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         if let region = Locale.current.regionCode {
             countryButton?.setAttributedTitle(flagTitleButton(by: region), for: .normal)
 
-            if let code = phoneNumberKit.countryCode(for: region) {
+            if let code = phoneNumberUtility.countryCode(for: region) {
                 phoneCodeLabel.text = "+\(code) "
                 phoneNumberField?.leftView = phoneCodeLabel
                 phoneNumberField?.leftViewMode = .always
@@ -132,18 +133,16 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
-        IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIStackView.self, UIView.self]
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.useTextInputViewTintColor = true
+        IQKeyboardToolbarManager.shared.deepResponderAllowedContainerClasses = [UIStackView.self, UIView.self]
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,7 +195,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     }
 
     private func phonePlaceholder(for region: String) -> String? {
-        phoneNumberKit
+        phoneNumberUtility
             .getFormattedExampleNumber(forCountry: region, ofType: .mobile, withFormat: .international, withPrefix: false)?
             .replacingOccurrences(of: "\\d", with: "0", options: .regularExpression)
     }
@@ -324,10 +323,10 @@ class ASCCreatePortalViewController: ASCBaseViewController {
            let phonenumberText = phoneNumberField.text?.trimmed,
            let stringCode = phoneCodeLabel.text?.trimmed.replacingOccurrences(of: "+", with: ""),
            let intCode = UInt64(stringCode),
-           let regionCode = phoneNumberKit.mainCountry(forCode: intCode)
+           let regionCode = phoneNumberUtility.mainCountry(forCode: intCode)
         {
             do {
-                phoneNumber = try phoneNumberKit.parse("\(phoneCodeText)\(phonenumberText)", withRegion: regionCode)
+                phoneNumber = try phoneNumberUtility.parse("\(phoneCodeText)\(phonenumberText)", withRegion: regionCode)
                 isValidNumber = true
             } catch {
                 log.error(error)
@@ -344,7 +343,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
             return
         }
 
-        let phoneNumberE164 = phoneNumberKit.format(phoneNumber, toType: .e164)
+        let phoneNumberE164 = phoneNumberUtility.format(phoneNumber, toType: .e164)
 
         // Validate portal name
 
@@ -404,7 +403,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                     switch status {
                     case .successReadyToRegister:
                         let portalViewController = StoryboardScene.CreatePortal.createPortalStepTwoController.instantiate()
-                        IQKeyboardManager.shared.enable = false
+                        IQKeyboardManager.shared.isEnabled = false
 
                         let createPortalInfo = ASCCreatePortal()
                         createPortalInfo.portalName = portalName

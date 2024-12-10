@@ -30,7 +30,9 @@ class ASCViewControllerManager {
     var rootController: ASCRootViewController? {
         didSet {
             if oldValue == nil {
-                initializeControllers()
+                Task { @MainActor [weak self] in
+                    self?.initializeControllers()
+                }
             }
         }
     }
@@ -51,6 +53,7 @@ class ASCViewControllerManager {
         }
     }
 
+    @MainActor
     func initializeControllers() {
         ASCConstants.SettingsKeys.setupDefaults()
         ASCConstants.RemoteSettingsKeys.setupDefaults()
@@ -144,6 +147,7 @@ class ASCViewControllerManager {
 
     // MARK: - Private
 
+    @MainActor
     private func configureRater() {
         SwiftRater.daysUntilPrompt = 1
         SwiftRater.usesUntilPrompt = 2

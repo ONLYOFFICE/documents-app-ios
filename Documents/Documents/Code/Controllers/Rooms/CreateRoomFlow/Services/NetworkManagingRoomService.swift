@@ -38,6 +38,9 @@ struct EditRoomModel {
     var isAutomaticIndexing: Bool = false
     var isRestrictContentCopy: Bool = false
     var fileLifetime: CreateRoomRequestModel.FileLifetime?
+    var watermark: CreateRoomRequestModel.Watermark?
+    var watermarkImage: UIImage?
+    var watermarkImageWasChanged: Bool = false
 }
 
 class NetworkManagingRoomServiceImp: ManagingRoomService {
@@ -76,7 +79,10 @@ extension NetworkManagingRoomServiceImp {
             roomType: model.roomType.rawValue,
             indexing: model.isAutomaticIndexing,
             denyDownload: model.isRestrictContentCopy,
-            lifetime: model.fileLifetime
+            lifetime: model.fileLifetime,
+            watermark: model.watermark,
+            watermarkImage: model.watermarkImage,
+            watermarkImageWasChanged: model.watermarkImageWasChanged
         ) { [self] result in
             switch result {
             case let .success(room):
@@ -109,33 +115,54 @@ extension NetworkManagingRoomServiceImp {
         indexing: Bool,
         denyDownload: Bool,
         lifetime: CreateRoomRequestModel.FileLifetime?,
+        watermark: CreateRoomRequestModel.Watermark?,
+        watermarkImage: UIImage?,
+        watermarkImageWasChanged: Bool,
         completion: @escaping (Result<ASCRoom, Error>) -> Void
     ) {
-        guard room.title != name else {
-            completion(.success(room))
-            return
-        }
-        let requestModel = CreateRoomRequestModel(
+        var requestModel = CreateRoomRequestModel(
             roomType: roomType,
             title: name,
             createAsNewFolder: false,
             indexing: indexing,
             denyDownload: denyDownload,
-            lifetime: lifetime
+            lifetime: lifetime,
+            watermark: watermark
         )
-        networkService.request(
-            OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
-            requestModel.dictionary
-        ) { response, error in
-            guard let room = response?.result else {
-                if let error {
-                    completion(.failure(error))
-                } else {
-                    completion(.failure(CreatingRoomServiceError.unableGetImageData))
+        let roomUpdater: (CreateRoomRequestModel) -> Void = { requestModel in
+            self.networkService.request(
+                OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
+                requestModel.dictionary
+            ) { response, error in
+                guard let room = response?.result else {
+                    if let error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.failure(CreatingRoomServiceError.unableGetImageData))
+                    }
+                    return
                 }
-                return
+                completion(.success(room))
             }
-            completion(.success(room))
+        }
+
+        if let watermarkImage = watermarkImage, watermark != nil, watermarkImageWasChanged {
+            uploadImage(image: watermarkImage, fileName: "watermark") { uploadResult in
+                switch uploadResult {
+                case let .success(logoMetaData):
+                    var watermark = requestModel.watermark
+                    watermark?.imageHeight = Int(watermarkImage.size.height)
+                    watermark?.imageWidth = Int(watermarkImage.size.width)
+                    watermark?.imageUrl = logoMetaData.tmpFileUrl
+                    requestModel.watermark = watermark
+                    roomUpdater(requestModel)
+                case let .failure(error):
+                    log.error(error.localizedDescription)
+                    roomUpdater(requestModel)
+                }
+            }
+        } else {
+            roomUpdater(requestModel)
         }
     }
 

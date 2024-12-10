@@ -145,6 +145,30 @@ extension ASCFolder {
             value <- map["value"]
         }
     }
+
+    final class Watermark: Mappable {
+        var additions: Int?
+        var rotate: Int?
+        var text: String?
+        var imageScale: Int?
+        var imageUrl: String?
+        var imageHeight: Int?
+        var imageWidth: Int?
+
+        init?(map: ObjectMapper.Map) {}
+
+        init() {}
+
+        func mapping(map: ObjectMapper.Map) {
+            additions <- map["additions"]
+            rotate <- map["rotate"]
+            text <- map["text"]
+            imageScale <- map["imageScale"]
+            imageUrl <- map["imageUrl"]
+            imageHeight <- map["imageHeight"]
+            imageWidth <- map["imageWidth"]
+        }
+    }
 }
 
 extension ASCFolder {

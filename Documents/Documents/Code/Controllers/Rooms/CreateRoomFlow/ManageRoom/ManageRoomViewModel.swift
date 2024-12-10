@@ -33,7 +33,7 @@ class ManageRoomViewModel: ObservableObject {
     // MARK: Published Virtual data room only vars
 
     @Published var isAutomaticIndexing: Bool = false
-    
+
     // File lifetime
     @Published var isFileLifetimeEnabled: Bool = false
     @Published var fileAge = 12
@@ -200,6 +200,7 @@ class ManageRoomViewModel: ObservableObject {
     private var selectedLocationPath: String = ""
     private var cancelable = Set<AnyCancellable>()
     private var roomQuota: ASCPaymentQuotaSettings?
+    private var watermarkImageWasChanged: Bool = false
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
@@ -232,11 +233,50 @@ class ManageRoomViewModel: ObservableObject {
                 rawValue: editingRoom.lifetime?.period ?? selectedTemePeriod.rawValue
             ) ?? selectedTemePeriod
             actionOnFiles = editingRoom.lifetime?.deletePermanently == true ? .remove : .trash
+            if let watermark = editingRoom.watermark {
+                isWatermarkEnabled = true
+                if let watermarkImageUrl = watermark.imageUrl {
+                    selectedWatermarkType = .image
+                    watermarkImage = {
+                        guard let url = URL(string: watermarkImageUrl),
+                              let image = UIImage(url: url)
+                        else { return watermarkImage }
+                        return image
+                    }()
+                    selectedWatermarkPosition = {
+                        guard let rotate = watermark.rotate,
+                              let position = WatermarkPosition(rawValue: rotate)
+                        else { return selectedWatermarkPosition }
+                        return position
+                    }()
+                    selectedWatermarkImageScale = {
+                        guard let scaleValue = watermark.imageScale,
+                              let imageScale = WatermarkImageScale(rawValue: Double(scaleValue))
+                        else { return selectedWatermarkImageScale }
+                        return imageScale
+                    }()
+                    selectedWatermarkImageRotationAngle = {
+                        guard let angleValue = watermark.rotate,
+                              let rotationAngle = WatermarkImageRotationAngle(rawValue: Double(angleValue))
+                        else { return selectedWatermarkImageRotationAngle }
+                        return rotationAngle
+                    }()
+                } else {
+                    selectedWatermarkType = .viewerInfo
                     if let additions = watermark.additions {
                         for selectedElement in WatermarkElement.selectedElements(from: additions) {
                             selectedWatermarkElements.insert(selectedElement)
                         }
                     }
+                    watermarkStaticText = {
+                        guard let text = watermark.text else {
+                            return watermarkStaticText
+                        }
+                        return text
+                    }()
+                }
+            }
+
         } else {
             self.roomName = roomName
         }
@@ -368,11 +408,13 @@ extension ManageRoomViewModel {
     func didTapWatermarkImage() {
         imageFromLibraryAction { [weak self] in
             self?.watermarkImage = $0
+            self?.watermarkImageWasChanged = true
         }
     }
 
     func didTapRemoveWatemarkImage() {
         watermarkImage = nil
+        editingRoom?.watermark?.imageUrl = nil
     }
 }
 
@@ -420,7 +462,7 @@ private extension ManageRoomViewModel {
                 isAutomaticIndexing: isAutomaticIndexing,
                 isRestrictContentCopy: isRestrictContentCopy,
                 fileLifetime: makeFileLifetimeModel(),
-                watermark: markWatermarkRequestModel(),
+                watermark: makeWatermarkRequestModel(),
                 watermarkImage: selectedWatermarkType == .image ? watermarkImage : nil
             )
         ) { [weak self] result in
@@ -447,7 +489,7 @@ private extension ManageRoomViewModel {
         )
     }
 
-    func markWatermarkRequestModel() -> CreateRoomRequestModel.Watermark? {
+    func makeWatermarkRequestModel() -> CreateRoomRequestModel.Watermark? {
         guard isWatermarkEnabled else { return nil }
         if selectedWatermarkType == .viewerInfo {
             return CreateRoomRequestModel.Watermark(
@@ -457,8 +499,11 @@ private extension ManageRoomViewModel {
             )
         } else if selectedWatermarkType == .image {
             return CreateRoomRequestModel.Watermark(
-                rotate: selectedWatermarkPosition.rawValue,
-                imageScale: Int(selectedWatermarkImageScale.rawValue)
+                rotate: Int(selectedWatermarkImageRotationAngle.rawValue),
+                imageScale: Int(selectedWatermarkImageScale.rawValue),
+                imageUrl: editingRoom?.watermark?.imageUrl,
+                imageWidth: editingRoom?.watermark?.imageWidth,
+                imageHeight: editingRoom?.watermark?.imageHeight
             )
         }
         return nil
@@ -498,7 +543,10 @@ private extension ManageRoomViewModel {
                 tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags)),
                 isAutomaticIndexing: isAutomaticIndexing,
                 isRestrictContentCopy: isRestrictContentCopy,
-                fileLifetime: makeFileLifetimeModel()
+                fileLifetime: makeFileLifetimeModel(),
+                watermark: makeWatermarkRequestModel(),
+                watermarkImage: watermarkImage,
+                watermarkImageWasChanged: watermarkImageWasChanged
             )
         ) { [weak self] result in
             switch result {

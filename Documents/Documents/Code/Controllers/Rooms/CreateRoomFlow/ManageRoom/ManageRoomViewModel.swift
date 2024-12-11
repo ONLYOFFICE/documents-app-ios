@@ -562,7 +562,7 @@ private extension ManageRoomViewModel {
     // MARK: Room image
 
     func makeImageMenuItems() -> [MenuViewItem] {
-        [
+        var menu: [MenuViewItem] = [
             .init(
                 text: NSLocalizedString("Photo Library", comment: ""),
                 systemImageName: "photo",
@@ -575,6 +575,18 @@ private extension ManageRoomViewModel {
             .init(text: NSLocalizedString("Take Photo", comment: ""), systemImageName: "camera", action: imageFromCameraAction),
             .init(text: NSLocalizedString("Choose Files", comment: ""), systemImageName: "folder", action: imageFromFilesAction),
         ]
+        if selectedImage != nil || editingRoom?.logo?.small != nil {
+            menu.append(.init(
+                text: NSLocalizedString("Remove", comment: ""),
+                systemImageName: "trash",
+                color: .red,
+                action: { [unowned self] in
+                    selectedImage = nil
+                    editingRoom?.logo?.small = nil
+                }
+            ))
+        }
+        return menu
     }
 
     func imageFromLibraryAction(completion: @escaping (UIImage?) -> Void) {

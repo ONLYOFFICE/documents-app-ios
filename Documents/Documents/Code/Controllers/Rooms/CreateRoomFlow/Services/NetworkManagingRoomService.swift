@@ -321,7 +321,11 @@ extension NetworkManagingRoomServiceImp {
 
     private func uploadAndAttachImage(image: UIImage?, room: ASCFolder, completion: @escaping () -> Void) {
         guard let image else {
-            completion()
+            if room.logo != nil {
+                removeLogo(room: room, completion: completion)
+            } else {
+                completion()
+            }
             return
         }
         uploadImage(image: image, fileName: room.title) { result in
@@ -368,6 +372,15 @@ extension NetworkManagingRoomServiceImp {
         let requestModel = AttachLogoRequestModel(tmpFile: logo.tmpFileUrl, width: imageSize.width, height: imageSize.height)
 
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), requestModel.dictionary) { result, _ in
+            if let folder = result?.result {
+                room.logo = folder.logo
+            }
+            completion()
+        }
+    }
+
+    private func removeLogo(room: ASCFolder, completion: @escaping () -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.deleteLogo(folder: room)) { result, _ in
             if let folder = result?.result {
                 room.logo = folder.logo
             }

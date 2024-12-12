@@ -302,6 +302,22 @@ private extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+
+    func alertSaveWithoutWatermark(isPresented: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        alert(isPresented: isPresented) {
+            Alert(
+                title: Text(NSLocalizedString("Warning", comment: "")),
+                message: Text(NSLocalizedString("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?", comment: "")),
+                primaryButton: .default(
+                    Text(NSLocalizedString("Continue", comment: "")),
+                    action: {
+                        viewModel.didPrimaryActionTappedOnNoWatermarkAlert()
+                    }
+                ),
+                secondaryButton: .cancel()
+            )
+        }
+    }
 }
 
 #Preview {

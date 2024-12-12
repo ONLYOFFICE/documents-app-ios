@@ -53,6 +53,10 @@ struct ManageRoomView: View {
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
+        .alertSaveWithoutWatermark(
+            isPresented: $viewModel.isNoWatermarkAlertPresented,
+            viewModel: viewModel
+        )
     }
 
     // MARK: - All rooms sections

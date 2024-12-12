@@ -32,6 +32,8 @@ class ManageRoomViewModel: ObservableObject {
 
     // MARK: Published Virtual data room only vars
 
+    @Published var isNoWatermarkAlertPresented: Bool = false
+
     @Published var isAutomaticIndexing: Bool = false
 
     // File lifetime
@@ -314,7 +316,16 @@ class ManageRoomViewModel: ObservableObject {
 
     // MARK: - Public func
 
-    func save() {
+    func save(ignoreNoWatermark: Bool = false) {
+        guard ignoreNoWatermark
+            || selectedRoomType.type != .virtualData
+            || selectedWatermarkType != .image
+            || watermarkImage != nil
+        else {
+            isNoWatermarkAlertPresented = true
+            return
+        }
+
         isSaving = true
         if isEditMode {
             updateRoom()
@@ -415,6 +426,10 @@ extension ManageRoomViewModel {
     func didTapRemoveWatemarkImage() {
         watermarkImage = nil
         editingRoom?.watermark?.imageUrl = nil
+    }
+
+    func didPrimaryActionTappedOnNoWatermarkAlert() {
+        save(ignoreNoWatermark: true)
     }
 }
 

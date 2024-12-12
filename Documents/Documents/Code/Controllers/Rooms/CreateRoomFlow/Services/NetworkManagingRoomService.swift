@@ -91,9 +91,16 @@ extension NetworkManagingRoomServiceImp {
                 self.editAndAttachTags(tagsToAdd: model.tagsToAdd, tagsToDelete: model.tagsToDelete, room: room) {
                     group.leave()
                 }
-                group.enter()
-                self.uploadAndAttachImage(image: model.image, room: room) {
-                    group.leave()
+                if let image = model.image {
+                    group.enter()
+                    self.uploadAndAttachImage(image: model.image, room: room) {
+                        group.leave()
+                    }
+                } else if room.logo != nil {
+                    group.enter()
+                    self.removeLogo(room: room) {
+                        group.leave()
+                    }
                 }
                 group.enter()
                 self.changeOwner(newOwner: model.ownerToChange, room: room) {
@@ -321,11 +328,7 @@ extension NetworkManagingRoomServiceImp {
 
     private func uploadAndAttachImage(image: UIImage?, room: ASCFolder, completion: @escaping () -> Void) {
         guard let image else {
-            if room.logo != nil {
-                removeLogo(room: room, completion: completion)
-            } else {
-                completion()
-            }
+            completion()
             return
         }
         uploadImage(image: image, fileName: room.title) { result in

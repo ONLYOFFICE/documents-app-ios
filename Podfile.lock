@@ -250,7 +250,7 @@ PODS:
     - SwiftMessages/App (= 10.0.1)
   - SwiftMessages/App (10.0.1)
   - SwiftRater (2.2.2)
-  - SwiftyDropbox (10.1.0)
+  - SwiftyDropbox (10.2.0)
   - SwiftyJSON (5.0.2)
   - SwiftyXMLParser (5.6.0)
   - UICircularProgressRing (8.0.0)
@@ -423,13 +423,13 @@ SPEC CHECKSUMS:
   KeychainSwift: 007c4647486e4563adca839cf02cef00deb3b670
   Kingfisher: dc989619594e24713c83e5a98f89f08850e0c529
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MediaBrowser: 6d830e6aff5446dbe8d002738abf4daa498e2ae7
+  MediaBrowser: bc16eb49bcfe679a8cf644468e5934f9d50381be
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   ObjectMapper: e6e4d91ff7f2861df7aecc536c92d8363f4c9677
   PhoneNumberKit: a74155066daa6450475f6a029068eb919fb00d5d
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
-  ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
+  ReCaptcha: 3f788ff72c2492666d77c536b332c1be74b0a878
   SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
   Siren: c0f6012f61196b73455202db07730f6454a4beb0
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
@@ -437,7 +437,7 @@ SPEC CHECKSUMS:
   SwiftGen: 4993cbf71cbc4886f775e26f8d5c3a1188ec9f99
   SwiftMessages: 759b4a0bf5c3a116a0d7e8a34b098ba83c458625
   SwiftRater: 891481e181a04d94be88867874fae3c9a08505b2
-  SwiftyDropbox: a023f55cb1bd8a81bb48c33eea529cd71faf8e29
+  SwiftyDropbox: e18dd068602b5e51252d0a61aad32b41946d0bf1
   SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
   SwiftyXMLParser: 9b98995235961881322015ebe38d1f3d7c953bd7
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16

@@ -20,6 +20,7 @@ class ASCFile: ASCEntity {
     var access: ASCEntityAccess = .none
     var shared: Bool = false
     var rootFolderType: ASCFolderType = .unknown
+    var expired: Date?
     var updated: Date?
     var updatedBy: ASCUser?
     var created: Date?
@@ -99,6 +100,7 @@ class ASCFile: ASCEntity {
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())
+        expired <- (map["expired"], ASCDateTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]
         created <- (map["created"], ASCDateTransform())

@@ -291,7 +291,7 @@ private extension View {
 // MARK: Constants
 
 private extension CGFloat {
-    static let imageSideSize: CGFloat = 48
+    static let imageSideSize: CGFloat = 36
     static let imageCornerRadious: CGFloat = 8
 }
 

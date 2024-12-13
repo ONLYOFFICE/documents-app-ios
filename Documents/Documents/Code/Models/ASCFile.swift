@@ -115,3 +115,15 @@ class ASCFile: ASCEntity {
         device <- map["device"]
     }
 }
+
+extension ASCFile {
+    
+    var isExpiredSoon: Bool {
+        guard let created, let expired, expired > created else { return false }
+        
+        let totalDuration = expired.timeIntervalSince(created)
+        let timePassed = Date().timeIntervalSince(created)
+
+        return timePassed >= totalDuration * 0.9
+    }
+}

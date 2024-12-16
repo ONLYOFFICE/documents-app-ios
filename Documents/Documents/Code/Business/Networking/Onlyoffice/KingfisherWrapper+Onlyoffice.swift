@@ -9,16 +9,15 @@
 import Kingfisher
 
 public extension KingfisherWrapper where Base: KFCrossPlatformImageView {
+    @MainActor
     @discardableResult
     func apiSetImage(
         with resource: Resource?,
         placeholder: Placeholder? = nil,
         options: KingfisherOptionsInfo? = nil,
         progressBlock: DownloadProgressBlock? = nil,
-        completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil
+        completionHandler: (@MainActor @Sendable (Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil
     ) -> DownloadTask? {
-//        guard let apiClient = ASCFileManager.onlyofficeProvider?.apiClient else { return nil }
-
         let modifier = AnyModifier { request in
             var apiRequest = request
 

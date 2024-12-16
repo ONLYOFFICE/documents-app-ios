@@ -562,7 +562,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func add(entity: Any, open: Bool = true) {
         guard let provider else { return }
 
-        if let file = entity as? ASCFile {
+        if var file = entity as? ASCFile {
+            file.parent = file.parent ?? folder
+
             provider.add(item: file, at: 0)
 
             provider.updateSort { provider, currentFolder, success, error in

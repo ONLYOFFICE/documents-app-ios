@@ -169,6 +169,17 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             }(UIImageView(image: badgeNewImage)))
         }
 
+        if file.isExpiredSoon {
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(UIImageView(
+                image: UIImage(
+                    named: "clock-cirlce-arrow"
+                ) ?? UIImage()
+            )))
+        }
+
         items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
 
         return {

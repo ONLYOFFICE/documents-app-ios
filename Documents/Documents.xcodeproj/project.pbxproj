@@ -86,6 +86,16 @@
 		E87CCAE92C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */; };
 		E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
+		E8CD62002D107F2600DF3440 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */; };
+		E8CD62012D107F2600DF3440 /* ToggleButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */; };
+		E8CD620A2D1080AE00DF3440 /* AutomaticIndexationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62022D1080AE00DF3440 /* AutomaticIndexationSection.swift */; };
+		E8CD620B2D1080AE00DF3440 /* ThirdPartySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62062D1080AE00DF3440 /* ThirdPartySection.swift */; };
+		E8CD620C2D1080AE00DF3440 /* FileLifetimeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62032D1080AE00DF3440 /* FileLifetimeSection.swift */; };
+		E8CD620D2D1080AE00DF3440 /* WatermarkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62082D1080AE00DF3440 /* WatermarkSection.swift */; };
+		E8CD620E2D1080AE00DF3440 /* WatermarkImageEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62072D1080AE00DF3440 /* WatermarkImageEditorView.swift */; };
+		E8CD620F2D1080AE00DF3440 /* StorageQuotaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62052D1080AE00DF3440 /* StorageQuotaSection.swift */; };
+		E8CD62102D1080AE00DF3440 /* RestrictContentCopySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62042D1080AE00DF3440 /* RestrictContentCopySection.swift */; };
+		E8CD62122D1080E700DF3440 /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62112D1080E700DF3440 /* RoomQuotaNetworkService.swift */; };
 		E8DE98372C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */; };
 		E8DE98392C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */; };
 		E8DE983B2C459617007401EF /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE983A2C459617007401EF /* ChevronRightView.swift */; };
@@ -719,6 +729,16 @@
 		E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreenRepresentable.swift; sourceTree = "<group>"; };
 		E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationLinkDateService.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonCollectionView.swift; sourceTree = "<group>"; };
+		E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
+		E8CD62022D1080AE00DF3440 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
+		E8CD62032D1080AE00DF3440 /* FileLifetimeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLifetimeSection.swift; sourceTree = "<group>"; };
+		E8CD62042D1080AE00DF3440 /* RestrictContentCopySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictContentCopySection.swift; sourceTree = "<group>"; };
+		E8CD62052D1080AE00DF3440 /* StorageQuotaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageQuotaSection.swift; sourceTree = "<group>"; };
+		E8CD62062D1080AE00DF3440 /* ThirdPartySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartySection.swift; sourceTree = "<group>"; };
+		E8CD62072D1080AE00DF3440 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
+		E8CD62082D1080AE00DF3440 /* WatermarkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkSection.swift; sourceTree = "<group>"; };
+		E8CD62112D1080E700DF3440 /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
 		E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
 		E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E8DE983A2C459617007401EF /* ChevronRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
@@ -1903,6 +1923,20 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		E8CD62092D1080AE00DF3440 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				E8CD62022D1080AE00DF3440 /* AutomaticIndexationSection.swift */,
+				E8CD62032D1080AE00DF3440 /* FileLifetimeSection.swift */,
+				E8CD62042D1080AE00DF3440 /* RestrictContentCopySection.swift */,
+				E8CD62052D1080AE00DF3440 /* StorageQuotaSection.swift */,
+				E8CD62062D1080AE00DF3440 /* ThirdPartySection.swift */,
+				E8CD62072D1080AE00DF3440 /* WatermarkImageEditorView.swift */,
+				E8CD62082D1080AE00DF3440 /* WatermarkSection.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		F30BCE362C9B6FCB00900E07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -2641,6 +2675,7 @@
 		FC759BF92C00614D00510096 /* ManageRoom */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD62092D1080AE00DF3440 /* Subviews */,
 				FC759BF72C00614D00510096 /* ManageRoomView.swift */,
 				FC759BF82C00614D00510096 /* ManageRoomViewModel.swift */,
 			);
@@ -2658,6 +2693,7 @@
 		FC759BFD2C00614D00510096 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD62112D1080E700DF3440 /* RoomQuotaNetworkService.swift */,
 				FC759BFC2C00614D00510096 /* NetworkManagingRoomService.swift */,
 			);
 			path = Services;
@@ -3489,6 +3525,8 @@
 		FCE9F6DA2B2B56A30056E420 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */,
+				E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */,
 				FCE9F6DC2B2B56A30056E420 /* Representable */,
 				FCE9F6DB2B2B56A30056E420 /* TagsFieldView.swift */,
 				FCE9F6DF2B2B56A30056E420 /* ActivityIndicatorView.swift */,
@@ -4240,6 +4278,13 @@
 				FCE993622B766D18009A0CC8 /* ASCOformPdfChecker.swift in Sources */,
 				1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,
+				E8CD620A2D1080AE00DF3440 /* AutomaticIndexationSection.swift in Sources */,
+				E8CD620B2D1080AE00DF3440 /* ThirdPartySection.swift in Sources */,
+				E8CD620C2D1080AE00DF3440 /* FileLifetimeSection.swift in Sources */,
+				E8CD620D2D1080AE00DF3440 /* WatermarkSection.swift in Sources */,
+				E8CD620E2D1080AE00DF3440 /* WatermarkImageEditorView.swift in Sources */,
+				E8CD620F2D1080AE00DF3440 /* StorageQuotaSection.swift in Sources */,
+				E8CD62102D1080AE00DF3440 /* RestrictContentCopySection.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
 				FC759C9E2C00615E00510096 /* ASCSharingChooseNewOwnerRightHoldersView.swift in Sources */,
 				FCF694C92632C9A600808644 /* ASCButtonStyle.swift in Sources */,
@@ -4260,6 +4305,7 @@
 				FC5943652AE6816E001BA2F9 /* ASCEditorManagerOptions.swift in Sources */,
 				FC35D4662A987DFC00C6383F /* CALayer+Animate.swift in Sources */,
 				1DD2FF21275A9EB000676010 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
+				E8CD62122D1080E700DF3440 /* RoomQuotaNetworkService.swift in Sources */,
 				FC759C972C00615E00510096 /* ASCSharingSettingsAccessViewController.swift in Sources */,
 				1D667A3528CE1E46009BD85D /* ASCOnlyofficeCategoriesGrouper.swift in Sources */,
 				FC35D4422A987DFB00C6383F /* Path+Extension.swift in Sources */,
@@ -4494,6 +4540,8 @@
 				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				FC759C332C00614D00510096 /* RoomSharingCustomizeLinkView.swift in Sources */,
 				FC4639D32BFE115700DA603A /* NavigationBarExtendPanelContentViewProtocol.swift in Sources */,
+				E8CD62002D107F2600DF3440 /* ToggleButtonView.swift in Sources */,
+				E8CD62012D107F2600DF3440 /* ToggleButtonCollectionView.swift in Sources */,
 				FC9EEFA62BFB201700A66DE8 /* RoomLinksRequestModels.swift in Sources */,
 				FCCE50AF2C1AF79000102056 /* ASCDocSpaceLinkLifeTimeView.swift in Sources */,
 				FC68526F26837B7300D830EC /* NextcloudDataResult.swift in Sources */,

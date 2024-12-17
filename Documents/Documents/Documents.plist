@@ -237,12 +237,12 @@
 			</array>
 		</dict>
 		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>pages</string>
 			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Apple Pages format (.pages)</string>
 			<key>LSHandlerRank</key>
@@ -253,12 +253,12 @@
 			</array>
 		</dict>
 		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>numbers</string>
 			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Apple Numbers format (.numbers)</string>
 			<key>LSHandlerRank</key>
@@ -269,12 +269,12 @@
 			</array>
 		</dict>
 		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>key</string>
 			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Apple Keynote format (.key)</string>
 			<key>LSHandlerRank</key>
@@ -341,7 +341,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1044</string>
+	<string>1045</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>

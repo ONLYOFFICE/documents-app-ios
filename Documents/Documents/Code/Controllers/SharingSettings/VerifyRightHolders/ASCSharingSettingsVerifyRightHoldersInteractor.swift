@@ -22,7 +22,7 @@ protocol ASCSharingSettingsVerifyRightHoldersDataStore: AnyObject {
     var itemsForSharingRemove: [OnlyofficeShare] { get set }
     var itemsForSharedAccessChange: [OnlyofficeShare] { get }
 
-    func clearData() -> Void
+    func clearData()
 }
 
 class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRightHoldersBusinessLogic, ASCSharingSettingsVerifyRightHoldersDataStore {

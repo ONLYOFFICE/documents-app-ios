@@ -9,7 +9,6 @@
 import Kingfisher
 
 public extension KingfisherWrapper where Base: KFCrossPlatformImageView {
-    
     @MainActor
     @discardableResult
     func setProviderImage(

@@ -158,8 +158,6 @@
 		FC4293B9294A684A00DC3932 /* graphics.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC429399294A673300DC3932 /* graphics.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC4293BA294A684A00DC3932 /* HtmlFile2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC42939C294A673400DC3932 /* HtmlFile2.xcframework */; };
 		FC4293BB294A684A00DC3932 /* HtmlFile2.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC42939C294A673400DC3932 /* HtmlFile2.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FC4293BC294A684A00DC3932 /* HtmlRenderer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC429395294A673300DC3932 /* HtmlRenderer.xcframework */; };
-		FC4293BD294A684B00DC3932 /* HtmlRenderer.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC429395294A673300DC3932 /* HtmlRenderer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC4293BE294A684B00DC3932 /* kernel_network.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC429392294A673300DC3932 /* kernel_network.xcframework */; };
 		FC4293BF294A684B00DC3932 /* kernel_network.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC429392294A673300DC3932 /* kernel_network.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC4293C0294A684B00DC3932 /* kernel.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC429396294A673300DC3932 /* kernel.xcframework */; };
@@ -537,6 +535,8 @@
 		FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC527120ADB68E000BD819 /* ASCSignInController.swift */; };
 		FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */; };
 		FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */; };
+		FCD466E02D10673C00BC45DA /* IWorkFile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD466DF2D10673C00BC45DA /* IWorkFile.xcframework */; };
+		FCD466E12D10673C00BC45DA /* IWorkFile.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCD466DF2D10673C00BC45DA /* IWorkFile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */; };
 		FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */; };
 		FCDB31A81E7C116E00907FC0 /* ASCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */; };
@@ -711,7 +711,7 @@
 				FC4293C5294A685500DC3932 /* UnicodeConverter.xcframework in CopyFiles */,
 				FC4293AF294A683F00DC3932 /* DjVuFile.xcframework in CopyFiles */,
 				FC4293B7294A684A00DC3932 /* Fb2File.xcframework in CopyFiles */,
-				FC4293BD294A684B00DC3932 /* HtmlRenderer.xcframework in CopyFiles */,
+				FCD466E12D10673C00BC45DA /* IWorkFile.xcframework in CopyFiles */,
 				FC4293BB294A684A00DC3932 /* HtmlFile2.xcframework in CopyFiles */,
 				FC53690424EB1D1A0092765B /* SpreadsheetEditor.framework in CopyFiles */,
 				FC4293B9294A684A00DC3932 /* graphics.xcframework in CopyFiles */,
@@ -1264,6 +1264,7 @@
 		FCD1DA731FAC764D00F67625 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsNavigationController.swift; sourceTree = "<group>"; };
 		FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsEmptyViewController.swift; sourceTree = "<group>"; };
+		FCD466DF2D10673C00BC45DA /* IWorkFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IWorkFile.xcframework; path = "../../editors-ios/build/SDK/lib/IWorkFile.xcframework"; sourceTree = "<group>"; };
 		FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferNavigationController.swift; sourceTree = "<group>"; };
 		FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCViewControllerManager.swift; sourceTree = "<group>"; };
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
@@ -1405,7 +1406,7 @@
 				FCC0D9D72BCE9B9F0025DC02 /* SDKCoreSwift in Frameworks */,
 				FC5368FD24EB1C2F0092765B /* DocumentConverter.framework in Frameworks */,
 				FC4293C6294A685700DC3932 /* x2t.xcframework in Frameworks */,
-				FC4293BC294A684A00DC3932 /* HtmlRenderer.xcframework in Frameworks */,
+				FCD466E02D10673C00BC45DA /* IWorkFile.xcframework in Frameworks */,
 				FC4293B2294A684900DC3932 /* DocxRenderer.xcframework in Frameworks */,
 				FC4293C4294A685500DC3932 /* UnicodeConverter.xcframework in Frameworks */,
 				FCC0D9A22BCE81E70025DC02 /* engine.xcframework in Frameworks */,
@@ -1439,6 +1440,7 @@
 		B7E3C8EC6916BB80232E66FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCD466DF2D10673C00BC45DA /* IWorkFile.xcframework */,
 				FC42939F294A673400DC3932 /* DjVuFile.xcframework */,
 				FC429393294A673300DC3932 /* doctrenderer.xcframework */,
 				FC429397294A673300DC3932 /* DocxRenderer.xcframework */,
@@ -3548,10 +3550,10 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "HTMLString" */,
-				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */,
-				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "PasscodeLock" */,
-				FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "SDKCore" */,
+				FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
+				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
+				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
+				FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -4963,19 +4965,19 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "HTMLString" */ = {
+		FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
+		FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
+		FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
-		FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "SDKCore" */ = {
+		FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../editors-ios/Common/SDKCore";
 		};
@@ -5017,7 +5019,7 @@
 		};
 		FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "SDKCore" */;
+			package = FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */;
 			productName = SDKCoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

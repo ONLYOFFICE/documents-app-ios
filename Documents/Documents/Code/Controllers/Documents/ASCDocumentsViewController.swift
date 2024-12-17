@@ -531,7 +531,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         loadingView.removeFromSuperview()
         emptyView?.removeFromSuperview()
 
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 
     @objc func refresh(_ refreshControl: UIRefreshControl) {
@@ -568,7 +570,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             provider.add(item: file, at: 0)
 
             provider.updateSort { provider, currentFolder, success, error in
-                self.collectionView.reloadData()
+                UIView.performWithoutAnimation { [weak self] in
+                    self?.collectionView.reloadData()
+                }
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
@@ -600,7 +604,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             provider.add(item: folder, at: 0)
 
             provider.updateSort { provider, currentFolder, success, error in
-                self.collectionView.reloadData()
+                UIView.performWithoutAnimation { [weak self] in
+                    self?.collectionView.reloadData()
+                }
 
                 self.showEmptyView(self.total < 1)
 
@@ -1234,8 +1240,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let self else { return }
-
-            self.collectionView.reloadData()
+            UIView.performWithoutAnimation { [weak self] in
+                self?.collectionView.reloadData()
+            }
             self.showEmptyView(self.total < 1)
 
             completeon?(true)
@@ -1305,7 +1312,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                 if success || isCanceled {
                     self.folder = folder
-                    self.collectionView.reloadData()
+                    UIView.performWithoutAnimation { [weak self] in
+                        self?.collectionView.reloadData()
+                    }
 
                     self.showEmptyView(self.total < 1)
                 } else {
@@ -1328,7 +1337,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         if needsToLoadFirstPageOnAppear {
             provider?.cancel()
             provider?.reset()
-            collectionView.reloadData()
+            UIView.performWithoutAnimation { [weak self] in
+                self?.collectionView.reloadData()
+            }
         }
 
         setEditMode(false)
@@ -1594,7 +1605,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     @objc func onReloadData(_ notification: Notification) {
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 
     @objc
@@ -2727,7 +2740,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                    let duplicate = result as? ASCFile
                 {
                     self.provider?.add(item: duplicate, at: indexPath.row)
-                    self.collectionView.reloadData()
+                    UIView.performWithoutAnimation { [weak self] in
+                        self?.collectionView.reloadData()
+                    }
 
                     if let newCell = self.collectionView.cellForItem(at: indexPath) {
                         self.highlight(cell: newCell)
@@ -3079,8 +3094,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             guard !items.isEmpty, let provider = viewController.provider else { return }
 
             provider.add(items: items, at: 0)
-            provider.updateSort(completeon: { _, _, _, _ in
-                viewController.collectionView.reloadData()
+            provider.updateSort(completeon: { [weak viewController] _, _, _, _ in
+                UIView.performWithoutAnimation { [weak viewController] in
+                    viewController?.collectionView.reloadData()
+                }
             })
 
             viewController.showEmptyView(viewController.total < 1)
@@ -3128,7 +3145,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
                     self.provider?.cancel()
                     self.provider?.reset()
-                    self.collectionView.reloadData()
+                    UIView.performWithoutAnimation { [weak self] in
+                        self?.collectionView.reloadData()
+                    }
                 }
 
                 self.showEmptyView(self.total < 1)
@@ -3619,7 +3638,9 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
 
     func didDismissSearchController(_ searchController: UISearchController) {
         provider?.reset()
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
 
         showLoadingPage(true)
 
@@ -3769,7 +3790,9 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         self.updateProviderStatus(for: newFile, indexPath: indexPath)
                     } else {
                         self.provider?.add(item: newFile, at: 0)
-                        self.collectionView.reloadData()
+                        UIView.performWithoutAnimation { [weak self] in
+                            self?.collectionView.reloadData()
+                        }
                         self.showEmptyView(self.total < 1)
                         self.updateNavBar()
 
@@ -3821,7 +3844,9 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     }
 
     func updateItems(provider: ASCFileProviderProtocol) {
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
 
         // TODO: Or search diff and do it animated
 
@@ -4154,7 +4179,9 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
                     self.provider?.page -= 1
                     delay(seconds: 0.6) {
                         cell.isHidden = true
-                        collectionView.reloadData()
+                        UIView.performWithoutAnimation { [weak self] in
+                            self?.collectionView.reloadData()
+                        }
                     }
                 }
             }

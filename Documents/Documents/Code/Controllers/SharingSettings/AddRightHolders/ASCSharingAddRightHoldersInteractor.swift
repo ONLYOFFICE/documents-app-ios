@@ -67,7 +67,6 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 updatedItems.append(item)
             }
             dataStore?.itemsForSharingAdd = updatedItems
-
         case let .changeOwner(userId, _: handler):
             changeOwner(userId, handler)
         }

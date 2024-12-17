@@ -65,7 +65,6 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
             }
 
             viewController?.displayData(viewModelType: .displayShareItems(.init(users: users, groups: groups)))
-
         case let .presentAccessProvider(provider: provider):
             viewController?.displayData(viewModelType: .displayAccessProvider(provider))
         case let .presentApplyingShareSettings(response: response):

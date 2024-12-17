@@ -498,7 +498,7 @@ class ASCEditorManager: NSObject {
                         if let result = response?.result {
                             self.documentKeyForTrack = result
                         }
-                        
+
                         if let provider = ASCFileManager.onlyofficeProvider {
                             self.trackingFileStatus = self.trackingReadyForLocking
                             self.downloadAndOpenFile(

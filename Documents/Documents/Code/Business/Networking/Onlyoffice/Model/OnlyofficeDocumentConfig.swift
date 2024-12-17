@@ -103,6 +103,17 @@ struct OnlyofficeDocumentEditorConfig: Codable {
     }
 }
 
+// MARK: - OnlyofficeDocumentSubmitForm
+
+struct OnlyofficeDocumentSubmitForm: Codable {
+    var visible: Bool
+    var resultMessage: String?
+
+    enum CodingKeys: String, CodingKey {
+        case visible, resultMessage
+    }
+}
+
 // MARK: - OnlyofficeDocumentCustomization
 
 struct OnlyofficeDocumentCustomization: Codable {
@@ -113,7 +124,28 @@ struct OnlyofficeDocumentCustomization: Codable {
     var forcesave: Bool?
     var mentionShare: Bool?
     var uiTheme: String?
-    var submitForm: Bool?
+    var submitForm: OnlyofficeDocumentSubmitForm?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        logo = try? container.decode(OnlyofficeDocumentLogo.self, forKey: .logo)
+        about = try? container.decode(Bool.self, forKey: .about)
+        anonymous = try? container.decode(OnlyofficeDocumentAnonymous.self, forKey: .anonymous)
+        feedback = try? container.decode(OnlyofficeDocumentFeedback.self, forKey: .feedback)
+        forcesave = try? container.decode(Bool.self, forKey: .forcesave)
+        mentionShare = try? container.decode(Bool.self, forKey: .mentionShare)
+        uiTheme = try? container.decode(String.self, forKey: .uiTheme)
+        
+        do {
+            submitForm = try container.decode(OnlyofficeDocumentSubmitForm.self, forKey: .submitForm)
+        } catch DecodingError.typeMismatch {
+            // Old version, just Bool
+            if let visible = try? container.decode(Bool.self, forKey: .submitForm) {
+                submitForm = OnlyofficeDocumentSubmitForm(visible: visible, resultMessage: nil)
+            }
+        }
+    }
 }
 
 // MARK: - OnlyofficeDocumentFeedback

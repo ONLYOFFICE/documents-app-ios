@@ -62,6 +62,7 @@ enum OnlyofficeAPI {
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
         public static let paymentQuota = "api/\(version)/portal/payment/quota"
+        public static let paymentQuotaSettings = "api/\(version)/settings/roomquotasettings"
         public static let rooms = "api/\(version)/files/rooms"
         public static let roomsThirdparty = "api/\(version)/files/rooms/thirdparty/%@"
         public static let room = "api/\(version)/files/rooms/%@"
@@ -183,6 +184,8 @@ enum OnlyofficeAPI {
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
 
+            static let roomQuotaSettings: Endpoint<OnlyofficeResponse<ASCPaymentQuotaSettings>> = Endpoint<OnlyofficeResponse<ASCPaymentQuotaSettings>>.make(Path.paymentQuotaSettings, .post)
+
             static func createThirdparty(providerId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomsThirdparty, providerId), .post)
             }
@@ -209,6 +212,10 @@ enum OnlyofficeAPI {
 
             static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
+            }
+
+            static func deleteLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .delete)
             }
 
             static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {

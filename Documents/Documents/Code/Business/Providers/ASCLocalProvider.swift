@@ -174,6 +174,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .excludeSubfolders,
                      .customRoom,
                      .fillingFormRoom,
+                     .virtualDataRoom,
                      .collaborationRoom,
                      .reviewRoom,
                      .viewOnlyRoom,

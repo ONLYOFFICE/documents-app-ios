@@ -40,14 +40,24 @@
 		E87FF67C2BF74712000EFDE5 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6772BF74712000EFDE5 /* UserListView.swift */; };
 		E87FF67D2BF74712000EFDE5 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6782BF74712000EFDE5 /* UserListViewModel.swift */; };
 		E87FF67E2BF74712000EFDE5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6792BF74712000EFDE5 /* UserModel.swift */; };
+		E89750172CF7ECD000D3EC4C /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89750162CF7ECCD00D3EC4C /* ToggleButtonView.swift */; };
+		E89750192CF7EE3700D3EC4C /* ToggleButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89750182CF7EE3300D3EC4C /* ToggleButtonCollectionView.swift */; };
+		E897501B2CFDC30700D3EC4C /* RestrictContentCopySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E897501A2CFDC2F300D3EC4C /* RestrictContentCopySection.swift */; };
 		E8A4F3C92C73FFF5002168DA /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */; };
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
+		E8B2AFEA2D02604400CA4FAD /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */; };
+		E8B8C8A02CFDE32D00BEDD51 /* AutomaticIndexationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */; };
+		E8B8C8A22CFDE43700BEDD51 /* ThirdPartySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */; };
+		E8B8C8A42CFDFA6400BEDD51 /* WatermarkImageEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */; };
 		E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */; };
 		E8BE285F2B2435E5007F5942 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE285E2B2435E4007F5942 /* MenuView.swift */; };
 		E8CBF1D02C7E72D0003804FF /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */; };
 		E8CBF1D22C7E73C9003804FF /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */; };
+		E8D437232CFDD7FB006FC550 /* FileLifetimeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D437222CFDD7F7006FC550 /* FileLifetimeSection.swift */; };
+		E8D437252CFDD95E006FC550 /* WatermarkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D437242CFDD95A006FC550 /* WatermarkSection.swift */; };
+		E8D437272CFDDB7E006FC550 /* StorageQuotaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D437262CFDDB7B006FC550 /* StorageQuotaSection.swift */; };
 		E8D50B832BF9441A00741BB8 /* InviteUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B822BF9441A00741BB8 /* InviteUsersViewModel.swift */; };
 		E8D50B852BFAA08F00741BB8 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B842BFAA08F00741BB8 /* InviteUsersView.swift */; };
 		E8D50B872BFBEC9800741BB8 /* ChevronUpDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B862BFBEC9700741BB8 /* ChevronUpDownView.swift */; };
@@ -698,14 +708,24 @@
 		E87FF6772BF74712000EFDE5 /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		E87FF6782BF74712000EFDE5 /* UserListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		E87FF6792BF74712000EFDE5 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E89750162CF7ECCD00D3EC4C /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
+		E89750182CF7EE3300D3EC4C /* ToggleButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonCollectionView.swift; sourceTree = "<group>"; };
+		E897501A2CFDC2F300D3EC4C /* RestrictContentCopySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictContentCopySection.swift; sourceTree = "<group>"; };
 		E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
+		E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
+		E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartySection.swift; sourceTree = "<group>"; };
+		E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
 		E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E8BE285E2B2435E4007F5942 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
 		E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
+		E8D437222CFDD7F7006FC550 /* FileLifetimeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLifetimeSection.swift; sourceTree = "<group>"; };
+		E8D437242CFDD95A006FC550 /* WatermarkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkSection.swift; sourceTree = "<group>"; };
+		E8D437262CFDDB7B006FC550 /* StorageQuotaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageQuotaSection.swift; sourceTree = "<group>"; };
 		E8D50B822BF9441A00741BB8 /* InviteUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersViewModel.swift; sourceTree = "<group>"; };
 		E8D50B842BFAA08F00741BB8 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		E8D50B862BFBEC9700741BB8 /* ChevronUpDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronUpDownView.swift; sourceTree = "<group>"; };
@@ -1995,6 +2015,20 @@
 			path = UserList;
 			sourceTree = "<group>";
 		};
+		E897501C2CFDC30F00D3EC4C /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */,
+				E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */,
+				E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */,
+				E8D437262CFDDB7B006FC550 /* StorageQuotaSection.swift */,
+				E8D437242CFDD95A006FC550 /* WatermarkSection.swift */,
+				E8D437222CFDD7F7006FC550 /* FileLifetimeSection.swift */,
+				E897501A2CFDC2F300D3EC4C /* RestrictContentCopySection.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		E8AC0F0F2B14F29F00B8EEA2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -2013,6 +2047,8 @@
 				FC00CBF12C46613C00D3344D /* ChevronRightView.swift */,
 				E8BE285E2B2435E4007F5942 /* MenuView.swift */,
 				E83125CF2B249AC7006016F1 /* TagsFieldView.swift */,
+				E89750162CF7ECCD00D3EC4C /* ToggleButtonView.swift */,
+				E89750182CF7EE3300D3EC4C /* ToggleButtonCollectionView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -2358,6 +2394,7 @@
 		FC1764D62BA332AC00D6B6F0 /* ManageRoom */ = {
 			isa = PBXGroup;
 			children = (
+				E897501C2CFDC30F00D3EC4C /* Subviews */,
 				FC1764D42BA332AC00D6B6F0 /* ManageRoomView.swift */,
 				FC1764D52BA332AC00D6B6F0 /* ManageRoomViewModel.swift */,
 			);
@@ -2375,6 +2412,7 @@
 		FC1764DA2BA332AC00D6B6F0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */,
 				FC1764D92BA332AC00D6B6F0 /* NetworkManagingRoomService.swift */,
 			);
 			path = Services;
@@ -4014,6 +4052,7 @@
 				FC7081222812E2260057FCD2 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				FC7081232812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC142A7728981A1F00EDE7CE /* ASCNotificationSettingsViewController.swift in Sources */,
+				E89750172CF7ECD000D3EC4C /* ToggleButtonView.swift in Sources */,
 				FC7081242812E2260057FCD2 /* NetworkingServerError.swift in Sources */,
 				E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */,
 				E856CED02B5904D8003E4C3D /* RoomTypeViewRow.swift in Sources */,
@@ -4055,6 +4094,7 @@
 				FC1764F92BA332F300D6B6F0 /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
 				FC70813A2812E2260057FCD2 /* ASCDocumentsViewController.swift in Sources */,
 				FC70813B2812E2260057FCD2 /* NextcloudServerError.swift in Sources */,
+				E8D437272CFDDB7E006FC550 /* StorageQuotaSection.swift in Sources */,
 				FC7B80092AFA24D100C22C71 /* ASCPhoneCountryCode.swift in Sources */,
 				FC379D652C380C5900B120D9 /* EditSharedLinkViewModel.swift in Sources */,
 				FC70813C2812E2260057FCD2 /* ASCEntityItemProvider.swift in Sources */,
@@ -4096,6 +4136,7 @@
 				FC7081542812E2260057FCD2 /* Scenes.swift in Sources */,
 				E856CEC22B5904D8003E4C3D /* Rooms.swift in Sources */,
 				FC7081552812E2260057FCD2 /* NextcloudEndpoints.swift in Sources */,
+				E8B8C8A02CFDE32D00BEDD51 /* AutomaticIndexationSection.swift in Sources */,
 				FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
 				FC7081572812E2260057FCD2 /* AppDelegate+Helpers.swift in Sources */,
 				FC7081582812E2260057FCD2 /* ASCTextFieldCellViewModel.swift in Sources */,
@@ -4123,6 +4164,7 @@
 				FC0377B62BDBABCE00DDB2EF /* DocumentServerVersionRequest.swift in Sources */,
 				FC70816A2812E2260057FCD2 /* ASCSharingOptionsRouter.swift in Sources */,
 				FC70816B2812E2260057FCD2 /* ASCTransferViewCell.swift in Sources */,
+				E897501B2CFDC30700D3EC4C /* RestrictContentCopySection.swift in Sources */,
 				FC4639C72BFB33C400DA603A /* NavigationBarExtendPanelView.swift in Sources */,
 				FC83D6122A974E2300C404CB /* UIButton+Extensions.swift in Sources */,
 				FC1429FB2898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
@@ -4160,6 +4202,7 @@
 				FC03A6402BDA7F67005E8FFB /* CreateRoomRequestModel.swift in Sources */,
 				FC7081822812E2260057FCD2 /* ASC2FACodeViewController.swift in Sources */,
 				FC7F71FC299410D60004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
+				E8B8C8A42CFDFA6400BEDD51 /* WatermarkImageEditorView.swift in Sources */,
 				E83125D02B249AC7006016F1 /* TagsFieldView.swift in Sources */,
 				FC03A64A2BDA7F67005E8FFB /* OnlyofficeFileOperation.swift in Sources */,
 				FC379D5D2C380C5900B120D9 /* EditSharedLinkRequestModel.swift in Sources */,
@@ -4183,6 +4226,7 @@
 				FC7081962812E2260057FCD2 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				F3772FEF2C9DEEAD002B33A8 /* FormCompletedRootViewController.swift in Sources */,
 				FC59433D2AE67586001BA2F9 /* EditorDocumentProtocol.swift in Sources */,
+				E8D437232CFDD7FB006FC550 /* FileLifetimeSection.swift in Sources */,
 				FC5943BA2AE6B3C4001BA2F9 /* ASCIntroPageController.swift in Sources */,
 				FC83D5FF2A974E2200C404CB /* UIDevice+Extension.swift in Sources */,
 				FC7081982812E2260057FCD2 /* ASCDocumentsEmptyView.swift in Sources */,
@@ -4199,6 +4243,7 @@
 				FC7081A22812E2260057FCD2 /* NextcloudDataResult.swift in Sources */,
 				FC7081A32812E2260057FCD2 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FC4042582C2B0602002B6285 /* ASCFolderViewCell.swift in Sources */,
+				E8B2AFEA2D02604400CA4FAD /* RoomQuotaNetworkService.swift in Sources */,
 				FC83D60C2A974E2300C404CB /* Color+Extensions.swift in Sources */,
 				FC83D57B2A9742F000C404CB /* ManagedAppConfig.swift in Sources */,
 				1D8CFC4A290D7FF600F71071 /* ASCDocumentsEntityRemoverActionController.swift in Sources */,
@@ -4329,6 +4374,7 @@
 				FC142A8628981A8500EDE7CE /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
 				FC7081F92812E2260057FCD2 /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				FC83D61D2A974E2300C404CB /* UISplitViewController+Extensions.swift in Sources */,
+				E8D437252CFDD95E006FC550 /* WatermarkSection.swift in Sources */,
 				FC7081FA2812E2260057FCD2 /* ASCDropboxProvider.swift in Sources */,
 				FC03A6452BDA7F67005E8FFB /* RoomTagsListRequestModel.swift in Sources */,
 				FC03A6502BDA7F67005E8FFB /* RoomLinkResponceModel.swift in Sources */,
@@ -4356,6 +4402,7 @@
 				FC7082092812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FC83D56F2A9742F000C404CB /* ASCConstants.swift in Sources */,
 				FC70820A2812E2260057FCD2 /* ASCCustomHighlightButton.swift in Sources */,
+				E8B8C8A22CFDE43700BEDD51 /* ThirdPartySection.swift in Sources */,
 				FC70820B2812E2260057FCD2 /* ASCConnectStorageOAuth2Box.swift in Sources */,
 				FC142A12289818B800EDE7CE /* ASCSelectGroupViewController.swift in Sources */,
 				E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */,
@@ -4392,6 +4439,7 @@
 				FC1828F12A24D63B005D9220 /* ASCAppThemeViewController.swift in Sources */,
 				FC379D6B2C380C5900B120D9 /* ASCLabledCellView.swift in Sources */,
 				FC70821D2812E2260057FCD2 /* ASCSharingView.swift in Sources */,
+				E89750192CF7EE3700D3EC4C /* ToggleButtonCollectionView.swift in Sources */,
 				FC70821E2812E2260057FCD2 /* ASCPasswordRecoveryController.swift in Sources */,
 				FC70821F2812E2260057FCD2 /* ASCiCloudProvider.swift in Sources */,
 				FC83D61C2A974E2300C404CB /* UINavigationController+Extension.swift in Sources */,

@@ -26,6 +26,14 @@ struct ManageRoomView: View {
             roomTagsSection
             roomOwnerSection
             thirdPartySection
+            automaticIndexationSection
+            fileLifetimeSection
+            restrictContentCopySection
+            watermarkSection
+            storageQuotaSection
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
@@ -45,7 +53,13 @@ struct ManageRoomView: View {
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
+        .alertSaveWithoutWatermark(
+            isPresented: $viewModel.isNoWatermarkAlertPresented,
+            viewModel: viewModel
+        )
     }
+
+    // MARK: - All rooms sections
 
     private var roomTypeSection: some View {
         Section {
@@ -131,68 +145,43 @@ struct ManageRoomView: View {
             .disabled(viewModel.isSaving)
     }
 
-    @ViewBuilder
+    // MARK: - Public room third part section
+
     private var thirdPartySection: some View {
-        if viewModel.selectedRoomType.type == .publicRoom && !viewModel.isEditMode {
-            Section(
-                footer: Text(
-                    NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: "")
-                )
-            ) {
-                thirdPartyToggleCell
-                if viewModel.isThirdPartyStorageEnabled {
-                    storageSelectionCell
-                    folderSelectionCell
-                    createNewFolderCell
-                }
-            }
-        }
+        ThirdPartySection(viewModel: viewModel)
     }
 
-    private var thirdPartyToggleCell: some View {
-        Toggle(isOn: Binding(
-            get: { viewModel.isThirdPartyStorageEnabled },
-            set: { viewModel.didTapThirdPartyStorageSwitch(isOn: $0) }
-        )) {
-            Text(NSLocalizedString("Third party storage", comment: ""))
-        }
-        .tintColor(Color(Asset.Colors.brend.color))
+    // MARK: - VDR indexing section
+
+    private var automaticIndexationSection: some View {
+        AutomaticIndexationSection(viewModel: viewModel)
     }
 
-    private var storageSelectionCell: some View {
-        HStack(spacing: 4) {
-            Text(NSLocalizedString("Storage", comment: ""))
-            Spacer()
-            Text(viewModel.selectedStorage ?? "")
-                .foregroundColor(.gray)
-            ChevronRightView()
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            viewModel.didTapStorageSelectionCell()
-        }
+    // MARK: - VDR file lifetime section
+
+    private var fileLifetimeSection: some View {
+        FileLifetimeSection(viewModel: viewModel)
     }
 
-    private var folderSelectionCell: some View {
-        HStack {
-            Text(NSLocalizedString("Location", comment: ""))
-            Spacer()
-            Text(viewModel.selectedLocation)
-                .foregroundColor(.gray)
-            ChevronRightView()
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            viewModel.didTapSelectedFolderCell()
-        }
+    // MARK: - VDR restrict content copy section
+
+    private var restrictContentCopySection: some View {
+        RestrictContentCopySection(viewModel: viewModel)
     }
 
-    private var createNewFolderCell: some View {
-        Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
-            Text(NSLocalizedString("Create new folder", comment: ""))
-        }
-        .tintColor(Color(Asset.Colors.brend.color))
+    // MARK: - VDR watermark section
+
+    private var watermarkSection: some View {
+        WatermarkSection(viewModel: viewModel)
     }
+
+    // MARK: - Storage quota section
+
+    private var storageQuotaSection: some View {
+        StorageQuotaSection(viewModel: viewModel)
+    }
+
+    // MARK: - HUD
 
     private func handleHUD() {
         if viewModel.isSavedSuccessfully {
@@ -302,14 +291,8 @@ private extension View {
 // MARK: Constants
 
 private extension CGFloat {
-    static let imageSideSize: CGFloat = 48
+    static let imageSideSize: CGFloat = 36
     static let imageCornerRadious: CGFloat = 8
-}
-
-#Preview {
-    ManageRoomView(
-        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
-    )
 }
 
 private extension String {
@@ -319,24 +302,30 @@ private extension String {
     }
 }
 
-struct LocationSelectionView: View {
-    @Binding var selectedLocation: String
-
-    var body: some View {
-        List {
-            Button(action: {
-                selectedLocation = "/Files for test"
-            }) {
-                Text(verbatim: "/Files for test")
-                    .foregroundColor(selectedLocation == "/Files for test" ? Asset.Colors.brend.swiftUIColor : .primary)
-            }
-            Button(action: {
-                selectedLocation = "/Documents"
-            }) {
-                Text(verbatim: "/Documents")
-                    .foregroundColor(selectedLocation == "/Documents" ? Asset.Colors.brend.swiftUIColor : .primary)
-            }
-        }
-        .navigationBarTitle("Select Location", displayMode: .inline)
+private extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+
+    func alertSaveWithoutWatermark(isPresented: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        alert(isPresented: isPresented) {
+            Alert(
+                title: Text(NSLocalizedString("Warning", comment: "")),
+                message: Text(NSLocalizedString("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?", comment: "")),
+                primaryButton: .default(
+                    Text(NSLocalizedString("Continue", comment: "")),
+                    action: {
+                        viewModel.didPrimaryActionTappedOnNoWatermarkAlert()
+                    }
+                ),
+                secondaryButton: .cancel()
+            )
+        }
+    }
+}
+
+#Preview {
+    ManageRoomView(
+        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
+    )
 }

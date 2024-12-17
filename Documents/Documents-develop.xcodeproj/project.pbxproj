@@ -34,6 +34,16 @@
 		E8674BA42B2B166800CDA5DC /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674BA22B2B166700CDA5DC /* NavigationLink+Extensions.swift */; };
 		E8674BA52B2B166800CDA5DC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674BA32B2B166700CDA5DC /* View+Extensions.swift */; };
 		E8BD9A262CE756A30086FC9B /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD9A252CE756A30086FC9B /* ASCOnlyofficeEntityInternalLinkMaker.swift */; };
+		E8CD621C2D10823C00DF3440 /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD621B2D10823C00DF3440 /* RoomQuotaNetworkService.swift */; };
+		E8CD62252D10824C00DF3440 /* FileLifetimeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD621E2D10824C00DF3440 /* FileLifetimeSection.swift */; };
+		E8CD62262D10824C00DF3440 /* AutomaticIndexationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD621D2D10824C00DF3440 /* AutomaticIndexationSection.swift */; };
+		E8CD62272D10824C00DF3440 /* RestrictContentCopySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD621F2D10824C00DF3440 /* RestrictContentCopySection.swift */; };
+		E8CD62282D10824C00DF3440 /* ThirdPartySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62212D10824C00DF3440 /* ThirdPartySection.swift */; };
+		E8CD62292D10824C00DF3440 /* WatermarkImageEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62222D10824C00DF3440 /* WatermarkImageEditorView.swift */; };
+		E8CD622A2D10824C00DF3440 /* StorageQuotaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62202D10824C00DF3440 /* StorageQuotaSection.swift */; };
+		E8CD622B2D10824C00DF3440 /* WatermarkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62232D10824C00DF3440 /* WatermarkSection.swift */; };
+		E8CD622E2D1082F900DF3440 /* ToggleButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */; };
+		E8CD622F2D1082F900DF3440 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */; };
 		E8ECAF5F2C9DCD0B004F7C52 /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAF5C2C9DCD0A004F7C52 /* ASCTransferViewModel.swift */; };
 		E8ECAF602C9DCD0B004F7C52 /* CopyFileInsideProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAF5D2C9DCD0B004F7C52 /* CopyFileInsideProviderService.swift */; };
 		E8ECAF642C9DCD22004F7C52 /* FillFormMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAF612C9DCD22004F7C52 /* FillFormMenuScreen.swift */; };
@@ -762,6 +772,16 @@
 		E8674BA22B2B166700CDA5DC /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8674BA32B2B166700CDA5DC /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8BD9A252CE756A30086FC9B /* ASCOnlyofficeEntityInternalLinkMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMaker.swift; sourceTree = "<group>"; };
+		E8CD621B2D10823C00DF3440 /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
+		E8CD621D2D10824C00DF3440 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
+		E8CD621E2D10824C00DF3440 /* FileLifetimeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLifetimeSection.swift; sourceTree = "<group>"; };
+		E8CD621F2D10824C00DF3440 /* RestrictContentCopySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictContentCopySection.swift; sourceTree = "<group>"; };
+		E8CD62202D10824C00DF3440 /* StorageQuotaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageQuotaSection.swift; sourceTree = "<group>"; };
+		E8CD62212D10824C00DF3440 /* ThirdPartySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartySection.swift; sourceTree = "<group>"; };
+		E8CD62222D10824C00DF3440 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
+		E8CD62232D10824C00DF3440 /* WatermarkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkSection.swift; sourceTree = "<group>"; };
+		E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonCollectionView.swift; sourceTree = "<group>"; };
+		E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
 		E8ECAF5C2C9DCD0A004F7C52 /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
 		E8ECAF5D2C9DCD0B004F7C52 /* CopyFileInsideProviderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyFileInsideProviderService.swift; sourceTree = "<group>"; };
 		E8ECAF612C9DCD22004F7C52 /* FillFormMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreen.swift; sourceTree = "<group>"; };
@@ -1464,6 +1484,8 @@
 		E8674B6B2B2B15C100CDA5DC /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */,
+				E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */,
 				E8674B6D2B2B15C100CDA5DC /* Representable */,
 				E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */,
 				E8674B702B2B15C100CDA5DC /* ActivityIndicatorView.swift */,
@@ -1490,6 +1512,20 @@
 				E8674B742B2B15C100CDA5DC /* ASCAttachmentManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E8CD62242D10824C00DF3440 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				E8CD621D2D10824C00DF3440 /* AutomaticIndexationSection.swift */,
+				E8CD621E2D10824C00DF3440 /* FileLifetimeSection.swift */,
+				E8CD621F2D10824C00DF3440 /* RestrictContentCopySection.swift */,
+				E8CD62202D10824C00DF3440 /* StorageQuotaSection.swift */,
+				E8CD62212D10824C00DF3440 /* ThirdPartySection.swift */,
+				E8CD62222D10824C00DF3440 /* WatermarkImageEditorView.swift */,
+				E8CD62232D10824C00DF3440 /* WatermarkSection.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		E8ECAF5E2C9DCD0B004F7C52 /* Services */ = {
@@ -2312,6 +2348,7 @@
 		FC759B1A2C00608600510096 /* ManageRoom */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD62242D10824C00DF3440 /* Subviews */,
 				FC759B182C00608600510096 /* ManageRoomView.swift */,
 				FC759B192C00608600510096 /* ManageRoomViewModel.swift */,
 			);
@@ -2329,6 +2366,7 @@
 		FC759B1E2C00608600510096 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E8CD621B2D10823C00DF3440 /* RoomQuotaNetworkService.swift */,
 				FC759B1D2C00608600510096 /* NetworkManagingRoomService.swift */,
 			);
 			path = Services;
@@ -4084,6 +4122,13 @@
 				F3772FD72C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift in Sources */,
 				FC0377D62BDD1D4100DDB2EF /* DocumentServerVersionResponse.swift in Sources */,
 				FC83D52E2A973E2100C404CB /* Common+Extension.swift in Sources */,
+				E8CD62252D10824C00DF3440 /* FileLifetimeSection.swift in Sources */,
+				E8CD62262D10824C00DF3440 /* AutomaticIndexationSection.swift in Sources */,
+				E8CD62272D10824C00DF3440 /* RestrictContentCopySection.swift in Sources */,
+				E8CD62282D10824C00DF3440 /* ThirdPartySection.swift in Sources */,
+				E8CD62292D10824C00DF3440 /* WatermarkImageEditorView.swift in Sources */,
+				E8CD622A2D10824C00DF3440 /* StorageQuotaSection.swift in Sources */,
+				E8CD622B2D10824C00DF3440 /* WatermarkSection.swift in Sources */,
 				FC7DC873285A2D3400E61C69 /* ASCGroupTableViewDataModelItem.swift in Sources */,
 				FC759BE32C00611000510096 /* ASCSharingOptionsModels.swift in Sources */,
 				FC759BD52C00611000510096 /* ASCSharingRightHolderViewModelProtocol.swift in Sources */,
@@ -4357,6 +4402,7 @@
 				FCF696512637FD0F00808644 /* ASCDocumentSortType.swift in Sources */,
 				FCA1D4F02B4FD18D00904A30 /* ResultViewModel.swift in Sources */,
 				FC379D2C2C37ED7000B120D9 /* ExpirationLinkDateService.swift in Sources */,
+				E8CD621C2D10823C00DF3440 /* RoomQuotaNetworkService.swift in Sources */,
 				FC83D53C2A973E2100C404CB /* Sequence+Extensions.swift in Sources */,
 				FC379D362C37ED7000B120D9 /* TimeLimitCellView.swift in Sources */,
 				8A69B5A62497626E00152BDE /* ASCDebugManager.swift in Sources */,
@@ -4447,6 +4493,8 @@
 				FCE9F6D32B2B55DD0056E420 /* View+Extensions.swift in Sources */,
 				FC9EF02F2BFB208800A66DE8 /* OnlyofficeShare.swift in Sources */,
 				FC68399621B7EF1000251CEA /* ASCOnlyofficeCategory.swift in Sources */,
+				E8CD622E2D1082F900DF3440 /* ToggleButtonCollectionView.swift in Sources */,
+				E8CD622F2D1082F900DF3440 /* ToggleButtonView.swift in Sources */,
 				FC83D5442A973E2100C404CB /* UIDevice+DeviceKit.swift in Sources */,
 				FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */,
 				FC7D994F272994BB00410795 /* AppDelegate.swift in Sources */,

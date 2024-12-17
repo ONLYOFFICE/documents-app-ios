@@ -368,6 +368,23 @@ extension OnlyofficeApiClient {
 
     class func request<Response>(
         _ endpoint: Endpoint<Response>,
+        _ parameters: Parameters? = nil
+    ) async throws -> Response? {
+        return try await withCheckedThrowingContinuation { continuation in
+            NetworkingClient.clearCookies(for: OnlyofficeApiClient.shared.url(path: endpoint.path))
+            let completion: (_ result: Response?, _ error: NetworkingError?) -> Void = { result, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: result)
+                }
+            }
+            OnlyofficeApiClient.shared.request(endpoint, parameters, completion)
+        }
+    }
+
+    class func request<Response>(
+        _ endpoint: Endpoint<Response>,
         _ parameters: Parameters? = nil,
         _ apply: ((_ data: MultipartFormData) -> Void)? = nil,
         _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil

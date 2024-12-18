@@ -21,14 +21,8 @@ typealias UnmovedEntities = [ASCEntity]
 class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
-    static var itemsViewType: ASCEntityViewLayoutType {
-        get {
-            ASCAppSettings.gridLayoutFiles ? .grid : .list
-        }
-        set {
-            ASCAppSettings.gridLayoutFiles = newValue == .grid
-            NotificationCenter.default.post(name: ASCConstants.Notifications.updateDocumentsViewLayoutType, object: newValue)
-        }
+    private var itemsViewType: ASCEntityViewLayoutType {
+        provider?.itemsViewType ?? .list
     }
 
     // MARK: - Public
@@ -463,7 +457,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         delay(seconds: 0.1) { [weak self] in
             guard let self else { return }
             self.viewIsAppearing(true)
-            self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
+            self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: itemsViewType), animated: true)
         }
 
         collectionView.reloadSections(IndexSet(integer: 0))
@@ -499,11 +493,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func updateItemsViewType() {
-        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
+        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: true)
 
+        
         let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
         for cell in visibleCells {
-            cell.layoutType = ASCDocumentsViewController.itemsViewType
+            cell.layoutType = itemsViewType
         }
 
         collectionView.reloadSections(IndexSet(integer: 0))
@@ -4138,7 +4133,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     folderCell.provider = provider
                     folderCell.entity = folder
-                    folderCell.layoutType = ASCDocumentsViewController.itemsViewType
+                    folderCell.layoutType = itemsViewType
 
                     return folderCell
                 } else if let file = tableData[indexPath.row] as? ASCFile {
@@ -4148,7 +4143,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     fileCell.provider = provider
                     fileCell.entity = file
-                    fileCell.layoutType = ASCDocumentsViewController.itemsViewType
+                    fileCell.layoutType = itemsViewType
 
                     return fileCell
                 }

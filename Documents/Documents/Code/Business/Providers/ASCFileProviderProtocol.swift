@@ -149,6 +149,10 @@ protocol ASCFileProviderProtocol {
     func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory]
 }
 
+// MARK: - ASCEntityViewLayoutTypeProvider
+
+extension ASCFileProviderProtocol: ASCEntityViewLayoutTypeProvider { }
+
 // MARK: - ASCFileProvider protocol
 
 extension ASCFileProviderProtocol {

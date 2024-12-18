@@ -72,7 +72,7 @@ enum ASCFiletProviderContentType {
     case files, folders, documents, spreadsheets, presentations, images, collaboration, `public`, custom, viewOnly, fillingForms
 }
 
-protocol ASCFileProviderProtocol {
+protocol ASCFileProviderProtocol: ASCEntityViewLayoutTypeProvider {
     // Information
     var id: String? { get }
     var type: ASCFileProviderType { get }
@@ -148,10 +148,6 @@ protocol ASCFileProviderProtocol {
     // Subcategories
     func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory]
 }
-
-// MARK: - ASCEntityViewLayoutTypeProvider
-
-extension ASCFileProviderProtocol: ASCEntityViewLayoutTypeProvider { }
 
 // MARK: - ASCFileProvider protocol
 

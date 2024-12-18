@@ -125,7 +125,7 @@ struct OnlyofficeDocumentCustomization: Codable {
     var mentionShare: Bool?
     var uiTheme: String?
     var submitForm: OnlyofficeDocumentSubmitForm?
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -136,7 +136,7 @@ struct OnlyofficeDocumentCustomization: Codable {
         forcesave = try? container.decode(Bool.self, forKey: .forcesave)
         mentionShare = try? container.decode(Bool.self, forKey: .mentionShare)
         uiTheme = try? container.decode(String.self, forKey: .uiTheme)
-        
+
         do {
             submitForm = try container.decode(OnlyofficeDocumentSubmitForm.self, forKey: .submitForm)
         } catch DecodingError.typeMismatch {

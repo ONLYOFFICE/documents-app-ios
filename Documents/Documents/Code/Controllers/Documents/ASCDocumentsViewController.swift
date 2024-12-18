@@ -21,8 +21,13 @@ typealias UnmovedEntities = [ASCEntity]
 class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
-    private var itemsViewType: ASCEntityViewLayoutType {
-        provider?.itemsViewType ?? .list
+    var itemsViewType: ASCEntityViewLayoutType {
+        get {
+            return provider?.itemsViewType ?? .list
+        }
+        set {
+            provider?.itemsViewType = newValue
+        }
     }
 
     // MARK: - Public
@@ -495,7 +500,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private func updateItemsViewType() {
         collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: true)
 
-        
         let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
         for cell in visibleCells {
             cell.layoutType = itemsViewType

@@ -117,7 +117,6 @@ class ASCFile: ASCEntity {
 }
 
 extension ASCFile {
-
     var isExpiredSoon: Bool {
         guard let created, let expired, expired > created else { return false }
 

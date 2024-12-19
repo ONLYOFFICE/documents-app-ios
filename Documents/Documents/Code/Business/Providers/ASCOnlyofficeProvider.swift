@@ -2216,6 +2216,25 @@ extension ASCOnlyofficeProvider {
     }
 }
 
+// MARK: ASCEntityViewLayoutTypeProvider
+
+extension ASCOnlyofficeProvider {
+    var itemsViewType: ASCEntityViewLayoutType {
+        get {
+            if let folder, folder.parentsFoldersOrCurrentContains(
+                keyPath: \.roomType,
+                value: .virtualData
+            ) {
+                return .list
+            }
+            return ASCEntityViewLayoutTypeService.shared.itemsViewType
+        }
+        set {
+            ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue
+        }
+    }
+}
+
 struct StringError: LocalizedError {
     let message: String
 

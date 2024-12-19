@@ -12,16 +12,31 @@ protocol ASCEntityViewLayoutTypeProvider {
     var itemsViewType: ASCEntityViewLayoutType { get set }
 }
 
-private let queue = DispatchQueue(label: "ASCEntityViewLayoutTypeProvider", attributes: .concurrent)
-
 extension ASCEntityViewLayoutTypeProvider {
     var itemsViewType: ASCEntityViewLayoutType {
+        get { ASCEntityViewLayoutTypeService.shared.itemsViewType }
+        set { ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue }
+    }
+}
+
+class ASCEntityViewLayoutTypeService {
+    static let shared = ASCEntityViewLayoutTypeService()
+
+    private let queue = DispatchQueue(
+        label: "com.example.ASCEntityViewLayoutTypeService",
+        qos: .userInteractive,
+        attributes: .concurrent
+    )
+
+    private var type: ASCEntityViewLayoutType = ASCAppSettings.gridLayoutFiles ? .grid : .list
+
+    private init() {}
+
+    var itemsViewType: ASCEntityViewLayoutType {
         get {
-            var result: ASCEntityViewLayoutType = .list
-            queue.sync {
-                result = ASCAppSettings.gridLayoutFiles ? .grid : .list
+            return queue.sync {
+                ASCAppSettings.gridLayoutFiles ? .grid : .list
             }
-            return result
         }
         set {
             queue.async(flags: .barrier) {

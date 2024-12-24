@@ -53,6 +53,10 @@ struct ManageRoomView: View {
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
         .alertForErrorMessage($viewModel.errorMessage)
+        .alertFilesLifetimeWarning(
+            isPresented: $viewModel.isFilesLifetimeWarningPresented,
+            viewModel: viewModel
+        )
         .alertSaveWithoutWatermark(
             isPresented: $viewModel.isNoWatermarkAlertPresented,
             viewModel: viewModel
@@ -305,6 +309,19 @@ private extension String {
 private extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
+    func alertFilesLifetimeWarning(isPresented: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        alert(isPresented: isPresented) {
+            Alert(
+                title: Text(NSLocalizedString("Files with the exceeded lifetime will be deleted", comment: "")),
+                message: Text(NSLocalizedString("The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.", comment: "")),
+                primaryButton: .default(Text(NSLocalizedString("Ok", comment: ""))),
+                secondaryButton: .cancel {
+                    viewModel.isFileLifetimeEnabled = false
+                }
+            )
+        }
     }
 
     func alertSaveWithoutWatermark(isPresented: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {

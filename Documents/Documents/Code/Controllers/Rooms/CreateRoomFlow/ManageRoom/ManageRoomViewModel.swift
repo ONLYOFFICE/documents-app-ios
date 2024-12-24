@@ -32,6 +32,7 @@ class ManageRoomViewModel: ObservableObject {
 
     // MARK: Published Virtual data room only vars
 
+    @Published var isFilesLifetimeWarningPresented: Bool = false
     @Published var isNoWatermarkAlertPresented: Bool = false
 
     @Published var isAutomaticIndexing: Bool = false
@@ -203,6 +204,7 @@ class ManageRoomViewModel: ObservableObject {
     private var cancelable = Set<AnyCancellable>()
     private var roomQuota: ASCPaymentQuotaSettings?
     private var watermarkImageWasChanged: Bool = false
+    private var isFilesLifetimeWarningViewed: Bool = false
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
@@ -291,6 +293,16 @@ class ManageRoomViewModel: ObservableObject {
             .sink(receiveValue: { [weak self] _ in
                 self?.configureSelectedLocation()
             })
+            .store(in: &cancelable)
+
+        $isFileLifetimeEnabled
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isOn in
+                guard let self, isOn, isEditMode, !isFilesLifetimeWarningViewed
+                else { return }
+                isFilesLifetimeWarningViewed = true
+                isFilesLifetimeWarningPresented = true
+            }
             .store(in: &cancelable)
 
         $roomName

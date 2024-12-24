@@ -96,6 +96,7 @@ final class SharedSettingsViewModel: ObservableObject {
             linkAccess: link.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink,
             expiredTo: "",
             rights: ASCShareAccess(rawValue: link.access)?.title() ?? "",
+            rightsImage: ASCShareAccess(rawValue: link.access)?.swiftUIImage ?? Image(""),
             isExpired: link.sharedTo.isExpired,
             expirationInfo: expirationInfo,
             onTapAction: { [weak self] in

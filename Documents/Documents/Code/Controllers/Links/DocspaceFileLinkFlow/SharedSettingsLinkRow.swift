@@ -27,8 +27,9 @@ struct SharedSettingsLinkRowModel: Identifiable {
     var expirationInfo: String
 
     var onTapAction: () -> Void
+    var onShareAction: () -> Void
 
-    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", rightsImage: Image(""), isExpired: false, expirationInfo: "", onTapAction: {})
+    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", rightsImage: Image(""), isExpired: false, expirationInfo: "", onTapAction: {}, onShareAction: {})
 }
 
 struct SharedSettingsLinkRow: View {
@@ -56,6 +57,9 @@ struct SharedSettingsLinkRow: View {
             HStack(spacing: 12) {
                 Image(systemName: "square.and.arrow.up")
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                    .onTapGesture {
+                        model.onShareAction()
+                    }
                 model.rightsImage
                     .renderingMode(.template)
                     .foregroundColor(.secondary)

@@ -21,11 +21,13 @@ final class SharedSettingsViewModel: ObservableObject {
     private let networkService = NetworkManagerSharedSettings()
     private(set) var flowModel = LinksFlowModel()
     private let expirationService = ExpirationLinkDateService()
+    private(set) var sharingLink: URL?
 
     @Published var isShared: Bool
     @Published var links: [SharedSettingsLinkRowModel] = []
     @Published var isDocspaceUserOnly: Bool = false
     @Published var selectdLink: SharedSettingsLinkResponceModel?
+    @Published var isSharingScreenPresenting: Bool = false
 
     init(file: ASCFile) {
         self.file = file
@@ -91,6 +93,7 @@ final class SharedSettingsViewModel: ObservableObject {
 
     func mapToLinkViewModel(link: SharedSettingsLinkResponceModel) -> SharedSettingsLinkRowModel {
         let expirationInfo = calculateExpirationInfo(expirationDateString: link.sharedTo.expirationDate)
+        var isSharingPossible: Bool = !link.sharedTo.isExpired
         return SharedSettingsLinkRowModel(
             id: link.sharedTo.id,
             linkAccess: link.sharedTo.isInternal ? .docspaceUserOnly : .anyoneWithLink,
@@ -102,6 +105,11 @@ final class SharedSettingsViewModel: ObservableObject {
             onTapAction: { [weak self] in
                 guard let self else { return }
                 self.selectdLink = link
+            },
+            onShareAction: { [weak self] in
+                guard let self, isSharingPossible else { return }
+                isSharingScreenPresenting = true
+                sharingLink = URL(string: link.sharedTo.shareLink)
             }
         )
     }

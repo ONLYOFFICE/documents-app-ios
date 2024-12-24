@@ -158,14 +158,6 @@ private extension View {
                 .navigationBarHidden(true)
         }
     }
-
-    func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
-        sheet(isPresented: isPresented) {
-            if let link {
-                ActivityView(activityItems: [link])
-            }
-        }
-    }
 }
 
 struct InviteUsersView_Previews: PreviewProvider {

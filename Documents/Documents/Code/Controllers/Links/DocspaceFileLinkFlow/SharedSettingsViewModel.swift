@@ -92,7 +92,7 @@ final class SharedSettingsViewModel: ObservableObject {
     }
 
     func mapToLinkViewModel(link: SharedSettingsLinkResponceModel) -> SharedSettingsLinkRowModel {
-        let expirationInfo = calculateExpirationInfo(expirationDateString: link.sharedTo.expirationDate)
+        var isTimeLimited = link.sharedTo.expirationDate != nil
         var isSharingPossible: Bool = !link.sharedTo.isExpired
         return SharedSettingsLinkRowModel(
             id: link.sharedTo.id,
@@ -101,7 +101,7 @@ final class SharedSettingsViewModel: ObservableObject {
             rights: ASCShareAccess(rawValue: link.access)?.title() ?? "",
             rightsImage: ASCShareAccess(rawValue: link.access)?.swiftUIImage ?? Image(""),
             isExpired: link.sharedTo.isExpired,
-            expirationInfo: expirationInfo,
+            isTimeLimited: isTimeLimited,
             onTapAction: { [weak self] in
                 guard let self else { return }
                 self.selectdLink = link
@@ -119,27 +119,6 @@ final class SharedSettingsViewModel: ObservableObject {
             selectdLink = link
             flowModel.links[index] = link
             buildViewModel()
-        }
-    }
-
-    private func calculateExpirationInfo(expirationDateString: String?) -> String {
-        guard let expirationDateString = expirationDateString,
-              let expirationDate = SharedSettingsViewModel.dateFormatter.date(from: expirationDateString)
-        else {
-            return NSLocalizedString("Unlimited", comment: "")
-        }
-
-        guard let interval = expirationService.getExpirationInterval(expirationDateString: expirationDateString) else {
-            return ""
-        }
-
-        switch interval {
-        case .expired:
-            return NSLocalizedString("The link has expired", comment: "Expiration status")
-        case let .days(days):
-            return String(format: NSLocalizedString("Expires after %d days", comment: "Days left"), days)
-        case let .hours(hours):
-            return String(format: NSLocalizedString("Expires after %d hours", comment: "Hours left"), hours)
         }
     }
 }

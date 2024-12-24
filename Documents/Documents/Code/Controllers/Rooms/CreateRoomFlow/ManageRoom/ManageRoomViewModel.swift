@@ -23,6 +23,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
+    @Published var activeAlert: ManageRoomView.ActiveAlert?
 
     // Stroage quota
     @Published var allowChangeStorageQuota: Bool = false
@@ -31,9 +32,6 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedSizeUnit: SizeUnit = .mb
 
     // MARK: Published Virtual data room only vars
-
-    @Published var isFilesLifetimeWarningPresented: Bool = false
-    @Published var isNoWatermarkAlertPresented: Bool = false
 
     @Published var isAutomaticIndexing: Bool = false
 
@@ -301,7 +299,19 @@ class ManageRoomViewModel: ObservableObject {
                 guard let self, isOn, isEditMode, !isFilesLifetimeWarningViewed
                 else { return }
                 isFilesLifetimeWarningViewed = true
-                isFilesLifetimeWarningPresented = true
+                activeAlert = .filesLifetimeWarning
+            }
+            .store(in: &cancelable)
+
+        $errorMessage
+            .receive(on: RunLoop.main)
+            .sink { [weak self] message in
+                guard let self else { return }
+                if let message, !message.isEmpty {
+                    activeAlert = .errorMessage
+                } else {
+                    activeAlert = nil
+                }
             }
             .store(in: &cancelable)
 
@@ -334,7 +344,7 @@ class ManageRoomViewModel: ObservableObject {
             || selectedWatermarkType != .image
             || watermarkImage != nil
         else {
-            isNoWatermarkAlertPresented = true
+            activeAlert = .saveWithoutWatermark
             return
         }
 

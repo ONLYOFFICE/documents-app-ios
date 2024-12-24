@@ -15,8 +15,6 @@ struct ManageRoomView: View {
 
     @ObservedObject var viewModel: ManageRoomViewModel
 
-    @State private var isThirdPartyStorageEnabled: Bool = false
-
     var body: some View {
         handleHUD()
 
@@ -52,15 +50,7 @@ struct ManageRoomView: View {
         })
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
-        .alertForErrorMessage($viewModel.errorMessage)
-        .alertFilesLifetimeWarning(
-            isPresented: $viewModel.isFilesLifetimeWarningPresented,
-            viewModel: viewModel
-        )
-        .alertSaveWithoutWatermark(
-            isPresented: $viewModel.isNoWatermarkAlertPresented,
-            viewModel: viewModel
-        )
+        .alertForActiveAlert(activeAlert: $viewModel.activeAlert, viewModel: viewModel)
     }
 
     // MARK: - All rooms sections
@@ -214,9 +204,12 @@ struct ManageRoomView: View {
     }
 }
 
-// MARK: Modifiers
+// MARK: - Modifiers
 
 private extension View {
+    
+    // MARK: View navigation extenstions
+    
     @ViewBuilder
     func navigationBarItems(viewModel: ManageRoomViewModel) -> some View {
         let closeButton = Button(NSLocalizedString("Close", comment: "")) {
@@ -290,6 +283,67 @@ private extension View {
             listStyle(InsetGroupedListStyle())
         }
     }
+    
+    // MARK: View alert extensions
+
+    func alertForActiveAlert(
+        activeAlert: Binding<ManageRoomView.ActiveAlert?>,
+        viewModel: ManageRoomViewModel
+    ) -> some View {
+        alert(item: activeAlert) { alertType in
+            return switch alertType {
+            case .errorMessage:
+                Alert(
+                    title: Text(NSLocalizedString("Error", comment: "")),
+                    message: Text(viewModel.errorMessage ?? ""),
+                    dismissButton: .default(Text("OK")) {
+                        viewModel.errorMessage = nil
+                    }
+                )
+            case .filesLifetimeWarning:
+                Alert(
+                    title: Text(NSLocalizedString("Files with the exceeded lifetime will be deleted", comment: "")),
+                    message: Text(NSLocalizedString("The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.", comment: "")),
+                    primaryButton: .default(Text(NSLocalizedString("Ok", comment: ""))),
+                    secondaryButton: .cancel {
+                        viewModel.isFileLifetimeEnabled = false
+                    }
+                )
+            case .saveWithoutWatermark:
+                Alert(
+                    title: Text(NSLocalizedString("Warning", comment: "")),
+                    message: Text(NSLocalizedString("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?", comment: "")),
+                    primaryButton: .default(
+                        Text(NSLocalizedString("Continue", comment: "")),
+                        action: {
+                            viewModel.didPrimaryActionTappedOnNoWatermarkAlert()
+                        }
+                    ),
+                    secondaryButton: .cancel()
+                )
+            }
+        }
+    }
+    
+    // MARK: View hide keyboard
+    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+// MARK: - ActiveAlert subtype
+
+extension ManageRoomView {
+    enum ActiveAlert: String, Identifiable {
+        var id: String {
+            rawValue
+        }
+
+        case errorMessage
+        case filesLifetimeWarning
+        case saveWithoutWatermark
+    }
 }
 
 // MARK: Constants
@@ -303,41 +357,6 @@ private extension String {
     func removeForbiddenCharacters() -> String {
         let forbiddenCharacters = "*+:\"<>?|/\\"
         return filter { !forbiddenCharacters.contains($0) }
-    }
-}
-
-private extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-
-    func alertFilesLifetimeWarning(isPresented: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
-        alert(isPresented: isPresented) {
-            Alert(
-                title: Text(NSLocalizedString("Files with the exceeded lifetime will be deleted", comment: "")),
-                message: Text(NSLocalizedString("The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.", comment: "")),
-                primaryButton: .default(Text(NSLocalizedString("Ok", comment: ""))),
-                secondaryButton: .cancel {
-                    viewModel.isFileLifetimeEnabled = false
-                }
-            )
-        }
-    }
-
-    func alertSaveWithoutWatermark(isPresented: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
-        alert(isPresented: isPresented) {
-            Alert(
-                title: Text(NSLocalizedString("Warning", comment: "")),
-                message: Text(NSLocalizedString("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?", comment: "")),
-                primaryButton: .default(
-                    Text(NSLocalizedString("Continue", comment: "")),
-                    action: {
-                        viewModel.didPrimaryActionTappedOnNoWatermarkAlert()
-                    }
-                ),
-                secondaryButton: .cancel()
-            )
-        }
     }
 }
 

@@ -31,7 +31,6 @@ final class EditSharedLinkViewModel: ObservableObject {
             ASCShareAccess.review,
             ASCShareAccess.comment,
             ASCShareAccess.read,
-            ASCShareAccess.deny,
         ].map { access in
             MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
                 setAccessRight(access)

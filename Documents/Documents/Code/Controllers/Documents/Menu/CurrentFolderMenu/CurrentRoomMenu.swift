@@ -131,6 +131,18 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             )
         }
 
+        // Edit index
+        if actions.contains(.editIndex) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Edit index", comment: "Button title"),
+                    image: UIImage(systemName: "line.3.horizontal.decrease")
+                ) { [weak viewController] action in
+                    viewController?.isEditingIndexMode = true
+                }
+            )
+        }
+
         // Move to archive
         if actions.contains(.archive) {
             entityOperationsGroup.append(

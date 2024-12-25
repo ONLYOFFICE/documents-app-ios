@@ -40,9 +40,9 @@ struct EditSharedLinkView: View {
 
     private var accessCell: some View {
         MenuView(menuItems: viewModel.accessMenuItems) {
-            ASCDetailedChevronUpDownCellView(model: ASCDetailedChevronUpDownCellViewModel(
+            ASCDetailedImaeChevronUpDownCellView(model: ASCDetailedImaeChevronUpDownCellViewModel(
                 title: NSLocalizedString("Access rights", comment: ""),
-                detail: viewModel.selectedAccessRight.title(),
+                image: viewModel.selectedAccessRight.swiftUIImage ?? Image(""),
                 isEnabled: !viewModel.isExpired
             ))
         }

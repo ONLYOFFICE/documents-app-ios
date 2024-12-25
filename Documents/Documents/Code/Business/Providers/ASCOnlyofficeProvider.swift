@@ -1533,6 +1533,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomFolder, isArchiveCategory, folder.security.move {
                 entityActions.insert(.unarchive)
             }
+
+            if folder.isRoomListSubfolder,
+               folder.parentsFoldersOrCurrentContains(
+                   keyPath: \.roomType,
+                   value: .virtualData
+               ) == true
+            {
+                entityActions.insert(.editIndex)
+            }
         }
 
         return entityActions

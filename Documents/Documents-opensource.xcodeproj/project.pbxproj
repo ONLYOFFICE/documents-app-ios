@@ -54,6 +54,7 @@
 		E8B8C8A42CFDFA6400BEDD51 /* WatermarkImageEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */; };
 		E8BE285A2B1C6CF5007F5942 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */; };
 		E8BE285F2B2435E5007F5942 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE285E2B2435E4007F5942 /* MenuView.swift */; };
+		E8C8A8AA2D1C931E0020BE95 /* ASCDocumentsViewController+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C8A8A92D1C92E90020BE95 /* ASCDocumentsViewController+NavBar.swift */; };
 		E8CBF1D02C7E72D0003804FF /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */; };
 		E8CBF1D22C7E73C9003804FF /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */; };
 		E8D437232CFDD7FB006FC550 /* FileLifetimeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D437222CFDD7F7006FC550 /* FileLifetimeSection.swift */; };
@@ -723,6 +724,7 @@
 		E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
 		E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E8BE285E2B2435E4007F5942 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		E8C8A8A92D1C92E90020BE95 /* ASCDocumentsViewController+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+NavBar.swift"; sourceTree = "<group>"; };
 		E8CBF1CF2C7E72D0003804FF /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
 		E8CBF1D12C7E73C9003804FF /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
 		E8D437222CFDD7F7006FC550 /* FileLifetimeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLifetimeSection.swift; sourceTree = "<group>"; };
@@ -3211,6 +3213,7 @@
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
 				FC1764CF2BA3318600D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */,
 				FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */,
+				E8C8A8A92D1C92E90020BE95 /* ASCDocumentsViewController+NavBar.swift */,
 				FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */,
 			);
 			path = Documents;
@@ -4233,6 +4236,7 @@
 				E8D437232CFDD7FB006FC550 /* FileLifetimeSection.swift in Sources */,
 				FC5943BA2AE6B3C4001BA2F9 /* ASCIntroPageController.swift in Sources */,
 				FC83D5FF2A974E2200C404CB /* UIDevice+Extension.swift in Sources */,
+				E8C8A8AA2D1C931E0020BE95 /* ASCDocumentsViewController+NavBar.swift in Sources */,
 				FC7081982812E2260057FCD2 /* ASCDocumentsEmptyView.swift in Sources */,
 				FC1764DF2BA332AD00D6B6F0 /* RoomSelectionViewModel.swift in Sources */,
 				FC7081992812E2260057FCD2 /* ASCWebKitViewController.swift in Sources */,

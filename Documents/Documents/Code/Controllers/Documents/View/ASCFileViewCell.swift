@@ -218,6 +218,21 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         var items = [UIView]()
 
+        // VDR index
+        if let order = file.order {
+            let orderLabel = buildLabel()
+            let orderSeparator = buildLabel()
+
+            orderLabel.text = [
+                NSLocalizedString("Index", comment: "File order"),
+                order,
+            ].joined(separator: " ")
+            orderSeparator.text = "|"
+
+            items.append(orderLabel)
+            items.append(orderSeparator)
+        }
+
         if dateLabel.text != nil {
             items.append(dateLabel)
         }

@@ -33,6 +33,7 @@ class ASCFile: ASCEntity {
     var canShare: Bool = false
     var requestToken: String?
     var `extension`: String?
+    var order: String?
 
     override init() {
         super.init()
@@ -110,6 +111,7 @@ class ASCFile: ASCEntity {
         security <- map["security"]
         canShare <- map["canShare"]
         `extension` <- map["extension"]
+        order <- map["order"]
 
         // Internal
         device <- map["device"]

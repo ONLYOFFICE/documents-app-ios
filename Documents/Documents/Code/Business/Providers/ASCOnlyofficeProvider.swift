@@ -1555,6 +1555,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
         case .unarchive: unarchiveRoom(folder: folder, handler: handler)
+        case .reorderIndex: reorderIndex(folder: folder, handler: handler)
         default: unsupportedActionHandler(action: action, handler: handler)
         }
     }
@@ -1602,6 +1603,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
+
+    private func reorderIndex(folder: ASCFolder, handler: ASCEntityHandler?) {}
 
     func checkRoomOwner(folder: ASCFolder) -> Bool {
         return folder.createdBy?.userId == user?.userId

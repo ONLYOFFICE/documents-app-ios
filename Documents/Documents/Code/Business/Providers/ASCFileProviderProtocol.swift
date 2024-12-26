@@ -42,6 +42,7 @@ struct ASCEntityActions: OptionSet {
     static let shareAsRoom = ASCEntityActions(rawValue: 1 << 28)
     static let fillForm = ASCEntityActions(rawValue: 1 << 29)
     static let editIndex = ASCEntityActions(rawValue: 1 << 30)
+    static let reorderIndex = ASCEntityActions(rawValue: 1 << 31)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

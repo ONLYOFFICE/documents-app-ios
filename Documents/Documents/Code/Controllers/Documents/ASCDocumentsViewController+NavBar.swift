@@ -47,6 +47,7 @@ extension ASCDocumentsViewController {
             ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
+        reorderIndexButton = reorderIndexButton ?? ASCStyles.createBarButton(title: NSLocalizedString("Reorder", comment: "Button title"), target: self, action: #selector(onReorderAction))
         if let folder = folder,
            !folder.isRoom
         {
@@ -69,6 +70,7 @@ extension ASCDocumentsViewController {
         }
 
         if isEditingIndexMode {
+            navigationItem.setLeftBarButtonItems([reorderIndexButton!], animated: animated)
             navigationItem.setRightBarButtonItems([cancelBarButton!], animated: animated)
         } else if collectionView.isEditing {
             navigationItem.setLeftBarButtonItems([selectAllBarButton!], animated: animated)
@@ -393,7 +395,7 @@ extension ASCDocumentsViewController {
     }
 }
 
-// MARK: - NavBar objc func actions
+// MARK: - Objc func actions
 
 extension ASCDocumentsViewController {
     @objc func onFilterAction() {
@@ -486,6 +488,15 @@ extension ASCDocumentsViewController {
         guard view.isUserInteractionEnabled else { return }
         setEditMode(true)
         flashBlockInteration()
+    }
+
+    @objc func onReorderAction() {
+        guard let folder else { return }
+        provider?.handle(
+            action: .reorderIndex,
+            folder: folder
+        ) { status, result, error in
+        }
     }
 }
 

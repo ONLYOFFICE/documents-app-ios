@@ -62,7 +62,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     var isEditingIndexMode = false {
         didSet {
-            configureNavigationBar()
+            configureNavigationBar(animated: true)
         }
     }
 
@@ -913,6 +913,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = edit
 
         collectionView.isEditing = edit
+        isEditingIndexMode = false
 
         configureNavigationBar()
 

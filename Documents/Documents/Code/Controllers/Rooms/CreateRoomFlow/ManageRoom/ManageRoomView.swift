@@ -207,9 +207,8 @@ struct ManageRoomView: View {
 // MARK: - Modifiers
 
 private extension View {
-    
     // MARK: View navigation extenstions
-    
+
     @ViewBuilder
     func navigationBarItems(viewModel: ManageRoomViewModel) -> some View {
         let closeButton = Button(NSLocalizedString("Close", comment: "")) {
@@ -283,7 +282,7 @@ private extension View {
             listStyle(InsetGroupedListStyle())
         }
     }
-    
+
     // MARK: View alert extensions
 
     func alertForActiveAlert(
@@ -324,9 +323,9 @@ private extension View {
             }
         }
     }
-    
+
     // MARK: View hide keyboard
-    
+
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

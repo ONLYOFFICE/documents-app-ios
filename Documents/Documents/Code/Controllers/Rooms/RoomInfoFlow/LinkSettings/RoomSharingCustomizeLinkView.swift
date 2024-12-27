@@ -39,6 +39,7 @@ struct RoomSharingCustomizeLinkView: View {
     var generalLinkView: some View {
         List {
             generalSection
+            accessSection
             protectedSection
             restrictionSection
             deleteSection
@@ -63,6 +64,15 @@ struct RoomSharingCustomizeLinkView: View {
     private var generalSection: some View {
         Section(header: Text(NSLocalizedString("Link name", comment: ""))) {
             TextField("Link name", text: $viewModel.linkName)
+        }
+    }
+
+    private var accessSection: some View {
+        Section(
+            header: Text(NSLocalizedString("General", comment: "")))
+        {
+            accessCell
+                .disabled(viewModel.isExpired)
         }
     }
 
@@ -154,6 +164,16 @@ struct RoomSharingCustomizeLinkView: View {
                     )
                 )
             }
+        }
+    }
+
+    private var accessCell: some View {
+        MenuView(menuItems: viewModel.accessMenuItems) {
+            ASCDetailedImaeChevronUpDownCellView(model: ASCDetailedImaeChevronUpDownCellViewModel(
+                title: NSLocalizedString("Access rights", comment: ""),
+                image: viewModel.selectedAccessRight.swiftUIImage ?? Image(""),
+                isEnabled: !viewModel.isExpired
+            ))
         }
     }
 

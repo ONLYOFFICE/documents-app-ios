@@ -36,6 +36,20 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
     @Published var isReadyToDismissed: Bool = false
+    @Published var selectedAccessRight: ASCShareAccess = .none
+
+    var accessMenuItems: [MenuViewItem] {
+        [
+            ASCShareAccess.editing,
+            ASCShareAccess.review,
+            ASCShareAccess.comment,
+            ASCShareAccess.read,
+        ].map { access in
+            MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
+                selectedAccessRight = access
+            }
+        }
+    }
 
     var isDeletePossible: Bool {
         if (room.roomType == .public && link?.isGeneral == true) || room.roomType == .fillingForm {
@@ -97,7 +111,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         isProtected = !password.isEmpty
         isRestrictCopyOn = linkInfo?.denyDownload == true
         isTimeLimited = linkInfo?.expirationDate != nil
-
+        selectedAccessRight = link?.access ?? .none
         defineSharingLink()
     }
 }
@@ -167,7 +181,7 @@ private extension RoomSharingCustomizeLinkViewModel {
         linkAccessService.changeOrCreateLink(
             id: linkId,
             title: linkName,
-            access: .defaultAccsessForLink,
+            access: selectedAccessRight.rawValue,
             expirationDate: isTimeLimited ? Self.sendDateFormatter.string(from: selectedDate) : nil,
             linkType: ASCShareLinkType.external,
             denyDownload: isRestrictCopyOn,

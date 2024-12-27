@@ -30,15 +30,17 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
 
         var viewGroup: [UIMenuElement] = []
 
-        viewGroup.append(
-            UIAction(
-                title: NSLocalizedString("Icons", comment: "Button title"),
-                image: UIImage(systemName: "square.grid.2x2"),
-                state: viewController.itemsViewType == .grid ? .on : .off
-            ) { [weak viewController] action in
-                viewController?.itemsViewType = .grid
-            }
-        )
+        if folder.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) == false {
+            viewGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Icons", comment: "Button title"),
+                    image: UIImage(systemName: "square.grid.2x2"),
+                    state: viewController.itemsViewType == .grid ? .on : .off
+                ) { [weak viewController] action in
+                    viewController?.itemsViewType = .grid
+                }
+            )
+        }
 
         viewGroup.append(
             UIAction(

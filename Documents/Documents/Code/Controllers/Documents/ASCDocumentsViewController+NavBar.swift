@@ -6,6 +6,7 @@
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import UIKit
 
 extension ASCDocumentsViewController {
@@ -492,10 +493,28 @@ extension ASCDocumentsViewController {
 
     @objc func onReorderAction() {
         guard let folder else { return }
+        let hud = MBProgressHUD.showTopMost()
         provider?.handle(
             action: .reorderIndex,
             folder: folder
-        ) { status, result, error in
+        ) { [weak self] status, result, error in
+            guard let self else {
+                hud?.hide(animated: false)
+                return
+            }
+            switch status {
+            case .begin, .progress:
+                break
+            case .end:
+                hud?.setSuccessState()
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+                setEditMode(false)
+                loadFirstPage()
+            case .error:
+                hud?.setState(result: .failure(error?.localizedDescription))
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+                setEditMode(false)
+            }
         }
     }
 }

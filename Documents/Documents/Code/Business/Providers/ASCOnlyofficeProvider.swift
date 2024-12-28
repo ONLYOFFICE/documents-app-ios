@@ -1604,7 +1604,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    private func reorderIndex(folder: ASCFolder, handler: ASCEntityHandler?) {}
+    private func reorderIndex(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.roomReorder(folder: folder)) { response, error in
+            if error == nil, let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Reorder failed.", comment: "")))
+            }
+        }
+    }
 
     func checkRoomOwner(folder: ASCFolder) -> Bool {
         return folder.createdBy?.userId == user?.userId

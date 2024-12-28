@@ -142,9 +142,16 @@ extension RoomSharingCustomizeLinkViewModel {
         }
     }
 
-    func onSave() {
+    func onSave(completion: @escaping (String?) -> Void) {
+        if isProtected, !isPasswordValid(password) {
+            completion(.passwordErrorAlertMessage)
+            return
+        }
+
         guard isPossibleToSave else { return }
+
         saveCurrentState()
+        completion(nil)
     }
 
     func onRevoke() {
@@ -253,4 +260,21 @@ private extension Int {
 private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
+    static let passwordErrorAlertMessage = NSLocalizedString(
+        "Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~",
+        comment: ""
+    )
+}
+
+extension RoomSharingCustomizeLinkViewModel {
+    func isPasswordValid(_ password: String) -> Bool {
+        guard password.count >= 8 else { return false }
+
+        let pattern = "^[a-zA-Z0-9!\"№%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]+$"
+
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return false }
+
+        let range = NSRange(location: 0, length: password.utf16.count)
+        return regex.firstMatch(in: password, options: [], range: range) != nil
+    }
 }

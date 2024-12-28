@@ -15,12 +15,15 @@ struct RoomSharingCustomizeLinkView: View {
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
     @State private var showDeleteAlert = false
     @State private var showRevokeAlert = false
+    @State private var showPasswordErrorAlert = false
+
+    @State private var passwordErrorAlertMessage = ""
 
     var body: some View {
         handleHUD()
 
         return content
-            .navigationBarItems(rightBtn: doneButton)
+            .navigationBarItems(rightBtn: doneButton.alert(isPresented: $showPasswordErrorAlert) { passwordErrorAlert })
             .disabledIfDeleting(viewModel.isDeleting)
             .alertForErrorMessage($viewModel.errorMessage)
             .dismissOnChange(of: viewModel.isReadyToDismissed, using: presentationMode)
@@ -77,7 +80,7 @@ struct RoomSharingCustomizeLinkView: View {
     }
 
     private var protectedSection: some View {
-        Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
+        Section(header: Text(NSLocalizedString("Protection", comment: "")), footer: protectionSectionFooter) {
             Toggle(isOn: $viewModel.isProtected.animation()) {
                 Text(NSLocalizedString("Password access", comment: ""))
             }
@@ -94,6 +97,10 @@ struct RoomSharingCustomizeLinkView: View {
                 .foregroundColor(.primary)
             }
         }
+    }
+
+    private var protectionSectionFooter: some View {
+        Text(NSLocalizedString("Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}", comment: ""))
     }
 
     private var timeLimitSection: some View {
@@ -182,10 +189,27 @@ struct RoomSharingCustomizeLinkView: View {
         Button(
             NSLocalizedString("Done", comment: ""),
             action: {
-                viewModel.onSave()
+                viewModel.onSave { errorMessage in
+                    if let errorMessage = errorMessage {
+                        showErrorAlert(message: errorMessage)
+                    }
+                }
             }
         )
         .disabled(!viewModel.isPossibleToSave)
+    }
+
+    private var passwordErrorAlert: Alert {
+        Alert(
+            title: Text(NSLocalizedString("Error", comment: "")),
+            message: Text(passwordErrorAlertMessage),
+            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
+        )
+    }
+
+    private func showErrorAlert(message: String) {
+        passwordErrorAlertMessage = message
+        showPasswordErrorAlert = true
     }
 
     private func handleHUD() {

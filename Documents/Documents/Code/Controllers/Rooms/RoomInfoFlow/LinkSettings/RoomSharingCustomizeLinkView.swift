@@ -294,6 +294,6 @@ private extension View {
 private extension String {
     static let protectionSectionFooterText = NSLocalizedString("Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}", comment: "")
     static let restrictionSectionFooterText = NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: "")
-    static let deleteAlertMessage = NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")
+    static let deleteAlertMessage = NSLocalizedString("Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
     static let revokeAlertMessage = NSLocalizedString("Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
 }

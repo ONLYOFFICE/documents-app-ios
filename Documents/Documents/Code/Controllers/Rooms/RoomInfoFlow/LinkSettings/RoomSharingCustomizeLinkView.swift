@@ -101,7 +101,7 @@ struct RoomSharingCustomizeLinkView: View {
     }
 
     private var protectionSectionFooter: some View {
-        Text(NSLocalizedString("Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}", comment: ""))
+        Text(String.protectionSectionFooterText)
     }
 
     @ViewBuilder
@@ -123,7 +123,7 @@ struct RoomSharingCustomizeLinkView: View {
     @ViewBuilder
     private var restrictionSection: some View {
         if viewModel.roomType != .fillingForm {
-            Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
+            Section(footer: Text(String.restrictionSectionFooterText)) {
                 Toggle(isOn: $viewModel.isRestrictCopyOn) {
                     Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
                 }
@@ -193,14 +193,6 @@ struct RoomSharingCustomizeLinkView: View {
         .disabled(!viewModel.isPossibleToSave)
     }
 
-    private var passwordErrorAlert: Alert {
-        Alert(
-            title: Text(NSLocalizedString("Error", comment: "")),
-            message: Text(passwordErrorAlertMessage),
-            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
-        )
-    }
-
     private func showErrorAlert(message: String) {
         passwordErrorAlertMessage = message
         showPasswordErrorAlert = true
@@ -241,7 +233,7 @@ struct RoomSharingCustomizeLinkView: View {
     private func deleteAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Delete link", comment: "")),
-            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
+            message: Text(String.deleteAlertMessage),
             primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
                 viewModel.onDelete()
             }),
@@ -252,11 +244,19 @@ struct RoomSharingCustomizeLinkView: View {
     private func revokeAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Revoke link", comment: "")),
-            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
+            message: Text(String.revokeAlertMessage),
             primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
                 viewModel.onRevoke()
             }),
             secondaryButton: .cancel()
+        )
+    }
+
+    private var passwordErrorAlert: Alert {
+        Alert(
+            title: Text(NSLocalizedString("Error", comment: "")),
+            message: Text(passwordErrorAlertMessage),
+            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
         )
     }
 }
@@ -289,4 +289,11 @@ private extension View {
             outputLink: .constant(nil)
         )
     )
+}
+
+private extension String {
+    static let protectionSectionFooterText = NSLocalizedString("Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}", comment: "")
+    static let restrictionSectionFooterText = NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: "")
+    static let deleteAlertMessage = NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")
+    static let revokeAlertMessage = NSLocalizedString("Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
 }

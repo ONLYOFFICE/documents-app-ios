@@ -41,8 +41,8 @@ struct RoomSharingCustomizeLinkView: View {
 
     var generalLinkView: some View {
         List {
+            linkNameSection
             generalSection
-            accessSection
             protectedSection
             restrictionSection
             deleteSection
@@ -54,27 +54,28 @@ struct RoomSharingCustomizeLinkView: View {
 
     var additionalLinkView: some View {
         List {
+            linkNameSection
             generalSection
             protectedSection
             restrictionSection
-            timeLimitSection
             deleteSection
                 .alert(isPresented: $showDeleteAlert, content: deleteAlert)
         }
         .navigationBarTitle(Text(NSLocalizedString("Edit link", comment: "")))
     }
 
-    private var generalSection: some View {
+    private var linkNameSection: some View {
         Section(header: Text(NSLocalizedString("Link name", comment: ""))) {
             TextField("Link name", text: $viewModel.linkName)
         }
     }
 
-    private var accessSection: some View {
+    private var generalSection: some View {
         Section(
             header: Text(NSLocalizedString("General", comment: "")))
         {
             accessCell
+            timeLimitCell
                 .disabled(viewModel.isExpired)
         }
     }
@@ -103,26 +104,19 @@ struct RoomSharingCustomizeLinkView: View {
         Text(NSLocalizedString("Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}", comment: ""))
     }
 
-    private var timeLimitSection: some View {
-        Section(
-            header: Text(NSLocalizedString("Time limit", comment: "")),
-            footer: viewModel.isExpired
-                ? Text(NSLocalizedString("The link has expired and has been disabled", comment: ""))
-                .foregroundColor(.red)
-                : nil
-        ) {
-            Toggle(isOn: $viewModel.isTimeLimited.animation()) {
-                Text(NSLocalizedString("Enable time limit", comment: ""))
-            }
-            .tintColor(Color(Asset.Colors.brend.color))
+    @ViewBuilder
+    private var timeLimitCell: some View {
+        Toggle(isOn: $viewModel.isTimeLimited.animation()) {
+            Text(NSLocalizedString("Enable time limit", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
 
-            if viewModel.isTimeLimited {
-                TimeLimitCellView(model: TimeLimitCellModel(
-                    selectedDate: $viewModel.selectedDate,
-                    title: NSLocalizedString("Valid through", comment: ""),
-                    displayedComponents: [.date, .hourAndMinute]
-                ))
-            }
+        if viewModel.isTimeLimited {
+            TimeLimitCellView(model: TimeLimitCellModel(
+                selectedDate: $viewModel.selectedDate,
+                title: NSLocalizedString("Valid through", comment: ""),
+                displayedComponents: [.date, .hourAndMinute]
+            ))
         }
     }
 

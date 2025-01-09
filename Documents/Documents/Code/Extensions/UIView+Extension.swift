@@ -365,3 +365,19 @@ extension UIView {
         }
     }
 }
+
+// MARK: - Static
+
+extension UIView {
+    static var spacer: UIView {
+        UIView(
+            frame: CGRect(
+                origin: .zero,
+                size: CGSize(
+                    width: .zero,
+                    height: UIScreen.main.bounds.width
+                )
+            )
+        )
+    }
+}

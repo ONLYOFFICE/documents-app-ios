@@ -177,18 +177,44 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             middleStackView.addArrangedSubview(ownerView)
         }
 
+        var dateStackItems = [UIView]()
+
+        // VDR index
+        if let order = folder.order {
+            dateStackItems.append(buildCaption1ScondaryLabel(
+                [
+                    NSLocalizedString("Index", comment: "Folder order"),
+                    order,
+                ].joined(separator: " ")
+            ))
+            dateStackItems.append(buildCaption1ScondaryLabel("|"))
+        }
+
         // Right info
         dateRightLabel.text = nil
         if let createdDate = folder.created {
-            middleStackView.addArrangedSubview({
-                $0.font = UIFont.preferredFont(forTextStyle: .caption1)
-                $0.textColor = .secondaryLabel
-                $0.text = isCompact ? dateFormatter.string(from: createdDate) : nil
-                return $0
-            }(UILabel()))
+            dateStackItems.append(
+                buildCaption1ScondaryLabel(isCompact
+                    ? dateFormatter.string(from: createdDate)
+                    : nil
+                )
+            )
 
             dateRightLabel.text = dateTimeFormatter.string(from: createdDate)
         }
+
+        dateStackItems.append(.spacer)
+
+        if !dateStackItems.isEmpty {
+            middleStackView.addArrangedSubview({
+                $0.axis = .horizontal
+                $0.alignment = .fill
+                $0.distribution = .fill
+                $0.spacing = 4
+                return $0
+            }(UIStackView(arrangedSubviews: dateStackItems)))
+        }
+
         displayRightInfo(show: !isCompact)
 
         items.append(checkmarkView)
@@ -276,6 +302,15 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         }
 
         return authorLabel
+    }
+
+    private func buildCaption1ScondaryLabel(_ text: String?) -> UILabel {
+        return {
+            $0.font = UIFont.preferredFont(forTextStyle: .caption1)
+            $0.textColor = .secondaryLabel
+            $0.text = text
+            return $0
+        }(UILabel())
     }
 
     // MARK: - Grid Layout

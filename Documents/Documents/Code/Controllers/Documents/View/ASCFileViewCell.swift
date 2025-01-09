@@ -257,8 +257,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             items.append(sizeLabel)
         }
 
-        // Spacer
-        items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: UIScreen.main.bounds.width))))
+        items.append(.spacer)
 
         return {
             $0.axis = .horizontal

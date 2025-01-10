@@ -36,4 +36,8 @@ extension ASCEntity: Equatable {
     static func == (lhs: ASCEntity, rhs: ASCEntity) -> Bool {
         return lhs.uid == rhs.uid
     }
+
+    var orderIndex: String? {
+        (self as? ASCFile)?.order ?? (self as? ASCFolder)?.order
+    }
 }

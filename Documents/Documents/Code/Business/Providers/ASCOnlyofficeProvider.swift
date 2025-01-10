@@ -405,7 +405,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             return file
                         }
                         return entitie
-                    }
+                    }.sorted(by: { v1, v2 in
+                        guard let orderV1 = Int(v1.orderIndex ?? ""),
+                              let orderV2 = Int(v2.orderIndex ?? "")
+                        else { return false }
+                        return orderV1 < orderV2
+                    })
 
                     self.items += entities
 

@@ -47,6 +47,8 @@ class ASCFolder: ASCEntity {
     var denyDownload: Bool = false
     var lifetime: LifeTime?
     var watermark: Watermark?
+    var order: String?
+
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -92,6 +94,7 @@ class ASCFolder: ASCEntity {
         denyDownload <- map["denyDownload"]
         lifetime <- map["lifetime"]
         watermark <- map["watermark"]
+        order <- map["order"]
         // Internal
         device <- map["device"]
     }

@@ -166,6 +166,7 @@ class ASCTransferViewController: UITableViewController {
                 }
                 cell.titleLabel.text = viewModel.title
                 cell.badgeImageView.image = viewModel.badgeImage
+                cell.rightBadgeImageView.image = viewModel.rightBadgeImage
                 cell.isUserInteractionEnabled = viewModel.isInteractable
                 cell.contentView.alpha = viewModel.isInteractable ? 1 : 0.5
                 cell.accessoryType = .disclosureIndicator
@@ -176,6 +177,7 @@ class ASCTransferViewController: UITableViewController {
                 }
                 cell.leftImageView.image = viewModel.image
                 cell.titleLabel.text = viewModel.title
+                cell.rightBadgeImageView.image = nil
                 cell.accessoryType = .none
                 return cell
             }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,6 +47,7 @@
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
+		E8B21F272D349E2D00AE0E8F /* FilesOrderRequesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */; };
 		E8B2AFEA2D02604400CA4FAD /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */; };
 		E8B394172D133CD400A6AB70 /* ASCEntityViewLayoutTypeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B394162D133CCB00A6AB70 /* ASCEntityViewLayoutTypeProvider.swift */; };
 		E8B8C8A02CFDE32D00BEDD51 /* AutomaticIndexationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */; };
@@ -718,6 +719,7 @@
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesOrderRequesModel.swift; sourceTree = "<group>"; };
 		E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
 		E8B394162D133CCB00A6AB70 /* ASCEntityViewLayoutTypeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityViewLayoutTypeProvider.swift; sourceTree = "<group>"; };
 		E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
@@ -1341,6 +1343,10 @@
 		FCFDAA9A1E48A10C007A240C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF1B246C8E6383E9C844D7A7 /* Pods-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E8C5FD8F2D343489004112D3 /* Protocols */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Protocols; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FC7082232812E2260057FCD2 /* Frameworks */ = {
@@ -2164,6 +2170,7 @@
 		FC03A62F2BDA7F67005E8FFB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */,
 				E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */,
 				E87FF6732BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift */,
 				E87FF6722BF746F8000EFDE5 /* PeopleFilterRequestModel.swift */,
@@ -2236,6 +2243,7 @@
 		FC0F01DD216F43FF008D79A5 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				E8C5FD8F2D343489004112D3 /* Protocols */,
 				1D76B048275B919300389C61 /* ProviderTools */,
 				1D2E3B8726BB289500BEBE9D /* SharingSettingsAccessNotes */,
 				1D14AACC26962B93009E48AD /* SharingSettingsAccess */,
@@ -3568,6 +3576,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				E8C5FD8F2D343489004112D3 /* Protocols */,
+			);
 			name = "Documents-opensource";
 			packageProductDependencies = (
 				FC6A756F29915CE10056262F /* Pulse */,
@@ -4369,6 +4380,7 @@
 				FC7081EB2812E2260057FCD2 /* ASCNextCloudProvider.swift in Sources */,
 				FC83D57A2A9742F000C404CB /* ASCSignInController.swift in Sources */,
 				1D8CFC4C290D7FF600F71071 /* ASCEntityRemoverActionController.swift in Sources */,
+				E8B21F272D349E2D00AE0E8F /* FilesOrderRequesModel.swift in Sources */,
 				FC03A6412BDA7F67005E8FFB /* CreateTagRequestModel.swift in Sources */,
 				FC7081EE2812E2260057FCD2 /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC7081EF2812E2260057FCD2 /* ASCConnectStorageGoogleController.swift in Sources */,

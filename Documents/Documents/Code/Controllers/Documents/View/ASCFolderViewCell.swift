@@ -22,6 +22,12 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
     var provider: ASCFileProviderProtocol?
 
+    var dragAndDropState: Bool = false {
+        didSet {
+            buildView()
+        }
+    }
+
     var layoutType: ASCEntityViewLayoutType = .list {
         didSet {
             buildView()
@@ -221,14 +227,30 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         items.append(iconView)
         items.append(middleStackView)
         items.append(dateRightLabel)
-        items.append({
-            $0.contentMode = .center
-            $0.anchor(widthConstant: 20)
-            return $0
-        }(UIImageView(image: UIImage(
-            systemName: "chevron.forward",
-            withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .medium))
-        )?.withTintColor(.separator, renderingMode: .alwaysOriginal) ?? UIImage())))
+
+        if dragAndDropState {
+            items.append({
+                $0.contentMode = .center
+                $0.anchor(widthConstant: 20)
+                return $0
+            }(UIImageView(image: UIImage(
+                systemName: "line.3.horizontal"
+            )?.withTintColor(.separator, renderingMode: .alwaysOriginal) ?? UIImage())))
+
+            items.append({
+                $0.anchor(widthConstant: 10)
+                return $0
+            }(UIView()))
+        } else {
+            items.append({
+                $0.contentMode = .center
+                $0.anchor(widthConstant: 20)
+                return $0
+            }(UIImageView(image: UIImage(
+                systemName: "chevron.forward",
+                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .medium))
+            )?.withTintColor(.separator, renderingMode: .alwaysOriginal) ?? UIImage())))
+        }
 
         let contentView = {
             $0.axis = .horizontal

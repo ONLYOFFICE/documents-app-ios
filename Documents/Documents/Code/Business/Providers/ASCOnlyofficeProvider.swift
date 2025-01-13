@@ -13,6 +13,8 @@ import MBProgressHUD
 import UIKit
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
+    typealias ASCEntityId = String
+
     var category: ASCCategory?
 
     var id: String? {
@@ -39,6 +41,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     var items: [ASCEntity] = []
+
+    private var itemsBeforeEditingOrder = [ASCEntity]()
+    private var itemsIdsWithChangedOrderIndex = Set<ASCEntityId>()
 
     var page: Int = 0
     var pageSize: Int = 20
@@ -2258,6 +2263,43 @@ extension ASCOnlyofficeProvider {
         set {
             ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue
         }
+    }
+}
+
+extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
+    func changeOrderIndex(for entity: ASCEntity, toIndex index: Int) {
+        guard let srcItemIndex = items.firstIndex(where: { $0.id == entity.id }) else {
+            return
+        }
+        if itemsBeforeEditingOrder.isEmpty {
+            itemsBeforeEditingOrder = items
+        }
+        let srcItem = items[srcItemIndex]
+        let newSrcItemIndex = items[index].orderIndex
+
+        // If moving up in the array (shift down items between index and srcItemIndex
+        if srcItemIndex > index {
+            for i in index ..< srcItemIndex {
+                items[i].orderIndex = items[i + 1].orderIndex
+                itemsIdsWithChangedOrderIndex.insert(items[i].id)
+            }
+        }
+        // If moving down in the array (shift up items between srcItemIndex and index)
+        else if srcItemIndex < index {
+            var prevValue = srcItem.orderIndex
+            for i in srcItemIndex ... index {
+                let bufferValue = items[i].orderIndex
+                items[i].orderIndex = prevValue
+                prevValue = bufferValue
+                itemsIdsWithChangedOrderIndex.insert(items[i].id)
+            }
+        }
+
+        // Remove the item from the current position and insert it at the new position
+        items.remove(at: srcItemIndex)
+        items.insert(srcItem, at: index)
+        srcItem.orderIndex = newSrcItemIndex
+        itemsIdsWithChangedOrderIndex.insert(srcItem.id)
     }
 }
 

@@ -63,6 +63,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     var isEditingIndexMode = false {
         didSet {
             configureNavigationBar(animated: true)
+            updateUIForEditingOrderIndexState()
+            collectionView.reloadData()
         }
     }
 
@@ -158,6 +160,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         return collectionView
     }()
+
+    private lazy var applyButton: UIButton = {
+        $0.setTitle(NSLocalizedString("Apply", comment: "Button title"), for: .normal)
+        $0.backgroundColor = .clear
+        $0.setTitleColor(Asset.Colors.brend.color, for: .normal)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.addTarget(self, action: #selector(onApplyButtonTapped), for: .touchUpInside)
+        $0.isHidden = true
+        return $0
+    }(UIButton())
 
     // Search
     private lazy var searchController: UISearchController = {
@@ -295,7 +307,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         view.backgroundColor = .systemBackground
 
         view.addSubview(collectionView)
-        collectionView.fillToSuperview()
+        view.addSubview(applyButton)
+        collectionView.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
+
+        applyButton.anchor(
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(top: .zero, left: .zero, bottom: 50, right: .zero)
+        )
 
         if displaySegmentTabs {
             view.addSubview(navigationBarExtendPanelView)
@@ -893,6 +918,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         setToolbarItems(items, animated: false)
+    }
+
+    private func updateUIForEditingOrderIndexState() {
+        if isEditingIndexMode {
+            tabBarController?.tabBar.isHidden = true
+            applyButton.isHidden = false
+        } else {
+            tabBarController?.tabBar.isHidden = false
+            applyButton.isHidden = true
+        }
     }
 
     private func isSelectedItemsPinned() -> Bool {
@@ -3086,6 +3121,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    @objc func onApplyButtonTapped(_ sender: UIButton) {
+        if isEditingIndexMode, let editOrderIndexDelegate = provider as? ProviderEditIndexDelegate {
+            editOrderIndexDelegate.applyEditedOrderIndex { message in
+                guard let message else { return }
+                UIAlertController.showError(
+                    in: self,
+                    message: message
+                )
+            }
+            isEditingIndexMode = false
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func createFirstItem(_ sender: UIButton) {
@@ -3524,6 +3572,8 @@ private enum CompletionBehavior {
 
 extension ASCDocumentsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard !isEditingIndexMode else { return }
+
         if collectionView.isEditing {
             updateSelectedItems(indexPath: indexPath)
             return
@@ -3636,6 +3686,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
                     folderCell.provider = provider
                     folderCell.entity = folder
                     folderCell.layoutType = itemsViewType
+                    folderCell.dragAndDropState = isEditingIndexMode
 
                     return folderCell
                 } else if let file = tableData[indexPath.row] as? ASCFile {
@@ -3646,6 +3697,7 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
                     fileCell.provider = provider
                     fileCell.entity = file
                     fileCell.layoutType = itemsViewType
+                    fileCell.dragAndDropState = isEditingIndexMode
 
                     return fileCell
                 }

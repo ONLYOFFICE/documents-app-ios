@@ -2301,6 +2301,20 @@ extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
         srcItem.orderIndex = newSrcItemIndex
         itemsIdsWithChangedOrderIndex.insert(srcItem.id)
     }
+
+    func cancleEditOrderIndex() {
+        if !itemsBeforeEditingOrder.isEmpty {
+            items = itemsBeforeEditingOrder
+            let itemsOrders = itemsBeforeEditingOrder
+                .sorted(by: { $0.orderIndex ?? "" < $1.orderIndex ?? "" })
+                .map { $0.orderIndex }
+            for (index, item) in items.enumerated() {
+                item.orderIndex = itemsOrders[index]
+            }
+            itemsBeforeEditingOrder = []
+        }
+        itemsIdsWithChangedOrderIndex.removeAll()
+    }
 }
 
 struct StringError: LocalizedError {

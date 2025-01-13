@@ -38,6 +38,12 @@ extension ASCEntity: Equatable {
     }
 
     var orderIndex: String? {
-        (self as? ASCFile)?.order ?? (self as? ASCFolder)?.order
+        get {
+            (self as? ASCFile)?.order ?? (self as? ASCFolder)?.order
+        }
+        set {
+            (self as? ASCFile)?.order = newValue
+            (self as? ASCFolder)?.order = newValue
+        }
     }
 }

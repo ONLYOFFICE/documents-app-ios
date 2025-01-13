@@ -443,6 +443,11 @@ extension ASCDocumentsViewController {
     }
 
     @objc func onCancelAction() {
+        if isEditingIndexMode, let editOrderDelegate = provider as? ProviderEditIndexDelegate {
+            editOrderDelegate.cancleEditOrderIndex()
+            isEditingIndexMode = false
+            collectionView.reloadData()
+        }
         setEditMode(false)
     }
 

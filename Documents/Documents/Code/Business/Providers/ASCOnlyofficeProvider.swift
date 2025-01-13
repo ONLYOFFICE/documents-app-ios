@@ -2315,6 +2315,20 @@ extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
         }
         itemsIdsWithChangedOrderIndex.removeAll()
     }
+
+    func applyEditedOrderIndex(completion: @escaping (ErrorMessage?) -> Void) {
+        let requestModel = itemsIdsWithChangedOrderIndex
+            .compactMap { id in items.first(where: { $0.id == id }) }
+            .filesOrderRequestModel
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.order, requestModel.dictionary) { result, error in
+            DispatchQueue.main.async {
+                completion(error?.localizedDescription)
+            }
+        }
+
+        itemsBeforeEditingOrder = []
+        itemsIdsWithChangedOrderIndex.removeAll()
+    }
 }
 
 struct StringError: LocalizedError {

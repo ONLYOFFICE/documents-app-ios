@@ -282,6 +282,30 @@
 				<string>com.apple.iwork.keynote.key</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>hwp</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Hangul Word Processor Document (.hwp)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>hwpx</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Hangul Word Processor 2010 Document (.hwpx)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array/>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>

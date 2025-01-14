@@ -116,6 +116,8 @@
 		FC308D9B283E2FDA00FFE16E /* ASCNotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC308D9A283E2FDA00FFE16E /* ASCNotificationSettingsViewController.swift */; };
 		FC308DA8283FC45900FFE16E /* ASCPushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC308DA7283FC45800FFE16E /* ASCPushNotificationManager.swift */; };
 		FC33FAA02B0F59AD00688E17 /* ASCFolderLogoAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33FA9F2B0F59AD00688E17 /* ASCFolderLogoAvatarView.swift */; };
+		FC34555B2D367ED70051B573 /* HWPFile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC34555A2D367ED70051B573 /* HWPFile.xcframework */; };
+		FC34555C2D367ED70051B573 /* HWPFile.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC34555A2D367ED70051B573 /* HWPFile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC379D1D2C37ED7000B120D9 /* ASCDocSpaceLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC379CFB2C37ED7000B120D9 /* ASCDocSpaceLinkView.swift */; };
 		FC379D1E2C37ED7000B120D9 /* ASCDocSpaceLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC379CFC2C37ED7000B120D9 /* ASCDocSpaceLinkViewController.swift */; };
 		FC379D1F2C37ED7000B120D9 /* ASCDocSpaceLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC379CFD2C37ED7000B120D9 /* ASCDocSpaceLinkViewModel.swift */; };
@@ -719,6 +721,7 @@
 				FC4293C9294A685900DC3932 /* XpsFile.xcframework in CopyFiles */,
 				FC4293B3294A684900DC3932 /* DocxRenderer.xcframework in CopyFiles */,
 				FC4293C5294A685500DC3932 /* UnicodeConverter.xcframework in CopyFiles */,
+				FC34555C2D367ED70051B573 /* HWPFile.xcframework in CopyFiles */,
 				FC4293AF294A683F00DC3932 /* DjVuFile.xcframework in CopyFiles */,
 				FC4293B7294A684A00DC3932 /* Fb2File.xcframework in CopyFiles */,
 				FCD466E12D10673C00BC45DA /* IWorkFile.xcframework in CopyFiles */,
@@ -855,6 +858,7 @@
 		FC308D9A283E2FDA00FFE16E /* ASCNotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		FC308DA7283FC45800FFE16E /* ASCPushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPushNotificationManager.swift; sourceTree = "<group>"; };
 		FC33FA9F2B0F59AD00688E17 /* ASCFolderLogoAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderLogoAvatarView.swift; sourceTree = "<group>"; };
+		FC34555A2D367ED70051B573 /* HWPFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HWPFile.xcframework; path = "../../editors-ios/build/SDK/lib/HWPFile.xcframework"; sourceTree = "<group>"; };
 		FC379CFB2C37ED7000B120D9 /* ASCDocSpaceLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkView.swift; sourceTree = "<group>"; };
 		FC379CFC2C37ED7000B120D9 /* ASCDocSpaceLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewController.swift; sourceTree = "<group>"; };
 		FC379CFD2C37ED7000B120D9 /* ASCDocSpaceLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewModel.swift; sourceTree = "<group>"; };
@@ -1408,6 +1412,7 @@
 			files = (
 				FC6A756629915B530056262F /* PulseUI in Frameworks */,
 				FC2B7F232B4E86F90064DDDA /* ObservableSwift in Frameworks */,
+				FC34555B2D367ED70051B573 /* HWPFile.xcframework in Frameworks */,
 				FC4293B0294A684200DC3932 /* doctrenderer.xcframework in Frameworks */,
 				FC53690024EB1C3D0092765B /* SpreadsheetEditor.framework in Frameworks */,
 				FC6A756229915B530056262F /* Pulse in Frameworks */,
@@ -1460,6 +1465,7 @@
 		B7E3C8EC6916BB80232E66FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FC34555A2D367ED70051B573 /* HWPFile.xcframework */,
 				FCD466DF2D10673C00BC45DA /* IWorkFile.xcframework */,
 				FC42939F294A673400DC3932 /* DjVuFile.xcframework */,
 				FC429393294A673300DC3932 /* doctrenderer.xcframework */,

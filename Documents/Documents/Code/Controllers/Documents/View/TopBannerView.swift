@@ -1,6 +1,6 @@
 //
 //  TopBannerView.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Lolita Chernysheva on 13.01.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.

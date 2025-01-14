@@ -30,6 +30,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    private lazy var collectionHeaderView: TopBannerView = {
+        let header = TopBannerView(frame: CGRect(x: .zero, y: -TopBannerView.bannerHeight, width: view.frame.width, height: TopBannerView.bannerHeight))
+
+        if let formattedString = folder?.lifetime?.formattedLifetimeString() {
+            header.configure(
+                icon: Asset.Images.fire.image,
+                text: formattedString
+            )
+        }
+
+        return header
+    }()
+
     // MARK: - Public
 
     var folder: ASCFolder? {
@@ -90,6 +103,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         $0.onChange = onCategorySegmentChange
         return $0
     }(ASCCategorySegmentControl(frame: .zero))
+
+    private var showTopBanner: Bool {
+        return folder?.lifetime != nil
+    }
 
     var categories: [ASCSegmentCategory] = [] {
         didSet {
@@ -308,6 +325,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         view.addSubview(collectionView)
         view.addSubview(applyButton)
+
+        if showTopBanner {
+            collectionView.addSubview(collectionHeaderView)
+            collectionView.contentInset.top = TopBannerView.bannerHeight
+        }
+
         collectionView.anchor(
             top: view.topAnchor,
             leading: view.leadingAnchor,
@@ -336,11 +359,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        let topInset: CGFloat = showTopBanner ? TopBannerView.bannerHeight : .zero
+
         if navigationBarExtendPanelView.isHidden || tableData.isEmpty {
-            collectionView.contentInset.top = 0
+            collectionView.contentInset.top = topInset
         } else if displaySegmentTabs {
-            collectionView.contentInset.top = navigationBarExtendPanelView.contentView?.frame.height ?? 0
+            collectionView.contentInset.top = (navigationBarExtendPanelView.contentView?.frame.height ?? 0) + topInset
         }
+
+        collectionView.bringSubviewToFront(collectionHeaderView)
 
         collectionView.verticalScrollIndicatorInsets.top = collectionView.contentInset.top
     }

@@ -83,6 +83,7 @@
 		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
 		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
+		F3BAE5942D3543420024AB6A /* TopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAE5932D3543400024AB6A /* TopBannerView.swift */; };
 		FC00CBF22C46613C00D3344D /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF12C46613C00D3344D /* ChevronRightView.swift */; };
 		FC00CBF42C46616800D3344D /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF32C46616800D3344D /* ASCThirdpartySelectFolderProvider.swift */; };
 		FC00CBF62C4661A600D3344D /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF52C4661A600D3344D /* ASCTransferViewControllerRepresentable.swift */; };
@@ -761,6 +762,7 @@
 		F378024329DAE3720020B453 /* AccountCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
 		F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
+		F3BAE5932D3543400024AB6A /* TopBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerView.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC00CBF12C46613C00D3344D /* ChevronRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
 		FC00CBF32C46616800D3344D /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
@@ -2539,6 +2541,7 @@
 		FC31B27A1E76796E008699C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F3BAE5932D3543400024AB6A /* TopBannerView.swift */,
 				FC4639C52BFB339D00DA603A /* NavigationBarExtendPanel */,
 				FC33FA922B0F595400688E17 /* ASCFolderLogoAvatarView.swift */,
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
@@ -4469,6 +4472,7 @@
 				FC83D61C2A974E2300C404CB /* UINavigationController+Extension.swift in Sources */,
 				FC7082202812E2260057FCD2 /* ASCTransferViewController.swift in Sources */,
 				FC83D56E2A9742F000C404CB /* EventManager.swift in Sources */,
+				F3BAE5942D3543420024AB6A /* TopBannerView.swift in Sources */,
 				1D8CFC34290D7E2600F71071 /* ASCRoomType.swift in Sources */,
 				FC142A6528981A1F00EDE7CE /* ASCSwitchCell.swift in Sources */,
 				FC7082222812E2260057FCD2 /* ASCDeviceCategoryCell.swift in Sources */,

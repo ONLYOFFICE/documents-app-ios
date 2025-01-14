@@ -174,6 +174,27 @@ extension ASCFolder {
     }
 }
 
+extension ASCFolder.LifeTime {
+    func formattedLifetimeString() -> String? {
+        guard let value = value, let period = period else { return nil }
+
+        let unitLocalized: String = {
+            switch period {
+            case 0:
+                return String(format: NSLocalizedString("%d days", comment: ""), value)
+            case 1:
+                return String(format: NSLocalizedString("%d months", comment: ""), value)
+            case 2:
+                return String(format: NSLocalizedString("%d years", comment: ""), value)
+            default:
+                return ""
+            }
+        }()
+
+        return String(format: NSLocalizedString("The file lifetime is set to %@ in this room.", comment: ""), unitLocalized)
+    }
+}
+
 extension ASCFolder {
     var isRoot: Bool {
         parentId == nil || parentId == "0"

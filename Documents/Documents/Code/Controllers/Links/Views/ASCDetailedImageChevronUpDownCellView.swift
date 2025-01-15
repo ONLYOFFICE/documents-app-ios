@@ -1,6 +1,6 @@
 //
-//  ASCDetailedImaeChevronUpDownCellView.swift
-//  Documents-opensource
+//  ASCDetailedImageChevronUpDownCellView.swift
+//  Documents
 //
 //  Created by Lolita Chernysheva on 25.12.2024.
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
@@ -9,14 +9,14 @@
 import Combine
 import SwiftUI
 
-struct ASCDetailedImaeChevronUpDownCellViewModel {
+struct ASCDetailedImageChevronUpDownCellViewModel {
     let title: String
     let image: Image
     let isEnabled: Bool
 }
 
-struct ASCDetailedImaeChevronUpDownCellView: View {
-    var model: ASCDetailedImaeChevronUpDownCellViewModel
+struct ASCDetailedImageChevronUpDownCellView: View {
+    var model: ASCDetailedImageChevronUpDownCellViewModel
 
     var body: some View {
         HStack {

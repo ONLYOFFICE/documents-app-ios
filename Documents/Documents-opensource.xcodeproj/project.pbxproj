@@ -22,6 +22,7 @@
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
+		E801C9AF2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E801C9AE2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift */; };
 		E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */; };
 		E827EEEC2C3C856100BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827EEEB2C3C856000BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */; };
 		E83125CE2B249A4E006016F1 /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */; };
@@ -68,7 +69,6 @@
 		E8D50B8B2BFE5DE300741BB8 /* InviteUsersUIHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B8A2BFE5DE300741BB8 /* InviteUsersUIHostingController.swift */; };
 		E8D50B8D2BFE7BCA00741BB8 /* InviteUsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D50B8C2BFE7BCA00741BB8 /* InviteUsersService.swift */; };
 		E8D70A3F2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D70A3E2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift */; };
-		F328CA972D1C2AC8009C54BC /* ASCDetailedImaeChevronUpDownCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328CA962D1C2AC4009C54BC /* ASCDetailedImaeChevronUpDownCellView.swift */; };
 		F3772FE82C9DEEAD002B33A8 /* CompletedFormResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FDA2C9DEEAD002B33A8 /* CompletedFormResponceModel.swift */; };
 		F3772FE92C9DEEAD002B33A8 /* CompleteFormRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FDB2C9DEEAD002B33A8 /* CompleteFormRequestModel.swift */; };
 		F3772FEA2C9DEEAD002B33A8 /* FormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FDC2C9DEEAD002B33A8 /* FormModel.swift */; };
@@ -695,6 +695,7 @@
 		82FD00C7960698FE7A88A2F3 /* Pods-Documents-opensource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.debug.xcconfig"; sourceTree = "<group>"; };
 		A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_opensource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
+		E801C9AE2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDetailedImageChevronUpDownCellView.swift; sourceTree = "<group>"; };
 		E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E827EEEB2C3C856000BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
@@ -742,7 +743,6 @@
 		E8D50B8C2BFE7BCA00741BB8 /* InviteUsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersService.swift; sourceTree = "<group>"; };
 		E8D70A3E2CE7533300BE07E2 /* ASCOnlyofficeEntityInternalLinkMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMaker.swift; sourceTree = "<group>"; };
 		E8D70A402CE7534D00BE07E2 /* ASCOnlyofficeEntityInternalLinkMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMakerTests.swift; sourceTree = "<group>"; };
-		F328CA962D1C2AC4009C54BC /* ASCDetailedImaeChevronUpDownCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDetailedImaeChevronUpDownCellView.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F3772FDA2C9DEEAD002B33A8 /* CompletedFormResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedFormResponceModel.swift; sourceTree = "<group>"; };
@@ -2699,7 +2699,7 @@
 		FC379D572C380C5900B120D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F328CA962D1C2AC4009C54BC /* ASCDetailedImaeChevronUpDownCellView.swift */,
+				E801C9AE2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift */,
 				FC379D4D2C380C5900B120D9 /* ASCCreateLinkCellView.swift */,
 				FC379D4E2C380C5900B120D9 /* ASCDetailedChevronUpDownCellView.swift */,
 				FC379D4F2C380C5900B120D9 /* ASCLabledCellView.swift */,
@@ -4156,6 +4156,7 @@
 				FC03A6462BDA7F67005E8FFB /* LogoUploadResult.swift in Sources */,
 				F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */,
 				1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */,
+				E801C9AF2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift in Sources */,
 				FC7081532812E2260057FCD2 /* OnlyofficeApplicationType.swift in Sources */,
 				FC7081542812E2260057FCD2 /* Scenes.swift in Sources */,
 				E856CEC22B5904D8003E4C3D /* Rooms.swift in Sources */,
@@ -4256,7 +4257,6 @@
 				E8C8A8AA2D1C931E0020BE95 /* ASCDocumentsViewController+NavBar.swift in Sources */,
 				FC7081982812E2260057FCD2 /* ASCDocumentsEmptyView.swift in Sources */,
 				FC1764DF2BA332AD00D6B6F0 /* RoomSelectionViewModel.swift in Sources */,
-				F328CA972D1C2AC8009C54BC /* ASCDetailedImaeChevronUpDownCellView.swift in Sources */,
 				FC7081992812E2260057FCD2 /* ASCWebKitViewController.swift in Sources */,
 				E83125CE2B249A4E006016F1 /* WSTagsFieldRepresentable.swift in Sources */,
 				FC1764FD2BA332F300D6B6F0 /* RoomSharingAccessTypeViewModel.swift in Sources */,

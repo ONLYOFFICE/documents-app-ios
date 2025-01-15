@@ -8,17 +8,38 @@
 
 import UIKit
 
+struct TopBannerViewModel {
+    var icon: UIImage?
+    var text: String
+
+    static func lifetime(formattedString: String) -> TopBannerViewModel {
+        .init(
+            icon: Asset.Images.fire.image,
+            text: formattedString
+        )
+    }
+
+    static var trash: TopBannerViewModel {
+        .init(text: NSLocalizedString("Items in Trash are automatically deleted after 30 days", comment: ""))
+    }
+}
+
 final class TopBannerView: UICollectionReusableView {
     static let identifier: String = "TopBannerView"
     static let bannerHeight: CGFloat = 42
 
-    private let containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .tertiarySystemFill
-        view.layerCornerRadius = .cornerRadius
-        view.clipsToBounds = true
-        return view
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = .horizontalSpace
+        stackView.alignment = .center
+        stackView.backgroundColor = .tertiarySystemFill
+        stackView.layerCornerRadius = .cornerRadius
+        stackView.clipsToBounds = true
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: .horizontalPadding, bottom: 0, right: .horizontalPadding)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
 
     private let iconImageView: UIImageView = {
@@ -52,17 +73,12 @@ final class TopBannerView: UICollectionReusableView {
     // MARK: - Setup
 
     private func setupView() {
-        addSubview(containerView)
-        containerView.addSubview(iconImageView)
-        containerView.addSubview(titleLabel)
-
-        setupContainerViewConstraint()
-        setupIconImageViewConstraint()
-        setupTitleLabelConstraint()
+        addSubview(stackView)
+        setupStackViewConstraint()
     }
 
-    private func setupContainerViewConstraint() {
-        containerView.anchor(
+    private func setupStackViewConstraint() {
+        stackView.anchor(
             top: topAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
@@ -71,31 +87,12 @@ final class TopBannerView: UICollectionReusableView {
         )
     }
 
-    private func setupIconImageViewConstraint() {
-        iconImageView.anchor(
-            leading: containerView.leadingAnchor,
-            padding: UIEdgeInsets(top: .zero, left: .iconImageViewLeadingConstant, bottom: .zero, right: .zero),
-            size: CGSize(width: .imageSize, height: .imageSize)
-        )
-
-        iconImageView.anchorCenterYToSuperview()
-    }
-
-    private func setupTitleLabelConstraint() {
-        titleLabel.anchor(
-            leading: iconImageView.trailingAnchor,
-            trailing: containerView.trailingAnchor,
-            padding: UIEdgeInsets(top: .zero, left: .titleLabelLeadingConstant, bottom: .zero, right: .zero)
-        )
-
-        titleLabel.anchorCenterYToSuperview()
-    }
-
     // MARK: - Configuration
 
-    func configure(icon: UIImage?, text: String) {
-        iconImageView.image = icon
-        titleLabel.text = text
+    func configure(viewModel: TopBannerViewModel) {
+        iconImageView.isHidden = viewModel.icon == nil
+        iconImageView.image = viewModel.icon
+        titleLabel.text = viewModel.text
     }
 }
 
@@ -104,6 +101,5 @@ private extension CGFloat {
     static let horizontalPadding: CGFloat = 16
     static let imageSize: CGFloat = 18
     static let contentHeight: CGFloat = 42
-    static let iconImageViewLeadingConstant: CGFloat = 12
-    static let titleLabelLeadingConstant: CGFloat = 12
+    static let horizontalSpace: CGFloat = 12
 }

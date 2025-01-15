@@ -30,16 +30,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    private var topBannerViewModel: TopBannerViewModel? {
+        (provider as? TopBannerViewModelDelegate)?.topBannerViewModel(for: folder)
+    }
+
     private lazy var collectionHeaderView: TopBannerView = {
         let header = TopBannerView(frame: CGRect(x: .zero, y: -TopBannerView.bannerHeight, width: view.frame.width, height: TopBannerView.bannerHeight))
-
-        if let formattedString = folder?.lifetime?.formattedLifetimeString() {
-            header.configure(
-                icon: Asset.Images.fire.image,
-                text: formattedString
-            )
+        if let viewModel = topBannerViewModel {
+            header.configure(viewModel: viewModel)
         }
-
         return header
     }()
 
@@ -105,7 +104,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }(ASCCategorySegmentControl(frame: .zero))
 
     private var showTopBanner: Bool {
-        return folder?.lifetime != nil
+        return topBannerViewModel != nil
     }
 
     var categories: [ASCSegmentCategory] = [] {

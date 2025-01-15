@@ -2266,6 +2266,17 @@ extension ASCOnlyofficeProvider {
     }
 }
 
+extension ASCOnlyofficeProvider: TopBannerViewModelDelegate {
+    func topBannerViewModel(for folder: ASCFolder?) -> TopBannerViewModel? {
+        if let formattedString = folder?.lifetime?.formattedLifetimeString() {
+            return .lifetime(formattedString: formattedString)
+        } else if folder?.rootFolderType == .onlyofficeTrash {
+            return .trash
+        }
+        return nil
+    }
+}
+
 extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
     func changeOrderIndex(for entity: ASCEntity, toIndex index: Int) {
         guard let srcItemIndex = items.firstIndex(where: { $0.id == entity.id }) else {

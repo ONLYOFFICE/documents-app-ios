@@ -4926,7 +4926,7 @@
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp";
 			requirement = {
 				kind = exactVersion;
-				version = 8.1.0;
+				version = 8.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

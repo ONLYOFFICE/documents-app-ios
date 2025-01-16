@@ -289,6 +289,7 @@
 		FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */; };
 		FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */; };
 		FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */; };
+		FC650DFE2D38EBD0004EE6DD /* TopBannerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC650DFD2D38EBD0004EE6DD /* TopBannerViewModelDelegate.swift */; };
 		FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */; };
 		FC68398721B7DC0D00251CEA /* ASCRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */; };
 		FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398921B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift */; };
@@ -950,6 +951,7 @@
 		FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 		FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFacebookSignInController.swift; sourceTree = "<group>"; };
 		FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCGoogleSignInController.swift; sourceTree = "<group>"; };
+		FC650DFD2D38EBD0004EE6DD /* TopBannerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewModelDelegate.swift; sourceTree = "<group>"; };
 		FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityItemProvider.swift; sourceTree = "<group>"; };
 		FC65B6BA1EBA0AEB00AE73BB /* Documents-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Documents-Bridging-Header.h"; sourceTree = "<group>"; };
 		FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRootViewController.swift; sourceTree = "<group>"; };
@@ -1912,6 +1914,7 @@
 			isa = PBXGroup;
 			children = (
 				E801C98C2D368E5400E9939A /* ProviderEditIndexDelegate.swift */,
+				FC650DFD2D38EBD0004EE6DD /* TopBannerViewModelDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -4318,6 +4321,7 @@
 				1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,
 				E8CD620A2D1080AE00DF3440 /* AutomaticIndexationSection.swift in Sources */,
+				FC650DFE2D38EBD0004EE6DD /* TopBannerViewModelDelegate.swift in Sources */,
 				E8CD620B2D1080AE00DF3440 /* ThirdPartySection.swift in Sources */,
 				E8CD620C2D1080AE00DF3440 /* FileLifetimeSection.swift in Sources */,
 				E8CD620D2D1080AE00DF3440 /* WatermarkSection.swift in Sources */,

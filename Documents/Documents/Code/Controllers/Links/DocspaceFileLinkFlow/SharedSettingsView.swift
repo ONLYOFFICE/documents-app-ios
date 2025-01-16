@@ -16,6 +16,7 @@ struct SharedSettingsView: View {
             screenView
                 .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
                 .navigateToEditSharedLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
+                .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
         }
     }
 

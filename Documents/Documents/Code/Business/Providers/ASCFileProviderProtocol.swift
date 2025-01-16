@@ -41,6 +41,8 @@ struct ASCEntityActions: OptionSet {
     static let copySharedLink = ASCEntityActions(rawValue: 1 << 27)
     static let shareAsRoom = ASCEntityActions(rawValue: 1 << 28)
     static let fillForm = ASCEntityActions(rawValue: 1 << 29)
+    static let editIndex = ASCEntityActions(rawValue: 1 << 30)
+    static let reorderIndex = ASCEntityActions(rawValue: 1 << 31)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
@@ -72,7 +74,7 @@ enum ASCFiletProviderContentType {
     case files, folders, documents, spreadsheets, presentations, images, collaboration, `public`, custom, viewOnly, fillingForms
 }
 
-protocol ASCFileProviderProtocol {
+protocol ASCFileProviderProtocol: ASCEntityViewLayoutTypeProvider {
     // Information
     var id: String? { get }
     var type: ASCFileProviderType { get }

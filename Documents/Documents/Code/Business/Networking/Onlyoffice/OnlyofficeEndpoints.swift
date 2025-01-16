@@ -30,6 +30,7 @@ enum OnlyofficeAPI {
         public static let folder = "api/\(version)/files/folder/%@"
         public static let favorite = "api/\(version)/files/favorites"
         public static let filesShare = "api/\(version)/files/share"
+        public static let filesOrder = "api/\(version)/files/order"
         public static let operations = "api/\(version)/files/fileops"
         public static let operationsTerminate = "api/\(version)/files/fileops/terminate"
         public static let operationCopy = "api/\(version)/files/fileops/copy"
@@ -75,6 +76,7 @@ enum OnlyofficeAPI {
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        public static let roomReorder = "api/\(version)/files/rooms/%@/reorder"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
 
@@ -249,6 +251,10 @@ enum OnlyofficeAPI {
             static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
             }
+
+            static func roomReorder(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomReorder, folder.id), .put)
+            }
         }
 
         // MARK: Files
@@ -320,6 +326,7 @@ enum OnlyofficeAPI {
 
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
             static let removeFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .delete)
+            static let order: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.filesOrder, .put)
         }
 
         // MARK: Sharing

@@ -307,6 +307,7 @@ private extension RoomSharingViewModel {
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,
             isSharingPossible: isSharingPossible,
+            accessRight: link.access,
             onTapAction: { [weak self] in
                 guard let self else { return }
                 if isSharingPossible {
@@ -317,10 +318,6 @@ private extension RoomSharingViewModel {
                 guard let self, isSharingPossible else { return }
                 isSharingScreenPresenting = true
                 sharingLink = URL(string: link.linkInfo.shareLink)
-            },
-            onCopyAction: { [weak self] in
-                guard let self else { return }
-                onCopyLinkAndNotify(link: link)
             }
         )
     }

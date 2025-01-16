@@ -23,6 +23,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
+    @Published var activeAlert: ManageRoomView.ActiveAlert?
 
     // Stroage quota
     @Published var allowChangeStorageQuota: Bool = false
@@ -31,8 +32,6 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedSizeUnit: SizeUnit = .mb
 
     // MARK: Published Virtual data room only vars
-
-    @Published var isNoWatermarkAlertPresented: Bool = false
 
     @Published var isAutomaticIndexing: Bool = false
 
@@ -203,6 +202,7 @@ class ManageRoomViewModel: ObservableObject {
     private var cancelable = Set<AnyCancellable>()
     private var roomQuota: ASCPaymentQuotaSettings?
     private var watermarkImageWasChanged: Bool = false
+    private var isFilesLifetimeWarningViewed: Bool = false
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
@@ -293,6 +293,28 @@ class ManageRoomViewModel: ObservableObject {
             })
             .store(in: &cancelable)
 
+        $isFileLifetimeEnabled
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isOn in
+                guard let self, isOn, isEditMode, !isFilesLifetimeWarningViewed
+                else { return }
+                isFilesLifetimeWarningViewed = true
+                activeAlert = .filesLifetimeWarning
+            }
+            .store(in: &cancelable)
+
+        $errorMessage
+            .receive(on: RunLoop.main)
+            .sink { [weak self] message in
+                guard let self else { return }
+                if let message, !message.isEmpty {
+                    activeAlert = .errorMessage
+                } else {
+                    activeAlert = nil
+                }
+            }
+            .store(in: &cancelable)
+
         $roomName
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
@@ -322,7 +344,7 @@ class ManageRoomViewModel: ObservableObject {
             || selectedWatermarkType != .image
             || watermarkImage != nil
         else {
-            isNoWatermarkAlertPresented = true
+            activeAlert = .saveWithoutWatermark
             return
         }
 

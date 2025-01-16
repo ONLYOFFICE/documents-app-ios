@@ -13,6 +13,8 @@ import MBProgressHUD
 import UIKit
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
+    typealias ASCEntityId = String
+
     var category: ASCCategory?
 
     var id: String? {
@@ -39,6 +41,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     var items: [ASCEntity] = []
+
+    private var itemsBeforeEditingOrder = [ASCEntity]()
+    private var itemsIdsWithChangedOrderIndex = Set<ASCEntityId>()
 
     var page: Int = 0
     var pageSize: Int = 20
@@ -405,7 +410,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             return file
                         }
                         return entitie
-                    }
+                    }.sorted(by: { v1, v2 in
+                        guard let orderV1 = Int(v1.orderIndex ?? ""),
+                              let orderV2 = Int(v2.orderIndex ?? "")
+                        else { return false }
+                        return orderV1 < orderV2
+                    })
 
                     self.items += entities
 
@@ -1533,6 +1543,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomFolder, isArchiveCategory, folder.security.move {
                 entityActions.insert(.unarchive)
             }
+
+            if folder.isRoomListSubfolder,
+               folder.parentsFoldersOrCurrentContains(
+                   keyPath: \.roomType,
+                   value: .virtualData
+               ) == true
+            {
+                entityActions.insert(.editIndex)
+            }
         }
 
         return entityActions
@@ -1546,6 +1565,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
         case .unarchive: unarchiveRoom(folder: folder, handler: handler)
+        case .reorderIndex: reorderIndex(folder: folder, handler: handler)
         default: unsupportedActionHandler(action: action, handler: handler)
         }
     }
@@ -1590,6 +1610,17 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.end, folder, nil)
             } else {
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
+            }
+        }
+    }
+
+    private func reorderIndex(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.roomReorder(folder: folder)) { response, error in
+            if error == nil, let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Reorder failed.", comment: "")))
             }
         }
     }
@@ -2213,6 +2244,101 @@ extension ASCOnlyofficeProvider {
 
     static var isDocspaceApi: Bool {
         ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
+    }
+}
+
+// MARK: ASCEntityViewLayoutTypeProvider
+
+extension ASCOnlyofficeProvider {
+    var itemsViewType: ASCEntityViewLayoutType {
+        get {
+            if let folder, folder.parentsFoldersOrCurrentContains(
+                keyPath: \.roomType,
+                value: .virtualData
+            ) {
+                return .list
+            }
+            return ASCEntityViewLayoutTypeService.shared.itemsViewType
+        }
+        set {
+            ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue
+        }
+    }
+}
+
+extension ASCOnlyofficeProvider: TopBannerViewModelDelegate {
+    func topBannerViewModel(for folder: ASCFolder?) -> TopBannerViewModel? {
+        if let formattedString = folder?.lifetime?.formattedLifetimeString() {
+            return .lifetime(formattedString: formattedString)
+        } else if folder?.rootFolderType == .onlyofficeTrash {
+            return .trash
+        }
+        return nil
+    }
+}
+
+extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
+    func changeOrderIndex(for entity: ASCEntity, toIndex index: Int) {
+        guard let srcItemIndex = items.firstIndex(where: { $0.id == entity.id }) else {
+            return
+        }
+        if itemsBeforeEditingOrder.isEmpty {
+            itemsBeforeEditingOrder = items
+        }
+        let srcItem = items[srcItemIndex]
+        let newSrcItemIndex = items[index].orderIndex
+
+        // If moving up in the array (shift down items between index and srcItemIndex
+        if srcItemIndex > index {
+            for i in index ..< srcItemIndex {
+                items[i].orderIndex = items[i + 1].orderIndex
+                itemsIdsWithChangedOrderIndex.insert(items[i].id)
+            }
+        }
+        // If moving down in the array (shift up items between srcItemIndex and index)
+        else if srcItemIndex < index {
+            var prevValue = srcItem.orderIndex
+            for i in srcItemIndex ... index {
+                let bufferValue = items[i].orderIndex
+                items[i].orderIndex = prevValue
+                prevValue = bufferValue
+                itemsIdsWithChangedOrderIndex.insert(items[i].id)
+            }
+        }
+
+        // Remove the item from the current position and insert it at the new position
+        items.remove(at: srcItemIndex)
+        items.insert(srcItem, at: index)
+        srcItem.orderIndex = newSrcItemIndex
+        itemsIdsWithChangedOrderIndex.insert(srcItem.id)
+    }
+
+    func cancleEditOrderIndex() {
+        if !itemsBeforeEditingOrder.isEmpty {
+            items = itemsBeforeEditingOrder
+            let itemsOrders = itemsBeforeEditingOrder
+                .sorted(by: { $0.orderIndex ?? "" < $1.orderIndex ?? "" })
+                .map { $0.orderIndex }
+            for (index, item) in items.enumerated() {
+                item.orderIndex = itemsOrders[index]
+            }
+            itemsBeforeEditingOrder = []
+        }
+        itemsIdsWithChangedOrderIndex.removeAll()
+    }
+
+    func applyEditedOrderIndex(completion: @escaping (ErrorMessage?) -> Void) {
+        let requestModel = itemsIdsWithChangedOrderIndex
+            .compactMap { id in items.first(where: { $0.id == id }) }
+            .filesOrderRequestModel
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.order, requestModel.dictionary) { result, error in
+            DispatchQueue.main.async {
+                completion(error?.localizedDescription)
+            }
+        }
+
+        itemsBeforeEditingOrder = []
+        itemsIdsWithChangedOrderIndex.removeAll()
     }
 }
 

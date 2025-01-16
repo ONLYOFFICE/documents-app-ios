@@ -15,12 +15,15 @@ struct RoomSharingCustomizeLinkView: View {
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
     @State private var showDeleteAlert = false
     @State private var showRevokeAlert = false
+    @State private var showPasswordErrorAlert = false
+
+    @State private var passwordErrorAlertMessage = ""
 
     var body: some View {
         handleHUD()
 
         return content
-            .navigationBarItems(rightBtn: doneButton)
+            .navigationBarItems(rightBtn: doneButton.alert(isPresented: $showPasswordErrorAlert) { passwordErrorAlert })
             .disabledIfDeleting(viewModel.isDeleting)
             .alertForErrorMessage($viewModel.errorMessage)
             .dismissOnChange(of: viewModel.isReadyToDismissed, using: presentationMode)
@@ -38,6 +41,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     var generalLinkView: some View {
         List {
+            linkNameSection
             generalSection
             protectedSection
             restrictionSection
@@ -50,24 +54,34 @@ struct RoomSharingCustomizeLinkView: View {
 
     var additionalLinkView: some View {
         List {
+            linkNameSection
             generalSection
             protectedSection
             restrictionSection
-            timeLimitSection
             deleteSection
                 .alert(isPresented: $showDeleteAlert, content: deleteAlert)
         }
         .navigationBarTitle(Text(NSLocalizedString("Edit link", comment: "")))
     }
 
-    private var generalSection: some View {
+    private var linkNameSection: some View {
         Section(header: Text(NSLocalizedString("Link name", comment: ""))) {
             TextField("Link name", text: $viewModel.linkName)
         }
     }
 
+    private var generalSection: some View {
+        Section(
+            header: Text(NSLocalizedString("General", comment: "")))
+        {
+            accessCell
+            timeLimitCell
+                .disabled(viewModel.isExpired)
+        }
+    }
+
     private var protectedSection: some View {
-        Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
+        Section(header: Text(NSLocalizedString("Protection", comment: "")), footer: protectionSectionFooter) {
             Toggle(isOn: $viewModel.isProtected.animation()) {
                 Text(NSLocalizedString("Password access", comment: ""))
             }
@@ -86,33 +100,30 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
-    private var timeLimitSection: some View {
-        Section(
-            header: Text(NSLocalizedString("Time limit", comment: "")),
-            footer: viewModel.isExpired
-                ? Text(NSLocalizedString("The link has expired and has been disabled", comment: ""))
-                .foregroundColor(.red)
-                : nil
-        ) {
-            Toggle(isOn: $viewModel.isTimeLimited.animation()) {
-                Text(NSLocalizedString("Enable time limit", comment: ""))
-            }
-            .tintColor(Color(Asset.Colors.brend.color))
+    private var protectionSectionFooter: some View {
+        Text(String.protectionSectionFooterText)
+    }
 
-            if viewModel.isTimeLimited {
-                TimeLimitCellView(model: TimeLimitCellModel(
-                    selectedDate: $viewModel.selectedDate,
-                    title: NSLocalizedString("Valid through", comment: ""),
-                    displayedComponents: [.date, .hourAndMinute]
-                ))
-            }
+    @ViewBuilder
+    private var timeLimitCell: some View {
+        Toggle(isOn: $viewModel.isTimeLimited.animation()) {
+            Text(NSLocalizedString("Enable time limit", comment: ""))
+        }
+        .tintColor(Color(Asset.Colors.brend.color))
+
+        if viewModel.isTimeLimited {
+            TimeLimitCellView(model: TimeLimitCellModel(
+                selectedDate: $viewModel.selectedDate,
+                title: NSLocalizedString("Valid through", comment: ""),
+                displayedComponents: [.date, .hourAndMinute]
+            ))
         }
     }
 
     @ViewBuilder
     private var restrictionSection: some View {
         if viewModel.roomType != .fillingForm {
-            Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
+            Section(footer: Text(String.restrictionSectionFooterText)) {
                 Toggle(isOn: $viewModel.isRestrictCopyOn) {
                     Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
                 }
@@ -157,15 +168,34 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
+    private var accessCell: some View {
+        MenuView(menuItems: viewModel.accessMenuItems) {
+            ASCDetailedImageChevronUpDownCellView(model: ASCDetailedImageChevronUpDownCellViewModel(
+                title: NSLocalizedString("Access rights", comment: ""),
+                image: viewModel.selectedAccessRight.swiftUIImage ?? Image(""),
+                isEnabled: !viewModel.isExpired
+            ))
+        }
+    }
+
     @ViewBuilder
     private var doneButton: some View {
         Button(
             NSLocalizedString("Done", comment: ""),
             action: {
-                viewModel.onSave()
+                viewModel.onSave { errorMessage in
+                    if let errorMessage = errorMessage {
+                        showErrorAlert(message: errorMessage)
+                    }
+                }
             }
         )
         .disabled(!viewModel.isPossibleToSave)
+    }
+
+    private func showErrorAlert(message: String) {
+        passwordErrorAlertMessage = message
+        showPasswordErrorAlert = true
     }
 
     private func handleHUD() {
@@ -203,7 +233,7 @@ struct RoomSharingCustomizeLinkView: View {
     private func deleteAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Delete link", comment: "")),
-            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
+            message: Text(String.deleteAlertMessage),
             primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
                 viewModel.onDelete()
             }),
@@ -214,11 +244,19 @@ struct RoomSharingCustomizeLinkView: View {
     private func revokeAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Revoke link", comment: "")),
-            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
+            message: Text(String.revokeAlertMessage),
             primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
                 viewModel.onRevoke()
             }),
             secondaryButton: .cancel()
+        )
+    }
+
+    private var passwordErrorAlert: Alert {
+        Alert(
+            title: Text(NSLocalizedString("Error", comment: "")),
+            message: Text(passwordErrorAlertMessage),
+            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
         )
     }
 }
@@ -251,4 +289,11 @@ private extension View {
             outputLink: .constant(nil)
         )
     )
+}
+
+private extension String {
+    static let protectionSectionFooterText = NSLocalizedString("Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}", comment: "")
+    static let restrictionSectionFooterText = NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: "")
+    static let deleteAlertMessage = NSLocalizedString("Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
+    static let revokeAlertMessage = NSLocalizedString("Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
 }

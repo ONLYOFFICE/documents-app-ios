@@ -30,23 +30,25 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
 
         var viewGroup: [UIMenuElement] = []
 
-        viewGroup.append(
-            UIAction(
-                title: NSLocalizedString("Icons", comment: "Button title"),
-                image: UIImage(systemName: "square.grid.2x2"),
-                state: ASCDocumentsViewController.itemsViewType == .grid ? .on : .off
-            ) { action in
-                ASCDocumentsViewController.itemsViewType = .grid
-            }
-        )
+        if folder.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) == false {
+            viewGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Icons", comment: "Button title"),
+                    image: UIImage(systemName: "square.grid.2x2"),
+                    state: viewController.itemsViewType == .grid ? .on : .off
+                ) { [weak viewController] action in
+                    viewController?.itemsViewType = .grid
+                }
+            )
+        }
 
         viewGroup.append(
             UIAction(
                 title: NSLocalizedString("List", comment: "Button title"),
                 image: UIImage(systemName: "list.bullet"),
-                state: ASCDocumentsViewController.itemsViewType == .list ? .on : .off
-            ) { action in
-                ASCDocumentsViewController.itemsViewType = .list
+                state: viewController.itemsViewType == .list ? .on : .off
+            ) { [weak viewController] action in
+                viewController?.itemsViewType = .list
             }
         )
 
@@ -58,8 +60,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 UIAction(
                     title: NSLocalizedString("Edit room", comment: "Button title"),
                     image: UIImage(systemName: "gear")
-                ) { action in
-                    viewController.editRoom(folder: folder)
+                ) { [weak viewController] action in
+                    viewController?.editRoom(folder: folder)
                 }
             )
         }
@@ -70,8 +72,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 UIAction(
                     title: NSLocalizedString("Invite users", comment: "Button title"),
                     image: UIImage(systemName: "person.badge.plus")
-                ) { action in
-                    viewController.navigator.navigate(to: .addUsers(entity: folder))
+                ) { [weak viewController] action in
+                    viewController?.navigator.navigate(to: .addUsers(entity: folder))
                 }
             )
         }
@@ -84,8 +86,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                         ? NSLocalizedString("Copy link", comment: "Button title")
                         : NSLocalizedString("Copy general link", comment: "Button title"),
                     image: UIImage(systemName: "link")
-                ) { action in
-                    viewController.copyGeneralLinkToClipboard(room: folder)
+                ) { [weak viewController] action in
+                    viewController?.copyGeneralLinkToClipboard(room: folder)
                 }
             )
         }
@@ -96,8 +98,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 UIAction(
                     title: NSLocalizedString("Info", comment: "Button title"),
                     image: UIImage(systemName: "info.circle")
-                ) { action in
-                    viewController.navigator.navigate(to: .shareSettings(entity: folder))
+                ) { [weak viewController] action in
+                    viewController?.navigator.navigate(to: .shareSettings(entity: folder))
                 }
             )
         }
@@ -111,8 +113,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     image: folder.mute
                         ? UIImage(systemName: "bell.slash")
                         : UIImage(systemName: "bell")
-                ) { _ in
-                    viewController.disableNotifications(room: folder)
+                ) { [weak viewController] _ in
+                    viewController?.disableNotifications(room: folder)
                 }
             )
         }
@@ -125,8 +127,20 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 UIAction(
                     title: NSLocalizedString("Download", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.down")
-                ) { action in
-                    viewController.downloadFolder(cell: nil, folder: folder)
+                ) { [weak viewController] action in
+                    viewController?.downloadFolder(cell: nil, folder: folder)
+                }
+            )
+        }
+
+        // Edit index
+        if actions.contains(.editIndex) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Edit index", comment: "Button title"),
+                    image: UIImage(systemName: "line.3.horizontal.decrease")
+                ) { [weak viewController] action in
+                    viewController?.isEditingIndexMode = true
                 }
             )
         }
@@ -137,8 +151,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 UIAction(
                     title: NSLocalizedString("Move to archive", comment: "Button title"),
                     image: UIImage(systemName: "archivebox")
-                ) { action in
-                    viewController.archive(cell: nil, folder: folder)
+                ) { [weak viewController] action in
+                    viewController?.archive(cell: nil, folder: folder)
                 }
             )
         }
@@ -149,8 +163,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 UIAction(
                     title: NSLocalizedString("Leave the room", comment: "Button title"),
                     image: UIImage(systemName: "arrow.right.square")
-                ) { action in
-                    viewController.leaveRoom(cell: nil, folder: folder)
+                ) { [weak viewController] action in
+                    viewController?.leaveRoom(cell: nil, folder: folder)
                 }
             )
         }

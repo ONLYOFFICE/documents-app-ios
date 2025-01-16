@@ -47,6 +47,8 @@ class ASCFolder: ASCEntity {
     var denyDownload: Bool = false
     var lifetime: LifeTime?
     var watermark: Watermark?
+    var order: String?
+
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -92,6 +94,7 @@ class ASCFolder: ASCEntity {
         denyDownload <- map["denyDownload"]
         lifetime <- map["lifetime"]
         watermark <- map["watermark"]
+        order <- map["order"]
         // Internal
         device <- map["device"]
     }
@@ -168,6 +171,27 @@ extension ASCFolder {
             imageHeight <- map["imageHeight"]
             imageWidth <- map["imageWidth"]
         }
+    }
+}
+
+extension ASCFolder.LifeTime {
+    func formattedLifetimeString() -> String? {
+        guard let value = value, let period = period else { return nil }
+
+        let unitLocalized: String = {
+            switch period {
+            case 0:
+                return String(format: NSLocalizedString("%d days", comment: ""), value)
+            case 1:
+                return String(format: NSLocalizedString("%d months", comment: ""), value)
+            case 2:
+                return String(format: NSLocalizedString("%d years", comment: ""), value)
+            default:
+                return ""
+            }
+        }()
+
+        return String(format: NSLocalizedString("The file lifetime is set to %@ in this room.", comment: ""), unitLocalized)
     }
 }
 

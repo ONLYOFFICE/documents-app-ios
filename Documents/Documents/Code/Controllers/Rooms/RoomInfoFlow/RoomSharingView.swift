@@ -237,14 +237,6 @@ private extension View {
         }
     }
 
-    func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
-        sheet(isPresented: isPresented) {
-            if let link {
-                ActivityView(activityItems: [link])
-            }
-        }
-    }
-
     func navigateToChangeAccess(
         selectedUser: Binding<ASCUser?>,
         viewModel: RoomSharingViewModel

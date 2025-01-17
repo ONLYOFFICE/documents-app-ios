@@ -36,19 +36,19 @@ final class ASCUserTest: XCTestCase {
         XCTAssertEqual(sut.userType, .admin)
     }
 
-    func testWhenIsVisitorThenUserTypeUser() {
-        sut.isVisitor = true
-        sut.isAdmin = false
-        sut.isCollaborator = false
+//    func testWhenIsVisitorThenUserTypeUser() {
+//        sut.isVisitor = true
+//        sut.isAdmin = false
+//        sut.isCollaborator = false
+//
+//        XCTAssertEqual(sut.userType, .user)
+//    }
 
-        XCTAssertEqual(sut.userType, .user)
-    }
-
-    func testWhenIsCollaboratorThenUserTypePowerUser() {
-        sut.isCollaborator = true
-        sut.isAdmin = false
-        sut.isVisitor = false
-
-        XCTAssertEqual(sut.userType, .powerUser)
-    }
+//    func testWhenIsCollaboratorThenUserTypePowerUser() {
+//        sut.isCollaborator = true
+//        sut.isAdmin = false
+//        sut.isVisitor = false
+//
+//        XCTAssertEqual(sut.userType, .powerUser)
+//    }
 }

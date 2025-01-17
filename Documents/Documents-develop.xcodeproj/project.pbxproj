@@ -50,6 +50,7 @@
 		E8CD622B2D10824C00DF3440 /* WatermarkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62232D10824C00DF3440 /* WatermarkSection.swift */; };
 		E8CD622E2D1082F900DF3440 /* ToggleButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */; };
 		E8CD622F2D1082F900DF3440 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */; };
+		E8D0896E2D39E6E800890C64 /* TopBannerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D0896D2D39E6E800890C64 /* TopBannerViewModelDelegate.swift */; };
 		E8ECAF5F2C9DCD0B004F7C52 /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAF5C2C9DCD0A004F7C52 /* ASCTransferViewModel.swift */; };
 		E8ECAF602C9DCD0B004F7C52 /* CopyFileInsideProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAF5D2C9DCD0B004F7C52 /* CopyFileInsideProviderService.swift */; };
 		E8ECAF642C9DCD22004F7C52 /* FillFormMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ECAF612C9DCD22004F7C52 /* FillFormMenuScreen.swift */; };
@@ -797,6 +798,7 @@
 		E8CD62232D10824C00DF3440 /* WatermarkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkSection.swift; sourceTree = "<group>"; };
 		E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonCollectionView.swift; sourceTree = "<group>"; };
 		E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
+		E8D0896D2D39E6E800890C64 /* TopBannerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewModelDelegate.swift; sourceTree = "<group>"; };
 		E8ECAF5C2C9DCD0A004F7C52 /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
 		E8ECAF5D2C9DCD0B004F7C52 /* CopyFileInsideProviderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyFileInsideProviderService.swift; sourceTree = "<group>"; };
 		E8ECAF612C9DCD22004F7C52 /* FillFormMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreen.swift; sourceTree = "<group>"; };
@@ -1502,6 +1504,7 @@
 		E801C9A82D36E48700E9939A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E8D0896D2D39E6E800890C64 /* TopBannerViewModelDelegate.swift */,
 				E801C9A72D36E48700E9939A /* ProviderEditIndexDelegate.swift */,
 			);
 			path = Protocols;
@@ -4251,6 +4254,7 @@
 				FCF6186E268E0A9A00CD8D84 /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC379D262C37ED7000B120D9 /* SharedSettingsView.swift in Sources */,
 				FC68399221B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
+				E8D0896E2D39E6E800890C64 /* TopBannerViewModelDelegate.swift in Sources */,
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,
 				FC59AB682B761EC200F4336A /* DocumentConverterErrorProtocol.swift in Sources */,
 				FC9EF0312BFB208800A66DE8 /* OnlyofficeVersion.swift in Sources */,

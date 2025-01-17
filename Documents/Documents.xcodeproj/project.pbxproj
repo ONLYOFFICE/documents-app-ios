@@ -90,6 +90,7 @@
 		E87CCAE82C9DCC2500C43968 /* FillFormMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */; };
 		E87CCAE92C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */; };
 		E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */; };
+		E8B62E8F2D399D6B0053668E /* TopBannerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B62E8E2D399D6B0053668E /* TopBannerViewModelDelegate.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
 		E8CD62002D107F2600DF3440 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */; };
 		E8CD62012D107F2600DF3440 /* ToggleButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */; };
@@ -738,6 +739,7 @@
 		E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreen.swift; sourceTree = "<group>"; };
 		E87CCAE62C9DCC2500C43968 /* FillFormMenuScreenRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreenRepresentable.swift; sourceTree = "<group>"; };
 		E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationLinkDateService.swift; sourceTree = "<group>"; };
+		E8B62E8E2D399D6B0053668E /* TopBannerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewModelDelegate.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonCollectionView.swift; sourceTree = "<group>"; };
 		E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
@@ -1911,6 +1913,7 @@
 		E801C98D2D368E5400E9939A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E8B62E8E2D399D6B0053668E /* TopBannerViewModelDelegate.swift */,
 				E801C98C2D368E5400E9939A /* ProviderEditIndexDelegate.swift */,
 			);
 			path = Protocols;
@@ -4318,6 +4321,7 @@
 				1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,
 				E8CD620A2D1080AE00DF3440 /* AutomaticIndexationSection.swift in Sources */,
+				E8B62E8F2D399D6B0053668E /* TopBannerViewModelDelegate.swift in Sources */,
 				E8CD620B2D1080AE00DF3440 /* ThirdPartySection.swift in Sources */,
 				E8CD620C2D1080AE00DF3440 /* FileLifetimeSection.swift in Sources */,
 				E8CD620D2D1080AE00DF3440 /* WatermarkSection.swift in Sources */,

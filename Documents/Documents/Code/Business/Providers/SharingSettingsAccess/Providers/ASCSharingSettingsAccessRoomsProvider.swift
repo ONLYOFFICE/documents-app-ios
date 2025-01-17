@@ -22,25 +22,25 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
         case .fillingForm:
             switch rightHoldersTableType {
             case .users, .none:
-                return [.roomManager, .powerUser, .fillForms]
+                return [.roomManager, .contentCreator, .fillForms]
             case .groups:
                 return [.fillForms]
             }
 
         case .colobaration:
-            return [.roomManager, .powerUser, .editing, .read]
+            return [.roomManager, .contentCreator, .editing, .read]
 
         case .review:
-            return [.roomManager, .powerUser, .review, .comment, .read]
+            return [.roomManager, .contentCreator, .review, .comment, .read]
 
         case .viewOnly:
-            return [.roomManager, .powerUser, .read]
+            return [.roomManager, .contentCreator, .read]
 
         case .custom:
-            return [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+            return [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
 
         case .public:
-            return [.roomManager, .powerUser]
+            return [.roomManager, .contentCreator]
 
         default:
             return []

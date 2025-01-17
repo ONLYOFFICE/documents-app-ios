@@ -66,7 +66,7 @@ final class InviteUsersViewModel: ObservableObject {
                     self.preventToggleAction = false
                     return
                 }
-                changeLinkAccess(newAccess: isActive ? .powerUser : .none)
+                changeLinkAccess(newAccess: isActive ? .contentCreator : .none)
             })
             .store(in: &cancelable)
     }

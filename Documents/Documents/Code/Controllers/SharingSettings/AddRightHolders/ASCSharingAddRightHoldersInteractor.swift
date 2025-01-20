@@ -45,6 +45,34 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                     self.presenter?.presentData(responseType: .presentGroups(.init(groups: groups, sharedEntities: sharedInfoItems)))
                 }
             }
+        case .loadGuests:
+            let requestModel = PeopleGuestsRequestModel()
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.room(roomId: dataStore?.entity?.id ?? ""), requestModel.dictionary) { [unowned self] response, error in
+                if let error = error {
+                    log.error(error)
+                } else if let guests = response?.result {
+                    let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                    let sharedInfoItemsIds = Set(sharedInfoItems.compactMap { $0.user?.userId })
+//                    let guests = guests.filter {
+//                        !sharedInfoItemsIds.contains($0.userId ?? "")
+//                    }
+                    self.dataStore?.guests = guests
+                    self.presenter?.presentData(
+                        responseType: .presentGuests(
+                            .init(
+                                guests: guests,
+                                sharedEntities: sharedInfoItems
+                            )
+                        )
+                    )
+                }
+            }
+        case .prepareToVerify:
+            for (index, item) in (dataStore?.itemsForSharingAdd ?? []).enumerated() {
+                if item.user?.isRoomAdmin != true && item.user?.isAdmin != true {
+                    dataStore?.itemsForSharingAdd[index].access = .contentCreator
+                }
+            }
         case let .selectViewModel(request: request):
             if let shareInfo = makeShareInfo(model: request.selectedViewModel, access: request.access) {
                 dataStore?.add(shareInfo: shareInfo)
@@ -119,6 +147,10 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             if let group = dataStore.groups.first(where: { $0.id == model.id }) {
                 return OnlyofficeShare(access: access, group: group)
             }
+        case .guest:
+            if let guest = dataStore.guests.first(where: { $0.userId == model.id }) {
+                return OnlyofficeShare(access: access, user: guest)
+            }
         default: return nil
         }
         return nil
@@ -160,6 +192,8 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             return .users
         } else if let _ = dataStore.groups.firstIndex(where: { $0.id == id }) {
             return .groups
+        } else if let _ = dataStore.guests.firstIndex(where: { $0.userId == id }) {
+            return .guests
         }
         return nil
     }

@@ -205,13 +205,15 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
             usersCurrentlyLoading = false
         case .displayGroups:
             return
+        case .displayGuests:
+            return
         case let .displaySelected(viewModel: viewModel):
             switch viewModel.type {
             case .users:
                 if let index = usersModels.firstIndex(where: { $0.0.id == viewModel.selectedModel.id }) {
                     usersModels[index].1 = viewModel.isSelect
                 }
-            case .groups:
+            case .groups, .guests:
                 return
             }
         }

@@ -15,6 +15,8 @@ enum ASCSharingAddRightHolders {
             enum RequestType {
                 case loadUsers(preloadRightHolders: Bool, hideUsersWhoHasRights: Bool, showOnlyAdmins: Bool)
                 case loadGroups
+                case loadGuests
+                case prepareToVerify
                 case selectViewModel(_ request: ViewModelSelectedRequest)
                 case deselectViewModel(_ request: ViewModelDeselectedRequest)
                 case changeAccessForSelected(_ request: ASCShareAccess)
@@ -35,6 +37,7 @@ enum ASCSharingAddRightHolders {
             enum ResponseType {
                 case presentUsers(_ response: UsersResponse)
                 case presentGroups(_ response: GroupsResponse)
+                case presentGuests(_ Response: GuestsResponse)
                 case presentSelected(_ response: SelectedReponse)
             }
 
@@ -47,6 +50,11 @@ enum ASCSharingAddRightHolders {
 
             struct GroupsResponse {
                 var groups: [ASCGroup]
+                var sharedEntities: [OnlyofficeShare]
+            }
+
+            struct GuestsResponse {
+                var guests: [ASCUser]
                 var sharedEntities: [OnlyofficeShare]
             }
 
@@ -66,6 +74,7 @@ enum ASCSharingAddRightHolders {
             enum ViewModelData {
                 case displayUsers(_ viewModel: UsersViewModel)
                 case displayGroups(_ viewModel: GroupsViewModel)
+                case displayGuests(_ viewModel: GuestsViewModel)
                 case displaySelected(_ viewModel: SelectedViewModel)
             }
 
@@ -75,6 +84,10 @@ enum ASCSharingAddRightHolders {
 
             struct GroupsViewModel {
                 var groups: [(ASCSharingRightHolderViewModel, IsSelected)]
+            }
+
+            struct GuestsViewModel {
+                var guests: [(ASCSharingRightHolderViewModel, IsSelected)]
             }
 
             struct SelectedViewModel {

@@ -40,12 +40,14 @@ class ASCSharingAddRightHoldersView {
 
     lazy var usersTableView = UITableView(frame: .zero, style: .insetGrouped)
     lazy var groupsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    lazy var guestsTableView = UITableView(frame: .zero, style: .insetGrouped)
     lazy var searchResultsTable = UITableView(frame: .zero, style: .insetGrouped)
 
     // MARK: - Activity indicators
 
     public lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
     public lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
+    public lazy var loadingGuestsTableActivityIndicator = UIActivityIndicatorView()
 
     // MARK: - Navigation bar props
 
@@ -173,6 +175,7 @@ class ASCSharingAddRightHoldersView {
         resetModalSize()
         usersTableView.reloadData()
         groupsTableView.reloadData()
+        guestsTableView.reloadData()
         searchResultsTable.reloadData()
         searchController.dismiss(animated: false)
         searchController.isActive = false
@@ -388,6 +391,7 @@ extension ASCSharingAddRightHoldersView {
         switch rightHoldersTableType {
         case .users: return usersTableView
         case .groups: return groupsTableView
+        case .guests: return guestsTableView
         }
     }
 }
@@ -602,6 +606,14 @@ extension ASCSharingAddRightHoldersView {
 
     public func stopGroupsLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingGroupsTableActivityIndicator)
+    }
+
+    public func runGuestsLoadingAnimation() {
+        showTableLoadingActivityIndicator(tableView: guestsTableView, activityIndicator: loadingGuestsTableActivityIndicator)
+    }
+
+    public func stopGuestsLoadingAnimation() {
+        hideTableLoadingActivityIndicator(activityIndicator: loadingGuestsTableActivityIndicator)
     }
 
     private func showTableLoadingActivityIndicator(tableView: UITableView, activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {

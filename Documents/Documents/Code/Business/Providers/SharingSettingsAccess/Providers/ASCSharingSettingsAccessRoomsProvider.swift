@@ -22,26 +22,31 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
         case .fillingForm:
             switch rightHoldersTableType {
             case .users, .none:
-                return [.contentCreator, .fillForms]
+                return [.roomManager, .contentCreator, .fillForms]
             case .groups:
-                return [.fillForms]
+                return [.roomManager, .fillForms]
+            case .guests:
+                return [.contentCreator, .fillForms]
             }
         case .colobaration:
-            return [.contentCreator, .editing, .read]
-
+            return [.roomManager, .contentCreator, .editing, .read]
         case .review:
-            return [.contentCreator, .review, .comment, .read]
-
+            return [.roomManager, .contentCreator, .review, .comment, .read]
         case .viewOnly:
-            return [.contentCreator, .read]
-
+            return [.roomManager, .contentCreator, .read]
         case .custom:
-            return [.contentCreator, .editing, .fillForms, .review, .comment, .read]
-
+            return [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
         case .public:
-            return [.contentCreator]
+            return [.roomManager, .contentCreator]
         case .virtualData:
-            return [.contentCreator, .editing, .read]
+            return [.roomManager, .contentCreator, .editing, .read]
         }
+    }
+}
+
+class ASCSharingSettingsExternalLinkAccessRoomsProvider: ASCSharingSettingsAccessRoomsProvider {
+    override func get() -> [ASCShareAccess] {
+        var accessList = super.get()
+        return accessList.removeAll(.roomManager)
     }
 }

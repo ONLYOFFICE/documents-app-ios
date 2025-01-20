@@ -52,6 +52,7 @@ enum OnlyofficeAPI {
         public static let documentService = "api/\(version)/files/docservice"
         public static let people = "api/\(version)/people"
         public static let peopleFilter = "api/\(version)/people/filter"
+        public static let peopleRoom = "api/\(version)/people/room/%@"
         public static let groups = "api/\(version)/group"
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
@@ -123,6 +124,15 @@ enum OnlyofficeAPI {
             static let filter: Endpoint<OnlyofficeResponseArray<ASCUser>> =
                 Endpoint<OnlyofficeResponseArray<ASCUser>>.make(Path.peopleFilter, .get, URLEncoding.default)
             static let groups: Endpoint<OnlyofficeResponseArray<ASCGroup>> = Endpoint<OnlyofficeResponseArray<ASCGroup>>.make(Path.groups)
+
+            static func room(roomId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> { Endpoint<OnlyofficeResponseArray<ASCUser>>
+                    .make(
+                        String(format: Path.peopleRoom, roomId),
+                        .get,
+                        URLEncoding.default
+                    )
+            }
+
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))
             }

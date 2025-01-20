@@ -100,7 +100,7 @@ struct InviteUsersView: View {
 
     private var inviteByEmailCell: some View {
         HStack {
-            Text(NSLocalizedString("Invite people by email", comment: ""))
+            Text(NSLocalizedString("Invite guests by email", comment: ""))
             Spacer()
             ChevronRightView()
         }

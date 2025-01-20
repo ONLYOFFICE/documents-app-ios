@@ -38,6 +38,7 @@ struct RoomSharingView: View {
                     sharedLinksSection
                     adminSection
                     usersSection
+                    guestsSection
                     invitesSection
                 }
             }
@@ -113,9 +114,30 @@ struct RoomSharingView: View {
     }
 
     @ViewBuilder
+    private var guestsSection: some View {
+        if !viewModel.guests.isEmpty {
+            Section(
+                header: usersSectionHeader(
+                    title: NSLocalizedString("Guests", comment: ""),
+                    count: viewModel.guests.count
+                )
+            ) {
+                ForEach(viewModel.guests) { model in
+                    ASCUserRow(model: model)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
     private var invitesSection: some View {
         if !viewModel.invites.isEmpty {
-            Section(header: Text(NSLocalizedString("Expect users", comment: ""))) {
+            Section(
+                header: usersSectionHeader(
+                    title: NSLocalizedString("Expect users", comment: ""),
+                    count: viewModel.invites.count
+                )
+            ) {
                 ForEach(viewModel.invites) { model in
                     ASCUserRow(model: model)
                 }

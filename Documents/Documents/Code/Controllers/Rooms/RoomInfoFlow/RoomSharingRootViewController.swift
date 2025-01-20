@@ -20,7 +20,7 @@ class RoomSharingRootViewController: UIHostingController<RoomSharingView> {
     init(room: ASCFolder) {
         super.init(
             rootView: RoomSharingView(
-                viewModel: .init(room: room)
+                viewModel: RoomSharingViewModel(room: room)
             )
         )
     }

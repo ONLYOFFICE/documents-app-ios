@@ -126,11 +126,11 @@ enum OnlyofficeAPI {
             static let groups: Endpoint<OnlyofficeResponseArray<ASCGroup>> = Endpoint<OnlyofficeResponseArray<ASCGroup>>.make(Path.groups)
 
             static func room(roomId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> { Endpoint<OnlyofficeResponseArray<ASCUser>>
-                    .make(
-                        String(format: Path.peopleRoom, roomId),
-                        .get,
-                        URLEncoding.default
-                    )
+                .make(
+                    String(format: Path.peopleRoom, roomId),
+                    .get,
+                    URLEncoding.default
+                )
             }
 
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {

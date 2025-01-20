@@ -35,6 +35,8 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             loadRightHolders { [weak self] in
                 self?.loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights, showOnlyAdmins: showOnlyAdmins)
             }
+        case .loadAdminsWithoutOwner:
+            loadAdminsWithoutOwner()
         case .loadGroups: return
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
                 if let error = error {
@@ -97,6 +99,37 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             dataStore?.itemsForSharingAdd = updatedItems
         case let .changeOwner(userId, _: handler):
             changeOwner(userId, handler)
+        }
+    }
+
+    private func loadAdminsWithoutOwner() {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
+            if let error = error {
+                log.error(error)
+            } else if let users = response?.result {
+                let users = users.filter { user in
+                    let isAdmin = user.isAdmin || user.isRoomAdmin
+                    if let folder = self.dataStore?.entity as? ASCFolder,
+                       let ownerId = folder.createdBy?.userId
+                    {
+                        return ownerId != user.userId && isAdmin
+                    } else {
+                        return isAdmin
+                    }
+                }
+                self.dataStore?.users = users
+                let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                self.presenter?.presentData(
+                    responseType: .presentUsers(
+                        .init(
+                            users: users,
+                            sharedEntities: sharedInfoItems,
+                            entityOwner: self.dataStore?.entityOwner,
+                            currentUser: nil
+                        )
+                    )
+                )
+            }
         }
     }
 

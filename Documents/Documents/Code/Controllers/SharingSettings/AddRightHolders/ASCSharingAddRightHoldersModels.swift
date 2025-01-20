@@ -14,6 +14,7 @@ enum ASCSharingAddRightHolders {
         enum Request {
             enum RequestType {
                 case loadUsers(preloadRightHolders: Bool, hideUsersWhoHasRights: Bool, showOnlyAdmins: Bool)
+                case loadAdminsWithoutOwner
                 case loadGroups
                 case loadGuests
                 case prepareToVerify

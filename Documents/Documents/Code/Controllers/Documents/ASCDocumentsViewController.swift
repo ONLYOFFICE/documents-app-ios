@@ -2100,7 +2100,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder) {
+    func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {
         guard let provider = provider as? ASCOnlyofficeProvider else { return }
 
         var hud: MBProgressHUD?
@@ -2108,23 +2108,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let isOwner: Bool = provider.checkRoomOwner(folder: folder)
         let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
-
-        if isOwner {
-            let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
+        let displayAllert = !changeOwner
+        if isOwner || changeOwner {
+            let changeOwnerAction = {
                 self.navigator.navigate(to: .leaveRoom(entity: folder) { status, result, error in
                     if status == .begin {
                         hud = MBProgressHUD.showTopMost()
                     } else if status == .error {
                         hud?.hide(animated: true)
+                        let message = changeOwner
+                            ? NSLocalizedString("Couldn't change the room owner", comment: "")
+                            : NSLocalizedString("Couldn't leave the room", comment: "")
                         UIAlertController.showError(
                             in: self,
-                            message: NSLocalizedString("Couldn't leave the room", comment: "")
+                            message: message
                         )
                     } else if status == .end {
                         hud?.setSuccessState()
                         hud?.label.numberOfLines = 0
-                        hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
-                        if let cell = cell {
+                        hud?.label.text = changeOwner
+                            ? NSLocalizedString("You have changed the room owner", comment: "")
+                            : NSLocalizedString("You have left the room and appointed a new owner", comment: "")
+                        if changeOwner {
+                            self.loadFirstPage()
+                        } else if let cell = cell {
                             if let indexPath = self.collectionView.indexPath(for: cell) {
                                 self.provider?.remove(at: indexPath.row)
                                 self.collectionView.deleteItems(at: [indexPath])
@@ -2157,10 +2164,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     }
                 })
             }
+            let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
+                _ = changeOwnerAction()
+            }
             alertController.message = NSLocalizedString("You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.", comment: "")
 
             alertController.addAction(assignOwnerAction)
-
+            if changeOwner {
+                _ = changeOwnerAction()
+            }
         } else {
             let submitAction = UIAlertAction(title: ASCLocalization.Common.ok, style: .default) { _ in
                 provider.leaveRoom(folder: folder) { status, result, error in
@@ -2200,7 +2212,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         alertController.addAction(cancelAction)
-        present(alertController, animated: true)
+        if displayAllert {
+            present(alertController, animated: true)
+        }
     }
 
     func editRoom(folder: ASCFolder) {

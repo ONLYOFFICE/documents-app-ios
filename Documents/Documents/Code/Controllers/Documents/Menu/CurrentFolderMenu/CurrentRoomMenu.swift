@@ -145,6 +145,18 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             )
         }
 
+        // Change room owner
+        if actions.contains(.changeRoomOwner) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Change room owner", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
+                ) { [weak viewController] action in
+                    viewController?.leaveRoom(cell: nil, folder: folder, changeOwner: true)
+                }
+            )
+        }
+
         // Move to archive
         if actions.contains(.archive) {
             entityOperationsGroup.append(

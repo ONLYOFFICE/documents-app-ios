@@ -182,7 +182,7 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false, showOnlyAdmins: true))
+            interactor?.makeRequest(requestType: .loadAdminsWithoutOwner)
         }
     }
 

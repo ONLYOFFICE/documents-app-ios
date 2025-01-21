@@ -1548,12 +1548,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                folder.parentsFoldersOrCurrentContains(
                    keyPath: \.roomType,
                    value: .virtualData
-               ) == true
+               ) == true,
+               folder.indexing
             {
                 entityActions.insert(.editIndex)
+                entityActions.insert(.importRoomIndex)
             }
 
-            if folder.isRoomListSubfolder {
+            if folder.isRoomListSubfolder, user?.isAdmin == true {
                 entityActions.insert(.changeRoomOwner)
             }
         }

@@ -1906,6 +1906,33 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
+    
+    func exportRoomIndex() {
+        guard let folder = folder, let provider else { return }
+        let hud = MBProgressHUD.showTopMost()
+        hud?.isHidden = false
+        provider.handle(action: .exportRoomIndex, folder: folder) { [weak self] status, message, error in
+            guard let self = self else {
+                hud?.hide(animated: false)
+                return
+            }
+            self.baseProcessHandler(
+                hud: hud,
+                processingMessage: NSLocalizedString("Loading", comment: "Caption of the processing"),
+                status,
+                message,
+                error
+            ) {
+                if let message = message as? String {
+                    hud?.setSuccessState(title: message)
+                    hud?.hide(animated: false, afterDelay: .standardDelay)
+                    self.loadFirstPage()
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
 
     func baseProcessHandler(hud: MBProgressHUD?,
                             processingMessage: String,

@@ -103,6 +103,18 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
+        
+        // Export room index
+        if actions.contains(.exportRoomIndex) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Export room index", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.down.document")
+                ) { [weak viewController] action in
+                    
+                }
+            )
+        }
 
         if actions.contains(.disableNotifications) {
             entityActionsGroup.append(

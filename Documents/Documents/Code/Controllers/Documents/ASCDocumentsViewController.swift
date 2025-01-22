@@ -974,13 +974,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func setEditMode(_ edit: Bool) {
         collectionView.isEditing = edit
         isEditingIndexMode = false
+        selectedIds.removeAll()
 
         configureNavigationBar()
 
         configureToolBar()
         showToolBar(edit)
 
-        selectedIds.removeAll()
         updateTitle()
     }
 

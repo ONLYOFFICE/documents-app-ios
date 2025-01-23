@@ -180,6 +180,7 @@ class ASCEditorManager: NSObject {
 
     private func cleanupEditorWindow() {
         editorWindow?.isHidden = true
+        editorWindow?.rootViewController = nil
         editorWindow?.removeFromSuperview()
         editorWindow = nil
     }

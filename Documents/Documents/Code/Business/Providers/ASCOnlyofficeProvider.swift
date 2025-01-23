@@ -1774,6 +1774,54 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         doCheckOperation?()
     }
 
+    private func fetchAndProcessOperation<T: OnlyofficeOperation>(
+        operation: T,
+        endpoint: Endpoint<OnlyofficeResponse<T>>,
+        timeInterval: TimeInterval,
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<T?, Error>) -> Void
+    ) {
+        var doCheckOperation: (() -> Void)?
+        var preventCheck = false
+
+        doCheckOperation = { [weak self] in
+            self?.apiClient.request(endpoint) { result, error in
+                guard !preventCheck else { return }
+
+                if let error {
+                    preventCheck = true
+                    completion(.failure(error))
+                    return
+                }
+
+                if let updatedOperation = result?.result,
+                   updatedOperation.id == operation.id,
+                   let progress = updatedOperation.percentage
+                {
+                    process(Float(progress) / 100.0)
+
+                    if let operationError = updatedOperation.error, !operationError.isEmpty {
+                        preventCheck = true
+                        completion(.failure(ASCProviderError(msg: operationError)))
+                        return
+                    }
+
+                    if updatedOperation.isCompleted {
+                        preventCheck = true
+                        completion(.success(updatedOperation))
+                        return
+                    }
+
+                    DispatchQueue.global().asyncAfter(deadline: .now() + timeInterval) {
+                        doCheckOperation?()
+                    }
+                }
+            }
+        }
+
+        doCheckOperation?()
+    }
+
     private func progress(_ progress: Float, in range: ClosedRange<Float> = 0 ... 1) -> Float {
         range.lowerBound + (range.upperBound - range.lowerBound) * progress
     }

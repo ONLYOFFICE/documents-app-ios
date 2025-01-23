@@ -38,6 +38,7 @@ enum OnlyofficeAPI {
         public static let operationDelete = "api/\(version)/files/fileops/delete"
         public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
+        public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -78,6 +79,7 @@ enum OnlyofficeAPI {
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
         public static let roomReorder = "api/\(version)/files/rooms/%@/reorder"
+        public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
 
@@ -265,6 +267,10 @@ enum OnlyofficeAPI {
             static func roomReorder(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomReorder, folder.id), .put)
             }
+
+            static func roomIndexExport(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
+            }
         }
 
         // MARK: Files
@@ -385,6 +391,7 @@ enum OnlyofficeAPI {
             static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
+            static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
         }
 
         // MARK: Third-Party Integration

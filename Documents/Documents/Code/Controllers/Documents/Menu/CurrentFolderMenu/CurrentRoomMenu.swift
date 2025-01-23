@@ -103,7 +103,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
-        
+
         // Export room index
         if actions.contains(.exportRoomIndex) {
             entityActionsGroup.append(
@@ -111,7 +111,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     title: NSLocalizedString("Export room index", comment: "Button title"),
                     image: UIImage(systemName: "arrow.down.document")
                 ) { [weak viewController] action in
-                    
+                    viewController?.exportRoomIndex()
                 }
             )
         }

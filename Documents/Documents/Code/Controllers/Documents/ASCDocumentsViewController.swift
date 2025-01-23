@@ -1906,7 +1906,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
-    
+
     func exportRoomIndex() {
         guard let folder = folder, let provider else { return }
         let hud = MBProgressHUD.showTopMost()

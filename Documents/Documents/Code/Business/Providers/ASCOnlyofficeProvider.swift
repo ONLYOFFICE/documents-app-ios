@@ -1552,7 +1552,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                folder.indexing
             {
                 entityActions.insert(.editIndex)
-                entityActions.insert(.importRoomIndex)
+                entityActions.insert(.exportRoomIndex)
             }
 
             if folder.isRoomListSubfolder, user?.isAdmin == true {
@@ -1572,7 +1572,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         case .archive: archiveRoom(folder: folder, handler: handler)
         case .unarchive: unarchiveRoom(folder: folder, handler: handler)
         case .reorderIndex: reorderIndex(folder: folder, handler: handler)
+        case .exportRoomIndex: exportRoomIndex(folder: folder, handler: handler)
         default: unsupportedActionHandler(action: action, handler: handler)
+        }
+    }
+
+    private func exportRoomIndex(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        exportRoomIndex(
+            folder: folder,
+            process: { progress in
+                handler?(.progress, progress, nil)
+            }
+        ) { result in
+            switch result {
+            case .success:
+                handler?(.end, NSLocalizedString("Success", comment: ""), nil)
+            case .failure:
+                handler?(
+                    .error,
+                    nil,
+                    ASCProviderError(
+                        msg: NSLocalizedString(
+                            "Couldn't export room index",
+                            comment: ""
+                        )
+                    )
+                )
+            }
         }
     }
 
@@ -1726,6 +1753,80 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             } else {
                 completion(.failure(prepareArchiveError))
+            }
+        }
+    }
+
+    func exportRoomIndex(
+        folder: ASCFolder,
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<URL, Error>) -> Void
+    ) {
+        let prepareExportError = ASCProviderError(msg: NSLocalizedString("Failed to prepare the index export", comment: ""))
+
+        apiClient.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.roomIndexExport(folder: folder)
+        ) { [weak self] result, error in
+            guard let self else { return }
+
+            if let error {
+                completion(.failure(error))
+                return
+            }
+
+            if let operation = result?.result {
+                self.fetchAndProcessOperation(
+                    operation: operation,
+                    endpoint: OnlyofficeAPI.Endpoints.Operations.roomIndexExport,
+                    timeInterval: 1
+                ) { progress in
+                    let commonProgress = self.progress(progress, in: 0 ... 0.3)
+                    process(commonProgress)
+                } completion: { result in
+                    switch result {
+                    case let .success(model):
+                        guard let url = URL(string: model?.resultFileUrl ?? "") else {
+                            completion(.failure(prepareExportError))
+                            return
+                        }
+
+                        let fileName = model?.resultFileName ?? ""
+                        let message = "\(fileName) \(NSLocalizedString("file exported to Documents", comment: ""))"
+
+                        let alertController = UIAlertController.alert(
+                            "",
+                            message: message,
+                            actions: []
+                        )
+                        .action(title: NSLocalizedString("Open file", comment: "")) { [weak self] _ in
+                            guard let self else { return }
+                            let file = ASCFile()
+                            file.id = String(model?.resultFileId ?? .zero)
+                            self.apiClient.request(endpoint: OnlyofficeAPI.Endpoints.Files.info(file: file)) { result, error in
+                                if let file = result?.result {
+                                    self.open(
+                                        file: file,
+                                        openMode: .edit,
+                                        canEdit: true
+                                    )
+                                }
+                            }
+                        }
+                        .cancelable()
+
+                        if let topVC = ASCViewControllerManager.shared.topViewController {
+                            topVC.present(alertController, animated: true, completion: nil)
+                        }
+
+                        completion(.success(url))
+
+                    case let .failure(error):
+                        log.error(error)
+                        completion(.failure(prepareExportError))
+                    }
+                }
+            } else {
+                completion(.failure(prepareExportError))
             }
         }
     }

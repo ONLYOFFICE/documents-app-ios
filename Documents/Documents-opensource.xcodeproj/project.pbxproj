@@ -52,6 +52,8 @@
 		E8B21F272D349E2D00AE0E8F /* FilesOrderRequesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */; };
 		E8B2AFEA2D02604400CA4FAD /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */; };
 		E8B394172D133CD400A6AB70 /* ASCEntityViewLayoutTypeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B394162D133CCB00A6AB70 /* ASCEntityViewLayoutTypeProvider.swift */; };
+		E8B5CC6C2D418A9D00F8F59B /* OnlyofficeRoomIndexExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5CC6B2D418A9200F8F59B /* OnlyofficeRoomIndexExportOperation.swift */; };
+		E8B5CC6E2D418F0600F8F59B /* OnlyofficeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5CC6D2D418F0400F8F59B /* OnlyofficeOperation.swift */; };
 		E8B8C8A02CFDE32D00BEDD51 /* AutomaticIndexationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */; };
 		E8B8C8A22CFDE43700BEDD51 /* ThirdPartySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */; };
 		E8B8C8A42CFDFA6400BEDD51 /* WatermarkImageEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */; };
@@ -726,6 +728,8 @@
 		E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesOrderRequesModel.swift; sourceTree = "<group>"; };
 		E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
 		E8B394162D133CCB00A6AB70 /* ASCEntityViewLayoutTypeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityViewLayoutTypeProvider.swift; sourceTree = "<group>"; };
+		E8B5CC6B2D418A9200F8F59B /* OnlyofficeRoomIndexExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomIndexExportOperation.swift; sourceTree = "<group>"; };
+		E8B5CC6D2D418F0400F8F59B /* OnlyofficeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeOperation.swift; sourceTree = "<group>"; };
 		E8B8C89F2CFDE32A00BEDD51 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
 		E8B8C8A12CFDE43500BEDD51 /* ThirdPartySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartySection.swift; sourceTree = "<group>"; };
 		E8B8C8A32CFDFA5300BEDD51 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
@@ -2199,8 +2203,10 @@
 				FC03A6312BDA7F67005E8FFB /* OnlyofficeAuth.swift */,
 				FC03A6322BDA7F67005E8FFB /* OnlyofficeCapabilities.swift */,
 				FC03A6332BDA7F67005E8FFB /* OnlyofficeDocumentConfig.swift */,
+				E8B5CC6D2D418F0400F8F59B /* OnlyofficeOperation.swift */,
 				FC03A6342BDA7F67005E8FFB /* OnlyofficeFileOperation.swift */,
 				E86A8F012C930EC30062198A /* OnlyofficeRoomOperation.swift */,
+				E8B5CC6B2D418A9200F8F59B /* OnlyofficeRoomIndexExportOperation.swift */,
 				FC03A6352BDA7F67005E8FFB /* OnlyofficePath.swift */,
 				FC03A6362BDA7F67005E8FFB /* OnlyofficeResponse.swift */,
 				FC03A6372BDA7F67005E8FFB /* OnlyofficeShare.swift */,
@@ -4026,6 +4032,7 @@
 				FC7081052812E2260057FCD2 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				FC7081062812E2260057FCD2 /* ASCSharingOptionsModels.swift in Sources */,
 				FC83D5702A9742F000C404CB /* ASCNetworkReachability.swift in Sources */,
+				E8B5CC6E2D418F0600F8F59B /* OnlyofficeOperation.swift in Sources */,
 				FC7081092812E2260057FCD2 /* ASCCreatePortalViewController.swift in Sources */,
 				FC142A9328990AEC00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FCE9F6482B2B4AF20056E420 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
@@ -4447,6 +4454,7 @@
 				FC7082102812E2260057FCD2 /* ASCResponsePassword.swift in Sources */,
 				FC7082112812E2260057FCD2 /* ASCSMSCodeViewController.swift in Sources */,
 				E8D50B8B2BFE5DE300741BB8 /* InviteUsersUIHostingController.swift in Sources */,
+				E8B5CC6C2D418A9D00F8F59B /* OnlyofficeRoomIndexExportOperation.swift in Sources */,
 				FC1764F82BA332F300D6B6F0 /* RoomSharingCustomizeLinkView.swift in Sources */,
 				FC7082132812E2260057FCD2 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC7082142812E2260057FCD2 /* ASCSwitchTableViewCell.swift in Sources */,

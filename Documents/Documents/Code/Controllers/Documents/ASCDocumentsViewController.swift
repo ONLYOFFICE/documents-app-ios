@@ -1519,14 +1519,59 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     // MARK: - Entity actions
 
     func openFolder(folder: ASCFolder) {
-        let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-        navigationController?.pushViewController(controller, animated: true)
+        let transitionToFolderCompletion: (ASCFolder?) -> Void = { [weak navigationController, provider] folder in
+            guard let folder else { return }
+            let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+            navigationController?.pushViewController(controller, animated: true)
 
-        controller.provider = provider?.copy()
-        controller.provider?.cancel()
-        controller.provider?.reset()
-        controller.folder = folder
-        controller.title = folder.title
+            controller.provider = provider?.copy()
+            controller.provider?.cancel()
+            controller.provider?.reset()
+            controller.folder = folder
+            controller.title = folder.title
+        }
+
+        guard folder.passwordProtected else {
+            transitionToFolderCompletion(folder)
+            return
+        }
+
+        showPasswordAlert { [provider] password in
+            guard let password, !password.isEmpty else { return }
+            provider?.getAccess(for: folder, password: password, completion: { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case let .success(folder):
+                    transitionToFolderCompletion(folder)
+                case let .failure(error):
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
+                }
+            })
+        }
+    }
+
+    func showPasswordAlert(onCompletion: @escaping (String?) -> Void) {
+        var alert: UIAlertController?
+        alert = UIAlertController.alert(
+            NSLocalizedString("Enter password", comment: ""),
+            message: NSLocalizedString("You need a password to access the room", comment: ""),
+            actions: [
+                UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil),
+                UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default, handler: { _ in
+                    let password = alert?.textFields?.first?.text
+                    onCompletion(password)
+                }),
+            ]
+        )
+
+        alert?.addTextField { textField in
+            textField.placeholder = "Enter password"
+            textField.isSecureTextEntry = true
+        }
+
+        if let alert = alert {
+            present(alert, animated: true)
+        }
     }
 
     func delete(cell: UICollectionViewCell) {

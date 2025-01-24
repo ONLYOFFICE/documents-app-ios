@@ -48,6 +48,8 @@ class ASCFolder: ASCEntity {
     var lifetime: LifeTime?
     var watermark: Watermark?
     var order: String?
+    var passwordProtected: Bool = false
+    var requestToken: String?
 
     var providerId: String? {
         if isThirdParty {
@@ -95,6 +97,8 @@ class ASCFolder: ASCEntity {
         lifetime <- map["lifetime"]
         watermark <- map["watermark"]
         order <- map["order"]
+        passwordProtected <- map["passwordProtected"]
+        requestToken <- map["requestToken"]
         // Internal
         device <- map["device"]
     }

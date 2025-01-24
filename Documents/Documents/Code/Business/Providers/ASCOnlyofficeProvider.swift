@@ -1309,6 +1309,27 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return true
     }
 
+    func getAccess(for folder: ASCFolder?, password: String, completion: @escaping (Result<ASCFolder?, Error>) -> Void) {
+        guard let folder, folder.passwordProtected, let token = folder.requestToken else {
+            completion(.success(folder))
+            return
+        }
+
+        let requestModel = SharePasswordRequestModel(password: password)
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.password(token: token), requestModel.dictionary) { response, error in
+            if let result = response?.result {
+                folder.passwordProtected = false
+                completion(.success(folder))
+            } else if let error {
+                completion(.failure(error))
+            } else {
+                completion(.failure(OnlyofficeServerError.unknown(message: NSLocalizedString("Couldn' get access", comment: ""))))
+            }
+        }
+    }
+
+    // MARK: Actions
+
     func actions(for entity: ASCEntity?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
@@ -2507,4 +2528,8 @@ struct StringError: LocalizedError {
     var errorDescription: String? {
         return message
     }
+}
+
+enum ASCOnlyofficeProviderError: Error {
+    case couldntGetAccess
 }

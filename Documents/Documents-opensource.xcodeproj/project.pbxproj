@@ -87,6 +87,8 @@
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
 		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
 		F3BAE5942D3543420024AB6A /* TopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAE5932D3543400024AB6A /* TopBannerView.swift */; };
+		F3D3A9582D443539002E43D4 /* SharePasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */; };
+		F3D3A95A2D443669002E43D4 /* SharePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3A9592D443660002E43D4 /* SharePasswordRequestModel.swift */; };
 		FC00CBF22C46613C00D3344D /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF12C46613C00D3344D /* ChevronRightView.swift */; };
 		FC00CBF42C46616800D3344D /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF32C46616800D3344D /* ASCThirdpartySelectFolderProvider.swift */; };
 		FC00CBF62C4661A600D3344D /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF52C4661A600D3344D /* ASCTransferViewControllerRepresentable.swift */; };
@@ -769,6 +771,8 @@
 		F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		F3BAE5932D3543400024AB6A /* TopBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerView.swift; sourceTree = "<group>"; };
+		F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePasswordResponseModel.swift; sourceTree = "<group>"; };
+		F3D3A9592D443660002E43D4 /* SharePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePasswordRequestModel.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC00CBF12C46613C00D3344D /* ChevronRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
 		FC00CBF32C46616800D3344D /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
@@ -2178,6 +2182,7 @@
 		FC03A62F2BDA7F67005E8FFB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3D3A9592D443660002E43D4 /* SharePasswordRequestModel.swift */,
 				E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */,
 				E8A4F3C82C73FFF5002168DA /* RoomDuplicateRequestModel.swift */,
 				E87FF6732BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift */,
@@ -2215,6 +2220,7 @@
 				FC03A63A2BDA7F67005E8FFB /* RoomLinkResponceModel.swift */,
 				FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */,
 				FC03A63C2BDA7F67005E8FFB /* RoomUsersResponceModel.swift */,
+				F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4208,6 +4214,7 @@
 				E827EEEC2C3C856100BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */,
 				FC7081722812E2260057FCD2 /* ASCProgressAlert.swift in Sources */,
 				FC1765012BA332F300D6B6F0 /* RoomSharingRootViewController.swift in Sources */,
+				F3D3A9582D443539002E43D4 /* SharePasswordResponseModel.swift in Sources */,
 				FC379D592C380C5900B120D9 /* ASCDocSpaceLinkView.swift in Sources */,
 				FC7081742812E2260057FCD2 /* ASCReusedIdentifierProtocol.swift in Sources */,
 				FC7081752812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
@@ -4333,6 +4340,7 @@
 				E8D50B832BF9441A00741BB8 /* InviteUsersViewModel.swift in Sources */,
 				FC7081C82812E2260057FCD2 /* ASCDocumentSortType.swift in Sources */,
 				FCE9F63B2B2B49D60056E420 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */,
+				F3D3A95A2D443669002E43D4 /* SharePasswordRequestModel.swift in Sources */,
 				FC7081C92812E2260057FCD2 /* DropboxApiClient.swift in Sources */,
 				FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FC7081CA2812E2260057FCD2 /* ASCEntityAccess.swift in Sources */,

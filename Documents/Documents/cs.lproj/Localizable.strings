@@ -354,7 +354,7 @@ Category title */
 "Connect Storage" = "Připojit úložiště";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Připojte úložiště třetích stran\njako Nextcloud, ownCloud, Yandex Disk a\njiné, které používají protokol WebDAV.";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." = "Připojte úložiště třetích stran\njako Nextcloud, ownCloud, Dropbox a\njiné, které používají protokol WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase";

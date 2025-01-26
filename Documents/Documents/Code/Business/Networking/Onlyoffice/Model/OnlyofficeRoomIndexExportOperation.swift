@@ -1,6 +1,6 @@
 //
 //  OnlyofficeRoomIndexExportOperation.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 22.01.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.

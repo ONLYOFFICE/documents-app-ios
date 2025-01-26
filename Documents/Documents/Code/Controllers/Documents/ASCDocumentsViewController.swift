@@ -948,10 +948,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func updateUIForEditingOrderIndexState() {
         if isEditingIndexMode {
-            tabBarController?.tabBar.isHidden = true
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
             applyButton.isHidden = false
         } else {
-            tabBarController?.tabBar.isHidden = false
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
             applyButton.isHidden = true
         }
     }
@@ -968,20 +968,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func showToolBar(_ show: Bool, animated: Bool = true) {
         navigationController?.setToolbarHidden(!show, animated: animated)
+        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = show
     }
 
     func setEditMode(_ edit: Bool) {
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = edit
-
         collectionView.isEditing = edit
         isEditingIndexMode = false
+        selectedIds.removeAll()
 
         configureNavigationBar()
 
         configureToolBar()
         showToolBar(edit)
 
-        selectedIds.removeAll()
         updateTitle()
     }
 

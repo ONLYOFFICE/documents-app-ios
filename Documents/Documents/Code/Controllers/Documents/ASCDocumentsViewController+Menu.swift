@@ -531,6 +531,19 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Change room owner
+
+        if actions.contains(.changeRoomOwner) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Change room owner", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
+                ) { [unowned self] action in
+                    self.leaveRoom(cell: cell, folder: folder, changeOwner: true)
+                }
+            )
+        }
+
         /// Archive
 
         if actions.contains(.archive) {

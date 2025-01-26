@@ -39,6 +39,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
+    @Published var guests: [ASCUserRowModel] = []
     @Published var invites: [ASCUserRowModel] = []
     @Published var sharedLinksModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
 
@@ -274,8 +275,15 @@ private extension RoomSharingViewModel {
     func buildViewModel() {
         sharedLinksModels = flowModel.links.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
-        users = flowModel.sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
-        invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
+        users = flowModel.sharings
+            .filter { !$0.user.isAdmin && !$0.user.isVisitor }
+            .map { self.mapToUserViewModel(sharing: $0) }
+        guests = flowModel.sharings
+            .filter { $0.user.activationStatus == .applyed && $0.user.isVisitor }
+            .map { self.mapToUserViewModel(sharing: $0) }
+        invites = flowModel.sharings
+            .filter { $0.user.isUnaplyed && $0.user.isVisitor }
+            .map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
     }
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {

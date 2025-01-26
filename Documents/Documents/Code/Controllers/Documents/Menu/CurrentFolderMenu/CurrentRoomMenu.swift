@@ -104,6 +104,18 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             )
         }
 
+        // Export room index
+        if actions.contains(.exportRoomIndex) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Export room index", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.down.document")
+                ) { [weak viewController] action in
+                    viewController?.exportRoomIndex()
+                }
+            )
+        }
+
         if actions.contains(.disableNotifications) {
             entityActionsGroup.append(
                 UIAction(
@@ -141,6 +153,18 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     image: UIImage(systemName: "line.3.horizontal.decrease")
                 ) { [weak viewController] action in
                     viewController?.isEditingIndexMode = true
+                }
+            )
+        }
+
+        // Change room owner
+        if actions.contains(.changeRoomOwner) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Change room owner", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
+                ) { [weak viewController] action in
+                    viewController?.leaveRoom(cell: nil, folder: folder, changeOwner: true)
                 }
             )
         }

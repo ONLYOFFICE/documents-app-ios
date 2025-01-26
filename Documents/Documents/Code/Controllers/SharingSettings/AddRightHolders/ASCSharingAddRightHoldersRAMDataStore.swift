@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ASCSharingAddRightHoldersBaseDataStore {
+protocol ASCSharingAddRightHoldersBaseDataStore: AnyObject {
     var entity: ASCEntity? { get set }
     var entityOwner: ASCUser? { get set }
     var currentUser: ASCUser? { get set }
@@ -25,8 +25,9 @@ protocol ASCSharingAddRightHoldersBaseDataStore {
     func clear()
 }
 
-protocol ASCSharingAddRightHoldersDataStore: ASCSharingAddRightHoldersBaseDataStore {
+protocol ASCSharingAddRightHoldersDataStore: AnyObject, ASCSharingAddRightHoldersBaseDataStore {
     var groups: [ASCGroup] { get set }
+    var guests: [ASCUser] { get set }
 }
 
 class ASCSharingAddRightHoldersBaseRAMDataStore: ASCSharingAddRightHoldersBaseDataStore {
@@ -101,9 +102,11 @@ class ASCSharingAddRightHoldersBaseRAMDataStore: ASCSharingAddRightHoldersBaseDa
 
 class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersBaseRAMDataStore, ASCSharingAddRightHoldersDataStore {
     var groups: [ASCGroup] = []
+    var guests: [ASCUser] = []
 
     override func clear() {
         super.clear()
         groups = []
+        guests = []
     }
 }

@@ -48,15 +48,15 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
     private func updateRoomAccesses() {
         switch room.roomType {
         case .colobaration:
-            accesses = [.roomManager, .powerUser, .editing, .read]
+            accesses = [.roomManager, .contentCreator, .editing, .read]
         case .public:
-            accesses = [.roomManager, .powerUser]
+            accesses = [.roomManager, .contentCreator]
         case .custom:
-            accesses = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+            accesses = [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
         case .fillingForm:
-            accesses = [.roomManager, .powerUser, .fillForms]
+            accesses = [.roomManager, .contentCreator, .fillForms]
         default:
-            accesses = [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
+            accesses = [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
         }
     }
 

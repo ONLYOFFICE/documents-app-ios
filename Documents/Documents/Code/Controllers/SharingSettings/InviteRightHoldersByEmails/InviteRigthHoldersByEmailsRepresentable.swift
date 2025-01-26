@@ -30,7 +30,7 @@ struct InviteRigthHoldersByEmailsRepresentable: UIViewControllerRepresentable {
             entity: entity,
             currentAccess: .read,
             apiWorker: apiWorker,
-            accessProvider: ASCSharingSettingsAccessRoomsProvider(
+            accessProvider: ASCSharingSettingsExternalLinkAccessRoomsProvider(
                 roomType: (entity as? ASCFolder)?.roomType ?? .public,
                 rightHoldersTableType: .users
             )

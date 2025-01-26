@@ -100,7 +100,7 @@ struct InviteUsersView: View {
 
     private var inviteByEmailCell: some View {
         HStack {
-            Text(NSLocalizedString("Invite people by email", comment: ""))
+            Text(NSLocalizedString("Invite guests by email", comment: ""))
             Spacer()
             ChevronRightView()
         }
@@ -123,16 +123,16 @@ struct InviteUsersView: View {
     }
 
     private func handleHUD() -> some View {
-        EmptyView().onAppear {
-            MBProgressHUD.currentHUD?.hide(animated: false)
-            if viewModel.isLoading {
-                let hud = MBProgressHUD.showAdded(to: UIApplication.shared.windows.first!, animated: true)
-                hud.mode = .indeterminate
-                hud.label.text = NSLocalizedString("Loading", comment: "") + "..."
-            } else {
-                MBProgressHUD.hide(for: UIApplication.shared.windows.first!, animated: true)
+        EmptyView()
+            .onReceive(viewModel.$isLoading) { isLoading in
+                if isLoading {
+                    let hud = MBProgressHUD.showAdded(to: UIApplication.shared.windows.first!, animated: true)
+                    hud.mode = .indeterminate
+                    hud.label.text = NSLocalizedString("Loading", comment: "") + "..."
+                } else {
+                    MBProgressHUD.hide(for: UIApplication.shared.windows.first!, animated: true)
+                }
             }
-        }
     }
 }
 

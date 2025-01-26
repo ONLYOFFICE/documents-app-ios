@@ -32,7 +32,6 @@ final class UserListViewModel: ObservableObject {
         self.ignoreUserId = ignoreUserId
         _selectedUser = selectedUser
         setupBindings()
-        fetchUsers()
     }
 
     private func setupBindings() {
@@ -45,6 +44,7 @@ final class UserListViewModel: ObservableObject {
     }
 
     private func fetchUsers(filterValue: String? = nil) {
+        guard !isLoading else { return }
         isLoading = true
         userListNetworkService.fetchUsers(filterValue: filterValue) { [weak self] result in
             guard let self else { return }
@@ -63,9 +63,11 @@ final class UserListViewModel: ObservableObject {
 
     private func filterUsers(ascUsers: [ASCUser]) -> [User] {
         return ascUsers
-            .filter { ascUser in
-                guard let ignoreUserId = ignoreUserId else { return true }
-                return ascUser.userId != ignoreUserId && (ascUser.userType == .roomAdmin || ascUser.userType == .docspaseAdmin)
+            .filter {
+                let isAdmin = $0.userType == .roomAdmin || $0.userType == .docspaseAdmin
+                return isAdmin
+                guard let ignoreUserId = ignoreUserId else { return isAdmin }
+                return $0.userId != ignoreUserId && isAdmin
             }
             .map(mapToUserListUser)
     }

@@ -137,13 +137,17 @@ struct OnlyofficeDocumentCustomization: Codable {
         mentionShare = try? container.decode(Bool.self, forKey: .mentionShare)
         uiTheme = try? container.decode(String.self, forKey: .uiTheme)
 
-        do {
-            submitForm = try container.decode(OnlyofficeDocumentSubmitForm.self, forKey: .submitForm)
-        } catch DecodingError.typeMismatch {
-            // Old version, just Bool
-            if let visible = try? container.decode(Bool.self, forKey: .submitForm) {
-                submitForm = OnlyofficeDocumentSubmitForm(visible: visible, resultMessage: nil)
+        if container.contains(.submitForm) {
+            do {
+                submitForm = try container.decode(OnlyofficeDocumentSubmitForm.self, forKey: .submitForm)
+            } catch DecodingError.typeMismatch {
+                // Old version, just Bool
+                if let visible = try? container.decode(Bool.self, forKey: .submitForm) {
+                    submitForm = OnlyofficeDocumentSubmitForm(visible: visible, resultMessage: nil)
+                }
             }
+        } else {
+            submitForm = nil
         }
     }
 }

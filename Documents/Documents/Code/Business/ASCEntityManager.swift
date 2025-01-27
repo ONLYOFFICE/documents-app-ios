@@ -647,6 +647,10 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                             if let error = error {
                                 handler?(.error, 1, nil, error, &cancel)
+                            } else if let errorMessage = result?.result?.first?.error,
+                                      !errorMessage.isEmpty {
+                                let error = OnlyofficeFileOperationError.serverError(errorMessage)
+                                handler?(.error, 1, nil, error, &cancel)
                             } else if let operation = result?.result?.first, let progress = operation.progress {
                                 if progress >= 100 {
                                     handler?(.end, 1, operation.files.first, nil, &cancel)

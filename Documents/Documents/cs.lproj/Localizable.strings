@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "Všechny soubory";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won't be able to restore them." = "Všechny položky z archivu budou navždy odstraněny. Nebudete je moci obnovit.";
-
-/* No comment provided by engineer. */
 "All notifications" = "Všechna oznámení";
 
 /* No comment provided by engineer. */
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Vytvořením portálu souhlasíte s našimi zásadami ochrany osobních údajů a podmínkami služby.";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "bajty";
 
 /* No comment provided by engineer. */
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "Připojit úložiště";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." = "Připojte úložiště třetích stran\njako Nextcloud, ownCloud, Dropbox a\njiné, které používají protokol WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Vymazat složku";
-
-/* No comment provided by engineer. */
-"Delete forever" = "Smazat navždy";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "Navždy smazat?";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "Seznam";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "Načítání";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "Mocný uživatel";
 
-/* Share status */
-"Power user" = "Mocný uživatel";
-
 /* No comment provided by engineer. */
 "Presentation" = "Prezentace";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "Role";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "Správce místnosti";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Odkaz pro externí\npřístup je zkopírován\ndo schránky";
 
-/* Expiration status */
-"The link has expired" = "Platnost odkazu vypršela";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "Platnost odkazu vypršela a byl zakázán";
+"The link has expired" = "Platnost odkazu vypršela";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "Odkaz bude trvale odstraněn. Tuto akci nebude možné vrátit zpět.";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Tato tabulka je aktuálně upravována. Chcete otevřít %@ pouze k prohlížení?";
-
-/* No comment provided by engineer. */
-"Time limit" = "Časový limit";
 
 /* No comment provided by engineer. */
 "Title" = "Název";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won't be able to restore them." = "Chystáte se odstranit tuto místnost. Nebudete je moci obnovit.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Jste vlastníkem této místnosti. Než místnost opustíte, musíte roli vlastníka převést na jiného uživatele.";

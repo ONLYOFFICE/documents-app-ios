@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "Todos os arquivos";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "Todos os itens arquivados serão excluídos para sempre. Você não poderá restaurá-los.";
-
-/* No comment provided by engineer. */
 "All notifications" = "Todas as notificações";
 
 /* No comment provided by engineer. */
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Ao criar o portal, você concorda com nossa Política de Privacidade e Termos de Serviço";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "bytes";
 
 /* No comment provided by engineer. */
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "Conectar armazenamento";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Conectar-se a armazenamento de terceiros\ncomo Nextcloud, ownCloud, Yandex Disk e\noutros que usam o protocolo WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Conecte-se à sua nuvem %@ para armazenar arquivos online e colaborar em documentos em tempo real";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Excluir pasta";
-
-/* No comment provided by engineer. */
-"Delete forever" = "Excluir definitivamente";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "Eliminar para sempre?";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "Lista";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "Loading";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "Usuário avançado";
 
-/* Share status */
-"Power user" = "Usuário avançado";
-
 /* No comment provided by engineer. */
 "Presentation" = "Apresentação";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "Funções";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "Administrador da sala";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "O link para acesso externo\né copiado\npara a área de transferência";
 
-/* Expiration status */
-"The link has expired" = "O link expirou";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "O link expirou e foi desativado";
+"The link has expired" = "O link expirou";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "O link será excluído permanentemente. Você não poderá desfazer esta ação.";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Esta planilha está sendo editada. Você deseja abrir %@ apenas para visualização?";
-
-/* No comment provided by engineer. */
-"Time limit" = "Limite de tempo";
 
 /* No comment provided by engineer. */
 "Title" = "Titulo";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "Você está prestes a excluir esta sala. Você não poderá restaurá-los.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Você é o dono desta sala. Antes de sair da sala, você deve transferir a função de proprietário para outro usuário.";

@@ -2,46 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>%d years</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@years@</string>
-		<key>years</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>%d years</string>
-			<key>many</key>
-			<string>%d years</string>
-			<key>one</key>
-			<string>%d year</string>
-			<key>few</key>
-			<string>%d years</string>
-		</dict>
-	</dict>
-	<key>%d months</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@months@</string>
-		<key>months</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>%d months</string>
-			<key>few</key>
-			<string>%d months</string>
-			<key>one</key>
-			<string>%d month</string>
-			<key>many</key>
-			<string>%d months</string>
-		</dict>
-	</dict>
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -82,6 +42,26 @@
 			<string>%d hours</string>
 		</dict>
 	</dict>
+	<key>%d months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@months@</string>
+		<key>months</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d months</string>
+			<key>many</key>
+			<string>%d months</string>
+			<key>one</key>
+			<string>%d month</string>
+			<key>other</key>
+			<string>%d months</string>
+		</dict>
+	</dict>
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -100,6 +80,26 @@
 			<string>Выбран %d</string>
 			<key>other</key>
 			<string>Выбрано %d</string>
+		</dict>
+	</dict>
+	<key>%d years</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@years@</string>
+		<key>years</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d years</string>
+			<key>many</key>
+			<string>%d years</string>
+			<key>one</key>
+			<string>%d year</string>
+			<key>other</key>
+			<string>%d years</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>

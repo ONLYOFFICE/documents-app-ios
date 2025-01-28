@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "所有文件";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "存档中的所有项目将被永久删除。 您将无法恢复它们。";
-
-/* No comment provided by engineer. */
 "All notifications" = "所有通知";
 
 /* No comment provided by engineer. */
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "通过创建门户网站，您同意我们的隐私策略和服务条款";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "字节";
 
 /* No comment provided by engineer. */
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "连接存储";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "连接第三方存储\n像Nextcloud、ownCloud、Yandex Disk和\n其他三方存储使用WebDAV协议。";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "连接到您的 %@ 云端，在线存储文件并实时协作处理文件";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "删除文件夹";
-
-/* No comment provided by engineer. */
-"Delete forever" = "永久删除";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "永久删除？ ";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "列表";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "正在加载";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "高级用户";
 
-/* Share status */
-"Power user" = "高级用户";
-
 /* No comment provided by engineer. */
 "Presentation" = "演示文稿";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "角色";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "房间管理员";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "用于外部访问的链接\n已复制\n到剪贴板上";
 
-/* Expiration status */
-"The link has expired" = "链接已过期";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "链接已过期并已被禁用";
+"The link has expired" = "链接已过期";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "链接将被永久删除，您将无法撤销此操作。";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "此电子表格正在编辑中。您想打开 %@ 只查看吗？";
-
-/* No comment provided by engineer. */
-"Time limit" = "时间限制";
 
 /* No comment provided by engineer. */
 "Title" = "标题";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "您即将删除此房间。您将无法恢复它们。";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "您是此房间的所有者。在离开房间之前，您必须将所有者的角色转移给另一个用户。";

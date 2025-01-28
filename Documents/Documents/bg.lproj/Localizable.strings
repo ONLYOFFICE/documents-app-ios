@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "Всички файлове";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "Всички елементи от Архивирани ще бъдат изтрити завинаги. Няма да можете да ги възстановите.";
-
-/* No comment provided by engineer. */
 "All notifications" = "Всички известия";
 
 /* No comment provided by engineer. */
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Чрез създаването на портала се съгласявате с нашите Политика за поверителност и Условия за ползване";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "Байта";
 
 /* No comment provided by engineer. */
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "Свържете хранилището";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Свържете съхранение на трети страни\nкато Nextcloud, ownCloud, Yandex Disk и\nдруги, които използват WebDAV протокол.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Изтриване на папка";
-
-/* No comment provided by engineer. */
-"Delete forever" = "Изтрийте завинаги";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "Изтрий завинаги?";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "Списък";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "Зареждане";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "Опитен потребител";
 
-/* Share status */
-"Power user" = "Опитен потребител";
-
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "Роли";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "Администратор на стаята";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Линкът за външен\nдостъп е копиран\nв клипборда";
 
-/* Expiration status */
-"The link has expired" = "Линкът изтече";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "Линкът изтече и беше деактивиран";
+"The link has expired" = "Линкът изтече";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "Линкът ше бъде изтрит завинаги. Няма да можете да върнете това действие.";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Тази таблица се редактира. Искате ли да отворите %@ само за преглеждане?";
-
-/* No comment provided by engineer. */
-"Time limit" = "Времеви лимит";
 
 /* No comment provided by engineer. */
 "Title" = "Заглавие";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Яб";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "Напът сте да изтриете тази стая. Няма да можете да я възстановите.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Вие сте собственик на тази стая. Преди да я напуснете, трябва да прехвърлите ролята на собственик на друг потребител.";

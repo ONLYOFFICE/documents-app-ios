@@ -30,9 +30,7 @@ struct ManageRoomView: View {
             watermarkSection
             storageQuotaSection
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
+        .hideKeyboardOnDrag()
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
@@ -58,6 +56,7 @@ struct ManageRoomView: View {
     private var roomTypeSection: some View {
         Section {
             RoomTypeViewRow(roomTypeModel: viewModel.selectedRoomType)
+                .contentShape(Rectangle())
                 .onTapGesture {
                     guard !viewModel.isEditMode else { return }
                     viewModel.isRoomSelectionPresenting = true
@@ -363,4 +362,26 @@ private extension String {
     ManageRoomView(
         viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
     )
+}
+
+struct HideKeyboardOnDrag: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .gesture(
+                DragGesture().onEnded { _ in
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+            )
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func hideKeyboardOnDrag() -> some View {
+        if #available(iOS 16.0, *) {
+            self.scrollDismissesKeyboard(.immediately)
+        } else {
+            modifier(HideKeyboardOnDrag())
+        }
+    }
 }

@@ -83,7 +83,7 @@ extension ASCDocumentsViewController {
         if actions.contains(.copySharedLink) {
             shareActions.append(
                 UIAction(
-                    title: NSLocalizedString("Copy shared link", comment: ""),
+                    title: NSLocalizedString("Copy link", comment: ""),
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
                     self.copySharedLink(file: file)
@@ -403,11 +403,18 @@ extension ASCDocumentsViewController {
         /// Copy general link
 
         if actions.contains(.link) {
+            let title: String
+
+            switch folder.roomType {
+            case .public, .custom, .fillingForm:
+                title = NSLocalizedString("Copy general link", comment: "Button title")
+            default:
+                title = NSLocalizedString("Copy link", comment: "Button title")
+            }
+
             basicActions.append(
                 UIAction(
-                    title: folder.roomType == .colobaration
-                        ? NSLocalizedString("Copy link", comment: "Button title")
-                        : NSLocalizedString("Copy general link", comment: "Button title"),
+                    title: title,
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
                     self.copyGeneralLinkToClipboard(room: folder)

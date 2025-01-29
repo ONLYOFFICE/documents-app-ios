@@ -200,9 +200,14 @@ class ManageRoomViewModel: ObservableObject {
     private var selectedSubfolder: ASCFolder?
     private var selectedLocationPath: String = ""
     private var cancelable = Set<AnyCancellable>()
-    private var roomQuota: ASCPaymentQuotaSettings?
     private var watermarkImageWasChanged: Bool = false
     private var isFilesLifetimeWarningViewed: Bool = false
+    private var quotaSizeInBytes: Double? {
+        guard allowChangeStorageQuota else { return nil }
+        return isStorateQuotaEnabled
+            ? SizeUnit.bytes(from: sizeQuota, unit: selectedSizeUnit)
+            : -1
+    }
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
@@ -322,16 +327,35 @@ class ManageRoomViewModel: ObservableObject {
             })
             .store(in: &cancelable)
 
+        $isStorateQuotaEnabled
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] isOn in
+                guard let self else { return }
+                if isOn, sizeQuota < 0 {
+                    sizeQuota = 40
+                }
+            })
+            .store(in: &cancelable)
+
         Task { @MainActor in
-            if let roomQuota = await roomQuotaNetworkService.loadRoomsQouta(),
-               let quota = roomQuota.defaultQuota
+            if let roomsQuota = await roomQuotaNetworkService.loadRoomsQouta(),
+               let roomsQuotaValue = roomsQuota.defaultQuota
             {
-                let (size, unit) = SizeUnit.formatBytes(quota)
-                isStorateQuotaEnabled = roomQuota.enableQuota == true
+                let currentRoomQuote = editingRoom?.quotaLimit
+                let bytes = {
+                    guard let currentRoomQuote, currentRoomQuote >= 0 else { return roomsQuotaValue }
+                    return currentRoomQuote
+                }()
+                let (size, unit) = SizeUnit.formatBytes(bytes)
+                allowChangeStorageQuota = roomsQuota.enableQuota == true
+                    && selectedRoomType.type == .virtualData
+                isStorateQuotaEnabled = {
+                    guard let room = editingRoom else { return true }
+                    return room.isCustomQuota == true
+                        && (currentRoomQuote ?? -1) >= 0
+                }()
                 sizeQuota = size
                 selectedSizeUnit = unit
-                allowChangeStorageQuota = true
-                self.roomQuota = roomQuota
             }
         }
     }
@@ -354,7 +378,6 @@ class ManageRoomViewModel: ObservableObject {
         } else {
             createRoom()
         }
-        saveQuotaChanges()
     }
 
     func configureSelectedLocation() {
@@ -500,7 +523,8 @@ private extension ManageRoomViewModel {
                 isRestrictContentCopy: isRestrictContentCopy,
                 fileLifetime: makeFileLifetimeModel(),
                 watermark: makeWatermarkRequestModel(),
-                watermarkImage: selectedWatermarkType == .image ? watermarkImage : nil
+                watermarkImage: selectedWatermarkType == .image ? watermarkImage : nil,
+                quota: quotaSizeInBytes
             )
         ) { [weak self] result in
             self?.isSaving = false
@@ -546,22 +570,6 @@ private extension ManageRoomViewModel {
         return nil
     }
 
-    // MARK: Quota changes
-
-    func saveQuotaChanges() {
-        let quotaSizeInBytes = SizeUnit.bytes(from: sizeQuota, unit: selectedSizeUnit)
-        let screenStateRoomQuota = ASCPaymentQuotaSettings(
-            enableQuota: isStorateQuotaEnabled,
-            defaultQuota: quotaSizeInBytes,
-            lastRecalculateDate: roomQuota?.lastRecalculateDate
-        )
-        guard screenStateRoomQuota != roomQuota else { return }
-
-        Task { [roomQuotaNetworkService] in
-            await roomQuotaNetworkService.setupRoomsQuota(model: screenStateRoomQuota)
-        }
-    }
-
     // MARK: Update room
 
     func updateRoom() {
@@ -569,6 +577,7 @@ private extension ManageRoomViewModel {
             isSaving = false
             return
         }
+
         creatingRoomService.editRoom(
             model: EditRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
@@ -583,7 +592,8 @@ private extension ManageRoomViewModel {
                 fileLifetime: makeFileLifetimeModel(),
                 watermark: makeWatermarkRequestModel(),
                 watermarkImage: watermarkImage,
-                watermarkImageWasChanged: watermarkImageWasChanged
+                watermarkImageWasChanged: watermarkImageWasChanged,
+                quota: quotaSizeInBytes
             )
         ) { [weak self] result in
             switch result {

@@ -25,6 +25,7 @@ struct CreatingRoomModel {
     var fileLifetime: CreateRoomRequestModel.FileLifetime?
     var watermark: CreateRoomRequestModel.Watermark?
     var watermarkImage: UIImage?
+    var quota: Double?
 }
 
 struct EditRoomModel {
@@ -41,6 +42,7 @@ struct EditRoomModel {
     var watermark: CreateRoomRequestModel.Watermark?
     var watermarkImage: UIImage?
     var watermarkImageWasChanged: Bool = false
+    var quota: Double?
 }
 
 class NetworkManagingRoomServiceImp: ManagingRoomService {
@@ -82,7 +84,8 @@ extension NetworkManagingRoomServiceImp {
             lifetime: model.fileLifetime,
             watermark: model.watermark,
             watermarkImage: model.watermarkImage,
-            watermarkImageWasChanged: model.watermarkImageWasChanged
+            watermarkImageWasChanged: model.watermarkImageWasChanged,
+            quota: model.quota
         ) { [self] result in
             switch result {
             case let .success(room):
@@ -125,6 +128,7 @@ extension NetworkManagingRoomServiceImp {
         watermark: CreateRoomRequestModel.Watermark?,
         watermarkImage: UIImage?,
         watermarkImageWasChanged: Bool,
+        quota: Double?,
         completion: @escaping (Result<ASCRoom, Error>) -> Void
     ) {
         var requestModel = CreateRoomRequestModel(
@@ -134,7 +138,8 @@ extension NetworkManagingRoomServiceImp {
             indexing: indexing,
             denyDownload: denyDownload,
             lifetime: lifetime,
-            watermark: watermark
+            watermark: watermark,
+            quota: quota
         )
         let roomUpdater: (CreateRoomRequestModel) -> Void = { requestModel in
             self.networkService.request(
@@ -235,7 +240,8 @@ extension NetworkManagingRoomServiceImp {
             indexing: model.isAutomaticIndexing,
             denyDownload: model.isRestrictContentCopy,
             lifetime: model.fileLifetime,
-            watermark: model.watermark
+            watermark: model.watermark,
+            quota: model.quota
         )
         if let thirdPartyFolderId = model.thirdPartyFolderId {
             networkService.request(

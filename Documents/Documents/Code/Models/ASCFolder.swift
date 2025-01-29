@@ -50,6 +50,8 @@ class ASCFolder: ASCEntity {
     var order: String?
     var passwordProtected: Bool = false
     var requestToken: String?
+    var quotaLimit: Double?
+    var isCustomQuota: Bool = false
 
     var providerId: String? {
         if isThirdParty {
@@ -99,8 +101,11 @@ class ASCFolder: ASCEntity {
         order <- map["order"]
         passwordProtected <- map["passwordProtected"]
         requestToken <- map["requestToken"]
+        quotaLimit <- map["quotaLimit"]
+        isCustomQuota <- map["isCustomQuota"]
         // Internal
         device <- map["device"]
+        // TODO: Do not forget update copy() when add a new field
     }
 
     func copy() -> ASCFolder {
@@ -113,8 +118,11 @@ class ASCFolder: ASCEntity {
             folder.title = title
             folder.access = access
             folder.shared = shared
+            folder.pinned = pinned
             folder.mute = mute
             folder.roomType = roomType
+            folder.isPrivate = isPrivate
+            folder.type = type
             folder.rootFolderType = rootFolderType
             folder.updated = updated
             folder.updatedBy = updatedBy
@@ -125,6 +133,16 @@ class ASCFolder: ASCEntity {
             folder.logo = logo
             folder.tags = tags
             folder.providerType = providerType
+            folder.security = security
+            folder.indexing = indexing
+            folder.denyDownload = denyDownload
+            folder.lifetime = lifetime
+            folder.watermark = watermark
+            folder.order = order
+            folder.passwordProtected = passwordProtected
+            folder.requestToken = requestToken
+            folder.quotaLimit = quotaLimit
+            folder.isCustomQuota = isCustomQuota
             folder.device = device
             folder.parent = parent
             return folder

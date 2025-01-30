@@ -21,7 +21,12 @@ final class RoomSharingViewModel: ObservableObject {
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
     var isPossibleCreateNewLink: Bool {
-        room.roomType != .colobaration
+        switch room.roomType {
+        case .colobaration, .virtualData:
+            return false
+        default:
+            return true
+        }
     }
 
     var canAddLink: Bool {

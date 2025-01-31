@@ -349,10 +349,14 @@ class ASCViewControllerManager {
         if appDelegate.passcodeLockPresenter.isPasscodePresented {
             appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
                 appDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                processAndOpenFile()
+                DispatchQueue.main.debounce(interval: 1.0) {
+                    processAndOpenFile()
+                }
             }
         } else {
-            processAndOpenFile()
+            DispatchQueue.main.debounce(interval: 1.0) {
+                processAndOpenFile()
+            }
         }
     }
 
@@ -479,8 +483,8 @@ class ASCViewControllerManager {
 
             let withoutScheme: (String?) -> String? = { domain in
                 domain?
-                    .replacingOccurrences(of: "https://", with: "")
-                    .replacingOccurrences(of: "http://", with: "")
+                    .removingPrefix("https://")
+                    .removingPrefix("http://")
             }
 
             let onlyofficeProvider = ASCFileManager.onlyofficeProvider
@@ -664,10 +668,14 @@ class ASCViewControllerManager {
         if appDelegate.passcodeLockPresenter.isPasscodePresented {
             appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
                 appDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                processAndOpenFile()
+                DispatchQueue.main.debounce(interval: 1.0) {
+                    processAndOpenFile()
+                }
             }
         } else {
-            processAndOpenFile()
+            DispatchQueue.main.debounce(interval: 1.0) {
+                processAndOpenFile()
+            }
         }
     }
 

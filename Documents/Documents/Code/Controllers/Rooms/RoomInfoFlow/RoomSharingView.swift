@@ -155,7 +155,7 @@ struct RoomSharingView: View {
     }
 
     private var formRoomHeader: some View {
-        Text(NSLocalizedString("Public link", comment: ""))
+        Text("Public link")
     }
 
     private var sharedLinksHeader: some View {

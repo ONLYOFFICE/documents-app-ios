@@ -648,7 +648,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             if let error = error {
                                 handler?(.error, 1, nil, error, &cancel)
                             } else if let errorMessage = result?.result?.first?.error,
-                                      !errorMessage.isEmpty {
+                                      !errorMessage.isEmpty
+                            {
                                 let error = OnlyofficeFileOperationError.serverError(errorMessage)
                                 handler?(.error, 1, nil, error, &cancel)
                             } else if let operation = result?.result?.first, let progress = operation.progress {

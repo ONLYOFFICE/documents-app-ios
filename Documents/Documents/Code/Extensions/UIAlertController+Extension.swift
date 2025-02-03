@@ -31,4 +31,13 @@ extension UIAlertController {
         ).okable()
         viewController.present(alertController, animated: true, completion: nil)
     }
+
+    static func showCancelableWarning(in viewController: UIViewController, message: String, actions: [UIAlertAction]? = nil) {
+        let alertController = UIAlertController.alert(
+            NSLocalizedString("Warning", comment: ""),
+            message: message,
+            actions: actions ?? []
+        ).cancelable()
+        viewController.present(alertController, animated: true, completion: nil)
+    }
 }

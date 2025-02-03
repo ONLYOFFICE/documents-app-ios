@@ -443,12 +443,12 @@ extension ASCDocumentsViewController {
     }
 
     @objc func onCancelAction() {
-        if isEditingIndexMode, let editOrderDelegate = provider as? ProviderEditIndexDelegate {
-            editOrderDelegate.cancleEditOrderIndex()
-            isEditingIndexMode = false
-            collectionView.reloadData()
+        let continueAction = UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.cancelEditOrderIndex()
         }
-        setEditMode(false)
+
+        UIAlertController.showCancelableWarning(in: self, message: NSLocalizedString("Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.", comment: ""), actions: [continueAction])
     }
 
     @objc func onSortAction(_ sender: Any) {
@@ -497,6 +497,19 @@ extension ASCDocumentsViewController {
     }
 
     @objc func onReorderAction() {
+        let reorderAction = UIAlertAction(title: NSLocalizedString("Reorder", comment: ""), style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.reoreder()
+        }
+
+        UIAlertController.showCancelableWarning(in: self, message: NSLocalizedString("The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.", comment: ""), actions: [reorderAction])
+    }
+}
+
+// MARK: - Private
+
+private extension ASCDocumentsViewController {
+    func reoreder() {
         guard let folder else { return }
         let hud = MBProgressHUD.showTopMost()
         provider?.handle(
@@ -522,11 +535,16 @@ extension ASCDocumentsViewController {
             }
         }
     }
-}
 
-// MARK: - Private
+    func cancelEditOrderIndex() {
+        if isEditingIndexMode, let editOrderDelegate = provider as? ProviderEditIndexDelegate {
+            editOrderDelegate.cancleEditOrderIndex()
+            isEditingIndexMode = false
+            collectionView.reloadData()
+        }
+        setEditMode(false)
+    }
 
-private extension ASCDocumentsViewController {
     func createAddBarButton() -> UIBarButtonItem? {
         guard (provider?.allowAdd(toFolder: folder)) != nil, folder?.rootFolderType != .onlyofficeRoomArchived else { return nil }
 

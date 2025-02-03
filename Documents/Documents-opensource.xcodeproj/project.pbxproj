@@ -586,6 +586,7 @@
 		FCE9F7A72B3044CE0056E420 /* CurrentRoomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F7A22B3044CE0056E420 /* CurrentRoomMenu.swift */; };
 		FCE9F7A82B3044CE0056E420 /* CurrentFolderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F7A32B3044CE0056E420 /* CurrentFolderMenu.swift */; };
 		FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */; };
+		FCECD79E2D51181F008F1306 /* ASCDocumentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECD79D2D51181F008F1306 /* ASCDocumentsCollectionView.swift */; };
 		FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF258D2978190200522A3A /* WhatsNew.bundle */; };
 		FCF779BE2B4ED77600E5C2DC /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF779BD2B4ED77600E5C2DC /* ResultViewModel.swift */; };
 		FCFAEEF82CAD48B700FB3E19 /* ASCConnectStorageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFAEEF72CAD48B700FB3E19 /* ASCConnectStorageCell.xib */; };
@@ -1269,6 +1270,7 @@
 		FCE9F7A32B3044CE0056E420 /* CurrentFolderMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentFolderMenu.swift; sourceTree = "<group>"; };
 		FCEA68222264733A0055926A /* ASC2FAPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAPageController.swift; sourceTree = "<group>"; };
 		FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+Menu.swift"; sourceTree = "<group>"; };
+		FCECD79D2D51181F008F1306 /* ASCDocumentsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCollectionView.swift; sourceTree = "<group>"; };
 		FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		FCECDDCE264309D7006CD7B9 /* ASCEmailSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEmailSentViewController.swift; sourceTree = "<group>"; };
 		FCECDDD926430B28006CD7B9 /* ASCPasswordRecoveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryController.swift; sourceTree = "<group>"; };
@@ -2556,8 +2558,9 @@
 		FC31B27A1E76796E008699C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F3BAE5932D3543400024AB6A /* TopBannerView.swift */,
 				FC4639C52BFB339D00DA603A /* NavigationBarExtendPanel */,
+				FCECD79D2D51181F008F1306 /* ASCDocumentsCollectionView.swift */,
+				F3BAE5932D3543400024AB6A /* TopBannerView.swift */,
 				FC33FA922B0F595400688E17 /* ASCFolderLogoAvatarView.swift */,
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
 				FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */,
@@ -4344,6 +4347,7 @@
 				FC7081C92812E2260057FCD2 /* DropboxApiClient.swift in Sources */,
 				FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FC7081CA2812E2260057FCD2 /* ASCEntityAccess.swift in Sources */,
+				FCECD79E2D51181F008F1306 /* ASCDocumentsCollectionView.swift in Sources */,
 				FC4820862C2F026E00E22605 /* ASCLoaderViewCell.swift in Sources */,
 				FC83D6192A974E2300C404CB /* Data+Extension.swift in Sources */,
 				FC142A3F289819B400EDE7CE /* ASCAccount.swift in Sources */,
@@ -4946,7 +4950,7 @@
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp";
 			requirement = {
 				kind = exactVersion;
-				version = 8.1.0;
+				version = 8.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

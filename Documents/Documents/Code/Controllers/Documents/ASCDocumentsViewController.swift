@@ -160,8 +160,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     var filterBarButton: UIBarButtonItem?
     var reorderIndexButton: UIBarButtonItem?
 
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    lazy var collectionView: ASCDocumentsCollectionView = {
+        let collectionView = ASCDocumentsCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -169,6 +169,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         collectionView.dropDelegate = self
         collectionView.dragInteractionEnabled = true
         collectionView.allowsMultipleSelectionDuringEditing = true
+        collectionView.ascDocumentsDelegate = self
 
         collectionView.register(ASCFolderViewCell.self, forCellWithReuseIdentifier: ASCFolderViewCell.identifier)
         collectionView.register(ASCFileViewCell.self, forCellWithReuseIdentifier: ASCFileViewCell.identifier)
@@ -502,7 +503,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         delay(seconds: 0.1) { [weak self] in
             guard let self else { return }
             self.viewIsAppearing(true)
-            self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: itemsViewType), animated: true)
+            self.collectionView.updateLayout()
         }
 
         collectionView.reloadSections(IndexSet(integer: 0))
@@ -538,23 +539,14 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func updateItemsViewType() {
-        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: itemsViewType), animated: true)
+        collectionView.layoutType = itemsViewType
 
-        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
+        let visibleCells = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? [ASCEntityViewCellProtocol]()
         for cell in visibleCells {
             cell.layoutType = itemsViewType
         }
 
         collectionView.reloadSections(IndexSet(integer: 0))
-    }
-
-    private func collectionViewCompositionalLayout(by type: ASCEntityViewLayoutType) -> UICollectionViewCompositionalLayout {
-        switch type {
-        case .grid:
-            return makeGridLayout()
-        case .list:
-            return makeTableLayout()
-        }
     }
 
     // MARK: - Public
@@ -723,44 +715,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         if provider is ASCiCloudProvider {
             collectionView.refreshControl = nil
         }
-    }
-
-    private func makeTableLayout() -> UICollectionViewCompositionalLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-        configuration.backgroundColor = .systemBackground
-        configuration.showsSeparators = false
-        configuration.trailingSwipeActionsConfigurationProvider = { [weak self] itemIndex in
-            guard let self, let cell = self.collectionView.cellForItem(at: itemIndex) as? ASCEntityViewCellProtocol else { return UISwipeActionsConfiguration() }
-            return UISwipeActionsConfiguration(actions: self.buildCellMenu(for: cell))
-        }
-        return UICollectionViewCompositionalLayout.list(using: configuration)
-    }
-
-    private func makeGridLayout() -> UICollectionViewCompositionalLayout {
-        let groupSpacing: CGFloat = 4
-        let sectionSpacing: CGFloat = 16
-
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(190)
-        )
-
-        let count = Int(view.width / 110.0)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: count)
-        group.interItemSpacing = .fixed(groupSpacing)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: sectionSpacing, leading: sectionSpacing, bottom: sectionSpacing, trailing: sectionSpacing)
-        section.interGroupSpacing = groupSpacing
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
     }
 
     private func configureToolBar() {
@@ -3256,6 +3210,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     @IBAction func onErrorRetry(_ sender: UIButton) {
         loadFirstPage()
+    }
+}
+
+// MARK: - ASCDocumentsCollectionViewDelegate
+
+extension ASCDocumentsViewController: ASCDocumentsCollectionViewDelegate {
+    func swipeActionsConfiguration(collectionView: UICollectionView?, indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let collectionView, let cell = collectionView.cellForItem(at: indexPath) as? ASCEntityViewCellProtocol else { return UISwipeActionsConfiguration() }
+        return UISwipeActionsConfiguration(actions: buildCellMenu(for: cell))
     }
 }
 

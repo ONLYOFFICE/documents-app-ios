@@ -290,6 +290,7 @@
 		FC5C45112AEB89E000DEE5ED /* ASCAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F22A24E606005D9220 /* ASCAppSettings.swift */; };
 		FC5C45122AEB8A4200DEE5ED /* ASCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */; };
 		FC5C45132AEB8AB400DEE5ED /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35D4302A987DFA00C6383F /* UIColor+Extension.swift */; };
+		FC5E0B6B2D5119F2000CBBEE /* ASCDocumentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E0B6A2D5119F2000CBBEE /* ASCDocumentsCollectionView.swift */; };
 		FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */; };
 		FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */; };
 		FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */; };
@@ -957,6 +958,7 @@
 		FC5943E32AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPresentationEditorConfiguration.swift; sourceTree = "<group>"; };
 		FC5943E42AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSpreadsheetEditorConfiguration.swift; sourceTree = "<group>"; };
 		FC5943E82AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorConfigurationProtocol.swift; sourceTree = "<group>"; };
+		FC5E0B6A2D5119F2000CBBEE /* ASCDocumentsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCollectionView.swift; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewController.swift; sourceTree = "<group>"; };
 		FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
@@ -2233,6 +2235,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4639CC2BFE10FF00DA603A /* NavigationBarExtendPanel */,
+				FC5E0B6A2D5119F2000CBBEE /* ASCDocumentsCollectionView.swift */,
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
 				FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */,
 				FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */,
@@ -4494,6 +4497,7 @@
 				FC759CAE2C00615E00510096 /* ASCSwitchRowViewModel.swift in Sources */,
 				FC68527D26837B7300D830EC /* OnlyofficeApplicationType.swift in Sources */,
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
+				FC5E0B6B2D5119F2000CBBEE /* ASCDocumentsCollectionView.swift in Sources */,
 				FCA464A229437F5100EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
 				FCCE50A62C1AF79000102056 /* EditSharedLinkRequestModel.swift in Sources */,
 				FC759CCC2C00615E00510096 /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,

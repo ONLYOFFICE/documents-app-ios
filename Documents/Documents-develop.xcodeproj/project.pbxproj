@@ -595,6 +595,7 @@
 		FCE9F79D2B303E120056E420 /* CurrentRoomArchivesMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F79C2B303E120056E420 /* CurrentRoomArchivesMenu.swift */; };
 		FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA68222264733A0055926A /* ASC2FAPageController.swift */; };
 		FCEBA6FA28B361910009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA6F928B361910009D50B /* ASCDocumentsViewController+Menu.swift */; };
+		FCECD7982D510FB4008F1306 /* ASCDocumentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECD7972D510FA9008F1306 /* ASCDocumentsCollectionView.swift */; };
 		FCECDDC926430978006CD7B9 /* ASCEmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDC726430978006CD7B9 /* ASCEmailSentViewController.swift */; };
 		FCECDDCA26430978006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDC826430978006CD7B9 /* ASCPasswordRecoveryViewController.swift */; };
 		FCECDDD826430B00006CD7B9 /* ASCPasswordRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */; };
@@ -1350,6 +1351,7 @@
 		FCE9F79C2B303E120056E420 /* CurrentRoomArchivesMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRoomArchivesMenu.swift; sourceTree = "<group>"; };
 		FCEA68222264733A0055926A /* ASC2FAPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAPageController.swift; sourceTree = "<group>"; };
 		FCEBA6F928B361910009D50B /* ASCDocumentsViewController+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+Menu.swift"; sourceTree = "<group>"; };
+		FCECD7972D510FA9008F1306 /* ASCDocumentsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCollectionView.swift; sourceTree = "<group>"; };
 		FCECDDC726430978006CD7B9 /* ASCEmailSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEmailSentViewController.swift; sourceTree = "<group>"; };
 		FCECDDC826430978006CD7B9 /* ASCPasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryController.swift; sourceTree = "<group>"; };
@@ -1827,6 +1829,7 @@
 			isa = PBXGroup;
 			children = (
 				FC4639DE2BFE11BF00DA603A /* NavigationBarExtendPanel */,
+				FCECD7972D510FA9008F1306 /* ASCDocumentsCollectionView.swift */,
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
 				FCF696242632FFD400808644 /* ASCDocumentsEmptyView.xib */,
 				FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */,
@@ -4433,6 +4436,7 @@
 				FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FC4710A72780942A00707B68 /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */,
 				FC759B482C00608600510096 /* ManageRoomView.swift in Sources */,
+				FCECD7982D510FB4008F1306 /* ASCDocumentsCollectionView.swift in Sources */,
 				FCA4D5AA1E79728800ADD842 /* ASCEditorManager.swift in Sources */,
 				FC759BD82C00611000510096 /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC9EF0222BFB208800A66DE8 /* CreateTagRequestModel.swift in Sources */,

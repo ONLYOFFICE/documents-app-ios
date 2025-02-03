@@ -1237,6 +1237,8 @@ extension ASCEditorManager {
 
         cleanupEditorWindow()
 
+        let editorImportFormats = ASCConstants.FileExtensions.editorImportDocuments + ASCConstants.FileExtensions.editorImportSpreadsheets + ASCConstants.FileExtensions.editorImportPresentations
+
         if let file = openedFile {
             var cancel = false
 
@@ -1270,7 +1272,7 @@ extension ASCEditorManager {
                     let fileExtension = file.title.fileExtension().lowercased()
 
                     // if not docx
-                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                    if editorImportFormats.contains(fileExtension) {
                         let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".\(outputFileExtension)")
                         resolvedFilePath = fileTo
                     }
@@ -1281,7 +1283,7 @@ extension ASCEditorManager {
                 if let openedlocallyFile, let provider {
                     // File is not original
                     let fileExtension = file.title.fileExtension().lowercased()
-                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                    if editorImportFormats.contains(fileExtension) {
                         file.title = file.title.fileName() + ".\(outputFileExtension)"
                         file.id = resolvedFilePath.rawValue
 
@@ -1362,7 +1364,7 @@ extension ASCEditorManager {
                     file.pureContentLength = Int(filePath.fileSize ?? 0)
 
                     let fileExtension = file.title.fileExtension().lowercased()
-                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                    if editorImportFormats.contains(fileExtension) {
                         file.id = resolvedFilePath.rawValue
                         file.title = file.title.fileName() + ".\(outputFileExtension)"
 

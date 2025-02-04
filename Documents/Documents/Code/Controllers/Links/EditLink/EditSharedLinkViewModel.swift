@@ -22,20 +22,18 @@ final class EditSharedLinkViewModel: ObservableObject {
 
     private let networkService = NetworkManagerSharedSettings()
     private let expirationService = ExpirationLinkDateService()
+    private lazy var accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: file, isAccessExternal: false)
 
     // MARK: - Public vars
 
     var accessMenuItems: [MenuViewItem] {
-        [
-            ASCShareAccess.editing,
-            ASCShareAccess.review,
-            ASCShareAccess.comment,
-            ASCShareAccess.read,
-        ].map { access in
-            MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
-                setAccessRight(access)
+        accessProvider.get()
+            .filter { $0 != .deny }
+            .map { access in
+                MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
+                    setAccessRight(access)
+                }
             }
-        }
     }
 
     var linkLifeTimeMenuItems: [MenuViewItem] {

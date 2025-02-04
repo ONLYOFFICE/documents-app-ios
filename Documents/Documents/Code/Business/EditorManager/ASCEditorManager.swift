@@ -1332,7 +1332,7 @@ extension ASCEditorManager {
                                     // Backup on Device file
                                     let backupPath = Path.userDocuments + Path(backupFileName)
 
-                                    ASCLocalFileHelper.shared.copy(from: filePath, to: backupPath)
+                                    ASCLocalFileHelper.shared.copy(from: resolvedFilePath, to: backupPath)
                                 }
 
                                 let lastTempFile = Path.userTemporary + file.title

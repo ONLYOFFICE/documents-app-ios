@@ -553,7 +553,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
 
         let fileTitle = file.title
-        let destination = Path.userTemporary + fileTitle
+        let destinationPath = Path.userTemporary + UUID().uuidString
+        let destination = destinationPath + fileTitle
 
         ASCLocalFileHelper.shared.removeFile(Path(url: URL(fileURLWithPath: destination.rawValue))!)
 
@@ -561,6 +562,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             handler?(.error, 1, nil, ASCProviderError(msg: NSLocalizedString("A file with a similar name already exists in the document directory on the device.", comment: "")), &cancel)
             return
         }
+
+        ASCLocalFileHelper.shared.createDirectory(destinationPath)
 
         handler?(.begin, 0, nil, nil, &cancel)
 
@@ -716,30 +719,32 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 "title": file.title,
             ]
 
-            provider.upload(parent.id,
-                            data: data,
-                            overwrite: true,
-                            params: params,
-                            processing: { result, progress, error in
-                                if error != nil || result != nil {
-                                    if let error = error {
-                                        log.error("Upload file \(file.title) - \(error.localizedDescription)")
-                                        handler?(.error, Float(progress), nil, ASCProviderError(msg: NSLocalizedString("The server is not available.", comment: "")), &cancel)
-                                    }
+            provider.upload(
+                parent.id,
+                data: data,
+                overwrite: false,
+                params: params,
+                processing: { result, progress, error in
+                    if error != nil || result != nil {
+                        if let error = error {
+                            log.error("Upload file \(file.title) - \(error.localizedDescription)")
+                            handler?(.error, Float(progress), nil, ASCProviderError(msg: NSLocalizedString("The server is not available.", comment: "")), &cancel)
+                        }
 
-                                    if let result = result as? [String: Any] {
-                                        if let file = ASCFile(JSON: result) {
-                                            handler?(.end, 1, file, nil, &cancel)
-                                            NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
-                                        }
-                                    } else if let file = result as? ASCFile {
-                                        handler?(.end, 1, file, nil, &cancel)
-                                        NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
-                                    } else {
-                                        handler?(.progress, Float(progress), nil, nil, &cancel)
-                                    }
-                                }
-                            })
+                        if let result = result as? [String: Any] {
+                            if let file = ASCFile(JSON: result) {
+                                handler?(.end, 1, file, nil, &cancel)
+                                NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+                            }
+                        } else if let file = result as? ASCFile {
+                            handler?(.end, 1, file, nil, &cancel)
+                            NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+                        } else {
+                            handler?(.progress, Float(progress), nil, nil, &cancel)
+                        }
+                    }
+                }
+            )
         } else {
             handler?(.error, 1, nil, ASCProviderError(msg: NSLocalizedString("Could not read data from the file.", comment: "")), &cancel)
         }

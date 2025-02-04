@@ -3375,12 +3375,17 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
 
             if status == .begin {
                 if hud == nil, file?.device == true {
+                    MBProgressHUD.currentHUD?.hide(animated: false)
                     hud = MBProgressHUD.showTopMost()
                     hud?.mode = .indeterminate
                     hud?.label.text = title
                 }
             } else if status == .error {
                 hud?.hide(animated: true)
+
+                delay(seconds: 3.0) {
+                    MBProgressHUD.currentHUD?.hide(animated: false)
+                }
 
                 guard let self else { return }
 
@@ -3393,6 +3398,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             } else if status == .end {
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: .standardDelay)
+
+                delay(seconds: 3.0) {
+                    MBProgressHUD.currentHUD?.hide(animated: false)
+                }
 
                 SwiftRater.incrementSignificantUsageCount()
 

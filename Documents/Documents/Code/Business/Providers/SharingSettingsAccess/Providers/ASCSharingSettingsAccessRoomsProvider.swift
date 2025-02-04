@@ -35,7 +35,7 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
         case .viewOnly:
             return [.roomManager, .contentCreator, .read]
         case .custom:
-            return [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
+            return [.roomManager, .contentCreator, .editing, .review, .comment, .read]
         case .public:
             return [.roomManager, .contentCreator]
         case .virtualData:

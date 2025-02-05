@@ -203,6 +203,7 @@ private extension RoomSharingCustomizeLinkViewModel {
             case let .success(link):
                 DispatchQueue.main.async { [self] in
                     isSaving = false
+                    UIPasteboard.general.string = link.linkInfo.shareLink
                     outputLink = link
                     defineSharingLink()
                     if isExpired, selectedDate > Date() {

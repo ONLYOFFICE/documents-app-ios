@@ -72,6 +72,10 @@ class ManageRoomViewModel: ObservableObject {
     var newRoomOwner: ASCUser?
     var ignoreUserId: String?
 
+    var isRoomOwnerCellTappable: Bool {
+        editingRoom?.security.changeOwner == true
+    }
+
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = true
@@ -398,6 +402,11 @@ class ManageRoomViewModel: ObservableObject {
 // MARK: - Handlers
 
 extension ManageRoomViewModel {
+    func didTapRoomOwnerCell() {
+        guard isRoomOwnerCellTappable else { return }
+        isUserSelectionPresenting = true
+    }
+
     func didTapStorageSelectionCell() {
         isStorageSelectionPresenting = true
     }

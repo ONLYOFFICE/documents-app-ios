@@ -491,15 +491,21 @@ extension ASCCloudsViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if indexPath.section == 0, connected.count > 0 {
-            let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "")) { [weak self] action, indexPath in
-                self?.disconnectProvider(by: indexPath.row)
-            }
-            delete.backgroundColor = ASCConstants.Colors.red
-            return [delete]
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard indexPath.section == 0, connected.count > 0 else {
+            return nil
         }
 
-        return []
+        if connected[safe: indexPath.row]?.provider?.type == ASCFileProviderType.icloud {
+            return nil
+        }
+
+        let deleteAction = UIContextualAction(style: .destructive, title: NSLocalizedString("Delete", comment: "")) { [weak self] action, view, completionHandler in
+            self?.disconnectProvider(by: indexPath.row)
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = ASCConstants.Colors.red
+
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }

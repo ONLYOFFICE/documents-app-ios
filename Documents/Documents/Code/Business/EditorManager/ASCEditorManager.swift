@@ -1239,6 +1239,18 @@ extension ASCEditorManager {
 
         let editorImportFormats = ASCConstants.FileExtensions.editorImportDocuments + ASCConstants.FileExtensions.editorImportSpreadsheets + ASCConstants.FileExtensions.editorImportPresentations
 
+        let cleanup: () -> Void = { [weak self] in
+            guard let self, let openedFile, openedCopy else { return }
+
+            do {
+                if FileManager.default.fileExists(atPath: openedFile.id) {
+                    try FileManager.default.removeItem(atPath: openedFile.id)
+                }
+            } catch {
+                log.error(error)
+            }
+        }
+
         if let file = openedFile {
             var cancel = false
 
@@ -1254,6 +1266,7 @@ extension ASCEditorManager {
                     closeHandler?(.error, 1, nil, error, &cancel)
                 }
 
+                cleanup()
                 openedFile = nil
 
                 return
@@ -1343,6 +1356,9 @@ extension ASCEditorManager {
 
                                 // Remove original
                                 removeAutosave(at: autosaveFile)
+
+                                cleanup()
+                                openedFile = nil
                             }
                         }
                     )
@@ -1382,6 +1398,9 @@ extension ASCEditorManager {
 
                     // Remove original
                     removeAutosave(at: Path.userAutosavedInformation + file.title)
+
+                    cleanup()
+                    openedFile = nil
                 }
 
             } else {
@@ -1389,17 +1408,24 @@ extension ASCEditorManager {
                     closeHandler(.begin, 0, file, nil, &cancel)
                     removeAutosave(at: Path.userAutosavedInformation + file.title)
 
-                    clientRequest(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                    clientRequest(OnlyofficeAPI.Endpoints.Files.info(file: file)) { [weak self] response, error in
                         if let newFile = response?.result {
                             closeHandler(.end, 1, newFile, nil, &cancel)
                         } else {
                             closeHandler(.error, 1, file, error, &cancel)
                         }
+
+                        cleanup()
+                        self?.openedFile = nil
                     }
+                } else {
+                    cleanup()
+                    openedFile = nil
                 }
             }
 
-            openedFile = nil
+//            cleanup()
+//            openedFile = nil
         }
     }
 

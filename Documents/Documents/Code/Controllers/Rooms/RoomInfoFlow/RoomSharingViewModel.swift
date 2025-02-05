@@ -320,6 +320,7 @@ private extension RoomSharingViewModel {
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,
             isSharingPossible: isSharingPossible,
+            isEditAccessPossible: link.canEditAccess,
             accessRight: link.access,
             onTapAction: { [weak self] in
                 guard let self else { return }

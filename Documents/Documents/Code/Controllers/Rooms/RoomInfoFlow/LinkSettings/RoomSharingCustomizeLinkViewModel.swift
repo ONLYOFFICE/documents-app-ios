@@ -75,6 +75,10 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 
     var roomType: ASCRoomType?
 
+    var isEditAccessPossible: Bool {
+        link?.canEditAccess == true
+    }
+
     private var cancelable = Set<AnyCancellable>()
 
     private var linkId: String? {

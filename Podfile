@@ -137,6 +137,7 @@ post_install do | installer |
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
       config.build_settings['ENABLE_BITCODE'] = 'NO'
+      config.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
 
       target_is_resource_bundle = target.respond_to?(:product_type) && target.product_type == 'com.apple.product-type.bundle'
       target.build_configurations.each do |build_configuration|

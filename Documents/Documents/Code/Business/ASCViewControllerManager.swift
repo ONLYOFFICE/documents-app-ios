@@ -30,7 +30,9 @@ class ASCViewControllerManager {
     var rootController: ASCRootViewController? {
         didSet {
             if oldValue == nil {
-                initializeControllers()
+                Task { @MainActor [weak self] in
+                    self?.initializeControllers()
+                }
             }
         }
     }
@@ -51,6 +53,7 @@ class ASCViewControllerManager {
         }
     }
 
+    @MainActor
     func initializeControllers() {
         ASCConstants.SettingsKeys.setupDefaults()
         ASCConstants.RemoteSettingsKeys.setupDefaults()
@@ -144,6 +147,7 @@ class ASCViewControllerManager {
 
     // MARK: - Private
 
+    @MainActor
     private func configureRater() {
         SwiftRater.daysUntilPrompt = 1
         SwiftRater.usesUntilPrompt = 2
@@ -345,10 +349,14 @@ class ASCViewControllerManager {
         if appDelegate.passcodeLockPresenter.isPasscodePresented {
             appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
                 appDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                processAndOpenFile()
+                DispatchQueue.main.debounce(interval: 1.0) {
+                    processAndOpenFile()
+                }
             }
         } else {
-            processAndOpenFile()
+            DispatchQueue.main.debounce(interval: 1.0) {
+                processAndOpenFile()
+            }
         }
     }
 
@@ -475,8 +483,8 @@ class ASCViewControllerManager {
 
             let withoutScheme: (String?) -> String? = { domain in
                 domain?
-                    .replacingOccurrences(of: "https://", with: "")
-                    .replacingOccurrences(of: "http://", with: "")
+                    .removingPrefix("https://")
+                    .removingPrefix("http://")
             }
 
             let onlyofficeProvider = ASCFileManager.onlyofficeProvider
@@ -660,10 +668,14 @@ class ASCViewControllerManager {
         if appDelegate.passcodeLockPresenter.isPasscodePresented {
             appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
                 appDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                processAndOpenFile()
+                DispatchQueue.main.debounce(interval: 1.0) {
+                    processAndOpenFile()
+                }
             }
         } else {
-            processAndOpenFile()
+            DispatchQueue.main.debounce(interval: 1.0) {
+                processAndOpenFile()
+            }
         }
     }
 

@@ -51,9 +51,9 @@ extension UIBarButtonItem {
         btn.isEnabled = isEnabled
         btn.add(for: .touchUpInside, clousure)
 
-        Task { @MainActor [weak btn] in
-            btn?.iq.enableMode = isEnabled ? .enabled : .disabled
-        }
+//        Task { @MainActor [weak btn] in
+//            btn?.iq.enableMode = isEnabled ? .enabled : .disabled // TODO: - For InputView only
+//        }
 
         let barItem = UIBarButtonItem(customView: btn)
         barItem.isEnabled = isEnabled

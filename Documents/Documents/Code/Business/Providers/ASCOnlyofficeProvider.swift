@@ -13,6 +13,8 @@ import MBProgressHUD
 import UIKit
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
+    typealias ASCEntityId = String
+
     var category: ASCCategory?
 
     var id: String? {
@@ -39,6 +41,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     var items: [ASCEntity] = []
+
+    private var itemsBeforeEditingOrder = [ASCEntity]()
+    private var itemsIdsWithChangedOrderIndex = Set<ASCEntityId>()
 
     var page: Int = 0
     var pageSize: Int = 20
@@ -405,7 +410,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             return file
                         }
                         return entitie
-                    }
+                    }.sorted(by: { v1, v2 in
+                        guard let orderV1 = Int(v1.orderIndex ?? ""),
+                              let orderV2 = Int(v2.orderIndex ?? "")
+                        else { return false }
+                        return orderV1 < orderV2
+                    })
 
                     self.items += entities
 
@@ -1299,6 +1309,27 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return true
     }
 
+    func getAccess(for folder: ASCFolder?, password: String, completion: @escaping (Result<ASCFolder?, Error>) -> Void) {
+        guard let folder, folder.passwordProtected, let token = folder.requestToken else {
+            completion(.success(folder))
+            return
+        }
+
+        let requestModel = SharePasswordRequestModel(password: password)
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.password(token: token), requestModel.dictionary) { response, error in
+            if let result = response?.result {
+                folder.passwordProtected = false
+                completion(.success(folder))
+            } else if let error {
+                completion(.failure(error))
+            } else {
+                completion(.failure(OnlyofficeServerError.unknown(message: NSLocalizedString("Couldn' get access", comment: ""))))
+            }
+        }
+    }
+
+    // MARK: Actions
+
     func actions(for entity: ASCEntity?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
@@ -1533,6 +1564,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomFolder, isArchiveCategory, folder.security.move {
                 entityActions.insert(.unarchive)
             }
+
+            if folder.isRoomListSubfolder,
+               folder.parentsFoldersOrCurrentContains(
+                   keyPath: \.roomType,
+                   value: .virtualData
+               ) == true,
+               folder.indexing
+            {
+                entityActions.insert(.editIndex)
+                entityActions.insert(.exportRoomIndex)
+            }
+
+            if folder.isRoomListSubfolder, user?.isAdmin == true {
+                entityActions.insert(.changeRoomOwner)
+            }
         }
 
         return entityActions
@@ -1546,7 +1592,35 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
         case .unarchive: unarchiveRoom(folder: folder, handler: handler)
+        case .reorderIndex: reorderIndex(folder: folder, handler: handler)
+        case .exportRoomIndex: exportRoomIndex(folder: folder, handler: handler)
         default: unsupportedActionHandler(action: action, handler: handler)
+        }
+    }
+
+    private func exportRoomIndex(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        exportRoomIndex(
+            folder: folder,
+            process: { progress in
+                handler?(.progress, progress, nil)
+            }
+        ) { result in
+            switch result {
+            case .success:
+                handler?(.end, NSLocalizedString("Success", comment: ""), nil)
+            case .failure:
+                handler?(
+                    .error,
+                    nil,
+                    ASCProviderError(
+                        msg: NSLocalizedString(
+                            "Couldn't export room index",
+                            comment: ""
+                        )
+                    )
+                )
+            }
         }
     }
 
@@ -1594,6 +1668,17 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
+    private func reorderIndex(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.roomReorder(folder: folder)) { response, error in
+            if error == nil, let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Reorder failed.", comment: "")))
+            }
+        }
+    }
+
     func checkRoomOwner(folder: ASCFolder) -> Bool {
         return folder.createdBy?.userId == user?.userId
     }
@@ -1611,7 +1696,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder), inviteRequestModel.toJSON()) {
             result, error in
             if error != nil {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't change the room owner", comment: "")))
             } else {
                 handler?(.end, folder, nil)
             }
@@ -1693,6 +1778,80 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
+    func exportRoomIndex(
+        folder: ASCFolder,
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<URL, Error>) -> Void
+    ) {
+        let prepareExportError = ASCProviderError(msg: NSLocalizedString("Failed to prepare the index export", comment: ""))
+
+        apiClient.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.roomIndexExport(folder: folder)
+        ) { [weak self] result, error in
+            guard let self else { return }
+
+            if let error {
+                completion(.failure(error))
+                return
+            }
+
+            if let operation = result?.result {
+                self.fetchAndProcessOperation(
+                    operation: operation,
+                    endpoint: OnlyofficeAPI.Endpoints.Operations.roomIndexExport,
+                    timeInterval: 1
+                ) { progress in
+                    let commonProgress = self.progress(progress, in: 0 ... 0.3)
+                    process(commonProgress)
+                } completion: { result in
+                    switch result {
+                    case let .success(model):
+                        guard let url = URL(string: model?.resultFileUrl ?? "") else {
+                            completion(.failure(prepareExportError))
+                            return
+                        }
+
+                        let fileName = model?.resultFileName ?? ""
+                        let message = "\(fileName) \(NSLocalizedString("file exported to Documents", comment: ""))"
+
+                        let alertController = UIAlertController.alert(
+                            "",
+                            message: message,
+                            actions: []
+                        )
+                        .action(title: NSLocalizedString("Open file", comment: "")) { [weak self] _ in
+                            guard let self else { return }
+                            let file = ASCFile()
+                            file.id = String(model?.resultFileId ?? .zero)
+                            self.apiClient.request(endpoint: OnlyofficeAPI.Endpoints.Files.info(file: file)) { result, error in
+                                if let file = result?.result {
+                                    self.open(
+                                        file: file,
+                                        openMode: .edit,
+                                        canEdit: true
+                                    )
+                                }
+                            }
+                        }
+                        .cancelable()
+
+                        if let topVC = ASCViewControllerManager.shared.topViewController {
+                            topVC.present(alertController, animated: true, completion: nil)
+                        }
+
+                        completion(.success(url))
+
+                    case let .failure(error):
+                        log.error(error)
+                        completion(.failure(prepareExportError))
+                    }
+                }
+            } else {
+                completion(.failure(prepareExportError))
+            }
+        }
+    }
+
     private func checkOperation(
         operation: OnlyofficeFileOperation,
         timeInterval: TimeInterval = 0.5,
@@ -1724,6 +1883,54 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
                     if operation.finished {
                         completion(.success(URL(string: operation.url ?? "")))
+                        return
+                    }
+
+                    DispatchQueue.global().asyncAfter(deadline: .now() + timeInterval) {
+                        doCheckOperation?()
+                    }
+                }
+            }
+        }
+
+        doCheckOperation?()
+    }
+
+    private func fetchAndProcessOperation<T: OnlyofficeOperation>(
+        operation: T,
+        endpoint: Endpoint<OnlyofficeResponse<T>>,
+        timeInterval: TimeInterval,
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<T?, Error>) -> Void
+    ) {
+        var doCheckOperation: (() -> Void)?
+        var preventCheck = false
+
+        doCheckOperation = { [weak self] in
+            self?.apiClient.request(endpoint) { result, error in
+                guard !preventCheck else { return }
+
+                if let error {
+                    preventCheck = true
+                    completion(.failure(error))
+                    return
+                }
+
+                if let updatedOperation = result?.result,
+                   updatedOperation.id == operation.id,
+                   let progress = updatedOperation.percentage
+                {
+                    process(Float(progress) / 100.0)
+
+                    if let operationError = updatedOperation.error, !operationError.isEmpty {
+                        preventCheck = true
+                        completion(.failure(ASCProviderError(msg: operationError)))
+                        return
+                    }
+
+                    if updatedOperation.isCompleted {
+                        preventCheck = true
+                        completion(.success(updatedOperation))
                         return
                     }
 
@@ -2139,7 +2346,7 @@ extension ASCOnlyofficeProvider {
 
     private func generalLink(forRoom room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
-            guard room.roomType != .colobaration else {
+            guard room.roomType != .colobaration && room.roomType != .virtualData else {
                 if let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
                     let path = "%@/rooms/shared/filter?folder=%@"
                     let urlStr = String(format: path, baseUrl, room.id)
@@ -2216,6 +2423,101 @@ extension ASCOnlyofficeProvider {
     }
 }
 
+// MARK: ASCEntityViewLayoutTypeProvider
+
+extension ASCOnlyofficeProvider {
+    var itemsViewType: ASCEntityViewLayoutType {
+        get {
+            if let folder, folder.parentsFoldersOrCurrentContains(
+                keyPath: \.roomType,
+                value: .virtualData
+            ) {
+                return .list
+            }
+            return ASCEntityViewLayoutTypeService.shared.itemsViewType
+        }
+        set {
+            ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue
+        }
+    }
+}
+
+extension ASCOnlyofficeProvider: TopBannerViewModelDelegate {
+    func topBannerViewModel(for folder: ASCFolder?) -> TopBannerViewModel? {
+        if let formattedString = folder?.lifetime?.formattedLifetimeString() {
+            return .lifetime(formattedString: formattedString)
+        } else if folder?.rootFolderType == .onlyofficeTrash {
+            return .trash
+        }
+        return nil
+    }
+}
+
+extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
+    func changeOrderIndex(for entity: ASCEntity, toIndex index: Int) {
+        guard let srcItemIndex = items.firstIndex(where: { $0.id == entity.id }) else {
+            return
+        }
+        if itemsBeforeEditingOrder.isEmpty {
+            itemsBeforeEditingOrder = items
+        }
+        let srcItem = items[srcItemIndex]
+        let newSrcItemIndex = items[index].orderIndex
+
+        // If moving up in the array (shift down items between index and srcItemIndex
+        if srcItemIndex > index {
+            for i in index ..< srcItemIndex {
+                items[i].orderIndex = items[i + 1].orderIndex
+                itemsIdsWithChangedOrderIndex.insert(items[i].id)
+            }
+        }
+        // If moving down in the array (shift up items between srcItemIndex and index)
+        else if srcItemIndex < index {
+            var prevValue = srcItem.orderIndex
+            for i in srcItemIndex ... index {
+                let bufferValue = items[i].orderIndex
+                items[i].orderIndex = prevValue
+                prevValue = bufferValue
+                itemsIdsWithChangedOrderIndex.insert(items[i].id)
+            }
+        }
+
+        // Remove the item from the current position and insert it at the new position
+        items.remove(at: srcItemIndex)
+        items.insert(srcItem, at: index)
+        srcItem.orderIndex = newSrcItemIndex
+        itemsIdsWithChangedOrderIndex.insert(srcItem.id)
+    }
+
+    func cancleEditOrderIndex() {
+        if !itemsBeforeEditingOrder.isEmpty {
+            items = itemsBeforeEditingOrder
+            let itemsOrders = itemsBeforeEditingOrder
+                .sorted(by: { $0.orderIndex ?? "" < $1.orderIndex ?? "" })
+                .map { $0.orderIndex }
+            for (index, item) in items.enumerated() {
+                item.orderIndex = itemsOrders[index]
+            }
+            itemsBeforeEditingOrder = []
+        }
+        itemsIdsWithChangedOrderIndex.removeAll()
+    }
+
+    func applyEditedOrderIndex(completion: @escaping (ErrorMessage?) -> Void) {
+        let requestModel = itemsIdsWithChangedOrderIndex
+            .compactMap { id in items.first(where: { $0.id == id }) }
+            .filesOrderRequestModel
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.order, requestModel.dictionary) { result, error in
+            DispatchQueue.main.async {
+                completion(error?.localizedDescription)
+            }
+        }
+
+        itemsBeforeEditingOrder = []
+        itemsIdsWithChangedOrderIndex.removeAll()
+    }
+}
+
 struct StringError: LocalizedError {
     let message: String
 
@@ -2226,4 +2528,8 @@ struct StringError: LocalizedError {
     var errorDescription: String? {
         return message
     }
+}
+
+enum ASCOnlyofficeProviderError: Error {
+    case couldntGetAccess
 }

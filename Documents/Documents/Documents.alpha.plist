@@ -236,6 +236,78 @@
 				<string>org.onlyoffice.docxf</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>pages</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Apple Pages format (.pages)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.iwork.pages.pages</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>numbers</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Apple Numbers format (.numbers)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.iwork.numbers.numbers</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>key</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Apple Keynote format (.key)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.iwork.keynote.key</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>hwp</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Hangul Word Processor Document (.hwp)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>hwpx</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Hangul Word Processor 2010 Document (.hwpx)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array/>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -248,7 +320,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>8.2.2</string>
+	<string>8.3</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

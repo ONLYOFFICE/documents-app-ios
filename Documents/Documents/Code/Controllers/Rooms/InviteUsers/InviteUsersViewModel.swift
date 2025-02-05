@@ -45,7 +45,7 @@ final class InviteUsersViewModel: ObservableObject {
 
     private var cancelable = Set<AnyCancellable>()
     private var service: InviteUsersService = InviteUsersServiceImp()
-    private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessRoomsProvider(
+    private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsExternalLinkAccessRoomsProvider(
         roomType: room.roomType ?? .viewOnly,
         rightHoldersTableType: .users
     )
@@ -66,7 +66,7 @@ final class InviteUsersViewModel: ObservableObject {
                     self.preventToggleAction = false
                     return
                 }
-                changeLinkAccess(newAccess: isActive ? .powerUser : .none)
+                changeLinkAccess(newAccess: isActive ? .contentCreator : .none)
             })
             .store(in: &cancelable)
     }

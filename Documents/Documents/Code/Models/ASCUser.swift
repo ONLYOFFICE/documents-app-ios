@@ -30,7 +30,7 @@ final class ASCUser: Mappable {
     var activationStatus: ActivationStatus = .applyed
 
     var userType: UserType {
-        return isAdmin ? (isDocspace ? .docspaseAdmin : .admin) : isVisitor ? .user : isCollaborator ? .powerUser : .roomAdmin
+        return isAdmin ? (isDocspace ? .docspaseAdmin : .admin) : isVisitor ? .guest : isCollaborator ? .user : .roomAdmin
     }
 
     init() {

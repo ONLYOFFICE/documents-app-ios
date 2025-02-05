@@ -36,3 +36,18 @@ class OnlyofficeFileOperation: Mappable {
         folders <- map["folders"]
     }
 }
+
+enum OnlyofficeFileOperationError: Error, LocalizedError {
+    case serverError(String)
+
+    var localizedDescription: String? {
+        switch self {
+        case let .serverError(error):
+            return error
+        }
+    }
+
+    var errorDescription: String? {
+        return localizedDescription
+    }
+}

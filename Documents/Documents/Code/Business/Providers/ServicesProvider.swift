@@ -22,4 +22,6 @@ final class ServicesProvider {
     private(set) lazy var roomSharingLinkAccesskService: RoomSharingLinkAccessService = RoomSharingLinkAccessNetworkService()
 
     private(set) lazy var copyFileInsideProviderService: CopyFileInsideProviderService = CopyFileInsideProviderServiceImp()
+
+    private(set) lazy var roomQuotaNetworkService: RoomQuotaNetworkService = RoomQuotaNetworkService()
 }

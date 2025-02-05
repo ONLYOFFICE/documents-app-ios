@@ -13,6 +13,7 @@ struct MenuViewItem: Identifiable {
     var text: String
     var customImage: Image?
     var systemImageName: String?
+    var color: Color = .primary
     var action: () -> Void
 }
 
@@ -23,7 +24,7 @@ struct MenuView<Content>: View where Content: View {
 
     private var actionSheetButtons: [ActionSheet.Button] {
         var btns: [ActionSheet.Button] = menuItems.map {
-            .default(Text($0.text), action: $0.action)
+            .default(Text($0.text).foregroundColor($0.color), action: $0.action)
         }
         btns.append(.cancel())
         return btns
@@ -56,11 +57,13 @@ struct MenuView<Content>: View where Content: View {
                 Button(action: item.action) {
                     HStack {
                         if let customImage = item.customImage {
-                            customImage
+                            customImage.foregroundColor(item.color)
                         } else if let systemImageName = item.systemImageName {
                             Image(systemName: systemImageName)
+                                .renderingMode(.template)
+                                .foregroundColor(item.color)
                         }
-                        Text(item.text)
+                        Text(item.text).foregroundColor(item.color)
                     }
                 }
             }

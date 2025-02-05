@@ -29,9 +29,9 @@ final class CurrentLocalFolderMenu: CurrentFolderMenuProtocol {
             UIAction(
                 title: NSLocalizedString("Icons", comment: "Button title"),
                 image: UIImage(systemName: "square.grid.2x2"),
-                state: ASCDocumentsViewController.itemsViewType == .grid ? .on : .off
+                state: viewController.itemsViewType == .grid ? .on : .off
             ) { action in
-                ASCDocumentsViewController.itemsViewType = .grid
+                viewController.itemsViewType = .grid
             }
         )
 
@@ -39,9 +39,9 @@ final class CurrentLocalFolderMenu: CurrentFolderMenuProtocol {
             UIAction(
                 title: NSLocalizedString("List", comment: "Button title"),
                 image: UIImage(systemName: "list.bullet"),
-                state: ASCDocumentsViewController.itemsViewType == .list ? .on : .off
+                state: viewController.itemsViewType == .list ? .on : .off
             ) { action in
-                ASCDocumentsViewController.itemsViewType = .list
+                viewController.itemsViewType = .list
             }
         )
 

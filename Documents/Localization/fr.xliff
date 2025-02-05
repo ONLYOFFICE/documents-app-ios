@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ lancez votre office</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -217,6 +217,21 @@ lancez votre office</target>
         <target>%d hours</target>
         <note>Hours left</note>
       </trans-unit>
+      <trans-unit id="/%d months:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@months@</source>
+        <target>%#@months@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d months:dict/months:dict/one:dict/:string" xml:space="preserve">
+        <source>%d month</source>
+        <target>%d month</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d months:dict/months:dict/other:dict/:string" xml:space="preserve">
+        <source>%d months</source>
+        <target>%d months</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
@@ -231,6 +246,21 @@ lancez votre office</target>
         <source>%d selected</source>
         <target>%d séléctionné</target>
         <note>Count of seclected rows: count + selected</note>
+      </trans-unit>
+      <trans-unit id="/%d years:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@years@</source>
+        <target>%#@years@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d years:dict/years:dict/one:dict/:string" xml:space="preserve">
+        <source>%d year</source>
+        <target>%d year</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d years:dict/years:dict/other:dict/:string" xml:space="preserve">
+        <source>%d years</source>
+        <target>%d years</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
@@ -360,38 +390,38 @@ lancez votre office</target>
       <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note>Days left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d day</source>
         <target>Expires after %d day</target>
-        <note>Days left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
         <target>Expires after %d days</target>
-        <note>Days left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note>Hours left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d hour</source>
         <target>Expires after %d hour</target>
-        <note>Hours left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
         <target>Expires after %d hours</target>
-        <note>Hours left</note>
+        <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -642,7 +672,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -789,7 +819,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -870,7 +900,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -897,7 +927,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -934,7 +964,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -991,7 +1021,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1063,7 +1093,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1145,7 +1175,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1202,7 +1232,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1223,9 +1253,17 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <source>%d hours</source>
         <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
+      <trans-unit id="%d months" translate="no" xml:space="preserve">
+        <source>%d months</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
+      </trans-unit>
       <trans-unit id="%d selected" translate="no" xml:space="preserve">
         <source>%d selected</source>
         <note>Count of seclected rows: count + selected (Key in .stringsdict)</note>
+      </trans-unit>
+      <trans-unit id="%d years" translate="no" xml:space="preserve">
+        <source>%d years</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
@@ -1247,11 +1285,6 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
         <target>Les éléments %1$lu portant le même nom existent déjà dans le dossier '%2$@'. Remplacer les éléments ?</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="(%@)" xml:space="preserve">
-        <source>(%@)</source>
-        <target>(%@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
@@ -1389,6 +1422,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Comptes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Action on files" xml:space="preserve">
+        <source>Action on files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
         <source>Add account</source>
         <target>Ajouter le compte</target>
@@ -1403,6 +1440,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <source>Add message</source>
         <target>Ajouter un message</target>
         <note>Sharing settings add notification message</note>
+      </trans-unit>
+      <trans-unit id="Add static text" xml:space="preserve">
+        <source>Add static text</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add tag" xml:space="preserve">
         <source>Add tag</source>
@@ -1419,6 +1460,14 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
  read, review or edit documents.</source>
         <target>Ajoutez des utilisateurs ou des groupes et accordez-leur
  le droit d'accès à la lecture, révision ou modification des documents.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add watermark elements" xml:space="preserve">
+        <source>Add watermark elements</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add watermarks to documents" xml:space="preserve">
+        <source>Add watermarks to documents</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
@@ -1456,11 +1505,6 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Tous les fichiers</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="All items from Archived will be deleted forever. You won’t be able to restore them." xml:space="preserve">
-        <source>All items from Archived will be deleted forever. You won’t be able to restore them.</source>
-        <target>Tous les éléments archivés seront supprimés définitivement. Vous ne pourrez pas les restaurer.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
         <target>Toutes les notifications</target>
@@ -1490,6 +1534,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <source>AppleId authentication failed</source>
         <target>Authentification AppleId a échoué</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Apply" xml:space="preserve">
+        <source>Apply</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
         <source>Apply your own settings to use this room for any custom purpose</source>
@@ -1540,6 +1588,10 @@ Category title</note>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target>Auteur</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Automatic indexing" xml:space="preserve">
+        <source>Automatic indexing</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Back" xml:space="preserve">
@@ -1631,6 +1683,10 @@ Category title</note>
         <source>Change owner</source>
         <target>Changer de propriétaire</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Change room owner" xml:space="preserve">
+        <source>Change room owner</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Change room's owner" xml:space="preserve">
         <source>Change room's owner</source>
@@ -1772,13 +1828,10 @@ Category title</note>
         <target>Connecter le stockage</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
+      <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Dropbox and&#10;others which use WebDAV protocol." xml:space="preserve">
         <source>Connect third-party storage
-like Nextcloud, ownCloud, Yandex Disk and
+like Nextcloud, ownCloud, Dropbox and
 others which use WebDAV protocol.</source>
-        <target>Connecter un stockage tiers
-tel que Nextcloud, ownCloud, Yandex Disk et
-d'autres via le protocole WebDAV.</target>
         <note>Introduction Step Three - Description</note>
       </trans-unit>
       <trans-unit id="Connect to your %@ cloud to store files online and collaborate on documents in real time" xml:space="preserve">
@@ -1800,6 +1853,14 @@ Caption of the processing</note>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
         <target>Console</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Content creator" xml:space="preserve">
+        <source>Content creator</source>
+        <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Continue" xml:space="preserve">
+        <source>Continue</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1962,14 +2023,26 @@ Caption of the processing</note>
         <target>Impossible d'écrire dans le fichier</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Couldn' get access" xml:space="preserve">
+        <source>Couldn' get access</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
         <source>Couldn't change the owner.</source>
         <target>Impossible de changer le propriétaire.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Couldn't change the room owner" xml:space="preserve">
+        <source>Couldn't change the room owner</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't download the room." xml:space="preserve">
         <source>Couldn't download the room.</source>
         <target>Impossible de télécharger la salle.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Couldn't export room index" xml:space="preserve">
+        <source>Couldn't export room index</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
@@ -2044,6 +2117,10 @@ organize your files.</source>
         <note>Caption of the process
 Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Current Date" xml:space="preserve">
+        <source>Current Date</source>
+        <note>Watermark Element</note>
+      </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
         <target>Personnalisé</target>
@@ -2067,6 +2144,10 @@ Caption of the processing</note>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>Date</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Days" xml:space="preserve">
+        <source>Days</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
@@ -2096,11 +2177,6 @@ Caption of the processing</note>
         <target>Supprimer le dossier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Delete forever" xml:space="preserve">
-        <source>Delete forever</source>
-        <target>Supprimer pour toujours</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Delete forever?" xml:space="preserve">
         <source>Delete forever?</source>
         <target>Supprimer définitivement ?</target>
@@ -2114,6 +2190,10 @@ Caption of the processing</note>
       <trans-unit id="Delete link" xml:space="preserve">
         <source>Delete link</source>
         <target>Supprimer le lien</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete permanently" xml:space="preserve">
+        <source>Delete permanently</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
@@ -2141,6 +2221,10 @@ Caption of the processing</note>
         <target>Options de développement</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Diagonal" xml:space="preserve">
+        <source>Diagonal</source>
+        <note>Watermark Position</note>
+      </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
         <target>Désactivez si vous ne voulez pas recevoir des notifications de la part de %@</target>
@@ -2159,6 +2243,10 @@ Caption of the processing</note>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
         <source>Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.</source>
         <target>Voulez-vous vraiment quitter cette salle ? Vous pourrez le rejoindre à nouveau via une nouvelle invitation d'un administrateur de la salle.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="DocSpace" xml:space="preserve">
+        <source>DocSpace</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
@@ -2237,6 +2325,10 @@ Operation completed</note>
         <target>Modifier les documents localement</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Edit index" xml:space="preserve">
+        <source>Edit index</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Edit link" xml:space="preserve">
         <source>Edit link</source>
         <target>Modifier le lien</target>
@@ -2277,9 +2369,17 @@ Operation completed</note>
         <target>L'e-mail n'est pas valide</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Employees" xml:space="preserve">
+        <source>Employees</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
         <source>Empty name.</source>
         <target>Nom vide.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
+        <source>Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
@@ -2295,6 +2395,10 @@ Operation completed</note>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
         <source>Enable this setting to disable downloads of files and folders from this room shared via a link</source>
         <target>Activez ce paramètre pour désactiver les téléchargements de fichiers et de dossiers de cette salle partagés via un lien</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" xml:space="preserve">
+        <source>Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable time limit" xml:space="preserve">
@@ -2316,6 +2420,10 @@ Operation completed</note>
         <source>Enter email</source>
         <target>Saisissez l'email</target>
         <note>placeholder</note>
+      </trans-unit>
+      <trans-unit id="Enter password" xml:space="preserve">
+        <source>Enter password</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
         <source>Error</source>
@@ -2342,14 +2450,6 @@ Operation completed</note>
         <target>Expiré</target>
         <note>Expiration status</note>
       </trans-unit>
-      <trans-unit id="Expires after %d days" translate="no" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <note>Days left (Key in .stringsdict)</note>
-      </trans-unit>
-      <trans-unit id="Expires after %d hours" translate="no" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <note>Hours left (Key in .stringsdict)</note>
-      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>Expire dans les 7 jours</target>
@@ -2358,6 +2458,10 @@ Operation completed</note>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Exportation</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Export room index" xml:space="preserve">
+        <source>Export room index</source>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="External link" xml:space="preserve">
@@ -2410,6 +2514,10 @@ Operation completed</note>
         <target>Échec du déplacement : %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failed to prepare the index export" xml:space="preserve">
+        <source>Failed to prepare the index export</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
         <target>Impossible d'envoyer un commentaire par e-mail. Essayez de laisser votre demande sur notre forum.</target>
@@ -2445,6 +2553,10 @@ Operation completed</note>
         <target>Fichier ne existe pas</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="File lifetime" xml:space="preserve">
+        <source>File lifetime</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
         <target>Fichiers</target>
@@ -2458,6 +2570,14 @@ Operation completed</note>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
         <source>Files and folders uploaded by admins will appear here.</source>
         <target>Les fichiers et dossiers téléchargés par les administrateurs apparaissent ici.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files older than" xml:space="preserve">
+        <source>Files older than</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files with the exceeded lifetime will be deleted" xml:space="preserve">
+        <source>Files with the exceeded lifetime will be deleted</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill" xml:space="preserve">
@@ -2560,6 +2680,10 @@ Operation completed</note>
         <target>Accès complet</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="GB" xml:space="preserve">
+        <source>GB</source>
+        <note>Measurement unit</note>
+      </trans-unit>
       <trans-unit id="GET STARTED!" xml:space="preserve">
         <source>GET STARTED!</source>
         <target>COMMENCER !</target>
@@ -2615,10 +2739,22 @@ Operation completed</note>
         <target>Groupes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Guest" xml:space="preserve">
+        <source>Guest</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Guests" xml:space="preserve">
+        <source>Guests</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
         <target>Vous y trouverez une liste des fichiers récemment ouverts qui ont été partagés avec vous par le lien externe.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Horizontal" xml:space="preserve">
+        <source>Horizontal</source>
+        <note>Watermark Position</note>
       </trans-unit>
       <trans-unit id="Icons" xml:space="preserve">
         <source>Icons</source>
@@ -2629,6 +2765,10 @@ Operation completed</note>
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>Si l'utilisateur avec le mail %@ existe, l'instruction pour changer le mot de passe a été envoyée à cet e-mail.</target>
         <note>Email sent instructions</note>
+      </trans-unit>
+      <trans-unit id="Image" xml:space="preserve">
+        <source>Image</source>
+        <note>Watermark Type</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
         <source>Images</source>
@@ -2654,6 +2794,11 @@ Operation completed</note>
         <source>Incorrect portal address</source>
         <target>Adresse de portail incorrecte</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Index" xml:space="preserve">
+        <source>Index</source>
+        <note>File order
+Folder order</note>
       </trans-unit>
       <trans-unit id="Info" xml:space="preserve">
         <source>Info</source>
@@ -2690,9 +2835,17 @@ Operation completed</note>
         <target>Dossier incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Invalid server data." xml:space="preserve">
+        <source>Invalid server data.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
         <source>Invite</source>
         <target>Inviter</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite guests by email" xml:space="preserve">
+        <source>Invite guests by email</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite people" xml:space="preserve">
@@ -2714,6 +2867,14 @@ Operation completed</note>
         <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
         <target>Invitez les utilisateurs par le biais de liens partagés à consulter les documents sans inscription. Vous pouvez également intégrer cette salle dans n'importe quelle interface web.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
+        <source>Items in Trash are automatically deleted after 30 days</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="KB" xml:space="preserve">
+        <source>KB</source>
+        <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
@@ -2788,6 +2949,18 @@ dans le presse-papiers</target>
         <target>Le lien avec l'invitation a été envoyé par e-mail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.&#10; &#10;This action cannot be undone. Are you sure you want to continue?" xml:space="preserve">
+        <source>Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.
+ 
+This action cannot be undone. Are you sure you want to continue?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.&#10; &#10;This action cannot be undone. Are you sure you want to continue?" xml:space="preserve">
+        <source>Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.
+ 
+This action cannot be undone. Are you sure you want to continue?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="List" xml:space="preserve">
         <source>List</source>
         <target>Liste</target>
@@ -2796,7 +2969,7 @@ dans le presse-papiers</target>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
         <target>Chargement</target>
-        <note>No comment provided by engineer.</note>
+        <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
@@ -2829,6 +3002,10 @@ dans le presse-papiers</target>
         <note>Button title
 Caption of the process</note>
       </trans-unit>
+      <trans-unit id="MB" xml:space="preserve">
+        <source>MB</source>
+        <note>Measurement unit</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target>Marquer comme favori</target>
@@ -2855,6 +3032,10 @@ Caption of the process</note>
         <note>Author or member of a document
 If current user name is not set</note>
       </trans-unit>
+      <trans-unit id="Measurement unit" xml:space="preserve">
+        <source>Measurement unit</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
         <target>Média</target>
@@ -2863,6 +3044,14 @@ If current user name is not set</note>
       <trans-unit id="Member" xml:space="preserve">
         <source>Member</source>
         <target>Membre</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+        <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Months" xml:space="preserve">
+        <source>Months</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2894,6 +3083,10 @@ If current user name is not set</note>
         <source>Move to archive</source>
         <target>Déplacer dans l'archive</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Move to trash" xml:space="preserve">
+        <source>Move to trash</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
         <source>Moving</source>
@@ -3035,6 +3228,10 @@ If current user name is not set</note>
         <target>Aucun fichier ici pour l'instant</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No forms here yet " xml:space="preserve">
+        <source>No forms here yet </source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
         <source>No information about the user profile.</source>
         <target>Aucune information sur le profil utilisateur.</target>
@@ -3121,6 +3318,10 @@ Share status</note>
         <target>Portail ONLYOFFICE</target>
         <note>Full App Name</note>
       </trans-unit>
+      <trans-unit id="Ok" xml:space="preserve">
+        <source>Ok</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
         <source>On iPad</source>
         <target>Sur iPad</target>
@@ -3169,6 +3370,10 @@ Share status</note>
       <trans-unit id="Open Folder" xml:space="preserve">
         <source>Open Folder</source>
         <target>Ouvrir dossier</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open file" xml:space="preserve">
+        <source>Open file</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3229,6 +3434,10 @@ Share status</note>
       <trans-unit id="Password is empty" xml:space="preserve">
         <source>Password is empty</source>
         <target>Mot de passe est vide</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+        <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passwords do not match" xml:space="preserve">
@@ -3350,12 +3559,11 @@ Share status</note>
         <target>Le portail n'est pas disponible.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Pover user" xml:space="preserve">
-        <source>Power user</source>
-        <target>Utilisateur avancé</target>
-        <note>Share status</note>
+      <trans-unit id="Position" xml:space="preserve">
+        <source>Position</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Power user" xml:space="preserve">
+      <trans-unit id="Pover user" xml:space="preserve">
         <source>Power user</source>
         <target>Utilisateur avancé</target>
         <note>Share status</note>
@@ -3399,6 +3607,10 @@ Share status</note>
         <source>Project Documents</source>
         <target>Documents de projet</target>
         <note>Category title</note>
+      </trans-unit>
+      <trans-unit id="Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." xml:space="preserve">
+        <source>Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Protection" xml:space="preserve">
         <source>Protection</source>
@@ -3520,6 +3732,14 @@ Share status</note>
         <target>Renouvellement</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Reorder" xml:space="preserve">
+        <source>Reorder</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Reorder failed." xml:space="preserve">
+        <source>Reorder failed.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
         <target>Entité de la demande trop grande</target>
@@ -3585,15 +3805,23 @@ Share status</note>
         <target>Rôles</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Room Name" xml:space="preserve">
+        <source>Room Name</source>
+        <note>Watermark Element</note>
+      </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
         <source>Room admin</source>
         <target>Administrateur de salle</target>
-        <note>Share status</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
         <source>Room created!</source>
         <target>Salle créée !</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Room manager" xml:space="preserve">
+        <source>Room manager</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
@@ -3609,6 +3837,10 @@ DocSpace rooms</note>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
         <target>Dossier racine</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Rotate" xml:space="preserve">
+        <source>Rotate</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3630,6 +3862,10 @@ DocSpace rooms</note>
         <source>Saving</source>
         <target>Enregistrement</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Scale" xml:space="preserve">
+        <source>Scale</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
         <source>Search</source>
@@ -3665,6 +3901,10 @@ Navigation bar button title</note>
       <trans-unit id="Select group" xml:space="preserve">
         <source>Select group</source>
         <target>Sélectionner un groupe</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select image" xml:space="preserve">
+        <source>Select image</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
@@ -3730,6 +3970,10 @@ Navigation bar button title</note>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
         <target>Échec de la définition du favori.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." xml:space="preserve">
+        <source>Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -3827,6 +4071,10 @@ Navigation bar button title</note>
         <target>Taille</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Size quota" xml:space="preserve">
+        <source>Size quota</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
         <source>Skip</source>
         <target>Ignorer</target>
@@ -3872,6 +4120,18 @@ Navigation bar button title</note>
         <target>Stockage</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Storage quota" xml:space="preserve">
+        <source>Storage quota</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Storage quota set per room. You can change this value or turn off storage limit." xml:space="preserve">
+        <source>Storage quota set per room. You can change this value or turn off storage limit.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Success" xml:space="preserve">
+        <source>Success</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
         <target>Assistance</target>
@@ -3881,6 +4141,10 @@ Navigation bar button title</note>
         <source>Switch</source>
         <target>Basculer</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="TB" xml:space="preserve">
+        <source>TB</source>
+        <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
@@ -3942,6 +4206,10 @@ Navigation bar button title</note>
         <target>Le fichier placé dans la Corbeille ne peut pas être affiché.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The file lifetime is set to %@ in this room." xml:space="preserve">
+        <source>The file lifetime is set to %@ in this room.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The file will be irretrievably deleted. This action is irreversible.</source>
         <target>Le fichier sera irrémédiablement supprimé. Cette action est irréversible.</target>
@@ -3966,6 +4234,10 @@ contactez le propriétaire du formulaire en lui communiquant le numéro qui lui 
         <target>L'élément portant le nom '%1$@' existe déjà dans le dossier '%2$@’.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." xml:space="preserve">
+        <source>The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
         <source>The link for external
 access is copied
@@ -3978,11 +4250,6 @@ dans le presse-papiers</target>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>Le lien a expiré</target>
-        <note>Expiration status</note>
-      </trans-unit>
-      <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
-        <source>The link has expired and has been disabled</source>
-        <target>Le lien a expiré et a été désactivé</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
@@ -4090,6 +4357,10 @@ dans le presse-papiers</target>
         <target>Ce dossier est vide</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="This image preview roughly shows how the watermark will be displayed in your files." xml:space="preserve">
+        <source>This image preview roughly shows how the watermark will be displayed in your files.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
         <target>Cette opération libère de l'espace sur votre appareil en supprimant les fichiers temporaires. Vos fichiers locaux et vos données personnelles ne seront pas supprimés.</target>
@@ -4128,9 +4399,8 @@ tous les fichiers.</target>
         <target>Cette feuille de calcul est en cours de modification. Voulez-vous ouvrir %@ pour la lecture seule ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Time limit" xml:space="preserve">
-        <source>Time limit</source>
-        <target>Délai</target>
+      <trans-unit id="Time period" xml:space="preserve">
+        <source>Time period</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -4328,6 +4598,10 @@ tous les fichiers.</target>
         <target>Télécharger un formulaire PDF de l'appareil</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Upload PDF forms from DocSpace or device." xml:space="preserve">
+        <source>Upload PDF forms from DocSpace or device.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
         <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
         <target>Téléchargez des formulaires PDF dans la salle. Invitez les utilisateurs à remplir un formulaire PDF. Examinez les formulaires remplis et analysez les données collectées automatiquement dans une feuille de calcul.</target>
@@ -4343,6 +4617,14 @@ tous les fichiers.</target>
         <target>Téléchargement</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Use IP Address" xml:space="preserve">
+        <source>Use IP Address</source>
+        <note>Watermark Element</note>
+      </trans-unit>
+      <trans-unit id="Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." xml:space="preserve">
+        <source>Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
         <target>Utilisez des services tiers pour stocker les données de cette salle. Un nouveau dossier pour le stockage des données de cette salle sera créé dans l'espace de stockage connecté</target>
@@ -4352,6 +4634,14 @@ tous les fichiers.</target>
         <source>User</source>
         <target>Utilisateur</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User Email" xml:space="preserve">
+        <source>User Email</source>
+        <note>Watermark Element</note>
+      </trans-unit>
+      <trans-unit id="User Name" xml:space="preserve">
+        <source>User Name</source>
+        <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
@@ -4413,9 +4703,25 @@ tous les fichiers.</target>
         <target>Lecteur</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Viewer info" xml:space="preserve">
+        <source>Viewer info</source>
+        <note>Watermark Type</note>
+      </trans-unit>
+      <trans-unit id="Virtual Data Room" xml:space="preserve">
+        <source>Virtual Data Room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Virtual data room" xml:space="preserve">
+        <source>Virtual data room</source>
+        <note>Rooms filter</note>
+      </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>
         <target>Alerte</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Watermark type" xml:space="preserve">
+        <source>Watermark type</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We are sorry, this portal name is already taken" xml:space="preserve">
@@ -4489,9 +4795,20 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <target>Yo</target>
         <note>Data units</note>
       </trans-unit>
-      <trans-unit id="You are about to delete this room. You won’t be able to restore them." xml:space="preserve">
-        <source>You are about to delete this room. You won’t be able to restore them.</source>
-        <target>Vous êtes sur le point de supprimer cette salle. Vous ne pourrez pas les restaurer.</target>
+      <trans-unit id="Years" xml:space="preserve">
+        <source>Years</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete this room. You won't be able to restore them." xml:space="preserve">
+        <source>You are about to delete this room. You won't be able to restore them.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -4524,6 +4841,10 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <target>Vous ne pouvez pas épingler plus de 10 salles en haut de la page. Désépinglez celles qui sont déjà épinglées.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You have changed the room owner" xml:space="preserve">
+        <source>You have changed the room owner</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>Vous avez quitté la salle</target>
@@ -4534,9 +4855,17 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <target>Vous avez quitté la salle et choisi le nouveau propriétaire</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" xml:space="preserve">
+        <source>You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
         <source>You have read-only access to this folder. You cannot create files or folders here.</source>
         <target>Vous avez une permission de lecture seule pour ce dossier. Vous ne pouvez pas créer de fichiers ou de dossiers ici.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You need a password to access the room" xml:space="preserve">
+        <source>You need a password to access the room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
@@ -4567,7 +4896,8 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
       <trans-unit id="bytes" xml:space="preserve">
         <source>bytes</source>
         <target>octets</target>
-        <note>Data units</note>
+        <note>Data units
+Measurement unit</note>
       </trans-unit>
       <trans-unit id="cm" xml:space="preserve">
         <source>cm</source>
@@ -4628,6 +4958,10 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <source>Server Error</source>
         <target>Erreur de serveur</target>
         <note>Unknown Server Error</note>
+      </trans-unit>
+      <trans-unit id="file exported to Documents" xml:space="preserve">
+        <source>file exported to Documents</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
@@ -4703,7 +5037,7 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

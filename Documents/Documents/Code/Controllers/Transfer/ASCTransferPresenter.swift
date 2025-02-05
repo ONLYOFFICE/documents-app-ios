@@ -362,6 +362,10 @@ private extension ASCTransferPresenter {
         ASCTransferViewModel.TableData(
             cells: items.compactMap { provider, entity in
                 if let folder = entity as? ASCFolder {
+                    var rightBadgeImage: UIImage?
+                    if let _ = folder.lifetime {
+                        rightBadgeImage = Asset.Images.fire.image
+                    }
                     return .folder(
                         ASCTransferFolderModel(
                             provider: provider,
@@ -369,7 +373,8 @@ private extension ASCTransferPresenter {
                             image: getImage(forFolder: folder, provider: provider),
                             title: getTitle(forFolder: folder, provider: provider),
                             isInteractable: isFolderInteractable(folder),
-                            badgeImage: getBadgeImage(for: folder)
+                            badgeImage: getBadgeImage(for: folder),
+                            rightBadgeImage: rightBadgeImage
                         ) { [weak self] in
                             guard let self else { return }
                             let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)

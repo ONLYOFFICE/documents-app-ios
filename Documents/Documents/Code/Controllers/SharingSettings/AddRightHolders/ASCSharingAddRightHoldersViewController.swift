@@ -262,6 +262,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
             sharingAddRightHoldersView?.groupsTableView.reloadData()
             groupsCurrentlyLoading = false
+        case .displayGuests:
+            return
         case let .displaySelected(viewModel: viewModel):
             switch viewModel.type {
             case .users:
@@ -272,6 +274,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
                 if let index = groupsModels.firstIndex(where: { $0.0.id == viewModel.selectedModel.id }) {
                     groupsModels[index].1 = viewModel.isSelect
                 }
+            case .guests:
+                return
             }
         }
 
@@ -468,13 +472,16 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
 enum RightHoldersTableType: Int, CaseIterable {
     case users
     case groups
+    case guests
 
     func getTitle() -> String {
         switch self {
         case .users:
-            return NSLocalizedString("Users", comment: "")
+            return NSLocalizedString("Employees", comment: "")
         case .groups:
             return NSLocalizedString("Groups", comment: "")
+        case .guests:
+            return NSLocalizedString("Guests", comment: "")
         }
     }
 }

@@ -45,10 +45,6 @@ public enum ASCCommon {
         currentDevice.systemVersion
     }
 
-    static var statusBarHeight: CGFloat {
-        UIApplication.shared.statusBarFrame.height
-    }
-
     static var applicationIconBadgeNumber: Int {
         get {
             UIApplication.shared.applicationIconBadgeNumber
@@ -71,20 +67,6 @@ public enum ASCCommon {
     static func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {
         let task = DispatchWorkItem { completion() }
         queue.asyncAfter(deadline: .now() + seconds, execute: task)
-    }
-
-    static func isBeforeRelease() -> Bool {
-        // FIXME: REMOVE BELOW
-        /// BEGIN BLOCK
-
-        let expiryDate = "2024-02-04"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-
-        return Date() < dateFormatter.date(from: expiryDate) ?? Date()
-
-        /// BEGIN BLOCK
-        return false
     }
 
     static func isiOSAppOnMac() -> Bool {

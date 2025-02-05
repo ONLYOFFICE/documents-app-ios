@@ -21,15 +21,26 @@ typealias UnmovedEntities = [ASCEntity]
 class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDelegate {
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
-    static var itemsViewType: ASCEntityViewLayoutType {
+    var itemsViewType: ASCEntityViewLayoutType {
         get {
-            ASCAppSettings.gridLayoutFiles ? .grid : .list
+            return provider?.itemsViewType ?? .list
         }
         set {
-            ASCAppSettings.gridLayoutFiles = newValue == .grid
-            NotificationCenter.default.post(name: ASCConstants.Notifications.updateDocumentsViewLayoutType, object: newValue)
+            provider?.itemsViewType = newValue
         }
     }
+
+    private var topBannerViewModel: TopBannerViewModel? {
+        (provider as? TopBannerViewModelDelegate)?.topBannerViewModel(for: folder)
+    }
+
+    private lazy var collectionHeaderView: TopBannerView = {
+        let header = TopBannerView(frame: CGRect(x: .zero, y: -TopBannerView.bannerHeight, width: view.frame.width, height: TopBannerView.bannerHeight))
+        if let viewModel = topBannerViewModel {
+            header.configure(viewModel: viewModel)
+        }
+        return header
+    }()
 
     // MARK: - Public
 
@@ -61,16 +72,26 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         provider?.items ?? []
     }
 
+    var isEditingIndexMode = false {
+        didSet {
+            configureNavigationBar(animated: true)
+            updateUIForEditingOrderIndexState()
+            collectionView.reloadData()
+        }
+    }
+
+    var selectedIds: Set<String> = []
+
     // MARK: - Private
 
     private lazy var loadedDocumentsViewControllerFinder: ASCLoadedViewControllerFinderProtocol = ASCLoadedDocumentViewControllerByProviderAndFolderFinder()
-    private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
     private let swipeToPreviousFolderGestureRecognizerName = "swipeRight"
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
     private var needsToLoadFirstPageOnAppear = false
-    private lazy var navigationBarExtendPanelView: NavigationBarExtendPanelView = {
+
+    private(set) lazy var navigationBarExtendPanelView: NavigationBarExtendPanelView = {
         let view = NavigationBarExtendPanelView(contentView: contentControl)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -82,13 +103,17 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         return $0
     }(ASCCategorySegmentControl(frame: .zero))
 
+    private var showTopBanner: Bool {
+        return topBannerViewModel != nil
+    }
+
     var categories: [ASCSegmentCategory] = [] {
         didSet {
             updateCategoryTabs()
         }
     }
 
-    private var displaySegmentTabs: Bool {
+    var displaySegmentTabs: Bool {
         categories.count > 0
     }
 
@@ -125,17 +150,18 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         [removerActionController, folderCellContextMenu]
     }
 
-    // Navigation bar
-    private var addBarButton: UIBarButtonItem?
-    private var sortSelectBarButton: UIBarButtonItem?
-    private var sortBarButton: UIBarButtonItem?
-    private var selectBarButton: UIBarButtonItem?
-    private var cancelBarButton: UIBarButtonItem?
-    private var selectAllBarButton: UIBarButtonItem?
-    private var filterBarButton: UIBarButtonItem?
+    // Navigation bar items
+    var addBarButton: UIBarButtonItem?
+    var sortSelectBarButton: UIBarButtonItem?
+    var sortBarButton: UIBarButtonItem?
+    var selectBarButton: UIBarButtonItem?
+    var cancelBarButton: UIBarButtonItem?
+    var selectAllBarButton: UIBarButtonItem?
+    var filterBarButton: UIBarButtonItem?
+    var reorderIndexButton: UIBarButtonItem?
 
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    lazy var collectionView: ASCDocumentsCollectionView = {
+        let collectionView = ASCDocumentsCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -143,6 +169,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         collectionView.dropDelegate = self
         collectionView.dragInteractionEnabled = true
         collectionView.allowsMultipleSelectionDuringEditing = true
+        collectionView.ascDocumentsDelegate = self
 
         collectionView.register(ASCFolderViewCell.self, forCellWithReuseIdentifier: ASCFolderViewCell.identifier)
         collectionView.register(ASCFileViewCell.self, forCellWithReuseIdentifier: ASCFileViewCell.identifier)
@@ -150,6 +177,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         return collectionView
     }()
+
+    private lazy var applyButton: UIButton = {
+        $0.setTitle(NSLocalizedString("Apply", comment: "Button title"), for: .normal)
+        $0.backgroundColor = .clear
+        $0.setTitleColor(Asset.Colors.brend.color, for: .normal)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.addTarget(self, action: #selector(onApplyButtonTapped), for: .touchUpInside)
+        $0.isHidden = true
+        return $0
+    }(UIButton())
 
     // Search
     private lazy var searchController: UISearchController = {
@@ -188,13 +225,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private var searchValue: String?
 
     // Events
-    private let events = EventManager()
+    let events = EventManager()
 
     // Interaction Controller
     fileprivate lazy var documentInteraction: UIDocumentInteractionController = UIDocumentInteractionController()
-
-    // Sort
-    private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
     // MARK: - Outlets
 
@@ -225,7 +259,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         return view
     }()
 
-    private lazy var errorView: ASCDocumentsEmptyView? = {
+    private(set) lazy var errorView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
 
         view.onAction = { [weak self] in
@@ -240,7 +274,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         return view
     }()
 
-    private lazy var categoryIsRecent: Bool = {
+    private(set) lazy var categoryIsRecent: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
         return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
     }()
@@ -286,28 +320,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         viewDidLayoutSubviews()
     }
 
-    private func configureNavigationItem() {
-        if displaySegmentTabs {
-            let appearance = UINavigationBarAppearance()
-            if navigationBarExtendPanelView.isHidden {
-                appearance.configureWithDefaultBackground()
-            } else {
-                appearance.configureWithTransparentBackground()
-            }
-            navigationItem.compactAppearance = appearance
-            navigationItem.standardAppearance = appearance
-            navigationItem.scrollEdgeAppearance = appearance
-            if #available(iOS 15.0, *) {
-                navigationItem.compactScrollEdgeAppearance = appearance
-            }
-        }
-    }
-
     private func configureView() {
         view.backgroundColor = .systemBackground
 
         view.addSubview(collectionView)
-        collectionView.fillToSuperview()
+        view.addSubview(applyButton)
+
+        if showTopBanner {
+            collectionView.addSubview(collectionHeaderView)
+            collectionView.contentInset.top = TopBannerView.bannerHeight
+        }
+
+        collectionView.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
+
+        applyButton.anchor(
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(top: .zero, left: .zero, bottom: 50, right: .zero)
+        )
 
         if displaySegmentTabs {
             view.addSubview(navigationBarExtendPanelView)
@@ -323,11 +359,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        let topInset: CGFloat = showTopBanner ? TopBannerView.bannerHeight : .zero
+
         if navigationBarExtendPanelView.isHidden || tableData.isEmpty {
-            collectionView.contentInset.top = 0
+            collectionView.contentInset.top = topInset
         } else if displaySegmentTabs {
-            collectionView.contentInset.top = navigationBarExtendPanelView.contentView?.frame.height ?? 0
+            collectionView.contentInset.top = (navigationBarExtendPanelView.contentView?.frame.height ?? 0) + topInset
         }
+
+        collectionView.bringSubviewToFront(collectionHeaderView)
 
         collectionView.verticalScrollIndicatorInsets.top = collectionView.contentInset.top
     }
@@ -463,7 +503,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         delay(seconds: 0.1) { [weak self] in
             guard let self else { return }
             self.viewIsAppearing(true)
-            self.collectionView.setCollectionViewLayout(self.collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
+            self.collectionView.updateLayout()
         }
 
         collectionView.reloadSections(IndexSet(integer: 0))
@@ -499,23 +539,14 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     private func updateItemsViewType() {
-        collectionView.setCollectionViewLayout(collectionViewCompositionalLayout(by: ASCDocumentsViewController.itemsViewType), animated: true)
+        collectionView.layoutType = itemsViewType
 
-        let visibleCells: [ASCEntityViewCellProtocol] = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? []
+        let visibleCells = collectionView.visibleCells as? [ASCEntityViewCellProtocol] ?? [ASCEntityViewCellProtocol]()
         for cell in visibleCells {
-            cell.layoutType = ASCDocumentsViewController.itemsViewType
+            cell.layoutType = itemsViewType
         }
 
         collectionView.reloadSections(IndexSet(integer: 0))
-    }
-
-    private func collectionViewCompositionalLayout(by type: ASCEntityViewLayoutType) -> UICollectionViewCompositionalLayout {
-        switch type {
-        case .grid:
-            return makeGridLayout()
-        case .list:
-            return makeTableLayout()
-        }
     }
 
     // MARK: - Public
@@ -531,7 +562,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         loadingView.removeFromSuperview()
         emptyView?.removeFromSuperview()
 
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 
     @objc func refresh(_ refreshControl: UIRefreshControl) {
@@ -568,7 +601,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             provider.add(item: file, at: 0)
 
             provider.updateSort { provider, currentFolder, success, error in
-                self.collectionView.reloadData()
+                UIView.performWithoutAnimation { [weak self] in
+                    self?.collectionView.reloadData()
+                }
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
@@ -600,7 +635,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             provider.add(item: folder, at: 0)
 
             provider.updateSort { provider, currentFolder, success, error in
-                self.collectionView.reloadData()
+                UIView.performWithoutAnimation { [weak self] in
+                    self?.collectionView.reloadData()
+                }
 
                 self.showEmptyView(self.total < 1)
 
@@ -664,98 +701,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         configureToolBar()
     }
 
-    @objc func onFilterAction() {
-        let providerCopy = provider?.copy()
-        provider?.filterController?.folder = folder
-        provider?.filterController?.provider = providerCopy
-        provider?.filterController?.onAction = { [weak self] in
-            self?.loadFirstPage()
-            self?.configureNavigationBar(animated: false)
-        }
-        provider?.filterController?.prepareForDisplay(total: total)
-
-        if let filtersViewController = provider?.filterController?.filtersViewController {
-            let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
-
-            if UIDevice.pad {
-                navigationVC.preferredContentSize = CGSize(width: 380, height: 714)
-                navigationVC.modalPresentationStyle = .popover
-                navigationVC.popoverPresentationController?.barButtonItem = filterBarButton
-                present(navigationVC, animated: true) {}
-            } else {
-                navigationController?.present(navigationVC, animated: true)
-            }
-        }
-    }
-
-    @objc func onAddEntityAction() {
-        guard let provider = provider else { return }
-        flashBlockInteration()
-        ASCCreateEntity().showCreateController(for: provider, in: self, sender: addBarButton)
-    }
-
-    @objc func onActionSelect(_ sender: Any) {
-        if #available(iOS 14.0, *) {
-            if let button = sender as? UIButton {
-                button.showsMenuAsPrimaryAction = true
-                button.menu = correntFolderActionMenu(for: button)
-            }
-        } else {
-            guard let folder, let sender = sender as? UIView else { return }
-            let actionSheet = CurrentFolderMenu().actionSheet(for: folder, sender: sender, in: self)
-            present(actionSheet, animated: true, completion: nil)
-        }
-    }
-
-    @objc func onCancelAction() {
-        setEditMode(false)
-    }
-
-    @objc func onSortAction(_ sender: Any) {
-        if #available(iOS 14.0, *) {
-            if let button = sender as? UIButton {
-                button.showsMenuAsPrimaryAction = true
-                button.menu = correntFolderActionMenu(for: button)
-            }
-        } else {
-            var sortType: ASCDocumentSortType = .dateandtime
-            var sortAscending = false
-            var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
-
-            if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-                if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
-                    sortType = ASCDocumentSortType(sortBy)
-                    sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
-                }
-
-                if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
-                    sortAscending = sortOrder == "ascending"
-                }
-            }
-
-            if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-                sortStates.append((.author, sortType == .author))
-            }
-
-            navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
-                if (sortType != type) || (ascending != sortAscending) {
-                    let sortInfo = [
-                        "type": type.rawValue,
-                        "order": ascending ? "ascending" : "descending",
-                    ]
-
-                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-                }
-            }))
-        }
-    }
-
-    @objc func onSelectAction() {
-        guard view.isUserInteractionEnabled else { return }
-        setEditMode(true)
-        flashBlockInteration()
-    }
-
     @objc func popViewController(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             navigationController?.popViewController(animated: true)
@@ -770,161 +715,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         if provider is ASCiCloudProvider {
             collectionView.refreshControl = nil
         }
-    }
-
-    private func configureNavigationBar(animated: Bool = true) {
-        addBarButton = addBarButton
-            ?? createAddBarButton()
-        sortSelectBarButton = sortSelectBarButton
-            ?? createSortSelectBarButton()
-        sortBarButton = sortBarButton
-            ?? createSortBarButton()
-        filterBarButton = createFilterBarButton()
-        selectBarButton = selectBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
-        cancelBarButton = cancelBarButton
-            ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
-        selectAllBarButton = selectAllBarButton
-            ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
-        if let folder = folder,
-           !folder.isRoom
-        {
-            sortSelectBarButton?.isEnabled = total > 0
-        }
-        sortBarButton?.isEnabled = total > 0
-        selectBarButton?.isEnabled = total > 0
-        selectAllBarButton?.isEnabled = total > 0
-        filterBarButton?.isEnabled = total > 0 || provider?.filterController?.isReset == false
-
-        if #available(iOS 14.0, *) {
-            for barButton in [sortSelectBarButton, sortBarButton] {
-                if let button = barButton?.customView as? UIButton {
-                    button.showsMenuAsPrimaryAction = true
-                    button.menu = correntFolderActionMenu(for: button)
-                }
-            }
-
-            selectAllBarButton = ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), menu: selectAllMenu())
-        }
-
-        if collectionView.isEditing {
-            navigationItem.setLeftBarButtonItems([selectAllBarButton!], animated: animated)
-            navigationItem.setRightBarButtonItems([cancelBarButton!], animated: animated)
-        } else {
-            navigationItem.setLeftBarButtonItems(nil, animated: animated)
-
-            var rightBarBtnItems = [ASCStyles.barFixedSpace]
-
-            if let sortSelectBarBtn = sortSelectBarButton {
-                rightBarBtnItems.append(sortSelectBarBtn)
-            }
-
-            if let filterBarBtn = filterBarButton, provider?.filterController != nil {
-                rightBarBtnItems.append(filterBarBtn)
-            }
-
-            if let addBarBtn = addBarButton {
-                rightBarBtnItems.append(addBarBtn)
-            }
-
-            navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
-        }
-
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-    }
-
-    private func makeTableLayout() -> UICollectionViewCompositionalLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-        configuration.backgroundColor = .systemBackground
-        configuration.showsSeparators = false
-        configuration.trailingSwipeActionsConfigurationProvider = { [weak self] itemIndex in
-            guard let self, let cell = self.collectionView.cellForItem(at: itemIndex) as? ASCEntityViewCellProtocol else { return UISwipeActionsConfiguration() }
-            return UISwipeActionsConfiguration(actions: self.buildCellMenu(for: cell))
-        }
-        return UICollectionViewCompositionalLayout.list(using: configuration)
-    }
-
-    private func makeGridLayout() -> UICollectionViewCompositionalLayout {
-        let groupSpacing: CGFloat = 4
-        let sectionSpacing: CGFloat = 16
-
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(190)
-        )
-
-        let count = Int(view.width / 110.0)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: count)
-        group.interItemSpacing = .fixed(groupSpacing)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: sectionSpacing, leading: sectionSpacing, bottom: sectionSpacing, trailing: sectionSpacing)
-        section.interGroupSpacing = groupSpacing
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-
-    private func createAddBarButton() -> UIBarButtonItem? {
-        guard ((provider?.allowAdd(toFolder: folder)) != nil) && folder?.rootFolderType != .onlyofficeRoomArchived else { return nil }
-
-        let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
-
-        let icon: UIImage? = {
-            guard folder?.isRoomListFolder == true else {
-                return UIImage(systemName: "plus", withConfiguration: config)
-            }
-            return Asset.Images.barRectanglesAdd.image
-        }()
-
-        return ASCStyles.createBarButton(
-            image: icon,
-            target: self,
-            action: #selector(onAddEntityAction)
-        )
-    }
-
-    private func createFilterBarButton() -> UIBarButtonItem {
-        let isReset = provider?.filterController?.isReset ?? true
-
-        return ASCStyles.createBarButton(
-            image: isReset ? Asset.Images.barFilter.image : Asset.Images.barFilterOn.image,
-            target: self,
-            action: #selector(onFilterAction)
-        )
-    }
-
-    private func createSortSelectBarButton() -> UIBarButtonItem {
-        guard categoryIsRecent else {
-            let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
-
-            return ASCStyles.createBarButton(
-                image: UIImage(systemName: "ellipsis.circle", withConfiguration: config),
-                target: self,
-                action: #selector(onActionSelect)
-            )
-        }
-
-        return ASCStyles.createBarButton(
-            title: NSLocalizedString("Select", comment: "Navigation bar button title"),
-            target: self,
-            action: #selector(onSelectAction)
-        )
-    }
-
-    private func createSortBarButton() -> UIBarButtonItem? {
-        guard !categoryIsRecent else {
-            return nil
-        }
-
-        return ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
     }
 
     private func configureToolBar() {
@@ -1110,39 +900,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         setToolbarItems(items, animated: false)
     }
 
-    private func updateSelectedInfo() {
-        let fileCount = tableData
-            .filter { $0 is ASCFile }
-            .filter { selectedIds.contains($0.uid) }
-            .count
-        let folderCount = tableData
-            .filter { $0 is ASCFolder }
-            .filter { selectedIds.contains($0.uid) }
-            .count
-        let roomsCount = tableData
-            .filter { $0 is ASCFolder }
-            .filter { selectedIds.contains($0.uid) }
-            .filter { $0.isRoom }
-            .count
-
-        if fileCount + folderCount > 0 {
-            if UIDevice.phone {
-                title = String(format: NSLocalizedString("Selected: %ld", comment: ""), fileCount + folderCount)
-            } else {
-                if roomsCount > 0 {
-                    title = String(format: NSLocalizedString("Selected: %ld", comment: ""), roomsCount)
-                } else if folderCount > 0, fileCount > 0 {
-                    title = String.localizedStringWithFormat(NSLocalizedString("%lu Folder and %lu File selected", comment: ""), folderCount, fileCount)
-                } else if folderCount > 0 {
-                    title = String.localizedStringWithFormat(NSLocalizedString("%lu Folder selected", comment: ""), folderCount)
-                } else if fileCount > 0 {
-                    title = String.localizedStringWithFormat(NSLocalizedString("%lu File selected", comment: ""), fileCount)
-                } else {
-                    title = folder?.title
-                }
-            }
+    private func updateUIForEditingOrderIndexState() {
+        if isEditingIndexMode {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+            applyButton.isHidden = false
         } else {
-            title = provider?.title(for: folder)
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+            applyButton.isHidden = true
         }
     }
 
@@ -1156,29 +920,21 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
     }
 
-    private func updateTitle() {
-        if !collectionView.isEditing {
-            title = provider?.title(for: folder)
-        } else {
-            updateSelectedInfo()
-        }
-    }
-
     private func showToolBar(_ show: Bool, animated: Bool = true) {
         navigationController?.setToolbarHidden(!show, animated: animated)
+        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = show
     }
 
     func setEditMode(_ edit: Bool) {
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = edit
-
         collectionView.isEditing = edit
+        isEditingIndexMode = false
+        selectedIds.removeAll()
 
         configureNavigationBar()
 
         configureToolBar()
         showToolBar(edit)
 
-        selectedIds.removeAll()
         updateTitle()
     }
 
@@ -1234,8 +990,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let self else { return }
-
-            self.collectionView.reloadData()
+            UIView.performWithoutAnimation { [weak self] in
+                self?.collectionView.reloadData()
+            }
             self.showEmptyView(self.total < 1)
 
             completeon?(true)
@@ -1305,7 +1062,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                 if success || isCanceled {
                     self.folder = folder
-                    self.collectionView.reloadData()
+                    UIView.performWithoutAnimation { [weak self] in
+                        self?.collectionView.reloadData()
+                    }
 
                     self.showEmptyView(self.total < 1)
                 } else {
@@ -1328,7 +1087,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         if needsToLoadFirstPageOnAppear {
             provider?.cancel()
             provider?.reset()
-            collectionView.reloadData()
+            UIView.performWithoutAnimation { [weak self] in
+                self?.collectionView.reloadData()
+            }
         }
 
         setEditMode(false)
@@ -1452,6 +1213,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else if folder.isRoom {
                         if folder.roomType == .fillingForm, provider.allowEdit(entity: folder) {
                             localEmptyView?.type = .formFillingRoom
+                        } else if folder.roomType == .virtualData, provider.allowEdit(entity: folder) {
+                            localEmptyView?.type = .virtualDataRoom
                         } else {
                             localEmptyView?.type = .room
                             if !(provider.allowEdit(entity: folder)) {
@@ -1594,7 +1357,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     @objc func onReloadData(_ notification: Notification) {
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 
     @objc
@@ -1614,131 +1379,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         searchController.isActive = false
     }
 
-    func updateNavBar() {
-        guard let folder else { return }
-
-        let hasError = errorView?.superview != nil
-
-        addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        sortSelectBarButton?.isEnabled = !hasError && (folder.isRoom || total > 0)
-        sortBarButton?.isEnabled = !hasError && total > 0
-        selectBarButton?.isEnabled = !hasError && total > 0
-        filterBarButton?.isEnabled = !hasError && total > 0
-    }
-
-    private func correntFolderActionMenu(for button: UIButton) -> UIMenu? {
+    func currentFolderActionMenu(for button: UIButton) -> UIMenu? {
         guard let folder else { return nil }
         return CurrentFolderMenu().contextMenu(for: folder, in: self)
-    }
-
-    private func selectAllMenu() -> UIMenu? {
-        let uiActions: [UIAction] = {
-            var uiActions = [UIAction]()
-            uiActions.append(UIAction(
-                title: NSLocalizedString("All", comment: ""),
-                image: UIImage(systemName: "checkmark.circle"),
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: AnyObject.self)
-                }
-            ))
-
-            provider?.contentTypes.forEach { contentType in
-                switch contentType {
-                case .files:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Files", comment: ""),
-                        image: Asset.Images.menuFiles.image,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFile.self)
-                        }
-                    ))
-                case .folders:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Folders", comment: ""),
-                        image: UIImage(systemName: "folder"),
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFolder.self)
-                        }
-                    ))
-                case .documents:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Documents", comment: ""),
-                        image: Asset.Images.menuDocuments.image,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
-                        }
-                    ))
-                case .spreadsheets:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Spreadsheets", comment: ""),
-                        image: Asset.Images.menuSpreadsheet.image,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
-                        }
-                    ))
-                case .presentations:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Presentations", comment: ""),
-                        image: Asset.Images.menuPresentation.image,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
-                        }
-                    ))
-                case .images:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Images", comment: ""),
-                        image: UIImage(systemName: "photo"),
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
-                        }
-                    ))
-                case .public:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Public", comment: ""),
-                        image: nil,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.public])
-                        }
-                    ))
-                case .collaboration:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Collaboration", comment: ""),
-                        image: nil,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.colobaration])
-                        }
-                    ))
-                case .custom:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Custom", comment: ""),
-                        image: nil,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.custom])
-                        }
-                    ))
-                case .viewOnly:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("View-only", comment: ""),
-                        image: nil,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.viewOnly])
-                        }
-                    ))
-                case .fillingForms:
-                    uiActions.append(UIAction(
-                        title: NSLocalizedString("Filling form", comment: ""),
-                        image: nil,
-                        handler: { [weak self] action in
-                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.fillingForm])
-                        }
-                    ))
-                }
-            }
-
-            return uiActions
-        }()
-
-        return UIMenu(title: "", options: .displayInline, children: uiActions)
     }
 
     func highlight(cell: UICollectionViewCell) {
@@ -1831,14 +1474,59 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     // MARK: - Entity actions
 
     func openFolder(folder: ASCFolder) {
-        let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-        navigationController?.pushViewController(controller, animated: true)
+        let transitionToFolderCompletion: (ASCFolder?) -> Void = { [weak navigationController, provider] folder in
+            guard let folder else { return }
+            let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+            navigationController?.pushViewController(controller, animated: true)
 
-        controller.provider = provider?.copy()
-        controller.provider?.cancel()
-        controller.provider?.reset()
-        controller.folder = folder
-        controller.title = folder.title
+            controller.provider = provider?.copy()
+            controller.provider?.cancel()
+            controller.provider?.reset()
+            controller.folder = folder
+            controller.title = folder.title
+        }
+
+        guard folder.passwordProtected else {
+            transitionToFolderCompletion(folder)
+            return
+        }
+
+        showPasswordAlert { [provider] password in
+            guard let password, !password.isEmpty else { return }
+            provider?.getAccess(for: folder, password: password, completion: { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case let .success(folder):
+                    transitionToFolderCompletion(folder)
+                case let .failure(error):
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
+                }
+            })
+        }
+    }
+
+    func showPasswordAlert(onCompletion: @escaping (String?) -> Void) {
+        var alert: UIAlertController?
+        alert = UIAlertController.alert(
+            NSLocalizedString("Enter password", comment: ""),
+            message: NSLocalizedString("You need a password to access the room", comment: ""),
+            actions: [
+                UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil),
+                UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default, handler: { _ in
+                    let password = alert?.textFields?.first?.text
+                    onCompletion(password)
+                }),
+            ]
+        )
+
+        alert?.addTextField { textField in
+            textField.placeholder = "Enter password"
+            textField.isSecureTextEntry = true
+        }
+
+        if let alert = alert {
+            present(alert, animated: true)
+        }
     }
 
     func delete(cell: UICollectionViewCell) {
@@ -2219,6 +1907,33 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func exportRoomIndex() {
+        guard let folder = folder, let provider else { return }
+        let hud = MBProgressHUD.showTopMost()
+        hud?.isHidden = false
+        provider.handle(action: .exportRoomIndex, folder: folder) { [weak self] status, message, error in
+            guard let self = self else {
+                hud?.hide(animated: false)
+                return
+            }
+            self.baseProcessHandler(
+                hud: hud,
+                processingMessage: NSLocalizedString("Loading", comment: "Caption of the processing"),
+                status,
+                message,
+                error
+            ) {
+                if let message = message as? String {
+                    hud?.setSuccessState(title: message)
+                    hud?.hide(animated: false, afterDelay: .standardDelay)
+                    self.loadFirstPage()
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
+
     func baseProcessHandler(hud: MBProgressHUD?,
                             processingMessage: String,
                             _ status: ASCEntityProcessStatus,
@@ -2412,7 +2127,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder) {
+    func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {
         guard let provider = provider as? ASCOnlyofficeProvider else { return }
 
         var hud: MBProgressHUD?
@@ -2420,23 +2135,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let isOwner: Bool = provider.checkRoomOwner(folder: folder)
         let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
-
-        if isOwner {
-            let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
+        let displayAllert = !changeOwner
+        if isOwner || changeOwner {
+            let changeOwnerAction = {
                 self.navigator.navigate(to: .leaveRoom(entity: folder) { status, result, error in
                     if status == .begin {
                         hud = MBProgressHUD.showTopMost()
                     } else if status == .error {
                         hud?.hide(animated: true)
+                        let message = changeOwner
+                            ? NSLocalizedString("Couldn't change the room owner", comment: "")
+                            : NSLocalizedString("Couldn't leave the room", comment: "")
                         UIAlertController.showError(
                             in: self,
-                            message: NSLocalizedString("Couldn't leave the room", comment: "")
+                            message: message
                         )
                     } else if status == .end {
                         hud?.setSuccessState()
                         hud?.label.numberOfLines = 0
-                        hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
-                        if let cell = cell {
+                        hud?.label.text = changeOwner
+                            ? NSLocalizedString("You have changed the room owner", comment: "")
+                            : NSLocalizedString("You have left the room and appointed a new owner", comment: "")
+                        if changeOwner {
+                            self.loadFirstPage()
+                        } else if let cell = cell {
                             if let indexPath = self.collectionView.indexPath(for: cell) {
                                 self.provider?.remove(at: indexPath.row)
                                 self.collectionView.deleteItems(at: [indexPath])
@@ -2469,10 +2191,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     }
                 })
             }
+            let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
+                _ = changeOwnerAction()
+            }
             alertController.message = NSLocalizedString("You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.", comment: "")
 
             alertController.addAction(assignOwnerAction)
-
+            if changeOwner {
+                _ = changeOwnerAction()
+            }
         } else {
             let submitAction = UIAlertAction(title: ASCLocalization.Common.ok, style: .default) { _ in
                 provider.leaveRoom(folder: folder) { status, result, error in
@@ -2512,7 +2239,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         alertController.addAction(cancelAction)
-        present(alertController, animated: true)
+        if displayAllert {
+            present(alertController, animated: true)
+        }
     }
 
     func editRoom(folder: ASCFolder) {
@@ -2727,7 +2456,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                    let duplicate = result as? ASCFile
                 {
                     self.provider?.add(item: duplicate, at: indexPath.row)
-                    self.collectionView.reloadData()
+                    UIView.performWithoutAnimation { [weak self] in
+                        self?.collectionView.reloadData()
+                    }
 
                     if let newCell = self.collectionView.cellForItem(at: indexPath) {
                         self.highlight(cell: newCell)
@@ -3079,8 +2810,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             guard !items.isEmpty, let provider = viewController.provider else { return }
 
             provider.add(items: items, at: 0)
-            provider.updateSort(completeon: { _, _, _, _ in
-                viewController.collectionView.reloadData()
+            provider.updateSort(completeon: { [weak viewController] _, _, _, _ in
+                UIView.performWithoutAnimation { [weak viewController] in
+                    viewController?.collectionView.reloadData()
+                }
             })
 
             viewController.showEmptyView(viewController.total < 1)
@@ -3128,7 +2861,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
                     self.provider?.cancel()
                     self.provider?.reset()
-                    self.collectionView.reloadData()
+                    UIView.performWithoutAnimation { [weak self] in
+                        self?.collectionView.reloadData()
+                    }
                 }
 
                 self.showEmptyView(self.total < 1)
@@ -3160,124 +2895,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    private func selectAllItems<T>(type: T.Type, extensions: [String]? = nil, roomTypes: [ASCRoomType]? = nil) {
-        if type == ASCFile.self {
-            var files: [ASCEntity] = []
-            if let extensions = extensions {
-                files = tableData.filter { $0 is ASCFile && extensions.contains(($0 as? ASCFile)?.title.fileExtension().lowercased() ?? "") }
-            } else {
-                files = tableData.filter { $0 is ASCFile }
-            }
-            let selectedFiles = files.filter { selectedIds.contains($0.uid) }
-            selectedIds = (
-                (selectedFiles.count == selectedIds.count)
-                    && (selectedFiles.count == files.count)
-                    && selectedFiles.count > 0)
-                ? []
-                : Set(files.map { $0.uid }
-                )
-        } else if type == ASCFolder.self {
-            let folders = tableData.filter {
-                guard let folder = $0 as? ASCFolder else { return false }
-                guard let roomTypes = roomTypes, let roomType = folder.roomType else {
-                    return $0 is ASCFolder
-                }
-                return roomTypes.contains(roomType)
-            }
-            let selectedFolders = folders.filter { selectedIds.contains($0.uid) }
-            selectedIds = (
-                (selectedFolders.count == selectedIds.count)
-                    && (selectedFolders.count == folders.count)
-                    && selectedFolders.count > 0)
-                ? []
-                : Set(folders.map { $0.uid }
-                )
-        } else {
-            selectedIds = selectedIds.count == tableData.count
-                ? []
-                : Set(tableData.map { $0.uid })
-        }
-
-        updateSelectedInfo()
-        collectionView.reloadSections(IndexSet(integer: 0))
-        events.trigger(eventName: "item:didSelect")
-    }
-
     // MARK: - Actions
-
-    @objc func onSelectAll(_ sender: Any) {
-        let selectController = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet,
-            tintColor: nil
-        )
-
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("All", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: AnyObject.self)
-        }))
-
-        provider?.contentTypes.forEach { contentType in
-            switch contentType {
-            case .files:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Files", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self)
-                }))
-            case .folders:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Folders", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self)
-                }))
-            case .documents:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Documents", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
-                }))
-            case .spreadsheets:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Spreadsheets", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
-                }))
-            case .presentations:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Presentations", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
-                }))
-            case .images:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Images", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
-                }))
-            case .public:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Public", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.public])
-                }))
-            case .collaboration:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Collaboration", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.colobaration])
-                }))
-            case .custom:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Custom", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.custom])
-                }))
-            case .viewOnly:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("View-only", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.viewOnly])
-                }))
-            case .fillingForms:
-                selectController.addAction(UIAlertAction(title: NSLocalizedString("Filling form", comment: ""), handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.fillingForm])
-                }))
-            }
-        }
-
-        selectController.addAction(UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil))
-
-        if UIDevice.pad {
-            selectController.modalPresentationStyle = .popover
-
-            if let barButtonItem = sender as? UIBarButtonItem {
-                selectController.popoverPresentationController?.barButtonItem = barButtonItem
-            }
-        }
-
-        present(selectController, animated: true, completion: nil)
-    }
 
     @objc func onTransformToRoomSelected(_ sender: Any) {
         let entities: [ASCEntity] = selectedIds.compactMap { uid in
@@ -3570,6 +3188,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    @objc func onApplyButtonTapped(_ sender: UIButton) {
+        if isEditingIndexMode, let editOrderIndexDelegate = provider as? ProviderEditIndexDelegate {
+            editOrderIndexDelegate.applyEditedOrderIndex { message in
+                guard let message else { return }
+                UIAlertController.showError(
+                    in: self,
+                    message: message
+                )
+            }
+            isEditingIndexMode = false
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func createFirstItem(_ sender: UIButton) {
@@ -3579,6 +3210,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     @IBAction func onErrorRetry(_ sender: UIButton) {
         loadFirstPage()
+    }
+}
+
+// MARK: - ASCDocumentsCollectionViewDelegate
+
+extension ASCDocumentsViewController: ASCDocumentsCollectionViewDelegate {
+    func swipeActionsConfiguration(collectionView: UICollectionView?, indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let collectionView, let cell = collectionView.cellForItem(at: indexPath) as? ASCEntityViewCellProtocol else { return UISwipeActionsConfiguration() }
+        return UISwipeActionsConfiguration(actions: buildCellMenu(for: cell))
     }
 }
 
@@ -3619,7 +3259,9 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
 
     func didDismissSearchController(_ searchController: UISearchController) {
         provider?.reset()
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
 
         showLoadingPage(true)
 
@@ -3733,12 +3375,17 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
 
             if status == .begin {
                 if hud == nil, file?.device == true {
+                    MBProgressHUD.currentHUD?.hide(animated: false)
                     hud = MBProgressHUD.showTopMost()
                     hud?.mode = .indeterminate
                     hud?.label.text = title
                 }
             } else if status == .error {
                 hud?.hide(animated: true)
+
+                delay(seconds: 3.0) {
+                    MBProgressHUD.currentHUD?.hide(animated: false)
+                }
 
                 guard let self else { return }
 
@@ -3751,6 +3398,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             } else if status == .end {
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: .standardDelay)
+
+                delay(seconds: 3.0) {
+                    MBProgressHUD.currentHUD?.hide(animated: false)
+                }
 
                 SwiftRater.incrementSignificantUsageCount()
 
@@ -3769,7 +3420,9 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         self.updateProviderStatus(for: newFile, indexPath: indexPath)
                     } else {
                         self.provider?.add(item: newFile, at: 0)
-                        self.collectionView.reloadData()
+                        UIView.performWithoutAnimation { [weak self] in
+                            self?.collectionView.reloadData()
+                        }
                         self.showEmptyView(self.total < 1)
                         self.updateNavBar()
 
@@ -3821,7 +3474,9 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     }
 
     func updateItems(provider: ASCFileProviderProtocol) {
-        collectionView.reloadData()
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
 
         // TODO: Or search diff and do it animated
 
@@ -4002,6 +3657,8 @@ private enum CompletionBehavior {
 
 extension ASCDocumentsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard !isEditingIndexMode else { return }
+
         if collectionView.isEditing {
             updateSelectedItems(indexPath: indexPath)
             return
@@ -4113,7 +3770,8 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     folderCell.provider = provider
                     folderCell.entity = folder
-                    folderCell.layoutType = ASCDocumentsViewController.itemsViewType
+                    folderCell.layoutType = itemsViewType
+                    folderCell.dragAndDropState = isEditingIndexMode
 
                     return folderCell
                 } else if let file = tableData[indexPath.row] as? ASCFile {
@@ -4123,7 +3781,8 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     fileCell.provider = provider
                     fileCell.entity = file
-                    fileCell.layoutType = ASCDocumentsViewController.itemsViewType
+                    fileCell.layoutType = itemsViewType
+                    fileCell.dragAndDropState = isEditingIndexMode
 
                     return fileCell
                 }
@@ -4154,7 +3813,9 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
                     self.provider?.page -= 1
                     delay(seconds: 0.6) {
                         cell.isHidden = true
-                        collectionView.reloadData()
+                        UIView.performWithoutAnimation { [weak self] in
+                            self?.collectionView.reloadData()
+                        }
                     }
                 }
             }

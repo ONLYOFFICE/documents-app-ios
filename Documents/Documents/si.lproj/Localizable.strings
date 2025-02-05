@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* Presentation Viewer */
@@ -122,9 +119,6 @@
 "All Files" = "සියළු ගොනු";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "සංරක්‍ෂිතයේ තිබෙන සියළුම අථක සදහටම මැකෙනු ඇත. ඔබට ඒවා ප්‍රත්‍යර්පණයට ද නොහැකි වනු ඇත.";
-
-/* No comment provided by engineer. */
 "All notifications" = "සියළු දැනුම්දීම්";
 
 /* No comment provided by engineer. */
@@ -188,7 +182,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "ද්වාරය සෑදීමෙන් ඔබ අපගේ රහස්‍යතා ප්‍රතිපත්තියට හා සේවා නියම සමඟ එකඟ වේ";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "බයිට";
 
 /* No comment provided by engineer. */
@@ -313,9 +308,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "ආචයනයට සබඳින්න";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "නෙක්ස්ක්ලවුඩ්, ඔව්න්කලවුඩ්, යාන්ඩෙක්ස් ඩිස්ක්\nසහ වෙබ්DAV කෙටුම්පත භාවිතා වන අනෙකුත්\nතෙවන පාර්ශ්ව ආචයන සම්බන්ධ කරන්න.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "ගොනු මාර්ගගතව ගබඩා කිරීමට සහ තථ්‍ය කාලීනව සහයෝගයෙන් ලේඛන කටයුතු \nසිදු කිරීමට ඔබගේ %@ මේඝයට සම්බන්ධ වන්න";
@@ -474,9 +466,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "බහාලුම මකන්න";
-
-/* No comment provided by engineer. */
-"Delete forever" = "සදහටම මකන්න";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "සදහටම මකන්නද?";
@@ -1130,9 +1119,6 @@ Share status */
 /* Share status */
 "Pover user" = "බලවත් පරිශ්‍රීලක";
 
-/* Share status */
-"Power user" = "බලවත් පරිශ්‍රීලක";
-
 /* No comment provided by engineer. */
 "Presentation" = "සමර්පණය";
 
@@ -1232,7 +1218,7 @@ Share status */
 /* Share status */
 "Reviewer" = "සමාලෝචක";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "කාමරයේ පරිපාලක";
 
 /* No comment provided by engineer. */
@@ -1426,11 +1412,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "බාහිර ප්‍රවේශය සඳහා\nසබැඳිය පසුරු පුවරුවට\nපිටපත් කර ඇත";
 
-/* Expiration status */
-"The link has expired" = "සබැඳිය ඉකුත් වී ඇත";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "සබැඳිය කල් ඉකුත් වී අබල කර ඇත";
+"The link has expired" = "සබැඳිය ඉකුත් වී ඇත";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "සබැඳිය සදහටම මැකෙනු ඇත. මෙම ක්‍රියාමාර්ගය අප්‍රතිවර්ත්‍යයි.";
@@ -1497,9 +1480,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "මෙම පැතුරුම්පත සංස්කරණය වෙමින් පවතී. දැකීමට පමණක් %@ විවෘත කිරීමට අවශ්‍යද?";
-
-/* No comment provided by engineer. */
-"Time limit" = "කාල සීමාව";
 
 /* No comment provided by engineer. */
 "Title" = "සිරැසිය";
@@ -1686,9 +1666,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "යො.බ.";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "ඔබ මෙම කාමරය මැකීමට සැරසෙයි. ඔබට ඒවා ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "ඔබ මෙම කාමරයේ හිමිකරු වේ. ඔබ කාමරය හැරයාමට පෙර හිමිකාරිත්‍ව භූමිකාව වෙනත් කෙනෙකුට මාරු කළ යුතුය.";

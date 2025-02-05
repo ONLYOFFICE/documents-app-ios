@@ -43,6 +43,16 @@ class ASCFolder: ASCEntity {
     var logo: ASCFolderLogo?
     var tags: [String]?
     var security: ASCFolderSecurity = .init()
+    var indexing: Bool = false
+    var denyDownload: Bool = false
+    var lifetime: LifeTime?
+    var watermark: Watermark?
+    var order: String?
+    var passwordProtected: Bool = false
+    var requestToken: String?
+    var quotaLimit: Double?
+    var isCustomQuota: Bool = false
+
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -84,8 +94,18 @@ class ASCFolder: ASCEntity {
         tags <- map["tags"]
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]
+        indexing <- map["indexing"]
+        denyDownload <- map["denyDownload"]
+        lifetime <- map["lifetime"]
+        watermark <- map["watermark"]
+        order <- map["order"]
+        passwordProtected <- map["passwordProtected"]
+        requestToken <- map["requestToken"]
+        quotaLimit <- map["quotaLimit"]
+        isCustomQuota <- map["isCustomQuota"]
         // Internal
         device <- map["device"]
+        // TODO: Do not forget update copy() when add a new field
     }
 
     func copy() -> ASCFolder {
@@ -98,8 +118,11 @@ class ASCFolder: ASCEntity {
             folder.title = title
             folder.access = access
             folder.shared = shared
+            folder.pinned = pinned
             folder.mute = mute
             folder.roomType = roomType
+            folder.isPrivate = isPrivate
+            folder.type = type
             folder.rootFolderType = rootFolderType
             folder.updated = updated
             folder.updatedBy = updatedBy
@@ -110,12 +133,87 @@ class ASCFolder: ASCEntity {
             folder.logo = logo
             folder.tags = tags
             folder.providerType = providerType
+            folder.security = security
+            folder.indexing = indexing
+            folder.denyDownload = denyDownload
+            folder.lifetime = lifetime
+            folder.watermark = watermark
+            folder.order = order
+            folder.passwordProtected = passwordProtected
+            folder.requestToken = requestToken
+            folder.quotaLimit = quotaLimit
+            folder.isCustomQuota = isCustomQuota
             folder.device = device
             folder.parent = parent
             return folder
         }
 
         return folder
+    }
+}
+
+// MARK: - Subtypes
+
+extension ASCFolder {
+    final class LifeTime: Mappable {
+        var deletePermanently: Bool = false
+        var period: Int?
+        var value: Int?
+
+        init?(map: ObjectMapper.Map) {}
+
+        init() {}
+
+        func mapping(map: ObjectMapper.Map) {
+            deletePermanently <- map["deletePermanently"]
+            period <- map["period"]
+            value <- map["value"]
+        }
+    }
+
+    final class Watermark: Mappable {
+        var additions: Int?
+        var rotate: Int?
+        var text: String?
+        var imageScale: Int?
+        var imageUrl: String?
+        var imageHeight: Int?
+        var imageWidth: Int?
+
+        init?(map: ObjectMapper.Map) {}
+
+        init() {}
+
+        func mapping(map: ObjectMapper.Map) {
+            additions <- map["additions"]
+            rotate <- map["rotate"]
+            text <- map["text"]
+            imageScale <- map["imageScale"]
+            imageUrl <- map["imageUrl"]
+            imageHeight <- map["imageHeight"]
+            imageWidth <- map["imageWidth"]
+        }
+    }
+}
+
+extension ASCFolder.LifeTime {
+    func formattedLifetimeString() -> String? {
+        guard let value = value, let period = period else { return nil }
+
+        let unitLocalized: String = {
+            switch period {
+            case 0:
+                return String(format: NSLocalizedString("%d days", comment: ""), value)
+            case 1:
+                return String(format: NSLocalizedString("%d months", comment: ""), value)
+            case 2:
+                return String(format: NSLocalizedString("%d years", comment: ""), value)
+            default:
+                return ""
+            }
+        }()
+
+        return String(format: NSLocalizedString("The file lifetime is set to %@ in this room.", comment: ""), unitLocalized)
     }
 }
 

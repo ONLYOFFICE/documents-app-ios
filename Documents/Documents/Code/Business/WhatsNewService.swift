@@ -24,14 +24,14 @@ final class WhatsNewService {
                     let tableName = whatsNew["TableName"] as? String,
                     let items = whatsNew["Items"] as? [[String: Any]]
                 {
-                    items.forEach { item in
+                    for item in items {
                         guard
                             let title = item["Title"] as? String,
                             let subtitle = item["Subtitle"] as? String,
                             let imageName = item["Image"] as? String,
                             let assetPath = whatsNewBundle.path(forResource: imageName, ofType: "pdf", inDirectory: "Assets"),
                             let image = UIImage(pdfUrl: URL(fileURLWithPath: assetPath))
-                        else { return }
+                        else { continue }
 
                         whatsNewItems.append(
                             WhatsNew.Item(

@@ -174,6 +174,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .excludeSubfolders,
                      .customRoom,
                      .fillingFormRoom,
+                     .virtualDataRoom,
                      .collaborationRoom,
                      .reviewRoom,
                      .viewOnlyRoom,
@@ -316,6 +317,43 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
     }
 
+    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
+        let destFilePath = Path(path)
+
+        ASCLocalFileHelper.shared.removeFile(destFilePath)
+
+        do {
+            try data.write(to: destFilePath, atomically: true)
+        } catch {
+            processing(nil, 1, error)
+            return
+        }
+
+        let owner = ASCUser()
+        owner.displayName = UIDevice.displayName
+
+        let parenFolder = ASCFolder()
+        parenFolder.id = destFilePath.parent.rawValue
+        parenFolder.title = destFilePath.parent.fileName
+        parenFolder.device = true
+
+        let localFile = ASCFile()
+        localFile.id = destFilePath.rawValue
+        localFile.rootFolderType = .deviceDocuments
+        localFile.title = destFilePath.fileName
+        localFile.created = destFilePath.creationDate
+        localFile.updated = destFilePath.creationDate
+        localFile.createdBy = owner
+        localFile.updatedBy = owner
+        localFile.parent = parenFolder
+        localFile.viewUrl = destFilePath.rawValue
+        localFile.displayContentLength = String.fileSizeToString(with: destFilePath.fileSize ?? 0)
+        localFile.pureContentLength = Int(destFilePath.fileSize ?? 0)
+        localFile.device = true
+
+        processing(localFile, 1, nil)
+    }
+
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         var dstPath = path
 
@@ -330,6 +368,19 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         } catch {
             processing(nil, 1, error)
             return
+        }
+
+        if overwrite {
+            ASCLocalFileHelper.shared.removeFile(Path(dstPath))
+        } else {
+            if Path(dstPath).exists {
+                if let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path(dstPath)) {
+                    dstPath = filePath.rawValue
+                } else {
+                    processing(nil, 1, ASCProviderError(msg: NSLocalizedString("Could not resolve the file.", comment: "")))
+                    return
+                }
+            }
         }
 
         if let error = ASCLocalFileHelper.shared.copy(from: dummyFilePath, to: Path(dstPath)) {
@@ -490,6 +541,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
                 let file = ASCFile()
                 file.id = filePath.rawValue
+                file.viewUrl = filePath.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = filePath.fileName
                 file.created = filePath.creationDate
@@ -850,11 +902,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 renameHandler: renameHandler
             )
         } else if allowOpen {
-            ASCEditorManager.shared.editLocal(
+            ASCEditorManager.shared.editFileLocally(
+                for: self,
                 file,
                 openMode: openMode,
                 canEdit: canEdit && UIDevice.allowEditor,
-                openHandler: openHandler,
+                handler: openHandler,
                 closeHandler: closeHandler,
                 renameHandler: renameHandler
             )

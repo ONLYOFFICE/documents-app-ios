@@ -147,7 +147,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.isEnabled = true
 
         configureToolBar()
         tagsView.textField.becomeFirstResponder()
@@ -155,7 +155,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.isEnabled = false
     }
 
     @objc func tapGuestureRecognize() {
@@ -249,8 +249,8 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         nextBtn.isEnabled = isNextBarBtnEnabled
 
-        Task { @MainActor [weak nextBtn] in
-            nextBtn?.iq.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
+        Task { @MainActor [weak tagsView] in
+            tagsView?.textField.iq.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
         }
 
         let barItem = UIBarButtonItem(customView: nextBtn)

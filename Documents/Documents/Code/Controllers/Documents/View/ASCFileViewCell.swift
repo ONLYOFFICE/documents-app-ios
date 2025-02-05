@@ -21,6 +21,12 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
     var provider: ASCFileProviderProtocol?
 
+    var dragAndDropState: Bool = false {
+        didSet {
+            buildView()
+        }
+    }
+
     var layoutType: ASCEntityViewLayoutType = .list {
         didSet {
             buildView()
@@ -169,6 +175,17 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             }(UIImageView(image: badgeNewImage)))
         }
 
+        if file.isExpiredSoon {
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(UIImageView(
+                image: UIImage(
+                    named: "clock-cirlce-arrow"
+                ) ?? UIImage()
+            )))
+        }
+
         items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
 
         return {
@@ -207,6 +224,21 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         var items = [UIView]()
 
+        // VDR index
+        if let order = file.order {
+            let orderLabel = buildLabel()
+            let orderSeparator = buildLabel()
+
+            orderLabel.text = [
+                NSLocalizedString("Index", comment: "File order"),
+                order,
+            ].joined(separator: " ")
+            orderSeparator.text = "|"
+
+            items.append(orderLabel)
+            items.append(orderSeparator)
+        }
+
         if dateLabel.text != nil {
             items.append(dateLabel)
         }
@@ -231,8 +263,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             items.append(sizeLabel)
         }
 
-        // Spacer
-        items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: UIScreen.main.bounds.width))))
+        items.append(.spacer)
 
         return {
             $0.axis = .horizontal
@@ -266,6 +297,20 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             $0.anchor(widthConstant: 20)
             return $0
         }(UIView()))
+        if dragAndDropState {
+            items.append({
+                $0.contentMode = .center
+                $0.anchor(widthConstant: 20)
+                return $0
+            }(UIImageView(image: UIImage(
+                systemName: "line.3.horizontal"
+            )?.withTintColor(.separator, renderingMode: .alwaysOriginal) ?? UIImage())))
+
+            items.append({
+                $0.anchor(widthConstant: 10)
+                return $0
+            }(UIView()))
+        }
 
         checkmarkView.removeConstraints(checkmarkView.constraints)
         checkmarkView.anchor(widthConstant: Constants.checkmarkSize)

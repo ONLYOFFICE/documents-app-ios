@@ -30,6 +30,8 @@ enum OnlyofficeAPI {
         public static let folder = "api/\(version)/files/folder/%@"
         public static let favorite = "api/\(version)/files/favorites"
         public static let filesShare = "api/\(version)/files/share"
+        public static let filesSharePassword = "api/\(version)/files/share/%@/password"
+        public static let filesOrder = "api/\(version)/files/order"
         public static let operations = "api/\(version)/files/fileops"
         public static let operationsTerminate = "api/\(version)/files/fileops/terminate"
         public static let operationCopy = "api/\(version)/files/fileops/copy"
@@ -37,6 +39,7 @@ enum OnlyofficeAPI {
         public static let operationDelete = "api/\(version)/files/fileops/delete"
         public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
+        public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -51,6 +54,7 @@ enum OnlyofficeAPI {
         public static let documentService = "api/\(version)/files/docservice"
         public static let people = "api/\(version)/people"
         public static let peopleFilter = "api/\(version)/people/filter"
+        public static let peopleRoom = "api/\(version)/people/room/%@"
         public static let groups = "api/\(version)/group"
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
@@ -62,6 +66,7 @@ enum OnlyofficeAPI {
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
         public static let paymentQuota = "api/\(version)/portal/payment/quota"
+        public static let paymentQuotaSettings = "api/\(version)/settings/roomquotasettings"
         public static let rooms = "api/\(version)/files/rooms"
         public static let roomsThirdparty = "api/\(version)/files/rooms/thirdparty/%@"
         public static let room = "api/\(version)/files/rooms/%@"
@@ -74,6 +79,8 @@ enum OnlyofficeAPI {
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        public static let roomReorder = "api/\(version)/files/rooms/%@/reorder"
+        public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
 
@@ -120,6 +127,15 @@ enum OnlyofficeAPI {
             static let filter: Endpoint<OnlyofficeResponseArray<ASCUser>> =
                 Endpoint<OnlyofficeResponseArray<ASCUser>>.make(Path.peopleFilter, .get, URLEncoding.default)
             static let groups: Endpoint<OnlyofficeResponseArray<ASCGroup>> = Endpoint<OnlyofficeResponseArray<ASCGroup>>.make(Path.groups)
+
+            static func room(roomId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> { Endpoint<OnlyofficeResponseArray<ASCUser>>
+                .make(
+                    String(format: Path.peopleRoom, roomId),
+                    .get,
+                    URLEncoding.default
+                )
+            }
+
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))
             }
@@ -183,6 +199,8 @@ enum OnlyofficeAPI {
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
 
+            static let roomQuotaSettings: Endpoint<OnlyofficeResponse<ASCPaymentQuotaSettings>> = Endpoint<OnlyofficeResponse<ASCPaymentQuotaSettings>>.make(Path.paymentQuotaSettings, .post)
+
             static func createThirdparty(providerId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomsThirdparty, providerId), .post)
             }
@@ -209,6 +227,10 @@ enum OnlyofficeAPI {
 
             static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
+            }
+
+            static func deleteLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .delete)
             }
 
             static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
@@ -241,6 +263,14 @@ enum OnlyofficeAPI {
 
             static func toggleRoomNotifications(room: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomNotificationsResponceModel>>.make(String(format: Path.disableNotifications), .post)
+            }
+
+            static func roomReorder(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomReorder, folder.id), .put)
+            }
+
+            static func roomIndexExport(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
             }
         }
 
@@ -313,6 +343,7 @@ enum OnlyofficeAPI {
 
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
             static let removeFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .delete)
+            static let order: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.filesOrder, .put)
         }
 
         // MARK: Sharing
@@ -329,6 +360,10 @@ enum OnlyofficeAPI {
 
             static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
+            }
+
+            static func password(token: String) -> Endpoint<OnlyofficeResponseCodable<SharePasswordResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharePasswordResponseModel>>.make(String(format: Path.filesSharePassword, token), .post)
             }
 
             static func folder(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
@@ -361,6 +396,7 @@ enum OnlyofficeAPI {
             static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
+            static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
         }
 
         // MARK: Third-Party Integration

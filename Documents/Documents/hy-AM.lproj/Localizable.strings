@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "Բոլոր Ֆայլերը";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "Արխիվացված բոլոր տարրերը ընդմիշտ կջնջվեն: Դուք չեք կարողանա վերականգնել դրանք:";
-
-/* No comment provided by engineer. */
 "All notifications" = "Բոլոր ծանուցումները";
 
 /* No comment provided by engineer. */
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Ստեղծելով պորտալը՝ դուք համաձայնում եք մեր Գաղտնիության քաղաքականությանը և Ծառայության պայմաններին";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "բայթ";
 
 /* No comment provided by engineer. */
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "Միացնել պահեստ";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Միացրեք երրորդ կողմի պահեստը\nինչպես Nextcloud-ը, ownCloud-ը, Yandex Disk-ը և\nմյուսները, որոնք օգտագործում են WebDAV արձանագրությունը:";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Միացեք ձեր %@ ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի վրա իրական ժամանակում համագործակցելու համար";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Ջնջել թղթապանակը";
-
-/* No comment provided by engineer. */
-"Delete forever" = "Ջնջել ընդմիշտ";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "Ջնջե՞լ ընդմիշտ";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "Ցուցակ";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "Բեռնվում է";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "Փորձառու օգտագործող";
 
-/* Share status */
-"Power user" = "Փորձառու օգտագործող";
-
 /* No comment provided by engineer. */
 "Presentation" = "Պրեզենտացիա";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "Դերեր";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "Սենյակի ադմին";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Հղում արտաքինի համար\nմուտքը պատճենված է\nդեպի clipboard";
 
-/* Expiration status */
-"The link has expired" = "Հղման ժամկետը սպառվել է";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "Հղումը ժամկետանց է և անջատված է";
+"The link has expired" = "Հղման ժամկետը սպառվել է";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "Հղումը ընդմիշտ կջնջվի: Դուք չեք կարողանա հետարկել այս գործողությունը:";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Այս աղյուսակը խմբագրվում է: Ցանկանու՞մ եք բացել %@-ը միայն դիտելու համար:";
-
-/* No comment provided by engineer. */
-"Time limit" = "Ժամկետը";
 
 /* No comment provided by engineer. */
 "Title" = "Կոչում";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "Դուք պատրաստվում եք ջնջել այս սենյակը: Դուք չեք կարողանա վերականգնել դրանք:";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Դուք այս սենյակի սեփականատերն եք: Նախքան սենյակից դուրս գալը, դուք պետք է սեփականատիրոջ դերը փոխանցեք մեկ այլ օգտատիրոջ:";

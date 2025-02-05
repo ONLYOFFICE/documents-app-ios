@@ -7,6 +7,7 @@
 //
 
 import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 import MBProgressHUD
 import UIKit
 
@@ -59,10 +60,9 @@ class ASCSMSCodeViewController: ASCBaseViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.shadowImage = UIImage()
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.useTextInputViewTintColor = true
 
         codeField?.becomeFirstResponder()
     }
@@ -70,8 +70,7 @@ class ASCSMSCodeViewController: ASCBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.isEnabled = false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

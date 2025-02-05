@@ -18,7 +18,7 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
 
     var selectCountry: ((ASCPhoneCountryCode) -> Void)?
 
-    private let phoneNumberKit = PhoneNumberKit()
+    private let phoneNumberUtility = PhoneNumberUtility()
     private var countresByLetter: [PhoneCountresByLetter] = []
 
     // Search
@@ -85,7 +85,7 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
     // MARK: - Private
 
     private func fetchData() {
-        let allCountries = phoneNumberKit.allCountries()
+        let allCountries = phoneNumberUtility.allCountries()
         var phoneCountries: [ASCPhoneCountryCode] = []
         var search: String?
 
@@ -101,7 +101,7 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
 
         for country in validCountries {
             if let countryName = Locale.current.localizedString(forRegionCode: country),
-               let code = phoneNumberKit.countryCode(for: country)
+               let code = phoneNumberUtility.countryCode(for: country)
             {
                 if let searchText = search {
                     if countryName.lowercased().contains(searchText) {

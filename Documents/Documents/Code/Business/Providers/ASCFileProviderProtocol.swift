@@ -41,6 +41,10 @@ struct ASCEntityActions: OptionSet {
     static let copySharedLink = ASCEntityActions(rawValue: 1 << 27)
     static let shareAsRoom = ASCEntityActions(rawValue: 1 << 28)
     static let fillForm = ASCEntityActions(rawValue: 1 << 29)
+    static let editIndex = ASCEntityActions(rawValue: 1 << 30)
+    static let reorderIndex = ASCEntityActions(rawValue: 1 << 31)
+    static let changeRoomOwner = ASCEntityActions(rawValue: 1 << 32)
+    static let exportRoomIndex = ASCEntityActions(rawValue: 1 << 33)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
@@ -72,7 +76,7 @@ enum ASCFiletProviderContentType {
     case files, folders, documents, spreadsheets, presentations, images, collaboration, `public`, custom, viewOnly, fillingForms
 }
 
-protocol ASCFileProviderProtocol {
+protocol ASCFileProviderProtocol: ASCEntityViewLayoutTypeProvider {
     // Information
     var id: String? { get }
     var type: ASCFileProviderType { get }
@@ -137,6 +141,7 @@ protocol ASCFileProviderProtocol {
     func actions(for entity: ASCEntity?) -> ASCEntityActions
     func isTrash(for folder: ASCFolder?) -> Bool
     func allowDragAndDrop(for entity: ASCEntity?) -> Bool
+    func getAccess(for folder: ASCFolder?, password: String, completion: @escaping (Result<ASCFolder?, Error>) -> Void)
 
     // Open files
     func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool)
@@ -189,6 +194,7 @@ extension ASCFileProviderProtocol {
     func allowEdit(entity: AnyObject?) -> Bool { false }
     func allowDelete(entity: AnyObject?) -> Bool { false }
     func allowDragAndDrop(for entity: ASCEntity?) -> Bool { true }
+    func getAccess(for folder: ASCFolder?, password: String, completion: @escaping (Result<ASCFolder?, Error>) -> Void) { completion(.failure(ProtocolImplementationError.unsupported)) }
     func isTrash(for folder: ASCFolder?) -> Bool { false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { [] }
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {
@@ -302,4 +308,8 @@ extension ASCFileProviderProtocol {
 
         return providerName(type)
     }
+}
+
+enum ProtocolImplementationError: Error {
+    case unsupported
 }

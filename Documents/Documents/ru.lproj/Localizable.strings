@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "Все файлы";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won't be able to restore them." = "Все элементы из архива будут удалены навсегда. Вы не сможете их восстановить.";
-
-/* No comment provided by engineer. */
 "All notifications" = "Все уведомления";
 
 /* No comment provided by engineer. */
@@ -192,7 +186,7 @@ Category title */
 "Back" = "Назад";
 
 /* No comment provided by engineer. */
-"Back to room" = "В комнату";
+"Back to room" = "Вернуться в комнату";
 
 /* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Поскольку вы являетесь владельцем данного DocSpace, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.";
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Создавая портал, вы соглашаетесь с нашей Политикой конфиденциальности и Условиями использования";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "байт";
 
 /* No comment provided by engineer. */
@@ -255,7 +250,7 @@ Category title */
 "Changing access" = "Изменение доступа";
 
 /* No comment provided by engineer. */
-"Check ready form" = "Проверить формы";
+"Check ready form" = "Проверить готовые формы";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Проверьте интернет-соединение";
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "Подключить хранилище";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Подключите стороннее хранилище,\nтакое как Nextcloud, ownCloud, Яндекс.Диск и\nдругие, использующие протокол WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Удалить папку";
-
-/* No comment provided by engineer. */
-"Delete forever" = "Удалить навсегда";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "Удалить навсегда?";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "Список";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "Загрузка";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "Опытный пользователь";
 
-/* Share status */
-"Power user" = "Опытный пользователь";
-
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "Роли";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "Администратор группы";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
 
-/* Expiration status */
-"The link has expired" = "Срок действия ссылки истек";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "Срок действия ссылки истек, и она была отключена";
+"The link has expired" = "Срок действия ссылки истек";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "Ссылка будет удалена безвозвратно. Вы не сможете отменить это действие.";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Эта таблица редактируется. Вы хотите открыть %@ только на просмотр?";
-
-/* No comment provided by engineer. */
-"Time limit" = "Ограничение по времени";
 
 /* No comment provided by engineer. */
 "Title" = "Название";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Иб";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won't be able to restore them." = "Вы собираетесь удалить эту комнату. Вы не сможете восстановить ее.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Вы являетесь владельцем комнаты. Перед тем, как покинуть комнату, вы должны передать роль владельца другому пользователю.";

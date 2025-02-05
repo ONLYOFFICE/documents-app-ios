@@ -20,7 +20,8 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
             UIAction(
                 title: NSLocalizedString("Select", comment: "Button title"),
                 image: UIImage(systemName: "checkmark.circle")
-            ) { action in
+            ) { [weak viewController] action in
+                guard let viewController else { return }
                 viewController.setEditMode(!viewController.collectionView.isEditing)
             }
         )
@@ -29,9 +30,9 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
             UIAction(
                 title: NSLocalizedString("Icons", comment: "Button title"),
                 image: UIImage(systemName: "square.grid.2x2"),
-                state: ASCDocumentsViewController.itemsViewType == .grid ? .on : .off
-            ) { action in
-                ASCDocumentsViewController.itemsViewType = .grid
+                state: viewController.itemsViewType == .grid ? .on : .off
+            ) { [weak viewController] action in
+                viewController?.itemsViewType = .grid
             }
         )
 
@@ -39,9 +40,9 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
             UIAction(
                 title: NSLocalizedString("List", comment: "Button title"),
                 image: UIImage(systemName: "list.bullet"),
-                state: ASCDocumentsViewController.itemsViewType == .list ? .on : .off
-            ) { action in
-                ASCDocumentsViewController.itemsViewType = .list
+                state: viewController.itemsViewType == .list ? .on : .off
+            ) { [weak viewController] action in
+                viewController?.itemsViewType = .list
             }
         )
 

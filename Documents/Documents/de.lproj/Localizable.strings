@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -137,9 +134,6 @@
 "All Files" = "Alle Dateien";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won't be able to restore them." = "Alle Objekte aus Archiviert werden endgültig gelöscht. Sie können sie nicht mehr wiederherstellen.";
-
-/* No comment provided by engineer. */
 "All notifications" = "Alle Benachrichtigungen";
 
 /* No comment provided by engineer. */
@@ -212,7 +206,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "Mit der Erstellung des Portals erklären Sie sich mit unseren Datenschutzbestimmungen und Nutzungsbedingungen einverstanden";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "Bytes";
 
 /* No comment provided by engineer. */
@@ -352,9 +347,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "Speicher verbinden";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Verbinden Sie Speicher von Drittanbietern\nwie Nextcloud, ownCloud, Yandex Disk und andere,\ndie das WebDAV-Protokoll verwenden.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Verbinden Sie sich mit Ihrer %@ Cloud, um Dateien online zu speichern und Dokumente in Echtzeit gemeinsam zu bearbeiten";
@@ -537,9 +529,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Ordner löschen";
-
-/* No comment provided by engineer. */
-"Delete forever" = "Endgültig löschen";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "Endgültig löschen?";
@@ -971,7 +960,7 @@ Operation completed */
 /* Button title */
 "List" = "Liste";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "Wird geladen";
 
 /* No comment provided by engineer. */
@@ -1313,9 +1302,6 @@ Share status */
 /* Share status */
 "Pover user" = "Power-Benutzer";
 
-/* Share status */
-"Power user" = "Power-Benutzer";
-
 /* No comment provided by engineer. */
 "Presentation" = "Präsentation";
 
@@ -1451,7 +1437,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "Rollen";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "Admin des Raums";
 
 /* No comment provided by engineer. */
@@ -1681,11 +1667,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Der Link für den externen\nZugriff wird in die Zwischenablage\nkopiert";
 
-/* Expiration status */
-"The link has expired" = "Der Link ist abgelaufen";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "Der Link ist abgelaufen und wurde deaktiviert";
+"The link has expired" = "Der Link ist abgelaufen";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "Der Link wird endgültig gelöscht. Sie können diese Aktion nicht mehr rückgängig machen.";
@@ -1767,9 +1750,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Diese Präsentation wird bearbeitet. Möchten Sie %@ nur anzeigen öffnen?";
-
-/* No comment provided by engineer. */
-"Time limit" = "Zeitliche Begrenzung";
 
 /* No comment provided by engineer. */
 "Title" = "Titel";
@@ -1980,9 +1960,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won't be able to restore them." = "Sie löschen diesen Raum jetzt. Dies kann nicht rückgängig gemacht werden.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Sie sind verantwortlich für diesen Raum. Bevor Sie den Raum verlassen, müssen Sie die Rolle des Verantwortlichen auf einen anderen Benutzer übertragen.";

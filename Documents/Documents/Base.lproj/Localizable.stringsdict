@@ -2,6 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@months@</string>
+		<key>months</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>%d months</string>
+			<key>one</key>
+			<string>%d month</string>
+		</dict>
+	</dict>
+	<key>%d years</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@years@</string>
+		<key>years</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>%d years</string>
+			<key>one</key>
+			<string>%d year</string>
+		</dict>
+	</dict>
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

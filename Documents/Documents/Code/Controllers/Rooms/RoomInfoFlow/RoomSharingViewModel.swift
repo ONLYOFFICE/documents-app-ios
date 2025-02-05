@@ -21,7 +21,12 @@ final class RoomSharingViewModel: ObservableObject {
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
     var isPossibleCreateNewLink: Bool {
-        room.roomType != .colobaration
+        switch room.roomType {
+        case .colobaration, .virtualData:
+            return false
+        default:
+            return true
+        }
     }
 
     var canAddLink: Bool {
@@ -39,6 +44,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
+    @Published var guests: [ASCUserRowModel] = []
     @Published var invites: [ASCUserRowModel] = []
     @Published var sharedLinksModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
 
@@ -274,8 +280,15 @@ private extension RoomSharingViewModel {
     func buildViewModel() {
         sharedLinksModels = flowModel.links.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
-        users = flowModel.sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
-        invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
+        users = flowModel.sharings
+            .filter { !$0.user.isAdmin && !$0.user.isVisitor }
+            .map { self.mapToUserViewModel(sharing: $0) }
+        guests = flowModel.sharings
+            .filter { $0.user.activationStatus == .applyed && $0.user.isVisitor }
+            .map { self.mapToUserViewModel(sharing: $0) }
+        invites = flowModel.sharings
+            .filter { $0.user.isUnaplyed && $0.user.isVisitor }
+            .map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
     }
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
@@ -307,6 +320,7 @@ private extension RoomSharingViewModel {
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,
             isSharingPossible: isSharingPossible,
+            accessRight: link.access,
             onTapAction: { [weak self] in
                 guard let self else { return }
                 if isSharingPossible {
@@ -317,10 +331,6 @@ private extension RoomSharingViewModel {
                 guard let self, isSharingPossible else { return }
                 isSharingScreenPresenting = true
                 sharingLink = URL(string: link.linkInfo.shareLink)
-            },
-            onCopyAction: { [weak self] in
-                guard let self else { return }
-                onCopyLinkAndNotify(link: link)
             }
         )
     }

@@ -849,7 +849,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         // Archive
-        if isDocSpaceRoomShared {
+        if isDocSpaceRoomShared, canArchiveAllSelectedItems() {
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
@@ -2944,6 +2944,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.delete, folderKeyPathSecurity: \.delete)
     }
 
+    private func canArchiveLeastOneItem() -> Bool {
+        canMoveLeastOneItem() // Archive = Move
+    }
+
     private func canCopyLeastOneItem() -> Bool {
         canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.copy, folderKeyPathSecurity: \.copy)
     }
@@ -2984,6 +2988,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private func canMoveAllSelectedItems() -> Bool {
         guard selectedIds.count > 0 else { return canMoveLeastOneItem() }
         return canPerformActionOnSelectedItems(fileKeyPathSecurity: \.move, folderKeyPathSecurity: \.move)
+    }
+
+    private func canArchiveAllSelectedItems() -> Bool {
+        canMoveAllSelectedItems() // Archive = Move
     }
 
     private func canPerformActionOnSelectedItems(fileKeyPathSecurity: KeyPath<ASCFileSecurity, Bool>,

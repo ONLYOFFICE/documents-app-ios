@@ -4206,7 +4206,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n";
+			shellScript = "#!/bin/bash\nexit 0 # incriment in build system\n\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		FCE1861D2628C51F0086D21B /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;

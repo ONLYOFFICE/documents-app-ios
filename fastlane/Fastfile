@@ -61,6 +61,68 @@ platform :ios do
     )
   end
 
+  desc "Increment Build Number"
+  lane :increment_build_number_and_settings do |options|
+    version_number = get_info_plist_value(
+      path: options[:plist_path],
+      key: "CFBundleShortVersionString"
+    )
+
+    build_number = get_info_plist_value(
+      path: options[:plist_path], 
+      key: "CFBundleVersion"
+    )
+
+    bumped_build_number = build_number.to_i.next.to_s
+
+    update_plist(
+      plist_path: options[:plist_path],
+      block: proc do |plist|
+        plist["CFBundleVersion"] = bumped_build_number
+      end
+    )
+
+    update_plist(
+      plist_path: options[:settings_plist_path],
+      block: proc do |plist|
+        versionInfo = plist["PreferenceSpecifiers"].find{|scheme| scheme["Key"] == "version_preference"}
+        versionInfo[:DefaultValue] = "#{version_number} (#{bumped_build_number})"
+      end
+    )
+  end
+
+  desc "Build app for simulator"
+  lane :simulator do |options|
+    gym(
+      clean: true,
+      scheme: "Documents",
+      workspace: "ONLYOFFICE-Documents.xcworkspace",
+      configuration: "Release",
+      skip_package_ipa: true,
+      skip_archive: true,
+      destination: "generic/platform=iOS Simulator",
+      derived_data_path: ".build/DerivedData",
+    )
+
+    if options[:archive_app]
+      version_number = get_info_plist_value(
+        path: "Documents/Documents/Documents.plist",
+        key: "CFBundleShortVersionString"
+      )
+      build_number = get_info_plist_value(
+        path: "Documents/Documents/Documents.plist", 
+        key: "CFBundleVersion"
+      )
+
+      sh("rm -f ../.build/output/Documents*-simulator.zip")
+
+      zip(
+        path: ".build/DerivedData/Build/Products/Release-iphonesimulator/Documents.app",
+        output_path: ".build/output/Documents-v#{version_number}(#{build_number})-simulator.zip"
+      )
+    end
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do |options|
@@ -101,6 +163,12 @@ platform :ios do
 
     appstore_change_log = truncate(change_log, 3500)
     telegram_change_log = truncate(escape_markdown(change_log), 3500)
+
+    # increment build number
+    increment_build_number_and_settings(
+      plist_path: "Documents/Documents/Documents.plist",
+      settings_plist_path: "Documents/Settings.bundle/Root.plist"
+    )
 
     # creates a bump version commit 
     commit_version_bump(
@@ -169,7 +237,6 @@ platform :ios do
       path: "Documents/Documents/Documents.alpha.plist",
       key: "CFBundleVersion"
     )
-    bumped_build_number = build_number.to_i.next.to_s
 
     # Update app icon
     add_badge(
@@ -197,19 +264,9 @@ platform :ios do
     appstore_change_log = truncate(change_log, 3500)
     telegram_change_log = truncate(escape_markdown(change_log), 3500)
 
-    # creates a bump version commit
-    update_plist(
+    increment_build_number_and_settings(
       plist_path: "Documents/Documents/Documents.alpha.plist",
-      block: proc do |plist|
-        plist[:CFBundleVersion] = bumped_build_number
-      end
-    )
-    update_plist(
-      plist_path: "Documents/Settings.bundle/Root.plist",
-      block: proc do |plist|
-        versionInfo = plist["PreferenceSpecifiers"].find{|scheme| scheme["Key"] == "version_preference"}
-        versionInfo[:DefaultValue] = "#{version_number} (#{bumped_build_number})"
-      end
+      settings_plist_path: "Documents/Settings.bundle/Root.plist"
     )
 
     git_commit(

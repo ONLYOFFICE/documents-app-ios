@@ -1483,6 +1483,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 && !folder.isThirdParty
                 && !isArchiveCategory
                 && canCopy
+            let canCopyLink = isFolderInRoom(folder: folder) && !isArchiveCategory && folder.security.copySharedLink
 
             if folder.rootFolderType == .onlyofficeTrash {
                 return [.delete, .restore]
@@ -1545,12 +1546,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.duplicate)
             }
 
+            if canCopyLink {
+                entityActions.insert(.link)
+            }
+
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
-                    entityActions.insert(.link)
                     entityActions.insert(.edit)
                 }
                 if folder.security.move {

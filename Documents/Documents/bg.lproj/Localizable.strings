@@ -379,9 +379,6 @@ Caption of the processing */
 /* Button title */
 "Copy link" = "Копирай линк";
 
-/* No comment provided by engineer. */
-"Copy shared link" = "Копирай споделен линк";
-
 /* Caption of the processing */
 "Copying" = "Копиране";
 

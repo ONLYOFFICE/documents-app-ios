@@ -1287,6 +1287,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>%1$lu елементи със същото име вече съществуват в папката '%2$@'. Презапишете елементите?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="(%@)" xml:space="preserve">
+        <source>(%@)</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
         <source>(%1$@/%2$@)</source>
         <target>(%1$@/%2$@)</target>
@@ -1893,11 +1897,6 @@ Caption of the processing</note>
         <target>Копирай линк</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Copy shared link" xml:space="preserve">
-        <source>Copy shared link</source>
-        <target>Копирай споделен линк</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>Копиране</target>
@@ -2018,6 +2017,10 @@ Caption of the processing</note>
         <target>Файлът не може да бъде прочетен</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Could not resolve the file." xml:space="preserve">
+        <source>Could not resolve the file.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>Върху файлът не може да се пише</target>
@@ -2068,6 +2071,10 @@ Caption of the processing</note>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
         <target>Създайте безплатен профил</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a new file" xml:space="preserve">
+        <source>Create a new file</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2439,6 +2446,10 @@ Operation completed</note>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
         <target>Няма подпапки</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
@@ -4192,6 +4203,10 @@ Navigation bar button title</note>
         <target>Сървърът %@ не е наличен.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
+        <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
         <target>Името на профила трябва да е между 6 и 50 знака</target>
@@ -4755,6 +4770,10 @@ Swipe to learn more about the app.</source>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
         <target>Добре дошли в Стаята за попълване на формуляри</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
+        <source>Welcome to the Virtual Data Room </source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

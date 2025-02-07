@@ -1489,7 +1489,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            if !folder.isEmpty {
+            let folderIsRoomsListAndNotEmpty: Bool = folder.isRoomListFolder && total > .zero
+
+            if !folder.isEmpty || folderIsRoomsListAndNotEmpty {
                 entityActions.insert(.select)
             }
 

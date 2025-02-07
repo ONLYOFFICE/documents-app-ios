@@ -74,6 +74,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     var isEditingIndexMode = false {
         didSet {
+            guard isEditingIndexMode != oldValue else { return }
             configureNavigationBar(animated: true)
             updateUIForEditingOrderIndexState()
             collectionView.reloadData()

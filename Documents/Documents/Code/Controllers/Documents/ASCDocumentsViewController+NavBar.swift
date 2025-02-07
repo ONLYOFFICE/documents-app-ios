@@ -112,6 +112,8 @@ extension ASCDocumentsViewController {
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0
+
+        configureNavigationBar()
     }
 }
 

@@ -1843,7 +1843,7 @@ Navigation bar button title */
 "The file in the Trash can not be viewed." = "Невозможно просмотреть файл, находящийся в корзине.";
 
 /* No comment provided by engineer. */
-"The file lifetime is set to %@ in this room." = "Срок действия файла в этой комнате установлен на %1d %2s.";
+"The file lifetime is set to %@ in this room." = "Срок действия файла в этой комнате установлен на %@.";
 
 /* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";

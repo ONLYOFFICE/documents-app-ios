@@ -4444,7 +4444,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The file lifetime is set to %@ in this room." xml:space="preserve">
         <source>The file lifetime is set to %@ in this room.</source>
-        <target>Срок действия файла в этой комнате установлен на %1d %2s.</target>
+        <target>Срок действия файла в этой комнате установлен на %@.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">

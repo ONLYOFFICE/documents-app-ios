@@ -287,6 +287,7 @@ class ASCViewControllerManager {
 
                                 let file = ASCFile()
                                 file.id = newFilePath.rawValue
+                                file.viewUrl = newFilePath.rawValue
                                 file.rootFolderType = .deviceDocuments
                                 file.title = newFilePath.fileName
                                 file.created = newFilePath.creationDate

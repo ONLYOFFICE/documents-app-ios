@@ -2396,6 +2396,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                     let file = ASCFile()
                     file.id = destinationPath.rawValue
+                    file.viewUrl = destinationPath.rawValue
                     file.rootFolderType = .deviceDocuments
                     file.title = destinationPath.fileName
                     file.created = destinationPath.creationDate

@@ -82,7 +82,7 @@ class ASCLocalFileHelper {
             try fromPath.copyFile(to: toPath)
         } catch {
             log.error(error)
-            return error
+            return ASCLocalFileHelperError(fileKitError: error)
         }
 
         return nil
@@ -94,9 +94,8 @@ class ASCLocalFileHelper {
             try fromPath.moveFile(to: toPath)
         } catch {
             log.error(error)
-            return error
+            return ASCLocalFileHelperError(fileKitError: error)
         }
-
         return nil
     }
 
@@ -139,5 +138,21 @@ class ASCLocalFileHelper {
         }
 
         return resolvePath.exists ? nil : resolvePath
+    }
+}
+
+struct ASCLocalFileHelperError: LocalizedError {
+    let fileKitError: FileKitError?
+
+    init(fileKitError: Error) {
+        self.fileKitError = fileKitError as? FileKitError
+    }
+
+    var localizedDescription: String? {
+        fileKitError?.message
+    }
+
+    var errorDescription: String? {
+        fileKitError?.message
     }
 }

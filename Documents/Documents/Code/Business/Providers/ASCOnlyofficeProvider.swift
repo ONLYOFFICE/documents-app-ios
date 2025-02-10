@@ -390,6 +390,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
                     if let current = path.current {
                         currentFolder = current
+
+                        if currentFolder.parent == nil {
+                            currentFolder.parentId = folder.parentId
+                            currentFolder.parent = folder.parent
+                        }
                     }
 
                     if self.page == 0 {
@@ -2437,17 +2442,21 @@ extension ASCOnlyofficeProvider {
 extension ASCOnlyofficeProvider {
     var itemsViewType: ASCEntityViewLayoutType {
         get {
-            if let folder, folder.parentsFoldersOrCurrentContains(
-                keyPath: \.roomType,
-                value: .virtualData
-            ) {
-                return .list
-            }
-            return ASCEntityViewLayoutTypeService.shared.itemsViewType
+            itemsViewType(for: folder)
         }
         set {
             ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue
         }
+    }
+
+    func itemsViewType(for folder: ASCFolder?) -> ASCEntityViewLayoutType {
+        if let folder, folder.parentsFoldersOrCurrentContains(
+            keyPath: \.indexing,
+            value: true
+        ) {
+            return .list
+        }
+        return ASCEntityViewLayoutTypeService.shared.itemsViewType
     }
 }
 

@@ -23,7 +23,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     var itemsViewType: ASCEntityViewLayoutType {
         get {
-            return provider?.itemsViewType ?? .list
+            return provider?.itemsViewType(for: folder) ?? .list
         }
         set {
             provider?.itemsViewType = newValue
@@ -2246,7 +2246,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func editRoom(folder: ASCFolder) {
-        let vc = EditRoomViewController(folder: folder) { _ in
+        let previusIndexingValue = folder.indexing
+        let vc = EditRoomViewController(folder: folder) { [weak self] editedRoom in
+            guard let self else { return }
+            self.folder = editedRoom
+
             if let refreshControl = self.collectionView.refreshControl {
                 self.refresh(refreshControl)
                 if let viewControllers = self.navigationController?.viewControllers,
@@ -2255,6 +2259,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 {
                     let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
                     previousController?.refresh(refreshControl)
+                }
+            }
+
+            // If indexing changed rerender layout with correct type for edited room
+            if previusIndexingValue != editedRoom.indexing {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(
+                        name: ASCConstants.Notifications.updateDocumentsViewLayoutType,
+                        object: self.provider?.itemsViewType(for: editedRoom) ?? .list
+                    )
                 }
             }
         }

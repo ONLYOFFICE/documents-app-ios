@@ -30,7 +30,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
 
         var viewGroup: [UIMenuElement] = []
 
-        if folder.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) == false {
+        if !folder.parentsFoldersOrCurrentContains(keyPath: \.indexing, value: true) {
             viewGroup.append(
                 UIAction(
                     title: NSLocalizedString("Icons", comment: "Button title"),

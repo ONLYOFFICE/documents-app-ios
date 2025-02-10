@@ -1316,8 +1316,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         let requestModel = SharePasswordRequestModel(password: password)
-        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.password(token: token), requestModel.dictionary) { response, error in
-            if let result = response?.result {
+        let endpoint = OnlyofficeAPI.Endpoints.Sharing.password(token: token)
+        apiClient.request(endpoint, requestModel.dictionary) { [apiClient] response, error in
+            apiClient.savePasswordCookiesToHeaders(endpoint: endpoint)
+            NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
+            if response?.result != nil {
                 folder.passwordProtected = false
                 completion(.success(folder))
             } else if let error {
@@ -2522,6 +2525,21 @@ extension ASCOnlyofficeProvider: ProviderEditIndexDelegate {
         itemsBeforeEditingOrder = []
         itemsIdsWithChangedOrderIndex.removeAll()
     }
+}
+
+private extension OnlyofficeApiClient {
+    func savePasswordCookiesToHeaders(endpoint: Endpoint<OnlyofficeResponseCodable<SharePasswordResponseModel>>) {
+        guard let url = url(path: endpoint.path) else { return }
+        let service = ServicesProvider.shared.onlyofficeHeadersOnTokenService
+        HTTPCookieStorage.shared.cookies(for: url)?
+            .filter { $0.name.contains(String.passwordCookiePrefix) }
+            .map { HTTPHeader(name: $0.name, value: $0.value) }
+            .forEach { service.add(header: $0, for: self.token ?? "") }
+    }
+}
+
+private extension String {
+    static let passwordCookiePrefix = "sharelink"
 }
 
 struct StringError: LocalizedError {

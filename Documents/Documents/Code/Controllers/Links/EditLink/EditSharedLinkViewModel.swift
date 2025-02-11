@@ -163,11 +163,12 @@ final class EditSharedLinkViewModel: ObservableObject {
 
         networkService.regenerateLink(file: file, requestModel: requestModel) { result in
             switch result {
-            case let .success(link):
-                self.link = link
+            case let .success(updatedLink):
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
+                    self.link = updatedLink
                     self.buildViewModel()
+                    self.outputLink = updatedLink
                 }
             case let .failure(error):
                 print(error.localizedDescription)

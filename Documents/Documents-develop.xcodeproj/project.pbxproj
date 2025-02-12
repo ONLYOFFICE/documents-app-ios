@@ -469,6 +469,7 @@
 		FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */; };
 		FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */; };
 		FC95D68A2D5A1D79000725C8 /* OnlyofficeHeadersOnTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6892D5A1D79000725C8 /* OnlyofficeHeadersOnTokenService.swift */; };
+		FC95D6A92D5CD50E000725C8 /* ASCUpdateLocallyEditFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6A82D5CD507000725C8 /* ASCUpdateLocallyEditFileInfo.swift */; };
 		FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */; };
 		FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */; };
 		FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */; };
@@ -1206,6 +1207,7 @@
 		FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Box.swift; sourceTree = "<group>"; };
 		FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavController.swift; sourceTree = "<group>"; };
 		FC95D6892D5A1D79000725C8 /* OnlyofficeHeadersOnTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeHeadersOnTokenService.swift; sourceTree = "<group>"; };
+		FC95D6A82D5CD507000725C8 /* ASCUpdateLocallyEditFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUpdateLocallyEditFileInfo.swift; sourceTree = "<group>"; };
 		FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalViewController.swift; sourceTree = "<group>"; };
 		FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSignInViewController.swift; sourceTree = "<group>"; };
 		FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAViewController.swift; sourceTree = "<group>"; };
@@ -2104,6 +2106,7 @@
 		FC56A36E2A3870A6000EA058 /* EditorManager */ = {
 			isa = PBXGroup;
 			children = (
+				FC95D6A72D5CD4FE000725C8 /* Models */,
 				FC59420F2AE65E0A001BA2F9 /* DI */,
 				FC56A36F2A3870D3000EA058 /* Protocols */,
 				FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */,
@@ -2971,6 +2974,14 @@
 				FC4160FC29090F42006B5E4A /* ASCLinkTableViewHeaderFooterView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FC95D6A72D5CD4FE000725C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC95D6A82D5CD507000725C8 /* ASCUpdateLocallyEditFileInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FC99FAEF22645F1D000F1464 /* 2FA */ = {
@@ -4070,6 +4081,7 @@
 				FC7D996A2729952400410795 /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,
 				FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */,
 				FC759BC62C00611000510096 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */,
+				FC95D6A92D5CD50E000725C8 /* ASCUpdateLocallyEditFileInfo.swift in Sources */,
 				FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */,
 				FC239982267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift in Sources */,
 				FC7DC86F285A2D3400E61C69 /* ASCFiltersCollectionViewModelBuilder.swift in Sources */,

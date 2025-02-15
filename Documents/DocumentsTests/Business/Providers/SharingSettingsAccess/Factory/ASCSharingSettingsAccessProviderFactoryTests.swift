@@ -49,7 +49,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         file.title = "Foo.docx"
         let provider = sut.get(entity: file, isAccessExternal: false)
         let actualAccessList = provider.get()
-        let expectedAccessList: [ASCShareAccess] = [.full, .review, .comment, .read, .deny]
+        let expectedAccessList: [ASCShareAccess] = [.editing, .review, .comment, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
 
@@ -72,7 +72,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         file.title = "Foo.docxf"
         let provider = sut.get(entity: file, isAccessExternal: false)
         let actualAccessList = provider.get()
-        let expectedAccessList: [ASCShareAccess] = [.full, .review, .comment, .read, .deny]
+        let expectedAccessList: [ASCShareAccess] = [.editing, .review, .comment, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
 
@@ -81,7 +81,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         file.title = "Foo.docxf"
         let provider = sut.get(entity: file, isAccessExternal: true)
         let actualAccessList = provider.get()
-        let expectedAccessList: [ASCShareAccess] = [.full, .review, .comment, .read, .deny]
+        let expectedAccessList: [ASCShareAccess] = [.editing, .review, .comment, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
 
@@ -97,7 +97,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         file.title = "Foo.oform"
         let provider = sut.get(entity: file, isAccessExternal: false)
         let actualAccessList = provider.get()
-        let expectedAccessList: [ASCShareAccess] = [.full, .fillForms, .read, .deny]
+        let expectedAccessList: [ASCShareAccess] = [.editing, .fillForms, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
 
@@ -106,7 +106,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         file.title = "Foo.oform"
         let provider = sut.get(entity: file, isAccessExternal: true)
         let actualAccessList = provider.get()
-        let expectedAccessList: [ASCShareAccess] = [.full, .fillForms, .read, .deny]
+        let expectedAccessList: [ASCShareAccess] = [.editing, .fillForms, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
 

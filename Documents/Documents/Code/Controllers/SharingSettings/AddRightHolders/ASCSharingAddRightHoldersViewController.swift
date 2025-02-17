@@ -150,9 +150,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.usersTableView.register(usersTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: usersTableViewDataSourceAndDelegate.type.reuseId)
         sharingAddRightHoldersView?.groupsTableView.register(groupsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: groupsTableViewDataSourceAndDelegate.type.reuseId)
 
-        sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
-
         loadData()
+        sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
     }
 
     override func viewWillAppear(_ animated: Bool) {

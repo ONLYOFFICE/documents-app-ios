@@ -989,7 +989,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     func isFolderInRoom(folder: ASCFolder?) -> Bool {
         guard let folder = folder else { return false }
-        return ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType)
+        return ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) && !folder.isRoom
     }
 
     func isRoot(folder: ASCFolder?) -> Bool {
@@ -1009,10 +1009,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return false
     }
 
-    func allowDuplicate(entity: AnyObject?) -> Bool {
-        guard let file = entity as? ASCFile, allowEdit(entity: entity) else { return false }
-        guard isInRoom else { return true }
-        return file.security.duplicate
+    func allowDuplicate(entity: ASCEntity?) -> Bool {
+        guard let entity = entity else { return false }
+
+        // Allow duplicate folders only in case folder - is room
+        if let folder = entity as? ASCFolder {
+            return folder.security.duplicate
+                && folder.isRoom
+                && !folder.isThirdParty
+        }
+
+        if let file = entity as? ASCFile {
+            return file.security.duplicate
+        }
+
+        return false
     }
 
     func allowDownload(folder: ASCFolder?) -> Bool {
@@ -1487,10 +1498,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
             let isRoomsCategory = folder.rootFolderType == .onlyofficeRoomShared
-            let canDuplicateRoom = folder.isRoom
-                && !folder.isThirdParty
-                && !isArchiveCategory
-                && canCopy
+            let canDuplicateRoom = allowDuplicate(entity: folder)
             let canCopyLink = isFolderInRoom(folder: folder) && !isArchiveCategory && folder.security.copySharedLink
 
             if folder.rootFolderType == .onlyofficeTrash {

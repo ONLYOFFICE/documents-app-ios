@@ -1,4 +1,7 @@
 /* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -479,6 +482,9 @@ Caption of the processing */
 "Could not read from file" = "Չհաջողվեց կարդալ ֆայլից";
 
 /* No comment provided by engineer. */
+"Could not resolve the file." = "Չհաջողվեց լուծել ֆայլը:";
+
+/* No comment provided by engineer. */
 "Could Not Send Email" = "Չհաջողվեց ուղարկել էլ․փոստին";
 
 /* Description of file operation error */
@@ -510,6 +516,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Create a free account" = "Ստեղծել անվճար հաշիվ";
+
+/* No comment provided by engineer. */
+"Create a new file" = "Ստեղծել նոր ֆայլ";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Ստեղծեք լրացուցիչ հղումներ՝ փաստաթուղթը հասանելիության տարբեր իրավունքներով համօգտագործելու համար:";
@@ -743,6 +752,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "Բացառել ենթաթղթապանակները";
+
+/* No comment provided by engineer. */
+"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "Դուրս գա՞լ առանց պահելու: Դուք փոփոխություններ եք կատարել ինդեքսում: Եթե ​​շարունակեք առանց պահելու, այս փոփոխությունները չեն կիրառվի:";
 
 /* No comment provided by engineer. */
 "Expect users" = "Սպասեք օգտվողներին";
@@ -1897,6 +1909,9 @@ Navigation bar button title */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Օգտատերերի չափաբաժինը գրեթե սպառվել է։ Կապվեք պորտալի ադմինիստրատորի հետ։";
 
 /* No comment provided by engineer. */
+"The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." = "Վերադասավորել գործողությունը կհեռացնի ինդեքսների բացատները: Ֆայլերը կվերինդեքսավորվեն օֆսեթ կարգով՝ բացակայող ինդեքսները լրացնելու համար:";
+
+/* No comment provided by engineer. */
 "The request timed out." = "Հարցման ժամկետը սպառվել է:";
 
 /* No comment provided by engineer. */
@@ -2168,6 +2183,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Welcome to the Form filling room " = "Բարի գալուստ Ձևաթղթերի լրացման սենյակ";
+
+/* No comment provided by engineer. */
+"Welcome to the Virtual Data Room " = "Բարի գալուստ Վիրտուալ Տվյալների Սենյակ";
 
 /* No comment provided by engineer. */
 "What's New" = "Ինչ նորություն կա";

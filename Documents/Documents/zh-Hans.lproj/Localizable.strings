@@ -1,4 +1,7 @@
 /* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -479,13 +482,13 @@ Caption of the processing */
 "Could not read from file" = "无法读取文件";
 
 /* No comment provided by engineer. */
+"Could not resolve the file." = "无法解析文件";
+
+/* No comment provided by engineer. */
 "Could Not Send Email" = "无法发送电子邮件";
 
 /* Description of file operation error */
 "Could not write to file" = "无法写入文件";
-
-/* No comment provided by engineer. */
-"Couldn' get access" = "无法获取访问权限";
 
 /* No comment provided by engineer. */
 "Couldn't change the owner." = "无法更改所有者。";
@@ -513,6 +516,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Create a free account" = "创建免费账户";
+
+/* No comment provided by engineer. */
+"Create a new file" = "创建新文件";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "创建附加链接以共享文档，并设置不同的访问权限。";
@@ -746,6 +752,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "排除子文件夾";
+
+/* No comment provided by engineer. */
+"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。";
 
 /* No comment provided by engineer. */
 "Expect users" = "预期用户";
@@ -1900,6 +1909,9 @@ Navigation bar button title */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "用户的配额快用完了。请联系门户网站的管理员";
 
 /* No comment provided by engineer. */
+"The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." = "重新排序操作将移除索引中的空白项。文件将重新索引，并按顺序填补缺失的索引。";
+
+/* No comment provided by engineer. */
 "The request timed out." = "请求已超时。";
 
 /* No comment provided by engineer. */
@@ -2171,6 +2183,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Welcome to the Form filling room " = "欢迎来到表单填写房间";
+
+/* No comment provided by engineer. */
+"Welcome to the Virtual Data Room " = "欢迎使用虚拟数据房间";
 
 /* No comment provided by engineer. */
 "What's New" = "新增功能";

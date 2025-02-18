@@ -1,4 +1,7 @@
 /* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -479,6 +482,9 @@ Caption of the processing */
 "Could not read from file" = "Impossible de lire le fichier";
 
 /* No comment provided by engineer. */
+"Could not resolve the file." = "Impossible de résoudre le fichier.";
+
+/* No comment provided by engineer. */
 "Could Not Send Email" = "Impossible d'envoyer un e-mail";
 
 /* Description of file operation error */
@@ -510,6 +516,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Create a free account" = "Créer un compte gratuit";
+
+/* No comment provided by engineer. */
+"Create a new file" = "Créer un nouveau fichier";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Créez des liens supplémentaires pour partager le document avec différents droits d'accès.";
@@ -743,6 +752,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "Pas de sous-dossiers";
+
+/* No comment provided by engineer. */
+"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "Quitter sans sauvegarder ?  Vous avez apporté des modifications à l'index. Si vous continuez sans sauvegarder, ces modifications ne seront pas appliquées.";
 
 /* No comment provided by engineer. */
 "Expect users" = "Attendre des utilisateurs";
@@ -1897,6 +1909,9 @@ Navigation bar button title */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Le quota d'utilisateurs est presque épuisé. Сontactez l'administrateur du portail";
 
 /* No comment provided by engineer. */
+"The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." = "L'action Réorganiser supprime les espaces dans les index. Les fichiers seront réindexés dans l'ordre avec un décalage pour compléter les index manquants.";
+
+/* No comment provided by engineer. */
 "The request timed out." = "La demande a expiré.";
 
 /* No comment provided by engineer. */
@@ -2168,6 +2183,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Welcome to the Form filling room " = "Bienvenue dans la salle de remplissage de formulaires";
+
+/* No comment provided by engineer. */
+"Welcome to the Virtual Data Room " = "Bienvenue dans la salle de données virtuelle";
 
 /* No comment provided by engineer. */
 "What's New" = "Quoi de neuf";

@@ -1598,7 +1598,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.exportRoomIndex)
             }
 
-            if folder.isRoomListSubfolder, user?.isAdmin == true {
+            if folder.isRoomListSubfolder,
+               user?.isAdmin == true,
+               !(folder.rootFolderType == .onlyofficeRoomArchived)
+            {
                 entityActions.insert(.changeRoomOwner)
             }
         }

@@ -1295,6 +1295,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="(%@)" xml:space="preserve">
+        <source>(%@)</source>
+        <target>(%@)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
         <source>(%1$@/%2$@)</source>
         <target>(%1$@/%2$@)</target>
@@ -1913,11 +1918,6 @@ Caption of the processing</note>
         <target>Copy link</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Copy shared link" xml:space="preserve">
-        <source>Copy shared link</source>
-        <target>Copy shared link</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>Copying</target>
@@ -2038,6 +2038,11 @@ Caption of the processing</note>
         <target>Could not read from file</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Could not resolve the file." xml:space="preserve">
+        <source>Could not resolve the file.</source>
+        <target>Could not resolve the file.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>Could not write to file</target>
@@ -2091,6 +2096,11 @@ Caption of the processing</note>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
         <target>Create a free account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a new file" xml:space="preserve">
+        <source>Create a new file</source>
+        <target>Create a new file</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2475,6 +2485,11 @@ Operation completed</note>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
         <target>Exclude subfolders</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
@@ -3226,6 +3241,11 @@ If current user name is not set</note>
         <target>New form filling room</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
+        <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <target>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
         <target>New room</target>
@@ -3264,6 +3284,11 @@ If current user name is not set</note>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
         <target>No Search Result</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No added guests yet" xml:space="preserve">
+        <source>No added guests yet</source>
+        <target>No added guests yet</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
@@ -4273,6 +4298,11 @@ Navigation bar button title</note>
         <target>The %@ server is not available.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
+        <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <target>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
         <target>The account name must be between 6 and 50 characters long</target>
@@ -4849,6 +4879,11 @@ Swipe to learn more about the app.</target>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
         <target>Welcome to the Form filling room </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
+        <source>Welcome to the Virtual Data Room </source>
+        <target>Welcome to the Virtual Data Room </target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

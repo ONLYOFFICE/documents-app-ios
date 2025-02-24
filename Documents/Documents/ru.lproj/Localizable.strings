@@ -95,6 +95,9 @@
 "Accounts" = "Учетные записи";
 
 /* No comment provided by engineer. */
+"Action on files" = "Действия с файлами";
+
+/* No comment provided by engineer. */
 "Add account" = "Добавить аккаунт";
 
 /* No comment provided by engineer. */
@@ -102,6 +105,9 @@
 
 /* Sharing settings add notification message */
 "Add message" = "Добавить сообщение";
+
+/* No comment provided by engineer. */
+"Add static text" = "Добавить статический текст";
 
 /* placeholder */
 "Add tag" = "Добавить тег";
@@ -111,6 +117,12 @@
 
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Добавьте пользователей или группы и дайте им\n возможность читать, просматривать или редактировать документы.";
+
+/* No comment provided by engineer. */
+"Add watermark elements" = "Добавить элементы водяного знака";
+
+/* No comment provided by engineer. */
+"Add watermarks to documents" = "Добавляйте водяные знаки в документы";
 
 /* No comment provided by engineer. */
 "Additional links" = "Дополнительные ссылки";
@@ -151,6 +163,9 @@
 /* No comment provided by engineer. */
 "AppleId authentication failed" = "Аутентификация через AppleId не удалась";
 
+/* Button title */
+"Apply" = "Применить";
+
 /* No comment provided by engineer. */
 "Apply your own settings to use this room for any custom purpose" = "Примените свои собственные настройки, чтобы использовать эту комнату для любых пользовательских целей";
 
@@ -181,6 +196,9 @@ Category title */
 
 /* No comment provided by engineer. */
 "Author" = "Автор";
+
+/* No comment provided by engineer. */
+"Automatic indexing" = "Автоматическая индексация";
 
 /* No comment provided by engineer. */
 "Back" = "Назад";
@@ -239,6 +257,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "Change owner" = "Сменить владельца";
+
+/* Button title */
+"Change room owner" = "Сменить владельца комнаты";
 
 /* No comment provided by engineer. */
 "Change room's owner" = "Сменить владельца комнаты";
@@ -348,6 +369,9 @@ Measurement unit */
 /* No comment provided by engineer. */
 "Connect Storage" = "Подключить хранилище";
 
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." = "Подключить сторонние хранилища,\nнапример, Nextcloud, ownCloud, Dropbox и\nдругие, использующие протокол WebDAV.";
+
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени";
 
@@ -360,6 +384,12 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Console" = "Консоль";
+
+/* Share status */
+"Content creator" = "Создатель контента";
+
+/* No comment provided by engineer. */
+"Continue" = "Продолжить";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "Продолжить все равно";
@@ -378,9 +408,6 @@ Caption of the processing */
 
 /* Button title */
 "Copy link" = "Копировать ссылку";
-
-/* No comment provided by engineer. */
-"Copy shared link" = "Скопировать общую ссылку";
 
 /* Caption of the processing */
 "Copying" = "Копирование";
@@ -461,7 +488,13 @@ Caption of the processing */
 "Couldn't change the owner." = "Не удалось сменить владельца";
 
 /* No comment provided by engineer. */
+"Couldn't change the room owner" = "Не удалось сменить владельца комнаты";
+
+/* No comment provided by engineer. */
 "Couldn't download the room." = "Не удалось загрузить комнату";
+
+/* No comment provided by engineer. */
+"Couldn't export room index" = "Не удалось экспортировать индекс комнаты";
 
 /* No comment provided by engineer. */
 "Couldn't leave the room" = "Не мог выйти из комнаты";
@@ -506,6 +539,9 @@ Caption of the processing */
 Caption of the processing */
 "Creating" = "Создание";
 
+/* Watermark Element */
+"Current Date" = "Текущая дата";
+
 /* No comment provided by engineer. */
 "Custom" = "Пользовательская";
 
@@ -520,6 +556,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Date" = "Дата";
+
+/* No comment provided by engineer. */
+"Days" = "Дней";
 
 /* Button title */
 "Delete" = "Удалить";
@@ -540,6 +579,9 @@ Caption of the processing */
 "Delete link" = "Удалить ссылку";
 
 /* No comment provided by engineer. */
+"Delete permanently" = "Удалить навсегда";
+
+/* No comment provided by engineer. */
 "Deleted" = "Удалено";
 
 /* Caption of the processing */
@@ -554,6 +596,9 @@ Caption of the processing */
 /* No comment provided by engineer. */
 "Developer options" = "Настройки разработчика";
 
+/* Watermark Position */
+"Diagonal" = "По диагонали";
+
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Отключите, если вы не хотите получать уведомления от %@";
 
@@ -565,6 +610,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Вы действительно хотите покинуть эту комнату? Вы сможете присоединиться к ней снова по новому приглашению администратора комнаты.";
+
+/* No comment provided by engineer. */
+"DocSpace" = "DocSpace";
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "Администратор DocSpace";
@@ -612,6 +660,9 @@ Operation completed */
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Редактируйте документ локально";
 
+/* Button title */
+"Edit index" = "Редактировать индекс";
+
 /* No comment provided by engineer. */
 "Edit link" = "Редактировать ссылку";
 
@@ -637,7 +688,13 @@ Operation completed */
 "Email is not valid" = "Некорректный e-mail";
 
 /* No comment provided by engineer. */
+"Employees" = "Сотрудники";
+
+/* No comment provided by engineer. */
 "Empty name." = "Пустое имя.";
+
+/* No comment provided by engineer. */
+"Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "Включить автоматическую индексацию для индексации файлов и папок по серийному номеру. Сортировка по номеру будет установлена ​​по умолчанию для всех пользователей.";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Включите, если хотите получать уведомления от %@";
@@ -649,6 +706,9 @@ Operation completed */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Включите этот параметр, чтобы отключить загрузку файлов и папок из этой комнаты, к которой предоставляется общий доступ по ссылке";
 
 /* No comment provided by engineer. */
+"Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" = "Включите этот параметр, чтобы отключить загрузку, печать и копирование контента для пользователей с ролью «Зритель»";
+
+/* No comment provided by engineer. */
 "Enable time limit" = "Включить ограничение по времени";
 
 /* Presentation Viewer */
@@ -656,6 +716,9 @@ Operation completed */
 
 /* placeholder */
 "Enter email" = "Введите адрес электронной почты";
+
+/* No comment provided by engineer. */
+"Enter password" = "Введите пароль";
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Введите адрес портала";
@@ -693,6 +756,9 @@ Operation completed */
 /* Button title */
 "Export" = "Экспорт";
 
+/* Button title */
+"Export room index" = "Экспорт индекса комнат";
+
 /* No comment provided by engineer. */
 "External link" = "Внешняя ссылка";
 
@@ -724,6 +790,9 @@ Operation completed */
 "Failed to move: %@" = "Не удалось переместить: %@";
 
 /* No comment provided by engineer. */
+"Failed to prepare the index export" = "Не удалось подготовить экспорт индекса";
+
+/* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.";
 
 /* No comment provided by engineer. */
@@ -745,13 +814,25 @@ Operation completed */
 "File does not exist" = "Файл не существует";
 
 /* No comment provided by engineer. */
+"file exported to Documents" = "файл экспортирован в Документы";
+
+/* No comment provided by engineer. */
+"File lifetime" = "Срок действия файла";
+
+/* No comment provided by engineer. */
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
 "Files and folders uploaded by admins will appear here." = "Файлы и папки, загружаемые администраторами, будут отображаться здесь.";
 
 /* No comment provided by engineer. */
+"Files older than" = "Срок действия файлов превышает";
+
+/* No comment provided by engineer. */
 "Files Preview" = "Предпросмотр файлов";
+
+/* No comment provided by engineer. */
+"Files with the exceeded lifetime will be deleted" = "Файлы с истекшим сроком действия будут удалены";
 
 /* Fill form Button title */
 "Fill" = "Заполнить";
@@ -816,6 +897,9 @@ Operation completed */
 /* Data units */
 "Gb" = "Гб";
 
+/* Measurement unit */
+"GB" = "Гб";
+
 /* No comment provided by engineer. */
 "General" = "Общие";
 
@@ -847,7 +931,16 @@ Operation completed */
 "Groups" = "Группы";
 
 /* No comment provided by engineer. */
+"Guest" = "Гость";
+
+/* No comment provided by engineer. */
+"Guests" = "Гости";
+
+/* No comment provided by engineer. */
 "Here you will find a list of the recently opened files shared with you via an external link." = "Здесь вы найдете список недавно открытых файлов, которыми с вами поделились с помощью внешней ссылки.";
+
+/* Watermark Position */
+"Horizontal" = "По горизонтали";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -860,6 +953,9 @@ Operation completed */
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Если пользователь с почтой %@ существует, то на этот адрес была отправлена инструкция по смене пароля.";
+
+/* Watermark Type */
+"Image" = "Изображение";
 
 /* No comment provided by engineer. */
 "Images" = "Изображения";
@@ -875,6 +971,10 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неверный адрес портала";
+
+/* File order
+Folder order */
+"Index" = "Индекс";
 
 /* Button title */
 "Info" = "Информация";
@@ -895,10 +995,16 @@ Operation completed */
 "Invalid folder" = "Неверная папка";
 
 /* No comment provided by engineer. */
+"Invalid server data." = "Неверные данные сервера";
+
+/* No comment provided by engineer. */
 "Invalid Url" = "Неверный URL";
 
 /* No comment provided by engineer. */
 "Invite" = "Пригласить";
+
+/* No comment provided by engineer. */
+"Invite guests by email" = "Пригласить гостей по электронной почте";
 
 /* No comment provided by engineer. */
 "Invite people" = "Пригласить пользователей";
@@ -912,8 +1018,14 @@ Operation completed */
 /* No comment provided by engineer. */
 "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "Пригласить пользователей по общим ссылкам для просмотра документов без регистрации. Вы также можете встроить эту комнату в любой веб-интерфейс.";
 
+/* No comment provided by engineer. */
+"Items in Trash are automatically deleted after 30 days" = "Элементы в корзине автоматически удаляются через 30 дней";
+
 /* Data units */
 "Kb" = "Кб";
+
+/* Measurement unit */
+"KB" = "Кб";
 
 /* No comment provided by engineer. */
 "kDrive" = "kDrive";
@@ -957,6 +1069,12 @@ Operation completed */
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Ссылка с приглашением отправлена на почту";
 
+/* No comment provided by engineer. */
+"Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?" = "Ссылки на все файлы в комнате будут удалены. Предыдущие ссылки на файлы в комнате и встроенные документы станут недоступны.\n\nЭто действие не может быть отменено. Хотите продолжить?";
+
+/* No comment provided by engineer. */
+"Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?" = "Ссылки на все файлы в комнате будут сгенерированы повторно. Предыдущие ссылки на файлы в комнате и встроенные документы станут недоступны.\n\nЭто действие не может быть отменено. Хотите продолжить?";
+
 /* Button title */
 "List" = "Список";
 
@@ -994,15 +1112,27 @@ Caption of the process */
 /* Data units */
 "Mb" = "Мб";
 
+/* Measurement unit */
+"MB" = "Мб";
+
 /* Author or member of a document
 If current user name is not set */
 "Me" = "Я";
+
+/* No comment provided by engineer. */
+"Measurement unit" = "Единица измерения";
 
 /* No comment provided by engineer. */
 "Media" = "Медиа";
 
 /* No comment provided by engineer. */
 "Member" = "Участник";
+
+/* No comment provided by engineer. */
+"Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" = "Минимальная длина: 8 символов | Допустимые символы: а-я, А-Я, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}";
+
+/* No comment provided by engineer. */
+"Months" = "Месяцев";
 
 /* Button title */
 "More" = "Еще";
@@ -1021,6 +1151,9 @@ If current user name is not set */
 
 /* Button title */
 "Move to archive" = "Переместить в архив";
+
+/* No comment provided by engineer. */
+"Move to trash" = "Переместить в Корзину";
 
 /* Caption of the processing */
 "Moving" = "Перемещение";
@@ -1104,6 +1237,9 @@ If current user name is not set */
 "No files here yet" = "Здесь пока нет файлов";
 
 /* No comment provided by engineer. */
+"No forms here yet " = "Здесь пока нет форм";
+
+/* No comment provided by engineer. */
 "No information about the user profile." = "Нет информации о профиле пользователя.";
 
 /* No comment provided by engineer. */
@@ -1145,6 +1281,9 @@ Share status */
 
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "из";
+
+/* No comment provided by engineer. */
+"Ok" = "OK";
 
 /* No comment provided by engineer. */
 "OK" = "ОК";
@@ -1192,6 +1331,9 @@ Share status */
 "Open Document" = "Открыть документ";
 
 /* No comment provided by engineer. */
+"Open file" = "Открыть файл";
+
+/* No comment provided by engineer. */
 "Open Folder" = "Открыть папку";
 
 /* Caption of the processing */
@@ -1232,6 +1374,9 @@ Share status */
 
 /* No comment provided by engineer. */
 "Password is empty" = "Пароль не заполнен";
+
+/* No comment provided by engineer. */
+"Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~" = "Пароль должен содержать: Минимальная длина: 8 символов Допустимые символы: а–я, А–Я, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
 /* No comment provided by engineer. */
 "Passwords do not match" = "Пароли не совпадают";
@@ -1299,6 +1444,9 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Портал недоступен.";
 
+/* No comment provided by engineer. */
+"Position" = "Положение";
+
 /* Share status */
 "Pover user" = "Опытный пользователь";
 
@@ -1325,6 +1473,9 @@ Share status */
 
 /* Category title */
 "Project Documents" = "В проектах";
+
+/* No comment provided by engineer. */
+"Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." = "Защитите все документы в этой комнате водяными знаками. Если в документе уже есть водяной знак, он не будет заменен.";
 
 /* No comment provided by engineer. */
 "Protection" = "Защита";
@@ -1398,6 +1549,12 @@ Share status */
 /* No comment provided by engineer. */
 "Renewal" = "Возобновить";
 
+/* Button title */
+"Reorder" = "Переместить";
+
+/* No comment provided by engineer. */
+"Reorder failed." = "Не удалось переместить.";
+
 /* No comment provided by engineer. */
 "Request canceled" = "Запрос отменен";
 
@@ -1443,8 +1600,14 @@ Share status */
 /* No comment provided by engineer. */
 "Room created!" = "Комната создана!";
 
+/* Share status */
+"Room manager" = "Менеджер комнаты";
+
 /* No comment provided by engineer. */
 "Room name" = "Название комнаты";
+
+/* Watermark Element */
+"Room Name" = "Имя комнаты";
 
 /* Category title
 DocSpace rooms */
@@ -1454,6 +1617,9 @@ DocSpace rooms */
 "Root folder" = "Корневая директроия";
 
 /* No comment provided by engineer. */
+"Rotate" = "Повернуть";
+
+/* No comment provided by engineer. */
 "Same as system" = "Системная";
 
 /* No comment provided by engineer. */
@@ -1461,6 +1627,9 @@ DocSpace rooms */
 
 /* Caption of the processing */
 "Saving" = "Сохранение";
+
+/* No comment provided by engineer. */
+"Scale" = "Масштаб";
 
 /* No comment provided by engineer. */
 "Search" = "Поиск";
@@ -1480,6 +1649,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Select group" = "Группы";
+
+/* No comment provided by engineer. */
+"Select image" = "Выберите изображение";
 
 /* Button title */
 "Select location" = "Выберите местоположение";
@@ -1522,6 +1694,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Set favorite failed." = "Не удалось изменить отметку Избранное";
+
+/* No comment provided by engineer. */
+"Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." = "Установите срок действия файла, чтобы автоматически удалять файлы в этой комнате после определенного периода. Срок действия начинается с даты загрузки/создания файла.";
 
 /* No comment provided by engineer. */
 "Settings" = "Настройки";
@@ -1580,6 +1755,9 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "Size" = "Размер";
 
+/* No comment provided by engineer. */
+"Size quota" = "Квота размера";
+
 /* Button title */
 "Skip" = "Пропустить";
 
@@ -1611,6 +1789,15 @@ Navigation bar button title */
 "Storage" = "Хранилище";
 
 /* No comment provided by engineer. */
+"Storage quota" = "Квота хранилища";
+
+/* No comment provided by engineer. */
+"Storage quota set per room. You can change this value or turn off storage limit." = "Квота хранилища установлена ​​на комнату. Вы можете изменить это значение или отключить ограничение хранилища.";
+
+/* No comment provided by engineer. */
+"Success" = "Успешно";
+
+/* No comment provided by engineer. */
 "Support" = "Поддержка";
 
 /* No comment provided by engineer. */
@@ -1630,6 +1817,9 @@ Navigation bar button title */
 
 /* Data units */
 "Tb" = "Тб";
+
+/* Measurement unit */
+"TB" = "Тб";
 
 /* No comment provided by engineer. */
 "Terminate account" = "Удалить аккаунт";
@@ -1653,6 +1843,9 @@ Navigation bar button title */
 "The file in the Trash can not be viewed." = "Невозможно просмотреть файл, находящийся в корзине.";
 
 /* No comment provided by engineer. */
+"The file lifetime is set to %@ in this room." = "Срок действия файла в этой комнате установлен на %@.";
+
+/* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
@@ -1663,6 +1856,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Файл с именем '%1$@' уже существует в папке '%2$@'";
+
+/* No comment provided by engineer. */
+"The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." = "Отсчет срока действия начинается с даты создания файла. Если срок действия каких-либо файлов в этой комнате превысит установленный, они будут удалены.";
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
@@ -1734,6 +1930,9 @@ Navigation bar button title */
 "This folder is empty" = "Эта папка пуста";
 
 /* No comment provided by engineer. */
+"This image preview roughly shows how the watermark will be displayed in your files." = "Это изображение для предварительного просмотра ориентировочно показывает, как водяной знак будет отображаться в ваших файлах.";
+
+/* No comment provided by engineer. */
 "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Эта операция освободит место на устройстве за счет удаления временных файлов. Автономные файлы и персональные данные не будут удалены.";
 
 /* No comment provided by engineer. */
@@ -1750,6 +1949,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Эта таблица редактируется. Вы хотите открыть %@ только на просмотр?";
+
+/* No comment provided by engineer. */
+"Time period" = "Период";
 
 /* No comment provided by engineer. */
 "Title" = "Название";
@@ -1872,13 +2074,22 @@ Navigation bar button title */
 "Upload PDF form from DocSpace" = "Загрузка PDF-формы из DocSpace";
 
 /* No comment provided by engineer. */
+"Upload PDF forms from DocSpace or device." = "Загрузите PDF-формы из DocSpace или устройства.";
+
+/* No comment provided by engineer. */
 "Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Загрузите PDF-формы в комнату. Предложите пользователям заполнить PDF-форму. Просмотр заполненных форм и анализ данных, автоматически собранных в электронную таблицу.";
 
 /* Caption of the process */
 "Uploading" = "Загрузка";
 
+/* Watermark Element */
+"Use IP Address" = "Использовать IP-адрес";
+
 /* No comment provided by engineer. */
 "Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Используйте сторонние сервисы в качестве хранилища данных для этой комнаты. В подключенном хранилище будет создана новая папка для хранения данных этой комнаты";
+
+/* No comment provided by engineer. */
+"Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." = "Используйте виртуальную комнату данных, чтобы обеспечить эффективный контроль и прозрачность при работе с документами. Добавьте водяные знаки, индексируйте и отслеживайте весь контент автоматически, ограничьте загрузку и копирование.";
 
 /* No comment provided by engineer. */
 "User" = "Пользователь";
@@ -1889,8 +2100,14 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "User authentication required" = "Требуется аутентификация пользователя";
 
+/* Watermark Element */
+"User Email" = "Электронная почта пользователя";
+
 /* No comment provided by engineer. */
 "User name" = "Имя пользователя";
+
+/* Watermark Element */
+"User Name" = "Имя";
 
 /* No comment provided by engineer. */
 "User undefined" = "Пользователь не авторизован";
@@ -1919,8 +2136,20 @@ Navigation bar button title */
 /* Share status */
 "Viewer" = "Только чтение";
 
+/* Watermark Type */
+"Viewer info" = "Информация о зрителе";
+
+/* Rooms filter */
+"Virtual data room" = "Виртуальная комната данных";
+
+/* No comment provided by engineer. */
+"Virtual Data Room" = "Виртуальная комната данных";
+
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";
+
+/* No comment provided by engineer. */
+"Watermark type" = "Тип водяного знака";
 
 /* No comment provided by engineer. */
 "We are sorry, this portal name is already taken" = "К сожалению, это имя портала уже занято";
@@ -1962,6 +2191,18 @@ Navigation bar button title */
 "Yb" = "Иб";
 
 /* No comment provided by engineer. */
+"Years" = "Лет";
+
+/* No comment provided by engineer. */
+"You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" = "Вы собираетесь удалить эти комнаты. Вы не сможете их восстановить. Хотите продолжить?";
+
+/* No comment provided by engineer. */
+"You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" = "Вы собираетесь удалить эту комнату. Вы не сможете ее восстановить. Хотите продолжить?";
+
+/* No comment provided by engineer. */
+"You are about to delete this room. You won't be able to restore them." = "Вы собираетесь удалить эту комнату. Вы не сможете ее восстановить.";
+
+/* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Вы являетесь владельцем комнаты. Перед тем, как покинуть комнату, вы должны передать роль владельца другому пользователю.";
 
 /* No comment provided by engineer. */
@@ -1980,13 +2221,22 @@ Navigation bar button title */
 "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Вы не можете прикрепить более 10 комнат. Открепите некоторые из них, которые уже прикреплены.";
 
 /* No comment provided by engineer. */
+"You have changed the room owner" = "Вы сменили владельца комнаты";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Вы вышли из комнаты";
 
 /* No comment provided by engineer. */
 "You have left the room and appointed a new owner" = "Вы покинули комнату и назначили нового владельца";
 
 /* No comment provided by engineer. */
+"You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" = "Вы не установили водяной знак для документов в этой комнате. Вы можете добавить водяной знак в любое время в настройках редактирования комнаты. Продолжить без водяного знака?";
+
+/* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "К этой папке у вас есть доступ только на чтение. Вы не можете создавать в ней файлы или папки.";
+
+/* No comment provided by engineer. */
+"You need a password to access the room" = "Вам нужен пароль для доступа в комнату";
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Срок действия вашего текущего тарифного плана Business истек. Пожалуйста, возобновите подписку в настройках учетной записи, чтобы продолжать использовать DocSpace. Если у вас возникли вопросы, обратитесь в службу поддержки.";

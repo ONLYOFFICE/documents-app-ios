@@ -37,7 +37,7 @@ class OnlyofficeFileOperation: Mappable {
     }
 }
 
-enum OnlyofficeFileOperationError: Error, LocalizedError {
+enum OnlyofficeFileOperationError: LocalizedError {
     case serverError(String)
 
     var localizedDescription: String? {

@@ -90,9 +90,15 @@ class ASCSharingAddRightHoldersView {
 
     // MARK: - Empty view props
 
-    private lazy var emptyView: ASCDocumentsEmptyView? = {
+    private lazy var emptySearchView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
         view.type = .search
+        return view
+    }()
+
+    private lazy var emptyTableView: ASCDocumentsEmptyView? = {
+        guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
+        view.type = .usersNotFound
         return view
     }()
 
@@ -371,6 +377,7 @@ extension ASCSharingAddRightHoldersView {
         let tableView = getTableView(byRightHoldersTableType: tableType)
         view.addSubview(tableView)
         tableView.fillToSuperview()
+        checkTableForEmptyView(tableType: tableType)
         RightHoldersTableType.allCases.filter { $0 != tableType }.forEach { type in
             getTableView(byRightHoldersTableType: type).removeFromSuperview()
         }
@@ -392,6 +399,42 @@ extension ASCSharingAddRightHoldersView {
         case .users: return usersTableView
         case .groups: return groupsTableView
         case .guests: return guestsTableView
+        }
+    }
+
+    func didTableDataChange(tableType: RightHoldersTableType) {
+        switch tableType {
+        case .users:
+            usersTableView.reloadData()
+        case .groups:
+            groupsTableView.reloadData()
+        case .guests:
+            guestsTableView.reloadData()
+        }
+        checkTableForEmptyView(tableType: tableType)
+    }
+
+    private func checkTableForEmptyView(tableType: RightHoldersTableType) {
+        let tableView = getTableView(byRightHoldersTableType: tableType)
+        let isTableEmpty = (0 ..< tableView.numberOfSections).allSatisfy { tableView.numberOfRows(inSection: $0) == 0 }
+        let isLoadingUsersTableActivityIndicator: Bool
+        var emptyViewType: ASCDocumentsEmptyView.EmptyViewState = .usersNotFound
+        switch tableType {
+        case .users:
+            isLoadingUsersTableActivityIndicator = !loadingUsersTableActivityIndicator.isHidden
+        case .groups:
+            isLoadingUsersTableActivityIndicator = !loadingGroupsTableActivityIndicator.isHidden
+        case .guests:
+            isLoadingUsersTableActivityIndicator = !loadingGuestsTableActivityIndicator.isHidden
+            emptyViewType = .guestsNotFound
+        }
+        if isTableEmpty, !isLoadingUsersTableActivityIndicator, let emptyTableView {
+            emptyTableView.type = emptyViewType
+            emptyTableView.removeFromSuperview()
+            tableView.addSubview(emptyTableView)
+            emptyTableView.frame = tableView.frame
+        } else {
+            emptyTableView?.removeFromSuperview()
         }
     }
 }
@@ -417,38 +460,39 @@ extension ASCSharingAddRightHoldersView {
 // MARK: - Empty view methods
 
 extension ASCSharingAddRightHoldersView {
-    public func showEmptyView(_ show: Bool) {
-        guard let emptyView = emptyView else {
+    public func showEmptySearchView(_ show: Bool) {
+        guard let emptySearchView = emptySearchView else {
             return
         }
         if show {
-            emptyView.removeFromSuperview()
-            emptyView.frame = searchResultsTable.frame
+            emptySearchView.removeFromSuperview()
+
+            emptySearchView.frame = searchResultsTable.frame
 
             if UIDevice.pad,
                let preferedContentHeight = viewController?.preferredContentSize.height,
                preferedContentHeight > 0,
                preferedContentHeight < 500
             {
-                emptyView.imageView.image = nil
-                emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: preferedContentHeight / 2 - 100)
-            } else if emptyView.imageView.image == nil {
-                emptyView.type = .search
+                emptySearchView.imageView.image = nil
+                emptySearchView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: preferedContentHeight / 2 - 100)
+            } else if emptySearchView.imageView.image == nil {
+                emptySearchView.type = .search
             }
 
             if UIDevice.phone {
-                emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: 75)
+                emptySearchView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: 75)
             }
 
-            searchResultsTable.addSubview(emptyView)
+            searchResultsTable.addSubview(emptySearchView)
         } else {
-            emptyView.removeFromSuperview()
+            emptySearchView.removeFromSuperview()
         }
     }
 
-    func reloadEmptyViewIfNeeded() {
-        if emptyView?.superview != nil {
-            showEmptyView(true)
+    func reloadEmptySearchViewIfNeeded() {
+        if emptySearchView?.superview != nil {
+            showEmptySearchView(true)
         }
     }
 }
@@ -520,7 +564,7 @@ extension ASCSharingAddRightHoldersView {
         if UIDevice.pad {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.changeModalHeightIfNeeded(keyboardSize: keyboardFrame)
-                self.reloadEmptyViewIfNeeded()
+                self.reloadEmptySearchViewIfNeeded()
             }
         }
     }

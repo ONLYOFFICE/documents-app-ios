@@ -284,7 +284,7 @@ private extension RoomSharingViewModel {
             .filter { !$0.user.isAdmin && !$0.user.isVisitor }
             .map { self.mapToUserViewModel(sharing: $0) }
         guests = flowModel.sharings
-            .filter { $0.user.activationStatus == .applyed && $0.user.isVisitor }
+            .filter { $0.user.activationStatus != .unapplyed && $0.user.isVisitor }
             .map { self.mapToUserViewModel(sharing: $0) }
         invites = flowModel.sharings
             .filter { $0.user.isUnaplyed && $0.user.isVisitor }
@@ -320,6 +320,7 @@ private extension RoomSharingViewModel {
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,
             isSharingPossible: isSharingPossible,
+            isEditAccessPossible: link.canEditAccess,
             accessRight: link.access,
             onTapAction: { [weak self] in
                 guard let self else { return }

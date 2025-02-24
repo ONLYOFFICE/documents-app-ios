@@ -364,9 +364,6 @@ Caption of the processing */
 /* Button title */
 "Copy link" = "リンクをコピー";
 
-/* No comment provided by engineer. */
-"Copy shared link" = "共有リンクのコピー";
-
 /* Caption of the processing */
 "Copying" = "コピー中";
 

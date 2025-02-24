@@ -150,9 +150,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.usersTableView.register(usersTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: usersTableViewDataSourceAndDelegate.type.reuseId)
         sharingAddRightHoldersView?.groupsTableView.register(groupsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: groupsTableViewDataSourceAndDelegate.type.reuseId)
 
-        sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
-
         loadData()
+        sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -177,7 +176,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         super.viewWillDisappear(animated)
         if UIDevice.pad {
             sharingAddRightHoldersView?.resetModalSize()
-            sharingAddRightHoldersView?.reloadEmptyViewIfNeeded()
+            sharingAddRightHoldersView?.reloadEmptySearchViewIfNeeded()
         }
         navigationController?.isToolbarHidden = true
     }
@@ -394,7 +393,7 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         guard !searchText.isEmpty else {
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
             usersTableViewDataSourceAndDelegate.set(models: usersModels)
-            sharingAddRightHoldersView?.showEmptyView(false)
+            sharingAddRightHoldersView?.showEmptySearchView(false)
             sharingAddRightHoldersView?.groupsTableView.reloadData()
             sharingAddRightHoldersView?.usersTableView.reloadData()
             sharingAddRightHoldersView?.searchResultsTable.reloadData()
@@ -418,9 +417,9 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         sharingAddRightHoldersView?.searchResultsTable.reloadData()
 
         if foundUsersModels.isEmpty, foundGroupsModels.isEmpty {
-            sharingAddRightHoldersView?.showEmptyView(true)
+            sharingAddRightHoldersView?.showEmptySearchView(true)
         } else {
-            sharingAddRightHoldersView?.showEmptyView(false)
+            sharingAddRightHoldersView?.showEmptySearchView(false)
         }
     }
 
@@ -452,7 +451,7 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
 
         sharingAddRightHoldersView?.showTablesSegmentedControl()
         sharingAddRightHoldersView?.searchResultsTable.removeFromSuperview()
-        sharingAddRightHoldersView?.showEmptyView(false)
+        sharingAddRightHoldersView?.showEmptySearchView(false)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

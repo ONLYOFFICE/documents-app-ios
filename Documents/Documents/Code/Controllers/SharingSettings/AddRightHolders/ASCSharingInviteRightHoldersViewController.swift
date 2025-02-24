@@ -208,14 +208,12 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         sharingAddRightHoldersView?.usersTableView.register(usersTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: usersTableViewDataSourceAndDelegate.type.reuseId)
         sharingAddRightHoldersView?.groupsTableView.register(groupsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: groupsTableViewDataSourceAndDelegate.type.reuseId)
         sharingAddRightHoldersView?.guestsTableView.register(guestsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: guestsTableViewDataSourceAndDelegate.type.reuseId)
-
-        sharingAddRightHoldersView?.showTable(tableType: .users)
-
         usersTableViewDataSourceAndDelegate.inviteCellClousure = { [weak self] in
             self?.showSureClearSelectionAlertIfNeededAndGoToInviteVC()
         }
 
         loadData()
+        sharingAddRightHoldersView?.showTable(tableType: .users)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -240,7 +238,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         super.viewWillDisappear(animated)
         if UIDevice.pad {
             sharingAddRightHoldersView?.resetModalSize()
-            sharingAddRightHoldersView?.reloadEmptyViewIfNeeded()
+            sharingAddRightHoldersView?.reloadEmptySearchViewIfNeeded()
         }
         navigationController?.isToolbarHidden = true
     }
@@ -329,18 +327,18 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         case let .displayUsers(viewModel: viewModel):
             usersModels = viewModel.users
             usersTableViewDataSourceAndDelegate.set(models: viewModel.users)
-            sharingAddRightHoldersView?.usersTableView.reloadData()
             usersCurrentlyLoading = false
+            sharingAddRightHoldersView?.didTableDataChange(tableType: .users)
         case let .displayGroups(viewModel: viewModel):
             groupsModels = viewModel.groups
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
-            sharingAddRightHoldersView?.groupsTableView.reloadData()
             groupsCurrentlyLoading = false
+            sharingAddRightHoldersView?.didTableDataChange(tableType: .groups)
         case let .displayGuests(viewModel: viewModel):
             guestModels = viewModel.guests
             guestsTableViewDataSourceAndDelegate.set(models: viewModel.guests)
-            sharingAddRightHoldersView?.guestsTableView.reloadData()
             guestsCurrentlyLoading = false
+            sharingAddRightHoldersView?.didTableDataChange(tableType: .guests)
         case let .displaySelected(viewModel: viewModel):
             switch viewModel.type {
             case .users:
@@ -478,7 +476,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
             usersTableViewDataSourceAndDelegate.inviteSectionEnabled = false
             groupsTableViewDataSourceAndDelegate.inviteSectionEnabled = false
             guestsTableViewDataSourceAndDelegate.inviteSectionEnabled = false
-            sharingAddRightHoldersView?.showEmptyView(false)
+            sharingAddRightHoldersView?.showEmptySearchView(false)
             sharingAddRightHoldersView?.groupsTableView.reloadData()
             sharingAddRightHoldersView?.usersTableView.reloadData()
             sharingAddRightHoldersView?.guestsTableView.reloadData()
@@ -509,9 +507,9 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         sharingAddRightHoldersView?.searchResultsTable.reloadData()
 
         if foundUsersModels.isEmpty, foundGroupsModels.isEmpty, foundGuestsModels.isEmpty {
-            sharingAddRightHoldersView?.showEmptyView(true)
+            sharingAddRightHoldersView?.showEmptySearchView(true)
         } else {
-            sharingAddRightHoldersView?.showEmptyView(false)
+            sharingAddRightHoldersView?.showEmptySearchView(false)
         }
     }
 
@@ -548,7 +546,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
 
         sharingAddRightHoldersView?.showTablesSegmentedControl()
         sharingAddRightHoldersView?.searchResultsTable.removeFromSuperview()
-        sharingAddRightHoldersView?.showEmptyView(false)
+        sharingAddRightHoldersView?.showEmptySearchView(false)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

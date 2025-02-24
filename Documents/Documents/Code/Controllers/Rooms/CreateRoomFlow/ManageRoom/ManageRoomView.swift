@@ -94,10 +94,12 @@ struct ManageRoomView: View {
                     Spacer()
                     Text(viewModel.roomOwnerName)
                         .foregroundColor(.secondary)
-                    ChevronRightView()
+                    if viewModel.isRoomOwnerCellTappable {
+                        ChevronRightView()
+                    }
                 }
                 .onTapGesture {
-                    viewModel.isUserSelectionPresenting = true
+                    viewModel.didTapRoomOwnerCell()
                 }
             }
         }

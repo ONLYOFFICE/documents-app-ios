@@ -19,6 +19,7 @@ class ASCDocumentsEmptyView: UIView {
         case docspaceNoPermissions
         case search
         case usersNotFound
+        case guestsNotFound
         case usersNotFoundForDocSpaceRoomOwner
         case error
         case networkError
@@ -172,6 +173,13 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No users found", comment: "")
             subtitleLabel?.text = NSLocalizedString("The list of users previously invited to DocSpace or separate rooms will appear here.", comment: "")
+            actionButton?.removeFromSuperview()
+
+        case .guestsNotFound:
+            centerYConstraint?.constant = -150
+            imageView?.image = Asset.Images.emptySearchResult.image
+            titleLabel?.text = NSLocalizedString("No added guests yet", comment: "")
+            subtitleLabel?.text = NSLocalizedString("New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.", comment: "")
             actionButton?.removeFromSuperview()
 
         case .usersNotFoundForDocSpaceRoomOwner:

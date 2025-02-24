@@ -85,9 +85,13 @@ extension View {
                 viewModel: EditSharedLinkViewModel(
                     file: viewModel.file,
                     inputLink: link,
-                    outputLink: Binding<SharedSettingsLinkResponceModel?>(
+                    outputLink: Binding(
                         get: { nil },
-                        set: { viewModel.handleLinkOutChanges(link: $0) }
+                        set: { newLink in
+                            if let newLink {
+                                viewModel.handleLinkOutChanges(link: newLink)
+                            }
+                        }
                     ),
                     onRemoveCompletion: {
                         viewModel.loadLinks()

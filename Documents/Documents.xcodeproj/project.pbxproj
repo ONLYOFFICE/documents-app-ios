@@ -471,6 +471,8 @@
 		FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */; };
 		FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */; };
 		FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */; };
+		FC95D6962D5A1EFE000725C8 /* OnlyofficeHeadersOnTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6952D5A1EFE000725C8 /* OnlyofficeHeadersOnTokenService.swift */; };
+		FC95D6BB2D5CD9A5000725C8 /* ASCUpdateLocallyEditFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6B92D5CD9A5000725C8 /* ASCUpdateLocallyEditFileInfo.swift */; };
 		FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */; };
 		FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */; };
 		FC98A53329A4D6CC003A3A8D /* ASCLogIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A232494F8B2001EF1B5 /* ASCLogIntercepter.swift */; };
@@ -1192,6 +1194,8 @@
 		FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2OneDrive.swift; sourceTree = "<group>"; };
 		FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Box.swift; sourceTree = "<group>"; };
 		FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavController.swift; sourceTree = "<group>"; };
+		FC95D6952D5A1EFE000725C8 /* OnlyofficeHeadersOnTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeHeadersOnTokenService.swift; sourceTree = "<group>"; };
+		FC95D6B92D5CD9A5000725C8 /* ASCUpdateLocallyEditFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUpdateLocallyEditFileInfo.swift; sourceTree = "<group>"; };
 		FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalViewController.swift; sourceTree = "<group>"; };
 		FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSignInViewController.swift; sourceTree = "<group>"; };
 		FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAViewController.swift; sourceTree = "<group>"; };
@@ -2666,6 +2670,7 @@
 				FC9EEF9E2BFB201700A66DE8 /* Model */,
 				FC68525126837B7300D830EC /* KingfisherWrapper+Onlyoffice.swift */,
 				FC68525426837B7300D830EC /* OnlyofficeApiClient.swift */,
+				FC95D6952D5A1EFE000725C8 /* OnlyofficeHeadersOnTokenService.swift */,
 				FC68526026837B7300D830EC /* OnlyofficeEndpoints.swift */,
 				FC68526126837B7300D830EC /* OnlyofficeServerError.swift */,
 			);
@@ -3146,6 +3151,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		FC95D6BA2D5CD9A5000725C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC95D6B92D5CD9A5000725C8 /* ASCUpdateLocallyEditFileInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FC99FAEF22645F1D000F1464 /* 2FA */ = {
 			isa = PBXGroup;
 			children = (
@@ -3525,6 +3538,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5943572AE6816E001BA2F9 /* DI */,
+				FC95D6BA2D5CD9A5000725C8 /* Models */,
 				FC5943512AE6816E001BA2F9 /* Protocols */,
 				FC59435F2AE6816E001BA2F9 /* ASCEditorManager.swift */,
 				FC5943562AE6816E001BA2F9 /* ASCEditorManager+DocumentEditor.swift */,
@@ -4206,7 +4220,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n";
+			shellScript = "#!/bin/bash\nexit 0 # incriment in build system\n\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		FCE1861D2628C51F0086D21B /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4330,6 +4345,7 @@
 				FC68399021B7E01E00251CEA /* ASCCloudsNavigationController.swift in Sources */,
 				FC759CA02C00615E00510096 /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				1D76212C277DE2D70088126B /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */,
+				FC95D6BB2D5CD9A5000725C8 /* ASCUpdateLocallyEditFileInfo.swift in Sources */,
 				FC59436B2AE6816E001BA2F9 /* ASCEditorManager.swift in Sources */,
 				FC25B458284F68AB0075D6C2 /* ASCNotificationSettingsViewController.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
@@ -4603,6 +4619,7 @@
 				1DBA4736298FDBA100244F30 /* ASCEntitySecurity.swift in Sources */,
 				1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
+				FC95D6962D5A1EFE000725C8 /* OnlyofficeHeadersOnTokenService.swift in Sources */,
 				FC35D4642A987DFC00C6383F /* UIDevice+DeviceKit.swift in Sources */,
 				FC759C3C2C00614D00510096 /* RoomSharingRootViewController.swift in Sources */,
 				E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */,

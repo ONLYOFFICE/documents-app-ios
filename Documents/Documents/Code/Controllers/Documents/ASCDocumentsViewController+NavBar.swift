@@ -112,6 +112,8 @@ extension ASCDocumentsViewController {
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0
+
+        configureNavigationBar()
     }
 }
 
@@ -443,12 +445,16 @@ extension ASCDocumentsViewController {
     }
 
     @objc func onCancelAction() {
-        let continueAction = UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default) { [weak self] _ in
-            guard let self else { return }
-            self.cancelEditOrderIndex()
-        }
+        if isEditingIndexMode {
+            let continueAction = UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default) { [weak self] _ in
+                guard let self else { return }
+                self.cancelEditOrderIndex()
+            }
 
-        UIAlertController.showCancelableWarning(in: self, message: NSLocalizedString("Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.", comment: ""), actions: [continueAction])
+            UIAlertController.showCancelableWarning(in: self, message: NSLocalizedString("Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.", comment: ""), actions: [continueAction])
+        } else {
+            setEditMode(false)
+        }
     }
 
     @objc func onSortAction(_ sender: Any) {
@@ -539,9 +545,9 @@ private extension ASCDocumentsViewController {
     func cancelEditOrderIndex() {
         if isEditingIndexMode, let editOrderDelegate = provider as? ProviderEditIndexDelegate {
             editOrderDelegate.cancleEditOrderIndex()
-            isEditingIndexMode = false
-            collectionView.reloadData()
         }
+        isEditingIndexMode = false
+        collectionView.reloadData()
         setEditMode(false)
     }
 

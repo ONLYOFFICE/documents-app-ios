@@ -366,8 +366,8 @@ class ASCEditorManager: NSObject {
                         self.timer = Timer.scheduledTimer(
                             timeInterval: 4,
                             target: self,
-                            selector: #selector(ASCEditorManager.updateLocallyEditFile),
-                            userInfo: file,
+                            selector: #selector(ASCEditorManager.updateLocallyEditFile(_:)),
+                            userInfo: ASCUpdateLocallyEditFileInfo(file: file, config: config, openMode: openMode, canEdit: canEdit),
                             repeats: true
                         )
                         self.timer?.fire()
@@ -454,8 +454,9 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    @objc func updateLocallyEditFile(timer: Timer) {
+    @objc func updateLocallyEditFile(_ timer: Timer) {
         var cancel = false
+        let info = timer.userInfo as? ASCUpdateLocallyEditFileInfo
 
         if let file = openedlocallyFile,
            let key = documentKeyForTrack
@@ -505,8 +506,8 @@ class ASCEditorManager: NSObject {
                             self.downloadAndOpenFile(
                                 for: provider,
                                 file,
-                                openMode: .edit,
-                                canEdit: true,
+                                openMode: info?.openMode ?? .edit,
+                                canEdit: info?.canEdit ?? true,
                                 &cancel
                             )
                         }

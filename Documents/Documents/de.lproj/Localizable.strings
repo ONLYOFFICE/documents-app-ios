@@ -95,6 +95,9 @@
 "Accounts" = "Konten";
 
 /* No comment provided by engineer. */
+"Action on files" = "Aktion für Dateien";
+
+/* No comment provided by engineer. */
 "Add account" = "Konto hinzufügen";
 
 /* No comment provided by engineer. */
@@ -102,6 +105,9 @@
 
 /* Sharing settings add notification message */
 "Add message" = "Nachricht hinzufügen";
+
+/* No comment provided by engineer. */
+"Add static text" = "Statischen Text hinzufügen";
 
 /* placeholder */
 "Add tag" = "Tag hinzufügen";
@@ -111,6 +117,12 @@
 
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Fügen Sie Benutzer oder Gruppen hinzu und erlauben Sie \n Öffnen, Überprüfen oder Bearbeiten von Dokumenten.";
+
+/* No comment provided by engineer. */
+"Add watermark elements" = "Wasserzeichenelemente hinzufügen";
+
+/* No comment provided by engineer. */
+"Add watermarks to documents" = "Wasserzeichen zu Dokumenten hinzufügen";
 
 /* No comment provided by engineer. */
 "Additional links" = "Zusätzliche Links";
@@ -151,6 +163,9 @@
 /* No comment provided by engineer. */
 "AppleId authentication failed" = "Authentifizierung über Apple ID fehlgeschlagen";
 
+/* Button title */
+"Apply" = "Anwenden";
+
 /* No comment provided by engineer. */
 "Apply your own settings to use this room for any custom purpose" = "Wenden Sie Ihre eigenen Einstellungen an, um diesen Raum für jeden beliebigen Zweck zu verwenden";
 
@@ -181,6 +196,9 @@ Category title */
 
 /* No comment provided by engineer. */
 "Author" = "Autor";
+
+/* No comment provided by engineer. */
+"Automatic indexing" = "Automatische Indizierung";
 
 /* No comment provided by engineer. */
 "Back" = "Zurück";
@@ -239,6 +257,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "Change owner" = "Besitzer ändern";
+
+/* Button title */
+"Change room owner" = "Raumverantwortlichen ändern";
 
 /* No comment provided by engineer. */
 "Change room's owner" = "Besitzer des Raums ändern";
@@ -348,6 +369,9 @@ Measurement unit */
 /* No comment provided by engineer. */
 "Connect Storage" = "Speicher verbinden";
 
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." = "Verbinden Sie Speicher von Drittanbietern\nwie Nextcloud, ownCloud, Dropbox und\nandere, die das WebDAV-Protokoll verwenden.";
+
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Verbinden Sie sich mit Ihrer %@ Cloud, um Dateien online zu speichern und Dokumente in Echtzeit gemeinsam zu bearbeiten";
 
@@ -360,6 +384,12 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Console" = "Konsole";
+
+/* Share status */
+"Content creator" = "Inhaltsersteller";
+
+/* No comment provided by engineer. */
+"Continue" = "Fortsetzen";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "Trotzdem fortsetzen";
@@ -378,9 +408,6 @@ Caption of the processing */
 
 /* Button title */
 "Copy link" = "Link kopieren";
-
-/* No comment provided by engineer. */
-"Copy shared link" = "Freigegebenen Link kopieren";
 
 /* Caption of the processing */
 "Copying" = "Es wird kopiert";
@@ -461,7 +488,13 @@ Caption of the processing */
 "Couldn't change the owner." = "Der Besitzer konnte nicht geändert werden.";
 
 /* No comment provided by engineer. */
+"Couldn't change the room owner" = "Raumbesitzer konnte nicht geändert werden";
+
+/* No comment provided by engineer. */
 "Couldn't download the room." = "Der Raum konnte nicht heruntergeladen werden.";
+
+/* No comment provided by engineer. */
+"Couldn't export room index" = "Raumindex konnte nicht exportiert werden";
 
 /* No comment provided by engineer. */
 "Couldn't leave the room" = "Sie können den Raum nicht verlassen.";
@@ -506,6 +539,9 @@ Caption of the processing */
 Caption of the processing */
 "Creating" = "Wird erstellt";
 
+/* Watermark Element */
+"Current Date" = "Aktuelles Datum";
+
 /* No comment provided by engineer. */
 "Custom" = "Benutzerdefiniert";
 
@@ -520,6 +556,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Date" = "Datum";
+
+/* No comment provided by engineer. */
+"Days" = "Tage";
 
 /* Button title */
 "Delete" = "Löschen";
@@ -540,6 +579,9 @@ Caption of the processing */
 "Delete link" = "Link löschen";
 
 /* No comment provided by engineer. */
+"Delete permanently" = "Endgültig löschen";
+
+/* No comment provided by engineer. */
 "Deleted" = "Gelöscht";
 
 /* Caption of the processing */
@@ -554,6 +596,9 @@ Caption of the processing */
 /* No comment provided by engineer. */
 "Developer options" = "Für Entwickler";
 
+/* Watermark Position */
+"Diagonal" = "Diagonal";
+
 /* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Deaktivieren, wenn Sie keine Benachrichtigungen von %@ benötigen";
 
@@ -565,6 +610,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Möchten Sie diesen Raum wirklich verlassen? Sie können ihm wieder beitreten, wenn Sie eine neue Einladung von einem Raumadministrator erhalten.";
+
+/* No comment provided by engineer. */
+"DocSpace" = "DocSpace";
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "DocSpace-Administrator";
@@ -612,6 +660,9 @@ Operation completed */
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Dokumente lokal bearbeiten";
 
+/* Button title */
+"Edit index" = "Index bearbeiten";
+
 /* No comment provided by engineer. */
 "Edit link" = "Link bearbeiten";
 
@@ -637,7 +688,13 @@ Operation completed */
 "Email is not valid" = "Die E-Mail-Adresse ist nicht gültig";
 
 /* No comment provided by engineer. */
+"Employees" = "Mitarbeiter";
+
+/* No comment provided by engineer. */
 "Empty name." = "Das Feld Name ist leer.";
+
+/* No comment provided by engineer. */
+"Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "Aktivieren Sie die automatische Indizierung, um Dateien und Ordner nach Seriennummer zu indizieren. Die Sortierung nach Nummer wird für alle Benutzer als Standard festgelegt.";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = " Aktivieren, wenn Sie Benachrichtigungen von %@ benötigen";
@@ -649,6 +706,9 @@ Operation completed */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Aktivieren Sie diese Einstellung, um das Herunterladen von Dateien und Ordnern aus diesem Raum zu deaktivieren, die über einen Link freigegeben wurden";
 
 /* No comment provided by engineer. */
+"Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" = "Aktivieren Sie diese Einstellung, um Downloads, Drucken und Kopieren von Inhalten für Benutzer mit der Rolle “Betrachter” zu deaktivieren.";
+
+/* No comment provided by engineer. */
 "Enable time limit" = "Zeitliche Begrenzung einschalten";
 
 /* Presentation Viewer */
@@ -656,6 +716,9 @@ Operation completed */
 
 /* placeholder */
 "Enter email" = "E-Mail eingeben";
+
+/* No comment provided by engineer. */
+"Enter password" = "Passwort eingeben";
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Portal-Adresse eingeben";
@@ -693,6 +756,9 @@ Operation completed */
 /* Button title */
 "Export" = "Export";
 
+/* Button title */
+"Export room index" = "Raumindex exportieren";
+
 /* No comment provided by engineer. */
 "External link" = "Externer Link";
 
@@ -724,6 +790,9 @@ Operation completed */
 "Failed to move: %@" = "Verschieben fehlgeschlagen: %@";
 
 /* No comment provided by engineer. */
+"Failed to prepare the index export" = "Der Indexexport konnte nicht vorbereitet werden";
+
+/* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Absenden per E-Mail fehlgeschlagen. Bitte richten Sie eine Forum-Anfrage ein.";
 
 /* No comment provided by engineer. */
@@ -745,13 +814,25 @@ Operation completed */
 "File does not exist" = "Die Datei existiert nicht";
 
 /* No comment provided by engineer. */
+"file exported to Documents" = "Datei in Dokumente exportiert";
+
+/* No comment provided by engineer. */
+"File lifetime" = "Dateilebensdauer";
+
+/* No comment provided by engineer. */
 "Files" = "Dateien";
 
 /* No comment provided by engineer. */
 "Files and folders uploaded by admins will appear here." = "Von Administratoren hochgeladene Dateien und Ordner werden hier angezeigt.";
 
 /* No comment provided by engineer. */
+"Files older than" = "Dateien älter als";
+
+/* No comment provided by engineer. */
 "Files Preview" = "Dateivorschau";
+
+/* No comment provided by engineer. */
+"Files with the exceeded lifetime will be deleted" = "Ältere Dateien mit überschrittener Lebensdauer werden gelöscht";
 
 /* Fill form Button title */
 "Fill" = "Ausfühlen";
@@ -816,6 +897,9 @@ Operation completed */
 /* Data units */
 "Gb" = "Gb";
 
+/* Measurement unit */
+"GB" = "Gb";
+
 /* No comment provided by engineer. */
 "General" = "Allgemein";
 
@@ -847,7 +931,16 @@ Operation completed */
 "Groups" = "Gruppen";
 
 /* No comment provided by engineer. */
+"Guest" = "Gast";
+
+/* No comment provided by engineer. */
+"Guests" = "Gäste";
+
+/* No comment provided by engineer. */
 "Here you will find a list of the recently opened files shared with you via an external link." = "Hier finden Sie eine Liste der zuletzt geöffneten Dateien, die Sie über einen externen Link erhalten haben.";
+
+/* Watermark Position */
+"Horizontal" = "Horizontal";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -860,6 +953,9 @@ Operation completed */
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Wenn es einen Benutzer mit der E-Mail %@ gibt, wurden die Anweisungen zum Ändern des Passworts an diese E-Mail-Adresse verschickt.";
+
+/* Watermark Type */
+"Image" = "Bild";
 
 /* No comment provided by engineer. */
 "Images" = "Bilder";
@@ -875,6 +971,10 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Falsche Portal-Adresse";
+
+/* File order
+Folder order */
+"Index" = "Index";
 
 /* Button title */
 "Info" = "Info";
@@ -895,10 +995,16 @@ Operation completed */
 "Invalid folder" = "Ungültiger Ordner";
 
 /* No comment provided by engineer. */
+"Invalid server data." = "Ungültige Serverdaten.";
+
+/* No comment provided by engineer. */
 "Invalid Url" = "Ungültige URL";
 
 /* No comment provided by engineer. */
 "Invite" = "Einladen";
+
+/* No comment provided by engineer. */
+"Invite guests by email" = "Gäste per E-Mail einladen";
 
 /* No comment provided by engineer. */
 "Invite people" = "Benutzer einladen";
@@ -912,8 +1018,14 @@ Operation completed */
 /* No comment provided by engineer. */
 "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "Laden Sie Benutzer über gemeinsame Links ein, um Dokumente ohne Registrierung einzusehen. Sie können diesen Raum auch in eine beliebige Weboberfläche einbetten.";
 
+/* No comment provided by engineer. */
+"Items in Trash are automatically deleted after 30 days" = "Elemente im Papierkorb werden nach 30 Tagen automatisch gelöscht";
+
 /* Data units */
 "Kb" = "Kb";
+
+/* Measurement unit */
+"KB" = "Kb";
 
 /* No comment provided by engineer. */
 "kDrive" = "kDrive";
@@ -957,6 +1069,12 @@ Operation completed */
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "Einladungslink wurde per E-Mail gesendet";
 
+/* No comment provided by engineer. */
+"Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?" = "Links zu allen Dateien im Raum werden gelöscht. Vorherige Links zu Raumdateien und eingebetteten Dokumenten sind nicht mehr verfügbar.\n\nDiese Aktion kann nicht rückgängig gemacht werden. Möchten Sie wirklich fortfahren?";
+
+/* No comment provided by engineer. */
+"Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?" = "Links zu allen Dateien im Raum werden neu generiert. Vorherige Links zu Raumdateien und eingebetteten Dokumenten sind nicht mehr verfügbar.\n\nDiese Aktion kann nicht rückgängig gemacht werden. Möchten Sie wirklich fortfahren?";
+
 /* Button title */
 "List" = "Liste";
 
@@ -994,15 +1112,27 @@ Caption of the process */
 /* Data units */
 "Mb" = "Mb";
 
+/* Measurement unit */
+"MB" = "Mb";
+
 /* Author or member of a document
 If current user name is not set */
 "Me" = "Ich";
+
+/* No comment provided by engineer. */
+"Measurement unit" = "Maßeinheit";
 
 /* No comment provided by engineer. */
 "Media" = "Medien";
 
 /* No comment provided by engineer. */
 "Member" = "Mitglied";
+
+/* No comment provided by engineer. */
+"Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" = "Mindestlänge: 8 Zeichen | Erlaubte Zeichen: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}";
+
+/* No comment provided by engineer. */
+"Months" = "Monate";
 
 /* Button title */
 "More" = "Mehr";
@@ -1021,6 +1151,9 @@ If current user name is not set */
 
 /* Button title */
 "Move to archive" = "Ins Archiv verschieben";
+
+/* No comment provided by engineer. */
+"Move to trash" = "In den Papierkorb verschieben";
 
 /* Caption of the processing */
 "Moving" = "Wird verschoben";
@@ -1104,6 +1237,9 @@ If current user name is not set */
 "No files here yet" = "Noch keine Dateien vorhanden";
 
 /* No comment provided by engineer. */
+"No forms here yet " = "Noch keine Formulare vorhanden";
+
+/* No comment provided by engineer. */
 "No information about the user profile." = "Keine Informationen zum Benutzerprofil.";
 
 /* No comment provided by engineer. */
@@ -1145,6 +1281,9 @@ Share status */
 
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "von";
+
+/* No comment provided by engineer. */
+"Ok" = "OK";
 
 /* No comment provided by engineer. */
 "OK" = "OK";
@@ -1192,6 +1331,9 @@ Share status */
 "Open Document" = "Dokument öffnen";
 
 /* No comment provided by engineer. */
+"Open file" = "Datei öffnen";
+
+/* No comment provided by engineer. */
 "Open Folder" = "Ordner öffnen";
 
 /* Caption of the processing */
@@ -1232,6 +1374,9 @@ Share status */
 
 /* No comment provided by engineer. */
 "Password is empty" = "Das Feld Kennwort ist leer";
+
+/* No comment provided by engineer. */
+"Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~" = "Das Passwort muss folgendes enthalten: Mindestlänge: 8 Erlaubte Zeichen: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
 /* No comment provided by engineer. */
 "Passwords do not match" = "Die Kennwörter stimmen nicht überein";
@@ -1299,6 +1444,9 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Das Portal ist nicht verfügbar.";
 
+/* No comment provided by engineer. */
+"Position" = "Position";
+
 /* Share status */
 "Pover user" = "Power-Benutzer";
 
@@ -1325,6 +1473,9 @@ Share status */
 
 /* Category title */
 "Project Documents" = "Projektdokumente";
+
+/* No comment provided by engineer. */
+"Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." = "Schützen Sie alle Dokumente in diesem Raum mit Wasserzeichen. Wenn ein Dokument bereits eines enthält, wird es nicht ersetzt.";
 
 /* No comment provided by engineer. */
 "Protection" = "Schutz";
@@ -1398,6 +1549,12 @@ Share status */
 /* No comment provided by engineer. */
 "Renewal" = "Erneuerung";
 
+/* Button title */
+"Reorder" = "Neu ordnen";
+
+/* No comment provided by engineer. */
+"Reorder failed." = "Umordnen fehlgeschlagen.";
+
 /* No comment provided by engineer. */
 "Request canceled" = "Anforderung abgebrochen";
 
@@ -1443,8 +1600,14 @@ Share status */
 /* No comment provided by engineer. */
 "Room created!" = "Raum erstellt!";
 
+/* Share status */
+"Room manager" = "Raummanager";
+
 /* No comment provided by engineer. */
 "Room name" = "Name des Raums";
+
+/* Watermark Element */
+"Room Name" = "Raumname";
 
 /* Category title
 DocSpace rooms */
@@ -1454,6 +1617,9 @@ DocSpace rooms */
 "Root folder" = "Root-Verzeichnis";
 
 /* No comment provided by engineer. */
+"Rotate" = "Drehen";
+
+/* No comment provided by engineer. */
 "Same as system" = "Wie im System";
 
 /* No comment provided by engineer. */
@@ -1461,6 +1627,9 @@ DocSpace rooms */
 
 /* Caption of the processing */
 "Saving" = "Wird gespeichert";
+
+/* No comment provided by engineer. */
+"Scale" = "Skalieren";
 
 /* No comment provided by engineer. */
 "Search" = "Suche";
@@ -1480,6 +1649,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Select group" = "Gruppe auswählen";
+
+/* No comment provided by engineer. */
+"Select image" = "Bild auswählen";
 
 /* Button title */
 "Select location" = "Standort auswählen";
@@ -1522,6 +1694,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Set favorite failed." = "Favorit setzen fehlgeschlagen.";
+
+/* No comment provided by engineer. */
+"Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." = "Legen Sie die Dateilebensdauer fest, um die Dateien in diesem Raum nach einer festgelegten Zeit automatisch zu löschen. Die Lebensdauer beginnt mit dem Datum des Hochladens/Erstellens der Datei.";
 
 /* No comment provided by engineer. */
 "Settings" = "Einstellungen";
@@ -1580,6 +1755,9 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "Size" = "Größe";
 
+/* No comment provided by engineer. */
+"Size quota" = "Größenkontingent";
+
 /* Button title */
 "Skip" = "Überspringen";
 
@@ -1611,6 +1789,15 @@ Navigation bar button title */
 "Storage" = "Speicher";
 
 /* No comment provided by engineer. */
+"Storage quota" = "Speicherkontingent";
+
+/* No comment provided by engineer. */
+"Storage quota set per room. You can change this value or turn off storage limit." = "Speicherkontingent pro Raum festgelegt. Sie können diesen Wert ändern oder das Speicherlimit deaktivieren.";
+
+/* No comment provided by engineer. */
+"Success" = "Erfolg";
+
+/* No comment provided by engineer. */
 "Support" = "Support";
 
 /* No comment provided by engineer. */
@@ -1630,6 +1817,9 @@ Navigation bar button title */
 
 /* Data units */
 "Tb" = "Tb";
+
+/* Measurement unit */
+"TB" = "Tb";
 
 /* No comment provided by engineer. */
 "Terminate account" = "Konto kündigen";
@@ -1653,6 +1843,9 @@ Navigation bar button title */
 "The file in the Trash can not be viewed." = "Die Datei im Papierkorb kann nicht angezeigt werden.";
 
 /* No comment provided by engineer. */
+"The file lifetime is set to %@ in this room." = "Die Dateilebensdauer ist in diesem Raum auf %@ festgelegt";
+
+/* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "Die Datei wird unwiderruflich gelöscht. Diese Aktion ist nicht umkehrbar.";
 
 /* No comment provided by engineer. */
@@ -1663,6 +1856,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Das Element mit dem Namen '%1$@' existiert schon im Ordner '%2$@'.";
+
+/* No comment provided by engineer. */
+"The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." = "Die Lebensdauerzählung beginnt mit dem Erstellungsdatum der Datei. Wenn Dateien in diesem Raum die festgelegte Lebensdauer überschreiten, werden sie gelöscht.";
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Der Link für den externen\nZugriff wird in die Zwischenablage\nkopiert";
@@ -1734,6 +1930,9 @@ Navigation bar button title */
 "This folder is empty" = "Dieser Ordner ist leer";
 
 /* No comment provided by engineer. */
+"This image preview roughly shows how the watermark will be displayed in your files." = "Diese Bildvorschau zeigt grob, wie das Wasserzeichen in Ihren Dateien angezeigt wird.";
+
+/* No comment provided by engineer. */
 "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Durch diesen Vorgang wird Speicherplatz auf Ihrem Gerät freigegeben, indem temporäre Dateien gelöscht werden. Ihre Offline-Dateien und persönlichen Daten werden nicht entfernt.";
 
 /* No comment provided by engineer. */
@@ -1750,6 +1949,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Diese Präsentation wird bearbeitet. Möchten Sie %@ nur anzeigen öffnen?";
+
+/* No comment provided by engineer. */
+"Time period" = "Zeitraum";
 
 /* No comment provided by engineer. */
 "Title" = "Titel";
@@ -1872,13 +2074,22 @@ Navigation bar button title */
 "Upload PDF form from DocSpace" = "PDF-Formular aus DocSpace hochladen";
 
 /* No comment provided by engineer. */
+"Upload PDF forms from DocSpace or device." = "PDF-Formulare von DocSpace oder Gerät hochladen.";
+
+/* No comment provided by engineer. */
 "Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." = "Laden Sie PDF-Formulare in den Raum hoch. Fordern Sie Benutzer auf, ein PDF-Formular auszufüllen. Überprüfen Sie ausgefüllte Formulare und analysieren Sie automatisch erfasste Daten in einer Tabelle.";
 
 /* Caption of the process */
 "Uploading" = "Wird hochgeladen";
 
+/* Watermark Element */
+"Use IP Address" = "IP-Adresse verwenden";
+
 /* No comment provided by engineer. */
 "Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "Verwenden Sie Drittanbieterdienste als Datenspeicher für diesen Raum. Ein neuer Ordner zum Speichern der Daten dieses Raums wird im verbundenen Speicher erstellt";
+
+/* No comment provided by engineer. */
+"Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." = "Verwenden Sie VDR für erweiterte Dateisicherheit und Transparenz beim schrittweisen Ausfüllen und Unterzeichnen von Dokumenten. Setzen Sie Wasserzeichen, indizieren und verfolgen Sie automatisch alle Inhalte und schränken Sie das Herunterladen und Kopieren ein.";
 
 /* No comment provided by engineer. */
 "User" = "Benutzer";
@@ -1889,8 +2100,14 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "User authentication required" = "Benutzerauthentifizierung erforderlich";
 
+/* Watermark Element */
+"User Email" = "Benutzer-E-Mail";
+
 /* No comment provided by engineer. */
 "User name" = "Nutzername";
+
+/* Watermark Element */
+"User Name" = "Benutzername";
 
 /* No comment provided by engineer. */
 "User undefined" = "Benutzer nicht autorisiert";
@@ -1919,8 +2136,20 @@ Navigation bar button title */
 /* Share status */
 "Viewer" = "Betrachter";
 
+/* Watermark Type */
+"Viewer info" = "Viewer-Info";
+
+/* Rooms filter */
+"Virtual data room" = "Virtueller Datenraum";
+
+/* No comment provided by engineer. */
+"Virtual Data Room" = "Virtueller Datenraum";
+
 /* No comment provided by engineer. */
 "Warning" = "Warnung";
+
+/* No comment provided by engineer. */
+"Watermark type" = "Wasserzeichentyp";
 
 /* No comment provided by engineer. */
 "We are sorry, this portal name is already taken" = "Es tut uns leid, dieser Portalname ist bereits vergeben";
@@ -1962,6 +2191,18 @@ Navigation bar button title */
 "Yb" = "Yb";
 
 /* No comment provided by engineer. */
+"Years" = "Jahre";
+
+/* No comment provided by engineer. */
+"You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" = "Sie sind dabei, diese Räume zu löschen. Sie können sie nicht wiederherstellen. Möchten Sie wirklich fortfahren?";
+
+/* No comment provided by engineer. */
+"You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" = "Sie sind dabei, diesen Raum zu löschen. Sie können ihn nicht wiederherstellen. Möchten Sie wirklich fortfahren?";
+
+/* No comment provided by engineer. */
+"You are about to delete this room. You won't be able to restore them." = "Sie sind dabei, diesen Raum zu löschen. Sie können ihn nicht wiederherstellen.";
+
+/* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "Sie sind verantwortlich für diesen Raum. Bevor Sie den Raum verlassen, müssen Sie die Rolle des Verantwortlichen auf einen anderen Benutzer übertragen.";
 
 /* No comment provided by engineer. */
@@ -1980,13 +2221,22 @@ Navigation bar button title */
 "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Sie können nicht mehr als 10 Räume ganz oben anheften. Heben Sie die Anheftung einiger Räume auf, die derzeit angeheftet sind.";
 
 /* No comment provided by engineer. */
+"You have changed the room owner" = "Sie haben den Raumbesitzer geändert";
+
+/* No comment provided by engineer. */
 "You have left the room" = "Sie haben den Raum verlassen";
 
 /* No comment provided by engineer. */
 "You have left the room and appointed a new owner" = "Sie haben den Raum verlassen und einen neuen Verantwortlichen ernannt";
 
 /* No comment provided by engineer. */
+"You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" = "Sie haben kein Wasserzeichen für die Dokumente in diesem Raum festgelegt. Sie können in den Raumbearbeitungseinstellungen jederzeit ein Wasserzeichen hinzufügen. Ohne Wasserzeichen fortfahren?";
+
+/* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "Sie haben nur Lesezugriff auf diesen Ordner. Sie können hier keine Dateien oder Ordner erstellen.";
+
+/* No comment provided by engineer. */
+"You need a password to access the room" = "Für den Zugang zum Raum ist ein Passwort erforderlich";
 
 /* No comment provided by engineer. */
 "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." = "Ihr aktueller Business-Tarifplan ist abgelaufen. Bitte erneuern Sie Ihr Abonnement in den Kontoeinstellungen, um Ihren DocSpace nutzen zu können. Wenn Sie Fragen haben, wenden Sie sich bitte an den Support.";

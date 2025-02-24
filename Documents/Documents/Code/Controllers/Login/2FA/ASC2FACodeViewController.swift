@@ -7,6 +7,7 @@
 //
 
 import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 import MBProgressHUD
 import UIKit
 
@@ -49,10 +50,9 @@ class ASC2FACodeViewController: ASCBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
-        IQKeyboardManager.shared.toolbarConfiguration.useTextFieldTintColor = true
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+        IQKeyboardToolbarManager.shared.toolbarConfiguration.useTextInputViewTintColor = true
 
         checkPastboard()
     }
@@ -67,8 +67,7 @@ class ASC2FACodeViewController: ASCBaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == ASC2FACodeViewController.identifier || KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
-            IQKeyboardManager.shared.enable = false
-            IQKeyboardManager.shared.enableAutoToolbar = false
+            IQKeyboardManager.shared.isEnabled = false
             KeyboardManagerHelper.disablingKeyboardToolbarByScreen = nil
         }
     }

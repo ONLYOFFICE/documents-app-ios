@@ -527,6 +527,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                 let file = ASCFile()
                 file.id = destination.rawValue
+                file.viewUrl = destination.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = destination.fileName
                 file.created = destination.creationDate
@@ -553,7 +554,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
 
         let fileTitle = file.title
-        let destination = Path.userTemporary + fileTitle
+        let destinationPath = Path.userTemporary + UUID().uuidString
+        let destination = destinationPath + fileTitle
 
         ASCLocalFileHelper.shared.removeFile(Path(url: URL(fileURLWithPath: destination.rawValue))!)
 
@@ -561,6 +563,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             handler?(.error, 1, nil, ASCProviderError(msg: NSLocalizedString("A file with a similar name already exists in the document directory on the device.", comment: "")), &cancel)
             return
         }
+
+        ASCLocalFileHelper.shared.createDirectory(destinationPath)
 
         handler?(.begin, 0, nil, nil, &cancel)
 
@@ -579,6 +583,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                 let file = ASCFile()
                 file.id = destination.rawValue
+                file.viewUrl = destination.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = destination.fileName
                 file.created = destination.creationDate
@@ -619,6 +624,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                 let file = ASCFile()
                 file.id = filePath.rawValue
+                file.viewUrl = filePath.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = filePath.fileName
                 file.created = filePath.creationDate
@@ -646,6 +652,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     checkOperation = {
                         OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                             if let error = error {
+                                handler?(.error, 1, nil, error, &cancel)
+                            } else if let errorMessage = result?.result?.first?.error,
+                                      !errorMessage.isEmpty
+                            {
+                                let error = OnlyofficeFileOperationError.serverError(errorMessage)
                                 handler?(.error, 1, nil, error, &cancel)
                             } else if let operation = result?.result?.first, let progress = operation.progress {
                                 if progress >= 100 {
@@ -711,30 +722,32 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 "title": file.title,
             ]
 
-            provider.upload(parent.id,
-                            data: data,
-                            overwrite: true,
-                            params: params,
-                            processing: { result, progress, error in
-                                if error != nil || result != nil {
-                                    if let error = error {
-                                        log.error("Upload file \(file.title) - \(error.localizedDescription)")
-                                        handler?(.error, Float(progress), nil, ASCProviderError(msg: NSLocalizedString("The server is not available.", comment: "")), &cancel)
-                                    }
+            provider.upload(
+                parent.id,
+                data: data,
+                overwrite: false,
+                params: params,
+                processing: { result, progress, error in
+                    if error != nil || result != nil {
+                        if let error = error {
+                            log.error("Upload file \(file.title) - \(error.localizedDescription)")
+                            handler?(.error, Float(progress), nil, ASCProviderError(msg: NSLocalizedString("The server is not available.", comment: "")), &cancel)
+                        }
 
-                                    if let result = result as? [String: Any] {
-                                        if let file = ASCFile(JSON: result) {
-                                            handler?(.end, 1, file, nil, &cancel)
-                                            NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
-                                        }
-                                    } else if let file = result as? ASCFile {
-                                        handler?(.end, 1, file, nil, &cancel)
-                                        NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
-                                    } else {
-                                        handler?(.progress, Float(progress), nil, nil, &cancel)
-                                    }
-                                }
-                            })
+                        if let result = result as? [String: Any] {
+                            if let file = ASCFile(JSON: result) {
+                                handler?(.end, 1, file, nil, &cancel)
+                                NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+                            }
+                        } else if let file = result as? ASCFile {
+                            handler?(.end, 1, file, nil, &cancel)
+                            NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+                        } else {
+                            handler?(.progress, Float(progress), nil, nil, &cancel)
+                        }
+                    }
+                }
+            )
         } else {
             handler?(.error, 1, nil, ASCProviderError(msg: NSLocalizedString("Could not read data from the file.", comment: "")), &cancel)
         }

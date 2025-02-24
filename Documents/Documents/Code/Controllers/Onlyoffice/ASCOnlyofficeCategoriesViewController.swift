@@ -318,6 +318,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
                 case .cancelled, .sessionDeinitialized:
                     return
+
                 default:
                     UIAlertController.showError(in: self, message: error.localizedDescription)
                 }

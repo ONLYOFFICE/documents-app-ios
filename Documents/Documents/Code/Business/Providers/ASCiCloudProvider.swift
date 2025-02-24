@@ -621,38 +621,40 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
 
                 operationDelegate.onSucceed = { fileProvider, operation in
-                    self?.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
-                        DispatchQueue.main.async { [weak self] in
-                            if let error = error {
-                                processing(nil, 1.0, error)
-                            } else if let fileObject = fileObject {
-                                let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
+                    delay(seconds: 2.0) {
+                        self?.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
+                            DispatchQueue.main.async { [weak self] in
+                                if let error = error {
+                                    processing(nil, 1.0, error)
+                                } else if let fileObject = fileObject {
+                                    let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
 
-                                let parent = ASCFolder()
-                                parent.id = path
-                                parent.title = (path as NSString).lastPathComponent
+                                    let parent = ASCFolder()
+                                    parent.id = path
+                                    parent.title = (path as NSString).lastPathComponent
 
-                                let cloudFile = ASCFile()
-                                cloudFile.id = fileObject.path
-                                cloudFile.rootFolderType = .icloudAll
-                                cloudFile.title = fileObject.name
-                                cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
-                                cloudFile.updated = fileObject.modifiedDate
-                                cloudFile.createdBy = self?.user
-                                cloudFile.updatedBy = self?.user
-                                cloudFile.parent = parent
-                                cloudFile.viewUrl = fileObject.path
-                                cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
-                                cloudFile.pureContentLength = Int(fileSize)
+                                    let cloudFile = ASCFile()
+                                    cloudFile.id = fileObject.path
+                                    cloudFile.rootFolderType = .icloudAll
+                                    cloudFile.title = fileObject.name
+                                    cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
+                                    cloudFile.updated = fileObject.modifiedDate
+                                    cloudFile.createdBy = self?.user
+                                    cloudFile.updatedBy = self?.user
+                                    cloudFile.parent = parent
+                                    cloudFile.viewUrl = fileObject.path
+                                    cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+                                    cloudFile.pureContentLength = Int(fileSize)
 
-                                processing(cloudFile, 1.0, nil)
-                            } else {
-                                processing(nil, 1.0, nil)
+                                    processing(cloudFile, 1.0, nil)
+                                } else {
+                                    processing(nil, 1.0, nil)
+                                }
+                                ASCLocalFileHelper.shared.removeFile(dummyFilePath)
+                                cleanupHendler(handlerUid)
                             }
-                            ASCLocalFileHelper.shared.removeFile(dummyFilePath)
-                            cleanupHendler(handlerUid)
-                        }
-                    })
+                        })
+                    }
                 }
                 operationDelegate.onFailed = { fileProvider, operation, error in
                     DispatchQueue.main.async {

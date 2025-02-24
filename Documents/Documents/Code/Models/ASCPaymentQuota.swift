@@ -17,6 +17,7 @@ struct ASCPaymentQuota: Mappable {
     var free: Bool?
     var trial: Bool?
     var features: [ASCPaymentQuotaFeatures] = []
+    var roomsQuota: ASCPaymentQuotaSettings?
 
     init?(map: Map) {}
 
@@ -28,6 +29,7 @@ struct ASCPaymentQuota: Mappable {
         free <- map["free"]
         trial <- map["trial"]
         features <- map["features"]
+        roomsQuota <- map["roomsQuota"]
     }
 }
 
@@ -42,6 +44,7 @@ struct ASCPaymentQuotaFeatures: Mappable {
     static let restoreId = "restore"
     static let auditId = "audit"
     static let usersInRoomId = "usersInRoom"
+    static let statistic = "statistic"
 
     var id: String?
     var value: Int?
@@ -81,5 +84,29 @@ struct ASCPaymentQuotaPrice: Mappable {
     mutating func mapping(map: Map) {
         value <- map["value"]
         currencySymbol <- map["currencySymbol"]
+    }
+}
+
+struct ASCPaymentQuotaSettings: Mappable, Equatable {
+    var enableQuota: Bool?
+    var defaultQuota: Double?
+    var lastRecalculateDate: String?
+
+    init?(map: Map) {}
+
+    init(
+        enableQuota: Bool?,
+        defaultQuota: Double?,
+        lastRecalculateDate: String?
+    ) {
+        self.enableQuota = enableQuota
+        self.defaultQuota = defaultQuota
+        self.lastRecalculateDate = lastRecalculateDate
+    }
+
+    mutating func mapping(map: Map) {
+        enableQuota <- map["enableQuota"]
+        defaultQuota <- map["defaultQuota"]
+        lastRecalculateDate <- map["lastRecalculateDate"]
     }
 }

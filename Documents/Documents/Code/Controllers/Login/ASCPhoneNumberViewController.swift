@@ -23,7 +23,7 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
     var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
-    private let phoneNumberKit = PhoneNumberKit()
+    private let phoneNumberUtility = PhoneNumberUtility()
 
     // MARK: - Lifecycle Methods
 
@@ -44,7 +44,7 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
         }
 
         if let countryCode = Locale.current.regionCode {
-            if let code = phoneNumberKit.countryCode(for: countryCode) {
+            if let code = phoneNumberUtility.countryCode(for: countryCode) {
                 codeField.text = "+\(code)"
             }
 
@@ -88,10 +88,10 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
 
         if let stringCode = codeField.text?.trimmed.replacingOccurrences(of: "+", with: ""),
            let intCode = UInt64(stringCode),
-           let regionCode = phoneNumberKit.mainCountry(forCode: intCode)
+           let regionCode = phoneNumberUtility.mainCountry(forCode: intCode)
         {
             do {
-                phoneNumber = try phoneNumberKit.parse("\(codeField.text!)\(numberField.text!)", withRegion: regionCode)
+                phoneNumber = try phoneNumberUtility.parse("\(codeField.text!)\(numberField.text!)", withRegion: regionCode)
                 isValidNumber = true
             } catch {
                 log.error(error)
@@ -100,8 +100,8 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
         }
 
         if isValidNumber {
-            let phoneNumberE164 = phoneNumberKit.format(phoneNumber, toType: .e164)
-            let phoneNumberNormal = phoneNumberKit.format(phoneNumber, toType: .national)
+            let phoneNumberE164 = phoneNumberUtility.format(phoneNumber, toType: .e164)
+            let phoneNumberNormal = phoneNumberUtility.format(phoneNumber, toType: .national)
 
             request.phoneNoise = phoneNumberNormal
             request.mobilePhone = phoneNumberE164
@@ -141,7 +141,7 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
     func textFieldDidChange(_ textField: UITextField) {
         if textField == codeField {
             if let stringCode = textField.text?.trimmed.replacingOccurrences(of: "+", with: ""), let intCode = UInt64(stringCode) {
-                if let regionCode = phoneNumberKit.mainCountry(forCode: intCode) {
+                if let regionCode = phoneNumberUtility.mainCountry(forCode: intCode) {
                     if let countryName = Locale.current.localizedString(forRegionCode: regionCode) {
                         countryCodeField.text = countryName
                         return

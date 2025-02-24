@@ -38,9 +38,16 @@ class ASCSharingSettingsAccessProviderFactory {
                 : ASCSharingSettingsAccessDefaultProvider()
         }
 
-        return ASCSharingSettingsAccessRoomsProvider(
-            roomType: roomType,
-            rightHoldersTableType: rightHoldersTableType
-        )
+        if isAccessExternal {
+            return ASCSharingSettingsExternalLinkAccessRoomsProvider(
+                roomType: roomType,
+                rightHoldersTableType: rightHoldersTableType
+            )
+        } else {
+            return ASCSharingSettingsAccessRoomsProvider(
+                roomType: roomType,
+                rightHoldersTableType: rightHoldersTableType
+            )
+        }
     }
 }

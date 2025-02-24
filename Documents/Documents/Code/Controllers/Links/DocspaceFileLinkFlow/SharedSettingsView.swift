@@ -16,6 +16,7 @@ struct SharedSettingsView: View {
             screenView
                 .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
                 .navigateToEditSharedLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
+                .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
         }
     }
 
@@ -84,9 +85,13 @@ extension View {
                 viewModel: EditSharedLinkViewModel(
                     file: viewModel.file,
                     inputLink: link,
-                    outputLink: Binding<SharedSettingsLinkResponceModel?>(
+                    outputLink: Binding(
                         get: { nil },
-                        set: { viewModel.handleLinkOutChanges(link: $0) }
+                        set: { newLink in
+                            if let newLink {
+                                viewModel.handleLinkOutChanges(link: newLink)
+                            }
+                        }
                     ),
                     onRemoveCompletion: {
                         viewModel.loadLinks()

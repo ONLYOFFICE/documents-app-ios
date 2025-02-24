@@ -36,6 +36,20 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
     @Published var isReadyToDismissed: Bool = false
+    @Published var selectedAccessRight: ASCShareAccess = .none
+
+    var accessMenuItems: [MenuViewItem] {
+        [
+            ASCShareAccess.editing,
+            ASCShareAccess.review,
+            ASCShareAccess.comment,
+            ASCShareAccess.read,
+        ].map { access in
+            MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
+                selectedAccessRight = access
+            }
+        }
+    }
 
     var isDeletePossible: Bool {
         if (room.roomType == .public && link?.isGeneral == true) || room.roomType == .fillingForm {
@@ -60,6 +74,10 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     }
 
     var roomType: ASCRoomType?
+
+    var isEditAccessPossible: Bool {
+        link?.canEditAccess == true
+    }
 
     private var cancelable = Set<AnyCancellable>()
 
@@ -97,7 +115,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         isProtected = !password.isEmpty
         isRestrictCopyOn = linkInfo?.denyDownload == true
         isTimeLimited = linkInfo?.expirationDate != nil
-
+        selectedAccessRight = link?.access ?? .none
         defineSharingLink()
     }
 }
@@ -128,9 +146,16 @@ extension RoomSharingCustomizeLinkViewModel {
         }
     }
 
-    func onSave() {
+    func onSave(completion: @escaping (String?) -> Void) {
+        if isProtected, !isPasswordValid(password) {
+            completion(.passwordErrorAlertMessage)
+            return
+        }
+
         guard isPossibleToSave else { return }
+
         saveCurrentState()
+        completion(nil)
     }
 
     func onRevoke() {
@@ -167,7 +192,7 @@ private extension RoomSharingCustomizeLinkViewModel {
         linkAccessService.changeOrCreateLink(
             id: linkId,
             title: linkName,
-            access: .defaultAccsessForLink,
+            access: selectedAccessRight.rawValue,
             expirationDate: isTimeLimited ? Self.sendDateFormatter.string(from: selectedDate) : nil,
             linkType: ASCShareLinkType.external,
             denyDownload: isRestrictCopyOn,
@@ -178,6 +203,7 @@ private extension RoomSharingCustomizeLinkViewModel {
             case let .success(link):
                 DispatchQueue.main.async { [self] in
                     isSaving = false
+                    UIPasteboard.general.string = link.linkInfo.shareLink
                     outputLink = link
                     defineSharingLink()
                     if isExpired, selectedDate > Date() {
@@ -239,4 +265,21 @@ private extension Int {
 private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
+    static let passwordErrorAlertMessage = NSLocalizedString(
+        "Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~",
+        comment: ""
+    )
+}
+
+extension RoomSharingCustomizeLinkViewModel {
+    func isPasswordValid(_ password: String) -> Bool {
+        guard password.count >= 8 else { return false }
+
+        let pattern = "^[a-zA-Z0-9!\"№%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]+$"
+
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return false }
+
+        let range = NSRange(location: 0, length: password.utf16.count)
+        return regex.firstMatch(in: password, options: [], range: range) != nil
+    }
 }

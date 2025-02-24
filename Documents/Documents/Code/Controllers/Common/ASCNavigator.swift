@@ -89,6 +89,7 @@ final class ASCNavigator {
             nc.modalPresentationStyle = .formSheet
             nc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
             navigationController?.present(nc, animated: true, completion: nil)
+
         case let .leaveRoom(entity, handler):
             if let leaveRoomViewController = viewController as? ASCSharingChooseNewOwnerRightHoldersViewController {
                 let leaveRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: leaveRoomViewController)
@@ -120,6 +121,7 @@ final class ASCNavigator {
 
                 navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
+
         case let .sharedSettingsLink(file):
             let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
             if UIDevice.current.userInterfaceIdiom == .pad {

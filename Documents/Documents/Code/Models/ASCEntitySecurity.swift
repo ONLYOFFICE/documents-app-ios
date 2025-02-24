@@ -79,6 +79,8 @@ class ASCFolderSecurity: Mappable {
     var createRoomFrom: Bool = false
     var copyLink: Bool = false
     var embed: Bool = false
+    var changeOwner: Bool = false
+    var indexExport: Bool = false
 
     init() {}
 
@@ -104,5 +106,7 @@ class ASCFolderSecurity: Mappable {
         createRoomFrom <- map["CreateRoomFrom"]
         copyLink <- map["CopyLink"]
         embed <- map["Embed"]
+        changeOwner <- map["ChangeOwner"]
+        indexExport <- map["IndexExport"]
     }
 }

@@ -26,7 +26,7 @@ enum ASCShareAccess: Int, CaseIterable {
     case userFilter = 8
     case roomManager = 9
     case editing = 10
-    case powerUser = 11
+    case contentCreator = 11
 
     init() {
         self = .none
@@ -44,7 +44,7 @@ enum ASCShareAccess: Int, CaseIterable {
         case 8: self = .userFilter
         case 9: self = .roomManager
         case 10: self = .editing
-        case 11: self = .powerUser
+        case 11: self = .contentCreator
         default: self = .none
         }
     }
@@ -53,7 +53,7 @@ enum ASCShareAccess: Int, CaseIterable {
         switch self {
         case .none: return 5
         case .roomManager: return 7
-        case .powerUser: return 8
+        case .contentCreator: return 8
         case .editing: return 9
         case .full: return 10
         case .varies: return 20
@@ -87,11 +87,11 @@ enum ASCShareAccess: Int, CaseIterable {
         case .userFilter:
             return NSLocalizedString("Custom filter", comment: "Share status")
         case .roomManager:
-            return NSLocalizedString("Room admin", comment: "Share status")
+            return NSLocalizedString("Room manager", comment: "Share status")
         case .editing:
             return NSLocalizedString("Editor", comment: "Share status")
-        case .powerUser:
-            return NSLocalizedString("Power user", comment: "Share status")
+        case .contentCreator:
+            return NSLocalizedString("Content creator", comment: "Share status")
         }
     }
 
@@ -117,7 +117,6 @@ enum ASCShareAccess: Int, CaseIterable {
             case .varies:
 
                 return nil // MARK: - TODO
-
             case .review:
                 return Asset.Images.menuReview
             case .comment:
@@ -130,7 +129,7 @@ enum ASCShareAccess: Int, CaseIterable {
                 return Asset.Images.menuPerson
             case .editing:
                 return Asset.Images.menuFullAccess
-            case .powerUser:
+            case .contentCreator:
                 return Asset.Images.menuPersonStar
             }
         }

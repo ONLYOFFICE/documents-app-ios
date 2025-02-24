@@ -15,8 +15,6 @@ struct ManageRoomView: View {
 
     @ObservedObject var viewModel: ManageRoomViewModel
 
-    @State private var isThirdPartyStorageEnabled: Bool = false
-
     var body: some View {
         handleHUD()
 
@@ -26,7 +24,13 @@ struct ManageRoomView: View {
             roomTagsSection
             roomOwnerSection
             thirdPartySection
+            automaticIndexationSection
+            fileLifetimeSection
+            restrictContentCopySection
+            watermarkSection
+            storageQuotaSection
         }
+        .hideKeyboardOnDrag()
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
@@ -44,12 +48,15 @@ struct ManageRoomView: View {
         })
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
-        .alertForErrorMessage($viewModel.errorMessage)
+        .alertForActiveAlert(activeAlert: $viewModel.activeAlert, viewModel: viewModel)
     }
+
+    // MARK: - All rooms sections
 
     private var roomTypeSection: some View {
         Section {
             RoomTypeViewRow(roomTypeModel: viewModel.selectedRoomType)
+                .contentShape(Rectangle())
                 .onTapGesture {
                     guard !viewModel.isEditMode else { return }
                     viewModel.isRoomSelectionPresenting = true
@@ -87,10 +94,12 @@ struct ManageRoomView: View {
                     Spacer()
                     Text(viewModel.roomOwnerName)
                         .foregroundColor(.secondary)
-                    ChevronRightView()
+                    if viewModel.isRoomOwnerCellTappable {
+                        ChevronRightView()
+                    }
                 }
                 .onTapGesture {
-                    viewModel.isUserSelectionPresenting = true
+                    viewModel.didTapRoomOwnerCell()
                 }
             }
         }
@@ -131,68 +140,43 @@ struct ManageRoomView: View {
             .disabled(viewModel.isSaving)
     }
 
-    @ViewBuilder
+    // MARK: - Public room third part section
+
     private var thirdPartySection: some View {
-        if viewModel.selectedRoomType.type == .publicRoom && !viewModel.isEditMode {
-            Section(
-                footer: Text(
-                    NSLocalizedString("Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage", comment: "")
-                )
-            ) {
-                thirdPartyToggleCell
-                if viewModel.isThirdPartyStorageEnabled {
-                    storageSelectionCell
-                    folderSelectionCell
-                    createNewFolderCell
-                }
-            }
-        }
+        ThirdPartySection(viewModel: viewModel)
     }
 
-    private var thirdPartyToggleCell: some View {
-        Toggle(isOn: Binding(
-            get: { viewModel.isThirdPartyStorageEnabled },
-            set: { viewModel.didTapThirdPartyStorageSwitch(isOn: $0) }
-        )) {
-            Text(NSLocalizedString("Third party storage", comment: ""))
-        }
-        .tintColor(Color(Asset.Colors.brend.color))
+    // MARK: - VDR indexing section
+
+    private var automaticIndexationSection: some View {
+        AutomaticIndexationSection(viewModel: viewModel)
     }
 
-    private var storageSelectionCell: some View {
-        HStack(spacing: 4) {
-            Text(NSLocalizedString("Storage", comment: ""))
-            Spacer()
-            Text(viewModel.selectedStorage ?? "")
-                .foregroundColor(.gray)
-            ChevronRightView()
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            viewModel.didTapStorageSelectionCell()
-        }
+    // MARK: - VDR file lifetime section
+
+    private var fileLifetimeSection: some View {
+        FileLifetimeSection(viewModel: viewModel)
     }
 
-    private var folderSelectionCell: some View {
-        HStack {
-            Text(NSLocalizedString("Location", comment: ""))
-            Spacer()
-            Text(viewModel.selectedLocation)
-                .foregroundColor(.gray)
-            ChevronRightView()
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            viewModel.didTapSelectedFolderCell()
-        }
+    // MARK: - VDR restrict content copy section
+
+    private var restrictContentCopySection: some View {
+        RestrictContentCopySection(viewModel: viewModel)
     }
 
-    private var createNewFolderCell: some View {
-        Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
-            Text(NSLocalizedString("Create new folder", comment: ""))
-        }
-        .tintColor(Color(Asset.Colors.brend.color))
+    // MARK: - VDR watermark section
+
+    private var watermarkSection: some View {
+        WatermarkSection(viewModel: viewModel)
     }
+
+    // MARK: - Storage quota section
+
+    private var storageQuotaSection: some View {
+        StorageQuotaSection(viewModel: viewModel)
+    }
+
+    // MARK: - HUD
 
     private func handleHUD() {
         if viewModel.isSavedSuccessfully {
@@ -221,9 +205,11 @@ struct ManageRoomView: View {
     }
 }
 
-// MARK: Modifiers
+// MARK: - Modifiers
 
 private extension View {
+    // MARK: View navigation extenstions
+
     @ViewBuilder
     func navigationBarItems(viewModel: ManageRoomViewModel) -> some View {
         let closeButton = Button(NSLocalizedString("Close", comment: "")) {
@@ -297,19 +283,74 @@ private extension View {
             listStyle(InsetGroupedListStyle())
         }
     }
+
+    // MARK: View alert extensions
+
+    func alertForActiveAlert(
+        activeAlert: Binding<ManageRoomView.ActiveAlert?>,
+        viewModel: ManageRoomViewModel
+    ) -> some View {
+        alert(item: activeAlert) { alertType in
+            return switch alertType {
+            case .errorMessage:
+                Alert(
+                    title: Text(NSLocalizedString("Error", comment: "")),
+                    message: Text(viewModel.errorMessage ?? ""),
+                    dismissButton: .default(Text("OK")) {
+                        viewModel.errorMessage = nil
+                    }
+                )
+            case .filesLifetimeWarning:
+                Alert(
+                    title: Text(NSLocalizedString("Files with the exceeded lifetime will be deleted", comment: "")),
+                    message: Text(NSLocalizedString("The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.", comment: "")),
+                    primaryButton: .default(Text(NSLocalizedString("Ok", comment: ""))),
+                    secondaryButton: .cancel {
+                        viewModel.isFileLifetimeEnabled = false
+                    }
+                )
+            case .saveWithoutWatermark:
+                Alert(
+                    title: Text(NSLocalizedString("Warning", comment: "")),
+                    message: Text(NSLocalizedString("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?", comment: "")),
+                    primaryButton: .default(
+                        Text(NSLocalizedString("Continue", comment: "")),
+                        action: {
+                            viewModel.didPrimaryActionTappedOnNoWatermarkAlert()
+                        }
+                    ),
+                    secondaryButton: .cancel()
+                )
+            }
+        }
+    }
+
+    // MARK: View hide keyboard
+
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+// MARK: - ActiveAlert subtype
+
+extension ManageRoomView {
+    enum ActiveAlert: String, Identifiable {
+        var id: String {
+            rawValue
+        }
+
+        case errorMessage
+        case filesLifetimeWarning
+        case saveWithoutWatermark
+    }
 }
 
 // MARK: Constants
 
 private extension CGFloat {
-    static let imageSideSize: CGFloat = 48
+    static let imageSideSize: CGFloat = 36
     static let imageCornerRadious: CGFloat = 8
-}
-
-#Preview {
-    ManageRoomView(
-        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
-    )
 }
 
 private extension String {
@@ -319,24 +360,30 @@ private extension String {
     }
 }
 
-struct LocationSelectionView: View {
-    @Binding var selectedLocation: String
+#Preview {
+    ManageRoomView(
+        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
+    )
+}
 
-    var body: some View {
-        List {
-            Button(action: {
-                selectedLocation = "/Files for test"
-            }) {
-                Text(verbatim: "/Files for test")
-                    .foregroundColor(selectedLocation == "/Files for test" ? Asset.Colors.brend.swiftUIColor : .primary)
-            }
-            Button(action: {
-                selectedLocation = "/Documents"
-            }) {
-                Text(verbatim: "/Documents")
-                    .foregroundColor(selectedLocation == "/Documents" ? Asset.Colors.brend.swiftUIColor : .primary)
-            }
+struct HideKeyboardOnDrag: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .gesture(
+                DragGesture().onEnded { _ in
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+            )
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func hideKeyboardOnDrag() -> some View {
+        if #available(iOS 16.0, *) {
+            self.scrollDismissesKeyboard(.immediately)
+        } else {
+            modifier(HideKeyboardOnDrag())
         }
-        .navigationBarTitle("Select Location", displayMode: .inline)
     }
 }

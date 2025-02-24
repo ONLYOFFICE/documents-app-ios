@@ -19,6 +19,7 @@ class ASCDocumentsEmptyView: UIView {
         case docspaceNoPermissions
         case search
         case usersNotFound
+        case guestsNotFound
         case usersNotFoundForDocSpaceRoomOwner
         case error
         case networkError
@@ -27,6 +28,7 @@ class ASCDocumentsEmptyView: UIView {
         case recentlyAccessibleViaLink
         case formFillingRoom
         case formFillingRoomSubfolder
+        case virtualDataRoom
     }
 
     // MARK: - Properties
@@ -173,6 +175,13 @@ class ASCDocumentsEmptyView: UIView {
             subtitleLabel?.text = NSLocalizedString("The list of users previously invited to DocSpace or separate rooms will appear here.", comment: "")
             actionButton?.removeFromSuperview()
 
+        case .guestsNotFound:
+            centerYConstraint?.constant = -150
+            imageView?.image = Asset.Images.emptySearchResult.image
+            titleLabel?.text = NSLocalizedString("No added guests yet", comment: "")
+            subtitleLabel?.text = NSLocalizedString("New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.", comment: "")
+            actionButton?.removeFromSuperview()
+
         case .usersNotFoundForDocSpaceRoomOwner:
             centerYConstraint?.constant = -150
             imageView?.image = Asset.Images.emptySearchResult.image
@@ -221,6 +230,12 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel.text = NSLocalizedString("No forms here yet ", comment: "")
             subtitleLabel.text = NSLocalizedString("Upload PDF forms from DocSpace or device.", comment: "")
             actionButton.setTitle(NSLocalizedString("Upload a ready PDF form", comment: ""), for: .normal)
+
+        case .virtualDataRoom:
+            imageView.image = Asset.Images.emptyFileSecurity.image
+            titleLabel.text = NSLocalizedString("Welcome to the Virtual Data Room ", comment: "")
+            subtitleLabel.text = NSLocalizedString("Get started with quick actions: ", comment: "")
+            actionButton.setTitle(NSLocalizedString("Create a new file", comment: ""), for: .normal)
 
         default:
             imageView?.image = Asset.Images.emptyFolder.image

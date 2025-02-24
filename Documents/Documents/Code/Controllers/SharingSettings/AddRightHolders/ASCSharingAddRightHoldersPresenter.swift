@@ -20,7 +20,7 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
         case let .presentUsers(response: response):
             var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
             let users = response.users.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
-            let usersIdsSet: Set<String> = Set(response.sharedEntities.map { $0.user?.userId ?? nil }.compactMap { $0 })
+            let usersIdsSet: Set<String> = Set(response.sharedEntities.compactMap { $0.user?.userId })
 
             let currentUserId = response.currentUser?.userId
             let entityOwnerUserId = response.entityOwner?.userId
@@ -56,7 +56,7 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
         case let .presentGroups(response: response):
             var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
             let groups = response.groups.sorted(by: { $0.name ?? "" < $1.name ?? "" })
-            let groupIdsSet = Set(response.sharedEntities.map { $0.group?.id }.compactMap { $0 })
+            let groupIdsSet = Set(response.sharedEntities.compactMap { $0.group?.id })
             for group in groups {
                 var isSelected = false
 
@@ -75,6 +75,38 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
                 viewModels.append((viewModel, isSelected))
             }
             viewController?.displayData(viewModelType: .displayGroups(.init(groups: viewModels)))
+        case let .presentGuests(response: response):
+            var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
+            let guests = response.guests.sorted(by: { $0.userName ?? "" < $1.userName ?? "" })
+            let guestsIdsSet = Set(response.sharedEntities
+                .compactMap { $0.user?.userId })
+            for guest in guests {
+                var isSelected = false
+
+                if let id = guest.userId, guestsIdsSet.contains(id) {
+                    isSelected = true
+                }
+
+                let viewModel = ASCSharingRightHolderViewModel(
+                    id: guest.userId ?? "",
+                    avatarUrl: guest.avatar,
+                    name: guest.displayName ?? "",
+                    email: guest.email,
+                    department: guest.department,
+                    isOwner: false,
+                    rightHolderType: .guest,
+                    access: nil
+                )
+
+                viewModels.append((viewModel, isSelected))
+            }
+            viewController?.displayData(
+                viewModelType: .displayGuests(
+                    .init(
+                        guests: viewModels
+                    )
+                )
+            )
         case let .presentSelected(response: response):
             viewController?.displayData(viewModelType: .displaySelected(.init(selectedModel: response.selectedModel,
                                                                               isSelect: response.isSelect,

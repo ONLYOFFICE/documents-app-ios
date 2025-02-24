@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* No comment provided by engineer. */
@@ -134,9 +131,6 @@
 "All Files" = "すべてのファイル";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "アーカイブに登録された項目は、すべて永久に削除されます。復元することができなくなります。";
-
-/* No comment provided by engineer. */
 "All notifications" = "すべての通知";
 
 /* No comment provided by engineer. */
@@ -206,7 +200,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "ポータルを作成することにより、お客様は当社のプライバシーポリシーおよび利用規約に同意されたものとします";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "バイト";
 
 /* No comment provided by engineer. */
@@ -338,9 +333,6 @@ Category title */
 /* No comment provided by engineer. */
 "Connect Storage" = "ストレージに接続する";
 
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Nextcloud、ownCloud、Yandex Diskなど、\nWebDAVプロトコルを使用する\nサードパーティストレージを接続します。";
-
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存し、リアルタイムでドキュメントを共同編集します。";
 
@@ -371,9 +363,6 @@ Caption of the processing */
 
 /* Button title */
 "Copy link" = "リンクをコピー";
-
-/* No comment provided by engineer. */
-"Copy shared link" = "共有リンクのコピー";
 
 /* Caption of the processing */
 "Copying" = "コピー中";
@@ -513,9 +502,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "フォルダーを削除する";
-
-/* No comment provided by engineer. */
-"Delete forever" = "完全に削除する";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "永久に削除しますか？";
@@ -896,7 +882,7 @@ Operation completed */
 /* No comment provided by engineer. */
 "Link with the invitation has been sent to the mail" = "メールに招待リンクが送信されました";
 
-/* No comment provided by engineer. */
+/* Caption of the processing */
 "Loading" = "読み込み中";
 
 /* No comment provided by engineer. */
@@ -1229,9 +1215,6 @@ Share status */
 /* Share status */
 "Pover user" = "パワーユーザー";
 
-/* Share status */
-"Power user" = "パワーユーザー";
-
 /* No comment provided by engineer. */
 "Presentation" = "プレゼンテーション";
 
@@ -1364,7 +1347,7 @@ Share status */
 /* No comment provided by engineer. */
 "Roles" = "役割";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "ルームの管理者";
 
 /* No comment provided by engineer. */
@@ -1582,11 +1565,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "外部アクセス用の\nリンクがクリップボードに\nコピーされた";
 
-/* Expiration status */
-"The link has expired" = "リンクが無効になりました";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "リンクは期限切れで無効になっています。";
+"The link has expired" = "リンクが無効になりました";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "リンクは永久に削除されます。元に戻すことはできません。";
@@ -1659,9 +1639,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "このスプレッドシートは編集中です。%@ を開いて閲覧だけしますか?";
-
-/* No comment provided by engineer. */
-"Time limit" = "時間制限";
 
 /* No comment provided by engineer. */
 "Title" = "タイトル";
@@ -1854,9 +1831,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "このルームを削除しようとしています。復元することはできません。";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "あなたはこのルームの所有者です。退室する前に、所有者の役割を他のユーザーに割り当てなければなりません。";

@@ -36,7 +36,7 @@ extension ASCDocumentsViewController: UICollectionViewDragDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, dragSessionWillBegin session: any UIDragSession) {
-        guard let folder else { return }
+        guard let folder, !isEditingIndexMode else { return }
 
         session.localContext = ItemDragInfo(
             srcFolder: folder,
@@ -111,10 +111,20 @@ extension ASCDocumentsViewController: UICollectionViewDropDelegate {
             }
         }
 
+        if isEditingIndexMode, let editIndexDelegate = provider as? ProviderEditIndexDelegate {
+            for item in items {
+                if let destIndex = coordinator.destinationIndexPath?.item {
+                    editIndexDelegate.changeOrderIndex(for: item, toIndex: destIndex)
+                }
+            }
+            collectionView.reloadData()
+        }
+
         if let srcProvider = srcProvider,
            let dstProvider = dstProvider,
            let srcFolder = srcFolder,
-           let dstFolder = dstFolder
+           let dstFolder = dstFolder,
+           !isEditingIndexMode
         {
             let move = srcProvider.allowDelete(entity: items.first)
             let isInsideTransfer = (srcProvider.id == dstProvider.id) && !(srcProvider is ASCGoogleDriveProvider)
@@ -243,6 +253,10 @@ extension ASCDocumentsViewController: UICollectionViewDropDelegate {
 
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: any UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         if session.localDragSession != nil {
+            guard !isEditingIndexMode else {
+                return UICollectionViewDropProposal(operation: .move)
+            }
+
             dragHighlightItem()
 
             if let provider, provider.allowEdit(entity: folder) {

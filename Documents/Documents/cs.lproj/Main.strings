@@ -31,9 +31,6 @@
 /* Class = "UINavigationController"; title = "On iPad"; ObjectID = "gvd-UQ-EFI"; */
 "gvd-UQ-EFI.title" = "V iPadu";
 
-/* Class = "UINavigationItem"; title = "Documents"; ObjectID = "iQZ-4u-7mL"; */
-"iQZ-4u-7mL.title" = "Dokumenty";
-
 /* Class = "UILabel"; text = "Address"; ObjectID = "Jg5-fy-5tz"; Note = "Do not translate"; */
 "Jg5-fy-5tz.text" = "Adresa";
 

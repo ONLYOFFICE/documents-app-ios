@@ -20,6 +20,12 @@ struct CreatingRoomModel {
     var tags: [String]
     var createAsNewFolder: Bool = false
     var thirdPartyFolderId: String?
+    var isAutomaticIndexing: Bool = false
+    var isRestrictContentCopy: Bool = false
+    var fileLifetime: CreateRoomRequestModel.FileLifetime?
+    var watermark: CreateRoomRequestModel.Watermark?
+    var watermarkImage: UIImage?
+    var quota: Double?
 }
 
 struct EditRoomModel {
@@ -30,6 +36,13 @@ struct EditRoomModel {
     var ownerToChange: ASCUser?
     var tagsToAdd: [String]
     var tagsToDelete: [String]
+    var isAutomaticIndexing: Bool = false
+    var isRestrictContentCopy: Bool = false
+    var fileLifetime: CreateRoomRequestModel.FileLifetime?
+    var watermark: CreateRoomRequestModel.Watermark?
+    var watermarkImage: UIImage?
+    var watermarkImageWasChanged: Bool = false
+    var quota: Double?
 }
 
 class NetworkManagingRoomServiceImp: ManagingRoomService {
@@ -62,7 +75,18 @@ class NetworkManagingRoomServiceImp: ManagingRoomService {
 
 extension NetworkManagingRoomServiceImp {
     func editRoom(model: EditRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
-        updateRoom(room: model.room, name: model.name, roomType: model.roomType.rawValue) { [self] result in
+        updateRoom(
+            room: model.room,
+            name: model.name,
+            roomType: model.roomType.rawValue,
+            indexing: model.isAutomaticIndexing,
+            denyDownload: model.isRestrictContentCopy,
+            lifetime: model.fileLifetime,
+            watermark: model.watermark,
+            watermarkImage: model.watermarkImage,
+            watermarkImageWasChanged: model.watermarkImageWasChanged,
+            quota: model.quota
+        ) { [self] result in
             switch result {
             case let .success(room):
                 let group = DispatchGroup()
@@ -70,9 +94,16 @@ extension NetworkManagingRoomServiceImp {
                 self.editAndAttachTags(tagsToAdd: model.tagsToAdd, tagsToDelete: model.tagsToDelete, room: room) {
                     group.leave()
                 }
-                group.enter()
-                self.uploadAndAttachImage(image: model.image, room: room) {
-                    group.leave()
+                if let image = model.image {
+                    group.enter()
+                    self.uploadAndAttachImage(image: model.image, room: room) {
+                        group.leave()
+                    }
+                } else if room.logo != nil {
+                    group.enter()
+                    self.removeLogo(room: room) {
+                        group.leave()
+                    }
                 }
                 group.enter()
                 self.changeOwner(newOwner: model.ownerToChange, room: room) {
@@ -87,25 +118,63 @@ extension NetworkManagingRoomServiceImp {
         }
     }
 
-    private func updateRoom(room: ASCRoom, name: String, roomType: Int, completion: @escaping (Result<ASCRoom, Error>) -> Void) {
-        guard room.title != name else {
-            completion(.success(room))
-            return
-        }
-        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name, createAsNewFolder: false)
-        networkService.request(
-            OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
-            requestModel.dictionary
-        ) { response, error in
-            guard let room = response?.result else {
-                if let error {
-                    completion(.failure(error))
-                } else {
-                    completion(.failure(CreatingRoomServiceError.unableGetImageData))
+    private func updateRoom(
+        room: ASCRoom,
+        name: String,
+        roomType: Int,
+        indexing: Bool,
+        denyDownload: Bool,
+        lifetime: CreateRoomRequestModel.FileLifetime?,
+        watermark: CreateRoomRequestModel.Watermark?,
+        watermarkImage: UIImage?,
+        watermarkImageWasChanged: Bool,
+        quota: Double?,
+        completion: @escaping (Result<ASCRoom, Error>) -> Void
+    ) {
+        var requestModel = CreateRoomRequestModel(
+            roomType: roomType,
+            title: name,
+            createAsNewFolder: false,
+            indexing: indexing,
+            denyDownload: denyDownload,
+            lifetime: lifetime,
+            watermark: watermark,
+            quota: quota
+        )
+        let roomUpdater: (CreateRoomRequestModel) -> Void = { requestModel in
+            self.networkService.request(
+                OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
+                requestModel.dictionary
+            ) { response, error in
+                guard let room = response?.result else {
+                    if let error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.failure(CreatingRoomServiceError.unableGetImageData))
+                    }
+                    return
                 }
-                return
+                completion(.success(room))
             }
-            completion(.success(room))
+        }
+
+        if let watermarkImage = watermarkImage, watermark != nil, watermarkImageWasChanged {
+            uploadImage(image: watermarkImage, fileName: "watermark") { uploadResult in
+                switch uploadResult {
+                case let .success(logoMetaData):
+                    var watermark = requestModel.watermark
+                    watermark?.imageHeight = Int(watermarkImage.size.height)
+                    watermark?.imageWidth = Int(watermarkImage.size.width)
+                    watermark?.imageUrl = logoMetaData.tmpFileUrl
+                    requestModel.watermark = watermark
+                    roomUpdater(requestModel)
+                case let .failure(error):
+                    log.error(error.localizedDescription)
+                    roomUpdater(requestModel)
+                }
+            }
+        } else {
+            roomUpdater(requestModel)
         }
     }
 
@@ -164,10 +233,15 @@ extension NetworkManagingRoomServiceImp {
 
 extension NetworkManagingRoomServiceImp {
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
-        let requestModel = CreateRoomRequestModel(
+        var requestModel = CreateRoomRequestModel(
             roomType: model.roomType.rawValue,
             title: model.name,
-            createAsNewFolder: model.createAsNewFolder
+            createAsNewFolder: model.createAsNewFolder,
+            indexing: model.isAutomaticIndexing,
+            denyDownload: model.isRestrictContentCopy,
+            lifetime: model.fileLifetime,
+            watermark: model.watermark,
+            quota: model.quota
         )
         if let thirdPartyFolderId = model.thirdPartyFolderId {
             networkService.request(
@@ -181,12 +255,33 @@ extension NetworkManagingRoomServiceImp {
                 completion(.success(room))
             }
         } else {
-            networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
-                guard let room = response?.result, error == nil else {
-                    completion(.failure(error!))
-                    return
+            let roomCreator: (CreateRoomRequestModel) -> Void = { [networkService] requestModel in
+                networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
+                    guard let room = response?.result, error == nil else {
+                        completion(.failure(error!))
+                        return
+                    }
+                    completion(.success(room))
                 }
-                completion(.success(room))
+            }
+
+            if let watermarkImage = model.watermarkImage, model.watermark != nil {
+                uploadImage(image: watermarkImage, fileName: "watermark") { uploadResult in
+                    switch uploadResult {
+                    case let .success(logoMetaData):
+                        var watermark = requestModel.watermark
+                        watermark?.imageHeight = Int(watermarkImage.size.height)
+                        watermark?.imageWidth = Int(watermarkImage.size.width)
+                        watermark?.imageUrl = logoMetaData.tmpFileUrl
+                        requestModel.watermark = watermark
+                        roomCreator(requestModel)
+                    case let .failure(error):
+                        log.error(error.localizedDescription)
+                        roomCreator(requestModel)
+                    }
+                }
+            } else {
+                roomCreator(requestModel)
             }
         }
     }
@@ -242,7 +337,7 @@ extension NetworkManagingRoomServiceImp {
             completion()
             return
         }
-        uploadImage(image: image, room: room) { result in
+        uploadImage(image: image, fileName: room.title) { result in
             switch result {
             case let .success(logoUploadResult):
                 let imageWidth = Int(image.size.width)
@@ -257,13 +352,13 @@ extension NetworkManagingRoomServiceImp {
         }
     }
 
-    private func uploadImage(image: UIImage, room: ASCFolder, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
+    private func uploadImage(image: UIImage, fileName: String, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.7) else {
             completion(.failure(CreatingRoomServiceError.unableGetImageData))
             return
         }
 
-        let fileName = "\(room.title).jpg"
+        let fileName = "\(fileName).jpg"
         let mimeType = "image/jpeg"
 
         networkService.request(OnlyofficeAPI.Endpoints.Uploads.logos()) { multipartFormData in
@@ -286,6 +381,15 @@ extension NetworkManagingRoomServiceImp {
         let requestModel = AttachLogoRequestModel(tmpFile: logo.tmpFileUrl, width: imageSize.width, height: imageSize.height)
 
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), requestModel.dictionary) { result, _ in
+            if let folder = result?.result {
+                room.logo = folder.logo
+            }
+            completion()
+        }
+    }
+
+    private func removeLogo(room: ASCFolder, completion: @escaping () -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.deleteLogo(folder: room)) { result, _ in
             if let folder = result?.result {
                 room.logo = folder.logo
             }

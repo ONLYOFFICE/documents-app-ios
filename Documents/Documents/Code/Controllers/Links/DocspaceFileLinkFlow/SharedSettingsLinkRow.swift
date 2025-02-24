@@ -22,45 +22,116 @@ struct SharedSettingsLinkRowModel: Identifiable {
     var linkAccess: LinkAccess
     var expiredTo: String
     var rights: String
+    var rightsImage: Image
     var isExpired: Bool
-    var expirationInfo: String
-
+    var isTimeLimited: Bool
     var onTapAction: () -> Void
+    var onShareAction: () -> Void
 
-    static var empty: SharedSettingsLinkRowModel = .init(id: "", linkAccess: .anyoneWithLink, expiredTo: "", rights: "", isExpired: false, expirationInfo: "", onTapAction: {})
+    static var empty: SharedSettingsLinkRowModel = SharedSettingsLinkRowModel(
+        id: "",
+        linkAccess: .anyoneWithLink,
+        expiredTo: "", rights: "",
+        rightsImage: Image(""),
+        isExpired: false,
+        isTimeLimited: false,
+        onTapAction: {},
+        onShareAction: {}
+    )
 }
 
 struct SharedSettingsLinkRow: View {
     var model: SharedSettingsLinkRowModel
 
     var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: "link")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 21, height: 21)
-                .foregroundColor(.gray)
-                .padding(10)
-                .background(Color(asset: Asset.Colors.tableCellSelected))
-                .cornerRadius(40)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(model.linkAccess.rawValue)
-                Text(model.isExpired ? NSLocalizedString("The link has expired", comment: "") : model.expirationInfo)
-                    .foregroundColor(model.isExpired ? .red : .secondaryLabel)
-                    .font(.system(size: 13))
-            }
-
+        HStack {
+            linkImageIcon
+            textVStack
             Spacer()
-
-            HStack(spacing: 12) {
-                Text(model.rights)
-                    .foregroundColor(.secondaryLabel)
-                ChevronRightView()
-            }
+            rightActionIcons
         }
         .contentShape(Rectangle())
         .onTapGesture {
             model.onTapAction()
         }
     }
+
+    @ViewBuilder
+    private var rightActionIcons: some View {
+        HStack(spacing: .hStackSpacing) {
+            Image(systemName: "square.and.arrow.up")
+                .foregroundColor(.timeLimitedIconColor)
+                .onTapGesture {
+                    model.onShareAction()
+                }
+            model.rightsImage
+                .renderingMode(.template)
+                .foregroundColor(.rightsImageColor)
+            ChevronRightView()
+        }
+    }
+
+    @ViewBuilder
+    private var textVStack: some View {
+        VStack(alignment: .leading, spacing: .vStackSpacing) {
+            linkAccessTypeText
+            timeLimitedView
+        }
+        .padding(.leading, .vStackLeadingPadding)
+    }
+
+    @ViewBuilder
+    private var linkAccessTypeText: some View {
+        Text(model.linkAccess.rawValue)
+            .font(.subheadlineFont)
+    }
+
+    @ViewBuilder
+    private var timeLimitedView: some View {
+        if model.isExpired {
+            Text(NSLocalizedString("The link has expired", comment: ""))
+                .foregroundColor(.expirationTextColor)
+                .font(.footnoteFont)
+        } else if model.isTimeLimited {
+            Image(systemName: "clock.fill")
+                .renderingMode(.template)
+                .foregroundColor(.timeLimitedIconColor)
+        }
+    }
+
+    @ViewBuilder
+    private var linkImageIcon: some View {
+        Image(systemName: "link")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: .linkImageWidthHeight, height: .linkImageWidthHeight)
+            .foregroundColor(.linkIconColor)
+            .padding(.linkImagePadding)
+            .background(Color(asset: Asset.Colors.tableCellSelected))
+            .cornerRadius(.cornerRadius)
+    }
+}
+
+private extension CGFloat {
+    // Icon sizes and appearance
+    static let cornerRadius: CGFloat = 40
+    static let linkImageWidthHeight: CGFloat = 21
+    static let linkImagePadding: CGFloat = 10
+
+    // Spacing
+    static let vStackSpacing: CGFloat = 2
+    static let hStackSpacing: CGFloat = 12
+    static let vStackLeadingPadding: CGFloat = 16
+}
+
+private extension Font {
+    static let subheadlineFont = Font.subheadline
+    static let footnoteFont = Font.footnote
+}
+
+private extension Color {
+    static let linkIconColor = Color.gray
+    static let expirationTextColor = Color.red
+    static let timeLimitedIconColor = Asset.Colors.brend.swiftUIColor
+    static let rightsImageColor = Color.secondary
 }

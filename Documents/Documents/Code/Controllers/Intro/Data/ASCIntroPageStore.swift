@@ -26,7 +26,7 @@ final class ASCIntroPageStore: ASCIntroPageStoreProtocol {
             /// 3
             ASCIntroPage(
                 title: NSLocalizedString("Third-party storage", comment: "Introduction Step Three - Title"),
-                subtitle: String.localizedStringWithFormat(NSLocalizedString("Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol.", comment: "Introduction Step Three - Description"), ASCConstants.Name.appNameShort),
+                subtitle: String.localizedStringWithFormat(NSLocalizedString("Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol.", comment: "Introduction Step Three - Description"), ASCConstants.Name.appNameShort),
                 image: Asset.Images.introStepThree.image
             ),
             /// 4

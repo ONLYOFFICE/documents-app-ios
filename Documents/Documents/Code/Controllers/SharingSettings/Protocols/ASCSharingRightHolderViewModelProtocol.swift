@@ -20,6 +20,7 @@ protocol ASCSharingRightHolderViewModelProtocol: ASCNamedProtocol {
 enum ASCSharingRightHolderType: String {
     case user
     case group
+    case guest
     case link
     case email
 }

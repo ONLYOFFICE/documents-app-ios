@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -207,6 +207,16 @@ start using your office</source>
         <target>%d hours</target>
         <note>Hours left</note>
       </trans-unit>
+      <trans-unit id="/%d months:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@months@</source>
+        <target>%#@months@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d months:dict/months:dict/other:dict/:string" xml:space="preserve">
+        <source>%d months</source>
+        <target>%d months</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
         <target>%#@items@</target>
@@ -216,6 +226,16 @@ start using your office</source>
         <source>%d selected</source>
         <target>%d 已选定</target>
         <note>Count of seclected rows: count + selected</note>
+      </trans-unit>
+      <trans-unit id="/%d years:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@years@</source>
+        <target>%#@years@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d years:dict/years:dict/other:dict/:string" xml:space="preserve">
+        <source>%d years</source>
+        <target>%d years</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
@@ -305,28 +325,28 @@ start using your office</source>
       <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
-        <note>Days left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
         <target>Expires after %d days</target>
-        <note>Days left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@hours@</source>
         <target>%#@hours@</target>
-        <note>Hours left</note>
+        <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
         <target>Expires after %d hours</target>
-        <note>Hours left</note>
+        <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -577,7 +597,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -724,7 +744,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -805,7 +825,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -832,7 +852,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -869,7 +889,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -926,7 +946,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -998,7 +1018,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1080,7 +1100,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1137,7 +1157,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1158,9 +1178,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>%d hours</source>
         <note>Hours left (Key in .stringsdict)</note>
       </trans-unit>
+      <trans-unit id="%d months" translate="no" xml:space="preserve">
+        <source>%d months</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
+      </trans-unit>
       <trans-unit id="%d selected" translate="no" xml:space="preserve">
         <source>%d selected</source>
         <note>Count of seclected rows: count + selected (Key in .stringsdict)</note>
+      </trans-unit>
+      <trans-unit id="%d years" translate="no" xml:space="preserve">
+        <source>%d years</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
@@ -1324,6 +1352,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>帐户</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Action on files" xml:space="preserve">
+        <source>Action on files</source>
+        <target>文件操作</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
         <source>Add account</source>
         <target>添加账户</target>
@@ -1338,6 +1371,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Add message</source>
         <target>添加消息</target>
         <note>Sharing settings add notification message</note>
+      </trans-unit>
+      <trans-unit id="Add static text" xml:space="preserve">
+        <source>Add static text</source>
+        <target>添加静态文本</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add tag" xml:space="preserve">
         <source>Add tag</source>
@@ -1354,6 +1392,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
  read, review or edit documents.</source>
         <target>添加用户或团队允许他们 
 阅读、审查或编辑文件。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add watermark elements" xml:space="preserve">
+        <source>Add watermark elements</source>
+        <target>添加水印元素</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add watermarks to documents" xml:space="preserve">
+        <source>Add watermarks to documents</source>
+        <target>添加水印到文档</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
@@ -1391,11 +1439,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>所有文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="All items from Archived will be deleted forever. You won’t be able to restore them." xml:space="preserve">
-        <source>All items from Archived will be deleted forever. You won’t be able to restore them.</source>
-        <target>存档中的所有项目将被永久删除。 您将无法恢复它们。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
         <target>所有通知</target>
@@ -1425,6 +1468,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>AppleId authentication failed</source>
         <target>Apple ID验证失败</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Apply" xml:space="preserve">
+        <source>Apply</source>
+        <target>应用</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
         <source>Apply your own settings to use this room for any custom purpose</source>
@@ -1475,6 +1523,11 @@ Category title</note>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target>作者</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Automatic indexing" xml:space="preserve">
+        <source>Automatic indexing</source>
+        <target>自动索引</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Back" xml:space="preserve">
@@ -1566,6 +1619,11 @@ Category title</note>
         <source>Change owner</source>
         <target>更改所有者</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Change room owner" xml:space="preserve">
+        <source>Change room owner</source>
+        <target>更改房间所有者</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Change room's owner" xml:space="preserve">
         <source>Change room's owner</source>
@@ -1707,13 +1765,13 @@ Category title</note>
         <target>连接存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
+      <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Dropbox and&#10;others which use WebDAV protocol." xml:space="preserve">
         <source>Connect third-party storage
-like Nextcloud, ownCloud, Yandex Disk and
+like Nextcloud, ownCloud, Dropbox and
 others which use WebDAV protocol.</source>
-        <target>连接第三方存储
-像Nextcloud、ownCloud、Yandex Disk和
-其他三方存储使用WebDAV协议。</target>
+        <target>连接第三方存储，
+如 Nextcloud、ownCloud、Dropbox 及其他
+支持 WebDAV 协议的服务。</target>
         <note>Introduction Step Three - Description</note>
       </trans-unit>
       <trans-unit id="Connect to your %@ cloud to store files online and collaborate on documents in real time" xml:space="preserve">
@@ -1735,6 +1793,16 @@ Caption of the processing</note>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
         <target>控制台</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Content creator" xml:space="preserve">
+        <source>Content creator</source>
+        <target>内容创作者</target>
+        <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Continue" xml:space="preserve">
+        <source>Continue</source>
+        <target>继续</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1766,11 +1834,6 @@ Caption of the processing</note>
         <source>Copy link</source>
         <target>复制链接</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Copy shared link" xml:space="preserve">
-        <source>Copy shared link</source>
-        <target>复制共享链接</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
@@ -1892,14 +1955,28 @@ Caption of the processing</note>
         <target>无法读取文件</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Could not resolve the file." xml:space="preserve">
+        <source>Could not resolve the file.</source>
+        <target>无法解析文件</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>无法写入文件</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Couldn' get access" xml:space="preserve">
+        <source>Couldn' get access</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
         <source>Couldn't change the owner.</source>
         <target>无法更改所有者。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Couldn't change the room owner" xml:space="preserve">
+        <source>Couldn't change the room owner</source>
+        <target>无法更改房间所有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't download the room." xml:space="preserve">
@@ -1907,9 +1984,14 @@ Caption of the processing</note>
         <target>无法下载房间。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Couldn't export room index" xml:space="preserve">
+        <source>Couldn't export room index</source>
+        <target>无法导出房间索引</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
         <source>Couldn't leave the room</source>
-        <target>无法离开房间。</target>
+        <target>无法离开房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
@@ -1930,6 +2012,11 @@ Caption of the processing</note>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
         <target>创建免费账户</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a new file" xml:space="preserve">
+        <source>Create a new file</source>
+        <target>创建新文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -1979,6 +2066,11 @@ organize your files.</source>
         <note>Caption of the process
 Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Current Date" xml:space="preserve">
+        <source>Current Date</source>
+        <target>当前日期</target>
+        <note>Watermark Element</note>
+      </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
         <target>自訂</target>
@@ -2002,6 +2094,11 @@ Caption of the processing</note>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>日期</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Days" xml:space="preserve">
+        <source>Days</source>
+        <target>天</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
@@ -2031,14 +2128,9 @@ Caption of the processing</note>
         <target>删除文件夹</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Delete forever" xml:space="preserve">
-        <source>Delete forever</source>
-        <target>永久删除</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Delete forever?" xml:space="preserve">
         <source>Delete forever?</source>
-        <target>永久删除？ </target>
+        <target>永久删除？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete from device" xml:space="preserve">
@@ -2049,6 +2141,11 @@ Caption of the processing</note>
       <trans-unit id="Delete link" xml:space="preserve">
         <source>Delete link</source>
         <target>删除链接</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete permanently" xml:space="preserve">
+        <source>Delete permanently</source>
+        <target>永久删除</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
@@ -2076,6 +2173,11 @@ Caption of the processing</note>
         <target>開發者選項</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Diagonal" xml:space="preserve">
+        <source>Diagonal</source>
+        <target>对角线</target>
+        <note>Watermark Position</note>
+      </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
         <target>若您不想接收來自%@的通知，則請禁用</target>
@@ -2094,6 +2196,11 @@ Caption of the processing</note>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
         <source>Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.</source>
         <target>您确定要离开此房间吗？您可以通过房间管理员的新邀请再次加入。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="DocSpace" xml:space="preserve">
+        <source>DocSpace</source>
+        <target>协作空间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
@@ -2172,6 +2279,11 @@ Operation completed</note>
         <target>在本地编辑文档</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Edit index" xml:space="preserve">
+        <source>Edit index</source>
+        <target>编辑索引</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Edit link" xml:space="preserve">
         <source>Edit link</source>
         <target>编辑链接</target>
@@ -2212,9 +2324,19 @@ Operation completed</note>
         <target>邮箱无效</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Employees" xml:space="preserve">
+        <source>Employees</source>
+        <target>Employees</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
         <source>Empty name.</source>
         <target>空名称。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
+        <source>Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.</source>
+        <target>启用自动索引，通过序列号对文件和文件夹进行索引。所有用户的默认排序方式将设置为按序号排序。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
@@ -2230,6 +2352,11 @@ Operation completed</note>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
         <source>Enable this setting to disable downloads of files and folders from this room shared via a link</source>
         <target>开启此设置，通过链接共享的房间中的文件和文件夹将被限制下载</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" xml:space="preserve">
+        <source>Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role</source>
+        <target>使用此设置，可禁止具有“可查看”权限的用户下载和复制内容</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable time limit" xml:space="preserve">
@@ -2252,6 +2379,11 @@ Operation completed</note>
         <target>输入电邮</target>
         <note>placeholder</note>
       </trans-unit>
+      <trans-unit id="Enter password" xml:space="preserve">
+        <source>Enter password</source>
+        <target>输入密码</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
         <source>Error</source>
         <target>错误</target>
@@ -2267,6 +2399,11 @@ Operation completed</note>
         <target>排除子文件夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target>退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
         <source>Expect users</source>
         <target>预期用户</target>
@@ -2277,14 +2414,6 @@ Operation completed</note>
         <target>已过期</target>
         <note>Expiration status</note>
       </trans-unit>
-      <trans-unit id="Expires after %d days" translate="no" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <note>Days left (Key in .stringsdict)</note>
-      </trans-unit>
-      <trans-unit id="Expires after %d hours" translate="no" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <note>Hours left (Key in .stringsdict)</note>
-      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target>7天后过期</target>
@@ -2293,6 +2422,11 @@ Operation completed</note>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>导出</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Export room index" xml:space="preserve">
+        <source>Export room index</source>
+        <target>导出房间索引</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="External link" xml:space="preserve">
@@ -2345,6 +2479,11 @@ Operation completed</note>
         <target>%@ 移动失败</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failed to prepare the index export" xml:space="preserve">
+        <source>Failed to prepare the index export</source>
+        <target>无法准备索引导出</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
         <target>通过邮箱发送反馈信息失败。请尝试在我们的论坛上写下您的请求。</target>
@@ -2380,6 +2519,11 @@ Operation completed</note>
         <target>文件不存在</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="File lifetime" xml:space="preserve">
+        <source>File lifetime</source>
+        <target>文件有效期</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
         <target>文件</target>
@@ -2393,6 +2537,16 @@ Operation completed</note>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
         <source>Files and folders uploaded by admins will appear here.</source>
         <target>管理员上传的文件和文件夹将显示在此处。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files older than" xml:space="preserve">
+        <source>Files older than</source>
+        <target>超过以下时间的文件</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files with the exceeded lifetime will be deleted" xml:space="preserve">
+        <source>Files with the exceeded lifetime will be deleted</source>
+        <target>超过有效期的旧文件将被删除</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill" xml:space="preserve">
@@ -2495,6 +2649,11 @@ Operation completed</note>
         <target>完全访问权限</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="GB" xml:space="preserve">
+        <source>GB</source>
+        <target>Gb</target>
+        <note>Measurement unit</note>
+      </trans-unit>
       <trans-unit id="GET STARTED!" xml:space="preserve">
         <source>GET STARTED!</source>
         <target>开始使用！</target>
@@ -2550,10 +2709,25 @@ Operation completed</note>
         <target>团队</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Guest" xml:space="preserve">
+        <source>Guest</source>
+        <target>访客</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Guests" xml:space="preserve">
+        <source>Guests</source>
+        <target>访客</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
         <target>您可以在此处查看近期打开的、通过外部链接与您共享的文件列表。</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Horizontal" xml:space="preserve">
+        <source>Horizontal</source>
+        <target>水平</target>
+        <note>Watermark Position</note>
       </trans-unit>
       <trans-unit id="Icons" xml:space="preserve">
         <source>Icons</source>
@@ -2564,6 +2738,11 @@ Operation completed</note>
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>如果存在拥有 %@ 电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
         <note>Email sent instructions</note>
+      </trans-unit>
+      <trans-unit id="Image" xml:space="preserve">
+        <source>Image</source>
+        <target>图像</target>
+        <note>Watermark Type</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
         <source>Images</source>
@@ -2589,6 +2768,12 @@ Operation completed</note>
         <source>Incorrect portal address</source>
         <target>门户地址不正确</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Index" xml:space="preserve">
+        <source>Index</source>
+        <target>索引</target>
+        <note>File order
+Folder order</note>
       </trans-unit>
       <trans-unit id="Info" xml:space="preserve">
         <source>Info</source>
@@ -2625,9 +2810,19 @@ Operation completed</note>
         <target>无效文件夹</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Invalid server data." xml:space="preserve">
+        <source>Invalid server data.</source>
+        <target>服务器数据无效。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
         <source>Invite</source>
         <target>邀請</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite guests by email" xml:space="preserve">
+        <source>Invite guests by email</source>
+        <target>通过电子邮件邀请访客</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite people" xml:space="preserve">
@@ -2649,6 +2844,16 @@ Operation completed</note>
         <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
         <target>通过共享链接邀请用户，无需注册即可查看文档。你也可以将此房间嵌入任何网络界面。</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
+        <source>Items in Trash are automatically deleted after 30 days</source>
+        <target>回收站中的文件将在 30 天后自动删除</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="KB" xml:space="preserve">
+        <source>KB</source>
+        <target>Kb</target>
+        <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
@@ -2708,7 +2913,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
-        <target>链接名称 %@ </target>
+        <target>链接名称 %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link successfully&#10;copied to clipboard" xml:space="preserve">
@@ -2722,6 +2927,24 @@ copied to clipboard</source>
         <target>邀请函的链接已发送至邮箱</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.&#10; &#10;This action cannot be undone. Are you sure you want to continue?" xml:space="preserve">
+        <source>Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.
+ 
+This action cannot be undone. Are you sure you want to continue?</source>
+        <target>房间内所有文件的链接都将被删除。之前的房间文件链接和嵌入文档的链接将无法使用。
+
+此操作无法撤消。您确定要继续吗？</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.&#10; &#10;This action cannot be undone. Are you sure you want to continue?" xml:space="preserve">
+        <source>Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.
+ 
+This action cannot be undone. Are you sure you want to continue?</source>
+        <target>房间内所有文件的链接将被重新生成。之前的房间文件链接和嵌入文档的链接将无法使用。
+
+此操作无法撤消。您确定要继续吗？</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="List" xml:space="preserve">
         <source>List</source>
         <target>列表</target>
@@ -2730,7 +2953,7 @@ copied to clipboard</source>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
         <target>正在加载</target>
-        <note>No comment provided by engineer.</note>
+        <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
@@ -2763,6 +2986,11 @@ copied to clipboard</source>
         <note>Button title
 Caption of the process</note>
       </trans-unit>
+      <trans-unit id="MB" xml:space="preserve">
+        <source>MB</source>
+        <target>MB</target>
+        <note>Measurement unit</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target>标记为收藏</target>
@@ -2789,6 +3017,11 @@ Caption of the process</note>
         <note>Author or member of a document
 If current user name is not set</note>
       </trans-unit>
+      <trans-unit id="Measurement unit" xml:space="preserve">
+        <source>Measurement unit</source>
+        <target>测量单位</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
         <target>媒體</target>
@@ -2797,6 +3030,16 @@ If current user name is not set</note>
       <trans-unit id="Member" xml:space="preserve">
         <source>Member</source>
         <target>成员</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+        <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
+        <target>最小长度：8 | 允许的字符：字母（a-z, A-Z）、数字（0-9），特殊字符 （!"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}）</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Months" xml:space="preserve">
+        <source>Months</source>
+        <target>月</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2828,6 +3071,11 @@ If current user name is not set</note>
         <source>Move to archive</source>
         <target>移至归档</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Move to trash" xml:space="preserve">
+        <source>Move to trash</source>
+        <target>移至回收站</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
         <source>Moving</source>
@@ -2904,6 +3152,10 @@ If current user name is not set</note>
         <target>新表单填写房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
+        <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
         <target>新房间</target>
@@ -2944,6 +3196,10 @@ If current user name is not set</note>
         <target>沒有搜索結果</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No added guests yet" xml:space="preserve">
+        <source>No added guests yet</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
         <source>No archived rooms here yet</source>
         <target>此处还没有存档的房间</target>
@@ -2967,6 +3223,11 @@ If current user name is not set</note>
       <trans-unit id="No files here yet" xml:space="preserve">
         <source>No files here yet</source>
         <target>此处还没有文件</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No forms here yet " xml:space="preserve">
+        <source>No forms here yet </source>
+        <target>暂无表单</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3055,6 +3316,11 @@ Share status</note>
         <target>ONLYOFFICE入口網站</target>
         <note>Full App Name</note>
       </trans-unit>
+      <trans-unit id="Ok" xml:space="preserve">
+        <source>Ok</source>
+        <target>OK</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
         <source>On iPad</source>
         <target>在iPad上</target>
@@ -3103,6 +3369,11 @@ Share status</note>
       <trans-unit id="Open Folder" xml:space="preserve">
         <source>Open Folder</source>
         <target>開啟資料夾</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open file" xml:space="preserve">
+        <source>Open file</source>
+        <target>打开文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3163,6 +3434,11 @@ Share status</note>
       <trans-unit id="Password is empty" xml:space="preserve">
         <source>Password is empty</source>
         <target>密码为空</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+        <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
+        <target>密码必须包含：最小长度：8 允许的字符：字母（a-z, A-Z）、数字（0-9）、特殊字符（!"№%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}~）</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passwords do not match" xml:space="preserve">
@@ -3284,12 +3560,12 @@ Share status</note>
         <target>门户网站不可用。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Pover user" xml:space="preserve">
-        <source>Power user</source>
-        <target>高级用户</target>
-        <note>Share status</note>
+      <trans-unit id="Position" xml:space="preserve">
+        <source>Position</source>
+        <target>位置​​</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Power user" xml:space="preserve">
+      <trans-unit id="Pover user" xml:space="preserve">
         <source>Power user</source>
         <target>高级用户</target>
         <note>Share status</note>
@@ -3333,6 +3609,11 @@ Share status</note>
         <source>Project Documents</source>
         <target>项目文档</target>
         <note>Category title</note>
+      </trans-unit>
+      <trans-unit id="Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." xml:space="preserve">
+        <source>Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.</source>
+        <target>使用水印保护此房间中的所有文档。如果文档已经包含水印，则不会被替换。</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Protection" xml:space="preserve">
         <source>Protection</source>
@@ -3454,6 +3735,16 @@ Share status</note>
         <target>续订</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Reorder" xml:space="preserve">
+        <source>Reorder</source>
+        <target>重新排序</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Reorder failed." xml:space="preserve">
+        <source>Reorder failed.</source>
+        <target>重新排序失败。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
         <target>请求实体过大</target>
@@ -3519,15 +3810,25 @@ Share status</note>
         <target>角色</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Room Name" xml:space="preserve">
+        <source>Room Name</source>
+        <target>房间名称</target>
+        <note>Watermark Element</note>
+      </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
         <source>Room admin</source>
         <target>房间管理员</target>
-        <note>Share status</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
         <source>Room created!</source>
         <target>房间已创建！</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Room manager" xml:space="preserve">
+        <source>Room manager</source>
+        <target>房间管理员</target>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
@@ -3543,6 +3844,11 @@ DocSpace rooms</note>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
         <target>根文件夹</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Rotate" xml:space="preserve">
+        <source>Rotate</source>
+        <target>旋转</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3564,6 +3870,11 @@ DocSpace rooms</note>
         <source>Saving</source>
         <target>正在保存</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Scale" xml:space="preserve">
+        <source>Scale</source>
+        <target>缩放</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
         <source>Search</source>
@@ -3599,6 +3910,11 @@ Navigation bar button title</note>
       <trans-unit id="Select group" xml:space="preserve">
         <source>Select group</source>
         <target>選擇群組</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select image" xml:space="preserve">
+        <source>Select image</source>
+        <target>选择图片</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
@@ -3664,6 +3980,11 @@ Navigation bar button title</note>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
         <target>设置收藏夹失败。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." xml:space="preserve">
+        <source>Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.</source>
+        <target>设置文件有效期，此房间中的文件会在定义的时间段后自动删除。有效期从文件上传/创建之日起开始计算。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -3761,6 +4082,11 @@ Navigation bar button title</note>
         <target>大小</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Size quota" xml:space="preserve">
+        <source>Size quota</source>
+        <target>大小配额</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
         <source>Skip</source>
         <target>跳过</target>
@@ -3806,6 +4132,21 @@ Navigation bar button title</note>
         <target>存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Storage quota" xml:space="preserve">
+        <source>Storage quota</source>
+        <target>存储配额</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Storage quota set per room. You can change this value or turn off storage limit." xml:space="preserve">
+        <source>Storage quota set per room. You can change this value or turn off storage limit.</source>
+        <target>每个房间设置的存储配额。您可以更改此值或关闭存储限制。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Success" xml:space="preserve">
+        <source>Success</source>
+        <target>成功</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
         <target>支持</target>
@@ -3815,6 +4156,11 @@ Navigation bar button title</note>
         <source>Switch</source>
         <target>切换</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="TB" xml:space="preserve">
+        <source>TB</source>
+        <target>Tb</target>
+        <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
@@ -3861,6 +4207,11 @@ Navigation bar button title</note>
         <target>%@ 服务器不可用。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
+        <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <target>重新排序操作将移除索引中的空白项。文件将重新索引，并按顺序填补缺失的索引。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
         <target>账户名称的长度必须在6到50个字符之间</target>
@@ -3874,6 +4225,12 @@ Navigation bar button title</note>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
         <source>The file in the Trash can not be viewed.</source>
         <target>无法查看垃圾桶中的文件。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The file lifetime is set to %@ in this room." xml:space="preserve">
+        <source>The file lifetime is set to %@ in this room.</source>
+        <target>文件在此房间中的有效期
+设置为 %@。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -3900,6 +4257,11 @@ Navigation bar button title</note>
         <target>名称为 '%1$@' 的项目已经存在于 '%2$@' 文件夹中。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." xml:space="preserve">
+        <source>The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.</source>
+        <target>文件的生命周期从创建日期开始计算。如果此房间中的任何文件超过设定的生命周期，将被删除。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
         <source>The link for external
 access is copied
@@ -3912,11 +4274,6 @@ to the clipboard</source>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
         <target>链接已过期</target>
-        <note>Expiration status</note>
-      </trans-unit>
-      <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
-        <source>The link has expired and has been disabled</source>
-        <target>链接已过期并已被禁用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
@@ -4024,6 +4381,11 @@ to the clipboard</source>
         <target>文件夹为空</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="This image preview roughly shows how the watermark will be displayed in your files." xml:space="preserve">
+        <source>This image preview roughly shows how the watermark will be displayed in your files.</source>
+        <target>此图像预览大致显示了水印在您的文件中呈现的效果。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
         <target>这一操作将通过删除临时文件释放设备空间。您的离线文件和个人数据将不会删除。</target>
@@ -4062,9 +4424,9 @@ to the clipboard</source>
         <target>此电子表格正在编辑中。您想打开 %@ 只查看吗？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Time limit" xml:space="preserve">
-        <source>Time limit</source>
-        <target>时间限制</target>
+      <trans-unit id="Time period" xml:space="preserve">
+        <source>Time period</source>
+        <target>时间段</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -4262,6 +4624,11 @@ to the clipboard</source>
         <target>从设备上传 PDF 表单</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Upload PDF forms from DocSpace or device." xml:space="preserve">
+        <source>Upload PDF forms from DocSpace or device.</source>
+        <target>从协作空间或设备上传 PDF 表单。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
         <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
         <target>将 PDF 表单上传到房间。邀请用户填写 PDF 表单。查看已完成的表单并分析电子表格中自动收集的数据。</target>
@@ -4277,6 +4644,16 @@ to the clipboard</source>
         <target>正在上转</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Use IP Address" xml:space="preserve">
+        <source>Use IP Address</source>
+        <target>使用 IP 地址</target>
+        <note>Watermark Element</note>
+      </trans-unit>
+      <trans-unit id="Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." xml:space="preserve">
+        <source>Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying.</source>
+        <target>使用虚拟数据房间（VDR）在逐步填写和签署文档时实现高级文件安全性和透明度。设置水印，自动索引并跟踪所有内容，限制下载和复制操作。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
         <target>使用第三方服务存储此房间的数据。在连接的存储中将新建一个文件夹，用于存储此房间数据</target>
@@ -4286,6 +4663,16 @@ to the clipboard</source>
         <source>User</source>
         <target>用户</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User Email" xml:space="preserve">
+        <source>User Email</source>
+        <target>用户邮箱</target>
+        <note>Watermark Element</note>
+      </trans-unit>
+      <trans-unit id="User Name" xml:space="preserve">
+        <source>User Name</source>
+        <target>使用者名稱</target>
+        <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
@@ -4347,9 +4734,29 @@ to the clipboard</source>
         <target>查看者</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Viewer info" xml:space="preserve">
+        <source>Viewer info</source>
+        <target>查看者信息</target>
+        <note>Watermark Type</note>
+      </trans-unit>
+      <trans-unit id="Virtual Data Room" xml:space="preserve">
+        <source>Virtual Data Room</source>
+        <target>虚拟数据房间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Virtual data room" xml:space="preserve">
+        <source>Virtual data room</source>
+        <target>虚拟数据房间</target>
+        <note>Rooms filter</note>
+      </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>
         <target>警告</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Watermark type" xml:space="preserve">
+        <source>Watermark type</source>
+        <target>水印类型</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We are sorry, this portal name is already taken" xml:space="preserve">
@@ -4382,6 +4789,11 @@ Swipe to learn more about the app.</source>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
         <target>欢迎来到表单填写房间</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
+        <source>Welcome to the Virtual Data Room </source>
+        <target>欢迎使用虚拟数据房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
@@ -4423,9 +4835,24 @@ then accessed from any other device.</source>
         <target>Yb</target>
         <note>Data units</note>
       </trans-unit>
-      <trans-unit id="You are about to delete this room. You won’t be able to restore them." xml:space="preserve">
-        <source>You are about to delete this room. You won’t be able to restore them.</source>
-        <target>您即将删除此房间。您将无法恢复它们。</target>
+      <trans-unit id="Years" xml:space="preserve">
+        <source>Years</source>
+        <target>年</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?</source>
+        <target>您即将删除这些房间，无法恢复。确定要继续吗？</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?</source>
+        <target>您即将删除此房间，无法恢复。确定要继续吗？</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete this room. You won't be able to restore them." xml:space="preserve">
+        <source>You are about to delete this room. You won't be able to restore them.</source>
+        <target>您即将删除此房间，无法恢复。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -4458,6 +4885,11 @@ then accessed from any other device.</source>
         <target>不能置顶超过 10 个房间。请取消置顶的部分房间。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You have changed the room owner" xml:space="preserve">
+        <source>You have changed the room owner</source>
+        <target>您已更改房间所有者</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
         <target>您已离开房间</target>
@@ -4468,9 +4900,19 @@ then accessed from any other device.</source>
         <target>您已离开房间并指定了新的所有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" xml:space="preserve">
+        <source>You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?</source>
+        <target>您尚未为此房间中的文档设置水印。您可以随时在房间编辑设置中添加水印。是否继续而不添加水印？</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
         <source>You have read-only access to this folder. You cannot create files or folders here.</source>
         <target>您对此文件夹具有只读访问权限。您无法在此处创建文件或文件夹。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You need a password to access the room" xml:space="preserve">
+        <source>You need a password to access the room</source>
+        <target>输入密码才能进入房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
@@ -4501,7 +4943,8 @@ then accessed from any other device.</source>
       <trans-unit id="bytes" xml:space="preserve">
         <source>bytes</source>
         <target>字节</target>
-        <note>Data units</note>
+        <note>Data units
+Measurement unit</note>
       </trans-unit>
       <trans-unit id="cm" xml:space="preserve">
         <source>cm</source>
@@ -4562,6 +5005,11 @@ then accessed from any other device.</source>
         <source>Server Error</source>
         <target>服务器错误</target>
         <note>Unknown Server Error</note>
+      </trans-unit>
+      <trans-unit id="file exported to Documents" xml:space="preserve">
+        <source>file exported to Documents</source>
+        <target>文件已导出至文档</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
@@ -4637,7 +5085,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

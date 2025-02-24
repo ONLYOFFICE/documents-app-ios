@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"(%@)" = "(%@)";
-
-/* No comment provided by engineer. */
 "(%@/%@)" = "(%1$@/%2$@)";
 
 /* Presentation Viewer */
@@ -119,9 +116,6 @@
 "All Files" = "كافة الملفات";
 
 /* No comment provided by engineer. */
-"All items from Archived will be deleted forever. You won’t be able to restore them." = "سيتم حذف كافة العناصر من المؤرشفة إلى الأبد. لن تتمكن من استعادتها.";
-
-/* No comment provided by engineer. */
 "All notifications" = "كافة الإشعارات";
 
 /* No comment provided by engineer. */
@@ -185,7 +179,8 @@ Category title */
 /* No comment provided by engineer. */
 "By creating the portal you agree with our Privacy Policy and Terms of Service" = "من خلال إنشاء البوابة فإنك توافق على سياسة الخصوصية وشروط الخدمة الخاصة بنا";
 
-/* Data units */
+/* Data units
+Measurement unit */
 "bytes" = "بايتس";
 
 /* No comment provided by engineer. */
@@ -307,9 +302,6 @@ Category title */
 
 /* No comment provided by engineer. */
 "Connect Storage" = "ربط التخزين";
-
-/* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "قم بتوصيل وحدة تخزين الطرف الثالث\nمثل Nextcloud و ownCloud و Yandex Disk و\nالآخرين الذين يستخدمون بروتوكول WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "اتصل بسحابة %@ الخاصة بك لتخزين الملفات عبر الإنترنت والتعاون في المستندات في الوقت الفعلي";
@@ -468,9 +460,6 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Delete Folder" = "حذف المجلد";
-
-/* No comment provided by engineer. */
-"Delete forever" = "حذف نهائي";
 
 /* No comment provided by engineer. */
 "Delete forever?" = "حذف نهائي؟";
@@ -1124,9 +1113,6 @@ Share status */
 /* Share status */
 "Pover user" = "مستخدم قوي";
 
-/* Share status */
-"Power user" = "مستخدم قوي";
-
 /* No comment provided by engineer. */
 "Presentation" = "عرض تقديمي";
 
@@ -1226,7 +1212,7 @@ Share status */
 /* Share status */
 "Reviewer" = "المراجع";
 
-/* Share status */
+/* No comment provided by engineer. */
 "Room admin" = "مشرف الغرفة";
 
 /* No comment provided by engineer. */
@@ -1423,11 +1409,8 @@ Navigation bar button title */
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "تم نسخ حقوق الوصول\nللروابط الخارجية\nإلى الحافظة";
 
-/* Expiration status */
-"The link has expired" = "تم انتهاء صلاحية الرابط";
-
 /* No comment provided by engineer. */
-"The link has expired and has been disabled" = "لقد انتهت صلاحية الرابط وتم تعطيله";
+"The link has expired" = "تم انتهاء صلاحية الرابط";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "سيتم حذف الرابط نهائيا لن تتمكن من التراجع عن هذا الإجراء.";
@@ -1494,9 +1477,6 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "يجري تحرير جدول البيانات هذا. هل تريد فتح %@ للعرض فقط؟";
-
-/* No comment provided by engineer. */
-"Time limit" = "الحد الزمني";
 
 /* No comment provided by engineer. */
 "Title" = "العنوان";
@@ -1683,9 +1663,6 @@ Navigation bar button title */
 
 /* Data units */
 "Yb" = "Yb";
-
-/* No comment provided by engineer. */
-"You are about to delete this room. You won’t be able to restore them." = "أنت على وشك حذف هذه الغرفة. لن تتمكن من استعادتها.";
 
 /* No comment provided by engineer. */
 "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." = "أنت مالك هذه الغرفة. قبل أن تغادر الغرفة، يجب عليك نقل دور المالك إلى مستخدم آخر.";

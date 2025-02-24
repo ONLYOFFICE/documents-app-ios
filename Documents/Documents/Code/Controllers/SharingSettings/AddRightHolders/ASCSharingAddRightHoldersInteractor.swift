@@ -35,6 +35,8 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             loadRightHolders { [weak self] in
                 self?.loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights, showOnlyAdmins: showOnlyAdmins)
             }
+        case .loadAdminsWithoutOwner:
+            loadAdminsWithoutOwner()
         case .loadGroups: return
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
                 if let error = error {
@@ -43,6 +45,34 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                     self.dataStore?.groups = groups
                     let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
                     self.presenter?.presentData(responseType: .presentGroups(.init(groups: groups, sharedEntities: sharedInfoItems)))
+                }
+            }
+        case .loadGuests:
+            let requestModel = PeopleGuestsRequestModel()
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.room(roomId: dataStore?.entity?.id ?? ""), requestModel.dictionary) { [unowned self] response, error in
+                if let error = error {
+                    log.error(error)
+                } else if let guests = response?.result {
+                    let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                    let sharedInfoItemsIds = Set(sharedInfoItems.compactMap { $0.user?.userId })
+//                    let guests = guests.filter {
+//                        !sharedInfoItemsIds.contains($0.userId ?? "")
+//                    }
+                    self.dataStore?.guests = guests
+                    self.presenter?.presentData(
+                        responseType: .presentGuests(
+                            .init(
+                                guests: guests,
+                                sharedEntities: sharedInfoItems
+                            )
+                        )
+                    )
+                }
+            }
+        case .prepareToVerify:
+            for (index, item) in (dataStore?.itemsForSharingAdd ?? []).enumerated() {
+                if item.user?.isRoomAdmin != true && item.user?.isAdmin != true {
+                    dataStore?.itemsForSharingAdd[index].access = .contentCreator
                 }
             }
         case let .selectViewModel(request: request):
@@ -67,9 +97,39 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 updatedItems.append(item)
             }
             dataStore?.itemsForSharingAdd = updatedItems
-
         case let .changeOwner(userId, _: handler):
             changeOwner(userId, handler)
+        }
+    }
+
+    private func loadAdminsWithoutOwner() {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
+            if let error = error {
+                log.error(error)
+            } else if let users = response?.result {
+                let users = users.filter { user in
+                    let isAdmin = user.isAdmin || user.isRoomAdmin
+                    if let folder = self.dataStore?.entity as? ASCFolder,
+                       let ownerId = folder.createdBy?.userId
+                    {
+                        return ownerId != user.userId && isAdmin
+                    } else {
+                        return isAdmin
+                    }
+                }
+                self.dataStore?.users = users
+                let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                self.presenter?.presentData(
+                    responseType: .presentUsers(
+                        .init(
+                            users: users,
+                            sharedEntities: sharedInfoItems,
+                            entityOwner: self.dataStore?.entityOwner,
+                            currentUser: nil
+                        )
+                    )
+                )
+            }
         }
     }
 
@@ -120,6 +180,10 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             if let group = dataStore.groups.first(where: { $0.id == model.id }) {
                 return OnlyofficeShare(access: access, group: group)
             }
+        case .guest:
+            if let guest = dataStore.guests.first(where: { $0.userId == model.id }) {
+                return OnlyofficeShare(access: access, user: guest)
+            }
         default: return nil
         }
         return nil
@@ -161,6 +225,8 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             return .users
         } else if let _ = dataStore.groups.firstIndex(where: { $0.id == id }) {
             return .groups
+        } else if let _ = dataStore.guests.firstIndex(where: { $0.userId == id }) {
+            return .guests
         }
         return nil
     }

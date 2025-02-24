@@ -180,6 +180,7 @@ class ASCEditorManager: NSObject {
 
     private func cleanupEditorWindow() {
         editorWindow?.isHidden = true
+        editorWindow?.rootViewController = nil
         editorWindow?.removeFromSuperview()
         editorWindow = nil
     }
@@ -365,8 +366,8 @@ class ASCEditorManager: NSObject {
                         self.timer = Timer.scheduledTimer(
                             timeInterval: 4,
                             target: self,
-                            selector: #selector(ASCEditorManager.updateLocallyEditFile),
-                            userInfo: file,
+                            selector: #selector(ASCEditorManager.updateLocallyEditFile(_:)),
+                            userInfo: ASCUpdateLocallyEditFileInfo(file: file, config: config, openMode: openMode, canEdit: canEdit),
                             repeats: true
                         )
                         self.timer?.fire()
@@ -453,8 +454,9 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    @objc func updateLocallyEditFile(timer: Timer) {
+    @objc func updateLocallyEditFile(_ timer: Timer) {
         var cancel = false
+        let info = timer.userInfo as? ASCUpdateLocallyEditFileInfo
 
         if let file = openedlocallyFile,
            let key = documentKeyForTrack
@@ -498,14 +500,14 @@ class ASCEditorManager: NSObject {
                         if let result = response?.result {
                             self.documentKeyForTrack = result
                         }
-                        
+
                         if let provider = ASCFileManager.onlyofficeProvider {
                             self.trackingFileStatus = self.trackingReadyForLocking
                             self.downloadAndOpenFile(
                                 for: provider,
                                 file,
-                                openMode: .edit,
-                                canEdit: true,
+                                openMode: info?.openMode ?? .edit,
+                                canEdit: info?.canEdit ?? true,
                                 &cancel
                             )
                         }
@@ -1236,6 +1238,20 @@ extension ASCEditorManager {
 
         cleanupEditorWindow()
 
+        let editorImportFormats = ASCConstants.FileExtensions.editorImportDocuments + ASCConstants.FileExtensions.editorImportSpreadsheets + ASCConstants.FileExtensions.editorImportPresentations
+
+        let cleanup: () -> Void = { [weak self] in
+            guard let self, let openedFile, openedCopy else { return }
+
+            do {
+                if FileManager.default.fileExists(atPath: openedFile.id) {
+                    try FileManager.default.removeItem(atPath: openedFile.id)
+                }
+            } catch {
+                log.error(error)
+            }
+        }
+
         if let file = openedFile {
             var cancel = false
 
@@ -1251,6 +1267,7 @@ extension ASCEditorManager {
                     closeHandler?(.error, 1, nil, error, &cancel)
                 }
 
+                cleanup()
                 openedFile = nil
 
                 return
@@ -1269,7 +1286,7 @@ extension ASCEditorManager {
                     let fileExtension = file.title.fileExtension().lowercased()
 
                     // if not docx
-                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                    if editorImportFormats.contains(fileExtension) {
                         let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".\(outputFileExtension)")
                         resolvedFilePath = fileTo
                     }
@@ -1280,7 +1297,7 @@ extension ASCEditorManager {
                 if let openedlocallyFile, let provider {
                     // File is not original
                     let fileExtension = file.title.fileExtension().lowercased()
-                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                    if editorImportFormats.contains(fileExtension) {
                         file.title = file.title.fileName() + ".\(outputFileExtension)"
                         file.id = resolvedFilePath.rawValue
 
@@ -1329,7 +1346,7 @@ extension ASCEditorManager {
                                     // Backup on Device file
                                     let backupPath = Path.userDocuments + Path(backupFileName)
 
-                                    ASCLocalFileHelper.shared.copy(from: filePath, to: backupPath)
+                                    ASCLocalFileHelper.shared.copy(from: resolvedFilePath, to: backupPath)
                                 }
 
                                 let lastTempFile = Path.userTemporary + file.title
@@ -1340,6 +1357,9 @@ extension ASCEditorManager {
 
                                 // Remove original
                                 removeAutosave(at: autosaveFile)
+
+                                cleanup()
+                                openedFile = nil
                             }
                         }
                     )
@@ -1361,7 +1381,7 @@ extension ASCEditorManager {
                     file.pureContentLength = Int(filePath.fileSize ?? 0)
 
                     let fileExtension = file.title.fileExtension().lowercased()
-                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                    if editorImportFormats.contains(fileExtension) {
                         file.id = resolvedFilePath.rawValue
                         file.title = file.title.fileName() + ".\(outputFileExtension)"
 
@@ -1379,6 +1399,9 @@ extension ASCEditorManager {
 
                     // Remove original
                     removeAutosave(at: Path.userAutosavedInformation + file.title)
+
+                    cleanup()
+                    openedFile = nil
                 }
 
             } else {
@@ -1386,17 +1409,24 @@ extension ASCEditorManager {
                     closeHandler(.begin, 0, file, nil, &cancel)
                     removeAutosave(at: Path.userAutosavedInformation + file.title)
 
-                    clientRequest(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                    clientRequest(OnlyofficeAPI.Endpoints.Files.info(file: file)) { [weak self] response, error in
                         if let newFile = response?.result {
                             closeHandler(.end, 1, newFile, nil, &cancel)
                         } else {
                             closeHandler(.error, 1, file, error, &cancel)
                         }
+
+                        cleanup()
+                        self?.openedFile = nil
                     }
+                } else {
+                    cleanup()
+                    openedFile = nil
                 }
             }
 
-            openedFile = nil
+//            cleanup()
+//            openedFile = nil
         }
     }
 

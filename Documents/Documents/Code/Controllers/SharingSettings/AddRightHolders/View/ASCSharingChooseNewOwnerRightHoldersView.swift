@@ -219,7 +219,7 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
 
 extension ASCSharingChooseNewOwnerRightHoldersView {
     private func configureTables() {
-        let tables = RightHoldersTableType.allCases.map { getTableView(byRightHoldersTableType: $0) } + [searchResultsTable]
+        let tables = RightHoldersTableType.allCases.compactMap { getTableView(byRightHoldersTableType: $0) } + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
 
         if #available(iOS 13.0, *) {
@@ -240,11 +240,11 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
     }
 
     func showTable(tableType: RightHoldersTableType) {
-        let tableView = getTableView(byRightHoldersTableType: tableType)
+        guard let tableView = getTableView(byRightHoldersTableType: tableType) else { return }
         view.addSubview(tableView)
         tableView.fillToSuperview()
         RightHoldersTableType.allCases.filter { $0 != tableType }.forEach { type in
-            getTableView(byRightHoldersTableType: type).removeFromSuperview()
+            getTableView(byRightHoldersTableType: type)?.removeFromSuperview()
         }
     }
 
@@ -265,10 +265,11 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
         ])
     }
 
-    func getTableView(byRightHoldersTableType rightHoldersTableType: RightHoldersTableType) -> UITableView {
+    func getTableView(byRightHoldersTableType rightHoldersTableType: RightHoldersTableType) -> UITableView? {
         switch rightHoldersTableType {
         case .users: return usersTableView
         case .groups: return groupsTableView
+        case .guests: return nil
         }
     }
 }

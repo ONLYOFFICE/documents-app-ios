@@ -89,6 +89,15 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }
     }
 
+    /// Compiler support method
+    func request<Response>(
+        endpoint: Endpoint<Response>,
+        parameters: Parameters? = nil,
+        completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil
+    ) {
+        request(endpoint, parameters, completion)
+    }
+
     func request<Response>(
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters? = nil,
@@ -307,6 +316,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                         return .unknown(error: error)
                     }
                 }
+
             case .sessionDeinitialized:
                 return .sessionDeinitialized
 

@@ -20,6 +20,7 @@ class ASCFile: ASCEntity {
     var access: ASCEntityAccess = .none
     var shared: Bool = false
     var rootFolderType: ASCFolderType = .unknown
+    var expired: Date?
     var updated: Date?
     var updatedBy: ASCUser?
     var created: Date?
@@ -32,6 +33,7 @@ class ASCFile: ASCEntity {
     var canShare: Bool = false
     var requestToken: String?
     var `extension`: String?
+    var order: String?
 
     override init() {
         super.init()
@@ -99,6 +101,7 @@ class ASCFile: ASCEntity {
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())
+        expired <- (map["expired"], ASCDateTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]
         created <- (map["created"], ASCDateTransform())
@@ -108,8 +111,20 @@ class ASCFile: ASCEntity {
         security <- map["security"]
         canShare <- map["canShare"]
         `extension` <- map["extension"]
+        order <- map["order"]
 
         // Internal
         device <- map["device"]
+    }
+}
+
+extension ASCFile {
+    var isExpiredSoon: Bool {
+        guard let created, let expired, expired > created else { return false }
+
+        let totalDuration = expired.timeIntervalSince(created)
+        let timePassed = Date().timeIntervalSince(created)
+
+        return timePassed >= totalDuration * 0.9
     }
 }

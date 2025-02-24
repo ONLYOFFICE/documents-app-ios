@@ -23,7 +23,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     var itemsViewType: ASCEntityViewLayoutType {
         get {
-            return provider?.itemsViewType ?? .list
+            return provider?.itemsViewType(for: folder) ?? .list
         }
         set {
             provider?.itemsViewType = newValue
@@ -74,6 +74,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     var isEditingIndexMode = false {
         didSet {
+            guard isEditingIndexMode != oldValue else { return }
             configureNavigationBar(animated: true)
             updateUIForEditingOrderIndexState()
             collectionView.reloadData()
@@ -849,7 +850,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         // Archive
-        if isDocSpaceRoomShared {
+        if isDocSpaceRoomShared, canArchiveAllSelectedItems() {
             items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
@@ -2245,7 +2246,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func editRoom(folder: ASCFolder) {
-        let vc = EditRoomViewController(folder: folder) { _ in
+        let previusIndexingValue = folder.indexing
+        let vc = EditRoomViewController(folder: folder) { [weak self] editedRoom in
+            guard let self else { return }
+            self.folder = editedRoom
+
             if let refreshControl = self.collectionView.refreshControl {
                 self.refresh(refreshControl)
                 if let viewControllers = self.navigationController?.viewControllers,
@@ -2254,6 +2259,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 {
                     let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
                     previousController?.refresh(refreshControl)
+                }
+            }
+
+            // If indexing changed rerender layout with correct type for edited room
+            if previusIndexingValue != editedRoom.indexing {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(
+                        name: ASCConstants.Notifications.updateDocumentsViewLayoutType,
+                        object: self.provider?.itemsViewType(for: editedRoom) ?? .list
+                    )
                 }
             }
         }
@@ -2395,6 +2410,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                     let file = ASCFile()
                     file.id = destinationPath.rawValue
+                    file.viewUrl = destinationPath.rawValue
                     file.rootFolderType = .deviceDocuments
                     file.title = destinationPath.fileName
                     file.created = destinationPath.creationDate
@@ -2944,6 +2960,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.delete, folderKeyPathSecurity: \.delete)
     }
 
+    private func canArchiveLeastOneItem() -> Bool {
+        canMoveLeastOneItem() // Archive = Move
+    }
+
     private func canCopyLeastOneItem() -> Bool {
         canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.copy, folderKeyPathSecurity: \.copy)
     }
@@ -2984,6 +3004,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private func canMoveAllSelectedItems() -> Bool {
         guard selectedIds.count > 0 else { return canMoveLeastOneItem() }
         return canPerformActionOnSelectedItems(fileKeyPathSecurity: \.move, folderKeyPathSecurity: \.move)
+    }
+
+    private func canArchiveAllSelectedItems() -> Bool {
+        canMoveAllSelectedItems() // Archive = Move
     }
 
     private func canPerformActionOnSelectedItems(fileKeyPathSecurity: KeyPath<ASCFileSecurity, Bool>,

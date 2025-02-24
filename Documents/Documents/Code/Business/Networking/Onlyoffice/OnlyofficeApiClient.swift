@@ -10,7 +10,34 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
-class OnlyofficeTokenAdapter: RequestAdapter {
+final class OnlyofficeHeadersOnTokenAdapter: RequestAdapter, Sendable {
+    let accessToken: String
+    let onlyofficeHeadersOnTokenService: OnlyofficeHeadersOnTokenService
+
+    init(
+        accessToken: String,
+        onlyofficeHeadersOnTokenService: OnlyofficeHeadersOnTokenService
+    ) {
+        self.accessToken = accessToken
+        self.onlyofficeHeadersOnTokenService = onlyofficeHeadersOnTokenService
+    }
+
+    private var additionHeaders: [HTTPHeader] {
+        onlyofficeHeadersOnTokenService.headers(for: accessToken)
+    }
+
+    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        var urlRequest = urlRequest
+
+        for header in additionHeaders {
+            urlRequest.headers.add(header)
+        }
+
+        completion(.success(urlRequest))
+    }
+}
+
+final class OnlyofficeTokenAdapter: RequestAdapter {
     private let accessToken: String
     private let client: OnlyofficeApiClient
 
@@ -49,6 +76,8 @@ class OnlyofficeApiClient: NetworkingClient {
         return serverVersion?.community?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
     }
 
+    private let onlyofficeHeadersOnTokenService = ServicesProvider.shared.onlyofficeHeadersOnTokenService
+
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: OnlyofficeApiClient.self)))")
 
     // MARK: - Lifecycle
@@ -68,6 +97,8 @@ class OnlyofficeApiClient: NetworkingClient {
         configure(url: url, token: token)
     }
 
+    // MARK: Override public func
+
     override public func configure(url: String? = nil, token: String? = nil) {
         baseURL = URL(string: url ?? "")
 
@@ -77,11 +108,9 @@ class OnlyofficeApiClient: NetworkingClient {
         configuration.timeoutIntervalForResource = defaultTimeoutIntervalForResource
         configuration.headers = .default
 
-        let adapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
-
         manager = Session(
             configuration: configuration,
-            interceptor: Interceptor(adapters: [adapter]),
+            interceptor: Interceptor(adapters: buildAdapters()),
             serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
 
@@ -129,6 +158,8 @@ class OnlyofficeApiClient: NetworkingClient {
 
         return networkingError
     }
+
+    // MARK: public func
 
     func reset() {
         baseURL = nil
@@ -186,7 +217,6 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         )
 
-        let adapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
         let downloadManager = Alamofire.Session(
             configuration: {
                 $0.timeoutIntervalForRequest = 600
@@ -194,7 +224,7 @@ class OnlyofficeApiClient: NetworkingClient {
                 $0.headers = .default
                 return $0
             }(URLSessionConfiguration.default),
-            interceptor: Interceptor(adapters: [adapter]),
+            interceptor: Interceptor(adapters: buildAdapters()),
             serverTrustManager: ServerTrustManager(
                 allHostsMustBeEvaluated: false,
                 evaluators: [:]
@@ -246,8 +276,6 @@ class OnlyofficeApiClient: NetworkingClient {
             return
         }
 
-//        ASCBaseApi.clearCookies(for: url)
-
         var headers: HTTPHeaders = [
             "Content-Length": String(data.count),
         ]
@@ -268,60 +296,58 @@ class OnlyofficeApiClient: NetworkingClient {
             }
             urlComponents.queryItems = queryItems
 
-            if let uploadUrl = urlComponents.url {
-                let adapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
-                let uploadManager = Alamofire.Session(
-                    configuration: {
-                        $0.timeoutIntervalForRequest = 600
-                        $0.timeoutIntervalForResource = 600
-                        $0.headers = .default
-                        return $0
-                    }(URLSessionConfiguration.default),
-                    interceptor: Interceptor(adapters: [adapter]),
-                    serverTrustManager: ServerTrustManager(
-                        allHostsMustBeEvaluated: false,
-                        evaluators: [:]
-                    )
+            guard let uploadUrl = urlComponents.url else { return }
+            let uploadManager = Alamofire.Session(
+                configuration: {
+                    $0.timeoutIntervalForRequest = 600
+                    $0.timeoutIntervalForResource = 600
+                    $0.headers = .default
+                    return $0
+                }(URLSessionConfiguration.default),
+                interceptor: Interceptor(adapters: buildAdapters()),
+                serverTrustManager: ServerTrustManager(
+                    allHostsMustBeEvaluated: false,
+                    evaluators: [:]
                 )
+            )
 
-                sessions.append(uploadManager)
+            sessions.append(uploadManager)
 
-                uploadManager.upload(
-                    data,
-                    to: uploadUrl,
-                    method: endpoint.method,
-                    headers: headers
-                )
-                .uploadProgress(queue: queue) { progress in
-                    log.debug("Upload Progress: \(progress.fractionCompleted)")
+            uploadManager.upload(
+                data,
+                to: uploadUrl,
+                method: endpoint.method,
+                headers: headers
+            )
+            .uploadProgress(queue: queue) { progress in
+                log.debug("Upload Progress: \(progress.fractionCompleted)")
+                DispatchQueue.main.async {
+                    processing(nil, progress.fractionCompleted, nil)
+                }
+            }
+            .validate(statusCode: 200 ..< 300)
+            .responseData(queue: queue) { response in
+                switch response.result {
+                case let .success(value):
+                    do {
+                        let result = try endpoint.decode(value)
+                        DispatchQueue.main.async {
+                            processing(result, 1, nil)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            processing(nil, 1, .invalidData)
+                        }
+                    }
+                case let .failure(error):
+                    let err = self.parseError(response.data, error)
                     DispatchQueue.main.async {
-                        processing(nil, progress.fractionCompleted, nil)
+                        processing(nil, 1, err)
                     }
                 }
-                .validate(statusCode: 200 ..< 300)
-                .responseData(queue: queue) { response in
-                    switch response.result {
-                    case let .success(value):
-                        do {
-                            let result = try endpoint.decode(value)
-                            DispatchQueue.main.async {
-                                processing(result, 1, nil)
-                            }
-                        } catch {
-                            DispatchQueue.main.async {
-                                processing(nil, 1, .invalidData)
-                            }
-                        }
-                    case let .failure(error):
-                        let err = self.parseError(response.data, error)
-                        DispatchQueue.main.async {
-                            processing(nil, 1, err)
-                        }
-                    }
 
-                    if let managerIndex = self.sessions.firstIndex(where: { $0 === uploadManager }) {
-                        self.sessions.remove(at: managerIndex)
-                    }
+                if let managerIndex = self.sessions.firstIndex(where: { $0 === uploadManager }) {
+                    self.sessions.remove(at: managerIndex)
                 }
             }
         }
@@ -336,23 +362,6 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         }
         return nil
-    }
-
-    // MARK: - Private
-
-    private func fetchServerVersion(completion: NetworkCompletionHandler?) {
-        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Settings.versions) { [weak self] response, error in
-            defer { completion?(response?.result, error) }
-
-            if let error = error {
-                log.error(error)
-                return
-            }
-
-            if let versions = response?.result {
-                self?.serverVersion = versions
-            }
-        }
     }
 }
 
@@ -391,5 +400,33 @@ extension OnlyofficeApiClient {
     ) {
         NetworkingClient.clearCookies(for: OnlyofficeApiClient.shared.url(path: endpoint.path))
         OnlyofficeApiClient.shared.request(endpoint, parameters, apply, completion)
+    }
+}
+
+// MARK: - Private
+
+private extension OnlyofficeApiClient {
+    func fetchServerVersion(completion: NetworkCompletionHandler?) {
+        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Settings.versions) { [weak self] response, error in
+            defer { completion?(response?.result, error) }
+
+            if let error = error {
+                log.error(error)
+                return
+            }
+
+            if let versions = response?.result {
+                self?.serverVersion = versions
+            }
+        }
+    }
+
+    func buildAdapters() -> [RequestAdapter] {
+        let tokenAdapter = OnlyofficeTokenAdapter(client: self, accessToken: token ?? "")
+        let headersOnTokenAdapter = OnlyofficeHeadersOnTokenAdapter(
+            accessToken: token ?? "",
+            onlyofficeHeadersOnTokenService: onlyofficeHeadersOnTokenService
+        )
+        return [tokenAdapter, headersOnTokenAdapter]
     }
 }

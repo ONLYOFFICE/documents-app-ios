@@ -10,12 +10,18 @@ import Foundation
 
 protocol ASCEntityViewLayoutTypeProvider {
     var itemsViewType: ASCEntityViewLayoutType { get set }
+
+    func itemsViewType(for folder: ASCFolder?) -> ASCEntityViewLayoutType
 }
 
 extension ASCEntityViewLayoutTypeProvider {
     var itemsViewType: ASCEntityViewLayoutType {
         get { ASCEntityViewLayoutTypeService.shared.itemsViewType }
         set { ASCEntityViewLayoutTypeService.shared.itemsViewType = newValue }
+    }
+
+    func itemsViewType(for folder: ASCFolder?) -> ASCEntityViewLayoutType {
+        itemsViewType
     }
 }
 

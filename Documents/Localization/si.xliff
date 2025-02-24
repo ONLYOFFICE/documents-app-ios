@@ -1314,6 +1314,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>සමාන නමක් සහිත අථක %1$lu ක් දැනටමත් '%2$@' බහාලුමේ පවතී. උඩින් ලියන්නද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="(%@)" xml:space="preserve">
+        <source>(%@)</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
         <source>(%1$@/%2$@)</source>
         <target>(%1$@/%2$@)</target>
@@ -1909,10 +1913,6 @@ Caption of the processing</note>
         <target>සබැඳියේ පිටපතක්</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Copy shared link" xml:space="preserve">
-        <source>Copy shared link</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target>පිටපත් වෙමින්</target>
@@ -2031,6 +2031,10 @@ Caption of the processing</note>
         <target>ගොනුවෙන් කියවීමට නොහැකි විය</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Could not resolve the file." xml:space="preserve">
+        <source>Could not resolve the file.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
         <target>ගොනුවට ලිවීමට නොහැකි විය</target>
@@ -2080,6 +2084,10 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a new file" xml:space="preserve">
+        <source>Create a new file</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2442,6 +2450,10 @@ Operation completed</note>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
         <target>අනුබහාලුම් බැහැරව</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
@@ -3141,6 +3153,10 @@ If current user name is not set</note>
         <source>New form filling room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
+        <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
         <note>No comment provided by engineer.</note>
@@ -3177,6 +3193,10 @@ If current user name is not set</note>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
         <target>සෙවුම් ප්‍රතිඵල නැත</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No added guests yet" xml:space="preserve">
+        <source>No added guests yet</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
@@ -4137,6 +4157,10 @@ Navigation bar button title</note>
         <target>%@ සේවාදායකය නොතිබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
+        <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
         <target>ගිණුමේ නම අකුරු 6 සහ 50 අතර විය යුතුය</target>
@@ -4680,6 +4704,10 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
+        <source>Welcome to the Virtual Data Room </source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

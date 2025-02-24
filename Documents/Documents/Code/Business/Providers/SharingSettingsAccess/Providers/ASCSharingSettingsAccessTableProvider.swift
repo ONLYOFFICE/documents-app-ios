@@ -10,6 +10,6 @@ import Foundation
 
 class ASCSharingSettingsAccessTableProvider: ASCSharingSettingsAccessProvider {
     func get() -> [ASCShareAccess] {
-        [.full, .userFilter, .comment, .read, .deny]
+        [.editing, .userFilter, .comment, .read, .deny]
     }
 }

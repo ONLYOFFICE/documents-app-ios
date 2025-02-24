@@ -527,6 +527,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                 let file = ASCFile()
                 file.id = destination.rawValue
+                file.viewUrl = destination.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = destination.fileName
                 file.created = destination.creationDate
@@ -582,6 +583,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                 let file = ASCFile()
                 file.id = destination.rawValue
+                file.viewUrl = destination.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = destination.fileName
                 file.created = destination.creationDate
@@ -622,6 +624,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                 let file = ASCFile()
                 file.id = filePath.rawValue
+                file.viewUrl = filePath.rawValue
                 file.rootFolderType = .deviceDocuments
                 file.title = filePath.fileName
                 file.created = filePath.creationDate

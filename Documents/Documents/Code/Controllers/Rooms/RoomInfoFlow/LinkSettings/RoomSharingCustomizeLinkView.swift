@@ -168,13 +168,16 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
+    @ViewBuilder
     private var accessCell: some View {
-        MenuView(menuItems: viewModel.accessMenuItems) {
-            ASCDetailedImageChevronUpDownCellView(model: ASCDetailedImageChevronUpDownCellViewModel(
-                title: NSLocalizedString("Access rights", comment: ""),
-                image: viewModel.selectedAccessRight.swiftUIImage ?? Image(""),
-                isEnabled: !viewModel.isExpired
-            ))
+        if viewModel.isEditAccessPossible {
+            MenuView(menuItems: viewModel.accessMenuItems) {
+                ASCDetailedImageChevronUpDownCellView(model: ASCDetailedImageChevronUpDownCellViewModel(
+                    title: NSLocalizedString("Access rights", comment: ""),
+                    image: viewModel.selectedAccessRight.swiftUIImage ?? Image(""),
+                    isEnabled: !viewModel.isExpired
+                ))
+            }
         }
     }
 

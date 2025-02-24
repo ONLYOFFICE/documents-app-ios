@@ -11,15 +11,26 @@ import Foundation
 class ASCSharingSettingsAccessProviderFactory {
     typealias FileExtension = String
     typealias ProviderContainer = () -> ASCSharingSettingsAccessProvider
+    
+    private let isDocspaceProvider: () -> Bool
+    private var isDocspace: Bool { isDocspaceProvider() }
 
-    private let providerContainersByExtension: [FileExtension: ProviderContainer] = [
-        ASCConstants.FileExtensions.docx: { ASCSharingSettingsAccessDocumentProvider() },
-        ASCConstants.FileExtensions.docxf: { ASCSharingSettingsAccessDocumentFormProvider() },
-        ASCConstants.FileExtensions.xlsx: { ASCSharingSettingsAccessTableProvider() },
-        ASCConstants.FileExtensions.pptx: { ASCSharingSettingsAccessPresentationProvider() },
-        ASCConstants.FileExtensions.oform: { ASCSharingSettingsAccessOFormProvider() },
-        ASCConstants.FileExtensions.pdf: { ASCSharingSettingsAccessOFormProvider() },
+    private lazy var providerContainersByExtension: [FileExtension: ProviderContainer] = [
+        ASCConstants.FileExtensions.docx: docsAccessListProvider(),
+        ASCConstants.FileExtensions.docxf: docsfAccessListProvider(),
+        ASCConstants.FileExtensions.xlsx: xlsxAccessListProvider(),
+        ASCConstants.FileExtensions.pptx: pptxAccessListProvider(),
+        ASCConstants.FileExtensions.oform: oformAccessListProvider(),
+        ASCConstants.FileExtensions.pdf: pdfAccessListProvider(),
     ]
+    
+    init(
+        isDocspaceProvider: @escaping () -> Bool = {
+            OnlyofficeApiClient.shared.serverVersion?.docSpace != nil
+        }
+    ) {
+        self.isDocspaceProvider = isDocspaceProvider
+    }
 
     func get(
         entity: ASCEntity,
@@ -49,5 +60,44 @@ class ASCSharingSettingsAccessProviderFactory {
                 rightHoldersTableType: rightHoldersTableType
             )
         }
+    }
+}
+
+private extension ASCSharingSettingsAccessProviderFactory {
+    
+    func docsAccessListProvider() -> ProviderContainer {
+        isDocspace
+        ? { ASCDocSpaceAccessDocumentProvider() }
+        : { ASCSharingSettingsAccessDocumentProvider() }
+    }
+    
+    func docsfAccessListProvider() -> ProviderContainer {
+        isDocspace
+        ? { ASCDocSpaceAccessDocumentFormProvider() }
+        : { ASCSharingSettingsAccessDocumentFormProvider() }
+    }
+    
+    func xlsxAccessListProvider() -> ProviderContainer {
+        isDocspace
+        ? { ASCDocSpaceAccessTableProvider() }
+        : { ASCSharingSettingsAccessTableProvider() }
+    }
+    
+    func pptxAccessListProvider() -> ProviderContainer {
+        isDocspace
+        ? { ASCDocSpaceAccessPresentationProvider() }
+        : { ASCSharingSettingsAccessPresentationProvider() }
+    }
+    
+    func oformAccessListProvider() -> ProviderContainer {
+        isDocspace
+        ? { ASCDocSpaceAccessOFormProvider() }
+        : { ASCSharingSettingsAccessOFormProvider() }
+    }
+    
+    func pdfAccessListProvider() -> ProviderContainer {
+        isDocspace
+        ? { ASCDocSpaceAccessOFormProvider() }
+        : { ASCSharingSettingsAccessOFormProvider() }
     }
 }

@@ -29,6 +29,16 @@
 		E801C9A62D36E44900E9939A /* ASCDocumentsViewController+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E801C9A52D36E44900E9939A /* ASCDocumentsViewController+NavBar.swift */; };
 		E801C9A92D36E48700E9939A /* ProviderEditIndexDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E801C9A72D36E48700E9939A /* ProviderEditIndexDelegate.swift */; };
 		E801C9AB2D36E53A00E9939A /* TopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E801C9AA2D36E53A00E9939A /* TopBannerView.swift */; };
+		E80387252D6D34B200D162E3 /* ASCDocSpaceAccessPresentationProvider.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803871C2D6D34B200D162E3 /* ASCDocSpaceAccessPresentationProvider.swift.swift */; };
+		E80387262D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80387202D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentProvider.swift */; };
+		E80387272D6D34B200D162E3 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80387222D6D34B200D162E3 /* ASCSharingSettingsAccessPresentationProvider.swift */; };
+		E80387282D6D34B200D162E3 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80387212D6D34B200D162E3 /* ASCSharingSettingsAccessOFormProvider.swift */; };
+		E80387292D6D34B200D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80387192D6D34B200D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift */; };
+		E803872A2D6D34B200D162E3 /* ASCSharingSettingsAccessTableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80387232D6D34B200D162E3 /* ASCSharingSettingsAccessTableProvider.swift */; };
+		E803872B2D6D34B200D162E3 /* ASCDocSpaceAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803871B2D6D34B200D162E3 /* ASCDocSpaceAccessOFormProvider.swift */; };
+		E803872C2D6D34B200D162E3 /* ASCDocSpaceAccessDocumentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803871A2D6D34B200D162E3 /* ASCDocSpaceAccessDocumentProvider.swift */; };
+		E803872D2D6D34B200D162E3 /* ASCDocSpaceAccessTableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803871D2D6D34B200D162E3 /* ASCDocSpaceAccessTableProvider.swift */; };
+		E803872E2D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E803871F2D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentFormProvider.swift */; };
 		E827EEF62C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827EEF52C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */; };
 		E83F6A0B2C930B2E00A5560B /* ASCTransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F6A092C930B2E00A5560B /* ASCTransferPresenter.swift */; };
 		E8674B752B2B15C200CDA5DC /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */; };
@@ -542,13 +552,8 @@
 		FCC64F6929191F63004D9A47 /* ASCEntityRemoverActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F6729191F63004D9A47 /* ASCEntityRemoverActionController.swift */; };
 		FCC64F76291920F7004D9A47 /* ASCDocumentsFolderCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F72291920F7004D9A47 /* ASCDocumentsFolderCellContextMenu.swift */; };
 		FCC64F77291920F7004D9A47 /* ASCDocumentsCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F73291920F7004D9A47 /* ASCDocumentsCellContextMenu.swift */; };
-		FCC64F81291921D7004D9A47 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F79291921D6004D9A47 /* ASCSharingSettingsAccessOFormProvider.swift */; };
-		FCC64F82291921D7004D9A47 /* ASCSharingSettingsAccessTableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F7A291921D6004D9A47 /* ASCSharingSettingsAccessTableProvider.swift */; };
-		FCC64F83291921D7004D9A47 /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F7B291921D6004D9A47 /* ASCSharingSettingsAccessDocumentProvider.swift */; };
-		FCC64F84291921D7004D9A47 /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F7C291921D6004D9A47 /* ASCSharingSettingsAccessDocumentFormProvider.swift */; };
 		FCC64F85291921D7004D9A47 /* ASCSharingSettingsAccessDefaultProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F7D291921D6004D9A47 /* ASCSharingSettingsAccessDefaultProvider.swift */; };
 		FCC64F86291921D7004D9A47 /* ASCSharingSettingsAccessRoomsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F7E291921D7004D9A47 /* ASCSharingSettingsAccessRoomsProvider.swift */; };
-		FCC64F87291921D7004D9A47 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F7F291921D7004D9A47 /* ASCSharingSettingsAccessPresentationProvider.swift */; };
 		FCC64F88291921D7004D9A47 /* ASCSharingSettingsAccessExternalDefaultProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F80291921D7004D9A47 /* ASCSharingSettingsAccessExternalDefaultProvider.swift */; };
 		FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */; };
 		FCCB1931262AC66F007517BB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCB1930262AC66F007517BB /* Colors.xcassets */; };
@@ -785,6 +790,16 @@
 		E801C9A52D36E44900E9939A /* ASCDocumentsViewController+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+NavBar.swift"; sourceTree = "<group>"; };
 		E801C9A72D36E48700E9939A /* ProviderEditIndexDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderEditIndexDelegate.swift; sourceTree = "<group>"; };
 		E801C9AA2D36E53A00E9939A /* TopBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerView.swift; sourceTree = "<group>"; };
+		E80387192D6D34B200D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceAccessDocumentFormProvider.swift; sourceTree = "<group>"; };
+		E803871A2D6D34B200D162E3 /* ASCDocSpaceAccessDocumentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceAccessDocumentProvider.swift; sourceTree = "<group>"; };
+		E803871B2D6D34B200D162E3 /* ASCDocSpaceAccessOFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceAccessOFormProvider.swift; sourceTree = "<group>"; };
+		E803871C2D6D34B200D162E3 /* ASCDocSpaceAccessPresentationProvider.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceAccessPresentationProvider.swift.swift; sourceTree = "<group>"; };
+		E803871D2D6D34B200D162E3 /* ASCDocSpaceAccessTableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceAccessTableProvider.swift; sourceTree = "<group>"; };
+		E803871F2D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDocumentFormProvider.swift; sourceTree = "<group>"; };
+		E80387202D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDocumentProvider.swift; sourceTree = "<group>"; };
+		E80387212D6D34B200D162E3 /* ASCSharingSettingsAccessOFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessOFormProvider.swift; sourceTree = "<group>"; };
+		E80387222D6D34B200D162E3 /* ASCSharingSettingsAccessPresentationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessPresentationProvider.swift; sourceTree = "<group>"; };
+		E80387232D6D34B200D162E3 /* ASCSharingSettingsAccessTableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessTableProvider.swift; sourceTree = "<group>"; };
 		E827EEF52C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E83F6A092C930B2E00A5560B /* ASCTransferPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferPresenter.swift; sourceTree = "<group>"; };
 		E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
@@ -1283,13 +1298,8 @@
 		FCC64F6729191F63004D9A47 /* ASCEntityRemoverActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEntityRemoverActionController.swift; sourceTree = "<group>"; };
 		FCC64F72291920F7004D9A47 /* ASCDocumentsFolderCellContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFolderCellContextMenu.swift; sourceTree = "<group>"; };
 		FCC64F73291920F7004D9A47 /* ASCDocumentsCellContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCellContextMenu.swift; sourceTree = "<group>"; };
-		FCC64F79291921D6004D9A47 /* ASCSharingSettingsAccessOFormProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessOFormProvider.swift; sourceTree = "<group>"; };
-		FCC64F7A291921D6004D9A47 /* ASCSharingSettingsAccessTableProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessTableProvider.swift; sourceTree = "<group>"; };
-		FCC64F7B291921D6004D9A47 /* ASCSharingSettingsAccessDocumentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDocumentProvider.swift; sourceTree = "<group>"; };
-		FCC64F7C291921D6004D9A47 /* ASCSharingSettingsAccessDocumentFormProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDocumentFormProvider.swift; sourceTree = "<group>"; };
 		FCC64F7D291921D6004D9A47 /* ASCSharingSettingsAccessDefaultProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDefaultProvider.swift; sourceTree = "<group>"; };
 		FCC64F7E291921D7004D9A47 /* ASCSharingSettingsAccessRoomsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessRoomsProvider.swift; sourceTree = "<group>"; };
-		FCC64F7F291921D7004D9A47 /* ASCSharingSettingsAccessPresentationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessPresentationProvider.swift; sourceTree = "<group>"; };
 		FCC64F80291921D7004D9A47 /* ASCSharingSettingsAccessExternalDefaultProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessExternalDefaultProvider.swift; sourceTree = "<group>"; };
 		FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccountsManager.swift; sourceTree = "<group>"; };
 		FCCB1930262AC66F007517BB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = Resources/Colors.xcassets; sourceTree = "<group>"; };
@@ -1524,6 +1534,30 @@
 				E801C9A72D36E48700E9939A /* ProviderEditIndexDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E803871E2D6D34B200D162E3 /* Docspace */ = {
+			isa = PBXGroup;
+			children = (
+				E80387192D6D34B200D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift */,
+				E803871A2D6D34B200D162E3 /* ASCDocSpaceAccessDocumentProvider.swift */,
+				E803871B2D6D34B200D162E3 /* ASCDocSpaceAccessOFormProvider.swift */,
+				E803871C2D6D34B200D162E3 /* ASCDocSpaceAccessPresentationProvider.swift.swift */,
+				E803871D2D6D34B200D162E3 /* ASCDocSpaceAccessTableProvider.swift */,
+			);
+			path = Docspace;
+			sourceTree = "<group>";
+		};
+		E80387242D6D34B200D162E3 /* Portal */ = {
+			isa = PBXGroup;
+			children = (
+				E803871F2D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentFormProvider.swift */,
+				E80387202D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentProvider.swift */,
+				E80387212D6D34B200D162E3 /* ASCSharingSettingsAccessOFormProvider.swift */,
+				E80387222D6D34B200D162E3 /* ASCSharingSettingsAccessPresentationProvider.swift */,
+				E80387232D6D34B200D162E3 /* ASCSharingSettingsAccessTableProvider.swift */,
+			);
+			path = Portal;
 			sourceTree = "<group>";
 		};
 		E8674B6B2B2B15C100CDA5DC /* SwiftUIViews */ = {
@@ -2830,14 +2864,11 @@
 		FC7D99512729952400410795 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				E803871E2D6D34B200D162E3 /* Docspace */,
+				E80387242D6D34B200D162E3 /* Portal */,
 				FCC64F7D291921D6004D9A47 /* ASCSharingSettingsAccessDefaultProvider.swift */,
-				FCC64F7C291921D6004D9A47 /* ASCSharingSettingsAccessDocumentFormProvider.swift */,
-				FCC64F7B291921D6004D9A47 /* ASCSharingSettingsAccessDocumentProvider.swift */,
 				FCC64F80291921D7004D9A47 /* ASCSharingSettingsAccessExternalDefaultProvider.swift */,
-				FCC64F79291921D6004D9A47 /* ASCSharingSettingsAccessOFormProvider.swift */,
-				FCC64F7F291921D7004D9A47 /* ASCSharingSettingsAccessPresentationProvider.swift */,
 				FCC64F7E291921D7004D9A47 /* ASCSharingSettingsAccessRoomsProvider.swift */,
-				FCC64F7A291921D6004D9A47 /* ASCSharingSettingsAccessTableProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -4148,6 +4179,16 @@
 				FCE835362A8514B700EFA839 /* ASCCreateEntityUI.swift in Sources */,
 				F3772FD02C9DEBC1002B33A8 /* ASCFormCellView.swift in Sources */,
 				FCE2B4232930CCA700E50429 /* ASCGroup.swift in Sources */,
+				E80387252D6D34B200D162E3 /* ASCDocSpaceAccessPresentationProvider.swift.swift in Sources */,
+				E80387262D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */,
+				E80387272D6D34B200D162E3 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
+				E80387282D6D34B200D162E3 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
+				E80387292D6D34B200D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift in Sources */,
+				E803872A2D6D34B200D162E3 /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
+				E803872B2D6D34B200D162E3 /* ASCDocSpaceAccessOFormProvider.swift in Sources */,
+				E803872C2D6D34B200D162E3 /* ASCDocSpaceAccessDocumentProvider.swift in Sources */,
+				E803872D2D6D34B200D162E3 /* ASCDocSpaceAccessTableProvider.swift in Sources */,
+				E803872E2D6D34B200D162E3 /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				FC5D040F263AF06400D9DBCF /* NetworkingError.swift in Sources */,
 				FC83D53B2A973E2100C404CB /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FC83D5392A973E2100C404CB /* CALayer+Animate.swift in Sources */,
@@ -4225,7 +4266,6 @@
 				FC7D99682729952400410795 /* ASCSharingSettingsAccessProvider.swift in Sources */,
 				FC0377D52BDD1D4100DDB2EF /* DocumentServerVersionRequest.swift in Sources */,
 				FC83D5432A973E2100C404CB /* UIControl+Extension.swift in Sources */,
-				FCC64F84291921D7004D9A47 /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
 				FC759BBA2C00611000510096 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
 				FC759B552C00608600510096 /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
@@ -4278,7 +4318,6 @@
 				FC379D202C37ED7000B120D9 /* AddSharedLinkRequestModel.swift in Sources */,
 				FC379D2F2C37ED7000B120D9 /* ASCLabledCellView.swift in Sources */,
 				FC759BC92C00611000510096 /* ASCSwitchTableViewCell.swift in Sources */,
-				FCC64F87291921D7004D9A47 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
 				FC7DC8F12861FE8E00E61C69 /* ASCStandartCell.swift in Sources */,
 				FC7D99922729985F00410795 /* ManagedAppConfig.swift in Sources */,
 				E827EEF62C3C88CD00BABAA9 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */,
@@ -4406,7 +4445,6 @@
 				FC00CC022C4664EA00D3344D /* ASCTransferViewControllerRepresentable.swift in Sources */,
 				FC759B502C00608600510096 /* InviteUsersService.swift in Sources */,
 				FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */,
-				FCC64F83291921D7004D9A47 /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */,
 				FC2C73E22754BCDF008E9063 /* ASCPortalTypeDefinderByUrl.swift in Sources */,
 				FCF696232632FF3E00808644 /* ASCTextStyle.swift in Sources */,
 				FC83D5342A973E2100C404CB /* UIFont+Extensions.swift in Sources */,
@@ -4470,7 +4508,6 @@
 				FC5D0414263BE8F300D9DBCF /* DropboxApiClient.swift in Sources */,
 				FC9EF0342BFB208800A66DE8 /* RoomUsersResponceModel.swift in Sources */,
 				F3772FD12C9DEBC1002B33A8 /* ASCUserWithEmailRowView.swift in Sources */,
-				FCC64F81291921D7004D9A47 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				FC9EF0302BFB208800A66DE8 /* OnlyofficeUserPhoto.swift in Sources */,
 				FC83D5282A973E2100C404CB /* UISplitViewController+Extensions.swift in Sources */,
 				FCC64F5C29191B4C004D9A47 /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */,
@@ -4624,7 +4661,6 @@
 				FC759BC22C00611000510096 /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC7DC8EF2861FE8E00E61C69 /* ASCSwitchCell.swift in Sources */,
 				FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */,
-				FCC64F82291921D7004D9A47 /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
 				FC2A74AF2C383BB100A515F7 /* ASCEntityViewLayoutType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

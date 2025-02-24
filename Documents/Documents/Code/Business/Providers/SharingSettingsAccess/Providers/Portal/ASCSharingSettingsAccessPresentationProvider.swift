@@ -10,6 +10,6 @@ import Foundation
 
 class ASCSharingSettingsAccessDocumentFormProvider: ASCSharingSettingsAccessProvider {
     func get() -> [ASCShareAccess] {
-        [.editing, .review, .comment, .read, .deny]
+        [.full, .review, .comment, .read, .deny]
     }
 }

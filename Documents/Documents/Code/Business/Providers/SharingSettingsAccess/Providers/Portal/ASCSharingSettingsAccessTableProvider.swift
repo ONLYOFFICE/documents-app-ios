@@ -1,5 +1,5 @@
 //
-//  ASCSharingSettingsAccessPresentationProvider.swift
+//  ASCSharingSettingsAccessTableProvider.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 07.07.2021.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class ASCSharingSettingsAccessPresentationProvider: ASCSharingSettingsAccessProvider {
+class ASCSharingSettingsAccessTableProvider: ASCSharingSettingsAccessProvider {
     func get() -> [ASCShareAccess] {
-        [.editing, .comment, .read, .deny]
+        [.full, .userFilter, .comment, .read, .deny]
     }
 }

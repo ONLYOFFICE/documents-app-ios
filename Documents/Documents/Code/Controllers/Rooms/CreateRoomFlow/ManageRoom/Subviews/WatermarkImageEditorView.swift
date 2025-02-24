@@ -14,7 +14,7 @@ struct WatermarkImageEditorView: View {
     var body: some View {
         if viewModel.selectedWatermarkType == .image, let image = viewModel.watermarkImage {
             Section(
-                footer: Text(NSLocalizedString("This image preview roughly shows how the watermark will be displayed in your files.", comment: ""))
+                footer: Text("This image preview roughly shows how the watermark will be displayed in your files.")
             ) {
                 imageCell(image: image)
                 scaleCell
@@ -42,10 +42,10 @@ struct WatermarkImageEditorView: View {
     private var scaleCell: some View {
         MenuView(menuItems: viewModel.watermarkImageScaleMenuItems) {
             HStack {
-                Text(NSLocalizedString("Scale", comment: ""))
+                Text("Scale")
                     .foregroundColor(.primary)
                 Spacer()
-                Text(viewModel.selectedWatermarkImageScale.localizedDesc)
+                Text(verbatim: viewModel.selectedWatermarkImageScale.localizedDesc)
                     .foregroundColor(.gray)
                 ChevronUpDownView()
             }
@@ -55,10 +55,10 @@ struct WatermarkImageEditorView: View {
     private var rotateCell: some View {
         MenuView(menuItems: viewModel.watermarkImageRotationMenuItems) {
             HStack {
-                Text(NSLocalizedString("Rotate", comment: ""))
+                Text("Rotate")
                     .foregroundColor(.primary)
                 Spacer()
-                Text(viewModel.selectedWatermarkImageRotationAngle.localizedDesc)
+                Text(verbatim: viewModel.selectedWatermarkImageRotationAngle.localizedDesc)
                     .foregroundColor(.gray)
                 ChevronUpDownView()
             }
@@ -67,9 +67,7 @@ struct WatermarkImageEditorView: View {
 
     private var deleteCell: some View {
         HStack {
-            Text(
-                NSLocalizedString("Remove", comment: "")
-            )
+            Text("Remove")
             .foregroundColor(.red)
             Spacer()
         }

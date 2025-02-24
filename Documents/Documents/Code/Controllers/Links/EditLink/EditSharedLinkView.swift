@@ -23,13 +23,13 @@ struct EditSharedLinkView: View {
             }
             removeLinkSection
         }
-        .navigationBarTitle(Text(NSLocalizedString("Shared link", comment: "")), displayMode: .inline)
+        .navigationBarTitle(Text("Shared link"), displayMode: .inline)
     }
 
     @ViewBuilder
     private var generalSection: some View {
         Section(
-            header: Text(NSLocalizedString("General", comment: "")))
+            header: Text("General"))
         {
             accessCell
                 .disabled(viewModel.isExpired)
@@ -79,7 +79,7 @@ struct EditSharedLinkView: View {
     @ViewBuilder
     private var typeSection: some View {
         Section(
-            header: Text(NSLocalizedString("Type", comment: "")))
+            header: Text("Type"))
         {
             CheckmarkCellView(model: CheckmarkCellViewModel(
                 text: NSLocalizedString("Anyone with the link", comment: ""),

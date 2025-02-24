@@ -20,13 +20,13 @@ struct InviteUsersView: View {
             List {
                 externalLinkSection
 
-                Section(header: Text(NSLocalizedString("Add manually", comment: ""))) {
+                Section(header: Text("Add manually")) {
                     inviteByEmailCell
                     chooseFromListCell
                 }
             }
         }
-        .navigationBarTitle(Text(NSLocalizedString("Invite users", comment: "")), displayMode: .inline)
+        .navigationBarTitle(Text("Invite users"), displayMode: .inline)
         .navigationBarItems(trailing: cancelButton)
         .navigateToInviteByEmail(isDisplaying: $viewModel.isInviteByEmailsScreenDisplaying, viewModel: viewModel)
         .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
@@ -47,7 +47,7 @@ struct InviteUsersView: View {
     @ViewBuilder
     private var externalLinkSection: some View {
         if viewModel.isExternalLinkSectionAvailable {
-            Section(header: Text(NSLocalizedString("External link", comment: ""))) {
+            Section(header: Text("External link")) {
                 linkToggleCell
                 if viewModel.externalLink != nil {
                     accessCell
@@ -59,7 +59,7 @@ struct InviteUsersView: View {
 
     private var linkToggleCell: some View {
         Toggle(isOn: $viewModel.isExternalLinkSwitchActive) {
-            Text(NSLocalizedString("Link", comment: ""))
+            Text("Link")
         }
         .tintColor(Asset.Colors.brend.swiftUIColor)
     }
@@ -67,10 +67,10 @@ struct InviteUsersView: View {
     private var accessCell: some View {
         MenuView(menuItems: viewModel.accessMenuItems) {
             HStack {
-                Text(NSLocalizedString("Access rights", comment: ""))
+                Text("Access rights")
                     .foregroundColor(.primary)
                 Spacer()
-                Text(viewModel.selectedAccessRight.title())
+                Text(verbatim: viewModel.selectedAccessRight.title())
                     .foregroundColor(.gray)
                 ChevronUpDownView()
             }
@@ -79,7 +79,7 @@ struct InviteUsersView: View {
 
     private var linkCell: some View {
         HStack {
-            Text(viewModel.linkStr)
+            Text(verbatim: viewModel.linkStr)
                 .foregroundColor(.primary)
                 .lineLimit(1)
                 .truncationMode(.tail)
@@ -100,7 +100,7 @@ struct InviteUsersView: View {
 
     private var inviteByEmailCell: some View {
         HStack {
-            Text(NSLocalizedString("Invite guests by email", comment: ""))
+            Text("Invite guests by email")
             Spacer()
             ChevronRightView()
         }
@@ -112,7 +112,7 @@ struct InviteUsersView: View {
 
     private var chooseFromListCell: some View {
         HStack {
-            Text(NSLocalizedString("Choose from list", comment: ""))
+            Text("Choose from list")
             Spacer()
             ChevronRightView()
         }

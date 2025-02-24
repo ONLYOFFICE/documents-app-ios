@@ -46,14 +46,14 @@ struct FormCompletedView: View {
                             Button(action: {
                                 presentationMode.wrappedValue.dismiss()
                             }) {
-                                Text(TextConstants.backToRoom)
+                                Text(verbatim: TextConstants.backToRoom)
                             }
                             .foregroundColor(Asset.Colors.brend.swiftUIColor)
                             Spacer()
                             Button(action: {
                                 presentationMode.wrappedValue.dismiss()
                             }) {
-                                Text(TextConstants.checkReadyForm)
+                                Text(verbatim: TextConstants.checkReadyForm)
                                     .font(.body)
                                     .fontWeight(.semibold)
                             }
@@ -86,10 +86,10 @@ struct FormCompletedView: View {
     private var screenHeader: some View {
         VStack(spacing: Constants.screenHedaerInsets) {
             Asset.Images.checkmarkGreenCircle.swiftUIImage
-            Text(TextConstants.formCompletedSuccessfully)
+            Text(verbatim: TextConstants.formCompletedSuccessfully)
                 .font(.title2)
                 .foregroundColor(.primary)
-            Text(TextConstants.formSaved)
+            Text(verbatim: TextConstants.formSaved)
                 .font(.subheadline)
                 .foregroundColor(.secondaryLabel)
                 .multilineTextAlignment(.center)
@@ -118,11 +118,11 @@ struct FormCompletedView: View {
     private var formNumberSection: some View {
         Section {
             HStack {
-                Text(TextConstants.formNumber)
+                Text(verbatim: TextConstants.formNumber)
                     .font(.subheadline)
                     .foregroundColor(.primary)
                 Spacer()
-                Text("\(viewModel.formModel.formNumber)")
+                Text(verbatim: "\(viewModel.formModel.formNumber)")
                     .font(.body)
                     .foregroundColor(.secondaryLabel)
             }
@@ -131,7 +131,7 @@ struct FormCompletedView: View {
 
     @ViewBuilder
     private var ownerSection: some View {
-        Section(header: Text(TextConstants.formOwner)) {
+        Section(header: Text(verbatim: TextConstants.formOwner)) {
             ASCUserWithEmailRowView(
                 model: ASCUserWithEmailRowViewModel(
                     image: .uiImage(

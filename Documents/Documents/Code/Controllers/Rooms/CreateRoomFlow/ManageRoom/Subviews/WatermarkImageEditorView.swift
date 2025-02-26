@@ -68,7 +68,7 @@ struct WatermarkImageEditorView: View {
     private var deleteCell: some View {
         HStack {
             Text("Remove")
-            .foregroundColor(.red)
+                .foregroundColor(.red)
             Spacer()
         }
         .contentShape(Rectangle())

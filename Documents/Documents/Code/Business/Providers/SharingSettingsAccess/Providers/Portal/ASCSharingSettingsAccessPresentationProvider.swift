@@ -1,5 +1,5 @@
 //
-//  ASCSharingSettingsAccessDocumentFormProvider.swift
+//  ASCSharingSettingsAccessPresentationProvider.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 02.12.2021.

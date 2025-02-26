@@ -15,7 +15,7 @@ struct RestrictContentCopySection: View {
         if viewModel.selectedRoomType.type == .virtualData {
             Section(
                 footer: Text(
-                        "Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role")
+                    "Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role")
             ) {
                 Toggle(isOn: $viewModel.isRestrictContentCopy) {
                     Text("Restrict file content copy, file download and printing")

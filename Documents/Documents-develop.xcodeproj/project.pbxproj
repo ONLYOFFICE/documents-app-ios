@@ -626,6 +626,7 @@
 		FCF6186C268E0A9A00CD8D84 /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF61868268E0A9A00CD8D84 /* ASCLoadedVCFinderModels.swift */; };
 		FCF6186D268E0A9A00CD8D84 /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF61869268E0A9A00CD8D84 /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */; };
 		FCF6186E268E0A9A00CD8D84 /* ASCLoadedViewControllerFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6186B268E0A9A00CD8D84 /* ASCLoadedViewControllerFinderProtocol.swift */; };
+		FCF674882D6F41C100B6688A /* ASCDocumentsViewController+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF674872D6F41C100B6688A /* ASCDocumentsViewController+Localized.swift */; };
 		FCF696222632FF3E00808644 /* ASCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6961E2632FF3E00808644 /* ASCButtonStyle.swift */; };
 		FCF696232632FF3E00808644 /* ASCTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6961F2632FF3E00808644 /* ASCTextStyle.swift */; };
 		FCF696252632FFD400808644 /* ASCDocumentsEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF696242632FFD400808644 /* ASCDocumentsEmptyView.xib */; };
@@ -1425,6 +1426,7 @@
 		FCF61868268E0A9A00CD8D84 /* ASCLoadedVCFinderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedVCFinderModels.swift; sourceTree = "<group>"; };
 		FCF61869268E0A9A00CD8D84 /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift; sourceTree = "<group>"; };
 		FCF6186B268E0A9A00CD8D84 /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
+		FCF674872D6F41C100B6688A /* ASCDocumentsViewController+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+Localized.swift"; sourceTree = "<group>"; };
 		FCF6961E2632FF3E00808644 /* ASCButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCButtonStyle.swift; sourceTree = "<group>"; };
 		FCF6961F2632FF3E00808644 /* ASCTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTextStyle.swift; sourceTree = "<group>"; };
 		FCF696242632FFD400808644 /* ASCDocumentsEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCDocumentsEmptyView.xib; sourceTree = "<group>"; };
@@ -3109,6 +3111,7 @@
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
 				E801C9A52D36E44900E9939A /* ASCDocumentsViewController+NavBar.swift */,
 				FC476C322BA188BB00E3AF36 /* ASCDocumentsViewController+DragDrop.swift */,
+				FCF674872D6F41C100B6688A /* ASCDocumentsViewController+Localized.swift */,
 				FCEBA6F928B361910009D50B /* ASCDocumentsViewController+Menu.swift */,
 				FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */,
 			);
@@ -4232,6 +4235,7 @@
 				FCC552B41EC2F96600F645EE /* ASCPhoneNumberViewController.swift in Sources */,
 				F3772FD72C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift in Sources */,
 				FC0377D62BDD1D4100DDB2EF /* DocumentServerVersionResponse.swift in Sources */,
+				FCF674882D6F41C100B6688A /* ASCDocumentsViewController+Localized.swift in Sources */,
 				FC83D52E2A973E2100C404CB /* Common+Extension.swift in Sources */,
 				E8CD62252D10824C00DF3440 /* FileLifetimeSection.swift in Sources */,
 				E8CD62262D10824C00DF3440 /* AutomaticIndexationSection.swift in Sources */,

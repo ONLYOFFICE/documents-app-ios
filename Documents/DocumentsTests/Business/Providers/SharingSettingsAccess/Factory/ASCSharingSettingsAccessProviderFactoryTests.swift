@@ -116,9 +116,9 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         XCTAssertTrue(sut.get(entity: file, isAccessExternal: false) is ASCSharingSettingsAccessOFormProvider)
         XCTAssertTrue(sut.get(entity: file, isAccessExternal: true) is ASCSharingSettingsAccessOFormProvider)
     }
-    
+
     // DocSpace tests
-    
+
     func testWhenDocumentAndDocspaceThenGetsNextRightsReadDenyEditingCommentReview() {
         let file = ASCFile()
         file.title = "Foo.docx"
@@ -128,7 +128,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         let expectedAccessList: [ASCShareAccess] = [.editing, .review, .comment, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
-    
+
     func testWhenDocumentFormAndDocspaceThenGetsNextRightReadDenyEditingCommentReview() {
         let file = ASCFile()
         file.title = "Foo.docxf"
@@ -148,7 +148,7 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         let expectedAccessList: [ASCShareAccess] = [.editing, .review, .comment, .read, .deny]
         XCTAssertEqual(expectedAccessList, actualAccessList)
     }
-    
+
     func testWhenOFormAndDocspaceThenGetsNextRightReadDenyEditingCommentReview() {
         let file = ASCFile()
         file.title = "Foo.oform"

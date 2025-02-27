@@ -1532,10 +1532,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     func delete(cell: UICollectionViewCell) {
         if let file = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFile {
-            if folder?.rootFolderType == .onlyofficeTrash {
+            switch folder?.rootFolderType {
+            case .onlyofficeTrash, .deviceTrash:
                 showDeleteFromTrash(file: file)
-            } else {
-                removerActionController.delete(indexes: [file.uid])
+            default: removerActionController.delete(indexes: [file.uid])
             }
         } else if let folder = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFolder {
             if folder.rootFolderType == .onlyofficeRoomArchived {

@@ -27,19 +27,11 @@ final class FormCompletedViewModel: ObservableObject {
     func checkReadyForm() {
         onCheckReadyForm()
     }
-
+    
     func onCopyLink() {
-        FormCompleteNetworkService().copyFormLink(form: formModel.form) { result in
-            switch result {
-            case let .success(link):
-                let hud = MBProgressHUD.showTopMost()
-                UIPasteboard.general.string = link.sharedTo.shareLink
-                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
-                hud?.hide(animated: true, afterDelay: .standardDelay)
-
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+        let hud = MBProgressHUD.showTopMost()
+        UIPasteboard.general.string = formModel.form.webUrl
+        hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+        hud?.hide(animated: true, afterDelay: .standardDelay)
     }
 }

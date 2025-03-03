@@ -7,17 +7,42 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct CompletedFormResponceModel: Codable {
-    let formNumber: Int
-    let roomId: Int
-    let manager: FormManager?
+class CompletedFormResponceModel: Mappable {
+    var formNumber: Int = 0
+    var completedForm: ASCFile?
+    var roomId: Int = 0
+    var manager: FormManager?
+    
+    init() { }
+
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        formNumber <- map["formNumber"]
+        completedForm <- map["completedForm"]
+        roomId <- map["roomId"]
+        manager <- map["manager"]
+    }
 }
 
-struct FormManager: Codable {
-    let firstName: String?
-    let lastName: String?
-    let email: String?
-    let displayName: String?
-    let avatar: String?
+class FormManager: Mappable {
+    var firstName: String?
+    var lastName: String?
+    var email: String?
+    var displayName: String?
+    var avatar: String?
+    
+    init() { }
+
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        firstName <- map["firstName"]
+        lastName <- map["lastName"]
+        email <- map["email"]
+        displayName <- map["displayName"]
+        avatar <- map["avatar"]
+    }
 }

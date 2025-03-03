@@ -277,8 +277,8 @@ enum OnlyofficeAPI {
         // MARK: Files
 
         enum Files {
-            static func fillFormDidSend() -> Endpoint<OnlyofficeResponseCodable<CompletedFormResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<CompletedFormResponceModel>>.make(String(format: Path.fillFormDidSend), .get, URLEncoding.queryString)
+            static func fillFormDidSend() -> Endpoint<OnlyofficeResponse<CompletedFormResponceModel>> {
+                return Endpoint<OnlyofficeResponse<CompletedFormResponceModel>>.make(String(format: Path.fillFormDidSend), .get, URLEncoding.queryString)
             }
 
             static func info(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {

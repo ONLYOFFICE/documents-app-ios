@@ -558,7 +558,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             let vc = CreateFormCompletedRootViewController(
                 formModel: FormModel(
-                    form: file,
+                    form: responce.completedForm ?? ASCFile(),
                     authorName: responce.manager?.displayName ?? "",
                     authorEmail: responce.manager?.email ?? "",
                     formNumber: responce.formNumber,

@@ -14,11 +14,11 @@ class CompletedFormResponceModel: Mappable {
     var completedForm: ASCFile?
     var roomId: Int = 0
     var manager: FormManager?
-    
-    init() { }
 
-    required init?(map: Map) { }
-    
+    init() {}
+
+    required init?(map: Map) {}
+
     func mapping(map: Map) {
         formNumber <- map["formNumber"]
         completedForm <- map["completedForm"]
@@ -33,11 +33,11 @@ class FormManager: Mappable {
     var email: String?
     var displayName: String?
     var avatar: String?
-    
-    init() { }
 
-    required init?(map: Map) { }
-    
+    init() {}
+
+    required init?(map: Map) {}
+
     func mapping(map: Map) {
         firstName <- map["firstName"]
         lastName <- map["lastName"]

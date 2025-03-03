@@ -27,7 +27,7 @@ final class FormCompletedViewModel: ObservableObject {
     func checkReadyForm() {
         onCheckReadyForm()
     }
-    
+
     func onCopyLink() {
         let hud = MBProgressHUD.showTopMost()
         UIPasteboard.general.string = formModel.form.webUrl

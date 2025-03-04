@@ -1531,18 +1531,36 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func delete(cell: UICollectionViewCell) {
-        if let file = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFile {
-            switch folder?.rootFolderType {
-            case .onlyofficeTrash, .deviceTrash:
-                showDeleteFromTrash(file: file)
-            default: removerActionController.delete(indexes: [file.uid])
-            }
-        } else if let folder = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFolder {
-            if folder.rootFolderType == .onlyofficeRoomArchived {
-                deleteArchive(folder: folder)
-            } else {
-                removerActionController.delete(indexes: [folder.uid])
-            }
+        guard let entity = (cell as? ASCEntityViewCellProtocol)?.entity else { return }
+        
+        if let file = entity as? ASCFile {
+            handleFileDeletion(file)
+        } else if let folder = entity as? ASCFolder {
+            handleFolderDeletion(folder)
+        }
+    }
+
+    private func handleFileDeletion(_ file: ASCFile) {
+        switch folder?.rootFolderType {
+        case .onlyofficeTrash:
+            showDeleteFromOnlyofficeTrash(entity: file)
+        case .deviceTrash:
+            showDeleteFromDeviceTrash(entity: file)
+        default:
+            removerActionController.delete(indexes: [file.uid])
+        }
+    }
+
+    private func handleFolderDeletion(_ folder: ASCFolder) {
+        switch self.folder?.rootFolderType {
+        case .onlyofficeRoomArchived:
+            deleteArchive(folder: folder)
+        case .onlyofficeTrash:
+            showDeleteFromOnlyofficeTrash(entity: folder)
+        case .deviceTrash:
+            showDeleteFromDeviceTrash(entity: folder)
+        default:
+            removerActionController.delete(indexes: [folder.uid])
         }
     }
 
@@ -1560,12 +1578,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         present(alertController, animated: true)
     }
 
-    func showDeleteFromTrash(file: ASCFile) {
+    func showDeleteFromOnlyofficeTrash(entity: ASCEntity) {
+        if let file = entity as? ASCFile {
+            showDeleteAlert(
+                title: NSLocalizedString("Delete forever?", comment: ""),
+                message: AlertMessageType.deleteFileFromTrash.message
+            ) {
+                self.removerActionController.delete(indexes: [file.uid])
+            }
+        } else if let folder = entity as? ASCFolder {
+            showDeleteAlert(
+                title: NSLocalizedString("Delete forever?", comment: ""),
+                message: AlertMessageType.deleteFolderFromTrash.message
+            ) {
+                self.removerActionController.delete(indexes: [folder.uid])
+            }
+        }
+    }
+    
+    func showDeleteFromDeviceTrash(entity: ASCEntity) {
         showDeleteAlert(
-            title: NSLocalizedString("Delete forever?", comment: ""),
-            message: AlertMessageType.deleteFileFromTrash.message
+            title: NSLocalizedString("Delete this item?", comment: ""),
+            message: AlertMessageType.deleteFromDeviceTrash.message
         ) {
-            self.removerActionController.delete(indexes: [file.uid])
+            self.removerActionController.delete(indexes: [entity.uid])
         }
     }
 

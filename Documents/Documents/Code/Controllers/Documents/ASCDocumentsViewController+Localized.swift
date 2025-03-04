@@ -13,6 +13,8 @@ extension ASCDocumentsViewController {
         case deleteFileFromTrash
         case deleteRoomFromArchive
         case restoreRoomFromArchive
+        case deleteFromDeviceTrash
+        case deleteFolderFromTrash
 
         var message: String {
             switch self {
@@ -22,6 +24,10 @@ extension ASCDocumentsViewController {
                 return NSLocalizedString("You are about to delete this room. You won't be able to restore them.", comment: "")
             case .restoreRoomFromArchive:
                 return NSLocalizedString("All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?", comment: "")
+            case .deleteFromDeviceTrash:
+                return NSLocalizedString("It will be irretrievably deleted. This action is irreversible.", comment: "")
+            case .deleteFolderFromTrash:
+                return NSLocalizedString("You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?", comment: "")
             }
         }
     }

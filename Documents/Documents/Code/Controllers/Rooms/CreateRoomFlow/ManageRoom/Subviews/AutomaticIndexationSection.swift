@@ -14,12 +14,7 @@ struct AutomaticIndexationSection: View {
     var body: some View {
         if viewModel.selectedRoomType.type == .virtualData {
             Section(
-                footer: Text(
-                    NSLocalizedString(
-                        "Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.",
-                        comment: ""
-                    )
-                )
+                footer: Text("Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.")
             ) {
                 automaticIndexingCell
             }
@@ -32,7 +27,7 @@ struct AutomaticIndexationSection: View {
 extension AutomaticIndexationSection {
     private var automaticIndexingCell: some View {
         Toggle(isOn: $viewModel.isAutomaticIndexing) {
-            Text(NSLocalizedString("Automatic indexing", comment: ""))
+            Text("Automatic indexing")
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }

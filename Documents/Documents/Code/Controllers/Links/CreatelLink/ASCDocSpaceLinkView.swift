@@ -19,11 +19,11 @@ struct ASCDocSpaceLinkView: View {
 
     var body: some View {
         list()
-            .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
+            .navigationBarTitle(Text("Sharing settings"), displayMode: .inline)
             .navigationBarItems(leading: Button(action: { // TODO: - get from model
                 // TODO: add close btn action
             }, label: {
-                Text(NSLocalizedString("Close", comment: "")) // TODO: - get from model
+                Text("Close") // TODO: - get from model
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }))
     }
@@ -38,7 +38,7 @@ struct ASCDocSpaceLinkView: View {
 
     func sectionView(_ section: ASCDocSpaceLinkStateModel.Section) -> some View {
         Section(header: sectionHeader(section.header),
-                footer: Text(section.footer))
+                footer: Text(verbatim: section.footer))
         {
             ForEach(section.cells) { cell in
                 cellView(cell)
@@ -52,16 +52,16 @@ struct ASCDocSpaceLinkView: View {
         return HStack {
             switch (hasSubtitle, hasIcon) {
             case (true, true):
-                Text(header.title)
-                Text(header.subtitle ?? "")
+                Text(verbatim: header.title)
+                Text(verbatim: header.subtitle ?? "")
                 Spacer()
                 Image(uiImage: header.icon ?? UIImage())
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
             case (true, false):
-                Text(header.title)
-                Text(header.subtitle ?? "")
+                Text(verbatim: header.title)
+                Text(verbatim: header.subtitle ?? "")
             default:
-                Text(header.title)
+                Text(verbatim: header.title)
                 Spacer()
             }
         }

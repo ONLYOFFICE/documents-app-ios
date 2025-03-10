@@ -70,8 +70,10 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 }
             }
         case .prepareToVerify:
+            let guestsIds = Set(dataStore?.guests.compactMap(\.userId) ?? [])
             for (index, item) in (dataStore?.itemsForSharingAdd ?? []).enumerated() {
-                if item.user?.isRoomAdmin != true && item.user?.isAdmin != true {
+                let canBeRoomManager = item.user?.isRoomAdmin == true || item.user?.isAdmin == true
+                if item.access == .roomManager, !canBeRoomManager {
                     dataStore?.itemsForSharingAdd[index].access = .contentCreator
                 }
             }

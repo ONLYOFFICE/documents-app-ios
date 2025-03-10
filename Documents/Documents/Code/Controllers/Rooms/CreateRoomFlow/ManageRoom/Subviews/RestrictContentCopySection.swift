@@ -15,14 +15,10 @@ struct RestrictContentCopySection: View {
         if viewModel.selectedRoomType.type == .virtualData {
             Section(
                 footer: Text(
-                    NSLocalizedString(
-                        "Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role",
-                        comment: ""
-                    )
-                )
+                    "Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role")
             ) {
                 Toggle(isOn: $viewModel.isRestrictContentCopy) {
-                    Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+                    Text("Restrict file content copy, file download and printing")
                 }
                 .tintColor(Color(Asset.Colors.brend.color))
             }

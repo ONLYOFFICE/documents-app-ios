@@ -1532,7 +1532,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     func delete(cell: UICollectionViewCell) {
         if let file = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFile {
-            removerActionController.delete(indexes: [file.uid])
+            switch folder?.rootFolderType {
+            case .onlyofficeTrash, .deviceTrash:
+                showDeleteFromTrash(file: file)
+            default: removerActionController.delete(indexes: [file.uid])
+            }
         } else if let folder = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFolder {
             if folder.rootFolderType == .onlyofficeRoomArchived {
                 deleteArchive(folder: folder)
@@ -1542,24 +1546,42 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    func deleteArchive(folder: ASCFolder) {
-        let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
+    func showDeleteAlert(title: String, message: String, deleteHandler: @escaping () -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
-            self.removerActionController.delete(indexes: [folder.uid])
+            deleteHandler()
         }
-        alertController.message = NSLocalizedString("You are about to delete this room. You won't be able to restore them.", comment: "")
 
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
+
         present(alertController, animated: true)
+    }
+
+    func showDeleteFromTrash(file: ASCFile) {
+        showDeleteAlert(
+            title: NSLocalizedString("Delete forever?", comment: ""),
+            message: AlertMessageType.deleteFileFromTrash.message
+        ) {
+            self.removerActionController.delete(indexes: [file.uid])
+        }
+    }
+
+    func deleteArchive(folder: ASCFolder) {
+        showDeleteAlert(
+            title: NSLocalizedString("Delete forever?", comment: ""),
+            message: AlertMessageType.deleteRoomFromArchive.message
+        ) {
+            self.removerActionController.delete(indexes: [folder.uid])
+        }
     }
 
     func showRestoreRoomAlert(handler: @escaping () -> Void) {
         let alertController = UIAlertController(
             title: NSLocalizedString("Restore room?", comment: ""),
-            message: NSLocalizedString("All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?", comment: ""),
+            message: AlertMessageType.restoreRoomFromArchive.message,
             preferredStyle: .alert
         )
 

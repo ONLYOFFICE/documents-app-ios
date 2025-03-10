@@ -20,7 +20,7 @@ struct ImagedDetailCellView: View {
 
     var body: some View {
         HStack {
-            Text(model.titleString)
+            Text(verbatim: model.titleString)
             Spacer()
             Image(uiImage: model.image)
                 .foregroundColor(Asset.Colors.grayLight.swiftUIColor)

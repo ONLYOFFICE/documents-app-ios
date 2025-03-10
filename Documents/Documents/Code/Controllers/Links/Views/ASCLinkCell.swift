@@ -36,10 +36,10 @@ struct ASCLinkCellView: View {
                 .background(Color(asset: Asset.Colors.tableCellSelected))
                 .cornerRadius(20)
             VStack(alignment: .leading) {
-                Text(model.titleString)
+                Text(verbatim: model.titleString)
                     .font(Font.subheadline)
                 // TODO: - add some space
-                Text(model.subTitleString)
+                Text(verbatim: model.subTitleString)
                     .font(Font.footnote)
                     .foregroundColor(Asset.Colors.textSubtitle.swiftUIColor)
             }

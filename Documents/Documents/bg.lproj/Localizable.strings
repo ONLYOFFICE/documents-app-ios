@@ -1,12 +1,3 @@
-/* No comment provided by engineer. */
-"(%@/%@)" = "(%1$@/%2$@)";
-
-/* No comment provided by engineer. */
-"%@" = "%@";
-
-/* No comment provided by engineer. */
-"%@ | %@" = "%1$@ | %2$@";
-
 /* Presentation Viewer */
 "%i of %i" = "%1$i на %2$i";
 

@@ -52,7 +52,7 @@ struct RoomSelectionView: View {
                     }
                 }
         }
-        .navigationBarTitle(Text(NSLocalizedString("Choose room type", comment: "")), displayMode: .inline)
+        .navigationBarTitle(Text("Choose room type"), displayMode: .inline)
         .navigationBarItems(isLastInNCStack: dismissOnSelection, presentationMode: presentationMode)
     }
 }

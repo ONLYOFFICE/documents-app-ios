@@ -66,8 +66,8 @@ extension View {
     func alertForErrorMessage(_ errorMessage: Binding<String?>) -> some View {
         alert(item: errorMessage) { message in
             Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
-                message: Text(message),
+                title: Text("Error"),
+                message: Text(verbatim: message),
                 dismissButton: .default(Text("OK"), action: {
                     errorMessage.wrappedValue = nil
                 })

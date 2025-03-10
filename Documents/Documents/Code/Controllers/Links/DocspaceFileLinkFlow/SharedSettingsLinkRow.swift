@@ -89,7 +89,7 @@ struct SharedSettingsLinkRow: View {
     @ViewBuilder
     private var timeLimitedView: some View {
         if model.isExpired {
-            Text(NSLocalizedString("The link has expired", comment: ""))
+            Text("The link has expired")
                 .foregroundColor(.expirationTextColor)
                 .font(.footnoteFont)
         } else if model.isTimeLimited {

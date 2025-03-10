@@ -49,10 +49,10 @@ struct FillFormMenuScreen: View {
         Button(action: action) {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(title)
+                    Text(verbatim: title)
                         .font(.body)
                         .foregroundColor(.label)
-                    Text(subtitle)
+                    Text(verbatim: subtitle)
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

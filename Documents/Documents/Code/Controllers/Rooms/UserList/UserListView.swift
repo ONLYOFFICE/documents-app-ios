@@ -33,7 +33,7 @@ struct UserListView: View {
                 }
             }
         }
-        .navigationBarTitle(Text(NSLocalizedString("Change room's owner", comment: "")), displayMode: .inline)
+        .navigationBarTitle(Text("Change room's owner"), displayMode: .inline)
         .navigationBarItems(trailing: cancelButton)
     }
 
@@ -66,9 +66,9 @@ struct UserRow: View {
             }
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(user.name)
+                Text(verbatim: user.name)
                     .font(.subheadline)
-                Text("\(user.role) | \(user.email)")
+                Text(verbatim: "\(user.role) | \(user.email)")
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .lineLimit(1)

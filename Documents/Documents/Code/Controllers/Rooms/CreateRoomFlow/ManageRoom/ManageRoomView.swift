@@ -90,9 +90,9 @@ struct ManageRoomView: View {
         if viewModel.isEditMode {
             Section {
                 HStack(spacing: 8) {
-                    Text(NSLocalizedString("Owner", comment: ""))
+                    Text("Owner")
                     Spacer()
-                    Text(viewModel.roomOwnerName)
+                    Text(verbatim: viewModel.roomOwnerName)
                         .foregroundColor(.secondary)
                     if viewModel.isRoomOwnerCellTappable {
                         ChevronRightView()
@@ -238,8 +238,8 @@ private extension View {
 
     func navigationTitle(isEditMode: Bool) -> some View {
         isEditMode
-            ? navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
-            : navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
+            ? navigationBarTitle(Text("Edit room"), displayMode: .inline)
+            : navigationBarTitle(Text("Create room"), displayMode: .inline)
     }
 
     func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
@@ -294,27 +294,27 @@ private extension View {
             return switch alertType {
             case .errorMessage:
                 Alert(
-                    title: Text(NSLocalizedString("Error", comment: "")),
-                    message: Text(viewModel.errorMessage ?? ""),
+                    title: Text("Error"),
+                    message: Text(verbatim: viewModel.errorMessage ?? ""),
                     dismissButton: .default(Text("OK")) {
                         viewModel.errorMessage = nil
                     }
                 )
             case .filesLifetimeWarning:
                 Alert(
-                    title: Text(NSLocalizedString("Files with the exceeded lifetime will be deleted", comment: "")),
-                    message: Text(NSLocalizedString("The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.", comment: "")),
-                    primaryButton: .default(Text(NSLocalizedString("Ok", comment: ""))),
+                    title: Text("Files with the exceeded lifetime will be deleted"),
+                    message: Text("The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted."),
+                    primaryButton: .default(Text("Ok")),
                     secondaryButton: .cancel {
                         viewModel.isFileLifetimeEnabled = false
                     }
                 )
             case .saveWithoutWatermark:
                 Alert(
-                    title: Text(NSLocalizedString("Warning", comment: "")),
-                    message: Text(NSLocalizedString("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?", comment: "")),
+                    title: Text("Warning"),
+                    message: Text("You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?"),
                     primaryButton: .default(
-                        Text(NSLocalizedString("Continue", comment: "")),
+                        Text("Continue"),
                         action: {
                             viewModel.didPrimaryActionTappedOnNoWatermarkAlert()
                         }

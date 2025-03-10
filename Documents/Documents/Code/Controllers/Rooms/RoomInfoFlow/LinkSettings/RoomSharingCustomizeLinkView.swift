@@ -49,7 +49,7 @@ struct RoomSharingCustomizeLinkView: View {
             revokeSection
                 .alert(isPresented: $showRevokeAlert, content: revokeAlert)
         }
-        .navigationBarTitle(Text(NSLocalizedString("Edit link", comment: "")))
+        .navigationBarTitle(Text("Edit link"))
     }
 
     var additionalLinkView: some View {
@@ -61,18 +61,18 @@ struct RoomSharingCustomizeLinkView: View {
             deleteSection
                 .alert(isPresented: $showDeleteAlert, content: deleteAlert)
         }
-        .navigationBarTitle(Text(NSLocalizedString("Edit link", comment: "")))
+        .navigationBarTitle(Text("Edit link"))
     }
 
     private var linkNameSection: some View {
-        Section(header: Text(NSLocalizedString("Link name", comment: ""))) {
+        Section(header: Text("Link name")) {
             TextField("Link name", text: $viewModel.linkName)
         }
     }
 
     private var generalSection: some View {
         Section(
-            header: Text(NSLocalizedString("General", comment: "")))
+            header: Text("General"))
         {
             accessCell
             timeLimitCell
@@ -81,9 +81,9 @@ struct RoomSharingCustomizeLinkView: View {
     }
 
     private var protectedSection: some View {
-        Section(header: Text(NSLocalizedString("Protection", comment: "")), footer: protectionSectionFooter) {
+        Section(header: Text("Protection"), footer: protectionSectionFooter) {
             Toggle(isOn: $viewModel.isProtected.animation()) {
-                Text(NSLocalizedString("Password access", comment: ""))
+                Text("Password access")
             }
             .tintColor(Color(Asset.Colors.brend.color))
             .foregroundColor(.primary)
@@ -107,7 +107,7 @@ struct RoomSharingCustomizeLinkView: View {
     @ViewBuilder
     private var timeLimitCell: some View {
         Toggle(isOn: $viewModel.isTimeLimited.animation()) {
-            Text(NSLocalizedString("Enable time limit", comment: ""))
+            Text("Enable time limit")
         }
         .tintColor(Color(Asset.Colors.brend.color))
 
@@ -125,7 +125,7 @@ struct RoomSharingCustomizeLinkView: View {
         if viewModel.roomType != .fillingForm {
             Section(footer: Text(String.restrictionSectionFooterText)) {
                 Toggle(isOn: $viewModel.isRestrictCopyOn) {
-                    Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+                    Text("Restrict file content copy, file download and printing")
                 }
                 .tintColor(Color(Asset.Colors.brend.color))
             }
@@ -235,9 +235,9 @@ struct RoomSharingCustomizeLinkView: View {
 
     private func deleteAlert() -> Alert {
         Alert(
-            title: Text(NSLocalizedString("Delete link", comment: "")),
-            message: Text(String.deleteAlertMessage),
-            primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
+            title: Text("Delete link"),
+            message: Text(verbatim: String.deleteAlertMessage),
+            primaryButton: .destructive(Text("Delete"), action: {
                 viewModel.onDelete()
             }),
             secondaryButton: .cancel()
@@ -246,9 +246,9 @@ struct RoomSharingCustomizeLinkView: View {
 
     private func revokeAlert() -> Alert {
         Alert(
-            title: Text(NSLocalizedString("Revoke link", comment: "")),
-            message: Text(String.revokeAlertMessage),
-            primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
+            title: Text("Revoke link"),
+            message: Text(verbatim: String.revokeAlertMessage),
+            primaryButton: .destructive(Text("Revoke link"), action: {
                 viewModel.onRevoke()
             }),
             secondaryButton: .cancel()
@@ -257,9 +257,9 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var passwordErrorAlert: Alert {
         Alert(
-            title: Text(NSLocalizedString("Error", comment: "")),
-            message: Text(passwordErrorAlertMessage),
-            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
+            title: Text("Error"),
+            message: Text(verbatim: passwordErrorAlertMessage),
+            dismissButton: .default(Text("OK"))
         )
     }
 }

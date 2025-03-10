@@ -20,12 +20,12 @@ struct RoomSharingAccessTypeView: View {
             deleteSection
         }
         .disabled(viewModel.isAccessChanging)
-        .navigationBarTitle(Text(NSLocalizedString("Access type", comment: "")))
+        .navigationBarTitle(Text("Access type"))
         .alert(item: $viewModel.error) { errorMessage in
             Alert(
-                title: Text(ASCLocalization.Common.error),
-                message: Text(errorMessage),
-                dismissButton: .default(Text(ASCLocalization.Common.ok), action: {
+                title: Text(verbatim: ASCLocalization.Common.error),
+                message: Text(verbatim: errorMessage),
+                dismissButton: .default(Text(verbatim: ASCLocalization.Common.ok), action: {
                     viewModel.error = nil
                 })
             )
@@ -53,8 +53,8 @@ struct RoomSharingAccessTypeView: View {
     @ViewBuilder
     private var rolesSection: some View {
         Section(
-            header: Text(NSLocalizedString("Roles", comment: "")),
-            footer: Text(NSLocalizedString("Unauthorized members will be able only to view the document.", comment: ""))
+            header: Text("Roles"),
+            footer: Text("Unauthorized members will be able only to view the document.")
         ) {
             ForEach(viewModel.accessModels) { model in
                 RoomSharingAccessRowView(model: model)

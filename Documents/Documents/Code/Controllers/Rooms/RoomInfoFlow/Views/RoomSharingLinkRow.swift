@@ -49,7 +49,7 @@ struct RoomSharingLinkRow: View {
                 .background(Color(asset: Asset.Colors.tableCellSelected))
                 .cornerRadius(40)
             VStack(alignment: .leading) {
-                Text(model.titleString)
+                Text(verbatim: model.titleString)
                 if !model.imagesNames.isEmpty && !model.isExpired {
                     HStack {
                         ForEach(model.imagesNames) { imageName in
@@ -58,7 +58,7 @@ struct RoomSharingLinkRow: View {
                         }
                     }
                 } else if model.isExpired {
-                    Text(NSLocalizedString("The link has expired", comment: ""))
+                    Text("The link has expired")
                         .foregroundColor(.red)
                         .font(.subheadline)
                 }

@@ -19,9 +19,9 @@ struct SubTitledDetailCellView: View {
 
     var body: some View {
         HStack {
-            Text(model.title)
+            Text(verbatim: model.title)
             Spacer()
-            Text(model.subtitle)
+            Text(verbatim: model.subtitle)
                 .foregroundColor(Asset.Colors.textSubtitle.swiftUIColor)
             ChevronRightView()
         }

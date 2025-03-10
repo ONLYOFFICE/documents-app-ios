@@ -2,14 +2,14 @@
 //  ASCSharingSettingsAccessPresentationProvider.swift
 //  Documents
 //
-//  Created by Pavel Chernyshev on 07.07.2021.
+//  Created by Pavel Chernyshev on 02.12.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
 import Foundation
 
-class ASCSharingSettingsAccessPresentationProvider: ASCSharingSettingsAccessProvider {
+class ASCSharingSettingsAccessDocumentFormProvider: ASCSharingSettingsAccessProvider {
     func get() -> [ASCShareAccess] {
-        [.editing, .comment, .read, .deny]
+        [.full, .review, .comment, .read, .deny]
     }
 }

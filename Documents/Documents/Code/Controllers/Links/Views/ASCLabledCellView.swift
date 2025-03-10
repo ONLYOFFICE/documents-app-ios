@@ -12,7 +12,7 @@ struct ASCLabledCellView: View {
     var model: ASCLabledCellModel
 
     var body: some View {
-        Text(model.textString)
+        Text(verbatim: model.textString)
             .frame(maxWidth: .infinity, alignment: frameAlignment(for: model.textAlignment))
             .foregroundColor(textColor(for: model.cellType))
             .multilineTextAlignment(convertToTextAlignment(model.textAlignment))

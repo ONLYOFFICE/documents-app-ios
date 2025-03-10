@@ -25,13 +25,13 @@ struct ASCFormCellView: View {
         HStack(spacing: 15) {
             Asset.Images.listFormatPdf.swiftUIImage
             VStack(alignment: .leading, spacing: 3) {
-                Text(model.title)
+                Text(verbatim: model.title)
                     .font(.footnote)
                     .foregroundColor(.primary)
-                Text(model.author)
+                Text(verbatim: model.author)
                     .font(.caption2)
                     .foregroundColor(.secondaryLabel)
-                Text(model.date)
+                Text(verbatim: model.date)
                     .font(.caption2)
                     .foregroundColor(.secondaryLabel)
             }

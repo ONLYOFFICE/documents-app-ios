@@ -1,11 +1,5 @@
 /* No comment provided by engineer. */
-"(%@/%@)" = "(%1$@/%2$@)";
-
-/* No comment provided by engineer. */
-"%@" = "%@";
-
-/* No comment provided by engineer. */
-"%@ | %@" = "%1$@ | %2$@";
+"(%@)" = "(%@)";
 
 /* Presentation Viewer */
 "%i of %i" = "%1$i из %2$i";
@@ -204,7 +198,7 @@ Category title */
 "Back" = "Назад";
 
 /* No comment provided by engineer. */
-"Back to room" = "Вернуться в комнату";
+"Back to room" = "Назад в комнату";
 
 /* No comment provided by engineer. */
 "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Поскольку вы являетесь владельцем данного DocSpace, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.";
@@ -271,7 +265,7 @@ Measurement unit */
 "Changing access" = "Изменение доступа";
 
 /* No comment provided by engineer. */
-"Check ready form" = "Проверить готовые формы";
+"Check ready form" = "Все формы";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Проверьте интернет-соединение";
@@ -479,6 +473,9 @@ Caption of the processing */
 "Could not read from file" = "Невозможно прочитать из файла";
 
 /* No comment provided by engineer. */
+"Could not resolve the file." = "Не удалось решить файл.";
+
+/* No comment provided by engineer. */
 "Could Not Send Email" = "Не удалось отправить электронное письмо";
 
 /* Description of file operation error */
@@ -510,6 +507,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Create a free account" = "Создать бесплатный аккаунт";
+
+/* No comment provided by engineer. */
+"Create a new file" = "Создать новый файл";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Создайте дополнительные ссылки, чтобы поделиться документом с разными правами доступа.";
@@ -743,6 +743,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "Без подпапок";
+
+/* No comment provided by engineer. */
+"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "Выйти без сохранения?\nВы внесли изменения в индекс. Если вы продолжите без сохранения, изменения не будут применены.";
 
 /* No comment provided by engineer. */
 "Expect users" = "Ожидаемые пользователи";
@@ -1897,6 +1900,9 @@ Navigation bar button title */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "Ограничение на количество пользователей почти достигнуто. Свяжитесь с администратором портала";
 
 /* No comment provided by engineer. */
+"The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." = "Действие \"Переместить\" удалит пробелы в индексах. Файлы переиндексируются по порядку, и отсутствующие индексы будут заполнены.";
+
+/* No comment provided by engineer. */
 "The request timed out." = "Время ожидания запроса истекло.";
 
 /* No comment provided by engineer. */
@@ -2168,6 +2174,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Welcome to the Form filling room " = "Добро пожаловать в комнату для заполнения форм";
+
+/* No comment provided by engineer. */
+"Welcome to the Virtual Data Room " = "Добро пожаловать в виртуальную комнату данных";
 
 /* No comment provided by engineer. */
 "What's New" = "Что нового";

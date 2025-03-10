@@ -40,16 +40,16 @@ extension ThirdPartySection {
             get: { viewModel.isThirdPartyStorageEnabled },
             set: { viewModel.didTapThirdPartyStorageSwitch(isOn: $0) }
         )) {
-            Text(NSLocalizedString("Third party storage", comment: ""))
+            Text("Third party storage")
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
 
     private var storageSelectionCell: some View {
         HStack(spacing: 4) {
-            Text(NSLocalizedString("Storage", comment: ""))
+            Text("Storage")
             Spacer()
-            Text(viewModel.selectedStorage ?? "")
+            Text(verbatim: viewModel.selectedStorage ?? "")
                 .foregroundColor(.gray)
             ChevronRightView()
         }
@@ -61,9 +61,9 @@ extension ThirdPartySection {
 
     private var folderSelectionCell: some View {
         HStack {
-            Text(NSLocalizedString("Location", comment: ""))
+            Text("Location")
             Spacer()
-            Text(viewModel.selectedLocation)
+            Text(verbatim: viewModel.selectedLocation)
                 .foregroundColor(.gray)
             ChevronRightView()
         }
@@ -75,7 +75,7 @@ extension ThirdPartySection {
 
     private var createNewFolderCell: some View {
         Toggle(isOn: $viewModel.isCreateNewFolderEnabled) {
-            Text(NSLocalizedString("Create new folder", comment: ""))
+            Text("Create new folder")
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }

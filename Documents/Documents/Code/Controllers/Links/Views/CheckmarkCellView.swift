@@ -22,7 +22,7 @@ struct CheckmarkCellView: View {
 
     var body: some View {
         HStack {
-            Text(model.text)
+            Text(verbatim: model.text)
                 .foregroundColor(model.isEnabled ? .label : .secondaryLabel)
             Spacer()
             if model.isChecked {

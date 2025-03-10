@@ -15,6 +15,7 @@ class ASCFile: ASCEntity {
     var pureContentLength: Int = 0
     var fileStatus: ASCFileStatus = .none
     var viewUrl: String?
+    var webUrl: String?
     var isForm: Bool = false
     var title: String = ""
     var access: ASCEntityAccess = .none
@@ -96,6 +97,7 @@ class ASCFile: ASCEntity {
         pureContentLength <- map["pureContentLength"]
         fileStatus <- map["fileStatus"]
         viewUrl <- map["viewUrl"]
+        webUrl <- map["webUrl"]
         isForm <- map["isForm"]
         title <- (map["title"], ASCStringTransform())
         access <- (map["access"], EnumTransform())

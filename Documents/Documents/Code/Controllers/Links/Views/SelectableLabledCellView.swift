@@ -19,7 +19,7 @@ struct SelectableLabledCellView: View {
 
     var body: some View {
         HStack {
-            Text(model.title)
+            Text(verbatim: model.title)
             Spacer()
             if model.isSelected {
                 Image(systemName: "checkmark")

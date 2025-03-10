@@ -15,7 +15,7 @@ struct ToggleButtonView: View {
         return Button(action: {
             model.tapHandler(model.id)
         }, label: {
-            Text(model.title)
+            Text(verbatim: model.title)
                 .font(.subheadline)
                 .foregroundColor(model.isActive ? Color.white : .black)
                 .padding(.horizontal, .horizontalPadding)

@@ -10,13 +10,12 @@ import Foundation
 import ObjectMapper
 
 class ASCEntity: Mappable {
-    var id: String = "" {
-        didSet {
-            uid = String(describing: type(of: self)) + "-" + id
-        }
+    var id: String = ""
+
+    var uid: String {
+        String(describing: type(of: self)) + "-" + id
     }
 
-    var uid: String = ""
     var isPlaceholder = false
 
     init() {

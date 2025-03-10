@@ -14,9 +14,7 @@ struct FileLifetimeSection: View {
     var body: some View {
         if viewModel.selectedRoomType.type == .virtualData {
             Section(
-                footer: Text(
-                    NSLocalizedString("Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.", comment: "")
-                )
+                footer: Text("Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.")
             ) {
                 filesLifetimeCell
                 filesOlderThanCell
@@ -32,7 +30,7 @@ struct FileLifetimeSection: View {
 extension FileLifetimeSection {
     private var filesLifetimeCell: some View {
         Toggle(isOn: $viewModel.isFileLifetimeEnabled) {
-            Text(NSLocalizedString("File lifetime", comment: ""))
+            Text("File lifetime")
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
@@ -41,7 +39,7 @@ extension FileLifetimeSection {
     private var filesOlderThanCell: some View {
         if viewModel.isFileLifetimeEnabled {
             HStack {
-                Text(NSLocalizedString("Files older than", comment: ""))
+                Text("Files older than")
                 Spacer()
                 TextField("", value: $viewModel.fileAge, formatter: viewModel.fileAgeNumberFormatter)
                     .frame(width: 80)
@@ -56,10 +54,10 @@ extension FileLifetimeSection {
         if viewModel.isFileLifetimeEnabled {
             MenuView(menuItems: viewModel.filesTimePeriodMenuItems) {
                 HStack {
-                    Text(NSLocalizedString("Time period", comment: ""))
+                    Text("Time period")
                         .foregroundColor(.primary)
                     Spacer()
-                    Text(viewModel.selectedTemePeriod.localizedDesc)
+                    Text(verbatim: viewModel.selectedTemePeriod.localizedDesc)
                         .foregroundColor(.gray)
                     ChevronUpDownView()
                 }
@@ -72,10 +70,10 @@ extension FileLifetimeSection {
         if viewModel.isFileLifetimeEnabled {
             MenuView(menuItems: viewModel.actionOnFilesMenuItems) {
                 HStack {
-                    Text(NSLocalizedString("Action on files", comment: ""))
+                    Text("Action on files")
                         .foregroundColor(.primary)
                     Spacer()
-                    Text(viewModel.actionOnFiles.localizedDesc)
+                    Text(verbatim: viewModel.actionOnFiles.localizedDesc)
                         .foregroundColor(.gray)
                     ChevronUpDownView()
                 }

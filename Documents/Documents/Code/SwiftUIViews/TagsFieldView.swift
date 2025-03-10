@@ -42,7 +42,7 @@ struct TagsFieldView: View {
             .foregroundColor(.clear)
 
         HStack {
-            Text(addTagStr + ": \"\(text ?? "")\"")
+            Text(verbatim: addTagStr + ": \"\(text ?? "")\"")
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
             Spacer()

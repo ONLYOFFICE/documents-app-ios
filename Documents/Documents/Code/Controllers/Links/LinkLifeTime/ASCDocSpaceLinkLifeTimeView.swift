@@ -16,7 +16,7 @@ struct LinkLifeTimeView: View {
             List(viewModel.cellModels, id: \.title) { cellModel in
                 SelectableLabledCellView(model: cellModel)
             }
-            .navigationBarTitle(Text(NSLocalizedString("Link life time", comment: "")), displayMode: .inline)
+            .navigationBarTitle(Text("Link life time"), displayMode: .inline)
             .navigationBarItems(leading: Button(NSLocalizedString("Back", comment: "")) {}
                 .foregroundColor(Asset.Colors.brend.swiftUIColor))
         }

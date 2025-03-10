@@ -20,11 +20,11 @@ struct ASCDetailedChevronUpDownCellView: View {
 
     var body: some View {
         HStack {
-            Text(model.title)
+            Text(verbatim: model.title)
                 .foregroundColor(model.isEnabled ? .label : .secondaryLabel)
             Spacer()
             HStack {
-                Text(model.detail)
+                Text(verbatim: model.detail)
                     .foregroundColor(.secondaryLabel)
                 ChevronUpDownView()
             }

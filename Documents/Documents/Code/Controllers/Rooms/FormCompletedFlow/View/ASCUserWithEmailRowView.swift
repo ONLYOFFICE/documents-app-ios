@@ -29,10 +29,10 @@ struct ASCUserWithEmailRowView: View {
             imageView(for: model.image)
 
             VStack(alignment: .leading) {
-                Text(model.userName)
+                Text(verbatim: model.userName)
                     .lineLimit(1)
                     .font(.callout)
-                Text(model.email)
+                Text(verbatim: model.email)
                     .lineLimit(1)
                     .foregroundColor(.secondaryLabel)
                     .font(.caption)

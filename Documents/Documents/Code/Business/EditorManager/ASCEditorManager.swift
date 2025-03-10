@@ -1492,12 +1492,21 @@ extension ASCEditorManager {
 
             renameHandler(file, title) { success in
                 if success {
-                    for file in [self.openedlocallyFile, self.openedFile] {
-                        file?.title = title
+                    for file in [self.openedlocallyFile, self.openedFile].compactMap(\.self) {
+                        file.title = title
 
                         if !fileExtension.isEmpty {
-                            file?.title = "\(title).\(fileExtension)"
+                            file.title = "\(title).\(fileExtension)"
                         }
+                    }
+
+                    // Rename work copy
+                    if let openedFile = self.openedFile, openedFile.device {
+                        let url = URL(fileURLWithPath: openedFile.id)
+                        let directory = url.deletingLastPathComponent()
+                        let newUrl = directory.appendingPathComponent(openedFile.title)
+                        openedFile.id = newUrl.path
+                        openedFile.viewUrl = newUrl.path
                     }
                 }
                 complation(.success(true))

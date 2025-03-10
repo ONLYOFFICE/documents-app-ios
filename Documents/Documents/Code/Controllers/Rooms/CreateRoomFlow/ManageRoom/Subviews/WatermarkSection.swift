@@ -15,7 +15,7 @@ struct WatermarkSection: View {
         if viewModel.selectedRoomType.type == .virtualData {
             Section(
                 footer: !viewModel.isWatermarkEnabled || viewModel.selectedWatermarkType == .image
-                    ? AnyView(Text(NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")))
+                    ? AnyView(Text("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced."))
                     : AnyView(EmptyView())
             ) {
                 watermarkToggleCell
@@ -37,7 +37,7 @@ struct WatermarkSection: View {
 extension WatermarkSection {
     private var watermarkToggleCell: some View {
         Toggle(isOn: $viewModel.isWatermarkEnabled) {
-            Text(NSLocalizedString("Add watermarks to documents", comment: ""))
+            Text("Add watermarks to documents")
         }
         .tintColor(Color(Asset.Colors.brend.color))
     }
@@ -46,11 +46,11 @@ extension WatermarkSection {
     private var watermarkTypeCell: some View {
         if viewModel.isWatermarkEnabled {
             HStack {
-                Text(NSLocalizedString("Watermark type", comment: ""))
+                Text("Watermark type")
                 Spacer()
                 MenuView(menuItems: viewModel.watermarkTypeMenuItems) {
                     HStack {
-                        Text(viewModel.selectedWatermarkType.localizedDesc)
+                        Text(verbatim: viewModel.selectedWatermarkType.localizedDesc)
                             .foregroundColor(.gray)
                         ChevronUpDownView()
                     }
@@ -63,7 +63,7 @@ extension WatermarkSection {
     private var selectImageCell: some View {
         if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .image {
             HStack {
-                Text(NSLocalizedString("Select image", comment: ""))
+                Text("Select image")
                     .foregroundColor(Color(Asset.Colors.brend.color))
                 Spacer()
             }
@@ -82,7 +82,7 @@ extension WatermarkSection {
     @ViewBuilder
     private var watermarkElementsSection: some View {
         if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
-            Section(header: Text(NSLocalizedString("Add watermark elements", comment: ""))) {
+            Section(header: Text("Add watermark elements")) {
                 ToggleButtonCollectionView(
                     buttonModels: viewModel.watermarkElementButtons,
                     width: UIScreen.main.bounds.width - 4 * 20
@@ -117,11 +117,11 @@ extension WatermarkSection {
                 )
             ) {
                 HStack {
-                    Text(NSLocalizedString("Position", comment: ""))
+                    Text("Position")
                     Spacer()
                     MenuView(menuItems: viewModel.watermarkPositionMenuItems) {
                         HStack {
-                            Text(viewModel.selectedWatermarkPosition.localizedDesc)
+                            Text(verbatim: viewModel.selectedWatermarkPosition.localizedDesc)
                                 .foregroundColor(.gray)
                             ChevronUpDownView()
                         }

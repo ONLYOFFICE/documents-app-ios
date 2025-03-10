@@ -22,7 +22,7 @@ struct ASCCreateLinkCellView: View {
             model.onTapAction()
         }) {
             HStack {
-                Text(model.textString)
+                Text(verbatim: model.textString)
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 Spacer()
             }

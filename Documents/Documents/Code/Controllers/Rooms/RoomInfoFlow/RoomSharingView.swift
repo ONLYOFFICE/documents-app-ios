@@ -18,7 +18,7 @@ struct RoomSharingView: View {
         handleHUD()
 
         return screenView
-            .navigationBarTitle(Text(viewModel.room.title), displayMode: .inline)
+            .navigationBarTitle(Text(verbatim: viewModel.room.title), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
@@ -53,7 +53,7 @@ struct RoomSharingView: View {
     @ViewBuilder
     private var roomDescriptionText: some View {
         if viewModel.room.roomType != .colobaration {
-            Text(viewModel.roomTypeDescription)
+            Text(verbatim: viewModel.roomTypeDescription)
                 .multilineTextAlignment(.center)
                 .padding(.top, Constants.descriptionTopPadding)
                 .padding(.horizontal, Constants.horizontalAlignment)
@@ -160,7 +160,7 @@ struct RoomSharingView: View {
 
     private var sharedLinksHeader: some View {
         HStack {
-            Text(sharedLinksTitle)
+            Text(verbatim: sharedLinksTitle)
             Spacer()
             if viewModel.canAddLink {
                 addButton
@@ -184,7 +184,7 @@ struct RoomSharingView: View {
 
     private func usersSectionHeader(title: String, count: Int) -> some View {
         HStack {
-            Text(title)
+            Text(verbatim: title)
             Text("(\(count))")
         }
     }
@@ -214,9 +214,9 @@ struct RoomSharingView: View {
 private extension RoomSharingView {
     func deleteAlert() -> Alert {
         Alert(
-            title: Text(NSLocalizedString("Delete link", comment: "")),
-            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
-            primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
+            title: Text("Delete link"),
+            message: Text("The link will be deleted permanently. You will not be able to undo this action."),
+            primaryButton: .destructive(Text("Delete"), action: {
                 viewModel.proceedDeletingLink()
             }),
             secondaryButton: .cancel {
@@ -227,9 +227,9 @@ private extension RoomSharingView {
 
     func revokeAlert() -> Alert {
         Alert(
-            title: Text(NSLocalizedString("Revoke link", comment: "")),
-            message: Text(NSLocalizedString("The previous link will become unavailable. A new shared link will be created.", comment: "")),
-            primaryButton: .destructive(Text(NSLocalizedString("Revoke link", comment: "")), action: {
+            title: Text("Revoke link"),
+            message: Text("The previous link will become unavailable. A new shared link will be created."),
+            primaryButton: .destructive(Text("Revoke link"), action: {
                 viewModel.proceedDeletingLink()
             }),
             secondaryButton: .cancel {
@@ -344,10 +344,10 @@ struct ASCUserRow: View {
             imageView(for: model.image)
 
             VStack(alignment: .leading) {
-                Text(model.userName)
+                Text(verbatim: model.userName)
                     .lineLimit(1)
                     .font(.callout)
-                Text([model.accessString, model.emailString].joined(separator: " | "))
+                Text(verbatim: [model.accessString, model.emailString].joined(separator: " | "))
                     .lineLimit(1)
                     .foregroundColor(.secondaryLabel)
                     .font(.caption)
@@ -355,7 +355,7 @@ struct ASCUserRow: View {
 
             Spacer()
 
-            Text(model.accessString)
+            Text(verbatim: model.accessString)
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)

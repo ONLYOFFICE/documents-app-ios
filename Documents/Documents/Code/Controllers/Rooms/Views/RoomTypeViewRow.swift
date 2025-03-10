@@ -26,10 +26,10 @@ struct RoomTypeViewRow: View {
                 .padding(.vertical, 4)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(roomTypeModel.name)
+                Text(verbatim: roomTypeModel.name)
                     .font(.subheadline) // TODO: Look at design
                     .fontWeight(.semibold)
-                Text(roomTypeModel.description)
+                Text(verbatim: roomTypeModel.description)
                     .font(subtitleFont)
                     .foregroundColor(Color.secondaryLabel)
             }

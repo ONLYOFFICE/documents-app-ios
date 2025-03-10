@@ -14,7 +14,7 @@ struct SharedSettingsView: View {
     var body: some View {
         NavigationView {
             screenView
-                .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
+                .navigationBarTitle(Text("Sharing settings"), displayMode: .inline)
                 .navigateToEditSharedLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
                 .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
         }
@@ -34,8 +34,8 @@ struct SharedSettingsView: View {
     @ViewBuilder
     private var createAndCopySection: some View {
         Section(
-            header: Text(NSLocalizedString("Shared links", comment: "")),
-            footer: Text(NSLocalizedString("Provide access to the document and set the permission levels.", comment: ""))
+            header: Text("Shared links"),
+            footer: Text("Provide access to the document and set the permission levels.")
         ) {
             ASCCreateLinkCellView(
                 model: ASCCreateLinkCellModel(
@@ -51,7 +51,7 @@ struct SharedSettingsView: View {
     private var sharedLinkSection: some View {
         Section(
             header: sharedLinksSectionHeader,
-            footer: Text(NSLocalizedString("Provide access to the document and set the permission levels.", comment: ""))
+            footer: Text("Provide access to the document and set the permission levels.")
         ) {
             ForEach(viewModel.links) { linkModel in
                 SharedSettingsLinkRow(model: linkModel)
@@ -61,8 +61,8 @@ struct SharedSettingsView: View {
 
     private var sharedLinksSectionHeader: some View {
         HStack {
-            Text(NSLocalizedString("Shared links", comment: ""))
-            Text("(\(viewModel.links.count)/\(viewModel.linksLimit))")
+            Text("Shared links")
+            Text(verbatim: "(\(viewModel.links.count)/\(viewModel.linksLimit))")
             Spacer()
             if viewModel.links.count < viewModel.linksLimit {
                 Button {

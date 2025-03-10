@@ -24,7 +24,7 @@ struct MenuView<Content>: View where Content: View {
 
     private var actionSheetButtons: [ActionSheet.Button] {
         var btns: [ActionSheet.Button] = menuItems.map {
-            .default(Text($0.text).foregroundColor($0.color), action: $0.action)
+            .default(Text(verbatim: $0.text).foregroundColor($0.color), action: $0.action)
         }
         btns.append(.cancel())
         return btns
@@ -63,7 +63,7 @@ struct MenuView<Content>: View where Content: View {
                                 .renderingMode(.template)
                                 .foregroundColor(item.color)
                         }
-                        Text(item.text).foregroundColor(item.color)
+                        Text(verbatim: item.text).foregroundColor(item.color)
                     }
                 }
             }

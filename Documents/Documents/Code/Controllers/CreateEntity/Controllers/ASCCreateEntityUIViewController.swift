@@ -16,15 +16,17 @@ class ASCCreateEntityUIViewController: UIHostingController<ASCCreateEntityUI> {
             coder: aDecoder,
             rootView: ASCCreateEntityUI(allowClouds: .constant(true),
                                         allowForms: .constant(true),
+                                        allowScanDocument: .constant(false),
                                         onAction: .constant { type in })
         )
     }
 
-    init(allowClouds: Bool, allowForms: Bool, onAction: @escaping (CreateEntityUIType) -> Void) {
+    init(allowClouds: Bool, allowForms: Bool, allowScanDocument: Bool, onAction: @escaping (CreateEntityUIType) -> Void) {
         super.init(
             rootView: ASCCreateEntityUI(
                 allowClouds: .constant(allowClouds),
                 allowForms: .constant(allowForms),
+                allowScanDocument: .constant(allowScanDocument),
                 onAction: .constant(onAction)
             )
         )

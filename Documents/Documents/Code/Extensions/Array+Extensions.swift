@@ -158,4 +158,10 @@ public extension Array where Element: Equatable {
         var set = Set<E>()
         return filter { set.insert($0[keyPath: path]).inserted }
     }
+
+    mutating func inoutForEach(_ body: (inout Element) -> Void) {
+        for index in indices {
+            body(&self[index])
+        }
+    }
 }

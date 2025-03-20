@@ -1754,7 +1754,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         guard file.isForm else { return }
 
-        if file.parent?.roomType == .fillingForm && file.security.fillForms {
+        let isInsideFillingFormRoom = file.parent?.parentsFoldersOrCurrentContains(
+            keyPath: \.roomType,
+            value: .fillingForm
+        ) == true
+        if isInsideFillingFormRoom && file.security.fillForms {
             open(file: file, openMode: .fillform)
             return
         }

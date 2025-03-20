@@ -341,6 +341,18 @@ class ManageRoomViewModel: ObservableObject {
             })
             .store(in: &cancelable)
 
+        $selectedWatermarkType
+            .receive(on: RunLoop.main)
+            .sink { [weak self] value in
+                guard let self else { return }
+                if value != .viewerInfo {
+                    watermarkElementButtons.inoutForEach { $0.isActive = false }
+                    watermarkStaticText = ""
+                    selectedWatermarkPosition = .diagonal
+                }
+            }
+            .store(in: &cancelable)
+
         Task { @MainActor in
             if let roomsQuota = await roomQuotaNetworkService.loadRoomsQouta(),
                let roomsQuotaValue = roomsQuota.defaultQuota

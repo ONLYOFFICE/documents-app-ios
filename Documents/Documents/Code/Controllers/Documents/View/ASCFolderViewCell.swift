@@ -61,7 +61,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
     private lazy var dateRightLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        $0.textAlignment = .right
+        $0.textAlignment = ASCCommon.isRTL ? .left : .right
         $0.textColor = .secondaryLabel
         return $0
     }(UILabel())

@@ -1790,7 +1790,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         guard file.isForm else { return }
 
-        if file.parent?.roomType == .fillingForm && file.security.fillForms {
+        let isInsideFillingFormRoom = file.parent?.parentsFoldersOrCurrentContains(
+            keyPath: \.roomType,
+            value: .fillingForm
+        ) == true
+        if isInsideFillingFormRoom && file.security.fillForms {
             open(file: file, openMode: .fillform)
             return
         }
@@ -3767,7 +3771,7 @@ extension ASCDocumentsViewController: UICollectionViewDelegate {
                 let title = file.title,
                     fileExt = title.fileExtension().lowercased()
 
-                if file.isForm {
+                if file.isForm, ASCConstants.FileExtensions.forms.contains(fileExt) || ASCConstants.FileExtensions.pdf == fileExt {
                     fillForm(file: file)
                 } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
                     open(file: file, openMode: .view)

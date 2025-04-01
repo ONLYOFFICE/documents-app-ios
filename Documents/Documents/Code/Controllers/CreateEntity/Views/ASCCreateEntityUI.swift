@@ -13,6 +13,7 @@ struct ASCCreateEntityUI: View {
 
     @Binding var allowClouds: Bool
     @Binding var allowForms: Bool
+    @Binding var allowScanDocument: Bool
     @Binding var onAction: ((CreateEntityUIType) -> Void)?
 
     private var createEntities: [CreateEntityViewModel] {
@@ -77,6 +78,16 @@ struct ASCCreateEntityUI: View {
                         onAction?(type)
                     }
                 ),
+                allowScanDocument
+                    ? .init(
+                        type: .scanDocument,
+                        caption: NSLocalizedString("Scan Document", comment: ""),
+                        icon: Image(systemName: "document.viewfinder"),
+                        action: { type in
+                            onAction?(type)
+                        }
+                    )
+                    : nil,
                 allowClouds
                     ? .init(
                         type: .connectCloud,
@@ -234,6 +245,7 @@ struct CreateEntityButtonStyle: ButtonStyle {
     ASCCreateEntityUI(
         allowClouds: .constant(true),
         allowForms: .constant(true),
+        allowScanDocument: .constant(true),
         onAction: .constant { type in
             print("\(type)")
         }

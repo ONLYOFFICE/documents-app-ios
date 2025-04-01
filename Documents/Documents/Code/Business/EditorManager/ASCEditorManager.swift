@@ -100,6 +100,8 @@ class ASCEditorManager: NSObject {
 
     private var documentServiceVersion: String?
 
+    var ocrPath: String?
+
     var allowForm: Bool {
         ASCDIContainer.shared.resolve(ASCEditorManagerOptionsProtocol.self)?.allowForm ?? false
     }
@@ -1534,6 +1536,58 @@ extension ASCEditorManager {
                     msg: NSLocalizedString("Failed to submit the form", comment: "")
                 )
             ))
+        }
+    }
+}
+
+// MARK: - OCR
+
+extension ASCEditorManager {
+    func storyForOCR(images: [UIImage]) {
+        let fileManager = FileManager.default
+
+        // Cleanup
+        if let ocrPath, !ocrPath.isEmpty {
+            let ocrDirectoryURL = URL(fileURLWithPath: ocrPath)
+
+            do {
+                var isDirectory: ObjCBool = false
+                if fileManager.fileExists(atPath: ocrDirectoryURL.path, isDirectory: &isDirectory), isDirectory.boolValue {
+                    try fileManager.removeItem(at: ocrDirectoryURL)
+                }
+            } catch {
+                print(error.localizedDescription)
+                return
+            }
+        }
+
+        // Create work directory
+        let destinationPath = Path.userTemporary + Path("ocr_\(UUID().uuidString.replacingOccurrences(of: "-", with: ""))")
+
+        do {
+            if !destinationPath.exists {
+                try destinationPath.createDirectory(withIntermediateDirectories: true)
+            }
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+
+        ocrPath = destinationPath.rawValue
+
+        // Write image to storage
+        for (index, image) in images.enumerated() {
+            guard let imageData = image.jpegData(compressionQuality: 0.85) else {
+                continue
+            }
+
+            let imagePath = destinationPath + Path("ocr_\(index).jpg")
+
+            do {
+                try imageData.write(to: imagePath)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }

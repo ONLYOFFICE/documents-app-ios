@@ -9,5 +9,5 @@
 enum CreateEntityUIType {
     case document, spreadsheet, presentation, folder,
          importFile, importImage, makePicture, connectCloud,
-         pdfDocspace, pdfDevice
+         pdfDocspace, pdfDevice, scanDocument
 }

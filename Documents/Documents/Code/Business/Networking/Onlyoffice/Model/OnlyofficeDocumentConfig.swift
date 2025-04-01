@@ -169,7 +169,8 @@ struct OnlyofficeDocumentLogo: Codable {
 // MARK: - OnlyofficeDocumentUser
 
 struct OnlyofficeDocumentUser: Codable {
-    var id, name: String?
+    var id, name, image: String?
+    var roles: [String]?
 }
 
 // MARK: - OnlyofficeDocumentAnonymous

@@ -3735,7 +3735,7 @@ extension ASCDocumentsViewController: UICollectionViewDelegate {
                 let title = file.title,
                     fileExt = title.fileExtension().lowercased()
 
-                if file.isForm {
+                if file.isForm, ASCConstants.FileExtensions.forms.contains(fileExt) || ASCConstants.FileExtensions.pdf == fileExt {
                     fillForm(file: file)
                 } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
                     open(file: file, openMode: .view)

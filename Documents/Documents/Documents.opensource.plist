@@ -320,7 +320,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
+<<<<<<< HEAD
 	<string>9.0</string>
+=======
+	<string>8.3.2</string>
+>>>>>>> hotfix/v8.3.2
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

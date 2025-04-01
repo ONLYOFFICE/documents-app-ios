@@ -1394,7 +1394,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 fileExtension == ASCConstants.FileExtensions.pdf
 
             // Workaround to disable the preview action in the fillform room
-            if file.isForm, let roomType = file.parent?.roomType, roomType == .fillingForm {
+            if file.isForm, let roomType = file.parent?.roomType, roomType == .fillingForm,
+               ASCConstants.FileExtensions.forms.contains(fileExtension) || ASCConstants.FileExtensions.pdf == fileExtension
+            {
                 canPreview = false
             }
 
@@ -1432,10 +1434,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.open)
             }
 
-            if file.isForm, isDocspace, isUserCategory
-                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
-                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .fillFormInProgress) == true
-                || file.security.fillForms
+            if file.isForm, isDocspace, isUserCategory,
+               ASCConstants.FileExtensions.forms.contains(fileExtension) || ASCConstants.FileExtensions.pdf == fileExtension
+               || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
+               || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .fillFormInProgress) == true
+               || file.security.fillForms
             {
                 entityActions.insert(.fillForm)
 

@@ -517,6 +517,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
 
+        // Handle send form
         apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
             guard let topVC = UIApplication.topViewController() else { return }
             MBProgressHUD.hide(for: topVC.view, animated: true)
@@ -2182,7 +2183,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
         let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, fillingSessionId, complation in
-            guard let file, let fillingSessionId else { complation(false); return }
+            guard let file else { complation(false); return }
+
+            // Update file info
+            self.apiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { [weak self] response, error in
+                if let self, let file = response?.result {
+                    self.updateItem(file)
+                }
+            }
+
+            guard let fillingSessionId else { complation(false); return }
 
             self.fillFormDidSubmit(file, fillingSessionId: fillingSessionId) { provider, result, success, error in
                 complation(success)

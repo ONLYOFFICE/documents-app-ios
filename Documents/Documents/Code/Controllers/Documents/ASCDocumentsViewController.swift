@@ -1532,7 +1532,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     func delete(cell: UICollectionViewCell) {
         guard let entity = (cell as? ASCEntityViewCellProtocol)?.entity else { return }
-        
+
         if let file = entity as? ASCFile {
             handleFileDeletion(file)
         } else if let folder = entity as? ASCFolder {
@@ -1595,7 +1595,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
-    
+
     func showDeleteFromDeviceTrash(entity: ASCEntity) {
         showDeleteAlert(
             title: NSLocalizedString("Delete this item?", comment: ""),

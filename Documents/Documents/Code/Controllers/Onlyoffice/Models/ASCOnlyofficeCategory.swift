@@ -105,23 +105,23 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func id(of type: ASCFolderType) -> String {
         switch type {
         case .onlyofficeUser:
-            return OnlyofficeAPI.Path.Forlder.my
+            return OnlyofficeAPI.Path.Folder.my
         case .onlyofficeShare:
-            return OnlyofficeAPI.Path.Forlder.share
+            return OnlyofficeAPI.Path.Folder.share
         case .onlyofficeRoomShared:
-            return OnlyofficeAPI.Path.Forlder.room
+            return OnlyofficeAPI.Path.Folder.room
         case .onlyofficeRoomArchived:
-            return OnlyofficeAPI.Path.Forlder.room
+            return OnlyofficeAPI.Path.Folder.room
         case .onlyofficeFavorites:
-            return OnlyofficeAPI.Path.Forlder.favorites
+            return OnlyofficeAPI.Path.Folder.favorites
         case .onlyofficeRecent:
-            return OnlyofficeAPI.Path.Forlder.recent
+            return OnlyofficeAPI.Path.Folder.recent
         case .onlyofficeCommon:
-            return OnlyofficeAPI.Path.Forlder.common
+            return OnlyofficeAPI.Path.Folder.common
         case .onlyofficeBunch, .onlyofficeProjects:
-            return OnlyofficeAPI.Path.Forlder.projects
+            return OnlyofficeAPI.Path.Folder.projects
         case .onlyofficeTrash:
-            return OnlyofficeAPI.Path.Forlder.trash
+            return OnlyofficeAPI.Path.Folder.trash
         default:
             return ""
         }

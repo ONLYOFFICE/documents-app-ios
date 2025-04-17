@@ -895,6 +895,8 @@ class ASCEditorManager: NSObject {
     // MARK: - Utils
 
     func compareCloudSdk(with localSdkString: String?) -> Bool {
+        if ASCAppSettings.Feature.disableSdkVersionCheck { return true }
+
         guard
             let localSdkString,
             let documentServerVersionString = documentServiceVersion

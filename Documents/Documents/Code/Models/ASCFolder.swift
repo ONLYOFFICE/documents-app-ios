@@ -286,7 +286,6 @@ extension ASCFolder {
 }
 
 extension ASCFolder {
-    /// Идентична сатегории "комнаты"
     static var onlyofficeRoomSharedFolder: ASCFolder {
         let folder = ASCFolder()
         folder.rootFolderType = .onlyofficeRoomShared

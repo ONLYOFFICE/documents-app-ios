@@ -86,7 +86,7 @@ enum OnlyofficeAPI {
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
-        enum Forlder {
+        enum Folder {
             public static let root = "@root"
             public static let my = "@my"
             public static let share = "@share"
@@ -144,7 +144,7 @@ enum OnlyofficeAPI {
         // MARK: Folders
 
         enum Folders {
-            static let roots: Endpoint<OnlyofficeResponseArray<OnlyofficePath>> = Endpoint<OnlyofficeResponseArray<OnlyofficePath>>.make(String(format: Path.files, Path.Forlder.root))
+            static let roots: Endpoint<OnlyofficeResponseArray<OnlyofficePath>> = Endpoint<OnlyofficeResponseArray<OnlyofficePath>>.make(String(format: Path.files, Path.Folder.root))
             static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }
@@ -203,6 +203,10 @@ enum OnlyofficeAPI {
 
             static func createThirdparty(providerId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomsThirdparty, providerId), .post)
+            }
+
+            static func rooms() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms)
             }
 
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {

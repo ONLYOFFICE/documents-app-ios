@@ -35,7 +35,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return {
             $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
             $0.rootFolderType = .onlyofficeUser
-            $0.id = OnlyofficeAPI.Path.Forlder.my
+            $0.id = OnlyofficeAPI.Path.Folder.my
             return $0
         }(ASCFolder())
     }
@@ -374,9 +374,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             let endpoint: Endpoint<OnlyofficeResponse<OnlyofficePath>> = {
+                if folder.isRoomListFolder {
+                    return OnlyofficeAPI.Endpoints.Folders.path(of: ASCFolder.onlyofficeRoomSharedFolder)
+                }
+
                 guard hasFilters, folder.isRoomListFolder else {
                     return OnlyofficeAPI.Endpoints.Folders.path(of: folder)
                 }
+
                 return OnlyofficeAPI.Endpoints.Folders.roomsPath()
             }()
 
@@ -2333,7 +2338,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if folder.isRoot, folder.rootFolderType == .onlyofficeUser {
             let resentFolder = folder.copy()
             resentFolder.rootFolderType = .onlyofficeRecent
-            resentFolder.id = OnlyofficeAPI.Path.Forlder.recentRaw
+            resentFolder.id = OnlyofficeAPI.Path.Folder.recentRaw
 
             return [
                 ASCSegmentCategory(title: NSLocalizedString("My Documents", comment: ""), folder: folder),

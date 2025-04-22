@@ -78,6 +78,18 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Show versions history
+    
+        if actions.contains(.showVersionsHistory) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    image: UIImage(systemName: "clock.arrow.circlepath")
+            ) { [unowned self] action in
+                self.showVersionsHistory(file: file)
+            })
+        }
+        
         ///  Copy shared link action
 
         if actions.contains(.copySharedLink) {

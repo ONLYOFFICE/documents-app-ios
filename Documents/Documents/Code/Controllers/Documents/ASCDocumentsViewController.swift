@@ -2189,6 +2189,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
+    
+    func showVersionsHistory(file: ASCFile) {
+        
+    }
 
     func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {
         guard let provider = provider as? ASCOnlyofficeProvider else { return }

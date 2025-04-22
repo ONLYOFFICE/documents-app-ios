@@ -83,6 +83,7 @@ enum OnlyofficeAPI {
         public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
+        public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -343,6 +344,10 @@ enum OnlyofficeAPI {
 
             static func trackEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<Parameters>> {
                 return Endpoint<OnlyofficeResponseType<Parameters>>.make(String(format: Path.trackEdit, file.id), .get, URLEncoding.default)
+            }
+            
+            static func getVersionHistory(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<ASCFile>> {
+                return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
             }
 
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)

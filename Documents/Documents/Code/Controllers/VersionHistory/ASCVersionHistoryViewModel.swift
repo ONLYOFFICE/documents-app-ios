@@ -25,8 +25,19 @@ final class ASCVersionHistoryViewModel: ObservableObject {
     }
     
     func fetchVersions() {
+        loadData { result in
+            switch result {
+            case let .success(versions):
+                let mapped = versions.map { self.mapToVersionViewModel(version: $0) }
+                DispatchQueue.main.async {
+                    self.versions = mapped
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
     }
-
+    
     
     func restoreVersion() {
         
@@ -52,6 +63,23 @@ private extension ASCVersionHistoryViewModel {
             dateDescription: version.updated ?? Date(), //TODO: -
             author: version.createdBy?.displayName ?? "",
             comment: version.comment ?? "")
+    }
+    
+    func loadData(completion: @escaping (Result<[ASCFile], Error>) -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Files.getVersionHistory(file: file)) { result, error in
+            guard let versions = result?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))//MARK: - TODO
+                }
+                return
+            }
+            completion(.success(versions))
+            
+        }
+        
+        
     }
 }
 

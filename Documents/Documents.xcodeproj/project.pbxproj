@@ -148,6 +148,7 @@
 		F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */; };
 		F3F706F82DB6EFA20004A09F /* ASCVersionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */; };
 		F3F706FA2DB6EFB80004A09F /* ASCVersionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */; };
+		F3F706FC2DB7E1F30004A09F /* ASCVersionHistoryRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */; };
 		F3F706FE2DB837720004A09F /* ASCFileSwiftUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */; };
 		FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */; };
@@ -814,6 +815,7 @@
 		F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalFilterController.swift; sourceTree = "<group>"; };
 		F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryView.swift; sourceTree = "<group>"; };
 		F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryViewModel.swift; sourceTree = "<group>"; };
+		F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryRootViewController.swift; sourceTree = "<group>"; };
 		F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileSwiftUICell.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2109,6 +2111,7 @@
 		F3F706F62DB6E8D10004A09F /* VersionHistory */ = {
 			isa = PBXGroup;
 			children = (
+				F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */,
 				F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */,
 				F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */,
 			);
@@ -4533,6 +4536,7 @@
 				FC35D4672A987DFC00C6383F /* Data+Extension.swift in Sources */,
 				E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */,
 				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
+				F3F706FC2DB7E1F30004A09F /* ASCVersionHistoryRootViewController.swift in Sources */,
 				FC9EEFAF2BFB201700A66DE8 /* OnlyofficeResponse.swift in Sources */,
 				FC35D4542A987DFC00C6383F /* UIBarButtonItem+Extensions.swift in Sources */,
 				FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */,

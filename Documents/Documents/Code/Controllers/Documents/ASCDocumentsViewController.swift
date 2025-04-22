@@ -2191,7 +2191,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
     
     func showVersionsHistory(file: ASCFile) {
-        
+        guard let provider = provider as? ASCOnlyofficeProvider else { return }
+        let showVersionHistoryController = ASCVersionHistoryRootViewController(file: file, provider: provider)
+        showVersionHistoryController.modalPresentationStyle = .popover
+        self.present(showVersionHistoryController, animated: true)
     }
 
     func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {

@@ -11,9 +11,14 @@ import SwiftUI
 
 class ASCVersionHistoryRootViewController: UIHostingController<ASCVersionHistoryView> {
     
-    init(file: ASCFile, provider: ASCFileProviderProtocol) {
+    init(
+        file: ASCFile,
+        networkService: ASCVersionHistoryNetworkServiceProtocol
+    ) {
         super.init(
-            rootView: ASCVersionHistoryView(viewModel: ASCVersionHistoryViewModel(provider: provider, file: file))
+            rootView: ASCVersionHistoryView(
+                viewModel: ASCVersionHistoryViewModel(file: file, networkService: networkService)
+            )
         )
     }
     

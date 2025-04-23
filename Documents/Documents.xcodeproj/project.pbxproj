@@ -153,6 +153,7 @@
 		F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */; };
 		F3F707022DB8F6C40004A09F /* ASCRestoreVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */; };
 		F3F707042DB9199C0004A09F /* ASCDeleteVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */; };
+		F3F707082DB9831F0004A09F /* TextFieldAlertSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707072DB9831D0004A09F /* TextFieldAlertSwiftUI.swift */; };
 		FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -823,6 +824,7 @@
 		F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
 		F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRestoreVersionRequestModel.swift; sourceTree = "<group>"; };
 		F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeleteVersionRequestModel.swift; sourceTree = "<group>"; };
+		F3F707072DB9831D0004A09F /* TextFieldAlertSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertSwiftUI.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC029A3C27BCF8E800E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
@@ -3645,6 +3647,7 @@
 		FCE9F6DA2B2B56A30056E420 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				F3F707072DB9831D0004A09F /* TextFieldAlertSwiftUI.swift */,
 				F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */,
 				E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */,
 				E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */,
@@ -4363,6 +4366,7 @@
 			files = (
 				FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */,
 				1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
+				F3F707082DB9831F0004A09F /* TextFieldAlertSwiftUI.swift in Sources */,
 				FC7E456F29226A35006C4CA1 /* ASCDeepLink.swift in Sources */,
 				FC25B46A285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift in Sources */,
 				FC7B80202AFA299D00C22C71 /* ASCPhoneCountryCode.swift in Sources */,

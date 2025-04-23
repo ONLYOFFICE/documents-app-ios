@@ -33,53 +33,73 @@ struct ASCVersionHistoryView: View {
     @State private var versionToRestore: VersionViewModel?
     @State private var isShowingDeleteAlert = false
     @State private var versionToDelete: VersionViewModel?
+    
+    @State private var showEditCommentAlert = false
+    @State private var versionToEdit: VersionViewModel?
 
+    
     var body: some View {
         handleHUD()
-        return ZStack {
-            NavigationView {
-                List {
-                    ForEach(viewModel.versions) { version in
-                        Section(header: Text("Version \(version.versionNumber)")) {
-                            ASCFileSwiftUICell(model: ASCFileSwiftUICellModel(
-                                date: version.dateDescription,
-                                author: version.author,
-                                comment: version.comment,
-                                icon: Asset.Images.listFormatDocument.swiftUIImage)
-                            )
-                            .contextMenu {
-                                Button("Open", systemImage: "arrow.up.right.square") { }
+        
+        return NavigationView {
+            List {
+                ForEach(viewModel.versions) { version in
+                    Section(header: Text("Version \(version.versionNumber)")) {
+                        ASCFileSwiftUICell(model: ASCFileSwiftUICellModel(
+                            date: version.dateDescription,
+                            author: version.author,
+                            comment: version.comment,
+                            icon: Asset.Images.listFormatDocument.swiftUIImage)
+                        )
+                        .contextMenu {
+                            Button("Open", systemImage: "arrow.up.right.square") { }
 
-                                Button("Edit comment", systemImage: "text.bubble") { }
+                            Button("Edit comment", systemImage: "text.bubble") {
+                                versionToEdit = version
+                                showEditCommentAlert = true
+                            }
 
-                                if version.canRestore {
-                                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
-                                        activeAlert = .restore(version)
-                                    }
+                            if version.canRestore {
+                                Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                                    activeAlert = .restore(version)
                                 }
-                                
-                                Button("Download", systemImage: "square.and.arrow.down") {
-                                    
-                                }
+                            }
 
-                                if version.canDelete {
-                                    Button("Delete", systemImage: "trash") {
-                                        activeAlert = .delete(version)
-                                    }
+                            Button("Download", systemImage: "square.and.arrow.down") {
+                            }
+
+                            if version.canDelete {
+                                Button("Delete", systemImage: "trash") {
+                                    activeAlert = .delete(version)
                                 }
                             }
                         }
                     }
                 }
-                .onAppear {
-                    viewModel.fetchVersions()
-                }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    versionHistoryTitle
-                    versionHistoryToolbar
-                }
             }
+            .onAppear {
+                viewModel.fetchVersions()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                versionHistoryTitle
+                versionHistoryToolbar
+            }
+            .background(
+                TextFieldAlertSwiftUI(isPresented: $showEditCommentAlert, alert: TextFieldAlertSwiftUIModel(
+                    title: NSLocalizedString("Edit Comment", comment: ""),
+                    message: nil,
+                    placeholder: "",
+                    accept: NSLocalizedString("Save", comment: ""),
+                    cancel: NSLocalizedString("Cancel", comment: "")
+                ) { newText in
+                    if let newText = newText,
+                       let version = versionToEdit {
+                        viewModel.editComment(comment: newText)
+                    }
+                })
+                .allowsHitTesting(false)
+            )
         }
         .alert(item: $activeAlert, content: { alert(for: $0) })
     }

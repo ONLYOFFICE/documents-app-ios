@@ -53,14 +53,24 @@ final class ASCVersionHistoryViewModel: ObservableObject {
 
     
     func restoreVersion(version: VersionViewModel) {
+        isActivityIndicatorVisible = true
+
         networkService.restoreVersion(file: file, versionNumber: version.versionNumber) { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self.isActivityIndicatorVisible = false
+                switch result {
+                case .success:
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("Version restored", comment: "")
+                    )
                     self.fetchVersions()
+                case let .failure(error):
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error.localizedDescription
+                    )
                 }
-            case let .failure(error):
-                print(error.localizedDescription)
             }
         }
     }

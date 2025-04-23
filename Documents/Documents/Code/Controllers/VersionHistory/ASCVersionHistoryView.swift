@@ -9,19 +9,34 @@
 import SwiftUI
 import Combine
 import UIKit
+import MBProgressHUD
+
+enum VersionAlertType: Identifiable {
+    case restore(VersionViewModel)
+    case delete(VersionViewModel)
+
+    var id: UUID {
+        switch self {
+        case .restore(let version), .delete(let version):
+            return version.id
+        }
+    }
+}
 
 struct ASCVersionHistoryView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: ASCVersionHistoryViewModel
     
+    @State private var activeAlert: VersionAlertType?
     @State private var isShowingRestoreAlert = false
     @State private var versionToRestore: VersionViewModel?
     @State private var isShowingDeleteAlert = false
     @State private var versionToDelete: VersionViewModel?
 
     var body: some View {
-        ZStack {
+        handleHUD()
+        return ZStack {
             NavigationView {
                 List {
                     ForEach(viewModel.versions) { version in
@@ -39,19 +54,17 @@ struct ASCVersionHistoryView: View {
 
                                 if version.canRestore {
                                     Button("Restore", systemImage: "arrowshape.turn.up.right") {
-                                        versionToRestore = version
-                                        isShowingRestoreAlert = true
+                                        activeAlert = .restore(version)
                                     }
                                 }
-
+                                
                                 Button("Download", systemImage: "square.and.arrow.down") {
                                     
                                 }
 
                                 if version.canDelete {
                                     Button("Delete", systemImage: "trash") {
-                                        versionToDelete = version
-                                        isShowingDeleteAlert = true
+                                        activeAlert = .delete(version)
                                     }
                                 }
                             }
@@ -68,8 +81,7 @@ struct ASCVersionHistoryView: View {
                 }
             }
         }
-        .alert(isPresented: $isShowingRestoreAlert, content: { restoreAlert })
-        .alert(isPresented: $isShowingDeleteAlert, content: { deleteAlert })
+        .alert(item: $activeAlert, content: { alert(for: $0) })
     }
 
     // MARK: - View Components
@@ -93,30 +105,50 @@ struct ASCVersionHistoryView: View {
             }
         }
     }
-
-    private var restoreAlert: Alert {
-        Alert(
-            title: Text("Restore this version?"),
-            message: Text("Current file will be saved in version history."),
-            primaryButton: .default(Text("Restore")) {
-                if let version = versionToRestore {
-                    viewModel.restoreVersion(version: version)
-                }
-            },
-            secondaryButton: .cancel()
-        )
-    }
     
-    private var deleteAlert: Alert {
-        Alert(
-            title: Text("Delete version"),
-            message: Text("You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?"),
-            primaryButton: .default(Text("Delete")) {
-                if let version = versionToRestore {
+    private func alert(for type: VersionAlertType) -> Alert {
+        switch type {
+        case let .restore(version):
+            return Alert(
+                title: Text("Restore this version?"),
+                message: Text("Current file will be saved in version history."),
+                primaryButton: .default(Text("Restore")) {
+                    viewModel.restoreVersion(version: version)
+                },
+                secondaryButton: .cancel()
+            )
+            
+        case let .delete(version):
+            return Alert(
+                title: Text("Delete version"),
+                message: Text("You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?"),
+                primaryButton: .destructive(Text("Delete")) {
                     viewModel.deleteVersion(version: version)
+                },
+                secondaryButton: .cancel()
+            )
+        }
+    }
+
+    
+    private func handleHUD() {
+        if viewModel.isActivityIndicatorVisible {
+            MBProgressHUD.showTopMost(mode: .annularDeterminate)
+        } else if let hud = MBProgressHUD.currentHUD {
+            if let result = viewModel.resultModalModel {
+                switch result.result {
+                case .success:
+                    hud.setState(result: .success(result.message))
+                case .failure:
+                    hud.setState(result: .failure(result.message))
                 }
-            },
-            secondaryButton: .cancel()
-        )
+                hud.hide(animated: true, afterDelay: .twoSecondsDelay)
+                DispatchQueue.main.async {
+                    viewModel.resultModalModel = nil
+                }
+            } else {
+                hud.hide(animated: true)
+            }
+        }
     }
 }

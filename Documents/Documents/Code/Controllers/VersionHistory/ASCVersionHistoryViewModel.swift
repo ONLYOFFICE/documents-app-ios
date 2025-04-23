@@ -8,10 +8,13 @@
 
 import Combine
 import SwiftUI
+import MBProgressHUD
 
 final class ASCVersionHistoryViewModel: ObservableObject {
     
     @Published var versions: [VersionViewModel] = []
+    @Published var isActivityIndicatorVisible = false
+    @Published var resultModalModel: ResultViewModel?
     
     private var file: ASCFile
     private var networkService: ASCVersionHistoryNetworkServiceProtocol
@@ -67,7 +70,39 @@ final class ASCVersionHistoryViewModel: ObservableObject {
     }
     
     func deleteVersion(version: VersionViewModel) {
-        
+        isActivityIndicatorVisible = true
+
+        networkService.deleteVersion(file: file, versionNember: version.versionNumber) { [weak self] status, progress, result, error, cancel in
+            guard let self else { return }
+
+            switch status {
+            case .begin:
+                break
+            case .progress:
+                DispatchQueue.main.async {
+                    MBProgressHUD.currentHUD?.progress = progress
+                }
+
+            case .error:
+                DispatchQueue.main.async {
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not delete the version.", comment: "")
+                    )
+                    self.isActivityIndicatorVisible = false
+                }
+
+            case .end:
+                DispatchQueue.main.async {
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("Version deleted", comment: "")
+                    )
+                    self.isActivityIndicatorVisible = false
+                    self.fetchVersions()
+                }
+            }
+        }
     }
 }
 

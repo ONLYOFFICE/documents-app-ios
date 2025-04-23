@@ -152,6 +152,7 @@
 		F3F706FE2DB837720004A09F /* ASCFileSwiftUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */; };
 		F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */; };
 		F3F707022DB8F6C40004A09F /* ASCRestoreVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */; };
+		F3F707042DB9199C0004A09F /* ASCDeleteVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */; };
 		FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -821,6 +822,7 @@
 		F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileSwiftUICell.swift; sourceTree = "<group>"; };
 		F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
 		F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRestoreVersionRequestModel.swift; sourceTree = "<group>"; };
+		F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeleteVersionRequestModel.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC029A3C27BCF8E800E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2115,7 +2117,6 @@
 		F3F706F62DB6E8D10004A09F /* VersionHistory */ = {
 			isa = PBXGroup;
 			children = (
-				F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */,
 				F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */,
 				F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */,
 				F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */,
@@ -3230,6 +3231,8 @@
 		FC9EEF902BFB201700A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */,
+				F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */,
 				E87F75F82D445B090062A21C /* PeopleGuestsRequestModel.swift */,
 				E87F75F92D445B090062A21C /* SharePasswordRequestModel.swift */,
 				E801C98F2D36904C00E9939A /* FilesOrderRequesModel.swift */,
@@ -4579,6 +4582,7 @@
 				FC759CC62C00615E00510096 /* ASCSharingView.swift in Sources */,
 				FCCE50B22C1AF79000102056 /* ASCDetailedChevronUpDownCellView.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
+				F3F707042DB9199C0004A09F /* ASCDeleteVersionRequestModel.swift in Sources */,
 				FC759CAE2C00615E00510096 /* ASCSwitchRowViewModel.swift in Sources */,
 				FC68527D26837B7300D830EC /* OnlyofficeApplicationType.swift in Sources */,
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,

@@ -12,6 +12,7 @@ protocol ASCVersionHistoryNetworkServiceProtocol {
     func restoreVersion(file: ASCFile, versionNumber: Int, completion: @escaping (Result<ASCFile, Error>) -> Void)
     func loadData(file: ASCFile, completion: @escaping (Result<[ASCFile], Error>) -> Void)
     func deleteVersion(file: ASCFile, versionNember: Int, handler: ASCEntityProgressHandler?)
+    func editComment(file: ASCFile, comment: String, versionNumber: Int,  completion:@escaping (Result<String, Error>) -> Void)
 }
 
 final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProtocol {
@@ -30,6 +31,22 @@ final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProt
                 return
             }
             completion(.success(version))
+        }
+    }
+    
+    func editComment(file: ASCFile, comment: String, versionNumber: Int,  completion:@escaping (Result<String, Error>) -> Void) {
+        let requestModel = ASCEditVersionCommentRequestModel(comment: comment, version: versionNumber)
+        
+        networkService.request(OnlyofficeAPI.Endpoints.Files.editComment(file: file), requestModel.dictionary) { responce, error in
+            guard let comment = responce?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(ASCVersionHistoryNetworkService.Errors.emptyResponse))
+                }
+                return
+            }
+            completion(.success(comment))
         }
     }
     

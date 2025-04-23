@@ -95,7 +95,7 @@ struct ASCVersionHistoryView: View {
                 ) { newText in
                     if let newText = newText,
                        let version = versionToEdit {
-                        viewModel.editComment(comment: newText)
+                        viewModel.editComment(comment: newText, versionNumber: version.versionNumber)
                     }
                 })
                 .allowsHitTesting(false)

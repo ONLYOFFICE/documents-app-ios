@@ -51,7 +51,6 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         }
     }
 
-    
     func restoreVersion(version: VersionViewModel) {
         isActivityIndicatorVisible = true
 
@@ -75,8 +74,26 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         }
     }
     
-    func editComment(comment: String) {
-        
+    func editComment(comment: String, versionNumber: Int) {
+        isActivityIndicatorVisible = true
+        networkService.editComment(file: file, comment: comment, versionNumber: versionNumber) { result in
+            DispatchQueue.main.async {
+                self.isActivityIndicatorVisible = false
+                switch result {
+                case let .success(comment):
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("", comment: "")
+                    )
+                    self.fetchVersions()
+                case let .failure(error):
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error.localizedDescription
+                    )
+                }
+            }
+        }
     }
     
     func deleteVersion(version: VersionViewModel) {

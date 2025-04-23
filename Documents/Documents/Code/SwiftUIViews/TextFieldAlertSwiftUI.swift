@@ -13,8 +13,8 @@ struct TextFieldAlertSwiftUIModel {
     let title: String
     let message: String?
     var placeholder: String = ""
-    var accept: String = "OK"
-    var cancel: String = "Cancel"
+    var accept: String = ""
+    var cancel: String = ""
     var action: (String?) -> Void
 }
 

@@ -85,6 +85,7 @@ enum OnlyofficeAPI {
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
         public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
         public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
+        public static let editComment = "api/\(version)/files/file/%@/comment"
         
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -353,6 +354,10 @@ enum OnlyofficeAPI {
 
             static func restoreFileVersion(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            }
+            
+            static func editComment(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.editComment, file.id), .put)
             }
             
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)

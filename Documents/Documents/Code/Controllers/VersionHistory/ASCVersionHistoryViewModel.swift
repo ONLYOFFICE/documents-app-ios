@@ -43,8 +43,10 @@ final class ASCVersionHistoryViewModel: ObservableObject {
     func restoreVersion(version: VersionViewModel) {
         networkService.restoreVersion(file: file, versionNumber: version.versionNumber) { result in
             switch result {
-            case let .success(version):
-               print()
+            case .success:
+                DispatchQueue.main.async {
+                    self.fetchVersions()
+                }
             case let .failure(error):
                 print(error.localizedDescription)
             }

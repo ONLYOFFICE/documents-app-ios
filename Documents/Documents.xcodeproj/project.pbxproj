@@ -150,6 +150,8 @@
 		F3F706FA2DB6EFB80004A09F /* ASCVersionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */; };
 		F3F706FC2DB7E1F30004A09F /* ASCVersionHistoryRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */; };
 		F3F706FE2DB837720004A09F /* ASCFileSwiftUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */; };
+		F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */; };
+		F3F707022DB8F6C40004A09F /* ASCRestoreVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */; };
 		FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -817,6 +819,8 @@
 		F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryViewModel.swift; sourceTree = "<group>"; };
 		F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryRootViewController.swift; sourceTree = "<group>"; };
 		F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileSwiftUICell.swift; sourceTree = "<group>"; };
+		F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
+		F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRestoreVersionRequestModel.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC029A3C27BCF8E800E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2111,6 +2115,8 @@
 		F3F706F62DB6E8D10004A09F /* VersionHistory */ = {
 			isa = PBXGroup;
 			children = (
+				F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */,
+				F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */,
 				F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */,
 				F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */,
 				F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */,
@@ -4435,6 +4441,7 @@
 				FC35D4562A987DFC00C6383F /* URL+Extensions.swift in Sources */,
 				FC25B453284F67F70075D6C2 /* ASCSettingsNotificationCell.swift in Sources */,
 				FC41D80A2265DA5E00A155C2 /* ASCFolderType.swift in Sources */,
+				F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */,
 				FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */,
 				FC759C2C2C00614D00510096 /* CreateRoomRouteViewViewController.swift in Sources */,
 				FCF695902632E3D500808644 /* UIButton+Style.swift in Sources */,
@@ -4666,6 +4673,7 @@
 				FC7E456729226A35006C4CA1 /* ASCCategory.swift in Sources */,
 				E801C9922D36E0BA00E9939A /* ASCDocumentsViewController+NavBar.swift in Sources */,
 				FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
+				F3F707022DB8F6C40004A09F /* ASCRestoreVersionRequestModel.swift in Sources */,
 				FC68529726837B7300D830EC /* DropboxEndpoints.swift in Sources */,
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
 				FCCE50B12C1AF79000102056 /* ASCCreateLinkCellView.swift in Sources */,

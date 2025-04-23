@@ -20,6 +20,10 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         file.title
     }
     
+    var latestVersionNumber: Int {
+        versions.first?.versionNumber ?? 1
+    }
+        
     init(file: ASCFile, networkService: ASCVersionHistoryNetworkServiceProtocol) {
         self.file = file
         self.networkService = networkService
@@ -28,8 +32,13 @@ final class ASCVersionHistoryViewModel: ObservableObject {
     func fetchVersions() {
         networkService.loadData(file: file) { result in
             switch result {
-            case let .success(versions):
-                let mapped = versions.map { self.mapToVersionViewModel(version: $0) }
+            case let .success(files):
+                let mapped = files.map {
+                    self.mapToVersionViewModel(
+                        version: $0,
+                        latestVersionNumber: files.first?.version ?? 1
+                    )
+                }
                 DispatchQueue.main.async {
                     self.versions = mapped
                 }
@@ -38,7 +47,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
             }
         }
     }
-    
+
     
     func restoreVersion(version: VersionViewModel) {
         networkService.restoreVersion(file: file, versionNumber: version.versionNumber) { result in
@@ -66,13 +75,15 @@ final class ASCVersionHistoryViewModel: ObservableObject {
 
 private extension ASCVersionHistoryViewModel {
     
-    func mapToVersionViewModel(version: ASCFile) -> VersionViewModel {
-        return VersionViewModel(
+    func mapToVersionViewModel(version: ASCFile, latestVersionNumber: Int) -> VersionViewModel {
+        VersionViewModel(
             id: UUID(),
             versionNumber: version.version,
             dateDescription: version.updated ?? Date(),
             author: version.createdBy?.displayName ?? "",
-            comment: version.comment ?? "")
+            comment: version.comment ?? "",
+            canRestore: version.version < latestVersionNumber
+        )
     }
 }
 
@@ -82,4 +93,5 @@ struct VersionViewModel: Identifiable {
     let dateDescription: Date
     let author: String
     let comment: String
+    var canRestore: Bool
 }

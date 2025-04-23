@@ -32,16 +32,18 @@ struct ASCVersionHistoryView: View {
                             )
                             .contextMenu {
                                 Button("Open", systemImage: "arrow.up.right.square") { }
-                                
+
                                 Button("Edit comment", systemImage: "text.bubble") { }
-                                
-                                Button("Restore", systemImage: "arrowshape.turn.up.right") {
-                                    versionToRestore = version
-                                    isShowingRestoreAlert = true
+
+                                if version.canRestore {
+                                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                                        versionToRestore = version
+                                        isShowingRestoreAlert = true
+                                    }
                                 }
-                                
+
                                 Button("Download", systemImage: "square.and.arrow.down") { }
-                                
+
                                 Button("Delete", systemImage: "trash") { }
                             }
                         }

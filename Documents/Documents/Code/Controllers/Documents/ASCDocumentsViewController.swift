@@ -2192,7 +2192,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     
     func showVersionsHistory(file: ASCFile) {
         guard let provider = provider as? ASCOnlyofficeProvider else { return }
-        let showVersionHistoryController = ASCVersionHistoryRootViewController(file: file, provider: provider)
+        let versionHistoryNetworkService = ASCVersionHistoryNetworkService()
+        let showVersionHistoryController = ASCVersionHistoryRootViewController(file: file, networkService: versionHistoryNetworkService)
         showVersionHistoryController.modalPresentationStyle = .popover
         self.present(showVersionHistoryController, animated: true)
     }

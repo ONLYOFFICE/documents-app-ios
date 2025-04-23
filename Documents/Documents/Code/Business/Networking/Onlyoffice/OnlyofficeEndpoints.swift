@@ -84,7 +84,8 @@ enum OnlyofficeAPI {
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
         public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
-
+        public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
+        
         public static let defaultGeneralLink = "rooms/shared/filter"
 
         enum Folder {
@@ -410,6 +411,7 @@ enum OnlyofficeAPI {
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
             static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
+            static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
         }
 
         // MARK: Third-Party Integration

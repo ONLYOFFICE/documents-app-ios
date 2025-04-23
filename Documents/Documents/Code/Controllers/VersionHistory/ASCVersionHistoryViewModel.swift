@@ -66,7 +66,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         
     }
     
-    func deleteVersion() {
+    func deleteVersion(version: VersionViewModel) {
         
     }
 }
@@ -82,7 +82,8 @@ private extension ASCVersionHistoryViewModel {
             dateDescription: version.updated ?? Date(),
             author: version.createdBy?.displayName ?? "",
             comment: version.comment ?? "",
-            canRestore: version.version < latestVersionNumber
+            canRestore: version.version < latestVersionNumber,
+            canDelete: version.version < latestVersionNumber
         )
     }
 }
@@ -94,4 +95,5 @@ struct VersionViewModel: Identifiable {
     let author: String
     let comment: String
     var canRestore: Bool
+    var canDelete: Bool
 }

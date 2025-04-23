@@ -17,6 +17,8 @@ struct ASCVersionHistoryView: View {
     
     @State private var isShowingRestoreAlert = false
     @State private var versionToRestore: VersionViewModel?
+    @State private var isShowingDeleteAlert = false
+    @State private var versionToDelete: VersionViewModel?
 
     var body: some View {
         ZStack {
@@ -42,9 +44,16 @@ struct ASCVersionHistoryView: View {
                                     }
                                 }
 
-                                Button("Download", systemImage: "square.and.arrow.down") { }
+                                Button("Download", systemImage: "square.and.arrow.down") {
+                                    
+                                }
 
-                                Button("Delete", systemImage: "trash") { }
+                                if version.canDelete {
+                                    Button("Delete", systemImage: "trash") {
+                                        versionToDelete = version
+                                        isShowingDeleteAlert = true
+                                    }
+                                }
                             }
                         }
                     }
@@ -60,6 +69,7 @@ struct ASCVersionHistoryView: View {
             }
         }
         .alert(isPresented: $isShowingRestoreAlert, content: { restoreAlert })
+        .alert(isPresented: $isShowingDeleteAlert, content: { deleteAlert })
     }
 
     // MARK: - View Components
@@ -91,6 +101,19 @@ struct ASCVersionHistoryView: View {
             primaryButton: .default(Text("Restore")) {
                 if let version = versionToRestore {
                     viewModel.restoreVersion(version: version)
+                }
+            },
+            secondaryButton: .cancel()
+        )
+    }
+    
+    private var deleteAlert: Alert {
+        Alert(
+            title: Text("Delete version"),
+            message: Text("You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?"),
+            primaryButton: .default(Text("Delete")) {
+                if let version = versionToRestore {
+                    viewModel.deleteVersion(version: version)
                 }
             },
             secondaryButton: .cancel()

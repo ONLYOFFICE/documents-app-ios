@@ -350,6 +350,10 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
             }
 
+            static func restoreFileVersion(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            }
+            
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
             static let removeFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .delete)
             static let order: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.filesOrder, .put)

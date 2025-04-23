@@ -61,7 +61,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
                 case .success:
                     self.resultModalModel = .init(
                         result: .success,
-                        message: NSLocalizedString("Version restored", comment: "")
+                        message: NSLocalizedString("Restored", comment: "")
                     )
                     self.fetchVersions()
                 case let .failure(error):
@@ -123,7 +123,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.resultModalModel = .init(
                         result: .success,
-                        message: NSLocalizedString("Version deleted", comment: "")
+                        message: NSLocalizedString("Deleted", comment: "")
                     )
                     self.isActivityIndicatorVisible = false
                     self.fetchVersions()

@@ -945,6 +945,16 @@ extension ASCDocumentsViewController {
                 )
             )
         }
+        
+        if actions.contains(.showVersionsHistory) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        self.showVersionsHistory(file: file)
+                    }))
+        }
 
         if actions.contains(.rename) {
             actionAlertController.addAction(

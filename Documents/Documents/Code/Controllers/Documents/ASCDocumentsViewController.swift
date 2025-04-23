@@ -2193,10 +2193,17 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func showVersionsHistory(file: ASCFile) {
         guard let provider = provider as? ASCOnlyofficeProvider else { return }
         let versionHistoryNetworkService = ASCVersionHistoryNetworkService()
-        let showVersionHistoryController = ASCVersionHistoryRootViewController(file: file, networkService: versionHistoryNetworkService)
-        showVersionHistoryController.modalPresentationStyle = .popover
-        self.present(showVersionHistoryController, animated: true)
+        let controller = ASCVersionHistoryRootViewController(file: file, networkService: versionHistoryNetworkService)
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            controller.modalPresentationStyle = .formSheet
+        } else {
+            controller.modalPresentationStyle = .popover
+        }
+
+        self.present(controller, animated: true)
     }
+
 
     func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {
         guard let provider = provider as? ASCOnlyofficeProvider else { return }

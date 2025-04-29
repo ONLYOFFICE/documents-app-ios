@@ -39,6 +39,19 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Fill pdf form
+
+        if actions.contains(.startFilling) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Start filling", comment: "Start filling form Button title"),
+                    image: UIImage(systemName: "square.and.pencil")
+                ) { [unowned self] action in
+                    self.startFilling(file: file)
+                }
+            )
+        }
+
         /// Preview action
 
         if actions.contains(.open) {

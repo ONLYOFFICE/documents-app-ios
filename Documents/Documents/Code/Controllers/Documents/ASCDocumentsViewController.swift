@@ -2029,76 +2029,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
     
-    func download(version: ASCFile) {
-        guard let provider else { return }
-        
-        var forceCancel = false
-        let openingAlert = ASCProgressAlert(
-            title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...",
-            message: nil,
-            handler: { cancel in
-                forceCancel = cancel
-            }
-        )
-
-        ASCEntityManager.shared.download(for: provider, entity: version) { [unowned self] status, progress, result, error, cancel in
-            if status == .begin {
-                openingAlert.show()
-            }
-
-            openingAlert.progress = progress
-
-            if forceCancel {
-                cancel = forceCancel
-                provider.cancel()
-                return
-            }
-
-            if status == .end || status == .error {
-                if status == .error {
-                    openingAlert.hide()
-                    UIAlertController.showError(
-                        in: self,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not download file.", comment: "")
-                    )
-                } else {
-                    if let newFile = result as? ASCFile, let rootVC = ASCViewControllerManager.shared.rootController {
-                        // Switch category to 'On Device'
-                        rootVC.display(provider: ASCFileManager.localProvider, folder: nil)
-
-                        // Delay so that the loading indication is completed
-                        delay(seconds: 0.6) {
-                            openingAlert.hide()
-
-                            let splitVC = ASCViewControllerManager.shared.topViewController as? ASCBaseSplitViewController
-                            let documentsNC = splitVC?.detailViewController as? ASCDocumentsNavigationController
-                            let documentsVC: ASCDocumentsViewController? = documentsNC?.viewControllers.first as? ASCDocumentsViewController ?? ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController
-
-                            if let documentsVC = documentsVC {
-                                documentsVC.loadFirstPage { success in
-                                    if success {
-                                        if let index = documentsVC.tableData.firstIndex(where: { ($0 as? ASCFile)?.title == newFile.title }) {
-                                            // Scroll to new cell
-                                            let indexPath = IndexPath(row: index, section: 0)
-                                            documentsVC.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
-
-                                            // Highlight new cell
-                                            delay(seconds: 0.3) {
-                                                if let newCell = documentsVC.collectionView.cellForItem(at: indexPath) {
-                                                    documentsVC.highlight(cell: newCell)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     func downloadFile(cell: UICollectionViewCell) {
         guard
             let fileCell = cell as? ASCFileViewCell,
@@ -2111,6 +2041,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             )
             return
         }
+        downloadFile(file: file, provider: provider)
+    }
+    
+    func downloadFile(file: ASCFile, provider: ASCFileProviderProtocol) {
 
         var forceCancel = false
         let openingAlert = ASCProgressAlert(
@@ -2266,8 +2200,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             file: file,
             networkService: versionHistoryNetworkService) { [weak self] version in
              self?.open(file: version, openMode: .view)
-        } download: { [weak self] version in
-            self?.download(version: version)
+        } download: { [weak self] versionFile in
+            guard let self,
+                  let provider else { return }
+            self.downloadFile(file: versionFile, provider: provider)
             
         }
 

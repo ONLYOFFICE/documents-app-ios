@@ -11,12 +11,14 @@ import MBProgressHUD
 import SwiftUI
 
 final class ASCVersionHistoryViewModel: ObservableObject {
+    
+    @Published var screenModel = ASCVersionHistoryScreenModel()
     @Published var versions: [VersionViewModel] = []
     @Published var isActivityIndicatorVisible = false
     @Published var resultModalModel: ResultViewModel?
 
-    var openFile: (ASCFile) -> Void
-    var download: (ASCFile) -> Void
+    private var openFile: (ASCFile) -> Void
+    private var downloadFile: (ASCFile) -> Void
 
     private var file: ASCFile
     private var networkService: ASCVersionHistoryNetworkServiceProtocol
@@ -37,40 +39,39 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         self.file = file
         self.networkService = networkService
         openFile = completion
-        self.download = download
-    }
-
-    func openVersion(file: ASCFile, dismiss: @escaping () -> Void) {
-        dismiss()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.openFile(file)
-        }
+        self.downloadFile = download
     }
     
-    func downloadVersion(file: ASCFile, dismiss: @escaping () -> Void) {
-        dismiss()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.download(file)
-        }
+    func onAppear() {
+        fetchVersions()
+    }
+    
+    func triggerRestoreAlert(for version: VersionViewModel) {
+        screenModel.activeAlert = .restore(version)
     }
 
-    func fetchVersions() {
-        networkService.loadData(file: file) { result in
-            switch result {
-            case let .success(files):
-                let mapped = files.map {
-                    self.mapToVersionViewModel(
-                        version: $0,
-                        latestVersionNumber: files.first?.version ?? 1
-                    )
-                }
-                DispatchQueue.main.async {
-                    self.versions = mapped
-                }
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+    func triggerDeleteAlert(for version: VersionViewModel) {
+        screenModel.activeAlert = .delete(version)
+    }
+
+    func triggerEditComment(for version: VersionViewModel) {
+        screenModel.versionToEdit = version
+        screenModel.showEditCommentAlert = true
+    }
+    
+    func triggerOpenVersion(_ version: VersionViewModel, dismiss: @escaping () -> Void) {
+        let file = version.versionFile
+        openVersion(file: file, dismiss: dismiss)
+    }
+
+    func triggerDownloadVersion(_ version: VersionViewModel, dismiss: @escaping () -> Void) {
+        let file = version.versionFile
+        downloadVersion(file: file, dismiss: dismiss)
+    }
+
+    func clearEditCommentState() {
+        screenModel.versionToEdit = nil
+        screenModel.showEditCommentAlert = false
     }
 
     func restoreVersion(version: VersionViewModel) {
@@ -170,6 +171,35 @@ private extension ASCVersionHistoryViewModel {
             canRestore: version.version < latestVersionNumber,
             canDelete: version.version < latestVersionNumber
         )
+    }
+    
+    func openVersion(file: ASCFile, dismiss: @escaping () -> Void) {
+        dismiss()
+        self.openFile(file)
+    }
+    
+    func downloadVersion(file: ASCFile, dismiss: @escaping () -> Void) {
+        dismiss()
+        self.downloadFile(file)
+    }
+    
+    func fetchVersions() {
+        networkService.loadData(file: file) { result in
+            switch result {
+            case let .success(files):
+                let mapped = files.map {
+                    self.mapToVersionViewModel(
+                        version: $0,
+                        latestVersionNumber: files.first?.version ?? 1
+                    )
+                }
+                DispatchQueue.main.async {
+                    self.versions = mapped
+                }
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

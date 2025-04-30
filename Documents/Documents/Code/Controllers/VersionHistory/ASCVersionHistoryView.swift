@@ -27,15 +27,6 @@ struct ASCVersionHistoryView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: ASCVersionHistoryViewModel
 
-    @State private var activeAlert: VersionAlertType?
-    @State private var isShowingRestoreAlert = false
-    @State private var versionToRestore: VersionViewModel?
-    @State private var isShowingDeleteAlert = false
-    @State private var versionToDelete: VersionViewModel?
-
-    @State private var showEditCommentAlert = false
-    @State private var versionToEdit: VersionViewModel?
-
     var body: some View {
         handleHUD()
 
@@ -46,24 +37,21 @@ struct ASCVersionHistoryView: View {
                         version: version,
                         icon: Asset.Images.listFormatDocument.swiftUIImage,
                         onOpen: {
-                            let file = version.versionFile
-                            viewModel.openVersion(file: file) {
+                            viewModel.triggerOpenVersion(version) {
                                 presentationMode.wrappedValue.dismiss()
                             }
                         },
                         onEditComment: {
-                            versionToEdit = version
-                            showEditCommentAlert = true
+                            viewModel.triggerEditComment(for: version)
                         },
                         onRestore: {
-                            activeAlert = .restore(version)
+                            viewModel.triggerRestoreAlert(for: version)
                         },
                         onDelete: {
-                            activeAlert = .delete(version)
+                            viewModel.triggerDeleteAlert(for: version)
                         },
                         onDownload: {
-                            let file = version.versionFile
-                            viewModel.downloadVersion(file: file) {
+                            viewModel.triggerDownloadVersion(version) {
                                 presentationMode.wrappedValue.dismiss()
                             }
                         }
@@ -71,7 +59,7 @@ struct ASCVersionHistoryView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchVersions()
+                viewModel.onAppear()
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -80,14 +68,14 @@ struct ASCVersionHistoryView: View {
             }
             .background(editCommentAlert)
         }
-        .alert(item: $activeAlert, content: { alert(for: $0) })
+        .alert(item: $viewModel.screenModel.activeAlert, content: { alert(for: $0) })
     }
 
     // MARK: - View Components
-
+    
     private var editCommentAlert: some View {
         TextFieldAlertSwiftUI(
-            isPresented: $showEditCommentAlert,
+            isPresented: $viewModel.screenModel.showEditCommentAlert,
             alert: TextFieldAlertSwiftUIModel(
                 title: .editComment,
                 message: nil,
@@ -96,9 +84,10 @@ struct ASCVersionHistoryView: View {
                 cancel: .cancel
             ) { newText in
                 if let newText = newText,
-                   let version = versionToEdit
+                   let version = viewModel.screenModel.versionToEdit
                 {
                     viewModel.editComment(comment: newText, versionNumber: version.versionNumber)
+                    viewModel.clearEditCommentState()
                 }
             }
         )

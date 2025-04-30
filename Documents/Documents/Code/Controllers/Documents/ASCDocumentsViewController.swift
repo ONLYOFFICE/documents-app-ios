@@ -2198,13 +2198,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let versionHistoryNetworkService = ASCVersionHistoryNetworkService()
         let controller = ASCVersionHistoryRootViewController(
             file: file,
-            networkService: versionHistoryNetworkService) { [weak self] version in
+            networkService: versionHistoryNetworkService
+        ) { [weak self] version in
              self?.open(file: version, openMode: .view)
         } download: { [weak self] versionFile in
             guard let self,
                   let provider else { return }
             self.downloadFile(file: versionFile, provider: provider)
-            
         }
 
         if UIDevice.current.userInterfaceIdiom == .pad {

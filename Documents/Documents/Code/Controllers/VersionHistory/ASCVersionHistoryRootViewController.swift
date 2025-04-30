@@ -13,14 +13,16 @@ class ASCVersionHistoryRootViewController: UIHostingController<ASCVersionHistory
     init(
         file: ASCFile,
         networkService: ASCVersionHistoryNetworkServiceProtocol,
-        completion: @escaping (ASCFile) -> Void
+        completion: @escaping (ASCFile) -> Void,
+        download: @escaping (ASCFile) -> Void
     ) {
         super.init(
             rootView: ASCVersionHistoryView(
                 viewModel: ASCVersionHistoryViewModel(
                     file: file,
                     networkService: networkService,
-                    completion: completion
+                    completion: completion,
+                    download: download
                 )
             )
         )

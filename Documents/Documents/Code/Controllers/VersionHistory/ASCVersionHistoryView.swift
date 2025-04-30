@@ -60,6 +60,12 @@ struct ASCVersionHistoryView: View {
                         },
                         onDelete: {
                             activeAlert = .delete(version)
+                        },
+                        onDownload: {
+                            let file = version.versionFile
+                            viewModel.downloadVersion(file: file) {
+                                presentationMode.wrappedValue.dismiss()
+                            }
                         }
                     )
                 }
@@ -172,6 +178,7 @@ struct ASCVersionRowView: View {
     let onEditComment: () -> Void
     let onRestore: () -> Void
     let onDelete: () -> Void
+    let onDownload: () -> Void
 
     var body: some View {
         Section(header: Text("Version \(version.versionNumber)")) {
@@ -200,7 +207,7 @@ struct ASCVersionRowView: View {
                 }
 
                 Button("Download", systemImage: "square.and.arrow.down") {
-                    
+                    onDownload()
                 }
 
                 if version.canDelete {

@@ -16,6 +16,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
     @Published var resultModalModel: ResultViewModel?
 
     var openFile: (ASCFile) -> Void
+    var download: (ASCFile) -> Void
 
     private var file: ASCFile
     private var networkService: ASCVersionHistoryNetworkServiceProtocol
@@ -30,17 +31,26 @@ final class ASCVersionHistoryViewModel: ObservableObject {
 
     init(file: ASCFile,
          networkService: ASCVersionHistoryNetworkServiceProtocol,
-         completion: @escaping (ASCFile) -> Void)
+         completion: @escaping (ASCFile) -> Void,
+         download: @escaping (ASCFile) -> Void)
     {
         self.file = file
         self.networkService = networkService
         openFile = completion
+        self.download = download
     }
 
     func openVersion(file: ASCFile, dismiss: @escaping () -> Void) {
         dismiss()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.openFile(file)
+        }
+    }
+    
+    func downloadVersion(file: ASCFile, dismiss: @escaping () -> Void) {
+        dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.download(file)
         }
     }
 

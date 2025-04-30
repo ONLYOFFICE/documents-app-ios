@@ -12,102 +12,143 @@ struct VDRStartFillingView: View {
     @ObservedObject var viewModel: VDRStartFillingViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
+        ZStack(alignment: .bottom) {
+            Color(UIColor.systemGray6).ignoresSafeArea()
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("In this panel you can monitor the completion\nof the form in which you participate or in which you\nare the organizer of completion")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
+            VStack(spacing: 0) {
+                header
 
-                    Text("Roles from the form:")
-                        .font(.headline)
-                        .padding(.horizontal)
-
-                    VStack(spacing: 0) {
-                        ForEach(viewModel.roles) { role in
+                List {
+                    Section {
+                        ForEach(viewModel.state.roles) { role in
                             RoleRow(role: role) {
                                 viewModel.roleTapped(role)
                             }
-                            Divider()
+                            .fullWidthSeparators()
                         }
+                        .onDelete { indexSet in
+                            indexSet.map { viewModel.state.roles[$0] }
+                                .forEach(viewModel.deleteRole)
+                        }
+                    } header: {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .textCase(nil)
+
+                            Text("Roles from the form:")
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                                .textCase(nil)
+                        }
+                        .padding(.vertical, 8)
                     }
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .padding(.horizontal)
                 }
-                .padding(.top, 16)
+                .listStyle(InsetGroupedListStyle())
             }
 
             footer
         }
-        .background(Color(UIColor.systemGray6).ignoresSafeArea())
     }
 
+    // MARK: — Header
+
     private var header: some View {
-        HStack {
-            Button("Close", action: viewModel.closeTapped)
-                .foregroundColor(.blue)
+        ZStack {
+            HStack {
+                Button("Cancel", action: viewModel.closeTapped)
+                    .foregroundColor(.blue)
 
-            Spacer()
+                Spacer()
+            }
+            HStack {
+                Spacer()
 
-            Text("Start filling")
-                .font(.headline)
+                Text("Start filling")
+                    .font(.headline)
 
-            Spacer()
-
-            Spacer().frame(width: 44)
+                Spacer()
+            }
         }
         .padding()
         .background(Color.white)
     }
+
+    // MARK: — Footer
 
     private var footer: some View {
         HStack {
             Spacer()
             Button(action: viewModel.startTapped) {
                 Text("Start")
+                    .font(.body)
                     .foregroundColor(.white)
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 10)
-                    .background(Color.gray.opacity(0.4))
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 4)
+                    .background(
+                        viewModel.state.isStartEnabled
+                            ? Color(Asset.Colors.documentEditor.color)
+                            : Color.secondary.opacity(0.16)
+                    )
                     .cornerRadius(16)
             }
-            .padding()
+            .disabled(!viewModel.state.isStartEnabled)
+            .padding(.top, 16)
+            .padding(.horizontal)
         }
-        .background(Color.white)
+        .background(Color.white.ignoresSafeArea(edges: .bottom))
     }
 }
 
+// MARK: — Row
+
 struct RoleRow: View {
     typealias RoleItem = VDRStartFillingRoleItem
-    
+
     let role: RoleItem
     let onTap: () -> Void
 
     var body: some View {
-        Button(action: onTap) {
-            HStack(spacing: 12) {
-                Text("\(role.number)")
-                    .font(.body)
-                    .frame(width: 20, alignment: .leading)
+        HStack(spacing: 12) {
+            Text("\(role.number)")
+                .font(.body)
+                .frame(width: 20, alignment: .leading)
+                .foregroundColor(.secondary)
 
-                Circle()
-                    .fill(role.color)
-                    .frame(width: 30, height: 30)
-                    .overlay(Image(systemName: "plus").foregroundColor(.black))
+            Circle()
+                .fill(role.color)
+                .frame(width: 40, height: 40)
+                .overlay(Image(systemName: "plus").foregroundColor(.secondary))
 
+            VStack(alignment: .leading, spacing: 2) {
                 Text(role.title)
+                    .font(.subheadline)
                     .foregroundColor(.primary)
-
-                Spacer()
+                Text("Role description")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
             }
-            .padding(.vertical, 12)
-            .padding(.horizontal)
+
+            Spacer()
+        }
+        .padding(.vertical, 12)
+        .padding(.horizontal)
+        .background(Color.white)
+        .contentShape(Rectangle())
+        .onTapGesture(perform: onTap)
+    }
+}
+
+extension View {
+    func fullWidthSeparators() -> some View {
+        if #available(iOS 15, *) {
+            return self
+                .listRowSeparator(.visible, edges: .bottom)
+                .listRowInsets(EdgeInsets())
+        } else {
+            return self
         }
     }
 }

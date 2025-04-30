@@ -1854,9 +1854,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let hostingController = UIHostingController(rootView: fillFormMenuScreen)
         present(hostingController, animated: true, completion: nil)
     }
-    
+
     func startFilling(file: ASCFile) {
-        // TODO: Docspace 3.1
+        guard file.isForm, !file.device else { return }
+
+        let vc = VDRStartFillingViewController()
+        present(vc, animated: true, completion: nil)
     }
 
     func transformToRoom(entities: [ASCEntity]) {

@@ -7,31 +7,43 @@
 //
 
 import Combine
-import SwiftUI
 import MBProgressHUD
+import SwiftUI
 
 final class ASCVersionHistoryViewModel: ObservableObject {
-    
     @Published var versions: [VersionViewModel] = []
     @Published var isActivityIndicatorVisible = false
     @Published var resultModalModel: ResultViewModel?
-    
+
+    var openFile: (ASCFile) -> Void
+
     private var file: ASCFile
     private var networkService: ASCVersionHistoryNetworkServiceProtocol
-    
+
     var fileTitle: String {
         file.title
     }
-    
+
     var latestVersionNumber: Int {
         versions.first?.versionNumber ?? 1
     }
-        
-    init(file: ASCFile, networkService: ASCVersionHistoryNetworkServiceProtocol) {
+
+    init(file: ASCFile,
+         networkService: ASCVersionHistoryNetworkServiceProtocol,
+         completion: @escaping (ASCFile) -> Void)
+    {
         self.file = file
         self.networkService = networkService
+        openFile = completion
     }
-    
+
+    func openVersion(file: ASCFile, dismiss: @escaping () -> Void) {
+        dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.openFile(file)
+        }
+    }
+
     func fetchVersions() {
         networkService.loadData(file: file) { result in
             switch result {
@@ -73,7 +85,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
             }
         }
     }
-    
+
     func editComment(comment: String, versionNumber: Int) {
         isActivityIndicatorVisible = true
         networkService.editComment(file: file, comment: comment, versionNumber: versionNumber) { result in
@@ -95,7 +107,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
             }
         }
     }
-    
+
     func deleteVersion(version: VersionViewModel) {
         isActivityIndicatorVisible = true
 
@@ -105,6 +117,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
             switch status {
             case .begin:
                 break
+
             case .progress:
                 DispatchQueue.main.async {
                     MBProgressHUD.currentHUD?.progress = progress
@@ -133,13 +146,13 @@ final class ASCVersionHistoryViewModel: ObservableObject {
     }
 }
 
-//MARK: - private methods
+// MARK: - private methods
 
 private extension ASCVersionHistoryViewModel {
-    
     func mapToVersionViewModel(version: ASCFile, latestVersionNumber: Int) -> VersionViewModel {
         VersionViewModel(
             id: UUID(),
+            versionFile: version,
             versionNumber: version.version,
             dateDescription: version.updated ?? Date(),
             author: version.createdBy?.displayName ?? "",
@@ -152,6 +165,7 @@ private extension ASCVersionHistoryViewModel {
 
 struct VersionViewModel: Identifiable {
     var id: UUID
+    let versionFile: ASCFile
     let versionNumber: Int
     let dateDescription: Date
     let author: String

@@ -6,8 +6,8 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 struct TextFieldAlertSwiftUIModel {
     let title: String
@@ -19,11 +19,10 @@ struct TextFieldAlertSwiftUIModel {
 }
 
 struct TextFieldAlertSwiftUI: UIViewControllerRepresentable {
-    
     class Coordinator {
         var alert: UIAlertController?
     }
-    
+
     @Binding var isPresented: Bool
     let alert: TextFieldAlertSwiftUIModel
 

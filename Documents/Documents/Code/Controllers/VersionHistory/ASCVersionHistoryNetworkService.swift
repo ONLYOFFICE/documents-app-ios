@@ -12,13 +12,12 @@ protocol ASCVersionHistoryNetworkServiceProtocol {
     func restoreVersion(file: ASCFile, versionNumber: Int, completion: @escaping (Result<ASCFile, Error>) -> Void)
     func loadData(file: ASCFile, completion: @escaping (Result<[ASCFile], Error>) -> Void)
     func deleteVersion(file: ASCFile, versionNember: Int, handler: ASCEntityProgressHandler?)
-    func editComment(file: ASCFile, comment: String, versionNumber: Int,  completion:@escaping (Result<String, Error>) -> Void)
+    func editComment(file: ASCFile, comment: String, versionNumber: Int, completion: @escaping (Result<String, Error>) -> Void)
 }
 
 final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProtocol {
-    
     private var networkService = OnlyofficeApiClient.shared
-    
+
     func restoreVersion(file: ASCFile, versionNumber: Int, completion: @escaping (Result<ASCFile, Error>) -> Void) {
         let requestModel = ASCRestoreVersionRequestModel(lastversion: versionNumber)
         networkService.request(OnlyofficeAPI.Endpoints.Files.restoreFileVersion(file: file), requestModel.dictionary) { result, error in
@@ -33,10 +32,10 @@ final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProt
             completion(.success(version))
         }
     }
-    
-    func editComment(file: ASCFile, comment: String, versionNumber: Int,  completion:@escaping (Result<String, Error>) -> Void) {
+
+    func editComment(file: ASCFile, comment: String, versionNumber: Int, completion: @escaping (Result<String, Error>) -> Void) {
         let requestModel = ASCEditVersionCommentRequestModel(comment: comment, version: versionNumber)
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Files.editComment(file: file), requestModel.dictionary) { responce, error in
             guard let comment = responce?.result else {
                 if let error {
@@ -49,7 +48,7 @@ final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProt
             completion(.success(comment))
         }
     }
-    
+
     func loadData(file: ASCFile, completion: @escaping (Result<[ASCFile], Error>) -> Void) {
         networkService.request(OnlyofficeAPI.Endpoints.Files.getVersionHistory(file: file)) { result, error in
             guard let versions = result?.result else {
@@ -61,18 +60,17 @@ final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProt
                 return
             }
             completion(.success(versions))
-            
         }
     }
-    
+
     func deleteVersion(file: ASCFile, versionNember: Int, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         guard let fileId = Int(file.id) else { return }
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         let requestModel = ASCDeleteVersionRequestModel(fileId: fileId, versions: [versionNember])
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Operations.deleteVersion, requestModel.dictionary) { responce, error in
             if let error = error {
                 handler?(.error, 1, nil, error, &cancel)
@@ -83,7 +81,8 @@ final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProt
                         if let error = error {
                             handler?(.error, 1, nil, error, &cancel)
                         } else if let operation = result?.result?.first,
-                                  let progress = operation.progress {
+                                  let progress = operation.progress
+                        {
                             if progress >= 100 {
                                 handler?(.end, 1, nil, nil, &cancel)
                             } else {
@@ -93,7 +92,6 @@ final class ASCVersionHistoryNetworkService: ASCVersionHistoryNetworkServiceProt
                         } else {
                             handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
                         }
-                        
                     }
                 }
                 checkOperation?()

@@ -14,6 +14,8 @@ struct ASCFileSwiftUICellModel: Identifiable {
     let author: String
     let comment: String
     let icon: Image
+
+    var action: () -> Void
 }
 
 struct ASCFileSwiftUICell: View {
@@ -41,6 +43,9 @@ struct ASCFileSwiftUICell: View {
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
+        }
+        .onTapGesture {
+            model.action()
         }
     }
 }

@@ -6,10 +6,10 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Combine
-import UIKit
 import MBProgressHUD
+import SwiftUI
+import UIKit
 
 enum VersionAlertType: Identifiable {
     case restore(VersionViewModel)
@@ -17,64 +17,51 @@ enum VersionAlertType: Identifiable {
 
     var id: UUID {
         switch self {
-        case .restore(let version), .delete(let version):
+        case let .restore(version), let .delete(version):
             return version.id
         }
     }
 }
 
 struct ASCVersionHistoryView: View {
-    
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: ASCVersionHistoryViewModel
-    
+
     @State private var activeAlert: VersionAlertType?
     @State private var isShowingRestoreAlert = false
     @State private var versionToRestore: VersionViewModel?
     @State private var isShowingDeleteAlert = false
     @State private var versionToDelete: VersionViewModel?
-    
+
     @State private var showEditCommentAlert = false
     @State private var versionToEdit: VersionViewModel?
 
-    
     var body: some View {
         handleHUD()
-        
+
         return NavigationView {
             List {
                 ForEach(viewModel.versions) { version in
-                    Section(header: Text("Version \(version.versionNumber)")) {
-                        ASCFileSwiftUICell(model: ASCFileSwiftUICellModel(
-                            date: version.dateDescription,
-                            author: version.author,
-                            comment: version.comment,
-                            icon: Asset.Images.listFormatDocument.swiftUIImage)
-                        )
-                        .contextMenu {
-                            Button("Open", systemImage: "arrow.up.right.square") { }
-
-                            Button("Edit comment", systemImage: "text.bubble") {
-                                versionToEdit = version
-                                showEditCommentAlert = true
+                    ASCVersionRowView(
+                        version: version,
+                        icon: Asset.Images.listFormatDocument.swiftUIImage,
+                        onOpen: {
+                            let file = version.versionFile
+                            viewModel.openVersion(file: file) {
+                                presentationMode.wrappedValue.dismiss()
                             }
-
-                            if version.canRestore {
-                                Button("Restore", systemImage: "arrowshape.turn.up.right") {
-                                    activeAlert = .restore(version)
-                                }
-                            }
-
-                            Button("Download", systemImage: "square.and.arrow.down") {
-                            }
-
-                            if version.canDelete {
-                                Button("Delete", systemImage: "trash") {
-                                    activeAlert = .delete(version)
-                                }
-                            }
+                        },
+                        onEditComment: {
+                            versionToEdit = version
+                            showEditCommentAlert = true
+                        },
+                        onRestore: {
+                            activeAlert = .restore(version)
+                        },
+                        onDelete: {
+                            activeAlert = .delete(version)
                         }
-                    }
+                    )
                 }
             }
             .onAppear {
@@ -85,26 +72,32 @@ struct ASCVersionHistoryView: View {
                 versionHistoryTitle
                 versionHistoryToolbar
             }
-            .background(
-                TextFieldAlertSwiftUI(isPresented: $showEditCommentAlert, alert: TextFieldAlertSwiftUIModel(
-                    title: NSLocalizedString("Edit Comment", comment: ""),
-                    message: nil,
-                    placeholder: "",
-                    accept: NSLocalizedString("Save", comment: ""),
-                    cancel: NSLocalizedString("Cancel", comment: "")
-                ) { newText in
-                    if let newText = newText,
-                       let version = versionToEdit {
-                        viewModel.editComment(comment: newText, versionNumber: version.versionNumber)
-                    }
-                })
-                .allowsHitTesting(false)
-            )
+            .background(editCommentAlert)
         }
         .alert(item: $activeAlert, content: { alert(for: $0) })
     }
 
     // MARK: - View Components
+
+    private var editCommentAlert: some View {
+        TextFieldAlertSwiftUI(
+            isPresented: $showEditCommentAlert,
+            alert: TextFieldAlertSwiftUIModel(
+                title: .editComment,
+                message: nil,
+                placeholder: "",
+                accept: .save,
+                cancel: .cancel
+            ) { newText in
+                if let newText = newText,
+                   let version = versionToEdit
+                {
+                    viewModel.editComment(comment: newText, versionNumber: version.versionNumber)
+                }
+            }
+        )
+        .allowsHitTesting(false)
+    }
 
     private var versionHistoryTitle: some ToolbarContent {
         ToolbarItem(placement: .principal) {
@@ -125,24 +118,24 @@ struct ASCVersionHistoryView: View {
             }
         }
     }
-    
+
     private func alert(for type: VersionAlertType) -> Alert {
         switch type {
         case let .restore(version):
             return Alert(
-                title: Text("Restore this version?"),
-                message: Text("Current file will be saved in version history."),
-                primaryButton: .default(Text("Restore")) {
+                title: .restoreVersion,
+                message: .restoreVersionAlert,
+                primaryButton: .default(.restore) {
                     viewModel.restoreVersion(version: version)
                 },
                 secondaryButton: .cancel()
             )
-            
+
         case let .delete(version):
             return Alert(
-                title: Text("Delete version"),
-                message: Text("You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?"),
-                primaryButton: .destructive(Text("Delete")) {
+                title: .deleteVersion,
+                message: .deleteVersionAlert,
+                primaryButton: .destructive(.delete) {
                     viewModel.deleteVersion(version: version)
                 },
                 secondaryButton: .cancel()
@@ -150,7 +143,6 @@ struct ASCVersionHistoryView: View {
         }
     }
 
-    
     private func handleHUD() {
         if viewModel.isActivityIndicatorVisible {
             MBProgressHUD.showTopMost(mode: .annularDeterminate)
@@ -171,4 +163,67 @@ struct ASCVersionHistoryView: View {
             }
         }
     }
+}
+
+struct ASCVersionRowView: View {
+    let version: VersionViewModel
+    let icon: Image
+    let onOpen: () -> Void
+    let onEditComment: () -> Void
+    let onRestore: () -> Void
+    let onDelete: () -> Void
+
+    var body: some View {
+        Section(header: Text("Version \(version.versionNumber)")) {
+            ASCFileSwiftUICell(model: ASCFileSwiftUICellModel(
+                date: version.dateDescription,
+                author: version.author,
+                comment: version.comment,
+                icon: icon,
+                action: {
+                    onOpen()
+                }
+            ))
+            .contextMenu {
+                Button("Open", systemImage: "arrow.up.right.square") {
+                    onOpen()
+                }
+
+                Button("Edit comment", systemImage: "text.bubble") {
+                    onEditComment()
+                }
+
+                if version.canRestore {
+                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                        onRestore()
+                    }
+                }
+
+                Button("Download", systemImage: "square.and.arrow.down") {
+                    
+                }
+
+                if version.canDelete {
+                    Button("Delete", systemImage: "trash") {
+                        onDelete()
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension Text {
+    static let deleteVersion = Text("Delete version")
+    static let deleteVersionAlert = Text("You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?")
+    static let restoreVersion = Text("Restore this version?")
+    static let restoreVersionAlert = Text("Current file will be saved in version history.")
+    static let restore = Text("Restore")
+    static let delete = Text("Delete")
+}
+
+extension String {
+    static let editComment = NSLocalizedString("Edit Comment", comment: "")
+    static let save = NSLocalizedString("Save", comment: "")
+    static let cancel = NSLocalizedString("Cancel", comment: "")
 }

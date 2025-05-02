@@ -2028,7 +2028,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             downloadFolder(cell: cell, folder: folder)
         }
     }
-    
+
     func downloadFile(cell: UICollectionViewCell) {
         guard
             let fileCell = cell as? ASCFileViewCell,
@@ -2043,9 +2043,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
         downloadFile(file: file, provider: provider)
     }
-    
-    func downloadFile(file: ASCFile, provider: ASCFileProviderProtocol) {
 
+    func downloadFile(file: ASCFile, provider: ASCFileProviderProtocol) {
         var forceCancel = false
         let openingAlert = ASCProgressAlert(
             title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...",
@@ -2200,7 +2199,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             file: file,
             networkService: versionHistoryNetworkService
         ) { [weak self] version in
-             self?.open(file: version, openMode: .view)
+            self?.open(file: version, openMode: .view)
         } download: { [weak self] versionFile in
             guard let self,
                   let provider else { return }

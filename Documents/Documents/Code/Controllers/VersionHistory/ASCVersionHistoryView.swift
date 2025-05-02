@@ -72,7 +72,7 @@ struct ASCVersionHistoryView: View {
     }
 
     // MARK: - View Components
-    
+
     private var editCommentAlert: some View {
         TextFieldAlertSwiftUI(
             isPresented: $viewModel.screenModel.showEditCommentAlert,

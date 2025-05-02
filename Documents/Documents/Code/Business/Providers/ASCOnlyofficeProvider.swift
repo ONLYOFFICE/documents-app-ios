@@ -1486,7 +1486,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomsCategory, isDocspace, file.security.copyLink {
                 entityActions.insert(.copySharedLink)
             }
-            
+
             if canShowVersion {
                 entityActions.insert(.showVersionsHistory)
             }

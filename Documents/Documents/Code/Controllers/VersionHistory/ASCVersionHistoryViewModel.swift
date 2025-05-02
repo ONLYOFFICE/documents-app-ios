@@ -11,7 +11,6 @@ import MBProgressHUD
 import SwiftUI
 
 final class ASCVersionHistoryViewModel: ObservableObject {
-    
     @Published var screenModel = ASCVersionHistoryScreenModel()
     @Published var versions: [VersionViewModel] = []
     @Published var isActivityIndicatorVisible = false
@@ -39,13 +38,13 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         self.file = file
         self.networkService = networkService
         openFile = completion
-        self.downloadFile = download
+        downloadFile = download
     }
-    
+
     func onAppear() {
         fetchVersions()
     }
-    
+
     func triggerRestoreAlert(for version: VersionViewModel) {
         screenModel.activeAlert = .restore(version)
     }
@@ -58,7 +57,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         screenModel.versionToEdit = version
         screenModel.showEditCommentAlert = true
     }
-    
+
     func triggerOpenVersion(_ version: VersionViewModel, dismiss: @escaping () -> Void) {
         let file = version.versionFile
         openVersion(file: file, dismiss: dismiss)
@@ -172,17 +171,17 @@ private extension ASCVersionHistoryViewModel {
             canDelete: version.version < latestVersionNumber
         )
     }
-    
+
     func openVersion(file: ASCFile, dismiss: @escaping () -> Void) {
         dismiss()
-        self.openFile(file)
+        openFile(file)
     }
-    
+
     func downloadVersion(file: ASCFile, dismiss: @escaping () -> Void) {
         dismiss()
-        self.downloadFile(file)
+        downloadFile(file)
     }
-    
+
     func fetchVersions() {
         networkService.loadData(file: file) { result in
             switch result {

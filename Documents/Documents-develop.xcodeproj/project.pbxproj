@@ -111,6 +111,7 @@
 		FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */; };
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC142A9828992D4F00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */; };
+		FC17218E2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1829052A24E9A0005D9220 /* AppThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1829032A24E9A0005D9220 /* AppThemeService.swift */; };
 		FC1829062A24E9A0005D9220 /* ASCAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1829042A24E9A0005D9220 /* ASCAppSettings.swift */; };
@@ -883,6 +884,7 @@
 		FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPaddingLabel.swift; sourceTree = "<group>"; };
+		FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryScreenModel.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1829032A24E9A0005D9220 /* AppThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppThemeService.swift; sourceTree = "<group>"; };
 		FC1829042A24E9A0005D9220 /* ASCAppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppSettings.swift; sourceTree = "<group>"; };
@@ -1692,6 +1694,7 @@
 			children = (
 				F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */,
 				F3FB7AF12DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift */,
+				FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */,
 				F3FB7AF22DC0BBF800FA318A /* ASCVersionHistoryView.swift */,
 				F3FB7AF32DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift */,
 			);
@@ -4605,6 +4608,7 @@
 				FCE2B4242930CCA700E50429 /* ASCPaymentQuota.swift in Sources */,
 				FC308D9B283E2FDA00FFE16E /* ASCNotificationSettingsViewController.swift in Sources */,
 				FC759B612C00608600510096 /* UserListNetworkService.swift in Sources */,
+				FC17218E2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift in Sources */,
 				FC83D5312A973E2100C404CB /* UIStoryboard+Extensions.swift in Sources */,
 				FC5943202AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,

@@ -129,6 +129,7 @@
 		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
 		F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
 		F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
+		F381BE602DC2424000652E65 /* ASCVersionHistoryScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F381BE5F2DC2423E00652E65 /* ASCVersionHistoryScreenModel.swift */; };
 		F391DE5D280964AF00C93648 /* ASCUserTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */; };
 		F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
 		F39306A52C74ECBC0034691F /* OnlyofficeRoomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */; };
@@ -146,6 +147,15 @@
 		F3DA8957280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */; };
 		F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */; };
 		F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */; };
+		F3F706F82DB6EFA20004A09F /* ASCVersionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */; };
+		F3F706FA2DB6EFB80004A09F /* ASCVersionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */; };
+		F3F706FC2DB7E1F30004A09F /* ASCVersionHistoryRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */; };
+		F3F706FE2DB837720004A09F /* ASCFileSwiftUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */; };
+		F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */; };
+		F3F707022DB8F6C40004A09F /* ASCRestoreVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */; };
+		F3F707042DB9199C0004A09F /* ASCDeleteVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */; };
+		F3F707082DB9831F0004A09F /* TextFieldAlertSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707072DB9831D0004A09F /* TextFieldAlertSwiftUI.swift */; };
+		F3F7070A2DB986B00004A09F /* ASCEditVersionCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F707092DB9869B0004A09F /* ASCEditVersionCommentRequestModel.swift */; };
 		FC0377A42BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A32BDB8DB700DDB2EF /* DocumentServerVersionRequest.swift */; };
 		FC0377A62BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0377A52BDB8DD700DDB2EF /* DocumentServerVersionResponse.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -792,6 +802,7 @@
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
+		F381BE5F2DC2423E00652E65 /* ASCVersionHistoryScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryScreenModel.swift; sourceTree = "<group>"; };
 		F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserViewController.swift; sourceTree = "<group>"; };
 		F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomOperation.swift; sourceTree = "<group>"; };
@@ -809,6 +820,15 @@
 		F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGroupTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectGroupViewController.swift; sourceTree = "<group>"; };
 		F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalFilterController.swift; sourceTree = "<group>"; };
+		F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryView.swift; sourceTree = "<group>"; };
+		F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryViewModel.swift; sourceTree = "<group>"; };
+		F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryRootViewController.swift; sourceTree = "<group>"; };
+		F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileSwiftUICell.swift; sourceTree = "<group>"; };
+		F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
+		F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRestoreVersionRequestModel.swift; sourceTree = "<group>"; };
+		F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeleteVersionRequestModel.swift; sourceTree = "<group>"; };
+		F3F707072DB9831D0004A09F /* TextFieldAlertSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertSwiftUI.swift; sourceTree = "<group>"; };
+		F3F707092DB9869B0004A09F /* ASCEditVersionCommentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEditVersionCommentRequestModel.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC029A3C27BCF8E800E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2100,6 +2120,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F3F706F62DB6E8D10004A09F /* VersionHistory */ = {
+			isa = PBXGroup;
+			children = (
+				F381BE5F2DC2423E00652E65 /* ASCVersionHistoryScreenModel.swift */,
+				F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */,
+				F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */,
+				F3F706F92DB6EFAC0004A09F /* ASCVersionHistoryViewModel.swift */,
+				F3F706F72DB6E8FD0004A09F /* ASCVersionHistoryView.swift */,
+			);
+			path = VersionHistory;
+			sourceTree = "<group>";
+		};
 		FC0377A12BDB8D6500DDB2EF /* DocumentServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2342,6 +2374,7 @@
 		FC31B2881E76C168008699C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F3F706F62DB6E8D10004A09F /* VersionHistory */,
 				FC759C242C00614D00510096 /* Rooms */,
 				F3B17C0927F4ADE30021E03A /* Filters */,
 				FC1EA5C91ECECB77008FEE2E /* Common */,
@@ -3205,6 +3238,9 @@
 		FC9EEF902BFB201700A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3F707092DB9869B0004A09F /* ASCEditVersionCommentRequestModel.swift */,
+				F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */,
+				F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */,
 				E87F75F82D445B090062A21C /* PeopleGuestsRequestModel.swift */,
 				E87F75F92D445B090062A21C /* SharePasswordRequestModel.swift */,
 				E801C98F2D36904C00E9939A /* FilesOrderRequesModel.swift */,
@@ -3617,6 +3653,8 @@
 		FCE9F6DA2B2B56A30056E420 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				F3F707072DB9831D0004A09F /* TextFieldAlertSwiftUI.swift */,
+				F3F706FD2DB837670004A09F /* ASCFileSwiftUICell.swift */,
 				E8CD61FE2D107F2600DF3440 /* ToggleButtonCollectionView.swift */,
 				E8CD61FF2D107F2600DF3440 /* ToggleButtonView.swift */,
 				FCE9F6DC2B2B56A30056E420 /* Representable */,
@@ -4334,6 +4372,7 @@
 			files = (
 				FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */,
 				1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
+				F3F707082DB9831F0004A09F /* TextFieldAlertSwiftUI.swift in Sources */,
 				FC7E456F29226A35006C4CA1 /* ASCDeepLink.swift in Sources */,
 				FC25B46A285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift in Sources */,
 				FC7B80202AFA299D00C22C71 /* ASCPhoneCountryCode.swift in Sources */,
@@ -4415,6 +4454,7 @@
 				FC35D4562A987DFC00C6383F /* URL+Extensions.swift in Sources */,
 				FC25B453284F67F70075D6C2 /* ASCSettingsNotificationCell.swift in Sources */,
 				FC41D80A2265DA5E00A155C2 /* ASCFolderType.swift in Sources */,
+				F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */,
 				FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */,
 				FC759C2C2C00614D00510096 /* CreateRoomRouteViewViewController.swift in Sources */,
 				FCF695902632E3D500808644 /* UIButton+Style.swift in Sources */,
@@ -4435,6 +4475,7 @@
 				FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */,
 				FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */,
 				FC7DD8B62B5556AD0037405B /* ActivityView.swift in Sources */,
+				F381BE602DC2424000652E65 /* ASCVersionHistoryScreenModel.swift in Sources */,
 				FCC552B41EC2F96600F645EE /* ASCPhoneNumberViewController.swift in Sources */,
 				FC35D44A2A987DFB00C6383F /* UISplitViewController+Extensions.swift in Sources */,
 				FCF8472A22CB3E1800ABC3B4 /* ASCConnectStorageCell.swift in Sources */,
@@ -4516,6 +4557,7 @@
 				FC35D4672A987DFC00C6383F /* Data+Extension.swift in Sources */,
 				E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */,
 				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
+				F3F706FC2DB7E1F30004A09F /* ASCVersionHistoryRootViewController.swift in Sources */,
 				FC9EEFAF2BFB201700A66DE8 /* OnlyofficeResponse.swift in Sources */,
 				FC35D4542A987DFC00C6383F /* UIBarButtonItem+Extensions.swift in Sources */,
 				FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */,
@@ -4524,6 +4566,7 @@
 				1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */,
 				FC759C2F2C00614D00510096 /* InviteUsersService.swift in Sources */,
 				FC759CCE2C00615E00510096 /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
+				F3F706FE2DB837720004A09F /* ASCFileSwiftUICell.swift in Sources */,
 				FC759CA32C00615E00510096 /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				FC759CC22C00615E00510096 /* ASCSharingOptionsModels.swift in Sources */,
 				FC1828F32A24E606005D9220 /* ASCAppSettings.swift in Sources */,
@@ -4550,6 +4593,7 @@
 				FC759CC62C00615E00510096 /* ASCSharingView.swift in Sources */,
 				FCCE50B22C1AF79000102056 /* ASCDetailedChevronUpDownCellView.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
+				F3F707042DB9199C0004A09F /* ASCDeleteVersionRequestModel.swift in Sources */,
 				FC759CAE2C00615E00510096 /* ASCSwitchRowViewModel.swift in Sources */,
 				FC68527D26837B7300D830EC /* OnlyofficeApplicationType.swift in Sources */,
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
@@ -4644,6 +4688,7 @@
 				FC7E456729226A35006C4CA1 /* ASCCategory.swift in Sources */,
 				E801C9922D36E0BA00E9939A /* ASCDocumentsViewController+NavBar.swift in Sources */,
 				FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
+				F3F707022DB8F6C40004A09F /* ASCRestoreVersionRequestModel.swift in Sources */,
 				FC68529726837B7300D830EC /* DropboxEndpoints.swift in Sources */,
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
 				FCCE50B12C1AF79000102056 /* ASCCreateLinkCellView.swift in Sources */,
@@ -4772,6 +4817,7 @@
 				1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FC407FBC2191DC76009089EB /* ASCConnectCloudViewController.swift in Sources */,
 				FC5943622AE6816E001BA2F9 /* ASCEditorManager+SpreadsheetEditor.swift in Sources */,
+				F3F7070A2DB986B00004A09F /* ASCEditVersionCommentRequestModel.swift in Sources */,
 				FC35D45C2A987DFC00C6383F /* Encodable+Extensions.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
@@ -4808,6 +4854,7 @@
 				FC7DC88A285F631100E61C69 /* ASCDropboxSDKWrapper.swift in Sources */,
 				FC35D4582A987DFC00C6383F /* MBProgressHUD+Extension.swift in Sources */,
 				1D1A2E322660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
+				F3F706F82DB6EFA20004A09F /* ASCVersionHistoryView.swift in Sources */,
 				FC7F786B236ACBB00026E260 /* ASCConnectStorageGoogleController.swift in Sources */,
 				1D76B04B275B921100389C61 /* ASCEntityExistenceChecker.swift in Sources */,
 				E801C9962D36E1B200E9939A /* ASCDetailedImageChevronUpDownCellView.swift in Sources */,
@@ -4867,6 +4914,7 @@
 				FCCE50AD2C1AF79000102056 /* EditSharedLinkView.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC759C392C00614D00510096 /* RoomUsersAccessNetworkService.swift in Sources */,
+				F3F706FA2DB6EFB80004A09F /* ASCVersionHistoryViewModel.swift in Sources */,
 				FCE9F6E52B2B56A30056E420 /* MenuView.swift in Sources */,
 				FCE1864A2628CFE70086D21B /* Assets.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,

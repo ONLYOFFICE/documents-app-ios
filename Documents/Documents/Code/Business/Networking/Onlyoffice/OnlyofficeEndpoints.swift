@@ -83,6 +83,9 @@ enum OnlyofficeAPI {
         public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
+        public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
+        public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
+        public static let editComment = "api/\(version)/files/file/%@/comment"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -345,6 +348,18 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseType<Parameters>>.make(String(format: Path.trackEdit, file.id), .get, URLEncoding.default)
             }
 
+            static func getVersionHistory(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<ASCFile>> {
+                return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
+            }
+
+            static func restoreFileVersion(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            }
+
+            static func editComment(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.editComment, file.id), .put)
+            }
+
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
             static let removeFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .delete)
             static let order: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.filesOrder, .put)
@@ -401,6 +416,7 @@ enum OnlyofficeAPI {
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
             static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
+            static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
         }
 
         // MARK: Third-Party Integration

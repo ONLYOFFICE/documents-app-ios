@@ -82,6 +82,15 @@
 		F3772FD52C9DEBC1002B33A8 /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */; };
 		F3772FD72C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FD62C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift */; };
 		F3772FD92C9DED02002B33A8 /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FD82C9DED02002B33A8 /* RoomDuplicateRequestModel.swift */; };
+		F3FB7AF52DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */; };
+		F3FB7AF62DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF32DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift */; };
+		F3FB7AF72DC0BBF800FA318A /* ASCVersionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF22DC0BBF800FA318A /* ASCVersionHistoryView.swift */; };
+		F3FB7AF82DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF12DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift */; };
+		F3FB7AFC2DC0BC5900FA318A /* ASCRestoreVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AFB2DC0BC5900FA318A /* ASCRestoreVersionRequestModel.swift */; };
+		F3FB7AFD2DC0BC5900FA318A /* ASCDeleteVersionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF92DC0BC5900FA318A /* ASCDeleteVersionRequestModel.swift */; };
+		F3FB7AFE2DC0BC5900FA318A /* ASCEditVersionCommentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AFA2DC0BC5900FA318A /* ASCEditVersionCommentRequestModel.swift */; };
+		F3FB7B012DC0BCBC00FA318A /* ASCFileSwiftUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AFF2DC0BCBC00FA318A /* ASCFileSwiftUICell.swift */; };
+		F3FB7B022DC0BCBC00FA318A /* TextFieldAlertSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7B002DC0BCBC00FA318A /* TextFieldAlertSwiftUI.swift */; };
 		FC00CC002C4664DD00D3344D /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBFF2C4664DD00D3344D /* ASCThirdpartySelectFolderProvider.swift */; };
 		FC00CC022C4664EA00D3344D /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CC012C4664EA00D3344D /* ASCTransferViewControllerRepresentable.swift */; };
 		FC00CC042C4665CA00D3344D /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CC032C4665CA00D3344D /* ChevronRightView.swift */; };
@@ -102,6 +111,7 @@
 		FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */; };
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC142A9828992D4F00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */; };
+		FC17218E2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1829052A24E9A0005D9220 /* AppThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1829032A24E9A0005D9220 /* AppThemeService.swift */; };
 		FC1829062A24E9A0005D9220 /* ASCAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1829042A24E9A0005D9220 /* ASCAppSettings.swift */; };
@@ -844,6 +854,15 @@
 		F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
 		F3772FD62C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomOperation.swift; sourceTree = "<group>"; };
 		F3772FD82C9DED02002B33A8 /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
+		F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
+		F3FB7AF12DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryRootViewController.swift; sourceTree = "<group>"; };
+		F3FB7AF22DC0BBF800FA318A /* ASCVersionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryView.swift; sourceTree = "<group>"; };
+		F3FB7AF32DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryViewModel.swift; sourceTree = "<group>"; };
+		F3FB7AF92DC0BC5900FA318A /* ASCDeleteVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeleteVersionRequestModel.swift; sourceTree = "<group>"; };
+		F3FB7AFA2DC0BC5900FA318A /* ASCEditVersionCommentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEditVersionCommentRequestModel.swift; sourceTree = "<group>"; };
+		F3FB7AFB2DC0BC5900FA318A /* ASCRestoreVersionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRestoreVersionRequestModel.swift; sourceTree = "<group>"; };
+		F3FB7AFF2DC0BCBC00FA318A /* ASCFileSwiftUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileSwiftUICell.swift; sourceTree = "<group>"; };
+		F3FB7B002DC0BCBC00FA318A /* TextFieldAlertSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertSwiftUI.swift; sourceTree = "<group>"; };
 		FC00CBFF2C4664DD00D3344D /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
 		FC00CC012C4664EA00D3344D /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		FC00CC032C4665CA00D3344D /* ChevronRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
@@ -865,6 +884,7 @@
 		FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPaddingLabel.swift; sourceTree = "<group>"; };
+		FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryScreenModel.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1829032A24E9A0005D9220 /* AppThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppThemeService.swift; sourceTree = "<group>"; };
 		FC1829042A24E9A0005D9220 /* ASCAppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppSettings.swift; sourceTree = "<group>"; };
@@ -1565,6 +1585,8 @@
 		E8674B6B2B2B15C100CDA5DC /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				F3FB7AFF2DC0BCBC00FA318A /* ASCFileSwiftUICell.swift */,
+				F3FB7B002DC0BCBC00FA318A /* TextFieldAlertSwiftUI.swift */,
 				E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */,
 				E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */,
 				E8674B6D2B2B15C100CDA5DC /* Representable */,
@@ -1665,6 +1687,18 @@
 				F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */,
 			);
 			path = FormCompletedFlow;
+			sourceTree = "<group>";
+		};
+		F3FB7AF42DC0BBF800FA318A /* VersionHistory */ = {
+			isa = PBXGroup;
+			children = (
+				F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */,
+				F3FB7AF12DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift */,
+				FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */,
+				F3FB7AF22DC0BBF800FA318A /* ASCVersionHistoryView.swift */,
+				F3FB7AF32DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift */,
+			);
+			path = VersionHistory;
 			sourceTree = "<group>";
 		};
 		FC0299FF27B6436A00E5341B /* WebKit */ = {
@@ -1941,6 +1975,7 @@
 		FC31B2881E76C168008699C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F3FB7AF42DC0BBF800FA318A /* VersionHistory */,
 				FC759B452C00608600510096 /* Rooms */,
 				FC1EA5C91ECECB77008FEE2E /* Common */,
 				FC844391215E604000526974 /* Root */,
@@ -3030,6 +3065,9 @@
 		FC9EF00F2BFB208800A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3FB7AF92DC0BC5900FA318A /* ASCDeleteVersionRequestModel.swift */,
+				F3FB7AFA2DC0BC5900FA318A /* ASCEditVersionCommentRequestModel.swift */,
+				F3FB7AFB2DC0BC5900FA318A /* ASCRestoreVersionRequestModel.swift */,
 				E8D2DFE32D445E2200F26718 /* PeopleGuestsRequestModel.swift */,
 				E8D2DFE42D445E2200F26718 /* SharePasswordRequestModel.swift */,
 				E801C99F2D36E3EF00E9939A /* FilesOrderRequesModel.swift */,
@@ -4333,6 +4371,10 @@
 				E8D0896E2D39E6E800890C64 /* TopBannerViewModelDelegate.swift in Sources */,
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,
 				FC59AB682B761EC200F4336A /* DocumentConverterErrorProtocol.swift in Sources */,
+				F3FB7AF52DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift in Sources */,
+				F3FB7AF62DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift in Sources */,
+				F3FB7AF72DC0BBF800FA318A /* ASCVersionHistoryView.swift in Sources */,
+				F3FB7AF82DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift in Sources */,
 				FC9EF0312BFB208800A66DE8 /* OnlyofficeVersion.swift in Sources */,
 				FC83D5402A973E2100C404CB /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */,
@@ -4355,6 +4397,9 @@
 				FC759B652C00608600510096 /* ChevronUpDownView.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
 				FC9F497127F5D0D100D88936 /* ASCMicrosoftSignInController.swift in Sources */,
+				F3FB7AFC2DC0BC5900FA318A /* ASCRestoreVersionRequestModel.swift in Sources */,
+				F3FB7AFD2DC0BC5900FA318A /* ASCDeleteVersionRequestModel.swift in Sources */,
+				F3FB7AFE2DC0BC5900FA318A /* ASCEditVersionCommentRequestModel.swift in Sources */,
 				FC83D53E2A973E2100C404CB /* Path+Extension.swift in Sources */,
 				FC759B5D2C00608600510096 /* RoomSharingRootViewController.swift in Sources */,
 				0FA5C7A02B03B98300380510 /* ASCFolderLogo.swift in Sources */,
@@ -4551,6 +4596,8 @@
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */,
 				FCB4CE3029F93B04009C1E2E /* ASCEditorManager+DocumentEditor.swift in Sources */,
+				F3FB7B012DC0BCBC00FA318A /* ASCFileSwiftUICell.swift in Sources */,
+				F3FB7B022DC0BCBC00FA318A /* TextFieldAlertSwiftUI.swift in Sources */,
 				FC5942122AE65E36001BA2F9 /* ASCEditorManagerOptions.swift in Sources */,
 				FCC3964B1ECDD9A10016BB10 /* ASCUserProfileViewController.swift in Sources */,
 				FCA4649629435CA100EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
@@ -4561,6 +4608,7 @@
 				FCE2B4242930CCA700E50429 /* ASCPaymentQuota.swift in Sources */,
 				FC308D9B283E2FDA00FFE16E /* ASCNotificationSettingsViewController.swift in Sources */,
 				FC759B612C00608600510096 /* UserListNetworkService.swift in Sources */,
+				FC17218E2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift in Sources */,
 				FC83D5312A973E2100C404CB /* UIStoryboard+Extensions.swift in Sources */,
 				FC5943202AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
@@ -4975,6 +5023,7 @@
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
+				DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
@@ -5037,6 +5086,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -5048,6 +5098,7 @@
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
+				DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
@@ -5108,6 +5159,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};

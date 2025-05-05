@@ -1390,6 +1390,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isTrash = file.rootFolderType == .onlyofficeTrash
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+            let canShowVersion = file.version > 1
 
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
@@ -1484,6 +1485,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if isRoomsCategory, isDocspace, file.security.copyLink {
                 entityActions.insert(.copySharedLink)
+            }
+
+            if canShowVersion {
+                entityActions.insert(.showVersionsHistory)
             }
         }
 

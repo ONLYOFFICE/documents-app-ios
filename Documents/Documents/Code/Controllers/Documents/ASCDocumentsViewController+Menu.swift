@@ -78,6 +78,18 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Show versions history
+
+        if actions.contains(.showVersionsHistory) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    image: UIImage(systemName: "clock.arrow.circlepath")
+                ) { [unowned self] action in
+                    self.showVersionsHistory(file: file)
+                })
+        }
+
         ///  Copy shared link action
 
         if actions.contains(.copySharedLink) {
@@ -932,6 +944,17 @@ extension ASCDocumentsViewController {
                     }
                 )
             )
+        }
+
+        if actions.contains(.showVersionsHistory) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        self.showVersionsHistory(file: file)
+                    }
+                ))
         }
 
         if actions.contains(.rename) {

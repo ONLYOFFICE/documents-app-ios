@@ -2041,7 +2041,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             )
             return
         }
+        downloadFile(file: file, provider: provider)
+    }
 
+    func downloadFile(file: ASCFile, provider: ASCFileProviderProtocol) {
         var forceCancel = false
         let openingAlert = ASCProgressAlert(
             title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...",
@@ -2188,6 +2191,28 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 handleResult(result.map { $0.sharedTo.shareLink })
             }
         }
+    }
+
+    func showVersionsHistory(file: ASCFile) {
+        let versionHistoryNetworkService = ASCVersionHistoryNetworkService()
+        let controller = ASCVersionHistoryRootViewController(
+            file: file,
+            networkService: versionHistoryNetworkService
+        ) { [weak self] version in
+            self?.open(file: version, openMode: .view)
+        } download: { [weak self] versionFile in
+            guard let self,
+                  let provider else { return }
+            self.downloadFile(file: versionFile, provider: provider)
+        }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            controller.modalPresentationStyle = .formSheet
+        } else {
+            controller.modalPresentationStyle = .popover
+        }
+
+        present(controller, animated: true)
     }
 
     func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {

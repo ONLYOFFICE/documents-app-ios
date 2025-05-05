@@ -198,7 +198,9 @@ class ASCEditorManager: NSObject {
 
     private func fetchDocumentInfo(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit) async -> Result<OnlyofficeDocumentConfig, Error> {
         await withCheckedContinuation { continuation in
-            var params: [String: Any] = [:]
+            var params: [String: Any] = [
+                "version": file.version,
+            ]
 
             let key: String? = {
                 switch openMode {
@@ -240,7 +242,9 @@ class ASCEditorManager: NSObject {
     }
 
     private func fetchDocumentInfoLegacy(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit, complation: @escaping (Result<OnlyofficeDocumentConfig, Error>) -> Void) {
-        var params: [String: Any] = [:]
+        var params: [String: Any] = [
+            "version": file.version,
+        ]
 
         let key: String? = {
             switch openMode {

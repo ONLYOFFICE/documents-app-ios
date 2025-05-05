@@ -568,7 +568,18 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         handler?(.begin, 0, nil, nil, &cancel)
 
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
+        var downloadUrlString = file.viewUrl ?? ""
+
+        if file.version > 0 {
+            if var components = URLComponents(string: downloadUrlString) {
+                var queryItems = components.queryItems ?? []
+                queryItems.append(URLQueryItem(name: "version", value: String(file.version)))
+                components.queryItems = queryItems
+                downloadUrlString = components.url?.absoluteString ?? ""
+            }
+        }
+
+        provider.download(downloadUrlString, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
             if cancel {
                 handler?(.end, 1, nil, nil, &cancel)
                 return

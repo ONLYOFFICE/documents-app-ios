@@ -697,6 +697,10 @@ class ASCViewControllerManager {
         client.configure(url: portal)
         client.headers.add(name: "Request-Token", value: requestToken)
 
+        if let authorization = OnlyofficeApiClient.shared.token, OnlyofficeApiClient.shared.baseURL?.absoluteString.contains(portal) ?? false {
+            client.headers.add(.authorization(bearerToken: authorization))
+        }
+
         let onlyofficeProvider = ASCOnlyofficeProvider(apiClient: OnlyofficeApiClient(apiClient: client))
         onlyofficeProvider.open(file: file, openMode: isPdf ? .fillform : .edit, canEdit: onlyofficeProvider.allowEdit(entity: file))
     }

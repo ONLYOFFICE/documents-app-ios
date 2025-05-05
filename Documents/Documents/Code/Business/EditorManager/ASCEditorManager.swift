@@ -198,9 +198,7 @@ class ASCEditorManager: NSObject {
 
     private func fetchDocumentInfo(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit) async -> Result<OnlyofficeDocumentConfig, Error> {
         await withCheckedContinuation { continuation in
-            var params: [String: Any] = [
-                "version": file.version,
-            ]
+            var params: [String: Any] = [:]
 
             let openModeKey: String? = {
                 switch openMode {
@@ -213,6 +211,10 @@ class ASCEditorManager: NSObject {
 
             if let openModeKey {
                 params[openModeKey] = "true"
+            }
+
+            if file.version > 0 {
+                params["version"] = file.version
             }
 
             clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
@@ -242,9 +244,7 @@ class ASCEditorManager: NSObject {
     }
 
     private func fetchDocumentInfoLegacy(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit, complation: @escaping (Result<OnlyofficeDocumentConfig, Error>) -> Void) {
-        var params: [String: Any] = [
-            "version": file.version,
-        ]
+        var params: [String: Any] = [:]
 
         let openModeKey: String? = {
             switch openMode {
@@ -257,6 +257,10 @@ class ASCEditorManager: NSObject {
 
         if let openModeKey {
             params[openModeKey] = "true"
+        }
+
+        if file.version > 0 {
+            params["version"] = file.version
         }
 
         clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in

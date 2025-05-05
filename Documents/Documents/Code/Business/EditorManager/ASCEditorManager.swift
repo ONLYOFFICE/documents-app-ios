@@ -202,7 +202,7 @@ class ASCEditorManager: NSObject {
                 "version": file.version,
             ]
 
-            let key: String? = {
+            let openModeKey: String? = {
                 switch openMode {
                 case .edit: return "edit"
                 case .view: return "view"
@@ -211,8 +211,8 @@ class ASCEditorManager: NSObject {
                 }
             }()
 
-            if let key {
-                params[key] = "true"
+            if let openModeKey {
+                params[openModeKey] = "true"
             }
 
             clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
@@ -246,7 +246,7 @@ class ASCEditorManager: NSObject {
             "version": file.version,
         ]
 
-        let key: String? = {
+        let openModeKey: String? = {
             switch openMode {
             case .edit: return "edit"
             case .view: return "view"
@@ -255,8 +255,8 @@ class ASCEditorManager: NSObject {
             }
         }()
 
-        if let key {
-            params[key] = "true"
+        if let openModeKey {
+            params[openModeKey] = "true"
         }
 
         clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in

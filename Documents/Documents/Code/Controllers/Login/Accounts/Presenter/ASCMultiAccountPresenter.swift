@@ -61,14 +61,32 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
     }
 
     func deleteFromDevice(account: ASCAccount?, completion: () -> Void) {
-        guard let account = account else { return }
+        guard let account else { return }
 
-        let currentAccount = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "")
+        let currentAccount = ASCAccountsManager.shared.get(
+            by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "",
+            email: ASCFileManager.onlyofficeProvider?.user?.email ?? ""
+        )
 
-        if account.email == currentAccount?.email, account.portal == currentAccount?.portal {
+        if
+            account.email == currentAccount?.email,
+            account.portal == currentAccount?.portal
+        {
             logout()
+        } else {
+            // Request unubscribe of push
+            
+            let client = NetworkingClient()
+            client.configure(url: account.portal ?? "")
+            client.headers.add(.authorization(bearerToken: account.token ?? ""))
+            
+            let onlyofficeApiClient = OnlyofficeApiClient(apiClient: client)
+            
+            ASCPushNotificationManager.requestClearRegister(apiClient: onlyofficeApiClient)
         }
+        
         ASCAccountsManager.shared.remove(account)
+        
         render()
     }
 

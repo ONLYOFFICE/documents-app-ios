@@ -41,24 +41,24 @@ enum ASCPushNotificationManager {
         }
     }
 
-    static func requestClearRegister(fcmToken: String? = nil) {
-        if let fcmToken = fcmToken {
+    static func requestClearRegister(apiClient: OnlyofficeApiClient? = nil, fcmToken: String? = nil) {
+        if let fcmToken {
             UserDefaults.standard.set(fcmToken, forKey: ASCConstants.SettingsKeys.pushFCMToken)
         }
 
-        guard
-            let fcmToken = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.pushFCMToken)
-        else { return }
-
-        if OnlyofficeApiClient.shared.active {
-            let params = ASCPushSubscribed()
-            params.firebaseDeviceToken = fcmToken
-            params.isSubscribed = false
-
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Push.pushSubscribe, params.toJSON()) { response, error in
-                if let error = error {
-                    log.error(error)
-                }
+        let endpoint = OnlyofficeAPI.Endpoints.Push.pushSubscribe
+        let apiClient = apiClient ?? OnlyofficeApiClient.shared
+                
+        let params = ASCPushSubscribed()
+        params.firebaseDeviceToken = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.pushFCMToken)
+        params.isSubscribed = false
+        
+        
+        NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
+        
+        apiClient.request(endpoint, params.toJSON()) { response, error in
+            if let error {
+                log.error(error)
             }
         }
     }

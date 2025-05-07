@@ -75,18 +75,18 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
             logout()
         } else {
             // Request unubscribe of push
-            
+
             let client = NetworkingClient()
             client.configure(url: account.portal ?? "")
             client.headers.add(.authorization(bearerToken: account.token ?? ""))
-            
+
             let onlyofficeApiClient = OnlyofficeApiClient(apiClient: client)
-            
+
             ASCPushNotificationManager.requestClearRegister(apiClient: onlyofficeApiClient)
         }
-        
+
         ASCAccountsManager.shared.remove(account)
-        
+
         render()
     }
 

@@ -48,14 +48,13 @@ enum ASCPushNotificationManager {
 
         let endpoint = OnlyofficeAPI.Endpoints.Push.pushSubscribe
         let apiClient = apiClient ?? OnlyofficeApiClient.shared
-                
+
         let params = ASCPushSubscribed()
         params.firebaseDeviceToken = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.pushFCMToken)
         params.isSubscribed = false
-        
-        
+
         NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
-        
+
         apiClient.request(endpoint, params.toJSON()) { response, error in
             if let error {
                 log.error(error)

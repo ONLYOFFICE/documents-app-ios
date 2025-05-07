@@ -158,7 +158,7 @@ class ASCConstants {
     }
 
     enum FileExtensions {
-        static let documents = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt", "pages", "hwp", "hwpx"]
+        static let documents = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt", "pages", "hwp", "hwpx", "md", "markdown"]
         static let spreadsheets = ["xlsx", "xls", "csv", "ods", "numbers"]
         static let presentations = ["pptx", "ppt", "odp", "odg", "key"]
         static let formTemplates = ["docxf"]
@@ -167,8 +167,8 @@ class ASCConstants {
         static let videos = ["mov", "mp4", "mpg4", "m4v", "mqv", "mpg", "mpeg", "avi", "vfw", "3g2", "3gp", "3gp2", "3gpp", "qt"]
         static let audios = ["mp1", "mp2", "mp3", "mpa", "mpga", "m1a", "m2a", "m4a", "m4b", "m4p", "m4r", "aac", "snd", "caf", "aa", "aax", "adts", "aif", "aifc", "aiff", "au", "flac", "amr", "wav", "wave", "bwf", "ac3", "eac3", "ec3", "cdda"]
         static let archives = ["zip", "tar", "gz"]
-        static let allowEdit = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "odg", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform", "pages", "numbers", "key", "hwp", "hwpx"]
-        static let editorImportDocuments = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2", "pages", "hwp", "hwpx"]
+        static let allowEdit = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "odg", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform", "pages", "numbers", "key", "hwp", "hwpx", "md", "markdown"]
+        static let editorImportDocuments = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2", "pages", "hwp", "hwpx", "md", "markdown"]
         static let editorImportSpreadsheets = ["xls", "ods", "csv", "numbers"]
         static let editorImportPresentations = ["ppt", "odp", "odg", "key"]
         static let editorExportDocuments = ["docx", "odt", "dotx", "ott", "docxf", "oform"]

@@ -493,6 +493,8 @@
 		FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */; };
 		FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */; };
 		FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */; };
+		FC9A676E2DCB74C500AC30D1 /* OFDFile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9A676D2DCB74C500AC30D1 /* OFDFile.xcframework */; };
+		FC9A676F2DCB74C500AC30D1 /* OFDFile.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC9A676D2DCB74C500AC30D1 /* OFDFile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */; };
 		FC9EF01E2BFB208800A66DE8 /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF0052BFB208800A66DE8 /* AttachLogoRequestModel.swift */; };
 		FC9EF01F2BFB208800A66DE8 /* AttachTagsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF0062BFB208800A66DE8 /* AttachTagsRequestModel.swift */; };
@@ -753,6 +755,7 @@
 				FC4293B3294A684900DC3932 /* DocxRenderer.xcframework in CopyFiles */,
 				FC4293C5294A685500DC3932 /* UnicodeConverter.xcframework in CopyFiles */,
 				FC34555C2D367ED70051B573 /* HWPFile.xcframework in CopyFiles */,
+				FC9A676F2DCB74C500AC30D1 /* OFDFile.xcframework in CopyFiles */,
 				FC4293AF294A683F00DC3932 /* DjVuFile.xcframework in CopyFiles */,
 				FC4293B7294A684A00DC3932 /* Fb2File.xcframework in CopyFiles */,
 				FCD466E12D10673C00BC45DA /* IWorkFile.xcframework in CopyFiles */,
@@ -1247,6 +1250,7 @@
 		FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalViewController.swift; sourceTree = "<group>"; };
 		FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSignInViewController.swift; sourceTree = "<group>"; };
 		FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAViewController.swift; sourceTree = "<group>"; };
+		FC9A676D2DCB74C500AC30D1 /* OFDFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OFDFile.xcframework; path = "../../editors-ios/build/SDK/lib/OFDFile.xcframework"; sourceTree = "<group>"; };
 		FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsEmptyView.swift; sourceTree = "<group>"; };
 		FC9EF0052BFB208800A66DE8 /* AttachLogoRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachLogoRequestModel.swift; sourceTree = "<group>"; };
 		FC9EF0062BFB208800A66DE8 /* AttachTagsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachTagsRequestModel.swift; sourceTree = "<group>"; };
@@ -1499,6 +1503,7 @@
 				FCC0D9A22BCE81E70025DC02 /* engine.xcframework in Frameworks */,
 				3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */,
 				FC4293B8294A684A00DC3932 /* graphics.xcframework in Frameworks */,
+				FC9A676E2DCB74C500AC30D1 /* OFDFile.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1527,6 +1532,7 @@
 		B7E3C8EC6916BB80232E66FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FC9A676D2DCB74C500AC30D1 /* OFDFile.xcframework */,
 				FC34555A2D367ED70051B573 /* HWPFile.xcframework */,
 				FCD466DF2D10673C00BC45DA /* IWorkFile.xcframework */,
 				FC42939F294A673400DC3932 /* DjVuFile.xcframework */,

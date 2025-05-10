@@ -126,6 +126,7 @@
 		F35933212B305CAF00449F33 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933202B305CAF00449F33 /* View+Extensions.swift */; };
 		F35933232B305CB600449F33 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */; };
 		F36E4DBF2B3DBA2B00910772 /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4DBE2B3DBA2B00910772 /* ServicesProvider.swift */; };
+		F373F0E62DCFA7E5002EF969 /* ASCVersionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373F0E52DCFA7E3002EF969 /* ASCVersionRowView.swift */; };
 		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
 		F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
 		F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
@@ -799,6 +800,7 @@
 		F35933202B305CAF00449F33 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		F36E4DBE2B3DBA2B00910772 /* ServicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		F373F0E52DCFA7E3002EF969 /* ASCVersionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionRowView.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
@@ -2123,6 +2125,7 @@
 		F3F706F62DB6E8D10004A09F /* VersionHistory */ = {
 			isa = PBXGroup;
 			children = (
+				F373F0E52DCFA7E3002EF969 /* ASCVersionRowView.swift */,
 				F381BE5F2DC2423E00652E65 /* ASCVersionHistoryScreenModel.swift */,
 				F3F706FF2DB8D0B30004A09F /* ASCVersionHistoryNetworkService.swift */,
 				F3F706FB2DB7E1E10004A09F /* ASCVersionHistoryRootViewController.swift */,
@@ -4480,6 +4483,7 @@
 				FC35D44A2A987DFB00C6383F /* UISplitViewController+Extensions.swift in Sources */,
 				FCF8472A22CB3E1800ABC3B4 /* ASCConnectStorageCell.swift in Sources */,
 				FC35D4432A987DFB00C6383F /* Dictionary+Extension.swift in Sources */,
+				F373F0E62DCFA7E5002EF969 /* ASCVersionRowView.swift in Sources */,
 				FC35D4492A987DFB00C6383F /* Array+Extensions.swift in Sources */,
 				FCEF851E26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */,
 				FCCE50BA2C1AF79000102056 /* TimeLimitCellView.swift in Sources */,

@@ -14,4 +14,6 @@ struct ASCVersionHistoryScreenModel {
     var versionToDelete: VersionViewModel?
     var showEditCommentAlert: Bool = false
     var versionToEdit: VersionViewModel?
+    var versionForBottomSheet: VersionViewModel?
+    var isShowingBottomSheet: Bool = false
 }

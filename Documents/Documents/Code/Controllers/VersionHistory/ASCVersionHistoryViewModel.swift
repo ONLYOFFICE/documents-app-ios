@@ -72,6 +72,11 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         screenModel.versionToEdit = nil
         screenModel.showEditCommentAlert = false
     }
+    
+    func triggerMoreSheet(version: VersionViewModel) {
+        screenModel.versionForBottomSheet = version
+        screenModel.isShowingBottomSheet = true
+    }
 
     func restoreVersion(version: VersionViewModel) {
         isActivityIndicatorVisible = true

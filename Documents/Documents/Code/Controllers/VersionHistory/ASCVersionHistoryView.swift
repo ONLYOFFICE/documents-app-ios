@@ -72,6 +72,29 @@ struct ASCVersionHistoryView: View {
             .background(editCommentAlert)
         }
         .alert(item: $viewModel.screenModel.activeAlert, content: { alert(for: $0) })
+        .applyVersionConfirmationDialogIfAvailable(
+            isPresented: $viewModel.screenModel.isShowingBottomSheet,
+            version: viewModel.screenModel.versionForBottomSheet,
+            onOpen: { version in
+                viewModel.triggerOpenVersion(version) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            },
+            onEditComment: { version in
+                viewModel.triggerEditComment(for: version)
+            },
+            onRestore: { version in
+                viewModel.triggerRestoreAlert(for: version)
+            },
+            onDownload: { version in
+                viewModel.triggerDownloadVersion(version) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            },
+            onDelete: { version in
+                viewModel.triggerDeleteAlert(for: version)
+            }
+        )
     }
 
     // MARK: - View Components
@@ -223,3 +246,73 @@ extension View {
         }
     }
 }
+
+@available(iOS 15.0, *)
+extension View {
+    func versionConfirmationDialog(
+        isPresented: Binding<Bool>,
+        version: VersionViewModel?,
+        onOpen: @escaping (VersionViewModel) -> Void,
+        onEditComment: @escaping (VersionViewModel) -> Void,
+        onRestore: @escaping (VersionViewModel) -> Void,
+        onDownload: @escaping (VersionViewModel) -> Void,
+        onDelete: @escaping (VersionViewModel) -> Void
+    ) -> some View {
+        self.confirmationDialog(
+            "",
+            isPresented: isPresented,
+            titleVisibility: .hidden
+        ) {
+            if let version = version {
+                Button("Open", systemImage: "arrow.up.right.square") {
+                    onOpen(version)
+                }
+                Button("Edit comment", systemImage: "text.bubble") {
+                    onEditComment(version)
+                }
+                if version.canRestore {
+                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                        onRestore(version)
+                    }
+                }
+                Button("Download", systemImage: "square.and.arrow.down") {
+                    onDownload(version)
+                }
+                if version.canDelete {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        onDelete(version)
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    func applyVersionConfirmationDialogIfAvailable(
+        isPresented: Binding<Bool>,
+        version: VersionViewModel?,
+        onOpen: @escaping (VersionViewModel) -> Void,
+        onEditComment: @escaping (VersionViewModel) -> Void,
+        onRestore: @escaping (VersionViewModel) -> Void,
+        onDownload: @escaping (VersionViewModel) -> Void,
+        onDelete: @escaping (VersionViewModel) -> Void
+    ) -> some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                self.versionConfirmationDialog(
+                    isPresented: isPresented,
+                    version: version,
+                    onOpen: onOpen,
+                    onEditComment: onEditComment,
+                    onRestore: onRestore,
+                    onDownload: onDownload,
+                    onDelete: onDelete
+                )
+            } else {
+                self
+            }
+        }
+    }
+}
+

@@ -605,6 +605,7 @@
 		FCE9F7A82B3044CE0056E420 /* CurrentFolderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F7A32B3044CE0056E420 /* CurrentFolderMenu.swift */; };
 		FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */; };
 		FCECD79E2D51181F008F1306 /* ASCDocumentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECD79D2D51181F008F1306 /* ASCDocumentsCollectionView.swift */; };
+		FCEF144F2DD395BC006A8282 /* ASCVersionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF144E2DD395BC006A8282 /* ASCVersionRowView.swift */; };
 		FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF258D2978190200522A3A /* WhatsNew.bundle */; };
 		FCF779BE2B4ED77600E5C2DC /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF779BD2B4ED77600E5C2DC /* ResultViewModel.swift */; };
 		FCFAEEF82CAD48B700FB3E19 /* ASCConnectStorageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFAEEF72CAD48B700FB3E19 /* ASCConnectStorageCell.xib */; };
@@ -1312,6 +1313,7 @@
 		FCECDDD926430B28006CD7B9 /* ASCPasswordRecoveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryController.swift; sourceTree = "<group>"; };
 		FCECDDE026430BD3006CD7B9 /* ASCResponsePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCResponsePassword.swift; sourceTree = "<group>"; };
 		FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		FCEF144E2DD395BC006A8282 /* ASCVersionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionRowView.swift; sourceTree = "<group>"; };
 		FCEF258D2978190200522A3A /* WhatsNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WhatsNew.bundle; path = Resources/WhatsNew.bundle; sourceTree = "<group>"; };
 		FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnedriveTokenAdapter.swift; sourceTree = "<group>"; };
 		FCEF853526C3E3CF00173DDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -3041,6 +3043,7 @@
 				FC654D5F2DC4EE8F00FEC4AF /* ASCVersionHistoryScreenModel.swift */,
 				FC654D602DC4EE8F00FEC4AF /* ASCVersionHistoryView.swift */,
 				FC654D612DC4EE8F00FEC4AF /* ASCVersionHistoryViewModel.swift */,
+				FCEF144E2DD395BC006A8282 /* ASCVersionRowView.swift */,
 			);
 			path = VersionHistory;
 			sourceTree = "<group>";
@@ -4185,6 +4188,7 @@
 				FC7081202812E2260057FCD2 /* ASCFileStatus.swift in Sources */,
 				FC03A64D2BDA7F67005E8FFB /* OnlyofficeShare.swift in Sources */,
 				FC83D6202A974E2300C404CB /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FCEF144F2DD395BC006A8282 /* ASCVersionRowView.swift in Sources */,
 				FC7081222812E2260057FCD2 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				FC7081232812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC142A7728981A1F00EDE7CE /* ASCNotificationSettingsViewController.swift in Sources */,

@@ -73,6 +73,11 @@ final class ASCVersionHistoryViewModel: ObservableObject {
         screenModel.showEditCommentAlert = false
     }
 
+    func triggerMoreSheet(version: VersionViewModel) {
+        screenModel.versionForBottomSheet = version
+        screenModel.isShowingBottomSheet = true
+    }
+
     func restoreVersion(version: VersionViewModel) {
         isActivityIndicatorVisible = true
 
@@ -168,7 +173,7 @@ private extension ASCVersionHistoryViewModel {
             author: version.createdBy?.displayName ?? "",
             comment: version.comment ?? "",
             canRestore: version.version < latestVersionNumber,
-            canDelete: version.version < latestVersionNumber
+            canDelete: (version.version < latestVersionNumber) && version.security.editHistory
         )
     }
 

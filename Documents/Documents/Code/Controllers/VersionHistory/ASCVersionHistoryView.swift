@@ -54,6 +54,9 @@ struct ASCVersionHistoryView: View {
                             viewModel.triggerDownloadVersion(version) {
                                 presentationMode.wrappedValue.dismiss()
                             }
+                        },
+                        onMoreButton: {
+                            viewModel.triggerMoreSheet(version: version)
                         }
                     )
                 }
@@ -69,6 +72,29 @@ struct ASCVersionHistoryView: View {
             .background(editCommentAlert)
         }
         .alert(item: $viewModel.screenModel.activeAlert, content: { alert(for: $0) })
+        .applyVersionConfirmationDialogIfAvailable(
+            isPresented: $viewModel.screenModel.isShowingBottomSheet,
+            version: viewModel.screenModel.versionForBottomSheet,
+            onOpen: { version in
+                viewModel.triggerOpenVersion(version) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            },
+            onEditComment: { version in
+                viewModel.triggerEditComment(for: version)
+            },
+            onRestore: { version in
+                viewModel.triggerRestoreAlert(for: version)
+            },
+            onDownload: { version in
+                viewModel.triggerDownloadVersion(version) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            },
+            onDelete: { version in
+                viewModel.triggerDeleteAlert(for: version)
+            }
+        )
     }
 
     // MARK: - View Components
@@ -160,55 +186,6 @@ struct ASCVersionHistoryView: View {
     }
 }
 
-struct ASCVersionRowView: View {
-    let version: VersionViewModel
-    let icon: Image
-    let onOpen: () -> Void
-    let onEditComment: () -> Void
-    let onRestore: () -> Void
-    let onDelete: () -> Void
-    let onDownload: () -> Void
-
-    var body: some View {
-        Section(header: Text("Version \(version.versionNumber)")) {
-            ASCFileSwiftUICell(model: ASCFileSwiftUICellModel(
-                date: version.dateDescription,
-                author: version.author,
-                comment: version.comment,
-                icon: icon,
-                action: {
-                    onOpen()
-                }
-            ))
-            .contextMenu {
-                Button("Open", systemImage: "arrow.up.right.square") {
-                    onOpen()
-                }
-
-                Button("Edit comment", systemImage: "text.bubble") {
-                    onEditComment()
-                }
-
-                if version.canRestore {
-                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
-                        onRestore()
-                    }
-                }
-
-                Button("Download", systemImage: "square.and.arrow.down") {
-                    onDownload()
-                }
-
-                if version.canDelete {
-                    Button("Delete", systemImage: "trash") {
-                        onDelete()
-                    }
-                }
-            }
-        }
-    }
-}
-
 extension Text {
     static let deleteVersion = Text("Delete version")
     static let deleteVersionAlert = Text("You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?")
@@ -222,4 +199,119 @@ extension String {
     static let editComment = NSLocalizedString("Edit Comment", comment: "")
     static let save = NSLocalizedString("Save", comment: "")
     static let cancel = NSLocalizedString("Cancel", comment: "")
+}
+
+@available(iOS 15.0, *)
+extension View {
+    func versionSwipeActions(
+        version: VersionViewModel,
+        onMoreButton: @escaping () -> Void,
+        onDelete: @escaping () -> Void
+    ) -> some View {
+        swipeActions(edge: .trailing, allowsFullSwipe: false) {
+            if version.canDelete {
+                Button(role: .destructive) {
+                    onDelete()
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+            }
+
+            Button {
+                onMoreButton()
+            } label: {
+                Label("More", systemImage: "ellipsis")
+            }
+            .tint(.gray)
+        }
+    }
+}
+
+extension View {
+    func applyVersionSwipeActionsIfAvailable(
+        version: VersionViewModel,
+        onMoreButton: @escaping () -> Void,
+        onDelete: @escaping () -> Void
+    ) -> some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                self.versionSwipeActions(
+                    version: version,
+                    onMoreButton: onMoreButton,
+                    onDelete: onDelete
+                )
+            } else {
+                self
+            }
+        }
+    }
+}
+
+@available(iOS 15.0, *)
+extension View {
+    func versionConfirmationDialog(
+        isPresented: Binding<Bool>,
+        version: VersionViewModel?,
+        onOpen: @escaping (VersionViewModel) -> Void,
+        onEditComment: @escaping (VersionViewModel) -> Void,
+        onRestore: @escaping (VersionViewModel) -> Void,
+        onDownload: @escaping (VersionViewModel) -> Void,
+        onDelete: @escaping (VersionViewModel) -> Void
+    ) -> some View {
+        confirmationDialog(
+            "",
+            isPresented: isPresented,
+            titleVisibility: .hidden
+        ) {
+            if let version = version {
+                Button("Open", systemImage: "arrow.up.right.square") {
+                    onOpen(version)
+                }
+                Button("Edit comment", systemImage: "text.bubble") {
+                    onEditComment(version)
+                }
+                if version.canRestore {
+                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                        onRestore(version)
+                    }
+                }
+                Button("Download", systemImage: "square.and.arrow.down") {
+                    onDownload(version)
+                }
+                if version.canDelete {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        onDelete(version)
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    func applyVersionConfirmationDialogIfAvailable(
+        isPresented: Binding<Bool>,
+        version: VersionViewModel?,
+        onOpen: @escaping (VersionViewModel) -> Void,
+        onEditComment: @escaping (VersionViewModel) -> Void,
+        onRestore: @escaping (VersionViewModel) -> Void,
+        onDownload: @escaping (VersionViewModel) -> Void,
+        onDelete: @escaping (VersionViewModel) -> Void
+    ) -> some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                self.versionConfirmationDialog(
+                    isPresented: isPresented,
+                    version: version,
+                    onOpen: onOpen,
+                    onEditComment: onEditComment,
+                    onRestore: onRestore,
+                    onDownload: onDownload,
+                    onDelete: onDelete
+                )
+            } else {
+                self
+            }
+        }
+    }
 }

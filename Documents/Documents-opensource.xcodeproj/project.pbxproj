@@ -50,6 +50,8 @@
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
 		E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */; };
+		E8AE7A652DCF54C400BEBB00 /* FullScreenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE7A642DCF54BB00BEBB00 /* FullScreenLoader.swift */; };
+		E8AE7A672DCF550200BEBB00 /* OverlayLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE7A662DCF54F900BEBB00 /* OverlayLoader.swift */; };
 		E8B21F272D349E2D00AE0E8F /* FilesOrderRequesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */; };
 		E8B2AFEA2D02604400CA4FAD /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */; };
 		E8B394172D133CD400A6AB70 /* ASCEntityViewLayoutTypeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B394162D133CCB00A6AB70 /* ASCEntityViewLayoutTypeProvider.swift */; };
@@ -737,6 +739,8 @@
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F102B14F2CF00B8EEA2 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		E8AE7A642DCF54BB00BEBB00 /* FullScreenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoader.swift; sourceTree = "<group>"; };
+		E8AE7A662DCF54F900BEBB00 /* OverlayLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayLoader.swift; sourceTree = "<group>"; };
 		E8B21F262D349E2200AE0E8F /* FilesOrderRequesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesOrderRequesModel.swift; sourceTree = "<group>"; };
 		E8B2AFE92D02600600CA4FAD /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
 		E8B394162D133CCB00A6AB70 /* ASCEntityViewLayoutTypeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityViewLayoutTypeProvider.swift; sourceTree = "<group>"; };
@@ -1376,6 +1380,8 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VDRStartFillingStatus; sourceTree = "<group>"; };
+		E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VDRFillingStatus; sourceTree = "<group>"; };
+		E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SwiftUIViewModifiers; sourceTree = "<group>"; };
 		E8C5FD8F2D343489004112D3 /* Protocols */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Protocols; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -1990,6 +1996,7 @@
 		E856CE952B5904D8003E4C3D /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */,
 				E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */,
 				F3772FE72C9DEEAD002B33A8 /* FormCompletedFlow */,
 				E8D50B812BF943CC00741BB8 /* InviteUsers */,
@@ -2083,6 +2090,8 @@
 		E8BE28582B1C6CAF007F5942 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8AE7A662DCF54F900BEBB00 /* OverlayLoader.swift */,
+				E8AE7A642DCF54BB00BEBB00 /* FullScreenLoader.swift */,
 				E83125CC2B249A30006016F1 /* Representable */,
 				E8BE28592B1C6CF5007F5942 /* ActivityIndicatorView.swift */,
 				FC00CBF12C46613C00D3344D /* ChevronRightView.swift */,
@@ -3272,6 +3281,7 @@
 				FCAE8B891E71671C004FC332 /* Models */,
 				FC8540C21E83A56A000C2436 /* Components */,
 				FC31B2881E76C168008699C3 /* Controllers */,
+				E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */,
 				E8BE28582B1C6CAF007F5942 /* SwiftUIViews */,
 				FC31B2851E76C01B008699C3 /* Extensions */,
 				FCEF9D021ED2C94300627BA5 /* Vendor */,
@@ -3649,6 +3659,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */,
+				E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */,
+				E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */,
 				E8C5FD8F2D343489004112D3 /* Protocols */,
 			);
 			name = "Documents-opensource";
@@ -4294,6 +4306,7 @@
 				FCE9F6492B2B4AF20056E420 /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */,
 				FC70817D2812E2260057FCD2 /* ASCSharingOptionsInteractor.swift in Sources */,
+				E8AE7A672DCF550200BEBB00 /* OverlayLoader.swift in Sources */,
 				FC142A7528981A1F00EDE7CE /* ASCPasscodeLockSplashView.swift in Sources */,
 				FC70817F2812E2260057FCD2 /* ASCCreatePortalStatus.swift in Sources */,
 				FC7081802812E2260057FCD2 /* ASCShadowRadiusView.swift in Sources */,
@@ -4454,6 +4467,7 @@
 				FC7081E22812E2260057FCD2 /* OnedriveApiClient.swift in Sources */,
 				FCC9E8D62B4EC59500012746 /* Toggle+Extension.swift in Sources */,
 				FC7081E42812E2260057FCD2 /* ASCCloudsViewController.swift in Sources */,
+				E8AE7A652DCF54C400BEBB00 /* FullScreenLoader.swift in Sources */,
 				FC7081E62812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersRouter.swift in Sources */,
 				FC03A6472BDA7F67005E8FFB /* OnlyofficeAuth.swift in Sources */,
 				FC7081E92812E2260057FCD2 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,

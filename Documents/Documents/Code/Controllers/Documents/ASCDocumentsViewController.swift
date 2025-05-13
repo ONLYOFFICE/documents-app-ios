@@ -460,6 +460,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         navigationItem.searchController = tableData.isEmpty ? nil : searchController
         navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty
         navigationItem.largeTitleDisplayMode = !tableData.isEmpty ? .automatic : .never
+
+        updateTitleView(collectionView)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cleanupTitleView()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -596,7 +603,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func add(entity: Any, open: Bool = true) {
         guard let provider else { return }
 
-        if var file = entity as? ASCFile {
+        if let file = entity as? ASCFile {
             file.parent = file.parent ?? folder
 
             provider.add(item: file, at: 0)
@@ -3354,6 +3361,8 @@ extension ASCDocumentsViewController: UIScrollViewDelegate {
                 }
             }
         }
+
+        updateTitleView(scrollView)
     }
 }
 
@@ -3394,6 +3403,7 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
         navigationBarExtendPanelView.isHidden = false
         viewDidLayoutSubviews()
         configureNavigationItem()
+        updateTitle()
     }
 }
 

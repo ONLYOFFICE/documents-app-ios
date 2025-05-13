@@ -98,6 +98,7 @@ extension ASCDocumentsViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
+        updateTitle()
     }
 
     // MARK: Update nav bar
@@ -125,6 +126,46 @@ extension ASCDocumentsViewController {
             title = provider?.title(for: folder)
         } else {
             updateSelectedInfo()
+        }
+
+        setTitleBadgeIfNeeded()
+    }
+
+    func setTitleBadgeIfNeeded() {
+        guard false else { return }
+
+//        if let folder, !folder.isTemplate {
+//            return
+//        }
+
+        if !collectionView.isEditing {
+            let templateBadgeView: (() -> ASCPaddingLabel) = {
+                let badgeLabel = ASCPaddingLabel()
+                badgeLabel.text = "Template"
+                badgeLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+                badgeLabel.textColor = .white
+                badgeLabel.backgroundColor = .systemGray
+                badgeLabel.layer.cornerRadius = 10
+                badgeLabel.layer.masksToBounds = true
+                badgeLabel.padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+                badgeLabel.textAlignment = .center
+                badgeLabel.setContentHuggingPriority(.required, for: .horizontal)
+                badgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+                badgeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
+                return badgeLabel
+            }
+
+            titleBadgeView = (
+                large: templateBadgeView(),
+                inline: {
+                    $0.padding = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+                    $0.layer.cornerRadius = 8
+                    $0.heightAnchor.constraint(equalToConstant: 17).isActive = true
+                    return $0
+                }(templateBadgeView())
+            )
+        } else {
+            titleBadgeView = nil
         }
     }
 
@@ -604,5 +645,153 @@ private extension ASCDocumentsViewController {
         }
 
         return ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+    }
+}
+
+// MARK: - Title
+
+@MainActor
+extension ASCDocumentsViewController {
+    @MainActor
+    private struct AssociatedKeys {
+        static var largeTitleBadgeViewId: Int = 0
+        static var titleBadgeViewId: Int = 1
+        static var largeTitleLabelId: Int = 2
+    }
+
+    public var titleBadgeView: (large: UIView, inline: UIView)? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.titleBadgeViewId) as? (large: UIView, inline: UIView)
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &AssociatedKeys.titleBadgeViewId, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            updateTitleView(collectionView)
+        }
+    }
+
+    private var largeTitleBadgeView: UIView? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.largeTitleBadgeViewId) as? UIView
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &AssociatedKeys.largeTitleBadgeViewId, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    private weak var largeTitleLabel: UIView? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.largeTitleLabelId) as? UIView
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &AssociatedKeys.largeTitleLabelId, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    func findLargeTitleLabel(in view: UIView?) -> UILabel? {
+        guard let view else { return nil }
+
+        for subview in view.subviews {
+            if let label = subview as? UILabel, label.font.pointSize > 30 {
+                return label
+            }
+            if let found = findLargeTitleLabel(in: subview) {
+                return found
+            }
+        }
+        return nil
+    }
+
+    private func addBadgeToLargeTitleView(view: UIView) {
+        largeTitleBadgeView?.removeFromSuperview()
+
+        guard
+            let largeTitleLabel = findLargeTitleLabel(in: navigationController?.navigationBar),
+            let largeTitleLabelParent = largeTitleLabel.superview
+        else { return }
+
+        self.largeTitleLabel = largeTitleLabel
+
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = largeTitleLabel.font
+        titleLabel.lineBreakMode = .byTruncatingTail
+
+        let badgeLabel = view
+
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, badgeLabel, UIView()])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        largeTitleLabel.alpha = 0
+        stackView.alpha = 0
+
+        largeTitleLabelParent.addSubview(stackView)
+
+        let isViewPresented = collectionView.refreshControl != nil
+
+        UIView.animate(withDuration: isViewPresented ? 0 : 0.4, delay: isViewPresented ? 0 : 0.3, options: [.curveEaseIn]) {
+            largeTitleLabel.alpha = 0
+            stackView.alpha = 1
+        }
+
+        largeTitleBadgeView = stackView
+
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: largeTitleLabelParent.leadingAnchor, constant: largeTitleLabel.x),
+            stackView.trailingAnchor.constraint(equalTo: largeTitleLabelParent.safeAreaLayoutGuide.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: largeTitleLabel.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: largeTitleLabel.bottomAnchor),
+        ])
+    }
+
+    private func makeInlineTitleWithBadge(view: UIView) -> UIView {
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel.lineBreakMode = .byTruncatingTail
+
+        let badgeLabel = view
+
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, badgeLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        stackView.alignment = .center
+
+        return stackView
+    }
+
+    func updateTitleView(_ scrollView: UIScrollView) {
+        if let titleBadgeView {
+            guard let navBar = navigationController?.navigationBar else { return }
+            let navHeight = navBar.frame.height
+            let threshold: CGFloat = 80
+
+            largeTitleLabel?.alpha = 0
+
+            if navHeight > threshold {
+                if largeTitleBadgeView != nil { return }
+                addBadgeToLargeTitleView(view: titleBadgeView.large)
+                navigationItem.titleView = nil
+            } else {
+                largeTitleBadgeView?.removeFromSuperview()
+                largeTitleBadgeView = nil
+                if navigationItem.titleView != nil { return }
+                navigationItem.titleView = makeInlineTitleWithBadge(view: titleBadgeView.inline)
+            }
+        } else {
+            largeTitleBadgeView?.removeFromSuperview()
+            largeTitleBadgeView = nil
+            navigationItem.titleView = nil
+
+            largeTitleLabel?.alpha = 1
+        }
+    }
+
+    func cleanupTitleView() {
+        largeTitleBadgeView?.removeFromSuperview()
+        largeTitleBadgeView = nil
+        largeTitleLabel?.alpha = 1
     }
 }

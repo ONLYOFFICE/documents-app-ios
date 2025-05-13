@@ -149,6 +149,7 @@ class ASCViewControllerManager {
 
     @MainActor
     private func configureRater() {
+        SwiftRater.conditionsMetMode = .any
         SwiftRater.daysUntilPrompt = 1
         SwiftRater.usesUntilPrompt = 2
         SwiftRater.significantUsesUntilPrompt = 2

@@ -13,6 +13,7 @@ final class ASCPresentationEditorConfiguration: ASCPresentationEditorConfigurati
         [
             "asc.pe.external.appname": ASCConstants.Name.appNameShort,
             "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
+            "asc.pe.external.uservoiceurl": "https://onlyoffice.com/",
         ]
     }
 

@@ -33,6 +33,7 @@ enum Destination {
 
     case notificationSettings
     case about
+    case helpAndFeedback
     case passcodeLockSettings
     case developerOptions
     case themeOptions
@@ -173,6 +174,8 @@ final class ASCNavigator {
             return ASCNotificationSettingsViewController()
         case .about:
             return ASCAboutViewController.instance()
+        case .helpAndFeedback:
+            return ASCHelpAndFeedbackViewController()
         case .passcodeLockSettings:
             return ASCPasscodeLockViewController.instance()
         case .developerOptions:

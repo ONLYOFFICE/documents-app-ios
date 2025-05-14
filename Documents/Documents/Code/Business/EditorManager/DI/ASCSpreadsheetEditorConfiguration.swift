@@ -15,6 +15,7 @@ final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfiguration
         return [
             "asc.se.external.appname": ASCConstants.Name.appNameShort,
             "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
+            "asc.se.external.uservoiceurl": "https://onlyoffice.com/",
             "asc.se.external.page.formats": [
                 [
                     "width": 105,

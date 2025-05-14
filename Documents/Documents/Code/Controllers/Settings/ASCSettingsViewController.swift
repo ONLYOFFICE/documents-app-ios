@@ -6,11 +6,9 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
-import DocumentConverter
 import FileKit
 import Kingfisher
 import MBProgressHUD
-import MessageUI
 import SDWebImage
 import UIKit
 
@@ -204,16 +202,9 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                     accessoryType: .disclosureIndicator
                 )),
                 .standart(viewModel: ASCStandartCellViewModel(
-                    title: NSLocalizedString("Support", comment: ""),
+                    title: NSLocalizedString("Help & Feedback", comment: ""),
                     action: {
-                        self.sendFeedback()
-                    },
-                    accessoryType: .disclosureIndicator
-                )),
-                .standart(viewModel: ASCStandartCellViewModel(
-                    title: NSLocalizedString("What's New", comment: ""),
-                    action: {
-                        WhatsNewService.show(force: true)
+                        self.navigator.navigate(to: .helpAndFeedback)
                     },
                     accessoryType: .disclosureIndicator
                 )),
@@ -429,55 +420,6 @@ class ASCSettingsViewController: ASCBaseTableViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)
-    }
-
-    private func sendFeedback() {
-        let composer = MFMailComposeViewController()
-        let localSdkVersion = ASCEditorManager.shared.localSDKVersion().joined(separator: ".")
-        var converterVersion = "none"
-
-        converterVersion = DocumentLocalConverter.sdkVersion() ?? ""
-
-        if MFMailComposeViewController.canSendMail() {
-            composer.mailComposeDelegate = self
-            composer.setToRecipients([ASCConstants.Urls.supportMailTo])
-            composer.setSubject(String.localizedStringWithFormat("%@ iOS Feedback", ASCConstants.Name.appNameFull))
-            composer.setMessageBody([
-                String(repeating: "\n", count: 5),
-                String(repeating: "_", count: 20),
-                "App version: \(ASCCommon.appVersion ?? "Unknown") (\(ASCCommon.appBuild ?? "Unknown"))",
-                "SDK: \(localSdkVersion)",
-                "Converter: \(converterVersion)",
-                "Device model: \(Device.current.safeDescription)",
-                "iOS Version: \(ASCCommon.systemVersion)",
-            ].joined(separator: "\n"), isHTML: false)
-
-            present(composer, animated: true, completion: nil)
-        } else {
-            UIAlertController.showWarning(
-                in: self,
-                message: NSLocalizedString("Failed to send feedback by mail. Try to write your request on our forum.", comment: ""),
-                actions: [
-                    UIAlertAction(title: NSLocalizedString("Go to forum", comment: ""), handler: { action in
-                        if let url = URL(string: ASCConstants.Urls.applicationFeedbackForum), UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }
-                    }),
-                ]
-            )
-        }
-    }
-}
-
-// MARK: - MFMailComposeViewController Delegate
-
-extension ASCSettingsViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(
-        _ controller: MFMailComposeViewController,
-        didFinishWith result:
-        MFMailComposeResult, error: Error?
-    ) {
-        dismiss(animated: true, completion: nil)
     }
 }
 

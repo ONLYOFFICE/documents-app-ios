@@ -13,6 +13,7 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
         [
             "asc.de.external.appname": ASCConstants.Name.appNameShort,
             "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
+            "asc.de.external.uservoiceurl": "https://onlyoffice.com/",
             "asc.de.external.page.formats": [
                 [
                     "description": "A6",

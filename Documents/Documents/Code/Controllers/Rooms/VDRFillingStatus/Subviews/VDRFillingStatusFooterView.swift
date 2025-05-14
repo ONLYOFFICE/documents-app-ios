@@ -30,3 +30,17 @@ struct VDRFillingStatusFooterView: View {
         .background(Color.white.ignoresSafeArea(edges: .bottom))
     }
 }
+
+struct FooterButtonStyle: ButtonStyle {
+    let color: Color
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.body)
+            .foregroundColor(.white)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 8)
+            .background(color)
+            .cornerRadius(16)
+            .opacity(configuration.isPressed ? 0.7 : 1)
+    }
+}

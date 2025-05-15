@@ -52,6 +52,19 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Filling status form
+
+        if actions.contains(.fillingStatus) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Filling Status", comment: "Start filling form Button title"),
+                    image: UIImage(systemName: "note.text")
+                ) { [unowned self] action in
+                    self.fillingStatus(file: file)
+                }
+            )
+        }
+
         /// Preview action
 
         if actions.contains(.open) {

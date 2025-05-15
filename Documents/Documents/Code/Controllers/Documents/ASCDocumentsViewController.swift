@@ -1862,6 +1862,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         present(vc, animated: true, completion: nil)
     }
 
+    func fillingStatus(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+
+        let vc = VDRFillingStatusUIHostingController()
+        present(vc, animated: true, completion: nil)
+    }
+
     func transformToRoom(entities: [ASCEntity]) {
         let entitiesIsOnlyOneFolder: Bool = {
             guard entities.count == 1 else { return false }

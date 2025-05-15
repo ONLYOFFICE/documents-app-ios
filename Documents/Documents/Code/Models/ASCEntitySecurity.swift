@@ -31,6 +31,7 @@ class ASCFileSecurity: Mappable {
     var copyLink: Bool = false
     var embed: Bool = false
     var startFilling: Bool = false
+    var fillingStatus: Bool = false
 
     init() {}
 
@@ -58,6 +59,7 @@ class ASCFileSecurity: Mappable {
         copyLink <- map["CopyLink"]
         embed <- map["Embed"]
         startFilling <- map["StartFilling"]
+        fillingStatus <- map["FillingStatus"]
     }
 }
 

@@ -113,7 +113,7 @@ extension ASCDocumentsViewController {
                     : NSLocalizedString("Enable Custom filter", comment: ""),
                     image: Asset.Images.menuCustomFilter.image
                 ) { [unowned self] action in
-                    self.setCustomFilter(file: file)
+                    self.setCustomFilter(cell: cell, file: file)
                 }
             )
         }

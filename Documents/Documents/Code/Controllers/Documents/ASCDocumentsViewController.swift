@@ -2171,28 +2171,36 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
     
-    func setCustomFilter(file: ASCFile) {
+    func setCustomFilter(cell: UICollectionViewCell, file: ASCFile) {
         let hud = MBProgressHUD.showTopMost()
         let requestModel = ASCCustomFilterRequestModel(enabled: !(file.customFilterEnabled ?? false))
-        
-        NetworkManagerSharedSettings().customFilter(file: file, requestModel: requestModel) { responce in
-            var successMessage: String
-            switch responce {
-            case let .success(result):
-                if result.customFilterEnabled == true {
-                    successMessage = NSLocalizedString("Custom filter for\nthe selected file\nenabled", comment: "")
-                    file.customFilterEnabled = true
-                } else {
-                    successMessage = NSLocalizedString("Custom filter for\nthe selected file\ndisabled", comment: "")
-                    file.customFilterEnabled = false
+
+        NetworkManagerSharedSettings().customFilter(file: file, requestModel: requestModel) { response in
+            DispatchQueue.main.async {
+                var successMessage: String
+
+                switch response {
+                case let .success(result):
+                    if result.customFilterEnabled == true {
+                        successMessage = NSLocalizedString("Custom filter for\nthe selected file\nenabled", comment: "")
+                        file.customFilterEnabled = true
+                    } else {
+                        successMessage = NSLocalizedString("Custom filter for\nthe selected file\ndisabled", comment: "")
+                        file.customFilterEnabled = false
+                    }
+                    hud?.setState(result: .success(successMessage))
+                    
+                    if let indexPath = self.collectionView.indexPath(for: cell) {
+                        self.collectionView.reloadItems(at: [indexPath])
+                    }
+
+                case let .failure(error):
+                    hud?.setState(result: .failure(error.localizedDescription))
+                    print(error.localizedDescription)
                 }
-                hud?.setState(result: .success(successMessage))
-                
-            case let .failure(error):
-                hud?.setState(result: .failure(error.localizedDescription))
-                print(error.localizedDescription)
+
+                hud?.hide(animated: true, afterDelay: .standardDelay)
             }
-            hud?.hide(animated: true, afterDelay: .standardDelay)
         }
     }
 

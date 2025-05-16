@@ -2170,6 +2170,31 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
+    
+    func setCustomFilter(file: ASCFile) {
+        let hud = MBProgressHUD.showTopMost()
+        let requestModel = ASCCustomFilterRequestModel(enabled: !(file.customFilterEnabled ?? false))
+        
+        NetworkManagerSharedSettings().customFilter(file: file, requestModel: requestModel) { responce in
+            var successMessage: String
+            switch responce {
+            case let .success(result):
+                if result.customFilterEnabled == true {
+                    successMessage = NSLocalizedString("Custom filter for\nthe selected file\nenabled", comment: "")
+                    file.customFilterEnabled = true
+                } else {
+                    successMessage = NSLocalizedString("Custom filter for\nthe selected file\ndisabled", comment: "")
+                    file.customFilterEnabled = false
+                }
+                hud?.setState(result: .success(successMessage))
+                
+            case let .failure(error):
+                hud?.setState(result: .failure(error.localizedDescription))
+                print(error.localizedDescription)
+            }
+            hud?.hide(animated: true, afterDelay: .standardDelay)
+        }
+    }
 
     func copySharedLink(file: ASCFile) {
         let hud = MBProgressHUD.showTopMost()

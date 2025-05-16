@@ -2198,7 +2198,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     func copySharedLink(file: ASCFile) {
         let hud = MBProgressHUD.showTopMost()
-        let successMessage = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
+        let successMessage = file.customFilterEnabled
+        ? NSLocalizedString("The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard.", comment: "Button title")
+        : NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
 
         let handleResult: (Result<String, Error>) -> Void = { result in
             switch result {

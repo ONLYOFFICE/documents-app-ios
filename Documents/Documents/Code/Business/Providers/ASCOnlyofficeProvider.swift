@@ -1059,6 +1059,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
+    
+    func allowSetCustomFilter(entity: ASCEntity?) -> Bool {
+        guard let file = entity as? ASCFile else {
+            return false
+        }
+
+        return file.security.customFilter && file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
+    }
 
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
@@ -1391,6 +1399,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
             let canShowVersion = file.version > 1
+            let canSetCustomFilter = allowSetCustomFilter(entity: file)
 
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
@@ -1489,6 +1498,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if canShowVersion {
                 entityActions.insert(.showVersionsHistory)
+            }
+            
+            if canSetCustomFilter {
+                entityActions.insert(.setCustomFilter)
             }
         }
 

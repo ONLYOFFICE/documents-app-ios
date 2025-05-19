@@ -9,25 +9,85 @@
 import Foundation
 
 enum ASCFolderType: Int {
-    case unknown = 0
+    // Default
+    case `default` = 0
 
-    case onlyofficeCommon = 1
-    case onlyofficeBunch = 2
-    case onlyofficeTrash = 3
-    case onlyofficeUser = 5
-    case onlyofficeShare = 6
-    case onlyofficeProjects = 8
-    case onlyofficeFavorites = 10
-    case onlyofficeRecent = 11
-    case onlyofficeRoomShared = 14
-    case onlyofficeRoomArchived = 20
+    // Common
+    case common = 1
+    
+    // Bunch
+    case bunch = 2
+    
+    // Trash
+    case trash = 3
+    
+    // User
+    case user = 5
+    
+    // Share
+    case share = 6
+    
+    // Projects
+    case projects = 8
+    
+    // Favorites
+    case favorites = 10
+    
+    // Recent
+    case recent = 11
 
-    case fillFormDone = 25
-    case fillFormInProgress = 26
+    // Templates
+    case templates = 12
 
+    // Privacy
+    case privacy = 13
+    
+    // Virtual rooms
+    case virtualRooms = 14
+    
+    // Filling forms room
+    case fillingFormsRoom = 15
+    
+    // Editing room
+    case editingRoom = 16
+
+    // Custom room
+    case customRoom = 19
+    
+    // Archive
+    case archive = 20
+    
+    // Thirdparty backup
+    case thirdpartyBackup = 21
+
+    // Public room
+    case publicRoom = 22
+
+    // Ready form folder
+    case readyFormFolder = 25
+    
+    // In process form folder
+    case inProcessFormFolder = 26
+    
+    // Form filling folder done
+    case formFillingFolderDone = 27
+    
+    // Form filling folder in progress
+    case formFillingFolderInProgress = 28
+    
+    // Virtual Data Room
+    case virtualDataRoom = 29
+        
+    // Room templates folder
+    case roomTemplates = 30
+
+    // Device folder of documents
     case deviceDocuments = 50
+    
+    // Device folder of trash
     case deviceTrash = 51
 
+    // Thirdparty folders
     case nextcloudAll = 101
     case owncloudAll = 102
     case yandexAll = 103

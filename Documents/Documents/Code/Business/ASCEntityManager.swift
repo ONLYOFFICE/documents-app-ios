@@ -325,7 +325,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         if isDevice {
             if let deviceFile = file {
-                if deviceFile.rootFolderType == .onlyofficeTrash {
+                if deviceFile.rootFolderType == .trash {
                     ASCLocalFileHelper.shared.removeFile(Path(deviceFile.id))
                 } else {
                     guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userTrash + entityTitle!) else {
@@ -341,7 +341,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 }
                 handler?(.end, deviceFile, nil)
             } else if let deviceFolder = folder {
-                if deviceFolder.rootFolderType == .onlyofficeTrash {
+                if deviceFolder.rootFolderType == .trash {
                     ASCLocalFileHelper.shared.removeDirectory(Path(deviceFolder.id))
                 } else {
                     guard let folderPath = ASCLocalFileHelper.shared.resolve(folderPath: Path.userTrash + entityTitle!) else {
@@ -358,7 +358,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 handler?(.end, deviceFolder, nil)
             }
         } else {
-            let isShareEntity = (file?.rootFolderType == .onlyofficeShare) || (folder?.rootFolderType == .onlyofficeShare)
+            let isShareEntity = (file?.rootFolderType == .share) || (folder?.rootFolderType == .share)
 
             if isShareEntity {
                 let parameters = file != nil ? ["fileIds": [file?.id]] : ["folderIds": [folder?.id]]

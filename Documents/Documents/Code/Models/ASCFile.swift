@@ -20,7 +20,7 @@ class ASCFile: ASCEntity {
     var title: String = ""
     var access: ASCEntityAccess = .none
     var shared: Bool = false
-    var rootFolderType: ASCFolderType = .unknown
+    var rootFolderType: ASCFolderType = .default
     var expired: Date?
     var updated: Date?
     var updatedBy: ASCUser?

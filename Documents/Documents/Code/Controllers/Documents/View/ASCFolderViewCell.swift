@@ -445,7 +445,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         // Set icon image
         if let _ = folder.roomType {
-            if folder.rootFolderType == .onlyofficeRoomArchived {
+            if folder.rootFolderType == .archive {
                 imageView.image = roomImageDefault()
             } else {
                 let processor = RoundCornerImageProcessor(
@@ -500,9 +500,9 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         if let fillFormFolderType = folder.type {
             switch fillFormFolderType {
-            case .fillFormDone:
+            case .readyFormFolder:
                 imageView.image = iconFillFormRoomFolderDone
-            case .fillFormInProgress:
+            case .inProcessFormFolder:
                 imageView.image = iconFillFormRoomFolderInProgress
             default:
                 break

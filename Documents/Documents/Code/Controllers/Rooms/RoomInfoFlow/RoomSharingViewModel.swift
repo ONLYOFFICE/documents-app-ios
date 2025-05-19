@@ -34,8 +34,8 @@ final class RoomSharingViewModel: ObservableObject {
     }
 
     let linksLimit = 6
-    var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived && room.security.editAccess }
-    var isUserSelectionAllow: Bool { room.rootFolderType != .onlyofficeRoomArchived && room.security.editAccess }
+    var isSharingPossible: Bool { room.rootFolderType != .archive && room.security.editAccess }
+    var isUserSelectionAllow: Bool { room.rootFolderType != .archive && room.security.editAccess }
     private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false

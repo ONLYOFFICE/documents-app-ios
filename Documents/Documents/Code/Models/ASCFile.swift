@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import SwiftUI
 
 class ASCFile: ASCEntity {
     var version: Int = 0
@@ -16,6 +17,7 @@ class ASCFile: ASCEntity {
     var fileStatus: ASCFileStatus = .none
     var viewUrl: String?
     var webUrl: String?
+    var formFillingStatus: FormFillingStatus = .none
     var isForm: Bool = false
     var title: String = ""
     var access: ASCEntityAccess = .none
@@ -98,6 +100,7 @@ class ASCFile: ASCEntity {
         fileStatus <- map["fileStatus"]
         viewUrl <- map["viewUrl"]
         webUrl <- map["webUrl"]
+        formFillingStatus <- (map["formFillingStatus"], EnumTransform())
         isForm <- map["isForm"]
         title <- (map["title"], ASCStringTransform())
         access <- (map["access"], EnumTransform())
@@ -128,5 +131,42 @@ extension ASCFile {
         let timePassed = Date().timeIntervalSince(created)
 
         return timePassed >= totalDuration * 0.9
+    }
+}
+
+enum FormFillingStatus: Int {
+    case none = 0
+    case draft = 1
+    case yourTurn = 2
+    case inProgress = 3
+    case complete = 4
+    case stopped = 5
+
+    var localizedString: String {
+        switch self {
+        case .none:
+            ""
+        case .draft:
+            NSLocalizedString("Draft", comment: "Form filling status")
+        case .yourTurn:
+            NSLocalizedString("Your turn", comment: "Form filling status")
+        case .inProgress:
+            NSLocalizedString("In progress", comment: "Form filling status")
+        case .complete:
+            NSLocalizedString("Complete", comment: "Form filling status")
+        case .stopped:
+            NSLocalizedString("Stopped", comment: "Form filling status")
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .none: return .clear
+        case .draft: return .red
+        case .yourTurn: return .blue
+        case .inProgress: return .gray
+        case .complete: return .green
+        case .stopped: return .red
+        }
     }
 }

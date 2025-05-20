@@ -465,7 +465,7 @@ class ASCViewControllerManager {
 
         let rootSharedFolder = ASCFolder()
         rootSharedFolder.id = "@share"
-        rootSharedFolder.rootFolderType = .onlyofficeShare
+        rootSharedFolder.rootFolderType = .share
 
         var file = deepLink.file
         var folder = deepLink.folder ?? rootSharedFolder
@@ -617,9 +617,9 @@ class ASCViewControllerManager {
                         delay(seconds: 0.2) {
                             if let copyFolder = ASCFolder(JSON: folder.toJSON()) {
                                 // Correction root folfer type
-                                if copyFolder.rootFolderType == .onlyofficeBunch {
-                                    copyFolder.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
-                                    copyFolder.rootFolderType = .onlyofficeProjects
+                                if copyFolder.rootFolderType == .bunch {
+                                    copyFolder.title = ASCOnlyofficeCategory.title(of: .projects)
+                                    copyFolder.rootFolderType = .projects
                                 }
 
                                 if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() {

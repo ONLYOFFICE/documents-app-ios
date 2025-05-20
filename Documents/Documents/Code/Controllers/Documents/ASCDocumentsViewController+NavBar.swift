@@ -132,16 +132,14 @@ extension ASCDocumentsViewController {
     }
 
     func setTitleBadgeIfNeeded() {
-        guard false else { return }
-
-//        if let folder, !folder.isTemplate {
-//            return
-//        }
+        if let folder, !folder.isTemplateRoom {
+            return
+        }
 
         if !collectionView.isEditing {
             let templateBadgeView: (() -> ASCPaddingLabel) = {
                 let badgeLabel = ASCPaddingLabel()
-                badgeLabel.text = "Template"
+                badgeLabel.text = NSLocalizedString("Template", comment: "")
                 badgeLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
                 badgeLabel.textColor = .white
                 badgeLabel.backgroundColor = .systemGray
@@ -593,7 +591,7 @@ private extension ASCDocumentsViewController {
     }
 
     func createAddBarButton() -> UIBarButtonItem? {
-        guard (provider?.allowAdd(toFolder: folder)) != nil, folder?.rootFolderType != .onlyofficeRoomArchived else { return nil }
+        guard (provider?.allowAdd(toFolder: folder)) != nil, folder?.rootFolderType != .archive else { return nil }
 
         let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
 
@@ -725,16 +723,16 @@ extension ASCDocumentsViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         largeTitleLabel.alpha = 0
-        stackView.alpha = 0
+//        stackView.alpha = 0
 
         largeTitleLabelParent.addSubview(stackView)
 
-        let isViewPresented = collectionView.refreshControl != nil
+//        let isViewPresented = collectionView.refreshControl != nil
 
-        UIView.animate(withDuration: isViewPresented ? 0 : 0.4, delay: isViewPresented ? 0 : 0.3, options: [.curveEaseIn]) {
-            largeTitleLabel.alpha = 0
-            stackView.alpha = 1
-        }
+//        UIView.animate(withDuration: isViewPresented ? 0 : 0.4, delay: isViewPresented ? 0 : 0.3, options: [.curveEaseIn]) {
+//            largeTitleLabel.alpha = 0
+//            stackView.alpha = 1
+//        }
 
         largeTitleBadgeView = stackView
 

@@ -54,7 +54,7 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
             let canEdit = onlyofficeProvider.allowEdit(entity: file)
             let canShare = onlyofficeProvider.allowShare(entity: file)
             let canDownload = !file.denyDownload
-            let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+            let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
 
             config.supportShare = canEdit && canShare && !isProjects && canDownload && folder.roomType == nil
         }

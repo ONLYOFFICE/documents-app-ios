@@ -183,13 +183,13 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     func entrypointCategory() -> ASCOnlyofficeCategory {
-        var folderType: ASCFolderType = .onlyofficeUser
+        var folderType: ASCFolderType = .user
 
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             if user.isVisitor {
                 folderType = onlyoffice.apiClient.serverVersion?.docSpace != nil
-                    ? .onlyofficeRoomShared
-                    : .onlyofficeShare
+                    ? .virtualRooms
+                    : .share
             }
         }
 

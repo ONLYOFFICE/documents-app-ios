@@ -277,12 +277,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private(set) lazy var categoryIsRecent: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .recent
     }()
 
     private lazy var categoryIsFavorite: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeFavorites
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .favorites
     }()
 
     // MARK: - Lifecycle Methods
@@ -733,16 +733,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let isRoot = folder.parentId == nil || folder.parentId == "0"
         let isRoomList = folder.isRoomListFolder
         let isDevice = (provider?.id == ASCFileManager.localProvider.id)
-        let isShared = folder.rootFolderType == .onlyofficeShare
+        let isShared = folder.rootFolderType == .share
         let isTrash = self.isTrash(folder)
         let isRecent = categoryIsRecent
-        let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
+        let isProjectRoot = (folder.rootFolderType == .bunch || folder.rootFolderType == .projects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
-        let isPersonalCategory = folder.rootFolderType == .onlyofficeUser
+        let isPersonalCategory = folder.rootFolderType == .user
         let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
-        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
-        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
-        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
+        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .archive
+        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .archive && !isRoot
+        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .virtualRooms
         let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
         let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
         let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder || isDocSpaceArchive
@@ -1191,7 +1191,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
             let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
             let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
-            let isDocRecently = isDocSpace && folder?.rootFolderType == .onlyofficeRecent
+            let isDocRecently = isDocSpace && folder?.rootFolderType == .recent
 
             // If loading view still display
             if let _ = loadingView.superview {
@@ -1204,9 +1204,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 localEmptyView?.type = .search
             } else {
                 if let folder, let provider {
-                    if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
+                    if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .trash {
                         localEmptyView?.type = .trash
-                    } else if folder.rootFolderType == .onlyofficeRoomArchived && !folder.isRoom {
+                    } else if folder.rootFolderType == .archive && !folder.isRoom {
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
@@ -1549,7 +1549,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func handleFileDeletion(_ file: ASCFile) {
         switch folder?.rootFolderType {
-        case .onlyofficeTrash:
+        case .trash:
             showDeleteFromOnlyofficeTrash(entity: file)
         case .deviceTrash:
             showDeleteFromDeviceTrash(entity: file)
@@ -1560,9 +1560,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private func handleFolderDeletion(_ folder: ASCFolder) {
         switch self.folder?.rootFolderType {
-        case .onlyofficeRoomArchived:
+        case .archive:
             deleteArchive(folder: folder)
-        case .onlyofficeTrash:
+        case .trash:
             showDeleteFromOnlyofficeTrash(entity: folder)
         case .deviceTrash:
             showDeleteFromDeviceTrash(entity: folder)
@@ -1894,7 +1894,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: .standardDelay)
                     if let rootVC = ASCViewControllerManager.shared.rootController {
-                        rootVC.display(provider: provider, folder: room, inCategory: .onlyofficeRoomShared)
+                        rootVC.display(provider: provider, folder: room, inCategory: .virtualRooms)
                     }
                 }
             }
@@ -2968,7 +2968,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: .standardDelay)
 
-                if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
+                if self.isTrash(self.folder) || self.folder?.rootFolderType == .archive {
                     self.provider?.cancel()
                     self.provider?.reset()
                     UIView.performWithoutAnimation { [weak self] in
@@ -3686,7 +3686,7 @@ extension ASCDocumentsViewController {
             title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
         } else if let currentFolder, currentFolder.isThirdParty {
             title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
-        } else if let currentFolder, currentFolder.rootFolderType == .onlyofficeRoomArchived {
+        } else if let currentFolder, currentFolder.rootFolderType == .archive {
             complation(cell, true)
         }
 

@@ -230,14 +230,14 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                     if let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
                        let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController,
                        let categoryFolder = documentsVC.folder,
-                       categoryFolder.rootFolderType == .onlyofficeUser,
+                       categoryFolder.rootFolderType == .user,
                        categoryFolder.parentId == nil || categoryFolder.parentId == "0" // is onlyoffice root of user's folder
                     {
                         documentsVC.add(entity: newFolder)
                     } else {
                         rootVC.display(
                             provider: ASCFileManager.onlyofficeProvider,
-                            folder: ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
+                            folder: ASCOnlyofficeCategory.folder(of: .user)
                         )
 
                         delay(seconds: 0.3) {

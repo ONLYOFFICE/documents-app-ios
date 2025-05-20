@@ -22,7 +22,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
 
     private var isArchivedRoom: Bool {
         guard let folder = entity as? ASCFolder else { return false }
-        return isRoomFolder && folder.rootFolderType == .onlyofficeRoomArchived
+        return isRoomFolder && folder.rootFolderType == .archive
     }
 
     private var roomSecurity: ASCFolderSecurity {

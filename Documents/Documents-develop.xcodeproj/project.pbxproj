@@ -539,6 +539,7 @@
 		FCB4CE8129FAC88C009C1E2E /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7B29FAC88A009C1E2E /* ASCMultiAccountScreenModel.swift */; };
 		FCB4CE8329FAC88C009C1E2E /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7E29FAC88B009C1E2E /* ASCMultiAccountsViewController.swift */; };
 		FCB4CE8529FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE8429FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift */; };
+		FCB61DDD2DDC9652006DEFA5 /* OnlyofficeSearchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB61DDC2DDC9652006DEFA5 /* OnlyofficeSearchArea.swift */; };
 		FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */; };
 		FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */; };
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
@@ -1297,6 +1298,7 @@
 		FCB4CE7B29FAC88A009C1E2E /* ASCMultiAccountScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountScreenModel.swift; sourceTree = "<group>"; };
 		FCB4CE7E29FAC88B009C1E2E /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
 		FCB4CE8429FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailImageStyleTabelViewCell.swift; sourceTree = "<group>"; };
+		FCB61DDC2DDC9652006DEFA5 /* OnlyofficeSearchArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeSearchArea.swift; sourceTree = "<group>"; };
 		FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageController.swift; sourceTree = "<group>"; };
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
@@ -1871,6 +1873,7 @@
 			isa = PBXGroup;
 			children = (
 				FC2B0CCC264158B400969DB9 /* OnlyofficeApplicationType.swift */,
+				FCB61DDC2DDC9652006DEFA5 /* OnlyofficeSearchArea.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -4362,6 +4365,7 @@
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
 				FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */,
 				FCE2B4272930CCA700E50429 /* ASCRoomType.swift in Sources */,
+				FCB61DDD2DDC9652006DEFA5 /* OnlyofficeSearchArea.swift in Sources */,
 				F3772FD32C9DEBC1002B33A8 /* FormCompletedRootViewController.swift in Sources */,
 				FC759B632C00608600510096 /* UserListViewModel.swift in Sources */,
 				FC759BE52C00611000510096 /* ASCSharingOptionsRouter.swift in Sources */,

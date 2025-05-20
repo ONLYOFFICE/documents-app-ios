@@ -26,9 +26,9 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
             // My Documents
             if allowMy {
                 categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
+                    $0.title = ASCOnlyofficeCategory.title(of: .user)
                     $0.image = Asset.Images.categoryMy.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
+                    $0.folder = ASCOnlyofficeCategory.folder(of: .user)
                     return $0
                 }(ASCOnlyofficeCategory()))
             }
@@ -36,9 +36,9 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
             // Shared with Me Category
             if allowShare {
                 categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
+                    $0.title = ASCOnlyofficeCategory.title(of: .share)
                     $0.image = Asset.Images.categoryShare.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeShare)
+                    $0.folder = ASCOnlyofficeCategory.folder(of: .share)
                     return $0
                 }(ASCOnlyofficeCategory()))
             }
@@ -46,9 +46,9 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
             // Common Documents Category
             if allowCommon {
                 categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
+                    $0.title = ASCOnlyofficeCategory.title(of: .common)
                     $0.image = Asset.Images.categoryCommon.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon)
+                    $0.folder = ASCOnlyofficeCategory.folder(of: .common)
                     return $0
                 }(ASCOnlyofficeCategory()))
             }
@@ -56,18 +56,18 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
             // Project Documents Category
             if allowProjects {
                 categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
+                    $0.title = ASCOnlyofficeCategory.title(of: .projects)
                     $0.image = Asset.Images.categoryProjects.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeProjects)
+                    $0.folder = ASCOnlyofficeCategory.folder(of: .projects)
                     return $0
                 }(ASCOnlyofficeCategory()))
             }
 
             // Trash Category
             categories.append({
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeTrash)
+                $0.title = ASCOnlyofficeCategory.title(of: .trash)
                 $0.image = Asset.Images.categoryTrash.image
-                $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeTrash)
+                $0.folder = ASCOnlyofficeCategory.folder(of: .trash)
                 return $0
             }(ASCOnlyofficeCategory()))
 

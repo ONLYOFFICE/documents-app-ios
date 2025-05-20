@@ -12,7 +12,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     var sortWeight = 500
 
     var isDocSpaceRoom: Bool {
-        Self.isDocSpace(type: folder?.rootFolderType ?? .unknown)
+        Self.isDocSpace(type: folder?.rootFolderType ?? .default)
     }
 
     convenience init(folder: ASCFolder) {
@@ -29,25 +29,25 @@ class ASCOnlyofficeCategory: ASCCategory {
 
     static func title(of type: ASCFolderType) -> String {
         switch type {
-        case .onlyofficeUser:
+        case .user:
             return ASCOnlyofficeProvider.isDocspaceApi
                 ? NSLocalizedString("Documents", comment: "Category title")
                 : NSLocalizedString("My Documents", comment: "Category title")
-        case .onlyofficeShare:
+        case .share:
             return NSLocalizedString("Shared with Me", comment: "Category title")
-        case .onlyofficeFavorites:
+        case .favorites:
             return NSLocalizedString("Favorites", comment: "Category title")
-        case .onlyofficeRecent:
+        case .recent:
             return NSLocalizedString("Recent", comment: "Category title")
-        case .onlyofficeRoomShared:
+        case .virtualRooms:
             return NSLocalizedString("Rooms", comment: "Category title")
-        case .onlyofficeRoomArchived:
+        case .archive:
             return NSLocalizedString("Archive", comment: "Category title")
-        case .onlyofficeCommon:
+        case .common:
             return NSLocalizedString("Common Documents", comment: "Category title")
-        case .onlyofficeBunch, .onlyofficeProjects:
+        case .bunch, .projects:
             return NSLocalizedString("Project Documents", comment: "Category title")
-        case .onlyofficeTrash:
+        case .trash:
             return NSLocalizedString("Trash", comment: "Category title")
         default:
             return ""
@@ -56,23 +56,23 @@ class ASCOnlyofficeCategory: ASCCategory {
 
     static func image(of type: ASCFolderType) -> UIImage? {
         switch type {
-        case .onlyofficeCommon:
+        case .common:
             return Asset.Images.categoryCommon.image
-        case .onlyofficeTrash:
+        case .trash:
             return Asset.Images.categoryTrash.image
-        case .onlyofficeUser:
+        case .user:
             return Asset.Images.categoryMy.image
-        case .onlyofficeShare:
+        case .share:
             return Asset.Images.categoryShare.image
-        case .onlyofficeRoomShared:
+        case .virtualRooms:
             return Asset.Images.categoryRoom.image
-        case .onlyofficeRoomArchived:
+        case .archive:
             return Asset.Images.categoryArchived.image
-        case .onlyofficeBunch, .onlyofficeProjects:
+        case .bunch, .projects:
             return Asset.Images.categoryProjects.image
-        case .onlyofficeFavorites:
+        case .favorites:
             return Asset.Images.categoryFavorites.image
-        case .onlyofficeRecent:
+        case .recent:
             return Asset.Images.categoryRecent.image
         default:
             return nil
@@ -81,21 +81,21 @@ class ASCOnlyofficeCategory: ASCCategory {
 
     static func sortWeight(of type: ASCFolderType) -> Int {
         switch type {
-        case .onlyofficeUser:
+        case .user:
             return 10
-        case .onlyofficeShare, .onlyofficeRoomShared:
+        case .share, .virtualRooms:
             return 20
-        case .onlyofficeRoomArchived:
+        case .archive:
             return 25
-        case .onlyofficeFavorites:
+        case .favorites:
             return 30
-        case .onlyofficeRecent:
+        case .recent:
             return 40
-        case .onlyofficeCommon:
+        case .common:
             return 60
-        case .onlyofficeBunch, .onlyofficeProjects:
+        case .bunch, .projects:
             return 70
-        case .onlyofficeTrash:
+        case .trash:
             return 80
         default:
             return 500
@@ -104,23 +104,23 @@ class ASCOnlyofficeCategory: ASCCategory {
 
     static func id(of type: ASCFolderType) -> String {
         switch type {
-        case .onlyofficeUser:
+        case .user:
             return OnlyofficeAPI.Path.Folder.my
-        case .onlyofficeShare:
+        case .share:
             return OnlyofficeAPI.Path.Folder.share
-        case .onlyofficeRoomShared:
+        case .virtualRooms:
             return OnlyofficeAPI.Path.Folder.room
-        case .onlyofficeRoomArchived:
+        case .archive:
             return OnlyofficeAPI.Path.Folder.room
-        case .onlyofficeFavorites:
+        case .favorites:
             return OnlyofficeAPI.Path.Folder.favorites
-        case .onlyofficeRecent:
+        case .recent:
             return OnlyofficeAPI.Path.Folder.recent
-        case .onlyofficeCommon:
+        case .common:
             return OnlyofficeAPI.Path.Folder.common
-        case .onlyofficeBunch, .onlyofficeProjects:
+        case .bunch, .projects:
             return OnlyofficeAPI.Path.Folder.projects
-        case .onlyofficeTrash:
+        case .trash:
             return OnlyofficeAPI.Path.Folder.trash
         default:
             return ""
@@ -130,7 +130,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func isDocSpace(type: ASCFolderType) -> Bool {
         guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
-        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser, .onlyofficeRecent:
+        case .virtualRooms, .archive, .user, .recent, .roomTemplates:
             return true
         default:
             return false
@@ -140,7 +140,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     static func hasDocSpaceRootRoomsList(type: ASCFolderType) -> Bool {
         guard isDocSpace(type: type), ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
-        case .onlyofficeRoomShared, .onlyofficeRoomArchived:
+        case .virtualRooms, .archive, .roomTemplates:
             return true
         default:
             return false
@@ -149,27 +149,30 @@ class ASCOnlyofficeCategory: ASCCategory {
 
     static func searchArea(of type: ASCFolderType) -> String? {
         switch type {
-        case .onlyofficeRoomShared:
-            return "Active"
-        case .onlyofficeRoomArchived:
-            return "Archive"
-        case .onlyofficeRecent:
-            return "RecentByLinks"
-        default: return nil
+        case .virtualRooms:
+            return OnlyofficeSearchArea.active.rawValue
+        case .archive:
+            return OnlyofficeSearchArea.archive.rawValue
+        case .recent:
+            return OnlyofficeSearchArea.recentByLinks.rawValue
+        case .roomTemplates:
+            return OnlyofficeSearchArea.templates.rawValue
+        default:
+            return nil
         }
     }
 
     static func allowToMoveAndCopy(of type: ASCFolderType) -> Bool {
         switch type {
-        case .onlyofficeUser:
+        case .user:
             return true
-        case .onlyofficeShare:
+        case .share:
             return true
-        case .onlyofficeCommon:
+        case .common:
             return true
-        case .onlyofficeBunch, .onlyofficeProjects:
+        case .bunch, .projects:
             return true
-        case .onlyofficeRoomShared:
+        case .virtualRooms:
             return true
         default:
             return false
@@ -177,28 +180,28 @@ class ASCOnlyofficeCategory: ASCCategory {
     }
 
     static func allowToMoveAndCopy(category: ASCOnlyofficeCategory) -> Bool {
-        allowToMoveAndCopy(of: category.folder?.rootFolderType ?? .unknown)
+        allowToMoveAndCopy(of: category.folder?.rootFolderType ?? .default)
     }
 
     static func folder(of type: ASCFolderType) -> ASCFolder? {
         switch type {
-        case .onlyofficeUser,
-             .onlyofficeShare,
-             .onlyofficeRoomShared,
-             .onlyofficeCommon,
-             .onlyofficeProjects,
-             .onlyofficeTrash:
+        case .user,
+             .share,
+             .virtualRooms,
+             .common,
+             .projects,
+             .trash:
             return {
                 $0.title = Self.title(of: type)
                 $0.rootFolderType = type
                 $0.id = Self.id(of: type)
                 return $0
             }(ASCFolder())
-        case .onlyofficeBunch:
+        case .bunch:
             return {
-                $0.title = Self.title(of: .onlyofficeProjects)
-                $0.rootFolderType = .onlyofficeProjects
-                $0.id = Self.id(of: .onlyofficeProjects)
+                $0.title = Self.title(of: .projects)
+                $0.rootFolderType = .projects
+                $0.id = Self.id(of: .projects)
                 return $0
             }(ASCFolder())
         default:

@@ -126,14 +126,14 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         size: ASCFolder.Constants.listRoomIconSize,
         cornerRadius: ASCFolder.Constants.listRoomIconRadius,
         lineWidth: 2,
-        gapBetweenCorners: 8
+        gapBetweenCorners: 10
     )
     
     static let gridRoomTemplateFrameImage = UIImage.createFrameTexture(
         size: ASCFolder.Constants.gridRoomIconSize,
         cornerRadius: ASCFolder.Constants.gridRoomIconRadius,
         lineWidth: 4,
-        gapBetweenCorners: 12
+        gapBetweenCorners: 20
     )
 
     // MARK: - Lifecycle Methods
@@ -829,21 +829,26 @@ extension UIImage {
         }
         
         // Set up drawing parameters
-        context.setLineWidth(lineWidth)
+        context.setLineWidth(lineWidth * 2)
         context.setStrokeColor(color.cgColor)
-        context.setLineCap(.round) // This gives us the semi-spherical ends
+        context.setLineCap(.round)
         
         // Calculate inner rectangle that accounts for the line width
-        let insetRect = CGRect(x: lineWidth / 2,
-                               y: lineWidth / 2,
-                               width: size.width - lineWidth,
-                               height: size.height - lineWidth)
+        let insetRect = CGRect(x: 0,
+                               y: 0,
+                               width: size.width,
+                               height: size.height)
+        
+        
+        // Path of mask
+        let clipPath = UIBezierPath(roundedRect: insetRect, cornerRadius: cornerRadius).cgPath
+        context.addPath(clipPath)
+        context.closePath()
+        context.clip()
         
         // Calculate the length of each side minus corners and gaps
         let horizontalSideLength = max(0, (insetRect.width - 2 * cornerRadius - gapBetweenCorners) / 2)
         let verticalSideLength = max(0, (insetRect.height - 2 * cornerRadius - gapBetweenCorners) / 2)
-        
-        // Top-left corner and connected lines
         
         // Top-left corner
         context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.minY))

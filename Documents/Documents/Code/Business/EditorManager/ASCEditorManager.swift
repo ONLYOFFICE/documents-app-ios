@@ -999,7 +999,9 @@ extension ASCEditorManager {
         let isDocument = ([ASCConstants.FileExtensions.docx] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
         let isSpreadsheet = ([ASCConstants.FileExtensions.xlsx] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
         let isPresentation = ([ASCConstants.FileExtensions.pptx] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
-        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
+        let isPDF = ASCConstants.FileExtensions.pdfs.contains(fileExt)
+        let isFormExt = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = isFormExt || (isPDF && file.isForm)
 
         openedFile = nil
         openedCopy = locallyEditing
@@ -1079,7 +1081,9 @@ extension ASCEditorManager {
         let isDocument = ([ASCConstants.FileExtensions.docx] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
         let isSpreadsheet = ([ASCConstants.FileExtensions.xlsx] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
         let isPresentation = ([ASCConstants.FileExtensions.pptx] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
-        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
+        let isPDF = ASCConstants.FileExtensions.pdfs.contains(fileExt)
+        let isFormExt = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = isFormExt || (isPDF && file.isForm)
 
         openedFile = nil
 

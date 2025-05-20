@@ -103,7 +103,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
     private var isCompact: Bool {
         frame.width < Constants.transformWidth
     }
-    
+
     private var badgeInsets: UIEdgeInsets {
         guard let folder = entity as? ASCFolder else { return .zero }
 
@@ -121,14 +121,14 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         return .zero
     }
-    
+
     static let listRoomTemplateFrameImage = UIImage.createFrameTexture(
         size: ASCFolder.Constants.listRoomIconSize,
         cornerRadius: ASCFolder.Constants.listRoomIconRadius,
         lineWidth: 2,
         gapBetweenCorners: 10
     )
-    
+
     static let gridRoomTemplateFrameImage = UIImage.createFrameTexture(
         size: ASCFolder.Constants.gridRoomIconSize,
         cornerRadius: ASCFolder.Constants.gridRoomIconRadius,
@@ -187,7 +187,6 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         updateSelected()
     }
 
-    
     // MARK: - Common Layout
 
     private func buildIconView(preferredSize: CGSize) -> UIView {
@@ -195,7 +194,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             let folder = entity as? ASCFolder,
             let provider
         else { return UIView() }
-        
+
         if folder.isTemplateRoom {
             return buildRoomTemplateIconView(preferredSize: preferredSize)
         }
@@ -316,7 +315,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
         return parentView
     }
-    
+
     func buildRoomTemplateIconView(preferredSize: CGSize) -> UIView {
         guard
             let folder = entity as? ASCFolder,
@@ -336,13 +335,13 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         imageView.layerCornerRadius = 0
 
         // Set icon image
-        
+
         var roomColor = Asset.Colors.roomDefault.color
 
         if let hexColor = folder.logo?.color {
             roomColor = UIColor(hex: "#\(hexColor)")
         }
-        
+
         let literalLabel = {
             $0.font = UIFont.systemFont(ofSize: layoutType == .grid ? 36 : 17, weight: .semibold)
             $0.textColor = roomColor
@@ -350,10 +349,10 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             $0.text = folder.formatFolderName(folderName: folder.title)
             return $0
         }(UILabel(frame: CGRect(origin: .zero, size: preferredSize)))
-        
+
         let roomIconRadius = folder.roomIconRadius(layoutType: layoutType)
         let roomIconSize = folder.roomIconSize(layoutType: layoutType)
-        
+
         let processor = RoundCornerImageProcessor(
             cornerRadius: roomIconRadius,
             targetSize: CGSize(
@@ -377,34 +376,34 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
                 }
             }
         )
-    
+
         imageView.layerCornerRadius = folder.roomIconRadius(layoutType: layoutType) * 0.66
 
         // Layout
-        
+
         let frameView = {
             $0.contentMode = .center
             $0.tintColor = roomColor
             return $0
         }(UIImageView(image: frameRoomTemplateImage.withRenderingMode(.alwaysTemplate)))
-        
+
         imageView.removeConstraints(imageView.constraints)
 
         frameView.anchor(
             widthConstant: roomIconSize.width,
             heightConstant: roomIconSize.height
         )
-        
+
         imageView.anchor(
             widthConstant: roomIconSize.width - iconRoomTemplateOffset * 2,
             heightConstant: roomIconSize.height - iconRoomTemplateOffset * 2
         )
 
         let parentView = UIView()
-       
+
         parentView.addSubview(imageView)
         imageView.anchorCenterSuperview()
-        
+
         parentView.insertSubview(frameView, at: 0)
         frameView.fillToSuperview()
 
@@ -453,7 +452,6 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         dateRightLabel.alpha = show ? 1 : 0
         dateRightLabel.isHidden = !show
     }
-
 }
 
 // MARK: - List Layout
@@ -461,32 +459,32 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 extension ASCFolderViewCell {
     private func buildListView() -> UIView {
         guard let folder = entity as? ASCFolder else { return UIView() }
-        
+
         let containerView = UIView()
-        
+
         var items = [UIView]()
-        
+
         // Checkmark
         checkmarkView.removeConstraints(checkmarkView.constraints)
         checkmarkView.anchor(widthConstant: Constants.checkmarkSize)
         displayCheckmark(show: configurationState.isEditing)
-        
+
         // Icon
         let iconView = buildIconView(preferredSize: iconSize)
-        
+
         // Info
         let middleStackView = {
             $0.axis = .vertical
             $0.spacing = 1
             return $0
         }(UIStackView(arrangedSubviews: [buildListTitleView()]))
-        
+
         if let ownerView = buildOwnerView() {
             middleStackView.addArrangedSubview(ownerView)
         }
-        
+
         var dateStackItems = [UIView]()
-        
+
         // VDR index
         if let order = folder.order {
             dateStackItems.append(buildCaption1ScondaryLabel(
@@ -497,22 +495,22 @@ extension ASCFolderViewCell {
             ))
             dateStackItems.append(buildCaption1ScondaryLabel("|"))
         }
-        
+
         // Right info
         dateRightLabel.text = nil
         if let createdDate = folder.created {
             dateStackItems.append(
                 buildCaption1ScondaryLabel(isCompact
-                                           ? dateFormatter.string(from: createdDate)
-                                           : nil
-                                          )
+                    ? dateFormatter.string(from: createdDate)
+                    : nil
+                )
             )
-            
+
             dateRightLabel.text = dateTimeFormatter.string(from: createdDate)
         }
-        
+
         dateStackItems.append(.spacer)
-        
+
         if !dateStackItems.isEmpty {
             middleStackView.addArrangedSubview({
                 $0.axis = .horizontal
@@ -522,14 +520,14 @@ extension ASCFolderViewCell {
                 return $0
             }(UIStackView(arrangedSubviews: dateStackItems)))
         }
-        
+
         displayRightInfo(show: !isCompact)
-        
+
         items.append(checkmarkView)
         items.append(iconView)
         items.append(middleStackView)
         items.append(dateRightLabel)
-        
+
         if dragAndDropState {
             items.append({
                 $0.contentMode = .center
@@ -538,7 +536,7 @@ extension ASCFolderViewCell {
             }(UIImageView(image: UIImage(
                 systemName: "line.3.horizontal"
             )?.withTintColor(.separator, renderingMode: .alwaysOriginal) ?? UIImage())))
-            
+
             items.append({
                 $0.anchor(widthConstant: 10)
                 return $0
@@ -553,7 +551,7 @@ extension ASCFolderViewCell {
                 withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .medium))
             )?.withTintColor(.separator, renderingMode: .alwaysOriginal) ?? UIImage())))
         }
-        
+
         let contentView = {
             $0.axis = .horizontal
             $0.alignment = .center
@@ -561,10 +559,10 @@ extension ASCFolderViewCell {
             $0.spacing = 10
             return $0
         }(UIStackView(arrangedSubviews: items))
-        
+
         containerView.addSubview(contentView)
         containerView.addSubview(separatorView)
-        
+
         contentView.fillToSuperview(padding: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 5))
         separatorView.removeConstraints(separatorView.constraints)
         separatorView.anchor(
@@ -573,37 +571,37 @@ extension ASCFolderViewCell {
             trailing: containerView.trailingAnchor,
             size: CGSize(width: 0, height: 1.0 / UIScreen.main.scale)
         )
-        
+
         return containerView
     }
-    
+
     private func buildListTitleView() -> UIView {
         guard let folder = entity as? ASCFolder else { return UIView() }
-        
+
         var items: [UIView] = [titleLabel]
-        
+
         titleLabel.text = folder.title
-        
+
         if folder.pinned {
             items.append({
                 $0.contentMode = .center
                 return $0
             }(UIImageView(image: Asset.Images.pin.image)))
         }
-        
+
         items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
-        
+
         return {
             $0.axis = .horizontal
             $0.spacing = 2
             return $0
         }(UIStackView(arrangedSubviews: items))
     }
-    
+
     private func buildOwnerView() -> UIView? {
         guard let folder = entity as? ASCFolder else { return nil }
         let roomTypeDescription: String?
-        
+
         switch folder.roomType {
         case .custom:
             roomTypeDescription = CreatingRoomType.custom.name
@@ -618,18 +616,18 @@ extension ASCFolderViewCell {
         default:
             roomTypeDescription = nil
         }
-        
+
         authorLabel.text = [roomTypeDescription, folder.createdBy?.displayName]
             .compactMap { $0 }
             .joined(separator: " • ")
-        
+
         if authorLabel.text?.isEmpty == true {
             return nil
         }
-        
+
         return authorLabel
     }
-    
+
     private func buildCaption1ScondaryLabel(_ text: String?) -> UILabel {
         return {
             $0.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -642,9 +640,8 @@ extension ASCFolderViewCell {
 
 // MARK: - Grid Layout
 
-extension ASCFolderViewCell {
-
-    fileprivate func buildGridView() -> UIView {
+private extension ASCFolderViewCell {
+    func buildGridView() -> UIView {
         guard let folder = entity as? ASCFolder else { return UIView() }
 
         let iconView = buildIconView(preferredSize: iconSize)
@@ -785,11 +782,11 @@ extension ASCFolderViewCell {
     private var iconFillFormRoomFolderDone: UIImage {
         layoutType == .list ? Asset.Images.listRoomComplete.image : Asset.Images.gridRoomComplete.image
     }
-    
+
     private var iconRoomTemplateOffset: CGFloat {
         layoutType == .list ? Constants.listIconRoomTemplateOffset : Constants.gridIconRoomTemplateOffset
     }
-    
+
     private var frameRoomTemplateImage: UIImage {
         layoutType == .list ? ASCFolderViewCell.listRoomTemplateFrameImage : ASCFolderViewCell.gridRoomTemplateFrameImage
     }
@@ -821,101 +818,101 @@ extension UIImage {
                                    cornerRadius: CGFloat,
                                    lineWidth: CGFloat,
                                    gapBetweenCorners: CGFloat,
-                                   color: UIColor = .black) -> UIImage {
+                                   color: UIColor = .black) -> UIImage
+    {
         // Create a context to draw into
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         guard let context = UIGraphicsGetCurrentContext() else {
             return UIImage()
         }
-        
+
         // Set up drawing parameters
         context.setLineWidth(lineWidth * 2)
         context.setStrokeColor(color.cgColor)
         context.setLineCap(.round)
-        
+
         // Calculate inner rectangle that accounts for the line width
         let insetRect = CGRect(x: 0,
                                y: 0,
                                width: size.width,
                                height: size.height)
-        
-        
+
         // Path of mask
         let clipPath = UIBezierPath(roundedRect: insetRect, cornerRadius: cornerRadius).cgPath
         context.addPath(clipPath)
         context.closePath()
         context.clip()
-        
+
         // Calculate the length of each side minus corners and gaps
         let horizontalSideLength = max(0, (insetRect.width - 2 * cornerRadius - gapBetweenCorners) / 2)
         let verticalSideLength = max(0, (insetRect.height - 2 * cornerRadius - gapBetweenCorners) / 2)
-        
+
         // Top-left corner
         context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.minY))
         context.addArc(tangent1End: CGPoint(x: insetRect.minX, y: insetRect.minY),
                        tangent2End: CGPoint(x: insetRect.minX, y: insetRect.minY + cornerRadius),
                        radius: cornerRadius)
-        
+
         // Left vertical line after top-left corner
         context.addLine(to: CGPoint(x: insetRect.minX, y: insetRect.minY + cornerRadius + verticalSideLength))
         context.strokePath()
-        
+
         // Top horizontal line after top-left corner
         context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.minY))
         context.addLine(to: CGPoint(x: insetRect.minX + cornerRadius + horizontalSideLength, y: insetRect.minY))
         context.strokePath()
-        
+
         // Top-right corner
         context.move(to: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.minY))
         context.addArc(tangent1End: CGPoint(x: insetRect.maxX, y: insetRect.minY),
                        tangent2End: CGPoint(x: insetRect.maxX, y: insetRect.minY + cornerRadius),
                        radius: cornerRadius)
-        
+
         // Right vertical line after top-right corner
         context.addLine(to: CGPoint(x: insetRect.maxX, y: insetRect.minY + cornerRadius + verticalSideLength))
         context.strokePath()
-        
+
         // Top horizontal line before top-right corner
         context.move(to: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.minY))
         context.addLine(to: CGPoint(x: insetRect.maxX - cornerRadius - horizontalSideLength, y: insetRect.minY))
         context.strokePath()
-        
+
         // Bottom-left corner
         context.move(to: CGPoint(x: insetRect.minX, y: insetRect.maxY - cornerRadius))
         context.addArc(tangent1End: CGPoint(x: insetRect.minX, y: insetRect.maxY),
                        tangent2End: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.maxY),
                        radius: cornerRadius)
-        
+
         // Left vertical line before bottom-left corner
         context.move(to: CGPoint(x: insetRect.minX, y: insetRect.maxY - cornerRadius))
         context.addLine(to: CGPoint(x: insetRect.minX, y: insetRect.maxY - cornerRadius - verticalSideLength))
         context.strokePath()
-        
+
         // Bottom horizontal line after bottom-left corner
         context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.maxY))
         context.addLine(to: CGPoint(x: insetRect.minX + cornerRadius + horizontalSideLength, y: insetRect.maxY))
         context.strokePath()
-        
+
         // Bottom-right corner
         context.move(to: CGPoint(x: insetRect.maxX, y: insetRect.maxY - cornerRadius))
         context.addArc(tangent1End: CGPoint(x: insetRect.maxX, y: insetRect.maxY),
                        tangent2End: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.maxY),
                        radius: cornerRadius)
-        
+
         // Right vertical line before bottom-right corner
         context.move(to: CGPoint(x: insetRect.maxX, y: insetRect.maxY - cornerRadius))
         context.addLine(to: CGPoint(x: insetRect.maxX, y: insetRect.maxY - cornerRadius - verticalSideLength))
         context.strokePath()
-        
+
         // Bottom horizontal line before bottom-right corner
         context.move(to: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.maxY))
         context.addLine(to: CGPoint(x: insetRect.maxX - cornerRadius - horizontalSideLength, y: insetRect.maxY))
         context.strokePath()
-        
+
         // Get the image from the context
         let resultImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
         UIGraphicsEndImageContext()
-        
+
         return resultImage
     }
 }

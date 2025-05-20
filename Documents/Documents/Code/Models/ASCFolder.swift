@@ -283,7 +283,7 @@ extension ASCFolder {
     var isCustomRoom: Bool {
         return isRoom && roomType == .custom
     }
-    
+
     var isTemplateRoom: Bool {
         return isRoom && rootFolderType == .roomTemplates
     }

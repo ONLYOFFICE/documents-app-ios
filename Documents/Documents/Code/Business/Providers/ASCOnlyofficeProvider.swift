@@ -447,19 +447,19 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
-    
+
     func searchArea(for folder: ASCFolder) -> String? {
         guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return nil }
-        
+
         // List of Room Templates
         if folder.isRoot && folder.rootFolderType == .roomTemplates {
             return ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
         }
-        
+
         if let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
             return searchArea
         }
-        
+
         return nil
     }
 

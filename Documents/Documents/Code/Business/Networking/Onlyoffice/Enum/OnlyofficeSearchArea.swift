@@ -7,10 +7,9 @@
 //
 
 enum OnlyofficeSearchArea: String {
-
     case active
     case archive
-    case `any`
+    case any
     case recentByLinks
     case templates
 
@@ -18,19 +17,18 @@ enum OnlyofficeSearchArea: String {
         switch self {
         case .active:
             return "Active"
-       
+
         case .archive:
             return "Archive"
-        
+
         case .any:
             return "Any"
-        
+
         case .recentByLinks:
             return "RecentByLinks"
-        
+
         case .templates:
             return "Templates"
         }
     }
-    
 }

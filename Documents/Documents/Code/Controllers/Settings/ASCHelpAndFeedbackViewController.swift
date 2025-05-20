@@ -1,6 +1,6 @@
 //
 //  ASCHelpAndFeedbackViewController.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Victor Tihovodov on 13/5/25.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
@@ -31,11 +31,7 @@ class ASCHelpAndFeedbackViewController: ASCBaseTableViewController {
     // MARK: - Lifecycle Methods
 
     init() {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
+        super.init(style: .insetGrouped)
     }
 
     required init?(coder: NSCoder) {

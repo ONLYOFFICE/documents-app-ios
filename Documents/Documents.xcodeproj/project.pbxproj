@@ -543,6 +543,7 @@
 		FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCC62AE21E8AA91100D24BE2 /* MWPhotoBrowser.bundle */; };
 		FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */; };
 		FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC527120ADB68E000BD819 /* ASCSignInController.swift */; };
+		FCCC8D912DDCA8FF0045DB93 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC8D902DDCA8FF0045DB93 /* ASCHelpAndFeedbackViewController.swift */; };
 		FCCD8C90285782EB00ECD606 /* ASCStandartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD8C8E285782EB00ECD606 /* ASCStandartCell.swift */; };
 		FCCD8C92285782EB00ECD606 /* ASCStandartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCCD8C8F285782EB00ECD606 /* ASCStandartCell.xib */; };
 		FCCD8CA72859B80700ECD606 /* ASCDevelopOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD8CA62859B80700ECD606 /* ASCDevelopOptionsViewController.swift */; };
@@ -1303,6 +1304,7 @@
 		FCC64FE5291CF588004D9A47 /* Documents-Alpha.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Documents-Alpha.xcconfig"; sourceTree = "<group>"; };
 		FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccountsManager.swift; sourceTree = "<group>"; };
 		FCCC527120ADB68E000BD819 /* ASCSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSignInController.swift; sourceTree = "<group>"; };
+		FCCC8D902DDCA8FF0045DB93 /* ASCHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
 		FCCD8C8E285782EB00ECD606 /* ASCStandartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCStandartCell.swift; sourceTree = "<group>"; };
 		FCCD8C8F285782EB00ECD606 /* ASCStandartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCStandartCell.xib; sourceTree = "<group>"; };
 		FCCD8CA62859B80700ECD606 /* ASCDevelopOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDevelopOptionsViewController.swift; sourceTree = "<group>"; };
@@ -2255,6 +2257,7 @@
 				FC8650391ED3232B00C73AEF /* ASCAboutViewController.swift */,
 				FC1828F62A24E638005D9220 /* ASCAppThemeViewController.swift */,
 				FCCD8CA62859B80700ECD606 /* ASCDevelopOptionsViewController.swift */,
+				FCCC8D902DDCA8FF0045DB93 /* ASCHelpAndFeedbackViewController.swift */,
 				FC25B457284F68AB0075D6C2 /* ASCNotificationSettingsViewController.swift */,
 				FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */,
 			);
@@ -4568,6 +4571,7 @@
 				F3F706FC2DB7E1F30004A09F /* ASCVersionHistoryRootViewController.swift in Sources */,
 				FC9EEFAF2BFB201700A66DE8 /* OnlyofficeResponse.swift in Sources */,
 				FC35D4542A987DFC00C6383F /* UIBarButtonItem+Extensions.swift in Sources */,
+				FCCC8D912DDCA8FF0045DB93 /* ASCHelpAndFeedbackViewController.swift in Sources */,
 				FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */,
 				FC1765062BA3335A00D6B6F0 /* ASCDocumentsViewController+DragDrop.swift in Sources */,
 				FCCE50B82C1AF79000102056 /* SelectableLabledCellView.swift in Sources */,

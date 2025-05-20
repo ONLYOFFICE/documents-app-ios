@@ -32,6 +32,7 @@ class ASCFileSecurity: Mappable {
     var embed: Bool = false
     var startFilling: Bool = false
     var fillingStatus: Bool = false
+    var stopFilling: Bool = false
 
     init() {}
 
@@ -60,6 +61,7 @@ class ASCFileSecurity: Mappable {
         embed <- map["Embed"]
         startFilling <- map["StartFilling"]
         fillingStatus <- map["FillingStatus"]
+        stopFilling <- map["StopFilling"]
     }
 }
 

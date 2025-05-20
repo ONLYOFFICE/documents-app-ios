@@ -345,7 +345,7 @@ extension ASCFolder {
         layoutType == .grid ? Constants.gridRoomIconRadius : Constants.listRoomIconRadius
     }
 
-    private func formatFolderName(folderName: String) -> String {
+    func formatFolderName(folderName: String) -> String {
         folderName.components(separatedBy: " ")
             .filter { !$0.isEmpty }
             .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }

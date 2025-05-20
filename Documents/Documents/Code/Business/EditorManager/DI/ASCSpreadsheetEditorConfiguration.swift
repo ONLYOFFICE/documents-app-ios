@@ -12,7 +12,7 @@ import SpreadsheetEditor
 final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfigurationProtocol {
     var editorExternalSettings: [AnyHashable: Any] {
         let shortCm = NSLocalizedString("cm", comment: "Cut from centimeters")
-        return [
+        var settings: [AnyHashable: Any] = [
             "asc.se.external.appname": ASCConstants.Name.appNameShort,
             "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
             "asc.se.external.page.formats": [
@@ -35,6 +35,12 @@ final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfiguration
                 ],
             ],
         ]
+
+        if ASCAppSettings.Feature.allowUserVoice {
+            settings["asc.se.external.uservoiceurl"] = "https://onlyoffice.com/"
+        }
+
+        return settings
     }
 
     func localEditor(

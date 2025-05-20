@@ -60,5 +60,11 @@ enum ASCAppSettings {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
         }
+
+        // Allow user voice
+        static var allowUserVoice: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.allowUserVoice) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.allowUserVoice) }
+        }
     }
 }

@@ -10,33 +10,35 @@ import Foundation
 import ObjectMapper
 
 class ASCFile: ASCEntity {
-    var version: Int = 0
-    var displayContentLength: String?
-    var pureContentLength: Int = 0
-    var fileStatus: ASCFileStatus = .none
-    var viewUrl: String?
-    var webUrl: String?
-    var isForm: Bool = false
-    var title: String = ""
+    var `extension`: String?
     var access: ASCEntityAccess = .none
-    var shared: Bool = false
-    var rootFolderType: ASCFolderType = .default
-    var expired: Date?
-    var updated: Date?
-    var updatedBy: ASCUser?
+    var canShare: Bool = false
+    var comment: String?
     var created: Date?
     var createdBy: ASCUser?
-    var device: Bool = false
-    var parent: ASCFolder?
-    var security: ASCFileSecurity = .init()
-    var denyDownload: Bool = false
-    var editable: Bool = false
-    var canShare: Bool = false
-    var requestToken: String?
-    var `extension`: String?
-    var order: String?
-    var comment: String?
     var customFilterEnabled: Bool = false
+    var denyDownload: Bool = false
+    var device: Bool = false
+    var displayContentLength: String?
+    var editable: Bool = false
+    var expired: Date?
+    var fileStatus: ASCFileStatus = .none
+    var isForm: Bool = false
+    var order: String?
+    var parent: ASCFolder?
+    var pureContentLength: Int = 0
+    var requestToken: String?
+    var rootFolderType: ASCFolderType = .default
+    var security: ASCFileSecurity = .init()
+    var shared: Bool = false
+    var thumbnailStatus: ASCThumbnailStatus?
+    var thumbnailUrl: String?
+    var title: String = ""
+    var updated: Date?
+    var updatedBy: ASCUser?
+    var version: Int = 0
+    var viewUrl: String?
+    var webUrl: String?
 
     override init() {
         super.init()
@@ -94,30 +96,32 @@ class ASCFile: ASCEntity {
         super.mapping(map: map)
 
         id <- (map["id"], ASCIndexTransform())
-        version <- map["version"]
-        displayContentLength <- map["contentLength"]
-        pureContentLength <- map["pureContentLength"]
-        fileStatus <- map["fileStatus"]
-        viewUrl <- map["viewUrl"]
-        webUrl <- map["webUrl"]
-        isForm <- map["isForm"]
-        title <- (map["title"], ASCStringTransform())
+        `extension` <- map["extension"]
         access <- (map["access"], EnumTransform())
-        shared <- map["shared"]
-        rootFolderType <- (map["rootFolderType"], EnumTransform())
-        expired <- (map["expired"], ASCDateTransform())
-        updated <- (map["updated"], ASCDateTransform())
-        updatedBy <- map["updatedBy"]
+        canShare <- map["canShare"]
+        comment <- map["comment"]
         created <- (map["created"], ASCDateTransform())
         createdBy <- map["createdBy"]
-        device <- map["device"]
-        denyDownload <- map["denyDownload"]
-        security <- map["security"]
-        canShare <- map["canShare"]
-        `extension` <- map["extension"]
-        order <- map["order"]
-        comment <- map["comment"]
         customFilterEnabled <- map["customFilterEnabled"]
+        denyDownload <- map["denyDownload"]
+        device <- map["device"]
+        displayContentLength <- map["contentLength"]
+        expired <- (map["expired"], ASCDateTransform())
+        fileStatus <- map["fileStatus"]
+        isForm <- map["isForm"]
+        order <- map["order"]
+        pureContentLength <- map["pureContentLength"]
+        rootFolderType <- (map["rootFolderType"], EnumTransform())
+        security <- map["security"]
+        shared <- map["shared"]
+        thumbnailStatus <- (map["thumbnailStatus"], EnumTransform())
+        thumbnailUrl <- map["thumbnailUrl"]
+        title <- (map["title"], ASCStringTransform())
+        updated <- (map["updated"], ASCDateTransform())
+        updatedBy <- map["updatedBy"]
+        version <- map["version"]
+        viewUrl <- map["viewUrl"]
+        webUrl <- map["webUrl"]
 
         // Internal
         device <- map["device"]

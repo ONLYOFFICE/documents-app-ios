@@ -573,6 +573,7 @@
 		FC95D6B82D5CD977000725C8 /* ASCUpdateLocallyEditFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6B62D5CD977000725C8 /* ASCUpdateLocallyEditFileInfo.swift */; };
 		FCA3E7002B35C89000C5EDEC /* PasscodeLock in Frameworks */ = {isa = PBXBuildFile; productRef = FCA3E6FF2B35C89000C5EDEC /* PasscodeLock */; };
 		FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
+		FCACAF412DDDCDCC00CD11A8 /* ASCCustomFilterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCACAF402DDDCDCC00CD11A8 /* ASCCustomFilterRequestModel.swift */; };
 		FCB4CE7629FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */; };
 		FCB61DD32DDC961F006DEFA5 /* OnlyofficeSearchArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB61DD22DDC961F006DEFA5 /* OnlyofficeSearchArea.swift */; };
 		FCC27E7A2C4FB4630024DD3D /* PersonalMigrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC27E792C4FB4630024DD3D /* PersonalMigrationViewController.swift */; };
@@ -1191,6 +1192,7 @@
 		FCA3E6FD2B35C81200C5EDEC /* PasscodeLock */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PasscodeLock; sourceTree = "<group>"; };
 		FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentOpenMode.swift; sourceTree = "<group>"; };
 		FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsViewController.swift; sourceTree = "<group>"; };
+		FCACAF402DDDCDCC00CD11A8 /* ASCCustomFilterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomFilterRequestModel.swift; sourceTree = "<group>"; };
 		FCAE112D26A800E60013B475 /* ASCKdriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCKdriveFileProvider.swift; sourceTree = "<group>"; };
 		FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
 		FCB61DD22DDC961F006DEFA5 /* OnlyofficeSearchArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeSearchArea.swift; sourceTree = "<group>"; };
@@ -2249,6 +2251,7 @@
 		FC03A62F2BDA7F67005E8FFB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				FCACAF402DDDCDCC00CD11A8 /* ASCCustomFilterRequestModel.swift */,
 				FC654D682DC4EF0000FEC4AF /* ASCDeleteVersionRequestModel.swift */,
 				FC654D692DC4EF0000FEC4AF /* ASCEditVersionCommentRequestModel.swift */,
 				FC654D6A2DC4EF0000FEC4AF /* ASCRestoreVersionRequestModel.swift */,
@@ -4483,6 +4486,7 @@
 				FC5943242AE67567001BA2F9 /* ASCDIContainer.swift in Sources */,
 				FC83D5752A9742F000C404CB /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				1D8CFC41290D7F5000F71071 /* ASCShareSettingsRoomsAPIWorker.swift in Sources */,
+				FCACAF412DDDCDCC00CD11A8 /* ASCCustomFilterRequestModel.swift in Sources */,
 				FC7081CF2812E2260057FCD2 /* ASCOnlyofficeProvider.swift in Sources */,
 				FC7081D12812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FC379D6E2C380C5900B120D9 /* ImagedDetailCellView.swift in Sources */,

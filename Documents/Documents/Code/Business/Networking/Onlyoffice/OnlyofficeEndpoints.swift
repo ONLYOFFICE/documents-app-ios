@@ -86,6 +86,7 @@ enum OnlyofficeAPI {
         public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
         public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
         public static let editComment = "api/\(version)/files/file/%@/comment"
+        public static let customFilter = "api/\(version)/files/file/%@/customfilter"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -294,6 +295,10 @@ enum OnlyofficeAPI {
 
             static func getLinks(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>> {
                 return Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .get)
+            }
+
+            static func customFilter(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.customFilter, file.id), .put)
             }
 
             static func createAndCopyLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {

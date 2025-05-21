@@ -74,6 +74,15 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    private lazy var filterBadge: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.clipsToBounds = true
+        $0.image = Asset.Images.filterGreen.image
+        $0.contentMode = .scaleAspectFit
+
+        return $0
+    }(UIImageView())
+
     private lazy var separatorView: UIView = {
         $0.backgroundColor = .separator
         return $0
@@ -173,6 +182,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 $0.contentMode = .center
                 return $0
             }(UIImageView(image: badgeNewImage)))
+        }
+
+        if file.customFilterEnabled {
+            items.append(filterBadge)
         }
 
         if file.isExpiredSoon {
@@ -381,6 +394,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         if file.isNew, let badgeNewImage = newBadge.screenshot {
             overlays.append(UIImageView(image: badgeNewImage))
+        }
+
+        if file.customFilterEnabled {
+            overlays.append(filterBadge)
         }
 
         if file.isEditing {

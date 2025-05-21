@@ -248,6 +248,7 @@
 		FC5943202AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59431F2AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift */; };
 		FC5943AA2AE6B10A001BA2F9 /* ASCIntroPageStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943A92AE6B10A001BA2F9 /* ASCIntroPageStoreProtocol.swift */; };
 		FC5943AD2AE6B1F5001BA2F9 /* ASCIntroPageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943AC2AE6B1F5001BA2F9 /* ASCIntroPageStore.swift */; };
+		FC59620F2DDDC33B0042CBAD /* ASCCustomFilterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59620E2DDDC33B0042CBAD /* ASCCustomFilterRequestModel.swift */; };
 		FC59AB682B761EC200F4336A /* DocumentConverterErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59AB672B761EC200F4336A /* DocumentConverterErrorProtocol.swift */; };
 		FC5D040B263AE28400D9DBCF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D040A263AE28400D9DBCF /* Endpoint.swift */; };
 		FC5D040D263AEDCD00D9DBCF /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */; };
@@ -1008,6 +1009,7 @@
 		FC59431F2AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPresentationEditorConfiguration.swift; sourceTree = "<group>"; };
 		FC5943A92AE6B10A001BA2F9 /* ASCIntroPageStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIntroPageStoreProtocol.swift; sourceTree = "<group>"; };
 		FC5943AC2AE6B1F5001BA2F9 /* ASCIntroPageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIntroPageStore.swift; sourceTree = "<group>"; };
+		FC59620E2DDDC33B0042CBAD /* ASCCustomFilterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomFilterRequestModel.swift; sourceTree = "<group>"; };
 		FC59AB672B761EC200F4336A /* DocumentConverterErrorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentConverterErrorProtocol.swift; sourceTree = "<group>"; };
 		FC5D040A263AE28400D9DBCF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
@@ -3080,6 +3082,7 @@
 		FC9EF00F2BFB208800A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				FC59620E2DDDC33B0042CBAD /* ASCCustomFilterRequestModel.swift */,
 				F3FB7AF92DC0BC5900FA318A /* ASCDeleteVersionRequestModel.swift */,
 				F3FB7AFA2DC0BC5900FA318A /* ASCEditVersionCommentRequestModel.swift */,
 				F3FB7AFB2DC0BC5900FA318A /* ASCRestoreVersionRequestModel.swift */,
@@ -4355,6 +4358,7 @@
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				FC759BE02C00611000510096 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
 				FC72B0C52AFE039300FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */,
+				FC59620F2DDDC33B0042CBAD /* ASCCustomFilterRequestModel.swift in Sources */,
 				FC759BBD2C00611000510096 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				FC9EF0212BFB208800A66DE8 /* CreateRoomRequestModel.swift in Sources */,

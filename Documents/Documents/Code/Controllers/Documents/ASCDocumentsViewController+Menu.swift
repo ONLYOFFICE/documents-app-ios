@@ -103,6 +103,21 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Custom filter
+
+        if actions.contains(.setCustomFilter) {
+            shareActions.append(
+                UIAction(
+                    title: file.customFilterEnabled
+                        ? NSLocalizedString("Disable Custom filter", comment: "")
+                        : NSLocalizedString("Enable Custom filter", comment: ""),
+                    image: Asset.Images.menuCustomFilter.image
+                ) { [unowned self] action in
+                    self.setCustomFilter(cell: cell, file: file)
+                }
+            )
+        }
+
         /// Share action
 
         if actions.contains(.docspaceShare) {

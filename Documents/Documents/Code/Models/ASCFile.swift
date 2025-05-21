@@ -36,6 +36,7 @@ class ASCFile: ASCEntity {
     var `extension`: String?
     var order: String?
     var comment: String?
+    var customFilterEnabled: Bool = false
 
     override init() {
         super.init()
@@ -116,6 +117,7 @@ class ASCFile: ASCEntity {
         `extension` <- map["extension"]
         order <- map["order"]
         comment <- map["comment"]
+        customFilterEnabled <- map["customFilterEnabled"]
 
         // Internal
         device <- map["device"]

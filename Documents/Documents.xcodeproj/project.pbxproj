@@ -125,6 +125,7 @@
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		F35933212B305CAF00449F33 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933202B305CAF00449F33 /* View+Extensions.swift */; };
 		F35933232B305CB600449F33 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */; };
+		F36C131C2DD655AD00E8B704 /* ASCCustomFilterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C131B2DD6559A00E8B704 /* ASCCustomFilterRequestModel.swift */; };
 		F36E4DBF2B3DBA2B00910772 /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4DBE2B3DBA2B00910772 /* ServicesProvider.swift */; };
 		F373F0E62DCFA7E5002EF969 /* ASCVersionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373F0E52DCFA7E3002EF969 /* ASCVersionRowView.swift */; };
 		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
@@ -801,6 +802,7 @@
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F35933202B305CAF00449F33 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
+		F36C131B2DD6559A00E8B704 /* ASCCustomFilterRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomFilterRequestModel.swift; sourceTree = "<group>"; };
 		F36E4DBE2B3DBA2B00910772 /* ServicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
 		F373F0E52DCFA7E3002EF969 /* ASCVersionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionRowView.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
@@ -3247,6 +3249,7 @@
 		FC9EEF902BFB201700A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F36C131B2DD6559A00E8B704 /* ASCCustomFilterRequestModel.swift */,
 				F3F707092DB9869B0004A09F /* ASCEditVersionCommentRequestModel.swift */,
 				F3F707032DB9198F0004A09F /* ASCDeleteVersionRequestModel.swift */,
 				F3F707012DB8F6C20004A09F /* ASCRestoreVersionRequestModel.swift */,
@@ -4778,6 +4781,7 @@
 				FC5943C32AE6B422001BA2F9 /* ASCIntroPageStore.swift in Sources */,
 				FC2A74B72C383C3900A515F7 /* ASCFolderViewCell.swift in Sources */,
 				FCB4CE7129FAC5B5009C1E2E /* ASCMultiAccountPresenter.swift in Sources */,
+				F36C131C2DD655AD00E8B704 /* ASCCustomFilterRequestModel.swift in Sources */,
 				FCF6957D2632DBF600808644 /* ASCTextStyle.swift in Sources */,
 				FC9EEFB42BFB201700A66DE8 /* RoomNotificationsResponceModel.swift in Sources */,
 				FCF6748A2D6F41EF00B6688A /* ASCDocumentsViewController+Localized.swift in Sources */,

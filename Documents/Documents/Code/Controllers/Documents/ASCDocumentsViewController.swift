@@ -1741,6 +1741,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
+    
+    func saveAsTemplate(room: ASCFolder) {
+        
+    }
 
     func duplicateRoom(room: ASCFolder) {
         var hud: MBProgressHUD?

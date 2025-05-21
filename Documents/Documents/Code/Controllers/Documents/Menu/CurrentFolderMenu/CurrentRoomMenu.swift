@@ -130,6 +130,17 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
+        
+        if actions.contains(.saveAsTemplate) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Save as template", comment: ""),
+                    image: UIImage(systemName: "note.text.badge.plus")
+                ) { [weak viewController] _ in
+                    viewController?.saveAsTemplate(room: folder)
+                }
+            )
+        }
 
         var entityOperationsGroup: [UIMenuElement] = []
 

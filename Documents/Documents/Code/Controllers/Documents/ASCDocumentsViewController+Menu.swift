@@ -521,6 +521,19 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Save as template
+        
+        if actions.contains(.saveAsTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Save as template", comment: ""),
+                    image: UIImage(systemName: "note.text.badge.plus")
+                ) { [unowned self] action in
+                    saveAsTemplate(room: folder)
+                }
+            )
+        }
 
         // Transfer actions
 

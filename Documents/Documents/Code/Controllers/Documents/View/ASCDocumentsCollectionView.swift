@@ -29,31 +29,34 @@ class ASCDocumentsCollectionView: UICollectionView {
     // MARK: - Lifecycle Methods
 
     public func updateLayout() {
-        switch layoutType {
-        case .grid:
-            setCollectionViewLayout(makeGridLayout(), animated: true)
+        setCollectionViewLayout(makeCollectionLayout(), animated: true)
+    }
 
-        case .list:
-            setCollectionViewLayout(makeTableLayout(), animated: true)
+    private func makeCollectionLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
 
-        default:
-            setCollectionViewLayout(UICollectionViewLayout(), animated: true)
+            if sectionIndex == 0 {
+                return self?.layoutType == .grid ? self?.makeGridLayout() : self?.makeTableLayout(layoutEnvironment: layoutEnvironment)
+            } else {
+                return self?.makeLoaderLayout()
+            }
         }
     }
 
     // MARK: - Private
 
-    private func makeTableLayout() -> UICollectionViewCompositionalLayout {
+    private func makeTableLayout(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
         var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         configuration.backgroundColor = .systemBackground
         configuration.showsSeparators = false
         configuration.trailingSwipeActionsConfigurationProvider = { [weak self] itemIndex in
             self?.ascDocumentsDelegate?.swipeActionsConfiguration(collectionView: self, indexPath: itemIndex) ?? UISwipeActionsConfiguration()
         }
-        return UICollectionViewCompositionalLayout.list(using: configuration)
+
+        return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
     }
 
-    private func makeGridLayout() -> UICollectionViewCompositionalLayout {
+    private func makeGridLayout() -> NSCollectionLayoutSection {
         let groupSpacing: CGFloat = 4
         let sectionSpacing: CGFloat = 16
 
@@ -76,7 +79,21 @@ class ASCDocumentsCollectionView: UICollectionView {
         section.contentInsets = .init(top: sectionSpacing, leading: sectionSpacing, bottom: sectionSpacing, trailing: sectionSpacing)
         section.interGroupSpacing = groupSpacing
 
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        return section
+    }
+
+    private func makeLoaderLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(60)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 10, leading: 0, bottom: 20, trailing: 0)
+
+        return section
     }
 }

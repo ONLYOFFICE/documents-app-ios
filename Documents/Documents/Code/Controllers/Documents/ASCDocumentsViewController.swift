@@ -3874,18 +3874,23 @@ extension ASCDocumentsViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 
 extension ASCDocumentsViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return (tableData.count < total) ? 2 : 1
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard tableData.count < total else {
+        if section == 0 {
             return tableData.count
+        } else {
+            return 1
         }
-        return tableData.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if tableData.count > 0 {
-            emptyView?.removeFromSuperview()
+        if indexPath.section == 0 {
+            if tableData.count > 0 {
+                emptyView?.removeFromSuperview()
 
-            if indexPath.row < tableData.count {
                 if let folder = tableData[indexPath.row] as? ASCFolder {
                     guard let folderCell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCFolderViewCell.identifier, for: indexPath) as? ASCFolderViewCell else {
                         return UICollectionViewCell()
@@ -3909,16 +3914,16 @@ extension ASCDocumentsViewController: UICollectionViewDataSource {
 
                     return fileCell
                 }
-            } else {
-                guard let loaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCLoaderViewCell.identifier, for: indexPath) as? ASCLoaderViewCell else {
-                    return UICollectionViewCell()
-                }
-
-                loaderCell.tag = kPageLoadingCellTag
-                loaderCell.startActivity()
-
-                return loaderCell
             }
+        } else {
+            guard let loaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCLoaderViewCell.identifier, for: indexPath) as? ASCLoaderViewCell else {
+                return UICollectionViewCell()
+            }
+
+            loaderCell.tag = kPageLoadingCellTag
+            loaderCell.startActivity()
+
+            return loaderCell
         }
 
         return UICollectionViewCell()

@@ -46,7 +46,7 @@ struct ManageRoomView: View {
                 )
             }
         })
-        .navigationTitle(isEditMode: viewModel.isEditMode)
+        .navigationTitle(viewModel: viewModel)
         .navigationBarItems(viewModel: viewModel)
         .alertForActiveAlert(activeAlert: $viewModel.activeAlert, viewModel: viewModel)
     }
@@ -236,10 +236,16 @@ private extension View {
         }
     }
 
-    func navigationTitle(isEditMode: Bool) -> some View {
-        isEditMode
-            ? navigationBarTitle(Text("Edit room"), displayMode: .inline)
-            : navigationBarTitle(Text("Create room"), displayMode: .inline)
+    @ViewBuilder
+    func navigationTitle(viewModel: ManageRoomViewModel) -> some View {
+        switch viewModel.screenMode {
+        case .edit:
+            navigationBarTitle(Text("Edit room"), displayMode: .inline)
+        case .create:
+            navigationBarTitle(Text("Create room"), displayMode: .inline)
+        case .saveAsTemplate:
+            navigationBarTitle(Text("Save as template"), displayMode: .inline)
+        }
     }
 
     func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
@@ -362,7 +368,7 @@ private extension String {
 
 #Preview {
     ManageRoomView(
-        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
+        viewModel: ManageRoomViewModel(screenMode: .create, selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
     )
 }
 

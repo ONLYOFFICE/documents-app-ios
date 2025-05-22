@@ -22,6 +22,7 @@ struct CreateRoomRouteView: View {
                 .navigation(item: $selectedRoomType) { type in
                     ManageRoomView(
                         viewModel: ManageRoomViewModel(
+                            screenMode: .create,
                             selectedRoomType: type,
                             roomName: roomName,
                             hideActivityOnSuccess: hideActivityOnSuccess

@@ -36,6 +36,7 @@ struct EditRoomWrapperView: View {
         NavigationView {
             ManageRoomView(
                 viewModel: ManageRoomViewModel(
+                    screenMode: .edit(folder),
                     editingRoom: folder,
                     selectedRoomType: folder.roomTypeModel,
                     onCreate: onAction

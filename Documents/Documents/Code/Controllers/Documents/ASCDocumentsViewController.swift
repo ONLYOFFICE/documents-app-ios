@@ -1743,7 +1743,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
     
     func saveAsTemplate(room: ASCFolder) {
+        let vc = ASCSaveAsTemplateRootViewController(room: room) { folder in
+            
+        }
         
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true)
     }
 
     func duplicateRoom(room: ASCFolder) {

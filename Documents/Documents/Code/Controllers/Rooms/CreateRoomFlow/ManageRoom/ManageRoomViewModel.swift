@@ -10,6 +10,12 @@ import Combine
 import Foundation
 import UIKit
 
+enum ManageRoomScreenMode {
+    case create
+    case edit(ASCFolder)
+    case saveAsTemplate(ASCFolder)
+}
+
 class ManageRoomViewModel: ObservableObject {
     // MARK: Published vars
 
@@ -108,6 +114,7 @@ class ManageRoomViewModel: ObservableObject {
         }
         return nil
     }
+    var screenMode: ManageRoomScreenMode
 
     var isSaveBtnEnabled: Bool {
         roomName.isEmpty || isSaving
@@ -219,18 +226,20 @@ class ManageRoomViewModel: ObservableObject {
     // MARK: - Init
 
     init(
-        editingRoom: ASCRoom? = nil,
+        screenMode: ManageRoomScreenMode,
         selectedRoomType: RoomTypeModel,
         roomName: String = "",
         hideActivityOnSuccess: Bool = true,
         onCreate: @escaping (ASCFolder) -> Void
     ) {
-        self.editingRoom = editingRoom
         self.selectedRoomType = selectedRoomType
         self.hideActivityOnSuccess = hideActivityOnSuccess
         self.onCreate = onCreate
+        self.screenMode = screenMode
 
-        if let editingRoom {
+        switch screenMode {
+        case .edit(let editingRoom), .saveAsTemplate(let editingRoom):
+            self.editingRoom = editingRoom
             self.selectedRoomType.showDisclosureIndicator = false
             self.roomName = editingRoom.title
             roomOwnerName = editingRoom.createdBy?.displayName ?? ""
@@ -288,8 +297,9 @@ class ManageRoomViewModel: ObservableObject {
                 }
             }
 
-        } else {
+        default:
             self.roomName = roomName
+            self.editingRoom = nil
         }
 
         selectedWatermarkElements.insert(.userName)

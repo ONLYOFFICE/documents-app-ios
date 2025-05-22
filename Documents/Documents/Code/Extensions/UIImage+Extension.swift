@@ -94,6 +94,8 @@ extension UIImage {
             return iconFormatPresentation(for: layoutType)
         } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
             return iconFormatVideo(for: layoutType)
+        } else if ASCConstants.FileExtensions.images.contains(fileExt) {
+            return iconFormatImage(for: layoutType)
         } else if ASCConstants.FileExtensions.forms.contains(fileExt) {
             if fileExt == ASCConstants.FileExtensions.docxf {
                 return iconFormatDocxf(for: layoutType)

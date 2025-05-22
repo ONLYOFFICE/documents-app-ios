@@ -709,6 +709,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         let params: [String: Any] = [
             "mime": Path(file.id).mime ?? DEFAULT_MIME_TYPE,
+            "title": file.title,
         ]
 
         if originalFile.title == file.title {

@@ -35,7 +35,7 @@ struct ASCVersionHistoryView: View {
                 ForEach(viewModel.versions) { version in
                     ASCVersionRowView(
                         version: version,
-                        icon: Asset.Images.listFormatDocument.swiftUIImage,
+                        icon: getFileIcon(fileExt: version.versionFile.title.fileExtension().lowercased()),
                         onOpen: {
                             viewModel.triggerOpenVersion(version) {
                                 presentationMode.wrappedValue.dismiss()
@@ -312,6 +312,28 @@ extension View {
             } else {
                 self
             }
+        }
+    }
+}
+
+extension ASCVersionHistoryView {
+    private func getFileIcon(fileExt: String) -> Image {
+        switch fileExt {
+        case _ where ASCConstants.FileExtensions.documents.contains(fileExt):
+            return Asset.Images.listFormatDocument.swiftUIImage
+        case _ where ASCConstants.FileExtensions.spreadsheets.contains(fileExt):
+            return Asset.Images.listFormatSpreadsheet.swiftUIImage
+        case _ where ASCConstants.FileExtensions.presentations.contains(fileExt):
+            return Asset.Images.listFormatPresentation.swiftUIImage
+        case ASCConstants.FileExtensions.docxf:
+            return Asset.Images.listFormatDocxf.swiftUIImage
+        case ASCConstants.FileExtensions.oform:
+            return Asset.Images.listFormatOform.swiftUIImage
+        case _ where ASCConstants.FileExtensions.forms.contains(fileExt),
+             _ where ASCConstants.FileExtensions.pdfs.contains(fileExt):
+            return Asset.Images.listFormatPdf.swiftUIImage
+        default:
+            return Asset.Images.listFormatUnknown.swiftUIImage
         }
     }
 }

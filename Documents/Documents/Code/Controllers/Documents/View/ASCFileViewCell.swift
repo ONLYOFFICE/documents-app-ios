@@ -486,6 +486,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         imageView.alpha = 1
         imageView.layerBorderWidth = 0
         imageView.layerBorderColor = .clear
+        imageView.layerCornerRadius = 5
 
         activityIndicator.isHidden = true
 
@@ -539,7 +540,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         imageView.removeConstraints(imageView.constraints)
 
         imageView.anchor(
-            widthConstant: allowThumbnailPreview ? frame.width - 5 : preferredSize.width,
+            widthConstant: (allowThumbnailPreview && layoutType == .grid) ? frame.width - 10 : preferredSize.width,
             heightConstant: preferredSize.height
         )
 

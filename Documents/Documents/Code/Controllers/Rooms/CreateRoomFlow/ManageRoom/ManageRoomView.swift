@@ -179,27 +179,22 @@ struct ManageRoomView: View {
     // MARK: - HUD
 
     private func handleHUD() {
-        if viewModel.isSavedSuccessfully {
-            if let hud = MBProgressHUD.currentHUD, viewModel.hideActivityOnSuccess {
-                hud.setState(result: .success(nil))
-                hud.hide(animated: true, afterDelay: .standardDelay)
-            }
-        } else if viewModel.isSaving {
-            MBProgressHUD.currentHUD?.hide(animated: false)
-            let hud = MBProgressHUD.showTopMost()
-            hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the processing")
-        } else if viewModel.isConnecting {
-            MBProgressHUD.currentHUD?.hide(animated: false)
-            let hud = MBProgressHUD.showTopMost()
-            hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Connecting", comment: "Caption of the processing")
+        if viewModel.isSaving || viewModel.isConnecting {
+            MBProgressHUD.showTopMost(mode: .indeterminate)
         } else if let hud = MBProgressHUD.currentHUD {
-            if let _ = viewModel.errorMessage {
-                hud.hide(animated: true)
-            } else {
-                hud.setState(result: .success(nil))
+            if let result = viewModel.resultModalModel {
+                switch result.result {
+                case .success:
+                    hud.setState(result: .success(result.message))
+                case .failure:
+                    hud.setState(result: .failure(result.message))
+                }
                 hud.hide(animated: true, afterDelay: .standardDelay)
+                DispatchQueue.main.async {
+                    viewModel.resultModalModel = nil
+                }
+            } else {
+                hud.hide(animated: true)
             }
         }
     }

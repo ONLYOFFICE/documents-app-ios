@@ -549,6 +549,7 @@ private extension ManageRoomViewModel {
 
     func createRoom() {
         let roomName = roomName
+        isSaving = true
         creatingRoomService.createRoom(
             model: CreatingRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
@@ -565,17 +566,29 @@ private extension ManageRoomViewModel {
                 quota: quotaSizeInBytes
             )
         ) { [weak self] result in
-            self?.isSaving = false
-            switch result {
-            case let .success(room):
-                self?.isSavedSuccessfully = true
-                room.title = roomName
-                self?.onCreate(room)
-            case let .failure(error):
-                self?.errorMessage = error.localizedDescription
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.isSaving = false
+
+                switch result {
+                case let .success(room):
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("Done", comment: "")
+                    )
+                    room.title = roomName
+                    self.onCreate(room)
+
+                case let .failure(error):
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error.localizedDescription
+                    )
+                }
             }
         }
     }
+
     
     //MARK: - Create room template
     

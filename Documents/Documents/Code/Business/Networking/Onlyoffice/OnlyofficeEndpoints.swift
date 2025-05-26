@@ -40,6 +40,8 @@ enum OnlyofficeAPI {
         public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
         public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
+        public static let operationSaveRoomAsTemplate = "api/\(version)/files/roomtemplate"
+        public static let roomTemplateStatus = "api/\(version)/files/roomtemplate/status"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -422,6 +424,8 @@ enum OnlyofficeAPI {
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
             static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
             static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
+            static let saveRoomAsTemplate: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.operationSaveRoomAsTemplate, .post)
+            static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
         }
 
         // MARK: Third-Party Integration

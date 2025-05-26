@@ -216,9 +216,7 @@ private extension View {
             UIApplication.topViewController()?.dismiss(animated: true)
         }
         let saveButton = Button(
-            viewModel.isEditMode
-                ? NSLocalizedString("Save", comment: "")
-                : NSLocalizedString("Create", comment: "")
+            viewModel.screenMode.title
         ) {
             viewModel.save()
         }
@@ -390,6 +388,17 @@ extension View {
             self.scrollDismissesKeyboard(.immediately)
         } else {
             modifier(HideKeyboardOnDrag())
+        }
+    }
+}
+
+extension ManageRoomScreenMode {
+    var title: String {
+        switch self {
+        case .create, .saveAsTemplate:
+            return NSLocalizedString("Create", comment: "")
+        case .edit:
+            return NSLocalizedString("Save", comment: "")
         }
     }
 }

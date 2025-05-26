@@ -123,6 +123,7 @@
 		F30BCE3A2C9CC22800900E07 /* CompleteFormRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BCE392C9CC22800900E07 /* CompleteFormRequestModel.swift */; };
 		F30BD8922DE35CB800E5F4CF /* RoomTemplatesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8912DE35CB700E5F4CF /* RoomTemplatesNetworkService.swift */; };
 		F30BD8942DE35EAA00E5F4CF /* ASCCreateRoomTemplateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8932DE35EA800E5F4CF /* ASCCreateRoomTemplateRequestModel.swift */; };
+		F30BD8962DE48BC100E5F4CF /* OnlyofficeTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		F35933212B305CAF00449F33 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933202B305CAF00449F33 /* View+Extensions.swift */; };
@@ -803,6 +804,7 @@
 		F30BCE392C9CC22800900E07 /* CompleteFormRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFormRequestModel.swift; sourceTree = "<group>"; };
 		F30BD8912DE35CB700E5F4CF /* RoomTemplatesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTemplatesNetworkService.swift; sourceTree = "<group>"; };
 		F30BD8932DE35EA800E5F4CF /* ASCCreateRoomTemplateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateRoomTemplateRequestModel.swift; sourceTree = "<group>"; };
+		F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeTemplateOperation.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F35933202B305CAF00449F33 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -3265,6 +3267,7 @@
 		FC9EEF902BFB201700A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */,
 				F30BD8932DE35EA800E5F4CF /* ASCCreateRoomTemplateRequestModel.swift */,
 				F36C131B2DD6559A00E8B704 /* ASCCustomFilterRequestModel.swift */,
 				F3F707092DB9869B0004A09F /* ASCEditVersionCommentRequestModel.swift */,
@@ -4412,6 +4415,7 @@
 				FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */,
 				F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */,
 				FC759CB92C00615E00510096 /* ASCSharingOprionsExternalLink.swift in Sources */,
+				F30BD8962DE48BC100E5F4CF /* OnlyofficeTemplateOperation.swift in Sources */,
 				FC7E457129226A35006C4CA1 /* ASCFile.swift in Sources */,
 				FC1828FD2A24E6DA005D9220 /* AppThemeService.swift in Sources */,
 				1D1A2E282660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,

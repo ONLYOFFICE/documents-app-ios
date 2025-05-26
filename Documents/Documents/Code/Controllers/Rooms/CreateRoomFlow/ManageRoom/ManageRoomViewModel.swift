@@ -9,6 +9,7 @@
 import Combine
 import Foundation
 import UIKit
+import MBProgressHUD
 
 enum ManageRoomScreenMode {
     case create
@@ -30,6 +31,7 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
     @Published var activeAlert: ManageRoomView.ActiveAlert?
+    @Published var resultModalModel: ResultViewModel?
 
     // Stroage quota
     @Published var allowChangeStorageQuota: Bool = false
@@ -222,6 +224,7 @@ class ManageRoomViewModel: ObservableObject {
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
+    private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
 
     // MARK: - Init
 
@@ -399,10 +402,14 @@ class ManageRoomViewModel: ObservableObject {
         }
 
         isSaving = true
-        if isEditMode {
-            updateRoom()
-        } else {
+        
+        switch screenMode {
+        case .create:
             createRoom()
+        case .edit(_):
+            updateRoom()
+        case .saveAsTemplate(_):
+            createTemplate()
         }
     }
 
@@ -568,6 +575,49 @@ private extension ManageRoomViewModel {
                 self?.errorMessage = error.localizedDescription
             }
         }
+    }
+    
+    //MARK: - Create room template
+    
+    func createTemplate() {
+        roomTemplatesNetworkService.createTemplate(room: CreateRoomTemplateModel(
+            title: roomName,
+            roomId: editingRoom?.id,
+            tags: Array(tags),
+            public: false,
+            copylogo: true,
+            color: editingRoom?.logo?.color)) { [weak self] status, progress, result, error, cancel in
+                guard let self else { return }
+                switch status {
+                case .begin:
+                    break
+                    
+                case .progress:
+                    DispatchQueue.main.async {
+                        MBProgressHUD.currentHUD?.progress = progress
+                    }
+                    
+                case .error:
+                    DispatchQueue.main.async {
+                        self.resultModalModel = .init(
+                            result: .failure,
+                            message: error?.localizedDescription ?? NSLocalizedString("Could not create the template.", comment: "")
+                        )
+                    }
+                    self.isSaving = false
+                case .end:
+                    DispatchQueue.main.async {
+                        self.resultModalModel = .init(
+                            result: .success,
+                            message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
+                        )
+                        self.isSaving = false
+                    }
+                }
+                if let editingRoom {
+                    onCreate(editingRoom)
+                }
+            }
     }
 
     func makeFileLifetimeModel() -> CreateRoomRequestModel.FileLifetime? {

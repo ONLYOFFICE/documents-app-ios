@@ -8,21 +8,30 @@
 
 import SwiftUI
 
+struct VDRFillingStatusTimelineViewModel {
+    let formFillingStatus: FormFillingStatus
+}
+
 /// Timeline view showing list of events
 struct VDRFillingStatusTimelineView: View {
-    let events: [VDRFillingStatusEvent]
+    let rowViewModels: [VDRFillingStatusEventRowViewModel]
+    let model: VDRFillingStatusTimelineViewModel
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 0) {
-                ForEach(Array(events.enumerated()), id: \.1.id) { idx, item in
-                    VDRFillingStatusEventRowView(
-                        event: item,
-                        showConnector: idx < events.count - 1
-                    )
+            VStack(alignment: .leading, spacing: 0) {
+                if !rowViewModels.isEmpty {
+                    ForEach(Array(rowViewModels.enumerated()), id: \.1.id) { idx, item in
+                        VDRFillingStatusEventRowView(
+                            model: item
+                        )
+                    }
+
+                    VDRFillingFinishStatusRowView(model: FormFillingStatusRowViewModel(fillingStatus: model.formFillingStatus))
                 }
             }
-            .padding(.vertical, 8)
+            .cornerRadius(12)
+            .padding(.vertical, 16)
         }
     }
 }

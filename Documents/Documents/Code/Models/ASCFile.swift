@@ -134,7 +134,7 @@ extension ASCFile {
     }
 }
 
-enum FormFillingStatus: Int {
+enum FormFillingStatus: Int, Codable {
     case none = 0
     case draft = 1
     case yourTurn = 2
@@ -159,14 +159,29 @@ enum FormFillingStatus: Int {
         }
     }
 
-    var color: Color {
+    var uiColor: UIColor {
         switch self {
         case .none: return .clear
-        case .draft: return .red
-        case .yourTurn: return .blue
+        case .draft: return .systemRed
+        case .yourTurn: return .systemBlue
         case .inProgress: return .gray
-        case .complete: return .green
-        case .stopped: return .red
+        case .complete: return .systemGreen
+        case .stopped: return .systemRed
+        }
+    }
+
+    var color: Color {
+        if #available(iOS 15.0, *) {
+            return Color(uiColor: uiColor)
+        } else {
+            switch self {
+            case .none: return .clear
+            case .draft: return .red
+            case .yourTurn: return .blue
+            case .inProgress: return .gray
+            case .complete: return .green
+            case .stopped: return .red
+            }
         }
     }
 }

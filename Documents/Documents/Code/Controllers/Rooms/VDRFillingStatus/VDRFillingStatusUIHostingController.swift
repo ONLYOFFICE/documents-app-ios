@@ -18,10 +18,20 @@ class VDRFillingStatusUIHostingController: UIHostingController<VDRFillingStatusV
         )
     }
 
-    init() {
-        let viewModel = VDRFillingStatusViewModel()
+    init(
+        file: ASCFile,
+        onStoppedSuccess: @escaping () -> Void,
+        onFillTapped: @escaping () -> Void
+    ) {
+        let service = VDRFillingStatusService()
+        let viewModel = VDRFillingStatusViewModel(
+            service: service,
+            file: file,
+            onStoppedSuccess: onStoppedSuccess
+        )
         let view = VDRFillingStatusView(
-            viewModel: viewModel
+            viewModel: viewModel,
+            onFillTapped: onFillTapped
         )
         super.init(rootView: view)
     }

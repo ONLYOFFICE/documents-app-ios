@@ -107,3 +107,19 @@ final class VDRFillingStatusViewModel: ObservableObject {
         }
     }
 }
+
+// MARK: - Delay cancellable task
+
+extension VDRFillingStatusViewModel {
+    func getDelayedActionLoadingTask() -> Task<Void, Never>? {
+        Task { @MainActor in
+            do {
+                try await Task.sleep(nanoseconds: 150_000_000)
+            } catch {
+                return
+            }
+            guard !Task.isCancelled else { return }
+            state.isActionLoading = true
+        }
+    }
+}

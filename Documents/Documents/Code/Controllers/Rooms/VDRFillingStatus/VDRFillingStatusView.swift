@@ -10,49 +10,88 @@ import SwiftUI
 
 /// Main view for Filling Status screen
 struct VDRFillingStatusView: View {
-    @StateObject var viewModel = VDRFillingStatusViewModel()
+    @ObservedObject var viewModel: VDRFillingStatusViewModel
+    @Environment(\.presentationMode) var presentationMode
+
+    @State var onFillTapped: () -> Void
 
     var body: some View {
-        ZStack {
-            Color(UIColor.systemGray6).ignoresSafeArea()
+        NavigationView {
+            ZStack {
+                Color(UIColor.systemGray6).ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                VDRFillingStatusHeaderView(
-                    title: "Filling status",
-                    onCancel: viewModel.loadStatus
-                )
+                VStack(spacing: 0) {
+                    header
 
-                if let app = viewModel.state.application {
-                    VDRFillingStatusCardView(application: app)
+                    if let formInfo = viewModel.state.formInfo {
+                        VDRFillingStatusFormCardView(formModel: formInfo)
+                            .padding(.horizontal)
+                            .padding(.top, 8)
+
+                        sectionHeader("Process details")
+                        VDRFillingStatusTimelineView(
+                            rowViewModels: viewModel.state.events,
+                            model: VDRFillingStatusTimelineViewModel(formFillingStatus: viewModel.file.formFillingStatus)
+                        )
                         .padding(.horizontal)
-                        .padding(.top, 8)
+                    } else if viewModel.state.isInitialLoading || viewModel.state.isContentLoading {
+                        Spacer()
+                    } else if let error = viewModel.state.errorMessage {
+                        Text(error)
+                            .foregroundColor(.red)
+                            .padding()
+                        Spacer()
+                    }
 
-                    VDRFillingStatusTimelineView(events: viewModel.state.events)
-                        .padding(.horizontal)
-                } else if viewModel.state.isInitialLoading {
-                    Spacer()
-                } else if let error = viewModel.state.errorMessage {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                    Spacer()
+                    footer
                 }
 
-                VDRFillingStatusFooterView(
-                    status: viewModel.state.application?.status,
-                    isLoading: viewModel.state.isActionLoading,
-                    onStop: viewModel.stopFilling,
-                    onStart: viewModel.startFilling
-                )
-            }
+                if viewModel.state.isInitialLoading || viewModel.state.isContentLoading {
+                    FullScreenLoader()
+                }
 
-            if viewModel.state.isInitialLoading {
-                FullScreenLoader()
+                if viewModel.state.isActionLoading && !viewModel.state.isInitialLoading {
+                    OverlayLoader()
+                }
             }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
 
-            if viewModel.state.isActionLoading && !viewModel.state.isInitialLoading {
-                OverlayLoader()
-            }
+    @ViewBuilder
+    private var header: some View {
+        VDRFillingStatusHeaderView(
+            title: "Filling status",
+            subtitle: "In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion",
+            onCancel: { presentationMode.wrappedValue.dismiss() }
+        )
+    }
+
+    @ViewBuilder
+    private var footer: some View {
+        if viewModel.state.stopEnable || viewModel.state.fillEnable {
+            VDRFillingStatusFooterView(
+                stopEnabled: viewModel.state.stopEnable,
+                fillEnabled: viewModel.state.fillEnable,
+                onStop: viewModel.stopFilling,
+                onFill: {
+                    presentationMode.wrappedValue.dismiss()
+                    onFillTapped()
+                }
+            )
+        }
+    }
+
+    private func sectionHeader(_ text: String) -> some View {
+        HStack {
+            Text(text)
+                .textCase(.uppercase)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+                .padding(.top, 16)
+
+            Spacer()
         }
     }
 }

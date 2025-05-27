@@ -1,6 +1,6 @@
 //
 //  VDRFillingStatusUIHostingController.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 14.05.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.

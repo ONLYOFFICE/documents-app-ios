@@ -1,6 +1,6 @@
 //
 //  CardStyle.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 7.05.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.

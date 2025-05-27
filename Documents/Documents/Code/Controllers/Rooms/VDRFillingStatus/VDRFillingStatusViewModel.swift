@@ -123,3 +123,14 @@ extension VDRFillingStatusViewModel {
         }
     }
 }
+
+// MARK: - Models
+
+/// Application model for Filling Status screen
+struct VDRFillingStatusFormInfoModel: Identifiable {
+    let id: UUID
+    let title: String
+    let subtitle: String
+    let detail: String
+    var status: FormFillingStatus
+}

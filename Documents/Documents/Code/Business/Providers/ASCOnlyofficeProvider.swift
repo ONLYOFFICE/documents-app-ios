@@ -1441,6 +1441,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if file.isForm, isDocspace, isUserCategory,
+               file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) != true,
                ASCConstants.FileExtensions.forms.contains(fileExtension) || ASCConstants.FileExtensions.pdf == fileExtension
                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .fillFormInProgress) == true
@@ -1451,6 +1452,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if canEdit {
                     entityActions.insert(.edit)
                 }
+            }
+
+            if file.isForm,
+               isDocspace,
+               file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) == true,
+               file.formFillingStatus == .yourTurn
+            {
+                entityActions.insert(.fillForm)
             }
 
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {

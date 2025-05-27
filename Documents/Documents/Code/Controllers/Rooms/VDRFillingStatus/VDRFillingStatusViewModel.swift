@@ -146,3 +146,30 @@ struct VDRFillingStatusEvent: Identifiable {
     let status: VDRFillingStatusEventStatus
     let formActions: [FormAction]
 }
+
+struct FormAction: Identifiable {
+    let id = UUID()
+    let description: String
+    let date: Date
+}
+
+/// Possible statuses for timeline events
+enum VDRFillingStatusEventStatus {
+    case pending, success, failure
+
+    var iconName: String {
+        switch self {
+        case .pending: return "hourglass"
+        case .success: return "checkmark.circle.fill"
+        case .failure: return "xmark.octagon.fill"
+        }
+    }
+
+    var iconColor: Color {
+        switch self {
+        case .pending: return .gray
+        case .success: return .green
+        case .failure: return .red
+        }
+    }
+}

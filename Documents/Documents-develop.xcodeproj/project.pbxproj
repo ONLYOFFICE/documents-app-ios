@@ -49,6 +49,24 @@
 		E8674B7B2B2B15C200CDA5DC /* ASCAttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B742B2B15C100CDA5DC /* ASCAttachmentManager.swift */; };
 		E8674BA42B2B166800CDA5DC /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674BA22B2B166700CDA5DC /* NavigationLink+Extensions.swift */; };
 		E8674BA52B2B166800CDA5DC /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674BA32B2B166700CDA5DC /* View+Extensions.swift */; };
+		E8A2DAA62DE5EF09005F0C53 /* VDRStartFillingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAA42DE5EF09005F0C53 /* VDRStartFillingViewModel.swift */; };
+		E8A2DAA72DE5EF09005F0C53 /* VDRFillingStatusResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA9B2DE5EF09005F0C53 /* VDRFillingStatusResponceModel.swift */; };
+		E8A2DAA82DE5EF09005F0C53 /* VDRFillingStatusUIHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA9D2DE5EF09005F0C53 /* VDRFillingStatusUIHostingController.swift */; };
+		E8A2DAA92DE5EF09005F0C53 /* VDRStartFillingUIHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAA22DE5EF09005F0C53 /* VDRStartFillingUIHostingController.swift */; };
+		E8A2DAAA2DE5EF09005F0C53 /* VDRStartFillingRoleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAA12DE5EF09005F0C53 /* VDRStartFillingRoleItem.swift */; };
+		E8A2DAAB2DE5EF09005F0C53 /* VDRFillingStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA9F2DE5EF09005F0C53 /* VDRFillingStatusViewModel.swift */; };
+		E8A2DAAC2DE5EF09005F0C53 /* VDRFillingFinishStatusRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA942DE5EF09005F0C53 /* VDRFillingFinishStatusRowView.swift */; };
+		E8A2DAAD2DE5EF09005F0C53 /* VDRStartFillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAA32DE5EF09005F0C53 /* VDRStartFillingView.swift */; };
+		E8A2DAAE2DE5EF09005F0C53 /* VDRFillingStatusFormCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA972DE5EF09005F0C53 /* VDRFillingStatusFormCardView.swift */; };
+		E8A2DAAF2DE5EF09005F0C53 /* VDRFillingStatusEventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA952DE5EF09005F0C53 /* VDRFillingStatusEventRowView.swift */; };
+		E8A2DAB02DE5EF09005F0C53 /* VDRFillingStatusTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA992DE5EF09005F0C53 /* VDRFillingStatusTimelineView.swift */; };
+		E8A2DAB12DE5EF09005F0C53 /* VDRFillingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA9E2DE5EF09005F0C53 /* VDRFillingStatusView.swift */; };
+		E8A2DAB22DE5EF09005F0C53 /* VDRFillingStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA9C2DE5EF09005F0C53 /* VDRFillingStatusService.swift */; };
+		E8A2DAB32DE5EF09005F0C53 /* VDRFillingStatusFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA962DE5EF09005F0C53 /* VDRFillingStatusFooterView.swift */; };
+		E8A2DAB42DE5EF09005F0C53 /* VDRFillingStatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DA982DE5EF09005F0C53 /* VDRFillingStatusHeaderView.swift */; };
+		E8A2DAB72DE5EF2C005F0C53 /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAB52DE5EF2C005F0C53 /* CardStyle.swift */; };
+		E8A2DABA2DE5EF44005F0C53 /* FullScreenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAB82DE5EF44005F0C53 /* FullScreenLoader.swift */; };
+		E8A2DABB2DE5EF44005F0C53 /* OverlayLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2DAB92DE5EF44005F0C53 /* OverlayLoader.swift */; };
 		E8BD9A262CE756A30086FC9B /* ASCOnlyofficeEntityInternalLinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD9A252CE756A30086FC9B /* ASCOnlyofficeEntityInternalLinkMaker.swift */; };
 		E8CD621C2D10823C00DF3440 /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD621B2D10823C00DF3440 /* RoomQuotaNetworkService.swift */; };
 		E8CD62252D10824C00DF3440 /* FileLifetimeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD621E2D10824C00DF3440 /* FileLifetimeSection.swift */; };
@@ -811,6 +829,24 @@
 		E8674B742B2B15C100CDA5DC /* ASCAttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAttachmentManager.swift; sourceTree = "<group>"; };
 		E8674BA22B2B166700CDA5DC /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8674BA32B2B166700CDA5DC /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		E8A2DA942DE5EF09005F0C53 /* VDRFillingFinishStatusRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingFinishStatusRowView.swift; sourceTree = "<group>"; };
+		E8A2DA952DE5EF09005F0C53 /* VDRFillingStatusEventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusEventRowView.swift; sourceTree = "<group>"; };
+		E8A2DA962DE5EF09005F0C53 /* VDRFillingStatusFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusFooterView.swift; sourceTree = "<group>"; };
+		E8A2DA972DE5EF09005F0C53 /* VDRFillingStatusFormCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusFormCardView.swift; sourceTree = "<group>"; };
+		E8A2DA982DE5EF09005F0C53 /* VDRFillingStatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusHeaderView.swift; sourceTree = "<group>"; };
+		E8A2DA992DE5EF09005F0C53 /* VDRFillingStatusTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusTimelineView.swift; sourceTree = "<group>"; };
+		E8A2DA9B2DE5EF09005F0C53 /* VDRFillingStatusResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusResponceModel.swift; sourceTree = "<group>"; };
+		E8A2DA9C2DE5EF09005F0C53 /* VDRFillingStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusService.swift; sourceTree = "<group>"; };
+		E8A2DA9D2DE5EF09005F0C53 /* VDRFillingStatusUIHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusUIHostingController.swift; sourceTree = "<group>"; };
+		E8A2DA9E2DE5EF09005F0C53 /* VDRFillingStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusView.swift; sourceTree = "<group>"; };
+		E8A2DA9F2DE5EF09005F0C53 /* VDRFillingStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRFillingStatusViewModel.swift; sourceTree = "<group>"; };
+		E8A2DAA12DE5EF09005F0C53 /* VDRStartFillingRoleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRStartFillingRoleItem.swift; sourceTree = "<group>"; };
+		E8A2DAA22DE5EF09005F0C53 /* VDRStartFillingUIHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRStartFillingUIHostingController.swift; sourceTree = "<group>"; };
+		E8A2DAA32DE5EF09005F0C53 /* VDRStartFillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRStartFillingView.swift; sourceTree = "<group>"; };
+		E8A2DAA42DE5EF09005F0C53 /* VDRStartFillingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRStartFillingViewModel.swift; sourceTree = "<group>"; };
+		E8A2DAB52DE5EF2C005F0C53 /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
+		E8A2DAB82DE5EF44005F0C53 /* FullScreenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoader.swift; sourceTree = "<group>"; };
+		E8A2DAB92DE5EF44005F0C53 /* OverlayLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayLoader.swift; sourceTree = "<group>"; };
 		E8BD9A252CE756A30086FC9B /* ASCOnlyofficeEntityInternalLinkMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeEntityInternalLinkMaker.swift; sourceTree = "<group>"; };
 		E8CD621B2D10823C00DF3440 /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
 		E8CD621D2D10824C00DF3440 /* AutomaticIndexationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticIndexationSection.swift; sourceTree = "<group>"; };
@@ -1565,6 +1601,8 @@
 		E8674B6B2B2B15C100CDA5DC /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				E8A2DAB82DE5EF44005F0C53 /* FullScreenLoader.swift */,
+				E8A2DAB92DE5EF44005F0C53 /* OverlayLoader.swift */,
 				E8CD622C2D1082F800DF3440 /* ToggleButtonCollectionView.swift */,
 				E8CD622D2D1082F800DF3440 /* ToggleButtonView.swift */,
 				E8674B6D2B2B15C100CDA5DC /* Representable */,
@@ -1593,6 +1631,51 @@
 				E8674B742B2B15C100CDA5DC /* ASCAttachmentManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E8A2DA9A2DE5EF09005F0C53 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				E8A2DA942DE5EF09005F0C53 /* VDRFillingFinishStatusRowView.swift */,
+				E8A2DA952DE5EF09005F0C53 /* VDRFillingStatusEventRowView.swift */,
+				E8A2DA962DE5EF09005F0C53 /* VDRFillingStatusFooterView.swift */,
+				E8A2DA972DE5EF09005F0C53 /* VDRFillingStatusFormCardView.swift */,
+				E8A2DA982DE5EF09005F0C53 /* VDRFillingStatusHeaderView.swift */,
+				E8A2DA992DE5EF09005F0C53 /* VDRFillingStatusTimelineView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		E8A2DAA02DE5EF09005F0C53 /* VDRFillingStatus */ = {
+			isa = PBXGroup;
+			children = (
+				E8A2DA9A2DE5EF09005F0C53 /* Subviews */,
+				E8A2DA9B2DE5EF09005F0C53 /* VDRFillingStatusResponceModel.swift */,
+				E8A2DA9C2DE5EF09005F0C53 /* VDRFillingStatusService.swift */,
+				E8A2DA9D2DE5EF09005F0C53 /* VDRFillingStatusUIHostingController.swift */,
+				E8A2DA9E2DE5EF09005F0C53 /* VDRFillingStatusView.swift */,
+				E8A2DA9F2DE5EF09005F0C53 /* VDRFillingStatusViewModel.swift */,
+			);
+			path = VDRFillingStatus;
+			sourceTree = "<group>";
+		};
+		E8A2DAA52DE5EF09005F0C53 /* VDRStartFillingStatus */ = {
+			isa = PBXGroup;
+			children = (
+				E8A2DAA12DE5EF09005F0C53 /* VDRStartFillingRoleItem.swift */,
+				E8A2DAA22DE5EF09005F0C53 /* VDRStartFillingUIHostingController.swift */,
+				E8A2DAA32DE5EF09005F0C53 /* VDRStartFillingView.swift */,
+				E8A2DAA42DE5EF09005F0C53 /* VDRStartFillingViewModel.swift */,
+			);
+			path = VDRStartFillingStatus;
+			sourceTree = "<group>";
+		};
+		E8A2DAB62DE5EF2C005F0C53 /* SwiftUIViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E8A2DAB52DE5EF2C005F0C53 /* CardStyle.swift */,
+			);
+			path = SwiftUIViewModifiers;
 			sourceTree = "<group>";
 		};
 		E8CD62242D10824C00DF3440 /* Subviews */ = {
@@ -2575,6 +2658,8 @@
 		FC759B452C00608600510096 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				E8A2DAA02DE5EF09005F0C53 /* VDRFillingStatus */,
+				E8A2DAA52DE5EF09005F0C53 /* VDRStartFillingStatus */,
 				F3772FCB2C9DEBC0002B33A8 /* FormCompletedFlow */,
 				FC759B212C00608600510096 /* CreateRoomFlow */,
 				FC759B232C00608600510096 /* EditRoomFlow */,
@@ -3084,6 +3169,7 @@
 		FCA5B9201E48A25C00CD2EA9 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E8A2DAB62DE5EF2C005F0C53 /* SwiftUIViewModifiers */,
 				FCC39FE81E6ECB0400DECB8D /* Business */,
 				FCAE8B891E71671C004FC332 /* Models */,
 				FC8540C21E83A56A000C2436 /* Components */,
@@ -4563,6 +4649,8 @@
 				FC759B612C00608600510096 /* UserListNetworkService.swift in Sources */,
 				FC83D5312A973E2100C404CB /* UIStoryboard+Extensions.swift in Sources */,
 				FC5943202AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */,
+				E8A2DABA2DE5EF44005F0C53 /* FullScreenLoader.swift in Sources */,
+				E8A2DABB2DE5EF44005F0C53 /* OverlayLoader.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC759B462C00608600510096 /* RoomSelectionView.swift in Sources */,
 				FC759BD12C00611000510096 /* OnlyofficeShareItemRequestModel.swift in Sources */,
@@ -4587,6 +4675,7 @@
 				FCE9F79B2B303DF60056E420 /* CurrentRoomMenu.swift in Sources */,
 				FC759BE92C00611000510096 /* ASCTextFieldCellViewModel.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
+				E8A2DAB72DE5EF2C005F0C53 /* CardStyle.swift in Sources */,
 				FC759BF32C00611000510096 /* ASCShareSettingsRoomsAPIWorker.swift in Sources */,
 				FC692BD62BA9BBA00095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */,
 				FC2B0CCD264158B400969DB9 /* OnlyofficeApplicationType.swift in Sources */,
@@ -4598,6 +4687,21 @@
 				E8D2DFEA2D445E3100F26718 /* OnlyofficeOperation.swift in Sources */,
 				E8D2DFEB2D445E3100F26718 /* OnlyofficeRoomIndexExportOperation.swift in Sources */,
 				E8D2DFEC2D445E3100F26718 /* SharePasswordResponseModel.swift in Sources */,
+				E8A2DAA62DE5EF09005F0C53 /* VDRStartFillingViewModel.swift in Sources */,
+				E8A2DAA72DE5EF09005F0C53 /* VDRFillingStatusResponceModel.swift in Sources */,
+				E8A2DAA82DE5EF09005F0C53 /* VDRFillingStatusUIHostingController.swift in Sources */,
+				E8A2DAA92DE5EF09005F0C53 /* VDRStartFillingUIHostingController.swift in Sources */,
+				E8A2DAAA2DE5EF09005F0C53 /* VDRStartFillingRoleItem.swift in Sources */,
+				E8A2DAAB2DE5EF09005F0C53 /* VDRFillingStatusViewModel.swift in Sources */,
+				E8A2DAAC2DE5EF09005F0C53 /* VDRFillingFinishStatusRowView.swift in Sources */,
+				E8A2DAAD2DE5EF09005F0C53 /* VDRStartFillingView.swift in Sources */,
+				E8A2DAAE2DE5EF09005F0C53 /* VDRFillingStatusFormCardView.swift in Sources */,
+				E8A2DAAF2DE5EF09005F0C53 /* VDRFillingStatusEventRowView.swift in Sources */,
+				E8A2DAB02DE5EF09005F0C53 /* VDRFillingStatusTimelineView.swift in Sources */,
+				E8A2DAB12DE5EF09005F0C53 /* VDRFillingStatusView.swift in Sources */,
+				E8A2DAB22DE5EF09005F0C53 /* VDRFillingStatusService.swift in Sources */,
+				E8A2DAB32DE5EF09005F0C53 /* VDRFillingStatusFooterView.swift in Sources */,
+				E8A2DAB42DE5EF09005F0C53 /* VDRFillingStatusHeaderView.swift in Sources */,
 				FC41FE6A28C789020049F20F /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */,
 				FC759B5B2C00608600510096 /* RoomSharingLinkRow.swift in Sources */,

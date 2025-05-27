@@ -134,3 +134,15 @@ struct VDRFillingStatusFormInfoModel: Identifiable {
     let detail: String
     var status: FormFillingStatus
 }
+
+/// Event in the filling timeline
+struct VDRFillingStatusEvent: Identifiable {
+    let id = UUID()
+    let number: Int
+    let role: String
+    let actor: String
+    let date: Date
+    let description: String?
+    let status: VDRFillingStatusEventStatus
+    let formActions: [FormAction]
+}

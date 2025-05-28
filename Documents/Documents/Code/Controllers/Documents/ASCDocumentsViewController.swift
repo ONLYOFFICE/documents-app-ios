@@ -543,6 +543,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             onlyofficeProvider.folder = folder
         }
 
+        provider?.cancel()
+        provider?.reset()
+
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
+
         loadFirstPage()
     }
 

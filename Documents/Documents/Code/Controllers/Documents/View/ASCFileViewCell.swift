@@ -553,6 +553,8 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             $0.padding = UIEdgeInsets(top: 2, left: 4, bottom: 3, right: 4)
             $0.layerCornerRadius = 4
             $0.sizeToFit()
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.heightAnchor.constraint(equalToConstant: 18).isActive = true
             return $0
         }(ASCPaddingLabel(frame: .zero))
     }

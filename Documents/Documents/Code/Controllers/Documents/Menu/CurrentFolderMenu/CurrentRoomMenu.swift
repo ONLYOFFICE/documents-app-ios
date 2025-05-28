@@ -191,6 +191,17 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
+        
+        if actions.contains(.deleteRoomTemplate) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Delete template", comment: "Button title"),
+                    image: UIImage(systemName: "trash")
+                ) { [weak viewController] action in
+                    viewController?.deleteRoomTemplate(template: folder)
+                }
+            )
+        }
 
         if actions.contains(.leave) {
             // Leave the room

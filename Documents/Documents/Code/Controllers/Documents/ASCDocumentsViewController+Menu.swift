@@ -617,6 +617,20 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        if actions.contains(.deleteRoomTemplate) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Delete template", comment: "Button title"),
+                    image: UIImage(systemName: "trash")
+                ) { [unowned self] action in
+                    self.deleteRoomTempateAlert(template: folder) { [weak self] in
+                        guard let self else { return }
+                        self.deleteRoomTemplate( template: folder)
+                    }
+                }
+            )
+        }
 
         /// Copy action
 

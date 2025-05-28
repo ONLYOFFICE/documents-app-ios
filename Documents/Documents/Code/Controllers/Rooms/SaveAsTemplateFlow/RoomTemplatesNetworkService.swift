@@ -10,10 +10,45 @@ import Foundation
 
 protocol ASCRoomTemplatesNetworkServiceProtocol {
     func createTemplate(room: CreateRoomTemplateModel, handler: ASCEntityProgressHandler?)
+    func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?)
 }
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
+    
+    func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?) {
+        var cancel = false
+        
+        handler?(.begin, 0, nil, nil, &cancel)
+        
+        let requestModel = ASCDeleteRoomTemplateRequestModel(folderIds: [template.id], fileIds: [])
+        
+        networkService.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, requestModel.dictionary) { responce, error in
+            if let error = error {
+                handler?(.error, 1, nil, error, &cancel)
+            } else {
+                var checkOperation: (() -> Void)?
+                checkOperation = {
+                    self.networkService.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                        if let error = error {
+                            handler?(.error, 1, nil, error, &cancel)
+                        } else if let operation = result?.result?.first, let progress = operation.progress {
+                            if progress >= 100 {
+                                handler?(.end, 1, nil, nil, &cancel)
+                            } else {
+                                Thread.sleep(forTimeInterval: 1)
+                                checkOperation?()
+                            }
+                        } else {
+                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
+                        }
+                    }
+                }
+                checkOperation?()
+            }
+            
+        }
+    }
     
     func createTemplate(room: CreateRoomTemplateModel, handler: ASCEntityProgressHandler?) {
         var cancel = false

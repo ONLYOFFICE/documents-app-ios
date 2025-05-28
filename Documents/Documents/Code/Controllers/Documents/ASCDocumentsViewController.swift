@@ -1622,6 +1622,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             self.removerActionController.delete(indexes: [folder.uid])
         }
     }
+    
+    func deleteRoomTempateAlert(template: ASCFolder, handler: @escaping () -> Void) {
+        showDeleteAlert(
+            title: NSLocalizedString("Delete template", comment: ""),
+            message: AlertMessageType.deleteRoomTemplate(template.title).message
+        ) {
+            handler()
+        }
+    }
 
     func showRestoreRoomAlert(handler: @escaping () -> Void) {
         let alertController = UIAlertController(
@@ -1752,6 +1761,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             vc.modalPresentationStyle = .formSheet
         }
         present(vc, animated: true)
+    }
+    func deleteRoomTemplate(template: ASCFolder) {
+        var hud: MBProgressHUD?
+        
+        ASCRoomTemplatesNetworkService().deleteRoomTemplate(template: template) { [unowned self] status, progress, result, error, cancel in
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.mode = .annularDeterminate
+                hud?.progress = 0
+                hud?.label.text = NSLocalizedString("Deleting", comment: "Caption of the processing")
+            } else if status == .progress {
+                hud?.progress = progress
+            } else if status == .error {
+                hud?.hide(animated: true)
+                UIAlertController.showError(
+                    in: self,
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not delete the template.", comment: "")
+                )
+            } else if status == .end {
+                hud?.setSuccessState()
+                hud?.hide(animated: false, afterDelay: .standardDelay)
+                loadFirstPage()
+            }
+        }
     }
 
     func duplicateRoom(room: ASCFolder) {

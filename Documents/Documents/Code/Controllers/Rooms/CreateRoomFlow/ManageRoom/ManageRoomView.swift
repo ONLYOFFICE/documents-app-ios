@@ -232,8 +232,10 @@ private extension View {
     @ViewBuilder
     func navigationTitle(viewModel: ManageRoomViewModel) -> some View {
         switch viewModel.screenMode {
-        case .edit:
-            navigationBarTitle(Text("Edit room"), displayMode: .inline)
+        case let .edit(room):
+            room.isTemplateRoom
+            ? navigationBarTitle(Text("Edit template"), displayMode: .inline)
+            : navigationBarTitle(Text("Edit room"), displayMode: .inline)
         case .create:
             navigationBarTitle(Text("Create room"), displayMode: .inline)
         case .saveAsTemplate:

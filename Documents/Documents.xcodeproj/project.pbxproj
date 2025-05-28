@@ -124,6 +124,7 @@
 		F30BD8922DE35CB800E5F4CF /* RoomTemplatesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8912DE35CB700E5F4CF /* RoomTemplatesNetworkService.swift */; };
 		F30BD8942DE35EAA00E5F4CF /* ASCCreateRoomTemplateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8932DE35EA800E5F4CF /* ASCCreateRoomTemplateRequestModel.swift */; };
 		F30BD8962DE48BC100E5F4CF /* OnlyofficeTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */; };
+		F30BD8992DE5C9C800E5F4CF /* ASCEditTemplateRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8982DE5C9B800E5F4CF /* ASCEditTemplateRootViewController.swift */; };
 		F30BD89D2DE73E0300E5F4CF /* ASCDeleteRoomTemplateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD89C2DE73E0200E5F4CF /* ASCDeleteRoomTemplateRequestModel.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
@@ -806,6 +807,7 @@
 		F30BD8912DE35CB700E5F4CF /* RoomTemplatesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTemplatesNetworkService.swift; sourceTree = "<group>"; };
 		F30BD8932DE35EA800E5F4CF /* ASCCreateRoomTemplateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateRoomTemplateRequestModel.swift; sourceTree = "<group>"; };
 		F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeTemplateOperation.swift; sourceTree = "<group>"; };
+		F30BD8982DE5C9B800E5F4CF /* ASCEditTemplateRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEditTemplateRootViewController.swift; sourceTree = "<group>"; };
 		F30BD89C2DE73E0200E5F4CF /* ASCDeleteRoomTemplateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeleteRoomTemplateRequestModel.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
@@ -2055,6 +2057,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F30BD8972DE5C99C00E5F4CF /* EditTemplateFlow */ = {
+			isa = PBXGroup;
+			children = (
+				F30BD8982DE5C9B800E5F4CF /* ASCEditTemplateRootViewController.swift */,
+			);
+			path = EditTemplateFlow;
+			sourceTree = "<group>";
+		};
 		F336546027E48FF400ABBEB3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2951,6 +2961,7 @@
 		FC759C242C00614D00510096 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				F30BD8972DE5C99C00E5F4CF /* EditTemplateFlow */,
 				F36C131D2DDDFC1E00E8B704 /* SaveAsTemplateFlow */,
 				F3D3850C2C8F4668002889EE /* FormCompletedFlow */,
 				FC759C002C00614D00510096 /* CreateRoomFlow */,
@@ -4700,6 +4711,7 @@
 				FC759C9C2C00615E00510096 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FC86503A1ED3232B00C73AEF /* ASCAboutViewController.swift in Sources */,
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
+				F30BD8992DE5C9C800E5F4CF /* ASCEditTemplateRootViewController.swift in Sources */,
 				FC759CBE2C00615E00510096 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC759C992C00615E00510096 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
 				FC4D0A222494F807001EF1B5 /* ASCDebugConsoleViewController.swift in Sources */,

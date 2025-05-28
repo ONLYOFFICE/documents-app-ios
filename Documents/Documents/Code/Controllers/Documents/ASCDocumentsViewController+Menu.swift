@@ -534,6 +534,18 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Edit template
+        if actions.contains(.editTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit template", comment: ""),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    editTemplate(template: folder)
+                }
+            )
+        }
 
         // Transfer actions
 

@@ -1762,6 +1762,42 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
         present(vc, animated: true)
     }
+    
+    func editTemplate(template: ASCFolder) {
+        let previusIndexingValue = template.indexing
+        
+        let vc = ASCEditTemplateRootViewController(template: template) { [weak self] template in
+            guard let self else {return}
+            self.folder = template
+        }
+        
+        if let refreshControl = self.collectionView.refreshControl {
+            self.refresh(refreshControl)
+            if let viewControllers = self.navigationController?.viewControllers,
+               let index = viewControllers.firstIndex(of: self),
+               index > 0
+            {
+                let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
+                previousController?.refresh(refreshControl)
+            }
+        }
+        
+        // If indexing changed rerender layout with correct type for edited room
+        if previusIndexingValue != template.indexing {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(
+                    name: ASCConstants.Notifications.updateDocumentsViewLayoutType,
+                    object: self.provider?.itemsViewType(for: template) ?? .list
+                )
+            }
+        }
+        
+        vc.modalPresentationStyle = .formSheet
+        vc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+        present(vc, animated: true, completion: nil)
+    }
+    
     func deleteRoomTemplate(template: ASCFolder) {
         var hud: MBProgressHUD?
         

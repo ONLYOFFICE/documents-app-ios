@@ -141,6 +141,17 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
+        
+        if actions.contains(.editTemplate) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Edit template", comment: ""),
+                    image: UIImage(systemName: "gear")
+                ) { [weak viewController] _ in
+                    viewController?.editTemplate(template: folder)
+                }
+            )
+        }
 
         var entityOperationsGroup: [UIMenuElement] = []
 

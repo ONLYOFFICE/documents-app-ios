@@ -1092,7 +1092,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
-        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
+        let isPDF = ASCConstants.FileExtensions.pdfs.contains(fileExt)
+        let isFormExt = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = isFormExt || (isPDF && file.isForm)
 
         if allowOpen || isForm {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)

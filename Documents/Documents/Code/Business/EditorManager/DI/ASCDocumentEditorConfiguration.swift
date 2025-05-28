@@ -10,7 +10,7 @@ import DocumentEditor
 
 final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtocol {
     var editorExternalSettings: [AnyHashable: Any] {
-        [
+        var settings: [AnyHashable: Any] = [
             "asc.de.external.appname": ASCConstants.Name.appNameShort,
             "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
             "asc.de.external.page.formats": [
@@ -33,6 +33,12 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
                 ],
             ],
         ]
+
+        if ASCAppSettings.Feature.allowUserVoice {
+            settings["asc.de.external.uservoiceurl"] = "https://onlyoffice.com/"
+        }
+
+        return settings
     }
 
     func localEditor(
@@ -54,7 +60,7 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
             let canEdit = onlyofficeProvider.allowEdit(entity: file)
             let canShare = onlyofficeProvider.allowShare(entity: file)
             let canDownload = !file.denyDownload
-            let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+            let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
 
             config.supportShare = canEdit && canShare && !isProjects && canDownload && folder.roomType == nil
         }

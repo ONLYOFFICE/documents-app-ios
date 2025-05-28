@@ -33,7 +33,7 @@ enum ASCRoomType: Int {
         case .public:
             return Asset.Images.listRoomPublicPlanet.image
         case .virtualData:
-            return Asset.Images.listRoomVirtualDataCase.image
+            return Asset.Images.listRoomVdr.image
         default:
             return Asset.Images.listRoomDefault.image
         }

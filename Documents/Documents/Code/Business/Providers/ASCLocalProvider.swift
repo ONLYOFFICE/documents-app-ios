@@ -156,10 +156,14 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
                 case .spreadsheets:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
-                case .formTemplates:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.formTemplates)
-                case .forms:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.forms)
+                case .pdfDocuments:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.pdfs)
+                        .compactMap { $0 as? ASCFile }
+                        .filter { $0.isForm == false }
+                case .pdfForms:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.pdfs)
+                        .compactMap { $0 as? ASCFile }
+                        .filter { $0.isForm == true }
                 case .images:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
                 case .archive:

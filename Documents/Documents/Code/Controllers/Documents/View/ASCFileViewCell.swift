@@ -74,6 +74,15 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    private lazy var filterBadge: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.clipsToBounds = true
+        $0.image = Asset.Images.filterGreen.image
+        $0.contentMode = .scaleAspectFit
+
+        return $0
+    }(UIImageView())
+
     private lazy var separatorView: UIView = {
         $0.backgroundColor = .separator
         return $0
@@ -173,6 +182,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 $0.contentMode = .center
                 return $0
             }(UIImageView(image: badgeNewImage)))
+        }
+
+        if file.customFilterEnabled {
+            items.append(filterBadge)
         }
 
         if file.isExpiredSoon {
@@ -392,6 +405,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             overlays.append(UIImageView(image: badgeNewImage))
         }
 
+        if file.customFilterEnabled {
+            overlays.append(filterBadge)
+        }
+
         if file.isEditing {
             overlays.append(UIImageView(image: UIImage(
                 systemName: "pencil",
@@ -470,49 +487,69 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         else { return UIView() }
 
         let fileExt = file.title.fileExtension().lowercased()
+        let allowThumbnailPreview = ASCConstants.FileExtensions.images.contains(fileExt) ||
+            (layoutType == .grid && file.thumbnailStatus == .created && file.thumbnailUrl?.isEmpty == false)
+        let defaultIconFormatImage = UIImage.getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
 
         imageView.contentMode = .center
         imageView.alpha = 1
+        imageView.layerBorderWidth = 0
+        imageView.layerBorderColor = .clear
+        imageView.layerCornerRadius = 5
+
         activityIndicator.isHidden = true
 
-        if ASCConstants.FileExtensions.images.contains(fileExt) {
+        if allowThumbnailPreview {
             if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles) {
                 activityIndicator.isHidden = false
                 activityIndicator.startAnimating()
 
                 imageView.alpha = 0
-                imageView.image = iconFormatImage
+                imageView.image = defaultIconFormatImage
+
+                if ASCConstants.FileExtensions.images.contains(fileExt) {
+                    imageView.contentMode = .scaleAspectFit
+                } else {
+                    imageView.contentMode = .scaleAspectFill
+                }
 
                 imageView.kf.setProviderImage(
-                    with: provider.absoluteUrl(from: file.viewUrl),
+                    with: provider.absoluteUrl(from: file.thumbnailUrl ?? file.viewUrl),
                     for: provider,
-                    placeholder: iconFormatImage,
+                    placeholder: defaultIconFormatImage,
                     completionHandler: { [weak self] result in
                         switch result {
                         case .success:
-                            self?.imageView.contentMode = .scaleAspectFit
+                            if ASCConstants.FileExtensions.images.contains(fileExt) {
+                                self?.imageView.contentMode = .scaleAspectFit
+                            } else {
+                                self?.imageView.contentMode = .scaleAspectFill
+                                self?.imageView.layerBorderWidth = 1
+                                self?.imageView.layerBorderColor = .systemGray5
+                            }
                         default:
                             self?.imageView.contentMode = .center
                         }
 
                         self?.activityIndicator.stopAnimating()
                         self?.activityIndicator.isHidden = true
+
                         UIView.animate(withDuration: 0.2) { [weak self] in
                             self?.imageView.alpha = 1
                         }
                     }
                 )
             } else {
-                imageView.image = iconFormatImage
+                imageView.image = defaultIconFormatImage
             }
         } else {
-            imageView.image = .getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
+            imageView.image = defaultIconFormatImage
         }
 
         imageView.removeConstraints(imageView.constraints)
 
         imageView.anchor(
-            widthConstant: preferredSize.width,
+            widthConstant: (allowThumbnailPreview && layoutType == .grid) ? frame.width - 10 : preferredSize.width,
             heightConstant: preferredSize.height
         )
 

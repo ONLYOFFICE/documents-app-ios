@@ -13,6 +13,7 @@ struct LinkModel {}
 protocol NetworkManagerSharedSettingsProtocol {
     func fetchFileLinks(file: ASCFile, completion: @escaping (Result<[SharedSettingsLinkResponceModel], Error>) -> Void)
     func setLinkAccess(file: ASCFile, requestModel: EditSharedLinkRequestModel, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void)
+    func customFilter(file: ASCFile, requestModel: ASCCustomFilterRequestModel, completion: @escaping (Result<ASCFile, Error>) -> Void)
 }
 
 final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
@@ -58,6 +59,20 @@ final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
                 return
             }
             completion(.success(link))
+        }
+    }
+
+    func customFilter(file: ASCFile, requestModel: ASCCustomFilterRequestModel, completion: @escaping (Result<ASCFile, Error>) -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Files.customFilter(file: file), requestModel.dictionary) { result, error in
+            guard let file = result?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
+                }
+                return
+            }
+            completion(.success(file))
         }
     }
 

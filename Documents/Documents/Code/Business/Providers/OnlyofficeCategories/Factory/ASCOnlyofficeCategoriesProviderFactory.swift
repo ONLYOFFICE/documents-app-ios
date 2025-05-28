@@ -47,7 +47,7 @@ class ASCOnlyofficeCategoriesProviderFactory {
             categoriesProvider: ASCOnlyofficeAPICategoriesProvider(),
             filter: {
                 guard let folderType = $0.folder?.rootFolderType else { return false }
-                return folderType != .unknown
+                return folderType != .default
             }
         )
     }
@@ -61,7 +61,7 @@ class ASCOnlyofficeCategoriesProviderFactory {
             categoriesProvider: ASCOnlyofficeAPICategoriesProvider(),
             filter: {
                 guard let folderType = $0.folder?.rootFolderType else { return false }
-                return folderType != .unknown && !$0.isDocSpaceRoom
+                return folderType != .default && !$0.isDocSpaceRoom
             }
         )
     }

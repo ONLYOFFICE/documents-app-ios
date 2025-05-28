@@ -104,6 +104,18 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Show versions history
+
+        if actions.contains(.showVersionsHistory) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    image: UIImage(systemName: "clock.arrow.circlepath")
+                ) { [unowned self] action in
+                    self.showVersionsHistory(file: file)
+                })
+        }
+
         ///  Copy shared link action
 
         if actions.contains(.copySharedLink) {
@@ -113,6 +125,21 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
                     self.copySharedLink(file: file)
+                }
+            )
+        }
+
+        /// Custom filter
+
+        if actions.contains(.setCustomFilter) {
+            shareActions.append(
+                UIAction(
+                    title: file.customFilterEnabled
+                        ? NSLocalizedString("Disable Custom filter", comment: "")
+                        : NSLocalizedString("Enable Custom filter", comment: ""),
+                    image: Asset.Images.menuCustomFilter.image
+                ) { [unowned self] action in
+                    self.setCustomFilter(cell: cell, file: file)
                 }
             )
         }
@@ -958,6 +985,17 @@ extension ASCDocumentsViewController {
                     }
                 )
             )
+        }
+
+        if actions.contains(.showVersionsHistory) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        self.showVersionsHistory(file: file)
+                    }
+                ))
         }
 
         if actions.contains(.rename) {

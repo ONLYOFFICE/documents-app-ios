@@ -391,8 +391,8 @@ extension ASCRootViewController: UITabBarControllerDelegate {
                               let categoryVC = deviceSC.primaryViewController?.topMostViewController() as? ASCOnlyofficeCategoriesViewController
                     {
                         let category: ASCOnlyofficeCategory = {
-                            $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                            $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
+                            $0.title = ASCOnlyofficeCategory.title(of: .user)
+                            $0.folder = ASCOnlyofficeCategory.folder(of: .user)
                             return $0
                         }(ASCOnlyofficeCategory())
 

@@ -85,6 +85,10 @@ enum OnlyofficeAPI {
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
         public static let fillingStatus = "api/\(version)/files/file/%@/formroles"
         public static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
+        public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
+        public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
+        public static let editComment = "api/\(version)/files/file/%@/comment"
+        public static let customFilter = "api/\(version)/files/file/%@/customfilter"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -295,6 +299,10 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .get)
             }
 
+            static func customFilter(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.customFilter, file.id), .put)
+            }
+
             static func createAndCopyLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.createAndCopyFileLink, file.id), .get)
             }
@@ -354,6 +362,18 @@ enum OnlyofficeAPI {
             static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
                 Endpoint<OnlyofficeResponseBase>.make(String(format: Path.manageFormFilling, file.id), .put)
             }
+            
+            static func getVersionHistory(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<ASCFile>> {
+                return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
+            }
+
+            static func restoreFileVersion(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            }
+
+            static func editComment(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.editComment, file.id), .put)
+            }
 
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
             static let removeFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .delete)
@@ -411,6 +431,7 @@ enum OnlyofficeAPI {
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
             static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
+            static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
         }
 
         // MARK: Third-Party Integration

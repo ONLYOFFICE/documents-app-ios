@@ -26,7 +26,9 @@ extension ASCEditorManager {
     ) -> UIViewController? {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
+        let isPDF = ASCConstants.FileExtensions.pdfs.contains(fileExt)
+        let isFormExt = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = isFormExt || (isPDF && file.isForm)
         var documentPermissions = config.document?.permissions.dictionary ?? [:]
 
         if !documentPermissions.keys.contains("fillForms") {

@@ -10,10 +10,16 @@ import PresentationEditor
 
 final class ASCPresentationEditorConfiguration: ASCPresentationEditorConfigurationProtocol {
     var editorExternalSettings: [AnyHashable: Any] {
-        [
+        var settings: [AnyHashable: Any] = [
             "asc.pe.external.appname": ASCConstants.Name.appNameShort,
             "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
         ]
+
+        if ASCAppSettings.Feature.allowUserVoice {
+            settings["asc.pe.external.uservoiceurl"] = "https://onlyoffice.com/"
+        }
+
+        return settings
     }
 
     func localEditor(
@@ -35,7 +41,7 @@ final class ASCPresentationEditorConfiguration: ASCPresentationEditorConfigurati
             let canEdit = onlyofficeProvider.allowEdit(entity: file)
             let canShare = onlyofficeProvider.allowShare(entity: file)
             let canDownload = !file.denyDownload
-            let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+            let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
 
             config.supportShare = canEdit && canShare && !isProjects && canDownload && folder.roomType == nil
         }

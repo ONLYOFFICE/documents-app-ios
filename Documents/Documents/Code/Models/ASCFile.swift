@@ -8,8 +8,10 @@
 
 import Foundation
 import ObjectMapper
+import SwiftUI
 
 class ASCFile: ASCEntity {
+    var formFillingStatus: FormFillingStatus = .none
     var `extension`: String?
     var access: ASCEntityAccess = .none
     var canShare: Bool = false
@@ -108,6 +110,9 @@ class ASCFile: ASCEntity {
         displayContentLength <- map["contentLength"]
         expired <- (map["expired"], ASCDateTransform())
         fileStatus <- map["fileStatus"]
+        viewUrl <- map["viewUrl"]
+        webUrl <- map["webUrl"]
+        formFillingStatus <- (map["formFillingStatus"], EnumTransform())
         isForm <- map["isForm"]
         order <- map["order"]
         pureContentLength <- map["pureContentLength"]
@@ -136,5 +141,57 @@ extension ASCFile {
         let timePassed = Date().timeIntervalSince(created)
 
         return timePassed >= totalDuration * 0.9
+    }
+}
+
+enum FormFillingStatus: Int, Codable {
+    case none = 0
+    case draft = 1
+    case yourTurn = 2
+    case inProgress = 3
+    case complete = 4
+    case stopped = 5
+
+    var localizedString: String {
+        switch self {
+        case .none:
+            ""
+        case .draft:
+            NSLocalizedString("Draft", comment: "Form filling status")
+        case .yourTurn:
+            NSLocalizedString("Your turn", comment: "Form filling status")
+        case .inProgress:
+            NSLocalizedString("In progress", comment: "Form filling status")
+        case .complete:
+            NSLocalizedString("Complete", comment: "Form filling status")
+        case .stopped:
+            NSLocalizedString("Stopped", comment: "Form filling status")
+        }
+    }
+
+    var uiColor: UIColor {
+        switch self {
+        case .none: return .clear
+        case .draft: return .systemRed
+        case .yourTurn: return .systemBlue
+        case .inProgress: return .gray
+        case .complete: return .systemGreen
+        case .stopped: return .systemRed
+        }
+    }
+
+    var color: Color {
+        if #available(iOS 15.0, *) {
+            return Color(uiColor: uiColor)
+        } else {
+            switch self {
+            case .none: return .clear
+            case .draft: return .red
+            case .yourTurn: return .blue
+            case .inProgress: return .gray
+            case .complete: return .green
+            case .stopped: return .red
+            }
+        }
     }
 }

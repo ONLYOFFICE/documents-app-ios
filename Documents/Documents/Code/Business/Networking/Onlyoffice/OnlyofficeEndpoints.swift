@@ -83,6 +83,8 @@ enum OnlyofficeAPI {
         public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
+        public static let fillingStatus = "api/\(version)/files/file/%@/formroles"
+        public static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
         public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
         public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
         public static let editComment = "api/\(version)/files/file/%@/comment"
@@ -353,6 +355,14 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseType<Parameters>>.make(String(format: Path.trackEdit, file.id), .get, URLEncoding.default)
             }
 
+            static func getFillingStatus(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>>.make(String(format: Path.fillingStatus, file.id), .get, URLEncoding.default)
+            }
+
+            static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                Endpoint<OnlyofficeResponseBase>.make(String(format: Path.manageFormFilling, file.id), .put)
+            }
+            
             static func getVersionHistory(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<ASCFile>> {
                 return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
             }

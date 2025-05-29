@@ -1806,6 +1806,19 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         guard file.isForm else { return }
 
+        let isInsideVDRRoom = file.parent?.parentsFoldersOrCurrentContains(
+            keyPath: \.roomType,
+            value: .virtualData
+        ) == true
+        if isInsideVDRRoom {
+            if file.security.fillForms, file.formFillingStatus == .yourTurn {
+                openFormInFillingModeWithCheckingVersion(file: file)
+            } else {
+                open(file: file, openMode: .view)
+            }
+            return
+        }
+
         let isInsideFillingFormRoom = file.parent?.parentsFoldersOrCurrentContains(
             keyPath: \.roomType,
             value: .fillingForm
@@ -1869,6 +1882,48 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         let hostingController = UIHostingController(rootView: fillFormMenuScreen)
         present(hostingController, animated: true, completion: nil)
+    }
+
+    func startFilling(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+
+        let vc = VDRStartFillingViewController()
+        present(vc, animated: true, completion: nil)
+    }
+
+    func fillingStatus(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+
+        let vc = VDRFillingStatusUIHostingController(
+            file: file,
+            onStoppedSuccess: { [weak self] in
+                self?.fetchData()
+            },
+            onFillTapped: { [weak self] in
+                self?.openFormInFillingModeWithCheckingVersion(file: file)
+            }
+        )
+        present(vc, animated: true, completion: nil)
+    }
+
+    func openFormInFillingModeWithCheckingVersion(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+        if ASCEditorManager.shared.checkSDKVersion() {
+            open(file: file, openMode: .fillform)
+        } else {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Filling form", comment: ""),
+                message: NSLocalizedString("The client and server versions are incompatible. You can only open the document in view mode", comment: ""),
+                preferredStyle: .alert,
+                tintColor: nil
+            )
+
+            alertController.addCancel()
+            alertController.addOk { [unowned self] _ in
+                open(file: file, openMode: .view)
+            }
+            present(alertController, animated: true, completion: nil)
+        }
     }
 
     func transformToRoom(entities: [ASCEntity]) {

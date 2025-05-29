@@ -199,6 +199,15 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             )))
         }
 
+        if file.isForm, file.formFillingStatus != .none {
+            items.append(
+                buildTextBadge(
+                    file.formFillingStatus.localizedString,
+                    color: file.formFillingStatus.uiColor
+                )
+            )
+        }
+
         items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
 
         return {
@@ -570,6 +579,21 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         authorLabel.text = file.createdBy?.displayName
 
         return authorLabel
+    }
+
+    private func buildTextBadge(_ text: String, color: UIColor) -> ASCPaddingLabel {
+        {
+            $0.backgroundColor = color
+            $0.text = text.capitalized
+            $0.textAlignment = .center
+            $0.textStyle = .caption2White
+            $0.padding = UIEdgeInsets(top: 2, left: 4, bottom: 3, right: 4)
+            $0.layerCornerRadius = 4
+            $0.sizeToFit()
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.heightAnchor.constraint(equalToConstant: 18).isActive = true
+            return $0
+        }(ASCPaddingLabel(frame: .zero))
     }
 
     // MARK: - Handlers

@@ -783,12 +783,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         file.id = path
 
         var uploadParams = params ?? [:]
+        let fileName = uploadParams["title"] as? String
         let mime = uploadParams["mime"] as? String
 
         uploadParams.removeAll(keys: ["mime"])
-
-        apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
-            processing(response?.result, progress, error)
+        
+        if let docspaceVersion = apiClient.serverVersion?.docSpace, docspaceVersion.isVersion(greaterThanOrEqualTo: "3.1.0") {
+            apiClient.request(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file)) { multipartFormData in
+                multipartFormData.append(data, withName: "file", fileName: fileName, mimeType: mime)
+            } _: { response, progress, error in
+                processing(response?.result, progress, error)
+            }
+        } else {
+            apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
+                processing(response?.result, progress, error)
+            }
         }
     }
 

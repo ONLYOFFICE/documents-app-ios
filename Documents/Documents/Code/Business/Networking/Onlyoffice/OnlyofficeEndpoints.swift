@@ -362,7 +362,7 @@ enum OnlyofficeAPI {
             static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
                 Endpoint<OnlyofficeResponseBase>.make(String(format: Path.manageFormFilling, file.id), .put)
             }
-            
+
             static func getVersionHistory(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<ASCFile>> {
                 return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
             }

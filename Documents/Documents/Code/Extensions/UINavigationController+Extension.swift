@@ -16,7 +16,7 @@ extension UINavigationController {
         view.tintColor = Asset.Colors.brend.color
 
         if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = true
+            navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
             rootASCViewController.navigationItem.largeTitleDisplayMode = .automatic
         }
 

@@ -73,6 +73,7 @@ class ASCConstants {
         static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
         static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
         static let debugDisableSdkVersionCheck = "asc-debug-disablesdkversioncheck"
+        static let debugAllowLargeTitle = "asc-debug-allow-large-title"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
@@ -85,6 +86,7 @@ class ASCConstants {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowLargeTitle: true])
         }
     }
 

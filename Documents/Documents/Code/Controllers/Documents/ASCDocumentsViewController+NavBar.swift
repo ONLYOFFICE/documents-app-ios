@@ -96,7 +96,7 @@ extension ASCDocumentsViewController {
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .automatic
         updateTitle()
     }

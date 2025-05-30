@@ -458,7 +458,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         navigationItem.searchController = tableData.isEmpty ? nil : searchController
-        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty
+        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty && ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = !tableData.isEmpty ? .automatic : .never
 
         updateTitleView(collectionView)
@@ -1191,7 +1191,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             emptyView?.isHidden = true
             searchEmptyView?.isHidden = true
 
-            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
             navigationItem.largeTitleDisplayMode = .automatic
 
         } else {

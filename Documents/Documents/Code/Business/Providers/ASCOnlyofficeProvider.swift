@@ -1526,7 +1526,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if file.security.fillingStatus {
                 entityActions.insert(.fillingStatus)
             }
-            
+
             if canShowVersion {
                 entityActions.insert(.showVersionsHistory)
             }

@@ -77,6 +77,7 @@ class ASCHelpAndFeedbackViewController: ASCBaseTableViewController {
     }
 
     private func configureTableView() {
+        tableView?.cellLayoutMarginsFollowReadableWidth = true
         view.backgroundColor = .systemGroupedBackground
     }
 

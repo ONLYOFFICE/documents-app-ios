@@ -39,3 +39,22 @@ enum ASCRoomType: Int {
         }
     }
 }
+
+extension ASCRoomType {
+    var description: String? {
+        switch self {
+        case .custom:
+            return CreatingRoomType.custom.name
+        case .public:
+            return CreatingRoomType.publicRoom.name
+        case .colobaration:
+            return CreatingRoomType.collaboration.name
+        case .fillingForm:
+            return CreatingRoomType.formFilling.name
+        case .virtualData:
+            return CreatingRoomType.virtualData.name
+        default:
+            return nil
+        }
+    }
+}

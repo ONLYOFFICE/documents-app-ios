@@ -600,22 +600,7 @@ extension ASCFolderViewCell {
 
     private func buildOwnerView() -> UIView? {
         guard let folder = entity as? ASCFolder else { return nil }
-        let roomTypeDescription: String?
-
-        switch folder.roomType {
-        case .custom:
-            roomTypeDescription = CreatingRoomType.custom.name
-        case .public:
-            roomTypeDescription = CreatingRoomType.publicRoom.name
-        case .colobaration:
-            roomTypeDescription = CreatingRoomType.collaboration.name
-        case .fillingForm:
-            roomTypeDescription = CreatingRoomType.formFilling.name
-        case .virtualData:
-            roomTypeDescription = CreatingRoomType.virtualData.name
-        default:
-            roomTypeDescription = nil
-        }
+        let roomTypeDescription = folder.roomType?.description
 
         authorLabel.text = [roomTypeDescription, folder.createdBy?.displayName]
             .compactMap { $0 }
@@ -655,12 +640,15 @@ private extension ASCFolderViewCell {
             return $0
         }(UILabel())
 
-        let dateLabel = {
+        let subtitle: String? = folder.isRoom
+            ? folder.roomType?.description
+            : dateFormatter.string(from: folder.updated ?? Date())
+        let subtitleLabel = {
             $0.font = UIFont.preferredFont(forTextStyle: .caption2)
             $0.textAlignment = .center
             $0.numberOfLines = 1
             $0.textColor = .secondaryLabel
-            $0.text = dateFormatter.string(from: folder.updated ?? Date())
+            $0.text = subtitle
             return $0
         }(UILabel())
 
@@ -696,7 +684,7 @@ private extension ASCFolderViewCell {
                 return $0
             }(UIView()),
             titleLabel,
-            dateLabel,
+            subtitleLabel,
             UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: 100))),
         ]))
 

@@ -2291,7 +2291,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 }
             }
         } else {
-            NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+            let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+            NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
                 handleResult(result.map { $0.sharedTo.shareLink })
             }
         }

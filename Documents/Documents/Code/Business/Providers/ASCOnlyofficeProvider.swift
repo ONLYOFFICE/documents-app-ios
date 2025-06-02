@@ -2430,7 +2430,8 @@ extension ASCOnlyofficeProvider {
               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
         else {
             return await withCheckedContinuation { continuation in
-                NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+                NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
                     switch result {
                     case let .success(link):
                         continuation.resume(returning: .success(link.sharedTo.shareLink))

@@ -655,6 +655,7 @@
 		FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D341ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift */; };
 		FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D361ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift */; };
 		FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D381ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift */; };
+		FCF07BC52DEDEAD400E61023 /* CreateAndCopyLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF07BC42DEDEAD400E61023 /* CreateAndCopyLinkRequestModel.swift */; };
 		FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */; };
 		FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */; };
 		FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3AA8A1EF91A1B00DF63BA /* ASCTransferViewCell.swift */; };
@@ -1485,6 +1486,7 @@
 		FCEF9D341ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCUserDefaultsPasscodeRepository.swift; sourceTree = "<group>"; };
 		FCEF9D361ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasscodeLockPresenter.swift; sourceTree = "<group>"; };
 		FCEF9D381ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasscodeLockSplashView.swift; sourceTree = "<group>"; };
+		FCF07BC42DEDEAD400E61023 /* CreateAndCopyLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndCopyLinkRequestModel.swift; sourceTree = "<group>"; };
 		FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCProfileAvatarView.swift; sourceTree = "<group>"; };
 		FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShadowRadiusView.swift; sourceTree = "<group>"; };
 		FCF3AA8A1EF91A1B00DF63BA /* ASCTransferViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewCell.swift; sourceTree = "<group>"; };
@@ -3615,6 +3617,7 @@
 			isa = PBXGroup;
 			children = (
 				FCCE50862C1AF79000102056 /* AddSharedLinkRequestModel.swift */,
+				FCF07BC42DEDEAD400E61023 /* CreateAndCopyLinkRequestModel.swift */,
 				FCCE50872C1AF79000102056 /* EditSharedLinkRequestModel.swift */,
 				FCCE50882C1AF79000102056 /* NetworkManagerSharedSettings.swift */,
 				FCCE50892C1AF79000102056 /* SharedSettingsLinkResponceModel.swift */,
@@ -4717,6 +4720,7 @@
 				FC759CAA2C00615E00510096 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FCCE50B72C1AF79000102056 /* PasswordCellView.swift in Sources */,
 				FC759CBF2C00615E00510096 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
+				FCF07BC52DEDEAD400E61023 /* CreateAndCopyLinkRequestModel.swift in Sources */,
 				FC68526D26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
 				E801C98B2D368E0A00E9939A /* ASCEntityViewLayoutTypeProvider.swift in Sources */,
 				F30BCE3A2C9CC22800900E07 /* CompleteFormRequestModel.swift in Sources */,

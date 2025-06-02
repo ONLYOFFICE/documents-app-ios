@@ -303,8 +303,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.customFilter, file.id), .put)
             }
 
-            static func createAndCopyLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.createAndCopyFileLink, file.id), .get)
+            static func createAndCopyLink(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.createAndCopyFileLink, file.id), method)
             }
 
             static func setLinkAccess(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {

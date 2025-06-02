@@ -1802,7 +1802,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             return
         }
 
-        guard file.isForm else { return }
+        guard file.isForm || file.formFillingStatus == .complete else { return }
 
         let isInsideVDRRoom = file.parent?.parentsFoldersOrCurrentContains(
             keyPath: \.roomType,
@@ -1890,7 +1890,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func fillingStatus(file: ASCFile) {
-        guard file.isForm, !file.device else { return }
+        guard file.isForm || file.formFillingStatus == .complete, !file.device else { return }
 
         let vc = VDRFillingStatusUIHostingController(
             file: file,

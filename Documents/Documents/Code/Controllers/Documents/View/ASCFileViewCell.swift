@@ -199,7 +199,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             )))
         }
 
-        if file.isForm, file.formFillingStatus != .none {
+        if file.formFillingStatus != .none {
             items.append(
                 buildTextBadge(
                     file.formFillingStatus.localizedString,
@@ -403,6 +403,15 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         if file.isNew, let badgeNewImage = newBadge.screenshot {
             overlays.append(UIImageView(image: badgeNewImage))
+        }
+
+        if file.formFillingStatus != .none {
+            overlays.append(
+                buildTextBadge(
+                    file.formFillingStatus.localizedString,
+                    color: file.formFillingStatus.uiColor
+                )
+            )
         }
 
         if file.customFilterEnabled {

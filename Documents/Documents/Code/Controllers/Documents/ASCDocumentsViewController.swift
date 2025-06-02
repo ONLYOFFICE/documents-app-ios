@@ -640,9 +640,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let isDocument = fileExt == ASCConstants.FileExtensions.docx
                 let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
                 let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
-                let isPDF = ASCConstants.FileExtensions.pdfs.contains(fileExt)
-                let isFormExt = ASCConstants.FileExtensions.forms.contains(fileExt)
-                let isForm = isFormExt || (isPDF && file.isForm)
+                let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
                 if isDocument || isSpreadsheet || isPresentation || isForm {
                     provider.open(file: file, openMode: .create, canEdit: true)

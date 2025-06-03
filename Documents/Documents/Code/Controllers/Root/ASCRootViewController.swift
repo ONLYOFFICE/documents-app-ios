@@ -398,26 +398,26 @@ extension ASCRootViewController {
         else {
             return nil
         }
-        
+
         return categoryNC.viewControllers
             .first(where: { $0 is ASCOnlyofficeCategoriesViewController })
-        as? ASCOnlyofficeCategoriesViewController
+            as? ASCOnlyofficeCategoriesViewController
     }
-    
-    private func computeCategory( for folder: ASCFolder?, categoryType: ASCFolderType?, in categoryVC: ASCOnlyofficeCategoriesViewController) -> ASCOnlyofficeCategory {
+
+    private func computeCategory(for folder: ASCFolder?, categoryType: ASCFolderType?, in categoryVC: ASCOnlyofficeCategoriesViewController) -> ASCOnlyofficeCategory {
         if let type = categoryType,
            let existingCategory = categoryVC.category(ofType: type)
         {
             return existingCategory
         }
-        
+
         if let folder = folder {
             return ASCOnlyofficeCategory(folder: folder)
         }
-        
+
         return categoryVC.entrypointCategory()
     }
-    
+
     private func scheduleDocumentsPush(for folder: ASCFolder, using categoryVC: ASCOnlyofficeCategoriesViewController) {
         delay(seconds: 0.01) {
             guard let onlyofficeProvider = ASCFileManager.onlyofficeProvider,
@@ -425,21 +425,21 @@ extension ASCRootViewController {
             else {
                 return
             }
-            
+
             guard let splitVC = self.selectedViewController as? ASCOnlyofficeSplitViewController else {
                 return
             }
             let documentsNC = (splitVC.detailViewController as? ASCBaseNavigationController)
-            ?? (splitVC.primaryViewController as? ASCBaseNavigationController)
-            
+                ?? (splitVC.primaryViewController as? ASCBaseNavigationController)
+
             let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
             documentsVC.provider = onlyofficeProvider
             documentsVC.folder = folder
-            
+
             if let parentDocVC = documentsNC?.viewControllers.last as? ASCDocumentsViewController {
                 parentDocVC.loadFirstPage()
             }
-            
+
             documentsNC?.pushViewController(documentsVC, animated: false)
         }
     }

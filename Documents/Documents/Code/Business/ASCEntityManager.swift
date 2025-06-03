@@ -570,7 +570,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         var downloadUrlString = file.viewUrl ?? ""
 
-        if file.version > 0 {
+        if file.version > 0, file.openVersionMode {
             if var components = URLComponents(string: downloadUrlString) {
                 var queryItems = components.queryItems ?? []
                 queryItems.append(URLQueryItem(name: "version", value: String(file.version)))

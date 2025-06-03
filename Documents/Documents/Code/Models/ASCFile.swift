@@ -11,7 +11,6 @@ import ObjectMapper
 import SwiftUI
 
 class ASCFile: ASCEntity {
-    var formFillingStatus: FormFillingStatus = .none
     var `extension`: String?
     var access: ASCEntityAccess = .none
     var canShare: Bool = false
@@ -25,7 +24,9 @@ class ASCFile: ASCEntity {
     var editable: Bool = false
     var expired: Date?
     var fileStatus: ASCFileStatus = .none
+    var formFillingStatus: FormFillingStatus = .none
     var isForm: Bool = false
+    var openVersionMode: Bool = false
     var order: String?
     var parent: ASCFolder?
     var pureContentLength: Int = 0
@@ -130,6 +131,12 @@ class ASCFile: ASCEntity {
 
         // Internal
         device <- map["device"]
+
+        /// This parameter is taken into account if it is necessary to work with a specific
+        /// version of the file from the `version` property. In all other cases, the file
+        /// will be opened without specifying the versioning, which will ensure that
+        /// the actual version of the file is opened.
+        openVersionMode <- map["openVersionMode"]
     }
 }
 

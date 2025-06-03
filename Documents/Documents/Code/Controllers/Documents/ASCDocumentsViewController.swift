@@ -2304,7 +2304,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             file: file,
             networkService: versionHistoryNetworkService
         ) { [weak self] version in
-            self?.open(file: version, openMode: .view)
+            var versionFile = version
+            versionFile.openVersionMode = true
+            self?.open(file: versionFile, openMode: .view)
         } download: { [weak self] versionFile in
             guard let self,
                   let provider else { return }

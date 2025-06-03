@@ -213,7 +213,7 @@ class ASCEditorManager: NSObject {
                 params[openModeKey] = "true"
             }
 
-            if file.version > 0 {
+            if file.version > 0, file.openVersionMode {
                 params["version"] = file.version
             }
 
@@ -259,7 +259,7 @@ class ASCEditorManager: NSObject {
             params[openModeKey] = "true"
         }
 
-        if file.version > 0 {
+        if file.version > 0, file.openVersionMode {
             params["version"] = file.version
         }
 

@@ -18,7 +18,10 @@ struct CreateRoomRouteView: View {
 
     var body: some View {
         NavigationView {
-            RoomSelectionView(selectedRoomType: $selectedRoomType)
+            RoomSelectionView(
+                viewModel: RoomSelectionViewModel(isCreateTemplateEnabled: true),
+                selectedRoomType: $selectedRoomType
+            )
                 .navigation(item: $selectedRoomType) { type in
                     ManageRoomView(
                         viewModel: ManageRoomViewModel(

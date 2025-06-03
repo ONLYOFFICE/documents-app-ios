@@ -55,12 +55,14 @@ struct ManageRoomView: View {
 
     private var roomTypeSection: some View {
         Section {
-            RoomTypeViewRow(roomTypeModel: viewModel.selectedRoomType)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    guard !viewModel.isEditMode else { return }
-                    viewModel.isRoomSelectionPresenting = true
-                }
+            RoomTypeViewRow(
+                roomTypeModel: viewModel.selectedRoomType.mapToRowModel(
+                    onTap: {
+                        guard !viewModel.isEditMode else { return }
+                        viewModel.isRoomSelectionPresenting = true
+                    }
+                )
+            )
         }
     }
 
@@ -246,6 +248,7 @@ private extension View {
     func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         navigation(isActive: isActive, destination: {
             RoomSelectionView(
+                viewModel: RoomSelectionViewModel(),
                 selectedRoomType: Binding<RoomTypeModel?>(
                     get: { viewModel.selectedRoomType },
                     set: { newValue in

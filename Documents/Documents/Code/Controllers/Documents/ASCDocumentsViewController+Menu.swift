@@ -426,6 +426,30 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Create room
+        if actions.contains(.createRoom) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: ""),
+                    image: Asset.Images.menuRectanglesAdd.image
+                ) { [unowned self] action in
+                    createRoomFrom(template: folder)
+                }
+            )
+        }
+        
+        /// Edit template
+        if actions.contains(.editTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit template", comment: ""),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    editTemplate(template: folder)
+                }
+            )
+        }
 
         /// Copy general link
 
@@ -531,18 +555,6 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "note.text.badge.plus")
                 ) { [unowned self] action in
                     saveAsTemplate(room: folder)
-                }
-            )
-        }
-        
-        /// Edit template
-        if actions.contains(.editTemplate) {
-            basicActions.append(
-                UIAction(
-                    title: NSLocalizedString("Edit template", comment: ""),
-                    image: UIImage(systemName: "gear")
-                ) { [unowned self] action in
-                    editTemplate(template: folder)
                 }
             )
         }

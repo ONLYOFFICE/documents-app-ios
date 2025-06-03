@@ -1044,6 +1044,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         return false
     }
+    
+    func allowCreateRoomFrom(template: ASCFolder) -> Bool {
+        return template.security.create && isDocspace && template.isTemplateRoom
+    }
 
     func allowDownload(folder: ASCFolder?) -> Bool {
         return true
@@ -1536,9 +1540,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isUserCategory = folder.rootFolderType == .user
             let isArchiveCategory = folder.rootFolderType == .archive
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
-            let canDuplicateRoom = allowDuplicate(entity: folder)
+            let canDuplicateRoom = allowDuplicate(entity: folder) && !folder.isTemplateRoom
             let canCopyLink = isInDocSpaceCategory(folder: folder) && !isArchiveCategory && folder.security.copySharedLink
-
+            let canCreateRoomFromTemplate = allowCreateRoomFrom(template: folder)
+            
             if folder.rootFolderType == .trash {
                 return [.delete, .restore]
             }
@@ -1565,7 +1570,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canDownload, !folder.isRoot {
+            if canDownload, !folder.isRoot, !folder.isTemplateRoom {
                 entityActions.insert(.download)
             }
 
@@ -1590,12 +1595,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.transformToRoom)
             }
 
-            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive) {
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !(folder.isTemplateRoom) {
                 entityActions.insert(.disableNotifications)
             }
             
             if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom {
                 entityActions.insert(.saveAsTemplate)
+            }
+            
+            if canCreateRoomFromTemplate {
+                entityActions.insert(.createRoom)
             }
             
             if isDocspace, folder.isTemplateRoom, folder.security.editRoom {
@@ -1617,10 +1626,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canCopyLink {
                 entityActions.insert(.link)
             }
-
+            
             if isRoomFolder, !isArchiveCategory {
-                entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
+            }
+
+            if isRoomFolder, !isArchiveCategory, !folder.isTemplateRoom {
+                entityActions.insert(folder.pinned ? .unpin : .pin)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
                     entityActions.insert(.edit)
@@ -1650,7 +1662,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if folder.isRoomListSubfolder,
                user?.isAdmin == true,
-               !(folder.rootFolderType == .archive)
+               !(folder.rootFolderType == .archive),
+               !folder.isTemplateRoom
             {
                 entityActions.insert(.changeRoomOwner)
             }

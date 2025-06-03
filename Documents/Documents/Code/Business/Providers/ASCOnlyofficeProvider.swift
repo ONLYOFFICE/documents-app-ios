@@ -1198,7 +1198,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         let securityAllowEdit: Bool = {
             if let fileSecurity {
-                return fileSecurity.edit || fileSecurity.comment || fileSecurity.fillForms || fileSecurity.review
+                return (fileSecurity.edit && !fileSecurity.startFilling)
+                    || fileSecurity.comment
+                    || fileSecurity.fillForms
+                    || fileSecurity.review
             } else {
                 guard folder != nil else {
                     return fileSecurity?.edit == true

@@ -713,7 +713,7 @@ class ASCEditorManager: NSObject {
 
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: pdf.security.edit)
+                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: pdf.security.edit && !pdf.security.startFilling)
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in

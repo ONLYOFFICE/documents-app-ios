@@ -14,8 +14,14 @@ class RoomSelectionViewModel: ObservableObject {
     
     var isCreateTemplateEnabled: Bool
     
-    init(isCreateTemplateEnabled: Bool = false) {
+    var onShowTemplates: (() -> Void)?
+    
+    init(
+        isCreateTemplateEnabled: Bool = false,
+        onShowTemplates: (() -> Void)? = nil
+    ) {
         self.isCreateTemplateEnabled = isCreateTemplateEnabled
+        self.onShowTemplates = onShowTemplates
     }
     
     func roomTypeModel(showDisclosureIndicator: Bool) -> [RoomTypeRowModel] {
@@ -32,8 +38,8 @@ class RoomSelectionViewModel: ObservableObject {
                     description: NSLocalizedString("Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.", comment: ""),
                     icon: Asset.Images.listRoomTemplate.image,
                     showDisclosureIndicator: true
-                )  { [weak self] in
-// TODO: - show template
+                ) { [weak self] in
+                    self?.onShowTemplates?()
                 }
             )
         }

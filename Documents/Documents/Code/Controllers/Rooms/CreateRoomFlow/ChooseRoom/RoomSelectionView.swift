@@ -46,6 +46,7 @@ struct RoomSelectionView: View {
     @State var dismissOnSelection = false
     @State private var isPresenting = true
     @State private var maxHeights: CGFloat = 0
+    @State private var showTemplates = false
 
     var body: some View {
         List(viewModel.roomTypeModel(showDisclosureIndicator: !dismissOnSelection), id: \.name) { model in
@@ -53,12 +54,9 @@ struct RoomSelectionView: View {
                 .frame(minHeight: maxHeights)
                 .background(
                     GeometryReader { proxy in
-                        Color.clear
-                            .preference(
-                                key: SizePreferenceKey.self,
-                                value: proxy.size
-                            )
-                    })
+                        Color.clear.preference(key: SizePreferenceKey.self, value: proxy.size)
+                    }
+                )
                 .onPreferenceChange(SizePreferenceKey.self) { preferences in
                     if preferences.height > maxHeights {
                         maxHeights = preferences.height
@@ -73,8 +71,20 @@ struct RoomSelectionView: View {
                     }
                 }
         }
-        .navigationBarTitle(Text("Choose room type"), displayMode: .inline)
+        .navigationTitle("Choose room type")
         .navigationBarItems(isLastInNCStack: dismissOnSelection, presentationMode: presentationMode)
+        .background(
+            NavigationLink(
+                destination: ASCRoomTemplatesListView(viewModel: ASCRoomTemplatesViewModel()),
+                isActive: $showTemplates,
+                label: { EmptyView() }
+            )
+        )
+        .onAppear {
+            viewModel.onShowTemplates = {
+                showTemplates = true
+            }
+        }
     }
 }
 

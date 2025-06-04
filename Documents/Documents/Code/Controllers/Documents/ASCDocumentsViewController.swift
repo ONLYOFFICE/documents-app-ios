@@ -1753,7 +1753,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     
     func saveAsTemplate(room: ASCFolder) {
         let vc = ASCSaveAsTemplateRootViewController(room: room) { folder in
-            
+            UIApplication.topViewController()?.dismiss(animated: true)
+            MBProgressHUD.currentHUD?.removeFromSuperview()
         }
         
         if UIDevice.pad {
@@ -1821,6 +1822,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 loadFirstPage()
             }
         }
+    }
+    
+    func createRoomFrom(template: ASCFolder) {
+        let vc = ASCCreateRoomFromTemplateRootViewController(template: template) { _ in
+            UIApplication.topViewController()?.dismiss(animated: true)
+            MBProgressHUD.currentHUD?.removeFromSuperview()
+        }
+        
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true)
+        
     }
 
     func duplicateRoom(room: ASCFolder) {

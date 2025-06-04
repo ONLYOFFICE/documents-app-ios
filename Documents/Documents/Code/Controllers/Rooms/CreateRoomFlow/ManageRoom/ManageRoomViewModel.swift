@@ -15,6 +15,7 @@ enum ManageRoomScreenMode {
     case create
     case edit(ASCFolder)
     case saveAsTemplate(ASCFolder)
+    case createFromTemplate(ASCFolder)
 }
 
 class ManageRoomViewModel: ObservableObject {
@@ -241,7 +242,7 @@ class ManageRoomViewModel: ObservableObject {
         self.screenMode = screenMode
 
         switch screenMode {
-        case .edit(let editingRoom), .saveAsTemplate(let editingRoom):
+        case .edit(let editingRoom), .saveAsTemplate(let editingRoom), .createFromTemplate(let editingRoom):
             self.editingRoom = editingRoom
             self.selectedRoomType.showDisclosureIndicator = false
             self.roomName = editingRoom.title
@@ -410,6 +411,8 @@ class ManageRoomViewModel: ObservableObject {
             updateRoom()
         case .saveAsTemplate(_):
             createTemplate()
+        case .createFromTemplate(_):
+            createFromTemplate()
         }
     }
 
@@ -591,6 +594,54 @@ private extension ManageRoomViewModel {
 
     
     //MARK: - Create room template
+    
+    func createFromTemplate() {
+        guard let template = editingRoom,
+              let templateId = Int(template.id),
+              let templateRoomType = template.roomType,
+              let roomColor = template.logo?.color
+        else { return }
+        
+        roomTemplatesNetworkService.createRoomFromTemplate(
+            template: CreateRoomFromTemplateModel(
+                templateId: templateId,
+                roomType: templateRoomType,
+                title: roomName,
+                color: roomColor,
+                denyDownload: template.denyDownload,
+                indexing: template.indexing,
+                copyLogo: false)
+        ) { status, progress, result, error, cancel in
+           
+            switch status {
+            case .begin:
+                break
+                
+            case .progress:
+                DispatchQueue.main.async {
+                    MBProgressHUD.currentHUD?.progress = progress
+                }
+                
+            case .error:
+                DispatchQueue.main.async {
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not create room from the template.", comment: "")
+                    )
+                }
+                self.isSaving = false
+            case .end:
+                DispatchQueue.main.async {
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("Room created", comment: "")
+                    )
+                    self.isSaving = false
+                }
+            }
+            self.onCreate(template)
+        }
+    }
     
     func createTemplate() {
         roomTemplatesNetworkService.createTemplate(room: CreateRoomTemplateModel(

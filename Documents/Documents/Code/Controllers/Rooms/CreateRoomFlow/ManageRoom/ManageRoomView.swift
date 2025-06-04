@@ -238,7 +238,7 @@ private extension View {
             room.isTemplateRoom
             ? navigationBarTitle(Text("Edit template"), displayMode: .inline)
             : navigationBarTitle(Text("Edit room"), displayMode: .inline)
-        case .create:
+        case .create, .createFromTemplate(_):
             navigationBarTitle(Text("Create room"), displayMode: .inline)
         case .saveAsTemplate:
             navigationBarTitle(Text("Save as template"), displayMode: .inline)
@@ -395,7 +395,7 @@ extension View {
 extension ManageRoomScreenMode {
     var title: String {
         switch self {
-        case .create, .saveAsTemplate:
+        case .create, .saveAsTemplate, .createFromTemplate(_):
             return NSLocalizedString("Create", comment: "")
         case .edit:
             return NSLocalizedString("Save", comment: "")

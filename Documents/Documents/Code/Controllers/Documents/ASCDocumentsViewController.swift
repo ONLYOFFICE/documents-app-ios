@@ -1208,6 +1208,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 if let folder, let provider {
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .trash {
                         localEmptyView?.type = .trash
+                    } else if folder.rootFolderType == .roomTemplates {
+                        localEmptyView?.type = .roomTemplates
                     } else if folder.rootFolderType == .archive && !folder.isRoom {
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {

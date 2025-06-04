@@ -214,9 +214,13 @@ enum OnlyofficeAPI {
             }
 
             static func rooms() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms)
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .get, URLEncoding.default)
             }
-
+            
+            static func roomTemplates() -> Endpoint<OnlyofficeResponse<ASCRoomTemplate>> {
+                return Endpoint<OnlyofficeResponse<ASCRoomTemplate>>.make(Path.rooms, .get, URLEncoding.default)
+            }
+            
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)
             }

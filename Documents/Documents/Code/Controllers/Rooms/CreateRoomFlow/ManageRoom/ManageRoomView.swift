@@ -219,12 +219,13 @@ private extension View {
         }
         .disabled(viewModel.isSaveBtnEnabled)
 
-        if viewModel.isEditMode {
+        switch viewModel.screenMode {
+        case .edit(_):
             navigationBarItems(
                 leading: closeButton,
                 trailing: saveButton
             )
-        } else {
+        default:
             navigationBarItems(
                 trailing: saveButton
             )

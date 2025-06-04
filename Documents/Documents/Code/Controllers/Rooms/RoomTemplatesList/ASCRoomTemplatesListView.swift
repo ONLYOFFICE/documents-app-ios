@@ -9,9 +9,12 @@
 import SwiftUI
 import UIKit
 
-
 struct ASCRoomTemplatesListView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var viewModel: ASCRoomTemplatesViewModel
+    @State private var selectedTemplate: ASCFolder?
+    @State private var isNavigationActive = false
 
     var body: some View {
         List(viewModel.templates, id: \.id) { template in
@@ -23,12 +26,57 @@ struct ASCRoomTemplatesListView: View {
                     placeholderColor: UIColor(hex: "#\(template.logo?.color ?? "")")
                 )
             )
+            .contentShape(Rectangle())
+            .onTapGesture {
+                selectedTemplate = template
+                isNavigationActive = true
+            }
         }
+        .background(
+            NavigationLink(
+                destination: destinationView(),
+                isActive: $isNavigationActive
+            ) {
+                EmptyView()
+            }
+        )
         .navigationTitle(NSLocalizedString("Form templates", comment: ""))
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
             viewModel.fetchTemplates()
         }
     }
+
+    @ViewBuilder
+    private func destinationView() -> some View {
+        if let template = selectedTemplate {
+            ManageRoomView(viewModel: ManageRoomViewModel(
+                screenMode: .createFromTemplate(template),
+                selectedRoomType: template.roomTypeModel,
+                onCreate: { _ in
+                    presentationMode.wrappedValue.dismiss()
+                }))
+        } else {
+            EmptyView()
+        }
+    }
 }
 
+private extension ASCFolder {
+    var roomTypeModel: RoomTypeModel {
+        switch roomType {
+        case .colobaration:
+            return RoomTypeModel.make(fromRoomType: .collaboration)
+        case .custom:
+            return RoomTypeModel.make(fromRoomType: .custom)
+        case .public:
+            return RoomTypeModel.make(fromRoomType: .publicRoom)
+        case .fillingForm:
+            return RoomTypeModel.make(fromRoomType: .formFilling)
+        case .virtualData:
+            return RoomTypeModel.make(fromRoomType: .virtualData)
+        default:
+            return RoomTypeModel.make(fromRoomType: .collaboration)
+        }
+    }
+}

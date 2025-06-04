@@ -7,15 +7,29 @@
 //
 
 import Foundation
+import ObjectMapper
 
 protocol ASCRoomTemplatesNetworkServiceProtocol {
     func createTemplate(room: CreateRoomTemplateModel, handler: ASCEntityProgressHandler?)
     func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?)
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel, handler: ASCEntityProgressHandler?)
+    func fetchTemplates(completion: @escaping (Result<[ASCFolder], Error>) -> Void)
 }
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
+    
+    func fetchTemplates(completion: @escaping (Result<[ASCFolder], Error>) -> Void) {
+        let params = ["searchArea": "Templates"]
+        
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.roomTemplates(), params) { result, error in
+            if let templates = result?.result?.folders {
+                completion(.success(templates))
+            } else {
+                completion(.failure(Errors.emptyResponse))
+            }
+        }
+    }
     
     func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?) {
         var cancel = false
@@ -156,4 +170,22 @@ struct CreateRoomFromTemplateModel {
     let denyDownload: Bool
     let indexing: Bool
     let copyLogo: Bool
+}
+
+extension ASCRoomTemplatesNetworkService {
+    enum Errors: Error {
+        case emptyResponse
+    }
+}
+
+class ASCRoomTemplate: Mappable {
+    var folders: [ASCFolder]?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        folders <- map["folders"]
+    }
 }

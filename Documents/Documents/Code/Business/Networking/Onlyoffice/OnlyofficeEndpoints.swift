@@ -42,6 +42,8 @@ enum OnlyofficeAPI {
         public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
         public static let operationSaveRoomAsTemplate = "api/\(version)/files/roomtemplate"
         public static let roomTemplateStatus = "api/\(version)/files/roomtemplate/status"
+        public static let roomFromTemplate = "api/\(version)/files/rooms/fromTemplate"
+        public static let roomFromTemplateStatus = "api/\(version)/files/rooms/fromTemplate/status"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -426,6 +428,8 @@ enum OnlyofficeAPI {
             static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
             static let saveRoomAsTemplate: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.operationSaveRoomAsTemplate, .post)
             static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
+            static let createRoomFromTemplate: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplate, .post)
+            static let createRoomFromTemplateStatus: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplateStatus, .get)
         }
 
         // MARK: Third-Party Integration

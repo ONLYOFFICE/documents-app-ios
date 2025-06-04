@@ -126,6 +126,8 @@
 		F30BD8962DE48BC100E5F4CF /* OnlyofficeTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */; };
 		F30BD8992DE5C9C800E5F4CF /* ASCEditTemplateRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD8982DE5C9B800E5F4CF /* ASCEditTemplateRootViewController.swift */; };
 		F30BD89D2DE73E0300E5F4CF /* ASCDeleteRoomTemplateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BD89C2DE73E0200E5F4CF /* ASCDeleteRoomTemplateRequestModel.swift */; };
+		F30DD7DA2DEF87A800E82CA9 /* ASCCreateRoomFromTemplateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30DD7D92DEF87A600E82CA9 /* ASCCreateRoomFromTemplateRequestModel.swift */; };
+		F30DD7DD2DEF8D6400E82CA9 /* ASCCreateRoomFromTemplateRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30DD7DC2DEF8D5100E82CA9 /* ASCCreateRoomFromTemplateRootViewController.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		F35933212B305CAF00449F33 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933202B305CAF00449F33 /* View+Extensions.swift */; };
@@ -148,6 +150,7 @@
 		F3AAEFC528241917008ED772 /* ASCOnlyOfficeFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */; };
 		F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */; };
 		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
+		F3C935CB2DE8971800599EE4 /* ASCRoomFromTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */; };
 		F3D3850E2C8F472E002889EE /* FormCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850D2C8F472E002889EE /* FormCompletedView.swift */; };
 		F3D385102C8F473E002889EE /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */; };
 		F3D385152C8F5439002889EE /* ASCFormCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D385142C8F5439002889EE /* ASCFormCellView.swift */; };
@@ -809,6 +812,8 @@
 		F30BD8952DE48BBF00E5F4CF /* OnlyofficeTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeTemplateOperation.swift; sourceTree = "<group>"; };
 		F30BD8982DE5C9B800E5F4CF /* ASCEditTemplateRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEditTemplateRootViewController.swift; sourceTree = "<group>"; };
 		F30BD89C2DE73E0200E5F4CF /* ASCDeleteRoomTemplateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeleteRoomTemplateRequestModel.swift; sourceTree = "<group>"; };
+		F30DD7D92DEF87A600E82CA9 /* ASCCreateRoomFromTemplateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateRoomFromTemplateRequestModel.swift; sourceTree = "<group>"; };
+		F30DD7DC2DEF8D5100E82CA9 /* ASCCreateRoomFromTemplateRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateRoomFromTemplateRootViewController.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F35933202B305CAF00449F33 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };

@@ -602,88 +602,86 @@ private extension ManageRoomViewModel {
               let roomColor = template.logo?.color
         else { return }
 
-        roomTemplatesNetworkService.createRoomFromTemplate(
-            template: CreateRoomFromTemplateModel(
-                templateId: templateId,
-                roomType: templateRoomType,
-                title: roomName,
-                color: roomColor,
-                denyDownload: template.denyDownload,
-                indexing: template.indexing,
-                copyLogo: false
-            )
-        ) { status, progress, result, error, cancel in
+        let model = CreateRoomFromTemplateModel(
+            templateId: templateId,
+            roomType: templateRoomType,
+            title: roomName,
+            color: roomColor,
+            denyDownload: template.denyDownload,
+            indexing: template.indexing,
+            copyLogo: false
+        )
 
-            switch status {
-            case .begin:
-                break
-
-            case .progress:
-                DispatchQueue.main.async {
-                    MBProgressHUD.currentHUD?.progress = progress
-                }
-
-            case .error:
-                DispatchQueue.main.async {
-                    self.resultModalModel = .init(
-                        result: .failure,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not create room from the template.", comment: "")
-                    )
-                }
-                self.isSaving = false
-
-            case .end:
-                DispatchQueue.main.async {
-                    self.resultModalModel = .init(
-                        result: .success,
-                        message: NSLocalizedString("Room created", comment: "")
-                    )
-                    self.isSaving = false
+        Task {
+            for await event in roomTemplatesNetworkService.createRoomFromTemplate(template: model) {
+                switch event {
+                case .begin:
+                    break
+                case .progress(let progress):
+                    await MainActor.run {
+                        MBProgressHUD.currentHUD?.progress = Float(progress)
+                    }
+                case .success:
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .success,
+                            message: NSLocalizedString("Room created", comment: "")
+                        )
+                        self.isSaving = false
+                    }
+                    self.onCreate(template)
+                case .failure(let error):
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .failure,
+                            message: error.localizedDescription
+                        )
+                        self.isSaving = false
+                    }
                 }
             }
-            self.onCreate(template)
         }
     }
-
+    
     func createTemplate() {
-        roomTemplatesNetworkService.createTemplate(room: CreateRoomTemplateModel(
+        let model = CreateRoomTemplateModel(
             title: roomName,
             roomId: editingRoom?.id,
             tags: Array(tags),
             public: false,
             copylogo: true,
             color: editingRoom?.logo?.color
-        )) { [weak self] status, progress, result, error, cancel in
-            guard let self else { return }
-            switch status {
-            case .begin:
-                break
+        )
 
-            case .progress:
-                DispatchQueue.main.async {
-                    MBProgressHUD.currentHUD?.progress = progress
+        Task {
+            for await event in roomTemplatesNetworkService.createTemplate(room: model) {
+                switch event {
+                case .begin:
+                    break
+                case .progress(let value):
+                    await MainActor.run {
+                        MBProgressHUD.currentHUD?.progress = Float(value)
+                    }
+                case .success:
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .success,
+                            message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
+                        )
+                        self.isSaving = false
+                    }
+                    if let editingRoom {
+                        onCreate(editingRoom)
+                    }
+                case .failure(let error):
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .failure,
+                            message: error.localizedDescription
+                        )
+                        self.isSaving = false
+                    }
                 }
-
-            case .error:
-                DispatchQueue.main.async {
-                    self.resultModalModel = .init(
-                        result: .failure,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not create the template.", comment: "")
-                    )
-                }
-                self.isSaving = false
-
-            case .end:
-                DispatchQueue.main.async {
-                    self.resultModalModel = .init(
-                        result: .success,
-                        message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
-                    )
-                    self.isSaving = false
-                }
-            }
-            if let editingRoom {
-                onCreate(editingRoom)
             }
         }
     }

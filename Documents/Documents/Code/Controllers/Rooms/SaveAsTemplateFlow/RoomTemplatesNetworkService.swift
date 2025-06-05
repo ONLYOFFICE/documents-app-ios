@@ -9,145 +9,187 @@
 import Foundation
 import ObjectMapper
 
+enum RoomCreationProgress {
+    case begin
+    case progress(Double)
+    case success
+    case failure(Error)
+}
+
 protocol ASCRoomTemplatesNetworkServiceProtocol {
-    func createTemplate(room: CreateRoomTemplateModel, handler: ASCEntityProgressHandler?)
-    func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?)
-    func createRoomFromTemplate(template: CreateRoomFromTemplateModel, handler: ASCEntityProgressHandler?)
-    func fetchTemplates(completion: @escaping (Result<[ASCFolder], Error>) -> Void)
+    func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<RoomCreationProgress>
+    func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<RoomCreationProgress>
+    func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress>
+    func fetchTemplates() async throws -> [ASCFolder]
 }
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
 
-    func fetchTemplates(completion: @escaping (Result<[ASCFolder], Error>) -> Void) {
+    func fetchTemplates() async throws -> [ASCFolder] {
         let params = ["searchArea": "Templates"]
-
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.roomTemplates(), params) { result, error in
-            if let templates = result?.result?.folders {
-                completion(.success(templates))
-            } else {
-                completion(.failure(Errors.emptyResponse))
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            networkService.request(OnlyofficeAPI.Endpoints.Rooms.roomTemplates(), params) { result, error in
+                if let templates = result?.result?.folders {
+                    continuation.resume(returning: templates)
+                } else {
+                    continuation.resume(throwing: error ?? Errors.emptyResponse)
+                }
             }
         }
     }
+    
+    func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<RoomCreationProgress> {
+        AsyncStream { [weak self] continuation in
+            guard let self else {
+                continuation.finish()
+                return
+            }
 
-    func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?) {
-        var cancel = false
+            let requestModel = ASCDeleteRoomTemplateRequestModel(folderIds: [template.id], fileIds: [])
 
-        handler?(.begin, 0, nil, nil, &cancel)
-
-        let requestModel = ASCDeleteRoomTemplateRequestModel(folderIds: [template.id], fileIds: [])
-
-        networkService.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, requestModel.dictionary) { responce, error in
-            if let error = error {
-                handler?(.error, 1, nil, error, &cancel)
-            } else {
-                var checkOperation: (() -> Void)?
-                checkOperation = {
-                    self.networkService.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
-                        if let error = error {
-                            handler?(.error, 1, nil, error, &cancel)
-                        } else if let operation = result?.result?.first, let progress = operation.progress {
-                            if progress >= 100 {
-                                handler?(.end, 1, nil, nil, &cancel)
+            networkService.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, requestModel.dictionary) { response, error in
+                if let error = error {
+                    continuation.yield(.failure(error))
+                    continuation.finish()
+                } else {
+                    func checkStatus() {
+                        self.networkService.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                            if let error = error {
+                                continuation.yield(.failure(error))
+                                continuation.finish()
+                            } else if let operation = result?.result?.first,
+                                      let progress = operation.progress {
+                                if progress >= 100 {
+                                    continuation.yield(.progress(1.0))
+                                    continuation.yield(.success)
+                                    continuation.finish()
+                                } else {
+                                    continuation.yield(.progress(Double(progress) / 100))
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 1_000_000_000)
+                                        checkStatus()
+                                    }
+                                }
                             } else {
-                                Thread.sleep(forTimeInterval: 1)
-                                checkOperation?()
+                                continuation.yield(.failure(NetworkingError.invalidData))
+                                continuation.finish()
                             }
-                        } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
                         }
                     }
+
+                    checkStatus()
                 }
-                checkOperation?()
             }
         }
     }
+    
+    func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress> {
+        AsyncStream { continuation in
+            var cancel = false
+            continuation.yield(.begin)
 
-    func createRoomFromTemplate(template: CreateRoomFromTemplateModel, handler: ASCEntityProgressHandler?) {
-        var cancel = false
+            let requestModel = ASCCreateRoomFromTemplateRequestModel(
+                templateId: template.templateId,
+                roomType: template.roomType.rawValue,
+                title: template.title,
+                color: template.color,
+                denyDownload: template.denyDownload,
+                indexing: template.indexing,
+                copyLogo: false
+            )
 
-        handler?(.begin, 0, nil, nil, &cancel)
+            networkService.request(OnlyofficeAPI.Endpoints.Operations.createRoomFromTemplate, requestModel.dictionary) { response, error in
+                if let error = error {
+                    continuation.yield(.failure(error))
+                    continuation.finish()
+                    return
+                }
 
-        let requestModel = ASCCreateRoomFromTemplateRequestModel(
-            templateId: template.templateId,
-            roomType: template.roomType.rawValue,
-            title: template.title,
-            color: template.color,
-            denyDownload: template.denyDownload,
-            indexing: template.indexing,
-            copyLogo: false
-        )
-
-        networkService.request(OnlyofficeAPI.Endpoints.Operations.createRoomFromTemplate, requestModel.dictionary) { responce, error in
-            if let error = error {
-                handler?(.error, 1, nil, error, &cancel)
-            } else {
-                var checkStatus: (() -> Void)?
-                checkStatus = {
+                func checkStatus() {
                     self.networkService.request(OnlyofficeAPI.Endpoints.Operations.createRoomFromTemplateStatus) { result, error in
                         if let error = error {
-                            handler?(.error, 1, nil, error, &cancel)
+                            continuation.yield(.failure(error))
+                            continuation.finish()
                         } else if let status = result?.result,
-                                  let progress = status.progress
-                        {
+                                  let progress = status.progress {
                             if progress >= 100 {
-                                handler?(.end, 1, nil, nil, &cancel)
+                                continuation.yield(.progress(1.0))
+                                continuation.yield(.success)
+                                continuation.finish()
                             } else {
-                                Thread.sleep(forTimeInterval: 1)
-                                checkStatus?()
+                                continuation.yield(.progress(Double(progress) / 100))
+                                Task {
+                                    try? await Task.sleep(nanoseconds: 1_000_000_000)
+                                    checkStatus()
+                                }
                             }
                         } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
+                            continuation.yield(.failure(NetworkingError.invalidData))
+                            continuation.finish()
                         }
                     }
                 }
-                checkStatus?()
+                checkStatus()
             }
         }
     }
+    
+    func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<RoomCreationProgress> {
+        AsyncStream { continuation in
+            var cancel = false
 
-    func createTemplate(room: CreateRoomTemplateModel, handler: ASCEntityProgressHandler?) {
-        var cancel = false
+            guard let roomIdString = room.roomId,
+                  let roomId = Int(roomIdString) else {
+                continuation.yield(.failure(Errors.invalidData))
+                continuation.finish()
+                return
+            }
 
-        guard let roomIdString = room.roomId,
-              let roomId = Int(roomIdString) else { return }
+            continuation.yield(.begin)
 
-        handler?(.begin, 0, nil, nil, &cancel)
+            let requestModel = ASCCreateRoomTemplateRequestModel(
+                title: room.title,
+                roomId: roomId,
+                tags: room.tags,
+                public: room.public,
+                copylogo: room.copylogo,
+                color: room.color
+            )
 
-        let requestModel = ASCCreateRoomTemplateRequestModel(
-            title: room.title,
-            roomId: roomId,
-            tags: room.tags,
-            public: room.public,
-            copylogo: room.copylogo,
-            color: room.color
-        )
-
-        networkService.request(OnlyofficeAPI.Endpoints.Operations.saveRoomAsTemplate, requestModel.dictionary) { responce, error in
-            if let error = error {
-                handler?(.error, 1, nil, error, &cancel)
-            } else {
-                var checkStatus: (() -> Void)?
-                checkStatus = {
-                    self.networkService.request(OnlyofficeAPI.Endpoints.Operations.roomTemplateStatus) { result, error in
-                        if let error = error {
-                            handler?(.error, 1, nil, error, &cancel)
-                        } else if let status = result?.result,
-                                  let progress = status.progress
-                        {
-                            if progress >= 100 {
-                                handler?(.end, 1, nil, nil, &cancel)
+            networkService.request(OnlyofficeAPI.Endpoints.Operations.saveRoomAsTemplate, requestModel.dictionary) { response, error in
+                if let error = error {
+                    continuation.yield(.failure(error))
+                    continuation.finish()
+                } else {
+                    func checkStatus() {
+                        self.networkService.request(OnlyofficeAPI.Endpoints.Operations.roomTemplateStatus) { result, error in
+                            if let error = error {
+                                continuation.yield(.failure(error))
+                                continuation.finish()
+                            } else if let status = result?.result,
+                                      let progress = status.progress {
+                                if progress >= 100 {
+                                    continuation.yield(.progress(1.0))
+                                    continuation.yield(.success)
+                                    continuation.finish()
+                                } else {
+                                    continuation.yield(.progress(Double(progress) / 100))
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 1_000_000_000)
+                                        checkStatus()
+                                    }
+                                }
                             } else {
-                                Thread.sleep(forTimeInterval: 1)
-                                checkStatus?()
+                                continuation.yield(.failure(NetworkingError.invalidData))
+                                continuation.finish()
                             }
-                        } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
                         }
                     }
+
+                    checkStatus()
                 }
-                checkStatus?()
             }
         }
     }
@@ -175,6 +217,7 @@ struct CreateRoomFromTemplateModel {
 extension ASCRoomTemplatesNetworkService {
     enum Errors: Error {
         case emptyResponse
+        case invalidData
     }
 }
 

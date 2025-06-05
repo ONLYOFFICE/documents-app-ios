@@ -9,19 +9,19 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 final class ASCRoomTemplatesViewModel: ObservableObject {
     @Published var templates: [ASCFolder] = []
 
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
 
     func fetchTemplates() {
-        roomTemplatesNetworkService.fetchTemplates { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case let .success(templates):
-                self.templates = templates
-            case let .failure(error):
-                print(error.localizedDescription)
+        Task {
+            do {
+                let result = try await roomTemplatesNetworkService.fetchTemplates()
+                self.templates = result
+            } catch {
+                print("Failed to fetch templates: \(error.localizedDescription)")
             }
         }
     }

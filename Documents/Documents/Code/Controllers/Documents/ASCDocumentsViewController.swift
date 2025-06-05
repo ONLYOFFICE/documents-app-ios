@@ -1755,8 +1755,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     func saveAsTemplate(room: ASCFolder) {
         let vc = ASCSaveAsTemplateRootViewController(room: room) { folder in
-            UIApplication.topViewController()?.dismiss(animated: true)
-            MBProgressHUD.currentHUD?.removeFromSuperview()
+            DispatchQueue.main.async {
+                UIApplication.topViewController()?.dismiss(animated: true)
+                MBProgressHUD.currentHUD?.removeFromSuperview()
+            }
         }
 
         if UIDevice.pad {
@@ -1800,28 +1802,42 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         present(vc, animated: true, completion: nil)
     }
-
+    
     func deleteRoomTemplate(template: ASCFolder) {
-        var hud: MBProgressHUD?
+        Task {
+            var hud: MBProgressHUD?
 
-        ASCRoomTemplatesNetworkService().deleteRoomTemplate(template: template) { [unowned self] status, progress, result, error, cancel in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-                hud?.mode = .annularDeterminate
-                hud?.progress = 0
-                hud?.label.text = NSLocalizedString("Deleting", comment: "Caption of the processing")
-            } else if status == .progress {
-                hud?.progress = progress
-            } else if status == .error {
-                hud?.hide(animated: true)
-                UIAlertController.showError(
-                    in: self,
-                    message: error?.localizedDescription ?? NSLocalizedString("Could not delete the template.", comment: "")
-                )
-            } else if status == .end {
-                hud?.setSuccessState()
-                hud?.hide(animated: false, afterDelay: .standardDelay)
-                loadFirstPage()
+            for await event in ASCRoomTemplatesNetworkService().deleteRoomTemplate(template: template) {
+                switch event {
+                case .begin:
+                    await MainActor.run {
+                        hud = MBProgressHUD.showTopMost()
+                        hud?.mode = .annularDeterminate
+                        hud?.progress = 0
+                        hud?.label.text = NSLocalizedString("Deleting", comment: "")
+                    }
+
+                case .progress(let value):
+                    await MainActor.run {
+                        hud?.progress = Float(value)
+                    }
+
+                case .failure(let error):
+                    await MainActor.run {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: error.localizedDescription
+                        )
+                    }
+
+                case .success:
+                    await MainActor.run {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: false, afterDelay: .standardDelay)
+                        loadFirstPage()
+                    }
+                }
             }
         }
     }

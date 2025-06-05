@@ -39,17 +39,17 @@ private extension ASCFolder {
     var roomTypeModel: RoomTypeModel {
         switch roomType {
         case .colobaration:
-            return RoomTypeModel.make(fromRoomType: .collaboration)
+            return RoomTypeModel.make(fromRoomType: .collaboration, isRoomTemplate: true)
         case .custom:
-            return RoomTypeModel.make(fromRoomType: .custom)
+            return RoomTypeModel.make(fromRoomType: .custom, isRoomTemplate: true)
         case .public:
-            return RoomTypeModel.make(fromRoomType: .publicRoom)
+            return RoomTypeModel.make(fromRoomType: .publicRoom, isRoomTemplate: true)
         case .fillingForm:
-            return RoomTypeModel.make(fromRoomType: .formFilling)
+            return RoomTypeModel.make(fromRoomType: .formFilling, isRoomTemplate: true)
         case .virtualData:
-            return RoomTypeModel.make(fromRoomType: .virtualData)
+            return RoomTypeModel.make(fromRoomType: .virtualData, isRoomTemplate: true)
         default:
-            return RoomTypeModel.make(fromRoomType: .collaboration)
+            return RoomTypeModel.make(fromRoomType: .collaboration, isRoomTemplate: true)
         }
     }
 }

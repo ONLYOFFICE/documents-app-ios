@@ -98,12 +98,12 @@ struct SizePreferenceKey: PreferenceKey {
 }
 
 extension RoomTypeModel {
-    static func make(fromRoomType roomType: CreatingRoomType) -> RoomTypeModel {
+    static func make(fromRoomType roomType: CreatingRoomType, isRoomTemplate: Bool? = false) -> RoomTypeModel {
         RoomTypeModel(
             type: roomType,
             name: roomType.name,
             description: roomType.description,
-            icon: roomType.icon
+            icon: roomType.icon(isTemplate: isRoomTemplate ?? false)
         )
     }
 }

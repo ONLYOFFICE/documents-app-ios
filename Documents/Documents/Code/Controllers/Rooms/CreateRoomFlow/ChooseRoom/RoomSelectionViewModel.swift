@@ -51,6 +51,6 @@ class RoomSelectionViewModel: ObservableObject {
 
 extension CreatingRoomType {
     func toRoomTypeModel(showDisclosureIndicator: Bool) -> RoomTypeModel {
-        return RoomTypeModel(type: self, name: name, description: description, icon: icon, showDisclosureIndicator: showDisclosureIndicator)
+        return RoomTypeModel(type: self, name: name, description: description, icon: icon(isTemplate: false), showDisclosureIndicator: showDisclosureIndicator)
     }
 }

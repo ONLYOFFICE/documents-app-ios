@@ -66,5 +66,3 @@ struct TemplateViewRow: View {
         return String(initials)
     }
 }
-
-

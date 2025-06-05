@@ -220,7 +220,7 @@ private extension View {
         .disabled(viewModel.isSaveBtnEnabled)
 
         switch viewModel.screenMode {
-        case .edit(_):
+        case .edit:
             navigationBarItems(
                 leading: closeButton,
                 trailing: saveButton
@@ -237,9 +237,9 @@ private extension View {
         switch viewModel.screenMode {
         case let .edit(room):
             room.isTemplateRoom
-            ? navigationBarTitle(Text("Edit template"), displayMode: .inline)
-            : navigationBarTitle(Text("Edit room"), displayMode: .inline)
-        case .create, .createFromTemplate(_):
+                ? navigationBarTitle(Text("Edit template"), displayMode: .inline)
+                : navigationBarTitle(Text("Edit room"), displayMode: .inline)
+        case .create, .createFromTemplate:
             navigationBarTitle(Text("Create room"), displayMode: .inline)
         case .saveAsTemplate:
             navigationBarTitle(Text("Save as template"), displayMode: .inline)
@@ -396,7 +396,7 @@ extension View {
 extension ManageRoomScreenMode {
     var title: String {
         switch self {
-        case .create, .saveAsTemplate, .createFromTemplate(_):
+        case .create, .saveAsTemplate, .createFromTemplate:
             return NSLocalizedString("Create", comment: "")
         case .edit:
             return NSLocalizedString("Save", comment: "")

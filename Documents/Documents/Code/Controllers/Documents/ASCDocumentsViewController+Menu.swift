@@ -426,7 +426,7 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Create room
         if actions.contains(.createRoom) {
             basicActions.append(
@@ -438,7 +438,7 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Edit template
         if actions.contains(.editTemplate) {
             basicActions.append(
@@ -545,9 +545,9 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Save as template
-        
+
         if actions.contains(.saveAsTemplate) {
             basicActions.append(
                 UIAction(
@@ -641,7 +641,7 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         if actions.contains(.deleteRoomTemplate) {
             transferActions.append(
                 UIAction(
@@ -650,7 +650,7 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     self.deleteRoomTempateAlert(template: folder) { [weak self] in
                         guard let self else { return }
-                        self.deleteRoomTemplate( template: folder)
+                        self.deleteRoomTemplate(template: folder)
                     }
                 }
             )

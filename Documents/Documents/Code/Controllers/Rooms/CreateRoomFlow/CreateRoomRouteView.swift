@@ -22,19 +22,19 @@ struct CreateRoomRouteView: View {
                 viewModel: RoomSelectionViewModel(isCreateTemplateEnabled: true),
                 selectedRoomType: $selectedRoomType
             )
-                .navigation(item: $selectedRoomType) { type in
-                    ManageRoomView(
-                        viewModel: ManageRoomViewModel(
-                            screenMode: .create,
-                            selectedRoomType: type,
-                            roomName: roomName,
-                            hideActivityOnSuccess: hideActivityOnSuccess
-                        ) { room in
-                            presentationMode.wrappedValue.dismiss()
-                            onCreate(room)
-                        }
-                    )
-                }
+            .navigation(item: $selectedRoomType) { type in
+                ManageRoomView(
+                    viewModel: ManageRoomViewModel(
+                        screenMode: .create,
+                        selectedRoomType: type,
+                        roomName: roomName,
+                        hideActivityOnSuccess: hideActivityOnSuccess
+                    ) { room in
+                        presentationMode.wrappedValue.dismiss()
+                        onCreate(room)
+                    }
+                )
+            }
         }
     }
 }

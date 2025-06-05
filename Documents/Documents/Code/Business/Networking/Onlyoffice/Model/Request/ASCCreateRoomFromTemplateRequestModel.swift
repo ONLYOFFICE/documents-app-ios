@@ -14,5 +14,4 @@ struct ASCCreateRoomFromTemplateRequestModel: Codable {
     var denyDownload: Bool? = false
     var indexing: Bool? = false
     var copyLogo: Bool? = false
-    
 }

@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 class ASCCreateRoomFromTemplateRootViewController: UIHostingController<ASCCreateRoomFromTemplateRootView> {
-    
     init(template: ASCFolder, onCreate: @escaping (ASCFolder) -> Void) {
         let rootView = ASCCreateRoomFromTemplateRootView(
             template: template,
@@ -20,7 +19,8 @@ class ASCCreateRoomFromTemplateRootViewController: UIHostingController<ASCCreate
             rootView: rootView
         )
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,10 +28,10 @@ class ASCCreateRoomFromTemplateRootViewController: UIHostingController<ASCCreate
 
 struct ASCCreateRoomFromTemplateRootView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State var template: ASCFolder
     @State var onCreate: (ASCFolder) -> Void
-    
+
     var body: some View {
         NavigationView {
             ManageRoomView(viewModel: ManageRoomViewModel(
@@ -40,7 +40,8 @@ struct ASCCreateRoomFromTemplateRootView: View {
                 onCreate: {
                     presentationMode.wrappedValue.dismiss()
                     onCreate($0)
-                })
+                }
+            )
             )
         }
     }

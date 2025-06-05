@@ -130,7 +130,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
-        
+
         if actions.contains(.saveAsTemplate) {
             entityActionsGroup.append(
                 UIAction(
@@ -141,7 +141,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
-        
+
         if actions.contains(.editTemplate) {
             entityActionsGroup.append(
                 UIAction(
@@ -202,7 +202,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                 }
             )
         }
-        
+
         if actions.contains(.deleteRoomTemplate) {
             entityOperationsGroup.append(
                 UIAction(

@@ -18,10 +18,10 @@ protocol ASCRoomTemplatesNetworkServiceProtocol {
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
-    
+
     func fetchTemplates(completion: @escaping (Result<[ASCFolder], Error>) -> Void) {
         let params = ["searchArea": "Templates"]
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.roomTemplates(), params) { result, error in
             if let templates = result?.result?.folders {
                 completion(.success(templates))
@@ -30,14 +30,14 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     func deleteRoomTemplate(template: ASCFolder, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         let requestModel = ASCDeleteRoomTemplateRequestModel(folderIds: [template.id], fileIds: [])
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, requestModel.dictionary) { responce, error in
             if let error = error {
                 handler?(.error, 1, nil, error, &cancel)
@@ -61,15 +61,14 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                 }
                 checkOperation?()
             }
-            
         }
     }
-    
+
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         let requestModel = ASCCreateRoomFromTemplateRequestModel(
             templateId: template.templateId,
             roomType: template.roomType.rawValue,
@@ -77,8 +76,9 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             color: template.color,
             denyDownload: template.denyDownload,
             indexing: template.indexing,
-            copyLogo: false)
-        
+            copyLogo: false
+        )
+
         networkService.request(OnlyofficeAPI.Endpoints.Operations.createRoomFromTemplate, requestModel.dictionary) { responce, error in
             if let error = error {
                 handler?(.error, 1, nil, error, &cancel)
@@ -106,15 +106,15 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     func createTemplate(room: CreateRoomTemplateModel, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         guard let roomIdString = room.roomId,
               let roomId = Int(roomIdString) else { return }
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         let requestModel = ASCCreateRoomTemplateRequestModel(
             title: room.title,
             roomId: roomId,
@@ -123,7 +123,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             copylogo: room.copylogo,
             color: room.color
         )
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Operations.saveRoomAsTemplate, requestModel.dictionary) { responce, error in
             if let error = error {
                 handler?(.error, 1, nil, error, &cancel)
@@ -180,11 +180,11 @@ extension ASCRoomTemplatesNetworkService {
 
 class ASCRoomTemplate: Mappable {
     var folders: [ASCFolder]?
-    
+
     required convenience init?(map: Map) {
         self.init()
     }
-    
+
     func mapping(map: Map) {
         folders <- map["folders"]
     }

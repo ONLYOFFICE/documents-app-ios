@@ -14,9 +14,9 @@ final class ASCRoomFromTemplateOperation: Mappable {
     var progress: Int?
     var error: String?
     var isCompleted: Bool = false
-    
+
     required init?(map: Map) {}
-    
+
     func mapping(map: Map) {
         roomId <- map["roomId"]
         progress <- map["progress"]

@@ -9,13 +9,12 @@
 import SwiftUI
 
 class RoomSelectionViewModel: ObservableObject {
-    
     @Published var selectedType: RoomTypeModel?
-    
+
     var isCreateTemplateEnabled: Bool
-    
+
     var onShowTemplates: (() -> Void)?
-    
+
     init(
         isCreateTemplateEnabled: Bool = false,
         onShowTemplates: (() -> Void)? = nil
@@ -23,7 +22,7 @@ class RoomSelectionViewModel: ObservableObject {
         self.isCreateTemplateEnabled = isCreateTemplateEnabled
         self.onShowTemplates = onShowTemplates
     }
-    
+
     func roomTypeModel(showDisclosureIndicator: Bool) -> [RoomTypeRowModel] {
         var models = CreatingRoomType.allCases.map { type in
             let typeModel = type.toRoomTypeModel(showDisclosureIndicator: showDisclosureIndicator)

@@ -8,8 +8,8 @@
 
 import Combine
 import Foundation
-import UIKit
 import MBProgressHUD
+import UIKit
 
 enum ManageRoomScreenMode {
     case create
@@ -117,6 +117,7 @@ class ManageRoomViewModel: ObservableObject {
         }
         return nil
     }
+
     var screenMode: ManageRoomScreenMode
 
     var isSaveBtnEnabled: Bool {
@@ -242,7 +243,7 @@ class ManageRoomViewModel: ObservableObject {
         self.screenMode = screenMode
 
         switch screenMode {
-        case .edit(let editingRoom), .saveAsTemplate(let editingRoom), .createFromTemplate(let editingRoom):
+        case let .edit(editingRoom), let .saveAsTemplate(editingRoom), let .createFromTemplate(editingRoom):
             self.editingRoom = editingRoom
             self.selectedRoomType.showDisclosureIndicator = false
             self.roomName = editingRoom.title
@@ -303,7 +304,7 @@ class ManageRoomViewModel: ObservableObject {
 
         default:
             self.roomName = roomName
-            self.editingRoom = nil
+            editingRoom = nil
         }
 
         selectedWatermarkElements.insert(.userName)
@@ -403,15 +404,15 @@ class ManageRoomViewModel: ObservableObject {
         }
 
         isSaving = true
-        
+
         switch screenMode {
         case .create:
             createRoom()
-        case .edit(_):
+        case .edit:
             updateRoom()
-        case .saveAsTemplate(_):
+        case .saveAsTemplate:
             createTemplate()
-        case .createFromTemplate(_):
+        case .createFromTemplate:
             createFromTemplate()
         }
     }
@@ -592,16 +593,15 @@ private extension ManageRoomViewModel {
         }
     }
 
-    
-    //MARK: - Create room template
-    
+    // MARK: - Create room template
+
     func createFromTemplate() {
         guard let template = editingRoom,
               let templateId = Int(template.id),
               let templateRoomType = template.roomType,
               let roomColor = template.logo?.color
         else { return }
-        
+
         roomTemplatesNetworkService.createRoomFromTemplate(
             template: CreateRoomFromTemplateModel(
                 templateId: templateId,
@@ -610,18 +610,19 @@ private extension ManageRoomViewModel {
                 color: roomColor,
                 denyDownload: template.denyDownload,
                 indexing: template.indexing,
-                copyLogo: false)
+                copyLogo: false
+            )
         ) { status, progress, result, error, cancel in
-           
+
             switch status {
             case .begin:
                 break
-                
+
             case .progress:
                 DispatchQueue.main.async {
                     MBProgressHUD.currentHUD?.progress = progress
                 }
-                
+
             case .error:
                 DispatchQueue.main.async {
                     self.resultModalModel = .init(
@@ -630,6 +631,7 @@ private extension ManageRoomViewModel {
                     )
                 }
                 self.isSaving = false
+
             case .end:
                 DispatchQueue.main.async {
                     self.resultModalModel = .init(
@@ -642,7 +644,7 @@ private extension ManageRoomViewModel {
             self.onCreate(template)
         }
     }
-    
+
     func createTemplate() {
         roomTemplatesNetworkService.createTemplate(room: CreateRoomTemplateModel(
             title: roomName,
@@ -650,38 +652,40 @@ private extension ManageRoomViewModel {
             tags: Array(tags),
             public: false,
             copylogo: true,
-            color: editingRoom?.logo?.color)) { [weak self] status, progress, result, error, cancel in
-                guard let self else { return }
-                switch status {
-                case .begin:
-                    break
-                    
-                case .progress:
-                    DispatchQueue.main.async {
-                        MBProgressHUD.currentHUD?.progress = progress
-                    }
-                    
-                case .error:
-                    DispatchQueue.main.async {
-                        self.resultModalModel = .init(
-                            result: .failure,
-                            message: error?.localizedDescription ?? NSLocalizedString("Could not create the template.", comment: "")
-                        )
-                    }
-                    self.isSaving = false
-                case .end:
-                    DispatchQueue.main.async {
-                        self.resultModalModel = .init(
-                            result: .success,
-                            message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
-                        )
-                        self.isSaving = false
-                    }
+            color: editingRoom?.logo?.color
+        )) { [weak self] status, progress, result, error, cancel in
+            guard let self else { return }
+            switch status {
+            case .begin:
+                break
+
+            case .progress:
+                DispatchQueue.main.async {
+                    MBProgressHUD.currentHUD?.progress = progress
                 }
-                if let editingRoom {
-                    onCreate(editingRoom)
+
+            case .error:
+                DispatchQueue.main.async {
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not create the template.", comment: "")
+                    )
+                }
+                self.isSaving = false
+
+            case .end:
+                DispatchQueue.main.async {
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
+                    )
+                    self.isSaving = false
                 }
             }
+            if let editingRoom {
+                onCreate(editingRoom)
+            }
+        }
     }
 
     func makeFileLifetimeModel() -> CreateRoomRequestModel.FileLifetime? {

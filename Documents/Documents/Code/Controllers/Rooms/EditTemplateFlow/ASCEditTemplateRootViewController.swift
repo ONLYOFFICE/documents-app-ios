@@ -16,18 +16,19 @@ class ASCEditTemplateRootViewController: UIHostingController<ASCEditTemplateRoot
             onSave(template)
         })
     }
-    
-    @MainActor @preconcurrency required dynamic init?(coder aDecoder: NSCoder) {
+
+    @available(*, unavailable)
+    @MainActor @preconcurrency dynamic required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 struct ASCEditTemplateRootView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State var template: ASCRoom
     @State var onSave: (ASCRoom) -> Void
-    
+
     var body: some View {
         NavigationView {
             ManageRoomView(viewModel: ManageRoomViewModel(screenMode: .edit(template), selectedRoomType: template.roomTypeModel, onCreate: onSave))

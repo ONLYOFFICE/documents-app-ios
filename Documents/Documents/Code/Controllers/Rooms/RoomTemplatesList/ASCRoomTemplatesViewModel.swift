@@ -11,9 +11,9 @@ import SwiftUI
 
 final class ASCRoomTemplatesViewModel: ObservableObject {
     @Published var templates: [ASCFolder] = []
-    
+
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
-    
+
     func fetchTemplates() {
         roomTemplatesNetworkService.fetchTemplates { [weak self] result in
             guard let self else { return }

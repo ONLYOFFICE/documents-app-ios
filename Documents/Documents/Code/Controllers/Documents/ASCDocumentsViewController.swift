@@ -1624,7 +1624,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             self.removerActionController.delete(indexes: [folder.uid])
         }
     }
-    
+
     func deleteRoomTempateAlert(template: ASCFolder, handler: @escaping () -> Void) {
         showDeleteAlert(
             title: NSLocalizedString("Delete template", comment: ""),
@@ -1752,31 +1752,31 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
-    
+
     func saveAsTemplate(room: ASCFolder) {
         let vc = ASCSaveAsTemplateRootViewController(room: room) { folder in
             UIApplication.topViewController()?.dismiss(animated: true)
             MBProgressHUD.currentHUD?.removeFromSuperview()
         }
-        
+
         if UIDevice.pad {
             vc.isModalInPresentation = true
             vc.modalPresentationStyle = .formSheet
         }
         present(vc, animated: true)
     }
-    
+
     func editTemplate(template: ASCFolder) {
         let previusIndexingValue = template.indexing
-        
+
         let vc = ASCEditTemplateRootViewController(template: template) { [weak self] template in
-            guard let self else {return}
+            guard let self else { return }
             self.folder = template
         }
-        
-        if let refreshControl = self.collectionView.refreshControl {
-            self.refresh(refreshControl)
-            if let viewControllers = self.navigationController?.viewControllers,
+
+        if let refreshControl = collectionView.refreshControl {
+            refresh(refreshControl)
+            if let viewControllers = navigationController?.viewControllers,
                let index = viewControllers.firstIndex(of: self),
                index > 0
             {
@@ -1784,7 +1784,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 previousController?.refresh(refreshControl)
             }
         }
-        
+
         // If indexing changed rerender layout with correct type for edited room
         if previusIndexingValue != template.indexing {
             DispatchQueue.main.async {
@@ -1794,16 +1794,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 )
             }
         }
-        
+
         vc.modalPresentationStyle = .formSheet
         vc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
         present(vc, animated: true, completion: nil)
     }
-    
+
     func deleteRoomTemplate(template: ASCFolder) {
         var hud: MBProgressHUD?
-        
+
         ASCRoomTemplatesNetworkService().deleteRoomTemplate(template: template) { [unowned self] status, progress, result, error, cancel in
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
@@ -1825,19 +1825,18 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             }
         }
     }
-    
+
     func createRoomFrom(template: ASCFolder) {
         let vc = ASCCreateRoomFromTemplateRootViewController(template: template) { _ in
             UIApplication.topViewController()?.dismiss(animated: true)
             MBProgressHUD.currentHUD?.removeFromSuperview()
         }
-        
+
         if UIDevice.pad {
             vc.isModalInPresentation = true
             vc.modalPresentationStyle = .formSheet
         }
         present(vc, animated: true)
-        
     }
 
     func duplicateRoom(room: ASCFolder) {

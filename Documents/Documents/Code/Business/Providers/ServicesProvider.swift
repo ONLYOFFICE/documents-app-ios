@@ -26,6 +26,6 @@ final class ServicesProvider {
     private(set) lazy var roomQuotaNetworkService: RoomQuotaNetworkService = RoomQuotaNetworkService()
 
     private(set) lazy var onlyofficeHeadersOnTokenService = OnlyofficeHeadersOnTokenService()
-    
+
     private(set) lazy var roomTemplatesNetworkService = ASCRoomTemplatesNetworkService()
 }

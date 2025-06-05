@@ -1044,7 +1044,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         return false
     }
-    
+
     func allowCreateRoomFrom(template: ASCFolder) -> Bool {
         return template.security.create && isDocspace && template.isTemplateRoom
     }
@@ -1543,7 +1543,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDuplicateRoom = allowDuplicate(entity: folder) && !folder.isTemplateRoom
             let canCopyLink = isInDocSpaceCategory(folder: folder) && !isArchiveCategory && folder.security.copySharedLink
             let canCreateRoomFromTemplate = allowCreateRoomFrom(template: folder)
-            
+
             if folder.rootFolderType == .trash {
                 return [.delete, .restore]
             }
@@ -1598,19 +1598,19 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !(folder.isTemplateRoom) {
                 entityActions.insert(.disableNotifications)
             }
-            
+
             if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom {
                 entityActions.insert(.saveAsTemplate)
             }
-            
+
             if canCreateRoomFromTemplate {
                 entityActions.insert(.createRoom)
             }
-            
+
             if isDocspace, folder.isTemplateRoom, folder.security.editRoom {
                 entityActions.insert(.editTemplate)
             }
-            
+
             if isDocspace, folder.isTemplateRoom, folder.security.delete {
                 entityActions.insert(.deleteRoomTemplate)
             }
@@ -1626,7 +1626,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canCopyLink {
                 entityActions.insert(.link)
             }
-            
+
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(.info)
             }

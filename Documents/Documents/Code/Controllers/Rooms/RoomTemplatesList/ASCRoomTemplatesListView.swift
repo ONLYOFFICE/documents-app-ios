@@ -11,7 +11,7 @@ import UIKit
 
 struct ASCRoomTemplatesListView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @ObservedObject var viewModel: ASCRoomTemplatesViewModel
     @State private var selectedTemplate: ASCFolder?
     @State private var isNavigationActive = false
@@ -55,7 +55,8 @@ struct ASCRoomTemplatesListView: View {
                 selectedRoomType: template.roomTypeModel,
                 onCreate: { _ in
                     presentationMode.wrappedValue.dismiss()
-                }))
+                }
+            ))
         } else {
             EmptyView()
         }

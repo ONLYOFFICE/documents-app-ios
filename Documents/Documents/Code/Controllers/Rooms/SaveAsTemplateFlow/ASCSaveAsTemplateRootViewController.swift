@@ -13,7 +13,7 @@ class ASCSaveAsTemplateRootViewController: UIHostingController<ASCSaveAsTemplate
     init(room: ASCFolder, onSave: @escaping (ASCFolder) -> Void) {
         super.init(rootView: ASCSaveAsTemplateRootView(room: room, onCreate: onSave))
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder
@@ -23,16 +23,17 @@ class ASCSaveAsTemplateRootViewController: UIHostingController<ASCSaveAsTemplate
 
 struct ASCSaveAsTemplateRootView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State var room: ASCFolder
     @State var onCreate: (ASCFolder) -> Void
-    
+
     var body: some View {
         NavigationView {
             ManageRoomView(viewModel: ManageRoomViewModel(
                 screenMode: .saveAsTemplate(room),
                 selectedRoomType: room.roomTypeModel,
-                onCreate: onCreate)
+                onCreate: onCreate
+            )
             )
         }
     }

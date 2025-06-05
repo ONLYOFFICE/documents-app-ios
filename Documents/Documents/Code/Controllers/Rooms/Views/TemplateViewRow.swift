@@ -6,8 +6,8 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct TemplateViewRowModel {
     var title: String

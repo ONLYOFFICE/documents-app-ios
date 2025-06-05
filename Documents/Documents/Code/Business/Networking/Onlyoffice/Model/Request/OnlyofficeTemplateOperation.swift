@@ -10,14 +10,13 @@ import Foundation
 import ObjectMapper
 
 final class OnlyofficeTemplateOperation: Mappable {
-    
     var templateId: Int?
     var progress: Int?
     var error: String?
     var isCompleted: Bool = false
-    
+
     required init?(map: Map) {}
-    
+
     func mapping(map: Map) {
         templateId <- map["templateId"]
         progress <- map["progress"]

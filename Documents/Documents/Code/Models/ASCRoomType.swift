@@ -38,7 +38,7 @@ enum ASCRoomType: Int {
             return Asset.Images.listRoomDefault.image
         }
     }
-    
+
     var name: String {
         switch self {
         case .colobaration:

@@ -16,7 +16,7 @@ extension ASCDocumentsViewController {
         case deleteFromDeviceTrash
         case deleteFolderFromTrash
         case deleteRoomTemplate(String)
-        
+
         var message: String {
             switch self {
             case .deleteFileFromTrash:

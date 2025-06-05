@@ -130,7 +130,7 @@ final class CurrentFolderMenu {
              .recent:
             return CurrentCloudFolderMenu().contextMenu(for: folder, in: viewController)
 
-        case .virtualRooms:
+        case .virtualRooms, .roomTemplates:
             return CurrentRoomMenu().contextMenu(for: folder, in: viewController)
 
         case .archive:

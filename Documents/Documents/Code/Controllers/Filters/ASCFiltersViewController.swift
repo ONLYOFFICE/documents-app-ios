@@ -61,7 +61,8 @@ class ASCFiltersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Asset.Colors.tableCategoryBackground.color
+        view.backgroundColor = .secondarySystemBackground
+
         setupNavigationBar()
         showResultButtonConstraints()
         setupCollectionView()
@@ -240,7 +241,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
             cell?.backgroundColor = Asset.Colors.brend.color
         } else {
             cell?.labelText.textColor = filterViewModel.defaultTextColor
-            cell?.backgroundColor = Asset.Colors.filterCapsule.color
+            cell?.backgroundColor = .systemBackground
         }
         cell?.deselectFilterBtn.add(for: .touchUpInside) {
             self.viewModel.didFilterResetBtnTapped(filterViewModel)

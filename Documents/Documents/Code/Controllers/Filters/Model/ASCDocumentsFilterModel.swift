@@ -82,7 +82,7 @@ struct ActionButtonViewModel {
 
     static var empty = ActionButtonViewModel(
         text: "",
-        backgroundColor: Asset.Colors.filterCapsule.color,
+        backgroundColor: .systemBackground,
         textColor: Asset.Colors.brend.color,
         isActive: true
     )

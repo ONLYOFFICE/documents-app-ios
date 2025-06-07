@@ -13,7 +13,7 @@ class ASCFiltersCollectionViewHeader: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Asset.Colors.tableCategoryBackground.color
+        backgroundColor = .secondarySystemBackground
         addSubview(headerLabel)
     }
 

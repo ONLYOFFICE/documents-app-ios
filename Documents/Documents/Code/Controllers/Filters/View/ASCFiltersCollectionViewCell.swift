@@ -55,7 +55,7 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
 private extension ASCFiltersCollectionViewCell {
     func setupView() {
         addSubview(labelText)
-        backgroundColor = Asset.Colors.filterCapsule.color
+        backgroundColor = .systemBackground
         layer.cornerRadius = ASCFiltersCollectionViewCell.pillHeight / 2
         labelText.frame = bounds
         labelText.textAlignment = .center

@@ -129,11 +129,11 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
                 .init(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels),
             ], actionButtonViewModel: tempState.itemsCount > 0
                 ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
-                                        backgroundColor: Asset.Colors.filterCapsule.color,
+                                        backgroundColor: .systemBackground,
                                         textColor: Asset.Colors.brend.color,
                                         isActive: true)
                 : ActionButtonViewModel(text: NSLocalizedString("Nothing to show", comment: ""),
-                                        backgroundColor: Asset.Colors.filterCapsule.color,
+                                        backgroundColor: .systemBackground,
                                         textColor: Asset.Colors.tableCellSeparator.color,
                                         isActive: false)
         )

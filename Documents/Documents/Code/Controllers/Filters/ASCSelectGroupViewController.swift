@@ -74,7 +74,7 @@ class ASCSelectGroupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Asset.Colors.tableCategoryBackground.color
+        view.backgroundColor = .secondarySystemBackground
         searchController.searchBar.delegate = self
         setupNavigationBar()
         configureSearchController()

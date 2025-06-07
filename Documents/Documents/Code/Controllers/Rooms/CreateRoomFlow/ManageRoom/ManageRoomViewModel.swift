@@ -14,6 +14,7 @@ import UIKit
 enum ManageRoomScreenMode {
     case create
     case edit(ASCFolder)
+    case editTemplate(ASCFolder)
     case saveAsTemplate(ASCFolder)
     case createFromTemplate(ASCFolder)
 }
@@ -73,6 +74,7 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
+    @Published var isRoomTemplateAccessScreenPresenting = false
     @Published var isStorageSelectionPresenting = false
     @Published var isFolderSelectionPresenting = false
 
@@ -85,6 +87,7 @@ class ManageRoomViewModel: ObservableObject {
         editingRoom?.security.changeOwner == true
     }
 
+    private(set) var editingRoom: ASCRoom?
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = true
@@ -209,7 +212,6 @@ class ManageRoomViewModel: ObservableObject {
     // MARK: - Private vars
 
     private var onCreate: (ASCFolder) -> Void
-    private let editingRoom: ASCRoom?
     private(set) var provider: ASCFileProviderProtocol?
     private(set) var thirdPartyFolder: ASCFolder?
     private var selectedSubfolder: ASCFolder?
@@ -243,7 +245,7 @@ class ManageRoomViewModel: ObservableObject {
         self.screenMode = screenMode
 
         switch screenMode {
-        case let .edit(editingRoom), let .saveAsTemplate(editingRoom), let .createFromTemplate(editingRoom):
+        case let .edit(editingRoom), let .saveAsTemplate(editingRoom), let .createFromTemplate(editingRoom), let .editTemplate(editingRoom):
             self.editingRoom = editingRoom
             self.selectedRoomType.showDisclosureIndicator = false
             self.roomName = editingRoom.title
@@ -410,6 +412,8 @@ class ManageRoomViewModel: ObservableObject {
             createRoom()
         case .edit:
             updateRoom()
+        case .editTemplate(_):
+            updateRoom()
         case .saveAsTemplate:
             createTemplate()
         case .createFromTemplate:
@@ -437,7 +441,11 @@ class ManageRoomViewModel: ObservableObject {
 extension ManageRoomViewModel {
     func didTapRoomOwnerCell() {
         guard isRoomOwnerCellTappable else { return }
-        isUserSelectionPresenting = true
+        if ((editingRoom?.isTemplateRoom) != nil) {
+            isRoomTemplateAccessScreenPresenting = true
+        } else {
+            isUserSelectionPresenting = true
+        }
     }
 
     func didTapStorageSelectionCell() {

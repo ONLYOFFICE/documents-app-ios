@@ -10,7 +10,7 @@ import SwiftUI
 import Kingfisher
 
 struct ASCAccessRowModel: Identifiable {
-    var id = UUID()
+    var id: String
     var name: String
     var image: ImageSourceType
     var onTapAction: (() -> Void)?

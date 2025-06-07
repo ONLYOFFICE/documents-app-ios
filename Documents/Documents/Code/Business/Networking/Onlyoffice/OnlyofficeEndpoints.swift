@@ -293,6 +293,9 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseCodable<[ASCTemplateAccessModel]>>.make(String(format: Path.shareRoom, template.id), .get)
             }
             
+            static func setRoomTemplateAccess(template: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, template.id), .put)
+            }
         }
 
         // MARK: Files

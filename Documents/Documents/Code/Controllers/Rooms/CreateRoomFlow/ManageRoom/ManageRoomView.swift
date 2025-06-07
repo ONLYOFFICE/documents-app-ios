@@ -308,7 +308,7 @@ private extension View {
     func navigateToRoomTemplateAccessScreenPresenting(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         if let template = viewModel.editingRoom {
             navigation(isActive: isActive, destination: {
-                ASCAccessSettingsView(viewModel: ASCAccessSettingsViewModel(template: template))
+                ASCTemplateAccessSettingsView(viewModel: ASCTemplateAccessSettingsViewModel(template: template))
             })
         } else {
             EmptyView()

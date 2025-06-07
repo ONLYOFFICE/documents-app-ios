@@ -7,7 +7,7 @@
 //
 
 struct ASCTemplateAccessModel: Codable {
-    var access: Int?
+    var access: ASCShareAccess?
     var sharedTo: ASCUser?
     var isLocked: Bool?
     var isOwner: Bool

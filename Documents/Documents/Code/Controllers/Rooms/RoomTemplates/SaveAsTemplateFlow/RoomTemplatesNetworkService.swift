@@ -22,10 +22,37 @@ protocol ASCRoomTemplatesNetworkServiceProtocol {
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress>
     func fetchTemplates() async throws -> [ASCFolder]
     func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]
+    func setAccess(template: ASCFolder, invitations: [ASCRoomTemplateInviteItemRequestModel]) async throws -> OnlyofficeInviteResponseModel
 }
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
+    
+    func setAccess(
+        template: ASCFolder,
+        invitations: [ASCRoomTemplateInviteItemRequestModel]
+    ) async throws -> OnlyofficeInviteResponseModel {
+        let requestModel = ASCRoomTemplateInviteRequestModel(
+            invitations: invitations,
+            notify: false,
+            sharingMessage: nil
+        )
+
+        return try await withCheckedThrowingContinuation { continuation in
+            networkService.request(
+                OnlyofficeAPI.Endpoints.Rooms.setRoomTemplateAccess(template: template),
+                requestModel.toJSON()
+            ) { result, error in
+                if let response = result?.result {
+                    continuation.resume(returning: response)
+                } else if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: Errors.emptyResponse)
+                }
+            }
+        }
+    }
     
     func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]  {
         return try await withCheckedThrowingContinuation { continuation in

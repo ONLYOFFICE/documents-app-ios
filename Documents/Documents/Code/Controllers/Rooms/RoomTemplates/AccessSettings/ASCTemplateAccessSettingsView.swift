@@ -1,5 +1,5 @@
 //
-//  ASCAccessSettingsView.swift
+//  ASCTemplateAccessSettingsView.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 06.06.2025.
@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct ASCAccessSettingsView: View {
+struct ASCTemplateAccessSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var viewModel: ASCAccessSettingsViewModel
+    @ObservedObject var viewModel: ASCTemplateAccessSettingsViewModel
     
     var body: some View {
         List {
             availableForEveryoneSection
-            if !viewModel.isTemplateAvailableForEveryone {
+            if !viewModel.dataModel.isTemplateAvailableForEveryone {
                 addUsersAndGroupsSection
                 accessToTemplateSection
             }
@@ -45,7 +45,7 @@ struct ASCAccessSettingsView: View {
 }
 
 //MARK: - Sections
-private extension ASCAccessSettingsView {
+private extension ASCTemplateAccessSettingsView {
     @ViewBuilder
     var availableForEveryoneSection: some View {
         Section(footer: Text("All DocSpace and Room admins will be able to create rooms using this template.")
@@ -66,9 +66,9 @@ private extension ASCAccessSettingsView {
     
     @ViewBuilder
     var accessToTemplateSection: some View {
-        if !viewModel.accessToTemplate.isEmpty {
+        if !viewModel.screenModel.accessRowModels.isEmpty {
             Section(header: Text("Access to template")) {
-                ForEach(viewModel.accessToTemplate) { model in
+                ForEach(viewModel.screenModel.accessRowModels) { model in
                     ASCAccessRow(model: model)
                 }
                 .onDelete(perform: viewModel.removeAccess)
@@ -79,7 +79,7 @@ private extension ASCAccessSettingsView {
 
 //MARK: - Cells
 
-private extension ASCAccessSettingsView {
+private extension ASCTemplateAccessSettingsView {
     var chooseFromListCell: some View {
         HStack {
             Text("Choose from list")
@@ -88,17 +88,14 @@ private extension ASCAccessSettingsView {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            viewModel.chooseFromListScreenDisplaying = true
+            viewModel.didTapChooseFromList()
         }
     }
     
     var templateAvailabiltyCell: some View {
-        Toggle(isOn: $viewModel.isTemplateAvailableForEveryone) {
+        Toggle(isOn: $viewModel.dataModel.isTemplateAvailableForEveryone) {
             Text("Template available to everyone")
         }
         .tintColor(Color(Asset.Colors.brend.color))
-        .onChange(of: viewModel.isTemplateAvailableForEveryone) { newValue in
-            viewModel.isTemplateAvailableForEveryone = newValue
-        }
     }
 }

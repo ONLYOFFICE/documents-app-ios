@@ -34,6 +34,7 @@ struct ManageRoomView: View {
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
+        .navigateToRoomTemplateAccessScreenPresenting(isActive: $viewModel.isRoomTemplateAccessScreenPresenting, viewModel: viewModel)
         .sheet(isPresented: $viewModel.isStorageSelectionPresenting, content: {
             ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
         })
@@ -79,18 +80,17 @@ struct ManageRoomView: View {
     }
 
     private var roomTagsSection: some View {
-        Section {
+        Section(footer: tagsFooter) {
             TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
                 .background(Color.systemGroupedBackground)
         }
-        .background(Color.secondarySystemGroupedBackground)
     }
 
     @ViewBuilder
     private var roomOwnerSection: some View {
         if viewModel.isEditMode {
-            Section {
+            Section(footer: roomOwnerFooter) {
                 HStack(spacing: 8) {
                     Text("Owner")
                     Spacer()
@@ -100,10 +100,32 @@ struct ManageRoomView: View {
                         ChevronRightView()
                     }
                 }
+                .contentShape(Rectangle())
                 .onTapGesture {
                     viewModel.didTapRoomOwnerCell()
                 }
             }
+        }
+    }
+    
+    
+    @ViewBuilder
+    private var tagsFooter: some View {
+        switch viewModel.screenMode {
+        case .editTemplate(_):
+            Text ("Tags are applied to the room which will be created based on this template.")
+        default:
+            Text("")
+        }
+    }
+    
+    @ViewBuilder
+    private var roomOwnerFooter: some View {
+        switch viewModel.screenMode {
+        case .editTemplate(_):
+            Text ("Access to template. You can select members who can create rooms based on this template.")
+        default:
+            Text("")
         }
     }
 
@@ -236,13 +258,13 @@ private extension View {
     func navigationTitle(viewModel: ManageRoomViewModel) -> some View {
         switch viewModel.screenMode {
         case let .edit(room):
-            room.isTemplateRoom
-                ? navigationBarTitle(Text("Edit template"), displayMode: .inline)
-                : navigationBarTitle(Text("Edit room"), displayMode: .inline)
+            navigationBarTitle(Text("Edit room"), displayMode: .inline)
         case .create, .createFromTemplate:
             navigationBarTitle(Text("Create room"), displayMode: .inline)
         case .saveAsTemplate:
             navigationBarTitle(Text("Save as template"), displayMode: .inline)
+        case .editTemplate(_):
+            navigationBarTitle(Text("Edit template"), displayMode: .inline)
         }
     }
 
@@ -280,6 +302,17 @@ private extension View {
                 )
             )
         })
+    }
+    
+    @ViewBuilder
+    func navigateToRoomTemplateAccessScreenPresenting(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
+        if let template = viewModel.editingRoom {
+            navigation(isActive: isActive, destination: {
+                ASCAccessSettingsView(viewModel: ASCAccessSettingsViewModel(template: template))
+            })
+        } else {
+            EmptyView()
+        }
     }
 
     @ViewBuilder
@@ -398,7 +431,7 @@ extension ManageRoomScreenMode {
         switch self {
         case .create, .saveAsTemplate, .createFromTemplate:
             return NSLocalizedString("Create", comment: "")
-        case .edit:
+        case .edit, .editTemplate(_):
             return NSLocalizedString("Save", comment: "")
         }
     }

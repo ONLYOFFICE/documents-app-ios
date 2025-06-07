@@ -18,7 +18,7 @@ struct VDRFillingStatusHeaderView: View {
         VStack {
             HStack {
                 Button("Cancel", action: onCancel)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color(.systemBlue))
                 Spacer()
                 Text(title)
                     .font(.headline)
@@ -26,7 +26,7 @@ struct VDRFillingStatusHeaderView: View {
                 Color.clear.frame(width: 60, height: 1)
             }
             .padding()
-            .background(Color.white)
+            .background(Color(.systemBackground))
 
             HStack {
                 Text(subtitle)

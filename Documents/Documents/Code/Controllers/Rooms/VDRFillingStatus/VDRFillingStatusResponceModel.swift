@@ -21,7 +21,7 @@ struct VDRFillingStatusResponceModel: Codable {
     let roleColor: String?
 
     var roleSwiftUIColor: Color {
-        guard let roleColor else { return .black }
+        guard let roleColor else { return .primary }
         return Color(hex: roleColor)
     }
 }

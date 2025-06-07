@@ -96,13 +96,13 @@ struct VDRFillingStatusEventRowView: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal)
-        .background(Color.white)
+        .background(Color(.systemBackground))
     }
 
     @ViewBuilder
     private var roleName: some View {
         Text(verbatim: model.roleName)
-            .foregroundColor(model.roleColor)
+            .foregroundColor(.primary)
             .font(.subheadline)
     }
 

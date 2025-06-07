@@ -35,7 +35,7 @@ struct VDRFillingFinishStatusRowView: View {
                     .strokeBorder(color, lineWidth: 1.4)
                     .frame(width: 40, height: 40)
                 Circle()
-                    .fill(Color.white)
+                    .fill(Color(.systemBackground))
                     .frame(width: 36.3, height: 36.3)
 
                 if isFinishedStatus {
@@ -56,7 +56,7 @@ struct VDRFillingFinishStatusRowView: View {
         }
         .padding(.leading, 46)
         .padding(.vertical, 8)
-        .background(Color.white)
+        .background(Color(.systemBackground))
     }
 
     private var statusImage: some View {

@@ -18,7 +18,7 @@ struct VDRFillingStatusView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(UIColor.systemGray6).ignoresSafeArea()
+                Color(.secondarySystemBackground).ignoresSafeArea()
 
                 VStack(spacing: 0) {
                     header

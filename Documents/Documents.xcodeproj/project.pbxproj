@@ -153,6 +153,12 @@
 		F3AAEFC528241917008ED772 /* ASCOnlyOfficeFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */; };
 		F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */; };
 		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
+		F3B6B7222DF333E20096A7E5 /* ASCAccessSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7212DF333D70096A7E5 /* ASCAccessSettingsView.swift */; };
+		F3B6B7242DF333EE0096A7E5 /* ASCAccessSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7232DF333E90096A7E5 /* ASCAccessSettingsViewModel.swift */; };
+		F3B6B7262DF33CBC0096A7E5 /* ASCAccessRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7252DF33CB30096A7E5 /* ASCAccessRowModel.swift */; };
+		F3B6B72B2DF3986C0096A7E5 /* CreateRoomTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7292DF3986B0096A7E5 /* CreateRoomTemplateModel.swift */; };
+		F3B6B72E2DF398A70096A7E5 /* CreateRoomFromTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B72C2DF398A60096A7E5 /* CreateRoomFromTemplateModel.swift */; };
+		F3B6B7312DF399140096A7E5 /* ASCTemplateAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7302DF399110096A7E5 /* ASCTemplateAccessModel.swift */; };
 		F3C935CB2DE8971800599EE4 /* ASCRoomFromTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */; };
 		F3D3850E2C8F472E002889EE /* FormCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850D2C8F472E002889EE /* FormCompletedView.swift */; };
 		F3D385102C8F473E002889EE /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */; };
@@ -842,6 +848,12 @@
 		F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyOfficeFiltersController.swift; sourceTree = "<group>"; };
 		F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFiltersViewController.swift; sourceTree = "<group>"; };
 		F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFilterModel.swift; sourceTree = "<group>"; };
+		F3B6B7212DF333D70096A7E5 /* ASCAccessSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessSettingsView.swift; sourceTree = "<group>"; };
+		F3B6B7232DF333E90096A7E5 /* ASCAccessSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessSettingsViewModel.swift; sourceTree = "<group>"; };
+		F3B6B7252DF33CB30096A7E5 /* ASCAccessRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessRowModel.swift; sourceTree = "<group>"; };
+		F3B6B7292DF3986B0096A7E5 /* CreateRoomTemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomTemplateModel.swift; sourceTree = "<group>"; };
+		F3B6B72C2DF398A60096A7E5 /* CreateRoomFromTemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomFromTemplateModel.swift; sourceTree = "<group>"; };
+		F3B6B7302DF399110096A7E5 /* ASCTemplateAccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTemplateAccessModel.swift; sourceTree = "<group>"; };
 		F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomFromTemplateOperation.swift; sourceTree = "<group>"; };
 		F3D3850D2C8F472E002889EE /* FormCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedView.swift; sourceTree = "<group>"; };
 		F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
@@ -2163,6 +2175,38 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F3B6B7202DF333CC0096A7E5 /* AccessSettings */ = {
+			isa = PBXGroup;
+			children = (
+				F3B6B7232DF333E90096A7E5 /* ASCAccessSettingsViewModel.swift */,
+				F3B6B7212DF333D70096A7E5 /* ASCAccessSettingsView.swift */,
+			);
+			path = AccessSettings;
+			sourceTree = "<group>";
+		};
+		F3B6B7272DF398360096A7E5 /* RoomTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				F3B6B72F2DF398C00096A7E5 /* Models */,
+				F3B6B7202DF333CC0096A7E5 /* AccessSettings */,
+				F30DD7DB2DEF8D1D00E82CA9 /* CreateRoomFromTemplateFlow */,
+				F30DD7D42DEF27A200E82CA9 /* RoomTemplatesList */,
+				F30BD8972DE5C99C00E5F4CF /* EditTemplateFlow */,
+				F36C131D2DDDFC1E00E8B704 /* SaveAsTemplateFlow */,
+			);
+			path = RoomTemplates;
+			sourceTree = "<group>";
+		};
+		F3B6B72F2DF398C00096A7E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F3B6B7302DF399110096A7E5 /* ASCTemplateAccessModel.swift */,
+				F3B6B72C2DF398A60096A7E5 /* CreateRoomFromTemplateModel.swift */,
+				F3B6B7292DF3986B0096A7E5 /* CreateRoomTemplateModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F3D3850C2C8F4668002889EE /* FormCompletedFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -2981,6 +3025,7 @@
 		FC759C232C00614D00510096 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F3B6B7252DF33CB30096A7E5 /* ASCAccessRowModel.swift */,
 				F39F39B32DF0CF6200C04495 /* TemplateViewRow.swift */,
 				FC759C212C00614D00510096 /* ChevronUpDownView.swift */,
 				FC759C222C00614D00510096 /* RoomTypeViewRow.swift */,
@@ -2991,10 +3036,7 @@
 		FC759C242C00614D00510096 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				F30DD7DB2DEF8D1D00E82CA9 /* CreateRoomFromTemplateFlow */,
-				F30DD7D42DEF27A200E82CA9 /* RoomTemplatesList */,
-				F30BD8972DE5C99C00E5F4CF /* EditTemplateFlow */,
-				F36C131D2DDDFC1E00E8B704 /* SaveAsTemplateFlow */,
+				F3B6B7272DF398360096A7E5 /* RoomTemplates */,
 				F3D3850C2C8F4668002889EE /* FormCompletedFlow */,
 				FC759C002C00614D00510096 /* CreateRoomFlow */,
 				FC759C022C00614D00510096 /* EditRoomFlow */,
@@ -4484,6 +4526,7 @@
 				FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */,
 				FC9EEFB12BFB201700A66DE8 /* OnlyofficeUserPhoto.swift in Sources */,
 				FCCE50A22C1AF79000102056 /* ASCDocSpaceLinkView.swift in Sources */,
+				F3B6B7242DF333EE0096A7E5 /* ASCAccessSettingsViewModel.swift in Sources */,
 				FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */,
 				FCE9F6E22B2B56A30056E420 /* WSTagsFieldRepresentable.swift in Sources */,
 				FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */,
@@ -4537,6 +4580,7 @@
 				FCB4CE7329FAC5B5009C1E2E /* ASCMultiAccountScreenModel.swift in Sources */,
 				FC35D4562A987DFC00C6383F /* URL+Extensions.swift in Sources */,
 				FC25B453284F67F70075D6C2 /* ASCSettingsNotificationCell.swift in Sources */,
+				F3B6B72B2DF3986C0096A7E5 /* CreateRoomTemplateModel.swift in Sources */,
 				FC41D80A2265DA5E00A155C2 /* ASCFolderType.swift in Sources */,
 				F3F707002DB8D0C30004A09F /* ASCVersionHistoryNetworkService.swift in Sources */,
 				FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */,
@@ -4602,6 +4646,7 @@
 				FC759C322C00614D00510096 /* InviteUsersViewModel.swift in Sources */,
 				FC68527926837B7300D830EC /* NetworkingServerError.swift in Sources */,
 				FC7E457329226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */,
+				F3B6B72E2DF398A70096A7E5 /* CreateRoomFromTemplateModel.swift in Sources */,
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				FC35D45F2A987DFC00C6383F /* UINavigationController+Extension.swift in Sources */,
 				F3AAEFC528241917008ED772 /* ASCOnlyOfficeFiltersController.swift in Sources */,
@@ -4616,6 +4661,7 @@
 				1D667A3828CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */,
 				FC759CB42C00615E00510096 /* ASCSharingRightHolderViewModelProtocol.swift in Sources */,
 				FC142A9A28992D6C00EDE7CE /* ASCPaddingLabel.swift in Sources */,
+				F3B6B7262DF33CBC0096A7E5 /* ASCAccessRowModel.swift in Sources */,
 				FC35D4552A987DFC00C6383F /* UIImage+Extension.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC759CAC2C00615E00510096 /* ASCSharingRightHolder.swift in Sources */,
@@ -4641,6 +4687,7 @@
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
 				FC35D4482A987DFB00C6383F /* UIStoryboard+Extensions.swift in Sources */,
 				FC9EEFAC2BFB201700A66DE8 /* OnlyofficeDocumentConfig.swift in Sources */,
+				F3B6B7222DF333E20096A7E5 /* ASCAccessSettingsView.swift in Sources */,
 				FC35D4672A987DFC00C6383F /* Data+Extension.swift in Sources */,
 				E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */,
 				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
@@ -4826,6 +4873,7 @@
 				FC759CD72C00687A00510096 /* DispatchQueueExtensions.swift in Sources */,
 				F3D385172C8F7B40002889EE /* ASCUserWithEmailRowView.swift in Sources */,
 				FC759C2E2C00614D00510096 /* Rooms.swift in Sources */,
+				F3B6B7312DF399140096A7E5 /* ASCTemplateAccessModel.swift in Sources */,
 				FC7B80212AFA299D00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				F30DD7DA2DEF87A800E82CA9 /* ASCCreateRoomFromTemplateRequestModel.swift in Sources */,
 				1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,

@@ -21,10 +21,23 @@ protocol ASCRoomTemplatesNetworkServiceProtocol {
     func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<RoomCreationProgress>
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress>
     func fetchTemplates() async throws -> [ASCFolder]
+    func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]
 }
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
+    
+    func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]  {
+        return try await withCheckedThrowingContinuation { continuation in
+            networkService.request(OnlyofficeAPI.Endpoints.Rooms.getRoomTemplateAccessList(template: template)) { result, error in
+                if let accessList = result?.result {
+                    continuation.resume(returning: accessList)
+                } else {
+                    continuation.resume(throwing: error ?? Errors.emptyResponse)
+                }
+            }
+        }
+    }
 
     func fetchTemplates() async throws -> [ASCFolder] {
         let params = ["searchArea": "Templates"]
@@ -193,25 +206,6 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-}
-
-struct CreateRoomTemplateModel {
-    let title: String?
-    let roomId: String?
-    let tags: [String]?
-    let `public`: Bool?
-    let copylogo: Bool?
-    let color: String?
-}
-
-struct CreateRoomFromTemplateModel {
-    let templateId: Int
-    let roomType: ASCRoomType
-    let title: String
-    let color: String
-    let denyDownload: Bool
-    let indexing: Bool
-    let copyLogo: Bool
 }
 
 extension ASCRoomTemplatesNetworkService {

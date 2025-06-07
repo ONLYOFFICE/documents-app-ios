@@ -31,7 +31,7 @@ struct ASCEditTemplateRootView: View {
 
     var body: some View {
         NavigationView {
-            ManageRoomView(viewModel: ManageRoomViewModel(screenMode: .edit(template), selectedRoomType: template.roomTypeModel, onCreate: onSave))
+            ManageRoomView(viewModel: ManageRoomViewModel(screenMode: .editTemplate(template), selectedRoomType: template.roomTypeModel, onCreate: onSave))
         }
     }
 }

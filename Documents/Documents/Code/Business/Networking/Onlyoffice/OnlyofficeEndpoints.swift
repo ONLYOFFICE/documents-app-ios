@@ -288,6 +288,11 @@ enum OnlyofficeAPI {
             static func roomIndexExport(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
             }
+            
+            static func getRoomTemplateAccessList(template: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<[ASCTemplateAccessModel]>> {
+                return Endpoint<OnlyofficeResponseCodable<[ASCTemplateAccessModel]>>.make(String(format: Path.shareRoom, template.id), .get)
+            }
+            
         }
 
         // MARK: Files

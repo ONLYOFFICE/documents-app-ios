@@ -27,7 +27,7 @@ struct VDRFillingStatusFooterView: View {
                 .disabled(!fillEnabled)
         }
         .padding()
-        .background(Color.white.ignoresSafeArea(edges: .bottom))
+        .background(Color(.systemBackground).ignoresSafeArea(edges: .bottom))
     }
 }
 

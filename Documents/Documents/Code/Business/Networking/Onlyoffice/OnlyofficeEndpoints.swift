@@ -91,6 +91,8 @@ enum OnlyofficeAPI {
         public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
         public static let editComment = "api/\(version)/files/file/%@/comment"
         public static let customFilter = "api/\(version)/files/file/%@/customfilter"
+        public static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
+        public static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -295,6 +297,14 @@ enum OnlyofficeAPI {
             
             static func setRoomTemplateAccess(template: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, template.id), .put)
+            }
+            
+            static func setRoomTemplateAsPublic() -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.publicRoomTemplate), .put)
+            }
+            
+            static func getRoomTemplateIsPiblic(template: ASCFolder) -> Endpoint<OnlyofficeResponseType<Bool>> {
+                return Endpoint<OnlyofficeResponseType<Bool>>.make(String(format: Path.isTemplatePublic, template.id), .get)
             }
         }
 

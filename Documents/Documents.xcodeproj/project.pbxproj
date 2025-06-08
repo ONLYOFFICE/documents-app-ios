@@ -160,6 +160,8 @@
 		F3B6B72E2DF398A70096A7E5 /* CreateRoomFromTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B72C2DF398A60096A7E5 /* CreateRoomFromTemplateModel.swift */; };
 		F3B6B7312DF399140096A7E5 /* ASCTemplateAccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7302DF399110096A7E5 /* ASCTemplateAccessModel.swift */; };
 		F3B6B7332DF45F100096A7E5 /* ASCRoomTemplateInviteRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7322DF45F0E0096A7E5 /* ASCRoomTemplateInviteRequestModel.swift */; };
+		F3B6B7352DF5ADE80096A7E5 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7342DF5ADE60096A7E5 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift */; };
+		F3B6B7372DF5AF6B0096A7E5 /* ASCRoomTemplateAccessRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6B7362DF5AF580096A7E5 /* ASCRoomTemplateAccessRowView.swift */; };
 		F3C935CB2DE8971800599EE4 /* ASCRoomFromTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */; };
 		F3D3850E2C8F472E002889EE /* FormCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850D2C8F472E002889EE /* FormCompletedView.swift */; };
 		F3D385102C8F473E002889EE /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */; };
@@ -856,6 +858,8 @@
 		F3B6B72C2DF398A60096A7E5 /* CreateRoomFromTemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomFromTemplateModel.swift; sourceTree = "<group>"; };
 		F3B6B7302DF399110096A7E5 /* ASCTemplateAccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTemplateAccessModel.swift; sourceTree = "<group>"; };
 		F3B6B7322DF45F0E0096A7E5 /* ASCRoomTemplateInviteRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomTemplateInviteRequestModel.swift; sourceTree = "<group>"; };
+		F3B6B7342DF5ADE60096A7E5 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift; sourceTree = "<group>"; };
+		F3B6B7362DF5AF580096A7E5 /* ASCRoomTemplateAccessRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomTemplateAccessRowView.swift; sourceTree = "<group>"; };
 		F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomFromTemplateOperation.swift; sourceTree = "<group>"; };
 		F3D3850D2C8F472E002889EE /* FormCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedView.swift; sourceTree = "<group>"; };
 		F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
@@ -2189,6 +2193,7 @@
 		F3B6B7272DF398360096A7E5 /* RoomTemplates */ = {
 			isa = PBXGroup;
 			children = (
+				F3B6B7362DF5AF580096A7E5 /* ASCRoomTemplateAccessRowView.swift */,
 				F3B6B72F2DF398C00096A7E5 /* Models */,
 				F3B6B7202DF333CC0096A7E5 /* AccessSettings */,
 				F30DD7DB2DEF8D1D00E82CA9 /* CreateRoomFromTemplateFlow */,
@@ -3356,6 +3361,7 @@
 		FC9EEF902BFB201700A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3B6B7342DF5ADE60096A7E5 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift */,
 				F3B6B7322DF45F0E0096A7E5 /* ASCRoomTemplateInviteRequestModel.swift */,
 				F30DD7D92DEF87A600E82CA9 /* ASCCreateRoomFromTemplateRequestModel.swift */,
 				F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */,
@@ -4901,6 +4907,7 @@
 				FCF694B22631C10400808644 /* ASCBaseTableViewController.swift in Sources */,
 				FC9EEF9F2BFB201700A66DE8 /* AttachLogoRequestModel.swift in Sources */,
 				FC759C3A2C00614D00510096 /* RoomSharingLinkRow.swift in Sources */,
+				F3B6B7352DF5ADE80096A7E5 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift in Sources */,
 				FC759C412C00614D00510096 /* UserListView.swift in Sources */,
 				FCB4CE6029FAC0A5009C1E2E /* ASCMultiAccountsViewController.swift in Sources */,
 				FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
@@ -5018,6 +5025,7 @@
 				FC759C442C00614D00510096 /* ChevronUpDownView.swift in Sources */,
 				FC6D9A512355CDC100A970C6 /* ASCDropboxProvider.swift in Sources */,
 				FC35D4512A987DFC00C6383F /* Color+Extensions.swift in Sources */,
+				F3B6B7372DF5AF6B0096A7E5 /* ASCRoomTemplateAccessRowView.swift in Sources */,
 				FC7E457729226A35006C4CA1 /* ASCRoomType.swift in Sources */,
 				FC35D4522A987DFC00C6383F /* String+Extension.swift in Sources */,
 				FC35D4592A987DFC00C6383F /* Decodable+Extensions.swift in Sources */,

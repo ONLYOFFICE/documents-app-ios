@@ -14,11 +14,17 @@ struct ASCTemplateAccessSettingsView: View {
     @ObservedObject var viewModel: ASCTemplateAccessSettingsViewModel
     
     var body: some View {
-        List {
-            availableForEveryoneSection
-            if !viewModel.dataModel.isTemplateAvailableForEveryone {
-                addUsersAndGroupsSection
-                accessToTemplateSection
+        ZStack {
+            if viewModel.dataModel.isInitalFetchCompleted {
+                List {
+                    availableForEveryoneSection
+                    if !viewModel.dataModel.isTemplateAvailableForEveryone {
+                        addUsersAndGroupsSection
+                        accessToTemplateSection
+                    }
+                }
+            } else {
+                ActivityIndicatorView()
             }
         }
         .navigationTitle(Text("Access settings"))
@@ -39,9 +45,15 @@ struct ASCTemplateAccessSettingsView: View {
             }
         )
         .onAppear {
-            viewModel.fetchAccessList()
+            viewModel.loadData()
         }
     }
+}
+
+//MARK: - Navigation
+private extension ASCTemplateAccessSettingsView {
+    
+    
 }
 
 //MARK: - Sections

@@ -23,11 +23,39 @@ protocol ASCRoomTemplatesNetworkServiceProtocol {
     func fetchTemplates() async throws -> [ASCFolder]
     func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]
     func setAccess(template: ASCFolder, invitations: [ASCRoomTemplateInviteItemRequestModel]) async throws -> OnlyofficeInviteResponseModel
+    func setRoomTemplateAsPublic(templateId: Int, isPublic: Bool) async throws
+    func getIsRoomTemplateAvailableForEveryone(template: ASCFolder) async throws -> Bool
 }
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
     
+    func getIsRoomTemplateAvailableForEveryone(template: ASCFolder) async throws -> Bool {
+        return try await withCheckedThrowingContinuation { continuation in
+            networkService.request(OnlyofficeAPI.Endpoints.Rooms.getRoomTemplateIsPiblic(template: template)) { result, error in
+                if let isPublic = result?.result {
+                    continuation.resume(returning: isPublic)
+                } else {
+                    continuation.resume(throwing: error ?? Errors.emptyResponse)
+                }
+            }
+            
+        }
+    }
+    
+    func setRoomTemplateAsPublic(templateId: Int, isPublic: Bool = true) async throws {
+        let requestModel = ASCSetRoomTemplateAvailableForEveryoneRequestModel(id: templateId, isPublic: isPublic)
+        try await withCheckedThrowingContinuation { continuation in
+            networkService.request(OnlyofficeAPI.Endpoints.Rooms.setRoomTemplateAsPublic(), requestModel.toJSON()) { result, error in
+                if result != nil && error == nil {
+                    continuation.resume()
+                } else {
+                    continuation.resume(throwing: error ?? Errors.emptyResponse)
+                }
+            }
+        }
+    }
+
     func setAccess(
         template: ASCFolder,
         invitations: [ASCRoomTemplateInviteItemRequestModel]

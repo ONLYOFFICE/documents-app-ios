@@ -16,6 +16,7 @@ final class ASCTemplateAccessSettingsViewModel: ObservableObject {
     typealias ASCTemplate = ASCFolder
     
     @Published var dataModel: DataModel = .empty
+    @Published var isLoading = true
     
     var screenModel: ScreenModel {
         ScreenModel(
@@ -24,11 +25,13 @@ final class ASCTemplateAccessSettingsViewModel: ObservableObject {
     }
     
     private var template: ASCTemplate
+    var templateAdmin: ASCUser?
     
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
     
     init(template: ASCTemplate) {
         self.template = template
+        self.templateAdmin = template.createdBy
     }
 }
 
@@ -36,18 +39,33 @@ final class ASCTemplateAccessSettingsViewModel: ObservableObject {
 
 extension ASCTemplateAccessSettingsViewModel {
     
-    func fetchAccessList() {
+    func loadData() {
+        isLoading = true
         Task {
+            async let accessList = fetchAccessList()
+            async let isPublic = isRoomTemplatePublic()
+            
             do {
-                let result = try await roomTemplatesNetworkService.getAccessList(template: template)
-                dataModel.accessModels = result
+                let (list, isPublic) = try await (accessList, isPublic)
+                self.dataModel.accessModels = list
+                self.dataModel.isTemplateAvailableForEveryone = isPublic
             } catch {
-                print("Failed to fetch template access: \(error.localizedDescription)")
+                print(": \(error.localizedDescription)")
             }
+            
+            isLoading = false
+            dataModel.isInitalFetchCompleted = true
         }
     }
     
     func save() {
+        dataModel.isTemplateAvailableForEveryone
+        ? makeRoomTemplatePublic()
+        : setAccess()
+       
+    }
+    
+    func setAccess() {
         let invitations: [ASCRoomTemplateInviteItemRequestModel] = dataModel.accessModels
             .filter { !$0.isOwner }
             .map {
@@ -60,7 +78,15 @@ extension ASCTemplateAccessSettingsViewModel {
                 print("Failed to set access settings: \(error.localizedDescription)")
             }
         }
-       
+    }
+    
+    func makeRoomTemplatePublic() {
+        guard let templateId = Int(template.id) else { return }
+        Task {
+            do {
+                let result = try await roomTemplatesNetworkService.setRoomTemplateAsPublic(templateId: templateId, isPublic: true)
+            }
+        }
     }
     
     func setRoomTemplateAccess() {
@@ -104,10 +130,23 @@ private extension ASCTemplateAccessSettingsViewModel {
     }
 }
 
+//MARK: - Private methods
+
+private extension ASCTemplateAccessSettingsViewModel {
+   func fetchAccessList() async throws ->  [ASCTemplateAccessModel] {
+        try await roomTemplatesNetworkService.getAccessList(template: template)
+   }
+
+    func isRoomTemplatePublic() async throws -> Bool {
+       try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
+    }
+}
+
 // MARK: - Models
 
 extension ASCTemplateAccessSettingsViewModel {
     struct DataModel {
+        var isInitalFetchCompleted = false
         var isTemplateAvailableForEveryone = false
         fileprivate(set) var chooseFromListScreenDisplaying = false
         fileprivate var accessModels: [ASCTemplateAccessModel]

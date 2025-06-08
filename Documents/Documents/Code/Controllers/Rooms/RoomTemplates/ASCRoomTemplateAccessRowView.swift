@@ -17,15 +17,12 @@ struct ASCRoomTemplateAccessRowViewModel {
         let userCount = users.count
         guard userCount > 0 else { return "" }
 
-        let meName = "\(users.first?.sharedTo?.displayName ?? "") (Me)"
-        
-        switch userCount {
-        case 1:
-            return meName
-        case 2:
-            return "\(meName) and 1 User"
-        default:
-            return "\(meName) and \(userCount - 1) Users"
+        if userCount == 1 {
+            return "\(users.first?.sharedTo?.displayName ?? "") (Me)"
+        } else if userCount == 2 {
+            return "Me and 1 User"
+        } else {
+            return "Me and \(userCount - 1) Users"
         }
     }
     

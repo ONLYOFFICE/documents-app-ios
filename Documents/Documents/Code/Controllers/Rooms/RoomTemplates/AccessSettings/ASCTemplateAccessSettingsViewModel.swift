@@ -24,7 +24,7 @@ final class ASCTemplateAccessSettingsViewModel: ObservableObject {
         )
     }
     
-    private var template: ASCTemplate
+    var template: ASCTemplate
     var templateAdmin: ASCUser?
     
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
@@ -148,7 +148,7 @@ extension ASCTemplateAccessSettingsViewModel {
     struct DataModel {
         var isInitalFetchCompleted = false
         var isTemplateAvailableForEveryone = false
-        fileprivate(set) var chooseFromListScreenDisplaying = false
+        var chooseFromListScreenDisplaying = false
         fileprivate var accessModels: [ASCTemplateAccessModel]
         
         static let empty = DataModel(accessModels: [])

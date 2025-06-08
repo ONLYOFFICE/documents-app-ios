@@ -26,7 +26,18 @@ struct ASCTemplateAccessSettingsView: View {
             } else {
                 ActivityIndicatorView()
             }
+            NavigationLink(
+                destination: InviteUsersView(viewModel: InviteUsersViewModel(room: viewModel.template)),
+                isActive: Binding(
+                    get: { viewModel.dataModel.chooseFromListScreenDisplaying },
+                    set: { viewModel.dataModel.chooseFromListScreenDisplaying = $0 }
+                )
+            ) {
+                EmptyView()
+            }
+            .hidden()
         }
+
         .navigationTitle(Text("Access settings"))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -48,12 +59,6 @@ struct ASCTemplateAccessSettingsView: View {
             viewModel.loadData()
         }
     }
-}
-
-//MARK: - Navigation
-private extension ASCTemplateAccessSettingsView {
-    
-    
 }
 
 //MARK: - Sections

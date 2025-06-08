@@ -614,7 +614,9 @@ private extension ManageRoomViewModel {
         Task {
             do {
                 let result = try await roomTemplatesNetworkService.getAccessList(template: template)
-                self.accessModels = result
+                await MainActor.run {
+                    self.accessModels = result
+                }
             } catch {
                 print("Failed to get access list: \(error.localizedDescription)")
             }
@@ -627,7 +629,9 @@ private extension ManageRoomViewModel {
             Task {
                 do {
                     let isPublic = try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
-                    self.isPublicTemplate = isPublic
+                    await MainActor.run {
+                        self.isPublicTemplate = isPublic
+                    }
                 } catch {
                     print("Failed to get template availability: \(error.localizedDescription)")
                 }

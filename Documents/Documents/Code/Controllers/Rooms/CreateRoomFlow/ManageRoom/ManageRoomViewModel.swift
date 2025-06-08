@@ -34,6 +34,11 @@ class ManageRoomViewModel: ObservableObject {
     @Published var tags: Set<String> = []
     @Published var activeAlert: ManageRoomView.ActiveAlert?
     @Published var resultModalModel: ResultViewModel?
+    
+    //MARK: Room template
+    
+    @Published var accessModels: [ASCTemplateAccessModel] = []
+    @Published var isPublicTemplate: Bool = false
 
     // Stroage quota
     @Published var allowChangeStorageQuota: Bool = false
@@ -391,6 +396,8 @@ class ManageRoomViewModel: ObservableObject {
                 selectedSizeUnit = unit
             }
         }
+        fetchAccessList()
+        getTemplateAvailability()
     }
 
     // MARK: - Public func
@@ -440,12 +447,11 @@ class ManageRoomViewModel: ObservableObject {
 
 extension ManageRoomViewModel {
     func didTapRoomOwnerCell() {
-        guard isRoomOwnerCellTappable else { return }
-        if ((editingRoom?.isTemplateRoom) != nil) {
-            isRoomTemplateAccessScreenPresenting = true
-        } else {
-            isUserSelectionPresenting = true
-        }
+        isUserSelectionPresenting = true
+    }
+    
+    func didTapAccessToTemplate() {
+        isRoomTemplateAccessScreenPresenting = true
     }
 
     func didTapStorageSelectionCell() {
@@ -601,7 +607,35 @@ private extension ManageRoomViewModel {
         }
     }
 
-    // MARK: - Create room template
+    // MARK: - Room template
+    
+    func fetchAccessList() {
+        guard let template = editingRoom else { return }
+        Task {
+            do {
+                let result = try await roomTemplatesNetworkService.getAccessList(template: template)
+                self.accessModels = result
+            } catch {
+                print("Failed to get access list: \(error.localizedDescription)")
+            }
+        }
+     }
+    
+    func getTemplateAvailability() {
+        switch screenMode {
+        case let .editTemplate(template):
+            Task {
+                do {
+                    let isPublic = try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
+                    self.isPublicTemplate = isPublic
+                } catch {
+                    print("Failed to get template availability: \(error.localizedDescription)")
+                }
+            }
+        default:
+            return
+        }
+    }
 
     func createFromTemplate() {
         guard let template = editingRoom,

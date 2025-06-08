@@ -22,7 +22,12 @@ struct ManageRoomView: View {
             roomTypeSection
             roomImageAndNameSection
             roomTagsSection
-            roomOwnerSection
+            switch viewModel.screenMode {
+            case .editTemplate(_):
+                accessToTemplateSection
+            default:
+                roomOwnerSection
+            }
             thirdPartySection
             automaticIndexationSection
             fileLifetimeSection
@@ -73,7 +78,6 @@ struct ManageRoomView: View {
                 MenuView(menuItems: viewModel.menuItems) {
                     imagePicker
                 }
-
                 roomNameTextField
             }
         }
@@ -90,7 +94,7 @@ struct ManageRoomView: View {
     @ViewBuilder
     private var roomOwnerSection: some View {
         if viewModel.isEditMode {
-            Section(footer: roomOwnerFooter) {
+            Section {
                 HStack(spacing: 8) {
                     Text("Owner")
                     Spacer()
@@ -108,6 +112,15 @@ struct ManageRoomView: View {
         }
     }
     
+    @ViewBuilder
+    private var accessToTemplateSection: some View {
+        Section(footer: accessToTemplateFooter) {
+            ASCRoomTemplateAccessRowView(model: ASCRoomTemplateAccessRowViewModel(users: viewModel.accessModels, isPublicTemplate: viewModel.isPublicTemplate))
+                .onTapGesture {
+                    viewModel.didTapAccessToTemplate()
+                }
+        }
+    }
     
     @ViewBuilder
     private var tagsFooter: some View {
@@ -120,13 +133,8 @@ struct ManageRoomView: View {
     }
     
     @ViewBuilder
-    private var roomOwnerFooter: some View {
-        switch viewModel.screenMode {
-        case .editTemplate(_):
-            Text ("Access to template. You can select members who can create rooms based on this template.")
-        default:
-            Text("")
-        }
+    private var accessToTemplateFooter: some View {
+        Text ("Access to template. You can select members who can create rooms based on this template.")
     }
 
     @ViewBuilder

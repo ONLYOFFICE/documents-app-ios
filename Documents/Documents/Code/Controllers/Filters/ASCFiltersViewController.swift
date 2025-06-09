@@ -254,6 +254,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ASCFiltersCollectionViewHeader.identifier, for: indexPath) as? ASCFiltersCollectionViewHeader
         header?.setupLabel("\(viewModel.data[indexPath.section].sectionName)")
+        header?.backgroundColor = .clear
         return header!
     }
 }

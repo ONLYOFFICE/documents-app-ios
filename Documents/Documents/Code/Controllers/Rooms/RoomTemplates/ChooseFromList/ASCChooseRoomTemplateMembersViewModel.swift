@@ -11,19 +11,18 @@ import Foundation
 
 @MainActor
 final class ASCChooseRoomTemplateMembersViewModel: ObservableObject {
-    
     @Published var dataModel = DataModel.empty
-    
+
     let onAdd: (SelectedMembers) -> Void
-    
+
     init(
         ignoreMembersIds: Set<String> = [],
         onAdd: @escaping (SelectedMembers) -> Void
     ) {
         self.onAdd = onAdd
-        self.dataModel.ignoreMembersIds = ignoreMembersIds
+        dataModel.ignoreMembersIds = ignoreMembersIds
     }
-    
+
     var screenModel: ScreenModel {
         mapToScreenModel()
     }
@@ -32,35 +31,33 @@ final class ASCChooseRoomTemplateMembersViewModel: ObservableObject {
 // MARK: Public
 
 extension ASCChooseRoomTemplateMembersViewModel {
-    
     func onAppear() {
         Task {
             async let usersTask = fetchUsers()
             async let groupsTask = fetchGroups()
-            
-            let (users, groups) = await (usersTask, groupsTask)
+
+            let (users, groups) = await(usersTask, groupsTask)
             dataModel.users = users
             dataModel.groups = groups
         }
     }
-    
+
     func addSelectedMembers() {
         guard !dataModel.selectedIds.isEmpty else {
             onAdd(.empty)
             return
         }
-        let users = dataModel.users.filter({
+        let users = dataModel.users.filter {
             guard let id = $0.userId else { return false }
             return dataModel.selectedIds.contains(id)
-        })
-        let groups = dataModel.groups.filter({
+        }
+        let groups = dataModel.groups.filter {
             guard let id = $0.id else { return false }
             return dataModel.selectedIds.contains(id)
-        })
+        }
         onAdd(SelectedMembers(users: users, groups: groups))
     }
 }
-
 
 // MARK: Private
 
@@ -77,7 +74,7 @@ private extension ASCChooseRoomTemplateMembersViewModel {
             return []
         }
     }
-    
+
     func fetchGroups() async -> [ASCGroup] {
         do {
             let result = try await OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups)
@@ -87,7 +84,7 @@ private extension ASCChooseRoomTemplateMembersViewModel {
             return []
         }
     }
-    
+
     func didTapMember(id: String?) {
         guard let id else { return }
         if dataModel.selectedIds.contains(id) {
@@ -147,51 +144,49 @@ private extension ASCChooseRoomTemplateMembersViewModel {
 // MARK: - Structs
 
 extension ASCChooseRoomTemplateMembersViewModel {
-    
     struct DataModel {
-        
         var searchText: String = ""
         var selectedSegment: Segment = .users
-        
+
         var ignoreMembersIds: Set<String> = []
         var selectedIds: Set<String> = []
-        
+
         var users: [ASCUser] = []
         var groups: [ASCGroup] = []
-        
+
         static let empty = DataModel()
     }
-    
+
     enum Segment: String, CaseIterable, Identifiable {
         case users = "Members"
         case groups = "Groups"
-        
+
         var id: String { rawValue }
     }
-    
+
     struct ScreenModel {
         var isAddButtonEnabled: Bool = false
         var rows: [Cell]
     }
-    
+
     enum Cell: Identifiable {
         var id: String {
             switch self {
-            case .group(let model):
+            case let .group(model):
                 model.id
-            case .user(let model):
+            case let .user(model):
                 model.id
             }
         }
-        
+
         case user(ASCRoomTemplateUserMemberRowModel)
         case group(ASCRoomTemplateGroupMemberRowModel)
     }
-    
+
     struct SelectedMembers {
         let users: [ASCUser]
         let groups: [ASCGroup]
-        
+
         static let empty = SelectedMembers(users: [], groups: [])
     }
 }
@@ -199,7 +194,6 @@ extension ASCChooseRoomTemplateMembersViewModel {
 // MARK: - Extensions
 
 private extension ASCUser {
-    
     func mapToRowModel(isSelected: Bool, onTapAction: @escaping () -> Void) -> ASCRoomTemplateUserMemberRowModel {
         ASCRoomTemplateUserMemberRowModel(
             id: userId ?? "",
@@ -215,11 +209,10 @@ private extension ASCUser {
 }
 
 private extension ASCGroup {
-    
     func mapToGroupRowModel(isSelected: Bool, onTapAction: @escaping () -> Void) -> ASCRoomTemplateGroupMemberRowModel {
         ASCRoomTemplateGroupMemberRowModel(
-            id: self.id ?? "",
-            name: self.name ?? "",
+            id: id ?? "",
+            name: name ?? "",
             isSelected: isSelected,
             onTapAction: onTapAction
         )

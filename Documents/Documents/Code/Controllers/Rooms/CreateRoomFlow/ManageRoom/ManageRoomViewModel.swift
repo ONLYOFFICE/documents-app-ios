@@ -34,9 +34,9 @@ class ManageRoomViewModel: ObservableObject {
     @Published var tags: Set<String> = []
     @Published var activeAlert: ManageRoomView.ActiveAlert?
     @Published var resultModalModel: ResultViewModel?
-    
-    //MARK: Room template
-    
+
+    // MARK: Room template
+
     @Published var accessModels: [ASCTemplateAccessModel] = []
     @Published var isPublicTemplate: Bool = false
 
@@ -419,7 +419,7 @@ class ManageRoomViewModel: ObservableObject {
             createRoom()
         case .edit:
             updateRoom()
-        case .editTemplate(_):
+        case .editTemplate:
             updateRoom()
         case .saveAsTemplate:
             createTemplate()
@@ -446,17 +446,16 @@ class ManageRoomViewModel: ObservableObject {
 // MARK: - Handlers
 
 extension ManageRoomViewModel {
-    
     func onAppear() {
         if case .editTemplate = screenMode {
             fetchAccessList()
         }
     }
-    
+
     func didTapRoomOwnerCell() {
         isUserSelectionPresenting = true
     }
-    
+
     func didTapAccessToTemplate() {
         isRoomTemplateAccessScreenPresenting = true
     }
@@ -615,7 +614,7 @@ private extension ManageRoomViewModel {
     }
 
     // MARK: - Room template
-    
+
     func fetchAccessList() {
         guard let template = editingRoom else { return }
         Task {
@@ -628,8 +627,8 @@ private extension ManageRoomViewModel {
                 print("Failed to get access list: \(error.localizedDescription)")
             }
         }
-     }
-    
+    }
+
     func getTemplateAvailability() {
         switch screenMode {
         case let .editTemplate(template):
@@ -670,7 +669,7 @@ private extension ManageRoomViewModel {
                 switch event {
                 case .begin:
                     break
-                case .progress(let progress):
+                case let .progress(progress):
                     await MainActor.run {
                         MBProgressHUD.currentHUD?.progress = Float(progress)
                     }
@@ -683,7 +682,7 @@ private extension ManageRoomViewModel {
                         self.isSaving = false
                     }
                     self.onCreate(template)
-                case .failure(let error):
+                case let .failure(error):
                     await MainActor.run {
                         self.resultModalModel = .init(
                             result: .failure,
@@ -695,7 +694,7 @@ private extension ManageRoomViewModel {
             }
         }
     }
-    
+
     func createTemplate() {
         let model = CreateRoomTemplateModel(
             title: roomName,
@@ -711,7 +710,7 @@ private extension ManageRoomViewModel {
                 switch event {
                 case .begin:
                     break
-                case .progress(let value):
+                case let .progress(value):
                     await MainActor.run {
                         MBProgressHUD.currentHUD?.progress = Float(value)
                     }
@@ -726,7 +725,7 @@ private extension ManageRoomViewModel {
                     if let editingRoom {
                         onCreate(editingRoom)
                     }
-                case .failure(let error):
+                case let .failure(error):
                     await MainActor.run {
                         self.resultModalModel = .init(
                             result: .failure,

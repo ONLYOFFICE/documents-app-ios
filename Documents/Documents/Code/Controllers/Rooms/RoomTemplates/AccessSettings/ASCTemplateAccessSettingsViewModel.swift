@@ -1,5 +1,5 @@
 //
-//  ASCAccessSettingsViewModel.swift
+//  ASCTemplateAccessSettingsViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 06.06.2025.
@@ -12,61 +12,59 @@ import SwiftUI
 
 @MainActor
 final class ASCTemplateAccessSettingsViewModel: ObservableObject {
-    
     typealias ASCTemplate = ASCFolder
-    
+
     @Published var dataModel: DataModel = .empty
     @Published var isLoading = true
-    
+
     var screenModel: ScreenModel {
         ScreenModel(
             accessRowModels: accessRowModels
         )
     }
-    
+
     var template: ASCTemplate
     var templateAdmin: ASCUser?
-    
+
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
-    
+
     init(template: ASCTemplate) {
         self.template = template
-        self.templateAdmin = template.createdBy
+        templateAdmin = template.createdBy
     }
 }
 
 // MARK: - Public methods
 
 extension ASCTemplateAccessSettingsViewModel {
-    
     func loadData() {
         guard dataModel.isInitalFetchCompleted == false else { return }
         isLoading = true
         Task {
             async let accessList = fetchAccessList()
             async let isPublic = isRoomTemplatePublic()
-            
+
             do {
-                let (list, isPublic) = try await (accessList, isPublic)
+                let (list, isPublic) = try await(accessList, isPublic)
                 self.dataModel.initialAccessModels = list
                 self.dataModel.accessModels = list
                 self.dataModel.isTemplateAvailableForEveryone = isPublic
             } catch {
                 log.error(": \(error.localizedDescription)")
             }
-            
+
             isLoading = false
             dataModel.isInitalFetchCompleted = true
         }
     }
-    
+
     func save() async {
         isLoading = true
         dataModel.saveButtonIsEnabled = false
         let isPublic = dataModel.isTemplateAvailableForEveryone
         do {
-            try await self.makeRoomTemplatePublic(isPublic: isPublic)
-            try await self.setAccess()
+            try await makeRoomTemplatePublic(isPublic: isPublic)
+            try await setAccess()
         } catch {
             log.error("Failed to update template: \(error.localizedDescription)")
         }
@@ -94,20 +92,20 @@ extension ASCTemplateAccessSettingsViewModel {
         guard let templateId = Int(template.id) else { return }
         try await roomTemplatesNetworkService.setRoomTemplateAsPublic(templateId: templateId, isPublic: isPublic)
     }
-    
+
     func setRoomTemplateAccess() {
         let inviteRequestModel = OnlyofficeInviteRequestModel()
         inviteRequestModel.notify = false
     }
-    
+
     func didTapChooseFromList() {
         dataModel.isChooseFromListScreenDisplaying = true
     }
-    
+
     func didToggleTemplateAvailableForEveryone(_ value: Bool) {
         dataModel.isTemplateAvailableForEveryone = value
     }
-    
+
     func removeAccess(at offsets: IndexSet) {
         offsets
             .map { accessRowModels[$0].id }
@@ -117,12 +115,12 @@ extension ASCTemplateAccessSettingsViewModel {
                 }
             }
     }
-    
+
     func onChooseMembersAdd(model: ASCChooseRoomTemplateMembersViewModel.SelectedMembers) {
         dataModel.isChooseFromListScreenDisplaying = false
         dataModel.accessModels.append(contentsOf:
             model.users.map { user in
-                return ASCTemplateAccessModel(
+                ASCTemplateAccessModel(
                     access: .read,
                     sharedTo: ASCTemplateAccessSharedToModel(
                         id: user.userId,
@@ -151,7 +149,6 @@ extension ASCTemplateAccessSettingsViewModel {
 // MARK: - Mapper
 
 private extension ASCTemplateAccessSettingsViewModel {
-    
     var accessRowModels: [ASCAccessRowModel] {
         dataModel.accessModels
             .filter { $0.access != ASCShareAccess.none }
@@ -162,11 +159,11 @@ private extension ASCTemplateAccessSettingsViewModel {
                     image: {
                         switch $0.subjectType {
                         case .user:
-                                .url($0.sharedTo?.avatar ?? "")
+                            .url($0.sharedTo?.avatar ?? "")
                         case .group:
-                                .asset(Asset.Images.avatarDefaultGroup)
+                            .asset(Asset.Images.avatarDefaultGroup)
                         case .none:
-                                .asset(Asset.Images.avatarDefault)
+                            .asset(Asset.Images.avatarDefault)
                         }
                     }($0)
                 )
@@ -174,15 +171,15 @@ private extension ASCTemplateAccessSettingsViewModel {
     }
 }
 
-//MARK: - Private methods
+// MARK: - Private methods
 
 private extension ASCTemplateAccessSettingsViewModel {
-   func fetchAccessList() async throws ->  [ASCTemplateAccessModel] {
+    func fetchAccessList() async throws -> [ASCTemplateAccessModel] {
         try await roomTemplatesNetworkService.getAccessList(template: template)
-   }
+    }
 
     func isRoomTemplatePublic() async throws -> Bool {
-       try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
+        try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
     }
 }
 
@@ -197,10 +194,10 @@ extension ASCTemplateAccessSettingsViewModel {
         var isChooseFromListScreenDisplaying = false
         fileprivate var initialAccessModels: [ASCTemplateAccessModel] = []
         fileprivate var accessModels: [ASCTemplateAccessModel]
-        
+
         static let empty = DataModel(accessModels: [])
     }
-    
+
     struct ScreenModel {
         let accessRowModels: [ASCAccessRowModel]
     }

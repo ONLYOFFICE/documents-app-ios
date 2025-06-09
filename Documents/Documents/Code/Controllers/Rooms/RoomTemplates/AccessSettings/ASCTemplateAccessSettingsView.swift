@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ASCTemplateAccessSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @ObservedObject var viewModel: ASCTemplateAccessSettingsViewModel
-    
+
     var body: some View {
         ZStack {
             if viewModel.dataModel.isInitalFetchCompleted {
@@ -50,7 +50,7 @@ struct ASCTemplateAccessSettingsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-                .disabled(!viewModel.dataModel.saveButtonIsEnabled)
+            .disabled(!viewModel.dataModel.saveButtonIsEnabled)
         )
         .onAppear {
             viewModel.loadData()
@@ -63,7 +63,8 @@ struct ASCTemplateAccessSettingsView: View {
     }
 }
 
-//MARK: - Sections
+// MARK: - Sections
+
 private extension ASCTemplateAccessSettingsView {
     @ViewBuilder
     var availableForEveryoneSection: some View {
@@ -72,7 +73,7 @@ private extension ASCTemplateAccessSettingsView {
             templateAvailabiltyCell
         }
     }
-    
+
     @ViewBuilder
     var addUsersAndGroupsSection: some View {
         Section(
@@ -82,7 +83,7 @@ private extension ASCTemplateAccessSettingsView {
             chooseFromListCell
         }
     }
-    
+
     @ViewBuilder
     var accessToTemplateSection: some View {
         if !viewModel.screenModel.accessRowModels.isEmpty {
@@ -96,7 +97,7 @@ private extension ASCTemplateAccessSettingsView {
     }
 }
 
-//MARK: - Cells
+// MARK: - Cells
 
 private extension ASCTemplateAccessSettingsView {
     var chooseFromListCell: some View {
@@ -110,7 +111,7 @@ private extension ASCTemplateAccessSettingsView {
             viewModel.didTapChooseFromList()
         }
     }
-    
+
     var templateAvailabiltyCell: some View {
         Toggle(isOn: $viewModel.dataModel.isTemplateAvailableForEveryone) {
             Text("Template available to everyone")
@@ -120,6 +121,7 @@ private extension ASCTemplateAccessSettingsView {
 }
 
 // MARK: - Navigation
+
 private extension View {
     @ViewBuilder
     func navigateToChooseMembers(isActive: Binding<Bool>, viewModel: ASCTemplateAccessSettingsViewModel) -> some View {

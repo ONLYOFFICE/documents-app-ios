@@ -290,19 +290,19 @@ enum OnlyofficeAPI {
             static func roomIndexExport(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
             }
-            
+
             static func getRoomTemplateAccessList(template: ASCFolder) -> Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>> {
                 return Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>>.make(String(format: Path.shareRoom, template.id), .get)
             }
-            
+
             static func setRoomTemplateAccess(template: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, template.id), .put)
             }
-            
+
             static func setRoomTemplateAsPublic() -> Endpoint<OnlyofficeResponseBase> {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.publicRoomTemplate), .put)
             }
-            
+
             static func getRoomTemplateIsPiblic(template: ASCFolder) -> Endpoint<OnlyofficeResponseType<Bool>> {
                 return Endpoint<OnlyofficeResponseType<Bool>>.make(String(format: Path.isTemplatePublic, template.id), .get)
             }

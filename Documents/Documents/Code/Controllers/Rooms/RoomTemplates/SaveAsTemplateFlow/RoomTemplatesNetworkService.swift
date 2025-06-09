@@ -29,7 +29,7 @@ protocol ASCRoomTemplatesNetworkServiceProtocol {
 
 final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
-    
+
     func getIsRoomTemplateAvailableForEveryone(template: ASCFolder) async throws -> Bool {
         return try await withCheckedThrowingContinuation { continuation in
             networkService.request(OnlyofficeAPI.Endpoints.Rooms.getRoomTemplateIsPiblic(template: template)) { result, error in
@@ -39,10 +39,9 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                     continuation.resume(throwing: error ?? Errors.emptyResponse)
                 }
             }
-            
         }
     }
-    
+
     func setRoomTemplateAsPublic(templateId: Int, isPublic: Bool = true) async throws {
         let requestModel = ASCSetRoomTemplateAvailableForEveryoneRequestModel(id: templateId, isPublic: isPublic)
         try await withCheckedThrowingContinuation { continuation in
@@ -81,8 +80,8 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
-    func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]  {
+
+    func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel] {
         return try await withCheckedThrowingContinuation { continuation in
             networkService.request(OnlyofficeAPI.Endpoints.Rooms.getRoomTemplateAccessList(template: template)) { result, error in
                 if let accessList = result?.result {
@@ -96,7 +95,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
 
     func fetchTemplates() async throws -> [ASCFolder] {
         let params = ["searchArea": "Templates"]
-        
+
         return try await withCheckedThrowingContinuation { continuation in
             networkService.request(OnlyofficeAPI.Endpoints.Rooms.roomTemplates(), params) { result, error in
                 if let templates = result?.result?.folders {
@@ -107,7 +106,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<RoomCreationProgress> {
         AsyncStream { [weak self] continuation in
             guard let self else {
@@ -128,7 +127,8 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                                 continuation.yield(.failure(error))
                                 continuation.finish()
                             } else if let operation = result?.result?.first,
-                                      let progress = operation.progress {
+                                      let progress = operation.progress
+                            {
                                 if progress >= 100 {
                                     continuation.yield(.progress(1.0))
                                     continuation.yield(.success)
@@ -152,7 +152,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress> {
         AsyncStream { continuation in
             var cancel = false
@@ -181,7 +181,8 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                             continuation.yield(.failure(error))
                             continuation.finish()
                         } else if let status = result?.result,
-                                  let progress = status.progress {
+                                  let progress = status.progress
+                        {
                             if progress >= 100 {
                                 continuation.yield(.progress(1.0))
                                 continuation.yield(.success)
@@ -203,13 +204,14 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<RoomCreationProgress> {
         AsyncStream { continuation in
             var cancel = false
 
             guard let roomIdString = room.roomId,
-                  let roomId = Int(roomIdString) else {
+                  let roomId = Int(roomIdString)
+            else {
                 continuation.yield(.failure(Errors.invalidData))
                 continuation.finish()
                 return
@@ -237,7 +239,8 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                                 continuation.yield(.failure(error))
                                 continuation.finish()
                             } else if let status = result?.result,
-                                      let progress = status.progress {
+                                      let progress = status.progress
+                            {
                                 if progress >= 100 {
                                     continuation.yield(.progress(1.0))
                                     continuation.yield(.success)

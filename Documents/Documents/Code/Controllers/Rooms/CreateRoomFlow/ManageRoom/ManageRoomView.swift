@@ -109,7 +109,7 @@ struct ManageRoomView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var accessToTemplateSection: some View {
         if case .editTemplate = viewModel.screenMode {
@@ -121,20 +121,20 @@ struct ManageRoomView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var tagsFooter: some View {
         switch viewModel.screenMode {
-        case .editTemplate(_):
-            Text ("Tags are applied to the room which will be created based on this template.")
+        case .editTemplate:
+            Text("Tags are applied to the room which will be created based on this template.")
         default:
             Text("")
         }
     }
-    
+
     @ViewBuilder
     private var accessToTemplateFooter: some View {
-        Text ("Access to template. You can select members who can create rooms based on this template.")
+        Text("Access to template. You can select members who can create rooms based on this template.")
     }
 
     @ViewBuilder
@@ -271,7 +271,7 @@ private extension View {
             navigationBarTitle(Text("Create room"), displayMode: .inline)
         case .saveAsTemplate:
             navigationBarTitle(Text("Save as template"), displayMode: .inline)
-        case .editTemplate(_):
+        case .editTemplate:
             navigationBarTitle(Text("Edit template"), displayMode: .inline)
         }
     }
@@ -311,7 +311,7 @@ private extension View {
             )
         })
     }
-    
+
     @ViewBuilder
     func navigateToRoomTemplateAccessScreenPresenting(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         if let template = viewModel.editingRoom {
@@ -439,7 +439,7 @@ extension ManageRoomScreenMode {
         switch self {
         case .create, .saveAsTemplate, .createFromTemplate:
             return NSLocalizedString("Create", comment: "")
-        case .edit, .editTemplate(_):
+        case .edit, .editTemplate:
             return NSLocalizedString("Save", comment: "")
         }
     }

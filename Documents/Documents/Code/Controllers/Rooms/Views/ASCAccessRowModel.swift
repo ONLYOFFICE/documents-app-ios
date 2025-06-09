@@ -6,15 +6,15 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct ASCAccessRowModel: Identifiable {
     var id: String
     var name: String
     var image: ImageSourceType
     var onTapAction: (() -> Void)?
-    
+
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
@@ -35,32 +35,31 @@ struct ASCAccessRow: View {
             model.onTapAction?()
         }
     }
-        
-        
-        @ViewBuilder
-        private func imageView(for imageType: ASCAccessRowModel.ImageSourceType) -> some View {
-            switch imageType {
-            case let .url(string):
-                if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
-                   !string.contains(String.defaultUserPhotoSize),
-                   let url = URL(string: portal + string)
-                {
-                    KFImage(url)
-                        .resizable()
-                        .frame(width: Constants.imageWidth, height: Constants.imageHeight)
-                        .cornerRadius(Constants.imageCornerRadius)
-                        .clipped()
-                } else {
-                    Image(asset: Asset.Images.avatarDefault)
-                        .resizable()
-                        .frame(width: Constants.imageWidth, height: Constants.imageHeight)
-                }
-            case let .asset(asset):
-                Image(asset: asset)
+
+    @ViewBuilder
+    private func imageView(for imageType: ASCAccessRowModel.ImageSourceType) -> some View {
+        switch imageType {
+        case let .url(string):
+            if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
+               !string.contains(String.defaultUserPhotoSize),
+               let url = URL(string: portal + string)
+            {
+                KFImage(url)
+                    .resizable()
+                    .frame(width: Constants.imageWidth, height: Constants.imageHeight)
+                    .cornerRadius(Constants.imageCornerRadius)
+                    .clipped()
+            } else {
+                Image(asset: Asset.Images.avatarDefault)
                     .resizable()
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
             }
+        case let .asset(asset):
+            Image(asset: asset)
+                .resizable()
+                .frame(width: Constants.imageWidth, height: Constants.imageHeight)
         }
+    }
 }
 
 private enum Constants {

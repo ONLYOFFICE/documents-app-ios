@@ -1802,7 +1802,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         present(vc, animated: true, completion: nil)
     }
-    
+
     func deleteRoomTemplate(template: ASCFolder) {
         Task {
             var hud: MBProgressHUD?
@@ -1817,12 +1817,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         hud?.label.text = NSLocalizedString("Deleting", comment: "")
                     }
 
-                case .progress(let value):
+                case let .progress(value):
                     await MainActor.run {
                         hud?.progress = Float(value)
                     }
 
-                case .failure(let error):
+                case let .failure(error):
                     await MainActor.run {
                         hud?.hide(animated: true)
                         UIAlertController.showError(

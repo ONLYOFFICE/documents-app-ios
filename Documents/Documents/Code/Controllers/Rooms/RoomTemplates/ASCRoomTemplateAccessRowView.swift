@@ -6,20 +6,20 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct ASCRoomTemplateAccessRowViewModel {
     var members: [ASCTemplateAccessModel]
     var isPublicTemplate: Bool
-    
+
     var displayTitle: String {
         let groups = members.filter { $0.isGroup }
         let users = members.filter { $0.isUser }
-        
+
         let groupCount = groups.count
         let userCount = users.count
-        
+
         var components: [String] = []
 
         if userCount == 1 {
@@ -37,24 +37,23 @@ struct ASCRoomTemplateAccessRowViewModel {
         return components.joined(separator: ", ")
     }
 
-    
     var displayedAvatars: [ASCTemplateAccessModel] {
         Array(members.prefix(3))
     }
-    
+
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
     }
 }
 
-fileprivate extension ASCTemplateAccessModel {
+private extension ASCTemplateAccessModel {
     var imageSourceType: ASCRoomTemplateAccessRowViewModel.ImageSourceType {
         guard let urlString = sharedTo?.avatar else {
             return .asset(
-                self.isGroup
-                ? Asset.Images.avatarDefaultGroup
-                : Asset.Images.avatarDefault
+                isGroup
+                    ? Asset.Images.avatarDefaultGroup
+                    : Asset.Images.avatarDefault
             )
         }
         return .url(urlString)
@@ -63,7 +62,7 @@ fileprivate extension ASCTemplateAccessModel {
 
 struct ASCRoomTemplateAccessRowView: View {
     var model: ASCRoomTemplateAccessRowViewModel
-    
+
     var body: some View {
         HStack(spacing: 12) {
             if !model.isPublicTemplate {
@@ -92,7 +91,7 @@ struct ASCRoomTemplateAccessRowView: View {
         }
         .padding(.vertical, 8)
     }
-    
+
     @ViewBuilder
     private func imageView(for imageType: ASCRoomTemplateAccessRowViewModel.ImageSourceType) -> some View {
         switch imageType {

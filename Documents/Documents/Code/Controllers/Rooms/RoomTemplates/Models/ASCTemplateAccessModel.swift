@@ -9,12 +9,11 @@
 import ObjectMapper
 
 class ASCTemplateAccessModel: Mappable {
-    
     var access: ASCShareAccess?
     var sharedTo: ASCTemplateAccessSharedToModel?
     var subjectType: SubjectType?
     var isOwner: Bool = false
-    
+
     init(
         access: ASCShareAccess?,
         sharedTo: ASCTemplateAccessSharedToModel?,
@@ -24,25 +23,24 @@ class ASCTemplateAccessModel: Mappable {
         self.sharedTo = sharedTo
         self.subjectType = subjectType
     }
-    
+
     required init?(map: ObjectMapper.Map) {}
-    
+
     func mapping(map: ObjectMapper.Map) {
         access <- (map["access"], EnumTransform())
         sharedTo <- map["sharedTo"]
-        subjectType <-  (map["subjectType"], EnumTransform())
+        subjectType <- (map["subjectType"], EnumTransform())
         isOwner <- map["isOwner"]
     }
 }
 
 class ASCTemplateAccessSharedToModel: Mappable {
-    
     var id: String?
     var name: String?
     var avatar: String?
-    
+
     required init?(map: ObjectMapper.Map) {}
-    
+
     init(
         id: String? = nil,
         name: String? = nil,
@@ -52,7 +50,7 @@ class ASCTemplateAccessSharedToModel: Mappable {
         self.name = name
         self.avatar = avatar
     }
-    
+
     func mapping(map: ObjectMapper.Map) {
         id <- (map["id"], ASCStringTransform())
         name <- (map["name"], ASCStringTransform())

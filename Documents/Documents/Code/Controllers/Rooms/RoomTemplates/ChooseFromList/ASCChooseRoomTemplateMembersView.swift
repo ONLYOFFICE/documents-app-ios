@@ -6,20 +6,19 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct ASCChooseRoomTemplateMembersView: View {
-
     @StateObject var viewModel: ASCChooseRoomTemplateMembersViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
             header
-            
+
             membersList
-            
+
             footer
         }
         .onAppear { viewModel.onAppear() }
@@ -37,7 +36,7 @@ struct ASCChooseRoomTemplateMembersView: View {
             }
         )
     }
-    
+
     private var header: some View {
         VStack {
             searchBar
@@ -45,12 +44,12 @@ struct ASCChooseRoomTemplateMembersView: View {
             describingText
         }
     }
-    
+
     private var searchBar: some View {
         SearchBar(text: $viewModel.dataModel.searchText)
             .padding(.horizontal, 8)
     }
-    
+
     private var segment: some View {
         Picker("Select", selection: $viewModel.dataModel.selectedSegment) {
             ForEach(ASCChooseRoomTemplateMembersViewModel.Segment.allCases) { segment in
@@ -60,8 +59,7 @@ struct ASCChooseRoomTemplateMembersView: View {
         .pickerStyle(SegmentedPickerStyle())
         .padding(.horizontal, 16)
     }
-    
-    
+
     private var describingText: some View {
         let text = if viewModel.dataModel.selectedSegment == .users {
             "Only DocSpace and Room admins are shown here"
@@ -80,21 +78,21 @@ struct ASCChooseRoomTemplateMembersView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var membersList: some View {
         List {
-            return ForEach(viewModel.screenModel.rows) { cell in
+            ForEach(viewModel.screenModel.rows) { cell in
                 switch cell {
-                case .user(let model):
+                case let .user(model):
                     ASCRoomTemplateMemberRow(model: .user(model))
-                case .group(let model):
+                case let .group(model):
                     ASCRoomTemplateMemberRow(model: .group(model))
                 }
             }
         }
     }
-    
+
     private var footer: some View {
         HStack {
             Spacer()
@@ -108,8 +106,8 @@ struct ASCChooseRoomTemplateMembersView: View {
                     .padding(.horizontal, 16)
                     .background(
                         viewModel.screenModel.isAddButtonEnabled
-                        ? Asset.Colors.brend.swiftUIColor
-                        : Color.gray
+                            ? Asset.Colors.brend.swiftUIColor
+                            : Color.gray
                     )
                     .foregroundColor(.white)
                     .cornerRadius(14)

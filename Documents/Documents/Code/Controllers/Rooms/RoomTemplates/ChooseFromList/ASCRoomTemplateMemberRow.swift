@@ -5,8 +5,8 @@
 //  Created by Lolita Chernysheva on 09.06.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct ASCRoomTemplateUserMemberRowModel {
     var id: String
@@ -17,7 +17,7 @@ struct ASCRoomTemplateUserMemberRowModel {
     var isOwner: Bool
     var isSelected: Bool
     var onTapAction: (() -> Void)?
-    
+
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
@@ -37,19 +37,19 @@ struct ASCRoomTemplateMemberRow: View {
     var body: some View {
         HStack(alignment: .center) {
             switch model {
-            case .user(let userModel):
+            case let .user(userModel):
                 userRow(userModel)
 
-            case .group(let groupModel):
+            case let .group(groupModel):
                 groupRow(groupModel)
             }
         }
         .contentShape(Rectangle())
         .onTapGesture {
             switch model {
-            case .user(let userModel):
+            case let .user(userModel):
                 userModel.onTapAction?()
-            case .group(let groupModel):
+            case let .group(groupModel):
                 groupModel.onTapAction?()
             }
         }
@@ -61,9 +61,9 @@ struct ASCRoomTemplateMemberRow: View {
             .resizable()
             .frame(width: 24, height: 24)
             .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
-        
+
         imageView(for: model.image)
-        
+
         VStack(alignment: .leading) {
             Text(verbatim: model.userName)
                 .lineLimit(1)
@@ -81,7 +81,7 @@ struct ASCRoomTemplateMemberRow: View {
             .resizable()
             .frame(width: 24, height: 24)
             .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
-        
+
         Asset.Images.avatarDefaultGroup.swiftUIImage
             .resizable()
             .frame(width: Constants.imageWidth, height: Constants.imageHeight)

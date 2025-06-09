@@ -1223,7 +1223,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         switch access {
-        case .none, .readWrite, .review, .comment, .fillforms:
+        case .none, .readWrite, .review, .comment, .fillforms, .customFilter:
             if let folder = folder, isInDocSpaceCategory(folder: folder) || ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
                 return securityAllowEdit || (isRoot(folder: folder) && folder.security.create)
             } else {

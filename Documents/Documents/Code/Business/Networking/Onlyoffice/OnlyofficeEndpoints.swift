@@ -291,8 +291,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
             }
             
-            static func getRoomTemplateAccessList(template: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<[ASCTemplateAccessModel]>> {
-                return Endpoint<OnlyofficeResponseCodable<[ASCTemplateAccessModel]>>.make(String(format: Path.shareRoom, template.id), .get)
+            static func getRoomTemplateAccessList(template: ASCFolder) -> Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>> {
+                return Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>>.make(String(format: Path.shareRoom, template.id), .get)
             }
             
             static func setRoomTemplateAccess(template: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>> {

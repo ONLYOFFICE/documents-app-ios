@@ -22,12 +22,8 @@ struct ManageRoomView: View {
             roomTypeSection
             roomImageAndNameSection
             roomTagsSection
-            switch viewModel.screenMode {
-            case .editTemplate(_):
-                accessToTemplateSection
-            default:
-                roomOwnerSection
-            }
+            accessToTemplateSection
+            roomOwnerSection
             thirdPartySection
             automaticIndexationSection
             fileLifetimeSection
@@ -36,6 +32,7 @@ struct ManageRoomView: View {
             storageQuotaSection
         }
         .hideKeyboardOnDrag()
+        .onAppear { viewModel.onAppear() }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
@@ -93,7 +90,8 @@ struct ManageRoomView: View {
 
     @ViewBuilder
     private var roomOwnerSection: some View {
-        if viewModel.isEditMode {
+        /// Not an editTemplate mode
+        if case .editTemplate = viewModel.screenMode { } else if viewModel.isEditMode {
             Section {
                 HStack(spacing: 8) {
                     Text("Owner")
@@ -114,11 +112,13 @@ struct ManageRoomView: View {
     
     @ViewBuilder
     private var accessToTemplateSection: some View {
-        Section(footer: accessToTemplateFooter) {
-            ASCRoomTemplateAccessRowView(model: ASCRoomTemplateAccessRowViewModel(users: viewModel.accessModels, isPublicTemplate: viewModel.isPublicTemplate))
-                .onTapGesture {
-                    viewModel.didTapAccessToTemplate()
-                }
+        if case .editTemplate = viewModel.screenMode {
+            Section(footer: accessToTemplateFooter) {
+                ASCRoomTemplateAccessRowView(model: ASCRoomTemplateAccessRowViewModel(members: viewModel.accessModels, isPublicTemplate: viewModel.isPublicTemplate))
+                    .onTapGesture {
+                        viewModel.didTapAccessToTemplate()
+                    }
+            }
         }
     }
     

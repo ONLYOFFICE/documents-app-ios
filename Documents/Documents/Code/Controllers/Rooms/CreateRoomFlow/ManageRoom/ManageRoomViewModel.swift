@@ -446,6 +446,13 @@ class ManageRoomViewModel: ObservableObject {
 // MARK: - Handlers
 
 extension ManageRoomViewModel {
+    
+    func onAppear() {
+        if case .editTemplate = screenMode {
+            fetchAccessList()
+        }
+    }
+    
     func didTapRoomOwnerCell() {
         isUserSelectionPresenting = true
     }

@@ -10,29 +10,54 @@ import SwiftUI
 import Kingfisher
 
 struct ASCRoomTemplateAccessRowViewModel {
-    var users: [ASCTemplateAccessModel]
+    var members: [ASCTemplateAccessModel]
     var isPublicTemplate: Bool
     
     var displayTitle: String {
+        let groups = members.filter { $0.isGroup }
+        let users = members.filter { $0.isUser }
+        
+        let groupCount = groups.count
         let userCount = users.count
-        guard userCount > 0 else { return "" }
+        
+        var components: [String] = []
 
         if userCount == 1 {
-            return "\(users.first?.sharedTo?.displayName ?? "") (Me)"
-        } else if userCount == 2 {
-            return "Me and 1 User"
-        } else {
-            return "Me and \(userCount - 1) Users"
+            components.append("\(users.first?.sharedTo?.name ?? "") (Me)")
+        } else if userCount > 1 {
+            components.append("Me and \(userCount - 1) Users")
         }
+
+        if groupCount == 1 {
+            components.append("1 Group")
+        } else if groupCount > 1 {
+            components.append("\(groupCount) Groups")
+        }
+
+        return components.joined(separator: ", ")
     }
+
     
     var displayedAvatars: [ASCTemplateAccessModel] {
-        Array(users.prefix(3))
+        Array(members.prefix(3))
     }
     
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
+    }
+}
+
+fileprivate extension ASCTemplateAccessModel {
+    var imageSourceType: ASCRoomTemplateAccessRowViewModel.ImageSourceType {
+        guard let urlString = sharedTo?.avatar else {
+            return .asset(
+                self.isGroup
+                ? Asset.Images.avatarDefaultGroup
+                : Asset.Images.avatarDefault
+            )
+        }
+        return .url(urlString)
     }
 }
 
@@ -43,8 +68,8 @@ struct ASCRoomTemplateAccessRowView: View {
         HStack(spacing: 12) {
             if !model.isPublicTemplate {
                 HStack(spacing: -10) {
-                    ForEach(model.displayedAvatars, id: \.sharedTo?.userId) { user in
-                        imageView(for: .url(user.sharedTo?.avatar ?? ""))
+                    ForEach(model.displayedAvatars, id: \.sharedTo?.id) { member in
+                        imageView(for: member.imageSourceType)
                     }
                 }
             }

@@ -26,23 +26,16 @@ struct ASCTemplateAccessSettingsView: View {
             } else {
                 ActivityIndicatorView()
             }
-            NavigationLink(
-                destination: InviteUsersView(viewModel: InviteUsersViewModel(room: viewModel.template)),
-                isActive: Binding(
-                    get: { viewModel.dataModel.chooseFromListScreenDisplaying },
-                    set: { viewModel.dataModel.chooseFromListScreenDisplaying = $0 }
-                )
-            ) {
-                EmptyView()
+            if viewModel.isLoading {
+                ActivityIndicatorView()
             }
-            .hidden()
         }
-
         .navigationTitle(Text("Access settings"))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .navigateToChooseMembers(isActive: $viewModel.dataModel.isChooseFromListScreenDisplaying, viewModel: viewModel)
         .navigationBarItems(
-            leading:Button(
+            leading: Button(
                 action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
@@ -51,12 +44,21 @@ struct ASCTemplateAccessSettingsView: View {
                         Text("Back")
                     }
                 },
-            trailing:Button("Save") {
-                viewModel.save()
+            trailing: Button("Save") {
+                Task {
+                    await viewModel.save()
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
+                .disabled(!viewModel.dataModel.saveButtonIsEnabled)
         )
         .onAppear {
             viewModel.loadData()
+        }
+        .onReceive(viewModel.$dataModel) { _ in
+            if viewModel.dataModel.dissmiss {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }
@@ -114,5 +116,21 @@ private extension ASCTemplateAccessSettingsView {
             Text("Template available to everyone")
         }
         .tintColor(Color(Asset.Colors.brend.color))
+    }
+}
+
+// MARK: - Navigation
+private extension View {
+    @ViewBuilder
+    func navigateToChooseMembers(isActive: Binding<Bool>, viewModel: ASCTemplateAccessSettingsViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            ASCChooseRoomTemplateMembersView(
+                viewModel: ASCChooseRoomTemplateMembersViewModel(
+                    ignoreMembersIds: Set(viewModel.screenModel.accessRowModels.compactMap(\.id))
+                ) {
+                    viewModel.onChooseMembersAdd(model: $0)
+                }
+            )
+        })
     }
 }

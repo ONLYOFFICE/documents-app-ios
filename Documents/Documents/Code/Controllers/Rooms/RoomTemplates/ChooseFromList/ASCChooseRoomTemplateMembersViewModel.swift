@@ -162,6 +162,13 @@ extension ASCChooseRoomTemplateMembersViewModel {
         case groups = "Groups"
 
         var id: String { rawValue }
+
+        var localizedString: String {
+            switch self {
+            case .users: NSLocalizedString("Members", comment: "")
+            case .groups: NSLocalizedString("Groups", comment: "")
+            }
+        }
     }
 
     struct ScreenModel {

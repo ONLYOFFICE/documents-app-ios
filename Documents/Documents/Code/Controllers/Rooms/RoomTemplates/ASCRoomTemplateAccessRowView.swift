@@ -19,19 +19,19 @@ struct ASCRoomTemplateAccessRowViewModel {
 
         let groupCount = groups.count
         let userCount = users.count
-
+        
+        let stringSingleUser = NSLocalizedString("Me", comment: "")
+        let stringSeveralUsers = String(format: NSLocalizedString("Me and %ld Users", comment: ""), userCount - 1)
         var components: [String] = []
 
         if userCount == 1 {
-            components.append("\(users.first?.sharedTo?.name ?? "") (Me)")
+            components.append(stringSingleUser)
         } else if userCount > 1 {
-            components.append("Me and \(userCount - 1) Users")
+            components.append(stringSeveralUsers)
         }
 
-        if groupCount == 1 {
-            components.append("1 Group")
-        } else if groupCount > 1 {
-            components.append("\(groupCount) Groups")
+        if groupCount > 0 {
+            components.append(String(format: NSLocalizedString("%ld Groups", comment: ""), groupCount))
         }
 
         return components.joined(separator: ", ")

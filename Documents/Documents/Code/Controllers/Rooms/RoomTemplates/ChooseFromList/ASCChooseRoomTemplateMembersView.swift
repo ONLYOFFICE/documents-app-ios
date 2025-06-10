@@ -22,7 +22,7 @@ struct ASCChooseRoomTemplateMembersView: View {
             footer
         }
         .onAppear { viewModel.onAppear() }
-        .navigationTitle("Select members")
+        .navigationTitle(NSLocalizedString("Select members", comment: ""))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
@@ -53,7 +53,7 @@ struct ASCChooseRoomTemplateMembersView: View {
     private var segment: some View {
         Picker("Select", selection: $viewModel.dataModel.selectedSegment) {
             ForEach(ASCChooseRoomTemplateMembersViewModel.Segment.allCases) { segment in
-                Text(segment.rawValue).tag(segment)
+                Text(verbatim: segment.localizedString).tag(segment)
             }
         }
         .pickerStyle(SegmentedPickerStyle())
@@ -62,15 +62,15 @@ struct ASCChooseRoomTemplateMembersView: View {
 
     private var describingText: some View {
         let text = if viewModel.dataModel.selectedSegment == .users {
-            "Only DocSpace and Room admins are shown here"
+            NSLocalizedString("Only DocSpace and Room admins are shown here", comment: "")
         } else if viewModel.dataModel.selectedSegment == .groups {
-            "Only DocSpace and Room admins from the selected groups will be able to create rooms using this template."
+            NSLocalizedString("Only DocSpace and Room admins from the selected groups will be able to create rooms using this template.", comment: "")
         } else {
             ""
         }
         return Group {
             if !text.isEmpty {
-                Text(text)
+                Text(verbatim: text)
                     .font(.caption)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)

@@ -71,7 +71,7 @@ struct RoomSelectionView: View {
                     }
                 }
         }
-        .navigationTitle("Choose room type")
+        .navigationTitle(NSLocalizedString("Choose room type", comment: ""))
         .navigationBarItems(isLastInNCStack: dismissOnSelection, presentationMode: presentationMode)
         .background(
             NavigationLink(

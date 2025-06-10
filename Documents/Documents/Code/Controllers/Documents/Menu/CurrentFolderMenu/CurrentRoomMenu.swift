@@ -207,7 +207,8 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             entityOperationsGroup.append(
                 UIAction(
                     title: NSLocalizedString("Delete template", comment: "Button title"),
-                    image: UIImage(systemName: "trash")
+                    image: UIImage(systemName: "trash"),
+                    attributes: [.destructive]
                 ) { [weak viewController] action in
                     viewController?.deleteRoomTemplate(template: folder)
                 }

@@ -33,7 +33,7 @@ class RoomSelectionViewModel: ObservableObject {
         if isCreateTemplateEnabled {
             models.append(
                 RoomTypeRowModel(
-                    name: "From template",
+                    name: NSLocalizedString("From template", comment: ""),
                     description: NSLocalizedString("Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.", comment: ""),
                     icon: Asset.Images.listRoomTemplate.image,
                     showDisclosureIndicator: true

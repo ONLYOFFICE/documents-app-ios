@@ -128,6 +128,13 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                         ASCAppSettings.Feature.disableSdkVersionCheck = isOn
                     }
                 )),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: "Allow Large Title (false)",
+                    isOn: ASCAppSettings.Feature.allowLargeTitle,
+                    valueChanged: { isOn in
+                        ASCAppSettings.Feature.allowLargeTitle = isOn
+                    }
+                )),
             ],
             header: NSLocalizedString("Features", comment: "")
         )

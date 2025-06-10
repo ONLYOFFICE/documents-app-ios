@@ -783,12 +783,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         file.id = path
 
         var uploadParams = params ?? [:]
+        let fileName = uploadParams["title"] as? String
         let mime = uploadParams["mime"] as? String
 
         uploadParams.removeAll(keys: ["mime"])
 
-        apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
-            processing(response?.result, progress, error)
+        if let docspaceVersion = apiClient.serverVersion?.docSpace, docspaceVersion.isVersion(greaterThanOrEqualTo: "3.1.0") {
+            apiClient.request(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file)) { multipartFormData in
+                multipartFormData.append(data, withName: "file", fileName: fileName, mimeType: mime)
+            } _: { response, progress, error in
+                processing(response?.result, progress, error)
+            }
+        } else {
+            apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
+                processing(response?.result, progress, error)
+            }
         }
     }
 
@@ -1193,7 +1202,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         let securityAllowEdit: Bool = {
             if let fileSecurity {
-                return fileSecurity.edit || fileSecurity.comment || fileSecurity.fillForms || fileSecurity.review
+                return (fileSecurity.edit && !fileSecurity.startFilling)
+                    || fileSecurity.comment
+                    || fileSecurity.fillForms
+                    || fileSecurity.review
             } else {
                 guard folder != nil else {
                     return fileSecurity?.edit == true
@@ -1215,7 +1227,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         switch access {
-        case .none, .readWrite, .review, .comment, .fillforms:
+        case .none, .readWrite, .review, .comment, .fillforms, .customFilter:
             if let folder = folder, isInDocSpaceCategory(folder: folder) || ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
                 return securityAllowEdit || (isRoot(folder: folder) && folder.security.create)
             } else {
@@ -1468,6 +1480,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if file.isForm, isDocspace, isUserCategory,
+               file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) != true,
                ASCConstants.FileExtensions.forms.contains(fileExtension) || ASCConstants.FileExtensions.pdf == fileExtension
                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .inProcessFormFolder) == true
@@ -1478,6 +1491,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if canEdit {
                     entityActions.insert(.edit)
                 }
+            }
+
+            if file.isForm,
+               isDocspace,
+               file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) == true,
+               file.formFillingStatus == .yourTurn
+            {
+                entityActions.insert(.fillForm)
             }
 
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {
@@ -1511,6 +1532,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if isRoomsCategory, isDocspace, file.security.copyLink {
                 entityActions.insert(.copySharedLink)
+            }
+
+            if file.security.startFilling {
+                // TODO: Docspace 3.1 or older
+                // entityActions.insert(.startFilling)
+            }
+
+            if file.security.fillingStatus {
+                entityActions.insert(.fillingStatus)
             }
 
             if canShowVersion {
@@ -2428,7 +2458,8 @@ extension ASCOnlyofficeProvider {
               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
         else {
             return await withCheckedContinuation { continuation in
-                NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+                NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
                     switch result {
                     case let .success(link):
                         continuation.resume(returning: .success(link.sharedTo.shareLink))

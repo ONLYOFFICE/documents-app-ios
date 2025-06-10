@@ -199,6 +199,15 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             )))
         }
 
+        if file.formFillingStatus != .none {
+            items.append(
+                buildTextBadge(
+                    file.formFillingStatus.localizedString,
+                    color: file.formFillingStatus.uiColor
+                )
+            )
+        }
+
         items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
 
         return {
@@ -396,6 +405,15 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             overlays.append(UIImageView(image: badgeNewImage))
         }
 
+        if file.formFillingStatus != .none {
+            overlays.append(
+                buildTextBadge(
+                    file.formFillingStatus.localizedString,
+                    color: file.formFillingStatus.uiColor
+                )
+            )
+        }
+
         if file.customFilterEnabled {
             overlays.append(filterBadge)
         }
@@ -478,49 +496,69 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         else { return UIView() }
 
         let fileExt = file.title.fileExtension().lowercased()
+        let allowThumbnailPreview = ASCConstants.FileExtensions.images.contains(fileExt) ||
+            (layoutType == .grid && file.thumbnailStatus == .created && file.thumbnailUrl?.isEmpty == false)
+        let defaultIconFormatImage = UIImage.getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
 
         imageView.contentMode = .center
         imageView.alpha = 1
+        imageView.layerBorderWidth = 0
+        imageView.layerBorderColor = .clear
+        imageView.layerCornerRadius = 5
+
         activityIndicator.isHidden = true
 
-        if ASCConstants.FileExtensions.images.contains(fileExt) {
+        if allowThumbnailPreview {
             if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles) {
                 activityIndicator.isHidden = false
                 activityIndicator.startAnimating()
 
                 imageView.alpha = 0
-                imageView.image = iconFormatImage
+                imageView.image = defaultIconFormatImage
+
+                if ASCConstants.FileExtensions.images.contains(fileExt) {
+                    imageView.contentMode = .scaleAspectFit
+                } else {
+                    imageView.contentMode = .scaleAspectFill
+                }
 
                 imageView.kf.setProviderImage(
-                    with: provider.absoluteUrl(from: file.viewUrl),
+                    with: provider.absoluteUrl(from: file.thumbnailUrl ?? file.viewUrl),
                     for: provider,
-                    placeholder: iconFormatImage,
+                    placeholder: defaultIconFormatImage,
                     completionHandler: { [weak self] result in
                         switch result {
                         case .success:
-                            self?.imageView.contentMode = .scaleAspectFit
+                            if ASCConstants.FileExtensions.images.contains(fileExt) {
+                                self?.imageView.contentMode = .scaleAspectFit
+                            } else {
+                                self?.imageView.contentMode = .scaleAspectFill
+                                self?.imageView.layerBorderWidth = 1
+                                self?.imageView.layerBorderColor = .systemGray5
+                            }
                         default:
                             self?.imageView.contentMode = .center
                         }
 
                         self?.activityIndicator.stopAnimating()
                         self?.activityIndicator.isHidden = true
+
                         UIView.animate(withDuration: 0.2) { [weak self] in
                             self?.imageView.alpha = 1
                         }
                     }
                 )
             } else {
-                imageView.image = iconFormatImage
+                imageView.image = defaultIconFormatImage
             }
         } else {
-            imageView.image = .getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
+            imageView.image = defaultIconFormatImage
         }
 
         imageView.removeConstraints(imageView.constraints)
 
         imageView.anchor(
-            widthConstant: preferredSize.width,
+            widthConstant: (allowThumbnailPreview && layoutType == .grid) ? frame.width - 10 : preferredSize.width,
             heightConstant: preferredSize.height
         )
 
@@ -550,6 +588,21 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         authorLabel.text = file.createdBy?.displayName
 
         return authorLabel
+    }
+
+    private func buildTextBadge(_ text: String, color: UIColor) -> ASCPaddingLabel {
+        {
+            $0.backgroundColor = color
+            $0.text = text.capitalized
+            $0.textAlignment = .center
+            $0.textStyle = .caption2White
+            $0.padding = UIEdgeInsets(top: 2, left: 4, bottom: 3, right: 4)
+            $0.layerCornerRadius = 4
+            $0.sizeToFit()
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.heightAnchor.constraint(equalToConstant: 18).isActive = true
+            return $0
+        }(ASCPaddingLabel(frame: .zero))
     }
 
     // MARK: - Handlers

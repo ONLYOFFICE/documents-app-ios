@@ -570,7 +570,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         var downloadUrlString = file.viewUrl ?? ""
 
-        if file.version > 0 {
+        if file.version > 0, file.openVersionMode {
             if var components = URLComponents(string: downloadUrlString) {
                 var queryItems = components.queryItems ?? []
                 queryItems.append(URLQueryItem(name: "version", value: String(file.version)))
@@ -709,6 +709,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         let params: [String: Any] = [
             "mime": Path(file.id).mime ?? DEFAULT_MIME_TYPE,
+            "title": file.title,
         ]
 
         if originalFile.title == file.title {

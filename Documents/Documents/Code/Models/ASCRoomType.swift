@@ -33,7 +33,7 @@ enum ASCRoomType: Int {
         case .public:
             return Asset.Images.listRoomPublicPlanet.image
         case .virtualData:
-            return Asset.Images.listRoomVirtualDataCase.image
+            return Asset.Images.listRoomVdr.image
         default:
             return Asset.Images.listRoomDefault.image
         }
@@ -53,6 +53,25 @@ enum ASCRoomType: Int {
             return NSLocalizedString("Virtual Data Room", comment: "")
         default:
             return ""
+        }
+    }
+}
+
+extension ASCRoomType {
+    var description: String? {
+        switch self {
+        case .custom:
+            return CreatingRoomType.custom.name
+        case .public:
+            return CreatingRoomType.publicRoom.name
+        case .colobaration:
+            return CreatingRoomType.collaboration.name
+        case .fillingForm:
+            return CreatingRoomType.formFilling.name
+        case .virtualData:
+            return CreatingRoomType.virtualData.name
+        default:
+            return nil
         }
     }
 }

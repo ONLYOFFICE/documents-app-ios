@@ -458,7 +458,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         navigationItem.searchController = tableData.isEmpty ? nil : searchController
-        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty
+        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty && ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = !tableData.isEmpty ? .automatic : .never
 
         updateTitleView(collectionView)
@@ -541,6 +541,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
             onlyofficeProvider.folder = folder
+        }
+
+        provider?.cancel()
+        provider?.reset()
+
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
         }
 
         loadFirstPage()
@@ -633,9 +640,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let isDocument = fileExt == ASCConstants.FileExtensions.docx
                 let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
                 let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
-                let isPDF = ASCConstants.FileExtensions.pdfs.contains(fileExt)
-                let isFormExt = ASCConstants.FileExtensions.forms.contains(fileExt)
-                let isForm = isFormExt || (isPDF && file.isForm)
+                let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
                 if isDocument || isSpreadsheet || isPresentation || isForm {
                     provider.open(file: file, openMode: .create, canEdit: true)
@@ -1184,7 +1189,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             emptyView?.isHidden = true
             searchEmptyView?.isHidden = true
 
-            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
             navigationItem.largeTitleDisplayMode = .automatic
 
         } else {
@@ -1910,7 +1915,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             return
         }
 
-        guard file.isForm else { return }
+        guard file.isForm || file.formFillingStatus == .complete else { return }
+
+        let isInsideVDRRoom = file.parent?.parentsFoldersOrCurrentContains(
+            keyPath: \.roomType,
+            value: .virtualData
+        ) == true
+        if isInsideVDRRoom {
+            if file.security.fillForms, file.formFillingStatus == .yourTurn {
+                openFormInFillingModeWithCheckingVersion(file: file)
+            } else {
+                open(file: file, openMode: .view)
+            }
+            return
+        }
 
         let isInsideFillingFormRoom = file.parent?.parentsFoldersOrCurrentContains(
             keyPath: \.roomType,
@@ -1975,6 +1993,48 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         let hostingController = UIHostingController(rootView: fillFormMenuScreen)
         present(hostingController, animated: true, completion: nil)
+    }
+
+    func startFilling(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+
+        let vc = VDRStartFillingViewController()
+        present(vc, animated: true, completion: nil)
+    }
+
+    func fillingStatus(file: ASCFile) {
+        guard file.isForm || file.formFillingStatus == .complete, !file.device else { return }
+
+        let vc = VDRFillingStatusUIHostingController(
+            file: file,
+            onStoppedSuccess: { [weak self] in
+                self?.fetchData()
+            },
+            onFillTapped: { [weak self] in
+                self?.openFormInFillingModeWithCheckingVersion(file: file)
+            }
+        )
+        present(vc, animated: true, completion: nil)
+    }
+
+    func openFormInFillingModeWithCheckingVersion(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+        if ASCEditorManager.shared.checkSDKVersion() {
+            open(file: file, openMode: .fillform)
+        } else {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Filling form", comment: ""),
+                message: NSLocalizedString("The client and server versions are incompatible. You can only open the document in view mode", comment: ""),
+                preferredStyle: .alert,
+                tintColor: nil
+            )
+
+            alertController.addCancel()
+            alertController.addOk { [unowned self] _ in
+                open(file: file, openMode: .view)
+            }
+            present(alertController, animated: true, completion: nil)
+        }
     }
 
     func transformToRoom(entities: [ASCEntity]) {
@@ -2344,7 +2404,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 }
             }
         } else {
-            NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+            let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+            NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
                 handleResult(result.map { $0.sharedTo.shareLink })
             }
         }
@@ -2356,7 +2417,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             file: file,
             networkService: versionHistoryNetworkService
         ) { [weak self] version in
-            self?.open(file: version, openMode: .view)
+            var versionFile = version
+            versionFile.openVersionMode = true
+            self?.open(file: versionFile, openMode: .view)
         } download: { [weak self] versionFile in
             guard let self,
                   let provider else { return }

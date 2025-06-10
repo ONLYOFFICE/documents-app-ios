@@ -57,6 +57,11 @@ struct VDRFillingStatusEventRowViewModel: Identifiable {
         case solid
         case dashed
     }
+
+    enum ImageSourceType {
+        case url(String)
+        case asset(ImageAsset)
+    }
 }
 
 struct VDRFillingStatusEventRowView: View {
@@ -191,7 +196,7 @@ struct VDRFillingStatusEventRowView: View {
     }
 
     @ViewBuilder
-    private func imageView(for imageType: ASCUserRowModel.ImageSourceType) -> some View {
+    private func imageView(for imageType: VDRFillingStatusEventRowViewModel.ImageSourceType) -> some View {
         switch imageType {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,

@@ -8,7 +8,16 @@
 
 import Combine
 import Foundation
+import MBProgressHUD
 import UIKit
+
+enum ManageRoomScreenMode {
+    case create
+    case edit(ASCFolder)
+    case editTemplate(ASCFolder)
+    case saveAsTemplate(ASCFolder)
+    case createFromTemplate(ASCFolder)
+}
 
 class ManageRoomViewModel: ObservableObject {
     // MARK: Published vars
@@ -24,6 +33,12 @@ class ManageRoomViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
     @Published var activeAlert: ManageRoomView.ActiveAlert?
+    @Published var resultModalModel: ResultViewModel?
+
+    // MARK: Room template
+
+    @Published var accessModels: [ASCTemplateAccessModel] = []
+    @Published var isPublicTemplate: Bool = false
 
     // Stroage quota
     @Published var allowChangeStorageQuota: Bool = false
@@ -64,6 +79,7 @@ class ManageRoomViewModel: ObservableObject {
 
     @Published var isRoomSelectionPresenting = false
     @Published var isUserSelectionPresenting = false
+    @Published var isRoomTemplateAccessScreenPresenting = false
     @Published var isStorageSelectionPresenting = false
     @Published var isFolderSelectionPresenting = false
 
@@ -76,6 +92,7 @@ class ManageRoomViewModel: ObservableObject {
         editingRoom?.security.changeOwner == true
     }
 
+    private(set) var editingRoom: ASCRoom?
     private(set) var sizeQuotaFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.allowsFloats = true
@@ -108,6 +125,8 @@ class ManageRoomViewModel: ObservableObject {
         }
         return nil
     }
+
+    var screenMode: ManageRoomScreenMode
 
     var isSaveBtnEnabled: Bool {
         roomName.isEmpty || isSaving
@@ -198,7 +217,6 @@ class ManageRoomViewModel: ObservableObject {
     // MARK: - Private vars
 
     private var onCreate: (ASCFolder) -> Void
-    private let editingRoom: ASCRoom?
     private(set) var provider: ASCFileProviderProtocol?
     private(set) var thirdPartyFolder: ASCFolder?
     private var selectedSubfolder: ASCFolder?
@@ -215,22 +233,25 @@ class ManageRoomViewModel: ObservableObject {
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private lazy var roomQuotaNetworkService = ServicesProvider.shared.roomQuotaNetworkService
+    private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
 
     // MARK: - Init
 
     init(
-        editingRoom: ASCRoom? = nil,
+        screenMode: ManageRoomScreenMode,
         selectedRoomType: RoomTypeModel,
         roomName: String = "",
         hideActivityOnSuccess: Bool = true,
         onCreate: @escaping (ASCFolder) -> Void
     ) {
-        self.editingRoom = editingRoom
         self.selectedRoomType = selectedRoomType
         self.hideActivityOnSuccess = hideActivityOnSuccess
         self.onCreate = onCreate
+        self.screenMode = screenMode
 
-        if let editingRoom {
+        switch screenMode {
+        case let .edit(editingRoom), let .saveAsTemplate(editingRoom), let .createFromTemplate(editingRoom), let .editTemplate(editingRoom):
+            self.editingRoom = editingRoom
             self.selectedRoomType.showDisclosureIndicator = false
             self.roomName = editingRoom.title
             roomOwnerName = editingRoom.createdBy?.displayName ?? ""
@@ -288,8 +309,9 @@ class ManageRoomViewModel: ObservableObject {
                 }
             }
 
-        } else {
+        default:
             self.roomName = roomName
+            editingRoom = nil
         }
 
         selectedWatermarkElements.insert(.userName)
@@ -374,6 +396,8 @@ class ManageRoomViewModel: ObservableObject {
                 selectedSizeUnit = unit
             }
         }
+        fetchAccessList()
+        getTemplateAvailability()
     }
 
     // MARK: - Public func
@@ -389,10 +413,18 @@ class ManageRoomViewModel: ObservableObject {
         }
 
         isSaving = true
-        if isEditMode {
-            updateRoom()
-        } else {
+
+        switch screenMode {
+        case .create:
             createRoom()
+        case .edit:
+            updateRoom()
+        case .editTemplate:
+            updateRoom()
+        case .saveAsTemplate:
+            createTemplate()
+        case .createFromTemplate:
+            createFromTemplate()
         }
     }
 
@@ -414,9 +446,18 @@ class ManageRoomViewModel: ObservableObject {
 // MARK: - Handlers
 
 extension ManageRoomViewModel {
+    func onAppear() {
+        if case .editTemplate = screenMode {
+            fetchAccessList()
+        }
+    }
+
     func didTapRoomOwnerCell() {
-        guard isRoomOwnerCellTappable else { return }
         isUserSelectionPresenting = true
+    }
+
+    func didTapAccessToTemplate() {
+        isRoomTemplateAccessScreenPresenting = true
     }
 
     func didTapStorageSelectionCell() {
@@ -532,6 +573,7 @@ private extension ManageRoomViewModel {
 
     func createRoom() {
         let roomName = roomName
+        isSaving = true
         creatingRoomService.createRoom(
             model: CreatingRoomModel(
                 roomType: selectedRoomType.type.ascRoomType,
@@ -548,14 +590,150 @@ private extension ManageRoomViewModel {
                 quota: quotaSizeInBytes
             )
         ) { [weak self] result in
-            self?.isSaving = false
-            switch result {
-            case let .success(room):
-                self?.isSavedSuccessfully = true
-                room.title = roomName
-                self?.onCreate(room)
-            case let .failure(error):
-                self?.errorMessage = error.localizedDescription
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.isSaving = false
+
+                switch result {
+                case let .success(room):
+                    self.resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("Done", comment: "")
+                    )
+                    room.title = roomName
+                    self.onCreate(room)
+
+                case let .failure(error):
+                    self.resultModalModel = .init(
+                        result: .failure,
+                        message: error.localizedDescription
+                    )
+                }
+            }
+        }
+    }
+
+    // MARK: - Room template
+
+    func fetchAccessList() {
+        guard let template = editingRoom else { return }
+        Task {
+            do {
+                let result = try await roomTemplatesNetworkService.getAccessList(template: template)
+                await MainActor.run {
+                    self.accessModels = result
+                }
+            } catch {
+                print("Failed to get access list: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func getTemplateAvailability() {
+        switch screenMode {
+        case let .editTemplate(template):
+            Task {
+                do {
+                    let isPublic = try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
+                    await MainActor.run {
+                        self.isPublicTemplate = isPublic
+                    }
+                } catch {
+                    print("Failed to get template availability: \(error.localizedDescription)")
+                }
+            }
+        default:
+            return
+        }
+    }
+
+    func createFromTemplate() {
+        guard let template = editingRoom,
+              let templateId = Int(template.id),
+              let templateRoomType = template.roomType,
+              let roomColor = template.logo?.color
+        else { return }
+
+        let model = CreateRoomFromTemplateModel(
+            templateId: templateId,
+            roomType: templateRoomType,
+            title: roomName,
+            color: roomColor,
+            denyDownload: template.denyDownload,
+            indexing: template.indexing,
+            copyLogo: false
+        )
+
+        Task {
+            for await event in roomTemplatesNetworkService.createRoomFromTemplate(template: model) {
+                switch event {
+                case .begin:
+                    break
+                case let .progress(progress):
+                    await MainActor.run {
+                        MBProgressHUD.currentHUD?.progress = Float(progress)
+                    }
+                case .success:
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .success,
+                            message: NSLocalizedString("Room created", comment: "")
+                        )
+                        self.isSaving = false
+                    }
+                    self.onCreate(template)
+                case let .failure(error):
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .failure,
+                            message: error.localizedDescription
+                        )
+                        self.isSaving = false
+                    }
+                }
+            }
+        }
+    }
+
+    func createTemplate() {
+        let model = CreateRoomTemplateModel(
+            title: roomName,
+            roomId: editingRoom?.id,
+            tags: Array(tags),
+            public: false,
+            copylogo: true,
+            color: editingRoom?.logo?.color
+        )
+
+        Task {
+            for await event in roomTemplatesNetworkService.createTemplate(room: model) {
+                switch event {
+                case .begin:
+                    break
+                case let .progress(value):
+                    await MainActor.run {
+                        MBProgressHUD.currentHUD?.progress = Float(value)
+                    }
+                case .success:
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .success,
+                            message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
+                        )
+                        self.isSaving = false
+                    }
+                    if let editingRoom {
+                        onCreate(editingRoom)
+                    }
+                case let .failure(error):
+                    await MainActor.run {
+                        self.resultModalModel = .init(
+                            result: .failure,
+                            message: error.localizedDescription
+                        )
+                        self.isSaving = false
+                    }
+                }
             }
         }
     }

@@ -15,10 +15,8 @@ extension UINavigationController {
 
         view.tintColor = Asset.Colors.brend.color
 
-        if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
-            rootASCViewController.navigationItem.largeTitleDisplayMode = .automatic
-        }
+        navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
+        rootASCViewController.navigationItem.largeTitleDisplayMode = .automatic
 
         modalPresentationStyle = .formSheet
     }

@@ -1213,6 +1213,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 if let folder, let provider {
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .trash {
                         localEmptyView?.type = .trash
+                    } else if folder.rootFolderType == .roomTemplates {
+                        localEmptyView?.type = .roomTemplates
                     } else if folder.rootFolderType == .archive && !folder.isRoom {
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
@@ -1628,6 +1630,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func deleteRoomTempateAlert(template: ASCFolder, handler: @escaping () -> Void) {
+        showDeleteAlert(
+            title: NSLocalizedString("Delete template", comment: ""),
+            message: AlertMessageType.deleteRoomTemplate(template.title).message
+        ) {
+            handler()
+        }
+    }
+
     func showRestoreRoomAlert(handler: @escaping () -> Void) {
         let alertController = UIAlertController(
             title: NSLocalizedString("Restore room?", comment: ""),
@@ -1745,6 +1756,108 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 )
             }
         }
+    }
+
+    func saveAsTemplate(room: ASCFolder) {
+        let vc = ASCSaveAsTemplateRootViewController(room: room) { folder in
+            DispatchQueue.main.async {
+                UIApplication.topViewController()?.dismiss(animated: true)
+                MBProgressHUD.currentHUD?.removeFromSuperview()
+            }
+        }
+
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true)
+    }
+
+    func editTemplate(template: ASCFolder) {
+        let previusIndexingValue = template.indexing
+
+        let vc = ASCEditTemplateRootViewController(template: template) { [weak self] template in
+            guard let self else { return }
+            self.folder = template
+        }
+
+        if let refreshControl = collectionView.refreshControl {
+            refresh(refreshControl)
+            if let viewControllers = navigationController?.viewControllers,
+               let index = viewControllers.firstIndex(of: self),
+               index > 0
+            {
+                let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
+                previousController?.refresh(refreshControl)
+            }
+        }
+
+        // If indexing changed rerender layout with correct type for edited room
+        if previusIndexingValue != template.indexing {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(
+                    name: ASCConstants.Notifications.updateDocumentsViewLayoutType,
+                    object: self.provider?.itemsViewType(for: template) ?? .list
+                )
+            }
+        }
+
+        vc.modalPresentationStyle = .formSheet
+        vc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+        present(vc, animated: true, completion: nil)
+    }
+
+    func deleteRoomTemplate(template: ASCFolder) {
+        Task {
+            var hud: MBProgressHUD?
+
+            for await event in ASCRoomTemplatesNetworkService().deleteRoomTemplate(template: template) {
+                switch event {
+                case .begin:
+                    await MainActor.run {
+                        hud = MBProgressHUD.showTopMost()
+                        hud?.mode = .annularDeterminate
+                        hud?.progress = 0
+                        hud?.label.text = NSLocalizedString("Deleting", comment: "")
+                    }
+
+                case let .progress(value):
+                    await MainActor.run {
+                        hud?.progress = Float(value)
+                    }
+
+                case let .failure(error):
+                    await MainActor.run {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: error.localizedDescription
+                        )
+                    }
+
+                case .success:
+                    await MainActor.run {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: false, afterDelay: .standardDelay)
+                        loadFirstPage()
+                    }
+                }
+            }
+        }
+    }
+
+    func createRoomFrom(template: ASCFolder) {
+        let vc = ASCCreateRoomFromTemplateRootViewController(template: template) { _ in
+            UIApplication.topViewController()?.dismiss(animated: true)
+            MBProgressHUD.currentHUD?.removeFromSuperview()
+        }
+
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true)
     }
 
     func duplicateRoom(room: ASCFolder) {

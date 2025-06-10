@@ -16,17 +16,37 @@ struct RoomTypeModel {
     var showDisclosureIndicator: Bool = true
 }
 
+struct RoomTypeRowModel {
+    var name: String
+    var description: String
+    var icon: UIImage
+    var showDisclosureIndicator: Bool = true
+    var onTap: () -> Void = {}
+}
+
+extension RoomTypeModel {
+    func mapToRowModel(onTap: @escaping () -> Void) -> RoomTypeRowModel {
+        RoomTypeRowModel(
+            name: name,
+            description: description,
+            icon: icon,
+            onTap: onTap
+        )
+    }
+}
+
 extension RoomTypeModel: Equatable {}
 
 struct RoomSelectionView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel = RoomSelectionViewModel()
+    @ObservedObject var viewModel: RoomSelectionViewModel
 
     @Binding var selectedRoomType: RoomTypeModel?
     @State var dismissOnSelection = false
     @State private var isPresenting = true
     @State private var maxHeights: CGFloat = 0
+    @State private var showTemplates = false
 
     var body: some View {
         List(viewModel.roomTypeModel(showDisclosureIndicator: !dismissOnSelection), id: \.name) { model in
@@ -34,26 +54,37 @@ struct RoomSelectionView: View {
                 .frame(minHeight: maxHeights)
                 .background(
                     GeometryReader { proxy in
-                        Color.clear
-                            .preference(
-                                key: SizePreferenceKey.self,
-                                value: proxy.size
-                            )
-                    })
+                        Color.clear.preference(key: SizePreferenceKey.self, value: proxy.size)
+                    }
+                )
                 .onPreferenceChange(SizePreferenceKey.self) { preferences in
                     if preferences.height > maxHeights {
                         maxHeights = preferences.height
                     }
                 }
-                .onTapGesture {
-                    selectedRoomType = model
-                    if dismissOnSelection {
-                        presentationMode.wrappedValue.dismiss()
+                .onReceive(viewModel.$selectedType) { newType in
+                    if let type = newType {
+                        selectedRoomType = type
+                        if dismissOnSelection {
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
         }
-        .navigationBarTitle(Text("Choose room type"), displayMode: .inline)
+        .navigationTitle("Choose room type")
         .navigationBarItems(isLastInNCStack: dismissOnSelection, presentationMode: presentationMode)
+        .background(
+            NavigationLink(
+                destination: ASCRoomTemplatesListView(viewModel: ASCRoomTemplatesViewModel()),
+                isActive: $showTemplates,
+                label: { EmptyView() }
+            )
+        )
+        .onAppear {
+            viewModel.onShowTemplates = {
+                showTemplates = true
+            }
+        }
     }
 }
 
@@ -67,12 +98,12 @@ struct SizePreferenceKey: PreferenceKey {
 }
 
 extension RoomTypeModel {
-    static func make(fromRoomType roomType: CreatingRoomType) -> RoomTypeModel {
+    static func make(fromRoomType roomType: CreatingRoomType, isRoomTemplate: Bool? = false) -> RoomTypeModel {
         RoomTypeModel(
             type: roomType,
             name: roomType.name,
             description: roomType.description,
-            icon: roomType.icon
+            icon: roomType.icon(isTemplate: isRoomTemplate ?? false)
         )
     }
 }
@@ -90,5 +121,5 @@ private extension View {
 }
 
 #Preview {
-    RoomSelectionView(selectedRoomType: .constant(nil))
+    RoomSelectionView(viewModel: RoomSelectionViewModel(), selectedRoomType: .constant(nil))
 }

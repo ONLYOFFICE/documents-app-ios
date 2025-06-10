@@ -40,6 +40,10 @@ enum OnlyofficeAPI {
         public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
         public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
+        public static let operationSaveRoomAsTemplate = "api/\(version)/files/roomtemplate"
+        public static let roomTemplateStatus = "api/\(version)/files/roomtemplate/status"
+        public static let roomFromTemplate = "api/\(version)/files/rooms/fromTemplate"
+        public static let roomFromTemplateStatus = "api/\(version)/files/rooms/fromTemplate/status"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -89,6 +93,8 @@ enum OnlyofficeAPI {
         public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
         public static let editComment = "api/\(version)/files/file/%@/comment"
         public static let customFilter = "api/\(version)/files/file/%@/customfilter"
+        public static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
+        public static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -212,7 +218,11 @@ enum OnlyofficeAPI {
             }
 
             static func rooms() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms)
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .get, URLEncoding.default)
+            }
+
+            static func roomTemplates() -> Endpoint<OnlyofficeResponse<ASCRoomTemplate>> {
+                return Endpoint<OnlyofficeResponse<ASCRoomTemplate>>.make(Path.rooms, .get, URLEncoding.default)
             }
 
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -281,6 +291,22 @@ enum OnlyofficeAPI {
 
             static func roomIndexExport(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
+            }
+
+            static func getRoomTemplateAccessList(template: ASCFolder) -> Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>> {
+                return Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>>.make(String(format: Path.shareRoom, template.id), .get)
+            }
+
+            static func setRoomTemplateAccess(template: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, template.id), .put)
+            }
+
+            static func setRoomTemplateAsPublic() -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.publicRoomTemplate), .put)
+            }
+
+            static func getRoomTemplateIsPiblic(template: ASCFolder) -> Endpoint<OnlyofficeResponseType<Bool>> {
+                return Endpoint<OnlyofficeResponseType<Bool>>.make(String(format: Path.isTemplatePublic, template.id), .get)
             }
         }
 
@@ -432,6 +458,10 @@ enum OnlyofficeAPI {
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
             static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
             static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
+            static let saveRoomAsTemplate: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.operationSaveRoomAsTemplate, .post)
+            static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
+            static let createRoomFromTemplate: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplate, .post)
+            static let createRoomFromTemplateStatus: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplateStatus, .get)
         }
 
         // MARK: Third-Party Integration

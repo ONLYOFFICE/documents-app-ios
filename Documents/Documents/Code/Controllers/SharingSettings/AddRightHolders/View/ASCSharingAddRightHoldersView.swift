@@ -166,11 +166,7 @@ class ASCSharingAddRightHoldersView {
     }
 
     func load() {
-        if #available(iOS 13.0, *) {
-            view?.backgroundColor = .systemBackground
-        } else {
-            view?.backgroundColor = .white
-        }
+        view?.backgroundColor = .systemGroupedBackground
         notificationsRegister()
         configureNavigationBar()
         configureToolBar()
@@ -328,19 +324,11 @@ extension ASCSharingAddRightHoldersView {
 
 extension ASCSharingAddRightHoldersView {
     func showTablesSegmentedControl() {
-        if #available(iOS 13.0, *) {
-            searchController.searchBar.setShowsScope(true, animated: true)
-        } else {
-            searchController.searchBar.showsScopeBar = true
-        }
+        searchController.searchBar.setShowsScope(true, animated: true)
     }
 
     func hideTablesSegmentedControl() {
-        if #available(iOS 13.0, *) {
-            self.searchController.searchBar.setShowsScope(false, animated: true)
-        } else {
-            searchController.searchBar.showsScopeBar = false
-        }
+        searchController.searchBar.setShowsScope(false, animated: true)
     }
 }
 
@@ -350,12 +338,7 @@ extension ASCSharingAddRightHoldersView {
     private func configureTables() {
         let tables = RightHoldersTableType.allCases.map { getTableView(byRightHoldersTableType: $0) } + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
-
-        if #available(iOS 13.0, *) {
-            searchResultsTable.backgroundColor = .systemBackground
-        } else {
-            searchResultsTable.backgroundColor = .white
-        }
+        searchResultsTable.backgroundColor = .systemBackground
     }
 
     private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {

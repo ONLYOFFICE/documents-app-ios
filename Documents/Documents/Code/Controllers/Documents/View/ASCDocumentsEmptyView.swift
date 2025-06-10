@@ -29,6 +29,7 @@ class ASCDocumentsEmptyView: UIView {
         case formFillingRoom
         case formFillingRoomSubfolder
         case virtualDataRoom
+        case roomTemplates
     }
 
     // MARK: - Properties
@@ -236,6 +237,12 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel.text = NSLocalizedString("Welcome to the Virtual Data Room ", comment: "")
             subtitleLabel.text = NSLocalizedString("Get started with quick actions: ", comment: "")
             actionButton.setTitle(NSLocalizedString("Create a new file", comment: ""), for: .normal)
+
+        case .roomTemplates:
+            imageView.image = Asset.Images.emptyFolder.image
+            titleLabel.text = NSLocalizedString("No templates here yet", comment: "")
+            subtitleLabel.text = NSLocalizedString("You can create a template from a room in the Room section", comment: "")
+            actionButton?.removeFromSuperview()
 
         default:
             imageView?.image = Asset.Images.emptyFolder.image

@@ -38,6 +38,23 @@ enum ASCRoomType: Int {
             return Asset.Images.listRoomDefault.image
         }
     }
+
+    var name: String {
+        switch self {
+        case .colobaration:
+            return NSLocalizedString("Collaboration room", comment: "")
+        case .public:
+            return NSLocalizedString("Public room", comment: "")
+        case .custom:
+            return NSLocalizedString("Custom room", comment: "")
+        case .fillingForm:
+            return NSLocalizedString("Form Filling Room", comment: "")
+        case .virtualData:
+            return NSLocalizedString("Virtual Data Room", comment: "")
+        default:
+            return ""
+        }
+    }
 }
 
 extension ASCRoomType {

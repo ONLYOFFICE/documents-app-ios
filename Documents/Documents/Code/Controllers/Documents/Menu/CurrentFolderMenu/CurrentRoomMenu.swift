@@ -131,6 +131,28 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
             )
         }
 
+        if actions.contains(.saveAsTemplate) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Save as template", comment: ""),
+                    image: UIImage(systemName: "note.text.badge.plus")
+                ) { [weak viewController] _ in
+                    viewController?.saveAsTemplate(room: folder)
+                }
+            )
+        }
+
+        if actions.contains(.editTemplate) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Edit template", comment: ""),
+                    image: UIImage(systemName: "gear")
+                ) { [weak viewController] _ in
+                    viewController?.editTemplate(template: folder)
+                }
+            )
+        }
+
         var entityOperationsGroup: [UIMenuElement] = []
 
         // Download
@@ -177,6 +199,17 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     image: UIImage(systemName: "archivebox")
                 ) { [weak viewController] action in
                     viewController?.archive(cell: nil, folder: folder)
+                }
+            )
+        }
+
+        if actions.contains(.deleteRoomTemplate) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Delete template", comment: "Button title"),
+                    image: UIImage(systemName: "trash")
+                ) { [weak viewController] action in
+                    viewController?.deleteRoomTemplate(template: folder)
                 }
             )
         }

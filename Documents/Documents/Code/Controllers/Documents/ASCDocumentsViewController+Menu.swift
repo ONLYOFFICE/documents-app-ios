@@ -453,6 +453,30 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Create room
+        if actions.contains(.createRoom) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: ""),
+                    image: Asset.Images.menuRectanglesAdd.image
+                ) { [unowned self] action in
+                    createRoomFrom(template: folder)
+                }
+            )
+        }
+
+        /// Edit template
+        if actions.contains(.editTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit template", comment: ""),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    editTemplate(template: folder)
+                }
+            )
+        }
+
         /// Copy general link
 
         if actions.contains(.link) {
@@ -548,6 +572,19 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Save as template
+
+        if actions.contains(.saveAsTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Save as template", comment: ""),
+                    image: UIImage(systemName: "note.text.badge.plus")
+                ) { [unowned self] action in
+                    saveAsTemplate(room: folder)
+                }
+            )
+        }
+
         // Transfer actions
 
         var transferActions: [UIMenuElement] = []
@@ -626,6 +663,20 @@ extension ASCDocumentsViewController {
                     self.showRestoreRoomAlert { [weak self] in
                         guard let self else { return }
                         self.unarchive(cell: cell, folder: folder)
+                    }
+                }
+            )
+        }
+
+        if actions.contains(.deleteRoomTemplate) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Delete template", comment: "Button title"),
+                    image: UIImage(systemName: "trash")
+                ) { [unowned self] action in
+                    self.deleteRoomTempateAlert(template: folder) { [weak self] in
+                        guard let self else { return }
+                        self.deleteRoomTemplate(template: folder)
                     }
                 }
             )

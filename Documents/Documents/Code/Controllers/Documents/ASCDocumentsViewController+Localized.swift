@@ -9,12 +9,13 @@
 import Foundation
 
 extension ASCDocumentsViewController {
-    enum AlertMessageType: String {
+    enum AlertMessageType {
         case deleteFileFromTrash
         case deleteRoomFromArchive
         case restoreRoomFromArchive
         case deleteFromDeviceTrash
         case deleteFolderFromTrash
+        case deleteRoomTemplate(String)
 
         var message: String {
             switch self {
@@ -28,6 +29,8 @@ extension ASCDocumentsViewController {
                 return NSLocalizedString("It will be irretrievably deleted. This action is irreversible.", comment: "")
             case .deleteFolderFromTrash:
                 return NSLocalizedString("You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?", comment: "")
+            case let .deleteRoomTemplate(templateTitle):
+                return NSLocalizedString("Do you really want to delete template room \(templateTitle)? The template cannot be restored. ", comment: "")
             }
         }
     }

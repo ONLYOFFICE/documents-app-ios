@@ -49,6 +49,10 @@ struct ASCEntityActions: OptionSet {
     static let fillingStatus = ASCEntityActions(rawValue: 1 << 35)
     static let showVersionsHistory = ASCEntityActions(rawValue: 1 << 36)
     static let setCustomFilter = ASCEntityActions(rawValue: 1 << 37)
+    static let saveAsTemplate = ASCEntityActions(rawValue: 1 << 38)
+    static let editTemplate = ASCEntityActions(rawValue: 1 << 39)
+    static let deleteRoomTemplate = ASCEntityActions(rawValue: 1 << 40)
+    static let createRoom = ASCEntityActions(rawValue: 1 << 41)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

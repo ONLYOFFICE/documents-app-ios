@@ -81,6 +81,7 @@ struct UserRow: View {
 
 struct SearchBar: UIViewRepresentable {
     @Binding var text: String
+    var placeholder: String = "Search"
 
     class Coordinator: NSObject, UISearchBarDelegate {
         @Binding var text: String
@@ -103,6 +104,7 @@ struct SearchBar: UIViewRepresentable {
         searchBar.delegate = context.coordinator
         searchBar.backgroundImage = UIImage()
         searchBar.isTranslucent = true
+        searchBar.placeholder = placeholder
         return searchBar
     }
 

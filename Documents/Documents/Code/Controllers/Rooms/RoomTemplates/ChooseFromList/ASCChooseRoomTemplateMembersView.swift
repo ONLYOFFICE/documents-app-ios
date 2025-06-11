@@ -12,15 +12,16 @@ import SwiftUI
 struct ASCChooseRoomTemplateMembersView: View {
     @StateObject var viewModel: ASCChooseRoomTemplateMembersViewModel
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
         VStack {
             header
-
+            
             membersList
-
+            
             footer
         }
+        .background(Color(.secondarySystemBackground))
         .onAppear { viewModel.onAppear() }
         .navigationTitle(NSLocalizedString("Select members", comment: ""))
         .navigationBarTitleDisplayMode(.inline)
@@ -46,7 +47,7 @@ struct ASCChooseRoomTemplateMembersView: View {
     }
 
     private var searchBar: some View {
-        SearchBar(text: $viewModel.dataModel.searchText)
+        SearchBar(text: $viewModel.dataModel.searchText, placeholder: "Search")
             .padding(.horizontal, 8)
     }
 
@@ -72,6 +73,7 @@ struct ASCChooseRoomTemplateMembersView: View {
             if !text.isEmpty {
                 Text(verbatim: text)
                     .font(.caption)
+                    .foregroundColor(Color.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 16)
                     .padding(.vertical)
@@ -92,31 +94,37 @@ struct ASCChooseRoomTemplateMembersView: View {
             }
         }
     }
-
+    
     private var footer: some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                viewModel.addSelectedMembers()
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Add")
-                    .fontWeight(.semibold)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 16)
-                    .background(
-                        viewModel.screenModel.isAddButtonEnabled
+        VStack(spacing: 0) {
+            Rectangle()
+                .fill(Color.secondary)
+                .frame(height: 0.5)
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    viewModel.addSelectedMembers()
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Add")
+                        .fontWeight(.semibold)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 16)
+                        .background(
+                            viewModel.screenModel.isAddButtonEnabled
                             ? Asset.Colors.brend.swiftUIColor
                             : Color.gray
-                    )
-                    .foregroundColor(.white)
-                    .cornerRadius(14)
+                        )
+                        .foregroundColor(.white)
+                        .cornerRadius(14)
+                }
+                .disabled(!viewModel.screenModel.isAddButtonEnabled)
             }
-            .disabled(!viewModel.screenModel.isAddButtonEnabled)
+            .padding()
         }
-        .padding()
         .background(
-            Color(.systemBackground).ignoresSafeArea()
+            Color(.systemBackground).ignoresSafeArea(edges: [.horizontal, .bottom])
         )
     }
 }

@@ -217,10 +217,6 @@ private extension ASCFiltersViewController {
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectedClosure(getFilterViewModel(indexPath: indexPath))
-    }
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.data.count
     }
@@ -232,23 +228,14 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCFiltersCollectionViewCell.identifier, for: indexPath) as? ASCFiltersCollectionViewCell
         let filterViewModel = getFilterViewModel(indexPath: indexPath)
-        if filterViewModel.isSelected {
-            if filterViewModel.isFilterResetBtnShowen == true {
-                cell?.addDeselectFilterBtnToView()
-            }
-            cell?.labelText.textColor = .white
-            cell?.backgroundColor = Asset.Colors.brend.color
-        } else {
-            cell?.labelText.textColor = filterViewModel.defaultTextColor
-            cell?.backgroundColor = Asset.Colors.filterCapsule.color
+        cell?.configure(model: filterViewModel)
+        cell?.handlerConfiguration.onTap = { [weak self] in
+            self?.viewModel.didSelectedClosure(filterViewModel)
         }
-        cell?.deselectFilterBtn.add(for: .touchUpInside) {
-            self.viewModel.didFilterResetBtnTapped(filterViewModel)
+        cell?.handlerConfiguration.onButtonTap = { [weak self] in
+            self?.viewModel.didFilterResetBtnTapped(filterViewModel)
         }
-        cell?.deselectFilterBtn.isHidden = !filterViewModel.isFilterResetBtnShowen
-        cell?.setLabel(filterViewModel.filterName)
-
-        return cell!
+        return cell ?? UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

@@ -85,18 +85,15 @@ class ASCHelpAndFeedbackViewController: ASCBaseTableViewController {
         var data: [SectionType] = []
         var informationSection: SettingsSection = SettingsSection(items: [])
 
-        if ASCAppSettings.Feature.allowUserVoice {
-            informationSection.items.append(
-                .standart(viewModel: ASCStandartCellViewModel(
-                    title: NSLocalizedString("Suggest a Feature", comment: ""),
-                    action: {
-                        self.openURL(ASCConstants.Urls.userVoiceUrl)
-                    },
-                    accessoryType: .disclosureIndicator
-                )
-                )
-            )
-        }
+        informationSection.items.append(
+            .standart(viewModel: ASCStandartCellViewModel(
+                title: NSLocalizedString("Suggest a Feature", comment: ""),
+                action: {
+                    self.openURL(ASCConstants.Urls.userVoiceUrl)
+                },
+                accessoryType: .disclosureIndicator
+            ))
+        )
 
         informationSection.items.append(contentsOf: [
             .standart(viewModel: ASCStandartCellViewModel(

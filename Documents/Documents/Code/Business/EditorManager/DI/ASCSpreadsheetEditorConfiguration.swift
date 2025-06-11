@@ -15,6 +15,7 @@ final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfiguration
         var settings: [AnyHashable: Any] = [
             "asc.se.external.appname": ASCConstants.Name.appNameShort,
             "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
+            "asc.se.external.uservoiceurl": ASCConstants.Urls.userVoiceUrl,
             "asc.se.external.page.formats": [
                 [
                     "width": 105,
@@ -35,10 +36,6 @@ final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfiguration
                 ],
             ],
         ]
-
-        if ASCAppSettings.Feature.allowUserVoice {
-            settings["asc.se.external.uservoiceurl"] = "https://onlyoffice.com/"
-        }
 
         return settings
     }

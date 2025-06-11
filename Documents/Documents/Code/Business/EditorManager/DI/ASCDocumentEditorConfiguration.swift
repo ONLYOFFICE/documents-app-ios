@@ -13,6 +13,7 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
         var settings: [AnyHashable: Any] = [
             "asc.de.external.appname": ASCConstants.Name.appNameShort,
             "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
+            "asc.de.external.uservoiceurl": ASCConstants.Urls.userVoiceUrl,
             "asc.de.external.page.formats": [
                 [
                     "description": "A6",
@@ -33,10 +34,6 @@ final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtoc
                 ],
             ],
         ]
-
-        if ASCAppSettings.Feature.allowUserVoice {
-            settings["asc.de.external.uservoiceurl"] = "https://onlyoffice.com/"
-        }
 
         return settings
     }

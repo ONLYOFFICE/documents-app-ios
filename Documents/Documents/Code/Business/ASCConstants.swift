@@ -40,7 +40,7 @@ class ASCConstants {
         static let help2authByApp = "https://helpcenter.onlyoffice.com/guides/two-factor-authentication.aspx#step4"
         static let documentServiceDomain = ASCConstants.internalConstants["UrlsDocumentServiceDomain"] as? String ?? ""
         static let portalUserAccessRightsPath = "Management.aspx?type=4"
-        static let userVoiceUrl = "https://onlyoffice.com/"
+        static let userVoiceUrl = "https://feedback.onlyoffice.com/forums/966080-your-voice-matters?category_id=519219"
         static let helpCenterUrl = "https://helpcenter.onlyoffice.com/"
     }
 
@@ -65,7 +65,6 @@ class ASCConstants {
         static let appTheme = "asc-app-theme"
         static let gridLayoutFiles = "asc-grid-layout-files"
         static let hideCloudsCategory = "asc-hide-clouds-category"
-        static let allowUserVoice = "asc-allow-user-voice"
 
         // Debug
         static let debugAllowiCloud = "asc-debug-allowicloud"

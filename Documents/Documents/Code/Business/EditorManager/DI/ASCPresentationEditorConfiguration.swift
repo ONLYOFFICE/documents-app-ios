@@ -10,16 +10,11 @@ import PresentationEditor
 
 final class ASCPresentationEditorConfiguration: ASCPresentationEditorConfigurationProtocol {
     var editorExternalSettings: [AnyHashable: Any] {
-        var settings: [AnyHashable: Any] = [
+        [
             "asc.pe.external.appname": ASCConstants.Name.appNameShort,
             "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
+            "asc.pe.external.uservoiceurl": ASCConstants.Urls.userVoiceUrl,
         ]
-
-        if ASCAppSettings.Feature.allowUserVoice {
-            settings["asc.pe.external.uservoiceurl"] = "https://onlyoffice.com/"
-        }
-
-        return settings
     }
 
     func localEditor(

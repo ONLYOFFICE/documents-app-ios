@@ -39,15 +39,15 @@ struct ASCFileSwiftUICell: View {
         HStack {
             model.icon
             VStack(alignment: .leading, spacing: 4) {
-                Text(dateString)
+                Text(verbatim: dateString)
                     .font(.footnote)
                     .fontWeight(.semibold)
 
-                Text(model.author)
+                Text(verbatim: model.author)
                     .font(.caption2)
                     .foregroundColor(.secondary)
 
-                Text(model.comment)
+                Text(verbatim: model.comment)
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }

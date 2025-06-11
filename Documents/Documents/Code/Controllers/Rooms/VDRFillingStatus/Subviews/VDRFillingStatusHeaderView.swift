@@ -17,10 +17,10 @@ struct VDRFillingStatusHeaderView: View {
     var body: some View {
         VStack {
             HStack {
-                Button("Cancel", action: onCancel)
+                Button(NSLocalizedString("Cancel", comment: ""), action: onCancel)
                     .foregroundColor(Color(.systemBlue))
                 Spacer()
-                Text(title)
+                Text(verbatim: title)
                     .font(.headline)
                 Spacer()
                 Color.clear.frame(width: 60, height: 1)
@@ -29,7 +29,7 @@ struct VDRFillingStatusHeaderView: View {
             .background(Color(.systemBackground))
 
             HStack {
-                Text(subtitle)
+                Text(verbatim: subtitle)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)

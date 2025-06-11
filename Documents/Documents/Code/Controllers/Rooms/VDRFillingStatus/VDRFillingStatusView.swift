@@ -28,7 +28,7 @@ struct VDRFillingStatusView: View {
                             .padding(.horizontal)
                             .padding(.top, 8)
 
-                        sectionHeader("Process details")
+                        sectionHeader(NSLocalizedString("Process details", comment: ""))
                         VDRFillingStatusTimelineView(
                             rowViewModels: viewModel.state.events,
                             model: VDRFillingStatusTimelineViewModel(formFillingStatus: viewModel.file.formFillingStatus)
@@ -37,7 +37,7 @@ struct VDRFillingStatusView: View {
                     } else if viewModel.state.isInitialLoading || viewModel.state.isContentLoading {
                         Spacer()
                     } else if let error = viewModel.state.errorMessage {
-                        Text(error)
+                        Text(verbatim: error)
                             .foregroundColor(.red)
                             .padding()
                         Spacer()
@@ -61,8 +61,8 @@ struct VDRFillingStatusView: View {
     @ViewBuilder
     private var header: some View {
         VDRFillingStatusHeaderView(
-            title: "Filling status",
-            subtitle: "In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion",
+            title: NSLocalizedString("Filling status", comment: ""),
+            subtitle: NSLocalizedString("In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion", comment: ""),
             onCancel: { presentationMode.wrappedValue.dismiss() }
         )
     }
@@ -84,7 +84,7 @@ struct VDRFillingStatusView: View {
 
     private func sectionHeader(_ text: String) -> some View {
         HStack {
-            Text(text)
+            Text(verbatim: text)
                 .textCase(.uppercase)
                 .font(.subheadline)
                 .foregroundColor(.secondary)

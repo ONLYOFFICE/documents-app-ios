@@ -60,7 +60,7 @@ struct VDRStartFillingView: View {
     private var header: some View {
         ZStack {
             HStack {
-                Button("Cancel", action: viewModel.closeTapped)
+                Button(NSLocalizedString("Cancel", comment: ""), action: viewModel.closeTapped)
                     .foregroundColor(.blue)
 
                 Spacer()
@@ -125,7 +125,7 @@ struct RoleRow: View {
                 .overlay(Image(systemName: "plus").foregroundColor(.secondary))
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(role.title)
+                Text(verbatim: role.title)
                     .font(.subheadline)
                     .foregroundColor(.primary)
                 Text("Role description")

@@ -17,12 +17,12 @@ struct VDRFillingStatusFooterView: View {
 
     var body: some View {
         HStack {
-            Button("Stop filling", action: onStop)
+            Button(NSLocalizedString("Stop filling", comment: ""), action: onStop)
                 .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 .buttonStyle(.borderless)
                 .disabled(!stopEnabled)
             Spacer()
-            Button("Fill", action: onFill)
+            Button(NSLocalizedString("Fill", comment: ""), action: onFill)
                 .buttonStyle(FooterButtonStyle(color: fillEnabled ? .blue : .secondary))
                 .disabled(!fillEnabled)
         }

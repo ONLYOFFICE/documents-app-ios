@@ -19,9 +19,9 @@ struct ASCRoomTemplateAccessRowViewModel {
 
         let groupCount = groups.count
         let userCount = users.count
-        
+
         let stringSingleUser = NSLocalizedString("Me", comment: "")
-        let stringSeveralUsers = String(format: NSLocalizedString("Me and %ld Users", comment: ""), userCount - 1)
+        let stringSeveralUsers = String(format: NSLocalizedString("Me and %d Users", comment: ""), userCount - 1)
         var components: [String] = []
 
         if userCount == 1 {
@@ -31,7 +31,7 @@ struct ASCRoomTemplateAccessRowViewModel {
         }
 
         if groupCount > 0 {
-            components.append(String(format: NSLocalizedString("%ld Groups", comment: ""), groupCount))
+            components.append(String(format: NSLocalizedString("%d Groups", comment: ""), groupCount))
         }
 
         return components.joined(separator: ", ")
@@ -80,7 +80,7 @@ struct ASCRoomTemplateAccessRowView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 } else {
-                    Text(model.displayTitle)
+                    Text(verbatim: model.displayTitle)
                         .font(.subheadline)
                 }
             }

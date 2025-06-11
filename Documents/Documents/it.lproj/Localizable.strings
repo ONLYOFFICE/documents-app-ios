@@ -342,8 +342,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connettiti al tuo cloud %@ per archiviare i file online e collaborare ai documenti in tempo reale";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "Connessione";
 
 /* No comment provided by engineer. */
@@ -490,8 +489,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "Crea una stanza";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "Creazione";
 
 /* No comment provided by engineer. */
@@ -788,9 +786,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "Modelli di moduli";
-
-/* No comment provided by engineer. */
-"Forms" = "Moduli";
 
 /* No comment provided by engineer. */
 "From device" = "Da dispositivo";
@@ -1287,9 +1282,6 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Il portale non è disponibile.";
 
-/* Share status */
-"Pover user" = "Utente avanzato";
-
 /* No comment provided by engineer. */
 "Presentation" = "Presentazione";
 
@@ -1599,9 +1591,6 @@ Navigation bar button title */
 "Storage" = "Archivio";
 
 /* No comment provided by engineer. */
-"Support" = "Supporto";
-
-/* No comment provided by engineer. */
 "Switch" = "Cambiare";
 
 /* No comment provided by engineer. */
@@ -1846,9 +1835,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "Rimuovere";
-
-/* Caption of the processing */
-"Unpning" = "Rimuovere";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "Carica un modulo PDF pronto";

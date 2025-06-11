@@ -112,9 +112,7 @@ extension WatermarkSection {
     private var watermarkPositionSection: some View {
         if viewModel.isWatermarkEnabled, viewModel.selectedWatermarkType == .viewerInfo {
             Section(
-                footer: Text(
-                    NSLocalizedString("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.", comment: "")
-                )
+                footer: Text("Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.")
             ) {
                 HStack {
                     Text("Position")

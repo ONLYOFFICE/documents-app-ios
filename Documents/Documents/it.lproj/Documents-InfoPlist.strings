@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "Documenti";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "Nuovo documento";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "Nuova presentazione";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "Nuovo foglio di calcolo";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "Modulo compilabile ONLYOFFICE (.oform)";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "Modello di modulo ONLYOFFICE (.docxf)";
 

@@ -30,7 +30,7 @@ extension ASCDocumentsViewController {
             case .deleteFolderFromTrash:
                 return NSLocalizedString("You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?", comment: "")
             case let .deleteRoomTemplate(templateTitle):
-                return NSLocalizedString("Do you really want to delete template room \(templateTitle)? The template cannot be restored. ", comment: "")
+                return String(format: NSLocalizedString("Do you really want to delete template room %@? The template cannot be restored. ", comment: ""), templateTitle)
             }
         }
     }

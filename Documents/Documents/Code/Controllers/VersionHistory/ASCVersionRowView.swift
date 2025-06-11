@@ -30,21 +30,21 @@ struct ASCVersionRowView: View {
                 }
             ))
             .contextMenu {
-                Button("Open", systemImage: "arrow.up.right.square") {
+                Button(NSLocalizedString("Open", comment: ""), systemImage: "arrow.up.right.square") {
                     onOpen()
                 }
 
-                Button("Edit comment", systemImage: "text.bubble") {
+                Button(NSLocalizedString("Edit comment", comment: ""), systemImage: "text.bubble") {
                     onEditComment()
                 }
 
                 if version.canRestore {
-                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                    Button(NSLocalizedString("Restore", comment: ""), systemImage: "arrowshape.turn.up.right") {
                         onRestore()
                     }
                 }
 
-                Button("Download", systemImage: "square.and.arrow.down") {
+                Button(NSLocalizedString("Download", comment: ""), systemImage: "square.and.arrow.down") {
                     onDownload()
                 }
 
@@ -52,11 +52,11 @@ struct ASCVersionRowView: View {
 
                 if version.canDelete {
                     if #available(iOS 15.0, *) {
-                        Button("Delete", systemImage: "trash", role: .destructive) {
+                        Button(NSLocalizedString("Delete", comment: ""), systemImage: "trash", role: .destructive) {
                             onDelete()
                         }
                     } else {
-                        Button("Delete", systemImage: "trash") {
+                        Button(NSLocalizedString("Delete", comment: ""), systemImage: "trash") {
                             onDelete()
                         }
                     }

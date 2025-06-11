@@ -28,13 +28,13 @@ struct VDRFillingHistoryElement: Identifiable {
     var description: String {
         switch statusCode {
         case "0":
-            return "Opened the form to fill out"
+            return NSLocalizedString("Opened the form to fill out", comment: "")
         case "1":
-            return "Submitted their part. The form was sent to the next role."
+            return NSLocalizedString("Submitted their part. The form was sent to the next role.", comment: "")
         case "2":
-            return "Filling was stopped by"
+            return NSLocalizedString("Filling was stopped by", comment: "")
         default:
-            return "Unknown status"
+            return NSLocalizedString("Unknown status", comment: "")
         }
     }
 }
@@ -123,7 +123,7 @@ struct VDRFillingStatusEventRowView: View {
         ForEach(model.history) { element in
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 2) {
-                    Text(element.description)
+                    Text(verbatim: element.description)
                         .font(.caption2)
                     if element.statusCode == "2", let stopedBy = model.stopedBy {
                         Text(verbatim: stopedBy.displayName ?? "")
@@ -132,7 +132,7 @@ struct VDRFillingStatusEventRowView: View {
                     }
                 }
 
-                Text(historyDisplayFormatter.string(from: element.date))
+                Text(verbatim: historyDisplayFormatter.string(from: element.date))
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }

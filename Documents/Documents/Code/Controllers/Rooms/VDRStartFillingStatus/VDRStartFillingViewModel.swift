@@ -46,9 +46,9 @@ extension VDRStartFillingViewModel {
         static let initial: ScreenState = {
             var s = ScreenState()
             s.roles = [
-                RoleItem(number: 1, title: "Employee", color: .yellow.opacity(0.3)),
-                RoleItem(number: 2, title: "Accountant", color: .green.opacity(0.3)),
-                RoleItem(number: 3, title: "Director", color: .purple.opacity(0.3)),
+                RoleItem(number: 1, title: NSLocalizedString("Employee", comment: ""), color: .yellow.opacity(0.3)),
+                RoleItem(number: 2, title: NSLocalizedString("Accountant", comment: ""), color: .green.opacity(0.3)),
+                RoleItem(number: 3, title: NSLocalizedString("Director", comment: ""), color: .purple.opacity(0.3)),
             ]
             return s
         }()

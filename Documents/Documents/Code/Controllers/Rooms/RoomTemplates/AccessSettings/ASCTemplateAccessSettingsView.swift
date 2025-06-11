@@ -44,7 +44,7 @@ struct ASCTemplateAccessSettingsView: View {
                         Text("Back")
                     }
                 },
-            trailing: Button("Save") {
+            trailing: Button(NSLocalizedString("Save", comment: "")) {
                 Task {
                     await viewModel.save()
                     presentationMode.wrappedValue.dismiss()

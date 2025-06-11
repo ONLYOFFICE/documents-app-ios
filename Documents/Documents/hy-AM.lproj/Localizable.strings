@@ -369,8 +369,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Միացեք ձեր %@ ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի վրա իրական ժամանակում համագործակցելու համար";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "Միացում";
 
 /* No comment provided by engineer. */
@@ -535,8 +534,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "Ստեղծել սենյակ";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "Ստեղծելով";
 
 /* Watermark Element */
@@ -884,9 +882,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "Ձևի ձևանմուշներ";
-
-/* No comment provided by engineer. */
-"Forms" = "Ձևաթղթեր";
 
 /* No comment provided by engineer. */
 "From device" = "Սարքից";
@@ -1450,9 +1445,6 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "Դիրք";
 
-/* Share status */
-"Pover user" = "Փորձառու օգտագործող";
-
 /* No comment provided by engineer. */
 "Presentation" = "Պրեզենտացիա";
 
@@ -1801,9 +1793,6 @@ Navigation bar button title */
 "Success" = "Հաջողություն";
 
 /* No comment provided by engineer. */
-"Support" = "Աջակցություն";
-
-/* No comment provided by engineer. */
 "Switch" = "Անջատիչ";
 
 /* No comment provided by engineer. */
@@ -2066,9 +2055,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "Ապամրացում";
-
-/* Caption of the processing */
-"Unpning" = "Ապամրացում";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "Վերբեռնել պատրաստ PDF ձևը";

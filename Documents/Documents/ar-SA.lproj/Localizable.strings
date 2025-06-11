@@ -369,8 +369,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "اتصل بسحابة %@ الخاصة بك لتخزين الملفات عبر الإنترنت والتعاون في المستندات في الوقت الفعلي";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "يتم الربط";
 
 /* No comment provided by engineer. */
@@ -535,8 +534,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "إنشاء غرفة";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "يتم الإنشاء";
 
 /* Watermark Element */
@@ -884,9 +882,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "قوالب النموذج";
-
-/* No comment provided by engineer. */
-"Forms" = "النماذج";
 
 /* No comment provided by engineer. */
 "From device" = "من الجهاز";
@@ -1450,9 +1445,6 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "الموضع";
 
-/* Share status */
-"Pover user" = "مستخدم قوي";
-
 /* No comment provided by engineer. */
 "Presentation" = "عرض تقديمي";
 
@@ -1798,9 +1790,6 @@ Navigation bar button title */
 "Success" = "تم بنجاح";
 
 /* No comment provided by engineer. */
-"Support" = "دعم فني";
-
-/* No comment provided by engineer. */
 "Switch" = "تحويل";
 
 /* No comment provided by engineer. */
@@ -2063,9 +2052,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "إزالة التثبيت";
-
-/* Caption of the processing */
-"Unpning" = "إزالة التثبيت";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "تحميل نموذج \"PDF\" جاهز";

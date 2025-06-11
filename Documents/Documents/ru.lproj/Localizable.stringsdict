@@ -2,6 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d Groups</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@groups@</string>
+		<key>groups</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d Groups</string>
+			<key>many</key>
+			<string>%d Groups</string>
+			<key>one</key>
+			<string>One Group</string>
+			<key>other</key>
+			<string>%d Groups</string>
+		</dict>
+	</dict>
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -296,6 +316,26 @@
 			<string>Expires after %d hour</string>
 			<key>other</key>
 			<string>Expires after %d hours</string>
+		</dict>
+	</dict>
+	<key>Me and %d Users</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@users@</string>
+		<key>users</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>Me and %d Users</string>
+			<key>many</key>
+			<string>Me and %d Users</string>
+			<key>one</key>
+			<string>Me and One Users</string>
+			<key>other</key>
+			<string>Me and %d Users</string>
 		</dict>
 	</dict>
 </dict>

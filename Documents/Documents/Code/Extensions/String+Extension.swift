@@ -208,13 +208,18 @@ extension String {
         return results.map { String($0) }
     }
 
-//    /// Returns a localized string, with an optional comment for translators.
-//    ///
-//    ///        "Hello world".localized -> Hallo Welt
-//    ///
-//    func localized(comment: String = "") -> String {
-//        return NSLocalizedString(self, comment: comment)
-//    }
+    /// Returns a localized string, with an optional comment for translators.
+    ///
+    ///        "Hello world".localized -> Hallo Welt
+    ///
+    ///
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
+    
+    func localized(comment: String = "") -> String {
+        NSLocalizedString(self, comment: comment)
+    }
 
     /// Check if string only contains digits.
     ///

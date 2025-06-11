@@ -330,8 +330,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存し、リアルタイムでドキュメントを共同編集します。";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "接続中";
 
 /* No comment provided by engineer. */
@@ -469,8 +468,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "ルームの作成";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "作成中";
 
 /* No comment provided by engineer. */
@@ -734,9 +732,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "フォームテンプレート";
-
-/* No comment provided by engineer. */
-"Forms" = "フォーム";
 
 /* Share status */
 "Full Access" = "フルアクセス";
@@ -1206,9 +1201,6 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "ポータルは使用できません。";
 
-/* Share status */
-"Pover user" = "パワーユーザー";
-
 /* No comment provided by engineer. */
 "Presentation" = "プレゼンテーション";
 
@@ -1506,9 +1498,6 @@ Navigation bar button title */
 "Storage" = "ストレージ";
 
 /* No comment provided by engineer. */
-"Support" = "サポート";
-
-/* No comment provided by engineer. */
 "Switch" = "スイッチ";
 
 /* No comment provided by engineer. */
@@ -1741,9 +1730,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "ピン留めを外す中";
-
-/* Caption of the processing */
-"Unpning" = "ピン留めを外す中";
 
 /* Caption of the process */
 "Uploading" = "アップロード中";

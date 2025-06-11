@@ -125,7 +125,7 @@ struct ASCVersionHistoryView: View {
             VStack(spacing: 2) {
                 Text("Version History")
                     .font(.headline)
-                Text(viewModel.fileTitle)
+                Text(verbatim: viewModel.fileTitle)
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
@@ -134,7 +134,7 @@ struct ASCVersionHistoryView: View {
 
     private var versionHistoryToolbar: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
-            Button("Close") {
+            Button(NSLocalizedString("Close", comment: "")) {
                 presentationMode.wrappedValue.dismiss()
             }
         }
@@ -264,22 +264,22 @@ extension View {
             titleVisibility: .hidden
         ) {
             if let version = version {
-                Button("Open", systemImage: "arrow.up.right.square") {
+                Button(NSLocalizedString("Open", comment: ""), systemImage: "arrow.up.right.square") {
                     onOpen(version)
                 }
-                Button("Edit comment", systemImage: "text.bubble") {
+                Button(NSLocalizedString("Edit comment", comment: ""), systemImage: "text.bubble") {
                     onEditComment(version)
                 }
                 if version.canRestore {
-                    Button("Restore", systemImage: "arrowshape.turn.up.right") {
+                    Button(NSLocalizedString("Restore", comment: ""), systemImage: "arrowshape.turn.up.right") {
                         onRestore(version)
                     }
                 }
-                Button("Download", systemImage: "square.and.arrow.down") {
+                Button(NSLocalizedString("Download", comment: ""), systemImage: "square.and.arrow.down") {
                     onDownload(version)
                 }
                 if version.canDelete {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
+                    Button(NSLocalizedString("Delete", comment: ""), systemImage: "trash", role: .destructive) {
                         onDelete(version)
                     }
                 }

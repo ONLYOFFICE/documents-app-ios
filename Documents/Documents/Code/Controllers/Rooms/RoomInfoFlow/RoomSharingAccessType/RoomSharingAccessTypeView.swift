@@ -97,7 +97,7 @@ struct RoomSharingAccessRowView: View {
                     .frame(width: 20, height: 20).foregroundColor(.gray)
                     .padding(.trailing, 8)
             }
-            Text(model.name)
+            Text(verbatim: model.name)
             Spacer()
             if model.isChecked {
                 Image(systemName: "checkmark")

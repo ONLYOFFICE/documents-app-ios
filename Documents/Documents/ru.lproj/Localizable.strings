@@ -369,8 +369,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "Подключение";
 
 /* No comment provided by engineer. */
@@ -535,8 +534,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "Создать комнату";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "Создание";
 
 /* Watermark Element */
@@ -884,9 +882,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "Шаблоны форм";
-
-/* No comment provided by engineer. */
-"Forms" = "Формы";
 
 /* No comment provided by engineer. */
 "From device" = "С устройства";
@@ -1450,9 +1445,6 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "Положение";
 
-/* Share status */
-"Pover user" = "Опытный пользователь";
-
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1801,9 +1793,6 @@ Navigation bar button title */
 "Success" = "Успешно";
 
 /* No comment provided by engineer. */
-"Support" = "Поддержка";
-
-/* No comment provided by engineer. */
 "Switch" = "Переключить";
 
 /* No comment provided by engineer. */
@@ -2066,9 +2055,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "Открепление";
-
-/* Caption of the processing */
-"Unpning" = "Открепление";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "Загрузите готовую форму в формате PDF";

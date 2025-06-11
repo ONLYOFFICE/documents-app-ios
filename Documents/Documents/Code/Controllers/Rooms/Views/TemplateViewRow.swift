@@ -34,7 +34,7 @@ struct TemplateViewRow: View {
                         .frame(width: size - 12, height: size - 12)
                         .clipShape(RoundedRectangle(cornerRadius: (size - 12) * 0.2))
                 } else {
-                    Text(initials(from: model.title))
+                    Text(verbatim: initials(from: model.title))
                         .font(.system(size: size * 0.4, weight: .semibold))
                         .foregroundColor(Color(model.placeholderColor))
                         .frame(width: size - 12, height: size - 12)
@@ -44,10 +44,10 @@ struct TemplateViewRow: View {
             }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(model.title)
+                Text(verbatim: model.title)
                     .font(.footnote)
                     .fontWeight(.semibold)
-                Text(model.subtitle)
+                Text(verbatim: model.subtitle)
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }

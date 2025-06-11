@@ -718,7 +718,7 @@ private extension ManageRoomViewModel {
                     await MainActor.run {
                         self.resultModalModel = .init(
                             result: .success,
-                            message: NSLocalizedString("Template \(self.roomName) saved", comment: "")
+                            message: String(format: NSLocalizedString("Template %@ saved", comment: ""), self.roomName)
                         )
                         self.isSaving = false
                     }

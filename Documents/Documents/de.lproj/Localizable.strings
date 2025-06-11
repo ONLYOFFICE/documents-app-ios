@@ -366,8 +366,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Verbinden Sie sich mit Ihrer %@ Cloud, um Dateien online zu speichern und Dokumente in Echtzeit gemeinsam zu bearbeiten";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "Verbindung wird hergestellt";
 
 /* No comment provided by engineer. */
@@ -526,8 +525,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "Raum erstellen";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "Wird erstellt";
 
 /* Watermark Element */
@@ -872,9 +870,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "Formularvorlagen";
-
-/* No comment provided by engineer. */
-"Forms" = "Formulare";
 
 /* No comment provided by engineer. */
 "From device" = "Vom Gerät";
@@ -1438,9 +1433,6 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "Position";
 
-/* Share status */
-"Pover user" = "Power-Benutzer";
-
 /* No comment provided by engineer. */
 "Presentation" = "Präsentation";
 
@@ -1789,9 +1781,6 @@ Navigation bar button title */
 "Success" = "Erfolg";
 
 /* No comment provided by engineer. */
-"Support" = "Support";
-
-/* No comment provided by engineer. */
 "Switch" = "Umschalten";
 
 /* No comment provided by engineer. */
@@ -2051,9 +2040,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "Entrinnen";
-
-/* Caption of the processing */
-"Unpning" = "Entrinnen";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "Ein fertiges PDF-Formular hochladen";

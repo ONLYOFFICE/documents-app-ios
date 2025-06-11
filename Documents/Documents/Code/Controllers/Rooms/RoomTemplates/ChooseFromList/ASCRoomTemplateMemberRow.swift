@@ -87,7 +87,7 @@ struct ASCRoomTemplateMemberRow: View {
             .frame(width: Constants.imageWidth, height: Constants.imageHeight)
             .cornerRadius(Constants.imageCornerRadius)
 
-        Text(model.name)
+        Text(verbatim: model.name)
             .font(.subheadline)
     }
 

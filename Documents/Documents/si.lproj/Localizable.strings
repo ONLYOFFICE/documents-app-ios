@@ -309,8 +309,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "ගොනු මාර්ගගතව ගබඩා කිරීමට සහ තථ්‍ය කාලීනව සහයෝගයෙන් ලේඛන කටයුතු \nසිදු කිරීමට ඔබගේ %@ මේඝයට සම්බන්ධ වන්න";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "සම්බන්ධ වෙමින්";
 
 /* No comment provided by engineer. */
@@ -436,8 +435,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "කාමරය සාදන්න";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "සෑදෙමින්";
 
 /* No comment provided by engineer. */
@@ -680,9 +678,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form templates" = "ආකෘතිපත්‍ර අච්චු";
-
-/* No comment provided by engineer. */
-"Forms" = "ආකෘතිපත්‍ර";
 
 /* Share status */
 "Full Access" = "පූර්ණ ප්‍රවේශය";
@@ -1113,9 +1108,6 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "ද්වාරය නොතිබේ.";
 
-/* Share status */
-"Pover user" = "බලවත් පරිශ්‍රීලක";
-
 /* No comment provided by engineer. */
 "Presentation" = "සමර්පණය";
 
@@ -1359,9 +1351,6 @@ Navigation bar button title */
 "Storage" = "ආචයනය";
 
 /* No comment provided by engineer. */
-"Support" = "සහාය";
-
-/* No comment provided by engineer. */
 "Switch" = "මාරුව";
 
 /* No comment provided by engineer. */
@@ -1582,9 +1571,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "ගැළවෙමින්";
-
-/* Caption of the processing */
-"Unpning" = "ගැළවෙමින්";
 
 /* Caption of the process */
 "Uploading" = "උඩුගත වෙමින්";

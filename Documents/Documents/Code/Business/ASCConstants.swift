@@ -85,7 +85,7 @@ class ASCConstants {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault: true])
-            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowLargeTitle: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowLargeTitle: false]) // https://bugzilla.onlyoffice.com/show_bug.cgi?id=52295
         }
     }
 

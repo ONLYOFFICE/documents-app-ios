@@ -216,7 +216,7 @@ extension String {
     var localized: String {
         NSLocalizedString(self, comment: "")
     }
-    
+
     func localized(comment: String = "") -> String {
         NSLocalizedString(self, comment: comment)
     }

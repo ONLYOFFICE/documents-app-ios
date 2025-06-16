@@ -3715,7 +3715,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 }
             } else if status == .error {
                 hud?.hide(animated: true)
-                
+
                 delay(seconds: 3.0) {
                     MBProgressHUD.currentHUD?.hide(animated: false)
                 }
@@ -3748,7 +3748,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         newFile.openVersionMode = false
                         return
                     }
-                    
+
                     if let index = self.tableData.firstIndex(where: { entity -> Bool in
                         guard let file = entity as? ASCFile else { return false }
                         return file.id == newFile.id || file.id == originalFile.id

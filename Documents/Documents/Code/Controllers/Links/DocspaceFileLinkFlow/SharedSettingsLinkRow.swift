@@ -15,11 +15,11 @@ enum LinkAccess: String {
     var isInternal: Bool {
         self == .docspaceUserOnly
     }
-    
+
     var localizedDescription: String {
         switch self {
-            case .anyoneWithLink: return NSLocalizedString("Anyone with the link", comment: "")
-            case .docspaceUserOnly: return NSLocalizedString("Docspace user only", comment: "")
+        case .anyoneWithLink: return NSLocalizedString("Anyone with the link", comment: "")
+        case .docspaceUserOnly: return NSLocalizedString("Docspace user only", comment: "")
         }
     }
 }

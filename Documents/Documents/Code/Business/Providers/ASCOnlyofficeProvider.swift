@@ -2490,7 +2490,7 @@ extension ASCOnlyofficeProvider {
 
     private func generalLink(forRoom room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
-            guard room.roomType != .colobaration && room.roomType != .virtualData else {
+            guard room.roomType != .colobaration && room.roomType != .virtualData && room.rootFolderType != .roomTemplates else {
                 if let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
                     let path = "%@/rooms/shared/filter?folder=%@"
                     let urlStr = String(format: path, baseUrl, room.id)

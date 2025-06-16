@@ -40,7 +40,7 @@ struct ASCRoomTemplatesListView: View {
                 EmptyView()
             }
         )
-        .navigationTitle(NSLocalizedString("Form templates", comment: ""))
+        .navigationTitle(NSLocalizedString("From templates", comment: ""))
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
             viewModel.fetchTemplates()

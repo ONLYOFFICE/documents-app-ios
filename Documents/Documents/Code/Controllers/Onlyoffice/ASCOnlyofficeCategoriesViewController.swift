@@ -10,6 +10,8 @@ import Kingfisher
 import UIKit
 
 class ASCOnlyofficeCategoriesViewController: UITableViewController {
+    let documentServerRestrictedCategories = Set([ASCFolderType.privacy])
+
     // MARK: - Properties
 
     @IBOutlet var avatarView: UIImageView!
@@ -298,10 +300,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
     func loadCategories(completion: @escaping () -> Void) {
         categoriesProviderFactory.get().loadCategories { [self] result in
+            defer { completion() }
             switch result {
             case let .success(categories):
                 self.loadedCategories = categories
-                completion()
+                    .filter {
+                        guard !isDocspace, let type = $0.folder?.rootFolderType else { return true }
+                        return !documentServerRestrictedCategories.contains(type)
+                    }
             case let .failure(error):
                 guard let error = error as? NetworkingError else { return }
 
@@ -570,5 +576,11 @@ extension ASCOnlyofficeCategoriesViewController {
             }
             return groups[indexPath.section].categories[indexPath.row]
         }
+    }
+}
+
+private extension ASCOnlyofficeCategoriesViewController {
+    var isDocspace: Bool {
+        ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
     }
 }

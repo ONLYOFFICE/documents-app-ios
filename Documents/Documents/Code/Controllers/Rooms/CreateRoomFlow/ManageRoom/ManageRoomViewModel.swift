@@ -479,13 +479,13 @@ extension ManageRoomViewModel {
         }
         isConnecting = true
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, info) { [weak self] response, error in
-            DispatchQueue.main.async { [weak self] in
+            Task { @MainActor in
                 guard let self else { return }
                 if let error = error {
                     log.error(error)
-                    selectedStorage = nil
-                    thirdPartyFolder = nil
-                    errorMessage = error.localizedDescription
+                    self.selectedStorage = nil
+                    self.thirdPartyFolder = nil
+                    self.errorMessage = error.localizedDescription
                 } else if let folder = response?.result {
                     let provider = ASCThirdpartySelectFolderProvider(
                         rootFolder: folder,
@@ -493,9 +493,9 @@ extension ManageRoomViewModel {
                     )
                     self.provider = provider
                     self.selectedStorage = providerType?.rawValue ?? folder.title
-                    thirdPartyFolder = folder
+                    self.thirdPartyFolder = folder
                 }
-                isConnecting = false
+                self.isConnecting = false
             }
         }
     }
@@ -591,7 +591,7 @@ private extension ManageRoomViewModel {
             )
         ) { [weak self] result in
             guard let self else { return }
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.isSaving = false
 
                 switch result {
@@ -630,20 +630,15 @@ private extension ManageRoomViewModel {
     }
 
     func getTemplateAvailability() {
-        switch screenMode {
-        case let .editTemplate(template):
-            Task {
-                do {
-                    let isPublic = try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
-                    await MainActor.run {
-                        self.isPublicTemplate = isPublic
-                    }
-                } catch {
-                    print("Failed to get template availability: \(error.localizedDescription)")
-                }
+        guard case let .editTemplate(template) = screenMode else { return }
+
+        Task { @MainActor in
+            do {
+                let isPublic = try await roomTemplatesNetworkService.getIsRoomTemplateAvailableForEveryone(template: template)
+                self.isPublicTemplate = isPublic
+            } catch {
+                log.error("Failed to get template availability: \(error.localizedDescription)")
             }
-        default:
-            return
         }
     }
 

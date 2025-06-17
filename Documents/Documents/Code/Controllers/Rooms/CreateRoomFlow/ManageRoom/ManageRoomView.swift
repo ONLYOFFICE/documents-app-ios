@@ -265,7 +265,7 @@ private extension View {
     @ViewBuilder
     func navigationTitle(viewModel: ManageRoomViewModel) -> some View {
         switch viewModel.screenMode {
-        case let .edit(room):
+        case .edit:
             navigationBarTitle(Text("Edit room"), displayMode: .inline)
         case .create, .createFromTemplate:
             navigationBarTitle(Text("Create room"), displayMode: .inline)
@@ -313,13 +313,18 @@ private extension View {
     }
 
     @ViewBuilder
-    func navigateToRoomTemplateAccessScreenPresenting(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
-        if let template = viewModel.editingRoom {
-            navigation(isActive: isActive, destination: {
-                ASCTemplateAccessSettingsView(viewModel: ASCTemplateAccessSettingsViewModel(template: template))
-            })
-        } else {
-            EmptyView()
+    func navigateToRoomTemplateAccessScreenPresenting(
+        isActive: Binding<Bool>,
+        viewModel: ManageRoomViewModel
+    ) -> some View {
+        navigation(isActive: isActive) {
+            if let template = viewModel.editingRoom {
+                ASCTemplateAccessSettingsView(
+                    viewModel: ASCTemplateAccessSettingsViewModel(
+                        template: template
+                    )
+                )
+            }
         }
     }
 

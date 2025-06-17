@@ -3706,8 +3706,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         let closeHandler: ASCEditorManagerCloseHandler = { [weak self] status, progress, file, error, cancel in
             log.info("Close file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
 
-            originalFile.openVersionMode = false
-            
             if status == .begin {
                 if hud == nil, file?.device == true {
                     MBProgressHUD.currentHUD?.hide(animated: false)
@@ -3716,10 +3714,8 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                     hud?.label.text = title
                 }
             } else if status == .error {
-                file?.openVersionMode = false
-                
                 hud?.hide(animated: true)
-                
+
                 delay(seconds: 3.0) {
                     MBProgressHUD.currentHUD?.hide(animated: false)
                 }
@@ -3733,8 +3729,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                     )
                 }
             } else if status == .end {
-                file?.openVersionMode = false
-                
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: .standardDelay)
 
@@ -3749,6 +3743,11 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 /// Update file info
                 let updateFileInfo = {
                     let newFile = file ?? originalFile
+
+                    if newFile.openVersionMode {
+                        newFile.openVersionMode = false
+                        return
+                    }
 
                     if let index = self.tableData.firstIndex(where: { entity -> Bool in
                         guard let file = entity as? ASCFile else { return false }

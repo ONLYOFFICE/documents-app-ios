@@ -17,7 +17,7 @@ class ASCFileSecurity: Mappable {
     var edit: Bool = false
     var delete: Bool = false
     var customFilter: Bool = false
-    var rename: Bool = false
+    var rename: Bool = true
     var readHistory: Bool = false
     var lock: Bool = false
     var editHistory: Bool = false

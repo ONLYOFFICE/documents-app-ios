@@ -1021,7 +1021,8 @@ extension ASCEditorManager {
             OnlyofficeDocument(
                 permissions: OnlyofficeDocumentPermissions(
                     edit: canEdit && UIDevice.allowEditor,
-                    fillForms: openMode == .fillform
+                    fillForms: openMode == .fillform,
+                    rename: file.security.rename
                 ),
                 fileType: fileExt
             )

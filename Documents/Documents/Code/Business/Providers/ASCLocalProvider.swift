@@ -458,6 +458,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 deviceFile.title = newPath.fileName
                 deviceFile.created = newPath.creationDate
                 deviceFile.updated = newPath.modificationDate
+                deviceFile.viewUrl = newPath.rawValue
 
                 completeon?(self, deviceFile, true, nil)
             } else if let deviceFolder = folder {

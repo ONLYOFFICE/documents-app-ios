@@ -12,13 +12,13 @@ import SwiftUI
 struct ASCChooseRoomTemplateMembersView: View {
     @StateObject var viewModel: ASCChooseRoomTemplateMembersViewModel
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         VStack {
             header
-            
+
             membersList
-            
+
             footer
         }
         .background(Color(.secondarySystemBackground))
@@ -94,13 +94,13 @@ struct ASCChooseRoomTemplateMembersView: View {
             }
         }
     }
-    
+
     private var footer: some View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.secondary)
                 .frame(height: 0.5)
-            
+
             HStack {
                 Spacer()
                 Button(action: {
@@ -113,8 +113,8 @@ struct ASCChooseRoomTemplateMembersView: View {
                         .padding(.horizontal, 16)
                         .background(
                             viewModel.screenModel.isAddButtonEnabled
-                            ? Asset.Colors.brend.swiftUIColor
-                            : Color.gray
+                                ? Asset.Colors.brend.swiftUIColor
+                                : Color.gray
                         )
                         .foregroundColor(.white)
                         .cornerRadius(14)

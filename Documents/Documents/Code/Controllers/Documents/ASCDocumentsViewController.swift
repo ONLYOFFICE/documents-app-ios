@@ -1848,9 +1848,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func createRoomFrom(template: ASCFolder) {
-        let vc = ASCCreateRoomFromTemplateRootViewController(template: template) { _ in
-            UIApplication.topViewController()?.dismiss(animated: true)
-            MBProgressHUD.currentHUD?.removeFromSuperview()
+        let vc = ASCCreateRoomFromTemplateRootViewController(template: template) { [weak self] room in
+            self?.add(entity: room, open: true)
         }
 
         if UIDevice.pad {

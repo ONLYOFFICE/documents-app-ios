@@ -38,8 +38,11 @@ struct ASCCreateRoomFromTemplateRootView: View {
                 screenMode: .createFromTemplate(template),
                 selectedRoomType: template.roomTypeModel,
                 onCreate: {
-                    presentationMode.wrappedValue.dismiss()
-                    onCreate($0)
+                    let room = $0
+                    DispatchQueue.main.async {
+                        presentationMode.wrappedValue.dismiss()
+                        onCreate(room)
+                    }
                 }
             )
             )

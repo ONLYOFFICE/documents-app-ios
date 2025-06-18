@@ -15,6 +15,8 @@ struct ASCRoomTemplatesListView: View {
     @ObservedObject var viewModel: ASCRoomTemplatesViewModel
     @State private var selectedTemplate: ASCFolder?
     @State private var isNavigationActive = false
+    
+    var onCreateFromTemplate: ((ASCFolder) -> Void)?
 
     var body: some View {
         List(viewModel.templates, id: \.id) { template in
@@ -53,8 +55,11 @@ struct ASCRoomTemplatesListView: View {
             ManageRoomView(viewModel: ManageRoomViewModel(
                 screenMode: .createFromTemplate(template),
                 selectedRoomType: template.roomTypeModel,
-                onCreate: { _ in
-                    presentationMode.wrappedValue.dismiss()
+                onCreate: { createdRoom in
+                    Task { @MainActor in
+                        presentationMode.wrappedValue.dismiss()
+                        onCreateFromTemplate?(createdRoom)
+                    }
                 }
             ))
         } else {

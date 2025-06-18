@@ -20,7 +20,10 @@ struct CreateRoomRouteView: View {
         NavigationView {
             RoomSelectionView(
                 viewModel: RoomSelectionViewModel(isCreateTemplateEnabled: true),
-                selectedRoomType: $selectedRoomType
+                selectedRoomType: $selectedRoomType, onCreateFromTemplate: { room in
+                    presentationMode.wrappedValue.dismiss()
+                    onCreate(room)
+                }
             )
             .navigation(item: $selectedRoomType) { type in
                 ManageRoomView(

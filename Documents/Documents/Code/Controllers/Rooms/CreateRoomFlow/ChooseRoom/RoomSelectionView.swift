@@ -48,6 +48,8 @@ struct RoomSelectionView: View {
     @State private var isPresenting = true
     @State private var maxHeights: CGFloat = 0
     @State private var showTemplates = false
+    
+    var onCreateFromTemplate: ((ASCFolder) -> Void)?
 
     var body: some View {
         List(viewModel.roomTypeModel(showDisclosureIndicator: !dismissOnSelection), id: \.name) { model in
@@ -76,7 +78,10 @@ struct RoomSelectionView: View {
         .navigationBarItems(isLastInNCStack: dismissOnSelection, presentationMode: presentationMode)
         .background(
             NavigationLink(
-                destination: ASCRoomTemplatesListView(viewModel: ASCRoomTemplatesViewModel()),
+                destination: ASCRoomTemplatesListView(viewModel: ASCRoomTemplatesViewModel(), onCreateFromTemplate: { room in
+                    presentationMode.wrappedValue.dismiss()
+                    onCreateFromTemplate?(room)
+                }),
                 isActive: $showTemplates,
                 label: { EmptyView() }
             )

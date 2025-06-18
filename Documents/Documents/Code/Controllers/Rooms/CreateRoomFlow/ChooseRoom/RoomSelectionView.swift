@@ -25,11 +25,12 @@ struct RoomTypeRowModel {
 }
 
 extension RoomTypeModel {
-    func mapToRowModel(onTap: @escaping () -> Void) -> RoomTypeRowModel {
+    func mapToRowModel(showDisclosureIndicator: Bool = true, onTap: @escaping () -> Void) -> RoomTypeRowModel {
         RoomTypeRowModel(
             name: name,
             description: description,
             icon: icon,
+            showDisclosureIndicator: showDisclosureIndicator,
             onTap: onTap
         )
     }

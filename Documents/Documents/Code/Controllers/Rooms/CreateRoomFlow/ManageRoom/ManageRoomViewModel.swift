@@ -386,7 +386,6 @@ class ManageRoomViewModel: ObservableObject {
                 }()
                 let (size, unit) = SizeUnit.formatBytes(bytes)
                 allowChangeStorageQuota = roomsQuota.enableQuota == true
-                    && selectedRoomType.type == .virtualData
                 isStorateQuotaEnabled = {
                     guard let room = editingRoom else { return true }
                     return room.isCustomQuota == true

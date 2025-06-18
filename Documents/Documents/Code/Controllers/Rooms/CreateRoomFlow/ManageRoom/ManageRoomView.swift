@@ -56,10 +56,19 @@ struct ManageRoomView: View {
 
     // MARK: - All rooms sections
 
+    @ViewBuilder
     private var roomTypeSection: some View {
+        let showDisclosureIndicator = {
+            if case .createFromTemplate = viewModel.screenMode {
+                return false
+            }
+            return true
+        }()
+
         Section {
             RoomTypeViewRow(
                 roomTypeModel: viewModel.selectedRoomType.mapToRowModel(
+                    showDisclosureIndicator: showDisclosureIndicator,
                     onTap: {
                         guard !viewModel.isEditMode else { return }
                         viewModel.isRoomSelectionPresenting = true
@@ -90,8 +99,7 @@ struct ManageRoomView: View {
 
     @ViewBuilder
     private var roomOwnerSection: some View {
-        /// Not an editTemplate mode
-        if case .editTemplate = viewModel.screenMode { } else if viewModel.isEditMode {
+        if !isEditOrCreateFromTemplateMode, viewModel.isEditMode {
             Section {
                 HStack(spacing: 8) {
                     Text("Owner")
@@ -108,6 +116,12 @@ struct ManageRoomView: View {
                 }
             }
         }
+    }
+
+    private var isEditOrCreateFromTemplateMode: Bool {
+        if case .editTemplate = viewModel.screenMode { return true }
+        if case .createFromTemplate = viewModel.screenMode { return true }
+        return false
     }
 
     @ViewBuilder

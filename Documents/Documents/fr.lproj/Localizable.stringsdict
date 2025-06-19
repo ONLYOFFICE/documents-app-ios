@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>One Group</string>
+			<string>Un groupe</string>
 			<key>other</key>
-			<string>%d Groups</string>
+			<string>%d Groupes</string>
 		</dict>
 	</dict>
 	<key>%d days</key>
@@ -29,9 +29,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>%d jour</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d jours</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
@@ -45,9 +45,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d hour</string>
+			<string>%d heure</string>
 			<key>other</key>
-			<string>%d hours</string>
+			<string>%d heures</string>
 		</dict>
 	</dict>
 	<key>%d months</key>
@@ -61,9 +61,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d month</string>
+			<string>%d mois</string>
 			<key>other</key>
-			<string>%d months</string>
+			<string>%d mois</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
@@ -93,9 +93,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d year</string>
+			<string>%d année</string>
 			<key>other</key>
-			<string>%d years</string>
+			<string>%d années</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
@@ -225,7 +225,7 @@
 	<key>Expires after %d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
+		<string>%#@jours@</string>
 		<key>days</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -233,9 +233,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Expires after %d day</string>
+			<string>Expire après %d jour</string>
 			<key>other</key>
-			<string>Expires after %d days</string>
+			<string>Expire après %d jours</string>
 		</dict>
 	</dict>
 	<key>Expires after %d hours</key>
@@ -249,9 +249,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Expires after %d hour</string>
+			<string>Expire après %d heure</string>
 			<key>other</key>
-			<string>Expires after %d hours</string>
+			<string>Expire après %d heures</string>
 		</dict>
 	</dict>
 	<key>Me and %d Users</key>
@@ -265,9 +265,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Me and One Users</string>
+			<string>Moi et un utilisateur</string>
 			<key>other</key>
-			<string>Me and %d Users</string>
+			<string>Moi et %d utilisateurs</string>
 		</dict>
 	</dict>
 </dict>

@@ -2913,6 +2913,11 @@ Operation completed</note>
         <target>From template</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="From templates" xml:space="preserve">
+        <source>From templates</source>
+        <target>From templates</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Full Access</target>

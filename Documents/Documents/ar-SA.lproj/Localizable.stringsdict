@@ -13,17 +13,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d Groups</string>
+			<string>٪d مجموعة</string>
 			<key>many</key>
-			<string>%d Groups</string>
+			<string>%d مجموعتان</string>
 			<key>one</key>
-			<string>One Group</string>
+			<string>مجموعة واحدة</string>
 			<key>other</key>
-			<string>%d Groups</string>
+			<string>%d مجموعات</string>
 			<key>two</key>
-			<string>%d Groups</string>
+			<string>%d مجموعةً</string>
 			<key>zero</key>
-			<string>%d Groups</string>
+			<string>%d مجموعةً</string>
 		</dict>
 	</dict>
 	<key>%d days</key>
@@ -37,17 +37,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d days</string>
+			<string>%d يوم</string>
 			<key>many</key>
-			<string>%d days</string>
+			<string>%d يومان</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>%d يوم</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d أيام</string>
 			<key>two</key>
-			<string>%d days</string>
+			<string>%d يومًا</string>
 			<key>zero</key>
-			<string>%d days</string>
+			<string>%d يومًا</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
@@ -61,17 +61,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d hours</string>
+			<string>٪d ساعة</string>
 			<key>many</key>
-			<string>%d hours</string>
+			<string>%d ساعتان</string>
 			<key>one</key>
-			<string>%d hour</string>
+			<string>٪d ساعة</string>
 			<key>other</key>
-			<string>%d hours</string>
+			<string>%d ساعات</string>
 			<key>two</key>
-			<string>%d hours</string>
+			<string>%d ساعةً</string>
 			<key>zero</key>
-			<string>%d hours</string>
+			<string>%d ساعةً</string>
 		</dict>
 	</dict>
 	<key>%d months</key>
@@ -85,23 +85,23 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d months</string>
+			<string>٪d شهر</string>
 			<key>many</key>
-			<string>%d months</string>
+			<string>%d شهران</string>
 			<key>one</key>
-			<string>%d month</string>
+			<string>٪d شهر</string>
 			<key>other</key>
-			<string>%d months</string>
+			<string>%d شهرًا</string>
 			<key>two</key>
-			<string>%d months</string>
+			<string>%d شهرًا</string>
 			<key>zero</key>
-			<string>%d months</string>
+			<string>%d شهرًا</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@عناصر@</string>
+		<string>%#@items@</string>
 		<key>items</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -109,17 +109,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d selected</string>
+			<string>٪d محدد</string>
 			<key>many</key>
-			<string>%d selected</string>
+			<string>٪d محدد</string>
 			<key>one</key>
 			<string>%d محدد</string>
 			<key>other</key>
 			<string>%d محدد</string>
 			<key>two</key>
-			<string>%d selected</string>
+			<string>٪d محدد</string>
 			<key>zero</key>
-			<string>%d selected</string>
+			<string>٪d محدد</string>
 		</dict>
 	</dict>
 	<key>%d years</key>
@@ -133,23 +133,23 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d years</string>
+			<string>٪d سنة</string>
 			<key>many</key>
-			<string>%d years</string>
+			<string>%d سنتان</string>
 			<key>one</key>
-			<string>%d year</string>
+			<string>٪d سنة</string>
 			<key>other</key>
-			<string>%d years</string>
+			<string>%d سنوات</string>
 			<key>two</key>
-			<string>%d years</string>
+			<string>%d سنةً</string>
 			<key>zero</key>
-			<string>%d years</string>
+			<string>%d سنةً</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@ملفات@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -157,17 +157,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>%lu Files selected</string>
+			<string>تم تحديد ٪lu ملف</string>
 			<key>many</key>
-			<string>%lu Files selected</string>
+			<string>تم تحديد ٪lu ملفين</string>
 			<key>one</key>
 			<string>%lu تم اختيار ملف</string>
 			<key>other</key>
 			<string>%lu تم اختيار ملفات</string>
 			<key>two</key>
-			<string>%lu Files selected</string>
+			<string>تم تحديد ٪lu ملفات</string>
 			<key>zero</key>
-			<string>%lu Files selected</string>
+			<string>تم تحديد ٪lu ملفًا</string>
 		</dict>
 	</dict>
 	<key>%lu Folder and %lu File selected</key>
@@ -181,17 +181,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>and %lu Files selected</string>
+			<string>وتم تحديد %lu ملف</string>
 			<key>many</key>
-			<string>and %lu Files selected</string>
+			<string>وتم تحديد %lu ملفان</string>
 			<key>one</key>
 			<string>و %lu تم اختيار ملف</string>
 			<key>other</key>
 			<string>و %lu تم اختيار ملفات</string>
 			<key>two</key>
-			<string>and %lu Files selected</string>
+			<string>وتم تحديد %lu ملفات</string>
 			<key>zero</key>
-			<string>and %lu Files selected</string>
+			<string>وتم تحديد ٪lu ملفًا</string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>
@@ -200,15 +200,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>%lu Folders %2$#@lu_files@</string>
+			<string>٪lu مجلد و٪2$#@lu_files@</string>
 			<key>many</key>
-			<string>%lu Folders %2$#@lu_files@</string>
+			<string>٪lu مجلد و٪2$#@lu_files@</string>
 			<key>one</key>
 			<string>%المجلد %2$#@الملفات@</string>
 			<key>other</key>
 			<string>%المجلدات %2$#@الملفات@</string>
 			<key>two</key>
-			<string>%lu Folders %2$#@lu_files@</string>
+			<string>٪lu مجلد و٪2$#@lu_files@</string>
 			<key>zero</key>
 			<string>%2$#@الملفات@</string>
 		</dict>
@@ -216,7 +216,7 @@
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@المجلدات@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -224,23 +224,23 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>%lu Folders selected</string>
+			<string>تم تحديد ٪lu مجلد</string>
 			<key>many</key>
-			<string>%lu Folders selected</string>
+			<string>تم تحديد ٪lu مجلدين</string>
 			<key>one</key>
 			<string>%تم تحديد المجلد</string>
 			<key>other</key>
 			<string>%تم تحديد المجلدات</string>
 			<key>two</key>
-			<string>%lu Folders selected</string>
+			<string>تم تحديد ٪lu مجلدات</string>
 			<key>zero</key>
-			<string>%lu Folders selected</string>
+			<string>تم تحديد ٪lu مجلدًا</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@ملفات@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -248,23 +248,23 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>Delete %lu Files</string>
+			<string>حذف ٪lu ملف</string>
 			<key>many</key>
-			<string>Delete %lu Files</string>
+			<string>حذف %lu ملفين</string>
 			<key>one</key>
 			<string>حذف %الملف</string>
 			<key>other</key>
 			<string>حذف %الملفات</string>
 			<key>two</key>
-			<string>Delete %lu Files</string>
+			<string>حذف %lu ملفات</string>
 			<key>zero</key>
-			<string>Delete %lu Files</string>
+			<string>حذف %lu ملفًا</string>
 		</dict>
 	</dict>
 	<key>Delete %lu Folder</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@المجلدات@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -272,23 +272,23 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>Delete %lu Folders</string>
+			<string>حذف %lu مجلد</string>
 			<key>many</key>
-			<string>Delete %lu Folders</string>
+			<string>حذف %lu مجلدين</string>
 			<key>one</key>
 			<string>حذف %المجلد</string>
 			<key>other</key>
 			<string>حذف %المجلدات</string>
 			<key>two</key>
-			<string>Delete %lu Folders</string>
+			<string>حذف %lu مجلدات</string>
 			<key>zero</key>
-			<string>Delete %lu Folders</string>
+			<string>حذف %lu مجلدًا</string>
 		</dict>
 	</dict>
 	<key>Delete %lu Folder and %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@المجلدات@</string>
+		<string>%1$#@lu_folders@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -296,15 +296,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>and %lu Files</string>
+			<string>و %lu ملفان</string>
 			<key>many</key>
-			<string>and %lu Files</string>
+			<string>و %lu ملفات</string>
 			<key>one</key>
-			<string>و %الملف</string>
+			<string>و %lu ملف</string>
 			<key>other</key>
-			<string>و %الملفات</string>
+			<string>و %lu ملف</string>
 			<key>two</key>
-			<string>and %lu Files</string>
+			<string>و %lu ملفًا</string>
 			<key>zero</key>
 			<string></string>
 		</dict>
@@ -315,15 +315,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<string>حذف %lu مجلدًا و%2$#@lu_files@ ملفًا</string>
 			<key>many</key>
-			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<string>حذف %lu مجلدين و%2$#@lu_files@ ملفًا</string>
 			<key>one</key>
 			<string>حذف %المجلد %2$#@الملفات@</string>
 			<key>other</key>
 			<string>حذف %المجلدات %2$#@الملفات@</string>
 			<key>two</key>
-			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<string>حذف %lu مجلدات و%2$#@lu_files@ ملفًا</string>
 			<key>zero</key>
 			<string>حذف %2$#@الملفات@</string>
 		</dict>
@@ -339,17 +339,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Expires after %d days</string>
+			<string>تنتهي صلاحيته بعد %d يومين</string>
 			<key>many</key>
-			<string>Expires after %d days</string>
+			<string>تنتهي صلاحيته بعد %d أيام</string>
 			<key>one</key>
-			<string>Expires after %d day</string>
+			<string>تنتهي صلاحيته بعد %d يوم</string>
 			<key>other</key>
-			<string>Expires after %d days</string>
+			<string>تنتهي صلاحيته بعد %d يومًا</string>
 			<key>two</key>
-			<string>Expires after %d days</string>
+			<string>تنتهي صلاحيته بعد %d يومًا</string>
 			<key>zero</key>
-			<string>Expires after %d days</string>
+			<string>تنتهي صلاحيته بعد %d يوم</string>
 		</dict>
 	</dict>
 	<key>Expires after %d hours</key>
@@ -363,17 +363,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Expires after %d hours</string>
+			<string>ينتهي بعد %d ساعة</string>
 			<key>many</key>
-			<string>Expires after %d hours</string>
+			<string>ينتهي بعد %d ساعتين</string>
 			<key>one</key>
-			<string>Expires after %d hour</string>
+			<string>ينتهي بعد %d ساعة</string>
 			<key>other</key>
-			<string>Expires after %d hours</string>
+			<string>ينتهي بعد %d ساعات</string>
 			<key>two</key>
-			<string>Expires after %d hours</string>
+			<string>ينتهي بعد %d ساعةً</string>
 			<key>zero</key>
-			<string>Expires after %d hours</string>
+			<string>ينتهي بعد %d ساعةً</string>
 		</dict>
 	</dict>
 	<key>Me and %d Users</key>
@@ -387,17 +387,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Me and %d Users</string>
+			<string>أنا و %d مستخدم</string>
 			<key>many</key>
-			<string>Me and %d Users</string>
+			<string>أنا و %d مستخدمين</string>
 			<key>one</key>
-			<string>Me and One Users</string>
+			<string>أنا ومستخدم واحد</string>
 			<key>other</key>
-			<string>Me and %d Users</string>
+			<string>أنا و %d مستخدمًا</string>
 			<key>two</key>
-			<string>Me and %d Users</string>
+			<string>أنا و %d مستخدمون</string>
 			<key>zero</key>
-			<string>Me and %d Users</string>
+			<string>أنا و %d مستخدمون</string>
 		</dict>
 	</dict>
 </dict>

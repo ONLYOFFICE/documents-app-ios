@@ -38,7 +38,7 @@
 "TP3-h7-Hq1.placeholder" = "Prénom";
 
 /* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "WWd-Za-CPd"; */
-"WWd-Za-CPd.placeholder" = "Adresse E-mail";
+"WWd-Za-CPd.placeholder" = "Adresse e-mail";
 
 /* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP"; */
 "Zgx-q8-jRP.placeholder" = "Confirmez le mot de passe";

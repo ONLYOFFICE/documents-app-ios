@@ -1438,6 +1438,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
+        <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%d Groups" translate="no" xml:space="preserve">
@@ -1603,10 +1604,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Access to template" xml:space="preserve">
         <source>Access to template</source>
+        <target>Доступ к шаблону</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access to template. You can select members who can create rooms based on this template." xml:space="preserve">
         <source>Access to template. You can select members who can create rooms based on this template.</source>
+        <target>Доступ к шаблону. Вы можете выбрать участников, которые могут создавать комнаты на основе этого шаблона.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access type" xml:space="preserve">
@@ -1626,6 +1629,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Accountant" xml:space="preserve">
         <source>Accountant</source>
+        <target>Бухгалтер</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
@@ -1640,10 +1644,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add" xml:space="preserve">
         <source>Add</source>
+        <target>Добавить</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add Users or Groups" xml:space="preserve">
         <source>Add Users or Groups</source>
+        <target>Добавить пользователей или группы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
@@ -1720,6 +1726,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All DocSpace and Room admins will be able to create rooms using this template." xml:space="preserve">
         <source>All DocSpace and Room admins will be able to create rooms using this template.</source>
+        <target>Все администраторы DocSpace и комнат смогут создавать комнаты, используя этот шаблон.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All Files" xml:space="preserve">
@@ -2040,6 +2047,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Complete" xml:space="preserve">
         <source>Complete</source>
+        <target>Завершить</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
@@ -2093,6 +2101,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Contact Support" xml:space="preserve">
         <source>Contact Support</source>
+        <target>Связаться со Службой поддержки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Content creator" xml:space="preserve">
@@ -2202,6 +2211,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not delete the version." xml:space="preserve">
         <source>Could not delete the version.</source>
+        <target>Не удалось удалить версию.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not delete." xml:space="preserve">
@@ -2271,6 +2281,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn' get access" xml:space="preserve">
         <source>Couldn' get access</source>
+        <target>Не удалось получить доступ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
@@ -2325,6 +2336,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." xml:space="preserve">
         <source>Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</source>
+        <target>Создать комнату на основе шаблона. Все настройки, пользователи, папки и файлы будут взяты из выбранного шаблона комнаты.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2381,6 +2393,7 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Current file will be saved in version history." xml:space="preserve">
         <source>Current file will be saved in version history.</source>
+        <target>Текущий файл будет сохранен в истории версий.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
@@ -2397,12 +2410,18 @@ organize your files.</source>
         <source>Custom filter for
 the selected file
 disabled</source>
+        <target>Пользовательский фильтр для
+выбранного файла
+отключен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom filter for&#10;the selected file&#10;enabled" xml:space="preserve">
         <source>Custom filter for
 the selected file
 enabled</source>
+        <target>Пользовательский фильтр для
+выбранного файла
+включен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
@@ -2474,14 +2493,17 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Delete template" xml:space="preserve">
         <source>Delete template</source>
+        <target>Удалить шаблон</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete this item?" xml:space="preserve">
         <source>Delete this item?</source>
+        <target>Удалить этот элемент?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete version" xml:space="preserve">
         <source>Delete version</source>
+        <target>Удалить версию</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
@@ -2516,10 +2538,12 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Director" xml:space="preserve">
         <source>Director</source>
+        <target>Директор</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable Custom filter" xml:space="preserve">
         <source>Disable Custom filter</source>
+        <target>Отключить пользовательский фильтр</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
@@ -2539,6 +2563,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Do you really want to delete template room %@? The template cannot be restored. " xml:space="preserve">
         <source>Do you really want to delete template room %@? The template cannot be restored. </source>
+        <target>Вы действительно хотите удалить шаблон комнаты %@? Его нельзя будет восстановить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
@@ -2558,6 +2583,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Docspace user only" xml:space="preserve">
         <source>Docspace user only</source>
+        <target>Только для пользователей Docspace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2598,6 +2624,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Draft" xml:space="preserve">
         <source>Draft</source>
+        <target>Черновик</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
@@ -2632,10 +2659,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit Comment" xml:space="preserve">
         <source>Edit Comment</source>
+        <target>Редактировать комментарий</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit comment" xml:space="preserve">
         <source>Edit comment</source>
+        <target>Редактировать комментарий</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
@@ -2660,6 +2689,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit template" xml:space="preserve">
         <source>Edit template</source>
+        <target>Изменить шаблон</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
@@ -2694,6 +2724,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Employee" xml:space="preserve">
         <source>Employee</source>
+        <target>Сотрудник</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
@@ -2708,6 +2739,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enable Custom filter" xml:space="preserve">
         <source>Enable Custom filter</source>
+        <target>Включить пользовательский фильтр</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
@@ -2878,6 +2910,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
         <source>Falure to open editor</source>
+        <target>Не удалось открыть редактор</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2952,6 +2985,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Filling Status" xml:space="preserve">
         <source>Filling Status</source>
+        <target>Статус заполнения</target>
         <note>Start filling form Button title</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2961,10 +2995,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Filling status" xml:space="preserve">
         <source>Filling status</source>
+        <target>Статус заполнения</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling was stopped by" xml:space="preserve">
         <source>Filling was stopped by</source>
+        <target>Заполнение было остановлено:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -3034,6 +3070,11 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="From template" xml:space="preserve">
         <source>From template</source>
+        <target>Из шаблона</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From templates" xml:space="preserve">
+        <source>From templates</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -3113,10 +3154,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Help &amp; Feedback" xml:space="preserve">
         <source>Help &amp; Feedback</source>
+        <target>Помощь и обратная связь</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Help Center" xml:space="preserve">
         <source>Help Center</source>
+        <target>Справочный центр</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
@@ -3166,16 +3209,21 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="In progress" xml:space="preserve">
         <source>In progress</source>
+        <target>В процессе</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of
 the form in which you participate or in which you
 are the organizer of completion</source>
+        <target>На этой панели вы можете следить за заполнением
+формы, участником или организатором заполнения которой
+вы являетесь</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion</source>
+        <target>На этой панели вы можете следить за заполнением формы, участником или организатором заполнения которой вы являетесь</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
@@ -3261,6 +3309,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="It will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>It will be irretrievably deleted. This action is irreversible.</source>
+        <target>Файл будет безвозвратно удален. Это действие нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
@@ -3457,6 +3506,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Members" xml:space="preserve">
         <source>Members</source>
+        <target>Участники</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
@@ -3581,6 +3631,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
         <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <target>Новые Гости будут добавлены сюда, как только вы пригласите их в комнату. Вы можете поделиться своими гостями и добавить гостей, приглашенных другими, в свой список.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
@@ -3625,6 +3676,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No added guests yet" xml:space="preserve">
         <source>No added guests yet</source>
+        <target>Пока нет добавленных гостей</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
@@ -3684,6 +3736,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No templates here yet" xml:space="preserve">
         <source>No templates here yet</source>
+        <target>Здесь пока нет шаблонов </target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
@@ -3779,10 +3832,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Only DocSpace and Room admins are shown here" xml:space="preserve">
         <source>Only DocSpace and Room admins are shown here</source>
+        <target>Здесь отображаются только администраторы DocSpace и администраторы комнат</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." xml:space="preserve">
         <source>Only DocSpace and Room admins from the selected groups will be able to create rooms using this template.</source>
+        <target>Только администраторы DocSpace и администраторы комнат из выбранных групп смогут создавать комнаты с помощью этого шаблона.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
@@ -3817,6 +3872,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
+        <target>Открыл форму для заполнения</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3861,10 +3917,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
         <source>PDF-Documents</source>
+        <target>PDF-документы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="PDF-Forms" xml:space="preserve">
         <source>PDF-Forms</source>
+        <target>PDF-формы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
@@ -4018,6 +4076,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target>Опытный пользователь</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -4047,6 +4106,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Process details" xml:space="preserve">
         <source>Process details</source>
+        <target>Подробные сведения о процессе</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
@@ -4231,10 +4291,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Restore this version?" xml:space="preserve">
         <source>Restore this version?</source>
+        <target>Восстановить эту версию?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restored" xml:space="preserve">
         <source>Restored</source>
+        <target>Восстановлено</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
@@ -4269,6 +4331,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Role description" xml:space="preserve">
         <source>Role description</source>
+        <target>Описание роли</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
@@ -4278,6 +4341,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Roles from the form:" xml:space="preserve">
         <source>Roles from the form:</source>
+        <target>Роли из формы:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room Name" xml:space="preserve">
@@ -4292,6 +4356,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Room created" xml:space="preserve">
         <source>Room created</source>
+        <target>Комната создана</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
@@ -4342,6 +4407,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Save as template" xml:space="preserve">
         <source>Save as template</source>
+        <target>Сохранить как шаблон</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -4356,10 +4422,12 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Scan Document" xml:space="preserve">
         <source>Scan Document</source>
+        <target>Сканировать документ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Scanning is not supported on this device" xml:space="preserve">
         <source>Scanning is not supported on this device</source>
+        <target>Сканирование не поддерживается на этом устройстве.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
@@ -4410,6 +4478,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select members" xml:space="preserve">
         <source>Select members</source>
+        <target>Выбрать участников</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -4559,6 +4628,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Show version history" xml:space="preserve">
         <source>Show version history</source>
+        <target>Показать историю версий</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
@@ -4623,18 +4693,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Start" xml:space="preserve">
         <source>Start</source>
+        <target>Начать</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Start filling" xml:space="preserve">
         <source>Start filling</source>
+        <target>Начать заполнение</target>
         <note>Start filling form Button title</note>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
         <source>Stop filling</source>
+        <target>Начать заполнение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Stopped" xml:space="preserve">
         <source>Stopped</source>
+        <target>Остановлено</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
@@ -4654,6 +4728,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Submitted their part. The form was sent to the next role." xml:space="preserve">
         <source>Submitted their part. The form was sent to the next role.</source>
+        <target>Отправил свою часть. Форма была отправлена ​​на следующую роль.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Success" xml:space="preserve">
@@ -4663,6 +4738,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Suggest a Feature" xml:space="preserve">
         <source>Suggest a Feature</source>
+        <target>Предложить функциональную возможность</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -4687,6 +4763,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Tags are applied to the room which will be created based on this template." xml:space="preserve">
         <source>Tags are applied to the room which will be created based on this template.</source>
+        <target>Теги применяются к комнате, которая будет создана на основе этого шаблона.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
@@ -4706,18 +4783,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Template" xml:space="preserve">
         <source>Template</source>
+        <target>Шаблон</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Template %@ saved" xml:space="preserve">
         <source>Template %@ saved</source>
+        <target>Шаблон %@ сохранен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Template available to everyone" xml:space="preserve">
         <source>Template available to everyone</source>
+        <target>Шаблон доступен каждому</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Templates" xml:space="preserve">
         <source>Templates</source>
+        <target>Шаблоны</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terminate account" xml:space="preserve">
@@ -4752,10 +4833,12 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The added administrators will be able to create rooms using this template." xml:space="preserve">
         <source>The added administrators will be able to create rooms using this template.</source>
+        <target>Добавленные администраторы смогут создавать комнаты, используя этот шаблон.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The client and server versions are incompatible. You can only open the document in view mode" xml:space="preserve">
         <source>The client and server versions are incompatible. You can only open the document in view mode</source>
+        <target>Версии клиента и сервера несовместимы. Вы можете открыть документ только в режиме просмотра</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
@@ -4821,6 +4904,12 @@ Custom filter is
 successfully
 copied to the
 clipboard.</source>
+        <target>Ссылка на файл
+с включенным
+Пользовательским фильтром
+успешно
+скопирована в
+буфер обмена.</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
@@ -5126,6 +5215,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Unknown status" xml:space="preserve">
         <source>Unknown status</source>
+        <target>Неизвестный статус</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
@@ -5270,10 +5360,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Version %@" xml:space="preserve">
         <source>Version %@</source>
+        <target>Версия %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Version History" xml:space="preserve">
         <source>Version History</source>
+        <target>История версий</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
@@ -5394,6 +5486,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?</source>
+        <target>Вы собираетесь удалить версию файла. Ее будет невозможно увидеть или восстановить. Продолжить?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
@@ -5403,10 +5496,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target>Вы собираетесь удалить этот файл. Файл будет окончательно удален через 30 дней. Продолжить?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target>Вы собираетесь удалить эту папку. Папка будет окончательно удалена через 30 дней. Продолжить?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
@@ -5446,6 +5541,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">
         <source>You can create a template from a room in the Room section</source>
+        <target>Вы можете создать шаблон из комнаты в разделе «Комната».</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
@@ -5500,6 +5596,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Your turn" xml:space="preserve">
         <source>Your turn</source>
+        <target>Ваша очередь</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Zb" xml:space="preserve">

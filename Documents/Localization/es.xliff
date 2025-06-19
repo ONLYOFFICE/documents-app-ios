@@ -2857,6 +2857,10 @@ Operation completed</note>
         <source>From template</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="From templates" xml:space="preserve">
+        <source>From templates</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Acceso completo</target>

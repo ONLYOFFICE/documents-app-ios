@@ -2838,11 +2838,6 @@ Operation completed</note>
         <target>Propietario del formulario</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>Plantillas de formularios</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
         <target>Desde DocSpace</target>

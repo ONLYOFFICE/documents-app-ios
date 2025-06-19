@@ -2877,11 +2877,6 @@ Operation completed</note>
         <target>Ձևի սեփականատեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>Ձևի ձևանմուշներ</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
         <target>DocSpace-ից</target>

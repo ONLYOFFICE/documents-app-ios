@@ -374,12 +374,12 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder %2$#@lu_files@</source>
-        <target state="translated">Supprimer %lu dossier %2$#@lu_fichiers@</target>
+        <target>Supprimer %lu dossier %2$#@lu_folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
-        <target state="translated">Supprimer %lu dossiers %2$#@lu_fichiers@</target>
+        <target>Supprimer %lu dossiers %2$#@lu_folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
@@ -2633,8 +2633,10 @@ Operation completed</note>
         <target>Pas de sous-dossiers</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
-        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+      <trans-unit id="Exit without saving?
+You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving?
+You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
         <target>Quitter sans sauvegarder ?  Vous avez apporté des modifications à l'index. Si vous continuez sans sauvegarder, ces modifications ne seront pas appliquées.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
@@ -2876,11 +2878,6 @@ Operation completed</note>
       <trans-unit id="Form owner" xml:space="preserve">
         <source>Form owner</source>
         <target>Propriétaire du formulaire</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>Modèles de formulaire</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">

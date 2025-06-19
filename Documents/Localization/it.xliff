@@ -2812,11 +2812,6 @@ Operation completed</note>
         <target>Proprietario del modulo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>Modelli di moduli</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
         <target>Da DocSpace</target>

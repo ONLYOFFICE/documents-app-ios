@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
+/* No comment provided by engineer. */
+"%@" = "%@";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i из %2$i";
 
@@ -77,6 +80,12 @@
 "Access settings" = "Настройки доступа";
 
 /* No comment provided by engineer. */
+"Access to template" = "Доступ к шаблону";
+
+/* No comment provided by engineer. */
+"Access to template. You can select members who can create rooms based on this template." = "Доступ к шаблону. Вы можете выбрать участников, которые могут создавать комнаты на основе этого шаблона.";
+
+/* No comment provided by engineer. */
 "Access type" = "Тип доступа";
 
 /* No comment provided by engineer. */
@@ -86,10 +95,16 @@
 "Account name is not valid" = "Имя учетной записи некорректное";
 
 /* No comment provided by engineer. */
+"Accountant" = "Бухгалтер";
+
+/* No comment provided by engineer. */
 "Accounts" = "Учетные записи";
 
 /* No comment provided by engineer. */
 "Action on files" = "Действия с файлами";
+
+/* No comment provided by engineer. */
+"Add" = "Добавить";
 
 /* No comment provided by engineer. */
 "Add account" = "Добавить аккаунт";
@@ -108,6 +123,9 @@
 
 /* Button title */
 "Add users" = "Добавьте пользователей";
+
+/* No comment provided by engineer. */
+"Add Users or Groups" = "Добавить пользователей или группы";
 
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Добавьте пользователей или группы и дайте им\n возможность читать, просматривать или редактировать документы.";
@@ -132,6 +150,9 @@
 
 /* No comment provided by engineer. */
 "All" = "Все";
+
+/* No comment provided by engineer. */
+"All DocSpace and Room admins will be able to create rooms using this template." = "Все администраторы DocSpace и комнат смогут создавать комнаты, используя этот шаблон.";
 
 /* No comment provided by engineer. */
 "All files" = "Все файлы";
@@ -351,6 +372,9 @@ Measurement unit */
 /* Payment required title */
 "common.paymentRequiredTitle" = "Требуется оплата портала";
 
+/* Form filling status */
+"Complete" = "Завершить";
+
 /* No comment provided by engineer. */
 "Compress Images" = "Сжатие изображений";
 
@@ -377,6 +401,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "Console" = "Консоль";
+
+/* No comment provided by engineer. */
+"Contact Support" = "Связаться со Службой поддержки";
 
 /* Share status */
 "Content creator" = "Создатель контента";
@@ -439,6 +466,9 @@ Measurement unit */
 "Could not delete the folder." = "Невозможно удалить папку.";
 
 /* No comment provided by engineer. */
+"Could not delete the version." = "Не удалось удалить версию.";
+
+/* No comment provided by engineer. */
 "Could not delete." = "Невозможно удалить.";
 
 /* No comment provided by engineer. */
@@ -481,6 +511,9 @@ Measurement unit */
 "Could not write to file" = "Не удалось записать в файл";
 
 /* No comment provided by engineer. */
+"Couldn' get access" = "Не удалось получить доступ.";
+
+/* No comment provided by engineer. */
 "Couldn't change the owner." = "Не удалось сменить владельца";
 
 /* No comment provided by engineer. */
@@ -509,6 +542,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "Create a new file" = "Создать новый файл";
+
+/* No comment provided by engineer. */
+"Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." = "Создать комнату на основе шаблона. Все настройки, пользователи, папки и файлы будут взяты из выбранного шаблона комнаты.";
 
 /* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Создайте дополнительные ссылки, чтобы поделиться документом с разными правами доступа.";
@@ -541,10 +577,19 @@ Measurement unit */
 "Current Date" = "Текущая дата";
 
 /* No comment provided by engineer. */
+"Current file will be saved in version history." = "Текущий файл будет сохранен в истории версий.";
+
+/* No comment provided by engineer. */
 "Custom" = "Пользовательская";
 
 /* Share status */
 "Custom filter" = "Пользовательский фильтр";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\ndisabled" = "Пользовательский фильтр для\nвыбранного файла\nотключен";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\nenabled" = "Пользовательский фильтр для\nвыбранного файла\nвключен";
 
 /* No comment provided by engineer. */
 "Custom room" = "Пользовательская комната";
@@ -579,6 +624,15 @@ Measurement unit */
 /* No comment provided by engineer. */
 "Delete permanently" = "Удалить навсегда";
 
+/* Button title */
+"Delete template" = "Удалить шаблон";
+
+/* No comment provided by engineer. */
+"Delete this item?" = "Удалить этот элемент?";
+
+/* No comment provided by engineer. */
+"Delete version" = "Удалить версию";
+
 /* No comment provided by engineer. */
 "Deleted" = "Удалено";
 
@@ -598,6 +652,12 @@ Measurement unit */
 "Diagonal" = "По диагонали";
 
 /* No comment provided by engineer. */
+"Director" = "Директор";
+
+/* No comment provided by engineer. */
+"Disable Custom filter" = "Отключить пользовательский фильтр";
+
+/* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Отключите, если вы не хотите получать уведомления от %@";
 
 /* No comment provided by engineer. */
@@ -607,6 +667,9 @@ Measurement unit */
 "Disconnect third party" = "Отсоединить сторонние сервисы";
 
 /* No comment provided by engineer. */
+"Do you really want to delete template room %@? The template cannot be restored. " = "Вы действительно хотите удалить шаблон комнаты %@? Его нельзя будет восстановить.";
+
+/* No comment provided by engineer. */
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Вы действительно хотите покинуть эту комнату? Вы сможете присоединиться к ней снова по новому приглашению администратора комнаты.";
 
 /* No comment provided by engineer. */
@@ -614,6 +677,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "Администратор DocSpace";
+
+/* No comment provided by engineer. */
+"Docspace user only" = "Только для пользователей Docspace";
 
 /* No comment provided by engineer. */
 "Document" = "Документ";
@@ -637,6 +703,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "DoсSpace users only" = "Только для пользователей DoсSpace";
 
+/* Form filling status */
+"Draft" = "Черновик";
+
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
 
@@ -655,6 +724,12 @@ Operation completed */
 /* Button title */
 "Edit" = "Редактировать";
 
+/* No comment provided by engineer. */
+"Edit comment" = "Редактировать комментарий";
+
+/* No comment provided by engineer. */
+"Edit Comment" = "Редактировать комментарий";
+
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Редактируйте документ локально";
 
@@ -666,6 +741,9 @@ Operation completed */
 
 /* Button title */
 "Edit room" = "Редактировать комнату";
+
+/* No comment provided by engineer. */
+"Edit template" = "Изменить шаблон";
 
 /* Share status */
 "Editor" = "Редактор";
@@ -686,6 +764,9 @@ Operation completed */
 "Email is not valid" = "Некорректный e-mail";
 
 /* No comment provided by engineer. */
+"Employee" = "Сотрудник";
+
+/* No comment provided by engineer. */
 "Employees" = "Сотрудники";
 
 /* No comment provided by engineer. */
@@ -693,6 +774,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "Включить автоматическую индексацию для индексации файлов и папок по серийному номеру. Сортировка по номеру будет установлена ​​по умолчанию для всех пользователей.";
+
+/* No comment provided by engineer. */
+"Enable Custom filter" = "Включить пользовательский фильтр";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Включите, если хотите получать уведомления от %@";
@@ -802,6 +886,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Не удалось подготовить архив";
 
+/* No comment provided by engineer. */
+"Falure to open editor" = "Не удалось открыть редактор";
+
 /* Category title */
 "Favorites" = "Избранное";
 
@@ -851,6 +938,15 @@ Operation completed */
 "Filling form" = "Заполнение форм";
 
 /* No comment provided by engineer. */
+"Filling status" = "Статус заполнения";
+
+/* Start filling form Button title */
+"Filling Status" = "Статус заполнения";
+
+/* No comment provided by engineer. */
+"Filling was stopped by" = "Заполнение было остановлено:";
+
+/* No comment provided by engineer. */
 "Filters" = "Фильтры";
 
 /* No comment provided by engineer. */
@@ -888,6 +984,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "From DocSpace" = "Из DocSpace";
+
+/* No comment provided by engineer. */
+"From template" = "Из шаблона";
 
 /* Share status */
 "Full Access" = "Полный доступ";
@@ -935,6 +1034,12 @@ Operation completed */
 "Guests" = "Гости";
 
 /* No comment provided by engineer. */
+"Help & Feedback" = "Помощь и обратная связь";
+
+/* No comment provided by engineer. */
+"Help Center" = "Справочный центр";
+
+/* No comment provided by engineer. */
 "Here you will find a list of the recently opened files shared with you via an external link." = "Здесь вы найдете список недавно открытых файлов, которыми с вами поделились с помощью внешней ссылки.";
 
 /* Watermark Position */
@@ -966,6 +1071,15 @@ Operation completed */
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "В онлайн-режиме используйте функции совместного редактирования в режиме реального времени %@, чтобы работать над документами вместе с участниками портала, делиться документами и создавать общие папки для хранения.";
+
+/* Form filling status */
+"In progress" = "В процессе";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion" = "На этой панели вы можете следить за заполнением\nформы, участником или организатором заполнения которой\nвы являетесь";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" = "На этой панели вы можете следить за заполнением формы, участником или организатором заполнения которой вы являетесь";
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неверный адрес портала";
@@ -1015,6 +1129,9 @@ Folder order */
 
 /* No comment provided by engineer. */
 "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "Пригласить пользователей по общим ссылкам для просмотра документов без регистрации. Вы также можете встроить эту комнату в любой веб-интерфейс.";
+
+/* No comment provided by engineer. */
+"It will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
 "Items in Trash are automatically deleted after 30 days" = "Элементы в корзине автоматически удаляются через 30 дней";
@@ -1127,6 +1244,9 @@ If current user name is not set */
 "Member" = "Участник";
 
 /* No comment provided by engineer. */
+"Members" = "Участники";
+
+/* No comment provided by engineer. */
 "Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" = "Минимальная длина: 8 символов | Допустимые символы: а-я, А-Я, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}";
 
 /* No comment provided by engineer. */
@@ -1196,6 +1316,9 @@ If current user name is not set */
 "New form filling room" = "Новая комната для заполнения форм";
 
 /* No comment provided by engineer. */
+"New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." = "Новые Гости будут добавлены сюда, как только вы пригласите их в комнату. Вы можете поделиться своими гостями и добавить гостей, приглашенных другими, в свой список.";
+
+/* No comment provided by engineer. */
 "New Presentation" = "Новая презентация";
 
 /* No comment provided by engineer. */
@@ -1218,6 +1341,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "Nextcloud directory" = "Каталог Nextcloud";
+
+/* No comment provided by engineer. */
+"No added guests yet" = "Пока нет добавленных гостей";
 
 /* No comment provided by engineer. */
 "No archived rooms here yet" = "Здесь пока нет заархивированных комнат";
@@ -1257,6 +1383,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "No Search Result" = "Не найдено";
+
+/* No comment provided by engineer. */
+"No templates here yet" = "Здесь пока нет шаблонов ";
 
 /* No comment provided by engineer. */
 "No users found" = "Пользователи не найдены";
@@ -1304,6 +1433,12 @@ Share status */
 /* No comment provided by engineer. */
 "Only a room administrator or a DocSpace administrator can become the room owner." = "Владельцем комнаты может стать только администратор комнаты или администратор DocSpace.";
 
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins are shown here" = "Здесь отображаются только администраторы DocSpace и администраторы комнат";
+
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." = "Только администраторы DocSpace и администраторы комнат из выбранных групп смогут создавать комнаты с помощью этого шаблона.";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1333,6 +1468,9 @@ Share status */
 
 /* No comment provided by engineer. */
 "Open Folder" = "Открыть папку";
+
+/* No comment provided by engineer. */
+"Opened the form to fill out" = "Открыл форму для заполнения";
 
 /* Caption of the processing */
 "Opening" = "Открытие";
@@ -1384,6 +1522,12 @@ Share status */
 
 /* Default title of sample document */
 "PDF Form Sample" = "Образец PDF-формы";
+
+/* No comment provided by engineer. */
+"PDF-Documents" = "PDF-документы";
+
+/* No comment provided by engineer. */
+"PDF-Forms" = "PDF-формы";
 
 /* No comment provided by engineer. */
 "Phone" = "Телефон";
@@ -1445,6 +1589,9 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "Положение";
 
+/* Share status */
+"Power user" = "Опытный пользователь";
+
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1459,6 +1606,9 @@ Share status */
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Privacy Policy" = "Политикой конфиденциальности";
+
+/* No comment provided by engineer. */
+"Process details" = "Подробные сведения о процессе";
 
 /* Caption of the processing */
 "Processing" = "Обработка";
@@ -1568,6 +1718,12 @@ Share status */
 /* No comment provided by engineer. */
 "Restore room?" = "Восстановить комнату?";
 
+/* No comment provided by engineer. */
+"Restore this version?" = "Восстановить эту версию?";
+
+/* No comment provided by engineer. */
+"Restored" = "Восстановлено";
+
 /* Caption of the processing */
 "Restoring" = "Восстановление";
 
@@ -1587,10 +1743,19 @@ Share status */
 "Revoking" = "Отмена";
 
 /* No comment provided by engineer. */
+"Role description" = "Описание роли";
+
+/* No comment provided by engineer. */
 "Roles" = "Роли";
 
 /* No comment provided by engineer. */
+"Roles from the form:" = "Роли из формы:";
+
+/* No comment provided by engineer. */
 "Room admin" = "Администратор группы";
+
+/* No comment provided by engineer. */
+"Room created" = "Комната создана";
 
 /* No comment provided by engineer. */
 "Room created!" = "Комната создана!";
@@ -1620,11 +1785,20 @@ DocSpace rooms */
 /* No comment provided by engineer. */
 "Save" = "Сохранить";
 
+/* No comment provided by engineer. */
+"Save as template" = "Сохранить как шаблон";
+
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
 /* No comment provided by engineer. */
 "Scale" = "Масштаб";
+
+/* No comment provided by engineer. */
+"Scan Document" = "Сканировать документ";
+
+/* No comment provided by engineer. */
+"Scanning is not supported on this device" = "Сканирование не поддерживается на этом устройстве.";
 
 /* No comment provided by engineer. */
 "Search" = "Поиск";
@@ -1650,6 +1824,9 @@ Navigation bar button title */
 
 /* Button title */
 "Select location" = "Выберите местоположение";
+
+/* No comment provided by engineer. */
+"Select members" = "Выбрать участников";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Выбрать фото";
@@ -1742,6 +1919,9 @@ Navigation bar button title */
 "Show notifications" = "Показать уведомления";
 
 /* No comment provided by engineer. */
+"Show version history" = "Показать историю версий";
+
+/* No comment provided by engineer. */
 "Sign in" = "Вход";
 
 /* No comment provided by engineer. */
@@ -1781,6 +1961,18 @@ Navigation bar button title */
 "Spreadsheets" = "Таблицы";
 
 /* No comment provided by engineer. */
+"Start" = "Начать";
+
+/* Start filling form Button title */
+"Start filling" = "Начать заполнение";
+
+/* No comment provided by engineer. */
+"Stop filling" = "Начать заполнение";
+
+/* Form filling status */
+"Stopped" = "Остановлено";
+
+/* No comment provided by engineer. */
 "Storage" = "Хранилище";
 
 /* No comment provided by engineer. */
@@ -1790,7 +1982,13 @@ Navigation bar button title */
 "Storage quota set per room. You can change this value or turn off storage limit." = "Квота хранилища установлена ​​на комнату. Вы можете изменить это значение или отключить ограничение хранилища.";
 
 /* No comment provided by engineer. */
+"Submitted their part. The form was sent to the next role." = "Отправил свою часть. Форма была отправлена ​​на следующую роль.";
+
+/* No comment provided by engineer. */
 "Success" = "Успешно";
+
+/* No comment provided by engineer. */
+"Suggest a Feature" = "Предложить функциональную возможность";
 
 /* No comment provided by engineer. */
 "Switch" = "Переключить";
@@ -1800,6 +1998,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Tags" = "Теги";
+
+/* No comment provided by engineer. */
+"Tags are applied to the room which will be created based on this template." = "Теги применяются к комнате, которая будет создана на основе этого шаблона.";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Сделать снимок";
@@ -1812,6 +2013,18 @@ Navigation bar button title */
 
 /* Measurement unit */
 "TB" = "Тб";
+
+/* No comment provided by engineer. */
+"Template" = "Шаблон";
+
+/* No comment provided by engineer. */
+"Template %@ saved" = "Шаблон %@ сохранен";
+
+/* No comment provided by engineer. */
+"Template available to everyone" = "Шаблон доступен каждому";
+
+/* No comment provided by engineer. */
+"Templates" = "Шаблоны";
 
 /* No comment provided by engineer. */
 "Terminate account" = "Удалить аккаунт";
@@ -1827,6 +2040,12 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "Имя учетной записи должно быть от 6 до 50 символов";
+
+/* No comment provided by engineer. */
+"The added administrators will be able to create rooms using this template." = "Добавленные администраторы смогут создавать комнаты, используя этот шаблон.";
+
+/* No comment provided by engineer. */
+"The client and server versions are incompatible. You can only open the document in view mode" = "Версии клиента и сервера несовместимы. Вы можете открыть документ только в режиме просмотра";
 
 /* No comment provided by engineer. */
 "The deleted files go to the trash. You can either restore or delete them forever." = "Удаленные файлы попадают в корзину. Вы можете восстановить их или окончательно удалить.";
@@ -1857,6 +2076,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The link has expired" = "Срок действия ссылки истек";
+
+/* Button title */
+"The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard." = "Ссылка на файл\nс включенным\nПользовательским фильтром\nуспешно\nскопирована в\nбуфер обмена.";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "Ссылка будет удалена безвозвратно. Вы не сможете отменить это действие.";
@@ -2039,6 +2261,9 @@ Navigation bar button title */
 "Unknown item type." = "Неизвестный тип файла.";
 
 /* No comment provided by engineer. */
+"Unknown status" = "Неизвестный статус";
+
+/* No comment provided by engineer. */
 "Unlimited" = "Неограниченно";
 
 /* No comment provided by engineer. */
@@ -2123,6 +2348,12 @@ Navigation bar button title */
 "Version" = "Версия";
 
 /* No comment provided by engineer. */
+"Version %@" = "Версия %@";
+
+/* No comment provided by engineer. */
+"Version History" = "История версий";
+
+/* No comment provided by engineer. */
 "View-only" = "Только на просмотр";
 
 /* Share status */
@@ -2189,7 +2420,16 @@ Navigation bar button title */
 "Years" = "Лет";
 
 /* No comment provided by engineer. */
+"You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" = "Вы собираетесь удалить версию файла. Ее будет невозможно увидеть или восстановить. Продолжить?";
+
+/* No comment provided by engineer. */
 "You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" = "Вы собираетесь удалить эти комнаты. Вы не сможете их восстановить. Хотите продолжить?";
+
+/* No comment provided by engineer. */
+"You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" = "Вы собираетесь удалить этот файл. Файл будет окончательно удален через 30 дней. Продолжить?";
+
+/* No comment provided by engineer. */
+"You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" = "Вы собираетесь удалить эту папку. Папка будет окончательно удалена через 30 дней. Продолжить?";
 
 /* No comment provided by engineer. */
 "You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" = "Вы собираетесь удалить эту комнату. Вы не сможете ее восстановить. Хотите продолжить?";
@@ -2211,6 +2451,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the DocSpace rooms" = "Вы можете подключить следующие аккаунты к комнатам DocSpace";
+
+/* No comment provided by engineer. */
+"You can create a template from a room in the Room section" = "Вы можете создать шаблон из комнаты в разделе «Комната».";
 
 /* No comment provided by engineer. */
 "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Вы не можете прикрепить более 10 комнат. Открепите некоторые из них, которые уже прикреплены.";
@@ -2241,6 +2484,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Время сессии истекло";
+
+/* Form filling status */
+"Your turn" = "Ваша очередь";
 
 /* Data units */
 "Zb" = "Зб";

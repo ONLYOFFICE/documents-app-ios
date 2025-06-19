@@ -1182,6 +1182,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
+        <target>%@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%d Groups" translate="no" xml:space="preserve">
@@ -1232,6 +1233,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="(%@)" xml:space="preserve">
         <source>(%@)</source>
+        <target>(%@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
@@ -1346,10 +1348,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Access to template" xml:space="preserve">
         <source>Access to template</source>
+        <target>テンプレートへのアクセス</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access to template. You can select members who can create rooms based on this template." xml:space="preserve">
         <source>Access to template. You can select members who can create rooms based on this template.</source>
+        <target>テンプレートへのアクセス。このテンプレートを基にルームを作成できるメンバーを選択できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access type" xml:space="preserve">
@@ -1369,6 +1373,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Accountant" xml:space="preserve">
         <source>Accountant</source>
+        <target>会計担当者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
@@ -1378,14 +1383,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Action on files" xml:space="preserve">
         <source>Action on files</source>
+        <target>ファイル上の操作</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add" xml:space="preserve">
         <source>Add</source>
+        <target>追加</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add Users or Groups" xml:space="preserve">
         <source>Add Users or Groups</source>
+        <target>ユーザーまたはグループを追加</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
@@ -1405,6 +1413,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add static text" xml:space="preserve">
         <source>Add static text</source>
+        <target>固定テキストを追加</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add tag" xml:space="preserve">
@@ -1426,10 +1435,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add watermark elements" xml:space="preserve">
         <source>Add watermark elements</source>
+        <target>透かし要素を追加</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add watermarks to documents" xml:space="preserve">
         <source>Add watermarks to documents</source>
+        <target>ドキュメントに透かしを追加</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
@@ -1459,6 +1470,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All DocSpace and Room admins will be able to create rooms using this template." xml:space="preserve">
         <source>All DocSpace and Room admins will be able to create rooms using this template.</source>
+        <target>すべてのDocSpaceおよびルーム管理者は、このテンプレートを使用してルームを作成できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All Files" xml:space="preserve">
@@ -1503,6 +1515,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Apply" xml:space="preserve">
         <source>Apply</source>
+        <target>適用</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
@@ -1558,6 +1571,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
         <source>Automatic indexing</source>
+        <target>自動インデックス作成</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Back" xml:space="preserve">
@@ -1567,6 +1581,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Back to room" xml:space="preserve">
         <source>Back to room</source>
+        <target>ルームに戻る</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1651,6 +1666,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Change room owner" xml:space="preserve">
         <source>Change room owner</source>
+        <target>ルーム所有者を変更</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Change room's owner" xml:space="preserve">
@@ -1670,6 +1686,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Check ready form" xml:space="preserve">
         <source>Check ready form</source>
+        <target>完成したフォームを確認</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1684,6 +1701,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
         <source>Choose Form filling room or create new</source>
+        <target>フォーム入力用ルームを選択するか、新規作成する</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
@@ -1693,6 +1711,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target>テンプレート付きの場所を選択</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1772,6 +1791,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Complete" xml:space="preserve">
         <source>Complete</source>
+        <target>完了</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
@@ -1798,6 +1818,9 @@ Category title</note>
         <source>Connect third-party storage
 like Nextcloud, ownCloud, Dropbox and
 others which use WebDAV protocol.</source>
+        <target>Nextcloud、ownCloud、Dropbox などの
+WebDAVプロトコルを使用する
+サードパーティストレージに接続します。</target>
         <note>Introduction Step Three - Description</note>
       </trans-unit>
       <trans-unit id="Connect to your %@ cloud to store files online and collaborate on documents in real time" xml:space="preserve">
@@ -1822,14 +1845,17 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Contact Support" xml:space="preserve">
         <source>Contact Support</source>
+        <target>サポートに問い合わせ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Content creator" xml:space="preserve">
         <source>Content creator</source>
+        <target>コンテンツ作成者</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Continue" xml:space="preserve">
         <source>Continue</source>
+        <target>続行</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1869,6 +1895,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could Not Send Email" xml:space="preserve">
         <source>Could Not Send Email</source>
+        <target>メールを送信できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
@@ -1928,6 +1955,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not delete the version." xml:space="preserve">
         <source>Could not delete the version.</source>
+        <target>バージョンを削除できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not delete." xml:space="preserve">
@@ -1957,6 +1985,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not duplicate the room." xml:space="preserve">
         <source>Could not duplicate the room.</source>
+        <target>ルームを複製できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
@@ -1986,6 +2015,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not resolve the file." xml:space="preserve">
         <source>Could not resolve the file.</source>
+        <target>ファイルを解決できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
@@ -1995,6 +2025,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn' get access" xml:space="preserve">
         <source>Couldn' get access</source>
+        <target>アクセスを取得できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
@@ -2004,6 +2035,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't change the room owner" xml:space="preserve">
         <source>Couldn't change the room owner</source>
+        <target>ルーム所有者を変更できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't download the room." xml:space="preserve">
@@ -2013,6 +2045,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't export room index" xml:space="preserve">
         <source>Couldn't export room index</source>
+        <target>ルームインデックスをエクスポートできませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
@@ -2042,10 +2075,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create a new file" xml:space="preserve">
         <source>Create a new file</source>
+        <target>新しいファイルを作成</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." xml:space="preserve">
         <source>Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</source>
+        <target>テンプレートに基づいてルームを作成します。すべての設定、ユーザー、フォルダー、ファイルは選択したルームテンプレートから取得されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2075,6 +2110,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
+        <target>新しいフォルダーを作成</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
@@ -2096,10 +2132,12 @@ organize your files.</source>
       </trans-unit>
       <trans-unit id="Current Date" xml:space="preserve">
         <source>Current Date</source>
+        <target>現在の日付</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="Current file will be saved in version history." xml:space="preserve">
         <source>Current file will be saved in version history.</source>
+        <target>現在のファイルはバージョン履歴に保存されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
@@ -2116,12 +2154,18 @@ organize your files.</source>
         <source>Custom filter for
 the selected file
 disabled</source>
+        <target>選択したファイルの
+カスタムフィルターが
+無効になりました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom filter for&#10;the selected file&#10;enabled" xml:space="preserve">
         <source>Custom filter for
 the selected file
 enabled</source>
+        <target>選択したファイルの
+カスタムフィルターが
+有効になりました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
@@ -2141,6 +2185,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Days" xml:space="preserve">
         <source>Days</source>
+        <target>日数</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
@@ -2187,18 +2232,22 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Delete permanently" xml:space="preserve">
         <source>Delete permanently</source>
+        <target>完全に削除</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete template" xml:space="preserve">
         <source>Delete template</source>
+        <target>テンプレートを削除</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete this item?" xml:space="preserve">
         <source>Delete this item?</source>
+        <target>この項目を削除しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete version" xml:space="preserve">
         <source>Delete version</source>
+        <target>バージョンを削除</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
@@ -2228,14 +2277,17 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Diagonal" xml:space="preserve">
         <source>Diagonal</source>
+        <target>斜め</target>
         <note>Watermark Position</note>
       </trans-unit>
       <trans-unit id="Director" xml:space="preserve">
         <source>Director</source>
+        <target>ディレクター</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable Custom filter" xml:space="preserve">
         <source>Disable Custom filter</source>
+        <target>カスタムフィルターを無効化</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
@@ -2255,6 +2307,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Do you really want to delete template room %@? The template cannot be restored. " xml:space="preserve">
         <source>Do you really want to delete template room %@? The template cannot be restored. </source>
+        <target>テンプレートルーム %@ を本当に削除しますか？ 一度削除すると復元できません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
@@ -2264,6 +2317,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="DocSpace" xml:space="preserve">
         <source>DocSpace</source>
+        <target>DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
@@ -2273,6 +2327,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Docspace user only" xml:space="preserve">
         <source>Docspace user only</source>
+        <target>DocSpaceユーザーのみ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2313,6 +2368,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Draft" xml:space="preserve">
         <source>Draft</source>
+        <target>下書き</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
@@ -2347,10 +2403,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit Comment" xml:space="preserve">
         <source>Edit Comment</source>
+        <target>コメントを編集</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit comment" xml:space="preserve">
         <source>Edit comment</source>
+        <target>コメントを編集</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
@@ -2360,10 +2418,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit index" xml:space="preserve">
         <source>Edit index</source>
+        <target>索引を編集</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Edit link" xml:space="preserve">
         <source>Edit link</source>
+        <target>リンクを編集</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
@@ -2373,6 +2433,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit template" xml:space="preserve">
         <source>Edit template</source>
+        <target>テンプレートを編集</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
@@ -2407,10 +2468,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Employee" xml:space="preserve">
         <source>Employee</source>
+        <target>従業員</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
         <source>Employees</source>
+        <target>従業員</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
@@ -2420,10 +2483,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enable Custom filter" xml:space="preserve">
         <source>Enable Custom filter</source>
+        <target>カスタムフィルターを有効化</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
         <source>Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.</source>
+        <target>ファイルとフォルダを連番で自動的にインデックス付けすることを有効化します。番号順での並び替えがすべてのユーザーのデフォルトになります。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
@@ -2443,6 +2508,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" xml:space="preserve">
         <source>Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role</source>
+        <target>「閲覧者」ロールのユーザーに対して、ダウンロード、印刷、コンテンツのコピーを無効化するには、この設定を有効化します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable time limit" xml:space="preserve">
@@ -2467,6 +2533,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enter password" xml:space="preserve">
         <source>Enter password</source>
+        <target>パスワードを入力</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
@@ -2486,6 +2553,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target>保存せずに終了しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
@@ -2510,6 +2578,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Export room index" xml:space="preserve">
         <source>Export room index</source>
+        <target>ルームインデックスをエクスポート</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="External link" xml:space="preserve">
@@ -2564,6 +2633,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Failed to prepare the index export" xml:space="preserve">
         <source>Failed to prepare the index export</source>
+        <target>インデックスエクスポートの準備に失敗しました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
@@ -2573,6 +2643,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Failed to submit the form" xml:space="preserve">
         <source>Failed to submit the form</source>
+        <target>フォームの送信に失敗しました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2582,6 +2653,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
         <source>Falure to open editor</source>
+        <target>エディタを開くことに失敗しました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2606,6 +2678,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="File lifetime" xml:space="preserve">
         <source>File lifetime</source>
+        <target>ファイルの保存期間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
@@ -2625,30 +2698,37 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Files older than" xml:space="preserve">
         <source>Files older than</source>
+        <target>指定日数より古いファイル</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Files with the exceeded lifetime will be deleted" xml:space="preserve">
         <source>Files with the exceeded lifetime will be deleted</source>
+        <target>保存期間を超過したファイルは削除されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill" xml:space="preserve">
         <source>Fill</source>
+        <target>入力</target>
         <note>Fill form Button title</note>
       </trans-unit>
       <trans-unit id="Fill in as" xml:space="preserve">
         <source>Fill in as</source>
+        <target>として入力</target>
         <note>Title for fill-in options screen</note>
       </trans-unit>
       <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
         <source>Fill in the fields of the original form in the editor window.</source>
+        <target>エディタウィンドウで元のフォームのフィールドに入力します。</target>
         <note>Subtitle for form filling</note>
       </trans-unit>
       <trans-unit id="Fill out the form yourself" xml:space="preserve">
         <source>Fill out the form yourself</source>
+        <target>フォームを自分で入力します。</target>
         <note>Title for opening form filling</note>
       </trans-unit>
       <trans-unit id="Filling Status" xml:space="preserve">
         <source>Filling Status</source>
+        <target>入力状況</target>
         <note>Start filling form Button title</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2658,10 +2738,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Filling status" xml:space="preserve">
         <source>Filling status</source>
+        <target>入力状況</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filling was stopped by" xml:space="preserve">
         <source>Filling was stopped by</source>
+        <target>入力は停止されました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2691,39 +2773,46 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Form Filling" xml:space="preserve">
         <source>Form Filling</source>
+        <target>フォーム入力</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form Filling Room" xml:space="preserve">
         <source>Form Filling Room</source>
+        <target>フォーム記入ルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
         <source>Form completed successfully</source>
+        <target>フォームの入力が正常に完了しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
         <source>Form number</source>
+        <target>フォーム番号</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form owner" xml:space="preserve">
         <source>Form owner</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>フォームテンプレート</target>
+        <target>フォーム所有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
+        <target>DocSpaceから</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From device" xml:space="preserve">
         <source>From device</source>
+        <target>デバイスから</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From template" xml:space="preserve">
         <source>From template</source>
+        <target>テンプレートから</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From templates" xml:space="preserve">
+        <source>From templates</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2733,6 +2822,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="GB" xml:space="preserve">
         <source>GB</source>
+        <target>GB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="GET STARTED!" xml:space="preserve">
@@ -2762,6 +2852,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Get started with quick actions: " xml:space="preserve">
         <source>Get started with quick actions: </source>
+        <target>クイックアクションを始める：</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2791,18 +2882,22 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Guest" xml:space="preserve">
         <source>Guest</source>
+        <target>ゲスト</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Guests" xml:space="preserve">
         <source>Guests</source>
+        <target>ゲスト</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Help &amp; Feedback" xml:space="preserve">
         <source>Help &amp; Feedback</source>
+        <target>ヘルプ＆フィードバック</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Help Center" xml:space="preserve">
         <source>Help Center</source>
+        <target>ヘルプセンター</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
@@ -2812,10 +2907,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Horizontal" xml:space="preserve">
         <source>Horizontal</source>
+        <target>水平</target>
         <note>Watermark Position</note>
       </trans-unit>
       <trans-unit id="Icons" xml:space="preserve">
         <source>Icons</source>
+        <target>アイコン</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2825,6 +2922,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Image" xml:space="preserve">
         <source>Image</source>
+        <target>画像</target>
         <note>Watermark Type</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
@@ -2849,16 +2947,21 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="In progress" xml:space="preserve">
         <source>In progress</source>
+        <target>進行中</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of
 the form in which you participate or in which you
 are the organizer of completion</source>
+        <target>このパネルでは、あなたが参加者として入力しているフォーム、
+またはフォーム入力の主催者であるフォームの完了状況を監視できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion</source>
+        <target>このパネルでは、あなたが参加者として入力しているフォーム、
+またはフォーム入力の主催者であるフォームの完了状況を監視できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
@@ -2868,6 +2971,7 @@ are the organizer of completion</source>
       </trans-unit>
       <trans-unit id="Index" xml:space="preserve">
         <source>Index</source>
+        <target>インデックス</target>
         <note>File order
 Folder order</note>
       </trans-unit>
@@ -2908,6 +3012,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
         <source>Invalid server data.</source>
+        <target>サーバーデータが無効です。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
@@ -2917,6 +3022,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invite guests by email" xml:space="preserve">
         <source>Invite guests by email</source>
+        <target>メールでゲストを招待</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite people" xml:space="preserve">
@@ -2941,14 +3047,17 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="It will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>It will be irretrievably deleted. This action is irreversible.</source>
+        <target>回復不可能な削除になります。この操作は元に戻せません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
         <source>Items in Trash are automatically deleted after 30 days</source>
+        <target>ゴミ箱のアイテムは30日後に自動的に削除されます</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="KB" xml:space="preserve">
         <source>KB</source>
+        <target>KB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -3004,6 +3113,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link name" xml:space="preserve">
         <source>Link name</source>
+        <target>リンク名</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
@@ -3027,16 +3137,23 @@ copied to clipboard</source>
         <source>Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.
  
 This action cannot be undone. Are you sure you want to continue?</source>
+        <target>ルーム内のすべてのファイルへのリンクが削除されます。以前のルームファイルや埋め込みドキュメントへのリンクは利用できなくなります。
+
+この操作は元に戻せません。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.&#10; &#10;This action cannot be undone. Are you sure you want to continue?" xml:space="preserve">
         <source>Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.
  
 This action cannot be undone. Are you sure you want to continue?</source>
+        <target>ルーム内のすべてのファイルへのリンクが再生成されます。以前のルームファイルや埋め込みドキュメントへのリンクは利用できなくなります。
+
+この操作は元に戻せません。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="List" xml:space="preserve">
         <source>List</source>
+        <target>リスト</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
@@ -3077,6 +3194,7 @@ Caption of the process</note>
       </trans-unit>
       <trans-unit id="MB" xml:space="preserve">
         <source>MB</source>
+        <target>MB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
@@ -3111,6 +3229,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Measurement unit" xml:space="preserve">
         <source>Measurement unit</source>
+        <target>測定単位</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
@@ -3125,14 +3244,17 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Members" xml:space="preserve">
         <source>Members</source>
+        <target>メンバー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
+        <target>最小長: 8 ｜ 許可される文字: a-z、A-Z、0-9、!\"#%&amp;'()*+,-./:;&lt;=&gt;?@[\\]^_`{|}</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Months" xml:space="preserve">
         <source>Months</source>
+        <target>月</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -3167,6 +3289,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Move to trash" xml:space="preserve">
         <source>Move to trash</source>
+        <target>ゴミ箱に移動</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
@@ -3236,18 +3359,22 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New form filling" xml:space="preserve">
         <source>New form filling</source>
+        <target>新しいフォーム入力</target>
         <note>Suggested a room name when create a new one</note>
       </trans-unit>
       <trans-unit id="New form filling room" xml:space="preserve">
         <source>New form filling room</source>
+        <target>新しいフォーム入力ルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
         <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <target>ルームにゲストを招待すると、ここに新しいゲストが追加されます。他のユーザーが招待したゲストを共有したり、自分のリストに追加したりできます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
+        <target>新しいルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3287,6 +3414,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No added guests yet" xml:space="preserve">
         <source>No added guests yet</source>
+        <target>まだゲストが追加されていません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
@@ -3316,6 +3444,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No forms here yet " xml:space="preserve">
         <source>No forms here yet </source>
+        <target>まだフォームがありません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3345,6 +3474,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No templates here yet" xml:space="preserve">
         <source>No templates here yet</source>
+        <target>まだテンプレートがありません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
@@ -3410,6 +3540,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Ok" xml:space="preserve">
         <source>Ok</source>
+        <target>Ok</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
@@ -3439,10 +3570,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Only DocSpace and Room admins are shown here" xml:space="preserve">
         <source>Only DocSpace and Room admins are shown here</source>
+        <target>ここにはDocSpaceおよびルーム管理者のみが表示されます</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." xml:space="preserve">
         <source>Only DocSpace and Room admins from the selected groups will be able to create rooms using this template.</source>
+        <target>選択したグループのDocSpaceおよびルーム管理者のみがこのテンプレートを使用してルームを作成できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
@@ -3472,10 +3605,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Open file" xml:space="preserve">
         <source>Open file</source>
+        <target>ファイルを開く</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
+        <target>入力のためにフォームを開きました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3520,10 +3655,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
         <source>PDF-Documents</source>
+        <target>PDFドキュメント</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="PDF-Forms" xml:space="preserve">
         <source>PDF-Forms</source>
+        <target>PDFフォーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
@@ -3548,6 +3685,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
+        <target>パスワードには以下を含める必要があります: 最小文字数: 8 許可される文字: a-z、A-Z、0-9、!\"Nº%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}~</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passwords do not match" xml:space="preserve">
@@ -3671,10 +3809,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Position" xml:space="preserve">
         <source>Position</source>
+        <target>位置</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target>パワーユーザー</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -3704,6 +3844,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Process details" xml:space="preserve">
         <source>Process details</source>
+        <target>プロセスの詳細</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
@@ -3723,6 +3864,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." xml:space="preserve">
         <source>Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.</source>
+        <target>このルーム内のすべてのドキュメントに透かしを追加します。既に透かしが含まれている場合は置き換えられません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Protection" xml:space="preserve">
@@ -3747,6 +3889,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Public link" xml:space="preserve">
         <source>Public link</source>
+        <target>公開リンク</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3846,10 +3989,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Reorder" xml:space="preserve">
         <source>Reorder</source>
+        <target>並べ替え</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Reorder failed." xml:space="preserve">
         <source>Reorder failed.</source>
+        <target>並べ替えに失敗しました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
@@ -3884,10 +4029,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Restore this version?" xml:space="preserve">
         <source>Restore this version?</source>
+        <target>このバージョンを復元しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restored" xml:space="preserve">
         <source>Restored</source>
+        <target>復元しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
@@ -3922,6 +4069,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Role description" xml:space="preserve">
         <source>Role description</source>
+        <target>役割の説明</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
@@ -3931,10 +4079,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Roles from the form:" xml:space="preserve">
         <source>Roles from the form:</source>
+        <target>フォームからの役割:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room Name" xml:space="preserve">
         <source>Room Name</source>
+        <target>ルーム名</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3944,6 +4094,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Room created" xml:space="preserve">
         <source>Room created</source>
+        <target>ルームが作成されました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
@@ -3953,6 +4104,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Room manager" xml:space="preserve">
         <source>Room manager</source>
+        <target>ルーム管理者</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
@@ -3973,6 +4125,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Rotate" xml:space="preserve">
         <source>Rotate</source>
+        <target>回転</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3992,6 +4145,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Save as template" xml:space="preserve">
         <source>Save as template</source>
+        <target>テンプレートとして保存</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -4001,14 +4155,17 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Scale" xml:space="preserve">
         <source>Scale</source>
+        <target>拡大/縮小</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Scan Document" xml:space="preserve">
         <source>Scan Document</source>
+        <target>ドキュメントをスキャン</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Scanning is not supported on this device" xml:space="preserve">
         <source>Scanning is not supported on this device</source>
+        <target>このデバイスではスキャンはサポートされていません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
@@ -4029,6 +4186,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select a PDF Form" xml:space="preserve">
         <source>Select a PDF Form</source>
+        <target>PDFフォームを選択</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
@@ -4048,6 +4206,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select image" xml:space="preserve">
         <source>Select image</source>
+        <target>画像を選択</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
@@ -4057,6 +4216,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select members" xml:space="preserve">
         <source>Select members</source>
+        <target>メンバーを選択</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -4121,6 +4281,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." xml:space="preserve">
         <source>Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.</source>
+        <target>ファイルの有効期間を設定し、定められた期間経過後にこのルーム内のファイルを自動的に削除します。有効期間はファイルのアップロード／作成日から始まります。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -4140,6 +4301,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
+        <target>共有と収集</target>
         <note>Title for sharing and collecting form</note>
       </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
@@ -4149,6 +4311,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
         <source>Share your form and collect responses via a Form filling room.</source>
+        <target>フォームを共有し、フォーム入力ルームを通じて回答を収集します。</target>
         <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -4203,6 +4366,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Show version history" xml:space="preserve">
         <source>Show version history</source>
+        <target>バージョン履歴を表示</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
@@ -4222,6 +4386,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Size quota" xml:space="preserve">
         <source>Size quota</source>
+        <target>容量制限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
@@ -4266,18 +4431,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Start" xml:space="preserve">
         <source>Start</source>
+        <target>開始</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Start filling" xml:space="preserve">
         <source>Start filling</source>
+        <target>入力を開始</target>
         <note>Start filling form Button title</note>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
         <source>Stop filling</source>
+        <target>入力を停止</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Stopped" xml:space="preserve">
         <source>Stopped</source>
+        <target>停止</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
@@ -4287,22 +4456,27 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Storage quota" xml:space="preserve">
         <source>Storage quota</source>
+        <target>ストレージクォータ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Storage quota set per room. You can change this value or turn off storage limit." xml:space="preserve">
         <source>Storage quota set per room. You can change this value or turn off storage limit.</source>
+        <target>ストレージクォータはルームごとに設定されます。この値を変更するか、ストレージ制限をオフにすることができます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Submitted their part. The form was sent to the next role." xml:space="preserve">
         <source>Submitted their part. The form was sent to the next role.</source>
+        <target>担当部分を提出しました。フォームは次の役割に送信されました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Success" xml:space="preserve">
         <source>Success</source>
+        <target>成功</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Suggest a Feature" xml:space="preserve">
         <source>Suggest a Feature</source>
+        <target>機能を提案</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -4312,6 +4486,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="TB" xml:space="preserve">
         <source>TB</source>
+        <target>TB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
@@ -4326,6 +4501,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Tags are applied to the room which will be created based on this template." xml:space="preserve">
         <source>Tags are applied to the room which will be created based on this template.</source>
+        <target>タグは、このテンプレートに基づいて作成されるルームに適用されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
@@ -4345,18 +4521,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Template" xml:space="preserve">
         <source>Template</source>
+        <target>テンプレート</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Template %@ saved" xml:space="preserve">
         <source>Template %@ saved</source>
+        <target>テンプレート %@ が保存されました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Template available to everyone" xml:space="preserve">
         <source>Template available to everyone</source>
+        <target>誰でも使用できるテンプレート</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Templates" xml:space="preserve">
         <source>Templates</source>
+        <target>テンプレート</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terminate account" xml:space="preserve">
@@ -4381,6 +4561,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
         <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <target>「並べ替え」アクションはインデックスの空き番号を削除します。ファイルは順序通りに再インデックスされ、欠番を埋めるためにオフセットが適用されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -4390,10 +4571,12 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The added administrators will be able to create rooms using this template." xml:space="preserve">
         <source>The added administrators will be able to create rooms using this template.</source>
+        <target>追加された管理者は、このテンプレートを使用してルームを作成できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The client and server versions are incompatible. You can only open the document in view mode" xml:space="preserve">
         <source>The client and server versions are incompatible. You can only open the document in view mode</source>
+        <target>クライアントとサーバーのバージョンが互換性がありません。ドキュメントはビューのみで開くことができます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
@@ -4408,6 +4591,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The file lifetime is set to %@ in this room." xml:space="preserve">
         <source>The file lifetime is set to %@ in this room.</source>
+        <target>このルームのファイル有効期間は %@ に設定されています。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -4419,6 +4603,9 @@ Navigation bar button title</note>
         <source>The filled PDF form is saved and available to you
  in the Complete folder. To check the status,
  contact the form owner providing the assigned number.</source>
+        <target>入力済みのPDFフォームは「完成」フォルダに保存され、
+利用可能です。ステータスを確認するには、
+割り当てられた番号を伝えてフォーム所有者にお問い合わせください。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
@@ -4433,6 +4620,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." xml:space="preserve">
         <source>The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.</source>
+        <target>有効期間のカウントはファイルの作成日から始まります。このルーム内で設定された有効期間を超えたファイルは削除されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
@@ -4456,6 +4644,11 @@ Custom filter is
 successfully
 copied to the
 clipboard.</source>
+        <target>カスタムフィルターが
+有効なファイルへの
+リンクが正常に
+クリップボードに
+コピーされました。</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
@@ -4545,6 +4738,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target>サードパーティストレージ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4564,6 +4758,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="This image preview roughly shows how the watermark will be displayed in your files." xml:space="preserve">
         <source>This image preview roughly shows how the watermark will be displayed in your files.</source>
+        <target>この画像プレビューは、透かしがファイルにどのように表示されるかを概略的に示しています。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
@@ -4585,12 +4780,18 @@ clipboard.</source>
         <source>This room is available to anyone with the link.
  External users will have Form Filler permission
  for all the files.</source>
+        <target>このルームはリンクを知っている人なら誰でも
+利用できます。外部ユーザーにはすべてのファイルに
+対してフォーム入力者権限が付与されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
         <source>This room is available to anyone with the link.
  External users will have View Only permission
  for all the files.</source>
+        <target>このルームはリンクを知っている人なら誰でも
+利用できます。外部ユーザーにはすべてのファイルに
+対して閲覧のみ権限が付与されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -4600,6 +4801,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Time period" xml:space="preserve">
         <source>Time period</source>
+        <target>期間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -4754,6 +4956,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Unknown status" xml:space="preserve">
         <source>Unknown status</source>
+        <target>不明なステータス</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
@@ -4788,22 +4991,27 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
         <source>Upload PDF form from DocSpace</source>
+        <target>DocSpaceからPDFフォームをアップロード</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF form from device" xml:space="preserve">
         <source>Upload PDF form from device</source>
+        <target>デバイスからPDFフォームをアップロード</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF forms from DocSpace or device." xml:space="preserve">
         <source>Upload PDF forms from DocSpace or device.</source>
+        <target>DocSpaceまたはデバイスからPDFフォームをアップロードします。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
         <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <target>ルームにPDFフォームをアップロードします。ユーザーを招待してPDFフォームに入力してもらいます。完了したフォームを確認し、スプレッドシートに自動的に収集されたデータを分析します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload a ready PDF form" xml:space="preserve">
         <source>Upload a ready PDF form</source>
+        <target>完成済みのPDFフォームをアップロード</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -4813,14 +5021,17 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Use IP Address" xml:space="preserve">
         <source>Use IP Address</source>
+        <target>IPアドレスを使用</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." xml:space="preserve">
         <source>Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying.</source>
+        <target>高度なファイルセキュリティと透明性のためにVDRを使用します。透かしを設定し、すべてのコンテンツを自動的にインデックス化および追跡し、ダウンロードやコピーを制限します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target>このルームのデータの保存先としてサードパーティサービスを使用します。接続されたストレージに、このルームのデータを格納するための新しいフォルダーが作成されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4830,10 +5041,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="User Email" xml:space="preserve">
         <source>User Email</source>
+        <target>ユーザーのメールアドレス</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="User Name" xml:space="preserve">
         <source>User Name</source>
+        <target>ユーザー名</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
@@ -4888,10 +5101,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Version %@" xml:space="preserve">
         <source>Version %@</source>
+        <target>バージョン %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Version History" xml:space="preserve">
         <source>Version History</source>
+        <target>バージョン履歴</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
@@ -4906,14 +5121,17 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Viewer info" xml:space="preserve">
         <source>Viewer info</source>
+        <target>閲覧者情報</target>
         <note>Watermark Type</note>
       </trans-unit>
       <trans-unit id="Virtual Data Room" xml:space="preserve">
         <source>Virtual Data Room</source>
+        <target>バーチャルデータルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Virtual data room" xml:space="preserve">
         <source>Virtual data room</source>
+        <target>バーチャルデータルーム</target>
         <note>Rooms filter</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -4923,6 +5141,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Watermark type" xml:space="preserve">
         <source>Watermark type</source>
+        <target>透かしの種類</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We are sorry, this portal name is already taken" xml:space="preserve">
@@ -4953,10 +5172,12 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
+        <target>フォーム入力ルームへようこそ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
         <source>Welcome to the Virtual Data Room </source>
+        <target>バーチャルデータルームへようこそ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
@@ -4998,30 +5219,37 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Years" xml:space="preserve">
         <source>Years</source>
+        <target>年</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?</source>
+        <target>ファイルバージョンを削除しようとしています。これを削除すると、もはや表示や復元ができなくなります。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?</source>
+        <target>これらのルームを削除しようとしています。復元できなくなります。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target>このファイルを削除しようとしています。30日後に完全に削除されます。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target>このフォルダーを削除しようとしています。30日後に完全に削除されます。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?</source>
+        <target>このルームを削除しようとしています。復元できなくなります。本当に続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore them." xml:space="preserve">
         <source>You are about to delete this room. You won't be able to restore them.</source>
+        <target>このルームを削除しようとしています。復元できなくなります。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5046,18 +5274,22 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target>以下のアカウントをDocSpaceルームに接続できます</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">
         <source>You can create a template from a room in the Room section</source>
+        <target>ルームセクションからテンプレートを作成できます</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <target>ルームを上部に10個以上ピン留めできません。現在ピン留めされているもののピンを外してください。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have changed the room owner" xml:space="preserve">
         <source>You have changed the room owner</source>
+        <target>ルームの所有者を変更しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
@@ -5072,6 +5304,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" xml:space="preserve">
         <source>You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?</source>
+        <target>このルームのドキュメントに適用する透かしが設定されていません。ルーム編集設定でいつでも透かしを追加できます。透かしなしで続行しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
@@ -5081,6 +5314,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You need a password to access the room" xml:space="preserve">
         <source>You need a password to access the room</source>
+        <target>このルームにアクセスするにはパスワードが必要です</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
@@ -5090,6 +5324,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
         <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
+        <target>お使いのデバイスでメールを送信できませんでした。メールの設定を確認して再試行してください。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -5099,6 +5334,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Your turn" xml:space="preserve">
         <source>Your turn</source>
+        <target>あなたの番です</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Zb" xml:space="preserve">
@@ -5179,6 +5415,7 @@ Measurement unit</note>
       </trans-unit>
       <trans-unit id="file exported to Documents" xml:space="preserve">
         <source>file exported to Documents</source>
+        <target>ファイルがドキュメントにエクスポートされました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">

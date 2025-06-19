@@ -2755,11 +2755,6 @@ Operation completed</note>
         <target>表格擁有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>表格範本</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
         <target>來自DocSpace</target>
@@ -2772,6 +2767,10 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="From template" xml:space="preserve">
         <source>From template</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From templates" xml:space="preserve">
+        <source>From templates</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">

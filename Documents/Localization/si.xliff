@@ -2805,11 +2805,6 @@ Operation completed</note>
         <source>Form owner</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>ආකෘතිපත්‍ර අච්චු</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
         <note>No comment provided by engineer.</note>

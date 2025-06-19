@@ -52,6 +52,8 @@ struct ASCFileSwiftUICell: View {
                     .foregroundColor(.secondary)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
         .onTapGesture {
             model.action()
         }

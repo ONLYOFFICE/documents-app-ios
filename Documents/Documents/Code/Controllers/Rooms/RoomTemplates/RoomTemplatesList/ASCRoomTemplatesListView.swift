@@ -15,7 +15,7 @@ struct ASCRoomTemplatesListView: View {
     @ObservedObject var viewModel: ASCRoomTemplatesViewModel
     @State private var selectedTemplate: ASCFolder?
     @State private var isNavigationActive = false
-    
+
     var onCreateFromTemplate: ((ASCFolder) -> Void)?
 
     var body: some View {

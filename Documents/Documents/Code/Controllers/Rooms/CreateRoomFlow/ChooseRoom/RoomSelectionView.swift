@@ -48,7 +48,7 @@ struct RoomSelectionView: View {
     @State private var isPresenting = true
     @State private var maxHeights: CGFloat = 0
     @State private var showTemplates = false
-    
+
     var onCreateFromTemplate: ((ASCFolder) -> Void)?
 
     var body: some View {

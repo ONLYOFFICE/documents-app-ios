@@ -1,7 +1,6 @@
 ## Third-party
 
 - Alamofire 5.10.2 ([MIT License](https://github.com/Alamofire/Alamofire/blob/master/LICENSE))
-- atlantis-proxyman 1.26.0 ([License](https://github.com/ProxymanApp/atlantis))
 - DocumentConverter 9.0.0 ([License](https://github.com/ONLYOFFICE/editors-ios/blob/master/DocumentConverter/LICENSE))
 - DocumentEditor 9.0.0 ([License](https://github.com/ONLYOFFICE/editors-ios/blob/master/DocumentEditor/LICENSE))
 - facebook-ios-sdk 18.0.0 ([License](https://github.com/facebook/facebook-ios-sdk/blob/main/LICENSE))

@@ -12,17 +12,19 @@ import SwiftUI
 @MainActor
 final class ASCRoomTemplatesViewModel: ObservableObject {
     @Published var templates: [ASCFolder] = []
+    @Published var isLoading = false
 
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService
 
-    func fetchTemplates() {
-        Task {
-            do {
-                let result = try await roomTemplatesNetworkService.fetchTemplates()
-                self.templates = result
-            } catch {
-                print("Failed to fetch templates: \(error.localizedDescription)")
-            }
+    func fetchTemplates() async {
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            let result = try await roomTemplatesNetworkService.fetchTemplates()
+            self.templates = result
+        } catch {
+            print("Failed to fetch templates: \(error.localizedDescription)")
         }
     }
+
 }

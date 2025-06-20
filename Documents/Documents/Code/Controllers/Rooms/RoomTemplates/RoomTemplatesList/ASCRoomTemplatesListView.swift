@@ -15,10 +15,31 @@ struct ASCRoomTemplatesListView: View {
     @ObservedObject var viewModel: ASCRoomTemplatesViewModel
     @State private var selectedTemplate: ASCFolder?
     @State private var isNavigationActive = false
+    @State private var isFirstLoad = true
 
     var onCreateFromTemplate: ((ASCFolder) -> Void)?
 
     var body: some View {
+        Group {
+            if viewModel.templates.isEmpty && !isFirstLoad {
+                emptyTemplatedView
+            } else {
+                templatesList
+            }
+        }
+        .navigationTitle(NSLocalizedString("From templates", comment: ""))
+        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            if isFirstLoad {
+                isFirstLoad = false
+                Task {
+                    await viewModel.fetchTemplates()
+                }
+            }
+        }
+    }
+
+    private var templatesList: some View {
         List(viewModel.templates, id: \.id) { template in
             TemplateViewRow(
                 model: TemplateViewRowModel(
@@ -42,11 +63,24 @@ struct ASCRoomTemplatesListView: View {
                 EmptyView()
             }
         )
-        .navigationTitle(NSLocalizedString("From templates", comment: ""))
-        .navigationBarTitleDisplayMode(.large)
-        .onAppear {
-            viewModel.fetchTemplates()
+    }
+
+    @ViewBuilder
+    private var emptyTemplatedView: some View {
+        VStack {
+            Asset.Images.emptyFolder.swiftUIImage
+                .padding(.top, .emptyViewImageInsets)
+            Text("No templates here yet")
+                .font(.title2)
+                .padding(.top, .emptyViewTitleInset)
+            Text("You can create a template from\na room in the Room section")
+                .font(.caption)
+                .foregroundColor(.secondaryLabel)
+                .padding(.top, .emptyViewSubtitleInset)
+            Spacer()
         }
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     @ViewBuilder
@@ -85,4 +119,10 @@ private extension ASCFolder {
             return RoomTypeModel.make(fromRoomType: .collaboration, isRoomTemplate: true)
         }
     }
+}
+
+private extension CGFloat {
+    static let emptyViewTitleInset: CGFloat = 32
+    static let emptyViewSubtitleInset: CGFloat = 16
+    static let emptyViewImageInsets: CGFloat = 80
 }

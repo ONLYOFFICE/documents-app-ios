@@ -655,6 +655,7 @@ private extension ManageRoomViewModel {
             color: roomColor,
             denyDownload: template.denyDownload,
             indexing: template.indexing,
+            logo: selectedImage,
             copyLogo: false
         )
 
@@ -667,15 +668,24 @@ private extension ManageRoomViewModel {
                     await MainActor.run {
                         MBProgressHUD.currentHUD?.progress = Float(progress)
                     }
-                case .success:
-                    await MainActor.run {
-                        self.resultModalModel = .init(
-                            result: .success,
-                            message: NSLocalizedString("Room created", comment: "")
-                        )
-                        self.isSaving = false
+                case let .success(roomId):
+                    let roomBasedOnTemplate = template.copy()
+                    roomBasedOnTemplate.roomType = self.selectedRoomType.type.ascRoomType
+                    roomBasedOnTemplate.title = roomName
+                    roomBasedOnTemplate.tags = Array(tags)
+                    roomBasedOnTemplate.quotaLimit = sizeQuota
+                    roomBasedOnTemplate.id = String(roomId)
+
+                    roomTemplatesNetworkService.uploadAndAttachImage(image: selectedImage, room: roomBasedOnTemplate) {
+                        Task { @MainActor in
+                            self.resultModalModel = .init(
+                                result: .success,
+                                message: NSLocalizedString("Room created", comment: "")
+                            )
+                            self.isSaving = false
+                            self.onCreate(roomBasedOnTemplate)
+                        }
                     }
-                    self.onCreate(template)
                 case let .failure(error):
                     await MainActor.run {
                         self.resultModalModel = .init(

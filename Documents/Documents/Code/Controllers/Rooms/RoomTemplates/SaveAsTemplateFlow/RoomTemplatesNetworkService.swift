@@ -12,13 +12,27 @@ import ObjectMapper
 enum RoomCreationProgress {
     case begin
     case progress(Double)
+    case success(roomId: Int)
+    case failure(Error)
+}
+
+enum TemplateCreationProgress {
+    case begin
+    case progress(Double)
+    case success
+    case failure(Error)
+}
+
+enum TemplateDeletingProgress {
+    case begin
+    case progress(Double)
     case success
     case failure(Error)
 }
 
 protocol ASCRoomTemplatesNetworkServiceProtocol {
-    func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<RoomCreationProgress>
-    func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<RoomCreationProgress>
+    func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<TemplateCreationProgress>
+    func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<TemplateDeletingProgress>
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress>
     func fetchTemplates() async throws -> [ASCFolder]
     func getAccessList(template: ASCFolder) async throws -> [ASCTemplateAccessModel]
@@ -107,7 +121,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
         }
     }
 
-    func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<RoomCreationProgress> {
+    func deleteRoomTemplate(template: ASCFolder) -> AsyncStream<TemplateDeletingProgress> {
         AsyncStream { [weak self] continuation in
             guard let self else {
                 continuation.finish()
@@ -155,7 +169,6 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
 
     func createRoomFromTemplate(template: CreateRoomFromTemplateModel) -> AsyncStream<RoomCreationProgress> {
         AsyncStream { continuation in
-            var cancel = false
             continuation.yield(.begin)
 
             let requestModel = ASCCreateRoomFromTemplateRequestModel(
@@ -168,7 +181,10 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                 copyLogo: false
             )
 
-            networkService.request(OnlyofficeAPI.Endpoints.Operations.createRoomFromTemplate, requestModel.dictionary) { response, error in
+            networkService.request(
+                OnlyofficeAPI.Endpoints.Operations.createRoomFromTemplate,
+                requestModel.dictionary
+            ) { response, error in
                 if let error = error {
                     continuation.yield(.failure(error))
                     continuation.finish()
@@ -180,15 +196,28 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                         if let error = error {
                             continuation.yield(.failure(error))
                             continuation.finish()
-                        } else if let status = result?.result,
-                                  let progress = status.progress
-                        {
+                            return
+                        }
+
+                        guard let status = result?.result else {
+                            continuation.yield(.failure(NetworkingError.invalidData))
+                            continuation.finish()
+                            return
+                        }
+
+                        if let progress = status.progress {
+                            continuation.yield(.progress(Double(progress) / 100))
+
                             if progress >= 100 {
-                                continuation.yield(.progress(1.0))
-                                continuation.yield(.success)
+                                guard let roomId = status.roomId else {
+                                    continuation.yield(.failure(NetworkingError.invalidData))
+                                    continuation.finish()
+                                    return
+                                }
+
+                                continuation.yield(.success(roomId: roomId))
                                 continuation.finish()
                             } else {
-                                continuation.yield(.progress(Double(progress) / 100))
                                 Task {
                                     try? await Task.sleep(nanoseconds: 1_000_000_000)
                                     checkStatus()
@@ -200,12 +229,13 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                         }
                     }
                 }
+
                 checkStatus()
             }
         }
     }
 
-    func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<RoomCreationProgress> {
+    func createTemplate(room: CreateRoomTemplateModel) -> AsyncStream<TemplateCreationProgress> {
         AsyncStream { continuation in
             var cancel = false
 
@@ -258,10 +288,65 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                             }
                         }
                     }
-
                     checkStatus()
                 }
             }
+        }
+    }
+    
+    func uploadAndAttachImage(image: UIImage?, room: ASCFolder, completion: @escaping () -> Void) {
+        guard let image else {
+            completion()
+            return
+        }
+        uploadImage(image: image, fileName: room.title) { result in
+            switch result {
+            case let .success(logoUploadResult):
+                let imageWidth = Int(image.size.width)
+                let imageHeight = Int(image.size.height)
+                self.attachImage(room: room,
+                                 logo: logoUploadResult,
+                                 imageSize: CGSize(width: imageWidth, height: imageHeight),
+                                 completion: completion)
+            case .failure:
+                completion()
+            }
+        }
+    }
+    
+    private func uploadImage(image: UIImage, fileName: String, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.7) else {
+            completion(.failure(CreatingRoomServiceError.unableGetImageData))
+            return
+        }
+
+        let fileName = "\(fileName).jpg"
+        let mimeType = "image/jpeg"
+
+        networkService.request(OnlyofficeAPI.Endpoints.Uploads.logos()) { multipartFormData in
+            multipartFormData.append(imageData, withName: "file", fileName: fileName, mimeType: mimeType)
+        } _: { response, progress, error in
+            if let logoUpdateResult = response?.result {
+                completion(.success(logoUpdateResult))
+            }
+            if let error {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func attachImage(room: ASCFolder, logo: LogoUploadResult, imageSize: CGSize, completion: @escaping () -> Void) {
+        guard logo.success else {
+            completion()
+            return
+        }
+        let requestModel = AttachLogoRequestModel(tmpFile: logo.tmpFileUrl, width: imageSize.width, height: imageSize.height)
+
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), requestModel.dictionary) { result, _ in
+            if let folder = result?.result {
+                room.logo = folder.logo
+            }
+            completion()
         }
     }
 }

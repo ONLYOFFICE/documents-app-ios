@@ -566,13 +566,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     return
                 }
                 let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                topController.navigationController?.pushViewController(documentsVC, animated: true)
 
                 documentsVC.provider = self.copy()
                 documentsVC.provider?.cancel()
                 documentsVC.provider?.reset()
                 documentsVC.folder = doneFolder
                 documentsVC.title = doneFolder.title
+                topController.navigationController?.pushViewController(documentsVC, animated: true)
             }
 
             let vc = CreateFormCompletedRootViewController(

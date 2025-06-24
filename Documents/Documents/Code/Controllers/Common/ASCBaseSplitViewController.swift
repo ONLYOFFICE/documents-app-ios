@@ -72,20 +72,17 @@ extension ASCBaseSplitViewController: UISplitViewControllerDelegate {
     {
         if UIDevice.phone {
             if let primaryNC = primaryViewController as? UINavigationController {
+                if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+                    if topVC.description.contains("VNDocumentCameraViewController") {
+                        return false
+                    }
+                }
+
                 primaryNC.popToRootViewController(animated: false)
                 return true
             }
         }
         return false
-
-//        return UIDevice.phone
-//        guard let navigationController = primaryViewController as? UINavigationController,
-//            let controller = navigationController.topViewController as? ColorsViewController
-//            else {
-//                return true
-//        }
-//
-//        return controller.collapseDetailViewController
     }
 
     // https://forums.developer.apple.com/thread/88774

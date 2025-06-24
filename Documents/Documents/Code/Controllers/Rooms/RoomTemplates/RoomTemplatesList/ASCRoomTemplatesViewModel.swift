@@ -21,10 +21,9 @@ final class ASCRoomTemplatesViewModel: ObservableObject {
         defer { isLoading = false }
         do {
             let result = try await roomTemplatesNetworkService.fetchTemplates()
-            self.templates = result
+            templates = result
         } catch {
             print("Failed to fetch templates: \(error.localizedDescription)")
         }
     }
-
 }

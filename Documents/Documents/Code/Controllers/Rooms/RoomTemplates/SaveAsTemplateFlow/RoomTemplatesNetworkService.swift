@@ -293,7 +293,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     func uploadAndAttachImage(image: UIImage?, room: ASCFolder, completion: @escaping () -> Void) {
         guard let image else {
             completion()
@@ -313,7 +313,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     private func uploadImage(image: UIImage, fileName: String, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.7) else {
             completion(.failure(CreatingRoomServiceError.unableGetImageData))
@@ -334,7 +334,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
             }
         }
     }
-    
+
     private func attachImage(room: ASCFolder, logo: LogoUploadResult, imageSize: CGSize, completion: @escaping () -> Void) {
         guard logo.success else {
             completion()

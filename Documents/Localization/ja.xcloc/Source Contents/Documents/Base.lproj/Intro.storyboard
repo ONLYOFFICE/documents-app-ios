@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t0y-dG-csn">
+    <device id="retina5_5" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Page View Controller-->
+        <scene sceneID="6zl-WV-A6A">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vGJ-6E-wY9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DTu-h5-kI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="-63"/>
+        </scene>
+        <!--Intro View Controller-->
+        <scene sceneID="X4E-vP-A7o">
+            <objects>
+                <viewController storyboardIdentifier="ASCIntroViewController" id="t0y-dG-csn" customClass="ASCIntroViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ymN-da-oXY"/>
+                        <viewControllerLayoutGuide type="bottom" id="NAz-GO-jqB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bIa-NQ-fxM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuZ-S8-Wrh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <connections>
+                                    <segue destination="vGJ-6E-wY9" kind="embed" identifier="embedPageController" id="C4s-GT-SoV"/>
+                                </connections>
+                            </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="G9Q-9S-qgj">
+                                <rect key="frame" x="187.66666666666666" y="679" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" name="table-cell-separator"/>
+                                <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JV9-d9-sJs">
+                                <rect key="frame" x="278" y="667.66666666666663" width="120" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1fe-14-zOo"/>
+                                    <constraint firstAttribute="width" constant="120" id="OyI-Cf-xvt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="SKIP"/>
+                                <connections>
+                                    <action selector="onDone:" destination="t0y-dG-csn" eventType="touchUpInside" id="w2w-9U-eIE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JV9-d9-sJs" secondAttribute="trailing" constant="16" id="9hB-i9-G3b"/>
+                            <constraint firstItem="TuZ-S8-Wrh" firstAttribute="leading" secondItem="bIa-NQ-fxM" secondAttribute="leading" id="Ab0-A2-FRQ"/>
+                            <constraint firstItem="TuZ-S8-Wrh" firstAttribute="top" secondItem="bIa-NQ-fxM" secondAttribute="top" id="cG4-HO-7gZ"/>
+                            <constraint firstAttribute="trailing" secondItem="TuZ-S8-Wrh" secondAttribute="trailing" id="chO-j1-FlB"/>
+                            <constraint firstItem="JV9-d9-sJs" firstAttribute="centerY" secondItem="G9Q-9S-qgj" secondAttribute="centerY" id="fr7-EC-JUI"/>
+                            <constraint firstAttribute="bottom" secondItem="TuZ-S8-Wrh" secondAttribute="bottom" id="jWC-WR-u92"/>
+                            <constraint firstItem="NAz-GO-jqB" firstAttribute="top" secondItem="G9Q-9S-qgj" secondAttribute="bottomMargin" constant="28" id="u7Q-ZF-Dxt"/>
+                            <constraint firstItem="G9Q-9S-qgj" firstAttribute="centerX" secondItem="bIa-NQ-fxM" secondAttribute="centerX" id="xAc-rz-in8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="JV9-d9-sJs" id="Fww-6c-cy7"/>
+                        <outlet property="pageControl" destination="G9Q-9S-qgj" id="Ljq-ZB-8hO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWU-AZ-G8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-431" y="-63"/>
+        </scene>
+        <!--Intro Page Controller-->
+        <scene sceneID="tI0-5x-skP">
+            <objects>
+                <viewController storyboardIdentifier="ASCIntroPageController" id="py9-RN-Am9" customClass="ASCIntroPageController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NKS-9u-vUq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Unk-Oa-S8Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tdw-ma-aJp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Kmc-L6-Rnu">
+                                <rect key="frame" x="21.666666666666657" y="120" width="370.66666666666674" height="456"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro-step-five" translatesAutoresizingMaskIntoConstraints="NO" id="tOJ-q0-bSg">
+                                        <rect key="frame" x="0.0" y="0.0" width="370.66666666666669" height="256"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="250" constant="256" id="3D1-MT-PoE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Onboarding Design" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAF-Bt-8qi">
+                                        <rect key="frame" x="0.0" y="276" width="370.66666666666669" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Akh-s2-rcu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <attributedString key="userComments">
+                                            <fragment content="Do not translate">
+                                                <attributes>
+                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De8-tD-APT">
+                                        <rect key="frame" x="0.0" y="356" width="370.66666666666669" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="WBd-gj-3Vv"/>
+                                        </constraints>
+                                        <string key="text">Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </string>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <attributedString key="userComments">
+                                            <fragment content="Do not translate">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="message" size="11"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="efc-Gi-fMQ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Kmc-L6-Rnu" firstAttribute="centerX" secondItem="tdw-ma-aJp" secondAttribute="centerX" id="JVF-dJ-Fcy"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Kmc-L6-Rnu" secondAttribute="trailing" id="NCD-f5-Mif"/>
+                            <constraint firstItem="Kmc-L6-Rnu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NKS-9u-vUq" secondAttribute="bottom" id="Qcw-eb-J8g"/>
+                            <constraint firstItem="Kmc-L6-Rnu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tdw-ma-aJp" secondAttribute="leadingMargin" id="n5Q-xh-KV0"/>
+                            <constraint firstItem="Kmc-L6-Rnu" firstAttribute="centerY" secondItem="tdw-ma-aJp" secondAttribute="centerY" priority="250" constant="-20" id="p1p-Ti-3jY"/>
+                            <constraint firstItem="Unk-Oa-S8Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kmc-L6-Rnu" secondAttribute="bottom" constant="20" id="y8E-i7-XUZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageHeightConstarin" destination="3D1-MT-PoE" id="MRF-mU-0CF"/>
+                        <outlet property="imageView" destination="tOJ-q0-bSg" id="D5h-6W-E0m"/>
+                        <outlet property="infoLabel" destination="De8-tD-APT" id="ZTD-Kl-TkN"/>
+                        <outlet property="titleLabel" destination="KAF-Bt-8qi" id="86T-jy-Yb1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHg-Er-KAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="-63.418290854572717"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="intro-step-five" width="256.33334350585938" height="256"/>
+        <namedColor name="table-cell-separator">
+            <color red="0.77600002288818359" green="0.77600002288818359" blue="0.7839999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+    <color key="tintColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+</document>

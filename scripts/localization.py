@@ -8,8 +8,10 @@ import optparse
 arguments = sys.argv[1:]
 
 parser = optparse.OptionParser()
-parser.add_option("--import", action="store_true", dest="import", help="Import localization from xliff files")
-parser.add_option("--export", action="store_true", dest="export", help="Export localization to xliff files")
+parser.add_option("--import", action="store_true", dest="import", help="Import localization from xcloc files")
+parser.add_option("--export", action="store_true", dest="export", help="Export localization to xcloc files")
+parser.add_option("--importXliff", action="store_true", dest="importXliff", help="Import localization to xliff files")
+parser.add_option("--exportXliff", action="store_true", dest="exportXliff", help="Export localization to xliff files")
 
 (options, args) = parser.parse_args(arguments)
 options = vars(options)
@@ -29,27 +31,40 @@ support_langs = ["ar-SA", "bg", "cs", "de", "en", "es", "fr", "hy-AM", "it", "ja
 def import_localization():
     for key, value in projects.items():
         print("Import localization for {}".format(key))
+
         os.chdir(basepath)
         project = os.path.abspath(value["project"])
         os.chdir(value["localizations"])
-        for xliff in glob.glob("*.xliff"):
-            print("Importing {} ".format(os.path.splitext(os.path.basename(xliff))[0]))
-            os.system("xcodebuild -importLocalizations -project {0} -localizationPath {1}".format(project, xliff))
+
+        localizeExtension = "*.xcloc"
+        
+        if options["importXliff"]:
+            localizeExtension = "*.xliff"
+
+        for locFile in glob.glob(localizeExtension):
+            print("Importing {} ".format(os.path.splitext(os.path.basename(locFile))[0]))
+            os.system("xcodebuild -importLocalizations -project {0} -localizationPath {1}".format(project, locFile))
+
         print("")
 
 def export_localization():
     for key, value in projects.items():
         print("Export localization for {}".format(key))
+
         os.chdir(basepath)
         project = os.path.abspath(value["project"])
         localizations = os.path.abspath(value["localizations"])
+
         for lang in support_langs:
             os.system("xcodebuild -exportLocalizations -project {0} -localizationPath {1} -exportLanguage {2}".format(project, localizations, lang))
-            xcloc = "{0}/{1}.xcloc".format(localizations, lang)
-            xliff = "{0}/Localized Contents/{1}.xliff".format(xcloc, lang)
-            if os.path.exists(xcloc) and os.path.exists(xliff):
-                os.system('rsync -a --delete "{0}" "{1}"'.format(xliff, localizations))
-                os.system('rm -r "{0}"'.format(xcloc))
+
+            if options["exportXliff"]:
+                xcloc = "{0}/{1}.xcloc".format(localizations, lang)
+                xliff = "{0}/Localized Contents/{1}.xliff".format(xcloc, lang)
+                if os.path.exists(xcloc) and os.path.exists(xliff):
+                    os.system('rsync -a --delete "{0}" "{1}"'.format(xliff, localizations))
+                    os.system('rm -r "{0}"'.format(xcloc))
+
         print("")
 
 

@@ -1148,7 +1148,6 @@
 		FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomHighlightButton.swift; sourceTree = "<group>"; };
 		FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceSplitViewController.swift; sourceTree = "<group>"; };
-		FC83A9C62C3FFF530030B732 /* ar-SA.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ar-SA.xliff"; sourceTree = "<group>"; };
 		FC83A9C72C3FFF610030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FC83A9C82C3FFF610030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Main.strings"; sourceTree = "<group>"; };
 		FC83A9C92C3FFF610030B732 /* ar-SA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-SA"; path = "ar-SA.lproj/Login.strings"; sourceTree = "<group>"; };
@@ -1251,18 +1250,6 @@
 		FCAE112D26A800E60013B475 /* ASCKdriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCKdriveFileProvider.swift; sourceTree = "<group>"; };
 		FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
 		FCB61DD22DDC961F006DEFA5 /* OnlyofficeSearchArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeSearchArea.swift; sourceTree = "<group>"; };
-		FCB844542768B7B000A3F918 /* pt-BR.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pt-BR.xliff"; sourceTree = "<group>"; };
-		FCB844552768B7B000A3F918 /* ja.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ja.xliff; sourceTree = "<group>"; };
-		FCB844562768B7B000A3F918 /* fr.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
-		FCB844572768B7B000A3F918 /* bg.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bg.xliff; sourceTree = "<group>"; };
-		FCB844582768B7B000A3F918 /* es.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = es.xliff; sourceTree = "<group>"; };
-		FCB844592768B7B000A3F918 /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
-		FCB8445A2768B7B000A3F918 /* ru.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ru.xliff; sourceTree = "<group>"; };
-		FCB8445B2768B7B000A3F918 /* cs.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
-		FCB8445C2768B7B000A3F918 /* de.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
-		FCB8445D2768B7B000A3F918 /* zh-Hans.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "zh-Hans.xliff"; sourceTree = "<group>"; };
-		FCB8445E2768B7B000A3F918 /* zh-Hant.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "zh-Hant.xliff"; sourceTree = "<group>"; };
-		FCB8445F2768B7B000A3F918 /* it.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = it.xliff; sourceTree = "<group>"; };
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseSplitViewController.swift; sourceTree = "<group>"; };
@@ -1301,6 +1288,21 @@
 		FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsEmptyViewController.swift; sourceTree = "<group>"; };
 		FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferNavigationController.swift; sourceTree = "<group>"; };
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
+		FCDC02B62E0AEA6600704E7B /* ar-SA.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "ar-SA.xcloc"; sourceTree = "<group>"; };
+		FCDC02B72E0AEA6600704E7B /* bg.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = bg.xcloc; sourceTree = "<group>"; };
+		FCDC02B82E0AEA6600704E7B /* cs.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = cs.xcloc; sourceTree = "<group>"; };
+		FCDC02B92E0AEA6600704E7B /* de.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = de.xcloc; sourceTree = "<group>"; };
+		FCDC02BA2E0AEA6600704E7B /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
+		FCDC02BB2E0AEA6600704E7B /* es.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = es.xcloc; sourceTree = "<group>"; };
+		FCDC02BC2E0AEA6600704E7B /* fr.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = fr.xcloc; sourceTree = "<group>"; };
+		FCDC02BD2E0AEA6600704E7B /* hy-AM.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "hy-AM.xcloc"; sourceTree = "<group>"; };
+		FCDC02BE2E0AEA6600704E7B /* it.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = it.xcloc; sourceTree = "<group>"; };
+		FCDC02BF2E0AEA6600704E7B /* ja.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ja.xcloc; sourceTree = "<group>"; };
+		FCDC02C02E0AEA6600704E7B /* pt-BR.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "pt-BR.xcloc"; sourceTree = "<group>"; };
+		FCDC02C12E0AEA6600704E7B /* ru.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ru.xcloc; sourceTree = "<group>"; };
+		FCDC02C22E0AEA6600704E7B /* si.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = si.xcloc; sourceTree = "<group>"; };
+		FCDC02C32E0AEA6600704E7B /* zh-Hans.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "zh-Hans.xcloc"; sourceTree = "<group>"; };
+		FCDC02C42E0AEA6600704E7B /* zh-Hant.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "zh-Hant.xcloc"; sourceTree = "<group>"; };
 		FCE186212628C65F0086D21B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FCE186492628CFE70086D21B /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		FCE18667262AB4AB0086D21B /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
@@ -3117,19 +3119,21 @@
 		FC5CE53A26B437B70066901E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				FC83A9C62C3FFF530030B732 /* ar-SA.xliff */,
-				FCB844572768B7B000A3F918 /* bg.xliff */,
-				FCB8445B2768B7B000A3F918 /* cs.xliff */,
-				FCB8445C2768B7B000A3F918 /* de.xliff */,
-				FCB844592768B7B000A3F918 /* en.xliff */,
-				FCB844582768B7B000A3F918 /* es.xliff */,
-				FCB844562768B7B000A3F918 /* fr.xliff */,
-				FCB8445F2768B7B000A3F918 /* it.xliff */,
-				FCB844552768B7B000A3F918 /* ja.xliff */,
-				FCB844542768B7B000A3F918 /* pt-BR.xliff */,
-				FCB8445A2768B7B000A3F918 /* ru.xliff */,
-				FCB8445D2768B7B000A3F918 /* zh-Hans.xliff */,
-				FCB8445E2768B7B000A3F918 /* zh-Hant.xliff */,
+				FCDC02B62E0AEA6600704E7B /* ar-SA.xcloc */,
+				FCDC02B72E0AEA6600704E7B /* bg.xcloc */,
+				FCDC02B82E0AEA6600704E7B /* cs.xcloc */,
+				FCDC02B92E0AEA6600704E7B /* de.xcloc */,
+				FCDC02BA2E0AEA6600704E7B /* en.xcloc */,
+				FCDC02BB2E0AEA6600704E7B /* es.xcloc */,
+				FCDC02BC2E0AEA6600704E7B /* fr.xcloc */,
+				FCDC02BD2E0AEA6600704E7B /* hy-AM.xcloc */,
+				FCDC02BE2E0AEA6600704E7B /* it.xcloc */,
+				FCDC02BF2E0AEA6600704E7B /* ja.xcloc */,
+				FCDC02C02E0AEA6600704E7B /* pt-BR.xcloc */,
+				FCDC02C12E0AEA6600704E7B /* ru.xcloc */,
+				FCDC02C22E0AEA6600704E7B /* si.xcloc */,
+				FCDC02C32E0AEA6600704E7B /* zh-Hans.xcloc */,
+				FCDC02C42E0AEA6600704E7B /* zh-Hant.xcloc */,
 			);
 			path = Localization;
 			sourceTree = "<group>";

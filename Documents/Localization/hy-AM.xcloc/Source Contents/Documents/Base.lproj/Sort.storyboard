@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yAy-Q3-Av8">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Base Navigation Controller-->
+        <scene sceneID="OU0-fe-5iY">
+            <objects>
+                <navigationController id="XNA-77-LDo" customClass="ASCBaseNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" largeTitles="YES" id="pyL-kQ-qbR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yAy-Q3-Av8" kind="relationship" relationship="rootViewController" id="8Wh-8j-AH0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzk-2W-hIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-273" y="143"/>
+        </scene>
+        <!--Sort-->
+        <scene sceneID="192-24-N3W">
+            <objects>
+                <tableViewController storyboardIdentifier="ASCSortViewController" title="Sort" id="yAy-Q3-Av8" customClass="ASCSortViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="mai-ZJ-G9b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cellSortType" textLabel="VLB-h5-1fu" style="IBUITableViewCellStyleDefault" id="6bR-Yy-YSy" customClass="ASCSortViewCell" customModule="Documents" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="52"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6bR-Yy-YSy" id="EgC-rK-gcT">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="52"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="VLB-h5-1fu">
+                                            <rect key="frame" x="16" y="0.0" width="311" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellSortOrder" id="UvZ-rg-ViC" customClass="ASCSortViewCell" customModule="Documents" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="107.5" width="375" height="52"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="UvZ-rg-ViC" id="Pk3-6d-BvF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lrc-rU-5Fg">
+                                            <rect key="frame" x="310" y="10.5" width="51" height="31"/>
+                                            <color key="onTintColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="onAscendingSwitch:" destination="UvZ-rg-ViC" eventType="valueChanged" id="eAO-O4-EBD"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HjM-la-pDc">
+                                            <rect key="frame" x="16" y="15.5" width="294" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Lrc-rU-5Fg" secondAttribute="trailing" id="Whz-nj-9Zs"/>
+                                        <constraint firstItem="HjM-la-pDc" firstAttribute="leading" secondItem="Pk3-6d-BvF" secondAttribute="leadingMargin" id="fjc-5k-Vqf"/>
+                                        <constraint firstItem="Lrc-rU-5Fg" firstAttribute="centerY" secondItem="Pk3-6d-BvF" secondAttribute="centerY" id="ksH-MD-zNZ"/>
+                                        <constraint firstItem="HjM-la-pDc" firstAttribute="centerY" secondItem="Pk3-6d-BvF" secondAttribute="centerY" id="swv-E9-eVd"/>
+                                        <constraint firstItem="Lrc-rU-5Fg" firstAttribute="leading" secondItem="HjM-la-pDc" secondAttribute="trailing" id="yCV-0C-IKn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ascendingSwitch" destination="Lrc-rU-5Fg" id="jLI-NM-aJX"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="yAy-Q3-Av8" id="U1H-Pl-xES"/>
+                            <outlet property="delegate" destination="yAy-Q3-Av8" id="dAq-kD-xO4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sort" id="hSK-XM-USz">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="19A-Oo-E9e"/>
+                        <attributedString key="userComments">
+                            <fragment content="View Title">
+                                <attributes>
+                                    <font key="NSFont" metaFont="message" size="11"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3e4-nG-2hO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="143"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.1764705882352941" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+</document>

@@ -101,7 +101,7 @@ struct RoomSharingCustomizeLinkView: View {
     }
 
     private var protectionSectionFooter: some View {
-        Text(String.protectionSectionFooterText)
+        Text(verbatim: String.protectionSectionFooterText)
     }
 
     @ViewBuilder
@@ -123,7 +123,7 @@ struct RoomSharingCustomizeLinkView: View {
     @ViewBuilder
     private var restrictionSection: some View {
         if viewModel.roomType != .fillingForm {
-            Section(footer: Text(String.restrictionSectionFooterText)) {
+            Section(footer: Text(verbatim: String.restrictionSectionFooterText)) {
                 Toggle(isOn: $viewModel.isRestrictCopyOn) {
                     Text("Restrict file content copy, file download and printing")
                 }

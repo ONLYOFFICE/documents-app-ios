@@ -22,6 +22,7 @@ struct ManageRoomView: View {
             roomTypeSection
             roomImageAndNameSection
             roomTagsSection
+            accessToTemplateSection
             roomOwnerSection
             thirdPartySection
             automaticIndexationSection
@@ -31,9 +32,11 @@ struct ManageRoomView: View {
             storageQuotaSection
         }
         .hideKeyboardOnDrag()
+        .onAppear { viewModel.onAppear() }
         .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigateToUserSelection(isActive: $viewModel.isUserSelectionPresenting, viewModel: viewModel)
+        .navigateToRoomTemplateAccessScreenPresenting(isActive: $viewModel.isRoomTemplateAccessScreenPresenting, viewModel: viewModel)
         .sheet(isPresented: $viewModel.isStorageSelectionPresenting, content: {
             ASCConnectCloudViewControllerRepresentable(completion: viewModel.didCloudProviderLoad)
         })
@@ -46,21 +49,32 @@ struct ManageRoomView: View {
                 )
             }
         })
-        .navigationTitle(isEditMode: viewModel.isEditMode)
+        .navigationTitle(viewModel: viewModel)
         .navigationBarItems(viewModel: viewModel)
         .alertForActiveAlert(activeAlert: $viewModel.activeAlert, viewModel: viewModel)
     }
 
     // MARK: - All rooms sections
 
+    @ViewBuilder
     private var roomTypeSection: some View {
+        let showDisclosureIndicator = {
+            if case .createFromTemplate = viewModel.screenMode {
+                return false
+            }
+            return true
+        }()
+
         Section {
-            RoomTypeViewRow(roomTypeModel: viewModel.selectedRoomType)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    guard !viewModel.isEditMode else { return }
-                    viewModel.isRoomSelectionPresenting = true
-                }
+            RoomTypeViewRow(
+                roomTypeModel: viewModel.selectedRoomType.mapToRowModel(
+                    showDisclosureIndicator: showDisclosureIndicator,
+                    onTap: {
+                        guard !viewModel.isEditMode else { return }
+                        viewModel.isRoomSelectionPresenting = true
+                    }
+                )
+            )
         }
     }
 
@@ -70,24 +84,22 @@ struct ManageRoomView: View {
                 MenuView(menuItems: viewModel.menuItems) {
                     imagePicker
                 }
-
                 roomNameTextField
             }
         }
     }
 
     private var roomTagsSection: some View {
-        Section {
+        Section(footer: tagsFooter) {
             TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
                 .background(Color.systemGroupedBackground)
         }
-        .background(Color.secondarySystemGroupedBackground)
     }
 
     @ViewBuilder
     private var roomOwnerSection: some View {
-        if viewModel.isEditMode {
+        if !isEditOrCreateFromTemplateMode, viewModel.isEditMode {
             Section {
                 HStack(spacing: 8) {
                     Text("Owner")
@@ -98,11 +110,45 @@ struct ManageRoomView: View {
                         ChevronRightView()
                     }
                 }
+                .contentShape(Rectangle())
                 .onTapGesture {
                     viewModel.didTapRoomOwnerCell()
                 }
             }
         }
+    }
+
+    private var isEditOrCreateFromTemplateMode: Bool {
+        if case .editTemplate = viewModel.screenMode { return true }
+        if case .createFromTemplate = viewModel.screenMode { return true }
+        return false
+    }
+
+    @ViewBuilder
+    private var accessToTemplateSection: some View {
+        if case .editTemplate = viewModel.screenMode {
+            Section(footer: accessToTemplateFooter) {
+                ASCRoomTemplateAccessRowView(model: ASCRoomTemplateAccessRowViewModel(members: viewModel.accessModels, isPublicTemplate: viewModel.isPublicTemplate))
+                    .onTapGesture {
+                        viewModel.didTapAccessToTemplate()
+                    }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var tagsFooter: some View {
+        switch viewModel.screenMode {
+        case .editTemplate:
+            Text("Tags are applied to the room which will be created based on this template.")
+        default:
+            Text("")
+        }
+    }
+
+    @ViewBuilder
+    private var accessToTemplateFooter: some View {
+        Text("Access to template. You can select members who can create rooms based on this template.")
     }
 
     @ViewBuilder
@@ -179,27 +225,22 @@ struct ManageRoomView: View {
     // MARK: - HUD
 
     private func handleHUD() {
-        if viewModel.isSavedSuccessfully {
-            if let hud = MBProgressHUD.currentHUD, viewModel.hideActivityOnSuccess {
-                hud.setState(result: .success(nil))
-                hud.hide(animated: true, afterDelay: .standardDelay)
-            }
-        } else if viewModel.isSaving {
-            MBProgressHUD.currentHUD?.hide(animated: false)
-            let hud = MBProgressHUD.showTopMost()
-            hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the processing")
-        } else if viewModel.isConnecting {
-            MBProgressHUD.currentHUD?.hide(animated: false)
-            let hud = MBProgressHUD.showTopMost()
-            hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Connecting", comment: "Caption of the processing")
+        if viewModel.isSaving || viewModel.isConnecting {
+            MBProgressHUD.showTopMost(mode: .indeterminate)
         } else if let hud = MBProgressHUD.currentHUD {
-            if let _ = viewModel.errorMessage {
-                hud.hide(animated: true)
-            } else {
-                hud.setState(result: .success(nil))
+            if let result = viewModel.resultModalModel {
+                switch result.result {
+                case .success:
+                    hud.setState(result: .success(result.message))
+                case .failure:
+                    hud.setState(result: .failure(result.message))
+                }
                 hud.hide(animated: true, afterDelay: .standardDelay)
+                DispatchQueue.main.async {
+                    viewModel.resultModalModel = nil
+                }
+            } else {
+                hud.hide(animated: true)
             }
         }
     }
@@ -216,35 +257,43 @@ private extension View {
             UIApplication.topViewController()?.dismiss(animated: true)
         }
         let saveButton = Button(
-            viewModel.isEditMode
-                ? NSLocalizedString("Save", comment: "")
-                : NSLocalizedString("Create", comment: "")
+            viewModel.screenMode.title
         ) {
             viewModel.save()
         }
         .disabled(viewModel.isSaveBtnEnabled)
 
-        if viewModel.isEditMode {
+        switch viewModel.screenMode {
+        case .edit:
             navigationBarItems(
                 leading: closeButton,
                 trailing: saveButton
             )
-        } else {
+        default:
             navigationBarItems(
                 trailing: saveButton
             )
         }
     }
 
-    func navigationTitle(isEditMode: Bool) -> some View {
-        isEditMode
-            ? navigationBarTitle(Text("Edit room"), displayMode: .inline)
-            : navigationBarTitle(Text("Create room"), displayMode: .inline)
+    @ViewBuilder
+    func navigationTitle(viewModel: ManageRoomViewModel) -> some View {
+        switch viewModel.screenMode {
+        case .edit:
+            navigationBarTitle(Text("Edit room"), displayMode: .inline)
+        case .create, .createFromTemplate:
+            navigationBarTitle(Text("Create room"), displayMode: .inline)
+        case .saveAsTemplate:
+            navigationBarTitle(Text("Save as template"), displayMode: .inline)
+        case .editTemplate:
+            navigationBarTitle(Text("Edit template"), displayMode: .inline)
+        }
     }
 
     func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         navigation(isActive: isActive, destination: {
             RoomSelectionView(
+                viewModel: RoomSelectionViewModel(),
                 selectedRoomType: Binding<RoomTypeModel?>(
                     get: { viewModel.selectedRoomType },
                     set: { newValue in
@@ -275,6 +324,22 @@ private extension View {
                 )
             )
         })
+    }
+
+    @ViewBuilder
+    func navigateToRoomTemplateAccessScreenPresenting(
+        isActive: Binding<Bool>,
+        viewModel: ManageRoomViewModel
+    ) -> some View {
+        navigation(isActive: isActive) {
+            if let template = viewModel.editingRoom {
+                ASCTemplateAccessSettingsView(
+                    viewModel: ASCTemplateAccessSettingsViewModel(
+                        template: template
+                    )
+                )
+            }
+        }
     }
 
     @ViewBuilder
@@ -362,7 +427,7 @@ private extension String {
 
 #Preview {
     ManageRoomView(
-        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
+        viewModel: ManageRoomViewModel(screenMode: .create, selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)) { _ in }
     )
 }
 
@@ -384,6 +449,17 @@ extension View {
             self.scrollDismissesKeyboard(.immediately)
         } else {
             modifier(HideKeyboardOnDrag())
+        }
+    }
+}
+
+extension ManageRoomScreenMode {
+    var title: String {
+        switch self {
+        case .create, .saveAsTemplate, .createFromTemplate:
+            return NSLocalizedString("Create", comment: "")
+        case .edit, .editTemplate:
+            return NSLocalizedString("Save", comment: "")
         }
     }
 }

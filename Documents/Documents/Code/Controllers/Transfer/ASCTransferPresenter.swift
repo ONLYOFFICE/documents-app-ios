@@ -208,7 +208,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 guard let self else {
                     return
                 }
-                let denyedToTransferFoldersTypes = Set([ASCFolderType.fillFormDone, .fillFormInProgress])
+                let denyedToTransferFoldersTypes = Set([ASCFolderType.readyFormFolder, .inProcessFormFolder])
                 var entities = provider.items.filter {
                     if let folder = $0 as? ASCFolder, let folderType = folder.type {
                         return !denyedToTransferFoldersTypes.contains(folderType)
@@ -449,15 +449,15 @@ private extension ASCTransferPresenter {
             } else {
                 folderImage = allowFaceId ? Asset.Images.categoryIphoneNew.image : Asset.Images.categoryIphone.image
             }
-        case .onlyofficeUser:
+        case .user:
             folderImage = Asset.Images.categoryMy.image
-        case .onlyofficeShare:
+        case .share:
             folderImage = Asset.Images.categoryShare.image
-        case .onlyofficeCommon:
+        case .common:
             folderImage = Asset.Images.categoryCommon.image
-        case .onlyofficeBunch, .onlyofficeProjects:
+        case .bunch, .projects:
             folderImage = Asset.Images.categoryProjects.image
-        case .onlyofficeRoomShared:
+        case .virtualRooms:
             folderImage = Asset.Images.categoryRoom.image
         default:
             break

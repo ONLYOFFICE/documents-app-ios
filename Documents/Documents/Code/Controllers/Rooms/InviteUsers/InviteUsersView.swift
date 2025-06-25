@@ -146,6 +146,7 @@ private extension View {
         navigation(isActive: isDisplaying) {
             InviteRigthHoldersByEmailsRepresentable(entity: viewModel.room)
                 .navigationBarHidden(true)
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 
@@ -156,6 +157,7 @@ private extension View {
         navigation(isActive: isDisplaying) {
             SharingInviteRightHoldersRepresentable(entity: viewModel.room)
                 .navigationBarHidden(true)
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

@@ -60,5 +60,11 @@ enum ASCAppSettings {
             get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
             set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDisableSdkVersionCheck) }
         }
+
+        // Allow large title
+        static var allowLargeTitle: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowLargeTitle) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowLargeTitle) }
+        }
     }
 }

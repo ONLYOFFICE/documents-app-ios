@@ -1,6 +1,6 @@
 //
 //  ASCDocumentsViewController+Localized.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Lolita Chernysheva on 24.02.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
@@ -9,10 +9,13 @@
 import Foundation
 
 extension ASCDocumentsViewController {
-    enum AlertMessageType: String {
+    enum AlertMessageType {
         case deleteFileFromTrash
         case deleteRoomFromArchive
         case restoreRoomFromArchive
+        case deleteFromDeviceTrash
+        case deleteFolderFromTrash
+        case deleteRoomTemplate(String)
 
         var message: String {
             switch self {
@@ -22,6 +25,12 @@ extension ASCDocumentsViewController {
                 return NSLocalizedString("You are about to delete this room. You won't be able to restore them.", comment: "")
             case .restoreRoomFromArchive:
                 return NSLocalizedString("All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?", comment: "")
+            case .deleteFromDeviceTrash:
+                return NSLocalizedString("It will be irretrievably deleted. This action is irreversible.", comment: "")
+            case .deleteFolderFromTrash:
+                return NSLocalizedString("You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?", comment: "")
+            case let .deleteRoomTemplate(templateTitle):
+                return String(format: NSLocalizedString("Do you really want to delete template room %@? The template cannot be restored. ", comment: ""), templateTitle)
             }
         }
     }

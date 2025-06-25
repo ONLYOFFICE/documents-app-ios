@@ -26,7 +26,7 @@ class ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests: XCTestCase {
         categoryFoo.subtitle = "foo"
         let folder = ASCFolder()
         folder.id = "@my"
-        folder.rootFolderType = .onlyofficeUser
+        folder.rootFolderType = .user
         folder.title = "Foo"
         categoryFoo.folder = folder
 

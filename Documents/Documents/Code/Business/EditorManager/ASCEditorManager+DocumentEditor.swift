@@ -68,10 +68,13 @@ extension ASCEditorManager {
             user: editorUser,
             appFonts: editorFontsPaths,
             dataFontsPath: dataFontsPath,
+            ocrPath: ocrPath,
             license: licensePath,
             documentPermissions: documentPermissions.jsonString() ?? "",
             documentCommonConfig: config.dictionary?.jsonString() ?? ""
         )
+
+        ocrPath = nil
 
         if isCoauthoring {
             let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()

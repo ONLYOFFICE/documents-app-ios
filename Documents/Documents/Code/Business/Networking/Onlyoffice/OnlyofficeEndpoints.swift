@@ -40,6 +40,10 @@ enum OnlyofficeAPI {
         public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
         public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
+        public static let operationSaveRoomAsTemplate = "api/\(version)/files/roomtemplate"
+        public static let roomTemplateStatus = "api/\(version)/files/roomtemplate/status"
+        public static let roomFromTemplate = "api/\(version)/files/rooms/fromTemplate"
+        public static let roomFromTemplateStatus = "api/\(version)/files/rooms/fromTemplate/status"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let logos = "api/\(version)/files/logos"
@@ -83,10 +87,18 @@ enum OnlyofficeAPI {
         public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
+        public static let fillingStatus = "api/\(version)/files/file/%@/formroles"
+        public static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
+        public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
+        public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
+        public static let editComment = "api/\(version)/files/file/%@/comment"
+        public static let customFilter = "api/\(version)/files/file/%@/customfilter"
+        public static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
+        public static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
-        enum Forlder {
+        enum Folder {
             public static let root = "@root"
             public static let my = "@my"
             public static let share = "@share"
@@ -144,7 +156,7 @@ enum OnlyofficeAPI {
         // MARK: Folders
 
         enum Folders {
-            static let roots: Endpoint<OnlyofficeResponseArray<OnlyofficePath>> = Endpoint<OnlyofficeResponseArray<OnlyofficePath>>.make(String(format: Path.files, Path.Forlder.root))
+            static let roots: Endpoint<OnlyofficeResponseArray<OnlyofficePath>> = Endpoint<OnlyofficeResponseArray<OnlyofficePath>>.make(String(format: Path.files, Path.Folder.root))
             static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }
@@ -203,6 +215,14 @@ enum OnlyofficeAPI {
 
             static func createThirdparty(providerId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomsThirdparty, providerId), .post)
+            }
+
+            static func rooms() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .get, URLEncoding.default)
+            }
+
+            static func roomTemplates() -> Endpoint<OnlyofficeResponse<ASCRoomTemplate>> {
+                return Endpoint<OnlyofficeResponse<ASCRoomTemplate>>.make(Path.rooms, .get, URLEncoding.default)
             }
 
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -272,6 +292,22 @@ enum OnlyofficeAPI {
             static func roomIndexExport(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(String(format: Path.roomIndexExport, folder.id), .post)
             }
+
+            static func getRoomTemplateAccessList(template: ASCFolder) -> Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>> {
+                return Endpoint<OnlyofficeResponseArray<ASCTemplateAccessModel>>.make(String(format: Path.shareRoom, template.id), .get)
+            }
+
+            static func setRoomTemplateAccess(template: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, template.id), .put)
+            }
+
+            static func setRoomTemplateAsPublic() -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.publicRoomTemplate), .put)
+            }
+
+            static func getRoomTemplateIsPiblic(template: ASCFolder) -> Endpoint<OnlyofficeResponseType<Bool>> {
+                return Endpoint<OnlyofficeResponseType<Bool>>.make(String(format: Path.isTemplatePublic, template.id), .get)
+            }
         }
 
         // MARK: Files
@@ -289,8 +325,12 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .get)
             }
 
-            static func createAndCopyLink(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.createAndCopyFileLink, file.id), .get)
+            static func customFilter(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.customFilter, file.id), .put)
+            }
+
+            static func createAndCopyLink(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.createAndCopyFileLink, file.id), method)
             }
 
             static func setLinkAccess(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<SharedSettingsLinkResponceModel>> {
@@ -339,6 +379,26 @@ enum OnlyofficeAPI {
 
             static func trackEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<Parameters>> {
                 return Endpoint<OnlyofficeResponseType<Parameters>>.make(String(format: Path.trackEdit, file.id), .get, URLEncoding.default)
+            }
+
+            static func getFillingStatus(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>>.make(String(format: Path.fillingStatus, file.id), .get, URLEncoding.default)
+            }
+
+            static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                Endpoint<OnlyofficeResponseBase>.make(String(format: Path.manageFormFilling, file.id), .put)
+            }
+
+            static func getVersionHistory(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<ASCFile>> {
+                return Endpoint<OnlyofficeResponseArray<ASCFile>>.make(String(format: Path.fileVersionHistory, file.id), .get, URLEncoding.default)
+            }
+
+            static func restoreFileVersion(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            }
+
+            static func editComment(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.editComment, file.id), .put)
             }
 
             static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
@@ -397,6 +457,11 @@ enum OnlyofficeAPI {
             static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
             static let duplicateRoom: Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomOperation>>.make(Path.operationRoomDuplicate, .put)
             static let roomIndexExport: Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeRoomIndexExportOperation>>.make(Path.operationRoomIndexExport, .get)
+            static let deleteVersion: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.deleteFileVersion, .put)
+            static let saveRoomAsTemplate: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.operationSaveRoomAsTemplate, .post)
+            static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
+            static let createRoomFromTemplate: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplate, .post)
+            static let createRoomFromTemplateStatus: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplateStatus, .get)
         }
 
         // MARK: Third-Party Integration

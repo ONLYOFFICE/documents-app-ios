@@ -2,6 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d Groups</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@groups@</string>
+		<key>groups</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d группы</string>
+			<key>many</key>
+			<string>%d групп</string>
+			<key>one</key>
+			<string>Одна группа</string>
+			<key>other</key>
+			<string>%d групп</string>
+		</dict>
+	</dict>
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,13 +33,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d days</string>
+			<string>%d дня</string>
 			<key>many</key>
-			<string>%d days</string>
+			<string>%d дней</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>Один день</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d дней</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
@@ -33,13 +53,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d hours</string>
+			<string>%d часа</string>
 			<key>many</key>
-			<string>%d hours</string>
+			<string>%d часов</string>
 			<key>one</key>
-			<string>%d hour</string>
+			<string>Один час</string>
 			<key>other</key>
-			<string>%d hours</string>
+			<string>%d часов</string>
 		</dict>
 	</dict>
 	<key>%d months</key>
@@ -53,13 +73,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d months</string>
+			<string>%d месяца</string>
 			<key>many</key>
-			<string>%d months</string>
+			<string>%d месяцев</string>
 			<key>one</key>
-			<string>%d month</string>
+			<string>Один месяц</string>
 			<key>other</key>
-			<string>%d months</string>
+			<string>%d месяцев</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
@@ -93,13 +113,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>%d years</string>
+			<string>%d года</string>
 			<key>many</key>
-			<string>%d years</string>
+			<string>%d лет</string>
 			<key>one</key>
-			<string>%d year</string>
+			<string>Один год</string>
 			<key>other</key>
-			<string>%d years</string>
+			<string>%d лет</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
@@ -258,44 +278,24 @@
 			<string>Удалить %2$#@lu_files@</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
+	<key>Me and %d Users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
+		<string>%#@users@</string>
+		<key>users</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Expires after %d days</string>
+			<string>Я и %d пользователя</string>
 			<key>many</key>
-			<string>Expires after %d days</string>
+			<string>Я и %d пользователей</string>
 			<key>one</key>
-			<string>Expires after %d day</string>
+			<string>Я и один пользователь</string>
 			<key>other</key>
-			<string>Expires after %d days</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>few</key>
-			<string>Expires after %d hours</string>
-			<key>many</key>
-			<string>Expires after %d hours</string>
-			<key>one</key>
-			<string>Expires after %d hour</string>
-			<key>other</key>
-			<string>Expires after %d hours</string>
+			<string>Я и %d пользователей</string>
 		</dict>
 	</dict>
 </dict>

@@ -104,6 +104,38 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         frame.width < Constants.transformWidth
     }
 
+    private var badgeInsets: UIEdgeInsets {
+        guard let folder = entity as? ASCFolder else { return .zero }
+
+        if folder.isPublicRoom {
+            return layoutType == .grid
+                ? UIEdgeInsets(top: 0, left: 0, bottom: -7, right: -7)
+                : UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0)
+        }
+
+        if folder.isPrivate {
+            return layoutType == .grid
+                ? UIEdgeInsets(top: 0, left: 0, bottom: -7, right: -7)
+                : UIEdgeInsets(top: 0, left: 0, bottom: 3, right: -3)
+        }
+
+        return .zero
+    }
+
+    static let listRoomTemplateFrameImage = UIImage.createFrameTexture(
+        size: ASCFolder.Constants.listRoomIconSize,
+        cornerRadius: ASCFolder.Constants.listRoomIconRadius,
+        lineWidth: 2,
+        gapBetweenCorners: 10
+    )
+
+    static let gridRoomTemplateFrameImage = UIImage.createFrameTexture(
+        size: ASCFolder.Constants.gridRoomIconSize,
+        cornerRadius: ASCFolder.Constants.gridRoomIconRadius,
+        lineWidth: 4,
+        gapBetweenCorners: 20
+    )
+
     // MARK: - Lifecycle Methods
 
     override init(frame: CGRect) {
@@ -155,8 +187,276 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         updateSelected()
     }
 
-    // MARK: - List Layout
+    // MARK: - Common Layout
 
+    private func buildIconView(preferredSize: CGSize) -> UIView {
+        guard
+            let folder = entity as? ASCFolder,
+            let provider
+        else { return UIView() }
+
+        if folder.isTemplateRoom {
+            return buildRoomTemplateIconView(preferredSize: preferredSize)
+        }
+
+        let badgeImageView: UIImageView = {
+            $0.contentMode = .center
+            return $0
+        }(UIImageView())
+
+        let roomPlaceholderImage = UIImage(
+            color: .clear,
+            size: preferredSize
+        )
+
+        imageView.layerCornerRadius = 0
+
+        // Set icon image
+        if let _ = folder.roomType {
+            if folder.rootFolderType == .archive {
+                imageView.image = roomImageDefault()
+            } else {
+                let processor = RoundCornerImageProcessor(
+                    cornerRadius: folder.roomIconRadius(layoutType: layoutType),
+                    targetSize: folder.roomIconSize(layoutType: layoutType)
+                )
+                imageView.kf.setProviderImage(
+                    with: provider.absoluteUrl(from: folder.logo?.large ?? ""),
+                    for: provider,
+                    placeholder: roomPlaceholderImage,
+                    options: [
+                        .processor(processor),
+                    ],
+                    completionHandler: { [weak self] result in
+                        switch result {
+                        case .success:
+                            break
+                        case .failure:
+                            self?.imageView.image = self?.roomImageDefault()
+                        }
+                    }
+                )
+            }
+            imageView.layerCornerRadius = folder.roomIconRadius(layoutType: layoutType)
+        } else {
+            imageView.image = iconFolder
+        }
+
+        if let provider = folder.providerType, folder.roomType == nil {
+            switch provider {
+            case .boxNet:
+                imageView.image = iconFolderBoxnet
+            case .dropBox:
+                imageView.image = iconFolderDropbox
+            case .google,
+                 .googleDrive:
+                imageView.image = iconFolderGoogledrive
+            case .sharePoint,
+                 .skyDrive,
+                 .oneDrive:
+                imageView.image = iconFolderOnedrive
+            case .webDav:
+                imageView.image = iconFolderWebdav
+            case .yandex:
+                imageView.image = iconFolderYandexdisk
+            case .kDrive:
+                imageView.image = iconFolderKdrive
+            default:
+                break
+            }
+        }
+
+        if let fillFormFolderType = folder.type {
+            switch fillFormFolderType {
+            case .readyFormFolder:
+                imageView.image = iconFillFormRoomFolderDone
+            case .inProcessFormFolder:
+                imageView.image = iconFillFormRoomFolderInProgress
+            default:
+                break
+            }
+        }
+
+        // Set badge icon image if neede
+
+        if folder.isPublicRoom || folder.roomType == .fillingForm {
+            badgeImageView.image = iconWorld
+        }
+
+        if folder.isPrivate {
+            badgeImageView.image = iconSecurity
+        }
+
+        // Layout
+
+        imageView.removeConstraints(imageView.constraints)
+
+        imageView.anchor(
+            widthConstant: preferredSize.width,
+            heightConstant: preferredSize.height
+        )
+
+        let parentView = UIView()
+
+        parentView.addSubview(imageView)
+        imageView.fillToSuperview()
+
+        if badgeImageView.image != nil {
+            parentView.addSubview(badgeImageView)
+            badgeImageView.anchor(
+                bottom: parentView.bottomAnchor,
+                trailing: parentView.trailingAnchor,
+                padding: badgeInsets
+            )
+        }
+
+        parentView.addSubview(activityIndicator)
+        activityIndicator.anchorCenterSuperview()
+
+        return parentView
+    }
+
+    func buildRoomTemplateIconView(preferredSize: CGSize) -> UIView {
+        guard
+            let folder = entity as? ASCFolder,
+            let provider
+        else { return UIView() }
+
+        let badgeImageView: UIImageView = {
+            $0.contentMode = .center
+            return $0
+        }(UIImageView())
+
+        let roomPlaceholderImage = UIImage(
+            color: .clear,
+            size: preferredSize
+        )
+
+        imageView.layerCornerRadius = 0
+
+        // Set icon image
+
+        var roomColor = Asset.Colors.roomDefault.color
+
+        if let hexColor = folder.logo?.color {
+            roomColor = UIColor(hex: "#\(hexColor)")
+        }
+
+        let literalLabel = {
+            $0.font = UIFont.systemFont(ofSize: layoutType == .grid ? 36 : 17, weight: .semibold)
+            $0.textColor = roomColor
+            $0.textAlignment = .center
+            $0.text = folder.formatFolderName(folderName: folder.title)
+            return $0
+        }(UILabel(frame: CGRect(origin: .zero, size: preferredSize)))
+
+        let roomIconRadius = folder.roomIconRadius(layoutType: layoutType)
+        let roomIconSize = folder.roomIconSize(layoutType: layoutType)
+
+        let processor = RoundCornerImageProcessor(
+            cornerRadius: roomIconRadius,
+            targetSize: CGSize(
+                width: roomIconSize.width - iconRoomTemplateOffset * 2,
+                height: roomIconSize.height - iconRoomTemplateOffset * 2
+            )
+        )
+        imageView.kf.setProviderImage(
+            with: provider.absoluteUrl(from: folder.logo?.large ?? ""),
+            for: provider,
+            placeholder: roomPlaceholderImage,
+            options: [
+                .processor(processor),
+            ],
+            completionHandler: { [weak self] result in
+                switch result {
+                case .success:
+                    break
+                case .failure:
+                    self?.imageView.image = literalLabel.screenshot
+                }
+            }
+        )
+
+        imageView.layerCornerRadius = folder.roomIconRadius(layoutType: layoutType) * 0.66
+
+        // Layout
+
+        let frameView = {
+            $0.contentMode = .center
+            $0.tintColor = roomColor
+            return $0
+        }(UIImageView(image: frameRoomTemplateImage.withRenderingMode(.alwaysTemplate)))
+
+        imageView.removeConstraints(imageView.constraints)
+
+        frameView.anchor(
+            widthConstant: roomIconSize.width,
+            heightConstant: roomIconSize.height
+        )
+
+        imageView.anchor(
+            widthConstant: roomIconSize.width - iconRoomTemplateOffset * 2,
+            heightConstant: roomIconSize.height - iconRoomTemplateOffset * 2
+        )
+
+        let parentView = UIView()
+
+        parentView.addSubview(imageView)
+        imageView.anchorCenterSuperview()
+
+        parentView.insertSubview(frameView, at: 0)
+        frameView.fillToSuperview()
+
+        if badgeImageView.image != nil {
+            parentView.addSubview(badgeImageView)
+            badgeImageView.anchor(
+                bottom: parentView.bottomAnchor,
+                trailing: parentView.trailingAnchor,
+                padding: badgeInsets
+            )
+        }
+
+        parentView.addSubview(activityIndicator)
+        activityIndicator.anchorCenterSuperview()
+
+        return parentView
+    }
+
+    // MARK: - Handlers
+
+    private func roomImageDefault() -> UIImage? {
+        guard let folder = entity as? ASCFolder else { return UIImage() }
+        return folder.defaultRoomImage(layoutType: layoutType)
+    }
+
+    private func updateData() {
+        buildView()
+    }
+
+    private func updateSelected() {
+        checkmarkView.image = isSelected ? Asset.Images.select.image : Asset.Images.unselect.image
+        contentView.backgroundColor = isSelected ? .systemGray5 : .clear
+        contentView.layerCornerRadius = cornerRadius
+    }
+
+    private func updateEditing() {
+        displayCheckmark(show: configurationState.isEditing)
+    }
+
+    private func displayCheckmark(show: Bool) {
+        checkmarkView.alpha = show ? 1 : 0
+        checkmarkView.isHidden = !show
+    }
+
+    private func displayRightInfo(show: Bool) {
+        dateRightLabel.alpha = show ? 1 : 0
+        dateRightLabel.isHidden = !show
+    }
+}
+
+// MARK: - List Layout
+
+extension ASCFolderViewCell {
     private func buildListView() -> UIView {
         guard let folder = entity as? ASCFolder else { return UIView() }
 
@@ -300,22 +600,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
 
     private func buildOwnerView() -> UIView? {
         guard let folder = entity as? ASCFolder else { return nil }
-        let roomTypeDescription: String?
-
-        switch folder.roomType {
-        case .custom:
-            roomTypeDescription = CreatingRoomType.custom.name
-        case .public:
-            roomTypeDescription = CreatingRoomType.publicRoom.name
-        case .colobaration:
-            roomTypeDescription = CreatingRoomType.collaboration.name
-        case .fillingForm:
-            roomTypeDescription = CreatingRoomType.formFilling.name
-        case .virtualData:
-            roomTypeDescription = CreatingRoomType.virtualData.name
-        default:
-            roomTypeDescription = nil
-        }
+        let roomTypeDescription = folder.roomType?.description
 
         authorLabel.text = [roomTypeDescription, folder.createdBy?.displayName]
             .compactMap { $0 }
@@ -336,10 +621,12 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             return $0
         }(UILabel())
     }
+}
 
-    // MARK: - Grid Layout
+// MARK: - Grid Layout
 
-    private func buildGridView() -> UIView {
+private extension ASCFolderViewCell {
+    func buildGridView() -> UIView {
         guard let folder = entity as? ASCFolder else { return UIView() }
 
         let iconView = buildIconView(preferredSize: iconSize)
@@ -353,12 +640,15 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
             return $0
         }(UILabel())
 
-        let dateLabel = {
+        let subtitle: String? = folder.isRoom
+            ? folder.roomType?.description
+            : dateFormatter.string(from: folder.updated ?? Date())
+        let subtitleLabel = {
             $0.font = UIFont.preferredFont(forTextStyle: .caption2)
             $0.textAlignment = .center
             $0.numberOfLines = 1
             $0.textColor = .secondaryLabel
-            $0.text = dateFormatter.string(from: folder.updated ?? Date())
+            $0.text = subtitle
             return $0
         }(UILabel())
 
@@ -394,7 +684,7 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
                 return $0
             }(UIView()),
             titleLabel,
-            dateLabel,
+            subtitleLabel,
             UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: 100))),
         ]))
 
@@ -421,180 +711,6 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         displayCheckmark(show: configurationState.isEditing)
 
         return containerView
-    }
-
-    // MARK: - Common Layout
-
-    private func buildIconView(preferredSize: CGSize) -> UIView {
-        guard
-            let folder = entity as? ASCFolder,
-            let provider
-        else { return UIView() }
-
-        let badgeImageView: UIImageView = {
-            $0.contentMode = .center
-            return $0
-        }(UIImageView())
-
-        let roomPlaceholderImage = UIImage(
-            color: .clear,
-            size: preferredSize
-        )
-
-        imageView.layerCornerRadius = 0
-
-        // Set icon image
-        if let _ = folder.roomType {
-            if folder.rootFolderType == .onlyofficeRoomArchived {
-                imageView.image = roomImageDefault()
-            } else {
-                let processor = RoundCornerImageProcessor(
-                    cornerRadius: folder.roomIconRadius(layoutType: layoutType),
-                    targetSize: folder.roomIconSize(layoutType: layoutType)
-                )
-                imageView.kf.setProviderImage(
-                    with: provider.absoluteUrl(from: folder.logo?.large ?? ""),
-                    for: provider,
-                    placeholder: roomPlaceholderImage,
-                    options: [
-                        .processor(processor),
-                    ],
-                    completionHandler: { [weak self] result in
-                        switch result {
-                        case .success:
-                            break
-                        case .failure:
-                            self?.imageView.image = self?.roomImageDefault()
-                        }
-                    }
-                )
-            }
-            imageView.layerCornerRadius = folder.roomIconRadius(layoutType: layoutType)
-        } else {
-            imageView.image = iconFolder
-        }
-
-        if let provider = folder.providerType, folder.roomType == nil {
-            switch provider {
-            case .boxNet:
-                imageView.image = iconFolderBoxnet
-            case .dropBox:
-                imageView.image = iconFolderDropbox
-            case .google,
-                 .googleDrive:
-                imageView.image = iconFolderGoogledrive
-            case .sharePoint,
-                 .skyDrive,
-                 .oneDrive:
-                imageView.image = iconFolderOnedrive
-            case .webDav:
-                imageView.image = iconFolderWebdav
-            case .yandex:
-                imageView.image = iconFolderYandexdisk
-            case .kDrive:
-                imageView.image = iconFolderKdrive
-            default:
-                break
-            }
-        }
-
-        if let fillFormFolderType = folder.type {
-            switch fillFormFolderType {
-            case .fillFormDone:
-                imageView.image = iconFillFormRoomFolderDone
-            case .fillFormInProgress:
-                imageView.image = iconFillFormRoomFolderInProgress
-            default:
-                break
-            }
-        }
-
-        // Set badge icon image if neede
-
-        if folder.isPublicRoom || folder.roomType == .fillingForm {
-            badgeImageView.image = iconWorld
-        }
-
-        if folder.isPrivate {
-            badgeImageView.image = iconSecurity
-        }
-
-        // Layout
-
-        imageView.removeConstraints(imageView.constraints)
-
-        imageView.anchor(
-            widthConstant: preferredSize.width,
-            heightConstant: preferredSize.height
-        )
-
-        let parentView = UIView()
-
-        parentView.addSubview(imageView)
-        imageView.fillToSuperview()
-
-        if badgeImageView.image != nil {
-            parentView.addSubview(badgeImageView)
-            badgeImageView.anchor(
-                bottom: parentView.bottomAnchor,
-                trailing: parentView.trailingAnchor,
-                padding: badgeInsets()
-            )
-        }
-
-        parentView.addSubview(activityIndicator)
-        activityIndicator.anchorCenterSuperview()
-
-        return parentView
-    }
-
-    // MARK: - Handlers
-
-    private func roomImageDefault() -> UIImage? {
-        guard let folder = entity as? ASCFolder else { return UIImage() }
-        return folder.defaultRoomImage(layoutType: layoutType)
-    }
-
-    private func updateData() {
-        buildView()
-    }
-
-    private func updateSelected() {
-        checkmarkView.image = isSelected ? Asset.Images.select.image : Asset.Images.unselect.image
-        contentView.backgroundColor = isSelected ? .systemGray5 : .clear
-        contentView.layerCornerRadius = cornerRadius
-    }
-
-    private func updateEditing() {
-        displayCheckmark(show: configurationState.isEditing)
-    }
-
-    private func displayCheckmark(show: Bool) {
-        checkmarkView.alpha = show ? 1 : 0
-        checkmarkView.isHidden = !show
-    }
-
-    private func displayRightInfo(show: Bool) {
-        dateRightLabel.alpha = show ? 1 : 0
-        dateRightLabel.isHidden = !show
-    }
-
-    private func badgeInsets() -> UIEdgeInsets {
-        guard let folder = entity as? ASCFolder else { return .zero }
-
-        if folder.isPublicRoom {
-            return layoutType == .grid
-                ? UIEdgeInsets(top: 0, left: 0, bottom: -7, right: -7)
-                : UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0)
-        }
-
-        if folder.isPrivate {
-            return layoutType == .grid
-                ? UIEdgeInsets(top: 0, left: 0, bottom: -7, right: -7)
-                : UIEdgeInsets(top: 0, left: 0, bottom: 3, right: -3)
-        }
-
-        return .zero
     }
 }
 
@@ -654,6 +770,14 @@ extension ASCFolderViewCell {
     private var iconFillFormRoomFolderDone: UIImage {
         layoutType == .list ? Asset.Images.listRoomComplete.image : Asset.Images.gridRoomComplete.image
     }
+
+    private var iconRoomTemplateOffset: CGFloat {
+        layoutType == .list ? Constants.listIconRoomTemplateOffset : Constants.gridIconRoomTemplateOffset
+    }
+
+    private var frameRoomTemplateImage: UIImage {
+        layoutType == .list ? ASCFolderViewCell.listRoomTemplateFrameImage : ASCFolderViewCell.gridRoomTemplateFrameImage
+    }
 }
 
 private enum Constants {
@@ -665,4 +789,123 @@ private enum Constants {
     static let listIconSize = CGSize(width: 45, height: 50)
     static let gridIconSize = CGSize(width: 80, height: 80)
     static let listIconRadius: CGFloat = 8
+    static let listIconRoomTemplateOffset: CGFloat = 6
+    static let gridIconRoomTemplateOffset: CGFloat = 10
+}
+
+extension UIImage {
+    /// Creates a frame texture with rounded corners and semi-spherical ends
+    /// - Parameters:
+    ///   - size: The size of the resulting texture
+    ///   - cornerRadius: The radius of the corners
+    ///   - lineWidth: The thickness of the frame lines
+    ///   - gapBetweenCorners: The distance between corners (length of the gap)
+    ///   - color: The color of the frame
+    /// - Returns: UIImage containing the frame texture
+    static func createFrameTexture(size: CGSize,
+                                   cornerRadius: CGFloat,
+                                   lineWidth: CGFloat,
+                                   gapBetweenCorners: CGFloat,
+                                   color: UIColor = .black) -> UIImage
+    {
+        // Create a context to draw into
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return UIImage()
+        }
+
+        // Set up drawing parameters
+        context.setLineWidth(lineWidth * 2)
+        context.setStrokeColor(color.cgColor)
+        context.setLineCap(.round)
+
+        // Calculate inner rectangle that accounts for the line width
+        let insetRect = CGRect(x: 0,
+                               y: 0,
+                               width: size.width,
+                               height: size.height)
+
+        // Path of mask
+        let clipPath = UIBezierPath(roundedRect: insetRect, cornerRadius: cornerRadius).cgPath
+        context.addPath(clipPath)
+        context.closePath()
+        context.clip()
+
+        // Calculate the length of each side minus corners and gaps
+        let horizontalSideLength = max(0, (insetRect.width - 2 * cornerRadius - gapBetweenCorners) / 2)
+        let verticalSideLength = max(0, (insetRect.height - 2 * cornerRadius - gapBetweenCorners) / 2)
+
+        // Top-left corner
+        context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.minY))
+        context.addArc(tangent1End: CGPoint(x: insetRect.minX, y: insetRect.minY),
+                       tangent2End: CGPoint(x: insetRect.minX, y: insetRect.minY + cornerRadius),
+                       radius: cornerRadius)
+
+        // Left vertical line after top-left corner
+        context.addLine(to: CGPoint(x: insetRect.minX, y: insetRect.minY + cornerRadius + verticalSideLength))
+        context.strokePath()
+
+        // Top horizontal line after top-left corner
+        context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.minY))
+        context.addLine(to: CGPoint(x: insetRect.minX + cornerRadius + horizontalSideLength, y: insetRect.minY))
+        context.strokePath()
+
+        // Top-right corner
+        context.move(to: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.minY))
+        context.addArc(tangent1End: CGPoint(x: insetRect.maxX, y: insetRect.minY),
+                       tangent2End: CGPoint(x: insetRect.maxX, y: insetRect.minY + cornerRadius),
+                       radius: cornerRadius)
+
+        // Right vertical line after top-right corner
+        context.addLine(to: CGPoint(x: insetRect.maxX, y: insetRect.minY + cornerRadius + verticalSideLength))
+        context.strokePath()
+
+        // Top horizontal line before top-right corner
+        context.move(to: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.minY))
+        context.addLine(to: CGPoint(x: insetRect.maxX - cornerRadius - horizontalSideLength, y: insetRect.minY))
+        context.strokePath()
+
+        // Bottom-left corner
+        context.move(to: CGPoint(x: insetRect.minX, y: insetRect.maxY - cornerRadius))
+        context.addArc(tangent1End: CGPoint(x: insetRect.minX, y: insetRect.maxY),
+                       tangent2End: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.maxY),
+                       radius: cornerRadius)
+
+        // Left vertical line before bottom-left corner
+        context.move(to: CGPoint(x: insetRect.minX, y: insetRect.maxY - cornerRadius))
+        context.addLine(to: CGPoint(x: insetRect.minX, y: insetRect.maxY - cornerRadius - verticalSideLength))
+        context.strokePath()
+
+        // Bottom horizontal line after bottom-left corner
+        context.move(to: CGPoint(x: insetRect.minX + cornerRadius, y: insetRect.maxY))
+        context.addLine(to: CGPoint(x: insetRect.minX + cornerRadius + horizontalSideLength, y: insetRect.maxY))
+        context.strokePath()
+
+        // Bottom-right corner
+        context.move(to: CGPoint(x: insetRect.maxX, y: insetRect.maxY - cornerRadius))
+        context.addArc(tangent1End: CGPoint(x: insetRect.maxX, y: insetRect.maxY),
+                       tangent2End: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.maxY),
+                       radius: cornerRadius)
+
+        // Right vertical line before bottom-right corner
+        context.move(to: CGPoint(x: insetRect.maxX, y: insetRect.maxY - cornerRadius))
+        context.addLine(to: CGPoint(x: insetRect.maxX, y: insetRect.maxY - cornerRadius - verticalSideLength))
+        context.strokePath()
+
+        // Bottom horizontal line before bottom-right corner
+        context.move(to: CGPoint(x: insetRect.maxX - cornerRadius, y: insetRect.maxY))
+        context.addLine(to: CGPoint(x: insetRect.maxX - cornerRadius - horizontalSideLength, y: insetRect.maxY))
+        context.strokePath()
+
+        // Get the image from the context
+        let resultImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+
+        return resultImage
+    }
+}
+
+@available(iOS 17, *)
+#Preview {
+    ASCFolderViewCell().buildRoomTemplateIconView(preferredSize: Constants.gridIconSize)
 }

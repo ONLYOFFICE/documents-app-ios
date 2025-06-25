@@ -70,7 +70,7 @@ class ASCCloudsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
@@ -89,7 +89,7 @@ class ASCCloudsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.sizeToFit()
 
@@ -101,7 +101,7 @@ class ASCCloudsViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.sizeToFit()
     }

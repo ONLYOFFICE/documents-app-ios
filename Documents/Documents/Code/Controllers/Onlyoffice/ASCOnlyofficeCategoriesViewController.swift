@@ -10,6 +10,8 @@ import Kingfisher
 import UIKit
 
 class ASCOnlyofficeCategoriesViewController: UITableViewController {
+    let documentServerRestrictedCategories = Set([ASCFolderType.privacy])
+
     // MARK: - Properties
 
     @IBOutlet var avatarView: UIImageView!
@@ -137,7 +139,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         }
         updateLargeTitlesSize()
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.sizeToFit()
 
@@ -149,7 +151,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.sizeToFit()
 
@@ -183,13 +185,13 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     func entrypointCategory() -> ASCOnlyofficeCategory {
-        var folderType: ASCFolderType = .onlyofficeUser
+        var folderType: ASCFolderType = .user
 
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             if user.isVisitor {
                 folderType = onlyoffice.apiClient.serverVersion?.docSpace != nil
-                    ? .onlyofficeRoomShared
-                    : .onlyofficeShare
+                    ? .virtualRooms
+                    : .share
             }
         }
 
@@ -298,10 +300,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
     func loadCategories(completion: @escaping () -> Void) {
         categoriesProviderFactory.get().loadCategories { [self] result in
+            defer { completion() }
             switch result {
             case let .success(categories):
                 self.loadedCategories = categories
-                completion()
+                    .filter {
+                        guard !isDocspace, let type = $0.folder?.rootFolderType else { return true }
+                        return !documentServerRestrictedCategories.contains(type)
+                    }
             case let .failure(error):
                 guard let error = error as? NetworkingError else { return }
 
@@ -570,5 +576,11 @@ extension ASCOnlyofficeCategoriesViewController {
             }
             return groups[indexPath.section].categories[indexPath.row]
         }
+    }
+}
+
+private extension ASCOnlyofficeCategoriesViewController {
+    var isDocspace: Bool {
+        ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil
     }
 }

@@ -17,6 +17,10 @@ class ASCBaseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if !ASCAppSettings.Feature.allowLargeTitle {
+            navigationController?.navigationBar.prefersLargeTitles = false
+        }
     }
 
     override func didReceiveMemoryWarning() {

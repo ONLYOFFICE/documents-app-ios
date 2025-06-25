@@ -342,8 +342,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "Připojování";
 
 /* No comment provided by engineer. */
@@ -490,8 +489,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "Vytvořit místnost";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "Vytváření";
 
 /* No comment provided by engineer. */
@@ -785,12 +783,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form owner" = "Vlastník formuláře";
-
-/* No comment provided by engineer. */
-"Form templates" = "Šablony formulářů";
-
-/* No comment provided by engineer. */
-"Forms" = "Formuláře";
 
 /* No comment provided by engineer. */
 "From device" = "Ze zařízení";
@@ -1287,9 +1279,6 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Portál není k dispozici.";
 
-/* Share status */
-"Pover user" = "Mocný uživatel";
-
 /* No comment provided by engineer. */
 "Presentation" = "Prezentace";
 
@@ -1599,9 +1588,6 @@ Navigation bar button title */
 "Storage" = "Úložiště";
 
 /* No comment provided by engineer. */
-"Support" = "Podpora";
-
-/* No comment provided by engineer. */
 "Switch" = "Přepnutí";
 
 /* No comment provided by engineer. */
@@ -1846,9 +1832,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "Odpojení";
-
-/* Caption of the processing */
-"Unpning" = "Odpojení";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "Nahrání připraveného formuláře PDF";

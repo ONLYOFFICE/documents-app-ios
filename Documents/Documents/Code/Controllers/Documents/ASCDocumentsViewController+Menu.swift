@@ -39,6 +39,32 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Fill pdf form
+
+        if actions.contains(.startFilling) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Start filling", comment: "Start filling form Button title"),
+                    image: UIImage(systemName: "square.and.pencil")
+                ) { [unowned self] action in
+                    self.startFilling(file: file)
+                }
+            )
+        }
+
+        /// Filling status form
+
+        if actions.contains(.fillingStatus) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Filling Status", comment: "Start filling form Button title"),
+                    image: UIImage(systemName: "note.text")
+                ) { [unowned self] action in
+                    self.fillingStatus(file: file)
+                }
+            )
+        }
+
         /// Preview action
 
         if actions.contains(.open) {
@@ -78,6 +104,18 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Show versions history
+
+        if actions.contains(.showVersionsHistory) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    image: UIImage(systemName: "clock.arrow.circlepath")
+                ) { [unowned self] action in
+                    self.showVersionsHistory(file: file)
+                })
+        }
+
         ///  Copy shared link action
 
         if actions.contains(.copySharedLink) {
@@ -87,6 +125,21 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
                     self.copySharedLink(file: file)
+                }
+            )
+        }
+
+        /// Custom filter
+
+        if actions.contains(.setCustomFilter) {
+            shareActions.append(
+                UIAction(
+                    title: file.customFilterEnabled
+                        ? NSLocalizedString("Disable Custom filter", comment: "")
+                        : NSLocalizedString("Enable Custom filter", comment: ""),
+                    image: Asset.Images.menuCustomFilter.image
+                ) { [unowned self] action in
+                    self.setCustomFilter(cell: cell, file: file)
                 }
             )
         }
@@ -400,6 +453,30 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Create room
+        if actions.contains(.createRoom) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Create room", comment: ""),
+                    image: Asset.Images.menuRectanglesAdd.image
+                ) { [unowned self] action in
+                    createRoomFrom(template: folder)
+                }
+            )
+        }
+
+        /// Edit template
+        if actions.contains(.editTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit template", comment: ""),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    editTemplate(template: folder)
+                }
+            )
+        }
+
         /// Copy general link
 
         if actions.contains(.link) {
@@ -495,6 +572,19 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Save as template
+
+        if actions.contains(.saveAsTemplate) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Save as template", comment: ""),
+                    image: UIImage(systemName: "note.text.badge.plus")
+                ) { [unowned self] action in
+                    saveAsTemplate(room: folder)
+                }
+            )
+        }
+
         // Transfer actions
 
         var transferActions: [UIMenuElement] = []
@@ -573,6 +663,21 @@ extension ASCDocumentsViewController {
                     self.showRestoreRoomAlert { [weak self] in
                         guard let self else { return }
                         self.unarchive(cell: cell, folder: folder)
+                    }
+                }
+            )
+        }
+
+        if actions.contains(.deleteRoomTemplate) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Delete template", comment: "Button title"),
+                    image: UIImage(systemName: "trash"),
+                    attributes: [.destructive]
+                ) { [unowned self] action in
+                    self.deleteRoomTempateAlert(template: folder) { [weak self] in
+                        guard let self else { return }
+                        self.deleteRoomTemplate(template: folder)
                     }
                 }
             )
@@ -932,6 +1037,17 @@ extension ASCDocumentsViewController {
                     }
                 )
             )
+        }
+
+        if actions.contains(.showVersionsHistory) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Show version history", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        self.showVersionsHistory(file: file)
+                    }
+                ))
         }
 
         if actions.contains(.rename) {

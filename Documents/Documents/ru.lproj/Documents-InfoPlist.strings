@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "Документы";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "Новый документ";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "Новая презентация";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "Новая таблица";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "Заполняемая форма ONLYOFFICE (.oform)";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "Шаблон формы ONLYOFFICE (.docxf)";
 

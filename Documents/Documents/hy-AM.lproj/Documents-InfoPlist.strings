@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "Փաստաթղթեր";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "Նոր փաստաթուղթ";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "Նոր պրեզենտացիա";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "Նոր աղյուսակ";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Այս հավելվածին անհրաժեշտ է մուտք գործել ֆոտոդարան, որպեսզի կարողանաք վերբեռնել ձեր լուսանկարները հավելվածում:";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE լրացվող ձև (.oform)";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "ONLYOFFICE ձևանմուշ (.docxf)";
 

@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "ලේඛන";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "නව ලේඛනයක්";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "නව සමර්පණයක්";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "නව පැතුරුම්පතක්";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "මෙම යෙදුමට ඡායාරූප පුස්තකාලය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට යෙදුම හරහා ඡායාරූප උඩුගත කිරීමට හැකිය.";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "ඔන්ලිඔෆිස් පිරවිය හැකි ආකෘතිපත්‍රය (*.oform)";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "ඔන්ලිඔෆිස් ආකෘතිපත්‍ර අච්චුව (*.docxf)";
 

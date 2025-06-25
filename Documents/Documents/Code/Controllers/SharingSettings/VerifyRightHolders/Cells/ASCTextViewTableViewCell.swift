@@ -9,7 +9,7 @@
 import UIKit
 
 class ASCTextViewTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, ASCViewModelSetter {
-    static var reuseId: String = "TextFiieldTableViewCell"
+    static var reuseId: String = "TextFieldTableViewCell"
 
     var viewModel: ASCTextFieldCellViewModel? {
         didSet {

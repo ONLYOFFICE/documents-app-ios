@@ -100,6 +100,8 @@ class ASCEditorManager: NSObject {
 
     private var documentServiceVersion: String?
 
+    var ocrPath: String?
+
     var allowForm: Bool {
         ASCDIContainer.shared.resolve(ASCEditorManagerOptionsProtocol.self)?.allowForm ?? false
     }
@@ -198,7 +200,7 @@ class ASCEditorManager: NSObject {
         await withCheckedContinuation { continuation in
             var params: [String: Any] = [:]
 
-            let key: String? = {
+            let openModeKey: String? = {
                 switch openMode {
                 case .edit: return "edit"
                 case .view: return "view"
@@ -207,8 +209,12 @@ class ASCEditorManager: NSObject {
                 }
             }()
 
-            if let key {
-                params[key] = "true"
+            if let openModeKey {
+                params[openModeKey] = "true"
+            }
+
+            if file.version > 0, file.openVersionMode {
+                params["version"] = file.version
             }
 
             clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
@@ -240,7 +246,7 @@ class ASCEditorManager: NSObject {
     private func fetchDocumentInfoLegacy(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit, complation: @escaping (Result<OnlyofficeDocumentConfig, Error>) -> Void) {
         var params: [String: Any] = [:]
 
-        let key: String? = {
+        let openModeKey: String? = {
             switch openMode {
             case .edit: return "edit"
             case .view: return "view"
@@ -249,8 +255,12 @@ class ASCEditorManager: NSObject {
             }
         }()
 
-        if let key {
-            params[key] = "true"
+        if let openModeKey {
+            params[openModeKey] = "true"
+        }
+
+        if file.version > 0, file.openVersionMode {
+            params["version"] = file.version
         }
 
         clientRequest(OnlyofficeAPI.Endpoints.Files.openEdit(file: file), params) { response, error in
@@ -442,7 +452,11 @@ class ASCEditorManager: NSObject {
 
                     if let newFile = result as? ASCFile {
                         self.provider = provider
-                        self.openEditorLocal(file: newFile, openMode: openMode, canEdit: canEdit, locallyEditing: true)
+                        do {
+                            try self.openEditorLocal(file: newFile, openMode: openMode, canEdit: canEdit, locallyEditing: true)
+                        } catch {
+                            self.openHandler?(.error, 1, error, &cancel)
+                        }
                     } else {
                         self.stopLocallyEditing()
                         self.openHandler?(.error, 1, nil, &cancel)
@@ -540,12 +554,16 @@ class ASCEditorManager: NSObject {
         self.closeHandler = closeHandler
         self.renameHandler = renameHandler
 
-        openEditorLocal(
-            file: file,
-            openMode: openMode,
-            canEdit: canEdit,
-            autosave: true
-        )
+        do {
+            try openEditorLocal(
+                file: file,
+                openMode: openMode,
+                canEdit: canEdit,
+                autosave: true
+            )
+        } catch {
+            openHandler?(.error, 1, error, &cancel)
+        }
     }
 
     func editCloud(
@@ -587,12 +605,16 @@ class ASCEditorManager: NSObject {
                     self.renameHandler = renameHandler
                     self.fillFormDidSendHandler = fillFormDidSendHandler
 
-                    self.openEditorInCollaboration(
-                        file: file,
-                        config: config,
-                        openMode: openMode,
-                        handler: openHandler
-                    )
+                    do {
+                        try self.openEditorInCollaboration(
+                            file: file,
+                            config: config,
+                            openMode: openMode,
+                            handler: openHandler
+                        )
+                    } catch {
+                        openHandler?(.error, 1, error, &cancel)
+                    }
                 }
             }
         }
@@ -691,7 +713,7 @@ class ASCEditorManager: NSObject {
 
                     DispatchQueue.main.sync {
                         openHandler?(.end, 1, nil, &cancel)
-                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: pdf.security.edit)
+                        provider.open(file: pdf, openMode: openMode ?? .view, canEdit: pdf.security.edit && !pdf.security.startFilling)
                     }
                 } else {
                     provider.download(viewUrl, to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
@@ -893,6 +915,8 @@ class ASCEditorManager: NSObject {
     // MARK: - Utils
 
     func compareCloudSdk(with localSdkString: String?) -> Bool {
+        if ASCAppSettings.Feature.disableSdkVersionCheck { return true }
+
         guard
             let localSdkString,
             let documentServerVersionString = documentServiceVersion
@@ -981,7 +1005,7 @@ extension ASCEditorManager {
         canEdit: Bool = true,
         autosave: Bool = false,
         locallyEditing: Bool = false
-    ) {
+    ) throws {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let isDocument = ([ASCConstants.FileExtensions.docx] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
@@ -997,7 +1021,8 @@ extension ASCEditorManager {
             OnlyofficeDocument(
                 permissions: OnlyofficeDocumentPermissions(
                     edit: canEdit && UIDevice.allowEditor,
-                    fillForms: openMode == .fillform
+                    fillForms: openMode == .fillform,
+                    rename: file.security.rename
                 ),
                 fileType: fileExt
             )
@@ -1014,7 +1039,7 @@ extension ASCEditorManager {
         }
 
         guard let editorViewController, let editorWindow = createEditorWindow() else {
-            return
+            throw ASCEditorManagerError(msg: NSLocalizedString("Falure to open editor", comment: ""))
         }
 
         editorViewController.isModalInPresentation = true
@@ -1059,7 +1084,7 @@ extension ASCEditorManager {
         config: OnlyofficeDocumentConfig,
         openMode: ASCDocumentOpenMode = .edit,
         handler: ASCEditorManagerOpenHandler? = nil
-    ) {
+    ) throws {
         var cancel = false
 
         let title = file.title
@@ -1094,7 +1119,7 @@ extension ASCEditorManager {
         }
 
         guard let editorViewController, let editorWindow = createEditorWindow() else {
-            return
+            throw ASCEditorManagerError(msg: NSLocalizedString("Falure to open editor", comment: ""))
         }
 
         editorViewController.isModalInPresentation = true
@@ -1170,6 +1195,7 @@ extension ASCEditorManager {
 
             var deadTime = 0.0
             var timer: Timer!
+            var cancel = false
 
             timer = Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: { [weak self] in
                 if forceCancel {
@@ -1186,12 +1212,16 @@ extension ASCEditorManager {
                         progressAlert.hide(completion: {
                             self?.openedFileMode = .edit
 
-                            self?.openEditorLocal(
-                                file: file,
-                                openMode: .edit,
-                                canEdit: true,
-                                autosave: true
-                            )
+                            do {
+                                try self?.openEditorLocal(
+                                    file: file,
+                                    openMode: .edit,
+                                    canEdit: true,
+                                    autosave: true
+                                )
+                            } catch {
+                                self?.openHandler?(.error, 1, error, &cancel)
+                            }
                         })
                     }
                 }
@@ -1534,6 +1564,58 @@ extension ASCEditorManager {
                     msg: NSLocalizedString("Failed to submit the form", comment: "")
                 )
             ))
+        }
+    }
+}
+
+// MARK: - OCR
+
+extension ASCEditorManager {
+    func storyForOCR(images: [UIImage]) {
+        let fileManager = FileManager.default
+
+        // Cleanup
+        if let ocrPath, !ocrPath.isEmpty {
+            let ocrDirectoryURL = URL(fileURLWithPath: ocrPath)
+
+            do {
+                var isDirectory: ObjCBool = false
+                if fileManager.fileExists(atPath: ocrDirectoryURL.path, isDirectory: &isDirectory), isDirectory.boolValue {
+                    try fileManager.removeItem(at: ocrDirectoryURL)
+                }
+            } catch {
+                print(error.localizedDescription)
+                return
+            }
+        }
+
+        // Create work directory
+        let destinationPath = Path.userTemporary + Path("ocr_\(UUID().uuidString.replacingOccurrences(of: "-", with: ""))")
+
+        do {
+            if !destinationPath.exists {
+                try destinationPath.createDirectory(withIntermediateDirectories: true)
+            }
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+
+        ocrPath = destinationPath.rawValue
+
+        // Write image to storage
+        for (index, image) in images.enumerated() {
+            guard let imageData = image.jpegData(compressionQuality: 0.85) else {
+                continue
+            }
+
+            let imagePath = destinationPath + Path("ocr_\(index).jpg")
+
+            do {
+                try imageData.write(to: imagePath)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }

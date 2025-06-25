@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "ドキュメント";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "新規ドキュメント";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "新規プレゼンテーション";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "新規スプレッドシート";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "このアプリ内で写真をアップロードできるようになるには、フォトライブラリーへのアクセスが必要です。";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE記入可能なオンラインフォーム (.oform)";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "ONLYOFFICEフォームテンプレート (.docxf)";
 

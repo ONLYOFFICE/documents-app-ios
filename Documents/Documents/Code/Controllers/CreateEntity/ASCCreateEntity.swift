@@ -11,11 +11,13 @@ import CoreServices
 import MBProgressHUD
 import SwiftMessages
 import UIKit
+import VisionKit
 
 class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // MARK: - Properties
 
     private var provider: ASCFileProviderProtocol?
+    private var parent: ASCDocumentsViewController?
 
     override init() {
         super.init()
@@ -30,6 +32,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
     func showCreateController(for provider: ASCFileProviderProtocol, in viewController: ASCDocumentsViewController, sender: Any? = nil) {
         self.provider = provider
+        parent = viewController
 
         if let provider = provider as? ASCOnlyofficeProvider,
            provider.apiClient.serverVersion?.docSpace != nil,
@@ -58,12 +61,15 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             )
         }()
 
+        let allowScanDocument = VNDocumentCameraViewController.isSupported
+
         var createEntityVC: ASCCreateEntityUIViewController!
 
         if ASCViewControllerManager.shared.phoneLayout {
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
                 allowForms: allowForms,
+                allowScanDocument: allowScanDocument,
                 onAction: { type in
                     SwiftMessages.hide()
                     self.createEntity(type, in: viewController)
@@ -100,6 +106,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
                 allowForms: allowForms,
+                allowScanDocument: VNDocumentCameraViewController.isSupported,
                 onAction: { type in
                     createEntityVC.dismiss(animated: true) {
                         self.createEntity(type, in: viewController)
@@ -112,7 +119,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                 if allowForms {
                     createEntityVC.preferredContentSize = CGSize(width: 375, height: 200)
                 } else {
-                    createEntityVC.preferredContentSize = CGSize(width: 375, height: 420 - (allowClouds ? 0 : 50))
+                    createEntityVC.preferredContentSize = CGSize(width: 375, height: 420 - (allowClouds ? 0 : 50) + (allowScanDocument ? 50 : 0))
                 }
                 createEntityVC.popoverPresentationController?.backgroundColor = .systemGroupedBackground
                 createEntityVC.popoverPresentationController?.sourceView = senderView
@@ -140,18 +147,25 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         switch type {
         case .document:
             createFile(ASCConstants.FileExtensions.docx, viewController: viewController)
+
         case .spreadsheet:
             createFile(ASCConstants.FileExtensions.xlsx, viewController: viewController)
+
         case .presentation:
             createFile(ASCConstants.FileExtensions.pptx, viewController: viewController)
+
         case .folder:
             createFolder(viewController: viewController)
+
         case .importFile:
             loadFile(viewController: viewController)
+
         case .importImage:
             loadImage(viewController: viewController)
+
         case .makePicture:
             takePhoto(viewController: viewController)
+
         case .connectCloud:
             let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
             let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
@@ -160,10 +174,15 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
             viewController.present(connectStorageNavigationVC, animated: true, completion: nil)
+
         case .pdfDocspace:
             uploadPDFFromDocspace(viewController: viewController)
+
         case .pdfDevice:
             uploadPDFFromDevice(viewController: viewController)
+
+        case .scanDocument:
+            scanDocument(viewController: viewController)
         }
     }
 
@@ -353,6 +372,20 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         viewController.present(documentPicker, animated: true)
     }
 
+    func scanDocument(viewController: ASCDocumentsViewController) {
+        if VNDocumentCameraViewController.isSupported {
+            let scanner = VNDocumentCameraViewController()
+            ASCDocumentScannerDelegate.shared.setup(provider: provider, viewController: viewController)
+            scanner.delegate = ASCDocumentScannerDelegate.shared
+            viewController.present(scanner, animated: true)
+        } else {
+            UIAlertController.showError(
+                in: viewController,
+                message: NSLocalizedString("Scanning is not supported on this device", comment: "")
+            )
+        }
+    }
+
     // MARK: - Private
 
     private func showError(message: String) {
@@ -522,6 +555,72 @@ class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, U
     private func showError(message: String) {
         if let topVC = ASCViewControllerManager.shared.topViewController {
             UIAlertController.showError(in: topVC, message: message)
+        }
+    }
+}
+
+// MARK: - VNDocumentCameraDelegate
+
+class ASCDocumentScannerDelegate: NSObject, VNDocumentCameraViewControllerDelegate {
+    private var provider: ASCFileProviderProtocol?
+    private var viewController: ASCDocumentsViewController?
+
+    static let shared = ASCDocumentScannerDelegate()
+
+    func setup(provider: ASCFileProviderProtocol?, viewController: ASCDocumentsViewController?) {
+        self.provider = provider
+        self.viewController = viewController
+    }
+
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        controller.dismiss(animated: true) { [weak self] in
+            Task { [weak self] in
+                guard let self, let viewController = self.viewController else { return }
+
+                var images: [UIImage] = []
+                for index in 0 ..< scan.pageCount {
+                    images.append(scan.imageOfPage(at: index))
+                }
+
+                ASCEditorManager.shared.storyForOCR(images: images)
+
+                if let provider = self.provider {
+                    var hud: MBProgressHUD?
+
+                    await ASCEntityManager.shared.createFile(for: provider, ASCConstants.FileExtensions.docx, in: viewController.folder, handler: { status, entity, error in
+                        if status == .begin {
+                            hud = MBProgressHUD.showTopMost()
+                            hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
+                        } else if status == .error {
+                            hud?.hide(animated: true)
+
+                            if let error {
+                                if let topVC = ASCViewControllerManager.shared.topViewController {
+                                    UIAlertController.showError(in: topVC, message: error.localizedDescription)
+                                }
+                            }
+                        } else if status == .end {
+                            hud?.hide(animated: false)
+
+                            if let entity {
+                                viewController.add(entity: entity)
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        controller.dismiss(animated: true)
+    }
+
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        controller.dismiss(animated: true) {
+            if let topVC = ASCViewControllerManager.shared.topViewController {
+                UIAlertController.showError(in: topVC, message: error.localizedDescription)
+            }
         }
     }
 }

@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "المستندات";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "مستند جديد";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "عرض تقديمي جديد";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "جدول بيانات جديد";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "يتطلب هذا التطبيق الوصول إلى مكتبة الصور، حتى تتمكن من تحميل صورك في التطبيق.";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE نموذج قابل للتعبئة (.oform)";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "ONLYOFFICE قالب النموذج (.docxf)";
 

@@ -49,18 +49,26 @@ enum CreatingRoomType: CaseIterable {
         }
     }
 
-    var icon: UIImage {
+    func icon(isTemplate: Bool) -> UIImage {
+        if isTemplate {
+            return templateIcon
+        } else {
+            return ascRoomType.image
+        }
+    }
+
+    private var templateIcon: UIImage {
         switch self {
         case .collaboration:
-            return ascRoomType.image
+            return Asset.Images.listTemplateRoomCollaboration.image
         case .publicRoom:
-            return ascRoomType.image
+            return Asset.Images.listTemplateRoomPublic.image
         case .custom:
-            return ascRoomType.image
+            return Asset.Images.listTemplateRoomCustom.image
         case .formFilling:
-            return ascRoomType.image
+            return Asset.Images.listTemplateRoomFillingForms.image
         case .virtualData:
-            return ascRoomType.image
+            return Asset.Images.listTemplateRoomVDR.image
         }
     }
 

@@ -82,12 +82,12 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }()
 
     private var isRecentCategory: Bool {
-        folder?.rootFolderType == .onlyofficeRecent
+        folder?.rootFolderType == .recent
     }
 
     private var allowSearchFilter: Bool {
         guard let onlyofficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        let isRecentCategory = folder?.rootFolderType == .onlyofficeRecent
+        let isRecentCategory = folder?.rootFolderType == .recent
         let isServerVersionCorrect = onlyofficeProvider.apiClient.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "12.0.1") == true
         return !isRecentCategory && isServerVersionCorrect
     }

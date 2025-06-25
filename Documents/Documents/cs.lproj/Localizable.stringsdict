@@ -2,10 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d Groups</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@groups@</string>
+		<key>groups</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>few</key>
+			<string>%d Groups</string>
+			<key>many</key>
+			<string>%d Groups</string>
+			<key>one</key>
+			<string>One Group</string>
+			<key>other</key>
+			<string>%d Groups</string>
+		</dict>
+	</dict>
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@dnů@</string>
+		<string>%#@days@</string>
 		<key>days</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -25,7 +45,7 @@
 	<key>%d hours</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hodin@</string>
+		<string>%#@hours@</string>
 		<key>hours</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -105,7 +125,7 @@
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@souborů@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -162,7 +182,7 @@
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@složek@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -182,7 +202,7 @@
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@souborů@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -258,44 +278,24 @@
 			<string>Vymazat %2$#@lu_files@</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
+	<key>Me and %d Users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@dnů@</string>
-		<key>days</key>
+		<string>%#@users@</string>
+		<key>users</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>Platnost vyprší po %d dnech</string>
+			<string>Me and %d Users</string>
 			<key>many</key>
-			<string>Platnost vyprší po %d dnech</string>
+			<string>Me and %d Users</string>
 			<key>one</key>
-			<string>Platnost vyprší po %d dni</string>
+			<string>Me and One Users</string>
 			<key>other</key>
-			<string>Platnost vyprší po %d dnech</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hodin@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>few</key>
-			<string>Platnost vyprší po %d hodinách</string>
-			<key>many</key>
-			<string>Platnost vyprší po %d hodinách</string>
-			<key>one</key>
-			<string>Platnost vyprší p %d hodině</string>
-			<key>other</key>
-			<string>Platnost vyprší po %d hodinách</string>
+			<string>Me and %d Users</string>
 		</dict>
 	</dict>
 </dict>

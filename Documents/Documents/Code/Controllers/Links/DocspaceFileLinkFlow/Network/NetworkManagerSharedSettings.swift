@@ -6,6 +6,7 @@
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 
 struct LinkModel {}
@@ -13,6 +14,7 @@ struct LinkModel {}
 protocol NetworkManagerSharedSettingsProtocol {
     func fetchFileLinks(file: ASCFile, completion: @escaping (Result<[SharedSettingsLinkResponceModel], Error>) -> Void)
     func setLinkAccess(file: ASCFile, requestModel: EditSharedLinkRequestModel, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void)
+    func customFilter(file: ASCFile, requestModel: ASCCustomFilterRequestModel, completion: @escaping (Result<ASCFile, Error>) -> Void)
 }
 
 final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
@@ -61,8 +63,29 @@ final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
         }
     }
 
-    func createAndCopy(file: ASCFile, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void) {
-        networkService.request(OnlyofficeAPI.Endpoints.Files.createAndCopyLink(file: file)) { result, error in
+    func customFilter(file: ASCFile, requestModel: ASCCustomFilterRequestModel, completion: @escaping (Result<ASCFile, Error>) -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Files.customFilter(file: file), requestModel.dictionary) { result, error in
+            guard let file = result?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
+                }
+                return
+            }
+            completion(.success(file))
+        }
+    }
+
+    func createAndCopy(file: ASCFile, requestModel: CreateAndCopyLinkRequestModel?, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void) {
+        var method: HTTPMethod = .post
+        var request: Dictionary? = requestModel?.dictionary
+        if let docspaceVersion = networkService.serverVersion?.docSpace, docspaceVersion.isVersion(lessThan: "3.0.0") {
+            method = .get
+            request = nil
+        }
+
+        networkService.request(OnlyofficeAPI.Endpoints.Files.createAndCopyLink(file: file, method: method), request) { result, error in
             guard let link = result?.result else {
                 if let error {
                     completion(.failure(error))

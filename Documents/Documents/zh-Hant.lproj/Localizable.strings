@@ -366,8 +366,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "连接到您的 %@ 云端，在线存储文件并实时协作处理文件";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "正在链接中";
 
 /* No comment provided by engineer. */
@@ -526,8 +525,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "建立房間";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "正在创建";
 
 /* Watermark Element */
@@ -869,12 +867,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form owner" = "表格擁有者";
-
-/* No comment provided by engineer. */
-"Form templates" = "表格範本";
-
-/* No comment provided by engineer. */
-"Forms" = "表格";
 
 /* No comment provided by engineer. */
 "From device" = "來自裝置";
@@ -1438,9 +1430,6 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "位置​​";
 
-/* Share status */
-"Pover user" = "高級用戶";
-
 /* No comment provided by engineer. */
 "Presentation" = "演示文稿";
 
@@ -1789,9 +1778,6 @@ Navigation bar button title */
 "Success" = "成功";
 
 /* No comment provided by engineer. */
-"Support" = "支持";
-
-/* No comment provided by engineer. */
 "Switch" = "切换";
 
 /* No comment provided by engineer. */
@@ -2051,9 +2037,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "取消固定中";
-
-/* Caption of the processing */
-"Unpning" = "取消固定中";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "上傳已準備好的PDF表格";

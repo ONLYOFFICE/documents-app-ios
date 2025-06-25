@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
+/* No comment provided by engineer. */
+"%@" = "%@";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i من %2$i";
 
@@ -77,6 +80,12 @@
 "Access settings" = "إعدادات الوصول";
 
 /* No comment provided by engineer. */
+"Access to template" = "الوصول إلى القالب";
+
+/* No comment provided by engineer. */
+"Access to template. You can select members who can create rooms based on this template." = "الوصول إلى القالب. يمكنك اختيار الأعضاء الذين يمكنهم إنشاء غرف باستخدام هذا القالب.";
+
+/* No comment provided by engineer. */
 "Access type" = "نوع الوصول";
 
 /* No comment provided by engineer. */
@@ -86,10 +95,16 @@
 "Account name is not valid" = "اسم الحساب غير صالح";
 
 /* No comment provided by engineer. */
+"Accountant" = "محاسب";
+
+/* No comment provided by engineer. */
 "Accounts" = "الحسابات";
 
 /* No comment provided by engineer. */
 "Action on files" = "الإجراء على الملفات";
+
+/* No comment provided by engineer. */
+"Add" = "إضافة";
 
 /* No comment provided by engineer. */
 "Add account" = "إضافة حساب";
@@ -108,6 +123,9 @@
 
 /* Button title */
 "Add users" = "إضافة مستخدمين";
+
+/* No comment provided by engineer. */
+"Add Users or Groups" = "إضافة مستخدمين أو مجموعات";
 
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "إضافة مستخدمين أو مجموعات والسماح لهم \n  بقراءة أو مراجعة أو تحرير المستندات.";
@@ -132,6 +150,9 @@
 
 /* No comment provided by engineer. */
 "All" = "الكل";
+
+/* No comment provided by engineer. */
+"All DocSpace and Room admins will be able to create rooms using this template." = "سيتمكن جميع مديري \"DocSpace\" والغرف من إنشاء غرف باستخدام هذا القالب.";
 
 /* No comment provided by engineer. */
 "All files" = "كافة الملفات";
@@ -207,10 +228,10 @@ Category title */
 "Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "كونك مالكًا لهذه البوابة، يجب عليك نقل الملكية إلى مستخدم آخر قبل أن تتمكن من حذف حسابك. الرجاء اختيار مالك جديد للمتابعة.";
 
 /* No comment provided by engineer. */
-"Box" = "Box";
+"Box" = "صندوق";
 
 /* No comment provided by engineer. */
-"Box directory" = "Box دليل";
+"Box directory" = "دليل صندوق";
 
 /* No comment provided by engineer. */
 "Business subscription expired" = "انتهت صلاحية اشتراك الأعمال";
@@ -223,7 +244,7 @@ Measurement unit */
 "bytes" = "بايتس";
 
 /* No comment provided by engineer. */
-"Cache" = "Cache";
+"Cache" = "الكاش";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "الكاميرا غير متاحة";
@@ -351,6 +372,9 @@ Measurement unit */
 /* Payment required title */
 "common.paymentRequiredTitle" = "الدفع مطلوب";
 
+/* Form filling status */
+"Complete" = "مكتمل";
+
 /* No comment provided by engineer. */
 "Compress Images" = "ضغط الصور";
 
@@ -364,13 +388,12 @@ Measurement unit */
 "Connect Storage" = "ربط التخزين";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." = "اربطوا تخزينًا سحابيًا تابعًا لجهة خارجية مثل\n\"Nextcloud\" و\"ownCloud\" و\"Dropbox\"\nوغيرها باستخدام بروتوكول \"WebDAV\". ";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." = "اربطوا تخزينًا سحابيًا تابعًا لجهة خارجية مثل\n\"Nextcloud\" و\"ownCloud\" و\"Dropbox\"\nوغيرها باستخدام بروتوكول \"WebDAV\".";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "اتصل بسحابة %@ الخاصة بك لتخزين الملفات عبر الإنترنت والتعاون في المستندات في الوقت الفعلي";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "يتم الربط";
 
 /* No comment provided by engineer. */
@@ -378,6 +401,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Console" = "وحدة التحكم";
+
+/* No comment provided by engineer. */
+"Contact Support" = "اتصل بالدعم الفني";
 
 /* Share status */
 "Content creator" = "منشئ المحتوى";
@@ -440,6 +466,9 @@ Caption of the processing */
 "Could not delete the folder." = "تعذر حذف المجلد.";
 
 /* No comment provided by engineer. */
+"Could not delete the version." = "لم يتمكن من حذف الإصدار.";
+
+/* No comment provided by engineer. */
 "Could not delete." = "تعذر الحذف.";
 
 /* No comment provided by engineer. */
@@ -455,7 +484,7 @@ Caption of the processing */
 "Could not duplicate the file." = "تعذر تكرار الملف.";
 
 /* No comment provided by engineer. */
-"Could not duplicate the room." = "تعذّر تكرار الغرفة";
+"Could not duplicate the room." = "تعذّر تكرار الغرفة.";
 
 /* No comment provided by engineer. */
 "Could not export the file." = "تعذر تصدير الملف.";
@@ -473,13 +502,16 @@ Caption of the processing */
 "Could not read from file" = "تعذر القراءة من الملف";
 
 /* No comment provided by engineer. */
-"Could not resolve the file." = "تعذّر حل الملف";
+"Could not resolve the file." = "تعذّر حل الملف.";
 
 /* No comment provided by engineer. */
 "Could Not Send Email" = "تعذّر إرسال البريد الإلكتروني";
 
 /* Description of file operation error */
 "Could not write to file" = "تعذر كتابة الملف";
+
+/* No comment provided by engineer. */
+"Couldn' get access" = "تعذّر الحصول على الوصول";
 
 /* No comment provided by engineer. */
 "Couldn't change the owner." = "تعذر تغيير المالك.";
@@ -512,6 +544,9 @@ Caption of the processing */
 "Create a new file" = "أنشئوا ملفًا جديدًا";
 
 /* No comment provided by engineer. */
+"Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." = "أنشئ غرفة استنادًا إلى قالب. سيتم نسخ جميع الإعدادات والمستخدمين والمجلدات والملفات من قالب الغرفة المحدد.";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "قم بإنشاء روابط إضافية لمشاركة المستند بحقوق وصول مختلفة.";
 
 /* No comment provided by engineer. */
@@ -535,18 +570,26 @@ Caption of the processing */
 /* Button title */
 "Create room" = "إنشاء غرفة";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "يتم الإنشاء";
 
 /* Watermark Element */
 "Current Date" = "التاريخ الحالي";
 
 /* No comment provided by engineer. */
+"Current file will be saved in version history." = "سيتم حفظ الملف الحالي في سجل الإصدارات.";
+
+/* No comment provided by engineer. */
 "Custom" = "تخصيص";
 
 /* Share status */
 "Custom filter" = "تصفية مخصصة";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\ndisabled" = "فلتر مخصص لـ\nالملف المحددـ\nمعطّل";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\nenabled" = "فلتر مخصص لـ\nالملف المحددـ\nمفعّل";
 
 /* No comment provided by engineer. */
 "Custom room" = "غرفة مخصصة";
@@ -581,6 +624,15 @@ Caption of the processing */
 /* No comment provided by engineer. */
 "Delete permanently" = "حذف نهائيا";
 
+/* Button title */
+"Delete template" = "حذف القالب";
+
+/* No comment provided by engineer. */
+"Delete this item?" = "هل تريد حذف هذا العنصر؟";
+
+/* No comment provided by engineer. */
+"Delete version" = "حذف الإصدار";
+
 /* No comment provided by engineer. */
 "Deleted" = "تم الحذف";
 
@@ -600,6 +652,12 @@ Caption of the processing */
 "Diagonal" = "قطري";
 
 /* No comment provided by engineer. */
+"Director" = "مدير";
+
+/* No comment provided by engineer. */
+"Disable Custom filter" = "تعطيل الفلتر المخصص";
+
+/* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "قم بالتعطيل إذا كنت لا تريد تلقي إشعارات من %@";
 
 /* No comment provided by engineer. */
@@ -609,6 +667,9 @@ Caption of the processing */
 "Disconnect third party" = "فك ربط الطرف الثالث";
 
 /* No comment provided by engineer. */
+"Do you really want to delete template room %@? The template cannot be restored. " = "هل تريد فعلاً حذف قالب الغرفة %@؟ لا يمكن استعادة القالب بعد الحذف. ";
+
+/* No comment provided by engineer. */
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "هل تريد حقًا مغادرة هذه الغرفة؟ ستتمكن من الانضمام إليها مرة أخرى عبر دعوة جديدة من مشرف الغرفة.";
 
 /* No comment provided by engineer. */
@@ -616,6 +677,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "DocSpace مشرف";
+
+/* No comment provided by engineer. */
+"Docspace user only" = "مستخدم \"DocSpace\" فقط";
 
 /* No comment provided by engineer. */
 "Document" = "مستند";
@@ -639,6 +703,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "DoсSpace users only" = "خاص فقط بمستخدمي DoсSpace";
 
+/* Form filling status */
+"Draft" = "مسودة";
+
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
 
@@ -657,6 +724,12 @@ Operation completed */
 /* Button title */
 "Edit" = "تعديل";
 
+/* No comment provided by engineer. */
+"Edit comment" = "تعديل التعليق";
+
+/* No comment provided by engineer. */
+"Edit Comment" = "تعديل التعليق";
+
 /* Introduction Step Four - Title */
 "Edit documents locally" = "تعديل المستندات محليا";
 
@@ -668,6 +741,9 @@ Operation completed */
 
 /* Button title */
 "Edit room" = "تعديل الغرفة";
+
+/* No comment provided by engineer. */
+"Edit template" = "تعديل القالب";
 
 /* Share status */
 "Editor" = "المحرر";
@@ -688,13 +764,19 @@ Operation completed */
 "Email is not valid" = "البريد الالكتروني غير صالح";
 
 /* No comment provided by engineer. */
+"Employee" = "موظف";
+
+/* No comment provided by engineer. */
 "Employees" = "موظفين";
 
 /* No comment provided by engineer. */
 "Empty name." = "اسم فارغ.";
 
 /* No comment provided by engineer. */
-"Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "تمكين الفهرسة التلقائية لفهرسة الملفات والمجلدات حسب الرقم التسلسلي. سيتم تعيين الفرز حسب الرقم كإعداد افتراضي لجميع المستخدمين";
+"Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "تمكين الفهرسة التلقائية لفهرسة الملفات والمجلدات حسب الرقم التسلسلي. سيتم تعيين الفرز حسب الرقم كإعداد افتراضي لجميع المستخدمين.";
+
+/* No comment provided by engineer. */
+"Enable Custom filter" = "تفعيل الفلتر المخصص";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "قم بالتمكين إذا كنت تريد تلقي إشعارات من %@";
@@ -804,6 +886,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "فشل في إعداد الأرشيف";
 
+/* No comment provided by engineer. */
+"Falure to open editor" = "فشل في فتح المحرّر";
+
 /* Category title */
 "Favorites" = "المفضلات";
 
@@ -853,6 +938,15 @@ Operation completed */
 "Filling form" = "تعبئة النموذج";
 
 /* No comment provided by engineer. */
+"Filling status" = "حالة التعبئة";
+
+/* Start filling form Button title */
+"Filling Status" = "حالة التعبئة";
+
+/* No comment provided by engineer. */
+"Filling was stopped by" = "تم إيقاف التعبئة من قِبل";
+
+/* No comment provided by engineer. */
 "Filters" = "تصفيات";
 
 /* No comment provided by engineer. */
@@ -883,16 +977,13 @@ Operation completed */
 "Form owner" = "مالك النموذج";
 
 /* No comment provided by engineer. */
-"Form templates" = "قوالب النموذج";
-
-/* No comment provided by engineer. */
-"Forms" = "النماذج";
-
-/* No comment provided by engineer. */
 "From device" = "من الجهاز";
 
 /* No comment provided by engineer. */
 "From DocSpace" = "من \"DocSpace\"";
+
+/* No comment provided by engineer. */
+"From template" = "من قالب";
 
 /* Share status */
 "Full Access" = "الوصول الكامل";
@@ -913,7 +1004,7 @@ Operation completed */
 "Get started" = "إبدء الآن";
 
 /* No comment provided by engineer. */
-"Get started with quick actions: " = "ابدؤوا باستخدام الإجراءات السريعة:";
+"Get started with quick actions: " = "ابدؤوا باستخدام الإجراءات السريعة: ";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "إبدء الآن!";
@@ -938,6 +1029,12 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Guests" = "ضيوف";
+
+/* No comment provided by engineer. */
+"Help & Feedback" = "المساعدة والملاحظات";
+
+/* No comment provided by engineer. */
+"Help Center" = "مركز المساعدة";
 
 /* No comment provided by engineer. */
 "Here you will find a list of the recently opened files shared with you via an external link." = "ستجد هنا قائمة بالملفات المفتوحة مؤخرًا والتي تمت مشاركتها معك عبر رابط خارجي.";
@@ -971,6 +1068,15 @@ Operation completed */
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "في وضع الاتصال بالإنترنت، استخدم ميزات التحرير المشترك في الوقت الفعلي لـ %@ للعمل على المستندات مع أعضاء البوابة الإلكترونية ومشاركة المستندات وإنشاء مجلدات تخزين مشتركة.";
+
+/* Form filling status */
+"In progress" = "قيد التنفيذ";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion" = "في هذه اللوحة يمكنك متابعة مدى اكتمال\n النموذج الذي تُشارك في تعبئته أو الذي\n تُنظّم عملية تعبئته";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" = "في هذه اللوحة يمكنك متابعة مدى اكتمال النموذج الذي تُشارك في تعبئته أو الذي تُنظّم عملية تعبئته";
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "عنوان بوابة غير صحيح";
@@ -1022,6 +1128,9 @@ Folder order */
 "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "قم بدعوة المستخدمين عبر الروابط المشتركة لعرض المستندات دون تسجيل. يمكنك أيضًا تضمين هذه الغرفة في أي واجهة ويب.";
 
 /* No comment provided by engineer. */
+"It will be irretrievably deleted. This action is irreversible." = "سيتم حذفه نهائيًا ولا يمكن التراجع عن هذا الإجراء.";
+
+/* No comment provided by engineer. */
 "Items in Trash are automatically deleted after 30 days" = "يتم حذف العناصر الموجودة في سلة المهملات تلقائيًا بعد 30 يومًا";
 
 /* Data units */
@@ -1034,7 +1143,7 @@ Folder order */
 "kDrive" = "kDrive";
 
 /* No comment provided by engineer. */
-"kDrive directory" = "kDrive directory";
+"kDrive directory" = "دليل kDrive";
 
 /* No comment provided by engineer. */
 "Last name is empty" = "الاسم الأخير فارغ";
@@ -1132,6 +1241,9 @@ If current user name is not set */
 "Member" = "عضو";
 
 /* No comment provided by engineer. */
+"Members" = "الأعضاء";
+
+/* No comment provided by engineer. */
 "Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" = "الحد الأدنى للطول: 8 | الأحرف المسموح بها: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_{|}";
 
 /* No comment provided by engineer. */
@@ -1201,6 +1313,9 @@ If current user name is not set */
 "New form filling room" = "غرفة تعبئة نماذج جديدة";
 
 /* No comment provided by engineer. */
+"New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." = "سيتم إضافة الضيوف الجدد هنا بعد دعوتهم إلى الغرفة. يمكنك مشاركة ضيوفك وإضافة الضيوف الذين دعاهم الآخرون إلى قائمتك.";
+
+/* No comment provided by engineer. */
 "New Presentation" = "عرض تقديمي جديد";
 
 /* No comment provided by engineer. */
@@ -1225,6 +1340,9 @@ If current user name is not set */
 "Nextcloud directory" = "Nextcloud دليل";
 
 /* No comment provided by engineer. */
+"No added guests yet" = "لم تتم إضافة أي ضيوف بعد";
+
+/* No comment provided by engineer. */
 "No archived rooms here yet" = "لا يوجد غرف مؤرشفة هنا حتى الآن";
 
 /* No comment provided by engineer. */
@@ -1240,7 +1358,7 @@ If current user name is not set */
 "No files here yet" = "لا يوجد ملفات هنا حتى الآن";
 
 /* No comment provided by engineer. */
-"No forms here yet " = "لا توجد نماذج هنا بعد";
+"No forms here yet " = "لا توجد نماذج هنا بعد ";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "لا توجد معلومات حول ملف تعريف المستخدم.";
@@ -1262,6 +1380,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "No Search Result" = "لا يوجد نتائج بحث";
+
+/* No comment provided by engineer. */
+"No templates here yet" = "لا توجد قوالب هنا بعد";
 
 /* No comment provided by engineer. */
 "No users found" = "لم يتم العثور على مستخدمين";
@@ -1309,6 +1430,12 @@ Share status */
 /* No comment provided by engineer. */
 "Only a room administrator or a DocSpace administrator can become the room owner." = "يمكن فقط لمسؤول الغرفة أو مسؤول DocSpace أن يصبح مالك الغرفة.";
 
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins are shown here" = "يظهر هنا فقط مديرو \"DocSpace\" والغرف";
+
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." = "سيتمكن فقط مديرو \"DocSpace\" والغرف من المجموعات المحددة من إنشاء غرف باستخدام هذا القالب.";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1338,6 +1465,9 @@ Share status */
 
 /* No comment provided by engineer. */
 "Open Folder" = "فتح المجلد";
+
+/* No comment provided by engineer. */
+"Opened the form to fill out" = "فتح النموذج لبدء التعبئة";
 
 /* Caption of the processing */
 "Opening" = "يفتح";
@@ -1389,6 +1519,12 @@ Share status */
 
 /* Default title of sample document */
 "PDF Form Sample" = "عينة نموذج PDF";
+
+/* No comment provided by engineer. */
+"PDF-Documents" = "مستندات \"PDF\"";
+
+/* No comment provided by engineer. */
+"PDF-Forms" = "نماذج \"PDF\"";
 
 /* No comment provided by engineer. */
 "Phone" = "هاتف";
@@ -1451,7 +1587,7 @@ Share status */
 "Position" = "الموضع";
 
 /* Share status */
-"Pover user" = "مستخدم قوي";
+"Power user" = "مستخدم بارع";
 
 /* No comment provided by engineer. */
 "Presentation" = "عرض تقديمي";
@@ -1467,6 +1603,9 @@ Share status */
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Privacy Policy" = "سياية الخصوصية";
+
+/* No comment provided by engineer. */
+"Process details" = "تفاصيل العملية";
 
 /* Caption of the processing */
 "Processing" = "العملية جارية";
@@ -1553,7 +1692,7 @@ Share status */
 "Renewal" = "تجديد";
 
 /* Button title */
-"Reorder" = "إعادة الترتيب ";
+"Reorder" = "إعادة الترتيب";
 
 /* No comment provided by engineer. */
 "Reorder failed." = "فشل في إعادة الترتيب.";
@@ -1576,6 +1715,12 @@ Share status */
 /* No comment provided by engineer. */
 "Restore room?" = "استعادة الغرفة؟";
 
+/* No comment provided by engineer. */
+"Restore this version?" = "هل تريد استعادة هذا الإصدار؟";
+
+/* No comment provided by engineer. */
+"Restored" = "تم الاستعادة";
+
 /* Caption of the processing */
 "Restoring" = "يتم الاستعادة";
 
@@ -1595,10 +1740,19 @@ Share status */
 "Revoking" = "جاري الإلغاء";
 
 /* No comment provided by engineer. */
+"Role description" = "وصف الدور";
+
+/* No comment provided by engineer. */
 "Roles" = "الأدوار";
 
 /* No comment provided by engineer. */
+"Roles from the form:" = "الأدوار في النموذج:";
+
+/* No comment provided by engineer. */
 "Room admin" = "مشرف الغرفة";
+
+/* No comment provided by engineer. */
+"Room created" = "تم إنشاء الغرفة";
 
 /* No comment provided by engineer. */
 "Room created!" = "تم إنشاء الغرفة!";
@@ -1628,11 +1782,20 @@ DocSpace rooms */
 /* No comment provided by engineer. */
 "Save" = "حفظ";
 
+/* No comment provided by engineer. */
+"Save as template" = "حفظ كقالب";
+
 /* Caption of the processing */
 "Saving" = "يحفظ";
 
 /* No comment provided by engineer. */
 "Scale" = "مقياس";
+
+/* No comment provided by engineer. */
+"Scan Document" = "مسح المستند";
+
+/* No comment provided by engineer. */
+"Scanning is not supported on this device" = "المسح غير مدعوم على هذا الجهاز";
 
 /* No comment provided by engineer. */
 "Search" = "بحث";
@@ -1658,6 +1821,9 @@ Navigation bar button title */
 
 /* Button title */
 "Select location" = "حدد الموقع";
+
+/* No comment provided by engineer. */
+"Select members" = "اختر الأعضاء";
 
 /* No comment provided by engineer. */
 "Select Photos" = "تحديد الصور";
@@ -1697,6 +1863,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Set favorite failed." = "فشل تعيين المفضلة.";
+
+/* No comment provided by engineer. */
+"Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." = "عيّن مدة صلاحية للملفات ليتم حذفها تلقائيًا من هذه الغرفة بعد فترة محددة. تبدأ المدة من تاريخ رفع أو إنشاء الملف.";
 
 /* No comment provided by engineer. */
 "Settings" = "إعدادات";
@@ -1747,6 +1916,9 @@ Navigation bar button title */
 "Show notifications" = "عرض الإشعارات";
 
 /* No comment provided by engineer. */
+"Show version history" = "عرض سجل الإصدارات";
+
+/* No comment provided by engineer. */
 "Sign in" = "تسجيل دخول";
 
 /* No comment provided by engineer. */
@@ -1786,6 +1958,18 @@ Navigation bar button title */
 "Spreadsheets" = "جداول البيانات";
 
 /* No comment provided by engineer. */
+"Start" = "بدء";
+
+/* Start filling form Button title */
+"Start filling" = "بدء التعبئة";
+
+/* No comment provided by engineer. */
+"Stop filling" = "إيقاف التعبئة";
+
+/* Form filling status */
+"Stopped" = "تم الإيقاف";
+
+/* No comment provided by engineer. */
 "Storage" = "تخزين";
 
 /* No comment provided by engineer. */
@@ -1795,10 +1979,13 @@ Navigation bar button title */
 "Storage quota set per room. You can change this value or turn off storage limit." = "تم تحديد حصة التخزين لكل غرفة. يمكنك تغيير هذه القيمة أو إيقاف تشغيل حد التخزين.";
 
 /* No comment provided by engineer. */
+"Submitted their part. The form was sent to the next role." = "أكمل الجزء الخاص به. تم إرسال النموذج إلى الدور التالي.";
+
+/* No comment provided by engineer. */
 "Success" = "تم بنجاح";
 
 /* No comment provided by engineer. */
-"Support" = "دعم فني";
+"Suggest a Feature" = "اقتراح ميزة";
 
 /* No comment provided by engineer. */
 "Switch" = "تحويل";
@@ -1808,6 +1995,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Tags" = "الإشارات";
+
+/* No comment provided by engineer. */
+"Tags are applied to the room which will be created based on this template." = "يتم تطبيق الوسوم على الغرفة التي سيتم إنشاؤها استنادًا إلى هذا القالب.";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "أخذ صورة";
@@ -1820,6 +2010,18 @@ Navigation bar button title */
 
 /* Measurement unit */
 "TB" = "TB";
+
+/* No comment provided by engineer. */
+"Template" = "قالب";
+
+/* No comment provided by engineer. */
+"Template %@ saved" = "تم حفظ القالب %@";
+
+/* No comment provided by engineer. */
+"Template available to everyone" = "قالب متاح للجميع";
+
+/* No comment provided by engineer. */
+"Templates" = "القوالب";
 
 /* No comment provided by engineer. */
 "Terminate account" = "انهاء حساب";
@@ -1835,6 +2037,12 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "يجب أن يتراوح طول اسم الحساب بين 6 و50 حرفًا";
+
+/* No comment provided by engineer. */
+"The added administrators will be able to create rooms using this template." = "سيتمكن المديرون الذين تمت إضافتهم من إنشاء غرف باستخدام هذا القالب.";
+
+/* No comment provided by engineer. */
+"The client and server versions are incompatible. You can only open the document in view mode" = "إصدار العميل غير متوافق مع إصدار الخادم. يمكنك فتح المستند في وضع العرض فقط";
 
 /* No comment provided by engineer. */
 "The deleted files go to the trash. You can either restore or delete them forever." = "الملفات المحذوفة تذهب إلى سلة المهملات. ويمكنك إما استعادتها أو حذفها إلى الأبد.";
@@ -1865,6 +2073,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The link has expired" = "تم انتهاء صلاحية الرابط";
+
+/* Button title */
+"The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard." = "تم نسخ الرابط إلى الملف\n مع تفعيل الفلتر المخصص\n بنجاح إلى\nالحافظة.";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "سيتم حذف الرابط نهائيا لن تتمكن من التراجع عن هذا الإجراء.";
@@ -2047,6 +2258,9 @@ Navigation bar button title */
 "Unknown item type." = "نوع ملف غير معروف.";
 
 /* No comment provided by engineer. */
+"Unknown status" = "حالة غير معروفة";
+
+/* No comment provided by engineer. */
 "Unlimited" = "غير محدود";
 
 /* No comment provided by engineer. */
@@ -2063,9 +2277,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "إزالة التثبيت";
-
-/* Caption of the processing */
-"Unpning" = "إزالة التثبيت";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "تحميل نموذج \"PDF\" جاهز";
@@ -2089,7 +2300,7 @@ Navigation bar button title */
 "Use IP Address" = "استخدام عنوان الـ \"IP\"";
 
 /* No comment provided by engineer. */
-"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "استخدام خدمات الطرف الثالث كخدمات تخزين البيانات لهذه الغرفة. سيتم إنشاء مجلد جديد لتخزين بيانات هذه الغرفة في التخزين المتصل.";
+"Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" = "استخدام خدمات الطرف الثالث كخدمات تخزين البيانات لهذه الغرفة. سيتم إنشاء مجلد جديد لتخزين بيانات هذه الغرفة في التخزين المتصل";
 
 /* No comment provided by engineer. */
 "Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." = "استخدم غرفة البيانات الافتراضية لتحقيق أمان الملفات وشفافيتها بشكل متقدم أثناء ملء المستندات وتوقيعها خطوة بخطوة. قم بتعيين العلامات المائية، وفهرسة كل المحتوى وتتبعه تلقائيًا، وتقييد التنزيل والنسخ.";
@@ -2134,6 +2345,12 @@ Navigation bar button title */
 "Version" = "نسخة";
 
 /* No comment provided by engineer. */
+"Version %@" = "الإصدار %@";
+
+/* No comment provided by engineer. */
+"Version History" = "سجل الإصدارات";
+
+/* No comment provided by engineer. */
 "View-only" = "للمشاهدة فقط";
 
 /* Share status */
@@ -2170,7 +2387,10 @@ Navigation bar button title */
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "مرحبًا بك في %@ مجموعة تحرير الهاتف المحمول!\nاسحب لمعرفة المزيد عن التطبيق.";
 
 /* No comment provided by engineer. */
-"Welcome to the Form filling room " = "مرحبًا بكم في غرفة ملء النموذج";
+"Welcome to the Form filling room " = "مرحبًا بكم في غرفة ملء النموذج ";
+
+/* No comment provided by engineer. */
+"Welcome to the Virtual Data Room " = "أهلاً بك في غرفة البيانات الافتراضية. ";
 
 /* No comment provided by engineer. */
 "What's New" = "ما الجديد";
@@ -2197,7 +2417,16 @@ Navigation bar button title */
 "Years" = "سنوات";
 
 /* No comment provided by engineer. */
+"You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" = "أنت على وشك حذف إصدار من الملف. لن تتمكن من عرضه أو استعادته بعد الآن. هل أنت متأكد أنك تريد المتابعة؟";
+
+/* No comment provided by engineer. */
 "You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" = "أنتم على وشك حذف هذه الغرف. لن تتمكنوا من استعادتها. هل أنتم متأكدون من الاستمرار؟";
+
+/* No comment provided by engineer. */
+"You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" = "أنت على وشك حذف هذا الملف. سيتم حذفه نهائيًا خلال 30 يومًا. هل أنت متأكد أنك تريد المتابعة؟";
+
+/* No comment provided by engineer. */
+"You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" = "أنت على وشك حذف هذا المجلد. سيتم حذفه نهائيًا خلال 30 يومًا. هل أنت متأكد أنك تريد المتابعة؟";
 
 /* No comment provided by engineer. */
 "You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" = "أنتم على وشك حذف هذه الغرفة. لن تتمكنوا من استعادتها. هل أنتم متأكدون من الاستمرار؟";
@@ -2219,6 +2448,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the DocSpace rooms" = "يمكنكم ربط الحسابات التالية بغرف \"DocSpace\"";
+
+/* No comment provided by engineer. */
+"You can create a template from a room in the Room section" = "يمكنك إنشاء قالب من غرفة موجودة في قسم الغرف";
 
 /* No comment provided by engineer. */
 "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "لا يمكنكم تثبيت أكثر من 10 غرف في الأعلى. قوموا بإلغاء تثبيت بعض الغرف المثبتة حاليًا.";
@@ -2249,6 +2481,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Your session has expired" = "انتهت صلاحية جلسة العمل الخاصة بك";
+
+/* Form filling status */
+"Your turn" = "دورك الآن";
 
 /* Data units */
 "Zb" = "زيرو بايت";

@@ -342,8 +342,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "Свързване";
 
 /* No comment provided by engineer. */
@@ -490,8 +489,7 @@ Caption of the processing */
 /* Button title */
 "Create room" = "Създай стая";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "Създаване";
 
 /* No comment provided by engineer. */
@@ -785,12 +783,6 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Form owner" = "Собственик на формуляр";
-
-/* No comment provided by engineer. */
-"Form templates" = "Шаблони за формуляри";
-
-/* No comment provided by engineer. */
-"Forms" = "Формуляри";
 
 /* No comment provided by engineer. */
 "From device" = "От устройство";
@@ -1287,9 +1279,6 @@ Share status */
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Порталът не е наличен.";
 
-/* Share status */
-"Pover user" = "Опитен потребител";
-
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1599,9 +1588,6 @@ Navigation bar button title */
 "Storage" = "съхранение";
 
 /* No comment provided by engineer. */
-"Support" = "Поддържа";
-
-/* No comment provided by engineer. */
 "Switch" = "Ключ";
 
 /* No comment provided by engineer. */
@@ -1846,9 +1832,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "Откачване";
-
-/* Caption of the processing */
-"Unpning" = "Откачване";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "Качи готов PDF формуляр";

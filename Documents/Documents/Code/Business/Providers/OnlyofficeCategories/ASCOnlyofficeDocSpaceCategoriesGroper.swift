@@ -18,9 +18,9 @@ class ASCOnlyofficeDocSpaceCategoriesGroper: ASCOnlyofficeCategoriesGrouper {
 
         for category in categories {
             switch category.folder?.rootFolderType {
-            case .onlyofficeUser:
+            case .user:
                 roomsGroup.categories.append(category)
-            case .onlyofficeFavorites, .onlyofficeRecent, .onlyofficeTrash:
+            case .favorites, .recent, .trash:
                 filesGroup.categories.append(category)
             default:
                 category.isDocSpaceRoom

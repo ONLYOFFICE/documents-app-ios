@@ -66,38 +66,6 @@
 			<string>%d hour</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>Expires after %d days</string>
-			<key>one</key>
-			<string>Expires after %d day</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>Expires after %d hours</string>
-			<key>one</key>
-			<string>Expires after %d hour</string>
-		</dict>
-	</dict>
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -236,6 +204,38 @@
 			<string>Delete %lu File</string>
 			<key>other</key>
 			<string>Delete %lu Files</string>
+		</dict>
+	</dict>
+	<key>Me and %d Users</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@users@</string>
+		<key>users</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Me and One Users</string>
+			<key>other</key>
+			<string>Me and %d Users</string>
+		</dict>
+	</dict>
+	<key>%d Groups</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@groups@</string>
+		<key>groups</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>One Group</string>
+			<key>other</key>
+			<string>%d Groups</string>
 		</dict>
 	</dict>
 </dict>

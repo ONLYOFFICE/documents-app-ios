@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6sx-I7-SXg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6sx-I7-SXg">
     <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,11 +11,11 @@
         <!--Settings-->
         <scene sceneID="DVq-zQ-hml">
             <objects>
-                <navigationController id="6sx-I7-SXg" customClass="ASCBaseNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="tab-settings" selectedImage="tab-settings-selected" id="MZJ-3d-460"/>
+                <navigationController id="6sx-I7-SXg" customClass="ASCBaseNavigationController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="tab-settings" selectedImage="tab-settings" id="MZJ-3d-460"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="AgV-sO-gMo">
-                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                        <rect key="frame" x="0.0" y="94" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -29,7 +29,7 @@
         <!--Settings-->
         <scene sceneID="5bU-IN-0Md">
             <objects>
-                <tableViewController id="FE6-xk-Oxs" customClass="ASCSettingsViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FE6-xk-Oxs" customClass="ASCSettingsViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Pva-VI-rrb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
         <!--About-->
         <scene sceneID="FEg-QA-S8d">
             <objects>
-                <tableViewController storyboardIdentifier="ASCAboutViewController" hidesBottomBarWhenPushed="YES" id="ClM-GS-qV6" customClass="ASCAboutViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCAboutViewController" hidesBottomBarWhenPushed="YES" id="ClM-GS-qV6" customClass="ASCAboutViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="Goy-pY-xCj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
                                     <rect key="frame" x="102" y="25" width="186" height="80"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13m-jH-9Vu">
-                                    <rect key="frame" x="174" y="115" width="42.333333333333343" height="14.333333333333343"/>
+                                    <rect key="frame" x="172.33333333333334" y="115" width="45.333333333333343" height="15.666666666666657"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -92,7 +92,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Ascensio System SIA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEo-YM-MnB">
-                                    <rect key="frame" x="10" y="13" width="370" height="14.333333333333336"/>
+                                    <rect key="frame" x="10" y="12.333333333333336" width="370" height="15.666666666666664"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -108,14 +108,14 @@
                             <tableViewSection id="Znr-Ws-1Ib">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uEu-4Q-MHg">
-                                        <rect key="frame" x="20" y="208" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="208" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uEu-4Q-MHg" id="4YS-AS-O84">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUM-1F-5Be">
-                                                    <rect key="frame" x="145.33333333333334" y="17.666666666666668" width="59.333333333333343" height="17.000000000000004"/>
+                                                    <rect key="frame" x="144" y="15.999999999999998" width="70" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -128,14 +128,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ut8-EH-ren">
-                                        <rect key="frame" x="20" y="260" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="260" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ut8-EH-ren" id="hbq-tO-WO2">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell a Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqQ-Bv-Deg">
-                                                    <rect key="frame" x="136" y="17.666666666666668" width="78" height="17.000000000000004"/>
+                                                    <rect key="frame" x="133.33333333333334" y="15.999999999999998" width="91.333333333333343" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -148,14 +148,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yxb-35-p9P">
-                                        <rect key="frame" x="20" y="312" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="312" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yxb-35-p9P" id="KNP-94-Ete">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDj-N7-sjJ">
-                                                    <rect key="frame" x="120.66666666666666" y="17.666666666666668" width="108.66666666666666" height="17.000000000000004"/>
+                                                    <rect key="frame" x="115" y="15.999999999999998" width="128" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -168,14 +168,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ocW-UF-TG6">
-                                        <rect key="frame" x="20" y="364" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="364" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ocW-UF-TG6" id="iPT-oB-fNn">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl6-b0-Mjh">
-                                                    <rect key="frame" x="130.33333333333334" y="17.666666666666668" width="89.333333333333343" height="17.000000000000004"/>
+                                                    <rect key="frame" x="126.33333333333334" y="15.999999999999998" width="105.33333333333334" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -214,7 +214,7 @@
         <!--Passcode Lock-->
         <scene sceneID="zKy-Wb-soJ">
             <objects>
-                <tableViewController storyboardIdentifier="ASCPasscodeLockViewController" hidesBottomBarWhenPushed="YES" id="HD4-gx-psy" customClass="ASCPasscodeLockViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCPasscodeLockViewController" hidesBottomBarWhenPushed="YES" id="HD4-gx-psy" customClass="ASCPasscodeLockViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="EW4-BM-Y6b">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,14 +225,14 @@
 Note: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="XYC-Zw-fk6" style="IBUITableViewCellStyleDefault" id="T2j-D3-X8M">
-                                        <rect key="frame" x="20" y="18" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="18" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="T2j-D3-X8M" id="GOE-3m-Yk6">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" text="Turn Passcode On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="XYC-Zw-fk6">
-                                                    <rect key="frame" x="20" y="0.0" width="310" height="52"/>
+                                                    <rect key="frame" x="16" y="0.0" width="326" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,14 +245,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
                                         </accessibility>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="RuR-k5-kRu" style="IBUITableViewCellStyleDefault" id="qN4-8X-NYU">
-                                        <rect key="frame" x="20" y="70" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="70" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="qN4-8X-NYU" id="kyB-KV-kVo">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" text="Change Passcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="RuR-k5-kRu">
-                                                    <rect key="frame" x="20" y="0.0" width="310" height="52"/>
+                                                    <rect key="frame" x="16" y="0.0" width="326" height="52"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -269,21 +269,21 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
                             <tableViewSection id="2NN-gG-Ooi">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="wCs-NR-Yku">
-                                        <rect key="frame" x="20" y="208.33333396911621" width="350" height="52"/>
+                                        <rect key="frame" x="16" y="217.99999809265137" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="wCs-NR-Yku" id="WJt-Qp-hMu">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwo-GN-XCz">
-                                                    <rect key="frame" x="281" y="10.666666666666664" width="51" height="31"/>
+                                                    <rect key="frame" x="293" y="10.666666666666664" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="onAllowTouchID:" destination="HD4-gx-psy" eventType="valueChanged" id="A8V-WL-S93"/>
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock with Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YfE-Pr-7QU">
-                                                    <rect key="frame" x="20" y="17.666666666666668" width="250" height="17.000000000000004"/>
+                                                    <rect key="frame" x="16" y="15.999999999999998" width="266" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -326,7 +326,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <image name="logo-large" width="186" height="80"/>
         <image name="nav-back" width="13" height="21"/>
         <image name="tab-settings" width="30" height="28"/>
-        <image name="tab-settings-selected" width="30" height="28"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

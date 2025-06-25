@@ -15,6 +15,13 @@ enum LinkAccess: String {
     var isInternal: Bool {
         self == .docspaceUserOnly
     }
+
+    var localizedDescription: String {
+        switch self {
+        case .anyoneWithLink: return NSLocalizedString("Anyone with the link", comment: "")
+        case .docspaceUserOnly: return NSLocalizedString("Docspace user only", comment: "")
+        }
+    }
 }
 
 struct SharedSettingsLinkRowModel: Identifiable {
@@ -82,7 +89,7 @@ struct SharedSettingsLinkRow: View {
 
     @ViewBuilder
     private var linkAccessTypeText: some View {
-        Text(model.linkAccess.rawValue)
+        Text(verbatim: model.linkAccess.localizedDescription)
             .font(.subheadlineFont)
     }
 

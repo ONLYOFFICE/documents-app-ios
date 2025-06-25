@@ -84,6 +84,7 @@
         override open func viewDidLoad() {
             super.viewDidLoad()
 
+            view.semanticContentAttribute = .forceLeftToRight
             deleteSignButton?.isEnabled = false
 
             if false, !UIAccessibility.isReduceTransparencyEnabled {

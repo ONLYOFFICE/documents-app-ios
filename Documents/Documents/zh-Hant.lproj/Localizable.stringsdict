@@ -194,34 +194,6 @@
 			<string>删除 %2$#@lu_files@</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>other</key>
-			<string>Expires after %d days</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>other</key>
-			<string>Expires after %d hours</string>
-		</dict>
-	</dict>
 	<key>Me and %d Users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

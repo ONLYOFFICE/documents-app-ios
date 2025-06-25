@@ -13,7 +13,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>٪d مجموعة</string>
+			<string>%d مجموعة</string>
 			<key>many</key>
 			<string>%d مجموعتان</string>
 			<key>one</key>
@@ -61,11 +61,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>٪d ساعة</string>
+			<string>%d ساعة</string>
 			<key>many</key>
 			<string>%d ساعتان</string>
 			<key>one</key>
-			<string>٪d ساعة</string>
+			<string>%d ساعة</string>
 			<key>other</key>
 			<string>%d ساعات</string>
 			<key>two</key>
@@ -85,11 +85,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>٪d شهر</string>
+			<string>%d شهر</string>
 			<key>many</key>
 			<string>%d شهران</string>
 			<key>one</key>
-			<string>٪d شهر</string>
+			<string>%d شهر</string>
 			<key>other</key>
 			<string>%d شهرًا</string>
 			<key>two</key>
@@ -109,17 +109,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>٪d محدد</string>
+			<string>%d محدد</string>
 			<key>many</key>
-			<string>٪d محدد</string>
+			<string>%d محدد</string>
 			<key>one</key>
 			<string>%d محدد</string>
 			<key>other</key>
 			<string>%d محدد</string>
 			<key>two</key>
-			<string>٪d محدد</string>
+			<string>%d محدد</string>
 			<key>zero</key>
-			<string>٪d محدد</string>
+			<string>%d محدد</string>
 		</dict>
 	</dict>
 	<key>%d years</key>
@@ -133,11 +133,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>few</key>
-			<string>٪d سنة</string>
+			<string>%d سنة</string>
 			<key>many</key>
 			<string>%d سنتان</string>
 			<key>one</key>
-			<string>٪d سنة</string>
+			<string>%d سنة</string>
 			<key>other</key>
 			<string>%d سنوات</string>
 			<key>two</key>
@@ -157,17 +157,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>تم تحديد ٪lu ملف</string>
+			<string>تم تحديد %lu ملف</string>
 			<key>many</key>
-			<string>تم تحديد ٪lu ملفين</string>
+			<string>تم تحديد %lu ملفين</string>
 			<key>one</key>
 			<string>%lu تم اختيار ملف</string>
 			<key>other</key>
 			<string>%lu تم اختيار ملفات</string>
 			<key>two</key>
-			<string>تم تحديد ٪lu ملفات</string>
+			<string>تم تحديد %lu ملفات</string>
 			<key>zero</key>
-			<string>تم تحديد ٪lu ملفًا</string>
+			<string>تم تحديد %lu ملفًا</string>
 		</dict>
 	</dict>
 	<key>%lu Folder and %lu File selected</key>
@@ -191,7 +191,7 @@
 			<key>two</key>
 			<string>وتم تحديد %lu ملفات</string>
 			<key>zero</key>
-			<string>وتم تحديد ٪lu ملفًا</string>
+			<string>وتم تحديد %lu ملفًا</string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>
@@ -200,15 +200,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>٪lu مجلد و٪2$#@lu_files@</string>
+			<string>%lu مجلد و%2$#@lu_files@</string>
 			<key>many</key>
-			<string>٪lu مجلد و٪2$#@lu_files@</string>
+			<string>%lu مجلد و%2$#@lu_files@</string>
 			<key>one</key>
 			<string>%المجلد %2$#@الملفات@</string>
 			<key>other</key>
 			<string>%المجلدات %2$#@الملفات@</string>
 			<key>two</key>
-			<string>٪lu مجلد و٪2$#@lu_files@</string>
+			<string>%lu مجلد و%2$#@lu_files@</string>
 			<key>zero</key>
 			<string>%2$#@الملفات@</string>
 		</dict>
@@ -224,17 +224,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>تم تحديد ٪lu مجلد</string>
+			<string>تم تحديد %lu مجلد</string>
 			<key>many</key>
-			<string>تم تحديد ٪lu مجلدين</string>
+			<string>تم تحديد %lu مجلدين</string>
 			<key>one</key>
 			<string>%تم تحديد المجلد</string>
 			<key>other</key>
 			<string>%تم تحديد المجلدات</string>
 			<key>two</key>
-			<string>تم تحديد ٪lu مجلدات</string>
+			<string>تم تحديد %lu مجلدات</string>
 			<key>zero</key>
-			<string>تم تحديد ٪lu مجلدًا</string>
+			<string>تم تحديد %lu مجلدًا</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>
@@ -248,7 +248,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>few</key>
-			<string>حذف ٪lu ملف</string>
+			<string>حذف %lu ملف</string>
 			<key>many</key>
 			<string>حذف %lu ملفين</string>
 			<key>one</key>

@@ -279,7 +279,7 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
-        <target>%#@fichiers@</target>
+        <target>%#@files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
@@ -294,7 +294,7 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
-        <target>%1$#@lu_dossiers@</target>
+        <target>%1$#@lu_folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
@@ -309,22 +309,22 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder %2$#@lu_files@</source>
-        <target>%lu dossier %2$#@lu_fichiers@</target>
+        <target>%lu dossier %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
-        <target>%lu dossiers %2$#@lu_fichiers@</target>
+        <target>%lu dossiers %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%2$#@lu_files@</source>
-        <target>%2$#@lu_fichiers@</target>
+        <target>%2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
-        <target>%#@dossiers@</target>
+        <target>%#@folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
@@ -339,7 +339,7 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
-        <target>%#@fichiers@</target>
+        <target>%#@files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/one:dict/:string" xml:space="preserve">
@@ -354,7 +354,7 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
-        <target>%1$#@lu_dossiers@</target>
+        <target>%1$#@lu_folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
@@ -374,22 +374,22 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder %2$#@lu_files@</source>
-        <target>Supprimer %lu dossier %2$#@lu_folders@</target>
+        <target>Supprimer %lu dossier %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
-        <target>Supprimer %lu dossiers %2$#@lu_folders@</target>
+        <target>Supprimer %lu dossiers %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
-        <target>Supprimer %2$#@lu_fichiers@</target>
+        <target>Supprimer %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
-        <target>%#@dossiers@</target>
+        <target>%#@folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/one:dict/:string" xml:space="preserve">
@@ -401,36 +401,6 @@ lancez votre office</target>
         <source>Delete %lu Folders</source>
         <target>Supprimer %lu dossiers</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@days@</source>
-        <target>%#@jours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d day</source>
-        <target>Expire après %d jour</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expire après %d jours</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@hours@</source>
-        <target>%#@hours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d hour</source>
-        <target>Expire après %d heure</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expire après %d heures</target>
-        <note/>
       </trans-unit>
       <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@users@</source>
@@ -2633,11 +2603,8 @@ Operation completed</note>
         <target>Pas de sous-dossiers</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Exit without saving?
-You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
-        <source>Exit without saving?
-You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
-        <target>Quitter sans sauvegarder ?  Vous avez apporté des modifications à l'index. Si vous continuez sans sauvegarder, ces modifications ne seront pas appliquées.</target>
+      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
@@ -5360,6 +5327,11 @@ seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
         <target>Vous pouvez connecter les comptes suivants aux salles DocSpace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
+        <source>You can create a template from
+a room in the Room section</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">

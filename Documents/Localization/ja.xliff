@@ -229,7 +229,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
-        <target>%#@アイテム@</target>
+        <target>%#@items@</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
@@ -249,7 +249,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
-        <target>%#@ファイル@</target>
+        <target>%#@files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/other:dict/:string" xml:space="preserve">
@@ -279,7 +279,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
-        <target>%#@フォルダー@</target>
+        <target>%#@folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/other:dict/:string" xml:space="preserve">
@@ -289,7 +289,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
-        <target>%#@ファイル@</target>
+        <target>%#@files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/other:dict/:string" xml:space="preserve">
@@ -324,33 +324,13 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
-        <target>%#@フォルダー@</target>
+        <target>%#@folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
         <target>%lu フォルダーを削除する</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@days@</source>
-        <target>%#@days@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@hours@</source>
-        <target>%#@hours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
-        <note/>
       </trans-unit>
       <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@users@</source>
@@ -5275,6 +5255,11 @@ then accessed from any other device.</source>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
         <target>以下のアカウントをDocSpaceルームに接続できます</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
+        <source>You can create a template from
+a room in the Room section</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">

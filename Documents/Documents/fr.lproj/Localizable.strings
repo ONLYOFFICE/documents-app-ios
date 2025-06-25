@@ -827,9 +827,6 @@ Operation completed */
 "Exclude subfolders" = "Pas de sous-dossiers";
 
 /* No comment provided by engineer. */
-"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "Quitter sans sauvegarder ?  Vous avez apporté des modifications à l'index. Si vous continuez sans sauvegarder, ces modifications ne seront pas appliquées.";
-
-/* No comment provided by engineer. */
 "Expect users" = "Attendre des utilisateurs";
 
 /* Expiration status */

@@ -101,7 +101,7 @@
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@fichiers@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -117,7 +117,7 @@
 	<key>%lu Folder and %lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_dossiers@</string>
+		<string>%1$#@lu_folders@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -136,17 +136,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu dossier %2$#@lu_fichiers@</string>
+			<string>%lu dossier %2$#@lu_files@</string>
 			<key>other</key>
-			<string>%lu dossiers %2$#@lu_fichiers@</string>
+			<string>%lu dossiers %2$#@lu_files@</string>
 			<key>zero</key>
-			<string>%2$#@lu_fichiers@</string>
+			<string>%2$#@lu_files@</string>
 		</dict>
 	</dict>
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@dossiers@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -162,7 +162,7 @@
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@fichiers@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -178,7 +178,7 @@
 	<key>Delete %lu Folder</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@dossiers@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -194,7 +194,7 @@
 	<key>Delete %lu Folder and %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_dossiers@</string>
+		<string>%1$#@lu_folders@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -219,39 +219,7 @@
 			<key>other</key>
 			<string>Supprimer %lu dossiers %2$#@lu_files@</string>
 			<key>zero</key>
-			<string>Supprimer %2$#@lu_fichiers@</string>
-		</dict>
-	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@jours@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>Expire après %d jour</string>
-			<key>other</key>
-			<string>Expire après %d jours</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>Expire après %d heure</string>
-			<key>other</key>
-			<string>Expire après %d heures</string>
+			<string>Supprimer %2$#@lu_files@</string>
 		</dict>
 	</dict>
 	<key>Me and %d Users</key>

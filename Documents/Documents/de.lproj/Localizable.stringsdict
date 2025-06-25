@@ -101,7 +101,7 @@
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Dateien@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -146,7 +146,7 @@
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Ordner@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -162,7 +162,7 @@
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Dateien@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -178,7 +178,7 @@
 	<key>Delete %lu Folder</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Ordner@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -220,38 +220,6 @@
 			<string>%lu Ordner %2$#@lu_files@ löschen</string>
 			<key>zero</key>
 			<string>%2$#@lu_files@ löschen</string>
-		</dict>
-	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>Expires after %d day</string>
-			<key>other</key>
-			<string>Expires after %d days</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>Expires after %d hour</string>
-			<key>other</key>
-			<string>Expires after %d hours</string>
 		</dict>
 	</dict>
 	<key>Me and %d Users</key>

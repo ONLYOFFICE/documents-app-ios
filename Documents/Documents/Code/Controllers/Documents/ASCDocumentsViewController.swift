@@ -2415,9 +2415,28 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let controller = ASCVersionHistoryRootViewController(
             file: file,
             networkService: versionHistoryNetworkService
-        ) { [weak self] version in
-            version.openVersionMode = true
-            self?.open(file: version, openMode: .view)
+        ) { [weak self] versionFile in
+            if versionFile.version < file.version {
+                versionFile.openVersionMode = true
+                self?.open(file: versionFile, openMode: .view)
+            } else if let self, let provider = self.provider {
+                if ASCAppSettings.Feature.openViewModeByDefault {
+                    let title = file.title,
+                        fileExt = title.fileExtension().lowercased()
+
+                    if file.isForm, ASCConstants.FileExtensions.forms.contains(fileExt) || ASCConstants.FileExtensions.pdf == fileExt {
+                        fillForm(file: file)
+                    } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
+                        open(file: file, openMode: .view)
+                    } else if ASCConstants.FileExtensions.pdf == fileExt {
+                        open(file: file, openMode: .fillform)
+                    } else {
+                        open(file: file, openMode: !(provider.allowEdit(entity: file) || provider.allowComment(entity: file)) ? .view : .edit)
+                    }
+                } else {
+                    open(file: file, openMode: !provider.allowEdit(entity: file) ? .view : .edit)
+                }
+            }
         } download: { [weak self] versionFile in
             guard let self,
                   let provider else { return }

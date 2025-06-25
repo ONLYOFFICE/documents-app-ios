@@ -156,51 +156,17 @@ class ASCRootViewController: ASCBaseTabBarController {
     }
 
     private func navigateOnlyofficeProvider(to folder: ASCFolder?, inCategory categoryType: ASCFolderType? = nil) {
-        guard selectTab(ofType: ASCOnlyofficeSplitViewController.self),
-              let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
-              let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-              let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
-        else { return }
-
+        guard let categoryVC = findCategoriesController() else { return }
         isFirstOpenOnlyofficeCategory = true
 
-        let category: ASCOnlyofficeCategory = {
-            if let categoryType = categoryType,
-               let existingCategory = categoryVC.category(ofType: categoryType)
-            {
-                return existingCategory
-            } else if let folder = folder {
-                return ASCOnlyofficeCategory(folder: folder)
-            } else {
-                return categoryVC.entrypointCategory()
-            }
-        }()
-
         /// Display root folder of category
+        let category = computeCategory(for: folder, categoryType: categoryType, in: categoryVC)
         categoryVC.select(category: category)
 
-        guard let folder = folder else {
-            categoryVC.select(category: categoryVC.entrypointCategory())
-            return
-        }
+        guard let folder = folder, folder.id != folder.parentId else { return }
 
         /// Display stored folder if needed
-        delay(seconds: 0.01) {
-            guard let onlyofficeProvider = ASCFileManager.onlyofficeProvider,
-                  !onlyofficeProvider.isRoot(folder: folder) else { return }
-
-            let documentsNC = (splitVC.detailViewController as? ASCBaseNavigationController)
-                ?? (splitVC.primaryViewController as? ASCBaseNavigationController)
-
-            let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-            documentsVC.provider = ASCFileManager.onlyofficeProvider
-            documentsVC.folder = folder
-            if let parentDocumentVC = documentsNC?.viewControllers.last as? ASCDocumentsViewController {
-                parentDocumentVC.loadFirstPage()
-            }
-
-            documentsNC?.pushViewController(documentsVC, animated: false)
-        }
+        scheduleDocumentsPush(for: folder, using: categoryVC)
     }
 
     private func navigateiCloudProvider(to folder: ASCFolder?) {
@@ -391,8 +357,8 @@ extension ASCRootViewController: UITabBarControllerDelegate {
                               let categoryVC = deviceSC.primaryViewController?.topMostViewController() as? ASCOnlyofficeCategoriesViewController
                     {
                         let category: ASCOnlyofficeCategory = {
-                            $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                            $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
+                            $0.title = ASCOnlyofficeCategory.title(of: .user)
+                            $0.folder = ASCOnlyofficeCategory.folder(of: .user)
                             return $0
                         }(ASCOnlyofficeCategory())
 
@@ -419,5 +385,62 @@ extension ASCRootViewController: UITabBarControllerDelegate {
         }
 
         return true
+    }
+}
+
+// MARK: - OnlyOffice Navigation Helpers
+
+extension ASCRootViewController {
+    private func findCategoriesController() -> ASCOnlyofficeCategoriesViewController? {
+        guard selectTab(ofType: ASCOnlyofficeSplitViewController.self),
+              let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
+              let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController
+        else {
+            return nil
+        }
+
+        return categoryNC.viewControllers
+            .first(where: { $0 is ASCOnlyofficeCategoriesViewController })
+            as? ASCOnlyofficeCategoriesViewController
+    }
+
+    private func computeCategory(for folder: ASCFolder?, categoryType: ASCFolderType?, in categoryVC: ASCOnlyofficeCategoriesViewController) -> ASCOnlyofficeCategory {
+        if let type = categoryType,
+           let existingCategory = categoryVC.category(ofType: type)
+        {
+            return existingCategory
+        }
+
+        if let folder = folder {
+            return ASCOnlyofficeCategory(folder: folder)
+        }
+
+        return categoryVC.entrypointCategory()
+    }
+
+    private func scheduleDocumentsPush(for folder: ASCFolder, using categoryVC: ASCOnlyofficeCategoriesViewController) {
+        delay(seconds: 0.01) {
+            guard let onlyofficeProvider = ASCFileManager.onlyofficeProvider,
+                  !onlyofficeProvider.isRoot(folder: folder)
+            else {
+                return
+            }
+
+            guard let splitVC = self.selectedViewController as? ASCOnlyofficeSplitViewController else {
+                return
+            }
+            let documentsNC = (splitVC.detailViewController as? ASCBaseNavigationController)
+                ?? (splitVC.primaryViewController as? ASCBaseNavigationController)
+
+            let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+            documentsVC.provider = onlyofficeProvider
+            documentsVC.folder = folder
+
+            if let parentDocVC = documentsNC?.viewControllers.last as? ASCDocumentsViewController {
+                parentDocVC.loadFirstPage()
+            }
+
+            documentsNC?.pushViewController(documentsVC, animated: false)
+        }
     }
 }

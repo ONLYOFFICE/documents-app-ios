@@ -30,7 +30,7 @@ class ASCFolder: ASCEntity {
     var isPrivate: Bool = false
     var type: ASCFolderType?
     var isCanLeaveRoom: Bool = false
-    var rootFolderType: ASCFolderType = .unknown
+    var rootFolderType: ASCFolderType = .default
     var updated: Date?
     var updatedBy: ASCUser?
     var created: Date?
@@ -283,13 +283,16 @@ extension ASCFolder {
     var isCustomRoom: Bool {
         return isRoom && roomType == .custom
     }
+
+    var isTemplateRoom: Bool {
+        return isRoom && rootFolderType == .roomTemplates
+    }
 }
 
 extension ASCFolder {
-    /// Идентична сатегории "комнаты"
     static var onlyofficeRoomSharedFolder: ASCFolder {
         let folder = ASCFolder()
-        folder.rootFolderType = .onlyofficeRoomShared
+        folder.rootFolderType = .virtualRooms
         folder.id = "rooms"
         folder.title = NSLocalizedString("Rooms", comment: "")
         return folder
@@ -310,7 +313,7 @@ extension ASCFolder {
         let size = roomIconSize(layoutType: layoutType)
         var color = Asset.Colors.roomDefault.color
 
-        if folder.rootFolderType == .onlyofficeRoomArchived {
+        if folder.rootFolderType == .archive {
             color = Asset.Colors.roomArchive.color
         } else if let hexColor = folder.logo?.color {
             color = UIColor(hex: "#\(hexColor)")
@@ -342,7 +345,7 @@ extension ASCFolder {
         layoutType == .grid ? Constants.gridRoomIconRadius : Constants.listRoomIconRadius
     }
 
-    private func formatFolderName(folderName: String) -> String {
+    func formatFolderName(folderName: String) -> String {
         folderName.components(separatedBy: " ")
             .filter { !$0.isEmpty }
             .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }

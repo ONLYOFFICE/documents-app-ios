@@ -47,13 +47,13 @@
 "cBn-x1-r5A.text" = "Portail";
 
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
-"DK4-QO-Jde.text" = "L'Authentification \nà deux facteurs";
+"DK4-QO-Jde.text" = "L'authentification \nà deux facteurs";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
 "e1X-0t-hcs.normalTitle" = "Suivant";
 
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
-"Eb4-3w-0Jf.text" = "L'Authentification \nà deux facteurs";
+"Eb4-3w-0Jf.text" = "L'authentification \nà deux facteurs";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
 "ePY-rM-AOE.normalTitle" = "Envoyer";
@@ -65,7 +65,7 @@
 "GFx-Ry-9GC.text" = "Connectez-vous à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et collaborer sur les documents en temps réel";
 
 /* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
-"hRN-W6-nA0.title" = "La connexion via SSO (authentification unique)";
+"hRN-W6-nA0.title" = "Connexion via SSO (authentification unique)";
 
 /* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
 "K5M-Of-QAk.text" = "Copiez la clé et collez-la dans l'application Google Authenticator";

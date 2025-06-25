@@ -1,13 +1,13 @@
 /* Bundle name */
 "CFBundleName" = "Dokumenty";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Document" = "Nový dokument";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Presentation" = "Nová prezentace";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "New Spreadsheet" = "Nová tabulka";
 
 /* Privacy - Camera Usage Description */
@@ -22,9 +22,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie.";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE fillable form (.oform)" = "Vyplnitelný formulář ONLYOFFICE (.oform) ";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "ONLYOFFICE form template (.docxf)" = "Šablona formuláře ONLYOFFICE (.docxf)";
 

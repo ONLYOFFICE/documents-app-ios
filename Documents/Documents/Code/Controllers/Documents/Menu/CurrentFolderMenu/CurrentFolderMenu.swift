@@ -120,20 +120,20 @@ final class CurrentFolderMenu {
              .onedriveAll,
              .kdriveAll,
 
-             .onlyofficeCommon,
-             .onlyofficeBunch,
-             .onlyofficeTrash,
-             .onlyofficeUser,
-             .onlyofficeShare,
-             .onlyofficeProjects,
-             .onlyofficeFavorites,
-             .onlyofficeRecent:
+             .common,
+             .bunch,
+             .trash,
+             .user,
+             .share,
+             .projects,
+             .favorites,
+             .recent:
             return CurrentCloudFolderMenu().contextMenu(for: folder, in: viewController)
 
-        case .onlyofficeRoomShared:
+        case .virtualRooms, .roomTemplates:
             return CurrentRoomMenu().contextMenu(for: folder, in: viewController)
 
-        case .onlyofficeRoomArchived:
+        case .archive:
             return CurrentRoomArchivesMenu().contextMenu(for: folder, in: viewController)
 
         default:
@@ -158,20 +158,20 @@ final class CurrentFolderMenu {
              .onedriveAll,
              .kdriveAll,
 
-             .onlyofficeCommon,
-             .onlyofficeBunch,
-             .onlyofficeTrash,
-             .onlyofficeUser,
-             .onlyofficeShare,
-             .onlyofficeProjects,
-             .onlyofficeFavorites,
-             .onlyofficeRecent:
+             .common,
+             .bunch,
+             .trash,
+             .user,
+             .share,
+             .projects,
+             .favorites,
+             .recent:
             return CurrentCloudFolderMenu().actionSheet(for: folder, sender: sender, in: viewController)
 
-        case .onlyofficeRoomShared:
+        case .virtualRooms:
             return CurrentRoomMenu().actionSheet(for: folder, sender: sender, in: viewController)
 
-        case .onlyofficeRoomArchived:
+        case .archive:
             return CurrentRoomArchivesMenu().actionSheet(for: folder, sender: sender, in: viewController)
 
         default:

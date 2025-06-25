@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "(%@)" = "(%@)";
 
+/* No comment provided by engineer. */
+"%@" = "%@";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i / %2$i";
 
@@ -77,6 +80,12 @@
 "Access settings" = "访问设置";
 
 /* No comment provided by engineer. */
+"Access to template" = "访问模板";
+
+/* No comment provided by engineer. */
+"Access to template. You can select members who can create rooms based on this template." = "访问模板。您可以选择能够基于此模板创建房间的成员。";
+
+/* No comment provided by engineer. */
 "Access type" = "访问类型";
 
 /* No comment provided by engineer. */
@@ -86,10 +95,16 @@
 "Account name is not valid" = "帐户名称无效";
 
 /* No comment provided by engineer. */
+"Accountant" = "会计";
+
+/* No comment provided by engineer. */
 "Accounts" = "帐户";
 
 /* No comment provided by engineer. */
 "Action on files" = "文件操作";
+
+/* No comment provided by engineer. */
+"Add" = "添加";
 
 /* No comment provided by engineer. */
 "Add account" = "添加账户";
@@ -108,6 +123,9 @@
 
 /* Button title */
 "Add users" = "增加使用者";
+
+/* No comment provided by engineer. */
+"Add Users or Groups" = "添加用户或群组";
 
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "添加用户或团队允许他们 \n阅读、审查或编辑文件。";
@@ -132,6 +150,9 @@
 
 /* No comment provided by engineer. */
 "All" = "全部";
+
+/* No comment provided by engineer. */
+"All DocSpace and Room admins will be able to create rooms using this template." = "所有协作空间和房间管理员都可以使用此模板创建房间。";
 
 /* No comment provided by engineer. */
 "All files" = "所有文件";
@@ -351,6 +372,9 @@ Measurement unit */
 /* Payment required title */
 "common.paymentRequiredTitle" = "需要付款";
 
+/* Form filling status */
+"Complete" = "完成";
+
 /* No comment provided by engineer. */
 "Compress Images" = "压缩图像";
 
@@ -369,8 +393,7 @@ Measurement unit */
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "连接到您的 %@ 云端，在线存储文件并实时协作处理文件";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Connecting" = "正在链接中";
 
 /* No comment provided by engineer. */
@@ -378,6 +401,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "Console" = "控制台";
+
+/* No comment provided by engineer. */
+"Contact Support" = "联系支持";
 
 /* Share status */
 "Content creator" = "内容创作者";
@@ -440,6 +466,9 @@ Caption of the processing */
 "Could not delete the folder." = "无法删除该文件夹。";
 
 /* No comment provided by engineer. */
+"Could not delete the version." = "无法删除该版本。";
+
+/* No comment provided by engineer. */
 "Could not delete." = "无法删除。";
 
 /* No comment provided by engineer. */
@@ -482,6 +511,9 @@ Caption of the processing */
 "Could not write to file" = "无法写入文件";
 
 /* No comment provided by engineer. */
+"Couldn' get access" = "无法访问";
+
+/* No comment provided by engineer. */
 "Couldn't change the owner." = "无法更改所有者。";
 
 /* No comment provided by engineer. */
@@ -512,6 +544,9 @@ Caption of the processing */
 "Create a new file" = "创建新文件";
 
 /* No comment provided by engineer. */
+"Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." = "基于模板创建房间。所有设置、用户、文件夹和文件都将取自所选的房间模板。";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "创建附加链接以共享文档，并设置不同的访问权限。";
 
 /* No comment provided by engineer. */
@@ -535,18 +570,26 @@ Caption of the processing */
 /* Button title */
 "Create room" = "创建房间";
 
-/* Caption of the process
-Caption of the processing */
+/* Caption of the process */
 "Creating" = "正在创建";
 
 /* Watermark Element */
 "Current Date" = "当前日期";
 
 /* No comment provided by engineer. */
+"Current file will be saved in version history." = "当前文件将保存在版本历史记录中。";
+
+/* No comment provided by engineer. */
 "Custom" = "自訂";
 
 /* Share status */
 "Custom filter" = "自定义筛选器";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\ndisabled" = "所选文件的自定义过滤器\n已禁用";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\nenabled" = "所选文件的自定义过滤器\n已启用";
 
 /* No comment provided by engineer. */
 "Custom room" = "自定义房间";
@@ -581,6 +624,15 @@ Caption of the processing */
 /* No comment provided by engineer. */
 "Delete permanently" = "永久删除";
 
+/* Button title */
+"Delete template" = "删除模板";
+
+/* No comment provided by engineer. */
+"Delete this item?" = "删除此项？";
+
+/* No comment provided by engineer. */
+"Delete version" = "删除版本";
+
 /* No comment provided by engineer. */
 "Deleted" = "已删除";
 
@@ -600,6 +652,12 @@ Caption of the processing */
 "Diagonal" = "对角线";
 
 /* No comment provided by engineer. */
+"Director" = "主管";
+
+/* No comment provided by engineer. */
+"Disable Custom filter" = "禁用自定义过滤器";
+
+/* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "若您不想接收來自%@的通知，則請禁用";
 
 /* No comment provided by engineer. */
@@ -609,6 +667,9 @@ Caption of the processing */
 "Disconnect third party" = "断开第三方的连接";
 
 /* No comment provided by engineer. */
+"Do you really want to delete template room %@? The template cannot be restored. " = "您确实要删除模板房间 %@ 吗？该模板无法恢复。";
+
+/* No comment provided by engineer. */
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "您确定要离开此房间吗？您可以通过房间管理员的新邀请再次加入。";
 
 /* No comment provided by engineer. */
@@ -616,6 +677,9 @@ Caption of the processing */
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "协作空间管理员";
+
+/* No comment provided by engineer. */
+"Docspace user only" = "仅限协作空间用户";
 
 /* No comment provided by engineer. */
 "Document" = "文档";
@@ -639,6 +703,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "DoсSpace users only" = "仅限协作空间用户";
 
+/* Form filling status */
+"Draft" = "草稿";
+
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
 
@@ -657,6 +724,12 @@ Operation completed */
 /* Button title */
 "Edit" = "编辑";
 
+/* No comment provided by engineer. */
+"Edit comment" = "编辑评论";
+
+/* No comment provided by engineer. */
+"Edit Comment" = "编辑评论";
+
 /* Introduction Step Four - Title */
 "Edit documents locally" = "在本地编辑文档";
 
@@ -668,6 +741,9 @@ Operation completed */
 
 /* Button title */
 "Edit room" = "编辑房间";
+
+/* No comment provided by engineer. */
+"Edit template" = "编辑模板";
 
 /* Share status */
 "Editor" = "编辑器";
@@ -688,13 +764,19 @@ Operation completed */
 "Email is not valid" = "邮箱无效";
 
 /* No comment provided by engineer. */
-"Employees" = "Employees";
+"Employee" = "员工";
+
+/* No comment provided by engineer. */
+"Employees" = "员工";
 
 /* No comment provided by engineer. */
 "Empty name." = "空名称。";
 
 /* No comment provided by engineer. */
 "Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "启用自动索引，通过序列号对文件和文件夹进行索引。所有用户的默认排序方式将设置为按序号排序。";
+
+/* No comment provided by engineer. */
+"Enable Custom filter" = "启用自定义过滤器";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "若您想要接收來自%@的通知，則請啟用";
@@ -804,6 +886,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "整理归档失败";
 
+/* No comment provided by engineer. */
+"Falure to open editor" = "无法打开编辑器";
+
 /* Category title */
 "Favorites" = "我的";
 
@@ -853,7 +938,16 @@ Operation completed */
 "Filling form" = "填写表单";
 
 /* No comment provided by engineer. */
-"Filters" = "過濾器";
+"Filling status" = "填写状态";
+
+/* Start filling form Button title */
+"Filling Status" = "填写状态";
+
+/* No comment provided by engineer. */
+"Filling was stopped by" = "填写被终止";
+
+/* No comment provided by engineer. */
+"Filters" = "过滤器";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "名字不正确";
@@ -883,16 +977,13 @@ Operation completed */
 "Form owner" = "表单所有者";
 
 /* No comment provided by engineer. */
-"Form templates" = "表单模板";
-
-/* No comment provided by engineer. */
-"Forms" = "表单";
-
-/* No comment provided by engineer. */
 "From device" = "从设备";
 
 /* No comment provided by engineer. */
 "From DocSpace" = "从协作空间";
+
+/* No comment provided by engineer. */
+"From template" = "从模板";
 
 /* Share status */
 "Full Access" = "完全访问权限";
@@ -940,6 +1031,12 @@ Operation completed */
 "Guests" = "访客";
 
 /* No comment provided by engineer. */
+"Help & Feedback" = "帮助和反馈";
+
+/* No comment provided by engineer. */
+"Help Center" = "帮助中心";
+
+/* No comment provided by engineer. */
 "Here you will find a list of the recently opened files shared with you via an external link." = "您可以在此处查看近期打开的、通过外部链接与您共享的文件列表。";
 
 /* Watermark Position */
@@ -971,6 +1068,15 @@ Operation completed */
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "在线模式允许使用 %@ 的实时共同编辑功能，与您的门户成员一起处理并共享文件，创建共同的存储文件夹。";
+
+/* Form filling status */
+"In progress" = "进行中";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion" = "在此面板中，您可以监控您参与的或组织完成的表单完成情况";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" = "在此面板中，您可以监控您参与的或组织完成的表单完成情况";
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "门户地址不正确";
@@ -1020,6 +1126,9 @@ Folder order */
 
 /* No comment provided by engineer. */
 "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "通过共享链接邀请用户，无需注册即可查看文档。你也可以将此房间嵌入任何网络界面。";
+
+/* No comment provided by engineer. */
+"It will be irretrievably deleted. This action is irreversible." = "该文件将被不可恢复地删除。此操作无法撤销。";
 
 /* No comment provided by engineer. */
 "Items in Trash are automatically deleted after 30 days" = "回收站中的文件将在 30 天后自动删除";
@@ -1132,6 +1241,9 @@ If current user name is not set */
 "Member" = "成员";
 
 /* No comment provided by engineer. */
+"Members" = "成员";
+
+/* No comment provided by engineer. */
 "Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" = "最小长度：8 | 允许的字符：字母（a-z, A-Z）、数字（0-9），特殊字符 （!\"#%&'()*+,-./:;<=>?@[]^_`{|}）";
 
 /* No comment provided by engineer. */
@@ -1201,6 +1313,9 @@ If current user name is not set */
 "New form filling room" = "新表单填写房间";
 
 /* No comment provided by engineer. */
+"New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." = "邀请新访客加入房间后，系统会将他们添加到此处。您可以分享您的访客，并将其他人邀请的访客添加到您的列表中。";
+
+/* No comment provided by engineer. */
 "New Presentation" = "新建演示文稿";
 
 /* No comment provided by engineer. */
@@ -1223,6 +1338,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "Nextcloud directory" = "Nextcloud目录";
+
+/* No comment provided by engineer. */
+"No added guests yet" = "尚未添加任何访客";
 
 /* No comment provided by engineer. */
 "No archived rooms here yet" = "此处还没有存档的房间";
@@ -1262,6 +1380,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "No Search Result" = "沒有搜索結果";
+
+/* No comment provided by engineer. */
+"No templates here yet" = "此处没有模板";
 
 /* No comment provided by engineer. */
 "No users found" = "未找到用户";
@@ -1309,6 +1430,12 @@ Share status */
 /* No comment provided by engineer. */
 "Only a room administrator or a DocSpace administrator can become the room owner." = "只有房间管理员或协作空间管理员才能成为房间所有者。";
 
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins are shown here" = "此处仅显示协作空间和房间管理员";
+
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." = "只有来自选定群组的协作空间和房间管理员才能够使用此模板创建房间。";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1338,6 +1465,9 @@ Share status */
 
 /* No comment provided by engineer. */
 "Open Folder" = "開啟資料夾";
+
+/* No comment provided by engineer. */
+"Opened the form to fill out" = "打开表单填写";
 
 /* Caption of the processing */
 "Opening" = "正在打开";
@@ -1389,6 +1519,12 @@ Share status */
 
 /* Default title of sample document */
 "PDF Form Sample" = "PDF 表单示例";
+
+/* No comment provided by engineer. */
+"PDF-Documents" = "PDF 文档";
+
+/* No comment provided by engineer. */
+"PDF-Forms" = "PDF 表单";
 
 /* No comment provided by engineer. */
 "Phone" = "电话";
@@ -1451,7 +1587,7 @@ Share status */
 "Position" = "位置​​";
 
 /* Share status */
-"Pover user" = "高级用户";
+"Power user" = "高级用户";
 
 /* No comment provided by engineer. */
 "Presentation" = "演示文稿";
@@ -1467,6 +1603,9 @@ Share status */
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Privacy Policy" = "隐私策略";
+
+/* No comment provided by engineer. */
+"Process details" = "流程详细信息";
 
 /* Caption of the processing */
 "Processing" = "处理中";
@@ -1576,6 +1715,12 @@ Share status */
 /* No comment provided by engineer. */
 "Restore room?" = "恢复房间？";
 
+/* No comment provided by engineer. */
+"Restore this version?" = "恢复此版本吗？";
+
+/* No comment provided by engineer. */
+"Restored" = "恢复";
+
 /* Caption of the processing */
 "Restoring" = "正在还原";
 
@@ -1595,10 +1740,19 @@ Share status */
 "Revoking" = "正在撤销";
 
 /* No comment provided by engineer. */
+"Role description" = "角色描述";
+
+/* No comment provided by engineer. */
 "Roles" = "角色";
 
 /* No comment provided by engineer. */
+"Roles from the form:" = "表单中的角色：";
+
+/* No comment provided by engineer. */
 "Room admin" = "房间管理员";
+
+/* No comment provided by engineer. */
+"Room created" = "房间已创建";
 
 /* No comment provided by engineer. */
 "Room created!" = "房间已创建！";
@@ -1628,11 +1782,20 @@ DocSpace rooms */
 /* No comment provided by engineer. */
 "Save" = "保存";
 
+/* No comment provided by engineer. */
+"Save as template" = "另存为模板";
+
 /* Caption of the processing */
 "Saving" = "正在保存";
 
 /* No comment provided by engineer. */
 "Scale" = "缩放";
+
+/* No comment provided by engineer. */
+"Scan Document" = "扫描文档";
+
+/* No comment provided by engineer. */
+"Scanning is not supported on this device" = "此设备不支持扫描";
 
 /* No comment provided by engineer. */
 "Search" = "搜索";
@@ -1658,6 +1821,9 @@ Navigation bar button title */
 
 /* Button title */
 "Select location" = "选择位置";
+
+/* No comment provided by engineer. */
+"Select members" = "选择成员";
 
 /* No comment provided by engineer. */
 "Select Photos" = "选择照片";
@@ -1750,6 +1916,9 @@ Navigation bar button title */
 "Show notifications" = "顯示通知";
 
 /* No comment provided by engineer. */
+"Show version history" = "显示版本历史记录";
+
+/* No comment provided by engineer. */
 "Sign in" = "登录";
 
 /* No comment provided by engineer. */
@@ -1789,6 +1958,18 @@ Navigation bar button title */
 "Spreadsheets" = "电子表格";
 
 /* No comment provided by engineer. */
+"Start" = "开始";
+
+/* Start filling form Button title */
+"Start filling" = "开始填写";
+
+/* No comment provided by engineer. */
+"Stop filling" = "停止填写";
+
+/* Form filling status */
+"Stopped" = "已停止";
+
+/* No comment provided by engineer. */
 "Storage" = "存储";
 
 /* No comment provided by engineer. */
@@ -1798,10 +1979,13 @@ Navigation bar button title */
 "Storage quota set per room. You can change this value or turn off storage limit." = "每个房间设置的存储配额。您可以更改此值或关闭存储限制。";
 
 /* No comment provided by engineer. */
+"Submitted their part. The form was sent to the next role." = "已提交他们的部分。表格已发送给下一个角色。";
+
+/* No comment provided by engineer. */
 "Success" = "成功";
 
 /* No comment provided by engineer. */
-"Support" = "支持";
+"Suggest a Feature" = "功能建议";
 
 /* No comment provided by engineer. */
 "Switch" = "切换";
@@ -1811,6 +1995,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Tags" = "标签";
+
+/* No comment provided by engineer. */
+"Tags are applied to the room which will be created based on this template." = "标签将应用于基于此模板创建的房间。";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "拍照";
@@ -1823,6 +2010,18 @@ Navigation bar button title */
 
 /* Measurement unit */
 "TB" = "Tb";
+
+/* No comment provided by engineer. */
+"Template" = "模板";
+
+/* No comment provided by engineer. */
+"Template %@ saved" = "模板 %@ 已保存";
+
+/* No comment provided by engineer. */
+"Template available to everyone" = "模板可供所有人使用";
+
+/* No comment provided by engineer. */
+"Templates" = "模板";
 
 /* No comment provided by engineer. */
 "Terminate account" = "删除账户";
@@ -1838,6 +2037,12 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "账户名称的长度必须在6到50个字符之间";
+
+/* No comment provided by engineer. */
+"The added administrators will be able to create rooms using this template." = "添加的管理员将能够使用此模板创建房间。";
+
+/* No comment provided by engineer. */
+"The client and server versions are incompatible. You can only open the document in view mode" = "客户端和服务器版本不兼容。您只能在查看模式下打开文档";
 
 /* No comment provided by engineer. */
 "The deleted files go to the trash. You can either restore or delete them forever." = "删除的文件会进入垃圾桶。您可以选择恢复或永远删除这些文件。";
@@ -1868,6 +2073,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The link has expired" = "链接已过期";
+
+/* Button title */
+"The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard." = "已启用自定义过滤器的文件链接已成功复制到剪贴板。";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "链接将被永久删除，您将无法撤销此操作。";
@@ -2050,6 +2258,9 @@ Navigation bar button title */
 "Unknown item type." = "未知项目类型。";
 
 /* No comment provided by engineer. */
+"Unknown status" = "未知状态";
+
+/* No comment provided by engineer. */
 "Unlimited" = "无限制";
 
 /* No comment provided by engineer. */
@@ -2066,9 +2277,6 @@ Navigation bar button title */
 
 /* Caption of the processing */
 "Unpinning" = "取消置顶";
-
-/* Caption of the processing */
-"Unpning" = "取消置顶";
 
 /* No comment provided by engineer. */
 "Upload a ready PDF form" = "上传准备好的 PDF 表单";
@@ -2137,6 +2345,12 @@ Navigation bar button title */
 "Version" = "版本";
 
 /* No comment provided by engineer. */
+"Version %@" = "版本 ％@";
+
+/* No comment provided by engineer. */
+"Version History" = "版本历史记录";
+
+/* No comment provided by engineer. */
 "View-only" = "只读";
 
 /* Share status */
@@ -2203,7 +2417,16 @@ Navigation bar button title */
 "Years" = "年";
 
 /* No comment provided by engineer. */
+"You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" = "您即将删除一个文件版本。删除后将无法再查看或恢复它。您确定要继续吗？";
+
+/* No comment provided by engineer. */
 "You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" = "您即将删除这些房间，无法恢复。确定要继续吗？";
+
+/* No comment provided by engineer. */
+"You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" = "您即将删除此文件。该文件将在 30 天后永久删除。您确定要继续吗？";
+
+/* No comment provided by engineer. */
+"You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" = "您即将删除此文件夹。该文件夹将在 30 天后永久删除。您确定要继续吗？";
 
 /* No comment provided by engineer. */
 "You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" = "您即将删除此房间，无法恢复。确定要继续吗？";
@@ -2225,6 +2448,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the DocSpace rooms" = "您可以将以下帐户连接到协作空间房间";
+
+/* No comment provided by engineer. */
+"You can create a template from a room in the Room section" = "您可以在“房间”部分中从房间创建模板";
 
 /* No comment provided by engineer. */
 "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "不能置顶超过 10 个房间。请取消置顶的部分房间。";
@@ -2255,6 +2481,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Your session has expired" = "您的会话已过期";
+
+/* Form filling status */
+"Your turn" = "轮到您了";
 
 /* Data units */
 "Zb" = "Zb";

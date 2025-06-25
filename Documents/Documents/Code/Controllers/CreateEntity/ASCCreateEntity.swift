@@ -375,7 +375,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     func scanDocument(viewController: ASCDocumentsViewController) {
         if VNDocumentCameraViewController.isSupported {
             let scanner = VNDocumentCameraViewController()
-            scanner.delegate = self
+            ASCDocumentScannerDelegate.shared.setup(provider: provider, viewController: viewController)
+            scanner.delegate = ASCDocumentScannerDelegate.shared
             viewController.present(scanner, animated: true)
         } else {
             UIAlertController.showError(
@@ -558,13 +559,23 @@ class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, U
     }
 }
 
-// MARK: - VNDocumentCameraViewControllerDelegate
+// MARK: - VNDocumentCameraDelegate
 
-extension ASCCreateEntity: VNDocumentCameraViewControllerDelegate {
+class ASCDocumentScannerDelegate: NSObject, VNDocumentCameraViewControllerDelegate {
+    private var provider: ASCFileProviderProtocol?
+    private var viewController: ASCDocumentsViewController?
+
+    static let shared = ASCDocumentScannerDelegate()
+
+    func setup(provider: ASCFileProviderProtocol?, viewController: ASCDocumentsViewController?) {
+        self.provider = provider
+        self.viewController = viewController
+    }
+
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         controller.dismiss(animated: true) { [weak self] in
             Task { [weak self] in
-                guard let self, let viewController = self.parent else { return }
+                guard let self, let viewController = self.viewController else { return }
 
                 var images: [UIImage] = []
                 for index in 0 ..< scan.pageCount {
@@ -572,7 +583,43 @@ extension ASCCreateEntity: VNDocumentCameraViewControllerDelegate {
                 }
 
                 ASCEditorManager.shared.storyForOCR(images: images)
-                self.createFile(ASCConstants.FileExtensions.docx, viewController: viewController)
+
+                if let provider = self.provider {
+                    var hud: MBProgressHUD?
+
+                    await ASCEntityManager.shared.createFile(for: provider, ASCConstants.FileExtensions.docx, in: viewController.folder, handler: { status, entity, error in
+                        if status == .begin {
+                            hud = MBProgressHUD.showTopMost()
+                            hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
+                        } else if status == .error {
+                            hud?.hide(animated: true)
+
+                            if let error {
+                                if let topVC = ASCViewControllerManager.shared.topViewController {
+                                    UIAlertController.showError(in: topVC, message: error.localizedDescription)
+                                }
+                            }
+                        } else if status == .end {
+                            hud?.hide(animated: false)
+
+                            if let entity {
+                                viewController.add(entity: entity)
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        controller.dismiss(animated: true)
+    }
+
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        controller.dismiss(animated: true) {
+            if let topVC = ASCViewControllerManager.shared.topViewController {
+                UIAlertController.showError(in: topVC, message: error.localizedDescription)
             }
         }
     }

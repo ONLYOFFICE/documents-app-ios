@@ -86,7 +86,7 @@ class ASCConnectCloudViewController: UITableViewController {
         case .kdrive:
             return .kdriveAll
         default:
-            return .unknown
+            return .default
         }
     }
 

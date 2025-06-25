@@ -149,6 +149,7 @@ class ASCViewControllerManager {
 
     @MainActor
     private func configureRater() {
+        SwiftRater.conditionsMetMode = .any
         SwiftRater.daysUntilPrompt = 1
         SwiftRater.usesUntilPrompt = 2
         SwiftRater.significantUsesUntilPrompt = 2
@@ -464,7 +465,7 @@ class ASCViewControllerManager {
 
         let rootSharedFolder = ASCFolder()
         rootSharedFolder.id = "@share"
-        rootSharedFolder.rootFolderType = .onlyofficeShare
+        rootSharedFolder.rootFolderType = .share
 
         var file = deepLink.file
         var folder = deepLink.folder ?? rootSharedFolder
@@ -616,9 +617,9 @@ class ASCViewControllerManager {
                         delay(seconds: 0.2) {
                             if let copyFolder = ASCFolder(JSON: folder.toJSON()) {
                                 // Correction root folfer type
-                                if copyFolder.rootFolderType == .onlyofficeBunch {
-                                    copyFolder.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
-                                    copyFolder.rootFolderType = .onlyofficeProjects
+                                if copyFolder.rootFolderType == .bunch {
+                                    copyFolder.title = ASCOnlyofficeCategory.title(of: .projects)
+                                    copyFolder.rootFolderType = .projects
                                 }
 
                                 if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() {
@@ -696,6 +697,10 @@ class ASCViewControllerManager {
         let client = NetworkingClient()
         client.configure(url: portal)
         client.headers.add(name: "Request-Token", value: requestToken)
+
+        if let authorization = OnlyofficeApiClient.shared.token, OnlyofficeApiClient.shared.baseURL?.absoluteString.contains(portal) ?? false {
+            client.headers.add(.authorization(bearerToken: authorization))
+        }
 
         let onlyofficeProvider = ASCOnlyofficeProvider(apiClient: OnlyofficeApiClient(apiClient: client))
         onlyofficeProvider.open(file: file, openMode: isPdf ? .fillform : .edit, canEdit: onlyofficeProvider.allowEdit(entity: file))

@@ -17,7 +17,7 @@ class ASCFileSecurity: Mappable {
     var edit: Bool = false
     var delete: Bool = false
     var customFilter: Bool = false
-    var rename: Bool = false
+    var rename: Bool = true
     var readHistory: Bool = false
     var lock: Bool = false
     var editHistory: Bool = false
@@ -30,6 +30,9 @@ class ASCFileSecurity: Mappable {
     var createRoomFrom: Bool = false
     var copyLink: Bool = false
     var embed: Bool = false
+    var startFilling: Bool = false
+    var fillingStatus: Bool = false
+    var stopFilling: Bool = false
 
     init() {}
 
@@ -56,6 +59,9 @@ class ASCFileSecurity: Mappable {
         createRoomFrom <- map["CreateRoomFrom"]
         copyLink <- map["CopyLink"]
         embed <- map["Embed"]
+        startFilling <- map["StartFilling"]
+        fillingStatus <- map["FillingStatus"]
+        stopFilling <- map["StopFilling"]
     }
 }
 

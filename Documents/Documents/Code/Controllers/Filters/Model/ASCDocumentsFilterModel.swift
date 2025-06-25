@@ -95,8 +95,8 @@ enum ApiFilterType {
     case documents
     case presentations
     case spreadsheets
-    case formTemplates
-    case forms
+    case pdfDocuments
+    case pdfForms
     case images
     case me
     case user
@@ -135,10 +135,10 @@ enum ApiFilterType {
             return "presentations"
         case .spreadsheets:
             return "spreadsheets"
-        case .formTemplates:
-            return "formTemplates"
-        case .forms:
-            return "forms"
+        case .pdfDocuments:
+            return "pdfDocuments"
+        case .pdfForms:
+            return "pdfForms"
         case .images:
             return "images"
         case .me:
@@ -198,10 +198,10 @@ enum ApiFilterType {
             return "PresentationsOnly"
         case .spreadsheets:
             return "SpreadsheetsOnly"
-        case .formTemplates:
-            return "18"
-        case .forms:
-            return "19"
+        case .pdfDocuments:
+            return "22"
+        case .pdfForms:
+            return "23"
         case .images:
             return "ImagesOnly"
         case .me, .user:
@@ -261,10 +261,10 @@ extension ApiFilterType {
             self = .presentations
         case "spreadsheets":
             self = .spreadsheets
-        case "formTemplates":
-            self = .formTemplates
-        case "forms":
-            self = .forms
+        case "pdfDocuments":
+            self = .pdfDocuments
+        case "pdfForms":
+            self = .pdfForms
         case "images":
             self = .images
         case "me":
@@ -318,8 +318,9 @@ extension ApiFilterType: Equatable {
              (.documents, .documents),
              (.presentations, .presentations),
              (.spreadsheets, .spreadsheets),
-             (.formTemplates, .formTemplates),
-             (.forms, .forms), (.images, .images),
+             (.pdfDocuments, .pdfDocuments),
+             (.pdfForms, .pdfForms),
+             (.images, .images),
              (.me, .me),
              (.user, .user),
              (.group, .group),
@@ -378,8 +379,8 @@ enum FiltersName: String, CaseIterable {
     case documents
     case presentations
     case spreadsheets
-    case formTemplates
-    case forms
+    case pdfDocuments
+    case pdfForms
     case images
     case media
     case archives
@@ -412,10 +413,10 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Presentations", comment: "")
         case .spreadsheets:
             return NSLocalizedString("Spreadsheets", comment: "")
-        case .formTemplates:
-            return NSLocalizedString("Form templates", comment: "")
-        case .forms:
-            return NSLocalizedString("Forms", comment: "")
+        case .pdfDocuments:
+            return NSLocalizedString("PDF-Documents", comment: "")
+        case .pdfForms:
+            return NSLocalizedString("PDF-Forms", comment: "")
         case .images:
             return NSLocalizedString("Images", comment: "")
         case .media:

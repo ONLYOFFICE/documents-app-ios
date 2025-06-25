@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,9 +184,34 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="/%d Groups:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@groups@</source>
+        <target>%#@groups@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d Groups:dict/groups:dict/few:dict/:string" xml:space="preserve">
+        <source>%d Groups</source>
+        <target>%d группы</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d Groups:dict/groups:dict/many:dict/:string" xml:space="preserve">
+        <source>%d Groups</source>
+        <target>%d групп</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d Groups:dict/groups:dict/one:dict/:string" xml:space="preserve">
+        <source>One Group</source>
+        <target>Одна группа</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d Groups:dict/groups:dict/other:dict/:string" xml:space="preserve">
+        <source>%d Groups</source>
+        <target>%d групп</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
@@ -194,22 +219,22 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/few:dict/:string" xml:space="preserve">
         <source>%d days</source>
-        <target>%d days</target>
+        <target>%d дня</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/many:dict/:string" xml:space="preserve">
         <source>%d days</source>
-        <target>%d days</target>
+        <target>%d дней</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>%d day</source>
-        <target>%d day</target>
+        <target>Один день</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>%d days</source>
-        <target>%d days</target>
+        <target>%d дней</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -219,22 +244,22 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/few:dict/:string" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d hours</target>
+        <target>%d часа</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/many:dict/:string" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d hours</target>
+        <target>%d часов</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>%d hour</source>
-        <target>%d hour</target>
+        <target>Один час</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d hours</target>
+        <target>%d часов</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -244,22 +269,22 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/few:dict/:string" xml:space="preserve">
         <source>%d months</source>
-        <target>%d months</target>
+        <target>%d месяца</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/many:dict/:string" xml:space="preserve">
         <source>%d months</source>
-        <target>%d months</target>
+        <target>%d месяцев</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/one:dict/:string" xml:space="preserve">
         <source>%d month</source>
-        <target>%d month</target>
+        <target>Один месяц</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/other:dict/:string" xml:space="preserve">
         <source>%d months</source>
-        <target>%d months</target>
+        <target>%d месяцев</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -294,22 +319,22 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/few:dict/:string" xml:space="preserve">
         <source>%d years</source>
-        <target>%d years</target>
+        <target>%d года</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/many:dict/:string" xml:space="preserve">
         <source>%d years</source>
-        <target>%d years</target>
+        <target>%d лет</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/one:dict/:string" xml:space="preserve">
         <source>%d year</source>
-        <target>%d year</target>
+        <target>Один год</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/other:dict/:string" xml:space="preserve">
         <source>%d years</source>
-        <target>%d years</target>
+        <target>%d лет</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -517,61 +542,36 @@ start using your office</source>
         <target>Удалить %lu папок</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@days@</source>
-        <target>%#@days@</target>
-        <note/>
+      <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@users@</source>
+        <target>%#@users@</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/few:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
-        <note/>
+      <trans-unit id="/Me and %d Users:dict/users:dict/few:dict/:string" xml:space="preserve">
+        <source>Me and %d Users</source>
+        <target>Я и %d пользователя</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/many:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
-        <note/>
+      <trans-unit id="/Me and %d Users:dict/users:dict/many:dict/:string" xml:space="preserve">
+        <source>Me and %d Users</source>
+        <target>Я и %d пользователей</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d day</source>
-        <target>Expires after %d day</target>
-        <note/>
+      <trans-unit id="/Me and %d Users:dict/users:dict/one:dict/:string" xml:space="preserve">
+        <source>Me and One Users</source>
+        <target>Я и один пользователь</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@hours@</source>
-        <target>%#@hours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/few:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/many:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d hour</source>
-        <target>Expires after %d hour</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
-        <note/>
+      <trans-unit id="/Me and %d Users:dict/users:dict/other:dict/:string" xml:space="preserve">
+        <source>Me and %d Users</source>
+        <target>Я и %d пользователей</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -823,7 +823,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -970,7 +970,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -1051,7 +1051,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -1078,7 +1078,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -1115,7 +1115,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1172,7 +1172,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1244,7 +1244,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1326,7 +1326,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1357,35 +1357,44 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
         <target>Новый документ</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
         <target>Новая презентация</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>Новая таблица</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>Заполняемая форма ONLYOFFICE (.oform)</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
         <target>Шаблон формы ONLYOFFICE (.docxf)</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%d Groups" translate="no" xml:space="preserve">
+        <source>%d Groups</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
+      </trans-unit>
       <trans-unit id="%d days" translate="no" xml:space="preserve">
         <source>%d days</source>
         <note>Days left (Key in .stringsdict)</note>
@@ -1543,6 +1552,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Настройки доступа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Access to template" xml:space="preserve">
+        <source>Access to template</source>
+        <target>Доступ к шаблону</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access to template. You can select members who can create rooms based on this template." xml:space="preserve">
+        <source>Access to template. You can select members who can create rooms based on this template.</source>
+        <target>Доступ к шаблону. Вы можете выбрать участников, которые могут создавать комнаты на основе этого шаблона.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Access type" xml:space="preserve">
         <source>Access type</source>
         <target>Тип доступа</target>
@@ -1558,6 +1577,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Имя учетной записи некорректное</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Accountant" xml:space="preserve">
+        <source>Accountant</source>
+        <target>Бухгалтер</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
         <source>Accounts</source>
         <target>Учетные записи</target>
@@ -1566,6 +1590,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Action on files" xml:space="preserve">
         <source>Action on files</source>
         <target>Действия с файлами</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add" xml:space="preserve">
+        <source>Add</source>
+        <target>Добавить</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add Users or Groups" xml:space="preserve">
+        <source>Add Users or Groups</source>
+        <target>Добавить пользователей или группы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
@@ -1638,6 +1672,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="All" xml:space="preserve">
         <source>All</source>
         <target>Все</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="All DocSpace and Room admins will be able to create rooms using this template." xml:space="preserve">
+        <source>All DocSpace and Room admins will be able to create rooms using this template.</source>
+        <target>Все администраторы DocSpace и комнат смогут создавать комнаты, используя этот шаблон.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All Files" xml:space="preserve">
@@ -1956,6 +1995,11 @@ Category title</note>
         <target>Общие документы</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Complete" xml:space="preserve">
+        <source>Complete</source>
+        <target>Завершить</target>
+        <note>Form filling status</note>
+      </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
         <target>Сжатие изображений</target>
@@ -1993,8 +2037,7 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Connecting" xml:space="preserve">
         <source>Connecting</source>
         <target>Подключение</target>
-        <note>Caption of the process
-Caption of the processing</note>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
@@ -2004,6 +2047,11 @@ Caption of the processing</note>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
         <target>Консоль</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Contact Support" xml:space="preserve">
+        <source>Contact Support</source>
+        <target>Связаться со Службой поддержки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Content creator" xml:space="preserve">
@@ -2111,6 +2159,11 @@ Caption of the processing</note>
         <target>Невозможно удалить папку.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not delete the version." xml:space="preserve">
+        <source>Could not delete the version.</source>
+        <target>Не удалось удалить версию.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not delete." xml:space="preserve">
         <source>Could not delete.</source>
         <target>Невозможно удалить.</target>
@@ -2178,6 +2231,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Couldn' get access" xml:space="preserve">
         <source>Couldn' get access</source>
+        <target>Не удалось получить доступ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
@@ -2230,6 +2284,11 @@ Caption of the processing</note>
         <target>Создать новый файл</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." xml:space="preserve">
+        <source>Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</source>
+        <target>Создать комнату на основе шаблона. Все настройки, пользователи, папки и файлы будут взяты из выбранного шаблона комнаты.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
         <source>Create additional links to share the document with different access rights.</source>
         <target>Создайте дополнительные ссылки, чтобы поделиться документом с разными правами доступа.</target>
@@ -2275,13 +2334,17 @@ organize your files.</source>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
         <target>Создание</target>
-        <note>Caption of the process
-Caption of the processing</note>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Current Date" xml:space="preserve">
         <source>Current Date</source>
         <target>Текущая дата</target>
         <note>Watermark Element</note>
+      </trans-unit>
+      <trans-unit id="Current file will be saved in version history." xml:space="preserve">
+        <source>Current file will be saved in version history.</source>
+        <target>Текущий файл будет сохранен в истории версий.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -2292,6 +2355,24 @@ Caption of the processing</note>
         <source>Custom filter</source>
         <target>Пользовательский фильтр</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Custom filter for&#10;the selected file&#10;disabled" xml:space="preserve">
+        <source>Custom filter for
+the selected file
+disabled</source>
+        <target>Пользовательский фильтр для
+выбранного файла
+отключен</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Custom filter for&#10;the selected file&#10;enabled" xml:space="preserve">
+        <source>Custom filter for
+the selected file
+enabled</source>
+        <target>Пользовательский фильтр для
+выбранного файла
+включен</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
         <source>Custom room</source>
@@ -2360,6 +2441,21 @@ Caption of the processing</note>
         <target>Удалить навсегда</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Delete template" xml:space="preserve">
+        <source>Delete template</source>
+        <target>Удалить шаблон</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Delete this item?" xml:space="preserve">
+        <source>Delete this item?</source>
+        <target>Удалить этот элемент?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete version" xml:space="preserve">
+        <source>Delete version</source>
+        <target>Удалить версию</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
         <source>Deleted</source>
         <target>Удалено</target>
@@ -2390,6 +2486,16 @@ Caption of the processing</note>
         <target>По диагонали</target>
         <note>Watermark Position</note>
       </trans-unit>
+      <trans-unit id="Director" xml:space="preserve">
+        <source>Director</source>
+        <target>Директор</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Disable Custom filter" xml:space="preserve">
+        <source>Disable Custom filter</source>
+        <target>Отключить пользовательский фильтр</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
         <target>Отключите, если вы не хотите получать уведомления от %@</target>
@@ -2405,6 +2511,11 @@ Caption of the processing</note>
         <target>Отсоединить сторонние сервисы</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Do you really want to delete template room %@? The template cannot be restored. " xml:space="preserve">
+        <source>Do you really want to delete template room %@? The template cannot be restored. </source>
+        <target>Вы действительно хотите удалить шаблон комнаты %@? Его нельзя будет восстановить.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
         <source>Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.</source>
         <target>Вы действительно хотите покинуть эту комнату? Вы сможете присоединиться к ней снова по новому приглашению администратора комнаты.</target>
@@ -2418,6 +2529,11 @@ Caption of the processing</note>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
         <target>Администратор DocSpace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Docspace user only" xml:space="preserve">
+        <source>Docspace user only</source>
+        <target>Только для пользователей Docspace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2456,6 +2572,11 @@ Operation completed</note>
         <target>Только для пользователей DoсSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Draft" xml:space="preserve">
+        <source>Draft</source>
+        <target>Черновик</target>
+        <note>Form filling status</note>
+      </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
         <target>Dropbox</target>
@@ -2486,6 +2607,16 @@ Operation completed</note>
         <target>Редактировать</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Edit Comment" xml:space="preserve">
+        <source>Edit Comment</source>
+        <target>Редактировать комментарий</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Edit comment" xml:space="preserve">
+        <source>Edit comment</source>
+        <target>Редактировать комментарий</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
         <source>Edit documents locally</source>
         <target>Редактируйте документ локально</target>
@@ -2505,6 +2636,11 @@ Operation completed</note>
         <source>Edit room</source>
         <target>Редактировать комнату</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Edit template" xml:space="preserve">
+        <source>Edit template</source>
+        <target>Изменить шаблон</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
         <source>Editor</source>
@@ -2536,6 +2672,11 @@ Operation completed</note>
         <target>Некорректный e-mail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Employee" xml:space="preserve">
+        <source>Employee</source>
+        <target>Сотрудник</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
         <source>Employees</source>
         <target>Сотрудники</target>
@@ -2544,6 +2685,11 @@ Operation completed</note>
       <trans-unit id="Empty name." xml:space="preserve">
         <source>Empty name.</source>
         <target>Пустое имя.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enable Custom filter" xml:space="preserve">
+        <source>Enable Custom filter</source>
+        <target>Включить пользовательский фильтр</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
@@ -2712,6 +2858,11 @@ Operation completed</note>
         <target>Не удалось подготовить архив</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Falure to open editor" xml:space="preserve">
+        <source>Falure to open editor</source>
+        <target>Не удалось открыть редактор</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
         <source>Favorites</source>
         <target>Избранное</target>
@@ -2782,9 +2933,24 @@ Operation completed</note>
         <target>Заполните форму самостоятельно</target>
         <note>Title for opening form filling</note>
       </trans-unit>
+      <trans-unit id="Filling Status" xml:space="preserve">
+        <source>Filling Status</source>
+        <target>Статус заполнения</target>
+        <note>Start filling form Button title</note>
+      </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
         <target>Заполнение форм</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filling status" xml:space="preserve">
+        <source>Filling status</source>
+        <target>Статус заполнения</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filling was stopped by" xml:space="preserve">
+        <source>Filling was stopped by</source>
+        <target>Заполнение было остановлено:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2837,16 +3003,6 @@ Operation completed</note>
         <target>Владелец формы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form templates" xml:space="preserve">
-        <source>Form templates</source>
-        <target>Шаблоны форм</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Forms" xml:space="preserve">
-        <source>Forms</source>
-        <target>Формы</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
         <target>Из DocSpace</target>
@@ -2855,6 +3011,15 @@ Operation completed</note>
       <trans-unit id="From device" xml:space="preserve">
         <source>From device</source>
         <target>С устройства</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From template" xml:space="preserve">
+        <source>From template</source>
+        <target>Из шаблона</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From templates" xml:space="preserve">
+        <source>From templates</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2932,6 +3097,16 @@ Operation completed</note>
         <target>Гости</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Help &amp; Feedback" xml:space="preserve">
+        <source>Help &amp; Feedback</source>
+        <target>Помощь и обратная связь</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Help Center" xml:space="preserve">
+        <source>Help Center</source>
+        <target>Справочный центр</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
         <target>Здесь вы найдете список недавно открытых файлов, которыми с вами поделились с помощью внешней ссылки.</target>
@@ -2976,6 +3151,25 @@ Operation completed</note>
         <source>In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.</source>
         <target>В онлайн-режиме используйте функции совместного редактирования в режиме реального времени %@, чтобы работать над документами вместе с участниками портала, делиться документами и создавать общие папки для хранения.</target>
         <note>Introduction Step Five - Description</note>
+      </trans-unit>
+      <trans-unit id="In progress" xml:space="preserve">
+        <source>In progress</source>
+        <target>В процессе</target>
+        <note>Form filling status</note>
+      </trans-unit>
+      <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
+        <source>In this panel you can monitor the completion of
+the form in which you participate or in which you
+are the organizer of completion</source>
+        <target>На этой панели вы можете следить за заполнением
+формы, участником или организатором заполнения которой
+вы являетесь</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
+        <source>In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion</source>
+        <target>На этой панели вы можете следить за заполнением формы, участником или организатором заполнения которой вы являетесь</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
         <source>Incorrect portal address</source>
@@ -3056,6 +3250,11 @@ Folder order</note>
       <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
         <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
         <target>Пригласить пользователей по общим ссылкам для просмотра документов без регистрации. Вы также можете встроить эту комнату в любой веб-интерфейс.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="It will be irretrievably deleted. This action is irreversible." xml:space="preserve">
+        <source>It will be irretrievably deleted. This action is irreversible.</source>
+        <target>Файл будет безвозвратно удален. Это действие нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
@@ -3231,6 +3430,10 @@ Caption of the process</note>
         <note>Author or member of a document
 If current user name is not set</note>
       </trans-unit>
+      <trans-unit id="Me and %d Users" translate="no" xml:space="preserve">
+        <source>Me and %d Users</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
+      </trans-unit>
       <trans-unit id="Measurement unit" xml:space="preserve">
         <source>Measurement unit</source>
         <target>Единица измерения</target>
@@ -3244,6 +3447,11 @@ If current user name is not set</note>
       <trans-unit id="Member" xml:space="preserve">
         <source>Member</source>
         <target>Участник</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Members" xml:space="preserve">
+        <source>Members</source>
+        <target>Участники</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
@@ -3368,6 +3576,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
         <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <target>Новые Гости будут добавлены сюда, как только вы пригласите их в комнату. Вы можете поделиться своими гостями и добавить гостей, приглашенных другими, в свой список.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
@@ -3412,6 +3621,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No added guests yet" xml:space="preserve">
         <source>No added guests yet</source>
+        <target>Пока нет добавленных гостей</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
@@ -3467,6 +3677,11 @@ If current user name is not set</note>
       <trans-unit id="No search result" xml:space="preserve">
         <source>No search result</source>
         <target>Не найдено</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No templates here yet" xml:space="preserve">
+        <source>No templates here yet</source>
+        <target>Здесь пока нет шаблонов </target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
@@ -3560,6 +3775,16 @@ Share status</note>
         <target>OneDrive для бизнеса</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Only DocSpace and Room admins are shown here" xml:space="preserve">
+        <source>Only DocSpace and Room admins are shown here</source>
+        <target>Здесь отображаются только администраторы DocSpace и администраторы комнат</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." xml:space="preserve">
+        <source>Only DocSpace and Room admins from the selected groups will be able to create rooms using this template.</source>
+        <target>Только администраторы DocSpace и администраторы комнат из выбранных групп смогут создавать комнаты с помощью этого шаблона.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
         <source>Only a room administrator or a DocSpace administrator can become the room owner.</source>
         <target>Владельцем комнаты может стать только администратор комнаты или администратор DocSpace.</target>
@@ -3588,6 +3813,11 @@ Share status</note>
       <trans-unit id="Open file" xml:space="preserve">
         <source>Open file</source>
         <target>Открыть файл</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Opened the form to fill out" xml:space="preserve">
+        <source>Opened the form to fill out</source>
+        <target>Открыл форму для заполнения</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3629,6 +3859,16 @@ Share status</note>
         <source>PDF Form Sample</source>
         <target>Образец PDF-формы</target>
         <note>Default title of sample document</note>
+      </trans-unit>
+      <trans-unit id="PDF-Documents" xml:space="preserve">
+        <source>PDF-Documents</source>
+        <target>PDF-документы</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="PDF-Forms" xml:space="preserve">
+        <source>PDF-Forms</source>
+        <target>PDF-формы</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
@@ -3779,7 +4019,7 @@ Share status</note>
         <target>Положение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Pover user" xml:space="preserve">
+      <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
         <target>Опытный пользователь</target>
         <note>Share status</note>
@@ -3808,6 +4048,11 @@ Share status</note>
         <source>Privacy Policy</source>
         <target>Политикой конфиденциальности</target>
         <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
+      </trans-unit>
+      <trans-unit id="Process details" xml:space="preserve">
+        <source>Process details</source>
+        <target>Подробные сведения о процессе</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
         <source>Processing</source>
@@ -3989,6 +4234,16 @@ Share status</note>
         <target>Восстановить комнату?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Restore this version?" xml:space="preserve">
+        <source>Restore this version?</source>
+        <target>Восстановить эту версию?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Restored" xml:space="preserve">
+        <source>Restored</source>
+        <target>Восстановлено</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
         <source>Restoring</source>
         <target>Восстановление</target>
@@ -4019,9 +4274,19 @@ Share status</note>
         <target>Отмена</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Role description" xml:space="preserve">
+        <source>Role description</source>
+        <target>Описание роли</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
         <source>Roles</source>
         <target>Роли</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Roles from the form:" xml:space="preserve">
+        <source>Roles from the form:</source>
+        <target>Роли из формы:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room Name" xml:space="preserve">
@@ -4032,6 +4297,11 @@ Share status</note>
       <trans-unit id="Room admin" xml:space="preserve">
         <source>Room admin</source>
         <target>Администратор группы</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Room created" xml:space="preserve">
+        <source>Room created</source>
+        <target>Комната создана</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
@@ -4080,6 +4350,11 @@ DocSpace rooms</note>
         <target>Сохранить</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Save as template" xml:space="preserve">
+        <source>Save as template</source>
+        <target>Сохранить как шаблон</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>Сохранение</target>
@@ -4088,6 +4363,16 @@ DocSpace rooms</note>
       <trans-unit id="Scale" xml:space="preserve">
         <source>Scale</source>
         <target>Масштаб</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scan Document" xml:space="preserve">
+        <source>Scan Document</source>
+        <target>Сканировать документ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scanning is not supported on this device" xml:space="preserve">
+        <source>Scanning is not supported on this device</source>
+        <target>Сканирование не поддерживается на этом устройстве.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
@@ -4135,6 +4420,11 @@ Navigation bar button title</note>
         <source>Select location</source>
         <target>Выберите местоположение</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Select members" xml:space="preserve">
+        <source>Select members</source>
+        <target>Выбрать участников</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
@@ -4281,6 +4571,11 @@ Navigation bar button title</note>
         <target>Показать уведомления</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Show version history" xml:space="preserve">
+        <source>Show version history</source>
+        <target>Показать историю версий</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
         <source>Sign in</source>
         <target>Вход</target>
@@ -4341,6 +4636,26 @@ Navigation bar button title</note>
         <target>Таблицы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Start" xml:space="preserve">
+        <source>Start</source>
+        <target>Начать</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Start filling" xml:space="preserve">
+        <source>Start filling</source>
+        <target>Начать заполнение</target>
+        <note>Start filling form Button title</note>
+      </trans-unit>
+      <trans-unit id="Stop filling" xml:space="preserve">
+        <source>Stop filling</source>
+        <target>Начать заполнение</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Stopped" xml:space="preserve">
+        <source>Stopped</source>
+        <target>Остановлено</target>
+        <note>Form filling status</note>
+      </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
         <target>Хранилище</target>
@@ -4356,14 +4671,19 @@ Navigation bar button title</note>
         <target>Квота хранилища установлена ​​на комнату. Вы можете изменить это значение или отключить ограничение хранилища.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Submitted their part. The form was sent to the next role." xml:space="preserve">
+        <source>Submitted their part. The form was sent to the next role.</source>
+        <target>Отправил свою часть. Форма была отправлена ​​на следующую роль.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Success" xml:space="preserve">
         <source>Success</source>
         <target>Успешно</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Support" xml:space="preserve">
-        <source>Support</source>
-        <target>Поддержка</target>
+      <trans-unit id="Suggest a Feature" xml:space="preserve">
+        <source>Suggest a Feature</source>
+        <target>Предложить функциональную возможность</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -4386,6 +4706,11 @@ Navigation bar button title</note>
         <target>Теги</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Tags are applied to the room which will be created based on this template." xml:space="preserve">
+        <source>Tags are applied to the room which will be created based on this template.</source>
+        <target>Теги применяются к комнате, которая будет создана на основе этого шаблона.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
         <source>Take Photo</source>
         <target>Сделать снимок</target>
@@ -4400,6 +4725,26 @@ Navigation bar button title</note>
         <source>Tb</source>
         <target>Тб</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Template" xml:space="preserve">
+        <source>Template</source>
+        <target>Шаблон</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Template %@ saved" xml:space="preserve">
+        <source>Template %@ saved</source>
+        <target>Шаблон %@ сохранен</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Template available to everyone" xml:space="preserve">
+        <source>Template available to everyone</source>
+        <target>Шаблон доступен каждому</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Templates" xml:space="preserve">
+        <source>Templates</source>
+        <target>Шаблоны</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terminate account" xml:space="preserve">
         <source>Terminate account</source>
@@ -4429,6 +4774,16 @@ Navigation bar button title</note>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
         <target>Имя учетной записи должно быть от 6 до 50 символов</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The added administrators will be able to create rooms using this template." xml:space="preserve">
+        <source>The added administrators will be able to create rooms using this template.</source>
+        <target>Добавленные администраторы смогут создавать комнаты, используя этот шаблон.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The client and server versions are incompatible. You can only open the document in view mode" xml:space="preserve">
+        <source>The client and server versions are incompatible. You can only open the document in view mode</source>
+        <target>Версии клиента и сервера несовместимы. Вы можете открыть документ только в режиме просмотра</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
@@ -4486,6 +4841,21 @@ to the clipboard</source>
         <source>The link has expired</source>
         <target>Срок действия ссылки истек</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The link to the file&#10;with the enabled&#10;Custom filter is&#10;successfully&#10;copied to the&#10;clipboard." xml:space="preserve">
+        <source>The link to the file
+with the enabled
+Custom filter is
+successfully
+copied to the
+clipboard.</source>
+        <target>Ссылка на файл
+с включенным
+Пользовательским фильтром
+успешно
+скопирована в
+буфер обмена.</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
         <source>The link will be deleted permanently. You will not be able to undo this action.</source>
@@ -4788,6 +5158,11 @@ to the clipboard</source>
         <target>Неизвестный тип файла.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Unknown status" xml:space="preserve">
+        <source>Unknown status</source>
+        <target>Неизвестный статус</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
         <source>Unlimited</source>
         <target>Неограниченно</target>
@@ -4814,11 +5189,6 @@ to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unpinning" xml:space="preserve">
-        <source>Unpinning</source>
-        <target>Открепление</target>
-        <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Unpning" xml:space="preserve">
         <source>Unpinning</source>
         <target>Открепление</target>
         <note>Caption of the processing</note>
@@ -4931,6 +5301,16 @@ to the clipboard</source>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Версия</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Version %@" xml:space="preserve">
+        <source>Version %@</source>
+        <target>Версия %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Version History" xml:space="preserve">
+        <source>Version History</source>
+        <target>История версий</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
@@ -5049,6 +5429,11 @@ then accessed from any other device.</source>
         <target>Лет</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?</source>
+        <target>Вы собираетесь удалить версию файла. Ее будет невозможно увидеть или восстановить. Продолжить?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?</source>
         <target>Вы собираетесь удалить эти комнаты. Вы не сможете их восстановить. Хотите продолжить?</target>
@@ -5056,6 +5441,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target>Вы собираетесь удалить этот файл. Файл будет окончательно удален через 30 дней. Продолжить?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target>Вы собираетесь удалить эту папку. Папка будет окончательно удалена через 30 дней. Продолжить?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
@@ -5091,6 +5482,16 @@ then accessed from any other device.</source>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
         <target>Вы можете подключить следующие аккаунты к комнатам DocSpace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
+        <source>You can create a template from
+a room in the Room section</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">
+        <source>You can create a template from a room in the Room section</source>
+        <target>Вы можете создать шаблон из комнаты в разделе «Комната».</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
@@ -5142,6 +5543,11 @@ then accessed from any other device.</source>
         <source>Your session has expired</source>
         <target>Время сессии истекло</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your turn" xml:space="preserve">
+        <source>Your turn</source>
+        <target>Ваша очередь</target>
+        <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Zb" xml:space="preserve">
         <source>Zb</source>
@@ -5298,7 +5704,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

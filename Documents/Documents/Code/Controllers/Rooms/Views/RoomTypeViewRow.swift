@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RoomTypeViewRow: View {
-    let roomTypeModel: RoomTypeModel
+    let roomTypeModel: RoomTypeRowModel
 
     var subtitleFont: Font {
         if #available(iOS 14.0, *) {
@@ -39,9 +39,13 @@ struct RoomTypeViewRow: View {
                 ChevronRightView()
             }
         }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            roomTypeModel.onTap()
+        }
     }
 
-    private func roomImageView(for roomTypeModel: RoomTypeModel) -> some View {
+    private func roomImageView(for roomTypeModel: RoomTypeRowModel) -> some View {
         Image(uiImage: roomTypeModel.icon)
             .foregroundColor(.accentColor)
             .frame(width: 36, height: 36)
@@ -52,6 +56,6 @@ struct RoomTypeViewRow: View {
 
 #Preview {
     RoomTypeViewRow(
-        roomTypeModel: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)
+        roomTypeModel: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true).mapToRowModel {}
     )
 }

@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d Groups</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@groups@</string>
+		<key>groups</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>One Group</string>
+			<key>other</key>
+			<string>%d Groups</string>
+		</dict>
+	</dict>
 	<key>%d days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -53,7 +69,7 @@
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@իրեր@</string>
+		<string>%#@items@</string>
 		<key>items</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -85,7 +101,7 @@
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@ֆայլեր@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -101,7 +117,7 @@
 	<key>%lu Folder and %lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_թղթապանակ@</string>
+		<string>%1$#@lu_folders@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -120,17 +136,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu Թղթապանակ %2$#@lu_Ֆայլեր@</string>
+			<string>%lu Թղթապանակ %2$#@lu_files@</string>
 			<key>other</key>
-			<string>%lu Թղթապանակներ %2$#@lu_ֆայլեր@</string>
+			<string>%lu Թղթապանակներ %2$#@lu_files@</string>
 			<key>zero</key>
-			<string>%2$#@lu_Ֆայլեր@</string>
+			<string>%2$#@lu_files@</string>
 		</dict>
 	</dict>
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@թղթապանակներ@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -146,7 +162,7 @@
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@ֆայլեր@</string>
+		<string>%#@files@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -162,7 +178,7 @@
 	<key>Delete %lu Folder</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@թղթապանակներ@</string>
+		<string>%#@folders@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -178,7 +194,7 @@
 	<key>Delete %lu Folder and %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_թղթապանակ@</string>
+		<string>%1$#@lu_folders@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -199,43 +215,27 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Ջնջել %lu Թղթապանակի %2$#@lu_ֆայլերը@</string>
+			<string>Ջնջել %lu Թղթապանակի %2$#@lu_files@</string>
 			<key>other</key>
-			<string>Ջնջել %lu Թղթապանակների %2$#@lu_ֆայլերը@</string>
+			<string>Ջնջել %lu Թղթապանակների %2$#@lu_files@</string>
 			<key>zero</key>
-			<string>Ջնջել %2$#@lu_ֆայլերը@</string>
+			<string>Ջնջել %2$#@lu_files@</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
+	<key>Me and %d Users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
+		<string>%#@users@</string>
+		<key>users</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Expires after %d day</string>
+			<string>Me and One Users</string>
 			<key>other</key>
-			<string>Expires after %d days</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>Expires after %d hour</string>
-			<key>other</key>
-			<string>Expires after %d hours</string>
+			<string>Me and %d Users</string>
 		</dict>
 	</dict>
 </dict>

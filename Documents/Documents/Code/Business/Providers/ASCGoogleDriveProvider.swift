@@ -30,7 +30,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
     var rootFolder: ASCFolder {
         return {
-            $0.title = NSLocalizedString(NSLocalizedString("My Drive", comment: ""), comment: "")
+            $0.title = NSLocalizedString("My Drive", comment: "")
             $0.rootFolderType = .googledriveAll
             $0.id = "root"
             return $0

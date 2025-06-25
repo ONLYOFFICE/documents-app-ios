@@ -277,12 +277,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private(set) lazy var categoryIsRecent: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .recent
     }()
 
     private lazy var categoryIsFavorite: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeFavorites
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .favorites
     }()
 
     // MARK: - Lifecycle Methods
@@ -458,8 +458,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         navigationItem.searchController = tableData.isEmpty ? nil : searchController
-        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty
+        navigationController?.navigationBar.prefersLargeTitles = !tableData.isEmpty && ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = !tableData.isEmpty ? .automatic : .never
+
+        updateTitleView(collectionView)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cleanupTitleView()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -536,6 +543,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             onlyofficeProvider.folder = folder
         }
 
+        provider?.cancel()
+        provider?.reset()
+
+        UIView.performWithoutAnimation { [weak self] in
+            self?.collectionView.reloadData()
+        }
+
         loadFirstPage()
     }
 
@@ -596,7 +610,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func add(entity: Any, open: Bool = true) {
         guard let provider else { return }
 
-        if var file = entity as? ASCFile {
+        if let file = entity as? ASCFile {
             file.parent = file.parent ?? folder
 
             provider.add(item: file, at: 0)
@@ -726,16 +740,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         let isRoot = folder.parentId == nil || folder.parentId == "0"
         let isRoomList = folder.isRoomListFolder
         let isDevice = (provider?.id == ASCFileManager.localProvider.id)
-        let isShared = folder.rootFolderType == .onlyofficeShare
+        let isShared = folder.rootFolderType == .share
         let isTrash = self.isTrash(folder)
         let isRecent = categoryIsRecent
-        let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
+        let isProjectRoot = (folder.rootFolderType == .bunch || folder.rootFolderType == .projects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
-        let isPersonalCategory = folder.rootFolderType == .onlyofficeUser
+        let isPersonalCategory = folder.rootFolderType == .user
         let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
-        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
-        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
-        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
+        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .archive
+        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .archive && !isRoot
+        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .virtualRooms
         let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
         let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
         let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder || isDocSpaceArchive
@@ -1175,7 +1189,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             emptyView?.isHidden = true
             searchEmptyView?.isHidden = true
 
-            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
             navigationItem.largeTitleDisplayMode = .automatic
 
         } else {
@@ -1184,7 +1198,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
             let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
             let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
-            let isDocRecently = isDocSpace && folder?.rootFolderType == .onlyofficeRecent
+            let isDocRecently = isDocSpace && folder?.rootFolderType == .recent
 
             // If loading view still display
             if let _ = loadingView.superview {
@@ -1197,9 +1211,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 localEmptyView?.type = .search
             } else {
                 if let folder, let provider {
-                    if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
+                    if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .trash {
                         localEmptyView?.type = .trash
-                    } else if folder.rootFolderType == .onlyofficeRoomArchived && !folder.isRoom {
+                    } else if folder.rootFolderType == .roomTemplates {
+                        localEmptyView?.type = .roomTemplates
+                    } else if folder.rootFolderType == .archive && !folder.isRoom {
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
@@ -1531,18 +1547,36 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func delete(cell: UICollectionViewCell) {
-        if let file = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFile {
-            switch folder?.rootFolderType {
-            case .onlyofficeTrash, .deviceTrash:
-                showDeleteFromTrash(file: file)
-            default: removerActionController.delete(indexes: [file.uid])
-            }
-        } else if let folder = (cell as? ASCEntityViewCellProtocol)?.entity as? ASCFolder {
-            if folder.rootFolderType == .onlyofficeRoomArchived {
-                deleteArchive(folder: folder)
-            } else {
-                removerActionController.delete(indexes: [folder.uid])
-            }
+        guard let entity = (cell as? ASCEntityViewCellProtocol)?.entity else { return }
+
+        if let file = entity as? ASCFile {
+            handleFileDeletion(file)
+        } else if let folder = entity as? ASCFolder {
+            handleFolderDeletion(folder)
+        }
+    }
+
+    private func handleFileDeletion(_ file: ASCFile) {
+        switch folder?.rootFolderType {
+        case .trash:
+            showDeleteFromOnlyofficeTrash(entity: file)
+        case .deviceTrash:
+            showDeleteFromDeviceTrash(entity: file)
+        default:
+            removerActionController.delete(indexes: [file.uid])
+        }
+    }
+
+    private func handleFolderDeletion(_ folder: ASCFolder) {
+        switch self.folder?.rootFolderType {
+        case .archive:
+            deleteArchive(folder: folder)
+        case .trash:
+            showDeleteFromOnlyofficeTrash(entity: folder)
+        case .deviceTrash:
+            showDeleteFromDeviceTrash(entity: folder)
+        default:
+            removerActionController.delete(indexes: [folder.uid])
         }
     }
 
@@ -1560,12 +1594,30 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         present(alertController, animated: true)
     }
 
-    func showDeleteFromTrash(file: ASCFile) {
+    func showDeleteFromOnlyofficeTrash(entity: ASCEntity) {
+        if let file = entity as? ASCFile {
+            showDeleteAlert(
+                title: NSLocalizedString("Delete forever?", comment: ""),
+                message: AlertMessageType.deleteFileFromTrash.message
+            ) {
+                self.removerActionController.delete(indexes: [file.uid])
+            }
+        } else if let folder = entity as? ASCFolder {
+            showDeleteAlert(
+                title: NSLocalizedString("Delete forever?", comment: ""),
+                message: AlertMessageType.deleteFolderFromTrash.message
+            ) {
+                self.removerActionController.delete(indexes: [folder.uid])
+            }
+        }
+    }
+
+    func showDeleteFromDeviceTrash(entity: ASCEntity) {
         showDeleteAlert(
-            title: NSLocalizedString("Delete forever?", comment: ""),
-            message: AlertMessageType.deleteFileFromTrash.message
+            title: NSLocalizedString("Delete this item?", comment: ""),
+            message: AlertMessageType.deleteFromDeviceTrash.message
         ) {
-            self.removerActionController.delete(indexes: [file.uid])
+            self.removerActionController.delete(indexes: [entity.uid])
         }
     }
 
@@ -1575,6 +1627,15 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             message: AlertMessageType.deleteRoomFromArchive.message
         ) {
             self.removerActionController.delete(indexes: [folder.uid])
+        }
+    }
+
+    func deleteRoomTempateAlert(template: ASCFolder, handler: @escaping () -> Void) {
+        showDeleteAlert(
+            title: NSLocalizedString("Delete template", comment: ""),
+            message: AlertMessageType.deleteRoomTemplate(template.title).message
+        ) {
+            handler()
         }
     }
 
@@ -1697,6 +1758,107 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func saveAsTemplate(room: ASCFolder) {
+        let vc = ASCSaveAsTemplateRootViewController(room: room) { folder in
+            DispatchQueue.main.async {
+                UIApplication.topViewController()?.dismiss(animated: true)
+                MBProgressHUD.currentHUD?.removeFromSuperview()
+            }
+        }
+
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true)
+    }
+
+    func editTemplate(template: ASCFolder) {
+        let previusIndexingValue = template.indexing
+
+        let vc = ASCEditTemplateRootViewController(template: template) { [weak self] template in
+            guard let self else { return }
+            self.folder = template
+        }
+
+        if let refreshControl = collectionView.refreshControl {
+            refresh(refreshControl)
+            if let viewControllers = navigationController?.viewControllers,
+               let index = viewControllers.firstIndex(of: self),
+               index > 0
+            {
+                let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
+                previousController?.refresh(refreshControl)
+            }
+        }
+
+        // If indexing changed rerender layout with correct type for edited room
+        if previusIndexingValue != template.indexing {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(
+                    name: ASCConstants.Notifications.updateDocumentsViewLayoutType,
+                    object: self.provider?.itemsViewType(for: template) ?? .list
+                )
+            }
+        }
+
+        vc.modalPresentationStyle = .formSheet
+        vc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
+        present(vc, animated: true, completion: nil)
+    }
+
+    func deleteRoomTemplate(template: ASCFolder) {
+        Task {
+            var hud: MBProgressHUD?
+
+            for await event in ASCRoomTemplatesNetworkService().deleteRoomTemplate(template: template) {
+                switch event {
+                case .begin:
+                    await MainActor.run {
+                        hud = MBProgressHUD.showTopMost()
+                        hud?.mode = .annularDeterminate
+                        hud?.progress = 0
+                        hud?.label.text = NSLocalizedString("Deleting", comment: "")
+                    }
+
+                case let .progress(value):
+                    await MainActor.run {
+                        hud?.progress = Float(value)
+                    }
+
+                case let .failure(error):
+                    await MainActor.run {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: error.localizedDescription
+                        )
+                    }
+
+                case .success:
+                    await MainActor.run {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: false, afterDelay: .standardDelay)
+                        loadFirstPage()
+                    }
+                }
+            }
+        }
+    }
+
+    func createRoomFrom(template: ASCFolder) {
+        let vc = ASCCreateRoomFromTemplateRootViewController(template: template) { [weak self] room in
+            self?.add(entity: room, open: true)
+        }
+
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+        present(vc, animated: true)
+    }
+
     func duplicateRoom(room: ASCFolder) {
         var hud: MBProgressHUD?
 
@@ -1752,7 +1914,20 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             return
         }
 
-        guard file.isForm else { return }
+        guard file.isForm || file.formFillingStatus == .complete else { return }
+
+        let isInsideVDRRoom = file.parent?.parentsFoldersOrCurrentContains(
+            keyPath: \.roomType,
+            value: .virtualData
+        ) == true
+        if isInsideVDRRoom {
+            if file.security.fillForms, file.formFillingStatus == .yourTurn {
+                openFormInFillingModeWithCheckingVersion(file: file)
+            } else {
+                open(file: file, openMode: .view)
+            }
+            return
+        }
 
         let isInsideFillingFormRoom = file.parent?.parentsFoldersOrCurrentContains(
             keyPath: \.roomType,
@@ -1819,6 +1994,48 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         present(hostingController, animated: true, completion: nil)
     }
 
+    func startFilling(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+
+        let vc = VDRStartFillingViewController()
+        present(vc, animated: true, completion: nil)
+    }
+
+    func fillingStatus(file: ASCFile) {
+        guard file.isForm || file.formFillingStatus == .complete, !file.device else { return }
+
+        let vc = VDRFillingStatusUIHostingController(
+            file: file,
+            onStoppedSuccess: { [weak self] in
+                self?.fetchData()
+            },
+            onFillTapped: { [weak self] in
+                self?.openFormInFillingModeWithCheckingVersion(file: file)
+            }
+        )
+        present(vc, animated: true, completion: nil)
+    }
+
+    func openFormInFillingModeWithCheckingVersion(file: ASCFile) {
+        guard file.isForm, !file.device else { return }
+        if ASCEditorManager.shared.checkSDKVersion() {
+            open(file: file, openMode: .fillform)
+        } else {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Filling form", comment: ""),
+                message: NSLocalizedString("The client and server versions are incompatible. You can only open the document in view mode", comment: ""),
+                preferredStyle: .alert,
+                tintColor: nil
+            )
+
+            alertController.addCancel()
+            alertController.addOk { [unowned self] _ in
+                open(file: file, openMode: .view)
+            }
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+
     func transformToRoom(entities: [ASCEntity]) {
         let entitiesIsOnlyOneFolder: Bool = {
             guard entities.count == 1 else { return false }
@@ -1851,7 +2068,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: .standardDelay)
                     if let rootVC = ASCViewControllerManager.shared.rootController {
-                        rootVC.display(provider: provider, folder: room, inCategory: .onlyofficeRoomShared)
+                        rootVC.display(provider: provider, folder: room, inCategory: .virtualRooms)
                     }
                 }
             }
@@ -2005,7 +2222,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             )
             return
         }
+        downloadFile(file: file, provider: provider)
+    }
 
+    func downloadFile(file: ASCFile, provider: ASCFileProviderProtocol) {
         var forceCancel = false
         let openingAlert = ASCProgressAlert(
             title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...",
@@ -2125,9 +2345,44 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
+    func setCustomFilter(cell: UICollectionViewCell, file: ASCFile) {
+        let hud = MBProgressHUD.showTopMost()
+        let requestModel = ASCCustomFilterRequestModel(enabled: !(file.customFilterEnabled ?? false))
+
+        NetworkManagerSharedSettings().customFilter(file: file, requestModel: requestModel) { response in
+            DispatchQueue.main.async {
+                var successMessage: String
+
+                switch response {
+                case let .success(result):
+                    if result.customFilterEnabled == true {
+                        successMessage = NSLocalizedString("Custom filter for\nthe selected file\nenabled", comment: "")
+                        file.customFilterEnabled = true
+                    } else {
+                        successMessage = NSLocalizedString("Custom filter for\nthe selected file\ndisabled", comment: "")
+                        file.customFilterEnabled = false
+                    }
+                    hud?.setState(result: .success(successMessage))
+
+                    if let indexPath = self.collectionView.indexPath(for: cell) {
+                        self.collectionView.reloadItems(at: [indexPath])
+                    }
+
+                case let .failure(error):
+                    hud?.setState(result: .failure(error.localizedDescription))
+                    print(error.localizedDescription)
+                }
+
+                hud?.hide(animated: true, afterDelay: .standardDelay)
+            }
+        }
+    }
+
     func copySharedLink(file: ASCFile) {
         let hud = MBProgressHUD.showTopMost()
-        let successMessage = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
+        let successMessage = file.customFilterEnabled
+            ? NSLocalizedString("The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard.", comment: "Button title")
+            : NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
 
         let handleResult: (Result<String, Error>) -> Void = { result in
             switch result {
@@ -2148,10 +2403,34 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 }
             }
         } else {
-            NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+            let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+            NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
                 handleResult(result.map { $0.sharedTo.shareLink })
             }
         }
+    }
+
+    func showVersionsHistory(file: ASCFile) {
+        let versionHistoryNetworkService = ASCVersionHistoryNetworkService()
+        let controller = ASCVersionHistoryRootViewController(
+            file: file,
+            networkService: versionHistoryNetworkService
+        ) { [weak self] version in
+            version.openVersionMode = true
+            self?.open(file: version, openMode: .view)
+        } download: { [weak self] versionFile in
+            guard let self,
+                  let provider else { return }
+            self.downloadFile(file: versionFile, provider: provider)
+        }
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            controller.modalPresentationStyle = .formSheet
+        } else {
+            controller.modalPresentationStyle = .popover
+        }
+
+        present(controller, animated: true)
     }
 
     func leaveRoom(cell: UICollectionViewCell?, folder: ASCFolder, changeOwner: Bool = false) {
@@ -2900,7 +3179,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: .standardDelay)
 
-                if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
+                if self.isTrash(self.folder) || self.folder?.rootFolderType == .archive {
                     self.provider?.cancel()
                     self.provider?.reset()
                     UIView.performWithoutAnimation { [weak self] in
@@ -3293,6 +3572,8 @@ extension ASCDocumentsViewController: UIScrollViewDelegate {
                 }
             }
         }
+
+        updateTitleView(scrollView)
     }
 }
 
@@ -3333,6 +3614,7 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
         navigationBarExtendPanelView.isHidden = false
         viewDidLayoutSubviews()
         configureNavigationItem()
+        updateTitle()
     }
 }
 
@@ -3460,6 +3742,11 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 /// Update file info
                 let updateFileInfo = {
                     let newFile = file ?? originalFile
+
+                    if newFile.openVersionMode {
+                        newFile.openVersionMode = false
+                        return
+                    }
 
                     if let index = self.tableData.firstIndex(where: { entity -> Bool in
                         guard let file = entity as? ASCFile else { return false }
@@ -3615,7 +3902,7 @@ extension ASCDocumentsViewController {
             title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
         } else if let currentFolder, currentFolder.isThirdParty {
             title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
-        } else if let currentFolder, currentFolder.rootFolderType == .onlyofficeRoomArchived {
+        } else if let currentFolder, currentFolder.rootFolderType == .archive {
             complation(cell, true)
         }
 

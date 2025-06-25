@@ -37,7 +37,9 @@ final class SharedSettingsViewModel: ObservableObject {
     }
 
     func createAndCopySharedLink() {
-        networkService.createAndCopy(file: file) { [weak self] result in
+        let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+
+        networkService.createAndCopy(file: file, requestModel: requestModel) { [weak self] result in
             guard let self else { return }
             switch result {
             case let .success(link):

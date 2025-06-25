@@ -33,9 +33,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     var rootFolder: ASCFolder {
         return {
-            $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-            $0.rootFolderType = .onlyofficeUser
-            $0.id = OnlyofficeAPI.Path.Forlder.my
+            $0.title = ASCOnlyofficeCategory.title(of: .user)
+            $0.rootFolderType = .user
+            $0.id = OnlyofficeAPI.Path.Folder.my
             return $0
         }(ASCFolder())
     }
@@ -76,7 +76,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     private var externalApiClient: OnlyofficeApiClient?
 
-    var isRecentCategory: Bool { category?.folder?.rootFolderType == .onlyofficeRecent }
+    var isRecentCategory: Bool { category?.folder?.rootFolderType == .recent }
 
     var contentTypes: [ASCFiletProviderContentType] {
         let defaultTypes: [ASCFiletProviderContentType] = [.files, .folders, .documents, .spreadsheets, .presentations, .images]
@@ -340,9 +340,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 "count": count,
             ]
 
-            if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
-               let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
-            {
+            if let searchArea = searchArea(for: folder) {
                 params["searchArea"] = searchArea
             }
 
@@ -374,9 +372,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             let endpoint: Endpoint<OnlyofficeResponse<OnlyofficePath>> = {
+                if folder.isRoomListFolder {
+                    return OnlyofficeAPI.Endpoints.Folders.path(of: ASCFolder.onlyofficeRoomSharedFolder)
+                }
+
                 guard hasFilters, folder.isRoomListFolder else {
                     return OnlyofficeAPI.Endpoints.Folders.path(of: folder)
                 }
+
                 return OnlyofficeAPI.Endpoints.Folders.roomsPath()
             }()
 
@@ -443,6 +446,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         }
+    }
+
+    func searchArea(for folder: ASCFolder) -> String? {
+        guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return nil }
+
+        // List of Room Templates
+        if folder.isRoot && folder.rootFolderType == .roomTemplates {
+            return ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
+        }
+
+        if let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
+            return searchArea
+        }
+
+        return nil
     }
 
     /// Sort records
@@ -517,6 +535,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         let requestModel = CompleteFormRequestModel(fillingSessionId: fillingSessionId)
 
+        // Handle send form
         apiClient.request(OnlyofficeAPI.Endpoints.Files.fillFormDidSend(), requestModel.dictionary) { result, error in
             guard let topVC = UIApplication.topViewController() else { return }
             MBProgressHUD.hide(for: topVC.view, animated: true)
@@ -538,7 +557,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
                 let doneFolder = items
                     .compactMap { $0 as? ASCFolder }
-                    .first(where: { $0.type == .fillFormDone })
+                    .first(where: { $0.type == .readyFormFolder })
 
                 guard let doneFolder,
                       let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
@@ -547,13 +566,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     return
                 }
                 let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                topController.navigationController?.pushViewController(documentsVC, animated: true)
 
                 documentsVC.provider = self.copy()
                 documentsVC.provider?.cancel()
                 documentsVC.provider?.reset()
                 documentsVC.folder = doneFolder
                 documentsVC.title = doneFolder.title
+                topController.navigationController?.pushViewController(documentsVC, animated: true)
             }
 
             let vc = CreateFormCompletedRootViewController(
@@ -604,7 +623,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
-        let isShareRoot = folder.rootFolderType == .onlyofficeShare && (folder.parentId == nil || folder.parentId == "0")
+        let isShareRoot = folder.rootFolderType == .share && (folder.parentId == nil || folder.parentId == "0")
         var folderIds: [String] = []
         var cloudFolderIds: [String] = []
         var fileIds: [String] = []
@@ -612,7 +631,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         var parameters: [String: Any] = [:]
 
-        if folder.isRoot, folder.rootFolderType == .onlyofficeRoomArchived {
+        if folder.isRoot, folder.rootFolderType == .archive {
             parameters["deleteAfter"] = true
             parameters["immediately"] = true
         }
@@ -680,7 +699,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                             Thread.sleep(forTimeInterval: 1)
                                             checkOperation?()
                                         }
-                                    } else if !(folder.rootFolderType == .onlyofficeRoomArchived && response?.statusCode == 200) {
+                                    } else if !(folder.rootFolderType == .archive && response?.statusCode == 200) {
                                         lastError = ASCProviderError(msg: NetworkingError.invalidData.localizedDescription)
                                     }
                                 }
@@ -764,12 +783,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         file.id = path
 
         var uploadParams = params ?? [:]
+        let fileName = uploadParams["title"] as? String
         let mime = uploadParams["mime"] as? String
 
         uploadParams.removeAll(keys: ["mime"])
 
-        apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
-            processing(response?.result, progress, error)
+        if let docspaceVersion = apiClient.serverVersion?.docSpace, docspaceVersion.isVersion(greaterThanOrEqualTo: "3.1.0") {
+            apiClient.request(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file)) { multipartFormData in
+                multipartFormData.append(data, withName: "file", fileName: fileName, mimeType: mime)
+            } _: { response, progress, error in
+                processing(response?.result, progress, error)
+            }
+        } else {
+            apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
+                processing(response?.result, progress, error)
+            }
         }
     }
 
@@ -1026,6 +1054,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return false
     }
 
+    func allowCreateRoomFrom(template: ASCFolder) -> Bool {
+        return template.security.create && isDocspace && template.isTemplateRoom
+    }
+
     func allowDownload(folder: ASCFolder?) -> Bool {
         return true
     }
@@ -1054,6 +1086,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
+    func allowSetCustomFilter(entity: ASCEntity?) -> Bool {
+        guard let file = entity as? ASCFile else {
+            return false
+        }
+
+        return file.security.customFilter && file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInDocSpaceCategory else { return true }
@@ -1080,11 +1120,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     func allowAdd(toFolder folder: ASCFolder?) -> Bool {
         guard let folder = folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return allowEdit(entity: folder) }
-        if folder.rootFolderType == .onlyofficeUser {
+        if folder.rootFolderType == .user {
             return true
         }
 
-        if folder.rootFolderType == .onlyofficeRoomArchived {
+        if folder.rootFolderType == .archive {
             return total > 0
         }
 
@@ -1115,36 +1155,36 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
 
-        if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {
+        if let folder = self.folder, folder.rootFolderType == .archive, !isRoot(folder: folder) {
             return false
         }
 
         if let folder = folder {
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeCommon, !user.isAdmin {
+            if isRoot(folder: folder), folder.rootFolderType == .common, !user.isAdmin {
                 return false
             }
 
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeShare {
+            if isRoot(folder: folder), folder.rootFolderType == .share {
                 return false
             }
 
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeTrash {
+            if isRoot(folder: folder), folder.rootFolderType == .trash {
                 return false
             }
 
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeFavorites {
+            if isRoot(folder: folder), folder.rootFolderType == .favorites {
                 return false
             }
 
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeRecent {
+            if isRoot(folder: folder), folder.rootFolderType == .recent {
                 return false
             }
 
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeProjects || folder.rootFolderType == .onlyofficeBunch {
+            if isRoot(folder: folder), folder.rootFolderType == .projects || folder.rootFolderType == .bunch {
                 return false
             }
 
-            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeUser, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
+            if isRoot(folder: folder), folder.rootFolderType == .user, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
                 return true
             }
 
@@ -1152,7 +1192,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return false
             }
 
-            if folder.rootFolderType == .onlyofficeRoomArchived {
+            if folder.rootFolderType == .archive {
                 return false
             }
         }
@@ -1162,7 +1202,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         let securityAllowEdit: Bool = {
             if let fileSecurity {
-                return fileSecurity.edit || fileSecurity.comment || fileSecurity.fillForms || fileSecurity.review
+                return (fileSecurity.edit && !fileSecurity.startFilling)
+                    || fileSecurity.comment
+                    || fileSecurity.fillForms
+                    || fileSecurity.review
             } else {
                 guard folder != nil else {
                     return fileSecurity?.edit == true
@@ -1173,7 +1216,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }()
 
-        if isInDocSpaceCategory, !securityAllowEdit, folder?.rootFolderType != .onlyofficeUser {
+        if isInDocSpaceCategory, !securityAllowEdit, folder?.rootFolderType != .user {
             return false
         }
 
@@ -1184,7 +1227,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         switch access {
-        case .none, .readWrite, .review, .comment, .fillforms:
+        case .none, .readWrite, .review, .comment, .fillforms, .customFilter:
             if let folder = folder, isInDocSpaceCategory(folder: folder) || ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
                 return securityAllowEdit || (isRoot(folder: folder) && folder.security.create)
             } else {
@@ -1200,7 +1243,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let folder = entity as? ASCFolder
         let parentFolder = file?.parent ?? folder?.parent
 
-        if let folder = folder, folder.isRoom, folder.rootFolderType != .onlyofficeRoomArchived {
+        if let folder = folder, folder.isRoom, folder.rootFolderType != .archive {
             return false
         }
 
@@ -1224,11 +1267,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
-        if let providerFolder = self.folder, providerFolder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: providerFolder) {
+        if let providerFolder = self.folder, providerFolder.rootFolderType == .archive, !isRoot(folder: providerFolder) {
             return false
         }
 
-        if isRoot(folder: parentFolder), let folder = folder, folder.rootFolderType == .onlyofficeRoomArchived {
+        if isRoot(folder: parentFolder), let folder = folder, folder.rootFolderType == .archive {
             return folder.security.delete
         }
 
@@ -1246,7 +1289,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
-        if isRoot(folder: parentFolder), parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects {
+        if isRoot(folder: parentFolder), parentFolder?.rootFolderType == .bunch || parentFolder?.rootFolderType == .projects {
             return false
         }
 
@@ -1255,22 +1298,22 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
-        if category?.folder?.rootFolderType == .onlyofficeFavorites {
+        if category?.folder?.rootFolderType == .favorites {
             return false
         }
 
-        if category?.folder?.rootFolderType == .onlyofficeRecent {
+        if category?.folder?.rootFolderType == .recent {
             return false
         }
 
-        if category?.folder?.rootFolderType == .onlyofficeShare {
+        if category?.folder?.rootFolderType == .share {
             return true
         }
 
-        let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects)
+        let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .bunch || parentFolder?.rootFolderType == .projects)
 
         return access == ASCEntityAccess.none
-            || ((file != nil ? file?.rootFolderType == .onlyofficeCommon : folder?.rootFolderType == .onlyofficeCommon) && user.isAdmin)
+            || ((file != nil ? file?.rootFolderType == .common : folder?.rootFolderType == .common) && user.isAdmin)
             || (!isProjectRoot && (file != nil ? user.userId == file?.createdBy?.userId : user.userId == folder?.createdBy?.userId))
     }
 
@@ -1313,13 +1356,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let folder = entity as? ASCFolder
         let parentFolder = file?.parent ?? folder?.parent
 
-        if file != nil, parentFolder?.rootFolderType == .onlyofficeRoomArchived {
+        if file != nil, parentFolder?.rootFolderType == .archive {
             return false
         }
-        if let folder, folder.rootFolderType == .onlyofficeRoomArchived {
+        if let folder, folder.rootFolderType == .archive {
             return false
         }
-        if let folder, folder.isRoom, folder.rootFolderType == .onlyofficeRoomShared {
+        if let folder, folder.isRoom, folder.rootFolderType == .virtualRooms {
             return false
         }
         return true
@@ -1362,7 +1405,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func isTrash(for folder: ASCFolder?) -> Bool {
-        folder?.rootFolderType == .onlyofficeTrash
+        folder?.rootFolderType == .trash
     }
 
     private func actions(for file: ASCFile?) -> ASCEntityActions {
@@ -1379,11 +1422,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDownload = !file.denyDownload
             let canMove = file.security.move
             let canRename = allowRename(entity: file)
-            let isUserCategory = file.rootFolderType == .onlyofficeUser
-            let isRoomsCategory = file.rootFolderType == .onlyofficeRoomShared
-            let isTrash = file.rootFolderType == .onlyofficeTrash
-            let isShared = file.rootFolderType == .onlyofficeShare
-            let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+            let isUserCategory = file.rootFolderType == .user
+            let isRoomsCategory = file.rootFolderType == .virtualRooms
+            let isTrash = file.rootFolderType == .trash
+            let isShared = file.rootFolderType == .share
+            let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
+            let canShowVersion = file.version > 1
+            let canSetCustomFilter = allowSetCustomFilter(entity: file)
 
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
@@ -1400,7 +1445,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 canPreview = false
             }
 
-            let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
+            let isFavoriteCategory = category?.folder?.rootFolderType == .favorites
 
             if isTrash {
                 return [.delete, .restore]
@@ -1435,9 +1480,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if file.isForm, isDocspace, isUserCategory,
+               file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) != true,
                ASCConstants.FileExtensions.forms.contains(fileExtension) || ASCConstants.FileExtensions.pdf == fileExtension
                || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .fillingForm) == true
-               || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .fillFormInProgress) == true
+               || file.parent?.parentsFoldersOrCurrentContains(keyPath: \.type, value: .inProcessFormFolder) == true
                || file.security.fillForms
             {
                 entityActions.insert(.fillForm)
@@ -1445,6 +1491,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if canEdit {
                     entityActions.insert(.edit)
                 }
+            }
+
+            if file.isForm,
+               isDocspace,
+               file.parent?.parentsFoldersOrCurrentContains(keyPath: \.roomType, value: .virtualData) == true,
+               file.formFillingStatus == .yourTurn
+            {
+                entityActions.insert(.fillForm)
             }
 
             if canEdit, canOpenEditor, !(user?.isVisitor ?? false), UIDevice.allowEditor {
@@ -1479,6 +1533,23 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomsCategory, isDocspace, file.security.copyLink {
                 entityActions.insert(.copySharedLink)
             }
+
+            if file.security.startFilling {
+                // TODO: Docspace 3.1 or older
+                // entityActions.insert(.startFilling)
+            }
+
+            if file.security.fillingStatus {
+                entityActions.insert(.fillingStatus)
+            }
+
+            if canShowVersion {
+                entityActions.insert(.showVersionsHistory)
+            }
+
+            if canSetCustomFilter {
+                entityActions.insert(.setCustomFilter)
+            }
         }
 
         return entityActions
@@ -1494,15 +1565,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canShare = allowShare(entity: folder)
             let canDownload = allowDownload(folder: folder)
             let canRename = allowRename(entity: folder)
-            let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
+            let isProjects = folder.rootFolderType == .bunch || folder.rootFolderType == .projects
             let isRoomFolder = isInDocSpaceCategory(folder: folder) && folder.roomType != nil
-            let isUserCategory = folder.rootFolderType == .onlyofficeUser
-            let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
+            let isUserCategory = folder.rootFolderType == .user
+            let isArchiveCategory = folder.rootFolderType == .archive
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
-            let canDuplicateRoom = allowDuplicate(entity: folder)
+            let canDuplicateRoom = allowDuplicate(entity: folder) && !folder.isTemplateRoom
             let canCopyLink = isInDocSpaceCategory(folder: folder) && !isArchiveCategory && folder.security.copySharedLink
+            let canCreateRoomFromTemplate = allowCreateRoomFrom(template: folder)
 
-            if folder.rootFolderType == .onlyofficeTrash {
+            if folder.rootFolderType == .trash {
                 return [.delete, .restore]
             }
 
@@ -1528,7 +1600,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canDownload, !folder.isRoot {
+            if canDownload, !folder.isRoot, !folder.isTemplateRoom {
                 entityActions.insert(.download)
             }
 
@@ -1553,8 +1625,24 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.transformToRoom)
             }
 
-            if isDocspace, folder.isRoom, !(folder.rootFolderType == .onlyofficeRoomArchived) {
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !(folder.isTemplateRoom) {
                 entityActions.insert(.disableNotifications)
+            }
+
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom {
+                entityActions.insert(.saveAsTemplate)
+            }
+
+            if canCreateRoomFromTemplate {
+                entityActions.insert(.createRoom)
+            }
+
+            if isDocspace, folder.isTemplateRoom, folder.security.editRoom {
+                entityActions.insert(.editTemplate)
+            }
+
+            if isDocspace, folder.isTemplateRoom, folder.security.delete {
+                entityActions.insert(.deleteRoomTemplate)
             }
 
             if isDocspace, isUserCategory, canShare {
@@ -1570,8 +1658,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if isRoomFolder, !isArchiveCategory {
-                entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
+            }
+
+            if isRoomFolder, !isArchiveCategory, !folder.isTemplateRoom {
+                entityActions.insert(folder.pinned ? .unpin : .pin)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
                     entityActions.insert(.edit)
@@ -1601,7 +1692,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if folder.isRoomListSubfolder,
                user?.isAdmin == true,
-               !(folder.rootFolderType == .onlyofficeRoomArchived)
+               !(folder.rootFolderType == .archive),
+               !folder.isTemplateRoom
             {
                 entityActions.insert(.changeRoomOwner)
             }
@@ -2182,7 +2274,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
         let fillFormDidSendHandler: ASCEditorManagerFillFormDidSendHandler = { file, fillingSessionId, complation in
-            guard let file, let fillingSessionId else { complation(false); return }
+            guard let file else { complation(false); return }
+
+            // Update file info
+            self.apiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { [weak self] response, error in
+                if let self, let file = response?.result {
+                    self.updateItem(file)
+                }
+            }
+
+            guard let fillingSessionId else { complation(false); return }
 
             self.fillFormDidSubmit(file, fillingSessionId: fillingSessionId) { provider, result, success, error in
                 complation(success)
@@ -2320,14 +2421,30 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             docspaceVersion.isVersion(greaterThanOrEqualTo: "2.5.1")
         else { return [] }
 
-        if folder.isRoot, folder.rootFolderType == .onlyofficeUser {
+        if folder.isRoot, folder.rootFolderType == .user {
             let resentFolder = folder.copy()
-            resentFolder.rootFolderType = .onlyofficeRecent
-            resentFolder.id = OnlyofficeAPI.Path.Forlder.recentRaw
+            resentFolder.rootFolderType = .recent
+            resentFolder.id = OnlyofficeAPI.Path.Folder.recentRaw
 
             return [
                 ASCSegmentCategory(title: NSLocalizedString("My Documents", comment: ""), folder: folder),
                 ASCSegmentCategory(title: NSLocalizedString("Recently accessible via link", comment: ""), folder: resentFolder),
+            ]
+        }
+
+        guard
+            let docspaceVersion = apiClient.serverVersion?.docSpace,
+            docspaceVersion.isVersion(greaterThanOrEqualTo: "3.1.0")
+        else { return [] }
+
+        if folder.isRoot, folder.rootFolderType == .virtualRooms {
+            let roomTemplates = folder.copy()
+            roomTemplates.rootFolderType = .roomTemplates
+            roomTemplates.id = OnlyofficeAPI.Path.Folder.room
+
+            return [
+                ASCSegmentCategory(title: NSLocalizedString("Rooms", comment: ""), folder: folder),
+                ASCSegmentCategory(title: NSLocalizedString("Templates", comment: ""), folder: roomTemplates),
             ]
         }
 
@@ -2337,11 +2454,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
 extension ASCOnlyofficeProvider {
     func generalFileLink(file: ASCFile) async -> Result<String, Error> {
-        guard file.rootFolderType == .onlyofficeRoomShared,
+        guard file.rootFolderType == .virtualRooms,
               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
         else {
             return await withCheckedContinuation { continuation in
-                NetworkManagerSharedSettings().createAndCopy(file: file) { result in
+                let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+                NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
                     switch result {
                     case let .success(link):
                         continuation.resume(returning: .success(link.sharedTo.shareLink))
@@ -2372,7 +2490,7 @@ extension ASCOnlyofficeProvider {
 
     private func generalLink(forRoom room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
-            guard room.roomType != .colobaration && room.roomType != .virtualData else {
+            guard room.roomType != .colobaration && room.roomType != .virtualData && room.rootFolderType != .roomTemplates else {
                 if let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
                     let path = "%@/rooms/shared/filter?folder=%@"
                     let urlStr = String(format: path, baseUrl, room.id)
@@ -2476,7 +2594,7 @@ extension ASCOnlyofficeProvider: TopBannerViewModelDelegate {
     func topBannerViewModel(for folder: ASCFolder?) -> TopBannerViewModel? {
         if let formattedString = folder?.lifetime?.formattedLifetimeString() {
             return .lifetime(formattedString: formattedString)
-        } else if folder?.rootFolderType == .onlyofficeTrash {
+        } else if folder?.rootFolderType == .trash {
             return .trash
         }
         return nil

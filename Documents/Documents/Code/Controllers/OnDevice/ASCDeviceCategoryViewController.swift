@@ -78,7 +78,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
         }
         updateLargeTitlesSize()
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.sizeToFit()
     }
@@ -86,7 +86,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = ASCAppSettings.Feature.allowLargeTitle
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.sizeToFit()
     }

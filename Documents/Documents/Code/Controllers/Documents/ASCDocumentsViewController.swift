@@ -1916,6 +1916,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
         guard file.isForm || file.formFillingStatus == .complete else { return }
 
+        // Workaround a problem https://bugzilla.onlyoffice.com/show_bug.cgi?id=75525
+        if let folderOfFile = file.parent, folderOfFile.type == .formFillingFolderDone {
+            open(file: file, openMode: .view)
+            return
+        }
+
         let isInsideVDRRoom = file.parent?.parentsFoldersOrCurrentContains(
             keyPath: \.roomType,
             value: .virtualData

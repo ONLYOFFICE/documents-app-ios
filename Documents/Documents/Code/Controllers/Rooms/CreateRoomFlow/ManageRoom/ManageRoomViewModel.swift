@@ -645,13 +645,15 @@ private extension ManageRoomViewModel {
         guard let template = editingRoom,
               let templateId = Int(template.id),
               let templateRoomType = template.roomType,
-              let roomColor = template.logo?.color
+              let roomColor = template.logo?.color,
+              let quota = quotaSizeInBytes
         else { return }
 
         let model = CreateRoomFromTemplateModel(
             templateId: templateId,
             roomType: templateRoomType,
             title: roomName,
+            quota: Int(quota),
             color: roomColor,
             denyDownload: template.denyDownload,
             indexing: template.indexing,
@@ -673,7 +675,7 @@ private extension ManageRoomViewModel {
                     roomBasedOnTemplate.roomType = self.selectedRoomType.type.ascRoomType
                     roomBasedOnTemplate.title = roomName
                     roomBasedOnTemplate.tags = Array(tags)
-                    roomBasedOnTemplate.quotaLimit = sizeQuota
+                    roomBasedOnTemplate.quotaLimit = quotaSizeInBytes
                     roomBasedOnTemplate.id = String(roomId)
 
                     roomTemplatesNetworkService.uploadAndAttachImage(image: selectedImage, room: roomBasedOnTemplate) {

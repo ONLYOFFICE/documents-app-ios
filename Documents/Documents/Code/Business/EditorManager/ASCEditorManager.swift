@@ -1039,7 +1039,7 @@ extension ASCEditorManager {
         }
 
         guard let editorViewController, let editorWindow = createEditorWindow() else {
-            throw ASCEditorManagerError(msg: NSLocalizedString("Falure to open editor", comment: ""))
+            throw ASCEditorManagerError(msg: NSLocalizedString("Failure to open editor", comment: ""))
         }
 
         editorViewController.isModalInPresentation = true
@@ -1119,7 +1119,7 @@ extension ASCEditorManager {
         }
 
         guard let editorViewController, let editorWindow = createEditorWindow() else {
-            throw ASCEditorManagerError(msg: NSLocalizedString("Falure to open editor", comment: ""))
+            throw ASCEditorManagerError(msg: NSLocalizedString("Failure to open editor", comment: ""))
         }
 
         editorViewController.isModalInPresentation = true

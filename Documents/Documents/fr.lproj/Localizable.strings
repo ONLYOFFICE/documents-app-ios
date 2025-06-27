@@ -881,6 +881,9 @@ Operation completed */
 "Failed to submit the form" = "Impossible de soumettre le formulaire";
 
 /* No comment provided by engineer. */
+"Failure to open editor" = "Impossible d'ouvrir l'éditeur";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "Impossible de créer une archive";
 
 /* No comment provided by engineer. */

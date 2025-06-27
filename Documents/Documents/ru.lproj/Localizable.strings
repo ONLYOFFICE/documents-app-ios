@@ -884,6 +884,9 @@ Operation completed */
 "Failed to submit the form" = "Не удалось отправить форму";
 
 /* No comment provided by engineer. */
+"Failure to open editor" = "Не удалось открыть редактор";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "Не удалось подготовить архив";
 
 /* No comment provided by engineer. */

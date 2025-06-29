@@ -2074,6 +2074,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func updateItem(_ item: ASCEntity) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index] = item
+            delegate?.updateItems(at: [index])
         }
     }
 

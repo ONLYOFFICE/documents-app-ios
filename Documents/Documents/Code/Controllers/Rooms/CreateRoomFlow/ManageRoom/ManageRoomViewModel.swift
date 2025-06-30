@@ -644,17 +644,15 @@ private extension ManageRoomViewModel {
     func createFromTemplate() {
         guard let template = editingRoom,
               let templateId = Int(template.id),
-              let templateRoomType = template.roomType,
-              let roomColor = template.logo?.color,
-              let quota = quotaSizeInBytes
+              let templateRoomType = template.roomType
         else { return }
 
         let model = CreateRoomFromTemplateModel(
             templateId: templateId,
             roomType: templateRoomType,
             title: roomName,
-            quota: Int(quota),
-            color: roomColor,
+            quota: quotaSizeInBytes.map { Int($0) },
+            color: template.logo?.color,
             denyDownload: template.denyDownload,
             indexing: template.indexing,
             logo: selectedImage,

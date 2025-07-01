@@ -166,6 +166,8 @@ extension ASCMultiAccountsViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
         switch tableDataCell(indexPath: indexPath) {
         case .addAccount:
             let connectPortalVC = ASCConnectPortalViewController.instance()

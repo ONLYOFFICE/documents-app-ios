@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,9 +184,24 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="/%d Groups:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@groups@</source>
+        <target>%#@groups@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d Groups:dict/groups:dict/one:dict/:string" xml:space="preserve">
+        <source>One Group</source>
+        <target state="translated">එක් කණ්ඩායමක්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/%d Groups:dict/groups:dict/other:dict/:string" xml:space="preserve">
+        <source>%d Groups</source>
+        <target state="translated">කණ්ඩායම් %d</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="/%d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@days@</source>
         <target>%#@days@</target>
@@ -194,12 +209,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>%d day</source>
-        <target>%d day</target>
+        <target state="translated">දින %d</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>%d days</source>
-        <target>%d days</target>
+        <target state="translated">දින %d</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -209,12 +224,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>%d hour</source>
-        <target>%d hour</target>
+        <target state="translated">පැය %d</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>%d hours</source>
-        <target>%d hours</target>
+        <target state="translated">පැය %d</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -224,12 +239,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/one:dict/:string" xml:space="preserve">
         <source>%d month</source>
-        <target>%d month</target>
+        <target state="translated">මාස %d</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/other:dict/:string" xml:space="preserve">
         <source>%d months</source>
-        <target>%d months</target>
+        <target state="translated">මාස %d</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -259,12 +274,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/one:dict/:string" xml:space="preserve">
         <source>%d year</source>
-        <target>%d year</target>
+        <target state="translated">වසර %d</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/other:dict/:string" xml:space="preserve">
         <source>%d years</source>
-        <target>%d years</target>
+        <target state="translated">අවුරුදු %d</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -379,7 +394,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -424,12 +439,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d day</source>
-        <target>Expires after %d day</target>
+        <target state="translated">දින %d කට පසු කල් ඉකුත් වේ.</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
+        <target state="translated">දින %d කට පසු කල් ඉකුත් වේ.</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -439,19 +454,34 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>Expires after %d hour</source>
-        <target>Expires after %d hour</target>
+        <target state="translated">පැය %d කට පසු කල් ඉකුත් වේ.</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
         <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
+        <target state="translated">පැය %d කට පසු කල් ඉකුත් වේ.</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@users@</source>
+        <target>%#@users@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/Me and %d Users:dict/users:dict/one:dict/:string" xml:space="preserve">
+        <source>Me and One Users</source>
+        <target state="translated">මම සහ එක් පරිශීලකයෙක්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/Me and %d Users:dict/users:dict/other:dict/:string" xml:space="preserve">
+        <source>Me and %d Users</source>
+        <target state="translated">මම සහ %d පරිශීලකයින්</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -471,6 +501,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="3vf-pi-KmX.normalTitle" xml:space="preserve">
         <source>Button</source>
+        <target state="translated">බොත්තම</target>
         <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "3vf-pi-KmX";</note>
       </trans-unit>
       <trans-unit id="6Zd-HN-8wS.text" xml:space="preserve">
@@ -480,6 +511,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
         <source>Sign in as LDAP User</source>
+        <target state="translated">LDAP පරිශීලකයෙකු ලෙස පුරනය වන්න</target>
         <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
       </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
@@ -701,7 +733,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -848,7 +880,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -929,7 +961,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -956,7 +988,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -993,7 +1025,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1050,7 +1082,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1122,7 +1154,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1204,7 +1236,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1235,35 +1267,44 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
         <target>නව ලේඛනයක්</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
         <target>නව සමර්පණයක්</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>නව පැතුරුම්පතක්</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>ඔන්ලිඔෆිස් පිරවිය හැකි ආකෘතිපත්‍රය (*.oform)</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
         <target>ඔන්ලිඔෆිස් ආකෘතිපත්‍ර අච්චුව (*.docxf)</target>
-        <note/>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target state="translated">%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%d Groups" translate="no" xml:space="preserve">
+        <source>%d Groups</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
+      </trans-unit>
       <trans-unit id="%d days" translate="no" xml:space="preserve">
         <source>%d days</source>
         <note>Days left (Key in .stringsdict)</note>
@@ -1308,6 +1349,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="(%@)" xml:space="preserve">
         <source>(%@)</source>
+        <target state="translated">(%@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
@@ -1325,17 +1367,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>පැය 12</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;යාන්ඩෙක්ස් හැඳු.&lt;/a&gt; හි සාදන ලද මුරපදය භාවිතා කරන්න.&lt;/br&gt;තවත් විස්තර &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=en"&gt;උපකාර&lt;/a&gt; පිටුවෙහි සොයා ගැනීමට හැකිය.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;යාන්ඩෙක්ස් හැඳු.&lt;/a&gt; හි සාදන ලද මුරපදය භාවිතා කරන්න.&lt;/br&gt;තවත් විස්තර &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=en"&gt;උපකාර&lt;/a&gt; පිටුවෙහි සොයා ගැනීමට හැකිය.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;මෙම සේවාව භාවිතයට ඔබ සතුව වාදකයේ ගෙවන අනුවාදයක් තිබිය යුතුය.&lt;/p&gt;&lt;p&gt;ඔබ ද්විත්ව සත්‍යාපනය සක්‍රිය කර ඇත්නම්, කරුණාකර Infomaniak කළමනාකරණය හරහා CDM යෙදුමක් උත්පාදනය කරන්න. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;තවත්...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1352,6 +1394,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." xml:space="preserve">
         <source>A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room.</source>
+        <target state="translated">නව කාමරයක් නිර්මාණය වන අතර තෝරාගත් ෆෝල්ඩරයේ සියලුම අන්තර්ගතයන් එහි පිටපත් කෙරේ. පසුව, කාමරයක් තුළ ඇති ගොනු සමඟ සහයෝගයෙන් කටයුතු කිරීමට ඔබට වෙනත් පරිශීලකයින්ට ආරාධනා කළ හැකිය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1419,6 +1462,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>ප්‍රවේශ සැකසුම්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Access to template" xml:space="preserve">
+        <source>Access to template</source>
+        <target state="translated">අච්චුවට ප්‍රවේශය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access to template. You can select members who can create rooms based on this template." xml:space="preserve">
+        <source>Access to template. You can select members who can create rooms based on this template.</source>
+        <target state="translated">අච්චුවට ප්‍රවේශය. මෙම අච්චුව මත පදනම්ව කාමර නිර්මාණය කළ හැකි සාමාජිකයින් ඔබට තෝරා ගත හැකිය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Access type" xml:space="preserve">
         <source>Access type</source>
         <target>ප්‍රවේශ වර්ගය</target>
@@ -1434,6 +1487,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>ගිණුමේ නම වලංගු නොවේ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Accountant" xml:space="preserve">
+        <source>Accountant</source>
+        <target state="translated">ගණකාධිකාරී</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
         <source>Accounts</source>
         <target>ගිණුම්</target>
@@ -1441,6 +1499,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Action on files" xml:space="preserve">
         <source>Action on files</source>
+        <target state="translated">ගොනු මත ක්‍රියාමාර්ග</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add" xml:space="preserve">
+        <source>Add</source>
+        <target state="translated">එකතු</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add Users or Groups" xml:space="preserve">
+        <source>Add Users or Groups</source>
+        <target state="translated">පරිශීලකයින් හෝ කණ්ඩායම් එකතු කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
@@ -1450,6 +1519,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add manually" xml:space="preserve">
         <source>Add manually</source>
+        <target state="translated">අතින් එකතු කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
@@ -1459,6 +1529,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add static text" xml:space="preserve">
         <source>Add static text</source>
+        <target state="translated">ස්ථිතික පෙළ එක් කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add tag" xml:space="preserve">
@@ -1480,10 +1551,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add watermark elements" xml:space="preserve">
         <source>Add watermark elements</source>
+        <target state="translated">ජල සලකුණු අංග එකතු කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add watermarks to documents" xml:space="preserve">
         <source>Add watermarks to documents</source>
+        <target state="translated">ලේඛනවලට ජල සලකුණු එකතු කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
@@ -1498,6 +1571,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Admin" xml:space="preserve">
         <source>Admin</source>
+        <target state="translated">පරිපාලක</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Administration" xml:space="preserve">
@@ -1508,6 +1582,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="All" xml:space="preserve">
         <source>All</source>
         <target>සියල්ල</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="All DocSpace and Room admins will be able to create rooms using this template." xml:space="preserve">
+        <source>All DocSpace and Room admins will be able to create rooms using this template.</source>
+        <target state="translated">සියලුම DocSpace සහ කාමර පරිපාලකයින්ට මෙම අච්චුව භාවිතයෙන් කාමර සෑදීමට හැකි වනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All Files" xml:space="preserve">
@@ -1527,6 +1606,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" xml:space="preserve">
         <source>All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?</source>
+        <target state="translated">මෙම කාමරයේ ඇති සියලුම බෙදාගත් සබැඳි සක්‍රිය වනු ඇති අතර, එහි අන්තර්ගතය සබැඳිය ඇති සැමට ලබා ගත හැකි වනු ඇත. ඔබට කාමරය ප්‍රතිසාධනය කිරීමට අවශ්‍යද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1551,6 +1631,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Apply" xml:space="preserve">
         <source>Apply</source>
+        <target state="translated">යොදන්න</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
@@ -1606,6 +1687,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
         <source>Automatic indexing</source>
+        <target state="translated">ස්වයංක්‍රීය සුචිගත කිරීම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Back" xml:space="preserve">
@@ -1615,6 +1697,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Back to room" xml:space="preserve">
         <source>Back to room</source>
+        <target state="translated">කාමරයට ආපසු යන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
@@ -1639,6 +1722,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Business subscription expired" xml:space="preserve">
         <source>Business subscription expired</source>
+        <target state="translated">ව්‍යාපාර දායකත්වය කල් ඉකුත් විය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
@@ -1698,10 +1782,12 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Change room owner" xml:space="preserve">
         <source>Change room owner</source>
+        <target state="translated">කාමර හිමිකරු වෙනස් කරන්න</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Change room's owner" xml:space="preserve">
         <source>Change room's owner</source>
+        <target state="translated">කාමරයේ හිමිකරු වෙනස් කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Change the Room Owner" xml:space="preserve">
@@ -1716,6 +1802,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Check ready form" xml:space="preserve">
         <source>Check ready form</source>
+        <target state="translated">සූදානම් පෝරමය පරීක්ෂා කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1730,14 +1817,17 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Choose Form filling room or create new" xml:space="preserve">
         <source>Choose Form filling room or create new</source>
+        <target state="translated">පෝරම පිරවීමේ කාමරය තෝරන්න හෝ නව එකක් සාදන්න</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose from list" xml:space="preserve">
         <source>Choose from list</source>
+        <target state="translated">ලැයිස්තුවෙන් තෝරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose location with templates" xml:space="preserve">
         <source>Choose location with templates</source>
+        <target state="translated">සැකිලි සහිත ස්ථානය තෝරන්න</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
@@ -1815,6 +1905,11 @@ Category title</note>
         <target>සාමාන්‍ය ලේඛන</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Complete" xml:space="preserve">
+        <source>Complete</source>
+        <target state="translated">සම්පූර්ණයි</target>
+        <note>Form filling status</note>
+      </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
         <target>රූප සම්පීඩනය</target>
@@ -1839,6 +1934,7 @@ Category title</note>
         <source>Connect third-party storage
 like Nextcloud, ownCloud, Dropbox and
 others which use WebDAV protocol.</source>
+        <target state="translated">Nextcloud, ownCloud, Dropbox වැනි තෙවන පාර්ශවීය ගබඩාවන් සහ WebDAV ප්‍රොටෝකෝලය භාවිතා කරන අනෙකුත් ඒවා සම්බන්ධ කරන්න.</target>
         <note>Introduction Step Three - Description</note>
       </trans-unit>
       <trans-unit id="Connect to your %@ cloud to store files online and collaborate on documents in real time" xml:space="preserve">
@@ -1850,11 +1946,11 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Connecting" xml:space="preserve">
         <source>Connecting</source>
         <target>සම්බන්ධ වෙමින්</target>
-        <note>Caption of the process
-Caption of the processing</note>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Connection deinitialized" xml:space="preserve">
         <source>Connection deinitialized</source>
+        <target state="translated">සම්බන්ධතාවය අක්‍රිය කරන ලදී</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
@@ -1862,12 +1958,19 @@ Caption of the processing</note>
         <target>හසුරුව</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Contact Support" xml:space="preserve">
+        <source>Contact Support</source>
+        <target state="translated">සහාය අමතන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Content creator" xml:space="preserve">
         <source>Content creator</source>
+        <target state="translated">අන්තර්ගත නිර්මාණකරු</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Continue" xml:space="preserve">
         <source>Continue</source>
+        <target state="translated">ඉදිරියට</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1907,6 +2010,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could Not Send Email" xml:space="preserve">
         <source>Could Not Send Email</source>
+        <target state="translated">ඊමේල් යැවීමට නොහැකි විය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not change file attributes" xml:space="preserve">
@@ -1964,6 +2068,11 @@ Caption of the processing</note>
         <target>බහාලුම මැකීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not delete the version." xml:space="preserve">
+        <source>Could not delete the version.</source>
+        <target state="translated">අනුවාදය මැකීමට නොහැකි විය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Could not delete." xml:space="preserve">
         <source>Could not delete.</source>
         <target>මැකීමට නොහැකි විය.</target>
@@ -1991,6 +2100,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could not duplicate the room." xml:space="preserve">
         <source>Could not duplicate the room.</source>
+        <target state="translated">කාමරය අනුපිටපත් කිරීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
@@ -2020,6 +2130,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could not resolve the file." xml:space="preserve">
         <source>Could not resolve the file.</source>
+        <target state="translated">ගොනුව විසඳා ගැනීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
@@ -2029,6 +2140,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Couldn' get access" xml:space="preserve">
         <source>Couldn' get access</source>
+        <target state="translated">ප්‍රවේශය ලබා ගැනීමට නොහැකි විය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
@@ -2038,6 +2150,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Couldn't change the room owner" xml:space="preserve">
         <source>Couldn't change the room owner</source>
+        <target state="translated">කාමර හිමිකරු වෙනස් කිරීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't download the room." xml:space="preserve">
@@ -2047,6 +2160,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Couldn't export room index" xml:space="preserve">
         <source>Couldn't export room index</source>
+        <target state="translated">කාමර දර්ශකය නිර්යාත කිරීමට නොහැකි විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
@@ -2071,10 +2185,17 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Create a free account" xml:space="preserve">
         <source>Create a free account</source>
+        <target state="translated">නොමිලේ ගිණුමක් සාදන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create a new file" xml:space="preserve">
         <source>Create a new file</source>
+        <target state="translated">නව ගොනුවක් සාදන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." xml:space="preserve">
+        <source>Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</source>
+        <target state="translated">අච්චුවක් මත පදනම්ව කාමරයක් සාදන්න. සියලුම සැකසුම්, පරිශීලකයන්, ෆෝල්ඩර සහ ගොනු තෝරාගත් කාමර අච්චුවෙන් ගනු ලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -2099,15 +2220,19 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Create new files" xml:space="preserve">
         <source>Create new files</source>
+        <target state="translated">නව ගොනු සාදන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
+        <target state="translated">නව ෆෝල්ඩරයක් සාදන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
         <source>Create new folders to 
 organize your files.</source>
+        <target state="translated">ඔබගේ ගොනු සංවිධානය කිරීමට
+නව ෆෝල්ඩර සාදන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -2118,12 +2243,17 @@ organize your files.</source>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
         <target>සෑදෙමින්</target>
-        <note>Caption of the process
-Caption of the processing</note>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Current Date" xml:space="preserve">
         <source>Current Date</source>
+        <target state="translated">වත්මන් දිනය</target>
         <note>Watermark Element</note>
+      </trans-unit>
+      <trans-unit id="Current file will be saved in version history." xml:space="preserve">
+        <source>Current file will be saved in version history.</source>
+        <target state="translated">වත්මන් ගොනුව අනුවාද ඉතිහාසය තුළ සුරකිනු ඇත.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -2134,6 +2264,24 @@ Caption of the processing</note>
         <source>Custom filter</source>
         <target>අභිරුචි පෙරහන</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Custom filter for&#10;the selected file&#10;disabled" xml:space="preserve">
+        <source>Custom filter for
+the selected file
+disabled</source>
+        <target state="translated">තෝරාගත් ගොනුව
+සඳහා අභිරුචි පෙරහන
+අක්‍රීය කර ඇත.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Custom filter for&#10;the selected file&#10;enabled" xml:space="preserve">
+        <source>Custom filter for
+the selected file
+enabled</source>
+        <target state="translated">තෝරාගත් ගොනුව
+සඳහා අභිරුචි පෙරහන
+සක්‍රීය කර ඇත</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
         <source>Custom room</source>
@@ -2152,6 +2300,7 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Days" xml:space="preserve">
         <source>Days</source>
+        <target state="translated">දින</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
@@ -2198,6 +2347,22 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Delete permanently" xml:space="preserve">
         <source>Delete permanently</source>
+        <target state="translated">ස්ථිරවම මකන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete template" xml:space="preserve">
+        <source>Delete template</source>
+        <target state="translated">අච්චුව මකන්න</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Delete this item?" xml:space="preserve">
+        <source>Delete this item?</source>
+        <target state="translated">මෙම අයිතමය මකන්නද?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete version" xml:space="preserve">
+        <source>Delete version</source>
+        <target state="translated">අනුවාදය මකන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
@@ -2227,7 +2392,18 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Diagonal" xml:space="preserve">
         <source>Diagonal</source>
+        <target state="translated">විකර්ණ</target>
         <note>Watermark Position</note>
+      </trans-unit>
+      <trans-unit id="Director" xml:space="preserve">
+        <source>Director</source>
+        <target state="translated">අධ්‍යක්ෂක</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Disable Custom filter" xml:space="preserve">
+        <source>Disable Custom filter</source>
+        <target state="translated">අභිරුචි පෙරහන අක්‍රීය කරන්න</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
@@ -2236,12 +2412,18 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Disable notifications" xml:space="preserve">
         <source>Disable notifications</source>
+        <target state="translated">දැනුම්දීම් අබල කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>තෙවන පාර්ශ්වය විසන්ධිය</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Do you really want to delete template room %@? The template cannot be restored. " xml:space="preserve">
+        <source>Do you really want to delete template room %@? The template cannot be restored. </source>
+        <target state="translated">ඔබට ඇත්තටම සැකිලි කාමරය %@ මකා දැමීමට අවශ්‍යද? සැකිල්ල ප්‍රතිසාධනය කළ නොහැක.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
         <source>Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.</source>
@@ -2250,11 +2432,17 @@ Caption of the processing</note>
       </trans-unit>
       <trans-unit id="DocSpace" xml:space="preserve">
         <source>DocSpace</source>
+        <target state="translated">DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
-        <target>DocSpace පරිපාලක</target>
+        <target state="translated">DocSpace පරිපාලක</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Docspace user only" xml:space="preserve">
+        <source>Docspace user only</source>
+        <target state="translated">DocSpace පරිශීලකයාට පමණි</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2290,7 +2478,13 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="DoсSpace users only" xml:space="preserve">
         <source>DoсSpace users only</source>
+        <target state="translated">DoсSpace පරිශීලකයින්ට පමණි</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Draft" xml:space="preserve">
+        <source>Draft</source>
+        <target state="translated">කෙටුම්පත</target>
+        <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
         <source>Dropbox</source>
@@ -2322,6 +2516,16 @@ Operation completed</note>
         <target>සංස්කරණය</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Edit Comment" xml:space="preserve">
+        <source>Edit Comment</source>
+        <target state="translated">අදහස සංස්කරණය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Edit comment" xml:space="preserve">
+        <source>Edit comment</source>
+        <target state="translated">අදහස සංස්කරණය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
         <source>Edit documents locally</source>
         <target>ස්ථානීයව ලේඛන සංස්කරණය</target>
@@ -2329,16 +2533,23 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit index" xml:space="preserve">
         <source>Edit index</source>
+        <target state="translated">සුචිය සංස්කරණය කරන්න</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Edit link" xml:space="preserve">
         <source>Edit link</source>
+        <target state="translated">ලින්ක් එක සංස්කරණය කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
         <target>කාමරය සංශෝධනය</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Edit template" xml:space="preserve">
+        <source>Edit template</source>
+        <target state="translated">සැකිල්ල සංස්කරණය කරන්න</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
         <source>Editor</source>
@@ -2352,6 +2563,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Email address" xml:space="preserve">
         <source>Email address</source>
+        <target state="translated">ඊතැපැල් ලිපිනය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
@@ -2369,8 +2581,14 @@ Operation completed</note>
         <target>වි-තැපෑල වලංගු නොවේ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Employee" xml:space="preserve">
+        <source>Employee</source>
+        <target state="translated">සේවකයා</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
         <source>Employees</source>
+        <target state="translated">සේවකයින්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
@@ -2378,8 +2596,14 @@ Operation completed</note>
         <target>හිස් නමකි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Enable Custom filter" xml:space="preserve">
+        <source>Enable Custom filter</source>
+        <target state="translated">අභිරුචි පෙරහන සක්‍රීය කරන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
         <source>Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users.</source>
+        <target state="translated">අනුක්‍රමික අංකය අනුව ගොනු සහ ෆෝල්ඩර සුචිගත කිරීම ස්වයංක්‍රීයව සක්‍රීය කරන්න. සියලුම පරිශීලකයින් සඳහා අංකය අනුව වර්ග කිරීම පෙරනිමියෙන් සකසනු ලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
@@ -2389,6 +2613,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enable notifications" xml:space="preserve">
         <source>Enable notifications</source>
+        <target state="translated">දැනුම්දීම් සබල කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
@@ -2398,6 +2623,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" xml:space="preserve">
         <source>Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role</source>
+        <target state="translated">"නරඹන්නා" භූමිකාව ඇති පරිශීලකයින් සඳහා බාගැනීම්, මුද්‍රණය සහ අන්තර්ගත පිටපත් කිරීම අක්‍රිය කිරීමට මෙම සැකසුම සක්‍රීය කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable time limit" xml:space="preserve">
@@ -2422,6 +2648,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enter password" xml:space="preserve">
         <source>Enter password</source>
+        <target state="translated">මුරපදය ඇතුළත් කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
@@ -2441,6 +2668,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">ඔබ දර්ශකයේ වෙනස්කම් සිදු කර ඇත. ඔබ සුරැකීමෙන් තොරව ඉදිරියට ගියහොත්, එම වෙනස්කම් අදාළ නොවේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
@@ -2450,6 +2678,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Expired" xml:space="preserve">
         <source>Expired</source>
+        <target state="translated">කල් ඉකුත් විය</target>
         <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
@@ -2464,10 +2693,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Export room index" xml:space="preserve">
         <source>Export room index</source>
+        <target state="translated">අපනයන කාමර දර්ශකය</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="External link" xml:space="preserve">
         <source>External link</source>
+        <target state="translated">බාහිර සබැඳිය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
@@ -2517,6 +2748,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Failed to prepare the index export" xml:space="preserve">
         <source>Failed to prepare the index export</source>
+        <target state="translated">දර්ශක අපනයනය සකස් කිරීමට අපොහොසත් විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
@@ -2526,11 +2758,17 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Failed to submit the form" xml:space="preserve">
         <source>Failed to submit the form</source>
+        <target state="translated">ආකෘතිපත්‍රය යොමු කිරීමට අසමත් විය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
         <target>සංරක්‍ෂිතය සූදානම් කිරීමට අසමත් විය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Falure to open editor" xml:space="preserve">
+        <source>Falure to open editor</source>
+        <target state="translated">සංස්කාරකය විවෘත කිරීමට අපොහොසත් වීම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2555,6 +2793,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="File lifetime" xml:space="preserve">
         <source>File lifetime</source>
+        <target state="translated">ගොනු ආයු කාලය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
@@ -2569,35 +2808,57 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
         <source>Files and folders uploaded by admins will appear here.</source>
+        <target state="translated">පරිපාලකයින් විසින් උඩුගත කරන ලද ගොනු සහ ෆෝල්ඩර මෙහි දිස්වනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Files older than" xml:space="preserve">
         <source>Files older than</source>
+        <target state="translated">ගොනු පැරණි</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Files with the exceeded lifetime will be deleted" xml:space="preserve">
         <source>Files with the exceeded lifetime will be deleted</source>
+        <target state="translated">ආයු කාලය ඉක්මවා ඇති ගොනු මකා දැමෙනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill" xml:space="preserve">
         <source>Fill</source>
+        <target state="translated">පුරවන්න</target>
         <note>Fill form Button title</note>
       </trans-unit>
       <trans-unit id="Fill in as" xml:space="preserve">
         <source>Fill in as</source>
+        <target state="translated">ලෙස පුරවන්න</target>
         <note>Title for fill-in options screen</note>
       </trans-unit>
       <trans-unit id="Fill in the fields of the original form in the editor window." xml:space="preserve">
         <source>Fill in the fields of the original form in the editor window.</source>
+        <target state="translated">සංස්කාරක කවුළුවේ මුල් පෝරමයේ ක්ෂේත්‍ර පුරවන්න.</target>
         <note>Subtitle for form filling</note>
       </trans-unit>
       <trans-unit id="Fill out the form yourself" xml:space="preserve">
         <source>Fill out the form yourself</source>
+        <target state="translated">පෝරමය ඔබම පුරවන්න.</target>
         <note>Title for opening form filling</note>
+      </trans-unit>
+      <trans-unit id="Filling Status" xml:space="preserve">
+        <source>Filling Status</source>
+        <target state="translated">පිරවුම් තත්ත්වය</target>
+        <note>Start filling form Button title</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
         <target>පුරවන ආකෘතිපත්‍රය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filling status" xml:space="preserve">
+        <source>Filling status</source>
+        <target state="translated">පිරවුම් තත්ත්වය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filling was stopped by" xml:space="preserve">
+        <source>Filling was stopped by</source>
+        <target state="translated">පිරවීම නතර කරන ලද්දේ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2627,22 +2888,27 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Form Filling" xml:space="preserve">
         <source>Form Filling</source>
+        <target state="translated">පෝරම පිරවීම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form Filling Room" xml:space="preserve">
         <source>Form Filling Room</source>
+        <target state="translated">පෝරම පිරවීමේ කාමරය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
         <source>Form completed successfully</source>
+        <target state="translated">පෝරමය සාර්ථකව සම්පූර්ණ කරන ලදී</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
         <source>Form number</source>
+        <target state="translated">පෝරම අංකය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form owner" xml:space="preserve">
         <source>Form owner</source>
+        <target state="translated">පෝරම හිමිකරු</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2650,17 +2916,19 @@ Operation completed</note>
         <target>ආකෘතිපත්‍ර අච්චු</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Forms" xml:space="preserve">
-        <source>Forms</source>
-        <target>ආකෘතිපත්‍ර</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="From DocSpace" xml:space="preserve">
         <source>From DocSpace</source>
+        <target state="translated">DocSpace වෙතින්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="From device" xml:space="preserve">
         <source>From device</source>
+        <target state="translated">උපාංගයෙන්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="From template" xml:space="preserve">
+        <source>From template</source>
+        <target state="translated">සැකිල්ලෙන්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2670,6 +2938,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="GB" xml:space="preserve">
         <source>GB</source>
+        <target state="translated">GB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="GET STARTED!" xml:space="preserve">
@@ -2699,6 +2968,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Get started with quick actions: " xml:space="preserve">
         <source>Get started with quick actions: </source>
+        <target state="translated">ඉක්මන් ක්‍රියාමාර්ග සමඟ ආරම්භ කරන්න:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -2728,22 +2998,37 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Guest" xml:space="preserve">
         <source>Guest</source>
+        <target state="translated">අමුත්තා</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Guests" xml:space="preserve">
         <source>Guests</source>
+        <target state="translated">අමුත්තන්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Help &amp; Feedback" xml:space="preserve">
+        <source>Help &amp; Feedback</source>
+        <target state="translated">උදව් සහ ප්‍රතිපෝෂණ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Help Center" xml:space="preserve">
+        <source>Help Center</source>
+        <target state="translated">උදව් මධ්‍යස්ථානය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
         <source>Here you will find a list of the recently opened files shared with you via an external link.</source>
+        <target state="translated">බාහිර සබැඳියක් හරහා ඔබ සමඟ බෙදාගත් මෑතකදී විවෘත කරන ලද ගොනු ලැයිස්තුවක් මෙහිදී ඔබට සොයාගත හැකිය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Horizontal" xml:space="preserve">
         <source>Horizontal</source>
+        <target state="translated">තිරස්</target>
         <note>Watermark Position</note>
       </trans-unit>
       <trans-unit id="Icons" xml:space="preserve">
         <source>Icons</source>
+        <target state="translated">අයිකන</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2753,6 +3038,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Image" xml:space="preserve">
         <source>Image</source>
+        <target state="translated">අනුරුව</target>
         <note>Watermark Type</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
@@ -2775,6 +3061,25 @@ Operation completed</note>
         <target>මාර්ගගත ප්‍රකාරයේදී, ඔබගේ ද්වාරයේ සාමාජිකයින් සමඟ එක්ව ලේඛනවල වැඩ කිරීමට, ලේඛන බෙදා ගැනීමට සහ පොදු ආචයන බාහාලුම් සෑදීමට %@ හි තත්‍ය කාලීන සම-සංස්කරණ විශේෂාංග භාවිතා කරන්න.</target>
         <note>Introduction Step Five - Description</note>
       </trans-unit>
+      <trans-unit id="In progress" xml:space="preserve">
+        <source>In progress</source>
+        <target state="translated">ප්රගතියේ</target>
+        <note>Form filling status</note>
+      </trans-unit>
+      <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
+        <source>In this panel you can monitor the completion of
+the form in which you participate or in which you
+are the organizer of completion</source>
+        <target state="translated">මෙම පැනලයෙන් ඔබ සහභාගී වන හෝ ඔබ
+සම්පූර්ණ කිරීමේ සංවිධායක වන පෝරමය සම්පූර්ණ කිරීම
+නිරීක්ෂණය කළ හැකිය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
+        <source>In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion</source>
+        <target state="translated">මෙම පැනලය තුළ ඔබ සහභාගී වන හෝ ඔබ සම්පූර්ණ කිරීමේ සංවිධායක වන පෝරමය සම්පූර්ණ කිරීම නිරීක්ෂණය කළ හැකිය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
         <source>Incorrect portal address</source>
         <target>ද්වාරයේ ලිපිනය වැරදිය</target>
@@ -2782,6 +3087,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Index" xml:space="preserve">
         <source>Index</source>
+        <target state="translated">දර්ශකය</target>
         <note>File order
 Folder order</note>
       </trans-unit>
@@ -2822,6 +3128,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
         <source>Invalid server data.</source>
+        <target state="translated">අවලංගු සේවාදායක දත්ත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
@@ -2831,6 +3138,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invite guests by email" xml:space="preserve">
         <source>Invite guests by email</source>
+        <target state="translated">ඊමේල් මගින් අමුත්තන්ට ආරාධනා කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite people" xml:space="preserve">
@@ -2853,12 +3161,19 @@ Folder order</note>
         <target>ලියාපදිංචියකින් තොරව ලේඛන පෙන්වීමට සබැඳි මගින් පරිශ්‍රීලකයින්ට ආරාධනා කරන්න. ඔබට මෙම කාමරය ඕනෑම අඩවියක අතුරු මුහුණතකට කාවැද්දීමට ද හැකිය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="It will be irretrievably deleted. This action is irreversible." xml:space="preserve">
+        <source>It will be irretrievably deleted. This action is irreversible.</source>
+        <target state="translated">එය ආපසු ලබා ගත නොහැකි ලෙස මකා දමනු ලැබේ. මෙම ක්‍රියාව ආපසු හැරවිය නොහැක.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
         <source>Items in Trash are automatically deleted after 30 days</source>
+        <target state="translated">කුණු කූඩයේ ඇති අයිතම දින 30කට පසු ස්වයංක්‍රීයව මැකී යයි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="KB" xml:space="preserve">
         <source>KB</source>
+        <target state="translated">KB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2888,6 +3203,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Link" xml:space="preserve">
         <source>Link</source>
+        <target state="translated">සබැඳිය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link and password&#10;successfully copied&#10;to clipboard" xml:space="preserve">
@@ -2913,6 +3229,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link name" xml:space="preserve">
         <source>Link name</source>
+        <target state="translated">සබැඳි නම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
@@ -2936,24 +3253,33 @@ copied to clipboard</source>
         <source>Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.
  
 This action cannot be undone. Are you sure you want to continue?</source>
+        <target state="translated">කාමරයේ ඇති සියලුම ගොනු වෙත සබැඳි මකා දැමෙනු ඇත. කාමර ගොනු සහ කාවැද්දූ ලේඛන වෙත පෙර සබැඳි ලබා ගත නොහැකි වනු ඇත.
+
+මෙම ක්‍රියාව අහෝසි කළ නොහැක. ඔබට ඉදිරියට යාමට අවශ්‍ය බව ඔබට විශ්වාසද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.&#10; &#10;This action cannot be undone. Are you sure you want to continue?" xml:space="preserve">
         <source>Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.
  
 This action cannot be undone. Are you sure you want to continue?</source>
+        <target state="translated">කාමරයේ ඇති සියලුම ගොනු වෙත සබැඳි නැවත ජනනය කෙරේ. කාමර ගොනු සහ කාවැද්දූ ලේඛන වෙත පෙර සබැඳි ලබා ගත නොහැකි වනු ඇත.
+
+මෙම ක්‍රියාව අහෝසි කළ නොහැක. ඔබට ඉදිරියට යාමට අවශ්‍ය බව ඔබට විශ්වාසද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="List" xml:space="preserve">
         <source>List</source>
+        <target state="translated">ලැයිස්තුව</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Loading" xml:space="preserve">
         <source>Loading</source>
+        <target state="translated">පූරණය වෙමින්</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Location" xml:space="preserve">
         <source>Location</source>
+        <target state="translated">ස්ථානය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2984,6 +3310,7 @@ Caption of the process</note>
       </trans-unit>
       <trans-unit id="MB" xml:space="preserve">
         <source>MB</source>
+        <target state="translated">MB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
@@ -3012,8 +3339,13 @@ Caption of the process</note>
         <note>Author or member of a document
 If current user name is not set</note>
       </trans-unit>
+      <trans-unit id="Me and %d Users" translate="no" xml:space="preserve">
+        <source>Me and %d Users</source>
+        <note>No comment provided by engineer. (Key in .stringsdict)</note>
+      </trans-unit>
       <trans-unit id="Measurement unit" xml:space="preserve">
         <source>Measurement unit</source>
+        <target state="translated">මිනුම් ඒකකය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
@@ -3026,12 +3358,19 @@ If current user name is not set</note>
         <target>සාමාජික</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Members" xml:space="preserve">
+        <source>Members</source>
+        <target state="translated">සාමාජිකයින්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
+        <target state="translated">අවම දිග: 8 | අවසර ලත් අක්ෂර: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Months" xml:space="preserve">
         <source>Months</source>
+        <target state="translated">මාස</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -3066,6 +3405,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Move to trash" xml:space="preserve">
         <source>Move to trash</source>
+        <target state="translated">අපද්‍රව්‍ය වෙත ගෙන යන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
@@ -3130,22 +3470,27 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New folder" xml:space="preserve">
         <source>New folder</source>
+        <target state="translated">නව බහාලුම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New form filling" xml:space="preserve">
         <source>New form filling</source>
+        <target state="translated">නව පෝරමය පිරවීම</target>
         <note>Suggested a room name when create a new one</note>
       </trans-unit>
       <trans-unit id="New form filling room" xml:space="preserve">
         <source>New form filling room</source>
+        <target state="translated">නව පෝරම පිරවුම් කාමරය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
         <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <target state="translated">ඔබ කාමරයට ආරාධනා කළ පසු නව අමුත්තන් මෙහි එකතු කරනු ලැබේ. ඔබට ඔබේ අමුත්තන් බෙදා ගැනීමට සහ අන් අය විසින් ආරාධනා කරන ලද අමුත්තන් ඔබේ ලැයිස්තුවට එක් කිරීමට හැකිය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
         <source>New room</source>
+        <target state="translated">නව කාමරය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
@@ -3160,6 +3505,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="NextCloud" xml:space="preserve">
         <source>NextCloud</source>
+        <target state="translated">නෙක්ස්ක්ලවුඩ්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
@@ -3184,10 +3530,12 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No added guests yet" xml:space="preserve">
         <source>No added guests yet</source>
+        <target state="translated">තවම එකතු කළ අමුත්තන් නැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
         <source>No archived rooms here yet</source>
+        <target state="translated">මෙහි තවමත් සංරක්ෂිත කාමර නොමැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -3202,14 +3550,17 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No docs here yet" xml:space="preserve">
         <source>No docs here yet</source>
+        <target state="translated">මෙහි තවමත් ලේඛන නොමැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No files here yet" xml:space="preserve">
         <source>No files here yet</source>
+        <target state="translated">මෙහි තවමත් ගොනු නොමැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No forms here yet " xml:space="preserve">
         <source>No forms here yet </source>
+        <target state="translated">මෙහි තවමත් පෝරම නොමැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3235,6 +3586,11 @@ If current user name is not set</note>
       <trans-unit id="No search result" xml:space="preserve">
         <source>No search result</source>
         <target>සෙවුම් ප්‍රතිඵල නැත</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No templates here yet" xml:space="preserve">
+        <source>No templates here yet</source>
+        <target state="translated">මෙහි තවමත් සැකිලි නොමැත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
@@ -3285,10 +3641,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal is wrapping up" xml:space="preserve">
         <source>ONLYOFFICE Personal is wrapping up</source>
+        <target state="translated">ONLYOFFICE Personal අවසන් වේ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." xml:space="preserve">
         <source>ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud.</source>
+        <target state="translated">ONLYOFFICE Personal 2024 සැප්තැම්බර් 1 වන දින නතර කෙරේ. නොමිලේ ONLYOFFICE DocSpace Cloud වෙත මාරු වීමට අපි නිර්දේශ කරමු.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
@@ -3298,6 +3656,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Ok" xml:space="preserve">
         <source>Ok</source>
+        <target state="translated">Ok</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
@@ -3325,8 +3684,19 @@ Share status</note>
         <target>ව්‍යාපාර සඳහා වන්ඩ්‍රයිව්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Only DocSpace and Room admins are shown here" xml:space="preserve">
+        <source>Only DocSpace and Room admins are shown here</source>
+        <target state="translated">මෙහි පෙන්වන්නේ DocSpace සහ කාමර පරිපාලකයින් පමණි</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." xml:space="preserve">
+        <source>Only DocSpace and Room admins from the selected groups will be able to create rooms using this template.</source>
+        <target state="translated">තෝරාගත් කණ්ඩායම් වලින් DocSpace සහ කාමර පරිපාලකයින්ට පමණක් මෙම අච්චුව භාවිතයෙන් කාමර නිර්මාණය කළ හැකිය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
         <source>Only a room administrator or a DocSpace administrator can become the room owner.</source>
+        <target state="translated">කාමර හිමිකරු විය හැක්කේ කාමර පරිපාලකයෙකුට හෝ DocSpace පරිපාලකයෙකුට පමණි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Oops!" xml:space="preserve">
@@ -3351,6 +3721,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Open file" xml:space="preserve">
         <source>Open file</source>
+        <target state="translated">ගොනුව විවෘත කරන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Opened the form to fill out" xml:space="preserve">
+        <source>Opened the form to fill out</source>
+        <target state="translated">පිරවීම සඳහා පෝරමය විවෘත කළා</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3390,7 +3766,18 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF Form Sample" xml:space="preserve">
         <source>PDF Form Sample</source>
+        <target state="translated">PDF පෝරම නියැදිය</target>
         <note>Default title of sample document</note>
+      </trans-unit>
+      <trans-unit id="PDF-Documents" xml:space="preserve">
+        <source>PDF-Documents</source>
+        <target state="translated">PDF-ලේඛන</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="PDF-Forms" xml:space="preserve">
+        <source>PDF-Forms</source>
+        <target state="translated">PDF-ආකෘති</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
@@ -3412,8 +3799,9 @@ Share status</note>
         <target>මුරපදය හිස්ය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
+        <target state="translated">මුරපදයේ අඩංගු විය යුත්තේ: අවම දිග: අවසර ලත් අක්ෂර 8: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passwords do not match" xml:space="preserve">
@@ -3537,11 +3925,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Position" xml:space="preserve">
         <source>Position</source>
+        <target state="translated">පිහිටීම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Pover user" xml:space="preserve">
+      <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
-        <target>බලවත් පරිශ්‍රීලක</target>
+        <target state="translated">බලවත් පරිශ්‍රීලක</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -3569,6 +3958,11 @@ Share status</note>
         <target>රහස්‍යතා ප්‍රතිපත්තිය</target>
         <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
       </trans-unit>
+      <trans-unit id="Process details" xml:space="preserve">
+        <source>Process details</source>
+        <target state="translated">ක්‍රියාවලි විස්තර</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
         <source>Processing</source>
         <target>සැකසෙමින්</target>
@@ -3586,6 +3980,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." xml:space="preserve">
         <source>Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced.</source>
+        <target state="translated">මෙම කාමරයේ ඇති සියලුම ලේඛන ජල සලකුණු වලින් ආරක්ෂා කරන්න. ලේඛනයක දැනටමත් එකක් තිබේ නම්, එය ප්‍රතිස්ථාපනය නොකෙරේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Protection" xml:space="preserve">
@@ -3595,6 +3990,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Provide access to the document and set the permission levels." xml:space="preserve">
         <source>Provide access to the document and set the permission levels.</source>
+        <target state="translated">ලේඛනයට ප්‍රවේශය ලබා දී අවසර මට්ටම් සකසන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
@@ -3609,6 +4005,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Public link" xml:space="preserve">
         <source>Public link</source>
+        <target state="translated">පොදු සබැඳිය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
@@ -3628,6 +4025,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Recently accessible via link" xml:space="preserve">
         <source>Recently accessible via link</source>
+        <target state="translated">මෑතකදී සබැඳිය හරහා ප්‍රවේශ විය හැකි</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
@@ -3642,6 +4040,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Regenerate link" xml:space="preserve">
         <source>Regenerate link</source>
+        <target state="translated">සබැඳිය නැවත උත්පාදනය කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
@@ -3656,6 +4055,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Remove" xml:space="preserve">
         <source>Remove</source>
+        <target state="translated">ඉවත් කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
@@ -3665,6 +4065,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Remove link" xml:space="preserve">
         <source>Remove link</source>
+        <target state="translated">සබැඳිය ඉවත් කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
@@ -3694,6 +4095,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Renew Business plan" xml:space="preserve">
         <source>Renew Business plan</source>
+        <target state="translated">ව්‍යාපාර සැලැස්ම අලුත් කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Renewal" xml:space="preserve">
@@ -3703,10 +4105,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Reorder" xml:space="preserve">
         <source>Reorder</source>
+        <target state="translated">යළි පිළිවෙලට</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Reorder failed." xml:space="preserve">
         <source>Reorder failed.</source>
+        <target state="translated">නැවත ඇණවුම් කිරීම අසාර්ථක විය.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
@@ -3736,6 +4140,17 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Restore room?" xml:space="preserve">
         <source>Restore room?</source>
+        <target state="translated">කාමරය ප්‍රතිසාධනය කරන්නද?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Restore this version?" xml:space="preserve">
+        <source>Restore this version?</source>
+        <target state="translated">මෙම අනුවාදය ප්‍රතිසාධනය කරන්නද?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Restored" xml:space="preserve">
+        <source>Restored</source>
+        <target state="translated">ප්‍රතිෂ්ඨාපනය කළා</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
@@ -3755,22 +4170,37 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Revoke link" xml:space="preserve">
         <source>Revoke link</source>
+        <target state="translated">සබැඳිය අහෝසි කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Revoked" xml:space="preserve">
         <source>Revoked</source>
+        <target state="translated">අවලංගු කරන ලදී</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Revoking" xml:space="preserve">
         <source>Revoking</source>
+        <target state="translated">අහෝසි කිරීම</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Role description" xml:space="preserve">
+        <source>Role description</source>
+        <target state="translated">භූමිකාව පිළිබඳ විස්තරය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
         <source>Roles</source>
+        <target state="translated">භූමිකාවන්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Roles from the form:" xml:space="preserve">
+        <source>Roles from the form:</source>
+        <target state="translated">පෝරමයෙන් භූමිකාවන්:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room Name" xml:space="preserve">
         <source>Room Name</source>
+        <target state="translated">කාමරයේ නම</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3778,12 +4208,19 @@ Share status</note>
         <target>කාමරයේ පරිපාලක</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Room created" xml:space="preserve">
+        <source>Room created</source>
+        <target state="translated">කාමරය සාදන ලදී</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Room created!" xml:space="preserve">
         <source>Room created!</source>
+        <target state="translated">කාමරය සාදන ලදී!</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Room manager" xml:space="preserve">
         <source>Room manager</source>
+        <target state="translated">කාමරයේ කළමනාකරු</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
@@ -3799,10 +4236,12 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Root folder" xml:space="preserve">
         <source>Root folder</source>
+        <target state="translated">මූල ෆෝල්ඩරය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rotate" xml:space="preserve">
         <source>Rotate</source>
+        <target state="translated">කරකවන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -3820,6 +4259,11 @@ DocSpace rooms</note>
         <target>සුරකින්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Save as template" xml:space="preserve">
+        <source>Save as template</source>
+        <target state="translated">අච්චුවක් ලෙස සුරකින්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>සුරැකෙමින්</target>
@@ -3827,6 +4271,17 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Scale" xml:space="preserve">
         <source>Scale</source>
+        <target state="translated">පරිමාණය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scan Document" xml:space="preserve">
+        <source>Scan Document</source>
+        <target state="translated">ලේඛනය පරිලෝකනය කරන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scanning is not supported on this device" xml:space="preserve">
+        <source>Scanning is not supported on this device</source>
+        <target state="translated">මෙම උපාංගයේ ස්කෑන් කිරීම සහාය නොදක්වයි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
@@ -3847,6 +4302,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select a PDF Form" xml:space="preserve">
         <source>Select a PDF Form</source>
+        <target state="translated">PDF පෝරමයක් තෝරන්න</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
@@ -3866,11 +4322,18 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select image" xml:space="preserve">
         <source>Select image</source>
+        <target state="translated">රූපය තෝරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select location" xml:space="preserve">
         <source>Select location</source>
+        <target state="translated">ස්ථානය තෝරන්න</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Select members" xml:space="preserve">
+        <source>Select members</source>
+        <target state="translated">සාමාජිකයින් තෝරන්න</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
@@ -3934,6 +4397,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." xml:space="preserve">
         <source>Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file.</source>
+        <target state="translated">නිශ්චිත කාල පරිච්ඡේදයකට පසු මෙම කාමරයේ ඇති ගොනු ස්වයංක්‍රීයව මකා දැමීමට ගොනු ආයු කාලය සකසන්න. ගොනුව උඩුගත කළ/නිර්මාණය කළ දින සිට ආයු කාලය ආරම්භ වේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -3948,18 +4412,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
+        <target state="translated">බෙදාගන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
+        <target state="translated">බෙදාගන්න සහ එකතු කරන්න</target>
         <note>Title for sharing and collecting form</note>
       </trans-unit>
       <trans-unit id="Share folder" xml:space="preserve">
         <source>Share folder</source>
+        <target state="translated">ෆෝල්ඩරය බෙදා ගන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Share your form and collect responses via a Form filling room." xml:space="preserve">
         <source>Share your form and collect responses via a Form filling room.</source>
+        <target state="translated">පෝරම පිරවුම් කාමරයක් හරහා ඔබේ පෝරමය බෙදාගෙන ප්‍රතිචාර එකතු කරන්න.</target>
         <note>Subtitle for sharing form</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -3974,10 +4442,12 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Shared link" xml:space="preserve">
         <source>Shared link</source>
+        <target state="translated">බෙදාගත් සබැඳිය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
         <source>Shared links</source>
+        <target state="translated">බෙදාගත් සබැඳි</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -4010,6 +4480,11 @@ Navigation bar button title</note>
         <target>දැනුම්දීම් පෙන්වන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Show version history" xml:space="preserve">
+        <source>Show version history</source>
+        <target state="translated">අනුවාද ඉතිහාසය පෙන්වන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
         <source>Sign in</source>
         <target>පිවිසෙන්න</target>
@@ -4027,6 +4502,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Size quota" xml:space="preserve">
         <source>Size quota</source>
+        <target state="translated">ප්‍රමාණයේ කෝටාව</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
@@ -4069,6 +4545,26 @@ Navigation bar button title</note>
         <target>පැතුරුම්පත්</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Start" xml:space="preserve">
+        <source>Start</source>
+        <target state="translated">අරඹන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Start filling" xml:space="preserve">
+        <source>Start filling</source>
+        <target state="translated">පිරවීම ආරම්භ කරන්න</target>
+        <note>Start filling form Button title</note>
+      </trans-unit>
+      <trans-unit id="Stop filling" xml:space="preserve">
+        <source>Stop filling</source>
+        <target state="translated">පිරවීම නවත්වන්න</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Stopped" xml:space="preserve">
+        <source>Stopped</source>
+        <target state="translated">නැවැත්තුවා</target>
+        <note>Form filling status</note>
+      </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
         <target>ආචයනය</target>
@@ -4076,19 +4572,27 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Storage quota" xml:space="preserve">
         <source>Storage quota</source>
+        <target state="translated">ගබඩා කෝටාව</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Storage quota set per room. You can change this value or turn off storage limit." xml:space="preserve">
         <source>Storage quota set per room. You can change this value or turn off storage limit.</source>
+        <target state="translated">කාමරයකට ගබඩා කෝටාව සකසා ඇත. ඔබට මෙම අගය වෙනස් කිරීමට හෝ ගබඩා සීමාව අක්‍රිය කිරීමට හැකිය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Submitted their part. The form was sent to the next role." xml:space="preserve">
+        <source>Submitted their part. The form was sent to the next role.</source>
+        <target state="translated">ඔවුන්ගේ කොටස ඉදිරිපත් කළා. පෝරමය ඊළඟ භූමිකාවට යවන ලදී.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Success" xml:space="preserve">
         <source>Success</source>
+        <target state="translated">සාර්ථකත්වය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Support" xml:space="preserve">
-        <source>Support</source>
-        <target>සහාය</target>
+      <trans-unit id="Suggest a Feature" xml:space="preserve">
+        <source>Suggest a Feature</source>
+        <target state="translated">විශේෂාංගයක් යෝජනා කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -4098,6 +4602,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="TB" xml:space="preserve">
         <source>TB</source>
+        <target state="translated">TB</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
@@ -4107,6 +4612,12 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Tags" xml:space="preserve">
         <source>Tags</source>
+        <target state="translated">ටැග්</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tags are applied to the room which will be created based on this template." xml:space="preserve">
+        <source>Tags are applied to the room which will be created based on this template.</source>
+        <target state="translated">මෙම සැකිල්ල මත පදනම්ව නිර්මාණය කරනු ලබන කාමරයට ටැග් යොදනු ලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
@@ -4123,6 +4634,26 @@ Navigation bar button title</note>
         <source>Tb</source>
         <target>ටෙ.බ.</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Template" xml:space="preserve">
+        <source>Template</source>
+        <target state="translated">සැකිල්ල</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Template %@ saved" xml:space="preserve">
+        <source>Template %@ saved</source>
+        <target state="translated">%@ සැකිල්ල සුරකින ලදී</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Template available to everyone" xml:space="preserve">
+        <source>Template available to everyone</source>
+        <target state="translated">සැකිල්ල සැමට ලබා ගත හැකිය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Templates" xml:space="preserve">
+        <source>Templates</source>
+        <target state="translated">සැකිලි</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terminate account" xml:space="preserve">
         <source>Terminate account</source>
@@ -4146,11 +4677,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
         <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <target state="translated">නැවත සකස් කිරීමේ ක්‍රියාව මඟින් දර්ශකවල හිස්තැන් ඉවත් කරනු ඇත. අතුරුදහන් වූ දර්ශක පිරවීම සඳහා ඕෆ්සෙට් සමඟ ගොනු නැවත සුචිගත කරනු ලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
         <target>ගිණුමේ නම අකුරු 6 සහ 50 අතර විය යුතුය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The added administrators will be able to create rooms using this template." xml:space="preserve">
+        <source>The added administrators will be able to create rooms using this template.</source>
+        <target state="translated">එකතු කරන ලද පරිපාලකයින්ට මෙම සැකිල්ල භාවිතයෙන් කාමර නිර්මාණය කිරීමට හැකි වනු ඇත.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The client and server versions are incompatible. You can only open the document in view mode" xml:space="preserve">
+        <source>The client and server versions are incompatible. You can only open the document in view mode</source>
+        <target state="translated">සේවාලාභියා සහ සේවාදායක අනුවාදයන් නොගැළපේ. ඔබට ලේඛනය විවෘත කළ හැක්කේ දර්ශන ප්‍රකාරයේදී පමණි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
@@ -4165,6 +4707,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The file lifetime is set to %@ in this room." xml:space="preserve">
         <source>The file lifetime is set to %@ in this room.</source>
+        <target state="translated">මෙම කාමරයේ ගොනු ආයු කාලය %@ ලෙස සකසා ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -4176,6 +4719,9 @@ Navigation bar button title</note>
         <source>The filled PDF form is saved and available to you
  in the Complete folder. To check the status,
  contact the form owner providing the assigned number.</source>
+        <target state="translated">පුරවන ලද PDF පෝරමය සුරකින අතර ඔබට සම්පූර්ණ
+ෆෝල්ඩරය තුළ ලබා ගත හැකිය. තත්ත්වය පරීක්ෂා කිරීමට,
+පවරා ඇති අංකය ලබා දී පෝරම හිමිකරු අමතන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
@@ -4190,6 +4736,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." xml:space="preserve">
         <source>The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted.</source>
+        <target state="translated">ආයු කාලය ගණනය කිරීම ආරම්භ වන්නේ ගොනු නිර්මාණය කළ දින සිටය. මෙම කාමරයේ ඇති ඕනෑම ගොනුවක් නියමිත ආයු කාලය ඉක්මවා ගියහොත්, ඒවා මකා දැමෙනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
@@ -4206,6 +4753,21 @@ to the clipboard</source>
         <target>සබැඳිය ඉකුත් වී ඇත</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The link to the file&#10;with the enabled&#10;Custom filter is&#10;successfully&#10;copied to the&#10;clipboard." xml:space="preserve">
+        <source>The link to the file
+with the enabled
+Custom filter is
+successfully
+copied to the
+clipboard.</source>
+        <target state="translated">අභිරුචි පෙරහන
+සක්‍රීය කර ඇති
+ගොනුවට සබැඳිය
+සාර්ථකව පසුරු
+පුවරුවට පිටපත්
+කරන ලදී.</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
         <source>The link will be deleted permanently. You will not be able to undo this action.</source>
         <target>සබැඳිය සදහටම මැකෙනු ඇත. මෙම ක්‍රියාමාර්ගය අප්‍රතිවර්ත්‍යයි.</target>
@@ -4218,6 +4780,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The new shared link was created" xml:space="preserve">
         <source>The new shared link was created</source>
+        <target state="translated">නව බෙදාගත් සබැඳිය නිර්මාණය කරන ලදී.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
@@ -4247,6 +4810,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The previous link will become unavailable. A new shared link will be created." xml:space="preserve">
         <source>The previous link will become unavailable. A new shared link will be created.</source>
+        <target state="translated">පෙර සබැඳිය ලබා ගත නොහැකි වනු ඇත. නව බෙදාගත් සබැඳියක් සාදනු ලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The quota of users is almost exhausted. Сontact the portal administrator" xml:space="preserve">
@@ -4291,6 +4855,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Third party storage" xml:space="preserve">
         <source>Third party storage</source>
+        <target state="translated">තෙවන පාර්ශ්ව ආචයනය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -4310,6 +4875,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="This image preview roughly shows how the watermark will be displayed in your files." xml:space="preserve">
         <source>This image preview roughly shows how the watermark will be displayed in your files.</source>
+        <target state="translated">මෙම රූප පෙරදසුන දළ වශයෙන් ඔබේ ගොනු වල ජල සලකුණ පෙන්වන ආකාරය පෙන්වයි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
@@ -4331,12 +4897,18 @@ to the clipboard</source>
         <source>This room is available to anyone with the link.
  External users will have Form Filler permission
  for all the files.</source>
+        <target state="translated">මෙම කාමරය සබැඳිය ඇති ඕනෑම කෙනෙකුට ලබා ගත හැකිය.
+බාහිර පරිශීලකයින්ට සියලුම ගොනු සඳහා
+පෝරම පිරවුම් අවසරය ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This room is available to anyone with the link.&#10; External users will have View Only permission&#10; for all the files." xml:space="preserve">
         <source>This room is available to anyone with the link.
  External users will have View Only permission
  for all the files.</source>
+        <target state="translated">මෙම කාමරය සබැඳිය ඇති ඕනෑම කෙනෙකුට ලබා ගත හැකිය.
+බාහිර පරිශීලකයින්ට සියලුම ගොනු සඳහා
+නැරඹීමට පමණක් අවසරය ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -4346,6 +4918,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Time period" xml:space="preserve">
         <source>Time period</source>
+        <target state="translated">කාල සීමාව</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -4445,6 +5018,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unauthorized members will be able only to view the document." xml:space="preserve">
         <source>Unauthorized members will be able only to view the document.</source>
+        <target state="translated">අවසර නොලත් සාමාජිකයින්ට ලේඛනය බැලීමට පමණක් හැකි වනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -4497,6 +5071,11 @@ to the clipboard</source>
         <target>නොදන්නා අථක වර්ගයකි.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Unknown status" xml:space="preserve">
+        <source>Unknown status</source>
+        <target state="translated">නොදන්නා තත්ත්වය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
         <source>Unlimited</source>
         <target>අසීමිතයි</target>
@@ -4527,29 +5106,29 @@ to the clipboard</source>
         <target>ගැළවෙමින්</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Unpning" xml:space="preserve">
-        <source>Unpinning</source>
-        <target>ගැළවෙමින්</target>
-        <note>Caption of the processing</note>
-      </trans-unit>
       <trans-unit id="Upload PDF form from DocSpace" xml:space="preserve">
         <source>Upload PDF form from DocSpace</source>
+        <target state="translated">DocSpace වෙතින් PDF පෝරමය උඩුගත කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF form from device" xml:space="preserve">
         <source>Upload PDF form from device</source>
+        <target state="translated">උපාංගයෙන් PDF පෝරමය උඩුගත කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF forms from DocSpace or device." xml:space="preserve">
         <source>Upload PDF forms from DocSpace or device.</source>
+        <target state="translated">DocSpace හෝ උපාංගයෙන් PDF පෝරම උඩුගත කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
         <source>Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet.</source>
+        <target state="translated">කාමරයට PDF පෝරම උඩුගත කරන්න. PDF පෝරමයක් පිරවීමට පරිශීලකයින්ට ආරාධනා කරන්න. සම්පූර්ණ කරන ලද පෝරම සමාලෝචනය කර පැතුරුම්පතක ස්වයංක්‍රීයව එකතු කරන ලද දත්ත විශ්ලේෂණය කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload a ready PDF form" xml:space="preserve">
         <source>Upload a ready PDF form</source>
+        <target state="translated">සූදානම් PDF පෝරමයක් උඩුගත කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -4559,14 +5138,17 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use IP Address" xml:space="preserve">
         <source>Use IP Address</source>
+        <target state="translated">IP ලිපිනය භාවිතා කරන්න</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." xml:space="preserve">
         <source>Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying.</source>
+        <target state="translated">උසස් ගොනු ආරක්ෂාව සහ විනිවිදභාවය සඳහා VDR භාවිතා කරන්න. ජල සලකුණු සකසන්න, සියලුම අන්තර්ගතයන් ස්වයංක්‍රීයව සුචිගත කර නිරීක්ෂණය කරන්න, බාගත කිරීම සහ පිටපත් කිරීම සීමා කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" xml:space="preserve">
         <source>Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage</source>
+        <target state="translated">මෙම කාමරය සඳහා දත්ත ගබඩාව ලෙස තෙවන පාර්ශවීය සේවාවන් භාවිතා කරන්න. සම්බන්ධිත ගබඩාව තුළ මෙම කාමරයේ දත්ත ගබඩා කිරීම සඳහා නව ෆෝල්ඩරයක් සාදනු ලැබේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
@@ -4576,10 +5158,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="User Email" xml:space="preserve">
         <source>User Email</source>
+        <target state="translated">පරිශීලක විද්‍යුත් තැපෑල</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="User Name" xml:space="preserve">
         <source>User Name</source>
+        <target state="translated">පරිශ්‍රීලක නාමය</target>
         <note>Watermark Element</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
@@ -4594,6 +5178,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="User name" xml:space="preserve">
         <source>User name</source>
+        <target state="translated">පරිශීලක නාමය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
@@ -4631,6 +5216,16 @@ to the clipboard</source>
         <target>අනුවාදය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Version %@" xml:space="preserve">
+        <source>Version %@</source>
+        <target state="translated">අනුවාදය %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Version History" xml:space="preserve">
+        <source>Version History</source>
+        <target state="translated">අනුවාද ඉතිහාසය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <target>දැකීමට පමණි</target>
@@ -4643,14 +5238,17 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Viewer info" xml:space="preserve">
         <source>Viewer info</source>
+        <target state="translated">නරඹන්නාගේ තොරතුරු</target>
         <note>Watermark Type</note>
       </trans-unit>
       <trans-unit id="Virtual Data Room" xml:space="preserve">
         <source>Virtual Data Room</source>
+        <target state="translated">අතථ්‍ය දත්ත කාමරය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Virtual data room" xml:space="preserve">
         <source>Virtual data room</source>
+        <target state="translated">අතථ්‍ය දත්ත කාමරය</target>
         <note>Rooms filter</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -4660,6 +5258,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Watermark type" xml:space="preserve">
         <source>Watermark type</source>
+        <target state="translated">දිය සලකුණ වර්ගය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We are sorry, this portal name is already taken" xml:space="preserve">
@@ -4691,10 +5290,12 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
+        <target state="translated">පෝරම පිරවීමේ කාමරයට සාදරයෙන් පිළිගනිමු.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
         <source>Welcome to the Virtual Data Room </source>
+        <target state="translated">අතථ්‍ය දත්ත කාමරයට සාදරයෙන් පිළිගනිමු.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
@@ -4738,22 +5339,37 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Years" xml:space="preserve">
         <source>Years</source>
+        <target state="translated">අවුරුදු</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?</source>
+        <target state="translated">ඔබ ගොනු අනුවාදයක් මකා දැමීමට සූදානම් වේ. එය තවදුරටත් දැකීමට හෝ ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?</source>
+        <target state="translated">ඔබ මෙම කාමර මකා දැමීමට ආසන්නයි. ඔබට ඒවා ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target state="translated">ඔබ මෙම ගොනුව මකා දැමීමට ආසන්නයි. ගොනුව දින 30 කින් ස්ථිරවම මකා දැමෙනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
+        <source>You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target state="translated">ඔබ මෙම ෆෝල්ඩරය මැකීමට ආසන්නයි. ෆෝල්ඩරය දින 30 කින් ස්ථිරවම මැකෙනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව ඔබට විශ්වාසද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?</source>
+        <target state="translated">ඔබ මෙම කාමරය මකා දැමීමට ආසන්නයි. ඔබට එය ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore them." xml:space="preserve">
         <source>You are about to delete this room. You won't be able to restore them.</source>
+        <target state="translated">ඔබ මෙම කාමරය මකා දැමීමට ආසන්නයි. ඔබට ඒවා ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -4763,6 +5379,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." xml:space="preserve">
         <source>You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.</source>
+        <target state="translated">ඔබට ඔබ භාවිතා නොකරන කාමර සංරක්ෂණය කර ඒවා ඕනෑම මොහොතක ඔබේ DocSpace තුළ ප්‍රතිසාධනය කිරීමට හෝ ස්ථිරවම මකා දැමීමට හැකිය. මෙම කාමර මෙහි දිස්වනු ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@." xml:space="preserve">
@@ -4777,14 +5394,22 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the DocSpace rooms" xml:space="preserve">
         <source>You can connect the following accounts to the DocSpace rooms</source>
+        <target state="translated">ඔබට පහත ගිණුම් DocSpace කාමරවලට සම්බන්ධ කළ හැකිය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">
+        <source>You can create a template from a room in the Room section</source>
+        <target state="translated">ඔබට කාමර කොටසේ කාමරයකින් සැකිල්ලක් සෑදිය හැක.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
+        <target state="translated">ඔබට ඉහළට කාමර 10කට වඩා ඇමිණිය නොහැක. දැනට ඇමිණී ඇති සමහරක් ඉවත් කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have changed the room owner" xml:space="preserve">
         <source>You have changed the room owner</source>
+        <target state="translated">ඔබ කාමර හිමිකරු වෙනස් කර ඇත.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
@@ -4799,6 +5424,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" xml:space="preserve">
         <source>You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?</source>
+        <target state="translated">මෙම කාමරයේ ලේඛනවලට යෙදීම සඳහා ඔබ දිය සලකුණක් සකසා නැත. කාමර සංස්කරණ සැකසුම් තුළ ඔබට සැමවිටම දිය සලකුණක් එක් කළ හැකිය. දිය සලකුණක් නොමැතිව ඉදිරියට යන්නද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
@@ -4808,20 +5434,28 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You need a password to access the room" xml:space="preserve">
         <source>You need a password to access the room</source>
+        <target state="translated">කාමරයට පිවිසීමට ඔබට මුරපදයක් අවශ්‍ය වේ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." xml:space="preserve">
         <source>Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.</source>
+        <target state="translated">ඔබගේ වත්මන් ගාස්තු සැලැස්ම ව්‍යාපාර කල් ඉකුත් වී ඇත. ඔබගේ DocSpace භාවිතා කිරීමට හැකි වන පරිදි ගිණුම් සැකසුම් තුළ ඔබගේ දායකත්වය අලුත් කරන්න. ඔබට කිසියම් ප්‍රශ්නයක් ඇත්නම්, කරුණාකර සහාය අමතන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your device could not send e-mail. Please check e-mail configuration and try again." xml:space="preserve">
         <source>Your device could not send e-mail. Please check e-mail configuration and try again.</source>
+        <target state="translated">ඔබගේ උපාංගයට විද්‍යුත් තැපෑල යැවීමට නොහැකි විය. කරුණාකර විද්‍යුත් තැපෑල වින්‍යාසය පරීක්ෂා කර නැවත උත්සාහ කරන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
         <source>Your session has expired</source>
         <target>වාරය ඉකුත් වී ඇත</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your turn" xml:space="preserve">
+        <source>Your turn</source>
+        <target state="translated">ඔබේ වාරය</target>
+        <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Zb" xml:space="preserve">
         <source>Zb</source>
@@ -4901,6 +5535,7 @@ Measurement unit</note>
       </trans-unit>
       <trans-unit id="file exported to Documents" xml:space="preserve">
         <source>file exported to Documents</source>
+        <target state="translated">ගොනුව ලේඛන වෙත අපනයනය කරන ලදී</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
@@ -4977,7 +5612,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="si" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.2" build-num="16C5032a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

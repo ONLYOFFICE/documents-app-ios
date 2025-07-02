@@ -1039,7 +1039,7 @@ extension ASCEditorManager {
         }
 
         guard let editorViewController, let editorWindow = createEditorWindow() else {
-            throw ASCEditorManagerError(msg: NSLocalizedString("Falure to open editor", comment: ""))
+            throw ASCEditorManagerError(msg: NSLocalizedString("Failure to open editor", comment: ""))
         }
 
         editorViewController.isModalInPresentation = true
@@ -1119,7 +1119,7 @@ extension ASCEditorManager {
         }
 
         guard let editorViewController, let editorWindow = createEditorWindow() else {
-            throw ASCEditorManagerError(msg: NSLocalizedString("Falure to open editor", comment: ""))
+            throw ASCEditorManagerError(msg: NSLocalizedString("Failure to open editor", comment: ""))
         }
 
         editorViewController.isModalInPresentation = true
@@ -1376,7 +1376,11 @@ extension ASCEditorManager {
                                     // Backup on Device file
                                     let backupPath = Path.userDocuments + Path(backupFileName)
 
-                                    ASCLocalFileHelper.shared.copy(from: resolvedFilePath, to: backupPath)
+                                    if let resolvedFilePath {
+                                        ASCLocalFileHelper.shared.copy(from: resolvedFilePath, to: backupPath)
+                                    } else {
+                                        ASCLocalFileHelper.shared.copy(from: Path(file.id), to: backupPath)
+                                    }
                                 }
 
                                 let lastTempFile = Path.userTemporary + file.title

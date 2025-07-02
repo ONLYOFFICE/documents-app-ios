@@ -10,6 +10,7 @@ struct ASCCreateRoomFromTemplateRequestModel: Codable {
     let templateId: Int?
     let roomType: Int?
     let title: String?
+    let quota: Int?
     let color: String?
     var denyDownload: Bool? = false
     var indexing: Bool? = false

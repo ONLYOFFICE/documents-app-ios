@@ -328,54 +328,6 @@
 			<string>حذف %2$#@الملفات@</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>few</key>
-			<string>تنتهي صلاحيته بعد %d يومين</string>
-			<key>many</key>
-			<string>تنتهي صلاحيته بعد %d أيام</string>
-			<key>one</key>
-			<string>تنتهي صلاحيته بعد %d يوم</string>
-			<key>other</key>
-			<string>تنتهي صلاحيته بعد %d يومًا</string>
-			<key>two</key>
-			<string>تنتهي صلاحيته بعد %d يومًا</string>
-			<key>zero</key>
-			<string>تنتهي صلاحيته بعد %d يوم</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>few</key>
-			<string>ينتهي بعد %d ساعة</string>
-			<key>many</key>
-			<string>ينتهي بعد %d ساعتين</string>
-			<key>one</key>
-			<string>ينتهي بعد %d ساعة</string>
-			<key>other</key>
-			<string>ينتهي بعد %d ساعات</string>
-			<key>two</key>
-			<string>ينتهي بعد %d ساعةً</string>
-			<key>zero</key>
-			<string>ينتهي بعد %d ساعةً</string>
-		</dict>
-	</dict>
 	<key>Me and %d Users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

@@ -2589,13 +2589,13 @@ Operation completed</note>
         <target>提交表格失敗</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failure to open editor" xml:space="preserve">
+        <source>Failure to open editor</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
         <target>未能準備存檔</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">

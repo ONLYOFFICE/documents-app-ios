@@ -12,6 +12,97 @@ protocol ASCLogInterceptorDelegate: AnyObject {
     func log(message: String)
 }
 
+// MARK: - LogWriterActor
+
+/// Actor responsible for thread-safe file writing operations
+actor LogWriterActor {
+    private var logURL: URL?
+    private var fileHandle: FileHandle?
+    private var pendingWrites: [String] = []
+    private var isWriting = false
+    private let maxBufferSize = 100 // Maximum number of pending writes
+
+    /// Initialize the log writer with a file URL
+    func initialize(logURL: URL) async throws {
+        self.logURL = logURL
+
+        // Create initial log header
+        let header = """
+        Start logger
+        DeviceID: \(await UIDevice.current.identifierForVendor?.uuidString ?? "none")
+
+        """
+
+        try header.write(to: logURL, atomically: true, encoding: .utf8)
+    }
+
+    /// Write a log message asynchronously
+    func writeLog(_ message: String) async {
+        pendingWrites.append(message)
+
+        // Prevent buffer overflow
+        if pendingWrites.count > maxBufferSize {
+            pendingWrites.removeFirst(pendingWrites.count - maxBufferSize)
+        }
+
+        // Process writes if not already writing
+        if !isWriting {
+            await processWrites()
+        }
+    }
+
+    /// Process all pending writes
+    private func processWrites() async {
+        guard !pendingWrites.isEmpty, let logURL = logURL else { return }
+
+        isWriting = true
+        defer { isWriting = false }
+
+        let writesToProcess = pendingWrites
+        pendingWrites.removeAll()
+
+        do {
+            // Batch write all pending messages
+            let combinedMessage = writesToProcess.joined(separator: "\n") + "\n"
+            try await writeToFile(combinedMessage, url: logURL)
+        } catch {
+            // On error, put messages back to retry later
+            pendingWrites.insert(contentsOf: writesToProcess, at: 0)
+        }
+    }
+
+    /// Write data to file with proper error handling
+    private func writeToFile(_ content: String, url: URL) async throws {
+        guard let data = content.data(using: .utf8) else { return }
+
+        if let fileHandle = try? FileHandle(forWritingTo: url) {
+            defer { fileHandle.closeFile() }
+            fileHandle.seekToEndOfFile()
+            fileHandle.write(data)
+        } else {
+            try data.write(to: url, options: .atomic)
+        }
+    }
+
+    /// Flush all pending writes
+    func flush() async {
+        if !pendingWrites.isEmpty {
+            await processWrites()
+        }
+    }
+
+    /// Cleanup resources
+    func cleanup() async {
+        await flush()
+        fileHandle?.closeFile()
+        fileHandle = nil
+        pendingWrites.removeAll()
+    }
+}
+
+// MARK: - ASCLogIntercepter
+
+@MainActor
 class ASCLogIntercepter {
     public static let shared = ASCLogIntercepter()
 
@@ -19,34 +110,33 @@ class ASCLogIntercepter {
 
     private var inputPipe: Pipe?
     private var outputPipe: Pipe?
-    private let queue = DispatchQueue(label: "asc.log.interceptor.queue", qos: .default, attributes: .concurrent)
+    private let logWriter = LogWriterActor()
 
     weak var delegate: ASCLogInterceptorDelegate?
-    var logUrl: URL? {
+    lazy var logUrl: URL? = {
         if let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first {
             let documentsDirectory = URL(fileURLWithPath: path)
             return documentsDirectory.appendingPathComponent("\(Bundle.main.bundleIdentifier ?? "app")-output.log")
         }
         return nil
-    }
+    }()
 
     // MARK: - Lifecycle Methods
 
     public func start() {
-        if let logUrl = logUrl {
-            /// Cleanup
-            do {
-                let header =
-                    """
-                    Start logger
-                    DeviceID: \(UIDevice.current.identifierForVendor?.uuidString ?? "none")
+        Task {
+            if let logUrl = logUrl {
+                do {
+                    try await logWriter.initialize(logURL: logUrl)
+                } catch {
+                    print("Failed to initialize log writer: \(error)")
+                }
+            }
 
-                    """
-                try header.write(to: logUrl, atomically: true, encoding: .utf8)
-            } catch {}
+            await MainActor.run {
+                self.openConsolePipe()
+            }
         }
-
-        openConsolePipe()
     }
 
     private func openConsolePipe() {
@@ -93,13 +183,14 @@ class ASCLogIntercepter {
 
         log.hook = { [weak self] message, level in
             guard let self else { return }
-            if let logUrl = self.logUrl {
-                self.queue.async(flags: .barrier) {
-                    do {
-                        try message.appendLineToURL(logUrl)
-                    } catch {}
+
+            // Use Task to handle async operations without blocking
+            Task {
+                await self.logWriter.writeLog(message)
+
+                await MainActor.run {
+                    self.delegate?.log(message: message)
                 }
-                self.delegate?.log(message: message)
             }
         }
     }
@@ -109,24 +200,40 @@ class ASCLogIntercepter {
         inputPipe?.fileHandleForReading.readInBackgroundAndNotify()
 
         if let data = notification.userInfo?[NSFileHandleNotificationDataItem] as? Data,
-           let str = String(data: data, encoding: String.Encoding.utf8),
-           let logUrl = logUrl
+           let str = String(data: data, encoding: String.Encoding.utf8)
         {
             /// write the data back into the output pipe. the output pipe's write
             /// file descriptor points to STDOUT. this allows the logs to show up
             /// on the xcode console
             outputPipe?.fileHandleForWriting.write(data)
 
-            queue.async(flags: .barrier) {
-                do {
-                    try str.appendLineToURL(logUrl)
-                } catch {}
-            }
+            // Use Task to handle async operations without blocking
+            Task {
+                await logWriter.writeLog(str)
 
-            delegate?.log(message: str)
+                await MainActor.run {
+                    self.delegate?.log(message: str)
+                }
+            }
+        }
+    }
+
+    /// Manually flush all pending log writes
+    public func flushLogs() {
+        Task {
+            await logWriter.flush()
+        }
+    }
+
+    /// Cleanup resources when done
+    public func cleanup() {
+        Task {
+            await logWriter.cleanup()
         }
     }
 }
+
+// MARK: - Extensions
 
 extension String {
     func appendLineToURL(_ fileURL: URL) throws {

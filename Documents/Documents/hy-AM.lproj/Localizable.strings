@@ -884,6 +884,9 @@ Operation completed */
 "Failed to submit the form" = "Չհաջողվեց հաստատել ձևը";
 
 /* No comment provided by engineer. */
+"Failure to open editor" = "Չհաջողվեց բացել խմբագիրը";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "Արխիվի պատրաստման ձախողում";
 
 /* No comment provided by engineer. */

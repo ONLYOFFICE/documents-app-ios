@@ -175,6 +175,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
                 templateId: template.templateId,
                 roomType: template.roomType.rawValue,
                 title: template.title,
+                quota: template.quota,
                 color: template.color,
                 denyDownload: template.denyDownload,
                 indexing: template.indexing,

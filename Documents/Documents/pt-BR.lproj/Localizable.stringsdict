@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>One Group</string>
+			<string>Um grupo</string>
 			<key>other</key>
-			<string>%d Groups</string>
+			<string>%d grupos</string>
 		</dict>
 	</dict>
 	<key>%d days</key>
@@ -29,9 +29,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>%d dia</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d dias</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
@@ -45,9 +45,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d hour</string>
+			<string>%d hora</string>
 			<key>other</key>
-			<string>%d hours</string>
+			<string>%d horas</string>
 		</dict>
 	</dict>
 	<key>%d months</key>
@@ -61,9 +61,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d month</string>
+			<string>%d mês</string>
 			<key>other</key>
-			<string>%d months</string>
+			<string>%d meses</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
@@ -93,9 +93,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d year</string>
+			<string>%d ano</string>
 			<key>other</key>
-			<string>%d years</string>
+			<string>%d anos</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
@@ -233,9 +233,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Me and One Users</string>
+			<string>Eu e um usuário</string>
 			<key>other</key>
-			<string>Me and %d Users</string>
+			<string>Eu e %d usuários</string>
 		</dict>
 	</dict>
 </dict>

@@ -64,9 +64,14 @@ struct ASCLogger {
     var hook: Hook?
 
     fileprivate init() {
-        ASCLogIntercepter.shared.delegate = loggerInterceptor
         osLog = OSLog(subsystem: "\(Bundle.main.bundleIdentifier ?? "asc.onlyoffice.app")", category: "Documents")
         URLSessionProxyDelegate.ascEnableAutomaticRegistration()
+
+        // Set delegate on Main actor since ASCLogIntercepter is @MainActor
+        let interceptor = loggerInterceptor
+        Task { @MainActor in
+            ASCLogIntercepter.shared.delegate = interceptor
+        }
     }
 
     private func log(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {

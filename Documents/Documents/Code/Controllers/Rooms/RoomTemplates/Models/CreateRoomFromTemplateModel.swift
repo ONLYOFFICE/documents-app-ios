@@ -12,7 +12,8 @@ struct CreateRoomFromTemplateModel {
     let templateId: Int
     let roomType: ASCRoomType
     let title: String
-    let color: String
+    let quota: Int?
+    let color: String?
     let denyDownload: Bool
     let indexing: Bool
     let logo: UIImage?

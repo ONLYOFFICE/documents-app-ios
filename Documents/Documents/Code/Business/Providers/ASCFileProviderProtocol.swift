@@ -64,6 +64,7 @@ protocol ASCProviderDelegate {
     func openProgress(file: ASCFile, title: String, _ progress: Float) -> ASCEditorManagerOpenHandler
     func closeProgress(file: ASCFile, title: String) -> ASCEditorManagerCloseHandler
     func updateItems(provider: ASCFileProviderProtocol)
+    func updateItems(at indexes: Set<Int>)
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity)
 }
 
@@ -71,6 +72,7 @@ protocol ASCProviderDelegate {
 
 extension ASCProviderDelegate {
     func updateItems(provider: ASCFileProviderProtocol) {}
+    func updateItems(at indexes: Set<Int>) {}
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {}
 }
 

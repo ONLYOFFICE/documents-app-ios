@@ -200,7 +200,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 }
             }()
             let params: [String: Any] = [
-                "count": 1000,
+                "count": 100,
                 "filterType": filterType,
             ]
             let displayFoldersOnly = transferType != .selectFillForms

@@ -45,8 +45,9 @@ struct ASCRoomTemplatesListView: View {
                 model: TemplateViewRowModel(
                     title: template.title,
                     subtitle: template.roomType?.name ?? "",
-                    imageURL: URL(string: template.logo?.medium ?? ""),
-                    placeholderColor: UIColor(hex: "#\(template.logo?.color ?? "")")
+                    imageURL: makeTemplateImageURL(for: template),
+                    placeholderColor: UIColor(hex: "#\(template.logo?.color ?? "")"),
+                    provider: viewModel.provider
                 )
             )
             .contentShape(Rectangle())
@@ -63,6 +64,16 @@ struct ASCRoomTemplatesListView: View {
                 EmptyView()
             }
         )
+    }
+
+    private func makeTemplateImageURL(for template: ASCFolder) -> URL? {
+        guard let urlStr = template.logo?.small,
+              !urlStr.isEmpty,
+              let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed
+        else {
+            return nil
+        }
+        return URL(string: portal + urlStr)
     }
 
     @ViewBuilder

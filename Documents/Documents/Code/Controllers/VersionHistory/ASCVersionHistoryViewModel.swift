@@ -170,7 +170,7 @@ private extension ASCVersionHistoryViewModel {
             versionFile: version,
             versionNumber: version.version,
             dateDescription: version.updated ?? Date(),
-            author: version.createdBy?.displayName ?? "",
+            author: version.updatedBy?.displayName ?? "",
             comment: version.comment ?? "",
             canRestore: version.version < latestVersionNumber,
             canDelete: (version.version < latestVersionNumber) && version.security.editHistory

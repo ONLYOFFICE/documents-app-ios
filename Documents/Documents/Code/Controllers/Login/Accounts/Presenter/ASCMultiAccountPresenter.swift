@@ -105,8 +105,20 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
     func login(by account: ASCAccount, completion: @escaping () -> Void) {
         OnlyofficeApiClient.shared.cancelAll()
+        OnlyofficeApiClient.shared.reset()
 
-        if let baseUrl = account.portal, let token = account.token {
+        // Cleanup ONLYOFFICE provider
+        ASCFileManager.onlyofficeProvider?.reset()
+        ASCFileManager.onlyofficeProvider = nil
+        OnlyofficeApiClient.shared.reset()
+        ASCFileManager.storeProviders()
+
+        if let baseUrl = account.portal {
+            guard let token = account.token else {
+                renewal(by: account)
+                return
+            }
+
             let dummyOnlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
 
             let hud = MBProgressHUD.showTopMost()

@@ -827,7 +827,8 @@ Operation completed */
 "Exclude subfolders" = "サブフォルダなし";
 
 /* No comment provided by engineer. */
-"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "保存せずに終了しますか？";
+"Exit without saving?
+You have made changes in the index. If you proceed without saving, those changes will not be applied." = "保存せずに終了しますか？";
 
 /* No comment provided by engineer. */
 "Expect users" = "ユーザーの期待";

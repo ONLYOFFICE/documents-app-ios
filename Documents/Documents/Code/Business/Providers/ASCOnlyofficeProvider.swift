@@ -1629,7 +1629,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.disableNotifications)
             }
 
-            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom {
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom, folder.security.editRoom {
                 entityActions.insert(.saveAsTemplate)
             }
 
@@ -2074,6 +2074,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func updateItem(_ item: ASCEntity) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index] = item
+            delegate?.updateItems(at: [index])
         }
     }
 

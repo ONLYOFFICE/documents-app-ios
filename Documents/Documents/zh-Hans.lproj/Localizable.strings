@@ -884,6 +884,9 @@ Operation completed */
 "Failed to submit the form" = "提交表单失败";
 
 /* No comment provided by engineer. */
+"Failure to open editor" = "无法打开编辑器";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "整理归档失败";
 
 /* No comment provided by engineer. */

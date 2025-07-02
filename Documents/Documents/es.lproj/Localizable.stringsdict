@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>One Group</string>
+			<string>Un grupo</string>
 			<key>other</key>
-			<string>%d Groups</string>
+			<string>%d grupos</string>
 		</dict>
 	</dict>
 	<key>%d days</key>
@@ -29,9 +29,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>%d día</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d días</string>
 		</dict>
 	</dict>
 	<key>%d hours</key>
@@ -45,9 +45,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d hour</string>
+			<string>%d hora</string>
 			<key>other</key>
-			<string>%d hours</string>
+			<string>%d horas</string>
 		</dict>
 	</dict>
 	<key>%d months</key>
@@ -61,9 +61,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d month</string>
+			<string>%d mes</string>
 			<key>other</key>
-			<string>%d months</string>
+			<string>%d meses</string>
 		</dict>
 	</dict>
 	<key>%d selected</key>
@@ -93,9 +93,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d year</string>
+			<string>%d año</string>
 			<key>other</key>
-			<string>%d years</string>
+			<string>%d años</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
@@ -206,7 +206,7 @@
 			<key>other</key>
 			<string>y %lu archivos</string>
 			<key>zero</key>
-			<string></string>
+			<string> </string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>
@@ -233,9 +233,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>Me and One Users</string>
+			<string>Yo y un usuario</string>
 			<key>other</key>
-			<string>Me and %d Users</string>
+			<string>Yo y %d usuarios</string>
 		</dict>
 	</dict>
 </dict>

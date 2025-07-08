@@ -675,6 +675,7 @@ private extension ManageRoomViewModel {
                     roomBasedOnTemplate.tags = Array(tags)
                     roomBasedOnTemplate.quotaLimit = quotaSizeInBytes
                     roomBasedOnTemplate.id = String(roomId)
+                    roomBasedOnTemplate.rootFolderType = selectedRoomType.type.ascFolderType
 
                     roomTemplatesNetworkService.uploadAndAttachImage(image: selectedImage, room: roomBasedOnTemplate) {
                         Task { @MainActor in

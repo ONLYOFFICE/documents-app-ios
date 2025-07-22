@@ -95,6 +95,7 @@ enum OnlyofficeAPI {
         public static let customFilter = "api/\(version)/files/file/%@/customfilter"
         public static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
         public static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
+        public static let invitationSettings = "api/\(version)/settings/invitationsettings"
 
         public static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -440,6 +441,10 @@ enum OnlyofficeAPI {
 
             static func inviteRequest(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, folder.id), .put)
+            }
+            
+            static func getInvitationSettings() -> Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>>.make(String(format: Path.invitationSettings), .get)
             }
         }
 

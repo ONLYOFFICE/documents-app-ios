@@ -1778,7 +1778,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
-    
+
     private func fetchArchiveOperationId(folder: ASCFolder) async throws -> String {
         guard let archiveOperation = try await OnlyofficeApiClient.request(
             OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder),
@@ -2555,13 +2555,13 @@ extension ASCOnlyofficeProvider {
         let urlStr = String(format: path, baseUrl, folder.id, folder.id)
         return urlStr
     }
-    
+
     private func progressUpdates(for operationId: String, interval: UInt64 = NSEC_PER_SEC) -> AsyncThrowingStream<Int, Error> {
         AsyncThrowingStream { continuation in
             Task {
                 do {
                     var progress = try await fetchOperationProgress(operationId: operationId)
-                    while progress < 100 && !Task.isCancelled  {
+                    while progress < 100 && !Task.isCancelled {
                         continuation.yield(progress)
                         try await Task.sleep(nanoseconds: interval)
                         progress = try await fetchOperationProgress(operationId: operationId)
@@ -2573,7 +2573,7 @@ extension ASCOnlyofficeProvider {
             }
         }
     }
-    
+
     private func fetchOperationProgress(operationId: String) async throws -> Int {
         guard let resultOperation = try await OnlyofficeApiClient.request(
             OnlyofficeAPI.Endpoints.Operations.list(urlEncoding: .default),

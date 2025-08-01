@@ -86,7 +86,7 @@ enum CreatingRoomType: CaseIterable {
             return .virtualData
         }
     }
-    
+
     var ascFolderType: ASCFolderType {
         switch self {
         case .publicRoom:

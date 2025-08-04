@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B0k-do-2Bx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B0k-do-2Bx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -448,7 +448,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="na0-HR-avv">
-                                <rect key="frame" x="53" y="710" width="284" height="50"/>
+                                <rect key="frame" x="50" y="710" width="290" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-Fu-Jlq" userLabel="Facebook login">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -471,9 +471,8 @@
                                             <action selector="onGoogleLogin:" destination="UW0-fu-TUa" eventType="touchUpInside" id="iND-GI-CXT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hq7-X8-dJk" userLabel="Apple login">
-                                        <rect key="frame" x="160" y="0.0" width="44" height="50"/>
-                                        <inset key="imageEdgeInsets" minX="3" minY="6" maxX="3" maxY="6"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hq7-X8-dJk" userLabel="Apple login">
+                                        <rect key="frame" x="160" y="0.0" width="50" height="50"/>
                                         <state key="normal" image="signin-apple"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -485,7 +484,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9h9-uT-mkt" userLabel="Microsoft login">
-                                        <rect key="frame" x="234" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="240" y="0.0" width="50" height="50"/>
                                         <state key="normal" image="signin-microsoft"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -917,7 +916,7 @@ Authentication</string>
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SpX-p6-4uR">
-                                <rect key="frame" x="137.33333333333334" y="764" width="115.66666666666666" height="26"/>
+                                <rect key="frame" x="158.66666666666666" y="764" width="73" height="26"/>
                                 <color key="pageIndicatorTintColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
@@ -1439,20 +1438,6 @@ Authentication</string>
             <point key="canvasLocation" x="134" y="-637"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="ciJ-Qc-kAx">
-            <size key="intrinsicContentSize" width="160.66666666666666" height="34"/>
-        </designable>
-        <designable name="lTc-Mg-8ay">
-            <size key="intrinsicContentSize" width="62.666666666666664" height="34"/>
-        </designable>
-        <designable name="q8z-Ru-xxV">
-            <size key="intrinsicContentSize" width="63.333333333333336" height="34"/>
-        </designable>
-        <designable name="xUt-UA-mBW">
-            <size key="intrinsicContentSize" width="90.333333333333329" height="34"/>
-        </designable>
-    </designables>
     <color key="tintColor" red="0.1764705882352941" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="2fa-step-append" width="267" height="259"/>
@@ -1462,7 +1447,7 @@ Authentication</string>
         <image name="category-logo" width="50" height="50"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="mail-notification" width="200" height="200"/>
-        <image name="signin-apple" width="44" height="44"/>
+        <image name="signin-apple" width="50" height="50"/>
         <image name="signin-facebook" width="50" height="50"/>
         <image name="signin-google" width="50" height="50"/>
         <image name="signin-microsoft" width="50" height="50"/>

@@ -218,6 +218,11 @@ class ASCConstants {
             static let appId: String = ASCConstants.internalConstants["FacebookAppID"] as? String ?? ""
             static let clientToken: String = ASCConstants.internalConstants["FacebookClientToken"] as? String ?? ""
         }
+        
+        enum Zoom {
+            static let clientId: String = ASCConstants.internalConstants["ZoomClientId"] as? String ?? ""
+            static let redirectUrl: String = ASCConstants.internalConstants["ZoomRedirectUrl"] as? String ?? ""
+        }
     }
 
     enum Size {

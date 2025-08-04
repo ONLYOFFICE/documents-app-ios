@@ -107,11 +107,18 @@ class ASCSignInViewController: ASCBaseViewController {
             let allowAppleId = capabilities.providers.contains(.appleid)
             let allowMicrosoft = capabilities.providers.contains(.microsoft)
             let allowLdap = capabilities.ldapEnabled
+            let allowZoom = capabilities.providers.contains(.zoom)
+            let allowTwitter = capabilities.providers.contains(.twitter)
 
             loginByLabel?.isHidden = !(allowFacebook || allowGoogle || allowAppleId || allowMicrosoft)
             facebookButton?.isHidden = !allowFacebook
             googleButton?.isHidden = !allowGoogle
             signInWithLdapStack.isHidden = !allowLdap
+
+            if allowZoom {
+                let zoomButton = makeSocialButton(imageName: Asset.Images.signinZoom.name, action: #selector(onZoomLogin))
+                signInButtonsStack.addArrangedSubview(zoomButton)
+            }
 
             if #available(iOS 13.0, *) {
                 appleIdButton?.isHidden = !allowAppleId
@@ -591,6 +598,54 @@ class ASCSignInViewController: ASCBaseViewController {
             }
         })
     }
+    
+    @objc private func onZoomLogin() {
+        view.endEditing(true)
+        let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
+        let zoomSignInController = ASCZoomSignInController(clientId: ASCConstants.Clouds.Zoom.clientId, redirectUrl: ASCConstants.Clouds.Zoom.redirectUrl)
+        oauth2VC.responseType = .code
+        oauth2VC.complation = { [weak self] info in
+            guard let self = self else { return }
+            if let codeOauth = info["code"] as? String {
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .zoom
+                authRequest.portal = self.portal
+                authRequest.codeOauth = codeOauth
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+
+                ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
+                    if success {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
+
+                        NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(in: self, message: NSLocalizedString("User authentication failed", comment: ""))
+                    }
+                }
+            } else if let error = info["error"] as? String {
+                UIAlertController.showError(in: self, message: error)
+            }
+        }
+        oauth2VC.delegate = zoomSignInController
+        oauth2VC.title = "Zoom"
+        navigationController?.pushViewController(oauth2VC, animated: true)
+    }
+
+    private func makeSocialButton(imageName: String, action: Selector) -> UIButton {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.widthAnchor.constraint(equalToConstant: .buttonSize).isActive = true
+        button.heightAnchor.constraint(equalToConstant: .buttonSize).isActive = true
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
+    }
 }
 
 // MARK: - Text Field Delegate
@@ -618,4 +673,8 @@ extension ASCSignInViewController: UITextFieldDelegate {
         }
         return true
     }
+}
+
+private extension CGFloat {
+    static let buttonSize: CGFloat = 50
 }

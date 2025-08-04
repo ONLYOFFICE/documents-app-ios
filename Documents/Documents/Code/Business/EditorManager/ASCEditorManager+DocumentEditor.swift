@@ -57,7 +57,6 @@ extension ASCEditorManager {
         var configuration = EditorConfiguration(
             title: file.title,
             viewMode: openMode == .view || !UIDevice.allowEditor || (isCoauthoring && !sdkCheck),
-            newDocument: openMode == .create,
             openMode: EditorOpenMode(rawValue: openMode.rawValue),
             coauthoring: isCoauthoring,
             docKey: config.document?.key,
@@ -131,6 +130,10 @@ extension ASCEditorManager {
 }
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
+    func startFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
+        print("Call startFillingForm with roles: \(roles)")
+    }
+
     func documentDidOpen(_ controller: DocumentEditor.DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         switch result {
         case let .success(document):

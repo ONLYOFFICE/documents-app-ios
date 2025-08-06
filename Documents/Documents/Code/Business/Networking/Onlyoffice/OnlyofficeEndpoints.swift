@@ -237,8 +237,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnpin, folder.id), .put)
             }
 
-            static func archive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomArchive, folder.id), .put)
+            static func archive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(String(format: Path.roomArchive, folder.id), .put)
             }
 
             static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -462,6 +462,10 @@ enum OnlyofficeAPI {
             static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
             static let createRoomFromTemplate: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplate, .post)
             static let createRoomFromTemplateStatus: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplateStatus, .get)
+            
+            static func list(urlEncoding: URLEncoding) -> Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> {
+                Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations, .get, urlEncoding)
+            }
         }
 
         // MARK: Third-Party Integration

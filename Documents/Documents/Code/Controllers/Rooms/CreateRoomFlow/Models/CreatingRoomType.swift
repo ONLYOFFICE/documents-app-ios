@@ -86,4 +86,17 @@ enum CreatingRoomType: CaseIterable {
             return .virtualData
         }
     }
+    
+    var ascFolderType: ASCFolderType {
+        switch self {
+        case .publicRoom:
+            return .publicRoom
+        case .collaboration, .custom:
+            return .customRoom
+        case .formFilling:
+            return .fillingFormsRoom
+        case .virtualData:
+            return .virtualDataRoom
+        }
+    }
 }

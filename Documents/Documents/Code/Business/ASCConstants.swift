@@ -223,6 +223,16 @@ class ASCConstants {
             static let clientId: String = ASCConstants.internalConstants["ZoomClientId"] as? String ?? ""
             static let redirectUrl: String = ASCConstants.internalConstants["ZoomRedirectUrl"] as? String ?? ""
         }
+        
+        enum Twitter {
+            static let clientId: String = ASCConstants.internalConstants["TwitterKey"] as? String ?? ""
+            static let redirectUrl: String = ASCConstants.internalConstants["TwitterRedirectUrl"] as? String ?? ""
+        }
+        
+        enum LinkedIn {
+            static let clientId: String = ASCConstants.internalConstants["LinkedInClientId"] as? String ?? ""
+            static let redirectUrl: String = ASCConstants.internalConstants["LinkedInRedirectUrl"] as? String ?? ""
+        }
     }
 
     enum Size {

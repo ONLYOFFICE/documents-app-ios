@@ -1,14 +1,14 @@
 //
-//  ASCZoomSignInController.swift
+//  ASCLinkedInSignInController.swift
 //  Documents
 //
-//  Created by Lolita Chernysheva on 04.08.2025.
+//  Created by Lolita Chernysheva on 06.08.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
 import UIKit
 
-class ASCZoomSignInController: ASCConnectStorageOAuth2Delegate {
+class ASCLinkedInSignInController: ASCConnectStorageOAuth2Delegate {
     
     var clientId: String?
     var redirectUrl: String?
@@ -31,10 +31,11 @@ class ASCZoomSignInController: ASCConnectStorageOAuth2Delegate {
         let parameters: [String: String] = [
             "response_type": "code",
             "client_id": clientId,
-            "redirect_uri": redirectUrl
+            "redirect_uri": redirectUrl,
+            "scope": "r_liteprofile r_emailaddress w_member_social"
         ]
         
-        let authRequest = "https://zoom.us/oauth/authorize?\(parameters.stringAsHttpParameters())"
+        let authRequest = "https://www.linkedin.com/oauth/v2/authorization?\(parameters.stringAsHttpParameters())"
         guard let url = URL(string: authRequest) else { return }
         let urlRequest = URLRequest(url: url)
 
@@ -47,7 +48,7 @@ class ASCZoomSignInController: ASCConnectStorageOAuth2Delegate {
         if let errorCode = controller.getQueryStringParameter(url: request, param: "error") {
             log.error("code: \(errorCode)")
             controller.complation?([
-                "error": String(format: NSLocalizedString("Please retry. \n\n If the problem persists contact us and mention this error code: Zoom - %@", comment: ""), errorCode),
+                "error": String(format: NSLocalizedString("Please retry. \n\n If the problem persists contact us and mention this error code: Linkedin - %@", comment: ""), errorCode),
             ])
             return false
         }

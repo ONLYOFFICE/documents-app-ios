@@ -109,6 +109,7 @@ class ASCSignInViewController: ASCBaseViewController {
             let allowLdap = capabilities.ldapEnabled
             let allowZoom = capabilities.providers.contains(.zoom)
             let allowTwitter = capabilities.providers.contains(.twitter)
+            let allowLinkedIn = capabilities.providers.contains(.linkedin)
 
             loginByLabel?.isHidden = !(allowFacebook || allowGoogle || allowAppleId || allowMicrosoft)
             facebookButton?.isHidden = !allowFacebook
@@ -118,6 +119,16 @@ class ASCSignInViewController: ASCBaseViewController {
             if allowZoom {
                 let zoomButton = makeSocialButton(imageName: Asset.Images.signinZoom.name, action: #selector(onZoomLogin))
                 signInButtonsStack.addArrangedSubview(zoomButton)
+            }
+            
+            if allowTwitter {
+                let twitterButton = makeSocialButton(imageName: Asset.Images.signinTwitter.name, action: #selector(onTwitterLogin))
+                signInButtonsStack.addArrangedSubview(twitterButton)
+            }
+            
+            if allowLinkedIn {
+                let linkedInButton = makeSocialButton(imageName: Asset.Images.signinLinkedin.name, action: #selector(onLinkedInLogin))
+                signInButtonsStack.addArrangedSubview(linkedInButton)
             }
 
             if #available(iOS 13.0, *) {
@@ -599,6 +610,43 @@ class ASCSignInViewController: ASCBaseViewController {
         })
     }
     
+    @objc private func onLinkedInLogin() {
+        view.endEditing(true)
+        
+        let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
+        let linkedInSignInController = ASCLinkedInSignInController(clientId: ASCConstants.Clouds.LinkedIn.clientId, redirectUrl: ASCConstants.Clouds.LinkedIn.redirectUrl)
+        oauth2VC.responseType = .code
+        oauth2VC.complation = { [weak self] info in
+            guard let self = self else { return }
+            if let codeOauth = info["code"] as? String {
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .linkedin
+                authRequest.portal = self.portal
+                authRequest.codeOauth = codeOauth
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+
+                ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
+                    if success {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: true, afterDelay: .twoSecondsDelay)
+
+                        NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(in: self, message: NSLocalizedString("User authentication failed", comment: ""))
+                    }
+                }
+            }  else if let error = info["error"] as? String {
+                UIAlertController.showError(in: self, message: error)
+            }
+        }
+        oauth2VC.delegate = linkedInSignInController
+        oauth2VC.title = "LinkedIn"
+        navigationController?.pushViewController(oauth2VC, animated: true)
+    }
     @objc private func onZoomLogin() {
         view.endEditing(true)
         let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)

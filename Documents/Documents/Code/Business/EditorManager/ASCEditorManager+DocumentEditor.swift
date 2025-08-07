@@ -102,6 +102,7 @@ extension ASCEditorManager {
 
         let editorViewController = DocumentEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
+        editorViewController.collabDelegate = self
 
         return editorViewController
     }
@@ -174,5 +175,11 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
 
     func fillFormDidSend(_ controller: DocumentEditor.DocumentEditorViewController, complation: @escaping ((Result<Bool, Error>) -> Void)) {
         editorFillFormDidSend(controller, complation: complation)
+    }
+}
+
+extension ASCEditorManager: SDKParticipantsControllerDelegate {
+    func fetchParticipantsAvatarsFromApi(usersId usersID: [String], completion: @escaping ([String: UIImageView]) -> Void) {
+        fetchParticipantsAvatars(usersID: usersID, completion: completion)
     }
 }

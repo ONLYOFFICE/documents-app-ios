@@ -90,6 +90,7 @@ extension ASCEditorManager {
 
         let editorViewController = SpreadsheetEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
+        editorViewController.collabDelegate = self
 
         return editorViewController
     }

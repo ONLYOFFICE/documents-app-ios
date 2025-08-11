@@ -177,9 +177,3 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
         editorFillFormDidSend(controller, complation: complation)
     }
 }
-
-extension ASCEditorManager: SDKParticipantsControllerDelegate {
-    func fetchParticipantsAvatarsFromApi(usersId usersID: [String], completion: @escaping ([String: UIImageView]) -> Void) {
-        fetchParticipantsAvatars(usersID: usersID, completion: completion)
-    }
-}

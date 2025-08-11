@@ -1672,3 +1672,12 @@ extension ASCEditorManager {
         }
     }
 }
+
+extension ASCEditorManager: SpreadsheetEditor.SDKParticipantsControllerDelegate,
+    DocumentEditor.SDKParticipantsControllerDelegate,
+    PresentationEditor.SDKParticipantsControllerDelegate
+{
+    func fetchParticipantsAvatarsFromApi(usersId usersID: [String], completion: @escaping ([String: UIImageView]) -> Void) {
+        fetchParticipantsAvatars(usersID: usersID, completion: completion)
+    }
+}

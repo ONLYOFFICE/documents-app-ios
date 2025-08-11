@@ -1535,8 +1535,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if file.security.startFilling {
-                // TODO: Docspace 3.1 or older
-                // entityActions.insert(.startFilling)
+                entityActions.insert(.startFilling)
             }
 
             if file.security.fillingStatus {

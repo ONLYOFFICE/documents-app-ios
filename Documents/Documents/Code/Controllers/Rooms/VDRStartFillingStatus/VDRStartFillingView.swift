@@ -68,7 +68,7 @@ struct VDRStartFillingView: View {
     private var header: some View {
         ZStack {
             HStack {
-                Button(NSLocalizedString("Cancel", comment: ""), action: viewModel.closeTapped)
+                Button(NSLocalizedString("Cancel", comment: ""), action: { presentationMode.wrappedValue.dismiss() })
                     .foregroundColor(.blue)
 
                 Spacer()

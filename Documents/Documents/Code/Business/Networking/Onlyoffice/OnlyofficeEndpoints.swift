@@ -462,7 +462,7 @@ enum OnlyofficeAPI {
             static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
             static let createRoomFromTemplate: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplate, .post)
             static let createRoomFromTemplateStatus: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplateStatus, .get)
-            
+
             static func list(urlEncoding: URLEncoding) -> Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations, .get, urlEncoding)
             }

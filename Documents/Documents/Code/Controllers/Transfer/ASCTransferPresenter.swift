@@ -60,7 +60,7 @@ final class ASCTransferPresenter {
 
     private(set) var isLoading: Bool = false
     let transferType: ASCTransferType
-    
+
     private var lastDisplayedIntemIndex = 0
     private var total = 0
     private var startIndex = 0
@@ -267,7 +267,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
     func onClose() {
         view?.dismiss(animated: true, completion: nil)
     }
-    
+
     func willDisplay(at indexPath: IndexPath) {
         lastDisplayedIntemIndex = max(indexPath.row, lastDisplayedIntemIndex)
         loadMore()
@@ -669,7 +669,7 @@ private extension ASCTransferPresenter {
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     private func loadMore() {
         let nextStartIndex = startIndex + count
         let lastDisplayedIntemIndex = lastDisplayedIntemIndex + 1

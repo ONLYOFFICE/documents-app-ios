@@ -48,7 +48,7 @@ extension ASCEditorManager {
         var configuration = EditorConfiguration(
             title: file.title,
             viewMode: openMode == .view || !UIDevice.allowEditor || (isCoauthoring && !sdkCheck),
-            newDocument: openMode == .create,
+            openMode: EditorOpenMode(rawValue: openMode.rawValue),
             coauthoring: isCoauthoring,
             docKey: config.document?.key,
             docURL: config.document?.url,

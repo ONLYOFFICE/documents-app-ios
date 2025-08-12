@@ -11,49 +11,54 @@ import SwiftUI
 // MARK: - Under construction. Docspace 3.2 or later
 
 struct VDRStartFillingView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @ObservedObject var viewModel: VDRStartFillingViewModel
 
     let onDismiss: (Result<Bool, any Error>) -> Void
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Color(UIColor.systemGray6).ignoresSafeArea()
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                Color(UIColor.systemGray6).ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                header
+                VStack(spacing: 0) {
+                    header
 
-                List {
-                    Section {
-                        ForEach(viewModel.state.roles) { role in
-                            RoleRow(role: role) {
-                                viewModel.roleTapped(role)
+                    List {
+                        Section {
+                            ForEach(viewModel.state.roles) { role in
+                                RoleRow(role: role) {
+                                    viewModel.roleTapped(role)
+                                }
+                                .fullWidthSeparators()
                             }
-                            .fullWidthSeparators()
-                        }
-                        .onDelete { indexSet in
-                            indexSet.map { viewModel.state.roles[$0] }
-                                .forEach(viewModel.deleteRole)
-                        }
-                    } header: {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .textCase(nil)
+                            .onDelete { indexSet in
+                                indexSet.map { viewModel.state.roles[$0] }
+                                    .forEach(viewModel.deleteRole)
+                            }
+                        } header: {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
+                                    .textCase(nil)
 
-                            Text("Roles from the form:")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                                .textCase(nil)
+                                Text("Roles from the form:")
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                    .textCase(nil)
+                            }
+                            .padding(.vertical, 8)
                         }
-                        .padding(.vertical, 8)
                     }
+                    .listStyle(InsetGroupedListStyle())
                 }
-                .listStyle(InsetGroupedListStyle())
-            }
 
-            footer
+                footer
+            }
+            .navigateToChooseMembers(isActive: $viewModel.state.isChooseFromListScreenDisplaying, viewModel: viewModel)
         }
         .onAppear(perform: {
             viewModel.onAppear()
@@ -160,5 +165,22 @@ extension View {
         } else {
             return self
         }
+    }
+}
+
+// MARK: - Navigation
+
+private extension View {
+    @ViewBuilder
+    func navigateToChooseMembers(isActive: Binding<Bool>, viewModel: VDRStartFillingViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            ASCStartFillingAssignToRoleView(
+                viewModel: ASCStartFillingAssignToRoleViewModel(
+                    ignoreMembersIds: Set()
+                ) { _ in
+                    // viewModel.onChooseMembersAdd(model: $0)
+                }
+            )
+        })
     }
 }

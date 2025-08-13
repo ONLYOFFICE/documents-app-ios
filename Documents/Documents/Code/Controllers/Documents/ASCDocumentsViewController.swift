@@ -2003,8 +2003,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func startFilling(file: ASCFile) {
         guard file.isForm, !file.device else { return }
 
-        let vc = VDRStartFillingViewController()
-        present(vc, animated: true, completion: nil)
+        open(file: file, openMode: .startFilling)
     }
 
     func fillingStatus(file: ASCFile) {

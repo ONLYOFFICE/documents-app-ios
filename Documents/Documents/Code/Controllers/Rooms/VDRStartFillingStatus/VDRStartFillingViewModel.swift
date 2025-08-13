@@ -13,8 +13,17 @@ import SwiftUI
 @MainActor
 final class VDRStartFillingViewModel: ObservableObject {
     typealias RoleItem = VDRStartFillingRoleItem
+    let roles: [[String: Any]]
+
+    init(roles: [[String: Any]]) {
+        self.roles = roles
+    }
 
     @Published private(set) var state: ScreenState = .initial
+
+    func onAppear() {
+        setupRolesToState()
+    }
 
     func closeTapped() {
         print("Close tapped")
@@ -37,24 +46,35 @@ final class VDRStartFillingViewModel: ObservableObject {
     }
 }
 
+// MARK: - Private
+
+extension VDRStartFillingViewModel {
+    func setupRolesToState() {
+        guard state.roles.isEmpty else { return }
+        state.roles = roles.enumerated().compactMap { index, roleDict in
+            guard let name = roleDict["name"] as? String,
+                  let colorHex = roleDict["color"] as? String
+            else { return nil }
+            return RoleItem(
+                number: index + 1,
+                title: name,
+                color: Color(UIColor(hex: colorHex)).opacity(0.3)
+            )
+        }
+    }
+}
+
 // MARK: - ScreeenState
 
 extension VDRStartFillingViewModel {
     struct ScreenState {
         var roles: [RoleItem] = []
+        var areRolesFilled: Bool = false
 
-        static let initial: ScreenState = {
-            var s = ScreenState()
-            s.roles = [
-                RoleItem(number: 1, title: NSLocalizedString("Employee", comment: ""), color: .yellow.opacity(0.3)),
-                RoleItem(number: 2, title: NSLocalizedString("Accountant", comment: ""), color: .green.opacity(0.3)),
-                RoleItem(number: 3, title: NSLocalizedString("Director", comment: ""), color: .purple.opacity(0.3)),
-            ]
-            return s
-        }()
+        static let initial: ScreenState = ScreenState()
 
         var isStartEnabled: Bool {
-            !roles.isEmpty
+            areRolesFilled
         }
     }
 }

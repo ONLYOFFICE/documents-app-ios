@@ -20,7 +20,12 @@ class VDRStartFillingViewController: UIHostingController<VDRStartFillingView> {
         )
     }
 
-    init(roles: [[String: Any]], onDismiss: @escaping (Result<Bool, any Error>) -> Void) {
+    init(
+        roomId: String,
+        roles: [[String: Any]],
+        onDismiss: @escaping (Result<Bool, any Error>
+        ) -> Void
+    ) {
         let viewModel = VDRStartFillingViewModel(roles: roles)
         let view = VDRStartFillingView(
             viewModel: viewModel,

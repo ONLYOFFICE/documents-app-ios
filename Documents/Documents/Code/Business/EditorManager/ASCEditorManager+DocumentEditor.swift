@@ -131,8 +131,13 @@ extension ASCEditorManager {
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
     func startFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
-        print("====Call startFillingForm with roles: \(roles)")
-        let fillingViewController = VDRStartFillingViewController(roles: roles, onDismiss: complation)
+        guard let roomId = ASCFileManager.onlyofficeProvider?.folder?.currentOrParentsRoomId else { return }
+
+        let fillingViewController = VDRStartFillingViewController(
+            roomId: roomId,
+            roles: roles,
+            onDismiss: complation
+        )
         controller.present(fillingViewController, animated: true, completion: nil)
     }
 

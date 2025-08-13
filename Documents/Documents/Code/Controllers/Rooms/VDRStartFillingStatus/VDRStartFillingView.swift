@@ -31,7 +31,6 @@ struct VDRStartFillingView: View {
                                 RoleRow(role: role) {
                                     viewModel.roleTapped(role)
                                 }
-                                .fullWidthSeparators()
                             }
                             .onDelete { indexSet in
                                 indexSet.map { viewModel.state.roles[$0] }
@@ -153,18 +152,6 @@ struct RoleRow: View {
         .background(Color.white)
         .contentShape(Rectangle())
         .onTapGesture(perform: onTap)
-    }
-}
-
-extension View {
-    func fullWidthSeparators() -> some View {
-        if #available(iOS 15, *) {
-            return self
-                .listRowSeparator(.visible, edges: .bottom)
-                .listRowInsets(EdgeInsets())
-        } else {
-            return self
-        }
     }
 }
 

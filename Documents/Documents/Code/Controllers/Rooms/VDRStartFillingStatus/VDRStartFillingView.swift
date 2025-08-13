@@ -109,7 +109,7 @@ struct VDRStartFillingView: View {
                     .cornerRadius(16)
             }
             .disabled(!viewModel.state.isStartEnabled)
-            .padding(.top, 16)
+            .padding(.vertical, 16)
             .padding(.horizontal)
         }
         .background(Color.white.ignoresSafeArea(edges: .bottom))

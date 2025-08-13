@@ -16,6 +16,7 @@ struct ASCRoomTemplateUserMemberRowModel {
     var emailString: String
     var isOwner: Bool
     var isSelected: Bool
+    var displayCircleMark: Bool = true
     var onTapAction: (() -> Void)?
 
     enum ImageSourceType {
@@ -28,6 +29,7 @@ struct ASCRoomTemplateGroupMemberRowModel {
     var id: String
     var name: String
     var isSelected: Bool
+    var displayCircleMark: Bool = true
     var onTapAction: (() -> Void)?
 }
 
@@ -57,10 +59,12 @@ struct ASCRoomTemplateMemberRow: View {
 
     @ViewBuilder
     private func userRow(_ model: ASCRoomTemplateUserMemberRowModel) -> some View {
-        Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
-            .resizable()
-            .frame(width: 24, height: 24)
-            .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        if model.displayCircleMark {
+            Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        }
 
         imageView(for: model.image)
 
@@ -77,10 +81,12 @@ struct ASCRoomTemplateMemberRow: View {
 
     @ViewBuilder
     private func groupRow(_ model: ASCRoomTemplateGroupMemberRowModel) -> some View {
-        Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
-            .resizable()
-            .frame(width: 24, height: 24)
-            .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        if model.displayCircleMark {
+            Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        }
 
         Asset.Images.avatarDefaultGroup.swiftUIImage
             .resizable()

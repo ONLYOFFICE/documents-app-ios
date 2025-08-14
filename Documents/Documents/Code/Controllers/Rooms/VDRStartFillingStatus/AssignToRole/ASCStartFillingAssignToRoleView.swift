@@ -49,7 +49,7 @@ struct ASCStartFillingAssignToRoleView: View {
 
     private var segment: some View {
         Picker("Select", selection: $viewModel.dataModel.selectedSegment) {
-            ForEach(ASCChooseRoomTemplateMembersViewModel.Segment.allCases) { segment in
+            ForEach(ASCStartFillingAssignToRoleViewModel.Segment.allCases) { segment in
                 Text(verbatim: segment.localizedString).tag(segment)
             }
         }
@@ -94,7 +94,6 @@ struct ASCStartFillingAssignToRoleView: View {
 
                     // MARK: TODO modifier
                 }
-                .disabled(!viewModel.screenModel.isAddButtonEnabled)
             }
             .padding()
         }

@@ -15,18 +15,16 @@ final class ASCStartFillingAssignToRoleViewModel: ObservableObject {
 
     @Published var dataModel = DataModel.empty
 
-    // MARK: Dependencies
-
-    private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
-
     // MARK: Props
 
+    let room: ASCRoom
     let onAdd: (ASCUser) -> Void
 
     init(
-        ignoreMembersIds: Set<String> = [],
+        room: ASCRoom,
         onAdd: @escaping (ASCUser) -> Void
     ) {
+        self.room = room
         self.onAdd = onAdd
     }
 
@@ -40,8 +38,8 @@ final class ASCStartFillingAssignToRoleViewModel: ObservableObject {
 extension ASCStartFillingAssignToRoleViewModel {
     func onAppear() {
         Task {
-            async let usersTask = fetchUsers() // TODO: fetch room users
-            async let guestsTask = fetchUsers() // TODO: fetch guests
+            async let usersTask = fetchUsers()
+            async let guestsTask = fetchGuests()
 
             let (users, guests) = await(usersTask, guestsTask)
             dataModel.users = users
@@ -55,21 +53,22 @@ extension ASCStartFillingAssignToRoleViewModel {
 private extension ASCStartFillingAssignToRoleViewModel {
     func fetchUsers() async -> [ASCUser] {
         do {
-            let result = try await OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all)
-            return result?.result?
-                .filter { user in
-                    (user.isAdmin || user.isRoomAdmin) && !user.isOwner
-                } ?? []
+            return try await OnlyofficeApiClient.request(
+                OnlyofficeAPI.Endpoints.People.room(roomId: room.id),
+                PeopleRoomRequestModel().dictionary
+            )?.result ?? []
         } catch {
             log.error(error)
             return []
         }
     }
 
-    func fetchGroups() async -> [ASCGroup] {
+    func fetchGuests() async -> [ASCUser] {
         do {
-            let result = try await OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups)
-            return result?.result ?? []
+            return try await OnlyofficeApiClient.request(
+                OnlyofficeAPI.Endpoints.People.room(roomId: room.id),
+                PeopleGuestsRequestModel().dictionary
+            )?.result ?? []
         } catch {
             log.error(error)
             return []
@@ -115,7 +114,6 @@ private extension ASCStartFillingAssignToRoleViewModel {
             }
         }()
         return ScreenModel(
-            isAddButtonEnabled: true, // TODO: Remove
             rows: cells
         )
     }
@@ -149,7 +147,6 @@ extension ASCStartFillingAssignToRoleViewModel {
     }
 
     struct ScreenModel {
-        var isAddButtonEnabled: Bool = false
         var rows: [Cell]
     }
 
@@ -174,7 +171,7 @@ private extension ASCUser {
             id: userId ?? "",
             image: .url(avatar ?? ""),
             userName: displayName ?? "",
-            accessString: accessValue.title(),
+            accessString: userType.description,
             emailString: email ?? "",
             isOwner: isOwner,
             isSelected: false,

@@ -13,36 +13,42 @@ import SwiftUI
 @MainActor
 final class VDRStartFillingViewModel: ObservableObject {
     typealias RoleItem = VDRStartFillingRoleItem
-    let roles: [[String: Any]]
 
-    init(roles: [[String: Any]]) {
-        self.roles = roles
+    // MARK: Published
+
+    @Published var state: ScreenState = .initial
+
+    // MARK: Props
+
+    private(set) var dataModel: DataModel
+
+    init(room: ASCRoom, roles: [[String: Any]]) {
+        dataModel = DataModel(
+            room: room,
+            rawRoles: roles
+        )
     }
-
-    @Published private(set) var state: ScreenState = .initial
 
     func onAppear() {
         setupRolesToState()
     }
 
-    func closeTapped() {
-        print("Close tapped")
-    }
-
     func startTapped() {
-        print("Start tapped, roles:", state.roles)
+        // TODO: Check and fill form
     }
 
     func roleTapped(_ role: RoleItem) {
-        print("Role tapped (add user?) for role:", role.title)
+        // TODO: lastTappedRoleIndex
+        state.isChooseFromListScreenDisplaying = true
     }
 
     func deleteRole(_ role: RoleItem) {
         state.roles.removeAll { $0 == role }
+        // TODO: Map user on roles, remove only set user
     }
 
     func addRole() {
-        // state.roles.append(new)
+        state.isChooseFromListScreenDisplaying = true
     }
 }
 
@@ -51,7 +57,7 @@ final class VDRStartFillingViewModel: ObservableObject {
 extension VDRStartFillingViewModel {
     func setupRolesToState() {
         guard state.roles.isEmpty else { return }
-        state.roles = roles.enumerated().compactMap { index, roleDict in
+        state.roles = dataModel.rawRoles.enumerated().compactMap { index, roleDict in
             guard let name = roleDict["name"] as? String,
                   let colorHex = roleDict["color"] as? String
             else { return nil }
@@ -64,17 +70,22 @@ extension VDRStartFillingViewModel {
     }
 }
 
-// MARK: - ScreeenState
+// MARK: - ScreenState
 
 extension VDRStartFillingViewModel {
+    struct DataModel {
+        let room: ASCRoom
+        var rawRoles: [[String: Any]] = []
+        var lastTappedRoleIndex = 0
+    }
+
     struct ScreenState {
-        var roles: [RoleItem] = []
-        var areRolesFilled: Bool = false
+        fileprivate(set) var roles: [RoleItem] = []
+        private(set) var areRolesFilled = false
+        private(set) var isStartEnabled = false
+
+        var isChooseFromListScreenDisplaying = false
 
         static let initial: ScreenState = ScreenState()
-
-        var isStartEnabled: Bool {
-            areRolesFilled
-        }
     }
 }

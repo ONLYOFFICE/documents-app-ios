@@ -561,9 +561,9 @@
 		FC9EF02F2BFB208800A66DE8 /* OnlyofficeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF0172BFB208800A66DE8 /* OnlyofficeShare.swift */; };
 		FC9EF0302BFB208800A66DE8 /* OnlyofficeUserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF0182BFB208800A66DE8 /* OnlyofficeUserPhoto.swift */; };
 		FC9EF0312BFB208800A66DE8 /* OnlyofficeVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF0192BFB208800A66DE8 /* OnlyofficeVersion.swift */; };
-		FC9EF0322BFB208800A66DE8 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF01A2BFB208800A66DE8 /* RoomLinkResponceModel.swift */; };
+		FC9EF0322BFB208800A66DE8 /* RoomLinkResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF01A2BFB208800A66DE8 /* RoomLinkResponseModel.swift */; };
 		FC9EF0332BFB208800A66DE8 /* RoomNotificationsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF01B2BFB208800A66DE8 /* RoomNotificationsResponceModel.swift */; };
-		FC9EF0342BFB208800A66DE8 /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF01C2BFB208800A66DE8 /* RoomUsersResponceModel.swift */; };
+		FC9EF0342BFB208800A66DE8 /* RoomUsersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EF01C2BFB208800A66DE8 /* RoomUsersResponseModel.swift */; };
 		FC9F496B27F5CFE100D88936 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496A27F5CFE000D88936 /* ASCConnectStorageNextCloudServerController.swift */; };
 		FC9F496D27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */; };
 		FC9F496F27F5D0C900D88936 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496E27F5D0C900D88936 /* ASCAppleIdSignInController.swift */; };
@@ -1366,9 +1366,9 @@
 		FC9EF0172BFB208800A66DE8 /* OnlyofficeShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeShare.swift; sourceTree = "<group>"; };
 		FC9EF0182BFB208800A66DE8 /* OnlyofficeUserPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeUserPhoto.swift; sourceTree = "<group>"; };
 		FC9EF0192BFB208800A66DE8 /* OnlyofficeVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeVersion.swift; sourceTree = "<group>"; };
-		FC9EF01A2BFB208800A66DE8 /* RoomLinkResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinkResponceModel.swift; sourceTree = "<group>"; };
+		FC9EF01A2BFB208800A66DE8 /* RoomLinkResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinkResponseModel.swift; sourceTree = "<group>"; };
 		FC9EF01B2BFB208800A66DE8 /* RoomNotificationsResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomNotificationsResponceModel.swift; sourceTree = "<group>"; };
-		FC9EF01C2BFB208800A66DE8 /* RoomUsersResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersResponceModel.swift; sourceTree = "<group>"; };
+		FC9EF01C2BFB208800A66DE8 /* RoomUsersResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersResponseModel.swift; sourceTree = "<group>"; };
 		FC9F496A27F5CFE000D88936 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
 		FC9F496E27F5D0C900D88936 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
@@ -3347,9 +3347,9 @@
 				FC9EF0172BFB208800A66DE8 /* OnlyofficeShare.swift */,
 				FC9EF0182BFB208800A66DE8 /* OnlyofficeUserPhoto.swift */,
 				FC9EF0192BFB208800A66DE8 /* OnlyofficeVersion.swift */,
-				FC9EF01A2BFB208800A66DE8 /* RoomLinkResponceModel.swift */,
+				FC9EF01A2BFB208800A66DE8 /* RoomLinkResponseModel.swift */,
 				FC9EF01B2BFB208800A66DE8 /* RoomNotificationsResponceModel.swift */,
-				FC9EF01C2BFB208800A66DE8 /* RoomUsersResponceModel.swift */,
+				FC9EF01C2BFB208800A66DE8 /* RoomUsersResponseModel.swift */,
 				E8D2DFE72D445E3100F26718 /* OnlyofficeOperation.swift */,
 				E8D2DFE82D445E3100F26718 /* OnlyofficeRoomIndexExportOperation.swift */,
 				E8D2DFE92D445E3100F26718 /* SharePasswordResponseModel.swift */,
@@ -4697,7 +4697,7 @@
 				FC759B5C2C00608600510096 /* RoomSharingNetworkService.swift in Sources */,
 				FC2B0CCF2642C6F400969DB9 /* NextcloudServerError.swift in Sources */,
 				FCB4CE7F29FAC88C009C1E2E /* ASCMultiAccountPresenter.swift in Sources */,
-				FC9EF0322BFB208800A66DE8 /* RoomLinkResponceModel.swift in Sources */,
+				FC9EF0322BFB208800A66DE8 /* RoomLinkResponseModel.swift in Sources */,
 				FC6852192683572600D830EC /* ASCOneDriveProvider.swift in Sources */,
 				FC83D5302A973E2100C404CB /* UILabel+Extension.swift in Sources */,
 				FC759B4A2C00608600510096 /* CreatingRoomType.swift in Sources */,
@@ -4825,7 +4825,7 @@
 				FC83D54A2A973E2100C404CB /* UITableView+Extensions.swift in Sources */,
 				FC7DC8F42861FE8E00E61C69 /* ASCSettingsNotificationCell.swift in Sources */,
 				FC5D0414263BE8F300D9DBCF /* DropboxApiClient.swift in Sources */,
-				FC9EF0342BFB208800A66DE8 /* RoomUsersResponceModel.swift in Sources */,
+				FC9EF0342BFB208800A66DE8 /* RoomUsersResponseModel.swift in Sources */,
 				F3772FD12C9DEBC1002B33A8 /* ASCUserWithEmailRowView.swift in Sources */,
 				FC9EF0302BFB208800A66DE8 /* OnlyofficeUserPhoto.swift in Sources */,
 				FC83D5282A973E2100C404CB /* UISplitViewController+Extensions.swift in Sources */,

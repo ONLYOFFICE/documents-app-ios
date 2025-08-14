@@ -1,5 +1,5 @@
 //
-//  RoomUsersResponceModel.swift
+//  RoomUsersResponseModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 26.12.2023.
@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - RoomUsersResponceModel
 
-struct RoomUsersResponceModel: Codable {
+struct RoomUsersResponseModel: Codable {
     let access: ASCShareAccess
     let user: ASCUser
     let isLocked: Bool

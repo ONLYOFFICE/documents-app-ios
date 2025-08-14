@@ -11,8 +11,8 @@ import Foundation
 import SwiftUI
 
 struct RoomSharingFlowModel {
-    var links: [RoomLinkResponceModel] = []
-    var sharings: [RoomUsersResponceModel] = []
+    var links: [RoomLinkResponseModel] = []
+    var sharings: [RoomUsersResponseModel] = []
 }
 
 final class RoomSharingViewModel: ObservableObject {
@@ -70,7 +70,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
     private lazy var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
-    private var applyingDeletingLink: RoomLinkResponceModel?
+    private var applyingDeletingLink: RoomLinkResponseModel?
     private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
@@ -291,7 +291,7 @@ private extension RoomSharingViewModel {
             .map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
     }
 
-    func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
+    func mapToUserViewModel(sharing: RoomUsersResponseModel, isInvitation: Bool = false) -> ASCUserRowModel {
         let onTapAction: (() -> Void)? = isUserSelectionAllow && !sharing.user.isOwner
             ? { [weak self] in self?.selectedUser = sharing.user }
             : nil
@@ -305,7 +305,7 @@ private extension RoomSharingViewModel {
         )
     }
 
-    func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {
+    func mapToLinkViewModel(link: RoomLinkResponseModel) -> RoomSharingLinkRowModel {
         var imagesNames: [String] = []
         if link.linkInfo.password != nil {
             imagesNames.append("lock.circle.fill")

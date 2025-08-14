@@ -253,8 +253,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .delete)
             }
 
-            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
+            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
             }
 
             static func removeLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
@@ -265,16 +265,16 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
-            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
+            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
-            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
+            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
             }
 
-            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>> {
-                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
+            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
             }
 
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {

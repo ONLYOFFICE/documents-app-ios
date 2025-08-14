@@ -163,7 +163,7 @@ private extension View {
         navigation(isActive: isActive, destination: {
             ASCStartFillingAssignToRoleView(
                 viewModel: ASCStartFillingAssignToRoleViewModel(
-                    ignoreMembersIds: Set()
+                    room: viewModel.dataModel.room
                 ) { _ in
                     // viewModel.onChooseMembersAdd(model: $0)
                 }

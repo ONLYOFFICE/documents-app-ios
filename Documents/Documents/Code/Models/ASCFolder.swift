@@ -241,13 +241,13 @@ extension ASCEntity {
 // MARK: - ASCFolder extension for DocSpace
 
 extension ASCFolder {
-    var currentOrParentsRoomId: String? {
-        guard !isRoom else { return id }
+    var currentOrParentsRoom: ASCRoom? {
+        guard !isRoom else { return self }
         var currentFolder = self
 
         while let parentFolder = currentFolder.parent {
             if parentFolder.isRoom {
-                return parentFolder.id
+                return parentFolder
             }
             currentFolder = parentFolder
         }

@@ -1293,7 +1293,6 @@
 		FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsEmptyViewController.swift; sourceTree = "<group>"; };
 		FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferNavigationController.swift; sourceTree = "<group>"; };
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
-		FCDC03412E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+ASCProviderDelegate.swift"; sourceTree = "<group>"; };
 		FCDC02B62E0AEA6600704E7B /* ar-SA.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "ar-SA.xcloc"; sourceTree = "<group>"; };
 		FCDC02B72E0AEA6600704E7B /* bg.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = bg.xcloc; sourceTree = "<group>"; };
 		FCDC02B82E0AEA6600704E7B /* cs.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = cs.xcloc; sourceTree = "<group>"; };
@@ -1309,6 +1308,7 @@
 		FCDC02C22E0AEA6600704E7B /* si.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = si.xcloc; sourceTree = "<group>"; };
 		FCDC02C32E0AEA6600704E7B /* zh-Hans.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "zh-Hans.xcloc"; sourceTree = "<group>"; };
 		FCDC02C42E0AEA6600704E7B /* zh-Hant.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "zh-Hant.xcloc"; sourceTree = "<group>"; };
+		FCDC03412E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+ASCProviderDelegate.swift"; sourceTree = "<group>"; };
 		FCE186212628C65F0086D21B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FCE186492628CFE70086D21B /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		FCE18667262AB4AB0086D21B /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };

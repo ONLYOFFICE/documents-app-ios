@@ -9,38 +9,37 @@
 import UIKit
 
 class ASCZoomSignInController: ASCConnectStorageOAuth2Delegate {
-    
     var clientId: String?
     var redirectUrl: String?
-    
+
     weak var viewController: ASCConnectStorageOAuth2ViewController? {
         didSet {
             viewController?.delegate = self
         }
     }
-    
+
     init(clientId: String, redirectUrl: String) {
         self.clientId = clientId
         self.redirectUrl = redirectUrl
     }
-    
+
     func viewDidLoad(controller: ASCConnectStorageOAuth2ViewController) {
         guard let clientId,
               let redirectUrl else { return }
-        
+
         let parameters: [String: String] = [
             "response_type": "code",
             "client_id": clientId,
-            "redirect_uri": redirectUrl
+            "redirect_uri": redirectUrl,
         ]
-        
+
         let authRequest = "https://zoom.us/oauth/authorize?\(parameters.stringAsHttpParameters())"
         guard let url = URL(string: authRequest) else { return }
         let urlRequest = URLRequest(url: url)
 
         controller.load(request: urlRequest)
     }
-    
+
     func shouldStartLoad(with request: String, in controller: ASCConnectStorageOAuth2ViewController) -> Bool {
         log.info("webview url = \(request)")
 

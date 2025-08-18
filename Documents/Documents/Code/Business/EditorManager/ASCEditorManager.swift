@@ -1572,10 +1572,10 @@ extension ASCEditorManager {
     }
 
     @MainActor
-    func fetchParticipantsAvatars(usersID: [String], completion: @escaping ([String: UIImage]) -> Void) {
+    func editorFetchAvatars(for userIds: [String], completion: @escaping ([String: UIImage]) -> Void) {
         clientRequest(OnlyofficeAPI.Endpoints.People.all) { (response: OnlyofficeResponseArray<ASCUser>?, error) in
             var result: [String: UIImage] = [:]
-            for id in usersID {
+            for id in userIds {
                 if result[id] == nil {
                     result[id] = Asset.Images.avatarDefault.image
                 }
@@ -1586,7 +1586,7 @@ extension ASCEditorManager {
                 return
             }
 
-            let currentUsersId = Set(usersID)
+            let currentUsersId = Set(userIds)
             let userMap = users.reduce(into: [String: ASCUser]()) { acc, user in
                 if let id = user.userId, currentUsersId.contains(id) {
                     acc[id] = user
@@ -1676,15 +1676,5 @@ extension ASCEditorManager {
                 print(error.localizedDescription)
             }
         }
-    }
-}
-
-extension ASCEditorManager: SpreadsheetEditor.SDKParticipantsControllerDelegate,
-    DocumentEditor.SDKParticipantsControllerDelegate,
-    PresentationEditor.SDKParticipantsControllerDelegate
-{
-    @MainActor
-    func fetchParticipantsAvatarsFromApi(usersId usersID: [String], completion: @escaping ([String: UIImage]) -> Void) {
-        fetchParticipantsAvatars(usersID: usersID, completion: completion)
     }
 }

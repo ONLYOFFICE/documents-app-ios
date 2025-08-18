@@ -90,7 +90,6 @@ extension ASCEditorManager {
 
         let editorViewController = SpreadsheetEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
-        editorViewController.collabDelegate = self
 
         return editorViewController
     }
@@ -161,5 +160,13 @@ extension ASCEditorManager: SpreadsheetEditorViewControllerDelegate {
 
     func spreadsheetChartData(_ controller: SpreadsheetEditor.SpreadsheetEditorViewController, data: Data?) {
         //
+    }
+
+    func spreadsheetFetchAvatars(_ controller: SpreadsheetEditor.SpreadsheetEditorViewController, usersId: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        Task {
+            await MainActor.run {
+                editorFetchAvatars(for: usersId, completion: completion)
+            }
+        }
     }
 }

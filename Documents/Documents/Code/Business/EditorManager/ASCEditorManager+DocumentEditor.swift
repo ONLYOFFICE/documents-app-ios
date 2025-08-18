@@ -102,7 +102,6 @@ extension ASCEditorManager {
 
         let editorViewController = DocumentEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
-        editorViewController.collabDelegate = self
 
         return editorViewController
     }
@@ -131,12 +130,6 @@ extension ASCEditorManager {
 }
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
-    func startFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
-        print("====Call startFillingForm with roles: \(roles)")
-        let fillingViewController = VDRStartFillingViewController(roles: roles, onDismiss: complation)
-        controller.present(fillingViewController, animated: true, completion: nil)
-    }
-
     func documentDidOpen(_ controller: DocumentEditor.DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         switch result {
         case let .success(document):
@@ -179,7 +172,20 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
         editorDocumentRename(controller, title: title, complation: complation)
     }
 
-    func fillFormDidSend(_ controller: DocumentEditor.DocumentEditorViewController, complation: @escaping ((Result<Bool, Error>) -> Void)) {
+    func documentFillFormDidSend(_ controller: DocumentEditor.DocumentEditorViewController, complation: @escaping ((Result<Bool, Error>) -> Void)) {
         editorFillFormDidSend(controller, complation: complation)
+    }
+
+    func documentStartFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
+        let fillingViewController = VDRStartFillingViewController(roles: roles, onDismiss: complation)
+        controller.present(fillingViewController, animated: true, completion: nil)
+    }
+
+    func documentFetchAvatars(_ controller: DocumentEditor.DocumentEditorViewController, usersId: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        Task {
+            await MainActor.run {
+                editorFetchAvatars(for: usersId, completion: completion)
+            }
+        }
     }
 }

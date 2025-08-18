@@ -90,7 +90,6 @@ extension ASCEditorManager {
 
         let editorViewController = PresentationEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
-        editorViewController.collabDelegate = self
 
         return editorViewController
     }
@@ -157,5 +156,13 @@ extension ASCEditorManager: PresentationEditorViewControllerDelegate {
 
     func presentationRename(_ controller: PresentationEditor.PresentationEditorViewController, title: String, complation: @escaping ((Result<Bool, Error>) -> Void)) {
         editorDocumentRename(controller, title: title, complation: complation)
+    }
+
+    func presentationFetchAvatars(_ controller: PresentationEditor.PresentationEditorViewController, usersId: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        Task {
+            await MainActor.run {
+                editorFetchAvatars(for: usersId, completion: completion)
+            }
+        }
     }
 }

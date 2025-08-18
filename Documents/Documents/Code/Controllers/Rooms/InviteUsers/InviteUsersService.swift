@@ -20,6 +20,8 @@ protocol InviteUsersService {
         settingAccess: ASCShareAccess,
         completion: @escaping (Result<ASCSharingOprionsExternalLink?, Error>) -> Void
     )
+    
+    func getInvitationSettings(completion: @escaping(Result<ASCInvitationSettingsResponceModel?, Error>) -> Void)
 }
 
 // MARK: - InviteUsersServiceImp
@@ -114,6 +116,16 @@ extension InviteUsersServiceImp: InviteUsersService {
                         .failure(error)
                     )
                 }
+            }
+        }
+    }
+    
+    func getInvitationSettings(completion: @escaping(Result<ASCInvitationSettingsResponceModel?, Error>) -> Void) {
+        networkingRequestManager.request(OnlyofficeAPI.Endpoints.Sharing.getInvitationSettings(), nil) { result, error in
+            if let result = result?.result {
+                completion(.success(result))
+            } else if let error {
+                completion(.failure(error))
             }
         }
     }

@@ -1,0 +1,30 @@
+/* Bundle name */
+"CFBundleName" = "Documents";
+
+/* No comment provided by engineer. */
+"New Document" = "New Document";
+
+/* No comment provided by engineer. */
+"New Presentation" = "New Presentation";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "New Spreadsheet";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "This app requires access to the camera, so that you can take photo and upload it in the app.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "This app requires Face ID permission to authenticate using Face recognition.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "This app requires access to the photo library, so that you can upload your photos in the app.";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "This app requires access to the photo library, so that you can upload your photos in the app.";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE fillable form (.oform)";
+
+/* No comment provided by engineer. */
+"ONLYOFFICE form template (.docxf)" = "ONLYOFFICE form template (.docxf)";
+

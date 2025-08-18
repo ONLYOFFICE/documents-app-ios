@@ -2603,8 +2603,11 @@ Operation completed</note>
         <target>Pas de sous-dossiers</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
-        <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+      <trans-unit id="Exit without saving?
+You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
+        <source>Exit without saving?
+You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target>Quitter sans sauvegarder ?  Vous avez apporté des modifications à l'index. Si vous continuez sans sauvegarder, ces modifications ne seront pas appliquées.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">

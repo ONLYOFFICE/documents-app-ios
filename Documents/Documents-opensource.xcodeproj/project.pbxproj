@@ -120,6 +120,8 @@
 		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
 		F3BAE5942D3543420024AB6A /* TopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAE5932D3543400024AB6A /* TopBannerView.swift */; };
 		F3C003E72D6C9254008510F1 /* ASCDocumentsViewController+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C003E62D6C9241008510F1 /* ASCDocumentsViewController+Localized.swift */; };
+		F3D28A562E5331D400685E33 /* ASCZoomSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D28A552E5331D400685E33 /* ASCZoomSignInController.swift */; };
+		F3D28A572E5331D400685E33 /* ASCLinkedInSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D28A542E5331D400685E33 /* ASCLinkedInSignInController.swift */; };
 		F3D3A9582D443539002E43D4 /* SharePasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */; };
 		F3D3A95A2D443669002E43D4 /* SharePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3A9592D443660002E43D4 /* SharePasswordRequestModel.swift */; };
 		FC00CBF22C46613C00D3344D /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00CBF12C46613C00D3344D /* ChevronRightView.swift */; };
@@ -856,6 +858,8 @@
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		F3BAE5932D3543400024AB6A /* TopBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerView.swift; sourceTree = "<group>"; };
 		F3C003E62D6C9241008510F1 /* ASCDocumentsViewController+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+Localized.swift"; sourceTree = "<group>"; };
+		F3D28A542E5331D400685E33 /* ASCLinkedInSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLinkedInSignInController.swift; sourceTree = "<group>"; };
+		F3D28A552E5331D400685E33 /* ASCZoomSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCZoomSignInController.swift; sourceTree = "<group>"; };
 		F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePasswordResponseModel.swift; sourceTree = "<group>"; };
 		F3D3A9592D443660002E43D4 /* SharePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePasswordRequestModel.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
@@ -3188,6 +3192,8 @@
 		FC64B2E81EE56C5500920FDD /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				F3D28A542E5331D400685E33 /* ASCLinkedInSignInController.swift */,
+				F3D28A552E5331D400685E33 /* ASCZoomSignInController.swift */,
 				FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */,
 				FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */,
 				FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */,
@@ -4442,6 +4448,8 @@
 				F30716E92DF765DB003CBBD2 /* CreateRoomFromTemplateModel.swift in Sources */,
 				F30716EA2DF765DB003CBBD2 /* ASCChooseRoomTemplateMembersViewModel.swift in Sources */,
 				F30716EB2DF765DB003CBBD2 /* ASCTemplateAccessSettingsViewModel.swift in Sources */,
+				F3D28A562E5331D400685E33 /* ASCZoomSignInController.swift in Sources */,
+				F3D28A572E5331D400685E33 /* ASCLinkedInSignInController.swift in Sources */,
 				F30716EC2DF765DB003CBBD2 /* ASCSaveAsTemplateRootViewController.swift in Sources */,
 				F30716ED2DF765DB003CBBD2 /* ASCTemplateAccessModel.swift in Sources */,
 				F30716EE2DF765DB003CBBD2 /* ASCCreateRoomFromTemplateRootViewController.swift in Sources */,

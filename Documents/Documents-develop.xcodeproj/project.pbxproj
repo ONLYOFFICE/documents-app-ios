@@ -126,6 +126,8 @@
 		F3772FD52C9DEBC1002B33A8 /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */; };
 		F3772FD72C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FD62C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift */; };
 		F3772FD92C9DED02002B33A8 /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FD82C9DED02002B33A8 /* RoomDuplicateRequestModel.swift */; };
+		F3C64CAC2E53310B00F7BACC /* ASCZoomSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C64CAB2E53310B00F7BACC /* ASCZoomSignInController.swift */; };
+		F3C64CAD2E53310B00F7BACC /* ASCLinkedInSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C64CAA2E53310B00F7BACC /* ASCLinkedInSignInController.swift */; };
 		F3FB7AF52DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */; };
 		F3FB7AF62DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF32DC0BBF800FA318A /* ASCVersionHistoryViewModel.swift */; };
 		F3FB7AF72DC0BBF800FA318A /* ASCVersionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF22DC0BBF800FA318A /* ASCVersionHistoryView.swift */; };
@@ -950,6 +952,8 @@
 		F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
 		F3772FD62C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomOperation.swift; sourceTree = "<group>"; };
 		F3772FD82C9DED02002B33A8 /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
+		F3C64CAA2E53310B00F7BACC /* ASCLinkedInSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLinkedInSignInController.swift; sourceTree = "<group>"; };
+		F3C64CAB2E53310B00F7BACC /* ASCZoomSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCZoomSignInController.swift; sourceTree = "<group>"; };
 		F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
 		F3FB7AF12DC0BBF800FA318A /* ASCVersionHistoryRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryRootViewController.swift; sourceTree = "<group>"; };
 		F3FB7AF22DC0BBF800FA318A /* ASCVersionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryView.swift; sourceTree = "<group>"; };
@@ -2594,6 +2598,8 @@
 		FC64B2E81EE56C5500920FDD /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				F3C64CAA2E53310B00F7BACC /* ASCLinkedInSignInController.swift */,
+				F3C64CAB2E53310B00F7BACC /* ASCZoomSignInController.swift */,
 				FC9F496E27F5D0C900D88936 /* ASCAppleIdSignInController.swift */,
 				FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */,
 				FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */,
@@ -4738,6 +4744,8 @@
 				FC86503A1ED3232B00C73AEF /* ASCAboutViewController.swift in Sources */,
 				FCFE46D9275E237E007C9AE0 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
+				F3C64CAC2E53310B00F7BACC /* ASCZoomSignInController.swift in Sources */,
+				F3C64CAD2E53310B00F7BACC /* ASCLinkedInSignInController.swift in Sources */,
 				FC759B4C2C00608600510096 /* CreateRoomRouteView.swift in Sources */,
 				FCCB193A262AC68F007517BB /* Segues.swift in Sources */,
 				FC759B522C00608600510096 /* InviteUsersView.swift in Sources */,

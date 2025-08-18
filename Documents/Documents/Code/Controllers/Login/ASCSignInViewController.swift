@@ -108,7 +108,6 @@ class ASCSignInViewController: ASCBaseViewController {
             let allowMicrosoft = capabilities.providers.contains(.microsoft)
             let allowLdap = capabilities.ldapEnabled
             let allowZoom = capabilities.providers.contains(.zoom)
-            let allowTwitter = capabilities.providers.contains(.twitter)
             let allowLinkedIn = capabilities.providers.contains(.linkedin)
 
             loginByLabel?.isHidden = !(allowFacebook || allowGoogle || allowAppleId || allowMicrosoft)
@@ -120,12 +119,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 let zoomButton = makeSocialButton(imageName: Asset.Images.signinZoom.name, action: #selector(onZoomLogin))
                 signInButtonsStack.addArrangedSubview(zoomButton)
             }
-            
-            if allowTwitter {
-                let twitterButton = makeSocialButton(imageName: Asset.Images.signinTwitter.name, action: #selector(onTwitterLogin))
-                signInButtonsStack.addArrangedSubview(twitterButton)
-            }
-            
+
             if allowLinkedIn {
                 let linkedInButton = makeSocialButton(imageName: Asset.Images.signinLinkedin.name, action: #selector(onLinkedInLogin))
                 signInButtonsStack.addArrangedSubview(linkedInButton)
@@ -609,10 +603,10 @@ class ASCSignInViewController: ASCBaseViewController {
             }
         })
     }
-    
+
     @objc private func onLinkedInLogin() {
         view.endEditing(true)
-        
+
         let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
         let linkedInSignInController = ASCLinkedInSignInController(clientId: ASCConstants.Clouds.LinkedIn.clientId, redirectUrl: ASCConstants.Clouds.LinkedIn.redirectUrl)
         oauth2VC.responseType = .code
@@ -639,7 +633,7 @@ class ASCSignInViewController: ASCBaseViewController {
                         UIAlertController.showError(in: self, message: NSLocalizedString("User authentication failed", comment: ""))
                     }
                 }
-            }  else if let error = info["error"] as? String {
+            } else if let error = info["error"] as? String {
                 UIAlertController.showError(in: self, message: error)
             }
         }
@@ -647,6 +641,7 @@ class ASCSignInViewController: ASCBaseViewController {
         oauth2VC.title = "LinkedIn"
         navigationController?.pushViewController(oauth2VC, animated: true)
     }
+
     @objc private func onZoomLogin() {
         view.endEditing(true)
         let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)

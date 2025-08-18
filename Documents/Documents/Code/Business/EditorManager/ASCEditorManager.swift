@@ -1570,6 +1570,55 @@ extension ASCEditorManager {
             ))
         }
     }
+
+    func fetchParticipantsAvatars(usersID: [String], completion: @escaping ([String: UIImageView]) -> Void) {
+        clientRequest(OnlyofficeAPI.Endpoints.People.all) { (response: OnlyofficeResponseArray<ASCUser>?, error) in
+            let userIdSet = Set(usersID)
+            var result: [String: UIImageView] = [:]
+
+            guard let users = response?.result else {
+                for userId in usersID {
+                    let avatarView = UIImageView(image: Asset.Images.avatarDefault.image)
+                    result[userId] = avatarView
+                }
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+                return
+            }
+
+            var userMap: [String: ASCUser] = [:]
+            for user in users {
+                if let userId = user.userId, userIdSet.contains(userId) {
+                    userMap[userId] = user
+                }
+            }
+
+            for userId in usersID {
+                let avatarView = UIImageView()
+                avatarView.image = Asset.Images.avatarDefault.image
+
+                if let user = userMap[userId],
+                   let avatar = user.avatar,
+                   let urlString = OnlyofficeApiClient.shared.absoluteUrl(from: URL(string: avatar))?.absoluteString,
+                   let url = URL(string: urlString)
+                {
+                    DispatchQueue.main.async {
+                        avatarView.kf.apiSetImage(
+                            with: url,
+                            placeholder: Asset.Images.avatarDefault.image
+                        )
+                    }
+                }
+
+                result[userId] = avatarView
+            }
+
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
 }
 
 // MARK: - OCR
@@ -1621,5 +1670,14 @@ extension ASCEditorManager {
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+extension ASCEditorManager: SpreadsheetEditor.SDKParticipantsControllerDelegate,
+    DocumentEditor.SDKParticipantsControllerDelegate,
+    PresentationEditor.SDKParticipantsControllerDelegate
+{
+    func fetchParticipantsAvatarsFromApi(usersId usersID: [String], completion: @escaping ([String: UIImageView]) -> Void) {
+        fetchParticipantsAvatars(usersID: usersID, completion: completion)
     }
 }

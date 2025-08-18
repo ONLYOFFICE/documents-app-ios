@@ -102,6 +102,7 @@ extension ASCEditorManager {
 
         let editorViewController = DocumentEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
+        editorViewController.collabDelegate = self
 
         return editorViewController
     }

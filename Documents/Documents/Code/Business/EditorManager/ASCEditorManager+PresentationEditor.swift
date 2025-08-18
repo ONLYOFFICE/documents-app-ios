@@ -90,6 +90,7 @@ extension ASCEditorManager {
 
         let editorViewController = PresentationEditorViewController(document: document, configuration: configuration)
         editorViewController.delegate = self
+        editorViewController.collabDelegate = self
 
         return editorViewController
     }

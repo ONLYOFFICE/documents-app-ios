@@ -90,6 +90,7 @@
 		E80387102D6D27D400D162E3 /* ASCSharingSettingsAccessTableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80387052D6D27D400D162E3 /* ASCSharingSettingsAccessTableProvider.swift */; };
 		E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82715762B5EBA66004137F3 /* KFImageView.swift */; };
 		E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */; };
+		E879A0EB2E0FEA6D000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879A0EA2E0FEA5B000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift */; };
 		E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */; };
 		E87CCAE42C9DCBB000C43968 /* CopyFileInsideProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */; };
 		E87CCAE82C9DCC2500C43968 /* FillFormMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */; };
@@ -811,6 +812,7 @@
 		E80387052D6D27D400D162E3 /* ASCSharingSettingsAccessTableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessTableProvider.swift; sourceTree = "<group>"; };
 		E82715762B5EBA66004137F3 /* KFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
 		E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		E879A0EA2E0FEA5B000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+ASCProviderDelegate.swift"; sourceTree = "<group>"; };
 		E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
 		E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyFileInsideProviderService.swift; sourceTree = "<group>"; };
 		E87CCAE52C9DCC2500C43968 /* FillFormMenuScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreen.swift; sourceTree = "<group>"; };
@@ -3549,6 +3551,7 @@
 				FC4639D22BFE115700DA603A /* Protocols */,
 				FC31B27A1E76796E008699C3 /* Views */,
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
+				E879A0EA2E0FEA5B000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift */,
 				FC1765052BA3335900D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */,
 				FCF674892D6F41EF00B6688A /* ASCDocumentsViewController+Localized.swift */,
 				FCEBA71F28B3ADBB0009D50B /* ASCDocumentsViewController+Menu.swift */,
@@ -4934,6 +4937,7 @@
 				FC8BBC9E22BA5D6200761152 /* ASCCreatePortalStatus.swift in Sources */,
 				FC759C372C00614D00510096 /* RoomSharingAccessTypeView.swift in Sources */,
 				FC9EEFB02BFB201700A66DE8 /* OnlyofficeShare.swift in Sources */,
+				E879A0EB2E0FEA6D000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift in Sources */,
 				FC759CA52C00615E00510096 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */,
 				FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */,
 				FCE9F7B02B3045420056E420 /* CurrentCloudFolderMenu.swift in Sources */,

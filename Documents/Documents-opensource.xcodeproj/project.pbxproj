@@ -607,6 +607,7 @@
 		FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64FAB291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift */; };
 		FCC9E8D62B4EC59500012746 /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */; };
 		FCCC8D8F2DDCA8A00045DB93 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC8D8E2DDCA8A00045DB93 /* ASCHelpAndFeedbackViewController.swift */; };
+		FCDC03422E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDC03412E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift */; };
 		FCE886D12A828B050064F79D /* ASCCreateEntityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886D02A828B050064F79D /* ASCCreateEntityUI.swift */; };
 		FCE886EE2A83B76B0064F79D /* CreateEntityUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886ED2A83B76B0064F79D /* CreateEntityUIType.swift */; };
 		FCE886F12A83B7AF0064F79D /* CreateEntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886F02A83B7AF0064F79D /* CreateEntityViewModel.swift */; };
@@ -1288,6 +1289,7 @@
 		FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsEmptyViewController.swift; sourceTree = "<group>"; };
 		FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferNavigationController.swift; sourceTree = "<group>"; };
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
+		FCDC03412E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+ASCProviderDelegate.swift"; sourceTree = "<group>"; };
 		FCDC02B62E0AEA6600704E7B /* ar-SA.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "ar-SA.xcloc"; sourceTree = "<group>"; };
 		FCDC02B72E0AEA6600704E7B /* bg.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = bg.xcloc; sourceTree = "<group>"; };
 		FCDC02B82E0AEA6600704E7B /* cs.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = cs.xcloc; sourceTree = "<group>"; };
@@ -3498,6 +3500,7 @@
 				FC4639C22BFB2C1D00DA603A /* Protocols */,
 				FC31B27A1E76796E008699C3 /* Views */,
 				FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */,
+				FCDC03412E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift */,
 				FC1764CF2BA3318600D6B6F0 /* ASCDocumentsViewController+DragDrop.swift */,
 				FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */,
 				E8C8A8A92D1C92E90020BE95 /* ASCDocumentsViewController+NavBar.swift */,
@@ -4299,6 +4302,7 @@
 				FC142A1A289818B800EDE7CE /* ASCSelectUserViewController.swift in Sources */,
 				FC7080FE2812E2260057FCD2 /* UIButton+Style.swift in Sources */,
 				F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */,
+				FCDC03422E117F5200704E7B /* ASCDocumentsViewController+ASCProviderDelegate.swift in Sources */,
 				E8D50E242D6D25FE004EF563 /* ASCDocSpaceAccessOFormProvider.swift in Sources */,
 				FC7B800A2AFA24D100C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				FC5943B62AE6B3C4001BA2F9 /* ASCIntroPageStoreProtocol.swift in Sources */,
@@ -5266,7 +5270,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp";
 			requirement = {
-				branch = release/v9.0.0;
+				branch = main;
 				kind = branch;
 			};
 		};

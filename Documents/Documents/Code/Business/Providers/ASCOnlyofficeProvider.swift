@@ -1535,8 +1535,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if file.security.startFilling {
-                // TODO: Docspace 3.1 or older
-                // entityActions.insert(.startFilling)
+                entityActions.insert(.startFilling)
             }
 
             if file.security.fillingStatus {
@@ -1629,7 +1628,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.disableNotifications)
             }
 
-            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom {
+            if isDocspace, folder.isRoom, !(folder.rootFolderType == .archive), !folder.isTemplateRoom, folder.security.editRoom {
                 entityActions.insert(.saveAsTemplate)
             }
 
@@ -1765,14 +1764,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     private func archiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
-        handler?(.begin, nil, nil)
-        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
-            if let responseFolder = response?.result {
-                handler?(.end, responseFolder, nil)
-            } else {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Archiving failed.", comment: "")))
+        Task { @MainActor in
+            handler?(.begin, nil, nil)
+            do {
+                let id = try await fetchArchiveOperationId(folder: folder)
+                for try await progress in progressUpdates(for: id) {
+                    handler?(.progress, progress, nil)
+                }
+                handler?(.end, folder, nil)
+            } catch {
+                handler?(.error, nil, error)
             }
         }
+    }
+
+    private func fetchArchiveOperationId(folder: ASCFolder) async throws -> String {
+        guard let archiveOperation = try await OnlyofficeApiClient.request(
+            OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder),
+            ["deleteAfter": false]
+        )?.result else {
+            throw NetworkingError.invalidData
+        }
+        if let errorMessage = archiveOperation.error, !errorMessage.isEmpty {
+            throw StringError(errorMessage)
+        }
+        guard let id = archiveOperation.id else {
+            throw NetworkingError.invalidData
+        }
+        return id
     }
 
     private func unarchiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
@@ -2074,6 +2093,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func updateItem(_ item: ASCEntity) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index] = item
+            delegate?.updateItems(at: [index])
         }
     }
 
@@ -2533,6 +2553,40 @@ extension ASCOnlyofficeProvider {
         let path = "%@/rooms/shared/%@/filter?folder=%@"
         let urlStr = String(format: path, baseUrl, folder.id, folder.id)
         return urlStr
+    }
+
+    private func progressUpdates(for operationId: String, interval: UInt64 = NSEC_PER_SEC) -> AsyncThrowingStream<Int, Error> {
+        AsyncThrowingStream { continuation in
+            Task {
+                do {
+                    var progress = try await fetchOperationProgress(operationId: operationId)
+                    while progress < 100 && !Task.isCancelled {
+                        continuation.yield(progress)
+                        try await Task.sleep(nanoseconds: interval)
+                        progress = try await fetchOperationProgress(operationId: operationId)
+                    }
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
+        }
+    }
+
+    private func fetchOperationProgress(operationId: String) async throws -> Int {
+        guard let resultOperation = try await OnlyofficeApiClient.request(
+            OnlyofficeAPI.Endpoints.Operations.list(urlEncoding: .default),
+            ["id": operationId]
+        )?.result?.first else {
+            throw NetworkingError.invalidData
+        }
+        if let errorMessage = resultOperation.error, !errorMessage.isEmpty {
+            throw StringError(errorMessage)
+        }
+        guard let progress = resultOperation.progress else {
+            throw NetworkingError.invalidData
+        }
+        return progress
     }
 }
 

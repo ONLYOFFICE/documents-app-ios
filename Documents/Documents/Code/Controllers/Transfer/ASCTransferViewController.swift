@@ -200,6 +200,10 @@ class ASCTransferViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        presenter.willDisplay(at: indexPath)
+    }
+
     // MARK: - Actions
 
     @IBAction func onClose(_ sender: UIBarButtonItem) {

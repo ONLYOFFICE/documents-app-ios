@@ -13,6 +13,8 @@ import SwiftUI
 struct VDRStartFillingView: View {
     @ObservedObject var viewModel: VDRStartFillingViewModel
 
+    let onDismiss: (Result<Bool, any Error>) -> Void
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Color(UIColor.systemGray6).ignoresSafeArea()
@@ -52,6 +54,12 @@ struct VDRStartFillingView: View {
             }
 
             footer
+        }
+        .onAppear(perform: {
+            viewModel.onAppear()
+        })
+        .onDisappear {
+            onDismiss(.success(false))
         }
     }
 

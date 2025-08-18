@@ -1,3 +1,9 @@
+/* No comment provided by engineer. */
+"(%@)" = "(%@)";
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i de %2$i";
 
@@ -74,6 +80,12 @@
 "Access settings" = "Configurações de acesso";
 
 /* No comment provided by engineer. */
+"Access to template" = "Acesso ao modelo";
+
+/* No comment provided by engineer. */
+"Access to template. You can select members who can create rooms based on this template." = "Acesso ao modelo. Você pode selecionar membros que podem criar salas com base neste modelo.";
+
+/* No comment provided by engineer. */
 "Access type" = "Tipo de acesso";
 
 /* No comment provided by engineer. */
@@ -83,10 +95,16 @@
 "Account name is not valid" = "Nome de conta não é válido";
 
 /* No comment provided by engineer. */
+"Accountant" = "Contador(a)";
+
+/* No comment provided by engineer. */
 "Accounts" = "Contas";
 
 /* No comment provided by engineer. */
 "Action on files" = "Ação sobre os arquivos";
+
+/* No comment provided by engineer. */
+"Add" = "Adicionar";
 
 /* No comment provided by engineer. */
 "Add account" = "Adicionar conta";
@@ -105,6 +123,9 @@
 
 /* Button title */
 "Add users" = "Adicionar usuários";
+
+/* No comment provided by engineer. */
+"Add Users or Groups" = "Adicionar usuários ou grupos";
 
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Adicione usuários ou grupos e conceda a eles permissão para ler, revisar ou editar documentos.";
@@ -129,6 +150,9 @@
 
 /* No comment provided by engineer. */
 "All" = "Tudo";
+
+/* No comment provided by engineer. */
+"All DocSpace and Room admins will be able to create rooms using this template." = "Todos os administradores do DocSpace e de salas poderão criar salas usando este modelo.";
 
 /* No comment provided by engineer. */
 "All files" = "Todos os arquivos";
@@ -348,6 +372,9 @@ Measurement unit */
 /* Payment required title */
 "common.paymentRequiredTitle" = "Pagamento necessário";
 
+/* Form filling status */
+"Complete" = "Completo";
+
 /* No comment provided by engineer. */
 "Compress Images" = "Compactar imagens";
 
@@ -374,6 +401,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "Console" = "Console";
+
+/* No comment provided by engineer. */
+"Contact Support" = "Contato com o suporte";
 
 /* Share status */
 "Content creator" = "Criador de conteúdo";
@@ -436,6 +466,9 @@ Measurement unit */
 "Could not delete the folder." = "Não foi possível excluir a pasta.";
 
 /* No comment provided by engineer. */
+"Could not delete the version." = "Não foi possível excluir a versão.";
+
+/* No comment provided by engineer. */
 "Could not delete." = "Não foi possível excluir.";
 
 /* No comment provided by engineer. */
@@ -469,10 +502,16 @@ Measurement unit */
 "Could not read from file" = "Não foi possível ler do arquivo";
 
 /* No comment provided by engineer. */
+"Could not resolve the file." = "Não foi possível resolver o arquivo.";
+
+/* No comment provided by engineer. */
 "Could Not Send Email" = "Não foi possível enviar e-mail";
 
 /* Description of file operation error */
 "Could not write to file" = "Não foi possível gravar no arquivo";
+
+/* No comment provided by engineer. */
+"Couldn' get access" = "Não foi possível obter acesso";
 
 /* No comment provided by engineer. */
 "Couldn't change the owner." = "Não foi possível alterar o proprietário.";
@@ -502,6 +541,12 @@ Measurement unit */
 "Create a free account" = "Criar uma conta gratuita";
 
 /* No comment provided by engineer. */
+"Create a new file" = "Criar um novo arquivo";
+
+/* No comment provided by engineer. */
+"Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." = "Crie uma sala com base em um modelo. Todas as configurações, usuários, pastas e arquivos serão obtidos do modelo de sala selecionado.";
+
+/* No comment provided by engineer. */
 "Create additional links to share the document with different access rights." = "Crie links adicionais para compartilhar o documento com diferentes direitos de acesso.";
 
 /* No comment provided by engineer. */
@@ -523,7 +568,7 @@ Measurement unit */
 "Create new folders to \norganize your files." = "Crie novas pastas para\norganizar seus arquivos.";
 
 /* Button title */
-"Create room" = "Criar quarto";
+"Create room" = "Criar sala";
 
 /* Caption of the process */
 "Creating" = "Criando";
@@ -532,13 +577,22 @@ Measurement unit */
 "Current Date" = "Data atual";
 
 /* No comment provided by engineer. */
+"Current file will be saved in version history." = "O arquivo atual será salvo no histórico de versões.";
+
+/* No comment provided by engineer. */
 "Custom" = "Personalizado";
 
 /* Share status */
 "Custom filter" = "Filtro personalizado";
 
 /* No comment provided by engineer. */
-"Custom room" = "Quarto personalizado";
+"Custom filter for\nthe selected file\ndisabled" = "Filtro personalizado para\no arquivo selecionado\ndesativado";
+
+/* No comment provided by engineer. */
+"Custom filter for\nthe selected file\nenabled" = "Filtro personalizado para\no arquivo selecionado\nhabilitado";
+
+/* No comment provided by engineer. */
+"Custom room" = "Sala personalizada";
 
 /* No comment provided by engineer. */
 "Dark" = "Escuro";
@@ -570,6 +624,15 @@ Measurement unit */
 /* No comment provided by engineer. */
 "Delete permanently" = "Excluir permanentemente";
 
+/* Button title */
+"Delete template" = "Excluir modelo";
+
+/* No comment provided by engineer. */
+"Delete this item?" = "Excluir este item?";
+
+/* No comment provided by engineer. */
+"Delete version" = "Excluir versão";
+
 /* No comment provided by engineer. */
 "Deleted" = "Excluído";
 
@@ -589,6 +652,12 @@ Measurement unit */
 "Diagonal" = "Diagonal";
 
 /* No comment provided by engineer. */
+"Director" = "Diretor";
+
+/* No comment provided by engineer. */
+"Disable Custom filter" = "Desativar filtro personalizado";
+
+/* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Desative se você não quiser receber notificações do %@";
 
 /* No comment provided by engineer. */
@@ -598,6 +667,9 @@ Measurement unit */
 "Disconnect third party" = "Desconectar terceiro";
 
 /* No comment provided by engineer. */
+"Do you really want to delete template room %@? The template cannot be restored. " = "Você realmente deseja excluir a sala de modelos %@? O modelo não pode ser restaurado. ";
+
+/* No comment provided by engineer. */
 "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." = "Você realmente quer sair desta sala? Você poderá participar novamente por meio de um novo convite de um administrador da sala.";
 
 /* No comment provided by engineer. */
@@ -605,6 +677,9 @@ Measurement unit */
 
 /* No comment provided by engineer. */
 "DocSpace admin" = "Administrador do DocSpace";
+
+/* No comment provided by engineer. */
+"Docspace user only" = "Somente usuário do Docspace";
 
 /* No comment provided by engineer. */
 "Document" = "Documento";
@@ -628,6 +703,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "DoсSpace users only" = "Somente usuários do DoсSpace";
 
+/* Form filling status */
+"Draft" = "Rascunho";
+
 /* No comment provided by engineer. */
 "Dropbox" = "Dropbox";
 
@@ -646,6 +724,12 @@ Operation completed */
 /* Button title */
 "Edit" = "Editar";
 
+/* No comment provided by engineer. */
+"Edit comment" = "Editar comentário";
+
+/* No comment provided by engineer. */
+"Edit Comment" = "Editar comentário";
+
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Editar documentos localmente";
 
@@ -657,6 +741,9 @@ Operation completed */
 
 /* Button title */
 "Edit room" = "Editar sala";
+
+/* No comment provided by engineer. */
+"Edit template" = "Editar modelo";
 
 /* Share status */
 "Editor" = "Editor";
@@ -677,6 +764,9 @@ Operation completed */
 "Email is not valid" = "E-mail não é válido";
 
 /* No comment provided by engineer. */
+"Employee" = "Funcionário";
+
+/* No comment provided by engineer. */
 "Employees" = "Funcionários";
 
 /* No comment provided by engineer. */
@@ -684,6 +774,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." = "Ative a indexação automática para indexar arquivos e pastas por número de série. A classificação por número será definida como padrão para todos os usuários.";
+
+/* No comment provided by engineer. */
+"Enable Custom filter" = "Habilitar filtro personalizado";
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Ative se você quiser receber notificações do %@";
@@ -695,10 +788,10 @@ Operation completed */
 "Enable this setting to disable downloads of files and folders from this room shared via a link" = "Ative esta configuração para desativar downloads de arquivos e pastas desta sala compartilhada por meio de um link";
 
 /* No comment provided by engineer. */
-"Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" = "Ative essa configuração para desativar downloads, impressão e cópia de conteúdo para usuários com a função “Viewer”.";
+"Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" = "Ative essa configuração para desativar downloads, impressão e cópia de conteúdo para usuários com a função “Viewer”";
 
 /* No comment provided by engineer. */
-"Enable time limit" = "Enable time limit";
+"Enable time limit" = "Habilitar limite de tempo";
 
 /* Presentation Viewer */
 "End Slide Show" = "Fim da apresentação de slides";
@@ -732,6 +825,10 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Exclude subfolders" = "Excluir subpastas";
+
+/* No comment provided by engineer. */
+"Exit without saving?
+You have made changes in the index. If you proceed without saving, those changes will not be applied." = "Sair sem salvar? Você fez alterações no índice. Se prosseguir sem salvar, essas alterações não serão aplicadas.";
 
 /* No comment provided by engineer. */
 "Expect users" = "Espere usuários";
@@ -788,6 +885,9 @@ Operation completed */
 "Failed to submit the form" = "Falha ao enviar a forma";
 
 /* No comment provided by engineer. */
+"Failure to open editor" = "Falha ao abrir o editor";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "Falha na preparação do arquivo";
 
 /* Category title */
@@ -803,7 +903,7 @@ Operation completed */
 "File does not exist" = "O arquivo não existe";
 
 /* No comment provided by engineer. */
-"file exported to Documents" = "Arquivo exportado para Documentos";
+"file exported to Documents" = "arquivo exportado para Documentos";
 
 /* No comment provided by engineer. */
 "File lifetime" = "Vida útil do arquivo";
@@ -837,6 +937,15 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Filling form" = "Preenchimento de formulário";
+
+/* No comment provided by engineer. */
+"Filling status" = "Status de preenchimento";
+
+/* Start filling form Button title */
+"Filling Status" = "Status de preenchimento";
+
+/* No comment provided by engineer. */
+"Filling was stopped by" = "O preenchimento foi interrompido por";
 
 /* No comment provided by engineer. */
 "Filters" = "Filtros";
@@ -874,6 +983,9 @@ Operation completed */
 /* No comment provided by engineer. */
 "From DocSpace" = "Do DocSpace";
 
+/* No comment provided by engineer. */
+"From template" = "Do modelo";
+
 /* Share status */
 "Full Access" = "Acesso completo";
 
@@ -893,7 +1005,7 @@ Operation completed */
 "Get started" = "Introdução";
 
 /* No comment provided by engineer. */
-"Get started with quick actions: " = "Comece a usar ações rápidas:";
+"Get started with quick actions: " = "Comece a usar ações rápidas: ";
 
 /* No comment provided by engineer. */
 "GET STARTED!" = "INTRODUÇÃO!";
@@ -918,6 +1030,12 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Guests" = "Convidados";
+
+/* No comment provided by engineer. */
+"Help & Feedback" = "Ajuda e comentários";
+
+/* No comment provided by engineer. */
+"Help Center" = "Central de Ajuda";
 
 /* No comment provided by engineer. */
 "Here you will find a list of the recently opened files shared with you via an external link." = "Aqui você encontrará uma lista dos arquivos abertos recentemente compartilhados com você por meio de um link externo.";
@@ -951,6 +1069,15 @@ Operation completed */
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "No modo online, use os recursos de coedição em tempo real do %@ para trabalhar em documentos junto com os membros do portal, compartilhar documentos e criar pastas de armazenamento comuns.";
+
+/* Form filling status */
+"In progress" = "Em andamento";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion" = "Neste painel você pode monitorar o preenchimento\ndo formulário em que você participa ou do qual você\né o organizador do preenchimento";
+
+/* No comment provided by engineer. */
+"In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" = "Neste painel você pode acompanhar o preenchimento do formulário em que você participa ou em que você é o organizador do preenchimento";
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Endereço do portal incorreto";
@@ -1000,6 +1127,9 @@ Folder order */
 
 /* No comment provided by engineer. */
 "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." = "Convide usuários por meio de links compartilhados para visualizar documentos sem registro. Você também pode incorporar esta sala em qualquer interface web.";
+
+/* No comment provided by engineer. */
+"It will be irretrievably deleted. This action is irreversible." = "Ele será excluído irrevogavelmente. Esta ação é irreversível.";
 
 /* No comment provided by engineer. */
 "Items in Trash are automatically deleted after 30 days" = "Os itens na Lixeira são excluídos automaticamente após 30 dias";
@@ -1062,7 +1192,7 @@ Folder order */
 "List" = "Lista";
 
 /* Caption of the processing */
-"Loading" = "Loading";
+"Loading" = "Carregando";
 
 /* No comment provided by engineer. */
 "Location" = "Localização";
@@ -1110,6 +1240,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "Member" = "Membro";
+
+/* No comment provided by engineer. */
+"Members" = "Membros";
 
 /* No comment provided by engineer. */
 "Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" = "Comprimento mínimo: 8 caracteres | Caracteres permitidos: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}";
@@ -1181,6 +1314,9 @@ If current user name is not set */
 "New form filling room" = "Nova sala de preenchimento de formulários";
 
 /* No comment provided by engineer. */
+"New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." = "Novos convidados serão adicionados aqui assim que você os convidar para a sala. Você pode compartilhar seus convidados e adicionar convidados de outras pessoas à sua lista.";
+
+/* No comment provided by engineer. */
 "New Presentation" = "Nova apresentação";
 
 /* No comment provided by engineer. */
@@ -1205,6 +1341,9 @@ If current user name is not set */
 "Nextcloud directory" = "Diretório do Nextcloud";
 
 /* No comment provided by engineer. */
+"No added guests yet" = "Nenhum convidado adicionado ainda";
+
+/* No comment provided by engineer. */
 "No archived rooms here yet" = "Ainda não há salas arquivadas aqui";
 
 /* No comment provided by engineer. */
@@ -1220,7 +1359,7 @@ If current user name is not set */
 "No files here yet" = "Nenhum arquivo aqui ainda";
 
 /* No comment provided by engineer. */
-"No forms here yet " = "Ainda não há formulários aqui";
+"No forms here yet " = "Ainda não há formulários aqui ";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Sem informações sobre o perfil do usuário.";
@@ -1242,6 +1381,9 @@ If current user name is not set */
 
 /* No comment provided by engineer. */
 "No Search Result" = "Nenhum resultado de busca";
+
+/* No comment provided by engineer. */
+"No templates here yet" = "Nenhum modelo aqui ainda";
 
 /* No comment provided by engineer. */
 "No users found" = "Usuários não encontrados";
@@ -1289,6 +1431,12 @@ Share status */
 /* No comment provided by engineer. */
 "Only a room administrator or a DocSpace administrator can become the room owner." = "Somente um administrador da sala ou administrador do DocSpace pode se tornar o proprietário da sala.";
 
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins are shown here" = "Apenas os administradores do DocSpace e da sala são mostrados aqui";
+
+/* No comment provided by engineer. */
+"Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." = "Somente administradores do DocSpace e de salas dos grupos selecionados poderão criar salas usando este modelo.";
+
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
 
@@ -1318,6 +1466,9 @@ Share status */
 
 /* No comment provided by engineer. */
 "Open Folder" = "Abrir pasta";
+
+/* No comment provided by engineer. */
+"Opened the form to fill out" = "Abriu o formulário para preencher";
 
 /* Caption of the processing */
 "Opening" = "Abrindo";
@@ -1369,6 +1520,12 @@ Share status */
 
 /* Default title of sample document */
 "PDF Form Sample" = "Amostra de formulário PDF";
+
+/* No comment provided by engineer. */
+"PDF-Documents" = "Documentos PDF";
+
+/* No comment provided by engineer. */
+"PDF-Forms" = "Formulários PDF";
 
 /* No comment provided by engineer. */
 "Phone" = "Telefone";
@@ -1430,6 +1587,9 @@ Share status */
 /* No comment provided by engineer. */
 "Position" = "Posição";
 
+/* Share status */
+"Power user" = "Usuário avançado";
+
 /* No comment provided by engineer. */
 "Presentation" = "Apresentação";
 
@@ -1444,6 +1604,9 @@ Share status */
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Privacy Policy" = "Política de privacidade";
+
+/* No comment provided by engineer. */
+"Process details" = "Detalhes do processo";
 
 /* Caption of the processing */
 "Processing" = "Processando";
@@ -1553,6 +1716,12 @@ Share status */
 /* No comment provided by engineer. */
 "Restore room?" = "Restaurar sala?";
 
+/* No comment provided by engineer. */
+"Restore this version?" = "Restaurar esta versão?";
+
+/* No comment provided by engineer. */
+"Restored" = "Restaurado";
+
 /* Caption of the processing */
 "Restoring" = "Restaurando";
 
@@ -1572,10 +1741,19 @@ Share status */
 "Revoking" = "Revogando";
 
 /* No comment provided by engineer. */
+"Role description" = "Descrição da função";
+
+/* No comment provided by engineer. */
 "Roles" = "Funções";
 
 /* No comment provided by engineer. */
+"Roles from the form:" = "Funções do formulário:";
+
+/* No comment provided by engineer. */
 "Room admin" = "Administrador da sala";
+
+/* No comment provided by engineer. */
+"Room created" = "Sala criada";
 
 /* No comment provided by engineer. */
 "Room created!" = "Sala criada!";
@@ -1605,11 +1783,20 @@ DocSpace rooms */
 /* No comment provided by engineer. */
 "Save" = "Salvar";
 
+/* No comment provided by engineer. */
+"Save as template" = "Salvar como modelo";
+
 /* Caption of the processing */
 "Saving" = "Salvando";
 
 /* No comment provided by engineer. */
 "Scale" = "Escala";
+
+/* No comment provided by engineer. */
+"Scan Document" = "Digitalizar documento";
+
+/* No comment provided by engineer. */
+"Scanning is not supported on this device" = "A digitalização não é suportada neste dispositivo";
 
 /* No comment provided by engineer. */
 "Search" = "Pesquisar";
@@ -1635,6 +1822,9 @@ Navigation bar button title */
 
 /* Button title */
 "Select location" = "Selecionar local";
+
+/* No comment provided by engineer. */
+"Select members" = "Selecionar membros";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Selecionar fotos";
@@ -1727,6 +1917,9 @@ Navigation bar button title */
 "Show notifications" = "Exibir notificações";
 
 /* No comment provided by engineer. */
+"Show version history" = "Mostrar histórico de versões";
+
+/* No comment provided by engineer. */
 "Sign in" = "Entrar";
 
 /* No comment provided by engineer. */
@@ -1766,6 +1959,18 @@ Navigation bar button title */
 "Spreadsheets" = "Planilhas";
 
 /* No comment provided by engineer. */
+"Start" = "Começar";
+
+/* Start filling form Button title */
+"Start filling" = "Comece a preencher";
+
+/* No comment provided by engineer. */
+"Stop filling" = "Pare de preencher";
+
+/* Form filling status */
+"Stopped" = "Parado";
+
+/* No comment provided by engineer. */
 "Storage" = "Armazenamento";
 
 /* No comment provided by engineer. */
@@ -1775,7 +1980,13 @@ Navigation bar button title */
 "Storage quota set per room. You can change this value or turn off storage limit." = "Cota de armazenamento definida por sala. Você pode alterar esse valor ou desativar o limite de armazenamento.";
 
 /* No comment provided by engineer. */
+"Submitted their part. The form was sent to the next role." = "Enviou sua parte. O formulário foi enviado para a próxima função.";
+
+/* No comment provided by engineer. */
 "Success" = "Sucesso";
+
+/* No comment provided by engineer. */
+"Suggest a Feature" = "Sugerir um recurso";
 
 /* No comment provided by engineer. */
 "Switch" = "Alternar";
@@ -1785,6 +1996,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Tags" = "Tag";
+
+/* No comment provided by engineer. */
+"Tags are applied to the room which will be created based on this template." = "As tags são aplicadas à sala que será criada com base nesse modelo.";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Tire uma foto";
@@ -1797,6 +2011,18 @@ Navigation bar button title */
 
 /* Measurement unit */
 "TB" = "Tb";
+
+/* No comment provided by engineer. */
+"Template" = "Modelo";
+
+/* No comment provided by engineer. */
+"Template %@ saved" = "Modelo %@ salvo";
+
+/* No comment provided by engineer. */
+"Template available to everyone" = "Modelo disponível para todos";
+
+/* No comment provided by engineer. */
+"Templates" = "Modelos";
 
 /* No comment provided by engineer. */
 "Terminate account" = "Encerrar conta";
@@ -1814,13 +2040,19 @@ Navigation bar button title */
 "The account name must be between 6 and 50 characters long" = "O nome da conta deve ter entre 6 e 50 caracteres";
 
 /* No comment provided by engineer. */
+"The added administrators will be able to create rooms using this template." = "Os administradores adicionados poderão criar salas usando esse modelo.";
+
+/* No comment provided by engineer. */
+"The client and server versions are incompatible. You can only open the document in view mode" = "As versões do cliente e do servidor são incompatíveis. Você só pode abrir o documento no modo de exibição";
+
+/* No comment provided by engineer. */
 "The deleted files go to the trash. You can either restore or delete them forever." = "Os arquivos excluídos vão para a lixeira. Você pode restaurá-los ou excluí-los para sempre.";
 
 /* No comment provided by engineer. */
 "The file in the Trash can not be viewed." = "O arquivo na Lixeira não pode ser visualizado.";
 
 /* No comment provided by engineer. */
-"The file lifetime is set to %@ in this room." = "A vida útil do arquivo está definida como %@ nesta sala";
+"The file lifetime is set to %@ in this room." = "A vida útil do arquivo está definida como %@ nesta sala.";
 
 /* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "O arquivo será excluído de forma irreversível. Esta ação é irreversível.";
@@ -1842,6 +2074,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The link has expired" = "O link expirou";
+
+/* Button title */
+"The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard." = "O link para o arquivo\ncom o filtro personalizado\nativado é\ncopiado com êxito\npara a \nárea de transferência.";
 
 /* No comment provided by engineer. */
 "The link will be deleted permanently. You will not be able to undo this action." = "O link será excluído permanentemente. Você não poderá desfazer esta ação.";
@@ -1872,6 +2107,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "The quota of users is almost exhausted. Сontact the portal administrator" = "A cota de usuários está quase esgotada. Entre em contato com o administrador do portal";
+
+/* No comment provided by engineer. */
+"The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." = "A ação Reordenar removerá os espaços nos índices. Os arquivos serão reindexados em ordem com deslocamento para preencher os índices ausentes.";
 
 /* No comment provided by engineer. */
 "The request timed out." = "A solicitação excedeu o tempo limite.";
@@ -2021,6 +2259,9 @@ Navigation bar button title */
 "Unknown item type." = "Tipo de item desconhecido.";
 
 /* No comment provided by engineer. */
+"Unknown status" = "Status desconhecido";
+
+/* No comment provided by engineer. */
 "Unlimited" = "Ilimitado";
 
 /* No comment provided by engineer. */
@@ -2105,6 +2346,12 @@ Navigation bar button title */
 "Version" = "Versão";
 
 /* No comment provided by engineer. */
+"Version %@" = "Versão %@";
+
+/* No comment provided by engineer. */
+"Version History" = "Histórico da versão";
+
+/* No comment provided by engineer. */
 "View-only" = "Somente visualização";
 
 /* Share status */
@@ -2141,7 +2388,10 @@ Navigation bar button title */
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Bem-vindo ao pacote de edição móvel %@!\nDeslize para saber mais sobre o aplicativo.";
 
 /* No comment provided by engineer. */
-"Welcome to the Form filling room " = "Bem-vindo à sala de preenchimento de formulários";
+"Welcome to the Form filling room " = "Bem-vindo à sala de preenchimento de formulários ";
+
+/* No comment provided by engineer. */
+"Welcome to the Virtual Data Room " = "Bem-vindo ao Virtual Data Room ";
 
 /* No comment provided by engineer. */
 "What's New" = "Novidades";
@@ -2168,7 +2418,16 @@ Navigation bar button title */
 "Years" = "Anos";
 
 /* No comment provided by engineer. */
+"You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" = "Você está prestes a excluir uma versão de arquivo. Não será mais possível vê-la ou restaurá-la. Tem certeza de que deseja continuar?";
+
+/* No comment provided by engineer. */
 "You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" = "Você está prestes a excluir essas salas. Você não poderá restaurá-las. Tem certeza de que deseja continuar?";
+
+/* No comment provided by engineer. */
+"You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" = "Você está prestes a excluir este arquivo. O arquivo será excluído permanentemente em 30 dias. Tem certeza de que deseja continuar?";
+
+/* No comment provided by engineer. */
+"You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" = "Você está prestes a excluir essa pasta. A pasta será excluída permanentemente em 30 dias. Tem certeza de que deseja continuar?";
 
 /* No comment provided by engineer. */
 "You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" = "Você está prestes a excluir esta sala. Você não poderá restaurá-la. Tem certeza de que deseja continuar?";
@@ -2190,6 +2449,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "You can connect the following accounts to the DocSpace rooms" = "Você pode conectar as seguintes contas às salas do DocSpace";
+
+/* No comment provided by engineer. */
+"You can create a template from a room in the Room section" = "É possível criar um modelo a partir de uma sala na seção Sala";
 
 /* No comment provided by engineer. */
 "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." = "Você não pode fixar mais de 10 salas no topo. Retire a fixação de algumas que estão atualmente fixadas.";
@@ -2220,6 +2482,9 @@ Navigation bar button title */
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Sua sessão expirou";
+
+/* Form filling status */
+"Your turn" = "Sua vez";
 
 /* Data units */
 "Zb" = "Zb";

@@ -432,36 +432,6 @@ start using your office</source>
         <target>බහාලුම් %lu ක් මකන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@days@</source>
-        <target>%#@days@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d day</source>
-        <target>Expires after %d day</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@hours@</source>
-        <target>%#@hours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d hour</source>
-        <target>Expires after %d hour</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@users@</source>
         <target>%#@users@</target>
@@ -2672,13 +2642,13 @@ Operation completed</note>
         <source>Failed to submit the form</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failure to open editor" xml:space="preserve">
+        <source>Failure to open editor</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
         <target>සංරක්‍ෂිතය සූදානම් කිරීමට අසමත් විය</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">

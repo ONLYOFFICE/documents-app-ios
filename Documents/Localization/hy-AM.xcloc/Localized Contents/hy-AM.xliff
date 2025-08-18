@@ -249,7 +249,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
-        <target>%#@իրեր@</target>
+        <target>%#@items@</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
@@ -279,7 +279,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
-        <target>%#@ֆայլեր@</target>
+        <target>%#@files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
@@ -294,7 +294,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
-        <target>%1$#@lu_թղթապանակ@</target>
+        <target>%1$#@lu_folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
@@ -309,22 +309,22 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>%lu Folder %2$#@lu_files@</source>
-        <target>%lu Թղթապանակ %2$#@lu_Ֆայլեր@</target>
+        <target>%lu Թղթապանակ %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
-        <target>%lu Թղթապանակներ %2$#@lu_ֆայլեր@</target>
+        <target>%lu Թղթապանակներ %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%2$#@lu_files@</source>
-        <target>%2$#@lu_Ֆայլեր@</target>
+        <target>%2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
-        <target>%#@թղթապանակներ@</target>
+        <target>%#@folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
@@ -339,7 +339,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
-        <target>%#@ֆայլեր@</target>
+        <target>%#@files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/one:dict/:string" xml:space="preserve">
@@ -354,7 +354,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%1$#@lu_folders@</source>
-        <target>%1$#@lu_թղթապանակ@</target>
+        <target>%1$#@lu_folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
@@ -374,22 +374,22 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
         <source>Delete %lu Folder %2$#@lu_files@</source>
-        <target>Ջնջել %lu Թղթապանակի %2$#@lu_ֆայլերը@</target>
+        <target>Ջնջել %lu Թղթապանակի %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
-        <target>Ջնջել %lu Թղթապանակների %2$#@lu_ֆայլերը@</target>
+        <target>Ջնջել %lu Թղթապանակների %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
-        <target>Ջնջել %2$#@lu_ֆայլերը@</target>
+        <target>Ջնջել %2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@folders@</source>
-        <target>%#@թղթապանակներ@</target>
+        <target>%#@folders@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/one:dict/:string" xml:space="preserve">
@@ -401,36 +401,6 @@ start using your office</source>
         <source>Delete %lu Folders</source>
         <target>Ջնջել %lu թղթապանակները</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@days@</source>
-        <target>%#@days@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d day</source>
-        <target>Expires after %d day</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>Expires after %d days</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@hours@</source>
-        <target>%#@hours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d hour</source>
-        <target>Expires after %d hour</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>Expires after %d hours</target>
-        <note/>
       </trans-unit>
       <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@users@</source>
@@ -2727,14 +2697,14 @@ Operation completed</note>
         <target>Չհաջողվեց հաստատել ձևը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failure to open editor" xml:space="preserve">
+        <source>Failure to open editor</source>
+        <target>Չհաջողվեց բացել խմբագիրը</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
         <target>Արխիվի պատրաստման ձախողում</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
-        <target>Չհաջողվեց բացել խմբագիրը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">

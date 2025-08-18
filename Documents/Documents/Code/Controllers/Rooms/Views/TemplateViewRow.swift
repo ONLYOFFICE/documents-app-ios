@@ -14,6 +14,7 @@ struct TemplateViewRowModel {
     var subtitle: String
     var imageURL: URL?
     var placeholderColor: UIColor
+    var provider: ASCFileProviderProtocol?
 }
 
 struct TemplateViewRow: View {
@@ -26,11 +27,13 @@ struct TemplateViewRow: View {
                     .frame(width: .imageSize, height: .imageSize)
 
                 if let imageURL = model.imageURL {
-                    KFImage(imageURL)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: .imageSize - .imagePadding, height: .imageSize - .imagePadding)
-                        .clipShape(RoundedRectangle(cornerRadius: (.imageSize - .imagePadding) * .textCornerRadiusRatio))
+                    KFProviderImageView(
+                        url: imageURL,
+                        provider: model.provider
+                    )
+                    .scaledToFill()
+                    .frame(width: .imageSize - .imagePadding, height: .imageSize - .imagePadding)
+                    .clipShape(RoundedRectangle(cornerRadius: (.imageSize - .imagePadding) * .textCornerRadiusRatio))
                 } else {
                     Text(verbatim: initials(from: model.title))
                         .font(.system(size: .imageSize * .initialsFontScale, weight: .semibold))

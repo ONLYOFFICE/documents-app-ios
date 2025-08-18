@@ -884,6 +884,9 @@ Operation completed */
 "Failed to submit the form" = "فشل في إرسال النموذج";
 
 /* No comment provided by engineer. */
+"Failure to open editor" = "فشل في فتح المحرّر";
+
+/* No comment provided by engineer. */
 "Failure to prepare the archive" = "فشل في إعداد الأرشيف";
 
 /* No comment provided by engineer. */

@@ -208,6 +208,11 @@ class ASCUserProfileViewController: UITableViewController {
     // MARK: - Private
 
     private func onLogout() {
+        if let currentAccout = ASCAccountsManager.shared.get(by: viewModel.portal, email: viewModel.email) {
+            currentAccout.token = nil
+            ASCAccountsManager.shared.update(currentAccout)
+        }
+
         ASCUserProfileViewController.logout()
 
         if let hud = MBProgressHUD.showTopMost() {

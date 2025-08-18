@@ -30,6 +30,7 @@ protocol ASCTransferPresenterProtocol {
     func resetProvider()
     func onDone()
     func onClose()
+    func willDisplay(at indexPath: IndexPath)
 }
 
 struct ASCTransferFlowModel {
@@ -59,6 +60,12 @@ final class ASCTransferPresenter {
 
     private(set) var isLoading: Bool = false
     let transferType: ASCTransferType
+
+    private var lastDisplayedIntemIndex = 0
+    private var total = 0
+    private var startIndex = 0
+    private let count = 20
+    private var fetchedItemsCount = 0
 
     // MARK: Lifecycle
 
@@ -144,7 +151,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
     }
 
     func fetchData() {
-        guard let provider = provider, let folder = folder else { return }
+        guard let provider = provider, let folder = folder, !isLoading else { return }
         isLoading = true
         if provider.id == ASCFileManager.onlyofficeProvider?.id,
            folder.id == idOnlyofficeRoot
@@ -200,7 +207,8 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                 }
             }()
             let params: [String: Any] = [
-                "count": 1000,
+                "startIndex": startIndex,
+                "count": count,
                 "filterType": filterType,
             ]
             let displayFoldersOnly = transferType != .selectFillForms
@@ -209,6 +217,8 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                     return
                 }
                 let denyedToTransferFoldersTypes = Set([ASCFolderType.readyFormFolder, .inProcessFormFolder])
+                self.total = provider.total
+                self.fetchedItemsCount += provider.items.count
                 var entities = provider.items.filter {
                     if let folder = $0 as? ASCFolder, let folderType = folder.type {
                         return !denyedToTransferFoldersTypes.contains(folderType)
@@ -223,6 +233,7 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                     }
                 }
 
+                var items: [ASCTransferViewType] = []
                 if displayFoldersOnly, let foldersOnly = (entities.filter { $0 is ASCFolder }) as? [ASCFolder] {
                     items = foldersOnly.map { (provider, $0) }
                 } else if !displayFoldersOnly {
@@ -233,6 +244,11 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
                             return (provider, $0)
                         }
                     }
+                }
+                if startIndex == 0 {
+                    self.items = items
+                } else {
+                    self.items.append(contentsOf: items)
                 }
                 isActionButtonLocked = false
                 isLoading = false
@@ -250,6 +266,11 @@ extension ASCTransferPresenter: ASCTransferPresenterProtocol {
 
     func onClose() {
         view?.dismiss(animated: true, completion: nil)
+    }
+
+    func willDisplay(at indexPath: IndexPath) {
+        lastDisplayedIntemIndex = max(indexPath.row, lastDisplayedIntemIndex)
+        loadMore()
     }
 }
 
@@ -647,5 +668,14 @@ private extension ASCTransferPresenter {
             alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
+    }
+
+    private func loadMore() {
+        let nextStartIndex = startIndex + count
+        let lastDisplayedIntemIndex = lastDisplayedIntemIndex + 1
+        let hasItemsToFetch = fetchedItemsCount < total
+        guard lastDisplayedIntemIndex >= nextStartIndex, hasItemsToFetch else { return }
+        startIndex = nextStartIndex
+        fetchData()
     }
 }

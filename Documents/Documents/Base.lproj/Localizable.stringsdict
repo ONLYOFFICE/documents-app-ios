@@ -66,38 +66,6 @@
 			<string>%d hour</string>
 		</dict>
 	</dict>
-	<key>Expires after %d days</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@days@</string>
-		<key>days</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>Expires after %d days</string>
-			<key>one</key>
-			<string>Expires after %d day</string>
-		</dict>
-	</dict>
-	<key>Expires after %d hours</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@hours@</string>
-		<key>hours</key>
-		<dict>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>other</key>
-			<string>Expires after %d hours</string>
-			<key>one</key>
-			<string>Expires after %d hour</string>
-		</dict>
-	</dict>
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

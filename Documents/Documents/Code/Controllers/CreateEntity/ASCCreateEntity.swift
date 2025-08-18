@@ -77,7 +77,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             )
 
             var config = SwiftMessages.defaultConfig
-            config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
+            config.presentationContext = .window(windowLevel: UIWindow.Level.normal + 10)
             config.duration = .forever
             config.presentationStyle = .bottom
             config.dimMode = .gray(interactive: true)

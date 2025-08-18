@@ -194,7 +194,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d Groups:dict/groups:dict/few:dict/:string" xml:space="preserve">
         <source>%d Groups</source>
-        <target>٪d مجموعة</target>
+        <target>%d مجموعة</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d Groups:dict/groups:dict/many:dict/:string" xml:space="preserve">
@@ -264,7 +264,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/few:dict/:string" xml:space="preserve">
         <source>%d hours</source>
-        <target>٪d ساعة</target>
+        <target>%d ساعة</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/many:dict/:string" xml:space="preserve">
@@ -274,7 +274,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
         <source>%d hour</source>
-        <target>٪d ساعة</target>
+        <target>%d ساعة</target>
         <note>Hours left</note>
       </trans-unit>
       <trans-unit id="/%d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
@@ -299,7 +299,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/few:dict/:string" xml:space="preserve">
         <source>%d months</source>
-        <target>٪d شهر</target>
+        <target>%d شهر</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/many:dict/:string" xml:space="preserve">
@@ -309,7 +309,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/one:dict/:string" xml:space="preserve">
         <source>%d month</source>
-        <target>٪d شهر</target>
+        <target>%d شهر</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d months:dict/months:dict/other:dict/:string" xml:space="preserve">
@@ -334,12 +334,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/few:dict/:string" xml:space="preserve">
         <source>%d selected</source>
-        <target>٪d محدد</target>
+        <target>%d محدد</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/many:dict/:string" xml:space="preserve">
         <source>%d selected</source>
-        <target>٪d محدد</target>
+        <target>%d محدد</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
@@ -354,12 +354,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/two:dict/:string" xml:space="preserve">
         <source>%d selected</source>
-        <target>٪d محدد</target>
+        <target>%d محدد</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/zero:dict/:string" xml:space="preserve">
         <source>%d selected</source>
-        <target>٪d محدد</target>
+        <target>%d محدد</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -369,7 +369,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/few:dict/:string" xml:space="preserve">
         <source>%d years</source>
-        <target>٪d سنة</target>
+        <target>%d سنة</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/many:dict/:string" xml:space="preserve">
@@ -379,7 +379,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/one:dict/:string" xml:space="preserve">
         <source>%d year</source>
-        <target>٪d سنة</target>
+        <target>%d سنة</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%d years:dict/years:dict/other:dict/:string" xml:space="preserve">
@@ -404,12 +404,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/few:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
-        <target>تم تحديد ٪lu ملف</target>
+        <target>تم تحديد %lu ملف</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/many:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
-        <target>تم تحديد ٪lu ملفين</target>
+        <target>تم تحديد %lu ملفين</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
@@ -424,12 +424,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/two:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
-        <target>تم تحديد ٪lu ملفات</target>
+        <target>تم تحديد %lu ملفات</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/zero:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
-        <target>تم تحديد ٪lu ملفًا</target>
+        <target>تم تحديد %lu ملفًا</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -464,17 +464,17 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
-        <target>وتم تحديد ٪lu ملفًا</target>
+        <target>وتم تحديد %lu ملفًا</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/few:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
-        <target>٪lu مجلد و٪2$#@lu_files@</target>
+        <target>%lu مجلد و%2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/many:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
-        <target>٪lu مجلد و٪2$#@lu_files@</target>
+        <target>%lu مجلد و%2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -489,7 +489,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/two:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
-        <target>٪lu مجلد و٪2$#@lu_files@</target>
+        <target>%lu مجلد و%2$#@lu_files@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
@@ -504,12 +504,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/few:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
-        <target>تم تحديد ٪lu مجلد</target>
+        <target>تم تحديد %lu مجلد</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/many:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
-        <target>تم تحديد ٪lu مجلدين</target>
+        <target>تم تحديد %lu مجلدين</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
@@ -524,12 +524,12 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/two:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
-        <target>تم تحديد ٪lu مجلدات</target>
+        <target>تم تحديد %lu مجلدات</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/zero:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
-        <target>تم تحديد ٪lu مجلدًا</target>
+        <target>تم تحديد %lu مجلدًا</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -539,7 +539,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/few:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
-        <target>حذف ٪lu ملف</target>
+        <target>حذف %lu ملف</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/many:dict/:string" xml:space="preserve">
@@ -666,76 +666,6 @@ start using your office</source>
         <source>Delete %lu Folders</source>
         <target>حذف %lu مجلدًا</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@days@</source>
-        <target>%#@days@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/few:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>تنتهي صلاحيته بعد %d يومين</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/many:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>تنتهي صلاحيته بعد %d أيام</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d day</source>
-        <target>تنتهي صلاحيته بعد %d يوم</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>تنتهي صلاحيته بعد %d يومًا</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/two:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>تنتهي صلاحيته بعد %d يومًا</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d days:dict/days:dict/zero:dict/:string" xml:space="preserve">
-        <source>Expires after %d days</source>
-        <target>تنتهي صلاحيته بعد %d يوم</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
-        <source>%#@hours@</source>
-        <target>%#@hours@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/few:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>ينتهي بعد %d ساعة</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/many:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>ينتهي بعد %d ساعتين</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/one:dict/:string" xml:space="preserve">
-        <source>Expires after %d hour</source>
-        <target>ينتهي بعد %d ساعة</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/other:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>ينتهي بعد %d ساعات</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/two:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>ينتهي بعد %d ساعةً</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Expires after %d hours:dict/hours:dict/zero:dict/:string" xml:space="preserve">
-        <source>Expires after %d hours</source>
-        <target>ينتهي بعد %d ساعةً</target>
-        <note/>
       </trans-unit>
       <trans-unit id="/Me and %d Users:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@users@</source>
@@ -3056,14 +2986,14 @@ Operation completed</note>
         <target>فشل في إرسال النموذج</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failure to open editor" xml:space="preserve">
+        <source>Failure to open editor</source>
+        <target>فشل في فتح المحرّر</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
         <target>فشل في إعداد الأرشيف</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
-        <target>فشل في فتح المحرّر</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">

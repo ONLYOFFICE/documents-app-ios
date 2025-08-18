@@ -20,10 +20,11 @@ class VDRStartFillingViewController: UIHostingController<VDRStartFillingView> {
         )
     }
 
-    init() {
-        let viewModel = VDRStartFillingViewModel()
+    init(roles: [[String: Any]], onDismiss: @escaping (Result<Bool, any Error>) -> Void) {
+        let viewModel = VDRStartFillingViewModel(roles: roles)
         let view = VDRStartFillingView(
-            viewModel: viewModel
+            viewModel: viewModel,
+            onDismiss: onDismiss
         )
         super.init(rootView: view)
     }

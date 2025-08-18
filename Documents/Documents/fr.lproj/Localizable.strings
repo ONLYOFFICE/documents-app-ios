@@ -827,9 +827,6 @@ Operation completed */
 "Exclude subfolders" = "Pas de sous-dossiers";
 
 /* No comment provided by engineer. */
-"Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." = "Quitter sans sauvegarder ?  Vous avez apporté des modifications à l'index. Si vous continuez sans sauvegarder, ces modifications ne seront pas appliquées.";
-
-/* No comment provided by engineer. */
 "Expect users" = "Attendre des utilisateurs";
 
 /* Expiration status */
@@ -882,6 +879,9 @@ Operation completed */
 
 /* No comment provided by engineer. */
 "Failed to submit the form" = "Impossible de soumettre le formulaire";
+
+/* No comment provided by engineer. */
+"Failure to open editor" = "Impossible d'ouvrir l'éditeur";
 
 /* No comment provided by engineer. */
 "Failure to prepare the archive" = "Impossible de créer une archive";

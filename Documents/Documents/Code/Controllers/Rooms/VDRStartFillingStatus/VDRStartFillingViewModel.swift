@@ -68,6 +68,26 @@ extension VDRStartFillingViewModel {
             )
         }
     }
+
+    func makeFormRolesMappingRequestModel() -> FormRolesMappingUsersRequestModel? {
+        guard let formId = Int(dataModel.form.id),
+              let roomId = Int(dataModel.room.id)
+        else {
+            return nil
+        }
+        return FormRolesMappingUsersRequestModel(
+            formId: formId,
+            roles: state.roles.compactMap {
+                guard let user = $0.appliedUser else { return nil }
+                return FormRolesMappingUsersRequestModel.Role(
+                    userId: user.userId ?? "",
+                    roleName: $0.title,
+                    roleColor: $0.rawColor,
+                    roomId: roomId
+                )
+            }
+        )
+    }
 }
 
 // MARK: - ScreenState

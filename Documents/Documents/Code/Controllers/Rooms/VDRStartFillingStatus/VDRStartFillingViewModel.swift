@@ -45,9 +45,13 @@ final class VDRStartFillingViewModel: ObservableObject {
         state.isChooseFromListScreenDisplaying = true
     }
 
-    func deleteRole(_ role: RoleItem) {
-        state.roles.removeAll { $0 == role }
-        // TODO: Map user on roles, remove only set user
+    func deleteRoleAppliedUser(_ role: RoleItem) {
+        guard let index = state.roles.firstIndex(where: { $0.id == role.id }),
+              state.roles[safe: index] != nil
+        else {
+            return
+        }
+        state.roles[index].appliedUser = nil
     }
 
     func addRoleUser(_ user: ASCUser) {

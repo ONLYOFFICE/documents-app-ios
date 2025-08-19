@@ -43,7 +43,23 @@ final class VDRStartFillingViewModel: ObservableObject {
     }
 
     func startTapped() {
-        // TODO: Check and fill form
+        Task {
+            guard let requestModel = makeFormRolesMappingRequestModel() else { return }
+            state.isLoading = true
+            do {
+                let result = try await OnlyofficeApiClient.request(
+                    OnlyofficeAPI.Endpoints.Files.mapFormRolesToUsers(file: dataModel.form),
+                    requestModel.dictionary
+                )
+                if (200 ..< 300).contains(result?.statusCode ?? 0) {
+                    state.finishWithSuccess = true
+                }
+            } catch {
+                state.finishWithError = StringError(error.localizedDescription)
+                log.error(error)
+            }
+            state.isLoading = false
+        }
     }
 
     func roleTapped(_ role: RoleItem) {
@@ -129,6 +145,10 @@ extension VDRStartFillingViewModel {
         var isStartEnabled: Bool { areRolesFilled }
 
         var isChooseFromListScreenDisplaying = false
+        var isLoading = false
+
+        var finishWithError: StringError?
+        var finishWithSuccess = false
 
         static let initial: ScreenState = ScreenState()
     }

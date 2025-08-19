@@ -11,6 +11,7 @@
 		1D7327152E4B4EA400F9BDFB /* ASCStartFillingAssignToRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7327142E4B4E8A00F9BDFB /* ASCStartFillingAssignToRoleView.swift */; };
 		1D7327172E4B4EB000F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7327162E4B4EA900F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift */; };
 		1DA420762E4E4CE600F76BA1 /* PeopleRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA420752E4E4CD700F76BA1 /* PeopleRoomRequestModel.swift */; };
+		1DA420782E54A13800F76BA1 /* FormRolesMappingUsersRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */; };
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
 		77586F622DD3749300861561 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */; };
 		77A2D66A2DED95850093549D /* CreateAndCopyLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */; };

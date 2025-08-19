@@ -2747,6 +2747,8 @@ struct StringError: LocalizedError {
     }
 }
 
+extension StringError: Equatable {}
+
 enum ASCOnlyofficeProviderError: Error {
     case couldntGetAccess
 }

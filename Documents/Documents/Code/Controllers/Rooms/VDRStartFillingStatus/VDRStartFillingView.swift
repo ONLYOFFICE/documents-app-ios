@@ -60,6 +60,14 @@ struct VDRStartFillingView: View {
             }
             .navigateToChooseMembers(isActive: $viewModel.state.isChooseFromListScreenDisplaying, viewModel: viewModel)
         }
+        .onChange(of: viewModel.state.finishWithSuccess) {
+            onDismiss(.success($0))
+        }
+        .onChange(of: viewModel.state.finishWithError) {
+            if let error = $0 {
+                onDismiss(.failure(error))
+            }
+        }
         .onAppear(perform: {
             viewModel.onAppear()
         })

@@ -834,6 +834,7 @@
 		1D7327142E4B4E8A00F9BDFB /* ASCStartFillingAssignToRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCStartFillingAssignToRoleView.swift; sourceTree = "<group>"; };
 		1D7327162E4B4EA900F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCStartFillingAssignToRoleViewModel.swift; sourceTree = "<group>"; };
 		1DA420752E4E4CD700F76BA1 /* PeopleRoomRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRoomRequestModel.swift; sourceTree = "<group>"; };
+		1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRolesMappingUsersRequestModel.swift; sourceTree = "<group>"; };
 		77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
 		77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndCopyLinkRequestModel.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
@@ -3320,6 +3321,7 @@
 		FC9EF00F2BFB208800A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */,
 				1DA420752E4E4CD700F76BA1 /* PeopleRoomRequestModel.swift */,
 				F30716C12DF76583003CBBD2 /* ASCRoomTemplateInviteRequestModel.swift */,
 				F30716C22DF76583003CBBD2 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift */,
@@ -4621,6 +4623,7 @@
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC7B801A2AFA294E00C22C71 /* ASCPhoneCountryCode.swift in Sources */,
+				1DA420782E54A13800F76BA1 /* FormRolesMappingUsersRequestModel.swift in Sources */,
 				FC759BEB2C00611000510096 /* ASCSharingSettingsVerifyRightHoldersInteractor.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				FC759BE02C00611000510096 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,

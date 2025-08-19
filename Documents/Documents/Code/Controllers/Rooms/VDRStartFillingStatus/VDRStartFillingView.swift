@@ -6,6 +6,7 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
+import Kingfisher
 import SwiftUI
 
 // MARK: - Under construction. Docspace 3.2 or later
@@ -34,7 +35,7 @@ struct VDRStartFillingView: View {
                             }
                             .onDelete { indexSet in
                                 indexSet.map { viewModel.state.roles[$0] }
-                                    .forEach(viewModel.deleteRole)
+                                    .forEach(viewModel.deleteRoleAppliedUser)
                             }
                         } header: {
                             VStack(alignment: .leading, spacing: 8) {
@@ -194,10 +195,17 @@ private extension View {
             ASCStartFillingAssignToRoleView(
                 viewModel: ASCStartFillingAssignToRoleViewModel(
                     room: viewModel.dataModel.room
-                ) { _ in
-                    // viewModel.onChooseMembersAdd(model: $0)
+                ) { user in
+                    viewModel.addRoleUser(user)
+                    viewModel.state.isChooseFromListScreenDisplaying = false
                 }
             )
         })
     }
+}
+
+private extension CGFloat {
+    static let imageWidth: CGFloat = 40
+    static let imageHeight: CGFloat = 40
+    static let imageCornerRadius: CGFloat = 20
 }

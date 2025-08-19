@@ -16,6 +16,7 @@ struct VDRStartFillingRoleItem: Identifiable {
     let number: Int
     let title: String
     let color: Color
+    var appliedUser: ASCUser?
 }
 
 extension VDRStartFillingRoleItem: Equatable {

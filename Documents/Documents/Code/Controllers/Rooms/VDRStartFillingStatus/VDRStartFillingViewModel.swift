@@ -113,6 +113,7 @@ extension VDRStartFillingViewModel {
 
 extension VDRStartFillingViewModel {
     struct DataModel {
+        let form: ASCFile
         let room: ASCRoom
         var rawRoles: [[String: Any]] = []
         var lastTappedRoleIndex = 0

@@ -65,7 +65,7 @@ struct ASCStartFillingAssignToRoleView: View {
                 case let .user(model):
                     ASCRoomTemplateMemberRow(model: .user(model))
                 case let .guest(model):
-                    ASCRoomTemplateMemberRow(model: .user(model)) // TODO: support guest
+                    ASCRoomTemplateMemberRow(model: .user(model))
                 }
             }
         }

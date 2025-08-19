@@ -38,7 +38,10 @@ final class VDRStartFillingViewModel: ObservableObject {
     }
 
     func roleTapped(_ role: RoleItem) {
-        // TODO: lastTappedRoleIndex
+        guard let index = state.roles.firstIndex(where: { $0.id == role.id }) else {
+            return
+        }
+        dataModel.lastTappedRoleIndex = index
         state.isChooseFromListScreenDisplaying = true
     }
 
@@ -47,8 +50,11 @@ final class VDRStartFillingViewModel: ObservableObject {
         // TODO: Map user on roles, remove only set user
     }
 
-    func addRole() {
-        state.isChooseFromListScreenDisplaying = true
+    func addRoleUser(_ user: ASCUser) {
+        guard state.roles[safe: dataModel.lastTappedRoleIndex] != nil else {
+            return
+        }
+        state.roles[dataModel.lastTappedRoleIndex].appliedUser = user
     }
 }
 
@@ -101,8 +107,12 @@ extension VDRStartFillingViewModel {
 
     struct ScreenState {
         fileprivate(set) var roles: [RoleItem] = []
-        private(set) var areRolesFilled = false
-        private(set) var isStartEnabled = false
+
+        var areRolesFilled: Bool {
+            roles.allSatisfy { $0.appliedUser != nil && !isLoading }
+        }
+
+        var isStartEnabled: Bool { areRolesFilled }
 
         var isChooseFromListScreenDisplaying = false
 

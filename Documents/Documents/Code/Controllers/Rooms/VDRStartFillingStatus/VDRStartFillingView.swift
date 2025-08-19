@@ -130,19 +130,24 @@ struct RoleRow: View {
                 .font(.body)
                 .frame(width: 20, alignment: .leading)
                 .foregroundColor(.secondary)
-
-            Circle()
-                .fill(role.color)
-                .frame(width: 40, height: 40)
-                .overlay(Image(systemName: "plus").foregroundColor(.secondary))
+            if let user = role.appliedUser {
+                imageView(for: .url(user.avatar ?? ""))
+            } else {
+                Circle()
+                    .fill(role.color)
+                    .frame(width: .imageWidth, height: .imageHeight)
+                    .overlay(Image(systemName: "plus").foregroundColor(.secondary))
+            }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: role.title)
+                Text(verbatim: role.appliedUser?.displayName ?? role.title)
                     .font(.subheadline)
                     .foregroundColor(.primary)
-                Text("Role description")
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
+                if let accessValue = role.appliedUser?.userType.description {
+                    Text(accessValue)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
             }
 
             Spacer()
@@ -152,6 +157,31 @@ struct RoleRow: View {
         .background(Color.white)
         .contentShape(Rectangle())
         .onTapGesture(perform: onTap)
+    }
+
+    @ViewBuilder
+    private func imageView(for imageType: ASCRoomTemplateUserMemberRowModel.ImageSourceType) -> some View {
+        switch imageType {
+        case let .url(string):
+            if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
+               !string.contains(String.defaultUserPhotoSize),
+               let url = URL(string: portal + string)
+            {
+                KFImage(url)
+                    .resizable()
+                    .frame(width: .imageWidth, height: .imageHeight)
+                    .cornerRadius(.imageCornerRadius)
+                    .clipped()
+            } else {
+                Image(asset: Asset.Images.avatarDefault)
+                    .resizable()
+                    .frame(width: .imageWidth, height: .imageHeight)
+            }
+        case let .asset(asset):
+            Image(asset: asset)
+                .resizable()
+                .frame(width: .imageWidth, height: .imageHeight)
+        }
     }
 }
 

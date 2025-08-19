@@ -75,8 +75,8 @@ private extension ASCStartFillingAssignToRoleViewModel {
         }
     }
 
-    func didTapMember(id: String?) {
-        // MARK: - TODO
+    func didTapMember(user: ASCUser) {
+        onAdd(user)
     }
 }
 
@@ -96,7 +96,7 @@ private extension ASCStartFillingAssignToRoleViewModel {
                     }
                     .map { user in
                         Cell.user(user.mapToRowModel { [weak self] in
-                            self?.didTapMember(id: user.userId)
+                            self?.didTapMember(user: user)
                         })
                     }
             case .guests:
@@ -108,7 +108,7 @@ private extension ASCStartFillingAssignToRoleViewModel {
                     }
                     .map { user in
                         Cell.user(user.mapToRowModel { [weak self] in
-                            self?.didTapMember(id: user.userId)
+                            self?.didTapMember(user: user)
                         })
                     }
             }

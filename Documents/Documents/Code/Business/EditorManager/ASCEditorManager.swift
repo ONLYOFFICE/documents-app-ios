@@ -66,8 +66,8 @@ class ASCEditorManager: NSObject {
 
     // MARK: - Private
 
-    private var openedFile: ASCFile?
-    private var provider: ASCFileProviderProtocol?
+    private(set) var openedFile: ASCFile?
+    private(set) var provider: ASCFileProviderProtocol?
     private var closeHandler: ASCEditorManagerCloseHandler?
     private var openHandler: ASCEditorManagerOpenHandler?
     private var favoriteHandler: ASCEditorManagerFavoriteHandler?

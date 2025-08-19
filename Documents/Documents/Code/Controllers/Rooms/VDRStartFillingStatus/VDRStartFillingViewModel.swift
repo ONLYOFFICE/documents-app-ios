@@ -22,8 +22,17 @@ final class VDRStartFillingViewModel: ObservableObject {
 
     private(set) var dataModel: DataModel
 
-    init(room: ASCRoom, roles: [[String: Any]]) {
+    // MARK: Dependencies
+
+    private var networkService = OnlyofficeApiClient.shared
+
+    init(
+        form: ASCFile,
+        room: ASCRoom,
+        roles: [[String: Any]]
+    ) {
         dataModel = DataModel(
+            form: form,
             room: room,
             rawRoles: roles
         )

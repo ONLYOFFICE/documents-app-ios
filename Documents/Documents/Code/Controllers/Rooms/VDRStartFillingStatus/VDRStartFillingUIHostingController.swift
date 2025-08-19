@@ -21,12 +21,14 @@ class VDRStartFillingViewController: UIHostingController<VDRStartFillingView> {
     }
 
     init(
+        form: ASCFile,
         room: ASCRoom,
         roles: [[String: Any]],
         onDismiss: @escaping (Result<Bool, any Error>
         ) -> Void
     ) {
         let viewModel = VDRStartFillingViewModel(
+            form: form,
             room: room,
             roles: roles
         )

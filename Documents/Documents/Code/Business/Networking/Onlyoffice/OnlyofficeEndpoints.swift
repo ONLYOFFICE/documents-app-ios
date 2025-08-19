@@ -88,6 +88,7 @@ enum OnlyofficeAPI {
         public static let disableNotifications = "api/\(version)/settings/notification/rooms"
         public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
         public static let fillingStatus = "api/\(version)/files/file/%@/formroles"
+        public static let formRoleMapping = "api/\(version)/files/file/%@/formrolemapping"
         public static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
         public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
         public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
@@ -383,6 +384,10 @@ enum OnlyofficeAPI {
 
             static func getFillingStatus(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>> {
                 return Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>>.make(String(format: Path.fillingStatus, file.id), .get, URLEncoding.default)
+            }
+
+            static func mapFormRolesToUsers(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.formRoleMapping, file.id), .post)
             }
 
             static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {

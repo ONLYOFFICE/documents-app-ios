@@ -99,7 +99,10 @@ extension VDRStartFillingViewModel {
             return RoleItem(
                 number: index + 1,
                 title: name,
-                color: Color(UIColor(hex: colorHex)).opacity(0.3)
+                color: Color(UIColor(hex: colorHex)).opacity(0.3),
+                rawColor: String(colorHex
+                    .replacingOccurrences(of: "#", with: "")
+                    .prefix(6))
             )
         }
     }

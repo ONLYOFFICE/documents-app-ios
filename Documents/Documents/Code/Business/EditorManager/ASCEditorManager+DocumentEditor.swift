@@ -140,7 +140,17 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
             form: form,
             room: room,
             roles: roles,
-            onDismiss: complation
+            onDismiss: { result in
+                complation(result)
+                if let documentController = ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController {
+                    documentController.loadFirstPage { _ in
+                        if let index = provider.items.firstIndex(where: { $0.id == form.id }) {
+                            documentController.updateItems(at: [index])
+                            controller.dismiss(animated: false)
+                        }
+                    }
+                }
+            }
         )
         controller.present(fillingViewController, animated: true, completion: nil)
     }

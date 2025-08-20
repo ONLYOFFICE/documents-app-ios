@@ -131,8 +131,8 @@ extension ASCEditorManager {
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
     func startFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
-        guard let provider = provider,
-              let room = (provider as? ASCOnlyofficeProvider)?.folder?.currentOrParentsRoom,
+        guard let provider = provider as? ASCOnlyofficeProvider,
+              let room = provider.folder?.currentOrParentsRoom,
               let form = openedFile
         else { return }
 

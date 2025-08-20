@@ -568,6 +568,7 @@ class ASCEditorManager: NSObject {
 
     func editCloud(
         _ file: ASCFile,
+        provider: ASCOnlyofficeProvider,
         openMode: ASCDocumentOpenMode = .edit,
         canEdit: Bool,
         openHandler: ASCEditorManagerOpenHandler? = nil,
@@ -608,6 +609,7 @@ class ASCEditorManager: NSObject {
                     do {
                         try self.openEditorInCollaboration(
                             file: file,
+                            provider: provider,
                             config: config,
                             openMode: openMode,
                             handler: openHandler
@@ -1081,6 +1083,7 @@ extension ASCEditorManager {
     ///   - handler: File open process handler
     func openEditorInCollaboration(
         file: ASCFile,
+        provider: ASCOnlyofficeProvider,
         config: OnlyofficeDocumentConfig,
         openMode: ASCDocumentOpenMode = .edit,
         handler: ASCEditorManagerOpenHandler? = nil
@@ -1129,7 +1132,7 @@ extension ASCEditorManager {
         editorWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         editorWindow.rootViewController?.present(editorViewController, animated: true, completion: {
             self.openedFile = file
-            self.provider = ASCFileManager.onlyofficeProvider
+            self.provider = provider
 
             UserDefaults.standard.set(file.toJSONString(), forKey: ASCConstants.SettingsKeys.openedDocumentFile)
 

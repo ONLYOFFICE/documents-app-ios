@@ -12,6 +12,8 @@
 		1D7327172E4B4EB000F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7327162E4B4EA900F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift */; };
 		1DA420762E4E4CE600F76BA1 /* PeopleRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA420752E4E4CD700F76BA1 /* PeopleRoomRequestModel.swift */; };
 		1DA420782E54A13800F76BA1 /* FormRolesMappingUsersRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */; };
+		1DA4207B2E58CC9600F76BA1 /* AddMembersToRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4207A2E58CC8A00F76BA1 /* AddMembersToRoomView.swift */; };
+		1DA4207D2E58CCFC00F76BA1 /* AddMembersToRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */; };
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
 		77586F622DD3749300861561 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */; };
 		77A2D66A2DED95850093549D /* CreateAndCopyLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */; };
@@ -835,6 +837,8 @@
 		1D7327162E4B4EA900F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCStartFillingAssignToRoleViewModel.swift; sourceTree = "<group>"; };
 		1DA420752E4E4CD700F76BA1 /* PeopleRoomRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRoomRequestModel.swift; sourceTree = "<group>"; };
 		1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRolesMappingUsersRequestModel.swift; sourceTree = "<group>"; };
+		1DA4207A2E58CC8A00F76BA1 /* AddMembersToRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomView.swift; sourceTree = "<group>"; };
+		1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomViewModel.swift; sourceTree = "<group>"; };
 		77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
 		77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndCopyLinkRequestModel.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
@@ -1625,6 +1629,15 @@
 			path = AssignToRole;
 			sourceTree = "<group>";
 		};
+		1DA420792E58CC6200F76BA1 /* AddMembersToRoom */ = {
+			isa = PBXGroup;
+			children = (
+				1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */,
+				1DA4207A2E58CC8A00F76BA1 /* AddMembersToRoomView.swift */,
+			);
+			path = AddMembersToRoom;
+			sourceTree = "<group>";
+		};
 		8A69B5B3249762DE00152BDE /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -1769,6 +1782,7 @@
 		E8A2DAA52DE5EF09005F0C53 /* VDRStartFillingStatus */ = {
 			isa = PBXGroup;
 			children = (
+				1DA420792E58CC6200F76BA1 /* AddMembersToRoom */,
 				1D7327132E4B4E2C00F9BDFB /* AssignToRole */,
 				E8A2DAA12DE5EF09005F0C53 /* VDRStartFillingRoleItem.swift */,
 				E8A2DAA22DE5EF09005F0C53 /* VDRStartFillingUIHostingController.swift */,
@@ -4636,6 +4650,7 @@
 				FC759BBB2C00611000510096 /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FC759B4F2C00608600510096 /* Rooms.swift in Sources */,
 				FC9EF0272BFB208800A66DE8 /* RoomTagsListRequestModel.swift in Sources */,
+				1DA4207D2E58CCFC00F76BA1 /* AddMembersToRoomViewModel.swift in Sources */,
 				FCC64F6929191F63004D9A47 /* ASCEntityRemoverActionController.swift in Sources */,
 				FC759BEC2C00611000510096 /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
 				FC7D9983272996D600410795 /* UILabel+Style.swift in Sources */,
@@ -4680,6 +4695,7 @@
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
 				FC83D52A2A973E2100C404CB /* URL+Extensions.swift in Sources */,
 				FC7DC8F82861FF4900E61C69 /* ASCDevelopOptionsViewController.swift in Sources */,
+				1DA4207B2E58CC9600F76BA1 /* AddMembersToRoomView.swift in Sources */,
 				FCC64F5129191867004D9A47 /* ASCOnlyofficeCategoriesGrouper.swift in Sources */,
 				E8674B7A2B2B15C200CDA5DC /* ViewState.swift in Sources */,
 				FC759BC02C00611000510096 /* ASCSharingAddRightHoldersInteractor.swift in Sources */,

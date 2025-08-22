@@ -13,6 +13,7 @@ import Foundation
 final class ASCStartFillingAssignToRoleViewModel: ObservableObject {
     // MARK: Published
 
+    @Published var router = Router()
     @Published var dataModel = DataModel.empty
 
     // MARK: Props
@@ -130,6 +131,10 @@ extension ASCStartFillingAssignToRoleViewModel {
         var guests: [ASCUser] = []
 
         static let empty = DataModel()
+    }
+
+    struct Router {
+        var isAddToRoomDisplaying = false
     }
 
     enum Segment: String, CaseIterable, Identifiable {

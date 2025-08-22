@@ -23,6 +23,7 @@ struct ASCStartFillingAssignToRoleView: View {
         }
         .background(Color(.secondarySystemBackground))
         .onAppear { viewModel.onAppear() }
+        .navigateToAddMembersToRoom(isActive: $viewModel.router.isAddToRoomDisplaying, viewModel: viewModel)
         .navigationTitle(NSLocalizedString("Assign to role", comment: ""))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -80,7 +81,7 @@ struct ASCStartFillingAssignToRoleView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    // TODO: action to open new screen
+                    viewModel.router.isAddToRoomDisplaying = true
                 }) {
                     Text("Add user to room")
                         .fontWeight(.semibold)
@@ -100,5 +101,22 @@ struct ASCStartFillingAssignToRoleView: View {
         .background(
             Color(.systemBackground).ignoresSafeArea(edges: [.horizontal, .bottom])
         )
+    }
+}
+
+// MARK: - Navigation
+
+private extension View {
+    @ViewBuilder
+    func navigateToAddMembersToRoom(isActive: Binding<Bool>, viewModel: ASCStartFillingAssignToRoleViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            AddMembersToRoomView(
+                viewModel: AddMembersToRoomViewModel(
+                    room: viewModel.room,
+                    onAdd: { users in
+                    }
+                )
+            )
+        })
     }
 }

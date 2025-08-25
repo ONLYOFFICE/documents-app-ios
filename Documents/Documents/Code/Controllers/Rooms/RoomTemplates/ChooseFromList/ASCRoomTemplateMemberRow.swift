@@ -8,7 +8,7 @@
 import Kingfisher
 import SwiftUI
 
-struct ASCRoomTemplateUserMemberRowModel {
+struct ASCRoomTemplateUserMemberRowModel: Equatable {
     var id: String
     var image: ImageSourceType
     var userName: String
@@ -19,9 +19,31 @@ struct ASCRoomTemplateUserMemberRowModel {
     var displayCircleMark: Bool = true
     var onTapAction: (() -> Void)?
 
-    enum ImageSourceType {
+    enum ImageSourceType: Equatable {
         case url(String)
         case asset(ImageAsset)
+
+        static func == (lhs: ImageSourceType, rhs: ImageSourceType) -> Bool {
+            switch (lhs, rhs) {
+            case let (.url(l), .url(r)):
+                return l == r
+            case let (.asset(l), .asset(r)):
+                return l.name == r.name
+            default:
+                return false
+            }
+        }
+    }
+
+    static func == (lhs: ASCRoomTemplateUserMemberRowModel, rhs: ASCRoomTemplateUserMemberRowModel) -> Bool {
+        lhs.id == rhs.id &&
+            lhs.image == rhs.image &&
+            lhs.userName == rhs.userName &&
+            lhs.accessString == rhs.accessString &&
+            lhs.emailString == rhs.emailString &&
+            lhs.isOwner == rhs.isOwner &&
+            lhs.isSelected == rhs.isSelected &&
+            lhs.displayCircleMark == rhs.displayCircleMark
     }
 }
 

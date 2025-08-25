@@ -150,11 +150,13 @@ extension AddMembersToRoomViewModel {
         }
     }
 
-    struct ScreenModel {
+    struct ScreenModel: Equatable {
         var rows: [Cell]
+
+        static let empty = ScreenModel(rows: [])
     }
 
-    enum Cell: Identifiable {
+    enum Cell: Identifiable, Equatable {
         var id: String {
             switch self {
             case let .guest(model), let .user(model):
@@ -164,6 +166,17 @@ extension AddMembersToRoomViewModel {
 
         case user(ASCRoomTemplateUserMemberRowModel)
         case guest(ASCRoomTemplateUserMemberRowModel)
+
+        static func == (lhs: Cell, rhs: Cell) -> Bool {
+            switch (lhs, rhs) {
+            case let (.user(l), .user(r)):
+                return l == r
+            case let (.guest(l), .guest(r)):
+                return l == r
+            default:
+                return false
+            }
+        }
     }
 }
 

@@ -26,11 +26,12 @@ final class AddMembersToRoomViewModel: ObservableObject {
     // TODO: Exclude users
     init(
         room: ASCRoom,
-        onAdd: @escaping (ASCUser) -> Void
+        hiddenUsers: [ASCUser],
+        onAdd: @escaping ([ASCUser]) -> Void
     ) {
         self.room = room
         self.onAdd = onAdd
-    }
+        dataModel.hiddenUsers = Set(hiddenUsers.compactMap { $0.userId })
 
     var screenModel: ScreenModel {
         mapToScreenModel()
@@ -46,8 +47,8 @@ extension AddMembersToRoomViewModel {
             async let guestsTask = fetchGuests()
 
             let (users, guests) = await(usersTask, guestsTask)
-            dataModel.users = users
-            dataModel.guests = guests
+            dataModel.users = users.filter { !dataModel.hiddenUsers.contains($0.userId ?? "") }
+            dataModel.guests = guests.filter { !dataModel.hiddenUsers.contains($0.userId ?? "") }
         }
     }
 

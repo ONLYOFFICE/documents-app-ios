@@ -113,6 +113,7 @@ private extension View {
             AddMembersToRoomView(
                 viewModel: AddMembersToRoomViewModel(
                     room: viewModel.room,
+                    hiddenUsers: viewModel.dataModel.users + viewModel.dataModel.guests,
                     onAdd: { users in
                     }
                 )

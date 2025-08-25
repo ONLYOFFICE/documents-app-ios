@@ -76,7 +76,6 @@ class ASCSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else { return }
-//        handleURL(urlContext.url, options: urlContext.options)
         handleUrl(url)
     }
 
@@ -110,33 +109,6 @@ class ASCSceneDelegate: UIResponder, UIWindowSceneDelegate {
             ASCViewControllerManager.shared.route(by: url)
         }
     }
-
-//    private func handleURL(_ url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) {
-//        if let bundleTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: Any]] {
-//            for urlType in bundleTypes {
-//                if let service = urlType["CFBundleURLName"] as? String,
-//                   let schemes = urlType["CFBundleURLSchemes"] as? [String],
-//                   let scheme = schemes.last
-//                {
-//                    if let _ = url.scheme?.range(of: scheme, options: .caseInsensitive) {
-//                        if service == "facebook" {
-//                            _ = ASCFacebookSignInController.application(UIApplication.shared, open: url, options: options)
-//                        } else if service == "google" {
-//                            _ = GIDSignIn.sharedInstance.handle(url)
-//                        } else if service == "dropbox" {
-//                            _ = DropboxClientsManager.handleRedirectURL(url, includeBackgroundClient: false, completion: ASCDropboxSDKWrapper.shared.handleOAuthRedirect)
-//                        } else if service == "oodocuments" {
-//                            _ = ASCViewControllerManager.shared.route(by: url, options: options)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        if url.isFileURL {
-//            _ = ASCViewControllerManager.shared.route(by: url, options: options)
-//        }
-//    }
 
     // MARK: - User Activity Handling
 

@@ -11,5 +11,5 @@ struct PeopleRoomRequestModel: Encodable {
     var sortby = "displayname"
     var sortorder = "ascending"
     let area = "people"
-    let includeShared = "true"
+    var includeShared: String? = "true"
 }

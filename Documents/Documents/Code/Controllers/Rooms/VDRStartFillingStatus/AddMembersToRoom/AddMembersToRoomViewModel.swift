@@ -59,7 +59,7 @@ private extension AddMembersToRoomViewModel {
         do {
             return try await OnlyofficeApiClient.request(
                 OnlyofficeAPI.Endpoints.People.room(roomId: room.id),
-                PeopleRoomRequestModel().dictionary // TODO: - fix request model
+                PeopleRoomRequestModel(includeShared: nil).dictionary
             )?.result ?? []
         } catch {
             log.error(error)
@@ -71,7 +71,7 @@ private extension AddMembersToRoomViewModel {
         do {
             return try await OnlyofficeApiClient.request(
                 OnlyofficeAPI.Endpoints.People.room(roomId: room.id),
-                PeopleGuestsRequestModel().dictionary // TODO: - fix request model
+                PeopleGuestsRequestModel().dictionary
             )?.result ?? []
         } catch {
             log.error(error)

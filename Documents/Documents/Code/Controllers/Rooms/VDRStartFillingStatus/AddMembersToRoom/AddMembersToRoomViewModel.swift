@@ -50,6 +50,16 @@ extension AddMembersToRoomViewModel {
             dataModel.guests = guests
         }
     }
+
+    func didTapAddToRoom() {
+        let members: [ASCUser] = (dataModel.users + dataModel.guests)
+            .compactMap {
+                guard let id = $0.userId, dataModel.selectedUsers.contains(id) else { return nil }
+                return $0
+            }
+        guard !members.isEmpty else { return }
+        onAdd(members)
+    }
 }
 
 // MARK: Private
@@ -80,14 +90,19 @@ private extension AddMembersToRoomViewModel {
     }
 
     func didTapMember(user: ASCUser) {
-        onAdd(user)
+        guard let userId = user.userId else { return }
+        if dataModel.selectedUsers.contains(userId) {
+            dataModel.selectedUsers.remove(userId)
+        } else {
+            dataModel.selectedUsers.insert(userId)
+        }
     }
 }
 
 // MARK: - Mapper
 
 private extension AddMembersToRoomViewModel {
-    func mapToScreenModel() -> ScreenModel {
+    func mapToScreenModel(dataModel: DataModel) -> ScreenModel {
         let cells: [Cell] = {
             let hasSearchText = !dataModel.searchText.isEmpty
             return switch dataModel.selectedSegment {
@@ -99,7 +114,7 @@ private extension AddMembersToRoomViewModel {
                             .contains(dataModel.searchText.trimmed.lowercased())
                     }
                     .map { user in
-                        Cell.user(user.mapToRowModel { [weak self] in
+                        Cell.user(user.mapToRowModel(isSelected: dataModel.selectedUsers.contains(user.userId ?? "")) { [weak self] in
                             self?.didTapMember(user: user)
                         })
                     }
@@ -111,7 +126,7 @@ private extension AddMembersToRoomViewModel {
                             .contains(dataModel.searchText.trimmed.lowercased())
                     }
                     .map { user in
-                        Cell.user(user.mapToRowModel { [weak self] in
+                        Cell.user(user.mapToRowModel(isSelected: dataModel.selectedUsers.contains(user.userId ?? "")) { [weak self] in
                             self?.didTapMember(user: user)
                         })
                     }
@@ -130,8 +145,11 @@ extension AddMembersToRoomViewModel {
         var searchText: String = ""
         var selectedSegment: Segment = .users
 
-        var users: [ASCUser] = []
-        var guests: [ASCUser] = []
+        fileprivate(set) var users: [ASCUser] = []
+        fileprivate(set) var guests: [ASCUser] = []
+
+        fileprivate(set) var hiddenUsers: Set<String> = []
+        var selectedUsers: Set<String> = []
 
         static let empty = DataModel()
     }
@@ -183,7 +201,7 @@ extension AddMembersToRoomViewModel {
 // MARK: - Extensions
 
 private extension ASCUser {
-    func mapToRowModel(onTapAction: @escaping () -> Void) -> ASCRoomTemplateUserMemberRowModel {
+    func mapToRowModel(isSelected: Bool, onTapAction: @escaping () -> Void) -> ASCRoomTemplateUserMemberRowModel {
         ASCRoomTemplateUserMemberRowModel(
             id: userId ?? "",
             image: .url(avatar ?? ""),
@@ -191,7 +209,7 @@ private extension ASCUser {
             accessString: userType.description,
             emailString: email ?? "",
             isOwner: isOwner,
-            isSelected: false, // TODO: - map
+            isSelected: isSelected,
             displayCircleMark: true,
             onTapAction: onTapAction
         )

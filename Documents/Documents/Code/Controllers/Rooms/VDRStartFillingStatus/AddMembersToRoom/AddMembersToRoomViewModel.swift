@@ -13,17 +13,20 @@ import Foundation
 final class AddMembersToRoomViewModel: ObservableObject {
     // MARK: Published
 
-    @Published var dataModel = DataModel.empty // TODO: subscribe
-    // TODO: Screen model
-    // TODO: Selected users
+    @Published var dataModel = DataModel.empty
+
+    @Published private(set) var screenModel: ScreenModel = .empty
 
     // MARK: Props
 
     let room: ASCRoom
-    // TODO: Array
-    let onAdd: (ASCUser) -> Void
 
-    // TODO: Exclude users
+    // MARK: - Private
+
+    private var bag = Set<AnyCancellable>()
+
+    let onAdd: ([ASCUser]) -> Void
+
     init(
         room: ASCRoom,
         hiddenUsers: [ASCUser],
@@ -33,8 +36,16 @@ final class AddMembersToRoomViewModel: ObservableObject {
         self.onAdd = onAdd
         dataModel.hiddenUsers = Set(hiddenUsers.compactMap { $0.userId })
 
-    var screenModel: ScreenModel {
-        mapToScreenModel()
+        $dataModel
+            .map { [weak self] dm in
+                self?.mapToScreenModel(dataModel: dm) ?? .empty
+            }
+            .removeDuplicates()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] sm in
+                self?.screenModel = sm
+            }
+            .store(in: &bag)
     }
 }
 

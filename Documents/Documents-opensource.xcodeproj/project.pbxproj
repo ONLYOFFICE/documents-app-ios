@@ -225,6 +225,7 @@
 		FC1828EE2A24D08F005D9220 /* ASCDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828EC2A24D08F005D9220 /* ASCDetailCell.swift */; };
 		FC1828EF2A24D08F005D9220 /* ASCDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1828ED2A24D08F005D9220 /* ASCDetailCell.xib */; };
 		FC1828F12A24D63B005D9220 /* ASCAppThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F02A24D63B005D9220 /* ASCAppThemeViewController.swift */; };
+		FC1864F32E5C7F3A00829AF0 /* ASCSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1864F22E5C7F3A00829AF0 /* ASCSceneDelegate.swift */; };
 		FC2882BE28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2882BC28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */; };
 		FC33FA912B0F58B900688E17 /* ASCFolderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33FA902B0F58B900688E17 /* ASCFolderLogo.swift */; };
 		FC33FA932B0F595400688E17 /* ASCFolderLogoAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33FA922B0F595400688E17 /* ASCFolderLogoAvatarView.swift */; };
@@ -980,6 +981,7 @@
 		FC1828EC2A24D08F005D9220 /* ASCDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDetailCell.swift; sourceTree = "<group>"; };
 		FC1828ED2A24D08F005D9220 /* ASCDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCDetailCell.xib; sourceTree = "<group>"; };
 		FC1828F02A24D63B005D9220 /* ASCAppThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAppThemeViewController.swift; sourceTree = "<group>"; };
+		FC1864F22E5C7F3A00829AF0 /* ASCSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSceneDelegate.swift; sourceTree = "<group>"; };
 		FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseNavigationController.swift; sourceTree = "<group>"; };
 		FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseViewController.swift; sourceTree = "<group>"; };
 		FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCUserAvatarView.swift; sourceTree = "<group>"; };
@@ -3759,6 +3761,7 @@
 				FCEF853526C3E3CF00173DDF /* AppDelegate.swift */,
 				FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */,
 				FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */,
+				FC1864F22E5C7F3A00829AF0 /* ASCSceneDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -4514,6 +4517,7 @@
 				FCE9F7A82B3044CE0056E420 /* CurrentFolderMenu.swift in Sources */,
 				FC379D6A2C380C5900B120D9 /* ASCDetailedChevronUpDownCellView.swift in Sources */,
 				FC70815D2812E2260057FCD2 /* ASCSharingSettingsAccessExternalDefaultProvider.swift in Sources */,
+				FC1864F32E5C7F3A00829AF0 /* ASCSceneDelegate.swift in Sources */,
 				FC142A24289818B800EDE7CE /* ASCFiltersCollectionViewHeader.swift in Sources */,
 				FC70815E2812E2260057FCD2 /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */,
 				FC7081612812E2260057FCD2 /* NetworkingError.swift in Sources */,

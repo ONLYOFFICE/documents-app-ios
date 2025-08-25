@@ -330,6 +330,7 @@
 		FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C520C017C300557C1F /* ASCStyles.swift */; };
 		FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */; };
 		FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */; };
+		FC582BF82E549B2200DC3D84 /* ASCSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC582BF72E549B2200DC3D84 /* ASCSceneDelegate.swift */; };
 		FC59434F2AE68139001BA2F9 /* ASCDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59434D2AE68139001BA2F9 /* ASCDIContainer.swift */; };
 		FC5943502AE68139001BA2F9 /* ASCDIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59434E2AE68139001BA2F9 /* ASCDIProtocol.swift */; };
 		FC5943602AE6816E001BA2F9 /* EditorDocumentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943522AE6816E001BA2F9 /* EditorDocumentProtocol.swift */; };
@@ -1068,6 +1069,7 @@
 		FC54E803271F04BE00195CFD /* ASCCreatePortal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreatePortal.swift; sourceTree = "<group>"; };
 		FC56B5C520C017C300557C1F /* ASCStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCStyles.swift; sourceTree = "<group>"; };
 		FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSortViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		FC582BF72E549B2200DC3D84 /* ASCSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSceneDelegate.swift; sourceTree = "<group>"; };
 		FC584EDD25BB4F5D001C608E /* Documents.dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.dev.entitlements; sourceTree = "<group>"; };
 		FC584EDE25BB4F5D001C608E /* Documents.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.entitlements; sourceTree = "<group>"; };
 		FC59434D2AE68139001BA2F9 /* ASCDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDIContainer.swift; sourceTree = "<group>"; };
@@ -3982,6 +3984,7 @@
 				FCEF853526C3E3CF00173DDF /* AppDelegate.swift */,
 				FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */,
 				FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */,
+				FC582BF72E549B2200DC3D84 /* ASCSceneDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -5118,6 +5121,7 @@
 				FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC5943E72AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */,
 				FC9EEFA52BFB201700A66DE8 /* PeopleFilterRequestModel.swift in Sources */,
+				FC582BF82E549B2200DC3D84 /* ASCSceneDelegate.swift in Sources */,
 				1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FC407FBC2191DC76009089EB /* ASCConnectCloudViewController.swift in Sources */,

@@ -67,16 +67,16 @@ class ASCProgressAlert {
         if let controller = viewController {
             controller.present(actionController!, animated: true, completion: nil)
         } else {
-            alertWindow = UIWindow(frame: UIScreen.main.bounds)
+            guard let windowScene = UIApplication.shared.firstForegroundScene else {
+                return
+            }
+            alertWindow = UIWindow(windowScene: windowScene)
             alertWindow?.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
             alertWindow?.rootViewController = ASCBaseViewController()
 
-            if let delegate = UIApplication.shared.delegate {
-                alertWindow?.tintColor = delegate.window??.tintColor
-            }
-
-            if let topWindow = UIWindow.keyWindow {
-                alertWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
+            if let keyWindow = UIApplication.shared.keyWindow {
+                alertWindow?.tintColor = keyWindow.tintColor
+                alertWindow?.windowLevel = min(keyWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
             }
 
             alertWindow?.makeKeyAndVisible()

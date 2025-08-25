@@ -37,6 +37,7 @@ class ASCBaseNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.tintColor = Asset.Colors.brend.color
     }
 
     override func viewDidAppear(_ animated: Bool) {

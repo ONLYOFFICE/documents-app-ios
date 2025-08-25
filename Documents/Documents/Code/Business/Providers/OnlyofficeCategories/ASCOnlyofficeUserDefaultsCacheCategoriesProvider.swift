@@ -12,7 +12,7 @@ class ASCOnlyofficeUserDefaultsCacheCategoriesProvider {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
 
-    public func getKey(for account: ASCAccount) -> String? {
+    func getKey(for account: ASCAccount) -> String? {
         guard let email = account.email,
               let portal = account.portal,
               !email.isEmpty,

@@ -11,8 +11,8 @@ import UIKit
 let ASCEntityItemProviderTypeId = "com.onlyoffice.documents.entityItemProvider"
 
 class ASCEntityItemProvider: NSObject, Codable {
-    public var providerId: String = ""
-    public var entity: ASCEntity {
+    var providerId: String = ""
+    var entity: ASCEntity {
         return file ?? folder ?? ASCEntity()
     }
 
@@ -25,13 +25,13 @@ class ASCEntityItemProvider: NSObject, Codable {
         case folder
     }
 
-    public required init(providerId: String, entity: ASCEntity) {
+    required init(providerId: String, entity: ASCEntity) {
         self.providerId = providerId
         file = entity as? ASCFile
         folder = entity as? ASCFolder
     }
 
-    public required init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: ASCEntityItemProvider.CodingKeys.self)
         do {
             let fileJson = try values.decode(String.self, forKey: .file)
@@ -46,7 +46,7 @@ class ASCEntityItemProvider: NSObject, Codable {
         providerId = try values.decode(String.self, forKey: .providerId)
     }
 
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: ASCEntityItemProvider.CodingKeys.self)
 
         try container.encode(providerId, forKey: .providerId)

@@ -280,7 +280,6 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
-
             var query = NSPredicate(format: "TRUEPREDICATE")
 
             // Search

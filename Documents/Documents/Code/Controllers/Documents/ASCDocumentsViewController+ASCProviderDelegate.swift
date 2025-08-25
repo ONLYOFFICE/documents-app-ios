@@ -21,7 +21,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         openingAlert.progress = progress
 
         let openHandler: ASCEditorManagerOpenHandler = { [weak self] status, progress, error, cancel in
-
             openingAlert.progress = progress
 
             if forceCancel {
@@ -151,7 +150,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     }
 
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
-        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
+        if let keyWindow = UIApplication.shared.keyWindow {
             if var topController = keyWindow.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController

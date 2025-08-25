@@ -12,7 +12,7 @@ import SwiftRater
 import UIKit
 
 class ASCViewControllerManager {
-    public static let shared = ASCViewControllerManager()
+    static let shared = ASCViewControllerManager()
 
     // MARK: - Properties
 
@@ -59,7 +59,7 @@ class ASCViewControllerManager {
         ASCConstants.RemoteSettingsKeys.setupDefaults()
 
         // Setup global tintColor
-        UIApplication.shared.delegate?.window??.tintColor = Asset.Colors.brend.color
+        UIApplication.shared.keyWindow?.tintColor = Asset.Colors.brend.color
 
         // Read stored providers
         ASCFileManager.loadProviders()
@@ -108,7 +108,7 @@ class ASCViewControllerManager {
     }
 
     @discardableResult
-    func route(by url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+    func route(by url: URL) -> Bool {
 //        print("sourceApplication: \(options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String ?? "")")
 //        print("annotation: \(options[UIApplicationOpenURLOptionsKey.annotation] as? String ?? "")")
         guard
@@ -238,7 +238,7 @@ class ASCViewControllerManager {
 
     private func routeOpenLocalFile(info: [String: Any], needImport: Bool = true) {
         guard
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let url = info["url"] as? URL,
             url.isFileURL,
             !FileManager.default.isUbiquitousItem(at: url)
@@ -255,7 +255,7 @@ class ASCViewControllerManager {
 
             /// Prevent open if open editor
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
+               let topWindow = UIApplication.shared.keyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -348,9 +348,9 @@ class ASCViewControllerManager {
             }
         }
 
-        if appDelegate.passcodeLockPresenter.isPasscodePresented {
-            appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                 DispatchQueue.main.debounce(interval: 1.0) {
                     processAndOpenFile()
                 }
@@ -364,7 +364,7 @@ class ASCViewControllerManager {
 
     private func routeOpeniCloudFile(info: [String: Any]) {
         guard
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let url = info["url"] as? URL,
             url.isFileURL,
             FileManager.default.isUbiquitousItem(at: url)
@@ -386,7 +386,7 @@ class ASCViewControllerManager {
 
             /// Prevent open if open editor
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
+               let topWindow = UIApplication.shared.keyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -423,9 +423,9 @@ class ASCViewControllerManager {
             }
         }
 
-        if appDelegate.passcodeLockPresenter.isPasscodePresented {
-            appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                 processAndOpenFile()
             }
         } else {
@@ -456,7 +456,7 @@ class ASCViewControllerManager {
         let correctInfo = camelCaseKeys(of: info)
 
         guard
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let deepLink = ASCDeepLink(JSON: correctInfo),
             let originalUrl = deepLink.originalUrl,
             let portal = URL(string: originalUrl)?.dropPathAndQuery().absoluteString,
@@ -513,7 +513,6 @@ class ASCViewControllerManager {
                             : NSLocalizedString("Login", comment: ""),
                         style: .default,
                         handler: { action in
-
                             if let rootVC = ASCViewControllerManager.shared.rootController,
                                let onlyofficeSplitViewController = rootVC.viewControllers?.first(where: { $0 is ASCOnlyofficeSplitViewController }),
                                !onlyofficeSplitViewController.isViewLoaded
@@ -561,7 +560,7 @@ class ASCViewControllerManager {
             self?.openFileInfo = nil
 
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
+               let topWindow = UIApplication.shared.keyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -667,9 +666,9 @@ class ASCViewControllerManager {
             }
         }
 
-        if appDelegate.passcodeLockPresenter.isPasscodePresented {
-            appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                 DispatchQueue.main.debounce(interval: 1.0) {
                     processAndOpenFile()
                 }

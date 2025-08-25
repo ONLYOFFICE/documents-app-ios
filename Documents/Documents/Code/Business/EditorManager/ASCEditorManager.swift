@@ -57,7 +57,7 @@ typealias ASCEditorManagerLockedHandler = () -> Void
 typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ fillingSessionId: String?, _ complation: @escaping (Bool) -> Void) -> Void
 
 class ASCEditorManager: NSObject {
-    public static let shared = ASCEditorManager()
+    static let shared = ASCEditorManager()
 
     /// The ASCEditorManager Configuration
     struct Configuration {
@@ -162,16 +162,20 @@ class ASCEditorManager: NSObject {
     private func createEditorWindow() -> UIWindow? {
         cleanupEditorWindow()
 
-        editorWindow = UIWindow(frame: UIScreen.main.bounds)
+        guard let windowScene = UIApplication.shared.firstForegroundScene else {
+            return nil
+        }
+
+        editorWindow = UIWindow(windowScene: windowScene)
         editorWindow?.rootViewController = UIViewController()
 
-        if let delegate = UIApplication.shared.delegate {
-            editorWindow?.tintColor = delegate.window??.tintColor
+        if let keyWindow = UIApplication.shared.keyWindow {
+            editorWindow?.tintColor = keyWindow.tintColor
         }
 
         editorWindow?.windowLevel = UIWindow.Level.statusBar - 10
 
-        if let topWindow = UIWindow.keyWindow {
+        if let topWindow = UIApplication.shared.keyWindow {
             editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
         }
 
@@ -283,10 +287,9 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    public func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
+    func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
         let documentServerVersionRequest = DocumentServerVersionRequest(version: .true)
         clientRequest(OnlyofficeAPI.Endpoints.Settings.documentService, documentServerVersionRequest.dictionary) { response, error in
-
             let removePath = "/web-apps/apps/api/documents/api.js"
 
             if let results = response?.result as? String {
@@ -369,7 +372,7 @@ class ASCEditorManager: NSObject {
 
                     let canEdit = (allowEdit || (!allowEdit && (allowReview || allowComment || allowFillForms))) && canEdit
 
-                    if openMode == .view && !canEdit {
+                    if openMode == .view, !canEdit {
                         var cancel = false
                         self.downloadAndOpenFile(for: provider, file, openMode: openMode, canEdit: canEdit, &cancel)
                     } else {
@@ -495,7 +498,6 @@ class ASCEditorManager: NSObject {
                 }
             } else {
                 clientRequest(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
-
                     if let error {
                         if let status = response?.status,
                            let code = response?.statusCode,

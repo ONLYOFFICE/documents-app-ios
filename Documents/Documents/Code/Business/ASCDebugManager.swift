@@ -12,11 +12,11 @@ import SwiftUI
 import UIKit
 
 class ASCDebugManager: NSObject {
-    public static let shared = ASCDebugManager()
+    static let shared = ASCDebugManager()
 
     // MARK: - Properties
 
-    public var enabled: Bool {
+    var enabled: Bool {
         get { UserDefaults.standard.bool(forKey: isDebugModeKey) }
         set { UserDefaults.standard.set(newValue, forKey: isDebugModeKey) }
     }
@@ -33,7 +33,7 @@ class ASCDebugManager: NSObject {
 
     // MARK: - Public
 
-    public func showDebugMenu() {
+    func showDebugMenu() {
         if presented {
             return
         }
@@ -76,7 +76,7 @@ class ASCDebugManager: NSObject {
 // MARK: - UIAdaptivePresentationControllerDelegate
 
 extension ASCDebugManager: UIAdaptivePresentationControllerDelegate {
-    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         presented = false
     }
 }

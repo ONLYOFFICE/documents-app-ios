@@ -26,6 +26,8 @@ class ASCBaseSplitViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.tintColor = Asset.Colors.brend.color
+
         delegate = self
 
         if #available(iOS 13.0, *) {

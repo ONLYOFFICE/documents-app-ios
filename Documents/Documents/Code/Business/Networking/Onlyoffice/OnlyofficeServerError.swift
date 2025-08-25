@@ -29,7 +29,7 @@ enum OnlyofficeServerError: NetworkingServerError {
         }
     }
 
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .unauthorized:
             return NSLocalizedString("User authentication required", comment: "")

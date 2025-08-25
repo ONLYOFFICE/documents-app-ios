@@ -45,9 +45,9 @@ class ASCSharingAddRightHoldersView {
 
     // MARK: - Activity indicators
 
-    public lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
-    public lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
-    public lazy var loadingGuestsTableActivityIndicator = UIActivityIndicatorView()
+    lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
+    lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
+    lazy var loadingGuestsTableActivityIndicator = UIActivityIndicatorView()
 
     // MARK: - Navigation bar props
 
@@ -443,7 +443,7 @@ extension ASCSharingAddRightHoldersView {
 // MARK: - Empty view methods
 
 extension ASCSharingAddRightHoldersView {
-    public func showEmptySearchView(_ show: Bool) {
+    func showEmptySearchView(_ show: Bool) {
         guard let emptySearchView = emptySearchView else {
             return
         }
@@ -524,7 +524,7 @@ extension ASCSharingAddRightHoldersView {
         }
     }
 
-    public func updateToolbars() {
+    func updateToolbars() {
         delegate?.onUpdateToolbarItems(makeToolbarItems())
         if UIDevice.phone {
             keyboardToolbar.items = makeToolbarItems()
@@ -619,27 +619,27 @@ extension ASCSharingAddRightHoldersView {
 // MARK: - Activity indicators funcs
 
 extension ASCSharingAddRightHoldersView {
-    public func runUsersLoadingAnimation() {
+    func runUsersLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: usersTableView, activityIndicator: loadingUsersTableActivityIndicator)
     }
 
-    public func stopUsersLoadingAnimation() {
+    func stopUsersLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingUsersTableActivityIndicator)
     }
 
-    public func runGroupsLoadingAnimation() {
+    func runGroupsLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: groupsTableView, activityIndicator: loadingGroupsTableActivityIndicator)
     }
 
-    public func stopGroupsLoadingAnimation() {
+    func stopGroupsLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingGroupsTableActivityIndicator)
     }
 
-    public func runGuestsLoadingAnimation() {
+    func runGuestsLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: guestsTableView, activityIndicator: loadingGuestsTableActivityIndicator)
     }
 
-    public func stopGuestsLoadingAnimation() {
+    func stopGuestsLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingGuestsTableActivityIndicator)
     }
 

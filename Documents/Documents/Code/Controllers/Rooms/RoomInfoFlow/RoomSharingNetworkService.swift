@@ -49,7 +49,6 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
         let requestModel = RoomLinksRequestModel(type: 1)
 
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.getLinks(room: room), requestModel.dictionary) { response, error in
-
             guard let links = response?.result else {
                 if let error {
                     completion(.failure(error))
@@ -100,7 +99,6 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
         let requestModel = RoomDuplicateRequestModel(folderIds: [room.id], fileIds: [])
 
         networkService.request(OnlyofficeAPI.Endpoints.Operations.duplicateRoom, requestModel.dictionary) { response, error in
-
             if let error = error {
                 handler?(.error, 1, nil, error, &cancel)
             } else {

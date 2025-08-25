@@ -24,7 +24,7 @@ class DropboxTokenAdapter: RequestAdapter {
 }
 
 class DropboxApiClient: NetworkingClient {
-    public var credential: ASCOAuthCredential? {
+    var credential: ASCOAuthCredential? {
         didSet {
             if oldValue == nil {
                 configure(url: baseURL?.absoluteString ?? "", token: credential?.accessToken)
@@ -32,14 +32,14 @@ class DropboxApiClient: NetworkingClient {
         }
     }
 
-    public var onRefreshToken: ((ASCOAuthCredential) -> Void)?
+    var onRefreshToken: ((ASCOAuthCredential) -> Void)?
 
-    override public init() {
+    override init() {
         super.init()
         baseURL = URL(string: "https://api.dropboxapi.com/2/")
     }
 
-    override public func configure(url: String, token: String? = nil) {
+    override func configure(url: String, token: String? = nil) {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
         configuration.timeoutIntervalForResource = 30

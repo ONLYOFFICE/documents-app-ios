@@ -844,7 +844,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         // Info
-        if isDocSpaceArchive && !isInfoShowing {
+        if isDocSpaceArchive, !isInfoShowing {
             items.append(barIconSpacer)
             items.append(barFlexSpacer)
         } else if isInfoShowing {
@@ -1145,10 +1145,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 self.highlight(entity: self.highlightEntity)
 
                 // Check network
-                if !success &&
-                    self.folder?.rootFolderType != .deviceDocuments &&
-                    !ASCNetworkReachability.shared.isReachable &&
-                    OnlyofficeApiClient.shared.token != nil
+                if !success,
+                   self.folder?.rootFolderType != .deviceDocuments,
+                   !ASCNetworkReachability.shared.isReachable,
+                   OnlyofficeApiClient.shared.token != nil
                 {
                     ASCBanner.shared.showError(
                         title: NSLocalizedString("No network", comment: ""),
@@ -1215,7 +1215,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         localEmptyView?.type = .trash
                     } else if folder.rootFolderType == .roomTemplates {
                         localEmptyView?.type = .roomTemplates
-                    } else if folder.rootFolderType == .archive && !folder.isRoom {
+                    } else if folder.rootFolderType == .archive, !folder.isRoom {
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
@@ -1863,7 +1863,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         var hud: MBProgressHUD?
 
         RoomSharingNetworkService().duplicateRoom(room: room) { [unowned self] status, progress, result, error, cancel in
-
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
                 hud?.mode = .annularDeterminate
@@ -1939,7 +1938,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             keyPath: \.roomType,
             value: .fillingForm
         ) == true
-        if isInsideFillingFormRoom && file.security.fillForms {
+        if isInsideFillingFormRoom, file.security.fillForms {
             open(file: file, openMode: .fillform)
             return
         }
@@ -3670,7 +3669,7 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
 // MARK: - UISearchResultsUpdating
 
 extension ASCDocumentsViewController: UISearchResultsUpdating {
-    public func updateSearchResults(for searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         /// Throttle search
 
         searchTask?.cancel()

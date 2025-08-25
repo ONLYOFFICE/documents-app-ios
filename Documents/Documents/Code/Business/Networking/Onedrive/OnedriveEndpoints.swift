@@ -10,7 +10,7 @@ import Foundation
 
 enum OnedriveAPI {
     enum Path {
-        public static let me = "me"
+        static let me = "me"
     }
 
     enum Endpoints {

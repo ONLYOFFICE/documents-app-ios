@@ -535,6 +535,7 @@
 		FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */; };
 		FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */; };
 		FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */; };
+		FC8F19E02E585DF4009F869E /* ASCSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8F19DF2E585DF4009F869E /* ASCSceneDelegate.swift */; };
 		FC95D68A2D5A1D79000725C8 /* OnlyofficeHeadersOnTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6892D5A1D79000725C8 /* OnlyofficeHeadersOnTokenService.swift */; };
 		FC95D6A92D5CD50E000725C8 /* ASCUpdateLocallyEditFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95D6A82D5CD507000725C8 /* ASCUpdateLocallyEditFileInfo.swift */; };
 		FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */; };
@@ -1343,6 +1344,7 @@
 		FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2OneDrive.swift; sourceTree = "<group>"; };
 		FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Box.swift; sourceTree = "<group>"; };
 		FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavController.swift; sourceTree = "<group>"; };
+		FC8F19DF2E585DF4009F869E /* ASCSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSceneDelegate.swift; sourceTree = "<group>"; };
 		FC95D6892D5A1D79000725C8 /* OnlyofficeHeadersOnTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeHeadersOnTokenService.swift; sourceTree = "<group>"; };
 		FC95D6A82D5CD507000725C8 /* ASCUpdateLocallyEditFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUpdateLocallyEditFileInfo.swift; sourceTree = "<group>"; };
 		FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalViewController.swift; sourceTree = "<group>"; };
@@ -3128,6 +3130,7 @@
 				FC7D994A272994BB00410795 /* AppDelegate+Helpers.swift */,
 				FC7D994B272994BB00410795 /* AppDelegate+Notifications.swift */,
 				FC7D994C272994BB00410795 /* AppDelegate.swift */,
+				FC8F19DF2E585DF4009F869E /* ASCSceneDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -4613,6 +4616,7 @@
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				FC759BE02C00611000510096 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
 				FC72B0C52AFE039300FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */,
+				FC8F19E02E585DF4009F869E /* ASCSceneDelegate.swift in Sources */,
 				FC59620F2DDDC33B0042CBAD /* ASCCustomFilterRequestModel.swift in Sources */,
 				FC759BBD2C00611000510096 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,

@@ -34,6 +34,7 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.tintColor = Asset.Colors.brend.color
         title = "Nextcloud"
 
         doneCell?.isUserInteractionEnabled = false
@@ -68,7 +69,6 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
         let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
         nextCloudDelegate.viewController = oauth2VC
         oauth2VC.complation = { [weak self] info in
-
             guard let self = self else { return }
 
             if let login = info["user"] as? String,
@@ -132,7 +132,6 @@ extension ASCConnectStorageNextCloudServerController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == doneCell {
             valid(portal: serverField.text ?? "") { [weak self] isSuccess in
-
                 guard let self = self else { return }
                 if isSuccess {
                     self.showWebView()

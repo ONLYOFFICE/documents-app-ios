@@ -201,7 +201,6 @@ extension ASCMultiAccountsViewController {
             return nil
         case let .account(model):
             let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-
                 let profileActionTitle = NSLocalizedString("Profile", comment: "")
                 let profileAction = UIAction(title: profileActionTitle, image: UIImage(systemName: "person")) { _ in
                     model.showProfileCallback()

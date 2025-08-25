@@ -34,9 +34,9 @@ class ASCDocumentsEmptyView: UIView {
 
     // MARK: - Properties
 
-    public var onAction: (() -> Void)?
-    public var menuForType: [EmptyViewState: UIMenu] = [:]
-    public var type: EmptyViewState = .default {
+    var onAction: (() -> Void)?
+    var menuForType: [EmptyViewState: UIMenu] = [:]
+    var type: EmptyViewState = .default {
         didSet {
             updateType()
         }

@@ -36,8 +36,8 @@ protocol NetworkingRequestingProtocol {
 class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     // MARK: - Properties
 
-    public var baseURL: URL?
-    public var token: String? {
+    var baseURL: URL?
+    var token: String? {
         didSet {
             if token != oldValue, let baseURLString = baseURL?.absoluteString {
                 configure(url: baseURLString, token: token)
@@ -56,17 +56,17 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         return $0
     }(URLSessionConfiguration.default)
 
-    public var headers: HTTPHeaders = .default
+    var headers: HTTPHeaders = .default
     let defaultTimeoutIntervalForResource: TimeInterval = 30
     var sessions: [Alamofire.Session] = []
 
     // MARK: - init
 
-    override public init() {
+    override init() {
         super.init()
     }
 
-    public func configure(url: String, token: String? = nil) {
+    func configure(url: String, token: String? = nil) {
         baseURL = URL(string: url)
         manager = Alamofire.Session(
             configuration: configuration,
@@ -77,11 +77,11 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
     // MARK: - Control
 
-    public func clear() {
+    func clear() {
         cancelAll()
     }
 
-    public func cancelAll() {
+    func cancelAll() {
         for manager in sessions + [manager] {
             manager.session.getAllTasks { tasks in
                 tasks.forEach { $0.cancel() }
@@ -130,7 +130,6 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         )
         .validate()
         .responseData(queue: queue) { response in
-
             switch response.result {
             case let .success(value):
                 do {

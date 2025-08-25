@@ -452,7 +452,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return nil }
 
         // List of Room Templates
-        if folder.isRoot && folder.rootFolderType == .roomTemplates {
+        if folder.isRoot, folder.rootFolderType == .roomTemplates {
             return ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
         }
 
@@ -682,7 +682,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     }
                 } else {
                     self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, parameters) { response, error in
-
                         if (response?.result?.count ?? 0) > 0 {
                             var checkOperation: (() -> Void)?
                             checkOperation = {

@@ -11,7 +11,7 @@ import Foundation
 
 enum NextcloudAPI {
     enum Path {
-        public static let storageStats = "index.php/apps/files/ajax/getstoragestats.php"
+        static let storageStats = "index.php/apps/files/ajax/getstoragestats.php"
     }
 
     enum Endpoints {

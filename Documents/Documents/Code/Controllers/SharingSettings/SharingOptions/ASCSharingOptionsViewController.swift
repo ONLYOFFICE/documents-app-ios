@@ -111,7 +111,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
 
     // MARK: Setup
 
-    public func setup(entity: ASCEntity) {
+    func setup(entity: ASCEntity) {
         self.entity = entity
         if !isModuleConfigurated {
             let viewController = self
@@ -174,7 +174,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
 
     // MARK: - Requests
 
-    public func requestToLoadRightHolders() {
+    func requestToLoadRightHolders() {
         rightHolderCurrentlyLoading = true
         viewConfigurator?.showTableLoadingActivityIndicator(tableView: tableView)
         interactor?.makeRequest(request: .loadRightHolders(.init(entity: entity)))

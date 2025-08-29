@@ -131,31 +131,6 @@ extension ASCEditorManager {
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
 
-    func startFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
-        guard let provider = provider as? ASCOnlyofficeProvider,
-              let room = provider.folder?.currentOrParentsRoom,
-              let form = openedFile
-        else { return }
-
-        let fillingViewController = VDRStartFillingViewController(
-            form: form,
-            room: room,
-            roles: roles,
-            onDismiss: { result in
-                complation(result)
-                if let documentController = ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController {
-                    documentController.loadFirstPage { _ in
-                        if let index = provider.items.firstIndex(where: { $0.id == form.id }) {
-                            documentController.updateItems(at: [index])
-                            controller.dismiss(animated: false)
-                        }
-                    }
-                }
-            }
-        )
-        controller.present(fillingViewController, animated: true, completion: nil)
-    }
-
     func documentDidOpen(_ controller: DocumentEditor.DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         switch result {
         case let .success(document):
@@ -203,7 +178,27 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
     }
 
     func documentStartFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
-        let fillingViewController = VDRStartFillingViewController(roles: roles, onDismiss: complation)
+        guard let provider = provider as? ASCOnlyofficeProvider,
+              let room = provider.folder?.currentOrParentsRoom,
+              let form = openedFile
+        else { return }
+
+        let fillingViewController = VDRStartFillingViewController(
+            form: form,
+            room: room,
+            roles: roles,
+            onDismiss: { result in
+                complation(result)
+                if let documentController = ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController {
+                    documentController.loadFirstPage { _ in
+                        if let index = provider.items.firstIndex(where: { $0.id == form.id }) {
+                            documentController.updateItems(at: [index])
+                            controller.dismiss(animated: false)
+                        }
+                    }
+                }
+            }
+        )
         controller.present(fillingViewController, animated: true, completion: nil)
     }
 

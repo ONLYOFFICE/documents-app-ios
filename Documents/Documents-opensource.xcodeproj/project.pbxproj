@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D581BDB2E5F719300F53678 /* RoomLinkResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D581BD92E5F719300F53678 /* RoomLinkResponseModel.swift */; };
+		1D581BDC2E5F719300F53678 /* RoomUsersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D581BDA2E5F719300F53678 /* RoomUsersResponseModel.swift */; };
+		1D581BDF2E5F71BD00F53678 /* FormRolesMappingUsersRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D581BDD2E5F71BD00F53678 /* FormRolesMappingUsersRequestModel.swift */; };
+		1D581BE02E5F71BD00F53678 /* PeopleRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D581BDE2E5F71BD00F53678 /* PeopleRoomRequestModel.swift */; };
 		1D667A2D28CDFE4D009BD85D /* ASCOnlyofficeCategoriesGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A2B28CDFE4D009BD85D /* ASCOnlyofficeCategoriesGrouper.swift */; };
 		1D667A3028CDFF39009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A2E28CDFF39009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */; };
 		1D667A3328CDFF95009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3128CDFF95009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */; };
@@ -147,9 +151,7 @@
 		FC03A64D2BDA7F67005E8FFB /* OnlyofficeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A6372BDA7F67005E8FFB /* OnlyofficeShare.swift */; };
 		FC03A64E2BDA7F67005E8FFB /* OnlyofficeUserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A6382BDA7F67005E8FFB /* OnlyofficeUserPhoto.swift */; };
 		FC03A64F2BDA7F67005E8FFB /* OnlyofficeVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A6392BDA7F67005E8FFB /* OnlyofficeVersion.swift */; };
-		FC03A6502BDA7F67005E8FFB /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63A2BDA7F67005E8FFB /* RoomLinkResponceModel.swift */; };
 		FC03A6512BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */; };
-		FC03A6522BDA7F67005E8FFB /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03A63C2BDA7F67005E8FFB /* RoomUsersResponceModel.swift */; };
 		FC1429F92898183D00EDE7CE /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F32898183D00EDE7CE /* ASCEntityUniqNameFinder.swift */; };
 		FC1429FB2898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F42898183D00EDE7CE /* ASCEntityExistenceCheckerByAttributes.swift */; };
 		FC1429FD2898183D00EDE7CE /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1429F62898183D00EDE7CE /* ASCEntityExistenceChecker.swift */; };
@@ -685,6 +687,10 @@
 		1D4C6771268A2573000F2284 /* ASCSharingOptionsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsModels.swift; sourceTree = "<group>"; };
 		1D4C6773268A2573000F2284 /* ASCSharingOptionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsInteractor.swift; sourceTree = "<group>"; };
 		1D4C677C268A3297000F2284 /* ASCSharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingView.swift; sourceTree = "<group>"; };
+		1D581BD92E5F719300F53678 /* RoomLinkResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLinkResponseModel.swift; sourceTree = "<group>"; };
+		1D581BDA2E5F719300F53678 /* RoomUsersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomUsersResponseModel.swift; sourceTree = "<group>"; };
+		1D581BDD2E5F71BD00F53678 /* FormRolesMappingUsersRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRolesMappingUsersRequestModel.swift; sourceTree = "<group>"; };
+		1D581BDE2E5F71BD00F53678 /* PeopleRoomRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRoomRequestModel.swift; sourceTree = "<group>"; };
 		1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift; sourceTree = "<group>"; };
@@ -888,9 +894,7 @@
 		FC03A6372BDA7F67005E8FFB /* OnlyofficeShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeShare.swift; sourceTree = "<group>"; };
 		FC03A6382BDA7F67005E8FFB /* OnlyofficeUserPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeUserPhoto.swift; sourceTree = "<group>"; };
 		FC03A6392BDA7F67005E8FFB /* OnlyofficeVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeVersion.swift; sourceTree = "<group>"; };
-		FC03A63A2BDA7F67005E8FFB /* RoomLinkResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinkResponceModel.swift; sourceTree = "<group>"; };
 		FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomNotificationsResponceModel.swift; sourceTree = "<group>"; };
-		FC03A63C2BDA7F67005E8FFB /* RoomUsersResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersResponceModel.swift; sourceTree = "<group>"; };
 		FC050F7F1ECB1F6800FD452C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConnectStorage.storyboard; sourceTree = "<group>"; };
 		FC050F821ECB1F6A00FD452C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FC059D971E82584400BC2F5E /* ASCDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDateTransform.swift; sourceTree = "<group>"; };
@@ -2405,6 +2409,8 @@
 		FC03A62F2BDA7F67005E8FFB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				1D581BDD2E5F71BD00F53678 /* FormRolesMappingUsersRequestModel.swift */,
+				1D581BDE2E5F71BD00F53678 /* PeopleRoomRequestModel.swift */,
 				F30716F12DF765F8003CBBD2 /* ASCRoomTemplateInviteRequestModel.swift */,
 				F30716F22DF765F8003CBBD2 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift */,
 				F328A3302DF19C1F00713E31 /* ASCCreateRoomFromTemplateRequestModel.swift */,
@@ -2451,9 +2457,9 @@
 				FC03A6372BDA7F67005E8FFB /* OnlyofficeShare.swift */,
 				FC03A6382BDA7F67005E8FFB /* OnlyofficeUserPhoto.swift */,
 				FC03A6392BDA7F67005E8FFB /* OnlyofficeVersion.swift */,
-				FC03A63A2BDA7F67005E8FFB /* RoomLinkResponceModel.swift */,
+				1D581BD92E5F719300F53678 /* RoomLinkResponseModel.swift */,
+				1D581BDA2E5F719300F53678 /* RoomUsersResponseModel.swift */,
 				FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */,
-				FC03A63C2BDA7F67005E8FFB /* RoomUsersResponceModel.swift */,
 				F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */,
 			);
 			path = Model;
@@ -4557,6 +4563,8 @@
 				FCE886EE2A83B76B0064F79D /* CreateEntityUIType.swift in Sources */,
 				FC83D5722A9742F000C404CB /* ASCAnalytics.swift in Sources */,
 				1D667A3028CDFF39009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */,
+				1D581BDB2E5F719300F53678 /* RoomLinkResponseModel.swift in Sources */,
+				1D581BDC2E5F719300F53678 /* RoomUsersResponseModel.swift in Sources */,
 				FCE993512B7663FF009A0CC8 /* DocumentConverterErrorProtocol.swift in Sources */,
 				FCE886F62A83C6C60064F79D /* ASCCreateEntityUIViewController.swift in Sources */,
 				FCE9F6492B2B4AF20056E420 /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
@@ -4613,6 +4621,8 @@
 				FC7F71FA29940FB30004F274 /* ASCEntitySecurity.swift in Sources */,
 				FC7081A02812E2260057FCD2 /* ASCDebugNavigationController.swift in Sources */,
 				FC7081A12812E2260057FCD2 /* AppDelegate+Notifications.swift in Sources */,
+				1D581BDF2E5F71BD00F53678 /* FormRolesMappingUsersRequestModel.swift in Sources */,
+				1D581BE02E5F71BD00F53678 /* PeopleRoomRequestModel.swift in Sources */,
 				FC7081A22812E2260057FCD2 /* NextcloudDataResult.swift in Sources */,
 				FC7081A32812E2260057FCD2 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FC4042582C2B0602002B6285 /* ASCFolderViewCell.swift in Sources */,
@@ -4757,7 +4767,6 @@
 				E8D437252CFDD95E006FC550 /* WatermarkSection.swift in Sources */,
 				FC7081FA2812E2260057FCD2 /* ASCDropboxProvider.swift in Sources */,
 				FC03A6452BDA7F67005E8FFB /* RoomTagsListRequestModel.swift in Sources */,
-				FC03A6502BDA7F67005E8FFB /* RoomLinkResponceModel.swift in Sources */,
 				FC7081FB2812E2260057FCD2 /* ASCLoadedVCFinderModels.swift in Sources */,
 				FC142A8228981A8500EDE7CE /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FC7081FC2812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */,
@@ -4791,7 +4800,6 @@
 				FC70820D2812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
 				FC142A1E289818B800EDE7CE /* ASCDocumentsFilterModel.swift in Sources */,
 				FC142A8428981A8500EDE7CE /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,
-				FC03A6522BDA7F67005E8FFB /* RoomUsersResponceModel.swift in Sources */,
 				FC70820F2812E2260057FCD2 /* ASCLocalProvider.swift in Sources */,
 				FC1764E32BA332AD00D6B6F0 /* NetworkManagingRoomService.swift in Sources */,
 				FC7082102812E2260057FCD2 /* ASCResponsePassword.swift in Sources */,

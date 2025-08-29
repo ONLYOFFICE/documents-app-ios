@@ -6,54 +6,67 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
+import Kingfisher
 import SwiftUI
 
 // MARK: - Under construction. Docspace 3.2 or later
 
 struct VDRStartFillingView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @ObservedObject var viewModel: VDRStartFillingViewModel
 
     let onDismiss: (Result<Bool, any Error>) -> Void
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Color(UIColor.systemGray6).ignoresSafeArea()
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                Color(UIColor.systemGray6).ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                header
+                VStack(spacing: 0) {
+                    header
 
-                List {
-                    Section {
-                        ForEach(viewModel.state.roles) { role in
-                            RoleRow(role: role) {
-                                viewModel.roleTapped(role)
+                    List {
+                        Section {
+                            ForEach(viewModel.state.roles) { role in
+                                RoleRow(role: role) {
+                                    viewModel.roleTapped(role)
+                                }
                             }
-                            .fullWidthSeparators()
-                        }
-                        .onDelete { indexSet in
-                            indexSet.map { viewModel.state.roles[$0] }
-                                .forEach(viewModel.deleteRole)
-                        }
-                    } header: {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .textCase(nil)
+                            .onDelete { indexSet in
+                                indexSet.map { viewModel.state.roles[$0] }
+                                    .forEach(viewModel.deleteRoleAppliedUser)
+                            }
+                        } header: {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
+                                    .textCase(nil)
 
-                            Text("Roles from the form:")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                                .textCase(nil)
+                                Text("Roles from the form:")
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                    .textCase(nil)
+                            }
+                            .padding(.vertical, 8)
                         }
-                        .padding(.vertical, 8)
                     }
+                    .listStyle(InsetGroupedListStyle())
                 }
-                .listStyle(InsetGroupedListStyle())
-            }
 
-            footer
+                footer
+            }
+            .navigateToChooseMembers(isActive: $viewModel.state.isChooseFromListScreenDisplaying, viewModel: viewModel)
+        }
+        .onChange(of: viewModel.state.finishWithSuccess) {
+            onDismiss(.success($0))
+        }
+        .onChange(of: viewModel.state.finishWithError) {
+            if let error = $0 {
+                onDismiss(.failure(error))
+            }
         }
         .onAppear(perform: {
             viewModel.onAppear()
@@ -68,7 +81,7 @@ struct VDRStartFillingView: View {
     private var header: some View {
         ZStack {
             HStack {
-                Button(NSLocalizedString("Cancel", comment: ""), action: viewModel.closeTapped)
+                Button(NSLocalizedString("Cancel", comment: ""), action: { presentationMode.wrappedValue.dismiss() })
                     .foregroundColor(.blue)
 
                 Spacer()
@@ -93,19 +106,10 @@ struct VDRStartFillingView: View {
             Spacer()
             Button(action: viewModel.startTapped) {
                 Text("Start")
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 4)
-                    .background(
-                        viewModel.state.isStartEnabled
-                            ? Color(Asset.Colors.documentEditor.color)
-                            : Color.secondary.opacity(0.16)
-                    )
-                    .cornerRadius(16)
+                    .brandButton(.filledCapsule, isEnabled: viewModel.state.isStartEnabled)
             }
             .disabled(!viewModel.state.isStartEnabled)
-            .padding(.top, 16)
+            .padding(.vertical, 16)
             .padding(.horizontal)
         }
         .background(Color.white.ignoresSafeArea(edges: .bottom))
@@ -126,19 +130,24 @@ struct RoleRow: View {
                 .font(.body)
                 .frame(width: 20, alignment: .leading)
                 .foregroundColor(.secondary)
-
-            Circle()
-                .fill(role.color)
-                .frame(width: 40, height: 40)
-                .overlay(Image(systemName: "plus").foregroundColor(.secondary))
+            if let user = role.appliedUser {
+                imageView(for: .url(user.avatar ?? ""))
+            } else {
+                Circle()
+                    .fill(role.color)
+                    .frame(width: .imageWidth, height: .imageHeight)
+                    .overlay(Image(systemName: "plus").foregroundColor(.secondary))
+            }
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: role.title)
+                Text(verbatim: role.appliedUser?.displayName ?? role.title)
                     .font(.subheadline)
                     .foregroundColor(.primary)
-                Text("Role description")
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
+                if let accessValue = role.appliedUser?.userType.description {
+                    Text(accessValue)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
             }
 
             Spacer()
@@ -149,16 +158,53 @@ struct RoleRow: View {
         .contentShape(Rectangle())
         .onTapGesture(perform: onTap)
     }
-}
 
-extension View {
-    func fullWidthSeparators() -> some View {
-        if #available(iOS 15, *) {
-            return self
-                .listRowSeparator(.visible, edges: .bottom)
-                .listRowInsets(EdgeInsets())
-        } else {
-            return self
+    @ViewBuilder
+    private func imageView(for imageType: ASCRoomTemplateUserMemberRowModel.ImageSourceType) -> some View {
+        switch imageType {
+        case let .url(string):
+            if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
+               !string.contains(String.defaultUserPhotoSize),
+               let url = URL(string: portal + string)
+            {
+                KFImage(url)
+                    .resizable()
+                    .frame(width: .imageWidth, height: .imageHeight)
+                    .cornerRadius(.imageCornerRadius)
+                    .clipped()
+            } else {
+                Image(asset: Asset.Images.avatarDefault)
+                    .resizable()
+                    .frame(width: .imageWidth, height: .imageHeight)
+            }
+        case let .asset(asset):
+            Image(asset: asset)
+                .resizable()
+                .frame(width: .imageWidth, height: .imageHeight)
         }
     }
+}
+
+// MARK: - Navigation
+
+private extension View {
+    @ViewBuilder
+    func navigateToChooseMembers(isActive: Binding<Bool>, viewModel: VDRStartFillingViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            ASCStartFillingAssignToRoleView(
+                viewModel: ASCStartFillingAssignToRoleViewModel(
+                    room: viewModel.dataModel.room
+                ) { user in
+                    viewModel.addRoleUser(user)
+                    viewModel.state.isChooseFromListScreenDisplaying = false
+                }
+            )
+        })
+    }
+}
+
+private extension CGFloat {
+    static let imageWidth: CGFloat = 40
+    static let imageHeight: CGFloat = 40
+    static let imageCornerRadius: CGFloat = 20
 }

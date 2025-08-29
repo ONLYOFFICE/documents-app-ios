@@ -2310,11 +2310,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         let isShareFile = file.requestToken != nil
-
+        let copyProvider = copy() as! ASCOnlyofficeProvider
+        copyProvider.cancel()
+        copyProvider.reset()
+        copyProvider.folder = folder
         if isShareFile {
             let editorManager = ASCEditorManager(config: ASCEditorManager.Configuration(onlyofficeClient: apiClient))
             editorManager.editCloud(
                 file,
+                provider: copyProvider,
                 openMode: openMode,
                 canEdit: canEdit,
                 openHandler: openHandler,
@@ -2327,6 +2331,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         } else if ASCEditorManager.shared.checkSDKVersion() {
             ASCEditorManager.shared.editCloud(
                 file,
+                provider: copyProvider,
                 openMode: openMode,
                 canEdit: canEdit,
                 openHandler: openHandler,
@@ -2745,6 +2750,8 @@ struct StringError: LocalizedError {
         return message
     }
 }
+
+extension StringError: Equatable {}
 
 enum ASCOnlyofficeProviderError: Error {
     case couldntGetAccess

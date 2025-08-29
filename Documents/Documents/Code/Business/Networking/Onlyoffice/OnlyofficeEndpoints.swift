@@ -15,6 +15,7 @@ enum OnlyofficeAPI {
         private static let version = "2.0"
 
         // Api paths
+        
         static let authentication = "api/\(version)/authentication"
         static let authenticationPhone = "api/\(version)/authentication/setphone"
         static let authenticationCode = "api/\(version)/authentication/sendsms"
@@ -88,6 +89,7 @@ enum OnlyofficeAPI {
         static let disableNotifications = "api/\(version)/settings/notification/rooms"
         static let fillFormDidSend = "api/\(version)/files/file/fillresult"
         static let fillingStatus = "api/\(version)/files/file/%@/formroles"
+        static let formRoleMapping = "api/\(version)/files/file/%@/formrolemapping"
         static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
         static let fileVersionHistory = "api/\(version)/files/file/%@/history"
         static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
@@ -253,8 +255,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .delete)
             }
 
-            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
+            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
             }
 
             static func removeLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
@@ -265,16 +267,16 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
-            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
+            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
-            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
+            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
             }
 
-            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>> {
-                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
+            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
             }
 
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -385,6 +387,10 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>>.make(String(format: Path.fillingStatus, file.id), .get, URLEncoding.default)
             }
 
+            static func mapFormRolesToUsers(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.formRoleMapping, file.id), .post)
+            }
+
             static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
                 Endpoint<OnlyofficeResponseBase>.make(String(format: Path.manageFormFilling, file.id), .put)
             }
@@ -440,6 +446,10 @@ enum OnlyofficeAPI {
 
             static func inviteRequest(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, folder.id), .put)
+            }
+
+            static func inviteRequestBase(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.shareRoom, folder.id), .put)
             }
         }
 

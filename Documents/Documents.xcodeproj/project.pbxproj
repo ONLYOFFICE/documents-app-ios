@@ -31,6 +31,15 @@
 		1D2E3B8F26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */; };
 		1D2E3B9226BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B9126BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift */; };
 		1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B9426BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift */; };
+		1D4731882E5F72D900604A1A /* BrandButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4731872E5F72D900604A1A /* BrandButtonModifier.swift */; };
+		1D47318F2E5F730800604A1A /* AddMembersToRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4731892E5F730800604A1A /* AddMembersToRoomView.swift */; };
+		1D4731902E5F730800604A1A /* ASCStartFillingAssignToRoleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D47318D2E5F730800604A1A /* ASCStartFillingAssignToRoleViewModel.swift */; };
+		1D4731912E5F730800604A1A /* AddMembersToRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D47318A2E5F730800604A1A /* AddMembersToRoomViewModel.swift */; };
+		1D4731922E5F730800604A1A /* ASCStartFillingAssignToRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D47318C2E5F730800604A1A /* ASCStartFillingAssignToRoleView.swift */; };
+		1D4731952E5F734C00604A1A /* PeopleRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4731942E5F734C00604A1A /* PeopleRoomRequestModel.swift */; };
+		1D4731962E5F734C00604A1A /* FormRolesMappingUsersRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4731932E5F734C00604A1A /* FormRolesMappingUsersRequestModel.swift */; };
+		1D4731992E5F736900604A1A /* RoomUsersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4731982E5F736900604A1A /* RoomUsersResponseModel.swift */; };
+		1D47319A2E5F736900604A1A /* RoomLinkResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4731972E5F736900604A1A /* RoomLinkResponseModel.swift */; };
 		1D5DB0352658086C006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */; };
 		1D5DB03A2658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */; };
 		1D5DB04F265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */; };
@@ -561,9 +570,7 @@
 		FC9EEFB02BFB201700A66DE8 /* OnlyofficeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EEF982BFB201700A66DE8 /* OnlyofficeShare.swift */; };
 		FC9EEFB12BFB201700A66DE8 /* OnlyofficeUserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EEF992BFB201700A66DE8 /* OnlyofficeUserPhoto.swift */; };
 		FC9EEFB22BFB201700A66DE8 /* OnlyofficeVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EEF9A2BFB201700A66DE8 /* OnlyofficeVersion.swift */; };
-		FC9EEFB32BFB201700A66DE8 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EEF9B2BFB201700A66DE8 /* RoomLinkResponceModel.swift */; };
 		FC9EEFB42BFB201700A66DE8 /* RoomNotificationsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EEF9C2BFB201700A66DE8 /* RoomNotificationsResponceModel.swift */; };
-		FC9EEFB52BFB201700A66DE8 /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9EEF9D2BFB201700A66DE8 /* RoomUsersResponceModel.swift */; };
 		FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA0AD291EBC90AC00AA53EB /* Login.storyboard */; };
 		FCA0E5342542EF98008DDE78 /* ASCDocumentsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */; };
 		FCA464A229437F5100EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA464A129437F5000EC05C7 /* ASCDocumentOpenMode.swift */; };
@@ -745,6 +752,15 @@
 		1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift; sourceTree = "<group>"; };
 		1D2E3B9126BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessNotesProvidersFactory.swift; sourceTree = "<group>"; };
 		1D2E3B9426BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessViewControllerTests.swift; sourceTree = "<group>"; };
+		1D4731872E5F72D900604A1A /* BrandButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandButtonModifier.swift; sourceTree = "<group>"; };
+		1D4731892E5F730800604A1A /* AddMembersToRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomView.swift; sourceTree = "<group>"; };
+		1D47318A2E5F730800604A1A /* AddMembersToRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomViewModel.swift; sourceTree = "<group>"; };
+		1D47318C2E5F730800604A1A /* ASCStartFillingAssignToRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCStartFillingAssignToRoleView.swift; sourceTree = "<group>"; };
+		1D47318D2E5F730800604A1A /* ASCStartFillingAssignToRoleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCStartFillingAssignToRoleViewModel.swift; sourceTree = "<group>"; };
+		1D4731932E5F734C00604A1A /* FormRolesMappingUsersRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRolesMappingUsersRequestModel.swift; sourceTree = "<group>"; };
+		1D4731942E5F734C00604A1A /* PeopleRoomRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRoomRequestModel.swift; sourceTree = "<group>"; };
+		1D4731972E5F736900604A1A /* RoomLinkResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLinkResponseModel.swift; sourceTree = "<group>"; };
+		1D4731982E5F736900604A1A /* RoomUsersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomUsersResponseModel.swift; sourceTree = "<group>"; };
 		1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift; sourceTree = "<group>"; };
@@ -1349,9 +1365,7 @@
 		FC9EEF982BFB201700A66DE8 /* OnlyofficeShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeShare.swift; sourceTree = "<group>"; };
 		FC9EEF992BFB201700A66DE8 /* OnlyofficeUserPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeUserPhoto.swift; sourceTree = "<group>"; };
 		FC9EEF9A2BFB201700A66DE8 /* OnlyofficeVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeVersion.swift; sourceTree = "<group>"; };
-		FC9EEF9B2BFB201700A66DE8 /* RoomLinkResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinkResponceModel.swift; sourceTree = "<group>"; };
 		FC9EEF9C2BFB201700A66DE8 /* RoomNotificationsResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomNotificationsResponceModel.swift; sourceTree = "<group>"; };
-		FC9EEF9D2BFB201700A66DE8 /* RoomUsersResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersResponceModel.swift; sourceTree = "<group>"; };
 		FCA0AD281EBC90AC00AA53EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		FCA0AD2B1EBC90AD00AA53EB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
 		FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsToolbar.swift; sourceTree = "<group>"; };
@@ -1828,6 +1842,24 @@
 			path = Access;
 			sourceTree = "<group>";
 		};
+		1D47318B2E5F730800604A1A /* AddMembersToRoom */ = {
+			isa = PBXGroup;
+			children = (
+				1D4731892E5F730800604A1A /* AddMembersToRoomView.swift */,
+				1D47318A2E5F730800604A1A /* AddMembersToRoomViewModel.swift */,
+			);
+			path = AddMembersToRoom;
+			sourceTree = "<group>";
+		};
+		1D47318E2E5F730800604A1A /* AssignToRole */ = {
+			isa = PBXGroup;
+			children = (
+				1D47318C2E5F730800604A1A /* ASCStartFillingAssignToRoleView.swift */,
+				1D47318D2E5F730800604A1A /* ASCStartFillingAssignToRoleViewModel.swift */,
+			);
+			path = AssignToRole;
+			sourceTree = "<group>";
+		};
 		1D5DB04526584DBC006B4757 /* Business */ = {
 			isa = PBXGroup;
 			children = (
@@ -2139,6 +2171,8 @@
 		E89D3EF72DDDF21200FF7D8E /* VDRStartFillingStatus */ = {
 			isa = PBXGroup;
 			children = (
+				1D47318B2E5F730800604A1A /* AddMembersToRoom */,
+				1D47318E2E5F730800604A1A /* AssignToRole */,
 				E89D3EF32DDDF21200FF7D8E /* VDRStartFillingRoleItem.swift */,
 				E89D3EF42DDDF21200FF7D8E /* VDRStartFillingUIHostingController.swift */,
 				E89D3EF52DDDF21200FF7D8E /* VDRStartFillingView.swift */,
@@ -2150,6 +2184,7 @@
 		E89D3F0B2DDDF26200FF7D8E /* SwiftUIViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				1D4731872E5F72D900604A1A /* BrandButtonModifier.swift */,
 				E89D3F0A2DDDF26200FF7D8E /* CardStyle.swift */,
 			);
 			path = SwiftUIViewModifiers;
@@ -3477,6 +3512,8 @@
 		FC9EEF902BFB201700A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				1D4731932E5F734C00604A1A /* FormRolesMappingUsersRequestModel.swift */,
+				1D4731942E5F734C00604A1A /* PeopleRoomRequestModel.swift */,
 				F3B6B7342DF5ADE60096A7E5 /* ASCSetRoomTemplateAvailableForEveryoneRequestModel.swift */,
 				F3B6B7322DF45F0E0096A7E5 /* ASCRoomTemplateInviteRequestModel.swift */,
 				F30DD7D92DEF87A600E82CA9 /* ASCCreateRoomFromTemplateRequestModel.swift */,
@@ -3509,6 +3546,8 @@
 		FC9EEF9E2BFB201700A66DE8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D4731972E5F736900604A1A /* RoomLinkResponseModel.swift */,
+				1D4731982E5F736900604A1A /* RoomUsersResponseModel.swift */,
 				FC9EEF902BFB201700A66DE8 /* Request */,
 				F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */,
 				FC9EEF912BFB201700A66DE8 /* LogoUploadResult.swift */,
@@ -3521,9 +3560,7 @@
 				FC9EEF982BFB201700A66DE8 /* OnlyofficeShare.swift */,
 				FC9EEF992BFB201700A66DE8 /* OnlyofficeUserPhoto.swift */,
 				FC9EEF9A2BFB201700A66DE8 /* OnlyofficeVersion.swift */,
-				FC9EEF9B2BFB201700A66DE8 /* RoomLinkResponceModel.swift */,
 				FC9EEF9C2BFB201700A66DE8 /* RoomNotificationsResponceModel.swift */,
-				FC9EEF9D2BFB201700A66DE8 /* RoomUsersResponceModel.swift */,
 				E87F75FC2D445B1A0062A21C /* OnlyofficeOperation.swift */,
 				E87F75FD2D445B1A0062A21C /* OnlyofficeRoomIndexExportOperation.swift */,
 				E87F75FE2D445B1A0062A21C /* SharePasswordResponseModel.swift */,
@@ -4697,6 +4734,10 @@
 				E80387092D6D27D400D162E3 /* ASCDocSpaceAccessTableProvider.swift in Sources */,
 				E803870A2D6D27D400D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift in Sources */,
 				E803870B2D6D27D400D162E3 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
+				1D47318F2E5F730800604A1A /* AddMembersToRoomView.swift in Sources */,
+				1D4731902E5F730800604A1A /* ASCStartFillingAssignToRoleViewModel.swift in Sources */,
+				1D4731912E5F730800604A1A /* AddMembersToRoomViewModel.swift in Sources */,
+				1D4731922E5F730800604A1A /* ASCStartFillingAssignToRoleView.swift in Sources */,
 				E803870C2D6D27D400D162E3 /* ASCDocSpaceAccessPresentationProvider.swift.swift in Sources */,
 				E803870D2D6D27D400D162E3 /* ASCDocSpaceAccessDocumentProvider.swift in Sources */,
 				E803870E2D6D27D400D162E3 /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
@@ -4877,6 +4918,8 @@
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FC5E0B6B2D5119F2000CBBEE /* ASCDocumentsCollectionView.swift in Sources */,
 				FCA464A229437F5100EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
+				1D4731992E5F736900604A1A /* RoomUsersResponseModel.swift in Sources */,
+				1D47319A2E5F736900604A1A /* RoomLinkResponseModel.swift in Sources */,
 				FCCE50A62C1AF79000102056 /* EditSharedLinkRequestModel.swift in Sources */,
 				FC759CCC2C00615E00510096 /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
 				FC759CAA2C00615E00510096 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
@@ -5138,7 +5181,6 @@
 				1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				FC1828FA2A24E65B005D9220 /* ASCDetailCell.swift in Sources */,
 				FC759CAB2C00615E00510096 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */,
-				FC9EEFB32BFB201700A66DE8 /* RoomLinkResponceModel.swift in Sources */,
 				FC19849C2805559D002057B2 /* ASCFiltersCollectionViewHeader.swift in Sources */,
 				FCCE50AB2C1AF79000102056 /* SharedSettingsView.swift in Sources */,
 				F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
@@ -5217,6 +5259,7 @@
 				F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */,
 				1D667A5528D3AEA0009BD85D /* ASCDocumentsFolderCellContextMenu.swift in Sources */,
 				FC9EEFAD2BFB201700A66DE8 /* OnlyofficeFileOperation.swift in Sources */,
+				1D4731882E5F72D900604A1A /* BrandButtonModifier.swift in Sources */,
 				FC35D45B2A987DFC00C6383F /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */,
 				FCECDDE126430BD3006CD7B9 /* ASCResponsePassword.swift in Sources */,
@@ -5233,6 +5276,8 @@
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
 				F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */,
 				FCF695872632E3A300808644 /* UILabel+Style.swift in Sources */,
+				1D4731952E5F734C00604A1A /* PeopleRoomRequestModel.swift in Sources */,
+				1D4731962E5F734C00604A1A /* FormRolesMappingUsersRequestModel.swift in Sources */,
 				FC9EEFA02BFB201700A66DE8 /* AttachTagsRequestModel.swift in Sources */,
 				E87CCAE82C9DCC2500C43968 /* FillFormMenuScreen.swift in Sources */,
 				FC759C3D2C00614D00510096 /* RoomSharingView.swift in Sources */,
@@ -5245,7 +5290,6 @@
 				1D667A5328D3AB50009BD85D /* ASCDocumentsCellContextMenu.swift in Sources */,
 				FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */,
 				FC1828F52A24E622005D9220 /* AppTheme.swift in Sources */,
-				FC9EEFB52BFB201700A66DE8 /* RoomUsersResponceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

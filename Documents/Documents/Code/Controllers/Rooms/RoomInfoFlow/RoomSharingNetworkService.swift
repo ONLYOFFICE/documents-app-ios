@@ -9,18 +9,28 @@
 import Foundation
 
 protocol RoomSharingNetworkServiceProtocol {
-    func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponceModel], [RoomUsersResponceModel]) -> Void)
-    func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponceModel], Error>) -> Void)
-    func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void)
+    func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponseModel], [RoomUsersResponseModel]) -> Void)
+    func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponseModel], Error>) -> Void)
+    func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponseModel], Error>) -> Void)
+}
+
+extension RoomSharingNetworkServiceProtocol {
+    func fetchRoomUsers(room: ASCFolder) async throws -> [RoomUsersResponseModel] {
+        try await withCheckedThrowingContinuation { continuation in
+            fetchRoomUsers(room: room) { result in
+                continuation.resume(with: result)
+            }
+        }
+    }
 }
 
 final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
 
-    func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponceModel], [RoomUsersResponceModel]) -> Void) {
+    func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponseModel], [RoomUsersResponseModel]) -> Void) {
         let group = DispatchGroup()
-        var links = [RoomLinkResponceModel]()
-        var users = [RoomUsersResponceModel]()
+        var links = [RoomLinkResponseModel]()
+        var users = [RoomUsersResponseModel]()
 
         group.enter()
         fetchRoomLinks(room: room) { result in
@@ -43,7 +53,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
         }
     }
 
-    func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponceModel], Error>) -> Void) {
+    func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponseModel], Error>) -> Void) {
         // TODO: - room type
 
         let requestModel = RoomLinksRequestModel(type: 1)
@@ -61,7 +71,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
         }
     }
 
-    func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void) {
+    func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponseModel], Error>) -> Void) {
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.users(room: room)) { responce, error in
             guard let users = responce?.result else {
                 if let error {

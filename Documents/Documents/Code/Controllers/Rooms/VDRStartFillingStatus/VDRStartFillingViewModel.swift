@@ -13,36 +13,77 @@ import SwiftUI
 @MainActor
 final class VDRStartFillingViewModel: ObservableObject {
     typealias RoleItem = VDRStartFillingRoleItem
-    let roles: [[String: Any]]
 
-    init(roles: [[String: Any]]) {
-        self.roles = roles
+    // MARK: Published
+
+    @Published var state: ScreenState = .initial
+
+    // MARK: Props
+
+    private(set) var dataModel: DataModel
+
+    // MARK: Dependencies
+
+    private var networkService = OnlyofficeApiClient.shared
+
+    init(
+        form: ASCFile,
+        room: ASCRoom,
+        roles: [[String: Any]]
+    ) {
+        dataModel = DataModel(
+            form: form,
+            room: room,
+            rawRoles: roles
+        )
     }
-
-    @Published private(set) var state: ScreenState = .initial
 
     func onAppear() {
         setupRolesToState()
     }
 
-    func closeTapped() {
-        print("Close tapped")
-    }
-
     func startTapped() {
-        print("Start tapped, roles:", state.roles)
+        Task {
+            guard let requestModel = makeFormRolesMappingRequestModel() else { return }
+            state.isLoading = true
+            do {
+                let result = try await OnlyofficeApiClient.request(
+                    OnlyofficeAPI.Endpoints.Files.mapFormRolesToUsers(file: dataModel.form),
+                    requestModel.dictionary
+                )
+                if (200 ..< 300).contains(result?.statusCode ?? 0) {
+                    state.finishWithSuccess = true
+                }
+            } catch {
+                state.finishWithError = StringError(error.localizedDescription)
+                log.error(error)
+            }
+            state.isLoading = false
+        }
     }
 
     func roleTapped(_ role: RoleItem) {
-        print("Role tapped (add user?) for role:", role.title)
+        guard let index = state.roles.firstIndex(where: { $0.id == role.id }) else {
+            return
+        }
+        dataModel.lastTappedRoleIndex = index
+        state.isChooseFromListScreenDisplaying = true
     }
 
-    func deleteRole(_ role: RoleItem) {
-        state.roles.removeAll { $0 == role }
+    func deleteRoleAppliedUser(_ role: RoleItem) {
+        guard let index = state.roles.firstIndex(where: { $0.id == role.id }),
+              state.roles[safe: index] != nil
+        else {
+            return
+        }
+        state.roles[index].appliedUser = nil
     }
 
-    func addRole() {
-        // state.roles.append(new)
+    func addRoleUser(_ user: ASCUser) {
+        guard state.roles[safe: dataModel.lastTappedRoleIndex] != nil else {
+            return
+        }
+        state.roles[dataModel.lastTappedRoleIndex].appliedUser = user
     }
 }
 
@@ -51,30 +92,67 @@ final class VDRStartFillingViewModel: ObservableObject {
 extension VDRStartFillingViewModel {
     func setupRolesToState() {
         guard state.roles.isEmpty else { return }
-        state.roles = roles.enumerated().compactMap { index, roleDict in
+        state.roles = dataModel.rawRoles.enumerated().compactMap { index, roleDict in
             guard let name = roleDict["name"] as? String,
                   let colorHex = roleDict["color"] as? String
             else { return nil }
             return RoleItem(
                 number: index + 1,
                 title: name,
-                color: Color(UIColor(hex: colorHex)).opacity(0.3)
+                color: Color(UIColor(hex: colorHex)).opacity(0.3),
+                rawColor: String(colorHex
+                    .replacingOccurrences(of: "#", with: "")
+                    .prefix(6))
             )
         }
     }
+
+    func makeFormRolesMappingRequestModel() -> FormRolesMappingUsersRequestModel? {
+        guard let formId = Int(dataModel.form.id),
+              let roomId = Int(dataModel.room.id)
+        else {
+            return nil
+        }
+        return FormRolesMappingUsersRequestModel(
+            formId: formId,
+            roles: state.roles.compactMap {
+                guard let user = $0.appliedUser else { return nil }
+                return FormRolesMappingUsersRequestModel.Role(
+                    userId: user.userId ?? "",
+                    roleName: $0.title,
+                    roleColor: $0.rawColor,
+                    roomId: roomId
+                )
+            }
+        )
+    }
 }
 
-// MARK: - ScreeenState
+// MARK: - ScreenState
 
 extension VDRStartFillingViewModel {
+    struct DataModel {
+        let form: ASCFile
+        let room: ASCRoom
+        var rawRoles: [[String: Any]] = []
+        var lastTappedRoleIndex = 0
+    }
+
     struct ScreenState {
-        var roles: [RoleItem] = []
-        var areRolesFilled: Bool = false
+        fileprivate(set) var roles: [RoleItem] = []
+
+        var areRolesFilled: Bool {
+            roles.allSatisfy { $0.appliedUser != nil && !isLoading }
+        }
+
+        var isStartEnabled: Bool { areRolesFilled }
+
+        var isChooseFromListScreenDisplaying = false
+        var isLoading = false
+
+        var finishWithError: StringError?
+        var finishWithSuccess = false
 
         static let initial: ScreenState = ScreenState()
-
-        var isStartEnabled: Bool {
-            areRolesFilled
-        }
     }
 }

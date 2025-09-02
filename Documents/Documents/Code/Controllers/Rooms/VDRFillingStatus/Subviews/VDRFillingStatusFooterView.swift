@@ -17,30 +17,17 @@ struct VDRFillingStatusFooterView: View {
 
     var body: some View {
         HStack {
-            Button(NSLocalizedString("Stop filling", comment: ""), action: onStop)
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                .buttonStyle(.borderless)
-                .disabled(!stopEnabled)
+            Button(action: onStop) {
+                Text("Stop filling")
+                    .brandButton(.inline, isEnabled: stopEnabled)
+            }
             Spacer()
-            Button(NSLocalizedString("Fill", comment: ""), action: onFill)
-                .buttonStyle(FooterButtonStyle(color: fillEnabled ? .blue : .secondary))
-                .disabled(!fillEnabled)
+            Button(action: onFill) {
+                Text("Fill")
+                    .brandButton(.filledCapsule, isEnabled: fillEnabled)
+            }
         }
         .padding()
         .background(Color(.systemBackground).ignoresSafeArea(edges: .bottom))
-    }
-}
-
-struct FooterButtonStyle: ButtonStyle {
-    let color: Color
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.body)
-            .foregroundColor(.white)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 4)
-            .background(color)
-            .cornerRadius(16)
-            .opacity(configuration.isPressed ? 0.7 : 1)
     }
 }

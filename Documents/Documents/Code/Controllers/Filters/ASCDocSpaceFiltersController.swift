@@ -257,7 +257,7 @@ private extension ASCDocSpaceFiltersController {
                         case .user:
                             self.selectUserViewController.markAsSelected(id: selectedIdClosure(.user))
                             let navigationVC = UINavigationController(rootASCViewController: self.selectUserViewController)
-                            ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
+                            UIApplication.shared.topControllerFromScene?.navigationController?.present(navigationVC, animated: true)
                             self.currentSelectedAuthorFilterType = .user
                         default: continue
                         }

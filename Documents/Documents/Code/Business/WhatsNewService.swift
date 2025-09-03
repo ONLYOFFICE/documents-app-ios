@@ -105,7 +105,7 @@ final class WhatsNewService {
             )
 
             delay(seconds: 0.2) {
-                if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+                if let topVC = UIApplication.shared.topControllerFromScene {
                     if UIDevice.pad {
                         whatsNewViewController?.modalPresentationStyle = .formSheet
                         whatsNewViewController?.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize

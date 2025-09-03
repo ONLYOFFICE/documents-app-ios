@@ -16,10 +16,8 @@ extension MBProgressHUD {
     }
 
     static func showTopMost() -> MBProgressHUD? {
-        if let topView = UIWindow.keyWindow?.rootViewController?.view {
+        if let topView = UIApplication.shared.topControllerFromScene?.view {
             let hud = MBProgressHUD.showAdded(to: topView, animated: true)
-            hud.minSize = CGSize(width: 100, height: 100)
-            UIWindow.keyWindow?.addSubview(hud)
             MBProgressHUD.currentHUD = hud
             return hud
         }

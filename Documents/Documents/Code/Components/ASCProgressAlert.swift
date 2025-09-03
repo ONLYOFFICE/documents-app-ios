@@ -67,7 +67,7 @@ class ASCProgressAlert {
         if let controller = viewController {
             controller.present(actionController!, animated: true, completion: nil)
         } else {
-            guard let windowScene = UIApplication.shared.firstForegroundScene else {
+            guard let windowScene = ASCTrackingWindow.lastActiveScene else {
                 return
             }
             alertWindow = UIWindow(windowScene: windowScene)

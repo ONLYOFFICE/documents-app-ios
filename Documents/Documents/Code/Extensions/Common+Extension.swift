@@ -119,6 +119,12 @@ extension UIApplication {
             return nil
         }
     }
+
+    var topControllerFromScene: UIViewController? {
+        let scene = ASCTrackingWindow.lastActiveScene
+        let controller = scene?.windows.first(where: { $0.rootViewController != nil })
+        return controller?.rootViewController?.topMostViewController()
+    }
 }
 
 extension LocalizedError where Self: CustomStringConvertible {

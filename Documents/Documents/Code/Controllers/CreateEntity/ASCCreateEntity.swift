@@ -66,13 +66,15 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         var createEntityVC: ASCCreateEntityUIViewController!
 
         if ASCViewControllerManager.shared.phoneLayout {
-            guard let windowScene = UIApplication.shared.keyWindowScene else { return }
+            guard let windowScene = viewController.view.window?.windowScene else { return }
+            let swiftMessages = SwiftMessages() // Change to global vars scene manager
+
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
                 allowForms: allowForms,
                 allowScanDocument: allowScanDocument,
                 onAction: { type in
-                    SwiftMessages.hide()
+                    swiftMessages.hide()
                     self.createEntity(type, in: viewController)
                 }
             )
@@ -96,7 +98,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
             createEntityView.layerCornerRadius = 10
 
-            SwiftMessages.show(config: config, view: createEntityView)
+            swiftMessages.show(config: config, view: createEntityView)
         } else {
             var senderView = sender as? UIView
 

@@ -81,7 +81,7 @@ class ASCEditorManager: NSObject {
     private var documentToken: String?
     private var documentCommonConfig: String?
     private var documentFillingSessionId: String?
-    private var editorWindow: UIWindow?
+    private var editorWindows: [ObjectIdentifier: UIWindow] = [:]
     private let trackingReadyForLocking = 10000
     private var timer: Timer?
     private var trackingFileStatus: Int = 0
@@ -159,36 +159,35 @@ class ASCEditorManager: NSObject {
         configuration = config
     }
 
-    private func createEditorWindow() -> UIWindow? {
-        cleanupEditorWindow()
+    private func createEditorWindow(for scene: UIWindowScene) -> UIWindow? {
+        let key = ObjectIdentifier(scene)
+        if let editorWindow = editorWindows[key] { return editorWindow }
 
-        guard let windowScene = UIApplication.shared.firstForegroundScene else {
-            return nil
+        let editorWindow = ASCTrackingWindow(windowScene: scene)
+        editorWindow.rootViewController = UIViewController()
+
+        if let tint = scene.windows.first?.tintColor {
+            editorWindow.tintColor = tint
         }
 
-        editorWindow = UIWindow(windowScene: windowScene)
-        editorWindow?.rootViewController = UIViewController()
+        editorWindow.windowLevel = UIWindow.Level.statusBar - 10
 
-        if let keyWindow = UIApplication.shared.keyWindow {
-            editorWindow?.tintColor = keyWindow.tintColor
-        }
+        editorWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
+        editorWindow.makeKeyAndVisible()
 
-        editorWindow?.windowLevel = UIWindow.Level.statusBar - 10
-
-        if let topWindow = UIApplication.shared.keyWindow {
-            editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
-        }
-
-        editorWindow?.makeKeyAndVisible()
-
+        editorWindows[key] = editorWindow
         return editorWindow
     }
 
     private func cleanupEditorWindow() {
-        editorWindow?.isHidden = true
-        editorWindow?.rootViewController = nil
-        editorWindow?.removeFromSuperview()
-        editorWindow = nil
+        if let scene = ASCTrackingWindow.lastActiveScene {
+            let key = ObjectIdentifier(scene)
+            if let win = editorWindows.removeValue(forKey: key) {
+                win.isHidden = true
+                win.rootViewController = nil
+                win.removeFromSuperview()
+            }
+        }
     }
 
     private func clientRequest<Response>(
@@ -834,8 +833,13 @@ class ASCEditorManager: NSObject {
                 medias.append(browseMedia)
             }
         }
+        let targetScene: UIWindowScene? = ASCTrackingWindow.lastActiveScene ?? UIApplication.shared.firstForegroundScene
+        guard let scene = targetScene else {
+            assertionFailure("No active UIWindowScene to present media.")
+            return
+        }
 
-        if let windowRootViewController = createEditorWindow()?.rootViewController {
+        if let windowRootViewController = createEditorWindow(for: scene)?.rootViewController {
             let imageBrowserController = ASCImageViewController(with: fileProvider)
             imageBrowserController.displayMediaNavigationArrows = true
             imageBrowserController.enableGrid = true
@@ -970,7 +974,17 @@ class ASCEditorManager: NSObject {
 
 extension ASCEditorManager: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return (createEditorWindow()?.rootViewController)!
+        let targetScene: UIWindowScene? = ASCTrackingWindow.lastActiveScene ?? UIApplication.shared.firstForegroundScene
+
+        if let targetScene,
+           let editorWindow = createEditorWindow(for: targetScene),
+           let rootViewController = editorWindow.rootViewController
+        {
+            return rootViewController
+        }
+
+        assertionFailure("No available presenter to show UIDocumentInteractionController preview.")
+        return UIViewController()
     }
 
     func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
@@ -1040,7 +1054,13 @@ extension ASCEditorManager {
             editorViewController = createPresentationEditorViewController(for: file, config: config, openMode: openMode)
         }
 
-        guard let editorViewController, let editorWindow = createEditorWindow() else {
+        let targetScene: UIWindowScene? = ASCTrackingWindow.lastActiveScene ?? UIApplication.shared.firstForegroundScene
+        guard let scene = targetScene else {
+            assertionFailure("No active UIWindowScene to present local editor.")
+            return
+        }
+
+        guard let editorViewController, let editorWindow = createEditorWindow(for: scene) else {
             throw ASCEditorManagerError(msg: NSLocalizedString("Failure to open editor", comment: ""))
         }
 
@@ -1120,7 +1140,13 @@ extension ASCEditorManager {
             )
         }
 
-        guard let editorViewController, let editorWindow = createEditorWindow() else {
+        let targetScene: UIWindowScene? = ASCTrackingWindow.lastActiveScene ?? UIApplication.shared.firstForegroundScene
+        guard let scene = targetScene else {
+            assertionFailure("No active UIWindowScene to present collaboration editor")
+            return
+        }
+
+        guard let editorViewController, let editorWindow = createEditorWindow(for: scene) else {
             throw ASCEditorManagerError(msg: NSLocalizedString("Failure to open editor", comment: ""))
         }
 

@@ -11,6 +11,7 @@
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
 		77586F622DD3749300861561 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */; };
 		77A2D66A2DED95850093549D /* CreateAndCopyLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */; };
+		77BE24E62E685B1B00AD0768 /* ASCTrackingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BE24E52E685B1B00AD0768 /* ASCTrackingWindow.swift */; };
 		8A01844923A261540025BE85 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */; };
 		8A01844A23A261540025BE85 /* ASCConnectPortalThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */; };
 		8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */; };
@@ -832,6 +833,7 @@
 		0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderLogo.swift; sourceTree = "<group>"; };
 		77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
 		77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndCopyLinkRequestModel.swift; sourceTree = "<group>"; };
+		77BE24E52E685B1B00AD0768 /* ASCTrackingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTrackingWindow.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalThirdPartyViewController.swift; sourceTree = "<group>"; };
 		8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewController.swift; sourceTree = "<group>"; };
@@ -3287,6 +3289,7 @@
 				8AFBA30C23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift */,
 				FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */,
 				FC4160FC29090F42006B5E4A /* ASCLinkTableViewHeaderFooterView.swift */,
+				77BE24E52E685B1B00AD0768 /* ASCTrackingWindow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -4517,6 +4520,7 @@
 				FC9F496B27F5CFE100D88936 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				FC379D2E2C37ED7000B120D9 /* ASCDetailedChevronUpDownCellView.swift in Sources */,
 				FC379D1E2C37ED7000B120D9 /* ASCDocSpaceLinkViewController.swift in Sources */,
+				77BE24E62E685B1B00AD0768 /* ASCTrackingWindow.swift in Sources */,
 				FC9EF02B2BFB208800A66DE8 /* OnlyofficeDocumentConfig.swift in Sources */,
 				E8ECAF5F2C9DCD0B004F7C52 /* ASCTransferViewModel.swift in Sources */,
 				FC83D52B2A973E2100C404CB /* UIAlertController+Extension.swift in Sources */,

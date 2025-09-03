@@ -89,7 +89,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
 
-        if let topVC = ASCViewControllerManager.shared.topViewController {
+        if let topVC = UIApplication.shared.topControllerFromScene {
             alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }

@@ -28,10 +28,11 @@ struct ASCStartFillingAssignToRoleView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
-            trailing: Button(action: {
+            leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }) {
-                Text("Cancel")
+                Text("Back")
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         )
     }

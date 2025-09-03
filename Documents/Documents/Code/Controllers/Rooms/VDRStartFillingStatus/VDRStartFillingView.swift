@@ -32,6 +32,7 @@ struct VDRStartFillingView: View {
                                 RoleRow(role: role) {
                                     viewModel.roleTapped(role)
                                 }
+                                .deleteDisabled(role.appliedUser == nil)
                             }
                             .onDelete { indexSet in
                                 indexSet.map { viewModel.state.roles[$0] }
@@ -54,6 +55,7 @@ struct VDRStartFillingView: View {
                         }
                     }
                     .listStyle(InsetGroupedListStyle())
+                    .listRowSeparatorAvailable()
                 }
 
                 footer
@@ -81,8 +83,8 @@ struct VDRStartFillingView: View {
     private var header: some View {
         ZStack {
             HStack {
-                Button(NSLocalizedString("Cancel", comment: ""), action: { presentationMode.wrappedValue.dismiss() })
-                    .foregroundColor(.blue)
+                Button(NSLocalizedString("Close", comment: ""), action: { presentationMode.wrappedValue.dismiss() })
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
 
                 Spacer()
             }
@@ -152,7 +154,6 @@ struct RoleRow: View {
 
             Spacer()
         }
-        .padding(.vertical, 12)
         .padding(.horizontal)
         .background(Color.white)
         .contentShape(Rectangle())
@@ -207,4 +208,15 @@ private extension CGFloat {
     static let imageWidth: CGFloat = 40
     static let imageHeight: CGFloat = 40
     static let imageCornerRadius: CGFloat = 20
+}
+
+private extension View {
+    @ViewBuilder
+    func listRowSeparatorAvailable() -> some View {
+        if #available(iOS 15.0, *) {
+            self.listRowSeparator(.automatic, edges: .bottom)
+        } else {
+            self
+        }
+    }
 }

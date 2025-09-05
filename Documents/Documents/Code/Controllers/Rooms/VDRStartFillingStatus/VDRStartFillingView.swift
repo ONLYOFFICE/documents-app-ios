@@ -98,7 +98,6 @@ struct VDRStartFillingView: View {
             }
         }
         .padding()
-        .background(Color.white)
     }
 
     // MARK: — Footer
@@ -114,7 +113,7 @@ struct VDRStartFillingView: View {
             .padding(.vertical, 16)
             .padding(.horizontal)
         }
-        .background(Color.white.ignoresSafeArea(edges: .bottom))
+        .background(Color.secondarySystemGroupedBackground.ignoresSafeArea(edges: .bottom))
     }
 }
 
@@ -155,7 +154,7 @@ struct RoleRow: View {
             Spacer()
         }
         .padding(.horizontal)
-        .background(Color.white)
+        .background(Color.secondarySystemGroupedBackground)
         .contentShape(Rectangle())
         .onTapGesture(perform: onTap)
     }

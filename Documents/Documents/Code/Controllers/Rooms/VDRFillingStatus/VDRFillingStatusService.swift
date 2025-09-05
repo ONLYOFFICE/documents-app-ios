@@ -6,6 +6,8 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
+
 actor VDRFillingStatusService {
     private let networkService = OnlyofficeApiClient.shared
 
@@ -34,6 +36,20 @@ actor VDRFillingStatusService {
     }
 
     func startFilling() async throws {}
+
+    @MainActor
+    func copyLink(file: ASCFile) {
+        let hud = MBProgressHUD.showTopMost()
+        if let urlString = file.viewUrl,
+           let link = URL(string: urlString)
+        {
+            UIPasteboard.general.string = link.absoluteString
+            hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")))
+        } else {
+            hud?.setState(result: .failure(nil))
+        }
+        hud?.hide(animated: true, afterDelay: .standardDelay)
+    }
 }
 
 extension VDRFillingStatusService {

@@ -55,7 +55,7 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             self,
             selector: #selector(ASCPasscodeLockPresenter.applicationDidLaunched),
             name: UIScene.willConnectNotification,
-            object: nil
+            object: window?.windowScene
         )
 
         notificationCenter.addObserver(

@@ -380,4 +380,28 @@ extension UIView {
             )
         )
     }
+
+    static func spacer(height: CGFloat) -> UIView {
+        UIView(
+            frame: CGRect(
+                origin: .zero,
+                size: CGSize(
+                    width: .zero,
+                    height: height
+                )
+            )
+        )
+    }
+
+    static func spacer(width: CGFloat) -> UIView {
+        UIView(
+            frame: CGRect(
+                origin: .zero,
+                size: CGSize(
+                    width: width,
+                    height: .zero
+                )
+            )
+        )
+    }
 }

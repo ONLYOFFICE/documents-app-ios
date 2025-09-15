@@ -447,15 +447,9 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             $0.spacing = 2
             return $0
         }(UIStackView(arrangedSubviews: [
-            {
-                $0.anchor(heightConstant: 10)
-                return $0
-            }(UIView()),
+            .spacer(height: 10),
             iconView,
-            {
-                $0.anchor(heightConstant: 10)
-                return $0
-            }(UIView()),
+            .spacer(height: 10),
             titleLabel,
             dateLabel,
             sizeLabel,
@@ -558,7 +552,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         imageView.removeConstraints(imageView.constraints)
 
         imageView.anchor(
-            widthConstant: (allowThumbnailPreview && layoutType == .grid) ? frame.width - 10 : preferredSize.width,
+            widthConstant: preferredSize.width,
             heightConstant: preferredSize.height
         )
 
@@ -685,7 +679,7 @@ private enum Constants {
     static let listCornerRadius: CGFloat = 0
     static let overlayBagesFontSize: CGFloat = 13
     static let listIconSize = CGSize(width: 45, height: 50)
-    static let gridIconSize = CGSize(width: 80, height: 80)
+    static let gridIconSize = CGSize(width: 80, height: 104)
 }
 
 // @available(iOS 17, *)

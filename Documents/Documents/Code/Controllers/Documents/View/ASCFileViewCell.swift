@@ -398,17 +398,6 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             return $0
         }(UILabel())
 
-        // Overlay markers
-        let topLeftOverlays = buildGridTopLeftOverlays(file: file)
-
-        let topLeftOverlayView = {
-            $0.axis = .vertical
-            $0.alignment = .leading
-            $0.distribution = .fill
-            $0.spacing = 5
-            return $0
-        }(UIStackView(arrangedSubviews: topLeftOverlays))
-
         let contentView = {
             $0.axis = .vertical
             $0.alignment = .center
@@ -433,11 +422,22 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             padding: UIEdgeInsets(top: 16, left: 0, bottom: 2, right: 0)
         )
 
+        // Top left overlay markers
+        let topLeftOverlayView = buildGridBadgesOverlayView(file: file)
         containerView.addSubview(topLeftOverlayView)
         topLeftOverlayView.anchor(
             top: containerView.topAnchor,
             leading: containerView.leadingAnchor,
             padding: UIEdgeInsets(top: 4, left: 6, bottom: 0, right: 0)
+        )
+
+        // Bottom right overlay markers
+        let bottomRightOverlayView = buildGridFileTypeOverlay(file: file)
+        containerView.addSubview(bottomRightOverlayView)
+        bottomRightOverlayView.anchor(
+            bottom: iconView.bottomAnchor,
+            trailing: containerView.trailingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 6)
         )
 
         checkmarkView.removeConstraints(checkmarkView.constraints)
@@ -453,7 +453,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         return containerView
     }
 
-    private func buildGridTopLeftOverlays(file: ASCFile) -> [UIView] {
+    private func buildGridBadgesOverlayView(file: ASCFile) -> UIView {
         var overlays = [UIView]()
         if file.isNew, let badgeNewImage = newBadge.screenshot {
             overlays.append(UIImageView(image: badgeNewImage))
@@ -478,7 +478,45 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         if file.isFavorite {
             overlays.append(buildSymbolBadge("star.fill"))
         }
-        return overlays
+
+        let overlayView = {
+            $0.axis = .vertical
+            $0.alignment = .leading
+            $0.distribution = .fill
+            $0.spacing = 5
+            return $0
+        }(UIStackView(arrangedSubviews: overlays))
+
+        return overlayView
+    }
+
+    private func buildGridFileTypeOverlay(file: ASCFile) -> UIView {
+        let allowThumbnailPreview = file.allowThumbnailPreview(layoutType: layoutType)
+
+        guard allowThumbnailPreview else { return UIView() }
+
+        var overlays = [UIView]()
+
+        let fileExt = file.title.fileExtension().lowercased()
+        if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.listXIcon.image))
+        } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.listWIcon.image))
+        } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.listPIcon.image))
+        } else if ASCConstants.FileExtensions.pdfs.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.listPdfIcon.image))
+        }
+
+        let overlayView = {
+            $0.axis = .vertical
+            $0.alignment = .leading
+            $0.distribution = .fill
+            $0.spacing = 5
+            return $0
+        }(UIStackView(arrangedSubviews: overlays))
+
+        return overlayView
     }
 
     // MARK: - Common Layout
@@ -490,8 +528,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         else { return UIView() }
 
         let fileExt = file.title.fileExtension().lowercased()
-        let allowThumbnailPreview = ASCConstants.FileExtensions.images.contains(fileExt) ||
-            (layoutType == .grid && file.thumbnailStatus == .created && file.thumbnailUrl?.isEmpty == false)
+        let allowThumbnailPreview = file.allowThumbnailPreview(layoutType: layoutType)
         let defaultIconFormatImage = UIImage.getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
 
         imageView.contentMode = .center
@@ -748,3 +785,11 @@ private enum Constants {
 //
 //    return cell
 // }
+
+private extension ASCFile {
+    func allowThumbnailPreview(layoutType: ASCEntityViewLayoutType) -> Bool {
+        let fileExt = title.fileExtension().lowercased()
+        return ASCConstants.FileExtensions.images.contains(fileExt) ||
+            (layoutType == .grid && thumbnailStatus == .created && thumbnailUrl?.isEmpty == false)
+    }
+}

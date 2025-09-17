@@ -15,7 +15,7 @@ enum OnlyofficeAPI {
         private static let version = "2.0"
 
         // Api paths
-        
+
         static let authentication = "api/\(version)/authentication"
         static let authenticationPhone = "api/\(version)/authentication/setphone"
         static let authenticationCode = "api/\(version)/authentication/sendsms"

@@ -130,7 +130,6 @@ extension ASCEditorManager {
 }
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
-
     func documentDidOpen(_ controller: DocumentEditor.DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         switch result {
         case let .success(document):

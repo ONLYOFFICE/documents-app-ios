@@ -499,13 +499,13 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
         let fileExt = file.title.fileExtension().lowercased()
         if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
-            overlays.append(UIImageView(image: Asset.Images.listXIcon.image))
+            overlays.append(UIImageView(image: Asset.Images.formatsSpreadsheet.image))
         } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
-            overlays.append(UIImageView(image: Asset.Images.listWIcon.image))
+            overlays.append(UIImageView(image: Asset.Images.formatsDocument.image))
         } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
-            overlays.append(UIImageView(image: Asset.Images.listPIcon.image))
+            overlays.append(UIImageView(image: Asset.Images.formatsPresentation.image))
         } else if ASCConstants.FileExtensions.pdfs.contains(fileExt) {
-            overlays.append(UIImageView(image: Asset.Images.listPdfIcon.image))
+            overlays.append(UIImageView(image: Asset.Images.formatsPdf.image))
         }
 
         let overlayView = {

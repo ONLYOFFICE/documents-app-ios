@@ -56,7 +56,7 @@ platform :ios do
     scan(
       scheme: "Documents",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
-      devices: ["iPhone 16 Pro"],
+      devices: ["iPhone 17 Pro"],
       clean: true
     )
   end

@@ -437,7 +437,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         bottomRightOverlayView.anchor(
             bottom: iconView.bottomAnchor,
             trailing: containerView.trailingAnchor,
-            padding: UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 6)
+            padding: UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 10)
         )
 
         checkmarkView.removeConstraints(checkmarkView.constraints)

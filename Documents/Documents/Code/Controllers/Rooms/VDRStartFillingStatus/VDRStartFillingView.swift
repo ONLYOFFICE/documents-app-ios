@@ -11,12 +11,18 @@ import SwiftUI
 
 // MARK: - Under construction. Docspace 3.2 or later
 
+enum VDRStartFillingResult {
+    case close
+    case fill
+    case fail
+}
+
 struct VDRStartFillingView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: VDRStartFillingViewModel
 
-    let onDismiss: (Result<Bool, any Error>) -> Void
+    let onDismiss: (Result<VDRStartFillingResult, any Error>) -> Void
 
     var body: some View {
         NavigationView {
@@ -32,6 +38,7 @@ struct VDRStartFillingView: View {
                                 RoleRow(role: role) {
                                     viewModel.roleTapped(role)
                                 }
+                                .deleteDisabled(role.appliedUser == nil)
                             }
                             .onDelete { indexSet in
                                 indexSet.map { viewModel.state.roles[$0] }
@@ -54,14 +61,23 @@ struct VDRStartFillingView: View {
                         }
                     }
                     .listStyle(InsetGroupedListStyle())
+                    .listRowSeparatorAvailable()
                 }
 
                 footer
             }
             .navigateToChooseMembers(isActive: $viewModel.state.isChooseFromListScreenDisplaying, viewModel: viewModel)
+            .navigateToFillingStatus(isActive: $viewModel.state.isFillingStatusScreenDisplaying, viewModel: viewModel)
         }
-        .onChange(of: viewModel.state.finishWithSuccess) {
-            onDismiss(.success($0))
+        .onChange(of: viewModel.state.finishWithFill) { value in
+            if value {
+                onDismiss(.success(.fill))
+            }
+        }
+        .onChange(of: viewModel.state.finishWithGoToRoom) { value in
+            if value {
+                onDismiss(.success(.close))
+            }
         }
         .onChange(of: viewModel.state.finishWithError) {
             if let error = $0 {
@@ -72,7 +88,7 @@ struct VDRStartFillingView: View {
             viewModel.onAppear()
         })
         .onDisappear {
-            onDismiss(.success(false))
+            onDismiss(.success(.fail))
         }
     }
 
@@ -81,8 +97,8 @@ struct VDRStartFillingView: View {
     private var header: some View {
         ZStack {
             HStack {
-                Button(NSLocalizedString("Cancel", comment: ""), action: { presentationMode.wrappedValue.dismiss() })
-                    .foregroundColor(.blue)
+                Button(NSLocalizedString("Close", comment: ""), action: { presentationMode.wrappedValue.dismiss() })
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
 
                 Spacer()
             }
@@ -96,7 +112,6 @@ struct VDRStartFillingView: View {
             }
         }
         .padding()
-        .background(Color.white)
     }
 
     // MARK: — Footer
@@ -104,15 +119,13 @@ struct VDRStartFillingView: View {
     private var footer: some View {
         HStack {
             Spacer()
-            Button(action: viewModel.startTapped) {
-                Text("Start")
-                    .brandButton(.filledCapsule, isEnabled: viewModel.state.isStartEnabled)
-            }
-            .disabled(!viewModel.state.isStartEnabled)
-            .padding(.vertical, 16)
-            .padding(.horizontal)
+            Button("Start", action: viewModel.startTapped)
+                .brandButton(.filledCapsule)
+                .disabled(!viewModel.state.isStartEnabled)
+                .padding(.vertical, 16)
+                .padding(.horizontal)
         }
-        .background(Color.white.ignoresSafeArea(edges: .bottom))
+        .background(Color.secondarySystemGroupedBackground.ignoresSafeArea(edges: .bottom))
     }
 }
 
@@ -152,9 +165,8 @@ struct RoleRow: View {
 
             Spacer()
         }
-        .padding(.vertical, 12)
         .padding(.horizontal)
-        .background(Color.white)
+        .background(Color.secondarySystemGroupedBackground)
         .contentShape(Rectangle())
         .onTapGesture(perform: onTap)
     }
@@ -201,10 +213,37 @@ private extension View {
             )
         })
     }
+
+    @ViewBuilder
+    func navigateToFillingStatus(isActive: Binding<Bool>, viewModel: VDRStartFillingViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            VDRFillingStatusView(
+                viewModel: VDRFillingStatusViewModel(
+                    service: VDRFillingStatusService(),
+                    isOpenAfterStartFilling: true,
+                    file: viewModel.dataModel.form,
+                    onStoppedSuccess: {}
+                ),
+                onFillTapped: viewModel.onFillTapped,
+                onGoToRoomTapped: viewModel.onGoToRoomTapped
+            )
+        })
+    }
 }
 
 private extension CGFloat {
     static let imageWidth: CGFloat = 40
     static let imageHeight: CGFloat = 40
     static let imageCornerRadius: CGFloat = 20
+}
+
+private extension View {
+    @ViewBuilder
+    func listRowSeparatorAvailable() -> some View {
+        if #available(iOS 15.0, *) {
+            self.listRowSeparator(.automatic, edges: .bottom)
+        } else {
+            self
+        }
+    }
 }

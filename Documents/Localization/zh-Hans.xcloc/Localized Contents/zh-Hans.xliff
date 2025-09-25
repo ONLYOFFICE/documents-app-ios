@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="/%d Groups:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -346,7 +346,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -597,7 +597,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -744,7 +744,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -825,7 +825,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -852,7 +852,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -889,7 +889,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -946,7 +946,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1018,7 +1018,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1100,7 +1100,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1131,33 +1131,33 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
         <target>新建文档</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
         <target>新建演示文稿</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>新建电子表格</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>ONLYOFFICE可填写的表单 (.oform)</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
         <target>ONLYOFFICE表单模板 (.docxf)</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1261,6 +1261,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>创建一个新房间后，所选文件夹的所有内容都将复制到该房间。之后，您可以邀请其他用户协作处理房间内的文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="A notification has already been sent to the user in the first&#10; role, prompting them to fill out the form. You can navigate&#10; to the room or share the filling link with the participants." xml:space="preserve">
+        <source>A notification has already been sent to the user in the first
+ role, prompting them to fill out the form. You can navigate
+ to the room or share the filling link with the participants.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
         <source>A user or group will be able only to view the document and add comments, as well as manage them.</source>
         <target>用户或团队将只能查看文件、以及添加并管理评论。</target>
@@ -1349,11 +1355,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
         <target>帐户名称无效</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Accountant" xml:space="preserve">
-        <source>Accountant</source>
-        <target>会计</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
@@ -1524,11 +1525,6 @@ Category title</note>
         <target>存档</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Archiving failed." xml:space="preserve">
-        <source>Archiving failed.</source>
-        <target>存档失败。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Are you sure you want to leave this account?" xml:space="preserve">
         <source>Are you sure you want to leave this account?</source>
         <target>您确定要离开此账户吗？</target>
@@ -1542,6 +1538,10 @@ Category title</note>
       <trans-unit id="Assign Owner" xml:space="preserve">
         <source>Assign Owner</source>
         <target>指定所有者</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Assign to role" xml:space="preserve">
+        <source>Assign to role</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -2257,11 +2257,6 @@ enabled</source>
         <target>对角线</target>
         <note>Watermark Position</note>
       </trans-unit>
-      <trans-unit id="Director" xml:space="preserve">
-        <source>Director</source>
-        <target>主管</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Disable Custom filter" xml:space="preserve">
         <source>Disable Custom filter</source>
         <target>禁用自定义过滤器</target>
@@ -2441,11 +2436,6 @@ Operation completed</note>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>邮箱无效</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Employee" xml:space="preserve">
-        <source>Employee</source>
-        <target>员工</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
@@ -2713,11 +2703,6 @@ Operation completed</note>
         <target>填写表单</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Filling status" xml:space="preserve">
-        <source>Filling status</source>
-        <target>填写状态</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Filling was stopped by" xml:space="preserve">
         <source>Filling was stopped by</source>
         <target>填写被终止</target>
@@ -2758,9 +2743,17 @@ Operation completed</note>
         <target>表单填写房间</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Form Finalized" xml:space="preserve">
+        <source>Form Finalized</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
         <source>Form completed successfully</source>
         <target>已成功填写表单</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form is ready for filling in room" xml:space="preserve">
+        <source>Form is ready for filling in room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -2927,11 +2920,10 @@ Operation completed</note>
         <target>进行中</target>
         <note>Form filling status</note>
       </trans-unit>
-      <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
+      <trans-unit id="In this panel you can monitor the completion of&#10; the form in which you participate or in which you&#10; are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of
-the form in which you participate or in which you
-are the organizer of completion</source>
-        <target>在此面板中，您可以监控您参与的或组织完成的表单完成情况</target>
+ the form in which you participate or in which you
+ are the organizer of completion</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
@@ -3744,6 +3736,12 @@ Share status</note>
  如果问题仍然存在，请联系我们并提及此错误代码： Google - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Linkedin - %@" xml:space="preserve">
+        <source>Please retry. 
+
+ If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
         <source>Please retry. 
 
@@ -3769,6 +3767,12 @@ Share status</note>
         <target>请重试。
 
  如果问题仍然存在，请联系我们并提及此错误代码：SSO - %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Zoom - %@" xml:space="preserve">
+        <source>Please retry. 
+
+ If the problem persists contact us and mention this error code: Zoom - %@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -4039,11 +4043,6 @@ Share status</note>
       <trans-unit id="Revoking" xml:space="preserve">
         <source>Revoking</source>
         <target>正在撤销</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Role description" xml:space="preserve">
-        <source>Role description</source>
-        <target>角色描述</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
@@ -4403,20 +4402,10 @@ Navigation bar button title</note>
         <target>电子表格</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Start" xml:space="preserve">
-        <source>Start</source>
-        <target>开始</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Start filling" xml:space="preserve">
         <source>Start filling</source>
         <target>开始填写</target>
         <note>Start filling form Button title</note>
-      </trans-unit>
-      <trans-unit id="Stop filling" xml:space="preserve">
-        <source>Stop filling</source>
-        <target>停止填写</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Stopped" xml:space="preserve">
         <source>Stopped</source>
@@ -4700,6 +4689,22 @@ clipboard.</source>
       <trans-unit id="Theme" xml:space="preserve">
         <source>Theme</source>
         <target>主题</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no guests" xml:space="preserve">
+        <source>There are no guests</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no guests to add" xml:space="preserve">
+        <source>There are no guests to add</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no users" xml:space="preserve">
+        <source>There are no users</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no users to add" xml:space="preserve">
+        <source>There are no users to add</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5226,6 +5231,12 @@ then accessed from any other device.</source>
         <target>您即将删除此房间，无法恢复。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You are assigned to fill out the form as the first role. A&#10; notification has been sent to your email. You can start filling&#10; it out now or copy the filling link and return later." xml:space="preserve">
+        <source>You are assigned to fill out the form as the first role. A
+ notification has been sent to your email. You can start filling
+ it out now or copy the filling link and return later.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
         <source>You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.</source>
         <target>您是此房间的所有者。在离开房间之前，您必须将所有者的角色转移给另一个用户。</target>
@@ -5471,7 +5482,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

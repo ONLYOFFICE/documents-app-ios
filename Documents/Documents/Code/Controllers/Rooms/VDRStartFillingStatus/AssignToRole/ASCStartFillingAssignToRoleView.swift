@@ -14,24 +14,30 @@ struct ASCStartFillingAssignToRoleView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            header
+        ZStack {
+            Color(.systemGroupedBackground).ignoresSafeArea()
+            
+            VStack {
+                header
 
-            membersList
+                membersList
 
-            footer
+                footer
+            }
+
+            placeHolder
         }
-        .background(Color(.secondarySystemBackground))
         .onAppear { viewModel.onAppear() }
         .navigateToAddMembersToRoom(isActive: $viewModel.router.isAddToRoomDisplaying, viewModel: viewModel)
         .navigationTitle(NSLocalizedString("Assign to role", comment: ""))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
-            trailing: Button(action: {
+            leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }) {
-                Text("Cancel")
+                Text("Back")
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         )
     }
@@ -72,6 +78,35 @@ struct ASCStartFillingAssignToRoleView: View {
         }
     }
 
+    // MARK: - Placeholders
+
+    @ViewBuilder
+    private var placeHolder: some View {
+        if viewModel.dataModel.isUsersFetched,
+           viewModel.dataModel.selectedSegment == .users,
+           viewModel.dataModel.users.isEmpty
+        {
+            noUsersView
+        } else if viewModel.dataModel.isUsersFetched,
+                  viewModel.dataModel.selectedSegment == .guests,
+                  viewModel.dataModel.guests.isEmpty
+        {
+            noGuestsView
+        }
+    }
+
+    private var noUsersView: some View {
+        Text("There are no users")
+            .padding(.all)
+    }
+
+    private var noGuestsView: some View {
+        Text("There are no guests")
+            .padding(.all)
+    }
+
+    // MARK: - Footer
+
     private var footer: some View {
         VStack(spacing: 0) {
             Rectangle()
@@ -80,17 +115,15 @@ struct ASCStartFillingAssignToRoleView: View {
 
             HStack {
                 Spacer()
-                Button(action: {
+                Button("Add user to room", action: {
                     viewModel.router.isAddToRoomDisplaying = true
-                }) {
-                    Text("Add user to room")
-                        .brandButton(.filledCapsule)
-                }
+                })
+                .brandButton(.filledCapsule)
             }
             .padding()
         }
         .background(
-            Color(.systemBackground).ignoresSafeArea(edges: [.horizontal, .bottom])
+            Color(.secondarySystemGroupedBackground).ignoresSafeArea(edges: [.horizontal, .bottom])
         )
     }
 }

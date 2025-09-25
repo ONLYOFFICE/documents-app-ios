@@ -32,6 +32,8 @@ final class VDRFillingStatusViewModel: ObservableObject {
     @Published private(set) var state = VDRFillingStatusState()
     var file: ASCFile
 
+    var isOpenAfterStartFilling: Bool
+
     private let shortSlashDateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yy"
@@ -43,12 +45,14 @@ final class VDRFillingStatusViewModel: ObservableObject {
 
     init(
         service: VDRFillingStatusService = .init(),
+        isOpenAfterStartFilling: Bool = false,
         file: ASCFile,
         onStoppedSuccess: @escaping () -> Void
     ) {
         self.service = service
         self.file = file
         self.onStoppedSuccess = onStoppedSuccess
+        self.isOpenAfterStartFilling = isOpenAfterStartFilling
         loadStatus()
         setupFormInfo()
         setupActions()
@@ -62,7 +66,11 @@ final class VDRFillingStatusViewModel: ObservableObject {
             title: file.title,
             subtitle: file.createdBy?.displayName ?? "",
             detail: file.created.map { shortSlashDateFormatter.string(from: $0) } ?? "",
-            status: file.formFillingStatus
+            status: file.formFillingStatus,
+            onLinkAction: { [weak self] in
+                guard let self else { return }
+                self.service.copyLink(file: self.file)
+            }
         )
     }
 
@@ -106,6 +114,10 @@ final class VDRFillingStatusViewModel: ObservableObject {
             state.isActionLoading = false
         }
     }
+
+    func onCopyLink() {
+        service.copyLink(file: file)
+    }
 }
 
 // MARK: - Delay cancellable task
@@ -133,6 +145,7 @@ struct VDRFillingStatusFormInfoModel: Identifiable {
     let subtitle: String
     let detail: String
     var status: FormFillingStatus
+    let onLinkAction: () -> Void
 }
 
 /// Event in the filling timeline

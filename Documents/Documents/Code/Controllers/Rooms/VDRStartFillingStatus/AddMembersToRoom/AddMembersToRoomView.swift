@@ -15,6 +15,8 @@ struct AddMembersToRoomView: View {
 
     var body: some View {
         ZStack {
+            Color(.systemGroupedBackground).ignoresSafeArea()
+            
             VStack {
                 header
 
@@ -23,11 +25,12 @@ struct AddMembersToRoomView: View {
                 footer
             }
 
+            placeHolder
+
             if viewModel.dataModel.isLoading {
                 OverlayLoader()
             }
         }
-        .background(Color(.secondarySystemBackground))
         .onAppear { viewModel.onAppear() }
         .navigationTitle(NSLocalizedString("Select members", comment: ""))
         .navigationBarTitleDisplayMode(.inline)
@@ -77,6 +80,35 @@ struct AddMembersToRoomView: View {
         }
     }
 
+    // MARK: - Placeholders
+
+    @ViewBuilder
+    private var placeHolder: some View {
+        if viewModel.dataModel.areMembersFetched,
+           viewModel.dataModel.selectedSegment == .users,
+           viewModel.dataModel.users.isEmpty
+        {
+            noUsersView
+        } else if viewModel.dataModel.areMembersFetched,
+                  viewModel.dataModel.selectedSegment == .guests,
+                  viewModel.dataModel.guests.isEmpty
+        {
+            noGuestsView
+        }
+    }
+
+    private var noUsersView: some View {
+        Text("There are no users to add")
+            .padding(.all)
+    }
+
+    private var noGuestsView: some View {
+        Text("There are no guests to add")
+            .padding(.all)
+    }
+
+    // MARK: - Footer
+
     private var footer: some View {
         VStack(spacing: 0) {
             Rectangle()
@@ -97,19 +129,18 @@ struct AddMembersToRoomView: View {
                         .padding(.horizontal, 12)
                 }
                 Spacer()
-                Button(action: {
+                Button("Add to room", action: {
                     viewModel.addSelectedToRoom {
                         presentationMode.wrappedValue.dismiss()
                     }
-                }) {
-                    Text("Add to room")
-                        .brandButton(.filledCapsule, isEnabled: !(viewModel.dataModel.isLoading && viewModel.dataModel.selectedUsers.isEmpty))
-                }
+                })
+                .brandButton(.filledCapsule)
+                .disabled(viewModel.dataModel.isLoading || viewModel.dataModel.selectedUsers.isEmpty)
             }
             .padding()
         }
         .background(
-            Color(.systemBackground).ignoresSafeArea(edges: [.horizontal, .bottom])
+            Color(.secondarySystemGroupedBackground).ignoresSafeArea(edges: [.horizontal, .bottom])
         )
     }
 }

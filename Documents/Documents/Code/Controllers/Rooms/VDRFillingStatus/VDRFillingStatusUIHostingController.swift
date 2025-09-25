@@ -31,7 +31,8 @@ class VDRFillingStatusUIHostingController: UIHostingController<VDRFillingStatusV
         )
         let view = VDRFillingStatusView(
             viewModel: viewModel,
-            onFillTapped: onFillTapped
+            onFillTapped: onFillTapped,
+            onGoToRoomTapped: {}
         )
         super.init(rootView: view)
     }

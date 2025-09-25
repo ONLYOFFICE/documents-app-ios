@@ -60,6 +60,7 @@ extension AddMembersToRoomViewModel {
             let (users, guests) = await(usersTask, guestsTask)
             dataModel.users = users.filter { !dataModel.hiddenUsers.contains($0.userId ?? "") }
             dataModel.guests = guests.filter { !dataModel.hiddenUsers.contains($0.userId ?? "") }
+            dataModel.areMembersFetched = true
         }
     }
 
@@ -194,6 +195,7 @@ extension AddMembersToRoomViewModel {
         var searchText: String = ""
         var selectedSegment: Segment = .users
         var isLoading: Bool = false
+        var areMembersFetched = false
 
         fileprivate(set) var users: [ASCUser] = []
         fileprivate(set) var guests: [ASCUser] = []

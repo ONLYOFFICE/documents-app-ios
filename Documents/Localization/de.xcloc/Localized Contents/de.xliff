@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ und schön können Sie loslegen</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ und schön können Sie loslegen</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="/%d Groups:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -421,7 +421,7 @@ und schön können Sie loslegen</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -675,7 +675,7 @@ und fügen Sie diesen in das Eingabefeld</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -822,7 +822,7 @@ und fügen Sie diesen in das Eingabefeld</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -903,7 +903,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -930,7 +930,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -967,7 +967,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1024,7 +1024,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1096,7 +1096,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1178,7 +1178,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1209,33 +1209,33 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
         <target>Neues Dokument</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
         <target>Neue Präsentation</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>Neue Tabelle</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>Ausfüllbares ONLYOFFICE-Formular (.oform)</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
         <target>ONLYOFFICE-Formularvorlage (.docxf)</target>
-        <note>No comment provided by engineer.</note>
+        <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1339,6 +1339,12 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Es wird ein neuer Raum erstellt und der gesamte Inhalt des ausgewählten Ordners wird dorthin kopiert. Anschließend können Sie andere Benutzer einladen, an den Dateien in einem Raum mitzuarbeiten.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="A notification has already been sent to the user in the first&#10; role, prompting them to fill out the form. You can navigate&#10; to the room or share the filling link with the participants." xml:space="preserve">
+        <source>A notification has already been sent to the user in the first
+ role, prompting them to fill out the form. You can navigate
+ to the room or share the filling link with the participants.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
         <source>A user or group will be able only to view the document and add comments, as well as manage them.</source>
         <target>Ein Benutzer oder eine Gruppe kann das Dokument nur ansehen, Kommentare hinzufügen und verwalten.</target>
@@ -1427,11 +1433,6 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
         <target>Der Kontoname ist ungültig</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Accountant" xml:space="preserve">
-        <source>Accountant</source>
-        <target>Buchhalter</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
@@ -1602,11 +1603,6 @@ Category title</note>
         <target>Archivierung</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Archiving failed." xml:space="preserve">
-        <source>Archiving failed.</source>
-        <target>Die Archivierung ist fehlgeschlagen.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Are you sure you want to leave this account?" xml:space="preserve">
         <source>Are you sure you want to leave this account?</source>
         <target>Sind Sie sicher, dass Sie dieses Konto verlassen möchten?</target>
@@ -1620,6 +1616,10 @@ Category title</note>
       <trans-unit id="Assign Owner" xml:space="preserve">
         <source>Assign Owner</source>
         <target>Verantwortlichen zuweisen</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Assign to role" xml:space="preserve">
+        <source>Assign to role</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -2338,11 +2338,6 @@ aktiviert</target>
         <target>Diagonal</target>
         <note>Watermark Position</note>
       </trans-unit>
-      <trans-unit id="Director" xml:space="preserve">
-        <source>Director</source>
-        <target>Direktor</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Disable Custom filter" xml:space="preserve">
         <source>Disable Custom filter</source>
         <target>Benutzerdefinierten Filter deaktivieren</target>
@@ -2522,11 +2517,6 @@ Operation completed</note>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>Die E-Mail-Adresse ist nicht gültig</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Employee" xml:space="preserve">
-        <source>Employee</source>
-        <target>Mitarbeiter</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
@@ -2795,11 +2785,6 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
         <target>Formular ausfüllen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Filling status" xml:space="preserve">
-        <source>Filling status</source>
-        <target>Füllstatus</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Filling was stopped by" xml:space="preserve">
         <source>Filling was stopped by</source>
         <target>Das Ausfüllen wurde gestoppt von</target>
@@ -2840,9 +2825,17 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
         <target>Raum zum Ausfüllen von Formularen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Form Finalized" xml:space="preserve">
+        <source>Form Finalized</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
         <source>Form completed successfully</source>
         <target>Formular erfolgreich ausgefüllt</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form is ready for filling in room" xml:space="preserve">
+        <source>Form is ready for filling in room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -3009,13 +3002,10 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
         <target>Im Gange</target>
         <note>Form filling status</note>
       </trans-unit>
-      <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
+      <trans-unit id="In this panel you can monitor the completion of&#10; the form in which you participate or in which you&#10; are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of
-the form in which you participate or in which you
-are the organizer of completion</source>
-        <target>In diesem Bereich können Sie das Ausfüllen
-des Formulars überwachen, an dem Sie teilnehmen
-oder dessen Ausfüllen Sie organisieren</target>
+ the form in which you participate or in which you
+ are the organizer of completion</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
@@ -3829,6 +3819,12 @@ Share status</note>
  Wenn das Problem weiterhin besteht, wenden Sie sich an uns und geben Sie diesen Fehlercode an: Google - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Linkedin - %@" xml:space="preserve">
+        <source>Please retry. 
+
+ If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
         <source>Please retry. 
 
@@ -3854,6 +3850,12 @@ Share status</note>
         <target>Bitte versuchen Sie es erneut. 
 
  Wenn das Problem weiterhin besteht, wenden Sie sich an uns und geben Sie diesen Fehlercode an: SSO - %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Zoom - %@" xml:space="preserve">
+        <source>Please retry. 
+
+ If the problem persists contact us and mention this error code: Zoom - %@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -4124,11 +4126,6 @@ Share status</note>
       <trans-unit id="Revoking" xml:space="preserve">
         <source>Revoking</source>
         <target>Wird widerrufen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Role description" xml:space="preserve">
-        <source>Role description</source>
-        <target>Rollenbeschreibung</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
@@ -4488,20 +4485,10 @@ Navigation bar button title</note>
         <target>Tabellenkalkulationen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Start" xml:space="preserve">
-        <source>Start</source>
-        <target>Starten</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Start filling" xml:space="preserve">
         <source>Start filling</source>
         <target>Ausfüllen starten</target>
         <note>Start filling form Button title</note>
-      </trans-unit>
-      <trans-unit id="Stop filling" xml:space="preserve">
-        <source>Stop filling</source>
-        <target>Ausfüllen stoppen</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Stopped" xml:space="preserve">
         <source>Stopped</source>
@@ -4789,6 +4776,22 @@ kopiert.</target>
       <trans-unit id="Theme" xml:space="preserve">
         <source>Theme</source>
         <target>Thema</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no guests" xml:space="preserve">
+        <source>There are no guests</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no guests to add" xml:space="preserve">
+        <source>There are no guests to add</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no users" xml:space="preserve">
+        <source>There are no users</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no users to add" xml:space="preserve">
+        <source>There are no users to add</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5315,6 +5318,12 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
         <target>Sie sind dabei, diesen Raum zu löschen. Sie können ihn nicht wiederherstellen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="You are assigned to fill out the form as the first role. A&#10; notification has been sent to your email. You can start filling&#10; it out now or copy the filling link and return later." xml:space="preserve">
+        <source>You are assigned to fill out the form as the first role. A
+ notification has been sent to your email. You can start filling
+ it out now or copy the filling link and return later.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
         <source>You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.</source>
         <target>Sie sind verantwortlich für diesen Raum. Bevor Sie den Raum verlassen, müssen Sie die Rolle des Verantwortlichen auf einen anderen Benutzer übertragen.</target>
@@ -5560,7 +5569,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.4" build-num="16F6"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

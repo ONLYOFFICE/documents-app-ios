@@ -51,8 +51,16 @@ final class VDRStartFillingViewModel: ObservableObject {
                     OnlyofficeAPI.Endpoints.Files.mapFormRolesToUsers(file: dataModel.form),
                     requestModel.dictionary
                 )
-                if (200 ..< 300).contains(result?.statusCode ?? 0) {
-                    state.finishWithSuccess = true
+                let isSuccessStartStatus = (200 ..< 300).contains(result?.statusCode ?? 0)
+
+                if let fileInfo = try await OnlyofficeApiClient.request(
+                    OnlyofficeAPI.Endpoints.Files.info(file: dataModel.form)
+                )?.result {
+                    dataModel.form.update(with: fileInfo)
+                }
+
+                if isSuccessStartStatus {
+                    state.isFillingStatusScreenDisplaying = true
                 }
             } catch {
                 state.finishWithError = StringError(error.localizedDescription)
@@ -60,6 +68,14 @@ final class VDRStartFillingViewModel: ObservableObject {
             }
             state.isLoading = false
         }
+    }
+
+    func onFillTapped() {
+        state.finishWithFill = true
+    }
+
+    func onGoToRoomTapped() {
+        state.finishWithGoToRoom = true
     }
 
     func roleTapped(_ role: RoleItem) {
@@ -148,10 +164,12 @@ extension VDRStartFillingViewModel {
         var isStartEnabled: Bool { areRolesFilled }
 
         var isChooseFromListScreenDisplaying = false
+        var isFillingStatusScreenDisplaying = false
         var isLoading = false
 
         var finishWithError: StringError?
-        var finishWithSuccess = false
+        var finishWithFill = false
+        var finishWithGoToRoom = false
 
         static let initial: ScreenState = ScreenState()
     }

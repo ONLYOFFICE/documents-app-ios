@@ -12,35 +12,41 @@ import SwiftUI
 struct VDRFillingStatusFooterView: View {
     let stopEnabled: Bool
     let fillEnabled: Bool
+    let isReadyForFillingScreenStatus: Bool
+    let fillingStatus: FormFillingStatus
     let onStop: () -> Void
     let onFill: () -> Void
+    let onCopy: () -> Void
+    let onGoToRoom: () -> Void
 
     var body: some View {
-        HStack {
-            Button(NSLocalizedString("Stop filling", comment: ""), action: onStop)
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                .buttonStyle(.borderless)
-                .disabled(!stopEnabled)
-            Spacer()
-            Button(NSLocalizedString("Fill", comment: ""), action: onFill)
-                .buttonStyle(FooterButtonStyle(color: fillEnabled ? .blue : .secondary))
-                .disabled(!fillEnabled)
+        VStack(spacing: .zero) {
+            Rectangle()
+                .fill(Color.secondary)
+                .frame(height: 0.5)
+            HStack {
+                if isReadyForFillingScreenStatus {
+                    Button("Go to room", action: onGoToRoom)
+                        .brandButton(.inline)
+                } else {
+                    Button("Stop filling", action: onStop)
+                        .brandButton(.inline)
+                        .disabled(!stopEnabled)
+                }
+                
+                Spacer()
+                
+                if isReadyForFillingScreenStatus, fillingStatus != .yourTurn {
+                    Button("Copy link", action: onCopy)
+                        .brandButton(.filledCapsule)
+                } else {
+                    Button("Fill", action: onFill)
+                        .brandButton(.filledCapsule)
+                        .disabled(!fillEnabled)
+                }
+            }
+            .padding()
         }
-        .padding()
-        .background(Color(.systemBackground).ignoresSafeArea(edges: .bottom))
-    }
-}
-
-struct FooterButtonStyle: ButtonStyle {
-    let color: Color
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.body)
-            .foregroundColor(.white)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 4)
-            .background(color)
-            .cornerRadius(16)
-            .opacity(configuration.isPressed ? 0.7 : 1)
+        .background(Color(.tertiarySystemBackground).ignoresSafeArea(edges: .bottom))
     }
 }

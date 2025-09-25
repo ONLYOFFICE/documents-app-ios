@@ -202,3 +202,39 @@ enum FormFillingStatus: Int, Codable {
         }
     }
 }
+
+extension ASCFile {
+    func update(with file: ASCFile) {
+        self.extension = file.extension
+        access = file.access
+        canShare = file.canShare
+        comment = file.comment
+        created = file.created
+        createdBy = file.createdBy
+        customFilterEnabled = file.customFilterEnabled
+        denyDownload = file.denyDownload
+        device = file.device
+        displayContentLength = file.displayContentLength
+        editable = file.editable
+        expired = file.expired
+        fileStatus = file.fileStatus
+        formFillingStatus = file.formFillingStatus
+        isForm = file.isForm
+        openVersionMode = file.openVersionMode
+        order = file.order
+        parent = file.parent
+        pureContentLength = file.pureContentLength
+        requestToken = file.requestToken
+        rootFolderType = file.rootFolderType
+        security = file.security
+        shared = file.shared
+        thumbnailStatus = file.thumbnailStatus
+        thumbnailUrl = file.thumbnailUrl
+        title = file.title
+        updated = file.updated
+        updatedBy = file.updatedBy
+        version = file.version
+        viewUrl = file.viewUrl
+        webUrl = file.webUrl
+    }
+}

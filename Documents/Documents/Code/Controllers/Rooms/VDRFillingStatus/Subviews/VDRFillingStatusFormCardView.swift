@@ -36,8 +36,17 @@ struct VDRFillingStatusFormCardView: View {
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
-
+            
             Spacer()
+
+            Image(systemName: "link")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 24, height: 24)
+                .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                .onTapGesture {
+                    formModel.onLinkAction()
+                }
         }
         .padding()
         .modifier(CardStyle())

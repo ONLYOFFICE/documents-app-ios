@@ -1926,8 +1926,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             value: .virtualData
         ) == true
         if isInsideVDRRoom {
-            if file.security.fillForms, file.formFillingStatus == .yourTurn {
+            if file.formFillingStatus == .draft {
+                startFilling(file: file)
+            } else if file.security.fillForms, file.formFillingStatus == .yourTurn {
                 openFormInFillingModeWithCheckingVersion(file: file)
+            } else if file.security.startFilling {
+                startFilling(file: file)
             } else {
                 open(file: file, openMode: .view)
             }

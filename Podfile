@@ -35,7 +35,7 @@ def common_pods
   # UI
 
   pod 'SkyFloatingLabelTextField', :git => 'https://github.com/Skyscanner/SkyFloatingLabelTextField.git'
-  pod 'MBProgressHUD'
+  pod 'MBProgressHUD', :git => 'https://github.com/jdg/MBProgressHUD.git'
   pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git'
   pod 'SwiftRater'
   pod 'Siren'

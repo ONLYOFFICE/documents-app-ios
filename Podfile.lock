@@ -280,7 +280,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - KeychainSwift
   - Kingfisher
-  - MBProgressHUD
+  - MBProgressHUD (from `https://github.com/jdg/MBProgressHUD.git`)
   - MediaBrowser (from `https://github.com/ayuzhin/MediaBrowser.git`)
   - ObjectMapper
   - PhoneNumberKit
@@ -340,7 +340,6 @@ SPEC REPOS:
     - IQTextView
     - KeychainSwift
     - Kingfisher
-    - MBProgressHUD
     - nanopb
     - ObjectMapper
     - PhoneNumberKit
@@ -362,6 +361,8 @@ EXTERNAL SOURCES:
   FilesProvider:
     :commit: dac57676f5f5297f6a78a321bd9e4b6d3f892a39
     :git: https://github.com/ayuzhin/FileProvider.git
+  MBProgressHUD:
+    :git: https://github.com/jdg/MBProgressHUD.git
   MediaBrowser:
     :git: https://github.com/ayuzhin/MediaBrowser.git
   ReCaptcha:
@@ -375,6 +376,9 @@ CHECKOUT OPTIONS:
   FilesProvider:
     :commit: dac57676f5f5297f6a78a321bd9e4b6d3f892a39
     :git: https://github.com/ayuzhin/FileProvider.git
+  MBProgressHUD:
+    :commit: 4a7c5f3e53cdea77c5dcb8578c2ee5acacdf6781
+    :git: https://github.com/jdg/MBProgressHUD.git
   MediaBrowser:
     :commit: 8411f5defa223c5edb8677c5af3707a38e75051a
     :git: https://github.com/ayuzhin/MediaBrowser.git
@@ -430,7 +434,7 @@ SPEC CHECKSUMS:
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
   KeychainSwift: 007c4647486e4563adca839cf02cef00deb3b670
   Kingfisher: ff0d31a1f07bdff6a1ebb3ba08b8e6e567b6500c
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MBProgressHUD: 1b0fb447e80a0fda94808180750e8b78a07b3cd2
   MediaBrowser: bc16eb49bcfe679a8cf644468e5934f9d50381be
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   ObjectMapper: e6e4d91ff7f2861df7aecc536c92d8363f4c9677
@@ -452,6 +456,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: 87cdf0b01c6b65e8bc739c4722de31d4ece880bf
+PODFILE CHECKSUM: 58f52c4e59b0182c76cea59818b563c7119f94f7
 
 COCOAPODS: 1.16.2

@@ -16,7 +16,7 @@ struct ASCStartFillingAssignToRoleView: View {
     var body: some View {
         ZStack {
             Color(.systemGroupedBackground).ignoresSafeArea()
-            
+
             VStack {
                 header
 

@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct FullScreenLoader: View {
-    
     var displayLabel = false
-    
+
     var body: some View {
         ZStack {
             Color(.systemBackground)

@@ -33,9 +33,9 @@ struct VDRFillingStatusFooterView: View {
                         .brandButton(.inline)
                         .disabled(!stopEnabled)
                 }
-                
+
                 Spacer()
-                
+
                 if isReadyForFillingScreenStatus, fillingStatus != .yourTurn {
                     Button("Copy link", action: onCopy)
                         .brandButton(.filledCapsule)

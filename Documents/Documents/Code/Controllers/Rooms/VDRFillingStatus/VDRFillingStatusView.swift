@@ -36,7 +36,7 @@ struct VDRFillingStatusView: View {
                                 model: VDRFillingStatusTimelineViewModel(formFillingStatus: viewModel.file.formFillingStatus)
                             )
                             .padding(.horizontal)
-                            
+
                             if viewModel.state.isInitialLoading || viewModel.state.isContentLoading {
                                 ProgressView()
                                     .progressViewStyle(CircularProgressViewStyle(tint: .primary))

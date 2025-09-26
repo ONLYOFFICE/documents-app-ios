@@ -36,7 +36,7 @@ struct VDRFillingStatusFormCardView: View {
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
-            
+
             Spacer()
 
             Image(systemName: "link")

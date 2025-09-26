@@ -27,8 +27,8 @@ struct BrandButtonStyle: ButtonStyle {
                     (isEnabled ? Asset.Colors.brend.swiftUIColor : .secondary)
                         .opacity(
                             configuration.isPressed
-                            ? 0.8
-                            : isEnabled ? 1 : 0.16
+                                ? 0.8
+                                : isEnabled ? 1 : 0.16
                         )
                 )
                 .foregroundColor(.white)
@@ -59,6 +59,6 @@ private struct WeightModifier: ViewModifier {
 
 extension View {
     func brandButton(_ kind: BrandButtonStyle.Kind) -> some View {
-        self.buttonStyle(BrandButtonStyle(kind: kind))
+        buttonStyle(BrandButtonStyle(kind: kind))
     }
 }

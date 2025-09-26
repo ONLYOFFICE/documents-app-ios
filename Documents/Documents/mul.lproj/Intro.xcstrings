@@ -1,0 +1,294 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "De8-tD-APT.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. \"; ObjectID = \"De8-tD-APT\"; Note = \"Do not translate\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هنا في \"تصميم\"، نتحدث أحيانًا عن تصميم الويب، ونتحدث دائمًا عن تصميم الطباعة، ولكن الشيء الوحيد الذي لا نكتب عنه غالبًا هو واجهات تصميم الأجهزة المحمولة. "
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тук в DESIGN понякога говорим за уеб дизайн и винаги говорим за печатен дизайн, но едно нещо, за което не пишем често, са интерфейсите за мобилен дизайн. "
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tady v DESIGNu někdy mluvíme o web designu. Skoro vždy mluvíme o print (tisk) designu, ale jedna věc, o které často nemluvíme, je design mobilních rozhraní."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hier bei DESIGN sprechen wir manchmal über Webdesign und häufig über Printdesign, aber eine Sache über die wir nicht oft schreiben sind mobile Designoberflächen. "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En DISEÑO a veces hablamos del diseño web y siempre pensamos en el diseño gráfico, pero una cosa sobre la que no escribimos muy a menudo son las interfaces de diseño móvil. "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Par \"DESIGN\", nous entendons parfois la conception de sites web, toujours la conception d'imprimés, mais rarement la conception d'interfaces mobiles. "
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Այստեղ DESIGN-ում մենք երբեմն խոսում ենք վեբ դիզայնի մասին, և մենք միշտ խոսում ենք տպագիր դիզայնի մասին, բայց մի բան, որի մասին հաճախ չենք գրում, բջջային դիզայնի միջերեսներն են:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qui alla DESIGN, a volte parliamo di web design, e sempre di design tipografico, ma una cosa di cui non scriviamo spesso sono le interfacce per il design dei dispositivi mobili. "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここ DESIGN では、時々ウェブデザインについて討議し、印刷デザインについて常に討議していますが、当社が記述しないものはモバイルデザインのインターフェイスです。 "
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aqui na DESIGN, às vezes falamos sobre web design e sempre estamos falando sobre design de impressão, mas uma coisa sobre a qual não escrevemos com frequência são as interfaces de design para dispositivos móveis. "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Под \"ДИЗАЙНОМ\" мы иногда понимаем веб-дизайн, всегда - полиграфический дизайн, однако редко имеем в виду мобильный дизайн интерфейсов."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නිර්මාණයේ දී, අපි සමහර විට වියමන නිර්මාණය ගැන කතා කරනවා, අපි හැම විටම මුද්‍රණ නිර්මාණය ගැන කතා කරනවා, නමුත් අපි බොහෝ විට ලියන්නේ නැති දෙයක් ජංගම අතුරුමුහුණත් නිර්මාණය. "
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在DESIGN，我们有时会谈论网页设计，我们总是在谈论印刷设计，但有一件事我们不经常写，那就是移动设计界面。 "
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在DESIGN，我们有时会谈论网页设计，我们总是在谈论印刷设计，但有一件事我们不经常写，那就是移动设计界面。"
+          }
+        }
+      }
+    },
+    "JV9-d9-sJs.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"SKIP\"; ObjectID = \"JV9-d9-sJs\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تخطي"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРОПУСКАНЕ"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PŘESKOČIT"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÜBERSPRINGEN"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SKIP"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SALTAR"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IGNORER"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ՑԱՏԿԵԼ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PULAR"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРОПУСТИТЬ"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මඟහරින්න"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
+          }
+        }
+      }
+    },
+    "KAF-Bt-8qi.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"App Onboarding Design\"; ObjectID = \"KAF-Bt-8qi\"; Note = \"Do not translate\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تصميم تعريف التطبيقات"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дизайн за Вграждане в Приложение"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Návrh začlenění aplikace"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Onboarding Design"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "App Onboarding Design"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diseño de app de onboarding"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conception et mise en oeuvre de l'application"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Հավելվածի ներբեռնման ձևավորում"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Onboarding Design"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリオンボーディングデザイン"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Design de integração de aplicativos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Onboarding Design"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "යෙදුමට ගොඩවීම නිර්මාණය"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用程序板设计"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用程序板设计"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

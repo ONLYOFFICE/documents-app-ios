@@ -1609,20 +1609,11 @@ extension ASCEditorManager {
                 else { continue }
 
                 group.enter()
-
-                let imageView = UIImageView()
-                imageView.image = Asset.Images.avatarDefault.image
-
-                imageView.kf.apiSetImage(
-                    with: url,
-                    placeholder: Asset.Images.avatarDefault.image,
-                    completionHandler: { kfResult in
-                        if case let .success(value) = kfResult {
-                            result[id] = value.image
-                        }
-                        group.leave()
-                    }
-                )
+                
+                UIImageView.kfImage(for: url) { image in
+                    result[id] = image
+                    group.leave()
+                }
             }
 
             group.notify(queue: .main) {

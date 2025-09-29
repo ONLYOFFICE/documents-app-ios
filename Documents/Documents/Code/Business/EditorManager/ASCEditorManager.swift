@@ -48,6 +48,7 @@ class ASCEditorManagerError: LocalizedError, CustomStringConvertible, CustomNSEr
     }
 }
 
+typealias FullName = String
 typealias ASCEditorManagerOpenHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerCloseHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ result: ASCFile?, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @escaping (Bool) -> Void) -> Void
@@ -1619,6 +1620,60 @@ extension ASCEditorManager {
             group.notify(queue: .main) {
                 completion(result)
             }
+        }
+    }
+    
+    @MainActor
+    func fetchSharedUsers() async -> [(FullName, Email, UIImage?)] {
+        guard let fileId = openedFile?.id else { return [] }
+        let endpoint = OnlyofficeAPI.Endpoints.Sharing.users(fileId: fileId, method: .get)
+        NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
+        do {
+            guard let result = try await apiClient.request(endpoint: endpoint).result else {
+                return []
+            }
+            
+            let store = ImageStore()
+
+            await withTaskGroup(of: Void.self) { group in
+                for user in result {
+                    if let imageStr = user.image, let url = URL(string: imageStr) {
+                        group.addTask {
+                            let img = try? await UIImageView.kfImage(for: url)
+                            await store.set(imageStr, img)
+                        }
+                    }
+                }
+                await group.waitForAll()
+            }
+            
+            let images = await store.getAll()
+            
+            return result.compactMap { user in
+                guard
+                    let name = user.name,
+                    let email = user.email
+                else { return nil }
+                return (name, email, user.image.flatMap { images[$0] ?? nil })
+            }
+        } catch {
+            log.error(error)
+            return []
+        }
+    }
+}
+
+fileprivate extension ASCEditorManager {
+    
+    actor ImageStore {
+        private var storage: [String: UIImage] = [:]
+        
+        func set(_ key: String, _ image: UIImage?) {
+            storage[key] = image
+        }
+        
+        func getAll() -> [String: UIImage] {
+            storage
         }
     }
 }

@@ -165,4 +165,9 @@ extension ASCEditorManager: PresentationEditorViewControllerDelegate {
             }
         }
     }
+
+    @MainActor
+    func presentationFetchSharedUsers() async -> [[String: Any]] {
+        await fetchSharedUsers()
+    }
 }

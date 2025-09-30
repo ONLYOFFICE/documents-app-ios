@@ -219,4 +219,9 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
             }
         }
     }
+
+    @MainActor
+    func documentFetchSharedUsers() async -> [[String: Any]] {
+        await fetchSharedUsers()
+    }
 }

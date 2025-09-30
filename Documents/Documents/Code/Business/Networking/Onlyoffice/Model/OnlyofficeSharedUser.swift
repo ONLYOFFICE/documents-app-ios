@@ -9,11 +9,10 @@
 import ObjectMapper
 
 struct OnlyofficeSharedUser: Mappable {
-    
     var name: String?
     var email: String?
     var image: String?
-    
+
     init() {}
 
     init?(map: Map) {}

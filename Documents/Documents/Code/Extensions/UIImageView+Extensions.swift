@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIImageView {
-    
     static func kfImage(
         for url: URL,
         placeholder: UIImage? = nil,
@@ -27,7 +26,7 @@ extension UIImageView {
             }
         )
     }
-    
+
     static func kfImage(
         for url: URL,
         placeholder: UIImage? = nil
@@ -38,9 +37,9 @@ extension UIImageView {
                 placeholder: placeholder
             ) { result in
                 switch result {
-                case .success(let value):
+                case let .success(value):
                     continuation.resume(returning: value.image)
-                case .failure(let error):
+                case let .failure(error):
                     continuation.resume(throwing: error)
                 }
             }

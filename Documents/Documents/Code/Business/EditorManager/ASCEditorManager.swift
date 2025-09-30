@@ -1610,7 +1610,7 @@ extension ASCEditorManager {
                 else { continue }
 
                 group.enter()
-                
+
                 UIImageView.kfImage(for: url) { image in
                     result[id] = image
                     group.leave()
@@ -1622,7 +1622,7 @@ extension ASCEditorManager {
             }
         }
     }
-    
+
     @MainActor
     func fetchSharedUsers() async -> [(FullName, Email, UIImage?)] {
         guard let fileId = openedFile?.id else { return [] }
@@ -1632,7 +1632,7 @@ extension ASCEditorManager {
             guard let result = try await apiClient.request(endpoint: endpoint).result else {
                 return []
             }
-            
+
             let store = ImageStore()
 
             await withTaskGroup(of: Void.self) { group in
@@ -1646,9 +1646,9 @@ extension ASCEditorManager {
                 }
                 await group.waitForAll()
             }
-            
+
             let images = await store.getAll()
-            
+
             return result.compactMap { user in
                 guard
                     let name = user.name,
@@ -1663,15 +1663,14 @@ extension ASCEditorManager {
     }
 }
 
-fileprivate extension ASCEditorManager {
-    
+private extension ASCEditorManager {
     actor ImageStore {
         private var storage: [String: UIImage] = [:]
-        
+
         func set(_ key: String, _ image: UIImage?) {
             storage[key] = image
         }
-        
+
         func getAll() -> [String: UIImage] {
             storage
         }

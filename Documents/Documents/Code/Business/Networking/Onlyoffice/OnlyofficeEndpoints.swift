@@ -428,7 +428,7 @@ enum OnlyofficeAPI {
             static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
             }
-            
+
             static func users(fileId: String, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeSharedUser>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeSharedUser>>.make(String(format: Path.sharedUsers, fileId), method)
             }

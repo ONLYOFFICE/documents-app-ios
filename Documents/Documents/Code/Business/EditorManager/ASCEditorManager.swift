@@ -201,6 +201,14 @@ class ASCEditorManager: NSObject {
         apiClient.request(endpoint, parameters, completion)
     }
 
+    private func clientRequest<Response>(
+        _ endpoint: Endpoint<Response>,
+        _ parameters: [String: Any]? = nil
+    ) async throws -> Response {
+        NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
+        return try await apiClient.request(endpoint: endpoint, parameters: parameters)
+    }
+
     private func fetchDocumentInfo(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit) async -> Result<OnlyofficeDocumentConfig, Error> {
         await withCheckedContinuation { continuation in
             var params: [String: Any] = [:]

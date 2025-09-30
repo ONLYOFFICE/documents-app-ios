@@ -1001,6 +1001,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="" xml:space="preserve">
         <source/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="%@" xml:space="preserve">
@@ -1243,17 +1244,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">12 часов</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Используйте пароль, созданный в &lt;a href="https://yandex.ru/id/about"&gt;Яндекс ID&lt;/a&gt;.&lt;/br&gt;Более подробные инструкции по подключению можно найти в разделе &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;"Справка"&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Используйте пароль, созданный в &lt;a href="https://yandex.ru/id/about"&gt;Яндекс ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Более подробные инструкции по подключению можно найти в разделе &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;"Справка"&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.&lt;/p&gt;&lt;p&gt;Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).&lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Подробнее...&lt;/a&gt;&lt;/p&gt;</target>
         <note/>
@@ -1277,6 +1278,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>A notification has already been sent to the user in the first
  role, prompting them to fill out the form. You can navigate
  to the room or share the filling link with the participants.</source>
+        <target state="translated">Пользователю, выполняющему первую
+роль, отправлено уведомление с предложением заполнить форму. Вы можете перейти
+в комнату или поделиться ссылкой на форму с участниками.</target>
         <note/>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1564,6 +1568,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Assign to role" xml:space="preserve">
         <source>Assign to role</source>
+        <target state="translated">Назначить роль</target>
         <note/>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -2629,6 +2634,8 @@ Operation completed</note>
       <trans-unit id="Exit without saving?&#10;You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving?
 You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">Выйти без сохранения?
+Вы внесли изменения в индекс. Если вы продолжите без сохранения, изменения не будут применены.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
@@ -2869,6 +2876,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form Finalized" xml:space="preserve">
         <source>Form Finalized</source>
+        <target state="translated">Форма завершена</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
@@ -2878,6 +2886,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form is ready for filling in room" xml:space="preserve">
         <source>Form is ready for filling in room</source>
+        <target state="translated">Форма готова к заполнению в комнате</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -2907,6 +2916,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="From templates" xml:space="preserve">
         <source>From templates</source>
+        <target state="translated">Из шаблонов</target>
         <note/>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -3048,6 +3058,9 @@ You have made changes in the index. If you proceed without saving, those changes
         <source>In this panel you can monitor the completion of
  the form in which you participate or in which you
  are the organizer of completion</source>
+        <target state="translated">На этой панели вы можете следить за заполнением
+формы, участником или организатором заполнения которой
+вы являетесь</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
@@ -3363,7 +3376,7 @@ If current user name is not set</note>
         <target state="translated">Участники</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
         <target state="translated">Минимальная длина: 8 символов | Допустимые символы: а-я, А-Я, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</target>
         <note/>
@@ -3799,7 +3812,7 @@ Share status</note>
         <target state="translated">Пароль не заполнен</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <target state="translated">Пароль должен содержать: Минимальная длина: 8 символов Допустимые символы: а–я, А–Я, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</target>
         <note/>
@@ -3890,6 +3903,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <target state="translated">Попробуйте ещё раз.
+
+Если проблема повторяется, напишите нам и назовите код ошибки: Linkedin - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
@@ -3923,6 +3939,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Zoom - %@</source>
+        <target state="translated">Попробуйте ещё раз.
+
+Если проблема повторяется, напишите нам и назовите код ошибки: Zoom - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -4860,18 +4879,22 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no guests" xml:space="preserve">
         <source>There are no guests</source>
+        <target state="translated">Гостей нет</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <target state="translated">Нет гостей для добавления</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
         <source>There are no users</source>
+        <target state="translated">Пользователей нет</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users to add" xml:space="preserve">
         <source>There are no users to add</source>
+        <target state="translated">Нет пользователей для добавления</target>
         <note/>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5400,6 +5423,9 @@ then accessed from any other device.</source>
         <source>You are assigned to fill out the form as the first role. A
  notification has been sent to your email. You can start filling
  it out now or copy the filling link and return later.</source>
+        <target state="translated">Вам поручено заполнить форму в качестве участника с первой ролью.
+Уведомление отправлено на вашу электронную почту. Вы можете начать заполнять ее
+сейчас или скопировать ссылку для заполнения и вернуться позже.</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5430,6 +5456,7 @@ then accessed from any other device.</source>
       <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
         <source>You can create a template from
 a room in the Room section</source>
+        <target state="translated">Вы можете создать шаблон из комнаты в разделе «Комната».</target>
         <note/>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">

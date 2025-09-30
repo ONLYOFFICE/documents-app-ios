@@ -1003,6 +1003,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
     <body>
       <trans-unit id="" xml:space="preserve">
         <source/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="%@" xml:space="preserve">
@@ -1087,22 +1088,27 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$#@arg1@ and %2$#@arg2@ selected</source>
+        <target state="translated">%1$#@arg1@ und %2$#@arg2@ ausgewählt</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.one" xml:space="preserve">
         <source>%1$lu Folder</source>
+        <target state="translated">%1$lu Ordner</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
+        <target state="translated">%1$lu Ordner</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.one" xml:space="preserve">
         <source>%2$lu File</source>
+        <target state="translated">%2$lu Datei</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
+        <target state="translated">%2$lu Dateien</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder selected|==|plural.one" xml:space="preserve">
@@ -1140,17 +1146,17 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target state="translated">12 Stunden</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Verwenden Sie das in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt; erstellte Passwort.&lt;/br&gt;Ausführliche Anweisungen zur Verbindung finden Sie im &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;Hilfe-Center&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Verwenden Sie das in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt; erstellte Passwort.&lt;/p&gt;&lt;p&gt;Ausführliche Anweisungen zur Verbindung finden Sie im &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;Hilfe-Center&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Sie müssen eine kostenpflichtige Version des Players besitzen, um diesen Dienst nutzen zu können.&lt;/p&gt;&lt;p&gt;Wenn Sie die Zwei-Faktor-Authentifizierung aktiviert haben, erstellen Sie bitte eine CDM-Anwendung über den Infomaniak-Manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Mehr...&lt;/a&gt;&lt;/p&gt;</target>
         <note/>
@@ -1174,6 +1180,9 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <source>A notification has already been sent to the user in the first
  role, prompting them to fill out the form. You can navigate
  to the room or share the filling link with the participants.</source>
+        <target state="translated">Der Nutzer in der ersten Rolle wurde bereits benachrichtigt und
+ aufgefordert, das Formular auszufüllen. Sie können zum Raum
+ navigieren oder den Link zum Ausfüllen mit den Teilnehmern teilen.</target>
         <note/>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1461,6 +1470,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Assign to role" xml:space="preserve">
         <source>Assign to role</source>
+        <target state="translated">Einer Rolle zuweisen</target>
         <note/>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -2104,22 +2114,27 @@ aktiviert</target>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
+        <target state="translated">%1$#@arg1@ und %2$#@arg2@ löschen</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.one" xml:space="preserve">
         <source>%1$lu Folder</source>
+        <target state="translated">%1$lu Ordner</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
+        <target state="translated">%1$lu Ordner</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.one" xml:space="preserve">
         <source>%2$lu File</source>
+        <target state="translated">%2$lu Datei</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
+        <target state="translated">%2$lu Dateien</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder|==|plural.one" xml:space="preserve">
@@ -2481,6 +2496,8 @@ Operation completed</note>
       <trans-unit id="Exit without saving?&#10;You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving?
 You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">Ohne Speichern beenden?
+Sie haben Änderungen am Index vorgenommen. Wenn Sie ohne Speichern fortfahren, werden diese Änderungen nicht übernommen.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
@@ -2591,6 +2608,7 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
         <source>Falure to open editor</source>
+        <target state="translated">Fehler beim Öffnen des Editors</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2720,6 +2738,7 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
       </trans-unit>
       <trans-unit id="Form Finalized" xml:space="preserve">
         <source>Form Finalized</source>
+        <target state="translated">Formular abgeschlossen</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
@@ -2729,6 +2748,7 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
       </trans-unit>
       <trans-unit id="Form is ready for filling in room" xml:space="preserve">
         <source>Form is ready for filling in room</source>
+        <target state="translated">Das Formular steht im Raum zum Ausfüllen bereit</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -2758,6 +2778,7 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
       </trans-unit>
       <trans-unit id="From templates" xml:space="preserve">
         <source>From templates</source>
+        <target state="translated">Aus Vorlagen</target>
         <note/>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2899,6 +2920,9 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
         <source>In this panel you can monitor the completion of
  the form in which you participate or in which you
  are the organizer of completion</source>
+        <target state="translated">In diesem Bereich können Sie den Ausfüllvorgang des
+ Formulars verfolgen, an dem Sie teilnehmen oder
+ dessen Ausfüllen Sie organisieren</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
@@ -3204,7 +3228,7 @@ If current user name is not set</note>
         <target state="translated">Mitglieder</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
         <target state="translated">Mindestlänge: 8 Zeichen | Erlaubte Zeichen: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</target>
         <note/>
@@ -3640,7 +3664,7 @@ Share status</note>
         <target state="translated">Das Feld Kennwort ist leer</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <target state="translated">Das Passwort muss folgendes enthalten: Mindestlänge: 8 Erlaubte Zeichen: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</target>
         <note/>
@@ -3731,6 +3755,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <target state="translated">Bitte versuchen Sie es erneut. 
+
+ Wenn das Problem weiterhin besteht, kontaktieren Sie uns und geben Sie diesen Fehlercode an: Linkedin - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
@@ -3764,6 +3791,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Zoom - %@</source>
+        <target state="translated">Bitte versuchen Sie es erneut. 
+
+ Wenn das Problem weiterhin besteht, kontaktieren Sie uns und geben Sie diesen Fehlercode an: Zoom - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -4703,18 +4733,22 @@ kopiert.</target>
       </trans-unit>
       <trans-unit id="There are no guests" xml:space="preserve">
         <source>There are no guests</source>
+        <target state="translated">Es sind keine Gäste vorhanden</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <target state="translated">Es können keine Gäste hinzugefügt werden</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
         <source>There are no users</source>
+        <target state="translated">Es sind keine Benutzer vorhanden</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users to add" xml:space="preserve">
         <source>There are no users to add</source>
+        <target state="translated">Es können keine Benutzer hinzugefügt werden</target>
         <note/>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5245,6 +5279,9 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
         <source>You are assigned to fill out the form as the first role. A
  notification has been sent to your email. You can start filling
  it out now or copy the filling link and return later.</source>
+        <target state="translated">Sie sind als erste Person mit dem Ausfüllen des Formulars beauftragt. Eine
+ Benachrichtigung wurde an Ihre E-Mail-Adresse gesendet. Sie können jetzt mit dem Ausfüllen
+ beginnen oder den Link kopieren und später erneut eingeben.</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5275,6 +5312,8 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
       <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
         <source>You can create a template from
 a room in the Room section</source>
+        <target state="translated">Sie können eine Vorlage aus einem Raum
+im Bereich Räume erstellen</target>
         <note/>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">

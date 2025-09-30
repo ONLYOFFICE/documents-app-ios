@@ -1000,6 +1000,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="" xml:space="preserve">
         <source/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="%@" xml:space="preserve">
@@ -1049,14 +1050,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$#@arg1@ and %2$#@arg2@ selected</source>
+        <target state="translated">%1$#@arg1@ 和 %2$#@arg2@ 已选定</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
+        <target state="translated">%1$lu 文件夹</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
+        <target state="translated">%2$lu 文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder selected|==|plural.other" xml:space="preserve">
@@ -1089,17 +1093,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">12小时</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;使用在&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;中创建的密码。&lt;/br&gt;更详细的连接说明可以在&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;帮助中心&lt;/a&gt;找到。&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;使用在&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;中创建的密码。&lt;/p&gt;&lt;p&gt;更详细的连接说明可以在&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;帮助中心&lt;/a&gt;找到。&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;您必须有播放器的付费版本才能使用这项服务。&lt;/p&gt;&lt;p&gt;如果您已经激活了双重认证，请从Infomaniak管理器中生成CDM应用程序。&lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;了解更多&lt;/a&gt;&lt;/p&gt;</target>
         <note/>
@@ -1123,6 +1127,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>A notification has already been sent to the user in the first
  role, prompting them to fill out the form. You can navigate
  to the room or share the filling link with the participants.</source>
+        <target state="translated">第一个角色的用户已收到填写表单的通知。您可以导航到房间，或与参与者分享填写链接。</target>
         <note/>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1410,6 +1415,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Assign to role" xml:space="preserve">
         <source>Assign to role</source>
+        <target state="translated">指定角色</target>
         <note/>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1863,7 +1869,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not resolve the file." xml:space="preserve">
         <source>Could not resolve the file.</source>
-        <target state="translated">无法解析文件</target>
+        <target state="translated">无法解析文件。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
@@ -2045,14 +2051,17 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
+        <target state="translated">删除 %1$#@arg1@ 和 %2$#@arg2@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
+        <target state="translated">%1$lu 文件夹</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
+        <target state="translated">%2$lu 文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder|==|plural.other" xml:space="preserve">
@@ -2409,6 +2418,8 @@ Operation completed</note>
       <trans-unit id="Exit without saving?&#10;You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving?
 You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">退出不保存？
+您已对索引进行了更改。如果继续退出，您的更改将不会被应用。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
@@ -2648,6 +2659,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form Finalized" xml:space="preserve">
         <source>Form Finalized</source>
+        <target state="translated">表单已完成</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
@@ -2657,6 +2669,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form is ready for filling in room" xml:space="preserve">
         <source>Form is ready for filling in room</source>
+        <target state="translated">表单已准备填写</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -2686,6 +2699,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="From templates" xml:space="preserve">
         <source>From templates</source>
+        <target state="translated">从模板</target>
         <note/>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2827,6 +2841,9 @@ You have made changes in the index. If you proceed without saving, those changes
         <source>In this panel you can monitor the completion of
  the form in which you participate or in which you
  are the organizer of completion</source>
+        <target state="translated">在此面板中，您可以监控
+您参与的或
+组织的表单完成情况</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
@@ -3124,7 +3141,7 @@ If current user name is not set</note>
         <target state="translated">成员</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
         <target state="translated">最小长度：8 | 允许的字符：字母（a-z, A-Z）、数字（0-9），特殊字符 （!"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}）</target>
         <note/>
@@ -3560,7 +3577,7 @@ Share status</note>
         <target state="translated">密码为空</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <target state="translated">密码必须包含：最小长度：8 允许的字符：字母（a-z, A-Z）、数字（0-9）、特殊字符（!"№%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}~）</target>
         <note/>
@@ -3651,6 +3668,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <target state="translated">请重试。
+
+如果问题仍然存在，请联系我们并提及此错误代码：Linkedin - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
@@ -3684,6 +3704,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Zoom - %@</source>
+        <target state="translated">请重试。
+
+如果问题仍然存在，请联系我们并提及此错误代码：Zoom - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -4619,18 +4642,22 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no guests" xml:space="preserve">
         <source>There are no guests</source>
+        <target state="translated">没有访客</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <target state="translated">没有可添加的访客</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
         <source>There are no users</source>
+        <target state="translated">没有用户</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users to add" xml:space="preserve">
         <source>There are no users to add</source>
+        <target state="translated">没有可添加的用户</target>
         <note/>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5161,6 +5188,9 @@ then accessed from any other device.</source>
         <source>You are assigned to fill out the form as the first role. A
  notification has been sent to your email. You can start filling
  it out now or copy the filling link and return later.</source>
+        <target state="translated">您被分配作为第一个角色填写表单。
+通知已发送到您的邮箱，您可以立即开始填写
+或复制填写链接稍后填写。</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5191,6 +5221,8 @@ then accessed from any other device.</source>
       <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
         <source>You can create a template from
 a room in the Room section</source>
+        <target state="translated">您可以在“房间”部分中创建
+房间模板</target>
         <note/>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">

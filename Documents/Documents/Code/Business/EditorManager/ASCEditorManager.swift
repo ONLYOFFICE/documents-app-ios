@@ -1632,19 +1632,18 @@ extension ASCEditorManager {
     }
 
     @MainActor
-    func fetchSharedUsers() async -> [(FullName, Email, UIImage?)] {
+    func fetchSharedUsers() async -> [[String: Any]] {
         guard let fileId = openedFile?.id else { return [] }
-        let endpoint = OnlyofficeAPI.Endpoints.Sharing.users(fileId: fileId, method: .get)
-        NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
         do {
-            guard let result = try await apiClient.request(endpoint: endpoint).result else {
-                return []
-            }
+            let response: OnlyofficeResponseArray<OnlyofficeSharedUser> = try await clientRequest(
+                OnlyofficeAPI.Endpoints.Sharing.users(fileId: fileId, method: .get)
+            )
+            guard let users = response.result else { return [] }
 
             let store = ImageStore()
 
             await withTaskGroup(of: Void.self) { group in
-                for user in result {
+                for user in users {
                     if let imageStr = user.image, let url = URL(string: imageStr) {
                         group.addTask {
                             let img = try? await UIImageView.kfImage(for: url)
@@ -1657,12 +1656,13 @@ extension ASCEditorManager {
 
             let images = await store.getAll()
 
-            return result.compactMap { user in
-                guard
-                    let name = user.name,
-                    let email = user.email
-                else { return nil }
-                return (name, email, user.image.flatMap { images[$0] ?? nil })
+            return users.compactMap { user in
+                guard let name = user.name, let email = user.email else { return nil }
+                return [
+                    "name": name,
+                    "email": email,
+                    "image": user.image.flatMap { images[$0] ?? nil },
+                ]
             }
         } catch {
             log.error(error)

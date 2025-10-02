@@ -1075,10 +1075,9 @@
 		FC41D80B2265DA8700A155C2 /* ASCFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFilterType.swift; sourceTree = "<group>"; };
 		FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileProviderType.swift; sourceTree = "<group>"; };
 		FC41FE6928C789020049F20F /* ASCConnectStorageWebDavControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavControllerConfiguration.swift; sourceTree = "<group>"; };
-		FC429392294A673300DC3932 /* kernel_network.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = kernel_network.xcframework; path = "../../editors-ios/build/SDK/lib/kernel_network.xcframework"; sourceTree = "<group>"; };
+		FC429392294A673300DC3932 /* kernel_network.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2WH24U26GJ:Ascensio System SIA"; lastKnownFileType = wrapper.xcframework; name = kernel_network.xcframework; path = "../../editors-ios/build/SDK/lib/kernel_network.xcframework"; sourceTree = "<group>"; };
 		FC429393294A673300DC3932 /* doctrenderer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = doctrenderer.xcframework; path = "../../editors-ios/build/SDK/lib/doctrenderer.xcframework"; sourceTree = "<group>"; };
 		FC429394294A673300DC3932 /* EpubFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = EpubFile.xcframework; path = "../../editors-ios/build/SDK/lib/EpubFile.xcframework"; sourceTree = "<group>"; };
-		FC429395294A673300DC3932 /* HtmlRenderer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HtmlRenderer.xcframework; path = "../../editors-ios/build/SDK/lib/HtmlRenderer.xcframework"; sourceTree = "<group>"; };
 		FC429396294A673300DC3932 /* kernel.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = kernel.xcframework; path = "../../editors-ios/build/SDK/lib/kernel.xcframework"; sourceTree = "<group>"; };
 		FC429397294A673300DC3932 /* DocxRenderer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DocxRenderer.xcframework; path = "../../editors-ios/build/SDK/lib/DocxRenderer.xcframework"; sourceTree = "<group>"; };
 		FC429398294A673300DC3932 /* UnicodeConverter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UnicodeConverter.xcframework; path = "../../editors-ios/build/SDK/lib/UnicodeConverter.xcframework"; sourceTree = "<group>"; };
@@ -1630,7 +1629,6 @@
 				FC42939B294A673300DC3932 /* Fb2File.xcframework */,
 				FC429399294A673300DC3932 /* graphics.xcframework */,
 				FC42939C294A673400DC3932 /* HtmlFile2.xcframework */,
-				FC429395294A673300DC3932 /* HtmlRenderer.xcframework */,
 				FC429392294A673300DC3932 /* kernel_network.xcframework */,
 				FC429396294A673300DC3932 /* kernel.xcframework */,
 				FC42939D294A673400DC3932 /* PdfFile.xcframework */,

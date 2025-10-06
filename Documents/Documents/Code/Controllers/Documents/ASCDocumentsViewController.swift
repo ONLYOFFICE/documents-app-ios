@@ -1211,6 +1211,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 localEmptyView?.type = .search
             } else {
                 if let folder, let provider {
+                    let hasPermission = provider.allowEdit(entity: folder)
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .trash {
                         localEmptyView?.type = .trash
                     } else if folder.rootFolderType == .roomTemplates {
@@ -1228,23 +1229,29 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     {
                         localEmptyView?.type = .formFillingRoomSubfolder
                     } else if folder.isRoom {
-                        if folder.roomType == .fillingForm, provider.allowEdit(entity: folder) {
-                            localEmptyView?.type = .formFillingRoom
-                        } else if folder.roomType == .virtualData, provider.allowEdit(entity: folder) {
-                            localEmptyView?.type = .virtualDataRoom
-                        } else {
-                            localEmptyView?.type = .room
-                            if !(provider.allowEdit(entity: folder)) {
-                                localEmptyView?.type = .docspaceNoPermissions
-                            }
+                        if folder.roomType == .fillingForm {
+                            localEmptyView?.type = hasPermission ? .formFillingRoom : .formFillingNoPermissions
+                        } else if folder.roomType == .virtualData {
+                            localEmptyView?.type = hasPermission ? .virtualDataRoom : .virtualDataRoomNoPermissions
+                        } else if folder.roomType == .public {
+                            localEmptyView?.type = hasPermission ? .publicRoom : .publicRoomNoPermissions
+                        } else if folder.roomType == .colobaration {
+                            localEmptyView?.type = hasPermission ? .collaborationRoom : .collaborationRoomNoPermissions
+                        } else if folder.roomType == .custom {
+                            localEmptyView?.type = hasPermission ? .customRoom : .customRoomNoPermissions
+                        } else if !(provider.allowEdit(entity: folder)) {
+                            localEmptyView?.type = .docspaceNoPermissions
                         }
                     } else if isDocRecently {
                         localEmptyView?.type = .recentlyAccessibleViaLink
                     } else {
                         localEmptyView?.type = .cloud
-
                         if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView?.type = .cloudNoPermissions
+                            if folder.rootFolderType == .virtualRooms  {
+                                localEmptyView?.type = .docspaceEmptyRooms
+                            } else {
+                                localEmptyView?.type = .cloudNoPermissions
+                            }
                         }
                     }
                 }

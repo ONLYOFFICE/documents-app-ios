@@ -151,71 +151,60 @@ class ASCDocumentsEmptyView: UIView {
             titleLabel?.text = NSLocalizedString("The trash is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("The deleted files go to the trash. You can either restore or delete them forever.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .cloudNoPermissions:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("You have read-only access to this folder. You cannot create files or folders here.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .docspaceNoPermissions:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("No docs here yet", comment: "")
             subtitleLabel?.text = NSLocalizedString("Files and folders uploaded by admins will appear here.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .search:
             centerYConstraint?.constant = -150
             imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No search result", comment: "")
             subtitleLabel?.text = NSLocalizedString("No results matching your search could be found. Please try another phrase.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .usersNotFound:
             centerYConstraint?.constant = -150
             imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No users found", comment: "")
             subtitleLabel?.text = NSLocalizedString("The list of users previously invited to DocSpace or separate rooms will appear here.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .guestsNotFound:
             centerYConstraint?.constant = -150
             imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No added guests yet", comment: "")
             subtitleLabel?.text = NSLocalizedString("New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .usersNotFoundForDocSpaceRoomOwner:
             centerYConstraint?.constant = -150
             imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No users found", comment: "")
             subtitleLabel?.text = NSLocalizedString("Only a room administrator or a DocSpace administrator can become the room owner.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .error:
             imageView?.image = Asset.Images.emptyCommonError.image
             titleLabel?.text = NSLocalizedString("Oops!", comment: "")
             subtitleLabel?.text = NSLocalizedString("An unexpected error has occurred. Please try again later. Sorry for inconvenience.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Try again", comment: ""), for: .normal)
-
         case .networkError:
             imageView?.image = Asset.Images.emptyNoConnection.image
             titleLabel?.text = NSLocalizedString("No connection", comment: "")
             subtitleLabel?.text = NSLocalizedString("No network connection can be found. Please check the connection and reload the page.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Reload", comment: ""), for: .normal)
-
         case .paymentRequired:
             imageView?.image = Asset.Images.bussinesSubscriptionExpired.image
             titleLabel?.text = NSLocalizedString("Business subscription expired", comment: "")
             subtitleLabel?.text = NSLocalizedString("Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Renew Business plan", comment: ""), for: .normal)
-
         case .docspaceArchive:
             imageView?.image = Asset.Images.noFindingArchive.image
             titleLabel.text = NSLocalizedString("No archived rooms here yet", comment: "")
             subtitleLabel.text = NSLocalizedString("You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.", comment: "")
             actionButton?.removeFromSuperview()
-
         case .recentlyAccessibleViaLink:
             imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("No files here yet", comment: "")
@@ -289,7 +278,7 @@ class ASCDocumentsEmptyView: UIView {
         case .docspaceEmptyRoomsNoPermissions:
             imageView.image = Asset.Images.emptyDocspace.image
             titleLabel.text = NSLocalizedString("There are no rooms here yet", comment: "")
-            subtitleLabel.text =  NSLocalizedString("The shared rooms will appear here.", comment: "")
+            subtitleLabel.text = NSLocalizedString("The shared rooms will appear here.", comment: "")
             actionButton?.removeFromSuperview()
         default:
             imageView?.image = Asset.Images.emptyFolder.image

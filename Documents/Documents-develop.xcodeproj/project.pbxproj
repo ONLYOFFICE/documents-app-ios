@@ -163,6 +163,7 @@
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
 		FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */; };
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
+		FC12DD5F2E95087E001481EE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = FC12DD5E2E95087E001481EE /* Lottie */; };
 		FC142A9828992D4F00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */; };
 		FC17218E2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
@@ -997,6 +998,7 @@
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
 		FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
+		FC12DD552E950793001481EE /* lottie-spm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "lottie-spm"; path = "/Users/ayuzhin/Library/Developer/Xcode/DerivedData/ONLYOFFICE-Documents-develop-enzbhirwbyzzexdispismiexsvfu/SourcePackages/checkouts/lottie-spm"; sourceTree = "<absolute>"; };
 		FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPaddingLabel.swift; sourceTree = "<group>"; };
 		FC17218D2DC505250026CB5A /* ASCVersionHistoryScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryScreenModel.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
@@ -1553,6 +1555,7 @@
 				FC4293B6294A684900DC3932 /* Fb2File.xcframework in Frameworks */,
 				FC5368FF24EB1C390092765B /* PresentationEditor.framework in Frameworks */,
 				FC4293C0294A684B00DC3932 /* kernel.xcframework in Frameworks */,
+				FC12DD5F2E95087E001481EE /* Lottie in Frameworks */,
 				FC4293C8294A685900DC3932 /* XpsFile.xcframework in Frameworks */,
 				FC4293AE294A683F00DC3932 /* DjVuFile.xcframework in Frameworks */,
 				FC5368FE24EB1C330092765B /* DocumentEditor.framework in Frameworks */,
@@ -1636,6 +1639,7 @@
 				FC42939A294A673300DC3932 /* x2t.xcframework */,
 				FC42939E294A673400DC3932 /* XpsFile.xcframework */,
 				B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */,
+				FC12DD552E950793001481EE /* lottie-spm */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3928,6 +3932,7 @@
 				FC2B7F222B4E86F90064DDDA /* ObservableSwift */,
 				FC2B7F252B4E87070064DDDA /* PasscodeLock */,
 				FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */,
+				FC12DD5E2E95087E001481EE /* Lottie */,
 			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents-dev.app */;
@@ -3983,6 +3988,7 @@
 				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
 				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
 				FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */,
+				FC12DD5D2E95087E001481EE /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -5452,6 +5458,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FC12DD5D2E95087E001481EE /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
 		FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -5463,6 +5477,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FC12DD5E2E95087E001481EE /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC12DD5D2E95087E001481EE /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		FC2B7F1F2B4E86EA0064DDDA /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;

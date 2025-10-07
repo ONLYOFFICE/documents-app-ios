@@ -1247,7 +1247,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     } else {
                         localEmptyView?.type = .cloud
                         if !(provider.allowEdit(entity: folder)) {
-                            if folder.rootFolderType == .virtualRooms  {
+                            if folder.rootFolderType == .virtualRooms {
                                 localEmptyView?.type = .docspaceEmptyRooms
                             } else {
                                 localEmptyView?.type = .cloudNoPermissions

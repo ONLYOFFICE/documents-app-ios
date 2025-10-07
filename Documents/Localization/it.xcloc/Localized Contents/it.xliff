@@ -998,10 +998,6 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
     </header>
     <body>
-      <trans-unit id="" xml:space="preserve">
-        <source/>
-        <note/>
-      </trans-unit>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
         <target state="translated">%@</target>
@@ -1142,17 +1138,17 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target state="translated">12 ore</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/br&gt;Istruzioni di connessione più dettagliate sono disponibili in &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Istruzioni di connessione più dettagliate sono disponibili nella &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Devi avere una versione a pagamento del lettore per utilizzare questo servizio.&lt;/p&gt;&lt;p&gt;Se hai attivato la doppia autenticazione, genera un'applicazione CDM dal gestore di Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Altro...&lt;/a&gt;&lt;/p&gt;</target>
         <note/>
@@ -2008,27 +2004,23 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target state="translated">Crea nuovi documenti, fogli di calcolo o presentazioni. Crea nuove cartelle per organizzare i tuoi file.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Create new files" xml:space="preserve">
-        <source>Create new files</source>
-        <target state="translated">Crea nuovi file</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
         <target state="translated">Crea un account gratuito</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
-        <source>Create new folders to 
-organize your files.</source>
-        <target state="translated">Crea nuove cartelle per 
-organizzare i tuoi file.</target>
+      <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
+        <source>Create or upload new files or folders to get started.</source>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target state="translated">Crea una stanza</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Create your first room to get started." xml:space="preserve">
+        <source>Create your first room to get started.</source>
+        <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2603,7 +2595,7 @@ Hai apportato modifiche all'indice. Se procedi senza salvare, tali modifiche non
         <note/>
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
+        <source>Faliure to open editor</source>
         <target state="translated">Impossibile aprire l'editor</target>
         <note/>
       </trans-unit>
@@ -2640,6 +2632,10 @@ Hai apportato modifiche all'indice. Se procedi senza salvare, tali modifiche non
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target state="translated">Anteprima dei file</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
+        <source>Files and folders created or uploaded by admins will show up here.</source>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3223,7 +3219,7 @@ If current user name is not set</note>
         <target state="translated">Membri</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
         <target state="translated">Lunghezza minima: 8 caratteri | Caratteri consentiti: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</target>
         <note/>
@@ -3418,9 +3414,8 @@ If current user name is not set</note>
         <target state="translated">Non ci sono ancora file qui</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No forms here yet " xml:space="preserve">
-        <source>No forms here yet </source>
-        <target state="translated">Nessun modulo qui ancora</target>
+      <trans-unit id="No forms here yet" xml:space="preserve">
+        <source>No forms here yet</source>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3629,6 +3624,10 @@ Share status</note>
         <target state="translated">Esempio di modulo PDF</target>
         <note>Default title of sample document</note>
       </trans-unit>
+      <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
+        <source>PDF forms uploaded by admins will show up here.</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
         <source>PDF-Documents</source>
         <target state="translated">Documenti PDF</target>
@@ -3659,7 +3658,7 @@ Share status</note>
         <target state="translated">La password è vuota</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <target state="translated">La password deve includere: Lunghezza minima: 8 caratteri Caratteri consentiti: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</target>
         <note/>
@@ -4089,11 +4088,6 @@ Se il problema persiste, contattaci e menziona questo codice di errore: Zoom - %
       <trans-unit id="Room created" xml:space="preserve">
         <source>Room created</source>
         <target state="translated">Stanza creata</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Room created!" xml:space="preserve">
-        <source>Room created!</source>
-        <target state="translated">Stanza creata!</target>
         <note/>
       </trans-unit>
       <trans-unit id="Room manager" xml:space="preserve">
@@ -4696,6 +4690,10 @@ con il filtro personalizzato abilitato
         <target state="translated">La richiesta è scaduta.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="The room is empty" xml:space="preserve">
+        <source>The room is empty</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
         <source>The server is not available.</source>
         <target state="translated">Il server non è disponibile.</target>
@@ -4704,6 +4702,10 @@ con il filtro personalizzato abilitato
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
         <target state="translated">L'impostazione sarà disponibile dopo l'autorizzazione su %@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="The shared rooms will appear here." xml:space="preserve">
+        <source>The shared rooms will appear here.</source>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4729,6 +4731,10 @@ con il filtro personalizzato abilitato
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
         <target state="translated">Non ci sono ospiti da aggiungere</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="There are no rooms here yet" xml:space="preserve">
+        <source>There are no rooms here yet</source>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -5181,14 +5187,29 @@ Swipe to learn more about the app.</source>
 Scorri per saperne di più.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
+        <source>Welcome to DocSpace!</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
+        <source>Welcome to the Collaboration room</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Custom room" xml:space="preserve">
+        <source>Welcome to the Custom room</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
         <target state="translated">Benvenuto nella stanza di compilazione dei moduli</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
-        <source>Welcome to the Virtual Data Room </source>
-        <target state="translated">Benvenuti nella Stanza di dati virtuale </target>
+      <trans-unit id="Welcome to the Public room" xml:space="preserve">
+        <source>Welcome to the Public room</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
+        <source>Welcome to the Virtual Data Room</source>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

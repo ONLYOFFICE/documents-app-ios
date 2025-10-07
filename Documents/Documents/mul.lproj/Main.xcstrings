@@ -2348,7 +2348,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choisir le cloud"
+            "value" : "Choisissez le cloud"
           }
         },
         "hy-AM" : {
@@ -2635,7 +2635,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et à d'autres pris en charge."
+            "value" : "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et autres services pris en charge."
           }
         },
         "hy-AM" : {

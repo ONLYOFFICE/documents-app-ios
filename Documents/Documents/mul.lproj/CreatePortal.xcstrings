@@ -908,7 +908,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Après l'enregistrement, un courriel avec vos données d'inscription au portail sera envoyé à votre adresse e-mail."
+            "value" : "Après l'inscription, un e-mail contenant vos informations d'inscription au portail vous sera envoyé à votre adresse e-mail."
           }
         },
         "hy-AM" : {

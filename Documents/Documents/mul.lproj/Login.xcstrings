@@ -992,7 +992,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Si l'utilisateur avec cet e-mail existe, l'instruction de changement de mot de passe a été envoyée à cette adresse e-mail."
+            "value" : "Si un utilisateur avec cette adresse e-mail existe, les instructions pour changer le mot de passe ont été envoyées à cette adresse e-mail."
           }
         },
         "hy-AM" : {
@@ -2546,7 +2546,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本人確認に使用できる電話番号を入力してください。"
+            "value" : "本人確認に使用できる電話番号を入力してください"
           }
         },
         "pt-BR" : {
@@ -3776,7 +3776,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suivant(e)"
+            "value" : "Suivant"
           }
         },
         "hy-AM" : {

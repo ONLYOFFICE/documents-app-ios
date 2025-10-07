@@ -998,11 +998,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
     </header>
     <body>
-      <trans-unit id="" xml:space="preserve">
-        <source/>
-        <target state="needs-translation"/>
-        <note/>
-      </trans-unit>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
         <target state="translated">%@</target>
@@ -1093,17 +1088,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">12小时</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;使用在&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;中创建的密码。&lt;/br&gt;更详细的连接说明可以在&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;帮助中心&lt;/a&gt;找到。&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;使用在&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;中创建的密码。&lt;/p&gt;&lt;p&gt;更详细的连接说明可以在&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;帮助中心&lt;/a&gt;找到。&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;您必须有播放器的付费版本才能使用这项服务。&lt;/p&gt;&lt;p&gt;如果您已经激活了双重认证，请从Infomaniak管理器中生成CDM应用程序。&lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;了解更多&lt;/a&gt;&lt;/p&gt;</target>
         <note/>
@@ -1957,26 +1952,23 @@ others which use WebDAV protocol.</source>
         <target state="translated">创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Create new files" xml:space="preserve">
-        <source>Create new files</source>
-        <target state="translated">创建新文件</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
         <target state="translated">创建新文件夹</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
-        <source>Create new folders to 
-organize your files.</source>
-        <target state="translated">创建新文件夹以组织您的文件。</target>
+      <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
+        <source>Create or upload new files or folders to get started.</source>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target state="translated">创建房间</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Create your first room to get started." xml:space="preserve">
+        <source>Create your first room to get started.</source>
+        <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2528,7 +2520,7 @@ You have made changes in the index. If you proceed without saving, those changes
         <note/>
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
+        <source>Faliure to open editor</source>
         <target state="translated">无法打开编辑器</target>
         <note/>
       </trans-unit>
@@ -2565,6 +2557,10 @@ You have made changes in the index. If you proceed without saving, those changes
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target state="translated">文件预览</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
+        <source>Files and folders created or uploaded by admins will show up here.</source>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3141,7 +3137,7 @@ If current user name is not set</note>
         <target state="translated">成员</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
         <target state="translated">最小长度：8 | 允许的字符：字母（a-z, A-Z）、数字（0-9），特殊字符 （!"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}）</target>
         <note/>
@@ -3336,9 +3332,8 @@ If current user name is not set</note>
         <target state="translated">此处还没有文件</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No forms here yet " xml:space="preserve">
-        <source>No forms here yet </source>
-        <target state="translated">暂无表单</target>
+      <trans-unit id="No forms here yet" xml:space="preserve">
+        <source>No forms here yet</source>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3547,6 +3542,10 @@ Share status</note>
         <target state="translated">PDF 表单示例</target>
         <note>Default title of sample document</note>
       </trans-unit>
+      <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
+        <source>PDF forms uploaded by admins will show up here.</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
         <source>PDF-Documents</source>
         <target state="translated">PDF 文档</target>
@@ -3577,7 +3576,7 @@ Share status</note>
         <target state="translated">密码为空</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <target state="translated">密码必须包含：最小长度：8 允许的字符：字母（a-z, A-Z）、数字（0-9）、特殊字符（!"№%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}~）</target>
         <note/>
@@ -4007,11 +4006,6 @@ Share status</note>
       <trans-unit id="Room created" xml:space="preserve">
         <source>Room created</source>
         <target state="translated">房间已创建</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Room created!" xml:space="preserve">
-        <source>Room created!</source>
-        <target state="translated">房间已创建！</target>
         <note/>
       </trans-unit>
       <trans-unit id="Room manager" xml:space="preserve">
@@ -4615,6 +4609,10 @@ clipboard.</source>
         <target state="translated">请求已超时。</target>
         <note/>
       </trans-unit>
+      <trans-unit id="The room is empty" xml:space="preserve">
+        <source>The room is empty</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
         <source>The server is not available.</source>
         <target state="translated">服务器不可用。</target>
@@ -4623,6 +4621,10 @@ clipboard.</source>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
         <target state="translated">該設定將在%@上授權後可用。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="The shared rooms will appear here." xml:space="preserve">
+        <source>The shared rooms will appear here.</source>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4648,6 +4650,10 @@ clipboard.</source>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
         <target state="translated">没有可添加的访客</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="There are no rooms here yet" xml:space="preserve">
+        <source>There are no rooms here yet</source>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -5100,14 +5106,29 @@ Swipe to learn more about the app.</source>
 轻扫以了解更多关于该应用程序的信息。</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
+        <source>Welcome to DocSpace!</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
+        <source>Welcome to the Collaboration room</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Custom room" xml:space="preserve">
+        <source>Welcome to the Custom room</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
         <target state="translated">欢迎来到表单填写房间</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
-        <source>Welcome to the Virtual Data Room </source>
-        <target state="translated">欢迎使用虚拟数据房间</target>
+      <trans-unit id="Welcome to the Public room" xml:space="preserve">
+        <source>Welcome to the Public room</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
+        <source>Welcome to the Virtual Data Room</source>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

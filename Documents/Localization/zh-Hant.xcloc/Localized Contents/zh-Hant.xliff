@@ -998,10 +998,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
     </header>
     <body>
-      <trans-unit id="" xml:space="preserve">
-        <source/>
-        <note/>
-      </trans-unit>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
         <note/>
@@ -1048,14 +1044,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$#@arg1@ and %2$#@arg2@ selected</source>
+        <target state="new">%1$#@arg1@ and %2$#@arg2@ selected</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
+        <target state="new">%1$lu Folders</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
+        <target state="new">%2$lu Files</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder selected|==|plural.other" xml:space="preserve">
@@ -1936,26 +1935,23 @@ Nextcloud、ownCloud、Dropbox
         <target state="translated">创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Create new files" xml:space="preserve">
-        <source>Create new files</source>
-        <target state="translated">建立新檔案</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Create new folder" xml:space="preserve">
         <source>Create new folder</source>
         <target state="translated">建立新資料夾</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Create new folders to &#10;organize your files." xml:space="preserve">
-        <source>Create new folders to 
-organize your files.</source>
-        <target state="translated">建立新文件夾來管理您的檔案。</target>
+      <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
+        <source>Create or upload new files or folders to get started.</source>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
         <target state="translated">建立房間</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Create your first room to get started." xml:space="preserve">
+        <source>Create your first room to get started.</source>
+        <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
@@ -2025,14 +2021,17 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
+        <target state="new">Delete %1$#@arg1@ and %2$#@arg2@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
+        <target state="new">%1$lu Folders</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
+        <target state="new">%2$lu Files</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder|==|plural.other" xml:space="preserve">
@@ -2482,7 +2481,7 @@ You have made changes in the index. If you proceed without saving, those changes
         <note/>
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
-        <source>Falure to open editor</source>
+        <source>Faliure to open editor</source>
         <note/>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2518,6 +2517,10 @@ You have made changes in the index. If you proceed without saving, those changes
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
         <target state="translated">文件预览</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
+        <source>Files and folders created or uploaded by admins will show up here.</source>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3268,9 +3271,8 @@ If current user name is not set</note>
         <target state="translated">此處尚無檔案</target>
         <note/>
       </trans-unit>
-      <trans-unit id="No forms here yet " xml:space="preserve">
-        <source>No forms here yet </source>
-        <target state="translated">此處尚無任何表單</target>
+      <trans-unit id="No forms here yet" xml:space="preserve">
+        <source>No forms here yet</source>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3474,6 +3476,10 @@ Share status</note>
         <source>PDF Form Sample</source>
         <target state="translated">PDF表單範本</target>
         <note>Default title of sample document</note>
+      </trans-unit>
+      <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
+        <source>PDF forms uploaded by admins will show up here.</source>
+        <note/>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
         <source>PDF-Documents</source>
@@ -3920,11 +3926,6 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Room created" xml:space="preserve">
         <source>Room created</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Room created!" xml:space="preserve">
-        <source>Room created!</source>
-        <target state="translated">房間已建立！</target>
         <note/>
       </trans-unit>
       <trans-unit id="Room manager" xml:space="preserve">
@@ -4507,6 +4508,10 @@ clipboard.</source>
         <target state="translated">请求已超时。</target>
         <note/>
       </trans-unit>
+      <trans-unit id="The room is empty" xml:space="preserve">
+        <source>The room is empty</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
         <source>The server is not available.</source>
         <target state="translated">服务器不可用。</target>
@@ -4515,6 +4520,10 @@ clipboard.</source>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
         <target state="translated">該設定將在%@上授權後可用。</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="The shared rooms will appear here." xml:space="preserve">
+        <source>The shared rooms will appear here.</source>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4538,6 +4547,10 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="There are no rooms here yet" xml:space="preserve">
+        <source>There are no rooms here yet</source>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -4983,13 +4996,29 @@ Swipe to learn more about the app.</source>
 轻扫以了解更多关于该应用程序的信息。</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
+      <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
+        <source>Welcome to DocSpace!</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
+        <source>Welcome to the Collaboration room</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Custom room" xml:space="preserve">
+        <source>Welcome to the Custom room</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
         <source>Welcome to the Form filling room </source>
         <target state="translated">歡迎來到表格填寫房間</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Welcome to the Virtual Data Room " xml:space="preserve">
-        <source>Welcome to the Virtual Data Room </source>
+      <trans-unit id="Welcome to the Public room" xml:space="preserve">
+        <source>Welcome to the Public room</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
+        <source>Welcome to the Virtual Data Room</source>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

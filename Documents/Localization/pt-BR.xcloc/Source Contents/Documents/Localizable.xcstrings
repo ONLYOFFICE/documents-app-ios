@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "(%@)" : {
 
     },
@@ -707,17 +704,17 @@
     "Create new documents, spreadsheets or presentations. Create new folders to organize your files." : {
 
     },
-    "Create new files" : {
-
-    },
     "Create new folder" : {
 
     },
-    "Create new folders to \norganize your files." : {
+    "Create or upload new files or folders to get started." : {
 
     },
     "Create room" : {
       "comment" : "Button title"
+    },
+    "Create your first room to get started." : {
+
     },
     "Creating" : {
       "comment" : "Caption of the process"
@@ -1135,7 +1132,15 @@
 
     },
     "Falure to open editor" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faliure to open editor"
+          }
+        }
+      }
     },
     "Favorites" : {
       "comment" : "Category title"
@@ -1156,6 +1161,9 @@
 
     },
     "Files" : {
+
+    },
+    "Files and folders created or uploaded by admins will show up here." : {
 
     },
     "Files and folders uploaded by admins will appear here." : {
@@ -1626,7 +1634,7 @@
     "No files here yet" : {
 
     },
-    "No forms here yet " : {
+    "No forms here yet" : {
 
     },
     "No information about the user profile." : {
@@ -1787,6 +1795,9 @@
     },
     "PDF Form Sample" : {
       "comment" : "Default title of sample document"
+    },
+    "PDF forms uploaded by admins will show up here." : {
+
     },
     "PDF-Documents" : {
 
@@ -2035,9 +2046,6 @@
 
     },
     "Room created" : {
-
-    },
-    "Room created!" : {
 
     },
     "Room manager" : {
@@ -2394,10 +2402,16 @@
     "The request timed out." : {
 
     },
+    "The room is empty" : {
+
+    },
     "The server is not available." : {
 
     },
     "The setting will be available upon authorization on the %@." : {
+
+    },
+    "The shared rooms will appear here." : {
 
     },
     "The trash is empty" : {
@@ -2413,6 +2427,9 @@
 
     },
     "There are no guests to add" : {
+
+    },
+    "There are no rooms here yet" : {
 
     },
     "There are no users" : {
@@ -2679,10 +2696,22 @@
     "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." : {
       "comment" : "Introduction Step One - Description"
     },
+    "Welcome to DocSpace!" : {
+
+    },
+    "Welcome to the Collaboration room" : {
+
+    },
+    "Welcome to the Custom room" : {
+
+    },
     "Welcome to the Form filling room " : {
 
     },
-    "Welcome to the Virtual Data Room " : {
+    "Welcome to the Public room" : {
+
+    },
+    "Welcome to the Virtual Data Room" : {
 
     },
     "What's New" : {

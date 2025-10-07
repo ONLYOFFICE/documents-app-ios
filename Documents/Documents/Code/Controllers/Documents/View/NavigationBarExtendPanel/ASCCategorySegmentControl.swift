@@ -65,6 +65,7 @@ final class ASCCategorySegmentControl: UIScrollView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
         shadowLineLayer.frame = CGRect(
             origin: CGPoint(x: -1000, y: frame.height - 1),
             size: CGSize(width: 2000, height: 1.0 / UIScreen.main.scale)
@@ -126,6 +127,8 @@ final class ASCCategorySegmentControl: UIScrollView {
         guard
             let selectedButton = stackView.arrangedSubviews.first(where: { $0.tag == selectIndex }) as? UIButton
         else { return }
+
+        stackView.layoutIfNeeded()
 
         underlineView.frame = CGRect(
             origin: CGPoint(x: selectedButton.frame.minX + stackView.spacing - 4, y: selectedButton.frame.maxY - 4),

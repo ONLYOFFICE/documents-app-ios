@@ -18093,6 +18093,7 @@
       }
     },
     "Create new files" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
@@ -18257,6 +18258,7 @@
       }
     },
     "Create new folders to \norganize your files." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
@@ -18337,6 +18339,9 @@
           }
         }
       }
+    },
+    "Create or upload new files or folders to get started." : {
+
     },
     "Create room" : {
       "comment" : "Button title",
@@ -18426,6 +18431,9 @@
           }
         }
       }
+    },
+    "Create your first room to get started." : {
+
     },
     "Creating" : {
       "comment" : "Caption of the process",
@@ -28254,6 +28262,9 @@
           }
         }
       }
+    },
+    "Files and folders created or uploaded by admins will show up here." : {
+
     },
     "Files and folders uploaded by admins will appear here." : {
       "localizations" : {
@@ -40617,7 +40628,11 @@
         }
       }
     },
+    "No forms here yet" : {
+
+    },
     "No forms here yet " : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
@@ -45143,6 +45158,9 @@
           }
         }
       }
+    },
+    "PDF forms uploaded by admins will show up here." : {
+
     },
     "PDF-Documents" : {
       "localizations" : {
@@ -51606,6 +51624,7 @@
       }
     },
     "Room created!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
@@ -61110,6 +61129,9 @@
         }
       }
     },
+    "The room is empty" : {
+
+    },
     "The server is not available." : {
       "localizations" : {
         "ar-SA" : {
@@ -61285,6 +61307,9 @@
           }
         }
       }
+    },
+    "The shared rooms will appear here." : {
+
     },
     "The trash is empty" : {
       "localizations" : {
@@ -61554,6 +61579,9 @@
 
     },
     "There are no guests to add" : {
+
+    },
+    "There are no rooms here yet" : {
 
     },
     "There are no users" : {
@@ -68730,6 +68758,15 @@
         }
       }
     },
+    "Welcome to DocSpace!" : {
+
+    },
+    "Welcome to the Collaboration room" : {
+
+    },
+    "Welcome to the Custom room" : {
+
+    },
     "Welcome to the Form filling room " : {
       "localizations" : {
         "ar-SA" : {
@@ -68812,7 +68849,14 @@
         }
       }
     },
+    "Welcome to the Public room" : {
+
+    },
+    "Welcome to the Virtual Data Room" : {
+
+    },
     "Welcome to the Virtual Data Room " : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {

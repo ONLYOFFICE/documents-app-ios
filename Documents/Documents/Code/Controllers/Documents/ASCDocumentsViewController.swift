@@ -643,7 +643,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
                 if isDocument || isSpreadsheet || isPresentation || isForm {
-                    provider.open(file: file, openMode: .create, canEdit: true)
+                    provider.open(file: file, openMode: isForm ? .fillform : .create, canEdit: true)
                 }
             }
         } else if let folder = entity as? ASCFolder {

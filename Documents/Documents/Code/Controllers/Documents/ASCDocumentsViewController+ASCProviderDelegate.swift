@@ -112,10 +112,15 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         self.updateNavBar()
 
                         let updateIndexPath = IndexPath(row: 0, section: 0)
-                        self.collectionView.scrollToItem(at: updateIndexPath, at: .centeredVertically, animated: true)
+                        let hasSection = self.collectionView.numberOfSections > updateIndexPath.section
+                        let hasItem = hasSection && self.collectionView.numberOfItems(inSection: updateIndexPath.section) > updateIndexPath.item
+                        guard hasItem else { return }
 
-                        if let updatedCell = self.collectionView.cellForItem(at: updateIndexPath) {
-                            self.highlight(cell: updatedCell)
+                        DispatchQueue.main.async {
+                            self.collectionView.scrollToItem(at: updateIndexPath, at: .centeredVertically, animated: true)
+                            if let updatedCell = self.collectionView.cellForItem(at: updateIndexPath) {
+                                self.highlight(cell: updatedCell)
+                            }
                         }
                     }
                 }

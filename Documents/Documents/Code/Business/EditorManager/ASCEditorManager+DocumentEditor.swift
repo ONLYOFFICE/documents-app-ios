@@ -197,6 +197,7 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
                                 controller.dismiss(animated: false)
                             }
                             if screenResult == .fill, form.formFillingStatus == .yourTurn {
+                                controller.dismiss(animated: false)
                                 documentController.openFormInFillingModeWithCheckingVersion(file: form)
                             }
                         }

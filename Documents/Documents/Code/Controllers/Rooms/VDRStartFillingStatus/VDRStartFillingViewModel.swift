@@ -56,7 +56,7 @@ final class VDRStartFillingViewModel: ObservableObject {
                 if let fileInfo = try await OnlyofficeApiClient.request(
                     OnlyofficeAPI.Endpoints.Files.info(file: dataModel.form)
                 )?.result {
-                    dataModel.form.update(with: fileInfo)
+                    dataModel.form.update(with: fileInfo, ignore: [\.parent])
                 }
 
                 if isSuccessStartStatus {

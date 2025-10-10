@@ -204,37 +204,42 @@ enum FormFillingStatus: Int, Codable {
 }
 
 extension ASCFile {
-    func update(with file: ASCFile) {
-        self.extension = file.extension
-        access = file.access
-        canShare = file.canShare
-        comment = file.comment
-        created = file.created
-        createdBy = file.createdBy
-        customFilterEnabled = file.customFilterEnabled
-        denyDownload = file.denyDownload
-        device = file.device
-        displayContentLength = file.displayContentLength
-        editable = file.editable
-        expired = file.expired
-        fileStatus = file.fileStatus
-        formFillingStatus = file.formFillingStatus
-        isForm = file.isForm
-        openVersionMode = file.openVersionMode
-        order = file.order
-        parent = file.parent
-        pureContentLength = file.pureContentLength
-        requestToken = file.requestToken
-        rootFolderType = file.rootFolderType
-        security = file.security
-        shared = file.shared
-        thumbnailStatus = file.thumbnailStatus
-        thumbnailUrl = file.thumbnailUrl
-        title = file.title
-        updated = file.updated
-        updatedBy = file.updatedBy
-        version = file.version
-        viewUrl = file.viewUrl
-        webUrl = file.webUrl
+    func update(with file: ASCFile, ignore ignoredKeys: [PartialKeyPath<ASCFile>] = []) {
+        // helper function
+        func shouldUpdate<Value>(_ keyPath: KeyPath<ASCFile, Value>) -> Bool {
+            !ignoredKeys.contains(where: { $0 == keyPath })
+        }
+
+        if shouldUpdate(\.extension) { self.extension = file.extension }
+        if shouldUpdate(\.access) { access = file.access }
+        if shouldUpdate(\.canShare) { canShare = file.canShare }
+        if shouldUpdate(\.comment) { comment = file.comment }
+        if shouldUpdate(\.created) { created = file.created }
+        if shouldUpdate(\.createdBy) { createdBy = file.createdBy }
+        if shouldUpdate(\.customFilterEnabled) { customFilterEnabled = file.customFilterEnabled }
+        if shouldUpdate(\.denyDownload) { denyDownload = file.denyDownload }
+        if shouldUpdate(\.device) { device = file.device }
+        if shouldUpdate(\.displayContentLength) { displayContentLength = file.displayContentLength }
+        if shouldUpdate(\.editable) { editable = file.editable }
+        if shouldUpdate(\.expired) { expired = file.expired }
+        if shouldUpdate(\.fileStatus) { fileStatus = file.fileStatus }
+        if shouldUpdate(\.formFillingStatus) { formFillingStatus = file.formFillingStatus }
+        if shouldUpdate(\.isForm) { isForm = file.isForm }
+        if shouldUpdate(\.openVersionMode) { openVersionMode = file.openVersionMode }
+        if shouldUpdate(\.order) { order = file.order }
+        if shouldUpdate(\.parent) { parent = file.parent }
+        if shouldUpdate(\.pureContentLength) { pureContentLength = file.pureContentLength }
+        if shouldUpdate(\.requestToken) { requestToken = file.requestToken }
+        if shouldUpdate(\.rootFolderType) { rootFolderType = file.rootFolderType }
+        if shouldUpdate(\.security) { security = file.security }
+        if shouldUpdate(\.shared) { shared = file.shared }
+        if shouldUpdate(\.thumbnailStatus) { thumbnailStatus = file.thumbnailStatus }
+        if shouldUpdate(\.thumbnailUrl) { thumbnailUrl = file.thumbnailUrl }
+        if shouldUpdate(\.title) { title = file.title }
+        if shouldUpdate(\.updated) { updated = file.updated }
+        if shouldUpdate(\.updatedBy) { updatedBy = file.updatedBy }
+        if shouldUpdate(\.version) { version = file.version }
+        if shouldUpdate(\.viewUrl) { viewUrl = file.viewUrl }
+        if shouldUpdate(\.webUrl) { webUrl = file.webUrl }
     }
 }

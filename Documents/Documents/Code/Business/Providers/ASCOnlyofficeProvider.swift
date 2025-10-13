@@ -93,7 +93,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     init() {
         reset()
-        apiClient.reset()
+
+        if externalApiClient == nil {
+            apiClient.reset()
+        }
     }
 
     init(baseUrl: String, token: String) {
@@ -103,8 +106,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         reset()
 
-        apiClient.baseURL = URL(string: baseUrl)
-        apiClient.token = token
+        if externalApiClient == nil {
+            apiClient.baseURL = URL(string: baseUrl)
+            apiClient.token = token
+        }
     }
 
     init(apiClient: OnlyofficeApiClient) {
@@ -152,10 +157,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func copy() -> ASCFileProviderProtocol {
-        let baseUrl = apiClient.baseURL?.absoluteString ?? ""
-        let token = apiClient.token ?? ""
+        let copy: ASCOnlyofficeProvider
 
-        let copy = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+        if let externalApiClient = externalApiClient {
+            copy = ASCOnlyofficeProvider(apiClient: externalApiClient)
+        } else {
+            let baseUrl = apiClient.baseURL?.absoluteString ?? ""
+            let token = apiClient.token ?? ""
+            copy = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+        }
 
         copy.items = items
         copy.page = page
@@ -219,18 +229,20 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 user = ASCUser(JSON: userJson)
             }
 
-            if let capabilitiesJson = json["capabilities"] as? [String: Any] {
-                apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
-            }
+            if externalApiClient == nil {
+                if let capabilitiesJson = json["capabilities"] as? [String: Any] {
+                    apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
+                }
 
-            if let versions = json["serverVersion"] as? [String: Any] {
-                apiClient.serverVersion = OnlyofficeVersion(JSON: versions)
-            }
-            let dateTransform = ASCDateTransform()
+                if let versions = json["serverVersion"] as? [String: Any] {
+                    apiClient.serverVersion = OnlyofficeVersion(JSON: versions)
+                }
+                let dateTransform = ASCDateTransform()
 
-            apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
-            apiClient.token = json["token"] as? String
-            apiClient.expires = dateTransform.transformFromJSON(json["expires"])
+                apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
+                apiClient.token = json["token"] as? String
+                apiClient.expires = dateTransform.transformFromJSON(json["expires"])
+            }
         }
     }
 

@@ -228,11 +228,12 @@ class ASCViewControllerManager {
                     // Import and open file
                     routeOpenLocalFile(info: info)
                 }
-                openFileInfo = nil
             } else {
                 // Portal
                 routeOpenPortalEntity(info: info)
             }
+
+            openFileInfo = nil
         }
     }
 
@@ -694,7 +695,7 @@ class ASCViewControllerManager {
         let isPdf = file.extension?.contains(ASCConstants.FileExtensions.pdf) ?? false
 
         let client = NetworkingClient()
-        client.configure(url: portal)
+        client.configure(url: portal, token: requestToken)
         client.headers.add(name: "Request-Token", value: requestToken)
 
         if let authorization = OnlyofficeApiClient.shared.token, OnlyofficeApiClient.shared.baseURL?.absoluteString.contains(portal) ?? false {

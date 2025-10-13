@@ -1619,10 +1619,19 @@ extension ASCEditorManager {
 
                 group.enter()
 
-                UIImageView.kfImage(for: url) { image in
-                    result[id] = image
-                    group.leave()
-                }
+                let imageView = UIImageView()
+                imageView.image = Asset.Images.avatarDefault.image
+
+                imageView.kf.apiSetImage(
+                    with: url,
+                    placeholder: Asset.Images.avatarDefault.image,
+                    completionHandler: { kfResult in
+                        if case let .success(value) = kfResult {
+                            result[id] = value.image
+                        }
+                        group.leave()
+                    }
+                )
             }
 
             group.notify(queue: .main) {
@@ -1642,11 +1651,11 @@ extension ASCEditorManager {
 
             let store = ImageStore()
 
-            await withTaskGroup(of: Void.self) { group in
+            await withTaskGroup(of: Void.self) { [provider] group in
                 for user in users {
                     if let imageStr = user.image, let url = URL(string: imageStr) {
                         group.addTask {
-                            let img = try? await UIImageView.kfImage(for: url)
+                            let img = try? await UIImageView.kfImage(for: url, provider: provider)
                             await store.set(imageStr, img)
                         }
                     }

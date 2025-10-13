@@ -1,6 +1,6 @@
 //
 //  OnlyofficeSharedUser.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Pavel Chernyshev on 29.09.2025.
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.

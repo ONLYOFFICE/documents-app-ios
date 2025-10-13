@@ -80,7 +80,7 @@ private extension ASCStartFillingAssignToRoleViewModel {
         do {
             return try await OnlyofficeApiClient.request(
                 OnlyofficeAPI.Endpoints.People.room(roomId: room.id),
-                PeopleGuestsRequestModel().dictionary
+                PeopleGuestsRequestModel(includeShared: true).dictionary
             )?.result ?? []
         } catch {
             log.error(error)

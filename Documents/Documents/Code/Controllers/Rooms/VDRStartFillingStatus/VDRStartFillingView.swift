@@ -69,6 +69,7 @@ struct VDRStartFillingView: View {
             .navigateToChooseMembers(isActive: $viewModel.state.isChooseFromListScreenDisplaying, viewModel: viewModel)
             .navigateToFillingStatus(isActive: $viewModel.state.isFillingStatusScreenDisplaying, viewModel: viewModel)
         }
+        .stackNavigationStyleForDevice()
         .onChange(of: viewModel.state.finishWithFill) { value in
             if value {
                 onDismiss(.success(.fill))
@@ -125,7 +126,7 @@ struct VDRStartFillingView: View {
                 .padding(.vertical, 16)
                 .padding(.horizontal)
         }
-        .background(Color.secondarySystemGroupedBackground.ignoresSafeArea(edges: .bottom))
+        .background(Color.secondarySystemGroupedBackground.ignoresSafeArea(edges: [.horizontal, .bottom]))
     }
 }
 
@@ -228,6 +229,17 @@ private extension View {
                 onGoToRoomTapped: viewModel.onGoToRoomTapped
             )
         })
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func stackNavigationStyleForDevice() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            navigationViewStyle(StackNavigationViewStyle())
+        } else {
+            self
+        }
     }
 }
 

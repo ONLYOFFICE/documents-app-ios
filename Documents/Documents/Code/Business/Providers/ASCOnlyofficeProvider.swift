@@ -2454,7 +2454,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     func segmentCategory(of folder: ASCFolder) -> [ASCSegmentCategory] {
         guard
             let docspaceVersion = apiClient.serverVersion?.docSpace,
-            docspaceVersion.isVersion(greaterThanOrEqualTo: "2.5.1")
+            docspaceVersion.isVersion(greaterThanOrEqualTo: "2.5.1"),
+            docspaceVersion.isVersion(lessThan: "3.5.0")
         else { return [] }
 
         if folder.isRoot, folder.rootFolderType == .user {

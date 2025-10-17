@@ -2394,34 +2394,31 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func copySharedLink(file: ASCFile) {
-        let hud = MBProgressHUD.showTopMost()
-        let successMessage = file.customFilterEnabled
-            ? NSLocalizedString("The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard.", comment: "Button title")
-            : NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
+        Task { @MainActor in
+            let hud = MBProgressHUD.showTopMost()
+            let successMessage = file.customFilterEnabled
+                ? NSLocalizedString("The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard.", comment: "Button title")
+                : NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
 
-        let handleResult: (Result<String, Error>) -> Void = { result in
-            switch result {
-            case let .success(link):
+            do {
+                let link = if let provider = provider as? ASCOnlyofficeProvider {
+                    try await provider.generalFileLink(file: file)
+                } else {
+                    try await NetworkManagerSharedSettings().createAndCopy(
+                        file: file,
+                        requestModel: CreateAndCopyLinkRequestModel(
+                            access: ASCShareAccess.read.rawValue,
+                            expirationDate: nil,
+                            isInternal: false
+                        )
+                    ).sharedTo.shareLink
+                }
                 UIPasteboard.general.string = link
                 hud?.setState(result: .success(successMessage))
-            case let .failure(error):
+            } catch {
                 hud?.setState(result: .failure(error.localizedDescription))
             }
             hud?.hide(animated: true, afterDelay: .standardDelay)
-        }
-
-        if let provider = provider as? ASCOnlyofficeProvider {
-            Task {
-                let result = await provider.generalFileLink(file: file)
-                await MainActor.run {
-                    handleResult(result)
-                }
-            }
-        } else {
-            let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
-            NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
-                handleResult(result.map { $0.sharedTo.shareLink })
-            }
         }
     }
 

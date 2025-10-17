@@ -220,7 +220,9 @@ private extension View {
         navigation(isActive: isActive, destination: {
             VDRFillingStatusView(
                 viewModel: VDRFillingStatusViewModel(
-                    service: VDRFillingStatusService(),
+                    service: VDRFillingStatusService(
+                        sharedService: NetworkManagerSharedSettings()
+                    ),
                     isOpenAfterStartFilling: true,
                     file: viewModel.dataModel.form,
                     onStoppedSuccess: {}

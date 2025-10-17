@@ -23,7 +23,9 @@ class VDRFillingStatusUIHostingController: UIHostingController<VDRFillingStatusV
         onStoppedSuccess: @escaping () -> Void,
         onFillTapped: @escaping () -> Void
     ) {
-        let service = VDRFillingStatusService()
+        let service = VDRFillingStatusService(
+            sharedService: NetworkManagerSharedSettings()
+        )
         let viewModel = VDRFillingStatusViewModel(
             service: service,
             file: file,

@@ -6,10 +6,18 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-import MBProgressHUD
-
 actor VDRFillingStatusService {
-    private let networkService = OnlyofficeApiClient.shared
+    // MARK: Dependencies
+
+    let sharedService: NetworkManagerSharedSettingsProtocol
+
+    // MARK: Init
+
+    init(sharedService: NetworkManagerSharedSettingsProtocol) {
+        self.sharedService = sharedService
+    }
+
+    // MARK: Public funcs
 
     func fetchStatus(file: ASCFile) async throws -> [VDRFillingStatusResponceModel]? {
         try await OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.getFillingStatus(file: file))?.result
@@ -37,18 +45,15 @@ actor VDRFillingStatusService {
 
     func startFilling() async throws {}
 
-    @MainActor
-    func copyLink(file: ASCFile) {
-        let hud = MBProgressHUD.showTopMost()
-        if let urlString = file.viewUrl,
-           let link = URL(string: urlString)
-        {
-            UIPasteboard.general.string = link.absoluteString
-            hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")))
-        } else {
-            hud?.setState(result: .failure(nil))
-        }
-        hud?.hide(animated: true, afterDelay: .standardDelay)
+    func copyLink(file: ASCFile) async -> String? {
+        try? await sharedService.createAndCopy(
+            file: file,
+            requestModel: CreateAndCopyLinkRequestModel(
+                access: ASCShareAccess.editing.rawValue,
+                expirationDate: nil,
+                isInternal: false
+            )
+        ).sharedTo.shareLink
     }
 }
 

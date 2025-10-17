@@ -6,6 +6,7 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import SwiftUI
 
 // MARK: - Screen model
@@ -44,7 +45,7 @@ final class VDRFillingStatusViewModel: ObservableObject {
     private let onStoppedSuccess: () -> Void
 
     init(
-        service: VDRFillingStatusService = .init(),
+        service: VDRFillingStatusService,
         isOpenAfterStartFilling: Bool = false,
         file: ASCFile,
         onStoppedSuccess: @escaping () -> Void
@@ -69,7 +70,7 @@ final class VDRFillingStatusViewModel: ObservableObject {
             status: file.formFillingStatus,
             onLinkAction: { [weak self] in
                 guard let self else { return }
-                self.service.copyLink(file: self.file)
+                self.onCopyLink()
             }
         )
     }
@@ -116,7 +117,19 @@ final class VDRFillingStatusViewModel: ObservableObject {
     }
 
     func onCopyLink() {
-        service.copyLink(file: file)
+        Task { @MainActor in
+            let hud = MBProgressHUD.showTopMost()
+
+            if let urlString = await service.copyLink(file: file),
+               let link = URL(string: urlString)
+            {
+                UIPasteboard.general.string = link.absoluteString
+                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")))
+            } else {
+                hud?.setState(result: .failure(nil))
+            }
+            hud?.hide(animated: true, afterDelay: .standardDelay)
+        }
     }
 }
 

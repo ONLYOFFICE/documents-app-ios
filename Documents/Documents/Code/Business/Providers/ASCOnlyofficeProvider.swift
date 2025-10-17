@@ -91,6 +91,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return isInDocSpaceCategory(folder: folder)
     }
 
+    // MARK: Dependencies
+
+    let sharedService: NetworkManagerSharedSettingsProtocol = NetworkManagerSharedSettings()
+
+    // MRK: Init
+
     init() {
         reset()
 
@@ -2490,26 +2496,23 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 }
 
 extension ASCOnlyofficeProvider {
-    func generalFileLink(file: ASCFile) async -> Result<String, Error> {
+    func generalFileLink(file: ASCFile) async throws -> String {
         guard file.rootFolderType == .virtualRooms,
               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
         else {
-            return await withCheckedContinuation { continuation in
-                let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
-                NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
-                    switch result {
-                    case let .success(link):
-                        continuation.resume(returning: .success(link.sharedTo.shareLink))
-                    case let .failure(error):
-                        continuation.resume(returning: .failure(error))
-                    }
-                }
-            }
+            return try await sharedService.createAndCopy(
+                file: file,
+                requestModel: CreateAndCopyLinkRequestModel(
+                    access: ASCShareAccess.read.rawValue,
+                    expirationDate: nil,
+                    isInternal: false
+                )
+            ).sharedTo.shareLink
         }
 
         let path = "%@/doceditor?fileId=%@"
         let urlStr = String(format: path, baseUrl, file.id)
-        return .success(urlStr)
+        return urlStr
     }
 
     func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {

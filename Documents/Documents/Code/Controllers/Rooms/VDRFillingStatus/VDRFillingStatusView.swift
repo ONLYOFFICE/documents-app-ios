@@ -61,7 +61,6 @@ struct VDRFillingStatusView: View {
             }
         }
         .navigationTitle("Filling status")
-        .navigationBarItems(leading: Button(NSLocalizedString("Cancel", comment: ""), action: { presentationMode.wrappedValue.dismiss() }))
         .navigationBarTitleDisplayMode(.inline)
     }
 

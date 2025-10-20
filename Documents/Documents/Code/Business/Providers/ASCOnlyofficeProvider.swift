@@ -2315,8 +2315,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             // Update file info
             self.apiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { [weak self] response, error in
-                if let self, let file = response?.result {
-                    self.updateItem(file)
+                if let self, let responseFile = response?.result {
+                    responseFile.parent = file.parent
+                    self.updateItem(responseFile)
                 }
             }
 

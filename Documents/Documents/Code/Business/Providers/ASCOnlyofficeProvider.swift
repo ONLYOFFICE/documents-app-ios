@@ -2464,7 +2464,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             docspaceVersion.isVersion(lessThan: "3.5.0")
         else { return [] }
 
-        if folder.isRoot, folder.rootFolderType == .user {
+        if folder.isRoot,
+           folder.rootFolderType == .user,
+           docspaceVersion.isVersion(lessThan: "3.5.0")
+        {
             let resentFolder = folder.copy()
             resentFolder.rootFolderType = .recent
             resentFolder.id = OnlyofficeAPI.Path.Folder.recentRaw

@@ -2588,6 +2588,10 @@ Vous avez apporté des modifications à l'index. Si vous continuez sans enregist
         <target state="translated">Impossible de soumettre le formulaire</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Failed to verify user credentials." xml:space="preserve">
+        <source>Failed to verify user credentials.</source>
+        <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
+      </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
         <source>Failure to open editor</source>
         <target state="translated">Impossible d'ouvrir l'éditeur</target>

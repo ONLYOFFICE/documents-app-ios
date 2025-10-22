@@ -2585,6 +2585,10 @@ You have made changes in the index. If you proceed without saving, those changes
         <target state="translated">Չհաջողվեց հաստատել ձևը</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Failed to verify user credentials." xml:space="preserve">
+        <source>Failed to verify user credentials.</source>
+        <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
+      </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
         <source>Failure to open editor</source>
         <target state="translated">Չհաջողվեց բացել խմբագիրը</target>

@@ -2515,6 +2515,10 @@ You have made changes in the index. If you proceed without saving, those changes
         <target state="translated">提交表单失败</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Failed to verify user credentials." xml:space="preserve">
+        <source>Failed to verify user credentials.</source>
+        <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
+      </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
         <source>Failure to open editor</source>
         <target state="translated">无法打开编辑器</target>

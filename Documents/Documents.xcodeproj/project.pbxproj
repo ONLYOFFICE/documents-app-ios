@@ -79,6 +79,9 @@
 		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
+		77E206C42EA8E97700920AAA /* NextcloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206C32EA8E97700920AAA /* NextcloudUserData.swift */; };
+		77E206C52EA8E97700920AAA /* NextcloudOCSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206C22EA8E97700920AAA /* NextcloudOCSResponse.swift */; };
+		77E206C62EA8E97700920AAA /* NextcloudMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206C12EA8E97700920AAA /* NextcloudMeta.swift */; };
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		E801C98B2D368E0A00E9939A /* ASCEntityViewLayoutTypeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E801C98A2D368E0A00E9939A /* ASCEntityViewLayoutTypeProvider.swift */; };
@@ -383,7 +386,6 @@
 		FC68526B26837B7300D830EC /* NextcloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524626837B7300D830EC /* NextcloudApiClient.swift */; };
 		FC68526D26837B7300D830EC /* NextcloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524726837B7300D830EC /* NextcloudEndpoints.swift */; };
 		FC68526F26837B7300D830EC /* NextcloudDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524926837B7300D830EC /* NextcloudDataResult.swift */; };
-		FC68527126837B7300D830EC /* NextcloudStorageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524A26837B7300D830EC /* NextcloudStorageStats.swift */; };
 		FC68527326837B7300D830EC /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524B26837B7300D830EC /* NetworkingError.swift */; };
 		FC68527526837B7300D830EC /* OnedriveApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524D26837B7300D830EC /* OnedriveApiClient.swift */; };
 		FC68527726837B7300D830EC /* OnedriveEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524E26837B7300D830EC /* OnedriveEndpoints.swift */; };
@@ -805,6 +807,9 @@
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
 		6CBC0ED0667B3A2030713452 /* Pods-Documents-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		776605EDCAB83C1E517628AF /* Pods-Documents-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		77E206C12EA8E97700920AAA /* NextcloudMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudMeta.swift; sourceTree = "<group>"; };
+		77E206C22EA8E97700920AAA /* NextcloudOCSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudOCSResponse.swift; sourceTree = "<group>"; };
+		77E206C32EA8E97700920AAA /* NextcloudUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudUserData.swift; sourceTree = "<group>"; };
 		92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AF4777D687CAB5646E1F07 /* Pods-DocumentsTests.documents-alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.documents-alpha.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.documents-alpha.xcconfig"; sourceTree = "<group>"; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
@@ -1110,7 +1115,6 @@
 		FC68524626837B7300D830EC /* NextcloudApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudApiClient.swift; sourceTree = "<group>"; };
 		FC68524726837B7300D830EC /* NextcloudEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudEndpoints.swift; sourceTree = "<group>"; };
 		FC68524926837B7300D830EC /* NextcloudDataResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudDataResult.swift; sourceTree = "<group>"; };
-		FC68524A26837B7300D830EC /* NextcloudStorageStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudStorageStats.swift; sourceTree = "<group>"; };
 		FC68524B26837B7300D830EC /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		FC68524D26837B7300D830EC /* OnedriveApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveApiClient.swift; sourceTree = "<group>"; };
 		FC68524E26837B7300D830EC /* OnedriveEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveEndpoints.swift; sourceTree = "<group>"; };
@@ -2807,7 +2811,9 @@
 			isa = PBXGroup;
 			children = (
 				FC68524926837B7300D830EC /* NextcloudDataResult.swift */,
-				FC68524A26837B7300D830EC /* NextcloudStorageStats.swift */,
+				77E206C12EA8E97700920AAA /* NextcloudMeta.swift */,
+				77E206C22EA8E97700920AAA /* NextcloudOCSResponse.swift */,
+				77E206C32EA8E97700920AAA /* NextcloudUserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4673,6 +4679,9 @@
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC759CAC2C00615E00510096 /* ASCSharingRightHolder.swift in Sources */,
 				FC759CCA2C00615E00510096 /* ASCSharingSettingsVerifyRightHoldersInteractor.swift in Sources */,
+				77E206C42EA8E97700920AAA /* NextcloudUserData.swift in Sources */,
+				77E206C52EA8E97700920AAA /* NextcloudOCSResponse.swift in Sources */,
+				77E206C62EA8E97700920AAA /* NextcloudMeta.swift in Sources */,
 				FC759C282C00614D00510096 /* ManageRoomViewModel.swift in Sources */,
 				FC759C2A2C00614D00510096 /* NetworkManagingRoomService.swift in Sources */,
 				FC759CA62C00615E00510096 /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
@@ -4817,7 +4826,6 @@
 				FC759CA52C00615E00510096 /* ASCSharingChooseNewOwnerRightHoldersViewController.swift in Sources */,
 				FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */,
 				FCE9F7B02B3045420056E420 /* CurrentCloudFolderMenu.swift in Sources */,
-				FC68527126837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
 				FC41D7FB2265B4AF00A155C2 /* ASC2FACodeViewController.swift in Sources */,
 				FC759CB72C00615E00510096 /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC19849A2805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,

@@ -25,6 +25,9 @@
 		1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC53290D85E600F71071 /* ASCDocumentsCellContextMenu.swift */; };
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
+		77E206FB2EA8E9C100920AAA /* NextcloudMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206F82EA8E9C100920AAA /* NextcloudMeta.swift */; };
+		77E206FC2EA8E9C100920AAA /* NextcloudOCSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206F92EA8E9C100920AAA /* NextcloudOCSResponse.swift */; };
+		77E206FD2EA8E9C100920AAA /* NextcloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206FA2EA8E9C100920AAA /* NextcloudUserData.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
 		E801C9AF2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E801C9AE2D36E5EA00E9939A /* ASCDetailedImageChevronUpDownCellView.swift */; };
 		E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */; };
@@ -409,7 +412,6 @@
 		FC70817D2812E2260057FCD2 /* ASCSharingOptionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C6773268A2573000F2284 /* ASCSharingOptionsInteractor.swift */; };
 		FC70817F2812E2260057FCD2 /* ASCCreatePortalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */; };
 		FC7081802812E2260057FCD2 /* ASCShadowRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */; };
-		FC7081812812E2260057FCD2 /* NextcloudStorageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524A26837B7300D830EC /* NextcloudStorageStats.swift */; };
 		FC7081822812E2260057FCD2 /* ASC2FACodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D7FA2265B4AF00A155C2 /* ASC2FACodeViewController.swift */; };
 		FC7081862812E2260057FCD2 /* ASCCloudsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */; };
 		FC7081872812E2260057FCD2 /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
@@ -758,6 +760,9 @@
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
 		623F3AE813DFF5F90DB163B1 /* Pods-Documents-witheditors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-witheditors.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-witheditors/Pods-Documents-witheditors.release.xcconfig"; sourceTree = "<group>"; };
 		7390E689713220A904E49074 /* Pods-Documents-withouteditors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-withouteditors.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-withouteditors/Pods-Documents-withouteditors.debug.xcconfig"; sourceTree = "<group>"; };
+		77E206F82EA8E9C100920AAA /* NextcloudMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudMeta.swift; sourceTree = "<group>"; };
+		77E206F92EA8E9C100920AAA /* NextcloudOCSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudOCSResponse.swift; sourceTree = "<group>"; };
+		77E206FA2EA8E9C100920AAA /* NextcloudUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudUserData.swift; sourceTree = "<group>"; };
 		82FD00C7960698FE7A88A2F3 /* Pods-Documents-opensource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.debug.xcconfig"; sourceTree = "<group>"; };
 		A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_opensource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
@@ -1115,7 +1120,6 @@
 		FC68524626837B7300D830EC /* NextcloudApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudApiClient.swift; sourceTree = "<group>"; };
 		FC68524726837B7300D830EC /* NextcloudEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudEndpoints.swift; sourceTree = "<group>"; };
 		FC68524926837B7300D830EC /* NextcloudDataResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudDataResult.swift; sourceTree = "<group>"; };
-		FC68524A26837B7300D830EC /* NextcloudStorageStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextcloudStorageStats.swift; sourceTree = "<group>"; };
 		FC68524B26837B7300D830EC /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		FC68524D26837B7300D830EC /* OnedriveApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveApiClient.swift; sourceTree = "<group>"; };
 		FC68524E26837B7300D830EC /* OnedriveEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveEndpoints.swift; sourceTree = "<group>"; };
@@ -3220,7 +3224,9 @@
 			isa = PBXGroup;
 			children = (
 				FC68524926837B7300D830EC /* NextcloudDataResult.swift */,
-				FC68524A26837B7300D830EC /* NextcloudStorageStats.swift */,
+				77E206F82EA8E9C100920AAA /* NextcloudMeta.swift */,
+				77E206F92EA8E9C100920AAA /* NextcloudOCSResponse.swift */,
+				77E206FA2EA8E9C100920AAA /* NextcloudUserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4456,7 +4462,6 @@
 				FC70817F2812E2260057FCD2 /* ASCCreatePortalStatus.swift in Sources */,
 				FC7081802812E2260057FCD2 /* ASCShadowRadiusView.swift in Sources */,
 				FC00CBF62C4661A600D3344D /* ASCTransferViewControllerRepresentable.swift in Sources */,
-				FC7081812812E2260057FCD2 /* NextcloudStorageStats.swift in Sources */,
 				FC4DC3E9282BFBE7001060D6 /* DropBoxRequestInterceptor.swift in Sources */,
 				FC83D6152A974E2300C404CB /* String+Extension.swift in Sources */,
 				FC00CBF22C46613C00D3344D /* ChevronRightView.swift in Sources */,
@@ -4591,6 +4596,9 @@
 				FC7081CF2812E2260057FCD2 /* ASCOnlyofficeProvider.swift in Sources */,
 				FC7081D12812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FC379D6E2C380C5900B120D9 /* ImagedDetailCellView.swift in Sources */,
+				77E206FB2EA8E9C100920AAA /* NextcloudMeta.swift in Sources */,
+				77E206FC2EA8E9C100920AAA /* NextcloudOCSResponse.swift in Sources */,
+				77E206FD2EA8E9C100920AAA /* NextcloudUserData.swift in Sources */,
 				F3772FF12C9DEEAD002B33A8 /* FormCompletedViewModel.swift in Sources */,
 				FC5943DE2AE6D254001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */,
 				E86A8F0B2C94DB3D0062198A /* FillFormMenuScreenRepresentable.swift in Sources */,

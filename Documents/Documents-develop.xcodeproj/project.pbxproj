@@ -17,7 +17,9 @@
 		1DA4207D2E58CCFC00F76BA1 /* AddMembersToRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */; };
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
 		77586F622DD3749300861561 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */; };
+		77898AA42EA0E4B300880FEB /* NextcloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77898AA32EA0E4B300880FEB /* NextcloudUserData.swift */; };
 		77A2D66A2DED95850093549D /* CreateAndCopyLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */; };
+		77DD89B92EA1230500EFD127 /* NextcloudMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DD89B82EA1230500EFD127 /* NextcloudMeta.swift */; };
 		8A01844923A261540025BE85 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */; };
 		8A01844A23A261540025BE85 /* ASCConnectPortalThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */; };
 		8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */; };
@@ -311,8 +313,7 @@
 		FC5D0437263C2BF800D9DBCF /* DropboxAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0436263C2BF800D9DBCF /* DropboxAccount.swift */; };
 		FC5D043A263C3EF300D9DBCF /* NextcloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0439263C3EF300D9DBCF /* NextcloudApiClient.swift */; };
 		FC5D043C263C438400D9DBCF /* NextcloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D043B263C438400D9DBCF /* NextcloudEndpoints.swift */; };
-		FC5D043F263C444500D9DBCF /* NextcloudStorageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D043E263C444500D9DBCF /* NextcloudStorageStats.swift */; };
-		FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0440263FE0E700D9DBCF /* NextcloudDataResult.swift */; };
+		FC5D043F263C444500D9DBCF /* NextcloudOCSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D043E263C444500D9DBCF /* NextcloudOCSResponse.swift */; };
 		FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */; };
 		FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */; };
 		FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */; };
@@ -846,7 +847,9 @@
 		1DA4207A2E58CC8A00F76BA1 /* AddMembersToRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomView.swift; sourceTree = "<group>"; };
 		1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomViewModel.swift; sourceTree = "<group>"; };
 		77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
+		77898AA32EA0E4B300880FEB /* NextcloudUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudUserData.swift; sourceTree = "<group>"; };
 		77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndCopyLinkRequestModel.swift; sourceTree = "<group>"; };
+		77DD89B82EA1230500EFD127 /* NextcloudMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudMeta.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalThirdPartyViewController.swift; sourceTree = "<group>"; };
 		8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewController.swift; sourceTree = "<group>"; };
@@ -1127,8 +1130,7 @@
 		FC5D0436263C2BF800D9DBCF /* DropboxAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAccount.swift; sourceTree = "<group>"; };
 		FC5D0439263C3EF300D9DBCF /* NextcloudApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudApiClient.swift; sourceTree = "<group>"; };
 		FC5D043B263C438400D9DBCF /* NextcloudEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudEndpoints.swift; sourceTree = "<group>"; };
-		FC5D043E263C444500D9DBCF /* NextcloudStorageStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudStorageStats.swift; sourceTree = "<group>"; };
-		FC5D0440263FE0E700D9DBCF /* NextcloudDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudDataResult.swift; sourceTree = "<group>"; };
+		FC5D043E263C444500D9DBCF /* NextcloudOCSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudOCSResponse.swift; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewController.swift; sourceTree = "<group>"; };
 		FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
@@ -2536,8 +2538,9 @@
 		FC5D043D263C442C00D9DBCF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FC5D043E263C444500D9DBCF /* NextcloudStorageStats.swift */,
-				FC5D0440263FE0E700D9DBCF /* NextcloudDataResult.swift */,
+				FC5D043E263C444500D9DBCF /* NextcloudOCSResponse.swift */,
+				77898AA32EA0E4B300880FEB /* NextcloudUserData.swift */,
+				77DD89B82EA1230500EFD127 /* NextcloudMeta.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4621,7 +4624,6 @@
 				FC759BEC2C00611000510096 /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
 				FC7D9983272996D600410795 /* UILabel+Style.swift in Sources */,
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
-				FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */,
 				1D7327172E4B4EB000F9BDFB /* ASCStartFillingAssignToRoleViewModel.swift in Sources */,
 				FCE2B4272930CCA700E50429 /* ASCRoomType.swift in Sources */,
 				FCB61DDD2DDC9652006DEFA5 /* OnlyofficeSearchArea.swift in Sources */,
@@ -4790,6 +4792,7 @@
 				FC56A3772A389DB2000EA058 /* ASCEditorManager+SpreadsheetEditor.swift in Sources */,
 				FC5943AD2AE6B1F5001BA2F9 /* ASCIntroPageStore.swift in Sources */,
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
+				77DD89B92EA1230500EFD127 /* NextcloudMeta.swift in Sources */,
 				FCF6185F268E0A1A00CD8D84 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
 				FCB4CE8129FAC88C009C1E2E /* ASCMultiAccountScreenModel.swift in Sources */,
 				FC759B472C00608600510096 /* RoomSelectionViewModel.swift in Sources */,
@@ -4836,6 +4839,7 @@
 				FC5D0414263BE8F300D9DBCF /* DropboxApiClient.swift in Sources */,
 				FC9EF0342BFB208800A66DE8 /* RoomUsersResponseModel.swift in Sources */,
 				F3772FD12C9DEBC1002B33A8 /* ASCUserWithEmailRowView.swift in Sources */,
+				77898AA42EA0E4B300880FEB /* NextcloudUserData.swift in Sources */,
 				FC9EF0302BFB208800A66DE8 /* OnlyofficeUserPhoto.swift in Sources */,
 				FC83D5282A973E2100C404CB /* UISplitViewController+Extensions.swift in Sources */,
 				FCC64F5C29191B4C004D9A47 /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */,
@@ -4920,7 +4924,7 @@
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
 				FC2C73E42754BCDF008E9063 /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				FC759BC72C00611000510096 /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
-				FC5D043F263C444500D9DBCF /* NextcloudStorageStats.swift in Sources */,
+				FC5D043F263C444500D9DBCF /* NextcloudOCSResponse.swift in Sources */,
 				FC759BCE2C00611000510096 /* ASCSharingRightHolderViewModel.swift in Sources */,
 				FCE9F6AF2B2B54A10056E420 /* ASCAttachmentManager.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,

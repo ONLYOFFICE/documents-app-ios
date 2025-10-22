@@ -204,6 +204,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="3vf-pi-KmX.normalTitle" xml:space="preserve">
         <source>Button</source>
+        <target state="translated">බොත්තම</target>
         <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "3vf-pi-KmX";</note>
       </trans-unit>
       <trans-unit id="6Zd-HN-8wS.text" xml:space="preserve">
@@ -213,6 +214,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="9Ry-fz-MGU.text" xml:space="preserve">
         <source>Sign in as LDAP User</source>
+        <target state="translated">LDAP පරිශීලකයෙකු ලෙස පිවිසෙන්න</target>
         <note>Class = "UILabel"; text = "Sign in as LDAP User"; ObjectID = "9Ry-fz-MGU";</note>
       </trans-unit>
       <trans-unit id="18Q-Kh-0cC.text" xml:space="preserve">
@@ -945,6 +947,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">ලේඛන</target>
         <note>Bundle name</note>
       </trans-unit>
+      <trans-unit id="Microsoft Excel Binary Workbook (.xlsb)" translate="no" xml:space="preserve">
+        <source>Microsoft Excel Binary Workbook (.xlsb)</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
         <target state="translated">මෙම යෙදුමට රූගතය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට ඡායාරූප ගෙන ඒවා යෙදුමට උඩුගත කිරීමට හැකිය.</target>
@@ -999,6 +1005,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="%@" xml:space="preserve">
         <source>%@</source>
+        <target state="translated">%@</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d Groups|==|plural.one" xml:space="preserve">
@@ -1133,6 +1140,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="(%@)" xml:space="preserve">
         <source>(%@)</source>
+        <target state="translated">(%@)</target>
         <note/>
       </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
@@ -1977,6 +1985,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
         <source>Create or upload new files or folders to get started.</source>
+        <target state="translated">ආරම්භ කිරීමට නව ගොනු හෝ ෆෝල්ඩර සාදන්න හෝ උඩුගත කරන්න.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -1986,6 +1995,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create your first room to get started." xml:space="preserve">
         <source>Create your first room to get started.</source>
+        <target state="translated">ආරම්භ කිරීමට ඔබේ පළමු කාමරය සාදන්න.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -2565,6 +2575,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
         <source>Files and folders created or uploaded by admins will show up here.</source>
+        <target state="translated">පරිපාලකයින් විසින් සාදන ලද හෝ උඩුගත කරන ලද ගොනු සහ ෆෝල්ඩර මෙහි පෙන්වනු ඇත.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3274,6 +3285,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No forms here yet" xml:space="preserve">
         <source>No forms here yet</source>
+        <target state="translated">තවම මෙහි පෝරම නැත</target>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3474,6 +3486,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
         <source>PDF forms uploaded by admins will show up here.</source>
+        <target state="translated">පරිපාලකයින් විසින් උඩුගත කරන ලද PDF පෝරම මෙහි පෙන්වනු ඇත.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
@@ -4460,6 +4473,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="The room is empty" xml:space="preserve">
         <source>The room is empty</source>
+        <target state="translated">කාමරය හිස්</target>
         <note/>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -4474,6 +4488,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="The shared rooms will appear here." xml:space="preserve">
         <source>The shared rooms will appear here.</source>
+        <target state="translated">බෙදාගත් කාමර මෙහි පෙන්වනු ඇත.</target>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4501,6 +4516,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
         <source>There are no rooms here yet</source>
+        <target state="translated">තවම මෙහි කාමර නැත</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -4925,14 +4941,17 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
         <source>Welcome to DocSpace!</source>
+        <target state="translated">DocSpace වෙත සාදරයෙන් පිළිගනිමු!</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
         <source>Welcome to the Collaboration room</source>
+        <target state="translated">සහයෝගිතා කාමරය වෙත සාදරයෙන් පිළිගනිමු</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Custom room" xml:space="preserve">
         <source>Welcome to the Custom room</source>
+        <target state="translated">අභිරුචි කාමරය වෙත සාදරයෙන් පිළිගනිමු</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
@@ -4941,10 +4960,12 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Public room" xml:space="preserve">
         <source>Welcome to the Public room</source>
+        <target state="translated">පොදු කාමරය වෙත සාදරයෙන් පිළිගනිමු</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
         <source>Welcome to the Virtual Data Room</source>
+        <target state="translated">අතථ්‍ය දත්ත කාමරය වෙත සාදරයෙන් පිළිගනිමු</target>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

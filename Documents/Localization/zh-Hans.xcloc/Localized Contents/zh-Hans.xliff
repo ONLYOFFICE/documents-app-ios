@@ -946,6 +946,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">文档</target>
         <note>Bundle name</note>
       </trans-unit>
+      <trans-unit id="Microsoft Excel Binary Workbook (.xlsb)" translate="no" xml:space="preserve">
+        <source>Microsoft Excel Binary Workbook (.xlsb)</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
         <target state="translated">该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。</target>
@@ -1959,6 +1963,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
         <source>Create or upload new files or folders to get started.</source>
+        <target state="translated">创建或上传新文件或文件夹以开始使用。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -1968,6 +1973,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create your first room to get started." xml:space="preserve">
         <source>Create your first room to get started.</source>
+        <target state="translated">创建您的第一个房间以开始使用。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -2561,6 +2567,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
         <source>Files and folders created or uploaded by admins will show up here.</source>
+        <target state="translated">管理员创建或上传的文件和文件夹将显示在这里。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3334,6 +3341,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No forms here yet" xml:space="preserve">
         <source>No forms here yet</source>
+        <target state="translated">这里还没有表单</target>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3544,6 +3552,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
         <source>PDF forms uploaded by admins will show up here.</source>
+        <target state="translated">管理员上传的PDF表单将显示在这里。</target>
         <note/>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
@@ -4611,6 +4620,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="The room is empty" xml:space="preserve">
         <source>The room is empty</source>
+        <target state="translated">房间是空的</target>
         <note/>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -4625,6 +4635,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="The shared rooms will appear here." xml:space="preserve">
         <source>The shared rooms will appear here.</source>
+        <target state="translated">共享房间将显示在这里。</target>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4654,6 +4665,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
         <source>There are no rooms here yet</source>
+        <target state="translated">这里还没有房间</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -5108,14 +5120,17 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
         <source>Welcome to DocSpace!</source>
+        <target state="translated">欢迎使用DocSpace！</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
         <source>Welcome to the Collaboration room</source>
+        <target state="translated">欢迎来到协作室</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Custom room" xml:space="preserve">
         <source>Welcome to the Custom room</source>
+        <target state="translated">欢迎来到自定义房间</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
@@ -5125,10 +5140,12 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Public room" xml:space="preserve">
         <source>Welcome to the Public room</source>
+        <target state="translated">欢迎来到公共房间</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
         <source>Welcome to the Virtual Data Room</source>
+        <target state="translated">欢迎来到虚拟数据室</target>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

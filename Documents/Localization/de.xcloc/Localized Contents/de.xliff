@@ -949,6 +949,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target state="translated">Dokumente</target>
         <note>Bundle name</note>
       </trans-unit>
+      <trans-unit id="Microsoft Excel Binary Workbook (.xlsb)" translate="no" xml:space="preserve">
+        <source>Microsoft Excel Binary Workbook (.xlsb)</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
         <target state="translated">Diese App benötigt Zugriff auf die Kamera, damit Sie Fotos machen und in die App hochladen können.</target>
@@ -2014,6 +2018,7 @@ andere, die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
         <source>Create or upload new files or folders to get started.</source>
+        <target state="translated">Erstellen oder laden Sie neue Dateien oder Ordner hoch, um zu beginnen.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -2023,6 +2028,7 @@ andere, die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Create your first room to get started." xml:space="preserve">
         <source>Create your first room to get started.</source>
+        <target state="translated">Erstellen Sie Ihren ersten Raum, um zu beginnen.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -2599,6 +2605,7 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
         <source>Faliure to open editor</source>
+        <target state="translated">Fehler beim Öffnen des Editors</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2638,6 +2645,7 @@ Sie haben Änderungen im Index vorgenommen. Wenn Sie ohne Speichern fortfahren, 
       </trans-unit>
       <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
         <source>Files and folders created or uploaded by admins will show up here.</source>
+        <target state="translated">Von Administratoren erstellte oder hochgeladene Dateien und Ordner werden hier angezeigt.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3419,6 +3427,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No forms here yet" xml:space="preserve">
         <source>No forms here yet</source>
+        <target state="translated">Noch keine Formulare vorhanden</target>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3629,6 +3638,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
         <source>PDF forms uploaded by admins will show up here.</source>
+        <target state="translated">Von Administratoren hochgeladene PDF-Formulare werden hier angezeigt.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
@@ -4700,6 +4710,7 @@ kopiert.</target>
       </trans-unit>
       <trans-unit id="The room is empty" xml:space="preserve">
         <source>The room is empty</source>
+        <target state="translated">Der Raum ist leer</target>
         <note/>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -4714,6 +4725,7 @@ kopiert.</target>
       </trans-unit>
       <trans-unit id="The shared rooms will appear here." xml:space="preserve">
         <source>The shared rooms will appear here.</source>
+        <target state="translated">Die geteilten Räume werden hier angezeigt.</target>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4743,6 +4755,7 @@ kopiert.</target>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
         <source>There are no rooms here yet</source>
+        <target state="translated">Es gibt hier noch keine Räume</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -5197,14 +5210,17 @@ Swipen Sie um mehr über die App zu erfahren.</target>
       </trans-unit>
       <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
         <source>Welcome to DocSpace!</source>
+        <target state="translated">Willkommen bei DocSpace!</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
         <source>Welcome to the Collaboration room</source>
+        <target state="translated">Willkommen im Zusammenarbeitsraum</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Custom room" xml:space="preserve">
         <source>Welcome to the Custom room</source>
+        <target state="translated">Willkommen im benutzerdefinierten Raum</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
@@ -5214,10 +5230,12 @@ Swipen Sie um mehr über die App zu erfahren.</target>
       </trans-unit>
       <trans-unit id="Welcome to the Public room" xml:space="preserve">
         <source>Welcome to the Public room</source>
+        <target state="translated">Willkommen im öffentlichen Raum</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
         <source>Welcome to the Virtual Data Room</source>
+        <target state="translated">Willkommen im virtuellen Datenraum</target>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

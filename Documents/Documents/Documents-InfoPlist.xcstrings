@@ -97,6 +97,9 @@
         }
       }
     },
+    "Microsoft Excel Binary Workbook (.xlsb)" : {
+      "shouldTranslate" : false
+    },
     "New Document" : {
       "localizations" : {
         "ar-SA" : {

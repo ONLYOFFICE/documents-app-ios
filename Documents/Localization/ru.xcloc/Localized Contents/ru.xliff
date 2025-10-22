@@ -947,6 +947,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">Документы</target>
         <note>Bundle name</note>
       </trans-unit>
+      <trans-unit id="Microsoft Excel Binary Workbook (.xlsb)" translate="no" xml:space="preserve">
+        <source>Microsoft Excel Binary Workbook (.xlsb)</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
         <target state="translated">Это приложение требует доступа к камере, чтобы иметь возможность снимать фото и загрузить его в приложение.</target>

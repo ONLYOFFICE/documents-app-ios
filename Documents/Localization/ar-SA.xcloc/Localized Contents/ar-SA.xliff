@@ -946,6 +946,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">المستندات</target>
         <note>Bundle name</note>
       </trans-unit>
+      <trans-unit id="Microsoft Excel Binary Workbook (.xlsb)" translate="no" xml:space="preserve">
+        <source>Microsoft Excel Binary Workbook (.xlsb)</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
         <target state="translated">يتطلب هذا التطبيق الوصول إلى الكاميرا، حتى تتمكن من التقاط صورة وتحميلها في التطبيق.</target>
@@ -2211,6 +2215,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
         <source>Create or upload new files or folders to get started.</source>
+        <target state="translated">قم بإنشاء أو تحميل ملفات أو مجلدات جديدة للبدء.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -2220,6 +2225,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create your first room to get started." xml:space="preserve">
         <source>Create your first room to get started.</source>
+        <target state="translated">قم بإنشاء غرفتك الأولى للبدء.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -2916,6 +2922,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
         <source>Files and folders created or uploaded by admins will show up here.</source>
+        <target state="translated">ستظهر الملفات والمجلدات التي تم إنشاؤها أو تحميلها من قبل المسؤولين هنا.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3717,6 +3724,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No forms here yet" xml:space="preserve">
         <source>No forms here yet</source>
+        <target state="translated">لا توجد نماذج هنا حتى الآن</target>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3927,6 +3935,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
         <source>PDF forms uploaded by admins will show up here.</source>
+        <target state="translated">ستظهر نماذج PDF التي تم تحميلها من قبل المسؤولين هنا.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
@@ -4996,6 +5005,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="The room is empty" xml:space="preserve">
         <source>The room is empty</source>
+        <target state="translated">الغرفة فارغة</target>
         <note/>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -5010,6 +5020,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="The shared rooms will appear here." xml:space="preserve">
         <source>The shared rooms will appear here.</source>
+        <target state="translated">ستظهر الغرف المشتركة هنا.</target>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -5039,6 +5050,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
         <source>There are no rooms here yet</source>
+        <target state="translated">لا توجد غرف هنا حتى الآن</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -5493,14 +5505,17 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
         <source>Welcome to DocSpace!</source>
+        <target state="translated">مرحباً بك في DocSpace!</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
         <source>Welcome to the Collaboration room</source>
+        <target state="translated">مرحباً بك في غرفة التعاون</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Custom room" xml:space="preserve">
         <source>Welcome to the Custom room</source>
+        <target state="translated">مرحباً بك في الغرفة المخصصة</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
@@ -5510,10 +5525,12 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Welcome to the Public room" xml:space="preserve">
         <source>Welcome to the Public room</source>
+        <target state="translated">مرحباً بك في الغرفة العامة</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
         <source>Welcome to the Virtual Data Room</source>
+        <target state="translated">مرحباً بك في غرفة البيانات الافتراضية</target>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

@@ -946,6 +946,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target state="translated">Dokumenty</target>
         <note>Bundle name</note>
       </trans-unit>
+      <trans-unit id="Microsoft Excel Binary Workbook (.xlsb)" translate="no" xml:space="preserve">
+        <source>Microsoft Excel Binary Workbook (.xlsb)</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
         <target state="translated">Tato aplikace vyžaduje přístup k fotoaparátu, abyste mohli pořizovat fotografie.</target>
@@ -1559,6 +1563,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Assign to role" xml:space="preserve">
         <source>Assign to role</source>
+        <target state="translated">Přiřadit k roli</target>
         <note/>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -2107,6 +2112,7 @@ které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Create or upload new files or folders to get started." xml:space="preserve">
         <source>Create or upload new files or folders to get started.</source>
+        <target state="translated">Pro začátek vytvořte nebo nahrajte nové soubory nebo složky.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
@@ -2116,6 +2122,7 @@ které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Create your first room to get started." xml:space="preserve">
         <source>Create your first room to get started.</source>
+        <target state="translated">Pro začátek vytvořte svoji první místnost.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -2620,6 +2627,8 @@ Operation completed</note>
       <trans-unit id="Exit without saving?&#10;You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving?
 You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">Ukončit bez uložení?
+Provedli jste změny v rejstříku. Pokud budete pokračovat bez uložení, tyto změny nebudou použity.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
@@ -2769,6 +2778,7 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
       </trans-unit>
       <trans-unit id="Files and folders created or uploaded by admins will show up here." xml:space="preserve">
         <source>Files and folders created or uploaded by admins will show up here.</source>
+        <target state="translated">Soubory a složky vytvořené nebo nahrané správci se zobrazí zde.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Files and folders uploaded by admins will appear here." xml:space="preserve">
@@ -3553,6 +3563,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No forms here yet" xml:space="preserve">
         <source>No forms here yet</source>
+        <target state="translated">Zatím zde nejsou žádné formuláře</target>
         <note/>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
@@ -3763,6 +3774,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF forms uploaded by admins will show up here." xml:space="preserve">
         <source>PDF forms uploaded by admins will show up here.</source>
+        <target state="translated">PDF formuláře nahrané správci se zobrazí zde.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
@@ -4833,6 +4845,7 @@ schránky.</target>
       </trans-unit>
       <trans-unit id="The room is empty" xml:space="preserve">
         <source>The room is empty</source>
+        <target state="translated">Místnost je prázdná</target>
         <note/>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -4847,6 +4860,7 @@ schránky.</target>
       </trans-unit>
       <trans-unit id="The shared rooms will appear here." xml:space="preserve">
         <source>The shared rooms will appear here.</source>
+        <target state="translated">Sdílené místnosti se zobrazí zde.</target>
         <note/>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -4874,6 +4888,7 @@ schránky.</target>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
         <source>There are no rooms here yet</source>
+        <target state="translated">Zatím zde nejsou žádné místnosti</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
@@ -5326,14 +5341,17 @@ Přetáhněte prstem a zjistěte více o aplikaci.</target>
       </trans-unit>
       <trans-unit id="Welcome to DocSpace!" xml:space="preserve">
         <source>Welcome to DocSpace!</source>
+        <target state="translated">Vítejte v DocSpace!</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Collaboration room" xml:space="preserve">
         <source>Welcome to the Collaboration room</source>
+        <target state="translated">Vítejte v místnosti pro spolupráci</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Custom room" xml:space="preserve">
         <source>Welcome to the Custom room</source>
+        <target state="translated">Vítejte ve vlastní místnosti</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Form filling room " xml:space="preserve">
@@ -5343,10 +5361,12 @@ Přetáhněte prstem a zjistěte více o aplikaci.</target>
       </trans-unit>
       <trans-unit id="Welcome to the Public room" xml:space="preserve">
         <source>Welcome to the Public room</source>
+        <target state="translated">Vítejte ve veřejné místnosti</target>
         <note/>
       </trans-unit>
       <trans-unit id="Welcome to the Virtual Data Room" xml:space="preserve">
         <source>Welcome to the Virtual Data Room</source>
+        <target state="translated">Vítejte ve virtuální datové místnosti</target>
         <note/>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

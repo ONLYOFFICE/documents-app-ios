@@ -365,6 +365,12 @@
             "value" : "Кнопка"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බොත්තම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -549,6 +555,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Войти как пользователь LDAP"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LDAP පරිශීලකයෙකු ලෙස පිවිසෙන්න"
           }
         },
         "zh-Hans" : {

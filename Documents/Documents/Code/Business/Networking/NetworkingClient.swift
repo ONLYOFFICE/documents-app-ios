@@ -31,7 +31,7 @@ protocol NetworkingRequestingProtocol {
         _ apply: ((_ data: MultipartFormData) -> Void)?,
         _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)?
     )
-    
+
     func request<Response>(
         endpoint: Endpoint<Response>,
         parameters: Parameters?

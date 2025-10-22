@@ -715,6 +715,27 @@
 				</array>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.composite-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Microsoft Excel Binary Workbook (.xlsb)</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.microsoft.excel.xlsb</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xlsb</string>
+					<string>XLSB</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>application/vnd.ms-excel.sheet.binary.macroEnabled.12</string>
+			</dict>
+		</dict>
 	</array>
 	<key>VersionMode</key>
 	<string>$(VERSION_MODE)</string>

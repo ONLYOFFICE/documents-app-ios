@@ -637,7 +637,7 @@ class ASCViewControllerManager {
                     }
 
                     if let file, !file.id.isEmpty {
-                        delay(seconds: 0.3) {
+                        delay(seconds: 1) {
                             if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
                                let documentVC = topMostViewController as? ASCDocumentsViewController
                             {

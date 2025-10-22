@@ -31,6 +31,11 @@ protocol NetworkingRequestingProtocol {
         _ apply: ((_ data: MultipartFormData) -> Void)?,
         _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)?
     )
+    
+    func request<Response>(
+        endpoint: Endpoint<Response>,
+        parameters: Parameters?
+    ) async throws -> Response
 }
 
 class NetworkingClient: NSObject, NetworkingRequestingProtocol {
@@ -372,4 +377,66 @@ extension NetworkingClient {
 //
 //        NetworkingClient.shared.request(endpoint, parameters, apply, completion)
 //    }
+}
+
+// MARK: - Async / await
+
+extension NetworkingClient {
+    func request<Response>(
+        endpoint: Endpoint<Response>,
+        parameters: Parameters? = nil
+    ) async throws -> Response {
+        guard let url = url(path: endpoint.path) else {
+            throw NetworkingError.invalidUrl
+        }
+
+        var params: Parameters = [:]
+        var headers = headers
+
+        if let endpointHeaders = endpoint.headers {
+            headers = HTTPHeaders(headers.dictionary + endpointHeaders.dictionary)
+        }
+
+        if let keys = parameters?.keys {
+            for key in keys {
+                params[key] = parameters?[key]
+            }
+        }
+
+        return try await withCheckedThrowingContinuation { continuation in
+            manager.request(
+                url,
+                method: endpoint.method,
+                parameters: params.isEmpty ? nil : params,
+                encoding: endpoint.parameterEncoding ?? JSONEncoding.default,
+                headers: headers
+            )
+            .validate()
+            .responseData(queue: queue) { response in
+                switch response.result {
+                case let .success(value):
+                    do {
+                        if let result = try endpoint.decode(value) {
+                            continuation.resume(returning: result)
+                        } else {
+                            throw NetworkingError.invalidData
+                        }
+                    } catch {
+                        continuation.resume(throwing: NetworkingError.invalidData)
+                    }
+
+                case let .failure(error):
+                    let err = self.parseError(response.data, error)
+
+                    if let value = response.data,
+                       let decoded = try? endpoint.decode(value)
+                    {
+                        continuation.resume(returning: decoded)
+                    } else {
+                        continuation.resume(throwing: err)
+                    }
+                }
+            }
+        }
+    }
 }

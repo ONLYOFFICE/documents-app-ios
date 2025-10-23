@@ -87,7 +87,7 @@ extension ASCSharingOprionsInteractorTests {
         func request<Response>(endpoint: Documents.Endpoint<Response>, parameters: Parameters?) async throws -> Response {
             return () as! Response
         }
-        
+
         func request<Response>(_ endpoint: Endpoint<Response>, _ parameters: Parameters?, _ completion: ((Response?, NetworkingError?) -> Void)?) {
             completion?(nil, nil)
         }

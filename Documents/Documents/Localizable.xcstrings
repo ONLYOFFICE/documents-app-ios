@@ -228,13 +228,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d day"
+                  "value" : "%d дни"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d days"
+                  "value" : "%d дни"
                 }
               }
             }
@@ -514,13 +514,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "One Group"
+                  "value" : "%d групи"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d Groups"
+                  "value" : "%d групи"
                 }
               }
             }
@@ -801,13 +801,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d hour"
+                  "value" : "%d часа"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d hours"
+                  "value" : "%d часа"
                 }
               }
             }
@@ -1087,13 +1087,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d month"
+                  "value" : "%d месеца"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d months"
+                  "value" : "%d месеца"
                 }
               }
             }
@@ -1374,13 +1374,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d selected"
+                  "value" : "%d избран"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d selected"
+                  "value" : "%d избран"
                 }
               }
             }
@@ -1666,13 +1666,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d year"
+                  "value" : "%d години"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d years"
+                  "value" : "%d години"
                 }
               }
             }
@@ -2041,13 +2041,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lu Файлът е избран"
+                  "value" : "%lu файлът е избран"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lu Избрани файлове"
+                  "value" : "%lu файлът е избран"
                 }
               }
             }
@@ -2383,8 +2383,8 @@
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%#@arg1@ and %#@arg2@ selected"
+            "state" : "translated",
+            "value" : "Избрани са %#@arg1@ и %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {
@@ -2394,14 +2394,14 @@
                 "plural" : {
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folder"
+                      "state" : "translated",
+                      "value" : "%arg папка"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg папки"
                     }
                   }
                 }
@@ -2414,14 +2414,14 @@
                 "plural" : {
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg File"
+                      "state" : "translated",
+                      "value" : "%arg файл"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg файлове"
                     }
                   }
                 }
@@ -4307,6 +4307,12 @@
             "value" : "Будет создана новая комната, куда будет скопировано все содержимое выбранной папки. После этого вы можете пригласить других пользователей к совместной работе над файлами в комнате."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව කාමරයක් නිර්මාණය වන අතර තෝරාගත් ෆෝල්ඩරයේ සියලුම අන්තර්ගතයන් එහි පිටපත් කෙරේ. පසුව, කාමරයක් තුළ ඇති ගොනු සමඟ සහයෝගයෙන් කටයුතු කිරීමට ඔබට වෙනත් පරිශීලකයින්ට ආරාධනා කළ හැකිය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4327,6 +4333,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم بالفعل إرسال إشعار إلى المستخدم في الدور الأول\n يطالبهم بتعبئة النموذج. يمكنك الانتقال\n إلى الغرفة أو مشاركة رابط التعبئة مع المشاركين."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вече е изпратено известие до потребителя в първата роля,\nкоето го подканва да попълни формуляра. Можете да отидете\nдо стаята или да споделите линка за попълване с участниците."
           }
         },
         "de" : {
@@ -5547,6 +5559,12 @@
             "value" : "الوصول إلى القالب"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Достъп до шаблон"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5601,6 +5619,12 @@
             "value" : "Доступ к шаблону"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අච්චුවට ප්‍රවේශය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5621,6 +5645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الوصول إلى القالب. يمكنك اختيار الأعضاء الذين يمكنهم إنشاء غرف باستخدام هذا القالب."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Достъп до шаблон. Можете да изберете членове, които могат да създават стаи въз основа на този шаблон."
           }
         },
         "cs" : {
@@ -5675,6 +5705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступ к шаблону. Вы можете выбрать участников, которые могут создавать комнаты на основе этого шаблона."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අච්චුවට ප්‍රවේශය. මෙම අච්චුව මත පදනම්ව කාමර නිර්මාණය කළ හැකි සාමාජිකයින් ඔබට තෝරා ගත හැකිය."
           }
         },
         "zh-Hans" : {
@@ -5964,6 +6000,12 @@
             "value" : "محاسب"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Счетоводител"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6018,10 +6060,22 @@
             "value" : "Бухгалтер"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගණකාධිකාරී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "会计"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "會計師"
           }
         }
       }
@@ -6122,6 +6176,12 @@
             "value" : "الإجراء على الملفات"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Действия по файлове"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6176,6 +6236,12 @@
             "value" : "Действия с файлами"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනු මත ක්‍රියාමාර්ග"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6196,6 +6262,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "إضافة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добави"
           }
         },
         "cs" : {
@@ -6252,7 +6324,19 @@
             "value" : "Добавить"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එකතු"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加"
@@ -6416,6 +6500,12 @@
             "value" : "Добавить вручную"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අතින් එකතු කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6527,6 +6617,12 @@
             "value" : "إضافة نص ثابت"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добави статичен текст"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6579,6 +6675,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить статический текст"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ස්ථිතික පෙළ එක් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -6781,6 +6883,12 @@
             "value" : "إضافة مستخدمين أو مجموعات"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавете потребители или групи"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6833,6 +6941,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить пользователей или группы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිශීලකයින් හෝ කණ්ඩායම් එකතු කරන්න"
           }
         },
         "zh-Hans" : {
@@ -6939,6 +7053,12 @@
             "value" : "إضافة عناصر العلامة المائية"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добави елементи на воден знак"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6993,6 +7113,12 @@
             "value" : "Добавить элементы водяного знака"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ජල සලකුණු අංග එකතු කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7013,6 +7139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "إضافة علامات مائية إلى المستندات"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добави водни знаци към документи"
           }
         },
         "cs" : {
@@ -7067,6 +7199,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавляйте водяные знаки в документы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලේඛනවලට ජල සලකුණු එකතු කරන්න"
           }
         },
         "zh-Hans" : {
@@ -7327,6 +7465,12 @@
             "value" : "Администратор"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිපාලක"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7525,6 +7669,12 @@
             "value" : "سيتمكن جميع مديري \"DocSpace\" والغرف من إنشاء غرف باستخدام هذا القالب."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всички администратори на Docspace и стаи ще могат да създават стаи, използвайки този шаблон."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7577,6 +7727,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Все администраторы DocSpace и комнат смогут создавать комнаты, используя этот шаблон."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සියලුම DocSpace සහ කාමර පරිපාලකයින්ට මෙම අච්චුව භාවිතයෙන් කාමර සෑදීමට හැකි වනු ඇත."
           }
         },
         "zh-Hans" : {
@@ -7918,6 +8074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Все общие ссылки в этой комнате станут активными, и их содержимое будет доступно всем, у кого есть ссылка. Хотите восстановить комнату?"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරයේ ඇති සියලුම බෙදාගත් සබැඳි සක්‍රිය වනු ඇති අතර, එහි අන්තර්ගතය සබැඳිය ඇති සැමට ලබා ගත හැකි වනු ඇත. ඔබට කාමරය ප්‍රතිසාධනය කිරීමට අවශ්‍යද?"
           }
         },
         "zh-Hans" : {
@@ -8295,6 +8457,12 @@
             "value" : "تطبيق"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приложи"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8347,6 +8515,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Применить"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "යොදන්න"
           }
         },
         "zh-Hans" : {
@@ -9167,6 +9341,12 @@
             "value" : "التعيين إلى الدور"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Присвояване на роля"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9331,6 +9511,12 @@
             "value" : "الفهرسة التلقائية"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматично индексиране"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9383,6 +9569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Автоматическая индексация"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ස්වයංක්‍රීය සුචිගත කිරීම"
           }
         },
         "zh-Hans" : {
@@ -9553,6 +9745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назад в комнату"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයට ආපසු යන්න"
           }
         },
         "zh-Hans" : {
@@ -9987,6 +10185,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Срок действия подписки на тарифный план Business истек"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ව්‍යාපාර දායකත්වය කල් ඉකුත් විය"
           }
         },
         "zh-Hans" : {
@@ -11070,6 +11274,12 @@
             "value" : "تغيير مالك الغرفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Промени собственика на стаята"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11122,6 +11332,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сменить владельца комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමර හිමිකරු වෙනස් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -11204,6 +11420,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сменить владельца комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයේ හිමිකරු වෙනස් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -11462,6 +11684,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Все формы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සූදානම් පෝරමය පරීක්ෂා කරන්න"
           }
         },
         "zh-Hans" : {
@@ -11723,6 +11951,12 @@
             "value" : "Выберите комнату для заполнения формы или создайте новую"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම පිරවීමේ කාමරය තෝරන්න හෝ නව එකක් සාදන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11803,6 +12037,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите из списка"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලැයිස්තුවෙන් තෝරන්න"
           }
         },
         "zh-Hans" : {
@@ -11886,6 +12126,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите местоположение с помощью шаблонов"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිලි සහිත ස්ථානය තෝරන්න"
           }
         },
         "zh-Hans" : {
@@ -14001,6 +14247,12 @@
             "value" : "مكتمل"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завършен"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14055,7 +14307,19 @@
             "value" : "Завершить"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සම්පූර්ණයි"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "完成"
@@ -14425,6 +14689,12 @@
             "value" : "اربطوا تخزينًا سحابيًا تابعًا لجهة خارجية مثل\n\"Nextcloud\" و\"ownCloud\" و\"Dropbox\"\nوغيرها باستخدام بروتوكول \"WebDAV\"."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свържете съхранение от трето лице,\nкато Nextcloud, ownCloud, Dropbox и\nдруго, което използва WebDAV протокол."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14477,6 +14747,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подключить сторонние хранилища,\nнапример, Nextcloud, ownCloud, Dropbox и\nдругие, использующие протокол WebDAV."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nextcloud, ownCloud, Dropbox වැනි තෙවන පාර්ශවීය ගබඩාවන් සහ WebDAV ප්‍රොටෝකෝලය භාවිතා කරන අනෙකුත් ඒවා සම්බන්ධ කරන්න."
           }
         },
         "zh-Hans" : {
@@ -14739,6 +15015,12 @@
             "value" : "Соединение деинициализировано"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සම්බන්ධතාවය අක්‍රිය කරන ලදී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14849,6 +15131,12 @@
             "value" : "اتصل بالدعم الفني"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "За да се свържете с поддръжката"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14903,10 +15191,22 @@
             "value" : "Связаться со Службой поддержки"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සහාය අමතන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "联系支持"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "聯繫支持"
           }
         }
       }
@@ -14918,6 +15218,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "منشئ المحتوى"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Създател на съдържание"
           }
         },
         "cs" : {
@@ -14974,6 +15280,12 @@
             "value" : "Создатель контента"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අන්තර්ගත නිර්මාණකරු"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14994,6 +15306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "متابعة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продължи"
           }
         },
         "cs" : {
@@ -15048,6 +15366,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Продолжить"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඉදිරියට"
           }
         },
         "zh-Hans" : {
@@ -16669,6 +16993,12 @@
             "value" : "لم يتمكن من حذف الإصدار."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не можах да изтрия версията."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16721,6 +17051,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось удалить версию."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුවාදය මැකීමට නොහැකි විය."
           }
         },
         "zh-Hans" : {
@@ -17239,6 +17575,12 @@
             "value" : "Не удалось продублировать комнату."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරය අනුපිටපත් කිරීමට නොහැකි විය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17703,6 +18045,12 @@
             "value" : "تعذّر حل الملف."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлът не можа да бъде разрешен."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17757,10 +18105,22 @@
             "value" : "Не удалось решить файл."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනුව විසඳා ගැනීමට නොහැකි විය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法解析文件。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法解析文件"
           }
         }
       }
@@ -17831,6 +18191,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось отправить электронное письмо"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඊමේල් යැවීමට නොහැකි විය"
           }
         },
         "zh-Hans" : {
@@ -17944,6 +18310,12 @@
             "value" : "تعذّر الحصول على الوصول"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешен достъп"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17998,10 +18370,22 @@
             "value" : "Не удалось получить доступ."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්‍රවේශය ලබා ගැනීමට නොහැකි විය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法访问"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法訪問"
           }
         }
       }
@@ -18102,6 +18486,12 @@
             "value" : "تعذّر تغيير مالك الغرفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешна смяна на собственик на стая"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18154,6 +18544,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось сменить владельца комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමර හිමිකරු වෙනස් කිරීමට නොහැකි විය."
           }
         },
         "zh-Hans" : {
@@ -18266,6 +18662,12 @@
             "value" : "تعذّر تصدير فهرس الغرفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешно индексиране на индекс на стая"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18318,6 +18720,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось экспортировать индекс комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමර දර්ශකය නිර්යාත කිරීමට නොහැකි විය."
           }
         },
         "zh-Hans" : {
@@ -18754,6 +19162,12 @@
             "value" : "Создать бесплатный аккаунт"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නොමිලේ ගිණුමක් සාදන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18774,6 +19188,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنشئوا ملفًا جديدًا"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Създайте нов файл"
           }
         },
         "cs" : {
@@ -18830,7 +19250,19 @@
             "value" : "Создать новый файл"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව ගොනුවක් සාදන්න"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建新文件"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "创建新文件"
@@ -18844,6 +19276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنشئ غرفة استنادًا إلى قالب. سيتم نسخ جميع الإعدادات والمستخدمين والمجلدات والملفات من قالب الغرفة المحدد."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Създайте стая въз основа на шаблон. Всички настройки, потребители, папки и файлове ще бъдат взети от избрания шаблон на стая."
           }
         },
         "cs" : {
@@ -18898,6 +19336,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Создать комнату на основе шаблона. Все настройки, пользователи, папки и файлы будут взяты из выбранного шаблона комнаты."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අච්චුවක් මත පදනම්ව කාමරයක් සාදන්න. සියලුම සැකසුම්, පරිශීලකයන්, ෆෝල්ඩර සහ ගොනු තෝරාගත් කාමර අච්චුවෙන් ගනු ලැබේ."
           }
         },
         "zh-Hans" : {
@@ -19329,6 +19773,12 @@
             "value" : "Создать новую папку"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව ෆෝල්ඩරයක් සාදන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19706,6 +20156,12 @@
             "value" : "التاريخ الحالي"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Днешна дата"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19760,6 +20216,12 @@
             "value" : "Текущая дата"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වත්මන් දිනය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19780,6 +20242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "سيتم حفظ الملف الحالي في سجل الإصدارات."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущият файл ще бъде запазен в историята на версиите."
           }
         },
         "cs" : {
@@ -19834,6 +20302,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Текущий файл будет сохранен в истории версий."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "වත්මන් ගොනුව අනුවාද ඉතිහාසය තුළ සුරකිනු ඇත."
           }
         },
         "zh-Hans" : {
@@ -20029,6 +20503,12 @@
             "value" : "فلتر مخصص لـ\nالملف المحددـ\nمعطّل"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Персонализиран филтър за\nизбрания файл\nе деактивиран"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20083,6 +20563,12 @@
             "value" : "Пользовательский фильтр для\nвыбранного файла\nотключен"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තෝරාගත් ගොනුව\nසඳහා අභිරුචි පෙරහන\nඅක්‍රීය කර ඇත."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20097,6 +20583,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "فلتر مخصص لـ\nالملف المحددـ\nمفعّل"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Персонализиран филтър за\nизбрания файл\nе активиран"
           }
         },
         "cs" : {
@@ -20433,6 +20925,12 @@
             "value" : "أيام"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дни"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20485,6 +20983,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дней"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දින"
           }
         },
         "zh-Hans" : {
@@ -21274,8 +21778,8 @@
         },
         "bg" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete %#@arg1@ and %#@arg2@"
+            "state" : "translated",
+            "value" : "Изтриване на %#@arg1@ и %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {
@@ -21285,14 +21789,14 @@
                 "plural" : {
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folder"
+                      "state" : "translated",
+                      "value" : "%arg папка"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg папки"
                     }
                   }
                 }
@@ -21305,14 +21809,14 @@
                 "plural" : {
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg File"
+                      "state" : "translated",
+                      "value" : "%arg файл"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg файлове"
                     }
                   }
                 }
@@ -22407,6 +22911,12 @@
             "value" : "حذف نهائيا"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изтрий окончателно"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22461,6 +22971,12 @@
             "value" : "Удалить навсегда"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ස්ථිරවම මකන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22482,6 +22998,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "حذف القالب"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изтриване на шаблон"
           }
         },
         "cs" : {
@@ -22538,6 +23060,12 @@
             "value" : "Удалить шаблон"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අච්චුව මකන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22552,6 +23080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "هل تريد حذف هذا العنصر؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изтрийте този елемент?"
           }
         },
         "cs" : {
@@ -22608,6 +23142,12 @@
             "value" : "Удалить этот элемент?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම අයිතමය මකන්නද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22622,6 +23162,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "حذف الإصدار"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изтриване на версията"
           }
         },
         "cs" : {
@@ -22676,6 +23222,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Удалить версию"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුවාදය මකන්න"
           }
         },
         "zh-Hans" : {
@@ -23137,6 +23689,12 @@
             "value" : "قطري"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Диагонална"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23191,6 +23749,12 @@
             "value" : "По диагонали"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විකර්ණ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23212,6 +23776,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مدير"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Директор"
           }
         },
         "cs" : {
@@ -23268,6 +23838,12 @@
             "value" : "Директор"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අධ්‍යක්ෂක"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23282,6 +23858,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تعطيل الفلتر المخصص"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Деактивиране на персонализирания филтър"
           }
         },
         "cs" : {
@@ -23336,6 +23918,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отключить пользовательский фильтр"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අභිරුචි පෙරහන අක්‍රීය කරන්න"
           }
         },
         "zh-Hans" : {
@@ -23502,6 +24090,12 @@
             "value" : "Отключить уведомления"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දැනුම්දීම් අබල කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23613,6 +24207,12 @@
             "value" : "هل تريد فعلاً حذف قالب الغرفة %@؟ لا يمكن استعادة القالب بعد الحذف. "
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наистина ли искате да изтриете шаблона за стая %@? Шаблонът не може да бъде възстановен."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23665,6 +24265,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы действительно хотите удалить шаблон комнаты %@? Его нельзя будет восстановить."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබට ඇත්තටම සැකිලි කාමරය %@ මකා දැමීමට අවශ්‍යද? සැකිල්ල ප්‍රතිසාධනය කළ නොහැක."
           }
         },
         "zh-Hans" : {
@@ -23771,6 +24377,12 @@
             "value" : "DocSpace"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DocSpace"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23820,6 +24432,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DocSpace"
+          }
+        },
+        "si" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DocSpace"
@@ -23933,6 +24551,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مستخدم \"DocSpace\" فقط"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Само за потребители на Docspace"
           }
         },
         "cs" : {
@@ -24598,6 +25222,12 @@
             "value" : "Только для пользователей DoсSpace"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DoсSpace පරිශීලකයින්ට පමණි"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24619,6 +25249,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مسودة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чернова"
           }
         },
         "cs" : {
@@ -24673,6 +25309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Черновик"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කෙටුම්පත"
           }
         },
         "zh-Hans" : {
@@ -25223,6 +25865,12 @@
             "value" : "تعديل التعليق"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактиране на коментар"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25277,10 +25925,22 @@
             "value" : "Редактировать комментарий"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අදහස සංස්කරණය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "编辑评论"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑批注"
           }
         }
       }
@@ -25291,6 +25951,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تعديل التعليق"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактиране на коментар"
           }
         },
         "cs" : {
@@ -25347,7 +26013,19 @@
             "value" : "Редактировать комментарий"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අදහස සංස්කරණය"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑评论"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "编辑评论"
@@ -25453,6 +26131,12 @@
             "value" : "تحرير الفهرس"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактирай индекс"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25505,6 +26189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Редактировать индекс"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුචිය සංස්කරණය කරන්න"
           }
         },
         "zh-Hans" : {
@@ -25587,6 +26277,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Редактировать ссылку"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලින්ක් එක සංස්කරණය කරන්න"
           }
         },
         "zh-Hans" : {
@@ -25700,6 +26396,12 @@
             "value" : "تعديل القالب"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактиране на шаблон"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25752,6 +26454,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменить шаблон"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිල්ල සංස්කරණය කරන්න"
           }
         },
         "zh-Hans" : {
@@ -26005,6 +26713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Адрес электронной почты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඊතැපැල් ලිපිනය"
           }
         },
         "zh-Hans" : {
@@ -26294,6 +27008,12 @@
             "value" : "موظف"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Служител"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26348,6 +27068,12 @@
             "value" : "Сотрудник"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සේවකයා"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26362,6 +27088,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "موظفين"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Служители"
           }
         },
         "cs" : {
@@ -26416,6 +27148,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сотрудники"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සේවකයින්"
           }
         },
         "zh-Hans" : {
@@ -26528,6 +27266,12 @@
             "value" : "تمكين الفهرسة التلقائية لفهرسة الملفات والمجلدات حسب الرقم التسلسلي. سيتم تعيين الفرز حسب الرقم كإعداد افتراضي لجميع المستخدمين."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Активирайте автоматичното индексиране, за да индексирате файлове и папки по сериен номер. Сортирането по номер ще бъде зададено по подразбиране за всички потребители."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26582,6 +27326,12 @@
             "value" : "Включить автоматическую индексацию для индексации файлов и папок по серийному номеру. Сортировка по номеру будет установлена ​​по умолчанию для всех пользователей."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුක්‍රමික අංකය අනුව ගොනු සහ ෆෝල්ඩර සුචිගත කිරීම ස්වයංක්‍රීයව සක්‍රීය කරන්න. සියලුම පරිශීලකයින් සඳහා අංකය අනුව වර්ග කිරීම පෙරනිමියෙන් සකසනු ලැබේ."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26602,6 +27352,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تفعيل الفلتر المخصص"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Активиране на персонализиран филтър"
           }
         },
         "cs" : {
@@ -26656,6 +27412,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включить пользовательский фильтр"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අභිරුචි පෙරහන සක්‍රීය කරන්න"
           }
         },
         "zh-Hans" : {
@@ -26822,6 +27584,12 @@
             "value" : "Включить уведомления"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දැනුම්දීම් සබල කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26932,6 +27700,12 @@
             "value" : "قم بتمكين هذا الإعداد لتعطيل عمليات التنزيل والطباعة ونسخ المحتوى للمستخدمين الذين لديهم دور \"المشاهد\""
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Активирайте тази настройка, за да деактивирате изтегляне, отпечатване и копиране на съдържание за потребители с ролята „Зрител“."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26984,6 +27758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включите этот параметр, чтобы отключить загрузку, печать и копирование контента для пользователей с ролью «Зритель»"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"නරඹන්නා\" භූමිකාව ඇති පරිශීලකයින් සඳහා බාගැනීම්, මුද්‍රණය සහ අන්තර්ගත පිටපත් කිරීම අක්‍රිය කිරීමට මෙම සැකසුම සක්‍රීය කරන්න."
           }
         },
         "zh-Hans" : {
@@ -27274,6 +28054,12 @@
             "value" : "أدخلوا كلمة المرور"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Въведи парола"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27326,6 +28112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Введите пароль"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මුරපදය ඇතුළත් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -28087,6 +28879,12 @@
             "value" : "الخروج بدون حفظ؟\nلقد قمت بإجراء تغييرات في الفهرس. إذا قمت بالمتابعة دون حفظ، فلن يتم تطبيق هذه التغييرات."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изход без запазване?\nНаправихте промени в индекса. Ако продължите без запазване, тези промени няма да бъдат приложени."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28157,6 +28955,12 @@
             "value" : "الخروج دون الحفظ؟\n            لقد أجريتم تغييرات في الفهرس. إذا تابعتم دون الحفظ، فلن يتم تطبيق تلك التغييرات."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да се излезе ли без запазване?\nНаправихте промени в индекса. Ако продължите без запазване, тези промени няма да бъдат приложени."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28209,6 +29013,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выйти без сохранения?\nВы внесли изменения в индекс. Если вы продолжите без сохранения, изменения не будут применены."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ දර්ශකයේ වෙනස්කම් සිදු කර ඇත. ඔබ සුරැකීමෙන් තොරව ඉදිරියට ගියහොත්, එම වෙනස්කම් අදාළ නොවේ."
           }
         },
         "zh-Hans" : {
@@ -28374,6 +29184,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Истек"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කල් ඉකුත් විය"
           }
         },
         "zh-Hans" : {
@@ -28576,6 +29392,12 @@
             "value" : "مؤشر غرفة التصدير"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Експортиране на индекс на стая"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28628,6 +29450,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Экспорт индекса комнат"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අපනයන කාමර දර්ශකය"
           }
         },
         "zh-Hans" : {
@@ -28710,6 +29538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Внешняя ссылка"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බාහිර සබැඳිය"
           }
         },
         "zh-Hans" : {
@@ -29526,6 +30360,12 @@
             "value" : "فشل في تحضير تصدير الفهرس"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешно подготвяне на експортиране на индекс"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29578,6 +30418,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось подготовить экспорт индекса"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දර්ශක අපනයනය සකස් කිරීමට අපොහොසත් විය."
           }
         },
         "zh-Hans" : {
@@ -29750,6 +30596,12 @@
             "value" : "Не удалось отправить форму"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආකෘතිපත්‍රය යොමු කිරීමට අසමත් විය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29766,7 +30618,15 @@
     },
     "Failed to verify user credentials." : {
       "comment" : "Error message shown when the user credentials are not valid.",
-      "isCommentAutoGenerated" : true
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешно потвърждаване на потребителските идентификационни данни."
+          }
+        }
+      }
     },
     "Failure to open editor" : {
       "localizations" : {
@@ -29774,6 +30634,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "فشل في فتح المحرّر"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешно отваряне на редактора"
           }
         },
         "de" : {
@@ -29927,6 +30793,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "فشل في فتح المحرّر"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешно отваряне на редактора"
           }
         },
         "cs" : {
@@ -30360,6 +31232,12 @@
             "value" : "تم تصدير الملف إلى المستندات"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "файлът е експортиран в Документи"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30414,6 +31292,12 @@
             "value" : "файл экспортирован в Документы"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනුව ලේඛන වෙත අපනයනය කරන ලදී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30434,6 +31318,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "عمر الملف"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продължителност на живота на файла"
           }
         },
         "cs" : {
@@ -30488,6 +31378,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Срок действия файла"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනු ආයු කාලය"
           }
         },
         "zh-Hans" : {
@@ -30748,6 +31644,12 @@
             "value" : "Файлы и папки, загружаемые администраторами, будут отображаться здесь."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිපාලකයින් විසින් උඩුගත කරන ලද ගොනු සහ ෆෝල්ඩර මෙහි දිස්වනු ඇත."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30768,6 +31670,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الملفات الأقدم من"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлове, по-стари от"
           }
         },
         "cs" : {
@@ -30822,6 +31730,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Срок действия файлов превышает"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනු පැරණි"
           }
         },
         "zh-Hans" : {
@@ -30934,6 +31848,12 @@
             "value" : "سيتم حذف الملفات الأقدم التي تجاوز عمرها الافتراضي"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По-старите файлове с изтекъл живот ще бъдат изтрити"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30986,6 +31906,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Файлы с истекшим сроком действия будут удалены"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආයු කාලය ඉක්මවා ඇති ගොනු මකා දැමෙනු ඇත."
           }
         },
         "zh-Hans" : {
@@ -31071,6 +31997,12 @@
             "value" : "Заполнить"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පුරවන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31152,6 +32084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заполните как"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලෙස පුරවන්න"
           }
         },
         "zh-Hans" : {
@@ -31237,6 +32175,12 @@
             "value" : "Заполните поля исходной формы в окне редактора."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සංස්කාරක කවුළුවේ මුල් පෝරමයේ ක්ෂේත්‍ර පුරවන්න."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31318,6 +32262,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заполните форму самостоятельно"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරමය ඔබම පුරවන්න."
           }
         },
         "zh-Hans" : {
@@ -31431,6 +32381,12 @@
             "value" : "حالة التعبئة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Състояние на попълване"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31479,6 +32435,12 @@
             "value" : "Статус заполнения"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිරවුම් තත්ත්වය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31494,6 +32456,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "حالة التعبئة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Състояние на запълване"
           }
         },
         "cs" : {
@@ -31550,6 +32518,12 @@
             "value" : "Статус заполнения"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිරවුම් තත්ත්වය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31564,6 +32538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم إيقاف التعبئة من قِبل"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пълненето беше спряно от"
           }
         },
         "cs" : {
@@ -31618,6 +32598,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заполнение было остановлено:"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිරවීම නතර කරන ලද්දේ"
           }
         },
         "zh-Hans" : {
@@ -32048,6 +33034,12 @@
             "value" : "Форма успешно заполнена"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරමය සාර්ථකව සම්පූර්ණ කරන ලදී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32219,6 +33211,12 @@
             "value" : "Заполнение форм"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම පිරවීම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32301,6 +33299,12 @@
             "value" : "Комната заполнения форм"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම පිරවීමේ කාමරය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32321,6 +33325,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم الانتهاء من النموذج"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Формулярът е финализиран"
           }
         },
         "de" : {
@@ -32385,6 +33395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "النموذج جاهز للتعبئة في الغرفة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Формулярът е готов за попълване в стаята"
           }
         },
         "de" : {
@@ -32511,6 +33527,12 @@
             "value" : "Номер формы"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම අංකය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32591,6 +33613,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Владелец формы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම හිමිකරු"
           }
         },
         "zh-Hans" : {
@@ -32675,6 +33703,12 @@
             "value" : "С устройства"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උපාංගයෙන්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32757,6 +33791,12 @@
             "value" : "Из DocSpace"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DocSpace වෙතින්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32777,6 +33817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "من قالب"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "От шаблон"
           }
         },
         "cs" : {
@@ -32833,6 +33879,12 @@
             "value" : "Из шаблона"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිල්ලෙන්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32847,6 +33899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "من القوالب"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "От шаблони"
           }
         },
         "cs" : {
@@ -32904,6 +33962,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从模板"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "从模板"
@@ -33098,6 +34162,12 @@
             "value" : "GB"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гб"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33150,6 +34220,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гб"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GB"
           }
         },
         "zh-Hans" : {
@@ -33496,6 +34572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Приступайте к работе с помощью быстрых действий:"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඉක්මන් ක්‍රියාමාර්ග සමඟ ආරම්භ කරන්න:"
           }
         },
         "zh-Hans" : {
@@ -34049,6 +35131,12 @@
             "value" : "ضيف"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гости"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34103,6 +35191,12 @@
             "value" : "Гость"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අමුත්තා"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34123,6 +35217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ضيوف"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гости"
           }
         },
         "cs" : {
@@ -34179,6 +35279,12 @@
             "value" : "Гости"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අමුත්තන්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34199,6 +35305,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "المساعدة والملاحظات"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощ и обратна връзка"
           }
         },
         "cs" : {
@@ -34255,10 +35367,22 @@
             "value" : "Помощь и обратная связь"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උදව් සහ ප්‍රතිපෝෂණ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "帮助和反馈"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幫助和回饋"
           }
         }
       }
@@ -34269,6 +35393,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مركز المساعدة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощен център"
           }
         },
         "cs" : {
@@ -34325,10 +35455,22 @@
             "value" : "Справочный центр"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උදව් මධ්‍යස්ථානය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "帮助中心"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "幫助中心"
           }
         }
       }
@@ -34401,6 +35543,12 @@
             "value" : "Здесь вы найдете список недавно открытых файлов, которыми с вами поделились с помощью внешней ссылки."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බාහිර සබැඳියක් හරහා ඔබ සමඟ බෙදාගත් මෑතකදී විවෘත කරන ලද ගොනු ලැයිස්තුවක් මෙහිදී ඔබට සොයාගත හැකිය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34422,6 +35570,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أفقي"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хоризонтална"
           }
         },
         "cs" : {
@@ -34476,6 +35630,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "По горизонтали"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තිරස්"
           }
         },
         "zh-Hans" : {
@@ -34737,6 +35897,12 @@
             "value" : "Значки"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අයිකන"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34849,6 +36015,12 @@
             "value" : "صورة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изображение"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34901,6 +36073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изображение"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුරුව"
           }
         },
         "zh-Hans" : {
@@ -35279,6 +36457,12 @@
             "value" : "قيد التنفيذ"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В процес на изпълнение"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35333,6 +36517,12 @@
             "value" : "В процессе"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්රගතියේ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35347,6 +36537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "في هذه اللوحة يمكنك متابعة إكمال\n النموذج الذي تشارك فيه أو الذي\n أنت المنظِّم لإكماله"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В този панел можете да следите завършването\nна формуляра, в който участвате или на чието завършване\nсте организатор"
           }
         },
         "de" : {
@@ -35414,6 +36610,12 @@
             "value" : "في هذه اللوحة يمكنك متابعة مدى اكتمال\n النموذج الذي تُشارك في تعبئته أو الذي\n تُنظّم عملية تعبئته"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В този панел можете да следите попълването на\nформуляра, в който участвате или на който\nсте организатор на попълването"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35468,6 +36670,12 @@
             "value" : "На этой панели вы можете следить за заполнением\nформы, участником или организатором заполнения которой\nвы являетесь"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම පැනලයෙන් ඔබ සහභාගී වන හෝ ඔබ\nසම්පූර්ණ කිරීමේ සංවිධායක වන පෝරමය සම්පූර්ණ කිරීම\nනිරීක්ෂණය කළ හැකිය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35482,6 +36690,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "في هذه اللوحة يمكنك متابعة مدى اكتمال النموذج الذي تُشارك في تعبئته أو الذي تُنظّم عملية تعبئته"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В този панел можете да следите попълването на формуляра, в който участвате или на който сте организатор на попълването"
           }
         },
         "cs" : {
@@ -35536,6 +36750,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "На этой панели вы можете следить за заполнением формы, участником или организатором заполнения которой вы являетесь"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම පැනලය තුළ ඔබ සහභාගී වන හෝ ඔබ සම්පූර්ණ කිරීමේ සංවිධායක වන පෝරමය සම්පූර්ණ කිරීම නිරීක්ෂණය කළ හැකිය."
           }
         },
         "zh-Hans" : {
@@ -35641,6 +36861,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "المؤشر"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Индекс"
           }
         },
         "cs" : {
@@ -36248,6 +37474,12 @@
             "value" : "بيانات الخادم غير صالحة."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Невалидни данни за сървър."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -36300,6 +37532,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неверные данные сервера"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවලංගු සේවාදායක දත්ත."
           }
         },
         "zh-Hans" : {
@@ -36500,6 +37738,12 @@
             "value" : "ادعوا الضيوف عبر البريد الإلكتروني"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поканете гости по имейла"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -36552,6 +37796,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пригласить гостей по электронной почте"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඊමේල් මගින් අමුත්තන්ට ආරාධනා කරන්න"
           }
         },
         "zh-Hans" : {
@@ -36929,6 +38179,12 @@
             "value" : "سيتم حذفه نهائيًا ولا يمكن التراجع عن هذا الإجراء."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ще бъде безвъзвратно изтрито. Това действие е необратимо."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -36983,6 +38239,12 @@
             "value" : "Файл будет безвозвратно удален. Это действие нельзя отменить."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එය ආපසු ලබා ගත නොහැකි ලෙස මකා දමනු ලැබේ. මෙම ක්‍රියාව ආපසු හැරවිය නොහැක."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -36997,6 +38259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "يتم حذف العناصر الموجودة في سلة المهملات تلقائيًا بعد 30 يومًا"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Елементите в Кошчето ще бъдат автоматично изтрити след 30 дни"
           }
         },
         "cs" : {
@@ -37051,6 +38319,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Элементы в корзине автоматически удаляются через 30 дней"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කුණු කූඩයේ ඇති අයිතම දින 30කට පසු ස්වයංක්‍රීයව මැකී යයි."
           }
         },
         "zh-Hans" : {
@@ -37165,6 +38439,12 @@
             "value" : "KB"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кб"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37217,6 +38497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кб"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KB"
           }
         },
         "zh-Hans" : {
@@ -37830,6 +39116,12 @@
             "value" : "Ссылка"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සබැඳිය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38176,6 +39468,12 @@
             "value" : "Название ссылки"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සබැඳි නම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38463,6 +39761,12 @@
             "value" : "سيتم حذف الروابط إلى كافة الملفات الموجودة في الغرفة. لن تصبح الروابط السابقة لملفات الغرفة والمستندات المضمنة متاحة.\n\nلا يمكن التراجع عن هذا الإجراء. هل أنت متأكد أنك تريد الاستمرار؟"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Връзките към всички файлове в стаята ще бъдат изтрити. Предишните връзки към файлове на стаи и вградени документи ще станат недостъпни.\n\nТова действие не може да бъде отменено. Сигурни ли сте, че искате да продължите?"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38517,6 +39821,12 @@
             "value" : "Ссылки на все файлы в комнате будут удалены. Предыдущие ссылки на файлы в комнате и встроенные документы станут недоступны.\n\nЭто действие не может быть отменено. Хотите продолжить?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයේ ඇති සියලුම ගොනු වෙත සබැඳි මකා දැමෙනු ඇත. කාමර ගොනු සහ කාවැද්දූ ලේඛන වෙත පෙර සබැඳි ලබා ගත නොහැකි වනු ඇත.\n\nමෙම ක්‍රියාව අහෝසි කළ නොහැක. ඔබට ඉදිරියට යාමට අවශ්‍ය බව ඔබට විශ්වාසද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38537,6 +39847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "سيتم إعادة إنشاء الروابط لجميع الملفات الموجودة في الغرفة. لن تصبح الروابط السابقة لملفات الغرفة والمستندات المضمنة متاحة.\n\nلا يمكن التراجع عن هذا الإجراء. هل أنت متأكد أنك تريد الاستمرار؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Връзките към всички файлове в стаята ще бъдат отново генерирани. Предишните връзки към файлове на стаи и вградени документи ще станат недостъпни.\n\nТова действие не може да бъде отменено. Сигурни ли сте, че искате да продължите?"
           }
         },
         "cs" : {
@@ -38591,6 +39907,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ссылки на все файлы в комнате будут сгенерированы повторно. Предыдущие ссылки на файлы в комнате и встроенные документы станут недоступны.\n\nЭто действие не может быть отменено. Хотите продолжить?"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයේ ඇති සියලුම ගොනු වෙත සබැඳි නැවත ජනනය කෙරේ. කාමර ගොනු සහ කාවැද්දූ ලේඛන වෙත පෙර සබැඳි ලබා ගත නොහැකි වනු ඇත.\n\nමෙම ක්‍රියාව අහෝසි කළ නොහැක. ඔබට ඉදිරියට යාමට අවශ්‍ය බව ඔබට විශ්වාසද?"
           }
         },
         "zh-Hans" : {
@@ -38676,6 +39998,12 @@
             "value" : "Список"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලැයිස්තුව"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38759,6 +40087,12 @@
             "value" : "Загрузка"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පූරණය වෙමින්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38839,6 +40173,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Местоположение"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ස්ථානය"
           }
         },
         "zh-Hans" : {
@@ -39661,6 +41001,12 @@
             "value" : "MB"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мб"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -39713,6 +41059,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мб"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MB"
           }
         },
         "zh-Hans" : {
@@ -40112,6 +41464,12 @@
             "value" : "وحدة القياس"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мерна единица"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -40164,6 +41522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Единица измерения"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මිනුම් ඒකකය"
           }
         },
         "zh-Hans" : {
@@ -40364,6 +41728,12 @@
             "value" : "الأعضاء"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Членове"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -40418,6 +41788,12 @@
             "value" : "Участники"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සාමාජිකයින්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -40432,6 +41808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الحد الأدنى للطول: 8 | الأحرف المسموح بها: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_{|}"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Минимална дължина: 8 символа | Позволени символи: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}"
           }
         },
         "cs" : {
@@ -40488,6 +41870,12 @@
             "value" : "Минимальная длина: 8 символов | Допустимые символы: а-я, А-Я, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවම දිග: 8 | අවසර ලත් අක්ෂර: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -40508,6 +41896,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الأشهر"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Месеци"
           }
         },
         "cs" : {
@@ -40562,6 +41956,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Месяцев"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මාස"
           }
         },
         "zh-Hans" : {
@@ -41120,6 +42520,12 @@
             "value" : "انتقل إلى سلة المهملات"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Премести в Кошче"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -41172,6 +42578,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Переместить в Корзину"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අපද්‍රව්‍ය වෙත ගෙන යන්න"
           }
         },
         "zh-Hans" : {
@@ -42148,6 +43560,12 @@
             "value" : "Новая папка"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව බහාලුම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42319,6 +43737,12 @@
             "value" : "Новая форма"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව පෝරමය පිරවීම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42401,6 +43825,12 @@
             "value" : "Новая комната для заполнения форм"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව පෝරම පිරවුම් කාමරය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42421,6 +43851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "سيتم إضافة الضيوف الجدد هنا بعد دعوتهم إلى الغرفة. يمكنك مشاركة ضيوفك وإضافة الضيوف الذين دعاهم الآخرون إلى قائمتك."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новите гости ще бъдат добавени тук, след като ги поканите в стаята. Можете да споделяте гостите си и да добавяте към списъка си гости, поканени от други."
           }
         },
         "cs" : {
@@ -42475,6 +43911,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Новые Гости будут добавлены сюда, как только вы пригласите их в комнату. Вы можете поделиться своими гостями и добавить гостей, приглашенных другими, в свой список."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ කාමරයට ආරාධනා කළ පසු නව අමුත්තන් මෙහි එකතු කරනු ලැබේ. ඔබට ඔබේ අමුත්තන් බෙදා ගැනීමට සහ අන් අය විසින් ආරාධනා කරන ලද අමුත්තන් ඔබේ ලැයිස්තුවට එක් කිරීමට හැකිය."
           }
         },
         "zh-Hans" : {
@@ -42639,6 +44081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Новая комната"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව කාමරය"
           }
         },
         "zh-Hans" : {
@@ -43076,6 +44524,12 @@
             "value" : "NextCloud"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නෙක්ස්ක්ලවුඩ්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43186,6 +44640,12 @@
             "value" : "لم تتم إضافة أي ضيوف بعد"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все още няма добавени гости"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43238,6 +44698,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пока нет добавленных гостей"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තවම එකතු කළ අමුත්තන් නැත"
           }
         },
         "zh-Hans" : {
@@ -43314,6 +44780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Здесь пока нет заархивированных комнат"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙහි තවමත් සංරක්ෂිත කාමර නොමැත"
           }
         },
         "zh-Hans" : {
@@ -43574,6 +45046,12 @@
             "value" : "Здесь пока нет документов"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙහි තවමත් ලේඛන නොමැත"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43654,6 +45132,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Здесь пока нет файлов"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙහි තවමත් ගොනු නොමැත"
           }
         },
         "zh-Hans" : {
@@ -44382,6 +45866,12 @@
             "value" : "لا توجد قوالب هنا بعد"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тук все още няма шаблони"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -44434,6 +45924,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Здесь пока нет шаблонов "
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙහි තවමත් සැකිලි නොමැත"
           }
         },
         "zh-Hans" : {
@@ -45071,6 +46567,12 @@
             "value" : "موافق"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45123,6 +46625,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
           }
         },
         "zh-Hans" : {
@@ -45737,6 +47245,12 @@
             "value" : "Владельцем комнаты может стать только администратор комнаты или администратор DocSpace."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමර හිමිකරු විය හැක්කේ කාමර පරිපාලකයෙකුට හෝ DocSpace පරිපාලකයෙකුට පමණි."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45757,6 +47271,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "يظهر هنا فقط مديرو \"DocSpace\" والغرف"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тук са показани само администраторите на DocSpace и стаи"
           }
         },
         "cs" : {
@@ -45813,6 +47333,12 @@
             "value" : "Здесь отображаются только администраторы DocSpace и администраторы комнат"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙහි පෙන්වන්නේ DocSpace සහ කාමර පරිපාලකයින් පමණි"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45827,6 +47353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "سيتمكن فقط مديرو \"DocSpace\" والغرف من المجموعات المحددة من إنشاء غرف باستخدام هذا القالب."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Само администраторите на DocSpace и стаи от избраните групи ще могат да създават стаи, използвайки този шаблон."
           }
         },
         "cs" : {
@@ -45881,6 +47413,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Только администраторы DocSpace и администраторы комнат из выбранных групп смогут создавать комнаты с помощью этого шаблона."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තෝරාගත් කණ්ඩායම් වලින් DocSpace සහ කාමර පරිපාලකයින්ට පමණක් මෙම අච්චුව භාවිතයෙන් කාමර නිර්මාණය කළ හැකිය."
           }
         },
         "zh-Hans" : {
@@ -46137,6 +47675,12 @@
             "value" : "ONLYOFFICE Personal завершает работу"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE Personal අවසන් වේ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46217,6 +47761,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пожалуйста, обратите внимание: поддержка ONLYOFFICE Personal прекращается 1 сентября 2024 года. Рекомендуем перейти на бесплатный ONLYOFFICE DocSpace Cloud."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE Personal 2024 සැප්තැම්බර් 1 වන දින නතර කෙරේ. නොමිලේ ONLYOFFICE DocSpace Cloud වෙත මාරු වීමට අපි නිර්දේශ කරමු."
           }
         },
         "zh-Hans" : {
@@ -46595,6 +48145,12 @@
             "value" : "افتح الملف"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отвори файл"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46647,6 +48203,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Открыть файл"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගොනුව විවෘත කරන්න"
           }
         },
         "zh-Hans" : {
@@ -46759,6 +48321,12 @@
             "value" : "فتح النموذج لبدء التعبئة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отворих формуляра за попълване"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46811,6 +48379,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Открыл форму для заполнения"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිරවීම සඳහා පෝරමය විවෘත කළා"
           }
         },
         "zh-Hans" : {
@@ -47977,6 +49551,12 @@
             "value" : "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، ويمكن أن تشمل الأحرف التالية: a-z، A-Z، 0-9، !\"№%&'()*+,-./:;<=>?@[]^_`{|}~"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Паролата трябва да съдържа: Минимална дължина: 8 позволени знака: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48029,6 +49609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пароль должен содержать: Минимальная длина: 8 символов Допустимые символы: а–я, А–Я, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මුරපදයේ අඩංගු විය යුත්තේ: අවම දිග: අවසර ලත් අක්ෂර 8: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~"
           }
         },
         "zh-Hans" : {
@@ -48291,6 +49877,12 @@
             "value" : "Образец PDF-формы"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF පෝරම නියැදිය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48401,6 +49993,12 @@
             "value" : "مستندات \"PDF\""
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-документи"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48455,6 +50053,12 @@
             "value" : "PDF-документы"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-ලේඛන"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48469,6 +50073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "نماذج \"PDF\""
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-формуляри"
           }
         },
         "cs" : {
@@ -48523,6 +50133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PDF-формы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-ආකෘති"
           }
         },
         "zh-Hans" : {
@@ -49777,6 +51393,12 @@
             "value" : "يرجى المحاولة مرة أخرى.\n\n إذا استمرت المشكلة، تواصل معنا واذكر رمز الخطأ هذا: Linkedin - %@"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Моля, опитайте отново.\n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Linkedin - %@"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -50111,6 +51733,12 @@
             "value" : "يرجى المحاولة مرة أخرى.\n\n إذا استمرت المشكلة، تواصل معنا واذكر رمز الخطأ هذا: Zoom - %@"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Моля, опитайте отново. \n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Zoom - %@"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -50357,6 +51985,12 @@
             "value" : "الموضع"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Позиция"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -50411,6 +52045,12 @@
             "value" : "Положение"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිහිටීම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -50433,6 +52073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مستخدم بارع"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Опитен потребител"
           }
         },
         "cs" : {
@@ -50493,6 +52139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Опытный пользователь"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බලවත් පරිශ්‍රීලක"
           }
         },
         "zh-Hans" : {
@@ -50954,6 +52606,12 @@
             "value" : "تفاصيل العملية"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробности за процеса"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51006,6 +52664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подробные сведения о процессе"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ක්‍රියාවලි විස්තර"
           }
         },
         "zh-Hans" : {
@@ -51290,6 +52954,12 @@
             "value" : "قم بحماية جميع المستندات الموجودة في هذه الغرفة باستخدام العلامات المائية. إذا كان المستند يحتوي على مستند بالفعل، فلن يتم استبداله."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Защитете всички документи в тази стая с водни знаци. Ако даден документ вече има такъв, той няма да бъде заменен."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51342,6 +53012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Защитите все документы в этой комнате водяными знаками. Если в документе уже есть водяной знак, он не будет заменен."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරයේ ඇති සියලුම ලේඛන ජල සලකුණු වලින් ආරක්ෂා කරන්න. ලේඛනයක දැනටමත් එකක් තිබේ නම්, එය ප්‍රතිස්ථාපනය නොකෙරේ."
           }
         },
         "zh-Hans" : {
@@ -51512,6 +53188,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Предоставить доступ к документу и установить уровни доступа."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලේඛනයට ප්‍රවේශය ලබා දී අවසර මට්ටම් සකසන්න."
           }
         },
         "zh-Hans" : {
@@ -51770,6 +53452,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Публичная ссылка"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පොදු සබැඳිය"
           }
         },
         "zh-Hans" : {
@@ -52119,6 +53807,12 @@
             "value" : "Доступна по ссылке"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෑතකදී සබැඳිය හරහා ප්‍රවේශ විය හැකි"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -52379,6 +54073,12 @@
             "value" : "Восстановить ссылку"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සබැඳිය නැවත උත්පාදනය කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -52637,6 +54337,12 @@
             "value" : "Удалить"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඉවත් කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -52806,6 +54512,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Удалить ссылку"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සබැඳිය ඉවත් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -53333,6 +55045,12 @@
             "value" : "Возобновить тарифный план Business"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ව්‍යාපාර සැලැස්ම අලුත් කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53444,6 +55162,12 @@
             "value" : "إعادة الترتيب"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пренареждане"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53498,6 +55222,12 @@
             "value" : "Переместить"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "යළි පිළිවෙලට"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53518,6 +55248,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "فشل في إعادة الترتيب."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неуспешно пренареждане."
           }
         },
         "cs" : {
@@ -53572,6 +55308,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось переместить."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නැවත ඇණවුම් කිරීම අසාර්ථක විය."
           }
         },
         "zh-Hans" : {
@@ -54097,6 +55839,12 @@
             "value" : "Восстановить комнату?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරය ප්‍රතිසාධනය කරන්නද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54117,6 +55865,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "هل تريد استعادة هذا الإصدار؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да се ​​възстанови ли тази версия?"
           }
         },
         "cs" : {
@@ -54173,6 +55927,12 @@
             "value" : "Восстановить эту версию?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම අනුවාදය ප්‍රතිසාධනය කරන්නද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54187,6 +55947,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم الاستعادة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Възстановено"
           }
         },
         "cs" : {
@@ -54241,6 +56007,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановлено"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්‍රතිෂ්ඨාපනය කළා"
           }
         },
         "zh-Hans" : {
@@ -54585,6 +56357,12 @@
             "value" : "Отменить ссылку"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සබැඳිය අහෝසි කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54665,6 +56443,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отменено"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවලංගු කරන ලදී"
           }
         },
         "zh-Hans" : {
@@ -54749,6 +56533,12 @@
             "value" : "Отмена"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අහෝසි කිරීම"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54770,6 +56560,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "وصف الدور"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Описание на ролята"
           }
         },
         "cs" : {
@@ -54824,6 +56620,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Описание роли"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "භූමිකාව පිළිබඳ විස්තරය"
           }
         },
         "zh-Hans" : {
@@ -54902,6 +56704,12 @@
             "value" : "Роли"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "භූමිකාවන්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54922,6 +56730,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الأدوار في النموذج:"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Роли от формуляра:"
           }
         },
         "cs" : {
@@ -54976,6 +56790,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Роли из формы:"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරමයෙන් භූමිකාවන්:"
           }
         },
         "zh-Hans" : {
@@ -55082,6 +56902,12 @@
             "value" : "تم إنشاء الغرفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стаята е създадена"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55136,6 +56962,12 @@
             "value" : "Комната создана"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරය සාදන ලදී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55151,6 +56983,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مدير الغرفة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Управител на стая"
           }
         },
         "cs" : {
@@ -55205,6 +57043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Менеджер комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයේ කළමනාකරු"
           }
         },
         "zh-Hans" : {
@@ -55318,6 +57162,12 @@
             "value" : "اسم الغرفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Име на Стаята"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55370,6 +57220,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Имя комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයේ නම"
           }
         },
         "zh-Hans" : {
@@ -55543,6 +57399,12 @@
             "value" : "Корневая директроия"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මූල ෆෝල්ඩරය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55563,6 +57425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "استدارة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завърти"
           }
         },
         "cs" : {
@@ -55617,6 +57485,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Повернуть"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කරකවන්න"
           }
         },
         "zh-Hans" : {
@@ -55817,6 +57691,12 @@
             "value" : "حفظ كقالب"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запазване като шаблон"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55869,6 +57749,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сохранить как шаблон"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අච්චුවක් ලෙස සුරකින්න"
           }
         },
         "zh-Hans" : {
@@ -55976,6 +57862,12 @@
             "value" : "مقياس"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мащаб"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -56030,6 +57922,12 @@
             "value" : "Масштаб"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිමාණය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -56050,6 +57948,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مسح المستند"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сканиране на документ"
           }
         },
         "cs" : {
@@ -56106,10 +58010,22 @@
             "value" : "Сканировать документ"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලේඛනය පරිලෝකනය කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "扫描文档"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "掃描文件"
           }
         }
       }
@@ -56120,6 +58036,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "المسح غير مدعوم على هذا الجهاز"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сканирането не се поддържа на това устройство"
           }
         },
         "cs" : {
@@ -56174,6 +58096,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сканирование не поддерживается на этом устройстве."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම උපාංගයේ ස්කෑන් කිරීම සහාය නොදක්වයි."
           }
         },
         "zh-Hans" : {
@@ -56428,6 +58356,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите форму PDF"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF පෝරමයක් තෝරන්න"
           }
         },
         "zh-Hans" : {
@@ -56716,6 +58650,12 @@
             "value" : "حدد الصورة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изберете изображение"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -56768,6 +58708,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите изображение"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රූපය තෝරන්න"
           }
         },
         "zh-Hans" : {
@@ -56853,6 +58799,12 @@
             "value" : "Выберите местоположение"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ස්ථානය තෝරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -56873,6 +58825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اختر الأعضاء"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изберете членове"
           }
         },
         "cs" : {
@@ -56927,6 +58885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выбрать участников"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සාමාජිකයින් තෝරන්න"
           }
         },
         "zh-Hans" : {
@@ -58093,6 +60057,12 @@
             "value" : "عيّن مدة صلاحية للملفات ليتم حذفها تلقائيًا من هذه الغرفة بعد فترة محددة. تبدأ المدة من تاريخ رفع أو إنشاء الملف."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Задайте продължителност на живота на файла за автоматично изтриване на файловете в тази стая след определен период. Животът започва от датата на качване/създаване на файла."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -58145,6 +60115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Установите срок действия файла, чтобы автоматически удалять файлы в этой комнате после определенного периода. Срок действия начинается с даты загрузки/создания файла."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නිශ්චිත කාල පරිච්ඡේදයකට පසු මෙම කාමරයේ ඇති ගොනු ස්වයංක්‍රීයව මකා දැමීමට ගොනු ආයු කාලය සකසන්න. ගොනුව උඩුගත කළ/නිර්මාණය කළ දින සිට ආයු කාලය ආරම්භ වේ."
           }
         },
         "zh-Hans" : {
@@ -58405,6 +60381,12 @@
             "value" : "Совместный доступ"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බෙදාගන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -58486,6 +60468,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поделиться и собрать"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බෙදාගන්න සහ එකතු කරන්න"
           }
         },
         "zh-Hans" : {
@@ -58570,6 +60558,12 @@
             "value" : "Предоставить доступ к папке"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ෆෝල්ඩරය බෙදා ගන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -58651,6 +60645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поделитесь своей формой и собирайте ответы с помощью комнаты заполнения форм."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම පිරවුම් කාමරයක් හරහා ඔබේ පෝරමය බෙදාගෙන ප්‍රතිචාර එකතු කරන්න."
           }
         },
         "zh-Hans" : {
@@ -58823,6 +60823,12 @@
             "value" : "Общая ссылка"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බෙදාගත් සබැඳිය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -58903,6 +60909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Общие ссылки"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බෙදාගත් සබැඳි"
           }
         },
         "zh-Hans" : {
@@ -59546,6 +61558,12 @@
             "value" : "عرض سجل الإصدارات"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показване на историята на версиите"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59598,6 +61616,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Показать историю версий"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුවාද ඉතිහාසය පෙන්වන්න"
           }
         },
         "zh-Hans" : {
@@ -59880,6 +61904,12 @@
             "value" : "حصة الحجم"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Размер на квотата"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59932,6 +61962,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Квота размера"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්‍රමාණයේ කෝටාව"
           }
         },
         "zh-Hans" : {
@@ -60753,6 +62789,12 @@
             "value" : "بدء"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Започнете"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -60807,7 +62849,19 @@
             "value" : "Начать"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අරඹන්න"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "开始"
@@ -60822,6 +62876,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "بدء التعبئة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Започнете да пълните"
           }
         },
         "cs" : {
@@ -60878,6 +62938,12 @@
             "value" : "Начать заполнение"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිරවීම ආරම්භ කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -60893,6 +62959,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "إيقاف التعبئة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спрете да пълните"
           }
         },
         "cs" : {
@@ -60949,6 +63021,12 @@
             "value" : "Начать заполнение"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පිරවීම නවත්වන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -60964,6 +63042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم الإيقاف"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спряно"
           }
         },
         "cs" : {
@@ -61018,6 +63102,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Остановлено"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නැවැත්තුවා"
           }
         },
         "zh-Hans" : {
@@ -61124,6 +63214,12 @@
             "value" : "حصة التخزين"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Квота за съхранение"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -61178,6 +63274,12 @@
             "value" : "Квота хранилища"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ගබඩා කෝටාව"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -61198,6 +63300,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم تحديد حصة التخزين لكل غرفة. يمكنك تغيير هذه القيمة أو إيقاف تشغيل حد التخزين."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зададена на стая квота за съхранение. Можете да промените стойността или да изключите лимита за съхранение."
           }
         },
         "cs" : {
@@ -61254,6 +63362,12 @@
             "value" : "Квота хранилища установлена ​​на комнату. Вы можете изменить это значение или отключить ограничение хранилища."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයකට ගබඩා කෝටාව සකසා ඇත. ඔබට මෙම අගය වෙනස් කිරීමට හෝ ගබඩා සීමාව අක්‍රිය කිරීමට හැකිය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -61274,6 +63388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أكمل الجزء الخاص به. تم إرسال النموذج إلى الدور التالي."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предадоха своята част. Формулярът беше изпратен на следващата роля."
           }
         },
         "cs" : {
@@ -61330,6 +63450,12 @@
             "value" : "Отправил свою часть. Форма была отправлена ​​на следующую роль."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔවුන්ගේ කොටස ඉදිරිපත් කළා. පෝරමය ඊළඟ භූමිකාවට යවන ලදී."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -61344,6 +63470,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم بنجاح"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Успешно"
           }
         },
         "cs" : {
@@ -61400,6 +63532,12 @@
             "value" : "Успешно"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සාර්ථකත්වය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -61420,6 +63558,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اقتراح ميزة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предложете функция"
           }
         },
         "cs" : {
@@ -61476,10 +63620,22 @@
             "value" : "Предложить функциональную возможность"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "විශේෂාංගයක් යෝජනා කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "功能建议"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推薦功能"
           }
         }
       }
@@ -61728,6 +63884,12 @@
             "value" : "Теги"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ටැග්"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -61748,6 +63910,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "يتم تطبيق الوسوم على الغرفة التي سيتم إنشاؤها استنادًا إلى هذا القالب."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Етикетите се прилагат към стаята, която ще бъде създадена въз основа на този шаблон."
           }
         },
         "cs" : {
@@ -61802,6 +63970,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Теги применяются к комнате, которая будет создана на основе этого шаблона."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම සැකිල්ල මත පදනම්ව නිර්මාණය කරනු ලබන කාමරයට ටැග් යොදනු ලැබේ."
           }
         },
         "zh-Hans" : {
@@ -62086,6 +64260,12 @@
             "value" : "TB"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тб"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62134,6 +64314,12 @@
             "value" : "Тб"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TB"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62154,6 +64340,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "قالب"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаблон"
           }
         },
         "cs" : {
@@ -62210,6 +64402,12 @@
             "value" : "Шаблон"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිල්ල"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62224,6 +64422,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم حفظ القالب %@"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаблон %@ е запазен"
           }
         },
         "cs" : {
@@ -62280,6 +64484,12 @@
             "value" : "Шаблон %@ сохранен"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ සැකිල්ල සුරකින ලදී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62294,6 +64504,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "قالب متاح للجميع"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаблонът е достъпен за всички"
           }
         },
         "cs" : {
@@ -62350,6 +64566,12 @@
             "value" : "Шаблон доступен каждому"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිල්ල සැමට ලබා ගත හැකිය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62364,6 +64586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "القوالب"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаблони"
           }
         },
         "cs" : {
@@ -62418,6 +64646,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаблоны"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිලි"
           }
         },
         "zh-Hans" : {
@@ -62878,6 +65112,12 @@
             "value" : "سيتمكن المديرون الذين تمت إضافتهم من إنشاء غرف باستخدام هذا القالب."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавените администратори ще могат да създават стаи, използвайки този шаблон."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62932,6 +65172,12 @@
             "value" : "Добавленные администраторы смогут создавать комнаты, используя этот шаблон."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එකතු කරන ලද පරිපාලකයින්ට මෙම සැකිල්ල භාවිතයෙන් කාමර නිර්මාණය කිරීමට හැකි වනු ඇත."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62946,6 +65192,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "إصدار العميل غير متوافق مع إصدار الخادم. يمكنك فتح المستند في وضع العرض فقط"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клиентската и сървърната версия са несъвместими. Можете да отворите документа само в режим на преглед."
           }
         },
         "cs" : {
@@ -63000,6 +65252,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Версии клиента и сервера несовместимы. Вы можете открыть документ только в режиме просмотра"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සේවාලාභියා සහ සේවාදායක අනුවාදයන් නොගැළපේ. ඔබට ලේඛනය විවෘත කළ හැක්කේ දර්ශන ප්‍රකාරයේදී පමණි."
           }
         },
         "zh-Hans" : {
@@ -63194,6 +65452,12 @@
             "value" : "مدة صلاحية الملف محددة بـ %@ في هذه الغرفة."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Животът на файла е зададен за %@ в тази стая."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63246,6 +65510,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Срок действия файла в этой комнате установлен на %@."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරයේ ගොනු ආයු කාලය %@ ලෙස සකසා ඇත."
           }
         },
         "zh-Hans" : {
@@ -63416,6 +65686,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заполненная форма PDF сохраняется и становится доступной для вас в папке Готово. Чтобы проверить статус, свяжитесь с владельцем формы, указав присвоенный ему номер."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පුරවන ලද PDF පෝරමය සුරකින අතර ඔබට සම්පූර්ණ\nෆෝල්ඩරය තුළ ලබා ගත හැකිය. තත්ත්වය පරීක්ෂා කිරීමට,\nපවරා ඇති අංකය ලබා දී පෝරම හිමිකරු අමතන්න."
           }
         },
         "zh-Hans" : {
@@ -63616,6 +65892,12 @@
             "value" : "يبدأ احتساب مدة الصلاحية من تاريخ إنشاء الملف. إذا تجاوزت أي ملفات في هذه الغرفة المدة المحددة، فسيتم حذفها."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продължителността на живот започва от създаването на файла. Ако някой файл в тази стая надвиши зададения живот, той ще бъде изтрит."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63668,6 +65950,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отсчет срока действия начинается с даты создания файла. Если срок действия каких-либо файлов в этой комнате превысит установленный, они будут удалены."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ආයු කාලය ගණනය කිරීම ආරම්භ වන්නේ ගොනු නිර්මාණය කළ දින සිටය. මෙම කාමරයේ ඇති ඕනෑම ගොනුවක් නියමිත ආයු කාලය ඉක්මවා ගියහොත්, ඒවා මකා දැමෙනු ඇත."
           }
         },
         "zh-Hans" : {
@@ -63869,6 +66157,12 @@
             "value" : "تم نسخ الرابط إلى الملف\n مع تفعيل الفلتر المخصص\n بنجاح إلى\nالحافظة."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Връзката към файла\nс активиран\nперсонализиран филтър\nе успешно\nкопирана в\nклипборда."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63921,6 +66215,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ссылка на файл\nс включенным\nПользовательским фильтром\nуспешно\nскопирована в\nбуфер обмена."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අභිරුචි පෙරහන\nසක්‍රීය කර ඇති\nගොනුවට සබැඳිය\nසාර්ථකව පසුරු\nපුවරුවට පිටපත්\nකරන ලදී."
           }
         },
         "zh-Hans" : {
@@ -64173,6 +66473,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Создана новая общая ссылка"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව බෙදාගත් සබැඳිය නිර්මාණය කරන ලදී."
           }
         },
         "zh-Hans" : {
@@ -64697,6 +67003,12 @@
             "value" : "Предыдущая ссылка будет недоступна. Будет создана новая общая ссылка."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෙර සබැඳිය ලබා ගත නොහැකි වනු ඇත. නව බෙදාගත් සබැඳියක් සාදනු ලැබේ."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -64807,6 +67119,12 @@
             "value" : "إجراء إعادة الترتيب سيزيل الفراغات في الفهارس، وسيُعاد فهرسة الملفات بترتيب متسلسل لتعويض الفجوات."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Действието Пренареждане ще премахне интервалите в индексите. Файловете ще бъдат индексирани повторно, за да се попълни липсващите индекси с отместване."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -64861,7 +67179,19 @@
             "value" : "Действие \"Переместить\" удалит пробелы в индексах. Файлы переиндексируются по порядку, и отсутствующие индексы будут заполнены."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නැවත සකස් කිරීමේ ක්‍රියාව මඟින් දර්ශකවල හිස්තැන් ඉවත් කරනු ඇත. අතුරුදහන් වූ දර්ශක පිරවීම සඳහා ඕෆ්සෙට් සමඟ ගොනු නැවත සුචිගත කරනු ලැබේ."
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新排序操作将移除索引中的空白项。文件将重新索引，并按顺序填补缺失的索引。"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新排序操作将移除索引中的空白项。文件将重新索引，并按顺序填补缺失的索引。"
@@ -65581,6 +67911,12 @@
             "value" : "لا يوجد ضيوف"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Няма гости"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65643,6 +67979,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "لا يوجد ضيوف لإضافتهم"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Няма гости за добавяне"
           }
         },
         "de" : {
@@ -65797,6 +68139,12 @@
             "value" : "لا يوجد مستخدمون"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Няма потребители"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65859,6 +68207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "لا يوجد مستخدمون لإضافتهم"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Няма потребители за добавяне"
           }
         },
         "de" : {
@@ -66071,6 +68425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Стороннее хранилище"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තෙවන පාර්ශ්ව ආචයනය"
           }
         },
         "zh-Hans" : {
@@ -66360,6 +68720,12 @@
             "value" : "تعطي معاينة الصورة فكرة تقريبية عن شكل العلامة المائية في ملفاتكم."
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Този преглед на изображението грубо ви показва как ще изглежда водния знак във файловете ви."
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -66412,6 +68778,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Это изображение для предварительного просмотра ориентировочно показывает, как водяной знак будет отображаться в ваших файлах."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම රූප පෙරදසුන දළ වශයෙන් ඔබේ ගොනු වල ජල සලකුණ පෙන්වන ආකාරය පෙන්වයි."
           }
         },
         "zh-Hans" : {
@@ -66760,6 +69132,12 @@
             "value" : "Эта комната доступна всем, у кого есть ссылка.\nВнешние пользователи будут иметь разрешение “Заполнение форм” для всех файлов."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරය සබැඳිය ඇති ඕනෑම කෙනෙකුට ලබා ගත හැකිය.\nබාහිර පරිශීලකයින්ට සියලුම ගොනු සඳහා\nපෝරම පිරවුම් අවසරය ඇත."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -66840,6 +69218,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Эта комната доступна всем, у кого есть ссылка.\nВнешние пользователи будут иметь разрешение \"Только просмотр” для всех файлов."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරය සබැඳිය ඇති ඕනෑම කෙනෙකුට ලබා ගත හැකිය.\nබාහිර පරිශීලකයින්ට සියලුම ගොනු සඳහා\nනැරඹීමට පමණක් අවසරය ඇත."
           }
         },
         "zh-Hans" : {
@@ -66952,6 +69336,12 @@
             "value" : "الفترة الزمنية"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Времеви период"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67004,6 +69394,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Период"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාල සීමාව"
           }
         },
         "zh-Hans" : {
@@ -68761,6 +71157,12 @@
             "value" : "Неавторизованные участники смогут только просматривать документ."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවසර නොලත් සාමාජිකයින්ට ලේඛනය බැලීමට පමණක් හැකි වනු ඇත."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69663,6 +72065,12 @@
             "value" : "حالة غير معروفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неизвестен статус"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69715,6 +72123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неизвестный статус"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නොදන්නා තත්ත්වය"
           }
         },
         "zh-Hans" : {
@@ -70323,6 +72737,12 @@
             "value" : "Загрузите готовую форму в формате PDF"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සූදානම් PDF පෝරමයක් උඩුගත කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70403,6 +72823,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Загрузка PDF-формы с устройства"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උපාංගයෙන් PDF පෝරමය උඩුගත කරන්න"
           }
         },
         "zh-Hans" : {
@@ -70487,6 +72913,12 @@
             "value" : "Загрузка PDF-формы из DocSpace"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DocSpace වෙතින් PDF පෝරමය උඩුගත කරන්න."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70507,6 +72939,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تحميل نماذج \"PDF\" من \"DocSpace\" أو الجهاز."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Качвайте PDF формуляри от DocSpace или от устройство."
           }
         },
         "cs" : {
@@ -70645,6 +73083,12 @@
             "value" : "Загрузите PDF-формы в комнату. Предложите пользователям заполнить PDF-форму. Просмотр заполненных форм и анализ данных, автоматически собранных в электронную таблицу."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයට PDF පෝරම උඩුගත කරන්න. PDF පෝරමයක් පිරවීමට පරිශීලකයින්ට ආරාධනා කරන්න. සම්පූර්ණ කරන ලද පෝරම සමාලෝචනය කර පැතුරුම්පතක ස්වයංක්‍රීයව එකතු කරන ලද දත්ත විශ්ලේෂණය කරන්න."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70757,6 +73201,12 @@
             "value" : "استخدام عنوان الـ \"IP\""
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Използвайте IP адрес"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70809,6 +73259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Использовать IP-адрес"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP ලිපිනය භාවිතා කරන්න"
           }
         },
         "zh-Hans" : {
@@ -70893,6 +73349,12 @@
             "value" : "Используйте сторонние сервисы в качестве хранилища данных для этой комнаты. В подключенном хранилище будет создана новая папка для хранения данных этой комнаты"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරය සඳහා දත්ත ගබඩාව ලෙස තෙවන පාර්ශවීය සේවාවන් භාවිතා කරන්න. සම්බන්ධිත ගබඩාව තුළ මෙම කාමරයේ දත්ත ගබඩා කිරීම සඳහා නව ෆෝල්ඩරයක් සාදනු ලැබේ."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70913,6 +73375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "استخدم غرفة البيانات الافتراضية لتحقيق أمان الملفات وشفافيتها بشكل متقدم أثناء ملء المستندات وتوقيعها خطوة بخطوة. قم بتعيين العلامات المائية، وفهرسة كل المحتوى وتتبعه تلقائيًا، وتقييد التنزيل والنسخ."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Използвайте VDR за повече сигурност и прозрачност на файловете, докато постепенно попълвате и подписвате документи. Задавайте водни знаци, индексирайте и проследявайте автоматично цялото съдържание, ограничавайте изтеглянето и копирането."
           }
         },
         "cs" : {
@@ -70967,6 +73435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Используйте виртуальную комнату данных, чтобы обеспечить эффективный контроль и прозрачность при работе с документами. Добавьте водяные знаки, индексируйте и отслеживайте весь контент автоматически, ограничьте загрузку и копирование."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උසස් ගොනු ආරක්ෂාව සහ විනිවිදභාවය සඳහා VDR භාවිතා කරන්න. ජල සලකුණු සකසන්න, සියලුම අන්තර්ගතයන් ස්වයංක්‍රීයව සුචිගත කර නිරීක්ෂණය කරන්න, බාගත කිරීම සහ පිටපත් කිරීම සීමා කරන්න."
           }
         },
         "zh-Hans" : {
@@ -71256,6 +73730,12 @@
             "value" : "البريد الإلكتروني للمستخدم"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Потребителски Имейл"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -71308,6 +73788,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Электронная почта пользователя"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිශීලක විද්‍යුත් තැපෑල"
           }
         },
         "zh-Hans" : {
@@ -71392,6 +73878,12 @@
             "value" : "Имя пользователя"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිශීලක නාමය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -71413,6 +73905,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اسم المستخدم"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Потребителско име"
           }
         },
         "cs" : {
@@ -71467,6 +73965,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Имя"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිශ්‍රීලක නාමය"
           }
         },
         "zh-Hans" : {
@@ -72109,6 +74613,12 @@
             "value" : "الإصدار %@"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия %@"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72163,6 +74673,12 @@
             "value" : "Версия %@"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුවාදය %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72177,6 +74693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "سجل الإصدارات"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "История на версиите"
           }
         },
         "cs" : {
@@ -72231,6 +74753,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "История версий"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අනුවාද ඉතිහාසය"
           }
         },
         "zh-Hans" : {
@@ -72427,6 +74955,12 @@
             "value" : "معلومات المشاهد"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Информация за зрителя"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72481,6 +75015,12 @@
             "value" : "Информация о зрителе"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නරඹන්නාගේ තොරතුරු"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72502,6 +75042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "غرفة البيانات الافتراضية"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стая за виртуални данни"
           }
         },
         "cs" : {
@@ -72556,6 +75102,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Виртуальная комната данных"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අතථ්‍ය දත්ත කාමරය"
           }
         },
         "zh-Hans" : {
@@ -72580,6 +75132,12 @@
             "value" : "غرفة البيانات الافتراضية"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стая за виртуални данни"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72632,6 +75190,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Виртуальная комната данных"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අතථ්‍ය දත්ත කාමරය"
           }
         },
         "zh-Hans" : {
@@ -72744,6 +75308,12 @@
             "value" : "نوع العلامة المائية"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вид воден знак"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72796,6 +75366,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Тип водяного знака"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දිය සලකුණ වර්ගය"
           }
         },
         "zh-Hans" : {
@@ -73583,6 +76159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добро пожаловать в комнату для заполнения форм"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරම පිරවීමේ කාමරයට සාදරයෙන් පිළිගනිමු."
           }
         },
         "zh-Hans" : {
@@ -74402,6 +76984,12 @@
             "value" : "سنوات"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Години"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74456,6 +77044,12 @@
             "value" : "Лет"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවුරුදු"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74476,6 +77070,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنت على وشك حذف إصدار من الملف. لن تتمكن من عرضه أو استعادته بعد الآن. هل أنت متأكد أنك تريد المتابعة؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На път сте да изтриете версия на файл. Вече няма да е възможно да го видите или възстановите. Сигурни ли сте, че искате да продължите?"
           }
         },
         "cs" : {
@@ -74532,6 +77132,12 @@
             "value" : "Вы собираетесь удалить версию файла. Ее будет невозможно увидеть или восстановить. Продолжить?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ ගොනු අනුවාදයක් මකා දැමීමට සූදානම් වේ. එය තවදුරටත් දැකීමට හෝ ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74546,6 +77152,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنتم على وشك حذف هذه الغرف. لن تتمكنوا من استعادتها. هل أنتم متأكدون من الاستمرار؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На път сте да изтриете тези стаи. Няма да можете да ги възстановите. Желаете ли да продължите?"
           }
         },
         "cs" : {
@@ -74602,6 +77214,12 @@
             "value" : "Вы собираетесь удалить эти комнаты. Вы не сможете их восстановить. Хотите продолжить?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ මෙම කාමර මකා දැමීමට ආසන්නයි. ඔබට ඒවා ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74622,6 +77240,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنت على وشك حذف هذا الملف. سيتم حذفه نهائيًا خلال 30 يومًا. هل أنت متأكد أنك تريد المتابعة؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На път сте да изтриете този файл. Файлът ще бъде окончателно изтрит след 30 дни. Наистина ли искате да продължите?"
           }
         },
         "cs" : {
@@ -74678,6 +77302,12 @@
             "value" : "Вы собираетесь удалить этот файл. Файл будет окончательно удален через 30 дней. Продолжить?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ මෙම ගොනුව මකා දැමීමට ආසන්නයි. ගොනුව දින 30 කින් ස්ථිරවම මකා දැමෙනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74692,6 +77322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنت على وشك حذف هذا المجلد. سيتم حذفه نهائيًا خلال 30 يومًا. هل أنت متأكد أنك تريد المتابعة؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На път сте да изтриете тази папка. Папката ще бъде изтрита окончателно след 30 дни. Наистина ли искате да продължите?"
           }
         },
         "cs" : {
@@ -74748,6 +77384,12 @@
             "value" : "Вы собираетесь удалить эту папку. Папка будет окончательно удалена через 30 дней. Продолжить?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ මෙම ෆෝල්ඩරය මැකීමට ආසන්නයි. ෆෝල්ඩරය දින 30 කින් ස්ථිරවම මැකෙනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව ඔබට විශ්වාසද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74762,6 +77404,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنتم على وشك حذف هذه الغرفة. لن تتمكنوا من استعادتها. هل أنتم متأكدون من الاستمرار؟"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На път сте да изтриете тази стая. Няма да можете да я възстановите. Желаете ли да продължите?"
           }
         },
         "cs" : {
@@ -74818,6 +77466,12 @@
             "value" : "Вы собираетесь удалить эту комнату. Вы не сможете ее восстановить. Хотите продолжить?"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ මෙම කාමරය මකා දැමීමට ආසන්නයි. ඔබට එය ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත. ඔබට ඉදිරියට යාමට අවශ්‍ය බව විශ්වාසද?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74838,6 +77492,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "أنتم على وشك حذف هذه الغرفة. لن تتمكنوا من استعادتها."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На път сте да изтриете тази стая. Няма да можете да я възстановите."
           }
         },
         "cs" : {
@@ -74894,6 +77554,12 @@
             "value" : "Вы собираетесь удалить эту комнату. Вы не сможете ее восстановить."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ මෙම කාමරය මකා දැමීමට ආසන්නයි. ඔබට ඒවා ප්‍රතිසාධනය කිරීමට නොහැකි වනු ඇත."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -74914,6 +77580,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم تعيينك لتعبئة النموذج بصفتك الدور الأول.\n تم إرسال إشعار إلى بريدك الإلكتروني. يمكنك البدء في تعبئته \n الآن أو نسخ رابط التعبئة والعودة لاحقًا."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вие сте назначени да попълните формуляра като първа роля.\nИзпратено е известие на вашия имейл. Можете да започнете\nда го попълвате сега или да копирате връзката за попълване и да се върнете по-късно."
           }
         },
         "de" : {
@@ -75126,6 +77798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы можете заархивировать комнаты, которые вы не используете, и восстановить их в своем DocSpace в любой момент или удалить навсегда. Эти комнаты будут отображаться здесь."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබට ඔබ භාවිතා නොකරන කාමර සංරක්ෂණය කර ඒවා ඕනෑම මොහොතක ඔබේ DocSpace තුළ ප්‍රතිසාධනය කිරීමට හෝ ස්ථිරවම මකා දැමීමට හැකිය. මෙම කාමර මෙහි දිස්වනු ඇත."
           }
         },
         "zh-Hans" : {
@@ -75386,6 +78064,12 @@
             "value" : "Вы можете подключить следующие аккаунты к комнатам DocSpace"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබට පහත ගිණුම් DocSpace කාමරවලට සම්බන්ධ කළ හැකිය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75406,6 +78090,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "يمكنك إنشاء قالب من\nغرفة في قسم الغرف"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Можете да създадете шаблон от\nстая в секцията „Стая“"
           }
         },
         "cs" : {
@@ -75478,6 +78168,12 @@
             "value" : "يمكنك إنشاء قالب من غرفة موجودة في قسم الغرف"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Можете да създадете шаблон от стая в секцията „Стая“"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75530,6 +78226,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы можете создать шаблон из комнаты в разделе «Комната»."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබට කාමර කොටසේ කාමරයකින් සැකිල්ලක් සෑදිය හැක."
           }
         },
         "zh-Hans" : {
@@ -75608,6 +78310,12 @@
             "value" : "Вы не можете прикрепить более 10 комнат. Открепите некоторые из них, которые уже прикреплены."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබට ඉහළට කාමර 10කට වඩා ඇමිණිය නොහැක. දැනට ඇමිණී ඇති සමහරක් ඉවත් කරන්න."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75628,6 +78336,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "لقد قمتم بتغيير مالك الغرفة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сменихте собственика на стаята"
           }
         },
         "cs" : {
@@ -75682,6 +78396,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы сменили владельца комнаты"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබ කාමර හිමිකරු වෙනස් කර ඇත."
           }
         },
         "zh-Hans" : {
@@ -75882,6 +78602,12 @@
             "value" : "لم تقوموا بتعيين علامة مائية لتطبيقها على الوثائق في هذه الغرفة. يمكنكم دائمًا إضافة علامة مائية في إعدادات تحرير الغرفة. هل تودون الاستمرار دون علامة مائية؟"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не сте задали воден знак, който да се прилага в документите в тази стая. Можете да добавите воден знак в тази стая по всяко време, редактирайки настройките. Ще продължите ли без воден знак?"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75934,6 +78660,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы не установили водяной знак для документов в этой комнате. Вы можете добавить водяной знак в любое время в настройках редактирования комнаты. Продолжить без водяного знака?"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම කාමරයේ ලේඛනවලට යෙදීම සඳහා ඔබ දිය සලකුණක් සකසා නැත. කාමර සංස්කරණ සැකසුම් තුළ ඔබට සැමවිටම දිය සලකුණක් එක් කළ හැකිය. දිය සලකුණක් නොමැතිව ඉදිරියට යන්නද?"
           }
         },
         "zh-Hans" : {
@@ -76046,6 +78778,12 @@
             "value" : "أنتم بحاجة إلى إدخال كلمة مرور للوصول إلى الغرفة"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Трябва ви парола за достъп до стаята"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76098,6 +78836,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вам нужен пароль для доступа в комнату"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයට පිවිසීමට ඔබට මුරපදයක් අවශ්‍ය වේ."
           }
         },
         "zh-Hans" : {
@@ -76182,6 +78926,12 @@
             "value" : "Срок действия вашего текущего тарифного плана Business истек. Пожалуйста, возобновите подписку в настройках учетной записи, чтобы продолжать использовать DocSpace. Если у вас возникли вопросы, обратитесь в службу поддержки."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබගේ වත්මන් ගාස්තු සැලැස්ම ව්‍යාපාර කල් ඉකුත් වී ඇත. ඔබගේ DocSpace භාවිතා කිරීමට හැකි වන පරිදි ගිණුම් සැකසුම් තුළ ඔබගේ දායකත්වය අලුත් කරන්න. ඔබට කිසියම් ප්‍රශ්නයක් ඇත්නම්, කරුණාකර සහාය අමතන්න."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76262,6 +79012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваше устройство не смогло отправить электронную почту. Проверьте конфигурацию электронной почты и повторите попытку."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබගේ උපාංගයට විද්‍යුත් තැපෑල යැවීමට නොහැකි විය. කරුණාකර විද්‍යුත් තැපෑල වින්‍යාසය පරීක්ෂා කර නැවත උත්සාහ කරන්න."
           }
         },
         "zh-Hans" : {
@@ -76375,6 +79131,12 @@
             "value" : "دورك الآن"
           }
         },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Твой ред"
+          }
+        },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76427,6 +79189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваша очередь"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබේ වාරය"
           }
         },
         "zh-Hans" : {

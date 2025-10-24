@@ -1221,6 +1221,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Accountant" xml:space="preserve">
         <source>Accountant</source>
+        <target state="translated">會計師</target>
         <note/>
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
@@ -1235,6 +1236,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add" xml:space="preserve">
         <source>Add</source>
+        <target state="translated">添加</target>
         <note/>
       </trans-unit>
       <trans-unit id="Add Users or Groups" xml:space="preserve">
@@ -1640,6 +1642,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Complete" xml:space="preserve">
         <source>Complete</source>
+        <target state="translated">完成</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
@@ -1693,6 +1696,7 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Contact Support" xml:space="preserve">
         <source>Contact Support</source>
+        <target state="translated">聯繫支持</target>
         <note/>
       </trans-unit>
       <trans-unit id="Content creator" xml:space="preserve">
@@ -1861,6 +1865,7 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Could not resolve the file." xml:space="preserve">
         <source>Could not resolve the file.</source>
+        <target state="translated">无法解析文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
@@ -1870,6 +1875,7 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Couldn' get access" xml:space="preserve">
         <source>Couldn' get access</source>
+        <target state="translated">無法訪問</target>
         <note/>
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
@@ -1919,6 +1925,7 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Create a new file" xml:space="preserve">
         <source>Create a new file</source>
+        <target state="translated">创建新文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." xml:space="preserve">
@@ -2241,10 +2248,12 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit Comment" xml:space="preserve">
         <source>Edit Comment</source>
+        <target state="translated">编辑评论</target>
         <note/>
       </trans-unit>
       <trans-unit id="Edit comment" xml:space="preserve">
         <source>Edit comment</source>
+        <target state="translated">编辑批注</target>
         <note/>
       </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
@@ -2666,6 +2675,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="From templates" xml:space="preserve">
         <source>From templates</source>
+        <target state="translated">从模板</target>
         <note/>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2745,10 +2755,12 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Help &amp; Feedback" xml:space="preserve">
         <source>Help &amp; Feedback</source>
+        <target state="translated">幫助和回饋</target>
         <note/>
       </trans-unit>
       <trans-unit id="Help Center" xml:space="preserve">
         <source>Help Center</source>
+        <target state="translated">幫助中心</target>
         <note/>
       </trans-unit>
       <trans-unit id="Here you will find a list of the recently opened files shared with you via an external link." xml:space="preserve">
@@ -4004,6 +4016,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Scan Document" xml:space="preserve">
         <source>Scan Document</source>
+        <target state="translated">掃描文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="Scanning is not supported on this device" xml:space="preserve">
@@ -4271,6 +4284,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Start" xml:space="preserve">
         <source>Start</source>
+        <target state="translated">开始</target>
         <note/>
       </trans-unit>
       <trans-unit id="Start filling" xml:space="preserve">
@@ -4311,6 +4325,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Suggest a Feature" xml:space="preserve">
         <source>Suggest a Feature</source>
+        <target state="translated">推薦功能</target>
         <note/>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -4390,6 +4405,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." xml:space="preserve">
         <source>The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes.</source>
+        <target state="translated">重新排序操作将移除索引中的空白项。文件将重新索引，并按顺序填补缺失的索引。</target>
         <note/>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">

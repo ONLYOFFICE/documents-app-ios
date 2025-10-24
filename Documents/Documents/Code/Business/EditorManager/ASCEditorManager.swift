@@ -110,6 +110,8 @@ class ASCEditorManager: NSObject {
         return openedFile != nil
     }
 
+    var isOpenedFileFromDeeplink: Bool = false
+
     lazy var editorFontsPaths: [String] = {
         var paths = [Bundle.main.resourcePath?.appendingPathComponent("fonts") ?? ""]
 

@@ -256,7 +256,7 @@ class ASCViewControllerManager {
 
             /// Prevent open if open editor
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.keyWindow,
+               let topWindow = UIApplication.shared.lastKeyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -387,7 +387,7 @@ class ASCViewControllerManager {
 
             /// Prevent open if open editor
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.keyWindow,
+               let topWindow = UIApplication.shared.lastKeyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -479,6 +479,21 @@ class ASCViewControllerManager {
                 introViewController.dismiss(animated: true, completion: nil)
             }
 
+            /// Prevent open if open editor
+            if ASCEditorManager.shared.isOpenedFile || ASCEditorManager.shared.isOpenedFileFromDeeplink,
+               let topWindow = UIApplication.shared.lastKeyWindow,
+               let topVC = topWindow.rootViewController?.topMostViewController()
+            {
+                UIAlertController.showWarning(
+                    in: topVC,
+                    message: isOpenFile
+                        ? NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
+                        : NSLocalizedString("To open a folder, you must exit the current document.", comment: "")
+                )
+                self?.openFileInfo = nil
+                return
+            }
+
             if deepLink.requestToken != nil {
                 self?.routeOpenExternalEntity(deepLink: deepLink)
                 return
@@ -559,20 +574,6 @@ class ASCViewControllerManager {
             }
 
             self?.openFileInfo = nil
-
-            if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.keyWindow,
-               let topVC = topWindow.rootViewController?.topMostViewController()
-            {
-                UIAlertController.showWarning(
-                    in: topVC,
-                    message: isOpenFile
-                        ? NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
-                        : NSLocalizedString("To open a folder, you must exit the current document.", comment: "")
-                )
-                self?.openFileInfo = nil
-                return
-            }
 
             // Syncronize api calls
             let requestGroup = DispatchGroup()

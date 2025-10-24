@@ -98,16 +98,21 @@ extension UIApplication {
     }
 
     var keyWindowScene: UIWindowScene? {
-        connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .compactMap { $0 as? UIWindowScene }
-            .first
+        if let activeScene = connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene { return activeScene }
+        return connectedScenes
+            .first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene
     }
 
     var keyWindow: UIWindow? {
-        keyWindowScene?
-            .windows
-            .filter(\.isKeyWindow).first
+        keyWindowScene?.windows.first(where: { $0.isKeyWindow })
+    }
+
+    var lastKeyWindow: UIWindow? {
+        guard let scene = keyWindowScene else { return nil }
+        return scene.windows.first(where: { $0.isKeyWindow })
+            ?? scene.windows.first(where: { !$0.isHidden && $0.alpha > 0 && $0.windowLevel == .normal })
+            ?? scene.windows.first
     }
 
     var firstForegroundScene: UIWindowScene? {

@@ -54,7 +54,10 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         apiClient = nil
     }
 
-    override init(baseURL: URL, credential: URLCredential) {
+    init(baseURL: URL, credential: URLCredential, userData: NextcloudUserData) {
+        let isLDAP = userData.backend == "LDAP"
+        let credentialUsername = credential.user ?? ""
+
         var providerUrl = baseURL
 
         if providerUrl.scheme == nil,
@@ -63,7 +66,8 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
             providerUrl = fixedUrl
         }
 
-        let urlPath = String(format: endpointPath, credential.user ?? "")
+        let userId = (isLDAP ? (userData.id ?? credentialUsername) : credentialUsername)
+        let urlPath = String(format: endpointPath, userId)
 
         if !providerUrl.absoluteString.contains(webdavEndpoint) {
             providerUrl = URL(string: providerUrl.absoluteString.removingSuffix("/")) ?? providerUrl
@@ -79,9 +83,8 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
                 user: user,
                 password: password
             )
-            userInfo { success, error in
-                log.debug("Nexcloud fetch storagestats", success, error ?? "")
-            }
+
+            setUserInfo(userData: userData)
         }
     }
 
@@ -112,11 +115,12 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
                 let baseUrl = URL(string: json["baseUrl"] as? String ?? ""),
                 let password = json["password"] as? String,
                 let user = user,
-                let userId = user.userId
+                let userId = user.userId,
+                let userDisplayName = user.displayName
             {
-                let credential = URLCredential(user: userId, password: password, persistence: .permanent)
+                let credential = URLCredential(user: userDisplayName, password: password, persistence: .permanent)
                 var providerUrl = baseUrl
-                let urlPath = String(format: endpointPath, credential.user ?? "")
+                let urlPath = String(format: endpointPath, userId)
 
                 if !providerUrl.absoluteString.contains(webdavEndpoint) {
                     providerUrl = providerUrl.appendingPathComponent(urlPath)
@@ -139,6 +143,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
             let password = info["password"] as? String,
+            let userData = info["userData"] as? NextcloudUserData,
             let portalUrl = URL(string: portal)
         else {
             complation(false, nil)
@@ -146,7 +151,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         }
 
         let credential = URLCredential(user: login, password: password, persistence: .permanent)
-        let nextCloudProvider = ASCNextCloudProvider(baseURL: portalUrl, credential: credential)
+        let nextCloudProvider = ASCNextCloudProvider(baseURL: portalUrl, credential: credential, userData: userData)
 
         nextCloudProvider.isReachable { success, error in
             DispatchQueue.main.async {
@@ -155,36 +160,10 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         }
     }
 
-    /// Fetch an user information
-    ///
-    /// - Parameter completeon: a closure with result of user or error
-    override func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        guard let apiClient = apiClient else { return }
-
-        let params = [
-            "dir": "/",
-        ]
-
-        apiClient.request(NextcloudAPI.Endpoints.currentAccount, params) { [weak self] response, error in
-            guard let strongSelf = self else {
-                completeon?(false, nil)
-                return
-            }
-
-            guard let account = response?.result else {
-                completeon?(false, error)
-                if let error = error {
-                    log.debug(error)
-                }
-                return
-            }
-
-            strongSelf.user = ASCUser()
-            strongSelf.user?.userId = account.owner
-            strongSelf.user?.displayName = account.ownerDisplayName
-
-            completeon?(true, nil)
-        }
+    func setUserInfo(userData: NextcloudUserData) {
+        user = ASCUser()
+        user?.userId = userData.id
+        user?.displayName = userData.displayName
     }
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.

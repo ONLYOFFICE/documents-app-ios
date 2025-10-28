@@ -31,9 +31,9 @@ struct TemplateViewRow: View {
                         url: imageURL,
                         provider: model.provider
                     )
-                        .scaledToFill()
-                        .frame(width: .imageSize - .imagePadding, height: .imageSize - .imagePadding)
-                        .clipShape(RoundedRectangle(cornerRadius: (.imageSize - .imagePadding) * .textCornerRadiusRatio))
+                    .scaledToFill()
+                    .frame(width: .imageSize - .imagePadding, height: .imageSize - .imagePadding)
+                    .clipShape(RoundedRectangle(cornerRadius: (.imageSize - .imagePadding) * .textCornerRadiusRatio))
                 } else {
                     Text(verbatim: initials(from: model.title))
                         .font(.system(size: .imageSize * .initialsFontScale, weight: .semibold))

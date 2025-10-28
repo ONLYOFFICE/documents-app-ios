@@ -18,17 +18,13 @@ enum AppThemeService {
     }
 
     private static func update() {
-        guard
-            let sharedAppWindow = UIApplication.shared.delegate?.window
-        else { return }
-
         switch AppThemeService.theme {
         case .automatic:
-            sharedAppWindow?.overrideUserInterfaceStyle = .unspecified
+            UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .unspecified
         case .light:
-            sharedAppWindow?.overrideUserInterfaceStyle = .light
+            UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .light
         case .dark:
-            sharedAppWindow?.overrideUserInterfaceStyle = .dark
+            UIApplication.shared.keyWindow?.overrideUserInterfaceStyle = .dark
         }
     }
 }

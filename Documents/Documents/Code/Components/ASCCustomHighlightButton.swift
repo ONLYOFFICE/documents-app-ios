@@ -18,11 +18,11 @@ class ASCCustomHighlightButton: UIButton {
 
     // MARK: - Lifecycle Methods
 
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

@@ -14,7 +14,7 @@ import UIKit
     @IBInspectable var leftInset: CGFloat = 1.0
     @IBInspectable var rightInset: CGFloat = 1.0
 
-    public var padding: UIEdgeInsets? {
+    var padding: UIEdgeInsets? {
         get {
             return UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
         }

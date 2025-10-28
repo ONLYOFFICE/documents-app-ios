@@ -37,6 +37,8 @@ class ASCConnectStorageWebDavController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.tintColor = Asset.Colors.brend.color
+
         tableView.register(
             ASCLinkTableViewHeaderFooterView.self,
             forHeaderFooterViewReuseIdentifier: ASCLinkTableViewHeaderFooterView.identifier

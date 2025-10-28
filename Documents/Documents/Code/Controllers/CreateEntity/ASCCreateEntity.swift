@@ -66,6 +66,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         var createEntityVC: ASCCreateEntityUIViewController!
 
         if ASCViewControllerManager.shared.phoneLayout {
+            guard let windowScene = UIApplication.shared.keyWindowScene else { return }
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
                 allowForms: allowForms,
@@ -77,7 +78,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             )
 
             var config = SwiftMessages.defaultConfig
-            config.presentationContext = .window(windowLevel: UIWindow.Level.normal + 10)
+            config.presentationContext = .windowScene(windowScene, windowLevel: UIWindow.Level.normal + 10)
             config.duration = .forever
             config.presentationStyle = .bottom
             config.dimMode = .gray(interactive: true)
@@ -398,7 +399,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 // MARK: - ASCCreateEntityDocumentDelegate
 
 class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
-    public static let shared = ASCCreateEntityDocumentDelegate()
+    static let shared = ASCCreateEntityDocumentDelegate()
     var documentsViewController: ASCDocumentsViewController?
     var provider: ASCFileProviderProtocol?
 
@@ -483,7 +484,7 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
 // MARK: - ASCCreateEntityImageDelegate
 
 class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    public static let shared = ASCCreateEntityImageDelegate()
+    static let shared = ASCCreateEntityImageDelegate()
     var documentsViewController: ASCDocumentsViewController?
     var provider: ASCFileProviderProtocol?
 

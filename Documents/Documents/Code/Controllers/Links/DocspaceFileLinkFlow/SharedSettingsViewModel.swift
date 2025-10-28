@@ -37,26 +37,22 @@ final class SharedSettingsViewModel: ObservableObject {
     }
 
     func createAndCopySharedLink() {
-        let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
-
-        networkService.createAndCopy(file: file, requestModel: requestModel) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case let .success(link):
-                self.flowModel.links = [link]
-                DispatchQueue.main.async {
-                    self.isShared = true
-                    self.file.shared = true
-                    self.buildViewModel()
-                }
-                let hud = MBProgressHUD.showTopMost()
+        Task { @MainActor in
+            let hud = MBProgressHUD.showTopMost()
+            do {
+                let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
+                let link = try await networkService.createAndCopy(file: file, requestModel: requestModel)
+                flowModel.links = [link]
+                isShared = true
+                file.shared = true
+                buildViewModel()
                 UIPasteboard.general.string = link.sharedTo.shareLink
                 hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
-                hud?.hide(animated: true, afterDelay: .standardDelay)
-
-            case let .failure(error):
-                print(error.localizedDescription)
+            } catch {
+                hud?.setState(result: .failure(nil))
+                log.error(error.localizedDescription)
             }
+            hud?.hide(animated: true, afterDelay: .standardDelay)
         }
     }
 

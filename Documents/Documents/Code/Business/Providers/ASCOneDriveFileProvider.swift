@@ -257,7 +257,7 @@ extension URLRequest {
 }
 
 struct FileProviderOneDriveError: FileProviderHTTPError {
-    public let code: FileProviderHTTPErrorCode
-    public let path: String
-    public let serverDescription: String?
+    let code: FileProviderHTTPErrorCode
+    let path: String
+    let serverDescription: String?
 }

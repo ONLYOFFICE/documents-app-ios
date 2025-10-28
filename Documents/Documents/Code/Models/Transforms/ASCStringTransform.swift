@@ -10,10 +10,10 @@ import HTMLString
 import ObjectMapper
 
 class ASCStringTransform: TransformType {
-    public typealias Object = String
-    public typealias JSON = String
+    typealias Object = String
+    typealias JSON = String
 
-    public init() {}
+    init() {}
 
     open func transformFromJSON(_ value: Any?) -> String? {
         if let string = value as? String {

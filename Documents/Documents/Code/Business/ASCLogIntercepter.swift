@@ -104,7 +104,7 @@ actor LogWriterActor {
 
 @MainActor
 class ASCLogIntercepter {
-    public static let shared = ASCLogIntercepter()
+    static let shared = ASCLogIntercepter()
 
     // MARK: - Properties
 
@@ -123,7 +123,7 @@ class ASCLogIntercepter {
 
     // MARK: - Lifecycle Methods
 
-    public func start() {
+    func start() {
         Task {
             if let logUrl = logUrl {
                 do {
@@ -219,14 +219,14 @@ class ASCLogIntercepter {
     }
 
     /// Manually flush all pending log writes
-    public func flushLogs() {
+    func flushLogs() {
         Task {
             await logWriter.flush()
         }
     }
 
     /// Cleanup resources when done
-    public func cleanup() {
+    func cleanup() {
         Task {
             await logWriter.cleanup()
         }

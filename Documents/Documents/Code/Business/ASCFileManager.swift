@@ -12,15 +12,15 @@ import ObservableSwift
 import UIKit
 
 class ASCFileManager {
-    public static var provider: ASCFileProviderProtocol? {
+    static var provider: ASCFileProviderProtocol? {
         didSet {
             storeCurrentProvider()
         }
     }
 
-    public static var localProvider: ASCLocalProvider = ASCLocalProvider()
-    public static var onlyofficeProvider: ASCOnlyofficeProvider?
-    public static var cloudProviders: [ASCFileProviderProtocol] = [] {
+    static var localProvider: ASCLocalProvider = ASCLocalProvider()
+    static var onlyofficeProvider: ASCOnlyofficeProvider?
+    static var cloudProviders: [ASCFileProviderProtocol] = [] {
         didSet {
             observer.notify(observer)
         }
@@ -33,7 +33,7 @@ class ASCFileManager {
         return keychain
     }
 
-    public static var observer = Event<Any?>()
+    static var observer = Event<Any?>()
 
     static func reset() {
         provider?.reset()

@@ -11,10 +11,11 @@ import Foundation
 
 enum NextcloudAPI {
     enum Path {
-        public static let storageStats = "index.php/apps/files/ajax/getstoragestats.php"
+        static let currentUser = "ocs/v2.php/cloud/user"
     }
 
     enum Endpoints {
-        static let currentAccount: Endpoint<NextcloudDataResult<NextcloudStorageStats>> = Endpoint<NextcloudDataResult<NextcloudStorageStats>>.make(Path.storageStats, .get, URLEncoding.default)
+        static let currentUser: Endpoint<NextcloudOCSResponse<NextcloudUserData>> =
+            Endpoint<NextcloudOCSResponse<NextcloudUserData>>.make(Path.currentUser, .get, URLEncoding.default)
     }
 }

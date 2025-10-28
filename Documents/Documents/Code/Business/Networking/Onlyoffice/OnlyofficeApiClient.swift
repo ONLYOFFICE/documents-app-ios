@@ -61,18 +61,18 @@ final class OnlyofficeTokenAdapter: RequestAdapter {
 }
 
 class OnlyofficeApiClient: NetworkingClient {
-    public static let shared = OnlyofficeApiClient()
+    static let shared = OnlyofficeApiClient()
 
     // MARK: - Properties
 
-    public var expires: Date?
-    public var serverVersion: OnlyofficeVersion?
-    public var capabilities: OnlyofficeCapabilities?
-    public var active: Bool {
+    var expires: Date?
+    var serverVersion: OnlyofficeVersion?
+    var capabilities: OnlyofficeCapabilities?
+    var active: Bool {
         return baseURL != nil && token != nil
     }
 
-    public var isHttp2: Bool {
+    var isHttp2: Bool {
         return serverVersion?.community?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
     }
 
@@ -82,11 +82,11 @@ class OnlyofficeApiClient: NetworkingClient {
 
     // MARK: - Lifecycle
 
-    override public init() {
+    override init() {
         super.init()
     }
 
-    public init(apiClient: NetworkingClient) {
+    init(apiClient: NetworkingClient) {
         super.init()
         super.configure(url: apiClient.baseURL?.absoluteString ?? "")
         headers = apiClient.headers
@@ -99,7 +99,7 @@ class OnlyofficeApiClient: NetworkingClient {
 
     // MARK: Override public func
 
-    override public func configure(url: String? = nil, token: String? = nil) {
+    override func configure(url: String? = nil, token: String? = nil) {
         baseURL = URL(string: url ?? "")
 
         // Initialize session manager

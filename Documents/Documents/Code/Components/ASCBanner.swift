@@ -9,10 +9,10 @@
 import UIKit
 
 class ASCBanner {
-    public static let shared = ASCBanner()
+    static let shared = ASCBanner()
 
     private func showBanner(title: String, message: String, color: UIColor, textColor: UIColor) {
-        let appWindow = UIApplication.shared.delegate!.window!!
+        guard let appWindow = UIApplication.shared.keyWindow else { return }
         var safeAreaTopOffset: CGFloat = 0
         if #available(iOS 11.0, *) {
             safeAreaTopOffset = appWindow.safeAreaInsets.top
@@ -57,7 +57,7 @@ class ASCBanner {
         }
     }
 
-    public func showError(title: String, message: String) {
+    func showError(title: String, message: String) {
         showBanner(title: title, message: message, color: ASCConstants.Colors.red, textColor: .white)
     }
 }

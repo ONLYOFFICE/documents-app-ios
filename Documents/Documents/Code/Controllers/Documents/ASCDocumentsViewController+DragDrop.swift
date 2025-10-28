@@ -215,7 +215,6 @@ extension ASCDocumentsViewController: UICollectionViewDropDelegate {
 
                     if !cancel {
                         self.insideTransfer(items: items, to: dstFolder, move: move, conflictResolveType: conflictResolveType, completion: { entities in
-
                             // TODO: Fetch information about the moving elements and add them using the "add" function.
                             delay(seconds: 0.3) { [self] in
                                 self.loadFirstPage()

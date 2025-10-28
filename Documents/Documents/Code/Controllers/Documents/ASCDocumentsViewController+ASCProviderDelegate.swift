@@ -21,7 +21,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         openingAlert.progress = progress
 
         let openHandler: ASCEditorManagerOpenHandler = { [weak self] status, progress, error, cancel in
-
             openingAlert.progress = progress
 
             if forceCancel {
@@ -113,10 +112,15 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         self.updateNavBar()
 
                         let updateIndexPath = IndexPath(row: 0, section: 0)
-                        self.collectionView.scrollToItem(at: updateIndexPath, at: .centeredVertically, animated: true)
+                        let hasSection = self.collectionView.numberOfSections > updateIndexPath.section
+                        let hasItem = hasSection && self.collectionView.numberOfItems(inSection: updateIndexPath.section) > updateIndexPath.item
+                        guard hasItem else { return }
 
-                        if let updatedCell = self.collectionView.cellForItem(at: updateIndexPath) {
-                            self.highlight(cell: updatedCell)
+                        DispatchQueue.main.async {
+                            self.collectionView.scrollToItem(at: updateIndexPath, at: .centeredVertically, animated: true)
+                            if let updatedCell = self.collectionView.cellForItem(at: updateIndexPath) {
+                                self.highlight(cell: updatedCell)
+                            }
                         }
                     }
                 }
@@ -151,7 +155,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     }
 
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
-        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
+        if let keyWindow = UIApplication.shared.keyWindow {
             if var topController = keyWindow.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController

@@ -115,7 +115,6 @@ enum ASCShareAccess: Int, CaseIterable {
             case .deny:
                 return Asset.Images.menuDenyAccess
             case .varies:
-
                 return nil // MARK: - TODO
             case .review:
                 return Asset.Images.menuReview

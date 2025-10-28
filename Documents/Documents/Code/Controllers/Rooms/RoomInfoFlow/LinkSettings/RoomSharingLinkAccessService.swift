@@ -37,7 +37,7 @@ protocol RoomSharingLinkAccessService {
         denyDownload: Bool,
         password: String?,
         room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
     )
 
     func createLink(
@@ -48,12 +48,12 @@ protocol RoomSharingLinkAccessService {
         denyDownload: Bool,
         password: String?,
         room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
     )
 
     func createGeneralLink(
         room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
     )
 }
 
@@ -66,7 +66,7 @@ extension RoomSharingLinkAccessService {
         denyDownload: Bool = false,
         password: String? = nil,
         room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
     ) {
         changeOrCreateLink(
             id: nil,
@@ -150,7 +150,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         denyDownload: Bool,
         password: String?,
         room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
     ) {
         let requestModel = RoomLinkRequestModel(
             linkId: id,
@@ -176,7 +176,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
 
     func createGeneralLink(
         room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
     ) {
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
             DispatchQueue.main.async {

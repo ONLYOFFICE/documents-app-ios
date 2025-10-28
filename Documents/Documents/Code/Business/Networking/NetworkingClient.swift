@@ -31,13 +31,18 @@ protocol NetworkingRequestingProtocol {
         _ apply: ((_ data: MultipartFormData) -> Void)?,
         _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)?
     )
+
+    func request<Response>(
+        endpoint: Endpoint<Response>,
+        parameters: Parameters?
+    ) async throws -> Response
 }
 
 class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     // MARK: - Properties
 
-    public var baseURL: URL?
-    public var token: String? {
+    var baseURL: URL?
+    var token: String? {
         didSet {
             if token != oldValue, let baseURLString = baseURL?.absoluteString {
                 configure(url: baseURLString, token: token)
@@ -56,17 +61,17 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         return $0
     }(URLSessionConfiguration.default)
 
-    public var headers: HTTPHeaders = .default
+    var headers: HTTPHeaders = .default
     let defaultTimeoutIntervalForResource: TimeInterval = 30
     var sessions: [Alamofire.Session] = []
 
     // MARK: - init
 
-    override public init() {
+    override init() {
         super.init()
     }
 
-    public func configure(url: String, token: String? = nil) {
+    func configure(url: String, token: String? = nil) {
         baseURL = URL(string: url)
         manager = Alamofire.Session(
             configuration: configuration,
@@ -77,11 +82,11 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
     // MARK: - Control
 
-    public func clear() {
+    func clear() {
         cancelAll()
     }
 
-    public func cancelAll() {
+    func cancelAll() {
         for manager in sessions + [manager] {
             manager.session.getAllTasks { tasks in
                 tasks.forEach { $0.cancel() }
@@ -130,7 +135,6 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         )
         .validate()
         .responseData(queue: queue) { response in
-
             switch response.result {
             case let .success(value):
                 do {
@@ -373,4 +377,66 @@ extension NetworkingClient {
 //
 //        NetworkingClient.shared.request(endpoint, parameters, apply, completion)
 //    }
+}
+
+// MARK: - Async / await
+
+extension NetworkingClient {
+    func request<Response>(
+        endpoint: Endpoint<Response>,
+        parameters: Parameters? = nil
+    ) async throws -> Response {
+        guard let url = url(path: endpoint.path) else {
+            throw NetworkingError.invalidUrl
+        }
+
+        var params: Parameters = [:]
+        var headers = headers
+
+        if let endpointHeaders = endpoint.headers {
+            headers = HTTPHeaders(headers.dictionary + endpointHeaders.dictionary)
+        }
+
+        if let keys = parameters?.keys {
+            for key in keys {
+                params[key] = parameters?[key]
+            }
+        }
+
+        return try await withCheckedThrowingContinuation { continuation in
+            manager.request(
+                url,
+                method: endpoint.method,
+                parameters: params.isEmpty ? nil : params,
+                encoding: endpoint.parameterEncoding ?? JSONEncoding.default,
+                headers: headers
+            )
+            .validate()
+            .responseData(queue: queue) { response in
+                switch response.result {
+                case let .success(value):
+                    do {
+                        if let result = try endpoint.decode(value) {
+                            continuation.resume(returning: result)
+                        } else {
+                            throw NetworkingError.invalidData
+                        }
+                    } catch {
+                        continuation.resume(throwing: NetworkingError.invalidData)
+                    }
+
+                case let .failure(error):
+                    let err = self.parseError(response.data, error)
+
+                    if let value = response.data,
+                       let decoded = try? endpoint.decode(value)
+                    {
+                        continuation.resume(returning: decoded)
+                    } else {
+                        continuation.resume(throwing: err)
+                    }
+                }
+            }
+        }
+    }
 }

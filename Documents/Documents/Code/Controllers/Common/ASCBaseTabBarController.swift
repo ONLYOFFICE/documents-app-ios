@@ -17,6 +17,7 @@ class ASCBaseTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.tintColor = Asset.Colors.brend.color
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,11 +34,11 @@ class ASCBaseTabBarController: UITabBarController {
 
     // MARK: - Create
 
-    public class var storyboard: Storyboard {
+    class var storyboard: Storyboard {
         fatalError("Storyboard not defined:\(String(describing: self))")
     }
 
-    public class func instance() -> Self {
+    class func instance() -> Self {
         return instantiate(from: storyboard)
     }
 }

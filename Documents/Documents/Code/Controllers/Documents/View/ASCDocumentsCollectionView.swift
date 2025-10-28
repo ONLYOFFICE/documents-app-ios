@@ -28,7 +28,7 @@ class ASCDocumentsCollectionView: UICollectionView {
 
     // MARK: - Lifecycle Methods
 
-    public func updateLayout() {
+    func updateLayout() {
         switch layoutType {
         case .grid:
             setCollectionViewLayout(makeGridLayout(), animated: true)

@@ -40,7 +40,7 @@ class ASCSharingView {
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onAddRightsBarButtonTap))
     }()
 
-    public lazy var loadingTableActivityIndicator = UIActivityIndicatorView()
+    lazy var loadingTableActivityIndicator = UIActivityIndicatorView()
 
     convenience init(delegate: ASCSharingViewDelegate?) {
         self.init()
@@ -48,12 +48,12 @@ class ASCSharingView {
         self.delegate = delegate
     }
 
-    public func configureNavigationBar(_ navigationController: UINavigationController?) {
+    func configureNavigationBar(_ navigationController: UINavigationController?) {
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navBarHeigh = navigationController?.navigationBar.height ?? 0
     }
 
-    public func configureNavigationItem(_ navigationItem: UINavigationItem, allowAddRightHoders: Bool, allowLinkBarButton: Bool, title: String) {
+    func configureNavigationItem(_ navigationItem: UINavigationItem, allowAddRightHoders: Bool, allowLinkBarButton: Bool, title: String) {
         navigationItem.leftBarButtonItem = doneBarBtn
         navigationItem.title = title
 
@@ -68,7 +68,7 @@ class ASCSharingView {
         navigationItem.rightBarButtonItems = items
     }
 
-    public func configureTableView(_ tableView: UITableView) {
+    func configureTableView(_ tableView: UITableView) {
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {} else {
             tableView.backgroundColor = Asset.Colors.tableBackground.color
@@ -87,7 +87,7 @@ class ASCSharingView {
                            forHeaderFooterViewReuseIdentifier: ASCCentredLabelHeaderFooterView.reuseId)
     }
 
-    public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider, selectAccessDelegate: ((ASCShareAccess) -> Void)?) {
+    func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider, selectAccessDelegate: ((ASCShareAccess) -> Void)?) {
         let viewModel = ASCSharingSettingsAccessViewModel(title: userName,
                                                           currentlyAccess: access,
                                                           accessProvider: provider,
@@ -98,8 +98,8 @@ class ASCSharingView {
         accessViewController.viewModel = viewModel
     }
 
-    public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider,
-                                 selectAccessDelegate: ((ASCShareAccess) -> Void)?)
+    func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider,
+                          selectAccessDelegate: ((ASCShareAccess) -> Void)?)
     {
         let viewModel = ASCSharingSettingsAccessViewModel(title: NSLocalizedString("Sharing settings", comment: ""),
                                                           currentlyAccess: access,
@@ -111,7 +111,7 @@ class ASCSharingView {
         accessViewController.viewModel = viewModel
     }
 
-    public func showTableLoadingActivityIndicator(tableView: UITableView) {
+    func showTableLoadingActivityIndicator(tableView: UITableView) {
         let centerYOffset = navBarHeigh
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingTableActivityIndicator.startAnimating()
@@ -120,7 +120,7 @@ class ASCSharingView {
         loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -centerYOffset).isActive = true
     }
 
-    public func hideTableLoadingActivityIndicator() {
+    func hideTableLoadingActivityIndicator() {
         loadingTableActivityIndicator.stopAnimating()
         loadingTableActivityIndicator.removeFromSuperview()
     }

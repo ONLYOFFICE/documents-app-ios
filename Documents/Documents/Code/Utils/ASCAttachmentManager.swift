@@ -18,7 +18,7 @@ enum ASCAttachmentManagerError: LocalizedError, Equatable {
     case convert
     case unknown(error: Error?)
 
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .exist:
             return NSLocalizedString("A file with a similar name already exist.", comment: "")
@@ -39,7 +39,7 @@ enum ASCAttachmentManagerError: LocalizedError, Equatable {
 class ASCAttachmentManager: NSObject {
     // MARK: - Properties
 
-    public enum Text {
+    enum Text {
         static var photoLibraryUnavailableTitle = NSLocalizedString("Photo Library Unavailable", comment: "")
         static var photoLibraryUnavailableMessage = NSLocalizedString("Please go to Settings and enable the photo library for this app to use this feature.", comment: "")
         static var cameraUnavailableTitle = NSLocalizedString("Camera Unavailable", comment: "")
@@ -322,7 +322,6 @@ extension ASCAttachmentManager: UIDocumentPickerDelegate {
         var error: NSError? = nil
 
         coordinator.coordinate(readingItemAt: url, options: [], error: &error) { url in
-
             do {
                 let fileData = try Data(contentsOf: url)
                 if let temporaryFolderName = self.temporaryFolderName {

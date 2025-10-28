@@ -10,7 +10,7 @@ import KeychainSwift
 import UIKit
 
 class ASCAccountsManager {
-    public static let shared = ASCAccountsManager()
+    static let shared = ASCAccountsManager()
 
     var onUpdateUserInfoEnabled = true
 
@@ -38,7 +38,7 @@ class ASCAccountsManager {
         NotificationCenter.default.removeObserver(self)
     }
 
-    public class func start() {
+    class func start() {
         _ = ASCAccountsManager.shared
     }
 

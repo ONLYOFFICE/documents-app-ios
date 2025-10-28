@@ -21,7 +21,6 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
         categoriesCurrentlyLoading = true
 
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.roots) { [self] response, error in
-
             if let error {
                 log.error(error)
                 categoriesCurrentlyLoading = false

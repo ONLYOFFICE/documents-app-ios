@@ -132,7 +132,6 @@ extension Endpoint {
             parameterEncoding: parameterEncoding,
             headers: headers,
             decode: { (data: Data) -> [T]? in
-
                 var objects: [T] = []
 
                 do {

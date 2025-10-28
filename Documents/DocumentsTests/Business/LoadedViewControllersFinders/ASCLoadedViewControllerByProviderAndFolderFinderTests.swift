@@ -23,8 +23,10 @@ class ASCLoadedViewControllerByProviderAndFolderFinderTests: XCTestCase {
         tabbar.addChild(ASCCloudsSplitViewController())
         tabbar.addChild(UIViewController())
 
-        UIApplication.shared.windows.first?.rootViewController = tabbar
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        guard let windowScene = UIApplication.shared.firstForegroundScene else {
+            return
+        }
+        let window = UIWindow(windowScene: windowScene)
         window.rootViewController = tabbar
         window.makeKeyAndVisible()
     }
@@ -32,7 +34,6 @@ class ASCLoadedViewControllerByProviderAndFolderFinderTests: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
         tabbar = nil
-        UIApplication.shared.windows.first?.rootViewController = nil
     }
 
     func testDoNotSetDocumentVCAndWhenTryToFindThenNil() {

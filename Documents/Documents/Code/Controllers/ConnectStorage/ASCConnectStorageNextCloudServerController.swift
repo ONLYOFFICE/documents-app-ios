@@ -14,7 +14,7 @@ import WebKit
 class ASCConnectStorageNextCloudServerController: UITableViewController {
     // MARK: - Properties
 
-    var complation: (([String: String]) -> Void)?
+    var complation: (([String: Any]) -> Void)?
 
     @IBOutlet var serverField: UITextField!
     @IBOutlet var serverCell: UITableViewCell!
@@ -24,7 +24,7 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
 
     private var keyPortal = "KEY_PORTAL"
     private var loginSuffix = "/index.php/login/flow"
-    private var loginHeader = "OCS-APIREQUEST"
+    private var loginHeader = "OCS-APIRequest"
     private var backPattern1 = "apps"
     private var backPattern2 = "files"
     private var urlString: String = ""
@@ -34,6 +34,7 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.tintColor = Asset.Colors.brend.color
         title = "Nextcloud"
 
         doneCell?.isUserInteractionEnabled = false
@@ -63,28 +64,39 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
 
     private func showWebView() {
         guard let url = URL(string: urlString + loginSuffix) else { return }
+        guard let urlString = URL(string: urlString) else { return }
+
         let nextCloudDelegate = ASCNextCloudConnectStorageDelegate()
         nextCloudDelegate.url = url
         let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
+
         nextCloudDelegate.viewController = oauth2VC
         oauth2VC.complation = { [weak self] info in
+            guard let strongSelf = self else { return }
 
-            guard let self = self else { return }
+            if let login = info["user"] as? String, let password = info["password"] as? String {
+                let credential = URLCredential(user: login, password: password, persistence: .permanent)
+                strongSelf.getCurrentUser(baseURL: urlString, credential: credential) { result in
+                    switch result {
+                    case let .success(userData):
+                        var params: [String: Any] = [
+                            "providerKey": ASCFolderProviderType.nextCloud.rawValue,
+                            "login": login,
+                            "password": password,
+                            "userData": userData,
+                        ]
 
-            if let login = info["user"] as? String,
-               let password = info["password"] as? String
-            {
-                var params: [String: String] = [
-                    "providerKey": ASCFolderProviderType.nextCloud.rawValue,
-                    "login": login,
-                    "password": password,
-                ]
+                        params["url"] = strongSelf.urlString
+                        strongSelf.complation?(params)
 
-                params["url"] = urlString
-
-                self.complation?(params)
+                    case let .failure(error):
+                        log.error("Failed to verify Nextcloud user: \(error.localizedDescription)")
+                        UIAlertController.showError(in: strongSelf,
+                                                    message: NSLocalizedString("Failed to verify user credentials.", comment: ""))
+                    }
+                }
             } else if let error = info["error"] as? String {
-                UIAlertController.showError(in: self, message: error)
+                UIAlertController.showError(in: strongSelf, message: error)
             }
         }
 
@@ -122,6 +134,35 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
             }
         }).resume()
     }
+
+    private func getCurrentUser(
+        baseURL: URL,
+        credential: URLCredential,
+        completion: @escaping (Result<NextcloudUserData, Error>) -> Void
+    ) {
+        let apiClient = NextcloudApiClient(
+            url: baseURL.absoluteString,
+            user: credential.user ?? "",
+            password: credential.password ?? ""
+        )
+
+        apiClient.headers.add(name: loginHeader, value: "true")
+        apiClient.headers.add(name: "Accept", value: "application/json")
+
+        apiClient.request(NextcloudAPI.Endpoints.currentUser, nil) { response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let userData = response?.ocs?.data else {
+                completion(.failure(NSError(domain: "NextCloud", code: -2, userInfo: [NSLocalizedDescriptionKey: "OCS user id is empty"])))
+                return
+            }
+
+            completion(.success(userData))
+        }
+    }
 }
 
 // MARK: - TableView Delegate
@@ -132,7 +173,6 @@ extension ASCConnectStorageNextCloudServerController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == doneCell {
             valid(portal: serverField.text ?? "") { [weak self] isSuccess in
-
                 guard let self = self else { return }
                 if isSuccess {
                     self.showWebView()

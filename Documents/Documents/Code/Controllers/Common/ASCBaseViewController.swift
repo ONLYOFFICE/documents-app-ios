@@ -26,6 +26,8 @@ class ASCBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        view.tintColor = Asset.Colors.brend.color
+
         if isAddHideKeyboardHandler {
             addKeyboardHideHanlder()
         }
@@ -45,11 +47,11 @@ class ASCBaseViewController: UIViewController {
 
     // MARK: - Create
 
-    public class var storyboard: Storyboard {
+    class var storyboard: Storyboard {
         fatalError("Storyboard not defined:\(String(describing: self))")
     }
 
-    public class func instance() -> Self {
+    class func instance() -> Self {
         return instantiate(from: storyboard)
     }
 

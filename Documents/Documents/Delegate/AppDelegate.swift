@@ -21,7 +21,7 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+    // MARK: - Application Lifecycle
 
     func application(
         _ application: UIApplication,
@@ -61,100 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             searchablePromoInit()
         #endif
 
-        window = UIWindow()
-        window?.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
-        window?.rootViewController = ASCRootViewController.instance()
-        window?.makeKeyAndVisible()
-
-        // Initialize PasscodeLock presenter
-        initPasscodeLock()
-
         // Check Update
         configureAppUpdater()
 
         return true
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        NotificationCenter.default.post(name: ASCConstants.Notifications.appDidBecomeActive, object: nil)
+    // MARK: - UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_ application: UIApplication,
-                     performActionFor shortcutItem: UIApplicationShortcutItem,
-                     completionHandler: @escaping (Bool) -> Void)
-    {
-        completionHandler(handle(shortcutItem))
-    }
-
-    func application(_ application: UIApplication,
-                     continue userActivity: NSUserActivity,
-                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
-    {
-        if userActivity.activityType == CSSearchableItemActionType,
-           let info = userActivity.userInfo,
-           let selectedIdentifier = info[CSSearchableItemActivityIdentifier] as? String
-        {
-            log.debug("Selected Identifier: \(selectedIdentifier)")
-        }
-
-        return true
-    }
-
-    func application(_ app: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
-    {
-        if let bundleTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: Any]] {
-            for urlType in bundleTypes {
-                if let service = urlType["CFBundleURLName"] as? String,
-                   let schemes = urlType["CFBundleURLSchemes"] as? [String],
-                   let scheme = schemes.last
-                {
-                    if let _ = url.scheme?.range(of: scheme, options: .caseInsensitive) {
-                        if service == "facebook" {
-                            return ASCFacebookSignInController.application(app, open: url, options: options)
-                        } else if service == "google" {
-                            return GIDSignIn.sharedInstance.handle(url)
-                        } else if service == "dropbox" {
-                            return DropboxClientsManager.handleRedirectURL(url, includeBackgroundClient: false, completion: ASCDropboxSDKWrapper.shared.handleOAuthRedirect)
-                        } else if service == "oodocuments" {
-                            return ASCViewControllerManager.shared.route(by: url, options: options)
-                        }
-                    }
-                }
-            }
-        }
-
-        if url.isFileURL {
-            return ASCViewControllerManager.shared.route(by: url, options: options)
-        }
-
-        return false
-    }
-
-    private func handle(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
-        switch shortcutItem.type {
-        case ASCConstants.Shortcuts.newDocument:
-            delay(seconds: 0.3) {
-                UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.forceCreateNewDocument)
-                NotificationCenter.default.post(name: ASCConstants.Notifications.shortcutLaunch, object: nil)
-            }
-            return true
-        case ASCConstants.Shortcuts.newSpreadsheet:
-            delay(seconds: 0.3) {
-                UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.forceCreateNewSpreadsheet)
-                NotificationCenter.default.post(name: ASCConstants.Notifications.shortcutLaunch, object: nil)
-            }
-            return true
-        case ASCConstants.Shortcuts.newPresentation:
-            delay(seconds: 0.3) {
-                UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.forceCreateNewPresentation)
-                NotificationCenter.default.post(name: ASCConstants.Notifications.shortcutLaunch, object: nil)
-            }
-            return true
-        default:
-            return false
-        }
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
     private func searchablePromoInit() {

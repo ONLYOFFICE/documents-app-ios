@@ -28,11 +28,7 @@ class ASCNotificationSettingsViewController: ASCBaseTableViewController {
     // MARK: - Lifecycle Methods
 
     init() {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
+        super.init(style: .insetGrouped)
     }
 
     @available(*, unavailable)
@@ -196,7 +192,7 @@ extension ASCNotificationSettingsViewController {
         tableData[section].toSection().items.count
     }
 
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cellType(by: indexPath).toCell(tableView: tableView)
     }
 
@@ -208,11 +204,11 @@ extension ASCNotificationSettingsViewController {
         tableData[section].toSection().footer
     }
 
-    override public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
 
-    override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
 
@@ -228,7 +224,7 @@ extension ASCNotificationSettingsViewController {
         case warning(viewModel: NotificationSection)
         case notifications(viewModel: NotificationSection)
 
-        public func toSection() -> NotificationSection {
+        func toSection() -> NotificationSection {
             switch self {
             case let .warning(viewModel):
                 return viewModel
@@ -270,7 +266,7 @@ extension ASCNotificationSettingsViewController {
         case warning(viewModel: ASCNotificationWarningCellViewModel)
         case switchControl(viewModel: ASCSwitchCellViewModel)
 
-        public func toCell(tableView: UITableView) -> UITableViewCell {
+        func toCell(tableView: UITableView) -> UITableViewCell {
             switch self {
             case let .warning(viewModel):
                 return makeNotificationTurnoff(viewModel, for: tableView) ?? makeDefaultCell()

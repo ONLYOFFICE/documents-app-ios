@@ -11,4 +11,5 @@ struct PeopleGuestsRequestModel: Encodable {
     var sortby = "displayname"
     var sortorder = "ascending"
     let area = "guests"
+    var includeShared: Bool? = nil
 }

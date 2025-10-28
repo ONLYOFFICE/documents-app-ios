@@ -57,7 +57,7 @@ extension ASCEditorManager {
         var configuration = EditorConfiguration(
             title: file.title,
             viewMode: openMode == .view || !UIDevice.allowEditor || (isCoauthoring && !sdkCheck),
-            newDocument: openMode == .create,
+            openMode: EditorOpenMode(rawValue: openMode.rawValue),
             coauthoring: isCoauthoring,
             docKey: config.document?.key,
             docURL: config.document?.url,
@@ -172,7 +172,52 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
         editorDocumentRename(controller, title: title, complation: complation)
     }
 
-    func fillFormDidSend(_ controller: DocumentEditor.DocumentEditorViewController, complation: @escaping ((Result<Bool, Error>) -> Void)) {
+    func documentFillFormDidSend(_ controller: DocumentEditor.DocumentEditorViewController, complation: @escaping ((Result<Bool, Error>) -> Void)) {
         editorFillFormDidSend(controller, complation: complation)
+    }
+
+    func documentStartFillingForm(_ controller: DocumentEditor.DocumentEditorViewController, roles: [[String: Any]], complation: @escaping (Result<Bool, any Error>) -> Void) {
+        guard let provider = provider as? ASCOnlyofficeProvider,
+              let room = provider.folder?.currentOrParentsRoom,
+              let form = openedFile
+        else { return }
+
+        let fillingViewController = VDRStartFillingViewController(
+            form: form,
+            room: room,
+            roles: roles,
+            onDismiss: { result in
+                switch result {
+                case let .success(screenResult):
+                    switch screenResult {
+                    case .close, .fill:
+                        if let documentController = ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController {
+                            if let index = provider.items.firstIndex(where: { $0.id == form.id }) {
+                                documentController.updateItems(at: [index])
+                                controller.dismiss(animated: false)
+                            }
+                            if screenResult == .fill, form.formFillingStatus == .yourTurn {
+                                controller.dismiss(animated: false)
+                                documentController.openFormInFillingModeWithCheckingVersion(file: form)
+                            }
+                        }
+                        complation(.success(true))
+                    case .fail:
+                        complation(.success(false))
+                    }
+                case let .failure(error):
+                    complation(.failure(error))
+                }
+            }
+        )
+        controller.present(fillingViewController, animated: true, completion: nil)
+    }
+
+    func documentFetchAvatars(_ controller: DocumentEditor.DocumentEditorViewController, usersId: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        Task {
+            await MainActor.run {
+                editorFetchAvatars(for: usersId, completion: completion)
+            }
+        }
     }
 }

@@ -78,6 +78,10 @@ extension ASCUser {
     var isUnaplyed: Bool {
         activationStatus == .unapplyed
     }
+
+    var isGuest: Bool {
+        activationStatus != .unapplyed && isVisitor
+    }
 }
 
 extension ASCUser: Codable {

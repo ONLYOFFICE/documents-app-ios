@@ -19,7 +19,7 @@ enum NetworkingError: LocalizedError {
     case apiError(error: NetworkingServerError)
     case unknown(error: Error?)
 
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .cancelled:
             return NSLocalizedString("Request canceled", comment: "")

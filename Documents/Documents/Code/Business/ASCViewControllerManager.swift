@@ -12,7 +12,7 @@ import SwiftRater
 import UIKit
 
 class ASCViewControllerManager {
-    public static let shared = ASCViewControllerManager()
+    static let shared = ASCViewControllerManager()
 
     // MARK: - Properties
 
@@ -59,7 +59,7 @@ class ASCViewControllerManager {
         ASCConstants.RemoteSettingsKeys.setupDefaults()
 
         // Setup global tintColor
-        UIApplication.shared.delegate?.window??.tintColor = Asset.Colors.brend.color
+        UIApplication.shared.keyWindow?.tintColor = Asset.Colors.brend.color
 
         // Read stored providers
         ASCFileManager.loadProviders()
@@ -108,7 +108,7 @@ class ASCViewControllerManager {
     }
 
     @discardableResult
-    func route(by url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+    func route(by url: URL) -> Bool {
 //        print("sourceApplication: \(options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String ?? "")")
 //        print("annotation: \(options[UIApplicationOpenURLOptionsKey.annotation] as? String ?? "")")
         guard
@@ -228,17 +228,18 @@ class ASCViewControllerManager {
                     // Import and open file
                     routeOpenLocalFile(info: info)
                 }
-                openFileInfo = nil
             } else {
                 // Portal
                 routeOpenPortalEntity(info: info)
             }
+
+            openFileInfo = nil
         }
     }
 
     private func routeOpenLocalFile(info: [String: Any], needImport: Bool = true) {
         guard
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let url = info["url"] as? URL,
             url.isFileURL,
             !FileManager.default.isUbiquitousItem(at: url)
@@ -255,7 +256,7 @@ class ASCViewControllerManager {
 
             /// Prevent open if open editor
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
+               let topWindow = UIApplication.shared.lastKeyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -348,9 +349,9 @@ class ASCViewControllerManager {
             }
         }
 
-        if appDelegate.passcodeLockPresenter.isPasscodePresented {
-            appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                 DispatchQueue.main.debounce(interval: 1.0) {
                     processAndOpenFile()
                 }
@@ -364,7 +365,7 @@ class ASCViewControllerManager {
 
     private func routeOpeniCloudFile(info: [String: Any]) {
         guard
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let url = info["url"] as? URL,
             url.isFileURL,
             FileManager.default.isUbiquitousItem(at: url)
@@ -386,7 +387,7 @@ class ASCViewControllerManager {
 
             /// Prevent open if open editor
             if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
+               let topWindow = UIApplication.shared.lastKeyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
                 UIAlertController.showWarning(
@@ -423,9 +424,9 @@ class ASCViewControllerManager {
             }
         }
 
-        if appDelegate.passcodeLockPresenter.isPasscodePresented {
-            appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                 processAndOpenFile()
             }
         } else {
@@ -456,7 +457,7 @@ class ASCViewControllerManager {
         let correctInfo = camelCaseKeys(of: info)
 
         guard
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let deepLink = ASCDeepLink(JSON: correctInfo),
             let originalUrl = deepLink.originalUrl,
             let portal = URL(string: originalUrl)?.dropPathAndQuery().absoluteString,
@@ -476,6 +477,21 @@ class ASCViewControllerManager {
             /// Hide introdaction screen
             if let introViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCIntroViewController {
                 introViewController.dismiss(animated: true, completion: nil)
+            }
+
+            /// Prevent open if open editor
+            if ASCEditorManager.shared.isOpenedFile || ASCEditorManager.shared.isOpenedFileFromDeeplink,
+               let topWindow = UIApplication.shared.lastKeyWindow,
+               let topVC = topWindow.rootViewController?.topMostViewController()
+            {
+                UIAlertController.showWarning(
+                    in: topVC,
+                    message: isOpenFile
+                        ? NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
+                        : NSLocalizedString("To open a folder, you must exit the current document.", comment: "")
+                )
+                self?.openFileInfo = nil
+                return
             }
 
             if deepLink.requestToken != nil {
@@ -513,7 +529,6 @@ class ASCViewControllerManager {
                             : NSLocalizedString("Login", comment: ""),
                         style: .default,
                         handler: { action in
-
                             if let rootVC = ASCViewControllerManager.shared.rootController,
                                let onlyofficeSplitViewController = rootVC.viewControllers?.first(where: { $0 is ASCOnlyofficeSplitViewController }),
                                !onlyofficeSplitViewController.isViewLoaded
@@ -559,20 +574,6 @@ class ASCViewControllerManager {
             }
 
             self?.openFileInfo = nil
-
-            if ASCEditorManager.shared.isOpenedFile,
-               let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
-               let topVC = topWindow.rootViewController?.topMostViewController()
-            {
-                UIAlertController.showWarning(
-                    in: topVC,
-                    message: isOpenFile
-                        ? NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
-                        : NSLocalizedString("To open a folder, you must exit the current document.", comment: "")
-                )
-                self?.openFileInfo = nil
-                return
-            }
 
             // Syncronize api calls
             let requestGroup = DispatchGroup()
@@ -637,7 +638,7 @@ class ASCViewControllerManager {
                     }
 
                     if let file, !file.id.isEmpty {
-                        delay(seconds: 0.3) {
+                        delay(seconds: 1) {
                             if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
                                let documentVC = topMostViewController as? ASCDocumentsViewController
                             {
@@ -667,9 +668,9 @@ class ASCViewControllerManager {
             }
         }
 
-        if appDelegate.passcodeLockPresenter.isPasscodePresented {
-            appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                 DispatchQueue.main.debounce(interval: 1.0) {
                     processAndOpenFile()
                 }
@@ -695,7 +696,7 @@ class ASCViewControllerManager {
         let isPdf = file.extension?.contains(ASCConstants.FileExtensions.pdf) ?? false
 
         let client = NetworkingClient()
-        client.configure(url: portal)
+        client.configure(url: portal, token: requestToken)
         client.headers.add(name: "Request-Token", value: requestToken)
 
         if let authorization = OnlyofficeApiClient.shared.token, OnlyofficeApiClient.shared.baseURL?.absoluteString.contains(portal) ?? false {

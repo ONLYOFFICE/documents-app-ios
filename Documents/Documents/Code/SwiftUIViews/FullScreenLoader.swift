@@ -9,12 +9,23 @@
 import SwiftUI
 
 struct FullScreenLoader: View {
+    var displayLabel = false
+
     var body: some View {
         ZStack {
-            Color.white.opacity(0.8).ignoresSafeArea()
-            ProgressView("Loading…")
-                .progressViewStyle(CircularProgressViewStyle())
-                .scaleEffect(1.5)
+            Color(.systemBackground)
+                .opacity(0.8)
+                .ignoresSafeArea()
+
+            if displayLabel {
+                ProgressView("Loading…")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(1.5)
+            } else {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(1.5)
+            }
         }
     }
 }

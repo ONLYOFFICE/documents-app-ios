@@ -91,9 +91,18 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return isInDocSpaceCategory(folder: folder)
     }
 
+    // MARK: Dependencies
+
+    let sharedService: NetworkManagerSharedSettingsProtocol = NetworkManagerSharedSettings()
+
+    // MRK: Init
+
     init() {
         reset()
-        apiClient.reset()
+
+        if externalApiClient == nil {
+            apiClient.reset()
+        }
     }
 
     init(baseUrl: String, token: String) {
@@ -103,8 +112,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         reset()
 
-        apiClient.baseURL = URL(string: baseUrl)
-        apiClient.token = token
+        if externalApiClient == nil {
+            apiClient.baseURL = URL(string: baseUrl)
+            apiClient.token = token
+        }
     }
 
     init(apiClient: OnlyofficeApiClient) {
@@ -152,10 +163,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func copy() -> ASCFileProviderProtocol {
-        let baseUrl = apiClient.baseURL?.absoluteString ?? ""
-        let token = apiClient.token ?? ""
+        let copy: ASCOnlyofficeProvider
 
-        let copy = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+        if let externalApiClient = externalApiClient {
+            copy = ASCOnlyofficeProvider(apiClient: externalApiClient)
+        } else {
+            let baseUrl = apiClient.baseURL?.absoluteString ?? ""
+            let token = apiClient.token ?? ""
+            copy = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+        }
 
         copy.items = items
         copy.page = page
@@ -219,18 +235,20 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 user = ASCUser(JSON: userJson)
             }
 
-            if let capabilitiesJson = json["capabilities"] as? [String: Any] {
-                apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
-            }
+            if externalApiClient == nil {
+                if let capabilitiesJson = json["capabilities"] as? [String: Any] {
+                    apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
+                }
 
-            if let versions = json["serverVersion"] as? [String: Any] {
-                apiClient.serverVersion = OnlyofficeVersion(JSON: versions)
-            }
-            let dateTransform = ASCDateTransform()
+                if let versions = json["serverVersion"] as? [String: Any] {
+                    apiClient.serverVersion = OnlyofficeVersion(JSON: versions)
+                }
+                let dateTransform = ASCDateTransform()
 
-            apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
-            apiClient.token = json["token"] as? String
-            apiClient.expires = dateTransform.transformFromJSON(json["expires"])
+                apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
+                apiClient.token = json["token"] as? String
+                apiClient.expires = dateTransform.transformFromJSON(json["expires"])
+            }
         }
     }
 
@@ -452,7 +470,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return nil }
 
         // List of Room Templates
-        if folder.isRoot && folder.rootFolderType == .roomTemplates {
+        if folder.isRoot, folder.rootFolderType == .roomTemplates {
             return ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType)
         }
 
@@ -682,7 +700,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     }
                 } else {
                     self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, parameters) { response, error in
-
                         if (response?.result?.count ?? 0) > 0 {
                             var checkOperation: (() -> Void)?
                             checkOperation = {
@@ -1535,8 +1552,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if file.security.startFilling {
-                // TODO: Docspace 3.1 or older
-                // entityActions.insert(.startFilling)
+                entityActions.insert(.startFilling)
             }
 
             if file.security.fillingStatus {
@@ -1778,7 +1794,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
-    
+
     private func fetchArchiveOperationId(folder: ASCFolder) async throws -> String {
         guard let archiveOperation = try await OnlyofficeApiClient.request(
             OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder),
@@ -2299,8 +2315,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             // Update file info
             self.apiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { [weak self] response, error in
-                if let self, let file = response?.result {
-                    self.updateItem(file)
+                if let self, let responseFile = response?.result {
+                    responseFile.parent = file.parent
+                    self.updateItem(responseFile)
                 }
             }
 
@@ -2312,11 +2329,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         let isShareFile = file.requestToken != nil
-
+        let copyProvider = copy() as! ASCOnlyofficeProvider
+        copyProvider.cancel()
+        copyProvider.reset()
+        copyProvider.folder = folder
+        ASCEditorManager.shared.isOpenedFileFromDeeplink = isShareFile
         if isShareFile {
             let editorManager = ASCEditorManager(config: ASCEditorManager.Configuration(onlyofficeClient: apiClient))
             editorManager.editCloud(
                 file,
+                provider: copyProvider,
                 openMode: openMode,
                 canEdit: canEdit,
                 openHandler: openHandler,
@@ -2329,6 +2351,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         } else if ASCEditorManager.shared.checkSDKVersion() {
             ASCEditorManager.shared.editCloud(
                 file,
+                provider: copyProvider,
                 openMode: openMode,
                 canEdit: canEdit,
                 openHandler: openHandler,
@@ -2442,7 +2465,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             docspaceVersion.isVersion(greaterThanOrEqualTo: "2.5.1")
         else { return [] }
 
-        if folder.isRoot, folder.rootFolderType == .user {
+        if folder.isRoot,
+           folder.rootFolderType == .user,
+           docspaceVersion.isVersion(lessThan: "3.5.0")
+        {
             let resentFolder = folder.copy()
             resentFolder.rootFolderType = .recent
             resentFolder.id = OnlyofficeAPI.Path.Folder.recentRaw
@@ -2474,26 +2500,23 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 }
 
 extension ASCOnlyofficeProvider {
-    func generalFileLink(file: ASCFile) async -> Result<String, Error> {
+    func generalFileLink(file: ASCFile) async throws -> String {
         guard file.rootFolderType == .virtualRooms,
               let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
         else {
-            return await withCheckedContinuation { continuation in
-                let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
-                NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
-                    switch result {
-                    case let .success(link):
-                        continuation.resume(returning: .success(link.sharedTo.shareLink))
-                    case let .failure(error):
-                        continuation.resume(returning: .failure(error))
-                    }
-                }
-            }
+            return try await sharedService.createAndCopy(
+                file: file,
+                requestModel: CreateAndCopyLinkRequestModel(
+                    access: ASCShareAccess.read.rawValue,
+                    expirationDate: nil,
+                    isInternal: false
+                )
+            ).sharedTo.shareLink
         }
 
         let path = "%@/doceditor?fileId=%@"
         let urlStr = String(format: path, baseUrl, file.id)
-        return .success(urlStr)
+        return urlStr
     }
 
     func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {
@@ -2555,13 +2578,13 @@ extension ASCOnlyofficeProvider {
         let urlStr = String(format: path, baseUrl, folder.id, folder.id)
         return urlStr
     }
-    
+
     private func progressUpdates(for operationId: String, interval: UInt64 = NSEC_PER_SEC) -> AsyncThrowingStream<Int, Error> {
         AsyncThrowingStream { continuation in
             Task {
                 do {
                     var progress = try await fetchOperationProgress(operationId: operationId)
-                    while progress < 100 && !Task.isCancelled  {
+                    while progress < 100 && !Task.isCancelled {
                         continuation.yield(progress)
                         try await Task.sleep(nanoseconds: interval)
                         progress = try await fetchOperationProgress(operationId: operationId)
@@ -2573,7 +2596,7 @@ extension ASCOnlyofficeProvider {
             }
         }
     }
-    
+
     private func fetchOperationProgress(operationId: String) async throws -> Int {
         guard let resultOperation = try await OnlyofficeApiClient.request(
             OnlyofficeAPI.Endpoints.Operations.list(urlEncoding: .default),
@@ -2747,6 +2770,8 @@ struct StringError: LocalizedError {
         return message
     }
 }
+
+extension StringError: Equatable {}
 
 enum ASCOnlyofficeProviderError: Error {
     case couldntGetAccess

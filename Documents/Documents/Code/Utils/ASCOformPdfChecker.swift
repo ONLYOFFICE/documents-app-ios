@@ -35,7 +35,6 @@ final class ASCOformPdfChecker {
             }
 
             provider.download(stringPath, to: URL(fileURLWithPath: destination.rawValue), range: 0 ..< 110) { result, progress, error in
-
                 if error != nil {
                     continuation.resume(
                         returning: false

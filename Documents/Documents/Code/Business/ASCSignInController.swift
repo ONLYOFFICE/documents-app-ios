@@ -14,7 +14,7 @@ import UIKit
 typealias ASCSignInComplateHandler = (_ success: Bool) -> Void
 
 class ASCSignInController {
-    public static let shared = ASCSignInController()
+    static let shared = ASCSignInController()
 
     // MARK: - Properties
 

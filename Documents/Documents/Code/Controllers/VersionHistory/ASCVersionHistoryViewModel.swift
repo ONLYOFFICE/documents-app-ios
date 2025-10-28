@@ -110,7 +110,7 @@ final class ASCVersionHistoryViewModel: ObservableObject {
                 case let .success(comment):
                     self.resultModalModel = .init(
                         result: .success,
-                        message: NSLocalizedString("", comment: "")
+                        message: ""
                     )
                     self.fetchVersions()
                 case let .failure(error):

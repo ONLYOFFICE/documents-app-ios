@@ -96,6 +96,34 @@ extension UIApplication {
         }
         return controller
     }
+
+    var keyWindowScene: UIWindowScene? {
+        if let activeScene = connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene { return activeScene }
+        return connectedScenes
+            .first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene
+    }
+
+    var keyWindow: UIWindow? {
+        keyWindowScene?.windows.first(where: { $0.isKeyWindow })
+    }
+
+    var lastKeyWindow: UIWindow? {
+        guard let scene = keyWindowScene else { return nil }
+        return scene.windows.first(where: { $0.isKeyWindow })
+            ?? scene.windows.first(where: { !$0.isHidden && $0.alpha > 0 && $0.windowLevel == .normal })
+            ?? scene.windows.first
+    }
+
+    var firstForegroundScene: UIWindowScene? {
+        if let windowActiveScene = connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            return windowActiveScene
+        } else if let windowInactiveScene = connectedScenes.first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene {
+            return windowInactiveScene
+        } else {
+            return nil
+        }
+    }
 }
 
 extension LocalizedError where Self: CustomStringConvertible {

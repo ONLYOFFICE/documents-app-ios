@@ -142,7 +142,7 @@ struct ManageRoomView: View {
         case .editTemplate:
             Text("Tags are applied to the room which will be created based on this template.")
         default:
-            Text("")
+            Text(verbatim: "")
         }
     }
 

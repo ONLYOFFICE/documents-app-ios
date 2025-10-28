@@ -57,7 +57,7 @@ typealias ASCEditorManagerLockedHandler = () -> Void
 typealias ASCEditorManagerFillFormDidSendHandler = (_ file: ASCFile?, _ fillingSessionId: String?, _ complation: @escaping (Bool) -> Void) -> Void
 
 class ASCEditorManager: NSObject {
-    public static let shared = ASCEditorManager()
+    static let shared = ASCEditorManager()
 
     /// The ASCEditorManager Configuration
     struct Configuration {
@@ -66,8 +66,8 @@ class ASCEditorManager: NSObject {
 
     // MARK: - Private
 
-    private var openedFile: ASCFile?
-    private var provider: ASCFileProviderProtocol?
+    private(set) var openedFile: ASCFile?
+    private(set) var provider: ASCFileProviderProtocol?
     private var closeHandler: ASCEditorManagerCloseHandler?
     private var openHandler: ASCEditorManagerOpenHandler?
     private var favoriteHandler: ASCEditorManagerFavoriteHandler?
@@ -109,6 +109,8 @@ class ASCEditorManager: NSObject {
     var isOpenedFile: Bool {
         return openedFile != nil
     }
+
+    var isOpenedFileFromDeeplink: Bool = false
 
     lazy var editorFontsPaths: [String] = {
         var paths = [Bundle.main.resourcePath?.appendingPathComponent("fonts") ?? ""]
@@ -162,16 +164,20 @@ class ASCEditorManager: NSObject {
     private func createEditorWindow() -> UIWindow? {
         cleanupEditorWindow()
 
-        editorWindow = UIWindow(frame: UIScreen.main.bounds)
+        guard let windowScene = UIApplication.shared.firstForegroundScene else {
+            return nil
+        }
+
+        editorWindow = UIWindow(windowScene: windowScene)
         editorWindow?.rootViewController = UIViewController()
 
-        if let delegate = UIApplication.shared.delegate {
-            editorWindow?.tintColor = delegate.window??.tintColor
+        if let keyWindow = UIApplication.shared.keyWindow {
+            editorWindow?.tintColor = keyWindow.tintColor
         }
 
         editorWindow?.windowLevel = UIWindow.Level.statusBar - 10
 
-        if let topWindow = UIWindow.keyWindow {
+        if let topWindow = UIApplication.shared.keyWindow {
             editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
         }
 
@@ -283,10 +289,9 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    public func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
+    func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
         let documentServerVersionRequest = DocumentServerVersionRequest(version: .true)
         clientRequest(OnlyofficeAPI.Endpoints.Settings.documentService, documentServerVersionRequest.dictionary) { response, error in
-
             let removePath = "/web-apps/apps/api/documents/api.js"
 
             if let results = response?.result as? String {
@@ -369,7 +374,7 @@ class ASCEditorManager: NSObject {
 
                     let canEdit = (allowEdit || (!allowEdit && (allowReview || allowComment || allowFillForms))) && canEdit
 
-                    if openMode == .view && !canEdit {
+                    if openMode == .view, !canEdit {
                         var cancel = false
                         self.downloadAndOpenFile(for: provider, file, openMode: openMode, canEdit: canEdit, &cancel)
                     } else {
@@ -495,7 +500,6 @@ class ASCEditorManager: NSObject {
                 }
             } else {
                 clientRequest(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
-
                     if let error {
                         if let status = response?.status,
                            let code = response?.statusCode,
@@ -568,6 +572,7 @@ class ASCEditorManager: NSObject {
 
     func editCloud(
         _ file: ASCFile,
+        provider: ASCOnlyofficeProvider,
         openMode: ASCDocumentOpenMode = .edit,
         canEdit: Bool,
         openHandler: ASCEditorManagerOpenHandler? = nil,
@@ -608,6 +613,7 @@ class ASCEditorManager: NSObject {
                     do {
                         try self.openEditorInCollaboration(
                             file: file,
+                            provider: provider,
                             config: config,
                             openMode: openMode,
                             handler: openHandler
@@ -1081,6 +1087,7 @@ extension ASCEditorManager {
     ///   - handler: File open process handler
     func openEditorInCollaboration(
         file: ASCFile,
+        provider: ASCOnlyofficeProvider,
         config: OnlyofficeDocumentConfig,
         openMode: ASCDocumentOpenMode = .edit,
         handler: ASCEditorManagerOpenHandler? = nil
@@ -1129,7 +1136,7 @@ extension ASCEditorManager {
         editorWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         editorWindow.rootViewController?.present(editorViewController, animated: true, completion: {
             self.openedFile = file
-            self.provider = ASCFileManager.onlyofficeProvider
+            self.provider = provider
 
             UserDefaults.standard.set(file.toJSONString(), forKey: ASCConstants.SettingsKeys.openedDocumentFile)
 
@@ -1568,6 +1575,61 @@ extension ASCEditorManager {
                     msg: NSLocalizedString("Failed to submit the form", comment: "")
                 )
             ))
+        }
+    }
+
+    @MainActor
+    func editorFetchAvatars(for userIds: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        clientRequest(OnlyofficeAPI.Endpoints.People.all) { (response: OnlyofficeResponseArray<ASCUser>?, error) in
+            var result: [String: UIImage] = [:]
+            for id in userIds {
+                if result[id] == nil {
+                    result[id] = Asset.Images.avatarDefault.image
+                }
+            }
+
+            guard let users = response?.result, !users.isEmpty else {
+                completion(result)
+                return
+            }
+
+            let currentUsersId = Set(userIds)
+            let userMap = users.reduce(into: [String: ASCUser]()) { acc, user in
+                if let id = user.userId, currentUsersId.contains(id) {
+                    acc[id] = user
+                }
+            }
+
+            let group = DispatchGroup()
+
+            for id in currentUsersId {
+                guard
+                    let user = userMap[id],
+                    let avatar = user.avatar,
+                    let urlString = OnlyofficeApiClient.shared.absoluteUrl(from: URL(string: avatar))?.absoluteString,
+                    let url = URL(string: urlString)
+                else { continue }
+
+                group.enter()
+
+                let imageView = UIImageView()
+                imageView.image = Asset.Images.avatarDefault.image
+
+                imageView.kf.apiSetImage(
+                    with: url,
+                    placeholder: Asset.Images.avatarDefault.image,
+                    completionHandler: { kfResult in
+                        if case let .success(value) = kfResult {
+                            result[id] = value.image
+                        }
+                        group.leave()
+                    }
+                )
+            }
+
+            group.notify(queue: .main) {
+                completion(result)
+            }
         }
     }
 }

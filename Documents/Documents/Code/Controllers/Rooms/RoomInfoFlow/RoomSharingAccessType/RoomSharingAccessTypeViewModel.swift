@@ -62,7 +62,6 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
 
     private func updateModels() {
         accessModels = accesses.map { mappingAccess in
-
             ASCShareAccessRowModel(
                 uiImage: mappingAccess.image(),
                 name: mappingAccess.title(),

@@ -27,7 +27,7 @@ class NextcloudTokenAdapter: RequestAdapter {
 }
 
 class NextcloudApiClient: NetworkingClient {
-    override public init() {
+    override init() {
         super.init()
     }
 
@@ -36,7 +36,7 @@ class NextcloudApiClient: NetworkingClient {
         configure(url: url, user: user, password: password)
     }
 
-    public func configure(url: String, user: String? = nil, password: String? = nil) {
+    func configure(url: String, user: String? = nil, password: String? = nil) {
         guard let user = user, let password = password else {
             manager = Session()
             return

@@ -13,7 +13,7 @@ import SwiftUI
 final class ASCRoomTemplatesViewModel: ObservableObject {
     @Published var templates: [ASCFolder] = []
     @Published var isLoading = false
-    
+
     private(set) lazy var provider = ASCFileManager.onlyofficeProvider
 
     private lazy var roomTemplatesNetworkService = ServicesProvider.shared.roomTemplatesNetworkService

@@ -48,7 +48,7 @@ extension ASCEditorManager {
         var configuration = EditorConfiguration(
             title: file.title,
             viewMode: openMode == .view || !UIDevice.allowEditor || (isCoauthoring && !sdkCheck),
-            newDocument: openMode == .create,
+            openMode: EditorOpenMode(rawValue: openMode.rawValue),
             coauthoring: isCoauthoring,
             docKey: config.document?.key,
             docURL: config.document?.url,
@@ -160,5 +160,13 @@ extension ASCEditorManager: SpreadsheetEditorViewControllerDelegate {
 
     func spreadsheetChartData(_ controller: SpreadsheetEditor.SpreadsheetEditorViewController, data: Data?) {
         //
+    }
+
+    func spreadsheetFetchAvatars(_ controller: SpreadsheetEditor.SpreadsheetEditorViewController, usersId: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        Task {
+            await MainActor.run {
+                editorFetchAvatars(for: usersId, completion: completion)
+            }
+        }
     }
 }

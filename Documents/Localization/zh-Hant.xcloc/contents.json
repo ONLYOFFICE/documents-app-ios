@@ -1,0 +1,12 @@
+{
+  "developmentRegion" : "en",
+  "project" : "Documents.xcodeproj",
+  "targetLocale" : "zh-Hant",
+  "toolInfo" : {
+    "toolBuildNumber" : "17A400",
+    "toolID" : "com.apple.dt.xcode",
+    "toolName" : "Xcode",
+    "toolVersion" : "26.0.1"
+  },
+  "version" : "1.0"
+}

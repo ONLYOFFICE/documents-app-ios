@@ -22,7 +22,7 @@ typealias ASCEntityHandler = (_ status: ASCEntityProcessStatus, _ result: Any?, 
 typealias ASCEntityProgressHandler = (_ status: ASCEntityProcessStatus, _ progress: Float, _ result: Any?, _ error: Error?, _ cancel: inout Bool) -> Void
 
 class ASCEntityManager: NSObject, UITextFieldDelegate {
-    public static let shared = ASCEntityManager()
+    static let shared = ASCEntityManager()
 
     private static let maxTitle = 170
     private static let errorDomain = "ASCEntityManagerError"

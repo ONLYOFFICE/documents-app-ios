@@ -50,6 +50,27 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             name: UIApplication.didBecomeActiveNotification,
             object: nil
         )
+
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(ASCPasscodeLockPresenter.applicationDidLaunched),
+            name: UIScene.willConnectNotification,
+            object: window?.windowScene
+        )
+
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(ASCPasscodeLockPresenter.applicationDidEnterBackground),
+            name: UIScene.didEnterBackgroundNotification,
+            object: nil
+        )
+
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(ASCPasscodeLockPresenter.applicationDidBecomeActive),
+            name: UIScene.didActivateNotification,
+            object: nil
+        )
     }
 
     deinit {
@@ -60,7 +81,6 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
     @objc dynamic func applicationDidLaunched() {
         // start the Pin Lock presenter
         passcodeLockVC.successCallback = { [weak self] _ in
-
             // we can set isFreshAppLaunch to false
             self?.isFreshAppLaunch = false
         }
@@ -95,12 +115,10 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             splashView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             passcodeLockVC.view.addSubview(splashView)
         } else {
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                if let window = appDelegate.window {
-                    splashView.frame = window.frame
-                    splashView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                }
-                appDelegate.window?.addSubview(splashView)
+            if let window = UIApplication.shared.keyWindow {
+                splashView.frame = window.frame
+                splashView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                window.addSubview(splashView)
             }
         }
     }

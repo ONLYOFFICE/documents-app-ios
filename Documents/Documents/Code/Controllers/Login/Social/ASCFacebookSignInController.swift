@@ -70,22 +70,49 @@ class ASCFacebookSignInController {
         //
     }
 
-    static func application(_ app: UIApplication,
-                            open url: URL,
-                            options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
-    {
+//    static func application(_ app: UIApplication,
+//                            open url: URL,
+//                            options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
+//    {
+//        // Initialize facebook sdk if needed
+//        if !ASCFacebookSignInController.initializedSdk,
+//           let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//        {
+//            // Initialize Facebook SDK
+//            Settings.shared.appID = ASCConstants.Clouds.Facebook.appId
+//            Settings.shared.clientToken = ASCConstants.Clouds.Facebook.clientToken
+//            ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
+//
+//            ASCFacebookSignInController.initializedSdk = true
+//        }
+//
+//        return ApplicationDelegate.shared.application(app, open: url, options: options)
+//    }
+
+    @discardableResult
+    static func application(open url: URL) -> Bool {
         // Initialize facebook sdk if needed
-        if !ASCFacebookSignInController.initializedSdk,
-           let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        {
+        if !ASCFacebookSignInController.initializedSdk {
             // Initialize Facebook SDK
             Settings.shared.appID = ASCConstants.Clouds.Facebook.appId
             Settings.shared.clientToken = ASCConstants.Clouds.Facebook.clientToken
-            ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
+
+            let result = ApplicationDelegate.shared.application(
+                UIApplication.shared,
+                open: url,
+                sourceApplication: nil,
+                annotation: [UIApplication.OpenURLOptionsKey.annotation]
+            )
 
             ASCFacebookSignInController.initializedSdk = true
+            return result
         }
 
-        return ApplicationDelegate.shared.application(app, open: url, options: options)
+        return ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            open: url,
+            sourceApplication: nil,
+            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
 }

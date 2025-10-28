@@ -8,32 +8,34 @@
 
 import SwiftUI
 
-/// Header with title and cancel action
 struct VDRFillingStatusHeaderView: View {
     let title: String
     let subtitle: String
-    let onCancel: () -> Void
+    var isReady: Bool = false
 
     var body: some View {
-        VStack {
-            HStack {
-                Button(NSLocalizedString("Cancel", comment: ""), action: onCancel)
-                    .foregroundColor(Color(.systemBlue))
-                Spacer()
-                Text(verbatim: title)
-                    .font(.headline)
-                Spacer()
-                Color.clear.frame(width: 60, height: 1)
+        VStack(spacing: 16) {
+            if isReady {
+                Asset.Images.checkmarkGreenCircle.swiftUIImage
+                    .resizable()
+                    .frame(width: 64, height: 64)
+                    .padding(.bottom, 20)
             }
-            .padding()
-            .background(Color(.systemBackground))
+            VStack(spacing: 9) {
+                Text(verbatim: title)
+                    .font(.title2)
+                    .foregroundColor(.primary)
 
-            HStack {
                 Text(verbatim: subtitle)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryLabel)
                     .multilineTextAlignment(.center)
-            }.padding()
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.bottom, 30)
         }
+        .padding(.horizontal, 18)
+        .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top ?? 16)
     }
 }

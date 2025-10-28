@@ -11,7 +11,7 @@
 "PasscodeLockConfirmTitle" = "パスコードを確認する";
 
 /* (No Comment) */
-"PasscodeLockEnterDescription" = "パスコードを入力して、進行する";
+"PasscodeLockEnterDescription" = "パスコードを入力して、進行してください。";
 
 /* Enter Passcode State */
 "PasscodeLockEnterTitle" = "パスコードを入力してください";

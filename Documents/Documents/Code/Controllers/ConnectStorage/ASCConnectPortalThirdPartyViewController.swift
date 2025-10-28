@@ -33,6 +33,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.tintColor = Asset.Colors.brend.color
         navigationController?.navigationBar.prefersLargeTitles = false
 
         fetchProviders()

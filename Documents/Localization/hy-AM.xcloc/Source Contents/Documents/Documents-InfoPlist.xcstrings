@@ -1,0 +1,84 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Documents"
+          }
+        }
+      }
+    },
+    "Microsoft Excel Binary Workbook (.xlsb)" : {
+      "shouldTranslate" : false
+    },
+    "New Document" : {
+
+    },
+    "New Presentation" : {
+
+    },
+    "New Spreadsheet" : {
+
+    },
+    "NSCameraUsageDescription" : {
+      "comment" : "Privacy - Camera Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires access to the camera, so that you can take photo and upload it in the app."
+          }
+        }
+      }
+    },
+    "NSFaceIDUsageDescription" : {
+      "comment" : "Privacy - Face ID Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires Face ID permission to authenticate using Face recognition."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription" : {
+      "comment" : "Privacy - Photo Library Additions Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires access to the photo library, so that you can upload your photos in the app."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "comment" : "Privacy - Photo Library Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires access to the photo library, so that you can upload your photos in the app."
+          }
+        }
+      }
+    },
+    "ONLYOFFICE fillable form (.oform)" : {
+
+    },
+    "ONLYOFFICE form template (.docxf)" : {
+
+    }
+  },
+  "version" : "1.1"
+}

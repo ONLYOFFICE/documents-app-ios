@@ -116,7 +116,7 @@ final class WhatsNewService {
         }
     }
 
-    public class func show(force: Bool = false) {
+    class func show(force: Bool = false) {
         let storeAppVersion = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appVersion)
 
         if let appVersion = ASCCommon.appVersion, storeAppVersion != appVersion {

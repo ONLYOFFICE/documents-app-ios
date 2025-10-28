@@ -204,7 +204,7 @@ extension ASCHelpAndFeedbackViewController {
         tableData[section].toSection().items.count
     }
 
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cellType(by: indexPath).toCell(tableView: tableView)
     }
 
@@ -216,7 +216,7 @@ extension ASCHelpAndFeedbackViewController {
         tableData[section].toSection().footer
     }
 
-    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         switch cellType(by: indexPath) {
@@ -236,14 +236,14 @@ extension ASCHelpAndFeedbackViewController {
     enum CellType {
         case standart(viewModel: ASCStandartCellViewModel)
 
-        public func viewModel() -> Any {
+        func viewModel() -> Any {
             switch self {
             case let .standart(viewModel):
                 return viewModel
             }
         }
 
-        public func toCell(tableView: UITableView) -> UITableViewCell {
+        func toCell(tableView: UITableView) -> UITableViewCell {
             switch self {
             case let .standart(viewModel):
                 return makeStandartCell(viewModel, for: tableView) ?? makeDefaultCell()
@@ -268,7 +268,7 @@ extension ASCHelpAndFeedbackViewController {
     enum SectionType {
         case standart(viewModel: SettingsSection)
 
-        public func toSection() -> SettingsSection {
+        func toSection() -> SettingsSection {
             switch self {
             case let .standart(viewModel):
                 return viewModel

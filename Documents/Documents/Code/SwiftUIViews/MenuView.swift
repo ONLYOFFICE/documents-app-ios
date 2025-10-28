@@ -45,7 +45,7 @@ struct MenuView<Content>: View where Content: View {
             }
             .actionSheet(isPresented: $showingActionSheet) {
                 ActionSheet(
-                    title: Text(""),
+                    title: Text(verbatim: ""),
                     buttons: actionSheetButtons
                 )
             }

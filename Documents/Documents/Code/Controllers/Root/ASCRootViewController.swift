@@ -215,7 +215,7 @@ class ASCRootViewController: ASCBaseTabBarController {
     // MARK: - Notification handlers
 
     @objc func checkShortcutLaunch() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+        if let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate {
             let createFile: () -> Void = {
                 if ASCEditorManager.shared.isOpenedFile,
                    let rootKeyWindowVC = UIWindow.keyWindow?.rootViewController
@@ -257,9 +257,9 @@ class ASCRootViewController: ASCBaseTabBarController {
                 }
             }
 
-            if appDelegate.passcodeLockPresenter.isPasscodePresented {
-                appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                    appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+            if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+                sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                    sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                     delay(seconds: 0.3, completion: {
                         createFile()
                     })
@@ -274,7 +274,7 @@ class ASCRootViewController: ASCBaseTabBarController {
 
     @objc
     private func checkPushInfo() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+        if let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate {
             let handlePushInfo: () -> Void = {
                 if let userInfo = UserDefaults.standard.dictionary(forKey: ASCConstants.SettingsKeys.pushUserInfo) {
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.pushUserInfo)
@@ -291,9 +291,9 @@ class ASCRootViewController: ASCBaseTabBarController {
                 }
             }
 
-            if appDelegate.passcodeLockPresenter.isPasscodePresented {
-                appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                    appDelegate.passcodeLockPresenter.dismissPasscodeLock()
+            if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
+                sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
+                    sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
                     handlePushInfo()
                 }
             } else {

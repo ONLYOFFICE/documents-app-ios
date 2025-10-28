@@ -9,10 +9,10 @@
 import ObjectMapper
 
 class ASCDateTransform: TransformType {
-    public typealias Object = Date
-    public typealias JSON = String
+    typealias Object = Date
+    typealias JSON = String
 
-    public init() {}
+    init() {}
 
     open func transformFromJSON(_ value: Any?) -> Date? {
         if let timeInt = value as? Double {

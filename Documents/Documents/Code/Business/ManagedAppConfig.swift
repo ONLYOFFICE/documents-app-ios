@@ -13,7 +13,7 @@ protocol ManagedAppConfigHook: AnyObject {
 }
 
 final class ManagedAppConfig {
-    public static let shared = ManagedAppConfig()
+    static let shared = ManagedAppConfig()
 
     // MARK: - Properties
 

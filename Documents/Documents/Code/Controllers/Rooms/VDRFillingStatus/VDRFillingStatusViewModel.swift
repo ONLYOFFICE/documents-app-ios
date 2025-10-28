@@ -6,6 +6,7 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import SwiftUI
 
 // MARK: - Screen model
@@ -32,6 +33,8 @@ final class VDRFillingStatusViewModel: ObservableObject {
     @Published private(set) var state = VDRFillingStatusState()
     var file: ASCFile
 
+    var isOpenAfterStartFilling: Bool
+
     private let shortSlashDateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yy"
@@ -42,13 +45,15 @@ final class VDRFillingStatusViewModel: ObservableObject {
     private let onStoppedSuccess: () -> Void
 
     init(
-        service: VDRFillingStatusService = .init(),
+        service: VDRFillingStatusService,
+        isOpenAfterStartFilling: Bool = false,
         file: ASCFile,
         onStoppedSuccess: @escaping () -> Void
     ) {
         self.service = service
         self.file = file
         self.onStoppedSuccess = onStoppedSuccess
+        self.isOpenAfterStartFilling = isOpenAfterStartFilling
         loadStatus()
         setupFormInfo()
         setupActions()
@@ -62,7 +67,11 @@ final class VDRFillingStatusViewModel: ObservableObject {
             title: file.title,
             subtitle: file.createdBy?.displayName ?? "",
             detail: file.created.map { shortSlashDateFormatter.string(from: $0) } ?? "",
-            status: file.formFillingStatus
+            status: file.formFillingStatus,
+            onLinkAction: { [weak self] in
+                guard let self else { return }
+                self.onCopyLink()
+            }
         )
     }
 
@@ -106,6 +115,22 @@ final class VDRFillingStatusViewModel: ObservableObject {
             state.isActionLoading = false
         }
     }
+
+    func onCopyLink() {
+        Task { @MainActor in
+            let hud = MBProgressHUD.showTopMost()
+
+            if let urlString = await service.copyLink(file: file),
+               let link = URL(string: urlString)
+            {
+                UIPasteboard.general.string = link.absoluteString
+                hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")))
+            } else {
+                hud?.setState(result: .failure(nil))
+            }
+            hud?.hide(animated: true, afterDelay: .standardDelay)
+        }
+    }
 }
 
 // MARK: - Delay cancellable task
@@ -133,6 +158,7 @@ struct VDRFillingStatusFormInfoModel: Identifiable {
     let subtitle: String
     let detail: String
     var status: FormFillingStatus
+    let onLinkAction: () -> Void
 }
 
 /// Event in the filling timeline

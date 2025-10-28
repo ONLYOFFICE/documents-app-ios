@@ -67,11 +67,11 @@ extension ASCAppThemeViewController {
         tableData.count
     }
 
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cellType(by: indexPath).toCell(tableView: tableView)
     }
 
-    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         switch cellType(by: indexPath) {
@@ -80,7 +80,7 @@ extension ASCAppThemeViewController {
         }
     }
 
-    override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         52
     }
 
@@ -95,7 +95,7 @@ extension ASCAppThemeViewController {
     enum CellType {
         case standart(viewModel: ASCStandartCellViewModel)
 
-        public func toCell(tableView: UITableView) -> UITableViewCell {
+        func toCell(tableView: UITableView) -> UITableViewCell {
             switch self {
             case let .standart(viewModel):
                 return makeStandartCell(viewModel, for: tableView) ?? makeDefaultCell()

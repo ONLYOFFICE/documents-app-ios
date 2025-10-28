@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 
 class ASCPasswordRecoveryController {
-    public static let shared = ASCPasswordRecoveryController()
+    static let shared = ASCPasswordRecoveryController()
 
     // MARK: - Public
 

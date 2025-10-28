@@ -178,6 +178,7 @@ class ASCCloudsViewController: UITableViewController {
 
         navigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
         navigationVC.modalPresentationStyle = .formSheet
+        navigationVC.view.tintColor = Asset.Colors.brend.color
 
         present(navigationVC, animated: true, completion: completion)
         connectStorageVC.presentProviderConnection(by: type)

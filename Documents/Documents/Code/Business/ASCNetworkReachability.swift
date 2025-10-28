@@ -10,9 +10,9 @@ import Alamofire
 import UIKit
 
 class ASCNetworkReachability {
-    public static let shared = ASCNetworkReachability()
+    static let shared = ASCNetworkReachability()
 
-    public var isReachable: Bool {
+    var isReachable: Bool {
         if let manager = NetworkReachabilityManager() {
             return manager.isReachable
         }

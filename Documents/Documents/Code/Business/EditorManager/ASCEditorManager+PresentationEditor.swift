@@ -48,7 +48,7 @@ extension ASCEditorManager {
         var configuration = EditorConfiguration(
             title: file.title,
             viewMode: openMode == .view || !UIDevice.allowEditor || (isCoauthoring && !sdkCheck),
-            newDocument: openMode == .create,
+            openMode: EditorOpenMode(rawValue: openMode.rawValue),
             coauthoring: isCoauthoring,
             docKey: config.document?.key,
             docURL: config.document?.url,
@@ -156,5 +156,13 @@ extension ASCEditorManager: PresentationEditorViewControllerDelegate {
 
     func presentationRename(_ controller: PresentationEditor.PresentationEditorViewController, title: String, complation: @escaping ((Result<Bool, Error>) -> Void)) {
         editorDocumentRename(controller, title: title, complation: complation)
+    }
+
+    func presentationFetchAvatars(_ controller: PresentationEditor.PresentationEditorViewController, usersId: [String], completion: @escaping ([String: UIImage]) -> Void) {
+        Task {
+            await MainActor.run {
+                editorFetchAvatars(for: usersId, completion: completion)
+            }
+        }
     }
 }

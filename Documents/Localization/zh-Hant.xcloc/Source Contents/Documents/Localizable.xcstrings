@@ -1,0 +1,2837 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "(%@)" : {
+
+    },
+    "%@" : {
+
+    },
+    "%d days" : {
+      "comment" : "Days left"
+    },
+    "%d Groups" : {
+
+    },
+    "%d hours" : {
+      "comment" : "Hours left"
+    },
+    "%d months" : {
+
+    },
+    "%d selected" : {
+      "comment" : "Count of seclected rows: count + selected"
+    },
+    "%d years" : {
+
+    },
+    "%i of %i" : {
+      "comment" : "Presentation Viewer"
+    },
+    "%lu File selected" : {
+
+    },
+    "%lu Folder and %lu File selected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%#@arg1@ and %#@arg2@ selected"
+          },
+          "substitutions" : {
+            "arg1" : {
+              "argNum" : 1,
+              "formatSpecifier" : "lu",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg Folder"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg Folders"
+                    }
+                  }
+                }
+              }
+            },
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : "lu",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg File"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg Files"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lu Folder selected" : {
+
+    },
+    "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" : {
+
+    },
+    "© Ascensio System SIA %d" : {
+
+    },
+    "<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" : {
+
+    },
+    "<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" : {
+
+    },
+    "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" : {
+
+    },
+    "1 day" : {
+
+    },
+    "7 days" : {
+
+    },
+    "12 hours" : {
+
+    },
+    "A file with a similar name already exist." : {
+
+    },
+    "A file with a similar name already exists in the document directory on the device." : {
+
+    },
+    "A new room will be created and all the contents of the selected folder will be copied there. Afterwards, you can invite other users to collaborate on the files within a room." : {
+
+    },
+    "A notification has already been sent to the user in the first\n role, prompting them to fill out the form. You can navigate\n to the room or share the filling link with the participants." : {
+
+    },
+    "A user or group will be able only to view the document and add comments, as well as manage them." : {
+
+    },
+    "A user or group will be able only to view the document and fill in the forms inserted into the document." : {
+
+    },
+    "A user or group will be able only to view the document." : {
+
+    },
+    "A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." : {
+
+    },
+    "A user or group will be able to view and edit the document as well as to share this document." : {
+
+    },
+    "A0 (84,1%@ x 119,9%@)" : {
+      "comment" : "Format info"
+    },
+    "A1 (59,4%@ x 84,1%@)" : {
+      "comment" : "Format info"
+    },
+    "A2 (42%@ x 59,4%@)" : {
+      "comment" : "Format info"
+    },
+    "A6 (10,5%@ x 14,8%@)" : {
+      "comment" : "Format info"
+    },
+    "About" : {
+
+    },
+    "Access by external link" : {
+
+    },
+    "Access rights" : {
+
+    },
+    "Access settings" : {
+
+    },
+    "Access to template" : {
+
+    },
+    "Access to template. You can select members who can create rooms based on this template." : {
+
+    },
+    "Access type" : {
+
+    },
+    "Account name is empty" : {
+
+    },
+    "Account name is not valid" : {
+
+    },
+    "Accountant" : {
+      "extractionState" : "manual"
+    },
+    "Accounts" : {
+
+    },
+    "Action on files" : {
+
+    },
+    "Add" : {
+
+    },
+    "Add account" : {
+
+    },
+    "Add manually" : {
+
+    },
+    "Add message" : {
+      "comment" : "Sharing settings add notification message"
+    },
+    "Add static text" : {
+
+    },
+    "Add tag" : {
+      "comment" : "placeholder"
+    },
+    "Add users" : {
+      "comment" : "Button title"
+    },
+    "Add Users or Groups" : {
+
+    },
+    "Add users or groups and allow them to \n read, review or edit documents." : {
+
+    },
+    "Add watermark elements" : {
+
+    },
+    "Add watermarks to documents" : {
+
+    },
+    "Additional links" : {
+
+    },
+    "Address is empty" : {
+
+    },
+    "Admin" : {
+
+    },
+    "Administration" : {
+
+    },
+    "All" : {
+
+    },
+    "All DocSpace and Room admins will be able to create rooms using this template." : {
+
+    },
+    "All files" : {
+
+    },
+    "All Files" : {
+      "comment" : "Category title"
+    },
+    "All notifications" : {
+
+    },
+    "All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" : {
+
+    },
+    "Allow access via external link" : {
+
+    },
+    "An unexpected error has occurred. Please try again later. Sorry for inconvenience." : {
+
+    },
+    "Anyone with the link" : {
+
+    },
+    "AppleId authentication failed" : {
+
+    },
+    "Apply" : {
+      "comment" : "Button title"
+    },
+    "Apply your own settings to use this room for any custom purpose" : {
+
+    },
+    "Applying" : {
+      "comment" : "Caption of the process"
+    },
+    "Archive" : {
+      "comment" : "Button title\nCategory title"
+    },
+    "Archives" : {
+
+    },
+    "Archiving" : {
+      "comment" : "Caption of the processing"
+    },
+    "Archiving failed." : {
+      "extractionState" : "manual"
+    },
+    "Are you sure you want to delete the account %@ from this devce?" : {
+
+    },
+    "Are you sure you want to leave this account?" : {
+
+    },
+    "Assign Owner" : {
+
+    },
+    "Assign to role" : {
+
+    },
+    "Author" : {
+
+    },
+    "Automatic indexing" : {
+
+    },
+    "Back" : {
+
+    },
+    "Back to room" : {
+
+    },
+    "Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." : {
+
+    },
+    "Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." : {
+
+    },
+    "Box" : {
+
+    },
+    "Box directory" : {
+
+    },
+    "Business subscription expired" : {
+
+    },
+    "By creating the portal you agree with our Privacy Policy and Terms of Service" : {
+
+    },
+    "bytes" : {
+      "comment" : "Data units\nMeasurement unit"
+    },
+    "Cache" : {
+
+    },
+    "Camera Unavailable" : {
+
+    },
+    "Can not create file in the folder." : {
+
+    },
+    "Can not create file with this name." : {
+
+    },
+    "Can not create folder with this name." : {
+
+    },
+    "Can not duplicate the file." : {
+
+    },
+    "Cancel" : {
+      "comment" : "Cancel button"
+    },
+    "Cancel invitation?" : {
+
+    },
+    "Canceled" : {
+
+    },
+    "Change owner" : {
+
+    },
+    "Change room owner" : {
+      "comment" : "Button title"
+    },
+    "Change room's owner" : {
+
+    },
+    "Change the Room Owner" : {
+
+    },
+    "Changing access" : {
+
+    },
+    "Check ready form" : {
+
+    },
+    "Check your internet connection" : {
+
+    },
+    "Choose Files" : {
+
+    },
+    "Choose Form filling room or create new" : {
+      "comment" : "One line. Max 50 charasters"
+    },
+    "Choose from list" : {
+
+    },
+    "Choose location with templates" : {
+      "comment" : "One line. Max 50 charasters"
+    },
+    "Choose room type" : {
+
+    },
+    "Cleanup" : {
+      "comment" : "Caption of the processing"
+    },
+    "Clear Cache" : {
+      "comment" : "Button title"
+    },
+    "Clear Cache?" : {
+      "comment" : "Button title"
+    },
+    "Clear selection?" : {
+
+    },
+    "Clearing" : {
+      "comment" : "Caption of the processing"
+    },
+    "Close" : {
+      "comment" : "Close view"
+    },
+    "Close the document before opening a new one." : {
+
+    },
+    "Cloud directory" : {
+      "comment" : "Default external storage name"
+    },
+    "cm" : {
+      "comment" : "Cut from centimeters"
+    },
+    "Collaborate on one or multiple documents with your team" : {
+
+    },
+    "Collaborate with your team" : {
+      "comment" : "Introduction Step Five - Title"
+    },
+    "Collaboration" : {
+
+    },
+    "Collaboration room" : {
+
+    },
+    "Commentator" : {
+      "comment" : "Share status"
+    },
+    "Common Documents" : {
+      "comment" : "Category title"
+    },
+    "common.cancel" : {
+      "comment" : "Cancel",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "common.close" : {
+      "comment" : "Close",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "common.error" : {
+      "comment" : "Error",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Error"
+          }
+        }
+      }
+    },
+    "common.me" : {
+      "comment" : "Myself",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Me"
+          }
+        }
+      }
+    },
+    "common.ok" : {
+      "comment" : "OK",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "common.paymentRequiredMsg" : {
+      "comment" : "Payment required message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The paid period is over"
+          }
+        }
+      }
+    },
+    "common.paymentRequiredTitle" : {
+      "comment" : "Payment required title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Payment required"
+          }
+        }
+      }
+    },
+    "Complete" : {
+      "comment" : "Form filling status"
+    },
+    "Compress Images" : {
+
+    },
+    "Connect" : {
+      "comment" : "Button title"
+    },
+    "Connect Clouds" : {
+
+    },
+    "Connect Storage" : {
+
+    },
+    "Connect third-party storage\nlike Nextcloud, ownCloud, Dropbox and\nothers which use WebDAV protocol." : {
+      "comment" : "Introduction Step Three - Description"
+    },
+    "Connect to your %@ cloud to store files online and collaborate on documents in real time" : {
+      "comment" : "Footer text"
+    },
+    "Connecting" : {
+      "comment" : "Caption of the process"
+    },
+    "Connection deinitialized" : {
+
+    },
+    "Console" : {
+
+    },
+    "Contact Support" : {
+
+    },
+    "Content creator" : {
+      "comment" : "Share status"
+    },
+    "Continue" : {
+
+    },
+    "Continue anyway" : {
+
+    },
+    "Converter" : {
+
+    },
+    "Copy" : {
+      "comment" : "Button title"
+    },
+    "Copy general link" : {
+      "comment" : "Button title"
+    },
+    "Copy here" : {
+      "comment" : "Button title"
+    },
+    "Copy link" : {
+      "comment" : "Button title"
+    },
+    "Copying" : {
+      "comment" : "Caption of the processing"
+    },
+    "Could not change file attributes" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not change the directory" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not copy file" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not copy." : {
+
+    },
+    "Could not create a directory" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not create a hard link" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not create file" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not create symlink from" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not delete file" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not delete the file." : {
+
+    },
+    "Could not delete the folder." : {
+
+    },
+    "Could not delete the version." : {
+
+    },
+    "Could not delete." : {
+
+    },
+    "Could not download file." : {
+
+    },
+    "Could not download object." : {
+
+    },
+    "Could not download the file." : {
+
+    },
+    "Could not duplicate the file." : {
+
+    },
+    "Could not duplicate the room." : {
+
+    },
+    "Could not export the file." : {
+
+    },
+    "Could not move file" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not open file." : {
+
+    },
+    "Could not read data from the file." : {
+
+    },
+    "Could not read from file" : {
+      "comment" : "Description of file operation error"
+    },
+    "Could not resolve the file." : {
+
+    },
+    "Could Not Send Email" : {
+
+    },
+    "Could not write to file" : {
+      "comment" : "Description of file operation error"
+    },
+    "Couldn' get access" : {
+
+    },
+    "Couldn't change the owner." : {
+
+    },
+    "Couldn't change the room owner" : {
+
+    },
+    "Couldn't download the room." : {
+
+    },
+    "Couldn't export room index" : {
+
+    },
+    "Couldn't leave the room" : {
+
+    },
+    "Couldn't rename the file" : {
+
+    },
+    "Couldn't save changes at server. Your modified document is saved in local storage as %@" : {
+
+    },
+    "Create" : {
+
+    },
+    "Create a free account" : {
+
+    },
+    "Create a new file" : {
+
+    },
+    "Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." : {
+
+    },
+    "Create additional links to share the document with different access rights." : {
+
+    },
+    "Create and copy" : {
+
+    },
+    "Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." : {
+      "comment" : "Introduction Step Two - Description"
+    },
+    "Create new documents, spreadsheets or presentations. Create new folders to organize your files." : {
+
+    },
+    "Create new folder" : {
+
+    },
+    "Create or upload new files or folders to get started." : {
+
+    },
+    "Create room" : {
+      "comment" : "Button title"
+    },
+    "Create your first room to get started." : {
+
+    },
+    "Creating" : {
+      "comment" : "Caption of the process"
+    },
+    "Current Date" : {
+      "comment" : "Watermark Element"
+    },
+    "Current file will be saved in version history." : {
+
+    },
+    "Custom" : {
+
+    },
+    "Custom filter" : {
+      "comment" : "Share status"
+    },
+    "Custom filter for\nthe selected file\ndisabled" : {
+
+    },
+    "Custom filter for\nthe selected file\nenabled" : {
+
+    },
+    "Custom room" : {
+
+    },
+    "Dark" : {
+
+    },
+    "Date" : {
+
+    },
+    "Days" : {
+
+    },
+    "Delete" : {
+      "comment" : "Button title"
+    },
+    "Delete %lu File" : {
+
+    },
+    "Delete %lu Folder" : {
+
+    },
+    "Delete %lu Folder and %lu File" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete %#@arg1@ and %#@arg2@"
+          },
+          "substitutions" : {
+            "arg1" : {
+              "argNum" : 1,
+              "formatSpecifier" : "lu",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg Folder"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg Folders"
+                    }
+                  }
+                }
+              }
+            },
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : "lu",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg File"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg Files"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Delete File" : {
+      "comment" : "Button title"
+    },
+    "Delete Folder" : {
+
+    },
+    "Delete forever?" : {
+
+    },
+    "Delete from device" : {
+
+    },
+    "Delete link" : {
+
+    },
+    "Delete permanently" : {
+
+    },
+    "Delete template" : {
+      "comment" : "Button title"
+    },
+    "Delete this item?" : {
+
+    },
+    "Delete version" : {
+
+    },
+    "Deleted" : {
+
+    },
+    "Deleting" : {
+      "comment" : "Caption of the processing"
+    },
+    "Deny Access" : {
+      "comment" : "Share status"
+    },
+    "Deselect all" : {
+
+    },
+    "Developer options" : {
+
+    },
+    "Diagonal" : {
+      "comment" : "Watermark Position"
+    },
+    "Director" : {
+      "extractionState" : "manual"
+    },
+    "Disable Custom filter" : {
+
+    },
+    "Disable if you do not want to receive notifications from the %@" : {
+
+    },
+    "Disable notifications" : {
+
+    },
+    "Disconnect third party" : {
+      "comment" : "Button title"
+    },
+    "Do you really want to delete template room %@? The template cannot be restored. " : {
+
+    },
+    "Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." : {
+
+    },
+    "DocSpace" : {
+
+    },
+    "DocSpace admin" : {
+
+    },
+    "Docspace user only" : {
+
+    },
+    "Document" : {
+
+    },
+    "Document Sample" : {
+      "comment" : "Default title of sample document"
+    },
+    "Documents" : {
+      "comment" : "Category title"
+    },
+    "Done" : {
+      "comment" : "Button title\nOperation completed"
+    },
+    "Download" : {
+      "comment" : "Button title"
+    },
+    "Downloading" : {
+      "comment" : "Caption of the processing"
+    },
+    "DoсSpace users only" : {
+
+    },
+    "Draft" : {
+      "comment" : "Form filling status"
+    },
+    "Dropbox" : {
+
+    },
+    "Dropbox directory" : {
+
+    },
+    "Duplicate" : {
+      "comment" : "Button title"
+    },
+    "Duplication" : {
+      "comment" : "Caption of the processing"
+    },
+    "Eb" : {
+      "comment" : "Data units"
+    },
+    "Edit" : {
+      "comment" : "Button title"
+    },
+    "Edit comment" : {
+
+    },
+    "Edit Comment" : {
+
+    },
+    "Edit documents locally" : {
+      "comment" : "Introduction Step Four - Title"
+    },
+    "Edit index" : {
+      "comment" : "Button title"
+    },
+    "Edit link" : {
+
+    },
+    "Edit room" : {
+      "comment" : "Button title"
+    },
+    "Edit template" : {
+
+    },
+    "Editor" : {
+      "comment" : "Share status"
+    },
+    "Email" : {
+
+    },
+    "Email address" : {
+
+    },
+    "Email is empty" : {
+
+    },
+    "Email is incorrect." : {
+
+    },
+    "Email is not valid" : {
+
+    },
+    "Employee" : {
+      "extractionState" : "manual"
+    },
+    "Employees" : {
+
+    },
+    "Empty name." : {
+
+    },
+    "Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." : {
+
+    },
+    "Enable Custom filter" : {
+
+    },
+    "Enable if you want to receive notifications from the %@" : {
+
+    },
+    "Enable notifications" : {
+
+    },
+    "Enable this setting to disable downloads of files and folders from this room shared via a link" : {
+
+    },
+    "Enable this setting to disable downloads, printing, and content copying for users with the “Viewer” role" : {
+
+    },
+    "Enable time limit" : {
+
+    },
+    "End Slide Show" : {
+      "comment" : "Presentation Viewer"
+    },
+    "Enter email" : {
+      "comment" : "placeholder"
+    },
+    "Enter password" : {
+
+    },
+    "Enter Portal Address" : {
+
+    },
+    "Error" : {
+
+    },
+    "Error code: %ld" : {
+
+    },
+    "error.errorForbiddenMsg" : {
+      "comment" : "Access is Forbidden message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Contact the portal administrator for access to the resource."
+          }
+        }
+      }
+    },
+    "error.errorForbiddenTitle" : {
+      "comment" : "Access is Forbidden title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Access is Forbidden"
+          }
+        }
+      }
+    },
+    "error.errorNotFoundMsg" : {
+      "comment" : "The resource can not be found Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The resource can not be found"
+          }
+        }
+      }
+    },
+    "error.errorServerTitle" : {
+      "comment" : "Unknown Server Error",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Server Error"
+          }
+        }
+      }
+    },
+    "Exclude subfolders" : {
+
+    },
+    "Exit without saving?\nYou have made changes in the index. If you proceed without saving, those changes will not be applied." : {
+      "extractionState" : "manual"
+    },
+    "Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." : {
+
+    },
+    "Expect users" : {
+
+    },
+    "Expired" : {
+      "comment" : "Expiration status"
+    },
+    "Expires after 7 days" : {
+
+    },
+    "Export" : {
+      "comment" : "Button title"
+    },
+    "Export room index" : {
+      "comment" : "Button title"
+    },
+    "External link" : {
+
+    },
+    "Failed to check portal availability." : {
+
+    },
+    "Failed to check the name of the portal" : {
+
+    },
+    "Failed to connect folder." : {
+
+    },
+    "Failed to copy: %@" : {
+
+    },
+    "Failed to get file information from the server." : {
+
+    },
+    "Failed to get file list." : {
+
+    },
+    "Failed to get information about the file." : {
+
+    },
+    "Failed to get the address of the document server." : {
+
+    },
+    "Failed to move: %@" : {
+
+    },
+    "Failed to prepare the index export" : {
+
+    },
+    "Failed to send feedback by mail. Try to write your request on our forum." : {
+
+    },
+    "Failed to submit the form" : {
+
+    },
+    "Failed to verify user credentials." : {
+      "comment" : "Error message shown when the user credentials are not valid.",
+      "isCommentAutoGenerated" : true
+    },
+    "Failure to open editor" : {
+
+    },
+    "Failure to prepare the archive" : {
+
+    },
+    "Falure to open editor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faliure to open editor"
+          }
+        }
+      }
+    },
+    "Favorites" : {
+      "comment" : "Category title"
+    },
+    "Features" : {
+
+    },
+    "File already exists" : {
+      "comment" : "Description of file operation error"
+    },
+    "File does not exist" : {
+      "comment" : "Description of file operation error"
+    },
+    "file exported to Documents" : {
+
+    },
+    "File lifetime" : {
+
+    },
+    "Files" : {
+
+    },
+    "Files and folders created or uploaded by admins will show up here." : {
+
+    },
+    "Files and folders uploaded by admins will appear here." : {
+
+    },
+    "Files older than" : {
+
+    },
+    "Files Preview" : {
+
+    },
+    "Files with the exceeded lifetime will be deleted" : {
+
+    },
+    "Fill" : {
+      "comment" : "Fill form Button title"
+    },
+    "Fill in as" : {
+      "comment" : "Title for fill-in options screen"
+    },
+    "Fill in the fields of the original form in the editor window." : {
+      "comment" : "Subtitle for form filling"
+    },
+    "Fill out the form yourself" : {
+      "comment" : "Title for opening form filling"
+    },
+    "Filling form" : {
+
+    },
+    "Filling status" : {
+      "extractionState" : "manual"
+    },
+    "Filling Status" : {
+      "comment" : "Start filling form Button title"
+    },
+    "Filling was stopped by" : {
+
+    },
+    "Filters" : {
+
+    },
+    "First name is incorrect" : {
+
+    },
+    "Folder title" : {
+
+    },
+    "Folders" : {
+
+    },
+    "Form completed successfully" : {
+
+    },
+    "Form Filler" : {
+      "comment" : "Share status"
+    },
+    "Form Filling" : {
+
+    },
+    "Form Filling Room" : {
+
+    },
+    "Form Finalized" : {
+
+    },
+    "Form is ready for filling in room" : {
+
+    },
+    "Form number" : {
+
+    },
+    "Form owner" : {
+
+    },
+    "From device" : {
+
+    },
+    "From DocSpace" : {
+
+    },
+    "From template" : {
+
+    },
+    "From templates" : {
+
+    },
+    "Full Access" : {
+      "comment" : "Share status"
+    },
+    "Gb" : {
+      "comment" : "Data units"
+    },
+    "GB" : {
+      "comment" : "Measurement unit"
+    },
+    "General" : {
+
+    },
+    "General links" : {
+
+    },
+    "Get started" : {
+
+    },
+    "Get started with quick actions: " : {
+
+    },
+    "GET STARTED!" : {
+
+    },
+    "Getting started" : {
+      "comment" : "Introduction Step One - Title"
+    },
+    "Go to forum" : {
+
+    },
+    "Google directory" : {
+
+    },
+    "Google Drive" : {
+
+    },
+    "Groups" : {
+
+    },
+    "Guest" : {
+
+    },
+    "Guests" : {
+
+    },
+    "Help & Feedback" : {
+
+    },
+    "Help Center" : {
+
+    },
+    "Here you will find a list of the recently opened files shared with you via an external link." : {
+
+    },
+    "Horizontal" : {
+      "comment" : "Watermark Position"
+    },
+    "iCloud" : {
+
+    },
+    "iCloud Drive" : {
+
+    },
+    "Icons" : {
+      "comment" : "Button title"
+    },
+    "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." : {
+      "comment" : "Email sent instructions"
+    },
+    "Image" : {
+      "comment" : "Watermark Type"
+    },
+    "Images" : {
+
+    },
+    "Import File" : {
+
+    },
+    "Import Image" : {
+
+    },
+    "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." : {
+      "comment" : "Introduction Step Five - Description"
+    },
+    "In progress" : {
+      "comment" : "Form filling status"
+    },
+    "In this panel you can monitor the completion of\n the form in which you participate or in which you\n are the organizer of completion" : {
+
+    },
+    "In this panel you can monitor the completion of\nthe form in which you participate or in which you\nare the organizer of completion" : {
+      "extractionState" : "manual"
+    },
+    "In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" : {
+
+    },
+    "Incorrect portal address" : {
+
+    },
+    "Index" : {
+      "comment" : "File order\nFolder order"
+    },
+    "Info" : {
+      "comment" : "Button title"
+    },
+    "Information" : {
+
+    },
+    "Instructions had been sent to your email" : {
+
+    },
+    "Invalid Country Code" : {
+
+    },
+    "Invalid Data" : {
+
+    },
+    "Invalid folder" : {
+
+    },
+    "Invalid server data." : {
+
+    },
+    "Invalid Url" : {
+
+    },
+    "Invite" : {
+
+    },
+    "Invite guests by email" : {
+
+    },
+    "Invite people" : {
+
+    },
+    "Invite people by email" : {
+
+    },
+    "Invite users" : {
+      "comment" : "Button title"
+    },
+    "Invite users via shared links to view documents without registration. You can also embed this room into any web interface." : {
+
+    },
+    "It will be irretrievably deleted. This action is irreversible." : {
+
+    },
+    "Items in Trash are automatically deleted after 30 days" : {
+
+    },
+    "Kb" : {
+      "comment" : "Data units"
+    },
+    "KB" : {
+      "comment" : "Measurement unit"
+    },
+    "kDrive" : {
+
+    },
+    "kDrive directory" : {
+
+    },
+    "Last name is empty" : {
+
+    },
+    "Last name is incorrect" : {
+
+    },
+    "Leave the room" : {
+      "comment" : "Button title"
+    },
+    "Light" : {
+
+    },
+    "Link" : {
+
+    },
+    "Link and password\nsuccessfully copied\nto clipboard" : {
+
+    },
+    "Link copied\nto the clipboard" : {
+
+    },
+    "Link life time" : {
+
+    },
+    "Link name" : {
+
+    },
+    "Link name %@" : {
+
+    },
+    "Link successfully\ncopied to clipboard" : {
+      "comment" : "Button title"
+    },
+    "Link with the invitation has been sent to the mail" : {
+
+    },
+    "Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?" : {
+
+    },
+    "Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?" : {
+
+    },
+    "List" : {
+      "comment" : "Button title"
+    },
+    "Loading" : {
+      "comment" : "Caption of the processing"
+    },
+    "Location" : {
+
+    },
+    "Logging in" : {
+      "comment" : "Caption of the process"
+    },
+    "Login" : {
+
+    },
+    "Login by %@" : {
+
+    },
+    "Login is empty" : {
+
+    },
+    "Logout" : {
+      "comment" : "Button title\nCaption of the process"
+    },
+    "Mark as Favorite" : {
+      "comment" : "Button title"
+    },
+    "Mark as Read" : {
+      "comment" : "Button title"
+    },
+    "Mark as Read failed." : {
+
+    },
+    "Mb" : {
+      "comment" : "Data units"
+    },
+    "MB" : {
+      "comment" : "Measurement unit"
+    },
+    "Me" : {
+      "comment" : "Author or member of a document\nIf current user name is not set"
+    },
+    "Me and %d Users" : {
+
+    },
+    "Measurement unit" : {
+
+    },
+    "Media" : {
+
+    },
+    "Member" : {
+
+    },
+    "Members" : {
+
+    },
+    "Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !\"#%&'()*+,-./:;<=>?@[]^_`{|}" : {
+
+    },
+    "Months" : {
+
+    },
+    "More" : {
+      "comment" : "Button title"
+    },
+    "Move" : {
+      "comment" : "Button title"
+    },
+    "Move from archive" : {
+      "comment" : "Button title"
+    },
+    "Move here" : {
+      "comment" : "Button title"
+    },
+    "Move or Copy" : {
+      "comment" : "Button title"
+    },
+    "Move to archive" : {
+      "comment" : "Button title"
+    },
+    "Move to trash" : {
+
+    },
+    "Moving" : {
+      "comment" : "Caption of the processing"
+    },
+    "Moving from archive" : {
+      "comment" : "Caption of the processing"
+    },
+    "My archived" : {
+      "comment" : "Category title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My archives"
+          }
+        }
+      }
+    },
+    "My Clouds" : {
+
+    },
+    "My Documents" : {
+      "comment" : "Category title"
+    },
+    "My Drive" : {
+
+    },
+    "Name is empty" : {
+
+    },
+    "new" : {
+      "comment" : "Badge of file in file list"
+    },
+    "New" : {
+
+    },
+    "New Document" : {
+
+    },
+    "New folder" : {
+
+    },
+    "New Folder" : {
+
+    },
+    "New form filling" : {
+      "comment" : "Suggested a room name when create a new one"
+    },
+    "New form filling room" : {
+
+    },
+    "New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." : {
+
+    },
+    "New Presentation" : {
+
+    },
+    "New room" : {
+
+    },
+    "New Spreadsheet" : {
+
+    },
+    "New users" : {
+
+    },
+    "Next" : {
+      "comment" : "Next step"
+    },
+    "Nextcloud" : {
+
+    },
+    "NextCloud" : {
+
+    },
+    "Nextcloud directory" : {
+
+    },
+    "No added guests yet" : {
+
+    },
+    "No archived rooms here yet" : {
+
+    },
+    "No client IDs of application" : {
+
+    },
+    "No connection" : {
+
+    },
+    "No docs here yet" : {
+
+    },
+    "No files here yet" : {
+
+    },
+    "No forms here yet" : {
+
+    },
+    "No information about the user profile." : {
+
+    },
+    "No Internet connection" : {
+
+    },
+    "No network" : {
+
+    },
+    "No network connection can be found. Please check the connection and reload the page." : {
+
+    },
+    "No results matching your search could be found. Please try another phrase." : {
+
+    },
+    "No search result" : {
+
+    },
+    "No Search Result" : {
+
+    },
+    "No templates here yet" : {
+
+    },
+    "No users found" : {
+
+    },
+    "None" : {
+      "comment" : "If the cache is empty\nShare status"
+    },
+    "Note: removal from your account can not be undone." : {
+
+    },
+    "Nothing to show" : {
+
+    },
+    "Notifications" : {
+
+    },
+    "Notify by Email" : {
+      "comment" : "Sharing settings switcher"
+    },
+    "of" : {
+      "comment" : "Used in the context: 'Showing 1 of 3 items'"
+    },
+    "Ok" : {
+
+    },
+    "OK" : {
+
+    },
+    "On iPad" : {
+      "comment" : "Category title"
+    },
+    "On iPhone" : {
+      "comment" : "Category title"
+    },
+    "OneDrive" : {
+
+    },
+    "OneDrive directory" : {
+
+    },
+    "OneDrive for Business" : {
+
+    },
+    "Only a room administrator or a DocSpace administrator can become the room owner." : {
+
+    },
+    "Only DocSpace and Room admins are shown here" : {
+
+    },
+    "Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." : {
+
+    },
+    "ONLYOFFICE" : {
+      "comment" : "Short App Name"
+    },
+    "ONLYOFFICE Documents" : {
+      "comment" : "Full App Name"
+    },
+    "ONLYOFFICE Personal is wrapping up" : {
+
+    },
+    "ONLYOFFICE Personal will be discontinued on September 1st, 2024. We recommend you move to the free ONLYOFFICE DocSpace Cloud." : {
+
+    },
+    "ONLYOFFICE portal" : {
+      "comment" : "Full App Name"
+    },
+    "Oops!" : {
+
+    },
+    "Open" : {
+      "comment" : "Button title"
+    },
+    "Open Document" : {
+
+    },
+    "Open file" : {
+
+    },
+    "Open Folder" : {
+
+    },
+    "Opened the form to fill out" : {
+
+    },
+    "Opening" : {
+      "comment" : "Caption of the processing"
+    },
+    "Options" : {
+
+    },
+    "Order" : {
+
+    },
+    "Other" : {
+
+    },
+    "Overwrite" : {
+      "comment" : "Button title"
+    },
+    "Overwrite confirmation" : {
+      "comment" : "Button title"
+    },
+    "ownCloud" : {
+
+    },
+    "ownCloud directory" : {
+
+    },
+    "Owner" : {
+      "comment" : "Table cell right holder acces text"
+    },
+    "Passcode Lock" : {
+
+    },
+    "Password" : {
+
+    },
+    "Password access" : {
+
+    },
+    "Password is empty" : {
+
+    },
+    "Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !\"№%&'()*+,-./:;<=>?@[\\]^_`{|}~" : {
+
+    },
+    "Passwords do not match" : {
+
+    },
+    "Pb" : {
+      "comment" : "Data units"
+    },
+    "PDF Form Sample" : {
+      "comment" : "Default title of sample document"
+    },
+    "PDF forms uploaded by admins will show up here." : {
+
+    },
+    "PDF-Documents" : {
+
+    },
+    "PDF-Forms" : {
+
+    },
+    "Phone" : {
+
+    },
+    "Phone is incorrect" : {
+
+    },
+    "photo" : {
+      "comment" : "Used in the context: '1 photo'"
+    },
+    "Photo Library" : {
+
+    },
+    "Photo Library Unavailable" : {
+
+    },
+    "photos" : {
+      "comment" : "Used in the context: '3 photos'"
+    },
+    "Pin to top" : {
+      "comment" : "Button title"
+    },
+    "Pinning" : {
+      "comment" : "Caption of the processing"
+    },
+    "Please go to Settings and enable the camera for this app to use this feature." : {
+
+    },
+    "Please go to Settings and enable the photo library for this app to use this feature." : {
+
+    },
+    "Please re-login to renew your session." : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: Linkedin - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" : {
+
+    },
+    "Please retry. \n\n If the problem persists contact us and mention this error code: Zoom - %@" : {
+
+    },
+    "Portal Address" : {
+
+    },
+    "Portal is unavailable." : {
+
+    },
+    "Position" : {
+
+    },
+    "Power user" : {
+      "comment" : "Share status",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Power user"
+          }
+        }
+      }
+    },
+    "Presentation" : {
+
+    },
+    "Presentation Sample" : {
+      "comment" : "Default title of sample document"
+    },
+    "Presentations" : {
+
+    },
+    "Preview" : {
+      "comment" : "Button title"
+    },
+    "Privacy Policy" : {
+      "comment" : "Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service"
+    },
+    "Process details" : {
+
+    },
+    "Processing" : {
+      "comment" : "Caption of the processing"
+    },
+    "Profile" : {
+
+    },
+    "Project Documents" : {
+      "comment" : "Category title"
+    },
+    "Protect all documents in this room with watermarks. If a document already contains one, it will not be replaced." : {
+
+    },
+    "Protection" : {
+
+    },
+    "Provide access to the document and set the permission levels." : {
+
+    },
+    "Provide general access to the document selecting the required permission level." : {
+
+    },
+    "Public" : {
+
+    },
+    "Public link" : {
+
+    },
+    "Public room" : {
+
+    },
+    "Push notifications disabled" : {
+
+    },
+    "Recent" : {
+      "comment" : "Category title"
+    },
+    "Recently accessible via link" : {
+
+    },
+    "Recover here" : {
+      "comment" : "Button title"
+    },
+    "Recovery" : {
+      "comment" : "Caption of the processing"
+    },
+    "Regenerate link" : {
+
+    },
+    "Registration" : {
+
+    },
+    "Reload" : {
+
+    },
+    "Remove" : {
+
+    },
+    "Remove from Favorites" : {
+      "comment" : "Button title"
+    },
+    "Remove link" : {
+
+    },
+    "Removing" : {
+      "comment" : "Caption of the process"
+    },
+    "Rename" : {
+      "comment" : "Button title"
+    },
+    "Rename failed." : {
+
+    },
+    "Rename failed. An object with such a similar name exists." : {
+
+    },
+    "Renaming" : {
+      "comment" : "Caption of the processing"
+    },
+    "Renew Business plan" : {
+
+    },
+    "Renewal" : {
+
+    },
+    "Reorder" : {
+      "comment" : "Button title"
+    },
+    "Reorder failed." : {
+
+    },
+    "Request canceled" : {
+
+    },
+    "Request Entity Too Large" : {
+
+    },
+    "Request had insufficient authentication scopes" : {
+
+    },
+    "Reset" : {
+
+    },
+    "Restore" : {
+      "comment" : "Button title"
+    },
+    "Restore room?" : {
+
+    },
+    "Restore this version?" : {
+
+    },
+    "Restored" : {
+
+    },
+    "Restoring" : {
+      "comment" : "Caption of the processing"
+    },
+    "Restrict file content copy, file download and printing" : {
+
+    },
+    "Reviewer" : {
+      "comment" : "Share status"
+    },
+    "Revoke link" : {
+
+    },
+    "Revoked" : {
+
+    },
+    "Revoking" : {
+
+    },
+    "Role description" : {
+      "extractionState" : "manual"
+    },
+    "Roles" : {
+
+    },
+    "Roles from the form:" : {
+
+    },
+    "Room admin" : {
+
+    },
+    "Room created" : {
+
+    },
+    "Room manager" : {
+      "comment" : "Share status"
+    },
+    "Room name" : {
+
+    },
+    "Room Name" : {
+      "comment" : "Watermark Element"
+    },
+    "Rooms" : {
+      "comment" : "Category title\nDocSpace rooms"
+    },
+    "Root folder" : {
+
+    },
+    "Rotate" : {
+
+    },
+    "Same as system" : {
+
+    },
+    "Save" : {
+
+    },
+    "Save as template" : {
+
+    },
+    "Saving" : {
+      "comment" : "Caption of the processing"
+    },
+    "Scale" : {
+
+    },
+    "Scan Document" : {
+
+    },
+    "Scanning is not supported on this device" : {
+
+    },
+    "Search" : {
+
+    },
+    "Select" : {
+      "comment" : "Button title\nNavigation bar button title"
+    },
+    "Select a PDF Form" : {
+      "comment" : "One line. Max 50 charasters"
+    },
+    "Select all" : {
+
+    },
+    "Select another cloud to connect to Nextcloud, ownCloud and others are supported." : {
+
+    },
+    "Select group" : {
+
+    },
+    "Select image" : {
+
+    },
+    "Select location" : {
+      "comment" : "Button title"
+    },
+    "Select members" : {
+
+    },
+    "Select Photos" : {
+
+    },
+    "Select the folder to copy the items" : {
+      "comment" : "One line. Max 50 charasters"
+    },
+    "Select the folder to move the items" : {
+      "comment" : "One line. Max 50 charasters"
+    },
+    "Select the folder to recover the items" : {
+      "comment" : "One line. Max 50 charasters"
+    },
+    "Select user" : {
+
+    },
+    "Selected provider is not available" : {
+
+    },
+    "Selected users will not be invited to the room" : {
+
+    },
+    "Selected: %ld" : {
+
+    },
+    "Selecting access rights" : {
+
+    },
+    "Send" : {
+
+    },
+    "Send the profile deletion instructions to the email address %@?" : {
+
+    },
+    "Sending" : {
+      "comment" : "Caption of the process"
+    },
+    "Set favorite failed." : {
+
+    },
+    "Set file lifetime to automatically delete the files in this room after a defined period. Lifetime begins on the date of upload/creation of the file." : {
+
+    },
+    "Settings" : {
+
+    },
+    "Settings and Security" : {
+
+    },
+    "Share" : {
+
+    },
+    "Share & collect" : {
+      "comment" : "Title for sharing and collecting form"
+    },
+    "Share folder" : {
+
+    },
+    "Share your form and collect responses via a Form filling room." : {
+      "comment" : "Subtitle for sharing form"
+    },
+    "Shared access" : {
+
+    },
+    "Shared link" : {
+
+    },
+    "Shared links" : {
+
+    },
+    "Shared with Me" : {
+      "comment" : "Category title"
+    },
+    "SharePoint directory" : {
+
+    },
+    "Sharing" : {
+      "comment" : "Caption of the process"
+    },
+    "Sharing settings" : {
+
+    },
+    "Sharing Settings" : {
+      "comment" : "Button title"
+    },
+    "Show %d results" : {
+
+    },
+    "Show notifications" : {
+
+    },
+    "Show version history" : {
+
+    },
+    "Sign in" : {
+
+    },
+    "Single Sign-on" : {
+
+    },
+    "Size" : {
+
+    },
+    "Size quota" : {
+
+    },
+    "Skip" : {
+      "comment" : "Button title"
+    },
+    "SKIP" : {
+
+    },
+    "Slide %i of %i" : {
+      "comment" : "Presentation Viewer"
+    },
+    "Something went wrong, try again" : {
+
+    },
+    "Something wrong" : {
+
+    },
+    "Sort" : {
+      "comment" : "Button title"
+    },
+    "Spreadsheet" : {
+
+    },
+    "Spreadsheet Sample" : {
+      "comment" : "Default title of sample document"
+    },
+    "Spreadsheets" : {
+
+    },
+    "Start" : {
+      "extractionState" : "manual"
+    },
+    "Start filling" : {
+      "comment" : "Start filling form Button title"
+    },
+    "Stop filling" : {
+      "extractionState" : "manual"
+    },
+    "Stopped" : {
+      "comment" : "Form filling status"
+    },
+    "Storage" : {
+
+    },
+    "Storage quota" : {
+
+    },
+    "Storage quota set per room. You can change this value or turn off storage limit." : {
+
+    },
+    "Submitted their part. The form was sent to the next role." : {
+
+    },
+    "Success" : {
+
+    },
+    "Suggest a Feature" : {
+
+    },
+    "Switch" : {
+
+    },
+    "Tag" : {
+
+    },
+    "Tags" : {
+
+    },
+    "Tags are applied to the room which will be created based on this template." : {
+
+    },
+    "Take a Picture" : {
+
+    },
+    "Take Photo" : {
+
+    },
+    "Tb" : {
+      "comment" : "Data units"
+    },
+    "TB" : {
+      "comment" : "Measurement unit"
+    },
+    "Template" : {
+
+    },
+    "Template %@ saved" : {
+
+    },
+    "Template available to everyone" : {
+
+    },
+    "Templates" : {
+
+    },
+    "Terminate account" : {
+
+    },
+    "Terms of Service" : {
+      "comment" : "Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service"
+    },
+    "Text copied" : {
+      "comment" : "Notification title"
+    },
+    "The %@ server is not available." : {
+
+    },
+    "The account name must be between 6 and 50 characters long" : {
+
+    },
+    "The added administrators will be able to create rooms using this template." : {
+
+    },
+    "The client and server versions are incompatible. You can only open the document in view mode" : {
+
+    },
+    "The deleted files go to the trash. You can either restore or delete them forever." : {
+
+    },
+    "The file in the Trash can not be viewed." : {
+
+    },
+    "The file lifetime is set to %@ in this room." : {
+
+    },
+    "The file will be irretrievably deleted. This action is irreversible." : {
+
+    },
+    "The filled PDF form is saved and available to you\n in the Complete folder. To check the status,\n contact the form owner providing the assigned number." : {
+
+    },
+    "The folder in the Trash can not be opened." : {
+
+    },
+    "The item with the name '%@' already exists in the folder '%@'." : {
+
+    },
+    "The lifetime count starts from the file creation date. If any files in this room exceed the set lifetime, they will be deleted." : {
+
+    },
+    "The link for external\naccess is copied\nto the clipboard" : {
+
+    },
+    "The link has expired" : {
+
+    },
+    "The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard." : {
+      "comment" : "Button title"
+    },
+    "The link will be deleted permanently. You will not be able to undo this action." : {
+
+    },
+    "The list of users previously invited to DocSpace or separate rooms will appear here." : {
+
+    },
+    "The new shared link was created" : {
+
+    },
+    "The parameters are incorrect." : {
+
+    },
+    "The password is incorrect. It must contain 8 characters" : {
+
+    },
+    "The portal address is invalid" : {
+
+    },
+    "The portal is not available" : {
+
+    },
+    "The portal name must be between 6 and 50 characters long" : {
+
+    },
+    "The previous link will become unavailable. A new shared link will be created." : {
+
+    },
+    "The quota of users is almost exhausted. Сontact the portal administrator" : {
+
+    },
+    "The Reorder action will remove spaces in the indexes. The files will be re-indexed in order with offset to fill in missing indexes." : {
+
+    },
+    "The request timed out." : {
+
+    },
+    "The room is empty" : {
+
+    },
+    "The server is not available." : {
+
+    },
+    "The setting will be available upon authorization on the %@." : {
+
+    },
+    "The shared rooms will appear here." : {
+
+    },
+    "The trash is empty" : {
+
+    },
+    "The user limit has been reached. Сontact the portal administrator" : {
+
+    },
+    "Theme" : {
+
+    },
+    "There are no guests" : {
+
+    },
+    "There are no guests to add" : {
+
+    },
+    "There are no rooms here yet" : {
+
+    },
+    "There are no users" : {
+
+    },
+    "There are no users to add" : {
+
+    },
+    "Third party resource" : {
+
+    },
+    "Third party storage" : {
+
+    },
+    "Third-party storage" : {
+      "comment" : "Introduction Step Three - Title"
+    },
+    "This document is being edited. Do you want open %@ to view only?" : {
+
+    },
+    "This folder is empty" : {
+
+    },
+    "This image preview roughly shows how the watermark will be displayed in your files." : {
+
+    },
+    "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." : {
+
+    },
+    "This option is used to block access previously granted to a user or group." : {
+
+    },
+    "This presentation is being edited. Do you want open %@ to view only?" : {
+
+    },
+    "This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files." : {
+
+    },
+    "This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." : {
+
+    },
+    "This spreadsheet is being edited. Do you want open %@ to view only?" : {
+
+    },
+    "Time period" : {
+
+    },
+    "Title" : {
+
+    },
+    "To open a document, you must go to portal %@ under your account." : {
+
+    },
+    "To open a folder, you must exit the current document." : {
+
+    },
+    "To open a folder, you must go to portal %@ under your account." : {
+
+    },
+    "To open a new document, you must exit the current document." : {
+
+    },
+    "To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" : {
+
+    },
+    "Trash" : {
+      "comment" : "Category title"
+    },
+    "Try again" : {
+
+    },
+    "Try Again" : {
+
+    },
+    "Try to connect via another protocol?" : {
+
+    },
+    "Turn ON in Settings" : {
+
+    },
+    "Turn Passcode Off" : {
+
+    },
+    "Turn Passcode On" : {
+
+    },
+    "Type" : {
+
+    },
+    "Unable delete items" : {
+
+    },
+    "Unable disconnect third party" : {
+
+    },
+    "Unable to get information about the portal" : {
+
+    },
+    "Unable to get information about the user." : {
+
+    },
+    "Unarchiving failed." : {
+
+    },
+    "Unauthorized members will be able only to view the document." : {
+
+    },
+    "Unauthorized users will be able only to view the document and add comments, as well as manage them." : {
+
+    },
+    "Unauthorized users will be able only to view the document and fill in the forms inserted into the document." : {
+
+    },
+    "Unauthorized users will be able only to view the document." : {
+
+    },
+    "Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." : {
+
+    },
+    "Unauthorized users will be able to view and edit the document as well as to share this document." : {
+
+    },
+    "Unauthorized users will not have access to the document." : {
+
+    },
+    "Unknown" : {
+
+    },
+    "Unknown error" : {
+
+    },
+    "Unknown file provider" : {
+
+    },
+    "Unknown item type." : {
+
+    },
+    "Unknown status" : {
+
+    },
+    "Unlimited" : {
+
+    },
+    "Unlock with Face ID" : {
+
+    },
+    "Unlock with Touch ID" : {
+
+    },
+    "Unpin" : {
+      "comment" : "Button title"
+    },
+    "Unpinned failed." : {
+
+    },
+    "Unpinning" : {
+      "comment" : "Caption of the processing"
+    },
+    "Upload a ready PDF form" : {
+
+    },
+    "Upload PDF form from device" : {
+
+    },
+    "Upload PDF form from DocSpace" : {
+
+    },
+    "Upload PDF forms from DocSpace or device." : {
+
+    },
+    "Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." : {
+
+    },
+    "Uploading" : {
+      "comment" : "Caption of the process"
+    },
+    "Use IP Address" : {
+      "comment" : "Watermark Element"
+    },
+    "Use third-party services as data storage for this room. A new folder for storing this room’s data will be created in the connected storage" : {
+
+    },
+    "Use VDR for advanced file security and transparency. Set watermarks, automatically index and track all content, restrict downloading and copying." : {
+
+    },
+    "User" : {
+
+    },
+    "User authentication failed" : {
+
+    },
+    "User authentication required" : {
+
+    },
+    "User Email" : {
+      "comment" : "Watermark Element"
+    },
+    "User name" : {
+
+    },
+    "User Name" : {
+      "comment" : "Watermark Element"
+    },
+    "User undefined" : {
+
+    },
+    "Users" : {
+
+    },
+    "Users in room" : {
+
+    },
+    "Valid through" : {
+
+    },
+    "Validation" : {
+      "comment" : "Caption of the process"
+    },
+    "Varies" : {
+      "comment" : "Share status"
+    },
+    "Version" : {
+
+    },
+    "Version %@" : {
+
+    },
+    "Version History" : {
+
+    },
+    "View-only" : {
+
+    },
+    "Viewer" : {
+      "comment" : "Share status"
+    },
+    "Viewer info" : {
+      "comment" : "Watermark Type"
+    },
+    "Virtual data room" : {
+      "comment" : "Rooms filter"
+    },
+    "Virtual Data Room" : {
+
+    },
+    "Warning" : {
+
+    },
+    "Watermark type" : {
+
+    },
+    "We are sorry, this portal name is already taken" : {
+
+    },
+    "We have sent you an SMS with a code to the number %@" : {
+
+    },
+    "WebDAV" : {
+
+    },
+    "WebDAV directory" : {
+
+    },
+    "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." : {
+      "comment" : "Introduction Step One - Description"
+    },
+    "Welcome to DocSpace!" : {
+
+    },
+    "Welcome to the Collaboration room" : {
+
+    },
+    "Welcome to the Custom room" : {
+
+    },
+    "Welcome to the Form filling room " : {
+
+    },
+    "Welcome to the Public room" : {
+
+    },
+    "Welcome to the Virtual Data Room" : {
+
+    },
+    "What's New" : {
+
+    },
+    "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." : {
+      "comment" : "Introduction Step Four - Description"
+    },
+    "Work with office files" : {
+      "comment" : "Introduction Step Two - Title"
+    },
+    "Wrong server, login or password." : {
+
+    },
+    "Yandex directory" : {
+
+    },
+    "Yandex Disk" : {
+
+    },
+    "Yb" : {
+      "comment" : "Data units"
+    },
+    "Years" : {
+
+    },
+    "You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" : {
+
+    },
+    "You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" : {
+
+    },
+    "You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" : {
+
+    },
+    "You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" : {
+
+    },
+    "You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" : {
+
+    },
+    "You are about to delete this room. You won't be able to restore them." : {
+
+    },
+    "You are assigned to fill out the form as the first role. A\n notification has been sent to your email. You can start filling\n it out now or copy the filling link and return later." : {
+
+    },
+    "You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." : {
+
+    },
+    "You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here." : {
+
+    },
+    "You can connect the following accounts to the %@." : {
+
+    },
+    "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." : {
+
+    },
+    "You can connect the following accounts to the DocSpace rooms" : {
+
+    },
+    "You can create a template from\na room in the Room section" : {
+
+    },
+    "You can create a template from a room in the Room section" : {
+
+    },
+    "You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." : {
+
+    },
+    "You have changed the room owner" : {
+
+    },
+    "You have left the room" : {
+
+    },
+    "You have left the room and appointed a new owner" : {
+
+    },
+    "You have not set a watermark to be applied to documents in this room. You can always add a watermark in the room editing settings. Continue without a watermark?" : {
+
+    },
+    "You have read-only access to this folder. You cannot create files or folders here." : {
+
+    },
+    "You need a password to access the room" : {
+
+    },
+    "Your current tariff plan Business expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support." : {
+
+    },
+    "Your device could not send e-mail. Please check e-mail configuration and try again." : {
+
+    },
+    "Your session has expired" : {
+
+    },
+    "Your turn" : {
+      "comment" : "Form filling status"
+    },
+    "Zb" : {
+      "comment" : "Data units"
+    },
+    "Zero bytes" : {
+      "comment" : "Data units"
+    },
+    "Сonversion error" : {
+
+    },
+    "Сould not download file." : {
+
+    },
+    "Сould not upload file." : {
+
+    }
+  },
+  "version" : "1.1"
+}

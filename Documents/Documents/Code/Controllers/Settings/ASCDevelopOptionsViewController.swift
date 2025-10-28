@@ -156,7 +156,7 @@ extension ASCDevelopOptionsViewController {
         tableData[section].toSection().items.count
     }
 
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cellType(by: indexPath).toCell(tableView: tableView)
     }
 
@@ -168,7 +168,7 @@ extension ASCDevelopOptionsViewController {
         tableData[section].toSection().footer
     }
 
-    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         switch cellType(by: indexPath) {
@@ -191,7 +191,7 @@ extension ASCDevelopOptionsViewController {
         case standart(viewModel: ASCStandartCellViewModel)
         case switchControl(viewModel: ASCSwitchCellViewModel)
 
-        public func viewModel() -> Any {
+        func viewModel() -> Any {
             switch self {
             case let .standart(viewModel):
                 return viewModel
@@ -200,7 +200,7 @@ extension ASCDevelopOptionsViewController {
             }
         }
 
-        public func toCell(tableView: UITableView) -> UITableViewCell {
+        func toCell(tableView: UITableView) -> UITableViewCell {
             switch self {
             case let .standart(viewModel):
                 return makeStandartCell(viewModel, for: tableView) ?? makeDefaultCell()
@@ -234,7 +234,7 @@ extension ASCDevelopOptionsViewController {
     enum SectionType {
         case standart(viewModel: SettingsSection)
 
-        public func toSection() -> SettingsSection {
+        func toSection() -> SettingsSection {
             switch self {
             case let .standart(viewModel):
                 return viewModel

@@ -101,7 +101,7 @@ struct VDRFillingStatusEventRowView: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal)
-        .background(Color(.systemBackground))
+        .background(Color(.tertiarySystemBackground))
     }
 
     @ViewBuilder
@@ -171,7 +171,7 @@ struct VDRFillingStatusEventRowView: View {
 
     @ViewBuilder
     private var connector: some View {
-        let lineHeight = max(30, contentHeight - 50)
+        let lineHeight = max(20, contentHeight - 50)
         switch model.borderType {
         case .dashed:
             Path { path in

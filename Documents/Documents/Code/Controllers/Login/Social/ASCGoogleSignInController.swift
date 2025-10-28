@@ -21,7 +21,7 @@ class ASCGoogleSignInController: NSObject {
         case noGrantedScopes
         case unknown(error: Error?)
 
-        public var errorDescription: String? {
+        var errorDescription: String? {
             switch self {
             case .clientId:
                 return NSLocalizedString("No client IDs of application", comment: "")

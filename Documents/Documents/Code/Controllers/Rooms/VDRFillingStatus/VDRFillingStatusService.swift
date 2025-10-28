@@ -7,7 +7,17 @@
 //
 
 actor VDRFillingStatusService {
-    private let networkService = OnlyofficeApiClient.shared
+    // MARK: Dependencies
+
+    let sharedService: NetworkManagerSharedSettingsProtocol
+
+    // MARK: Init
+
+    init(sharedService: NetworkManagerSharedSettingsProtocol) {
+        self.sharedService = sharedService
+    }
+
+    // MARK: Public funcs
 
     func fetchStatus(file: ASCFile) async throws -> [VDRFillingStatusResponceModel]? {
         try await OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.getFillingStatus(file: file))?.result
@@ -34,6 +44,17 @@ actor VDRFillingStatusService {
     }
 
     func startFilling() async throws {}
+
+    func copyLink(file: ASCFile) async -> String? {
+        try? await sharedService.createAndCopy(
+            file: file,
+            requestModel: CreateAndCopyLinkRequestModel(
+                access: ASCShareAccess.editing.rawValue,
+                expirationDate: nil,
+                isInternal: false
+            )
+        ).sharedTo.shareLink
+    }
 }
 
 extension VDRFillingStatusService {

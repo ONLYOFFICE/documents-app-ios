@@ -107,7 +107,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         log.debug(userInfo)
 
         // Change this to your preferred presentation option
-        completionHandler([.alert, .badge, .sound])
+        completionHandler([.banner, .list, .badge, .sound])
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,

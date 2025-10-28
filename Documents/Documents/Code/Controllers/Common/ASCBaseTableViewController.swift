@@ -18,6 +18,8 @@ class ASCBaseTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.tintColor = Asset.Colors.brend.color
+
         if !ASCAppSettings.Feature.allowLargeTitle {
             navigationController?.navigationBar.prefersLargeTitles = false
         }
@@ -37,11 +39,11 @@ class ASCBaseTableViewController: UITableViewController {
 
     // MARK: - Create
 
-    public class var storyboard: Storyboard {
+    class var storyboard: Storyboard {
         fatalError("Storyboard not defined:\(String(describing: self))")
     }
 
-    public class func instance() -> Self {
+    class func instance() -> Self {
         return instantiate(from: storyboard)
     }
 }

@@ -1,0 +1,929 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المستندات"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Документи"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dokumenty"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dokumente"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Documents"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documentos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documents"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Փաստաթղթեր"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documenti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドキュメント"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documentos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Документы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ලේඛන"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文档"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文档"
+          }
+        }
+      }
+    },
+    "Microsoft Excel Binary Workbook (.xlsb)" : {
+      "shouldTranslate" : false
+    },
+    "New Document" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مستند جديد"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нов документ"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nový dokument"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neues Dokument"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuevo documento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau document"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Նոր փաստաթուղթ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuovo documento"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新規ドキュメント"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo Documento"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новый документ"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව ලේඛනයක්"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建文档"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建文档"
+          }
+        }
+      }
+    },
+    "New Presentation" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عرض تقديمي جديد"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нова презентация"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nová prezentace"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Präsentation"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva presentación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouvelle présentation"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Նոր պրեզենտացիա"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuova presentazione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新規プレゼンテーション"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nova apresentação"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая презентация"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව සමර්පණයක්"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建演示文稿"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建演示文稿"
+          }
+        }
+      }
+    },
+    "New Spreadsheet" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جدول بيانات جديد"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нова електронна таблица"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nová tabulka"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Tabelle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva hoja de cálculo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau classeur"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Նոր աղյուսակ"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuovo foglio di calcolo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新規スプレッドシート"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nova planilha"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая таблица"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "නව පැතුරුම්පතක්"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建电子表格"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建电子表格"
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription" : {
+      "comment" : "Privacy - Camera Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتطلب هذا التطبيق الوصول إلى الكاميرا، حتى تتمكن من التقاط صورة وتحميلها في التطبيق."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Това приложение изисква достъп до камерата, за да можете да правите снимки."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tato aplikace vyžaduje přístup k fotoaparátu, abyste mohli pořizovat fotografie."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App benötigt Zugriff auf die Kamera, damit Sie Fotos machen und in die App hochladen können."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires access to the camera, so that you can take photo and upload it in the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta aplicación requiere acceso a la cámara para que pueda tomar foto y cargarla en la aplicación."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application nécessite un accès à l'appareil photo, afin que vous puissiez prendre des photos et les charger dans l'application."
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Այս հավելվածին անհրաժեշտ է մուտք դեպի տեսախցիկ, որպեսզի կարողանաք լուսանկարել և վերբեռնել այն հավելվածում:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa app richiede l'accesso alla fotocamera, in modo da poter scattare una foto e caricarla nell'app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリ内で写真を撮って、アップロードできるようになるには、カメラのアクセスが必要です。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это приложение требует доступа к камере, чтобы иметь возможность снимать фото и загрузить его в приложение."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම යෙදුමට රූගතය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට ඡායාරූප ගෙන ඒවා යෙදුමට උඩුගත කිරීමට හැකිය."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。"
+          }
+        }
+      }
+    },
+    "NSFaceIDUsageDescription" : {
+      "comment" : "Privacy - Face ID Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتطلب هذا التطبيق إذن \"بصمة الوجه\" للمصادقة باستخدام التعرف على الوجه."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Това приложение изисква разрешението за идентификация на лицето, за да се удостовери с помощта на функцията за разпознаване на лица ."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tato aplikace vyžaduje oprávnění k identifikaci obličeje, aby se ověřila pomocí funkce Face ID."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für die Authentifizierung mit Gesichtserkennung benötigt diese App die Berechtigung zur Gesichtserkennung."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires Face ID permission to authenticate using Face recognition."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta app requiere el permiso de Face ID para autentificar usando el reconocimiento facial."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application demande un accès à Face ID pour que vous puissiez vous connecter via la reconnaissance de visage."
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Այս հավելվածը պահանջում է Face ID-ի թույլտվություն՝ դեմքի ճանաչման միջոցով նույնականացման համար:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa app richiede l'autorizzazione Face ID per l'autenticazione tramite il riconoscimento facciale."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリで顔認識を使用して承認を行うには、顔認識権限が必要です。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этому приложению требуется разрешение на использование Face ID для аутентификации с помощью технологии распознавания лиц."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මුහුණ හඳුනාගැනීම භාවිතයෙන් සත්‍යාපනයට මෙම යෙදුම සඳහා මුහුණු හැඳු. අවසරය වුවමනාය."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这个应用程序需要Face ID权限，以使用人脸识别进行验证。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这个应用程序需要Face ID权限，以使用人脸识别进行验证。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription" : {
+      "comment" : "Privacy - Photo Library Additions Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتطلب هذا التطبيق الوصول إلى مكتبة الصور، حتى تتمكن من تحميل صورك في التطبيق."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Това приложение изисква достъп до галерията със снимки, за да можете да качвате Вашите снимки в приложението."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App benötigt Zugriff auf die Fotobibliothek, damit Sie Ihre Fotos in die App hochladen können."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires access to the photo library, so that you can upload your photos in the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta app requiere acceso a la biblioteca de fotos para que usted pueda cargar sus fotos en la app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application."
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Այս հավելվածին անհրաժեշտ է մուտք գործել ֆոտոդարան, որպեսզի կարողանաք վերբեռնել ձեր լուսանկարները հավելվածում:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリ内で写真をアップロードできるようになるには、フォトライブラリーへのアクセスが必要です。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම යෙදුමට ඡායාරූප පුස්තකාලය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට යෙදුම හරහා ඡායාරූප උඩුගත කිරීමට හැකිය."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "comment" : "Privacy - Photo Library Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتطلب هذا التطبيق الوصول إلى مكتبة الصور، حتى تتمكن من تحميل صورك في التطبيق."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Това приложение изисква достъп до библиотеката с снимки, за да можете да качвате снимките си в приложението."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App benötigt Zugriff auf die Foto-Bibliothek, damit Sie Ihre Fotos in die App hochladen können."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This app requires access to the photo library, so that you can upload your photos in the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta app requiere acceso a la biblioteca de fotos para que usted pueda cargar sus fotos en la app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application."
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Այս հավելվածին անհրաժեշտ է մուտք գործել ֆոտոդարան, որպեսզի կարողանաք վերբեռնել ձեր լուսանկարները հավելվածում:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリ内で写真をアップロードできるようになるには、フォトライブラリーへのアクセスが必要です。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම යෙදුමට ඡායාරූප පුස්තකාලය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට යෙදුම හරහා ඡායාරූප උඩුගත කිරීමට හැකිය."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。"
+          }
+        }
+      }
+    },
+    "ONLYOFFICE fillable form (.oform)" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE نموذج قابل للتعبئة (.oform)"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE Онлайн формуляр за попълване"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyplnitelný formulář ONLYOFFICE (.oform) "
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausfüllbares ONLYOFFICE-Formular (.oform)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formulario rellenable de ONLYOFFICE (.oform)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formulaire ONLYOFFICE remplissable (.oform)"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE լրացվող ձև (.oform)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modulo compilabile ONLYOFFICE (.oform)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE記入可能なオンラインフォーム (.oform)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formulário preenchível do ONLYOFFICE (.oform)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заполняемая форма ONLYOFFICE (.oform)"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔන්ලිඔෆිස් පිරවිය හැකි ආකෘතිපත්‍රය (*.oform)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE可填写的表单 (.oform)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE可填写的表单 (.oform)"
+          }
+        }
+      }
+    },
+    "ONLYOFFICE form template (.docxf)" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE قالب النموذج (.docxf)"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE Шаблон на формуляр"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Šablona formuláře ONLYOFFICE (.docxf)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE-Formularvorlage (.docxf)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plantilla de formulario de ONLYOFFICE (.docxf)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèle de formulaire ONLYOFFICE (.docxf)"
+          }
+        },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE ձևանմուշ (.docxf)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modello di modulo ONLYOFFICE (.docxf)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICEフォームテンプレート (.docxf)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelo de formulário do ONLYOFFICE (.docxf)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шаблон формы ONLYOFFICE (.docxf)"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔන්ලිඔෆිස් ආකෘතිපත්‍ර අච්චුව (*.docxf)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE表单模板 (.docxf)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ONLYOFFICE表单模板 (.docxf)"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

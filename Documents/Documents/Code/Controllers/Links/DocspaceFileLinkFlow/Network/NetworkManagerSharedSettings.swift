@@ -15,6 +15,7 @@ protocol NetworkManagerSharedSettingsProtocol {
     func fetchFileLinks(file: ASCFile, completion: @escaping (Result<[SharedSettingsLinkResponceModel], Error>) -> Void)
     func setLinkAccess(file: ASCFile, requestModel: EditSharedLinkRequestModel, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void)
     func customFilter(file: ASCFile, requestModel: ASCCustomFilterRequestModel, completion: @escaping (Result<ASCFile, Error>) -> Void)
+    func createAndCopy(file: ASCFile, requestModel: CreateAndCopyLinkRequestModel?) async throws -> SharedSettingsLinkResponceModel
 }
 
 final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
@@ -77,7 +78,7 @@ final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
         }
     }
 
-    func createAndCopy(file: ASCFile, requestModel: CreateAndCopyLinkRequestModel?, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void) {
+    func createAndCopy(file: ASCFile, requestModel: CreateAndCopyLinkRequestModel?) async throws -> SharedSettingsLinkResponceModel {
         var method: HTTPMethod = .post
         var request: Dictionary? = requestModel?.dictionary
         if let docspaceVersion = networkService.serverVersion?.docSpace, docspaceVersion.isVersion(lessThan: "3.0.0") {
@@ -85,17 +86,16 @@ final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
             request = nil
         }
 
-        networkService.request(OnlyofficeAPI.Endpoints.Files.createAndCopyLink(file: file, method: method), request) { result, error in
-            guard let link = result?.result else {
-                if let error {
-                    completion(.failure(error))
-                } else {
-                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
-                }
-                return
-            }
-            completion(.success(link))
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Files.createAndCopyLink(file: file, method: method),
+            parameters: request
+        )
+
+        guard let model = response.result else {
+            throw NetworkingError.invalidData
         }
+
+        return model
     }
 
     func addLink(file: ASCFile, requestModel: AddSharedLinkRequestModel, completion: @escaping (Result<SharedSettingsLinkResponceModel, Error>) -> Void) {

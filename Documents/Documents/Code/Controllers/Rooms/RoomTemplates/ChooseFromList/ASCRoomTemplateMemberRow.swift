@@ -8,7 +8,7 @@
 import Kingfisher
 import SwiftUI
 
-struct ASCRoomTemplateUserMemberRowModel {
+struct ASCRoomTemplateUserMemberRowModel: Equatable {
     var id: String
     var image: ImageSourceType
     var userName: String
@@ -16,11 +16,34 @@ struct ASCRoomTemplateUserMemberRowModel {
     var emailString: String
     var isOwner: Bool
     var isSelected: Bool
+    var displayCircleMark: Bool = true
     var onTapAction: (() -> Void)?
 
-    enum ImageSourceType {
+    enum ImageSourceType: Equatable {
         case url(String)
         case asset(ImageAsset)
+
+        static func == (lhs: ImageSourceType, rhs: ImageSourceType) -> Bool {
+            switch (lhs, rhs) {
+            case let (.url(l), .url(r)):
+                return l == r
+            case let (.asset(l), .asset(r)):
+                return l.name == r.name
+            default:
+                return false
+            }
+        }
+    }
+
+    static func == (lhs: ASCRoomTemplateUserMemberRowModel, rhs: ASCRoomTemplateUserMemberRowModel) -> Bool {
+        lhs.id == rhs.id &&
+            lhs.image == rhs.image &&
+            lhs.userName == rhs.userName &&
+            lhs.accessString == rhs.accessString &&
+            lhs.emailString == rhs.emailString &&
+            lhs.isOwner == rhs.isOwner &&
+            lhs.isSelected == rhs.isSelected &&
+            lhs.displayCircleMark == rhs.displayCircleMark
     }
 }
 
@@ -28,6 +51,7 @@ struct ASCRoomTemplateGroupMemberRowModel {
     var id: String
     var name: String
     var isSelected: Bool
+    var displayCircleMark: Bool = true
     var onTapAction: (() -> Void)?
 }
 
@@ -57,10 +81,12 @@ struct ASCRoomTemplateMemberRow: View {
 
     @ViewBuilder
     private func userRow(_ model: ASCRoomTemplateUserMemberRowModel) -> some View {
-        Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
-            .resizable()
-            .frame(width: 24, height: 24)
-            .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        if model.displayCircleMark {
+            Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        }
 
         imageView(for: model.image)
 
@@ -77,10 +103,12 @@ struct ASCRoomTemplateMemberRow: View {
 
     @ViewBuilder
     private func groupRow(_ model: ASCRoomTemplateGroupMemberRowModel) -> some View {
-        Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
-            .resizable()
-            .frame(width: 24, height: 24)
-            .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        if model.displayCircleMark {
+            Image(systemName: model.isSelected ? "checkmark.circle.fill" : "circle")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(model.isSelected ? Color.accentColor : Color.secondaryLabel)
+        }
 
         Asset.Images.avatarDefaultGroup.swiftUIImage
             .resizable()

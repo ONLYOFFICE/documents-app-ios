@@ -15,100 +15,102 @@ enum OnlyofficeAPI {
         private static let version = "2.0"
 
         // Api paths
-        public static let authentication = "api/\(version)/authentication"
-        public static let authenticationPhone = "api/\(version)/authentication/setphone"
-        public static let authenticationCode = "api/\(version)/authentication/sendsms"
-        public static let serversVersion = "api/\(version)/settings/version/build"
-        public static let capabilities = "api/\(version)/capabilities"
-        public static let deviceRegistration = "api/\(version)/portal/mobile/registration"
-        public static let peopleSelf = "api/\(version)/people/@self"
-        public static let peoplePhoto = "api/\(version)/people/%@/photo"
-        public static let files = "api/\(version)/files/%@"
-        public static let file = "api/\(version)/files/file/%@"
-        public static let fileLinks = "api/\(version)/files/file/%@/links"
-        public static let createAndCopyFileLink = "api/\(version)/files/file/%@/link"
-        public static let folder = "api/\(version)/files/folder/%@"
-        public static let favorite = "api/\(version)/files/favorites"
-        public static let filesShare = "api/\(version)/files/share"
-        public static let filesSharePassword = "api/\(version)/files/share/%@/password"
-        public static let filesOrder = "api/\(version)/files/order"
-        public static let operations = "api/\(version)/files/fileops"
-        public static let operationsTerminate = "api/\(version)/files/fileops/terminate"
-        public static let operationCopy = "api/\(version)/files/fileops/copy"
-        public static let operationMove = "api/\(version)/files/fileops/move"
-        public static let operationDelete = "api/\(version)/files/fileops/delete"
-        public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
-        public static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
-        public static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
-        public static let operationSaveRoomAsTemplate = "api/\(version)/files/roomtemplate"
-        public static let roomTemplateStatus = "api/\(version)/files/roomtemplate/status"
-        public static let roomFromTemplate = "api/\(version)/files/rooms/fromTemplate"
-        public static let roomFromTemplateStatus = "api/\(version)/files/rooms/fromTemplate/status"
-        public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
-        public static let thirdParty = "api/\(version)/files/thirdparty"
-        public static let logos = "api/\(version)/files/logos"
-        public static let thirdPartyCapabilities = "api/\(version)/files/thirdparty/capabilities"
-        public static let insertFile = "api/\(version)/files/%@/insert"
-        public static let uploadFile = "api/\(version)/files/%@/upload"
-        public static let createFile = "api/\(version)/files/%@/file"
-        public static let openEditFile = "api/\(version)/files/file/%@/openedit"
-        public static let saveEditing = "api/\(version)/files/file/%@/saveediting"
-        public static let startEdit = "api/\(version)/files/file/%@/startedit"
-        public static let trackEdit = "api/\(version)/files/file/%@/trackeditfile"
-        public static let documentService = "api/\(version)/files/docservice"
-        public static let people = "api/\(version)/people"
-        public static let peopleFilter = "api/\(version)/people/filter"
-        public static let peopleRoom = "api/\(version)/people/room/%@"
-        public static let groups = "api/\(version)/group"
-        public static let shareFile = "api/\(version)/files/file/%@/share"
-        public static let shareFolder = "api/\(version)/files/folder/%@/share"
-        public static let shareRoom = "api/\(version)/files/rooms/%@/share"
-        public static let changeOwner = "api/\(version)/files/owner"
-        public static let forgotPassword = "api/\(version)/people/password"
-        public static let deleteAccount = "api/\(version)/people/self/delete"
-        public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
-        public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
-        public static let markAsRead = "api/\(version)/files/fileops/markasread"
-        public static let paymentQuota = "api/\(version)/portal/payment/quota"
-        public static let paymentQuotaSettings = "api/\(version)/settings/roomquotasettings"
-        public static let rooms = "api/\(version)/files/rooms"
-        public static let roomsThirdparty = "api/\(version)/files/rooms/thirdparty/%@"
-        public static let room = "api/\(version)/files/rooms/%@"
-        public static let roomPin = "api/\(version)/files/rooms/%@/pin"
-        public static let roomUnpin = "api/\(version)/files/rooms/%@/unpin"
-        public static let roomArchive = "api/\(version)/files/rooms/%@/archive"
-        public static let roomUnarchive = "api/\(version)/files/rooms/%@/unarchive"
-        public static let tags = "api/\(version)/files/tags"
-        public static let roomTags = "api/\(version)/files/rooms/%@/tags"
-        public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
-        public static let roomLink = "api/\(version)/files/rooms/%@/link"
-        public static let roomLinks = "api/\(version)/files/rooms/%@/links"
-        public static let roomReorder = "api/\(version)/files/rooms/%@/reorder"
-        public static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
-        public static let disableNotifications = "api/\(version)/settings/notification/rooms"
-        public static let fillFormDidSend = "api/\(version)/files/file/fillresult"
-        public static let fillingStatus = "api/\(version)/files/file/%@/formroles"
-        public static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
-        public static let fileVersionHistory = "api/\(version)/files/file/%@/history"
-        public static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
-        public static let editComment = "api/\(version)/files/file/%@/comment"
-        public static let customFilter = "api/\(version)/files/file/%@/customfilter"
-        public static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
-        public static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
 
-        public static let defaultGeneralLink = "rooms/shared/filter"
+        static let authentication = "api/\(version)/authentication"
+        static let authenticationPhone = "api/\(version)/authentication/setphone"
+        static let authenticationCode = "api/\(version)/authentication/sendsms"
+        static let serversVersion = "api/\(version)/settings/version/build"
+        static let capabilities = "api/\(version)/capabilities"
+        static let deviceRegistration = "api/\(version)/portal/mobile/registration"
+        static let peopleSelf = "api/\(version)/people/@self"
+        static let peoplePhoto = "api/\(version)/people/%@/photo"
+        static let files = "api/\(version)/files/%@"
+        static let file = "api/\(version)/files/file/%@"
+        static let fileLinks = "api/\(version)/files/file/%@/links"
+        static let createAndCopyFileLink = "api/\(version)/files/file/%@/link"
+        static let folder = "api/\(version)/files/folder/%@"
+        static let favorite = "api/\(version)/files/favorites"
+        static let filesShare = "api/\(version)/files/share"
+        static let filesSharePassword = "api/\(version)/files/share/%@/password"
+        static let filesOrder = "api/\(version)/files/order"
+        static let operations = "api/\(version)/files/fileops"
+        static let operationsTerminate = "api/\(version)/files/fileops/terminate"
+        static let operationCopy = "api/\(version)/files/fileops/copy"
+        static let operationMove = "api/\(version)/files/fileops/move"
+        static let operationDelete = "api/\(version)/files/fileops/delete"
+        static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
+        static let operationRoomDuplicate = "api/\(version)/files/fileops/duplicate"
+        static let operationRoomIndexExport = "api/\(version)/files/rooms/indexexport"
+        static let operationSaveRoomAsTemplate = "api/\(version)/files/roomtemplate"
+        static let roomTemplateStatus = "api/\(version)/files/roomtemplate/status"
+        static let roomFromTemplate = "api/\(version)/files/rooms/fromTemplate"
+        static let roomFromTemplateStatus = "api/\(version)/files/rooms/fromTemplate/status"
+        static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
+        static let thirdParty = "api/\(version)/files/thirdparty"
+        static let logos = "api/\(version)/files/logos"
+        static let thirdPartyCapabilities = "api/\(version)/files/thirdparty/capabilities"
+        static let insertFile = "api/\(version)/files/%@/insert"
+        static let uploadFile = "api/\(version)/files/%@/upload"
+        static let createFile = "api/\(version)/files/%@/file"
+        static let openEditFile = "api/\(version)/files/file/%@/openedit"
+        static let saveEditing = "api/\(version)/files/file/%@/saveediting"
+        static let startEdit = "api/\(version)/files/file/%@/startedit"
+        static let trackEdit = "api/\(version)/files/file/%@/trackeditfile"
+        static let documentService = "api/\(version)/files/docservice"
+        static let people = "api/\(version)/people"
+        static let peopleFilter = "api/\(version)/people/filter"
+        static let peopleRoom = "api/\(version)/people/room/%@"
+        static let groups = "api/\(version)/group"
+        static let shareFile = "api/\(version)/files/file/%@/share"
+        static let shareFolder = "api/\(version)/files/folder/%@/share"
+        static let shareRoom = "api/\(version)/files/rooms/%@/share"
+        static let changeOwner = "api/\(version)/files/owner"
+        static let forgotPassword = "api/\(version)/people/password"
+        static let deleteAccount = "api/\(version)/people/self/delete"
+        static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
+        static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
+        static let markAsRead = "api/\(version)/files/fileops/markasread"
+        static let paymentQuota = "api/\(version)/portal/payment/quota"
+        static let paymentQuotaSettings = "api/\(version)/settings/roomquotasettings"
+        static let rooms = "api/\(version)/files/rooms"
+        static let roomsThirdparty = "api/\(version)/files/rooms/thirdparty/%@"
+        static let room = "api/\(version)/files/rooms/%@"
+        static let roomPin = "api/\(version)/files/rooms/%@/pin"
+        static let roomUnpin = "api/\(version)/files/rooms/%@/unpin"
+        static let roomArchive = "api/\(version)/files/rooms/%@/archive"
+        static let roomUnarchive = "api/\(version)/files/rooms/%@/unarchive"
+        static let tags = "api/\(version)/files/tags"
+        static let roomTags = "api/\(version)/files/rooms/%@/tags"
+        static let roomLogo = "api/\(version)/files/rooms/%@/logo"
+        static let roomLink = "api/\(version)/files/rooms/%@/link"
+        static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        static let roomReorder = "api/\(version)/files/rooms/%@/reorder"
+        static let roomIndexExport = "api/\(version)/files/rooms/%@/indexexport"
+        static let disableNotifications = "api/\(version)/settings/notification/rooms"
+        static let fillFormDidSend = "api/\(version)/files/file/fillresult"
+        static let fillingStatus = "api/\(version)/files/file/%@/formroles"
+        static let formRoleMapping = "api/\(version)/files/file/%@/formrolemapping"
+        static let manageFormFilling = "api/\(version)/files/file/%@/manageformfilling"
+        static let fileVersionHistory = "api/\(version)/files/file/%@/history"
+        static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
+        static let editComment = "api/\(version)/files/file/%@/comment"
+        static let customFilter = "api/\(version)/files/file/%@/customfilter"
+        static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
+        static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
+
+        static let defaultGeneralLink = "rooms/shared/filter"
 
         enum Folder {
-            public static let root = "@root"
-            public static let my = "@my"
-            public static let share = "@share"
-            public static let common = "@common"
-            public static let projects = "@projects"
-            public static let trash = "@trash"
-            public static let favorites = "@favorites"
-            public static let recent = "@recent"
-            public static let room = "rooms"
-            public static let recentRaw = "recent" // Recently accessible via link
+            static let root = "@root"
+            static let my = "@my"
+            static let share = "@share"
+            static let common = "@common"
+            static let projects = "@projects"
+            static let trash = "@trash"
+            static let favorites = "@favorites"
+            static let recent = "@recent"
+            static let room = "rooms"
+            static let recentRaw = "recent" // Recently accessible via link
         }
     }
 
@@ -253,8 +255,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .delete)
             }
 
-            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
+            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
             }
 
             static func removeLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
@@ -265,16 +267,16 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
-            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
+            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }
 
-            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
+            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponseModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
             }
 
-            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>> {
-                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
+            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
             }
 
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -385,6 +387,10 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseArrayCodable<VDRFillingStatusResponceModel>>.make(String(format: Path.fillingStatus, file.id), .get, URLEncoding.default)
             }
 
+            static func mapFormRolesToUsers(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.formRoleMapping, file.id), .post)
+            }
+
             static func manageFormFilling(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
                 Endpoint<OnlyofficeResponseBase>.make(String(format: Path.manageFormFilling, file.id), .put)
             }
@@ -441,6 +447,10 @@ enum OnlyofficeAPI {
             static func inviteRequest(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeInviteResponseModel>>.make(String(format: Path.shareRoom, folder.id), .put)
             }
+
+            static func inviteRequestBase(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.shareRoom, folder.id), .put)
+            }
         }
 
         // MARK: Operations
@@ -462,7 +472,7 @@ enum OnlyofficeAPI {
             static let roomTemplateStatus: Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeTemplateOperation>>.make(Path.roomTemplateStatus, .get)
             static let createRoomFromTemplate: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplate, .post)
             static let createRoomFromTemplateStatus: Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>> = Endpoint<OnlyofficeResponse<ASCRoomFromTemplateOperation>>.make(Path.roomFromTemplateStatus, .get)
-            
+
             static func list(urlEncoding: URLEncoding) -> Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations, .get, urlEncoding)
             }

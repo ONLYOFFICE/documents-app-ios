@@ -28,8 +28,8 @@ class ASCSharingChooseNewOwnerRightHoldersView {
 
     // MARK: - Activity indicators
 
-    public lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
-    public lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
+    lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
+    lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
 
     // MARK: - Navigation bar props
 
@@ -295,7 +295,7 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
 // MARK: - Empty view methods
 
 extension ASCSharingChooseNewOwnerRightHoldersView {
-    public func showEmptySearchView(_ show: Bool) {
+    func showEmptySearchView(_ show: Bool) {
         guard let emptyView = emptySearchView else {
             return
         }
@@ -324,7 +324,7 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
         }
     }
 
-    public func showUsersNotFoundView(_ show: Bool) {
+    func showUsersNotFoundView(_ show: Bool) {
         guard let emptyView = usersNotFoundView else {
             return
         }
@@ -443,19 +443,19 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
 // MARK: - Activity indicators funcs
 
 extension ASCSharingChooseNewOwnerRightHoldersView {
-    public func runUsersLoadingAnimation() {
+    func runUsersLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: usersTableView, activityIndicator: loadingUsersTableActivityIndicator)
     }
 
-    public func stopUsersLoadingAnimation() {
+    func stopUsersLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingUsersTableActivityIndicator)
     }
 
-    public func runGroupsLoadingAnimation() {
+    func runGroupsLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: groupsTableView, activityIndicator: loadingGroupsTableActivityIndicator)
     }
 
-    public func stopGroupsLoadingAnimation() {
+    func stopGroupsLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingGroupsTableActivityIndicator)
     }
 

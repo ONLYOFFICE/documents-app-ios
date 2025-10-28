@@ -11,13 +11,13 @@ import Foundation
 
 enum DropboxAPI {
     enum URL {
-        public static let api = "https://api.dropboxapi.com"
+        static let api = "https://api.dropboxapi.com"
     }
 
     enum Path {
-        public static let currentAccount = "users/get_current_account"
-        public static let temporaryLink = "files/get_temporary_link"
-        public static let token = "oauth2/token"
+        static let currentAccount = "users/get_current_account"
+        static let temporaryLink = "files/get_temporary_link"
+        static let token = "oauth2/token"
     }
 
     enum Endpoints {

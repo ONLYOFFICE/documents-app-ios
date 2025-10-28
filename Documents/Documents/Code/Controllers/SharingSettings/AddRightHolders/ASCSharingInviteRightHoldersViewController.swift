@@ -484,9 +484,17 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
             return
         }
 
-        let foundGroupsModels = groupsModels.filter { $0.0.name.lowercased().contains(searchText.lowercased()) }
-        let foundUsersModels = usersModels.filter { $0.0.name.lowercased().contains(searchText.lowercased()) }
-        let foundGuestsModels = guestModels.filter { $0.0.name.lowercased().contains(searchText.lowercased()) }
+        let foundGroupsModels = groupsModels.filter {
+            $0.0.name.lowercased().contains(searchText.lowercased())
+        }
+        let foundUsersModels = usersModels.filter {
+            $0.0.name.lowercased().contains(searchText.lowercased())
+                || $0.0.email?.lowercased().contains(searchText.lowercased()) == true
+        }
+        let foundGuestsModels = guestModels.filter {
+            $0.0.name.lowercased().contains(searchText.lowercased())
+                || $0.0.email?.lowercased().contains(searchText.lowercased()) == true
+        }
 
         groupsTableViewDataSourceAndDelegate.set(models: foundGroupsModels)
         usersTableViewDataSourceAndDelegate.set(models: foundUsersModels)

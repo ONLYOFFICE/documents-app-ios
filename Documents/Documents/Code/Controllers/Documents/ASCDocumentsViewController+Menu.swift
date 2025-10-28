@@ -375,7 +375,6 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Open", comment: "Button title"),
                     image: UIImage(systemName: "arrow.triangle.turn.up.right.circle")
                 ) { [weak self] action in
-
                     guard
                         let self,
                         let index = collectionView.indexPath(for: cell)

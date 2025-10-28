@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 
 class OnedriveApiClient: NetworkingClient {
-    public var credential: ASCOAuthCredential? {
+    var credential: ASCOAuthCredential? {
         didSet {
             if oldValue == nil {
                 configure(url: baseURL?.absoluteString ?? "", token: credential?.accessToken)
@@ -18,14 +18,14 @@ class OnedriveApiClient: NetworkingClient {
         }
     }
 
-    public var onRefreshToken: ((ASCOAuthCredential) -> Void)?
+    var onRefreshToken: ((ASCOAuthCredential) -> Void)?
 
-    override public init() {
+    override init() {
         super.init()
         baseURL = URL(string: "https://graph.microsoft.com/v1.0/")
     }
 
-    override public func configure(url: String, token: String? = nil) {
+    override func configure(url: String, token: String? = nil) {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
         configuration.timeoutIntervalForResource = 30

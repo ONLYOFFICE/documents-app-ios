@@ -6,6 +6,6 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
-enum ASCDocumentOpenMode {
-    case view, edit, create, fillform
+enum ASCDocumentOpenMode: String, Codable {
+    case view, edit, create, fillform, startFilling
 }

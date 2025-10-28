@@ -40,7 +40,7 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerPresentationConte
 }
 
 extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
-    public func authorizationController(
+    func authorizationController(
         controller: ASAuthorizationController,
         didCompleteWithAuthorization authorization: ASAuthorization
     ) {
@@ -55,7 +55,7 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
         completionHandler(.success(codeStr))
     }
 
-    public func authorizationController(
+    func authorizationController(
         controller: ASAuthorizationController,
         didCompleteWithError error: Error
     ) {

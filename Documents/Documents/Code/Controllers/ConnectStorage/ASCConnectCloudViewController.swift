@@ -119,6 +119,7 @@ class ASCConnectCloudViewController: UITableViewController {
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
+        view.tintColor = Asset.Colors.brend.color
         super.viewDidLoad()
     }
 

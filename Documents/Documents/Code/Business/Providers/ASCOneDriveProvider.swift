@@ -26,7 +26,7 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     var total: Int = 0
 
     private var apiClient: OnedriveApiClient?
-    public var provider: ASCOneDriveFileProvider? {
+    var provider: ASCOneDriveFileProvider? {
         didSet {
             guard let provider = provider else {
                 entityExistenceChecker = nil
@@ -156,7 +156,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
-
             NetworkingClient.clearCookies(for: provider.baseURL)
 
             provider.contentsOfDirectory(path: folder.id) { [weak self] objects, error in
@@ -891,7 +890,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
 
         let folderCreateWithNameCompletion: (String) -> Void = { name in
             provider.create(folder: name, at: folder.id) { [weak self] error in
-
                 guard let self = self else { return }
 
                 guard error == nil else {

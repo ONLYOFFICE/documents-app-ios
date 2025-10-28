@@ -60,7 +60,7 @@ final class ASCRoomTemplatesNetworkService: ASCRoomTemplatesNetworkServiceProtoc
         let requestModel = ASCSetRoomTemplateAvailableForEveryoneRequestModel(id: templateId, isPublic: isPublic)
         try await withCheckedThrowingContinuation { continuation in
             networkService.request(OnlyofficeAPI.Endpoints.Rooms.setRoomTemplateAsPublic(), requestModel.toJSON()) { result, error in
-                if result != nil && error == nil {
+                if result != nil, error == nil {
                     continuation.resume()
                 } else {
                     continuation.resume(throwing: error ?? Errors.emptyResponse)

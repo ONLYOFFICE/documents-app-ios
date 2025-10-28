@@ -13,7 +13,7 @@ class ASCSortViewController: ASCBaseTableViewController {
 
     override class var storyboard: Storyboard { return Storyboard.sort }
 
-    public typealias ASCSortComplation = (_ type: ASCDocumentSortType, _ ascending: Bool) -> Void
+    typealias ASCSortComplation = (_ type: ASCDocumentSortType, _ ascending: Bool) -> Void
 
     // MARK: - Properties
 

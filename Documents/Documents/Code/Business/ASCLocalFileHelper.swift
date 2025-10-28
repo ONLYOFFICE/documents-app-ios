@@ -25,7 +25,7 @@ public extension Path {
 }
 
 class ASCLocalFileHelper {
-    public static let shared = ASCLocalFileHelper()
+    static let shared = ASCLocalFileHelper()
 
     private let excludeFileNames = [".DS_Store", ".Trash"]
 

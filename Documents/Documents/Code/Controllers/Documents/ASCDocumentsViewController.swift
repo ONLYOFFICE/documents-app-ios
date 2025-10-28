@@ -643,7 +643,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
                 if isDocument || isSpreadsheet || isPresentation || isForm {
-                    provider.open(file: file, openMode: .create, canEdit: true)
+                    provider.open(file: file, openMode: isForm ? .fillform : .create, canEdit: true)
                 }
             }
         } else if let folder = entity as? ASCFolder {
@@ -844,7 +844,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
 
         // Info
-        if isDocSpaceArchive && !isInfoShowing {
+        if isDocSpaceArchive, !isInfoShowing {
             items.append(barIconSpacer)
             items.append(barFlexSpacer)
         } else if isInfoShowing {
@@ -1145,10 +1145,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 self.highlight(entity: self.highlightEntity)
 
                 // Check network
-                if !success &&
-                    self.folder?.rootFolderType != .deviceDocuments &&
-                    !ASCNetworkReachability.shared.isReachable &&
-                    OnlyofficeApiClient.shared.token != nil
+                if !success,
+                   self.folder?.rootFolderType != .deviceDocuments,
+                   !ASCNetworkReachability.shared.isReachable,
+                   OnlyofficeApiClient.shared.token != nil
                 {
                     ASCBanner.shared.showError(
                         title: NSLocalizedString("No network", comment: ""),
@@ -1211,11 +1211,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 localEmptyView?.type = .search
             } else {
                 if let folder, let provider {
+                    let hasPermission = provider.allowEdit(entity: folder)
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .trash {
                         localEmptyView?.type = .trash
                     } else if folder.rootFolderType == .roomTemplates {
                         localEmptyView?.type = .roomTemplates
-                    } else if folder.rootFolderType == .archive && !folder.isRoom {
+                    } else if folder.rootFolderType == .archive, !folder.isRoom {
                         localEmptyView?.type = .docspaceArchive
                     } else if provider.type == .local {
                         localEmptyView?.type = .local
@@ -1228,23 +1229,29 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     {
                         localEmptyView?.type = .formFillingRoomSubfolder
                     } else if folder.isRoom {
-                        if folder.roomType == .fillingForm, provider.allowEdit(entity: folder) {
-                            localEmptyView?.type = .formFillingRoom
-                        } else if folder.roomType == .virtualData, provider.allowEdit(entity: folder) {
-                            localEmptyView?.type = .virtualDataRoom
-                        } else {
-                            localEmptyView?.type = .room
-                            if !(provider.allowEdit(entity: folder)) {
-                                localEmptyView?.type = .docspaceNoPermissions
-                            }
+                        if folder.roomType == .fillingForm {
+                            localEmptyView?.type = hasPermission ? .formFillingRoom : .formFillingNoPermissions
+                        } else if folder.roomType == .virtualData {
+                            localEmptyView?.type = hasPermission ? .virtualDataRoom : .virtualDataRoomNoPermissions
+                        } else if folder.roomType == .public {
+                            localEmptyView?.type = hasPermission ? .publicRoom : .publicRoomNoPermissions
+                        } else if folder.roomType == .colobaration {
+                            localEmptyView?.type = hasPermission ? .collaborationRoom : .collaborationRoomNoPermissions
+                        } else if folder.roomType == .custom {
+                            localEmptyView?.type = hasPermission ? .customRoom : .customRoomNoPermissions
+                        } else if !(provider.allowEdit(entity: folder)) {
+                            localEmptyView?.type = .docspaceNoPermissions
                         }
                     } else if isDocRecently {
                         localEmptyView?.type = .recentlyAccessibleViaLink
                     } else {
                         localEmptyView?.type = .cloud
-
                         if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView?.type = .cloudNoPermissions
+                            if folder.rootFolderType == .virtualRooms {
+                                localEmptyView?.type = .docspaceEmptyRooms
+                            } else {
+                                localEmptyView?.type = .cloudNoPermissions
+                            }
                         }
                     }
                 }
@@ -1863,7 +1870,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         var hud: MBProgressHUD?
 
         RoomSharingNetworkService().duplicateRoom(room: room) { [unowned self] status, progress, result, error, cancel in
-
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
                 hud?.mode = .annularDeterminate
@@ -1927,8 +1933,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             value: .virtualData
         ) == true
         if isInsideVDRRoom {
-            if file.security.fillForms, file.formFillingStatus == .yourTurn {
+            if file.formFillingStatus == .draft {
+                startFilling(file: file)
+            } else if file.security.fillForms, file.formFillingStatus == .yourTurn {
                 openFormInFillingModeWithCheckingVersion(file: file)
+            } else if file.security.startFilling {
+                startFilling(file: file)
             } else {
                 open(file: file, openMode: .view)
             }
@@ -1939,7 +1949,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             keyPath: \.roomType,
             value: .fillingForm
         ) == true
-        if isInsideFillingFormRoom && file.security.fillForms {
+        if isInsideFillingFormRoom, file.security.fillForms {
             open(file: file, openMode: .fillform)
             return
         }
@@ -2003,8 +2013,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     func startFilling(file: ASCFile) {
         guard file.isForm, !file.device else { return }
 
-        let vc = VDRStartFillingViewController()
-        present(vc, animated: true, completion: nil)
+        open(file: file, openMode: .startFilling)
     }
 
     func fillingStatus(file: ASCFile) {
@@ -2385,34 +2394,31 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func copySharedLink(file: ASCFile) {
-        let hud = MBProgressHUD.showTopMost()
-        let successMessage = file.customFilterEnabled
-            ? NSLocalizedString("The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard.", comment: "Button title")
-            : NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
+        Task { @MainActor in
+            let hud = MBProgressHUD.showTopMost()
+            let successMessage = file.customFilterEnabled
+                ? NSLocalizedString("The link to the file\nwith the enabled\nCustom filter is\nsuccessfully\ncopied to the\nclipboard.", comment: "Button title")
+                : NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")
 
-        let handleResult: (Result<String, Error>) -> Void = { result in
-            switch result {
-            case let .success(link):
+            do {
+                let link = if let provider = provider as? ASCOnlyofficeProvider {
+                    try await provider.generalFileLink(file: file)
+                } else {
+                    try await NetworkManagerSharedSettings().createAndCopy(
+                        file: file,
+                        requestModel: CreateAndCopyLinkRequestModel(
+                            access: ASCShareAccess.read.rawValue,
+                            expirationDate: nil,
+                            isInternal: false
+                        )
+                    ).sharedTo.shareLink
+                }
                 UIPasteboard.general.string = link
                 hud?.setState(result: .success(successMessage))
-            case let .failure(error):
+            } catch {
                 hud?.setState(result: .failure(error.localizedDescription))
             }
             hud?.hide(animated: true, afterDelay: .standardDelay)
-        }
-
-        if let provider = provider as? ASCOnlyofficeProvider {
-            Task {
-                let result = await provider.generalFileLink(file: file)
-                await MainActor.run {
-                    handleResult(result)
-                }
-            }
-        } else {
-            let requestModel = CreateAndCopyLinkRequestModel(access: ASCShareAccess.read.rawValue, expirationDate: nil, isInternal: false)
-            NetworkManagerSharedSettings().createAndCopy(file: file, requestModel: requestModel) { result in
-                handleResult(result.map { $0.sharedTo.shareLink })
-            }
         }
     }
 
@@ -3671,7 +3677,7 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
 // MARK: - UISearchResultsUpdating
 
 extension ASCDocumentsViewController: UISearchResultsUpdating {
-    public func updateSearchResults(for searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         /// Throttle search
 
         searchTask?.cancel()

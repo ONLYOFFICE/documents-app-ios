@@ -241,6 +241,19 @@ extension ASCEntity {
 // MARK: - ASCFolder extension for DocSpace
 
 extension ASCFolder {
+    var currentOrParentsRoom: ASCRoom? {
+        guard !isRoom else { return self }
+        var currentFolder = self
+
+        while let parentFolder = currentFolder.parent {
+            if parentFolder.isRoom {
+                return parentFolder
+            }
+            currentFolder = parentFolder
+        }
+        return nil
+    }
+
     var isRoomListFolder: Bool {
         isRoot && ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: rootFolderType)
     }

@@ -196,7 +196,6 @@
             // if presented as modal
             if presentingViewController?.presentedViewController == self {
                 dismiss(animated: animateOnDismiss, completion: { [weak self] in
-
                     self?.dismissCompletionCallback?()
 
                     completionHandler?()
@@ -236,7 +235,6 @@
                     self.view.layoutIfNeeded()
                 },
                 completion: { completed in
-
                     self.isPlaceholdersAnimationCompleted = true
                     self.animatePlaceholders(self.placeholders, toState: .inactive)
                 }

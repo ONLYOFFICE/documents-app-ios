@@ -398,9 +398,63 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             return $0
         }(UILabel())
 
-        // Overlay markers
-        var overlays: [UIView] = []
+        let contentView = {
+            $0.axis = .vertical
+            $0.alignment = .center
+            $0.distribution = .fill
+            $0.spacing = 2
+            return $0
+        }(UIStackView(arrangedSubviews: [
+            iconView,
+            titleLabel,
+            dateLabel,
+            sizeLabel,
+        ]))
 
+        let containerView = UIView()
+
+        containerView.addSubview(contentView)
+        contentView.anchor(
+            top: containerView.topAnchor,
+            leading: containerView.leadingAnchor,
+            bottom: containerView.bottomAnchor,
+            trailing: containerView.trailingAnchor,
+            padding: UIEdgeInsets(top: 16, left: 0, bottom: 2, right: 0)
+        )
+
+        // Top left overlay markers
+        let topLeftOverlayView = buildGridBadgesOverlayView(file: file)
+        containerView.addSubview(topLeftOverlayView)
+        topLeftOverlayView.anchor(
+            top: containerView.topAnchor,
+            leading: containerView.leadingAnchor,
+            padding: UIEdgeInsets(top: 4, left: 6, bottom: 0, right: 0)
+        )
+
+        // Bottom right overlay markers
+        let bottomRightOverlayView = buildGridFileTypeOverlay(file: file)
+        containerView.addSubview(bottomRightOverlayView)
+        bottomRightOverlayView.anchor(
+            bottom: iconView.bottomAnchor,
+            trailing: containerView.trailingAnchor,
+            padding: UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 10)
+        )
+
+        checkmarkView.removeConstraints(checkmarkView.constraints)
+        containerView.addSubview(checkmarkView)
+        checkmarkView.anchor(
+            top: containerView.topAnchor,
+            trailing: containerView.trailingAnchor,
+            padding: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 10),
+            size: CGSize(width: Constants.checkmarkSize, height: Constants.checkmarkSize)
+        )
+        displayCheckmark(show: configurationState.isEditing)
+
+        return containerView
+    }
+
+    private func buildGridBadgesOverlayView(file: ASCFile) -> UIView {
+        var overlays = [UIView]()
         if file.isNew, let badgeNewImage = newBadge.screenshot {
             overlays.append(UIImageView(image: badgeNewImage))
         }
@@ -417,19 +471,12 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         if file.customFilterEnabled {
             overlays.append(filterBadge)
         }
-
         if file.isEditing {
-            overlays.append(UIImageView(image: UIImage(
-                systemName: "pencil",
-                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .black))
-            )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()))
+            overlays.append(buildSymbolBadge("pencil"))
         }
 
         if file.isFavorite {
-            overlays.append(UIImageView(image: UIImage(
-                systemName: "star.fill",
-                withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: Constants.overlayBagesFontSize, weight: .black))
-            )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()))
+            overlays.append(buildSymbolBadge("star.fill"))
         }
 
         let overlayView = {
@@ -440,51 +487,36 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
             return $0
         }(UIStackView(arrangedSubviews: overlays))
 
-        let contentView = {
+        return overlayView
+    }
+
+    private func buildGridFileTypeOverlay(file: ASCFile) -> UIView {
+        let allowThumbnailPreview = file.allowThumbnailPreview(layoutType: layoutType)
+
+        guard allowThumbnailPreview else { return UIView() }
+
+        var overlays = [UIView]()
+
+        let fileExt = file.title.fileExtension().lowercased()
+        if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.formatsSpreadsheet.image))
+        } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.formatsDocument.image))
+        } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.formatsPresentation.image))
+        } else if ASCConstants.FileExtensions.pdfs.contains(fileExt) {
+            overlays.append(UIImageView(image: Asset.Images.formatsPdf.image))
+        }
+
+        let overlayView = {
             $0.axis = .vertical
-            $0.alignment = .center
+            $0.alignment = .leading
             $0.distribution = .fill
-            $0.spacing = 2
+            $0.spacing = 5
             return $0
-        }(UIStackView(arrangedSubviews: [
-            {
-                $0.anchor(heightConstant: 10)
-                return $0
-            }(UIView()),
-            iconView,
-            {
-                $0.anchor(heightConstant: 10)
-                return $0
-            }(UIView()),
-            titleLabel,
-            dateLabel,
-            sizeLabel,
-            UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: 100))),
-        ]))
+        }(UIStackView(arrangedSubviews: overlays))
 
-        let containerView = UIView()
-
-        containerView.addSubview(contentView)
-        contentView.fillToSuperview()
-
-        containerView.addSubview(overlayView)
-        overlayView.anchor(
-            top: contentView.topAnchor,
-            leading: contentView.leadingAnchor,
-            padding: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 0)
-        )
-
-        checkmarkView.removeConstraints(checkmarkView.constraints)
-        containerView.addSubview(checkmarkView)
-        checkmarkView.anchor(
-            top: containerView.topAnchor,
-            trailing: containerView.trailingAnchor,
-            padding: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 10),
-            size: CGSize(width: Constants.checkmarkSize, height: Constants.checkmarkSize)
-        )
-        displayCheckmark(show: configurationState.isEditing)
-
-        return containerView
+        return overlayView
     }
 
     // MARK: - Common Layout
@@ -496,8 +528,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         else { return UIView() }
 
         let fileExt = file.title.fileExtension().lowercased()
-        let allowThumbnailPreview = ASCConstants.FileExtensions.images.contains(fileExt) ||
-            (layoutType == .grid && file.thumbnailStatus == .created && file.thumbnailUrl?.isEmpty == false)
+        let allowThumbnailPreview = file.allowThumbnailPreview(layoutType: layoutType)
         let defaultIconFormatImage = UIImage.getFileExtensionBasedImage(fileExt: fileExt, layoutType: layoutType)
 
         imageView.contentMode = .center
@@ -558,7 +589,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         imageView.removeConstraints(imageView.constraints)
 
         imageView.anchor(
-            widthConstant: (allowThumbnailPreview && layoutType == .grid) ? frame.width - 10 : preferredSize.width,
+            widthConstant: preferredSize.width,
             heightConstant: preferredSize.height
         )
 
@@ -678,6 +709,52 @@ extension ASCFileViewCell {
     }
 }
 
+extension ASCFileViewCell {
+    /// Circle icon badge
+    private func buildSymbolBadge(
+        _ systemName: String,
+        tint: UIColor = Asset.Colors.brend.color,
+        pointSize: CGFloat = Badge.pointSize,
+        weight: UIFont.Weight = .black,
+        padding: CGFloat = Badge.padding,
+        bgColor: UIColor = .systemBackground,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat = 0
+    ) -> UIView {
+        let config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: pointSize, weight: weight))
+        let imageView = UIImageView(
+            image: UIImage(systemName: systemName, withConfiguration: config)?
+                .withTintColor(tint, renderingMode: .alwaysOriginal)
+        )
+        imageView.contentMode = UIView.ContentMode.center
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let diameter = pointSize + padding * 2
+        let container = UIView(frame: CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter)))
+        container.backgroundColor = bgColor
+        container.isOpaque = true
+        container.layer.cornerRadius = diameter / 2
+        container.layer.masksToBounds = true
+        if let borderColor { container.layer.borderColor = borderColor.cgColor; container.layer.borderWidth = borderWidth }
+        container.translatesAutoresizingMaskIntoConstraints = false
+
+        container.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            container.widthAnchor.constraint(equalToConstant: diameter),
+            container.heightAnchor.constraint(equalToConstant: diameter),
+            imageView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+        ])
+
+        return container
+    }
+}
+
+private enum Badge {
+    static let pointSize: CGFloat = Constants.overlayBagesFontSize
+    static let padding: CGFloat = 3
+}
+
 private enum Constants {
     static let transformWidth: CGFloat = 450
     static let checkmarkSize: CGFloat = 16
@@ -685,7 +762,7 @@ private enum Constants {
     static let listCornerRadius: CGFloat = 0
     static let overlayBagesFontSize: CGFloat = 13
     static let listIconSize = CGSize(width: 45, height: 50)
-    static let gridIconSize = CGSize(width: 80, height: 80)
+    static let gridIconSize = CGSize(width: 80, height: 104)
 }
 
 // @available(iOS 17, *)
@@ -708,3 +785,11 @@ private enum Constants {
 //
 //    return cell
 // }
+
+private extension ASCFile {
+    func allowThumbnailPreview(layoutType: ASCEntityViewLayoutType) -> Bool {
+        let fileExt = title.fileExtension().lowercased()
+        return ASCConstants.FileExtensions.images.contains(fileExt) ||
+            (layoutType == .grid && thumbnailStatus == .created && thumbnailUrl?.isEmpty == false)
+    }
+}

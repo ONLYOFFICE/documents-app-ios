@@ -1,5 +1,5 @@
 //
-//  RoomSharingViewModel.swift
+//  SharingInfoViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 19.12.2023.
@@ -15,7 +15,7 @@ struct RoomSharingFlowModel {
     var sharings: [RoomUsersResponseModel] = []
 }
 
-final class RoomSharingViewModel: ObservableObject {
+final class SharingInfoViewModel: ObservableObject {
     // MARK: - Published vars
 
     private(set) var flowModel = RoomSharingFlowModel()
@@ -258,7 +258,7 @@ final class RoomSharingViewModel: ObservableObject {
 
 // MARK: Private
 
-private extension RoomSharingViewModel {
+private extension SharingInfoViewModel {
     func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
         guard let inputLink else { return }
         if let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == inputLink.linkInfo.id }) {
@@ -369,7 +369,7 @@ private extension String {
     static let customRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
 }
 
-extension RoomSharingViewModel {
+extension SharingInfoViewModel {
     var roomTypeDescription: String {
         switch room.roomType {
         case .fillingForm:

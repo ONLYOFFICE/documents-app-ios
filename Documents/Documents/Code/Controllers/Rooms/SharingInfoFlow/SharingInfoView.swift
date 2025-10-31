@@ -1,5 +1,5 @@
 //
-//  RoomSharingView.swift
+//  SharingInfoView.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 19.12.2023.
@@ -11,8 +11,8 @@ import Kingfisher
 import MBProgressHUD
 import SwiftUI
 
-struct RoomSharingView: View {
-    @ObservedObject var viewModel: RoomSharingViewModel
+struct SharingInfoView: View {
+    @ObservedObject var viewModel: SharingInfoViewModel
 
     var body: some View {
         handleHUD()
@@ -211,7 +211,7 @@ struct RoomSharingView: View {
 
 // MARK: - Alerts
 
-private extension RoomSharingView {
+private extension SharingInfoView {
     func deleteAlert() -> Alert {
         Alert(
             title: Text("Delete link"),
@@ -240,7 +240,7 @@ private extension RoomSharingView {
 }
 
 private extension View {
-    func navigationBarItems(viewModel: RoomSharingViewModel) -> some View {
+    func navigationBarItems(viewModel: SharingInfoViewModel) -> some View {
         navigationBarItems(
             leading: Button(ASCLocalization.Common.close) {
                 UIApplication.topViewController()?.dismiss(animated: true)
@@ -251,7 +251,7 @@ private extension View {
         )
     }
 
-    func addUsersButton(viewModel: RoomSharingViewModel) -> some View {
+    func addUsersButton(viewModel: SharingInfoViewModel) -> some View {
         Button(action: {
             viewModel.addUsers()
         }) {
@@ -261,7 +261,7 @@ private extension View {
 
     func navigateToChangeAccess(
         selectedUser: Binding<ASCUser?>,
-        viewModel: RoomSharingViewModel
+        viewModel: SharingInfoViewModel
     ) -> some View {
         navigation(item: selectedUser) { user in
             RoomSharingAccessTypeView(
@@ -276,7 +276,7 @@ private extension View {
 
     func navigateToCreateLink(
         isDisplaing: Binding<Bool>,
-        viewModel: RoomSharingViewModel
+        viewModel: SharingInfoViewModel
     ) -> some View {
         navigation(isActive: isDisplaing) {
             RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
@@ -288,7 +288,7 @@ private extension View {
 
     func navigateToEditLink(
         selectedLink: Binding<RoomSharingLinkModel?>,
-        viewModel: RoomSharingViewModel
+        viewModel: SharingInfoViewModel
     ) -> some View {
         navigation(item: selectedLink, destination: { link in
             RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
@@ -301,7 +301,7 @@ private extension View {
 
     func navigateToAddUsers(
         isDisplaying: Binding<Bool>,
-        viewModel: RoomSharingViewModel
+        viewModel: SharingInfoViewModel
     ) -> some View {
         navigation(isActive: isDisplaying) {
             InviteUsersView(
@@ -313,10 +313,10 @@ private extension View {
     }
 }
 
-struct RoomSharingView_Previews: PreviewProvider {
+struct SharingInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomSharingView(
-            viewModel: RoomSharingViewModel(room: .init())
+        SharingInfoView(
+            viewModel: SharingInfoViewModel(room: .init())
         )
     }
 }

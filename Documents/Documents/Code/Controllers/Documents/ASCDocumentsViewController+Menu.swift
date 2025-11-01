@@ -104,6 +104,40 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Copy shared link
+        let copySharedLink = UIAction(
+            title: NSLocalizedString("Copy shared link", comment: ""),
+            image: UIImage(systemName: "link")
+        ) { [unowned self] action in
+            self.copySharedLink(file: file)
+        }
+
+        /// Share action
+
+        let sharingSettings = UIAction(
+            title: NSLocalizedString("Share", comment: ""),
+            image: UIImage(systemName: "square.and.arrow.up")
+        ) { [unowned self] action in
+            navigator.navigate(to: .sharedSettingsLink(file: file))
+        }
+
+        /// Tranfrorm to room
+        let createRoom = UIAction(
+            title: NSLocalizedString("Create room", comment: "Button title"),
+            image: Asset.Images.menuRectanglesAdd.image
+        ) { [unowned self] action in
+            transformToRoom(entities: [file])
+        }
+
+        if actions.contains(.copySharedLink), actions.contains(.docspaceShare) {
+            var menuChildren: [UIMenuElement] = [copySharedLink, sharingSettings]
+
+            if actions.contains(.createRoom) {
+                menuChildren.append(createRoom)
+            }
+            shareActions.append(UIMenu(title: NSLocalizedString("Share", comment: ""), children: menuChildren))
+        }
+
         /// Show versions history
 
         if actions.contains(.showVersionsHistory) {
@@ -114,19 +148,6 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     self.showVersionsHistory(file: file)
                 })
-        }
-
-        ///  Copy shared link action
-
-        if actions.contains(.copySharedLink) {
-            shareActions.append(
-                UIAction(
-                    title: NSLocalizedString("Copy link", comment: ""),
-                    image: UIImage(systemName: "link")
-                ) { [unowned self] action in
-                    self.copySharedLink(file: file)
-                }
-            )
         }
 
         /// Custom filter
@@ -140,19 +161,6 @@ extension ASCDocumentsViewController {
                     image: Asset.Images.menuCustomFilter.image
                 ) { [unowned self] action in
                     self.setCustomFilter(cell: cell, file: file)
-                }
-            )
-        }
-
-        /// Share action
-
-        if actions.contains(.docspaceShare) {
-            shareActions.append(
-                UIAction(
-                    title: NSLocalizedString("Share", comment: ""),
-                    image: UIImage(systemName: "square.and.arrow.up")
-                ) { [unowned self] action in
-                    navigator.navigate(to: .sharedSettingsLink(file: file))
                 }
             )
         }
@@ -183,32 +191,6 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "envelope.open")
                 ) { [unowned self] action in
                     self.markAsRead(cell: cell)
-                }
-            )
-        }
-
-        /// Rename action
-
-        if actions.contains(.rename) {
-            middleActions.append(
-                UIAction(
-                    title: NSLocalizedString("Rename", comment: "Button title"),
-                    image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
-                ) { [unowned self] action in
-                    self.rename(cell: cell)
-                }
-            )
-        }
-
-        // Transform to a room
-
-        if actions.contains(.transformToRoom) {
-            middleActions.append(
-                UIAction(
-                    title: NSLocalizedString("Create room", comment: "Button title"),
-                    image: Asset.Images.menuRectanglesAdd.image
-                ) { [unowned self] action in
-                    transformToRoom(entities: [file])
                 }
             )
         }
@@ -271,16 +253,15 @@ extension ASCDocumentsViewController {
             )
         }
 
-        /// Delete action
+        /// Export action
 
-        if actions.contains(.delete) {
+        if actions.contains(.export) {
             middleActions.append(
                 UIAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive
+                    title: NSLocalizedString("Export", comment: "Button title"),
+                    image: UIImage(systemName: "square.and.arrow.up")
                 ) { [unowned self] action in
-                    self.delete(cell: cell)
+                    self.export(cell: cell)
                 }
             )
         }
@@ -299,6 +280,19 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Rename action
+
+        if actions.contains(.rename) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Rename", comment: "Button title"),
+                    image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
+                ) { [unowned self] action in
+                    self.rename(cell: cell)
+                }
+            )
+        }
+
         /// Share action
 
         if actions.contains(.share) {
@@ -312,15 +306,16 @@ extension ASCDocumentsViewController {
             )
         }
 
-        /// Export action
+        /// Delete action
 
-        if actions.contains(.export) {
+        if actions.contains(.delete) {
             bottomActions.append(
                 UIAction(
-                    title: NSLocalizedString("Export", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.up")
+                    title: NSLocalizedString("Delete", comment: "Button title"),
+                    image: UIImage(systemName: "trash"),
+                    attributes: .destructive
                 ) { [unowned self] action in
-                    self.export(cell: cell)
+                    self.delete(cell: cell)
                 }
             )
         }

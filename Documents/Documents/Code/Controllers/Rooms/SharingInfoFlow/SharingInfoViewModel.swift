@@ -15,6 +15,7 @@ struct RoomSharingFlowModel {
     var sharings: [RoomUsersResponseModel] = []
 }
 
+@MainActor
 final class SharingInfoViewModel: ObservableObject {
     // MARK: - Published vars
 
@@ -77,8 +78,10 @@ final class SharingInfoViewModel: ObservableObject {
 
     init(room: ASCRoom) {
         self.room = room
-        isInitializing = true
-        loadData()
+        
+        Task {
+            await loadData()
+        }
 
         changedLink
             .receive(on: RunLoop.main)
@@ -88,15 +91,17 @@ final class SharingInfoViewModel: ObservableObject {
             .store(in: &cancelable)
     }
 
-    func loadData(completion: (() -> Void)? = nil) {
-        sharingRoomNetworkService.fetch(room: room) { [weak self] links, sharings in
-            guard let self else { return }
+    func loadData() async {
+        isInitializing = true
+        do {
+            let (links, sharings) = try await sharingRoomNetworkService.fetch(room: room)
             flowModel.links = links
             flowModel.sharings = sharings
             buildViewModel()
-            isInitializing = false
-            completion?()
+        } catch {
+            log.error(error)
         }
+        isInitializing = false
     }
 
     // MARK: Handlers
@@ -111,42 +116,36 @@ final class SharingInfoViewModel: ObservableObject {
         isCreatingLinkScreenDisplaing = true
     }
 
-    func createAndCopyGeneralLink() {
+    func createAndCopyGeneralLink() async {
         isActivitiIndicatorDisplaying = true
-        linkAccessService.createGeneralLink(room: room) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case let .success(link):
-                flowModel.links.append(link)
-                UIPasteboard.general.string = link.linkInfo.shareLink
-                resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
-                buildViewModel()
-            case let .failure(error):
-                errorMessage = error.localizedDescription
-            }
-            isActivitiIndicatorDisplaying = false
+        do {
+            let link = try await linkAccessService.createGeneralLink(room: room)
+            flowModel.links.append(link)
+            UIPasteboard.general.string = link.linkInfo.shareLink
+            resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
+            buildViewModel()
+        } catch {
+            errorMessage = error.localizedDescription
         }
+        isActivitiIndicatorDisplaying = false
     }
 
-    func createAndCopyAdditionalLink() {
+    func createAndCopyAdditionalLink() async {
         isActivitiIndicatorDisplaying = true
-        linkAccessService.createLink(
-            title: String(format: NSLocalizedString("Link name %@", comment: ""), "(1)"),
-            linkType: ASCShareLinkType.external,
-            room: room
-        ) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case let .success(link):
-                flowModel.links.append(link)
-                UIPasteboard.general.string = link.linkInfo.shareLink
-                resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
-                buildViewModel()
-            case let .failure(error):
-                errorMessage = error.localizedDescription
-            }
-            isActivitiIndicatorDisplaying = false
+        do {
+            let link = try await linkAccessService.createLink(
+                title: String(format: NSLocalizedString("Link name %@", comment: ""), "(1)"),
+                linkType: ASCShareLinkType.external,
+                room: room
+            )
+            flowModel.links.append(link)
+            UIPasteboard.general.string = link.linkInfo.shareLink
+            resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
+            buildViewModel()
+        } catch {
+            errorMessage = error.localizedDescription
         }
+        isActivitiIndicatorDisplaying = false
     }
 
     func onAppear() {
@@ -160,93 +159,98 @@ final class SharingInfoViewModel: ObservableObject {
     }
 
     func deleteSharedLink(indexSet: IndexSet) {
-        for index in indexSet {
-            if let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == sharedLinksModels[safe: index]?.id }) {
-                guard !deletingLink.isGeneral else {
-                    buildViewModel()
-                    applyingDeletingLink = deletingLink
-                    if room.roomType == .public {
-                        isRevokeAlertDisplaying = true
-                    } else {
-                        isDeleteAlertDisplaying = true
-                    }
-                    withAnimation {
-                        buildViewModel()
-                    }
-                    return
-                }
+        let indices = indexSet.sorted(by: >)
 
-                linkAccessService.removeLink(
+        for index in indices {
+            guard
+                let id = sharedLinksModels[safe: index]?.id,
+                let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == id })
+            else { continue }
+
+            // General link
+            if deletingLink.isGeneral {
+                buildViewModel()
+                applyingDeletingLink = deletingLink
+                if room.roomType == .public {
+                    isRevokeAlertDisplaying = true
+                } else {
+                    isDeleteAlertDisplaying = true
+                }
+                withAnimation { buildViewModel() }
+                return
+            }
+
+            // romove from UI
+            let removedModel = sharedLinksModels[safe: index]
+            withAnimation {
+                sharedLinksModels.remove(at: index)
+            }
+
+            // Network async
+            Task { [weak self] in
+                guard let self else { return }
+                do {
+                    try await linkAccessService.removeLink(
+                        id: deletingLink.linkInfo.id,
+                        title: deletingLink.linkInfo.title,
+                        linkType: deletingLink.linkInfo.linkType,
+                        password: deletingLink.linkInfo.password,
+                        room: room
+                    )
+                    await MainActor.run {
+                        self.flowModel.links.removeAll { $0.linkInfo.id == deletingLink.linkInfo.id }
+                    }
+                } catch {
+                    // discard UI when error
+                    await MainActor.run {
+                        if let vm = removedModel {
+                            self.sharedLinksModels.insert(vm, at: index)
+                        }
+                        self.buildViewModel()
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+            }
+        }
+    }
+
+    func proceedDeletingLink() async {
+        guard let deletingLink = applyingDeletingLink else { return }
+        do {
+            if deletingLink.isGeneral {
+                try await linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
                     title: deletingLink.linkInfo.title,
                     linkType: deletingLink.linkInfo.linkType,
                     password: deletingLink.linkInfo.password,
                     room: room
-                ) { [weak self] error in
-                    guard let self else { return }
-                    if let error {
-                        self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
-                        buildViewModel()
-                        self.errorMessage = error.localizedDescription
-                    } else {
-                        flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
-                    }
-                }
-            }
-        }
-        withAnimation {
-            sharedLinksModels.remove(atOffsets: indexSet)
-        }
-    }
-
-    func proceedDeletingLink() {
-        guard let deletingLink = applyingDeletingLink else { return }
-        if deletingLink.isGeneral {
-            linkAccessService.removeLink(
-                id: deletingLink.linkInfo.id,
-                title: deletingLink.linkInfo.title,
-                linkType: deletingLink.linkInfo.linkType,
-                password: deletingLink.linkInfo.password,
-                room: room
-            ) { [weak self] error in
-                guard let self else { return }
-                if let error {
-                    self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
-                    buildViewModel()
-                    self.errorMessage = error.localizedDescription
+                )
+                flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
+                if room.roomType == .public {
+                    isActivitiIndicatorDisplaying = true
+                    await loadData()
+                    resultModalModel = .init(
+                        result: .success,
+                        message: NSLocalizedString("The new shared link was created", comment: "")
+                    )
+                    isActivitiIndicatorDisplaying = false
                 } else {
-                    flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
-                    if room.roomType == .public {
-                        isActivitiIndicatorDisplaying = true
-                        loadData { [weak self] in
-                            self?.resultModalModel = .init(
-                                result: .success,
-                                message: NSLocalizedString("The new shared link was created", comment: "")
-                            )
-                            self?.isActivitiIndicatorDisplaying = false
-                        }
-                    } else {
-                        buildViewModel()
-                    }
-                }
-            }
-        } else {
-            linkAccessService.removeLink(
-                id: deletingLink.linkInfo.id,
-                title: deletingLink.linkInfo.title,
-                linkType: deletingLink.linkInfo.linkType,
-                password: deletingLink.linkInfo.password,
-                room: room
-            ) { [weak self] error in
-                guard let self else { return }
-                if let error {
-                    self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
                     buildViewModel()
-                    self.errorMessage = error.localizedDescription
-                } else {
-                    flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
                 }
+            } else {
+                try await linkAccessService.removeLink(
+                    id: deletingLink.linkInfo.id,
+                    title: deletingLink.linkInfo.title,
+                    linkType: deletingLink.linkInfo.linkType,
+                    password: deletingLink.linkInfo.password,
+                    room: room
+                )
+                flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
             }
+        } catch {
+            self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
+            buildViewModel()
+            self.errorMessage = error.localizedDescription
         }
     }
 

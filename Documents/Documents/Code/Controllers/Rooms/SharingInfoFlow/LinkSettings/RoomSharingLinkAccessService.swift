@@ -9,14 +9,14 @@
 import Foundation
 
 protocol RoomSharingLinkAccessService {
+
     func removeLink(
         id: String,
         title: String,
         linkType: ASCShareLinkType,
         password: String?,
-        room: ASCRoom,
-        completion: @escaping (Error?) -> Void
-    )
+        room: ASCRoom
+    ) async throws
 
     func revokeLink(
         id: String,
@@ -24,9 +24,8 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         password: String?,
         room: ASCRoom,
-        denyDownload: Bool,
-        completion: @escaping (Error?) -> Void
-    )
+        denyDownload: Bool
+    ) async throws
 
     func changeOrCreateLink(
         id: String?,
@@ -36,9 +35,8 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
-        room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
-    )
+        room: ASCRoom
+    ) async throws -> RoomLinkResponseModel
 
     func createLink(
         title: String,
@@ -47,15 +45,15 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
-        room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
-    )
+        room: ASCRoom
+    ) async throws -> RoomLinkResponseModel
 
     func createGeneralLink(
-        room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
-    )
+        room: ASCRoom
+    ) async throws -> RoomLinkResponseModel
 }
+
+// MARK: - Defaults
 
 extension RoomSharingLinkAccessService {
     func createLink(
@@ -65,10 +63,9 @@ extension RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool = false,
         password: String? = nil,
-        room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
-    ) {
-        changeOrCreateLink(
+        room: ASCRoom
+    ) async throws -> RoomLinkResponseModel {
+        try await changeOrCreateLink(
             id: nil,
             title: title,
             access: access,
@@ -76,24 +73,24 @@ extension RoomSharingLinkAccessService {
             linkType: linkType,
             denyDownload: denyDownload,
             password: password,
-            room: room,
-            completion: completion
+            room: room
         )
     }
 }
 
+// MARK: - Implementation
+
 final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
-    private var networkService = OnlyofficeApiClient.shared
+    private let networkService = OnlyofficeApiClient.shared
 
     func removeLink(
         id: String,
         title: String,
         linkType: ASCShareLinkType,
         password: String?,
-        room: ASCRoom,
-        completion: @escaping (Error?) -> Void
-    ) {
-        let requestModel = RoomRemoveLinkRequestModel(
+        room: ASCRoom
+    ) async throws {
+        let request = RoomRemoveLinkRequestModel(
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,
@@ -101,15 +98,11 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             password: password
         )
 
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.removeLink(folder: room), requestModel.dictionary) { response, error in
-            DispatchQueue.main.async {
-                guard response != nil, error == nil else {
-                    completion(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse)
-                    return
-                }
-                completion(nil)
-            }
-        }
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.removeLink(folder: room),
+            parameters: request.dictionary
+        )
+        guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
 
     func revokeLink(
@@ -118,10 +111,9 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         password: String?,
         room: ASCRoom,
-        denyDownload: Bool,
-        completion: @escaping (Error?) -> Void
-    ) {
-        let requestModel = RoomRevokeLinkRequestModel(
+        denyDownload: Bool
+    ) async throws {
+        let request = RoomRevokeLinkRequestModel(
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,
@@ -130,15 +122,11 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             denyDownload: denyDownload
         )
 
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.revokeLink(folder: room), requestModel.dictionary) { response, error in
-            DispatchQueue.main.async {
-                guard response != nil, error == nil else {
-                    completion(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse)
-                    return
-                }
-                completion(nil)
-            }
-        }
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.revokeLink(folder: room),
+            parameters: request.dictionary
+        )
+        guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
 
     func changeOrCreateLink(
@@ -149,10 +137,9 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
-        room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
-    ) {
-        let requestModel = RoomLinkRequestModel(
+        room: ASCRoom
+    ) async throws -> RoomLinkResponseModel {
+        let request = RoomLinkRequestModel(
             linkId: id,
             title: title,
             access: access,
@@ -162,37 +149,30 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             password: password
         )
 
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLinks(folder: room), requestModel.dictionary) { response, error in
-            DispatchQueue.main.async {
-                guard let result = response?.result else {
-                    completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
-                    return
-                }
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.setLinks(folder: room),
+            parameters: request.dictionary
+        )
 
-                completion(.success(result))
-            }
-        }
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
     }
 
     func createGeneralLink(
-        room: ASCRoom,
-        completion: @escaping (Result<RoomLinkResponseModel, Error>) -> Void
-    ) {
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
-            DispatchQueue.main.async {
-                guard let result = response?.result else {
-                    completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
-                    return
-                }
-                completion(.success(result))
-            }
-        }
+        room: ASCRoom
+    ) async throws -> RoomLinkResponseModel {
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)
+        )
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
     }
 }
 
 extension RoomSharingLinkAccessNetworkService {
     enum Errors: Error {
         case emptyResponse
+        case invalidData
     }
 }
 

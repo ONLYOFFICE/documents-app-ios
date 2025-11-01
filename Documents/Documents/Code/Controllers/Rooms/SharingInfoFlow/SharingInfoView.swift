@@ -71,9 +71,13 @@ struct SharingInfoView: View {
                         model: ASCCreateLinkCellModel(
                             textString: NSLocalizedString("Create and copy", comment: ""),
                             imageNames: [],
-                            onTapAction: viewModel.sharedLinksModels.isEmpty
-                                ? viewModel.createAndCopyGeneralLink
-                                : viewModel.createAndCopyAdditionalLink
+                            onTapAction: {
+                                Task { @MainActor in
+                                    viewModel.sharedLinksModels.isEmpty
+                                    ? viewModel.createAndCopyGeneralLink
+                                    : viewModel.createAndCopyAdditionalLink
+                                }
+                            }
                         )
                     )
                 } else {
@@ -217,7 +221,9 @@ private extension SharingInfoView {
             title: Text("Delete link"),
             message: Text("The link will be deleted permanently. You will not be able to undo this action."),
             primaryButton: .destructive(Text("Delete"), action: {
-                viewModel.proceedDeletingLink()
+                Task { @MainActor in
+                    await viewModel.proceedDeletingLink()
+                }
             }),
             secondaryButton: .cancel {
                 viewModel.declineRemoveLink()
@@ -230,7 +236,9 @@ private extension SharingInfoView {
             title: Text("Revoke link"),
             message: Text("The previous link will become unavailable. A new shared link will be created."),
             primaryButton: .destructive(Text("Revoke link"), action: {
-                viewModel.proceedDeletingLink()
+                Task { @MainActor in
+                    await viewModel.proceedDeletingLink()
+                }
             }),
             secondaryButton: .cancel {
                 viewModel.declineRemoveLink()

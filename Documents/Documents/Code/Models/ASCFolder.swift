@@ -33,6 +33,7 @@ class ASCFolder: ASCEntity {
     var rootFolderType: ASCFolderType = .default
     var updated: Date?
     var updatedBy: ASCUser?
+    var isFavorite: Bool?
     var created: Date?
     var createdBy: ASCUser?
     var new: Int = 0
@@ -86,6 +87,7 @@ class ASCFolder: ASCEntity {
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]
+        isFavorite <- map["isFavorite"]
         created <- (map["created"], ASCDateTransform())
         createdBy <- map["createdBy"]
         new <- map["new"]
@@ -126,6 +128,7 @@ class ASCFolder: ASCEntity {
             folder.rootFolderType = rootFolderType
             folder.updated = updated
             folder.updatedBy = updatedBy
+            folder.isFavorite = isFavorite
             folder.created = created
             folder.createdBy = createdBy
             folder.new = new

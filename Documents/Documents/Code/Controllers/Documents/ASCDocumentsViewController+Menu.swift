@@ -91,19 +91,6 @@ extension ASCDocumentsViewController {
             )
         }
 
-        /// Download action
-
-        if actions.contains(.download) {
-            topActions.append(
-                UIAction(
-                    title: NSLocalizedString("Download", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.down")
-                ) { [unowned self] action in
-                    self.download(cell: cell)
-                }
-            )
-        }
-
         /// Copy shared link
         let copySharedLink = UIAction(
             title: NSLocalizedString("Copy shared link", comment: ""),
@@ -165,23 +152,6 @@ extension ASCDocumentsViewController {
             )
         }
 
-        /// Favorite action
-
-        if actions.contains(.favarite) {
-            topActions.append(
-                UIAction(
-                    title: file.isFavorite
-                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
-                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
-                    image: file.isFavorite
-                        ? UIImage(systemName: "star.fill")
-                        : UIImage(systemName: "star")
-                ) { [unowned self] action in
-                    self.favorite(cell: cell, favorite: !file.isFavorite)
-                }
-            )
-        }
-
         /// Mark as read action
 
         if actions.contains(.new) {
@@ -191,6 +161,23 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "envelope.open")
                 ) { [unowned self] action in
                     self.markAsRead(cell: cell)
+                }
+            )
+        }
+
+        /// Favorite action
+
+        if actions.contains(.favarite) {
+            middleActions.append(
+                UIAction(
+                    title: file.isFavorite
+                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
+                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
+                    image: file.isFavorite
+                        ? UIImage(systemName: "star.fill")
+                        : UIImage(systemName: "star")
+                ) { [unowned self] action in
+                    self.favorite(cell: cell, favorite: !file.isFavorite)
                 }
             )
         }
@@ -220,6 +207,19 @@ extension ASCDocumentsViewController {
             image: UIImage(systemName: "folder")
         ) { [unowned self] action in
             self.move(cell: cell)
+        }
+
+        /// Download action
+
+        if actions.contains(.download) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Download", comment: "Button title"),
+                    image: UIImage(systemName: "square.and.arrow.down")
+                ) { [unowned self] action in
+                    self.download(cell: cell)
+                }
+            )
         }
 
         /// Transfer items
@@ -685,6 +685,23 @@ extension ASCDocumentsViewController {
                         guard let self else { return }
                         self.deleteRoomTemplate(template: folder)
                     }
+                }
+            )
+        }
+
+        if let isFavorite = folder.isFavorite,
+           actions.contains(.favarite)
+        {
+            transferActions.append(
+                UIAction(
+                    title: isFavorite
+                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
+                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
+                    image: isFavorite
+                        ? UIImage(systemName: "star.fill")
+                        : UIImage(systemName: "star")
+                ) { [unowned self] action in
+                    self.favorite(cell: cell, favorite: !isFavorite)
                 }
             )
         }

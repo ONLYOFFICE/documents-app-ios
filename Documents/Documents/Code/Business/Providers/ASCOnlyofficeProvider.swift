@@ -517,28 +517,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {
-        guard let file = entity as? ASCFile else {
+        var requestModel: [String: [String]] = [:]
+        var successCompletion: (() -> Void)?
+        let failCompletion = {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
+        }
+        switch entity {
+        case let file as ASCFile:
+            requestModel = ["fileIds": [file.id]]
+            file.isFavorite = favorite
+            successCompletion = { completeon?(self, file, true, nil) }
+        case let folder as ASCFolder:
+            requestModel = ["folderIds": [folder.id]]
+            folder.isFavorite = favorite
+            successCompletion = { completeon?(self, folder, true, nil) }
+        default:
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
 
-        if favorite {
-            apiClient.request(OnlyofficeAPI.Endpoints.Files.addFavorite, ["fileIds": [file.id]]) { response, error in
-                if response?.result ?? false {
-                    file.isFavorite = true
-                    completeon?(self, file, true, nil)
-                } else {
-                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
-                }
-            }
-        } else {
-            apiClient.request(OnlyofficeAPI.Endpoints.Files.removeFavorite, ["fileIds": [file.id]]) { response, error in
-                if response?.result ?? false {
-                    file.isFavorite = false
-                    completeon?(self, file, true, nil)
-                } else {
-                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
-                }
+        let endpoint = favorite
+            ? OnlyofficeAPI.Endpoints.Files.addFavorite
+            : OnlyofficeAPI.Endpoints.Files.removeFavorite
+
+        apiClient.request(endpoint, requestModel) { response, error in
+            if response?.result == true {
+                successCompletion?()
+            } else {
+                failCompletion()
             }
         }
     }
@@ -1566,6 +1572,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canSetCustomFilter {
                 entityActions.insert(.setCustomFilter)
             }
+
+            if !isTrash, !(file.rootFolderType == .archive), isDocspace {
+                entityActions.insert(.favarite)
+            }
         }
 
         return entityActions
@@ -1712,6 +1722,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                !folder.isTemplateRoom
             {
                 entityActions.insert(.changeRoomOwner)
+            }
+
+            if !(folder.rootFolderType == .trash), !(folder.rootFolderType == .archive), isDocspace, !folder.isRoom {
+                entityActions.insert(.favarite)
             }
         }
 

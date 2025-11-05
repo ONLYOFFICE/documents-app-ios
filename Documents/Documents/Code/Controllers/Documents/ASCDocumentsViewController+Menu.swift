@@ -137,6 +137,17 @@ extension ASCDocumentsViewController {
                 })
         }
 
+        if actions.contains(.openLocation) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Open location", comment: ""),
+                    image: Asset.Images.menuOpenLocation.image
+                ) { [unowned self] _ in
+                    // TODO: - open location
+                }
+            )
+        }
+
         /// Custom filter
 
         if actions.contains(.setCustomFilter) {
@@ -689,9 +700,8 @@ extension ASCDocumentsViewController {
             )
         }
 
-        if let isFavorite = folder.isFavorite,
-           actions.contains(.favarite)
-        {
+        if actions.contains(.favarite) {
+            let isFavorite = folder.isFavorite ?? false
             transferActions.append(
                 UIAction(
                     title: isFavorite
@@ -1073,6 +1083,18 @@ extension ASCDocumentsViewController {
                 ))
         }
 
+        if actions.contains(.openLocation) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Open location", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        // TODO: - open location
+                    }
+                )
+            )
+        }
+
         if actions.contains(.rename) {
             actionAlertController.addAction(
                 UIAlertAction(
@@ -1304,6 +1326,21 @@ extension ASCDocumentsViewController {
                     style: .default,
                     handler: { [unowned self] action in
                         self.move(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.favarite) {
+            let isFavorite = folder.isFavorite ?? false
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: isFavorite
+                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
+                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        self.favorite(cell: cell, favorite: !isFavorite)
                     }
                 )
             )

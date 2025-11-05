@@ -20,7 +20,13 @@ class SharingInfoRootViewController: UIHostingController<SharingInfoView> {
     init(room: ASCFolder) {
         super.init(
             rootView: SharingInfoView(
-                viewModel: SharingInfoViewModel(room: room)
+                viewModel: SharingInfoViewModel(
+                    room: room,
+                    linkAccessService: SharingInfoLinkAccessServiceImp(
+                        entityType: .room(room),
+                        roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService
+                    )
+                )
             )
         )
     }

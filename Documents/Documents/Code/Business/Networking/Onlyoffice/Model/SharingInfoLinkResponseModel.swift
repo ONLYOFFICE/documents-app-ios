@@ -1,5 +1,5 @@
 //
-//  RoomLinkResponseModel.swift
+//  SharingInfoLinkResponseModel.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 21.12.2023.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias RoomSharingLinkModel = RoomLinkResponseModel
+typealias SharingInfoLinkModel = SharingInfoLinkResponseModel
 
-struct RoomLinkResponseModel: Codable {
+struct SharingInfoLinkResponseModel: Codable {
     var access: ASCShareAccess
     let linkInfo: SharingLinkInfo
     let isLocked: Bool
@@ -26,7 +26,7 @@ struct RoomLinkResponseModel: Codable {
     }
 }
 
-extension RoomLinkResponseModel {
+extension SharingInfoLinkResponseModel {
     struct SharingLinkInfo: Codable {
         let id: String
         let title: String
@@ -45,7 +45,7 @@ extension RoomLinkResponseModel {
     }
 }
 
-extension RoomLinkResponseModel {
+extension SharingInfoLinkResponseModel {
     var isGeneral: Bool {
         linkInfo.primary
     }

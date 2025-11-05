@@ -36,7 +36,7 @@ protocol RoomSharingLinkAccessService {
         denyDownload: Bool,
         password: String?,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel
+    ) async throws -> SharingInfoLinkModel
 
     func createLink(
         title: String,
@@ -46,11 +46,11 @@ protocol RoomSharingLinkAccessService {
         denyDownload: Bool,
         password: String?,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel
+    ) async throws -> SharingInfoLinkModel
 
     func createGeneralLink(
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel
+    ) async throws -> SharingInfoLinkModel
 }
 
 // MARK: - Defaults
@@ -64,7 +64,7 @@ extension RoomSharingLinkAccessService {
         denyDownload: Bool = false,
         password: String? = nil,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel {
+    ) async throws -> SharingInfoLinkModel {
         try await changeOrCreateLink(
             id: nil,
             title: title,
@@ -138,7 +138,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         denyDownload: Bool,
         password: String?,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel {
+    ) async throws -> SharingInfoLinkModel {
         let request = RoomLinkRequestModel(
             linkId: id,
             title: title,
@@ -160,7 +160,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
 
     func createGeneralLink(
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel {
+    ) async throws -> SharingInfoLinkModel {
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)
         )

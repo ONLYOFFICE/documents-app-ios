@@ -295,7 +295,7 @@ private extension View {
     }
 
     func navigateToEditLink(
-        selectedLink: Binding<RoomSharingLinkModel?>,
+        selectedLink: Binding<SharingInfoLinkModel?>,
         viewModel: SharingInfoViewModel
     ) -> some View {
         navigation(item: selectedLink, destination: { link in
@@ -324,7 +324,13 @@ private extension View {
 struct SharingInfoView_Previews: PreviewProvider {
     static var previews: some View {
         SharingInfoView(
-            viewModel: SharingInfoViewModel(room: .init())
+            viewModel: SharingInfoViewModel(
+                room: .init(),
+                linkAccessService: SharingInfoLinkAccessServiceImp(
+                    entityType: .room(.init()),
+                    roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService
+                )
+            )
         )
     }
 }

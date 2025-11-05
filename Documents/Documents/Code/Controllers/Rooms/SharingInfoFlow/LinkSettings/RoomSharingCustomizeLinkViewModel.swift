@@ -85,17 +85,17 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         link?.linkInfo.id ?? outputLink?.linkInfo.id
     }
 
-    private let link: RoomSharingLinkModel?
+    private let link: SharingInfoLinkModel?
     private let room: ASCRoom
 
-    @Binding private var outputLink: RoomSharingLinkModel?
+    @Binding private var outputLink: SharingInfoLinkModel?
 
     private var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
 
     init(
         room: ASCRoom,
-        inputLink: RoomSharingLinkModel? = nil,
-        outputLink: Binding<RoomSharingLinkModel?>
+        inputLink: SharingInfoLinkModel? = nil,
+        outputLink: Binding<SharingInfoLinkModel?>
     ) {
         link = inputLink
         self.room = room

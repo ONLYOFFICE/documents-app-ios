@@ -211,7 +211,7 @@ private extension RoomSharingCustomizeLinkViewModel {
             }
             resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
             isSaved = true
-            try await Task.sleep(nanoseconds: UInt64(Double.dismissAfterSeconds) * 1_000_000)
+            try await Task.sleep(nanoseconds: UInt64(Double.dismissAfterSeconds) * 1_000_000_000)
             isReadyToDismissed = true
         } catch {
             isSaving = false

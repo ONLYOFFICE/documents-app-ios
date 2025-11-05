@@ -218,6 +218,9 @@
     "Add watermarks to documents" : {
 
     },
+    "Added to favorites" : {
+
+    },
     "Additional links" : {
 
     },
@@ -573,6 +576,9 @@
       "comment" : "Button title"
     },
     "Copy link" : {
+      "comment" : "Button title"
+    },
+    "Copy shared link" : {
       "comment" : "Button title"
     },
     "Copying" : {
@@ -1482,6 +1488,9 @@
     "Logout" : {
       "comment" : "Button title\nCaption of the process"
     },
+    "Manage" : {
+      "comment" : "Button title"
+    },
     "Mark as Favorite" : {
       "comment" : "Button title"
     },
@@ -1746,6 +1755,9 @@
     "Open Folder" : {
 
     },
+    "Open location" : {
+
+    },
     "Opened the form to fill out" : {
 
     },
@@ -1968,6 +1980,9 @@
     "Remove link" : {
 
     },
+    "Removed from favorites" : {
+
+    },
     "Removing" : {
       "comment" : "Caption of the process"
     },
@@ -2167,7 +2182,7 @@
 
     },
     "Share" : {
-
+      "comment" : "Button title"
     },
     "Share & collect" : {
       "comment" : "Title for sharing and collecting form"

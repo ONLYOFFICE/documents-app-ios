@@ -9,11 +9,16 @@
 // MARK: - Protocol
 
 protocol SharingInfoLinkAccessService {
+    
+    func fetchLinksAndUsers() async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel])
+    
     func createGeneralLink() async throws -> SharingInfoLinkModel
+    
     func createLink(
         title: String,
         linkType: ASCShareLinkType
     ) async throws -> SharingInfoLinkModel
+    
     func removeLink(
         id: String,
         title: String,
@@ -31,21 +36,31 @@ actor SharingInfoLinkAccessServiceImp {
     // MARK: Dependencies
     
     private let roomSharingLinkAccesskService: RoomSharingLinkAccessService
+    private let sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
     
     // MARK: Init
     
     init(
         entityType: EntityType,
-        roomSharingLinkAccesskService: RoomSharingLinkAccessService
+        roomSharingLinkAccesskService: RoomSharingLinkAccessService,
+        sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
     ) {
         self.entityType = entityType
         self.roomSharingLinkAccesskService = roomSharingLinkAccesskService
+        self.sharingRoomNetworkService = sharingRoomNetworkService
     }
 }
 
 // MARK: - SharingInfoLinkAccessServiceImp
 
 extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
+    
+    func fetchLinksAndUsers() async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel]) {
+        switch entityType {
+        case .room(let room):
+            try await sharingRoomNetworkService.fetch(room: room)
+        }
+    }
     
     func createGeneralLink() async throws -> SharingInfoLinkModel {
         switch entityType {

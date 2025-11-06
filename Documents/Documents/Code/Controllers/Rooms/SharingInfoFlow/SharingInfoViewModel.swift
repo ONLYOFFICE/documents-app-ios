@@ -69,7 +69,6 @@ final class SharingInfoViewModel: ObservableObject {
 
     // MARK: - Private vars
 
-    private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
     private let linkAccessService: SharingInfoLinkAccessService
     private var applyingDeletingLink: SharingInfoLinkModel?
     private var cancelable = Set<AnyCancellable>()
@@ -98,7 +97,7 @@ final class SharingInfoViewModel: ObservableObject {
     func loadData() async {
         isInitializing = true
         do {
-            let (links, sharings) = try await sharingRoomNetworkService.fetch(room: room)
+            let (links, sharings) = try await linkAccessService.fetchLinksAndUsers()
             flowModel.links = links
             flowModel.sharings = sharings
             buildViewModel()

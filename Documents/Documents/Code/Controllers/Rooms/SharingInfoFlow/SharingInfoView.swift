@@ -328,7 +328,8 @@ struct SharingInfoView_Previews: PreviewProvider {
                 room: .init(),
                 linkAccessService: SharingInfoLinkAccessServiceImp(
                     entityType: .room(.init()),
-                    roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService
+                    roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService,
+                    sharingRoomNetworkService: ServicesProvider.shared.roomSharingNetworkService
                 )
             )
         )

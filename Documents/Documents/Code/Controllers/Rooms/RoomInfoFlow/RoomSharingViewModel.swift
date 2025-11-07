@@ -313,9 +313,15 @@ private extension RoomSharingViewModel {
         if link.linkInfo.expirationDate != nil {
             imagesNames.append("clock.fill")
         }
+
+        var subtitle = link.linkInfo.internal
+            ? NSLocalizedString("Docspace user only", comment: "")
+            : NSLocalizedString("Anyone with the link", comment: "")
+
         return RoomSharingLinkRowModel(
             id: link.linkInfo.id,
             titleString: link.linkInfo.title,
+            subtitle: subtitle,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,

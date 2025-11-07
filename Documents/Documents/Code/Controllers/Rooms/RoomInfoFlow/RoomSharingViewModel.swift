@@ -365,7 +365,7 @@ private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
     static let fillingFormRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files.", comment: "")
-    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
+    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\nAccess for external users is provided depending\non the selected type of access rights.", comment: "")
     static let customRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
 }
 

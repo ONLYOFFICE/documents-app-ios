@@ -11,7 +11,8 @@ import SwiftUI
 
 struct ASCDetailedImageChevronUpDownCellViewModel {
     let title: String
-    let image: Image
+    var subtitle: String? = nil
+    var image: Image? = nil
     let isEnabled: Bool
 }
 
@@ -24,9 +25,14 @@ struct ASCDetailedImageChevronUpDownCellView: View {
                 .foregroundColor(model.isEnabled ? .label : .secondaryLabel)
             Spacer()
             HStack {
-                model.image
-                    .renderingMode(.template)
-                    .foregroundColor(.secondaryLabel)
+                if let image = model.image {
+                    image
+                        .renderingMode(.template)
+                        .foregroundColor(.secondaryLabel)
+                } else if let subtitle = model.subtitle {
+                    Text(verbatim: subtitle)
+                        .foregroundColor(.secondaryLabel)
+                }
                 ChevronUpDownView()
             }
         }

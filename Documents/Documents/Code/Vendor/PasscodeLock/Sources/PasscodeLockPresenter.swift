@@ -25,6 +25,7 @@
 
         private let passcodeConfiguration: PasscodeLockConfigurationType
         open var isPasscodePresented = false
+        open var hasPasscode = false
 
         public let passcodeLockVC: PasscodeLockViewController
 
@@ -32,6 +33,7 @@
             mainWindow = window
             mainWindow?.windowLevel = UIWindow.Level(rawValue: 1)
             passcodeConfiguration = configuration
+            hasPasscode = configuration.repository.hasPasscode
 
             passcodeLockVC = viewController
         }

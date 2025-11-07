@@ -137,16 +137,16 @@ extension ASCDocumentsViewController {
                 })
         }
 
-        if actions.contains(.openLocation) {
-            shareActions.append(
-                UIAction(
-                    title: NSLocalizedString("Open location", comment: ""),
-                    image: Asset.Images.menuOpenLocation.image
-                ) { [unowned self] _ in
-                    // TODO: - open location
-                }
-            )
-        }
+//        if actions.contains(.openLocation) {
+//            shareActions.append(
+//                UIAction(
+//                    title: NSLocalizedString("Open location", comment: ""),
+//                    image: Asset.Images.menuOpenLocation.image
+//                ) { [unowned self] _ in
+//
+//                }
+//            )
+//        }
 
         /// Custom filter
 
@@ -1083,17 +1083,17 @@ extension ASCDocumentsViewController {
                 ))
         }
 
-        if actions.contains(.openLocation) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Open location", comment: ""),
-                    style: .default,
-                    handler: { [unowned self] _ in
-                        // TODO: - open location
-                    }
-                )
-            )
-        }
+//        if actions.contains(.openLocation) {
+//            actionAlertController.addAction(
+//                UIAlertAction(
+//                    title: NSLocalizedString("Open location", comment: ""),
+//                    style: .default,
+//                    handler: { [unowned self] _ in
+//
+//                    }
+//                )
+//            )
+//        }
 
         if actions.contains(.rename) {
             actionAlertController.addAction(

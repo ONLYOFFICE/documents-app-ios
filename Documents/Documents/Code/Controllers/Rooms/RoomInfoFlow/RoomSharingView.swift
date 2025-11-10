@@ -21,7 +21,6 @@ struct RoomSharingView: View {
             .navigationBarTitle(Text(verbatim: viewModel.room.title), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
-            .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
             .navigationBarItems(viewModel: viewModel)
@@ -175,7 +174,10 @@ struct RoomSharingView: View {
 
     private var addButton: some View {
         Button {
-            viewModel.createAddLinkAction()
+            viewModel.sharedLinksModels.isEmpty
+                ? viewModel.createAndCopyGeneralLink()
+                : viewModel.createAndCopyAdditionalLink()
+
         } label: {
             Image(systemName: "plus")
                 .foregroundColor(Asset.Colors.brend.swiftUIColor)
@@ -271,18 +273,6 @@ private extension View {
                     onRemove: viewModel.onUserRemove(userId:)
                 )
             )
-        }
-    }
-
-    func navigateToCreateLink(
-        isDisplaing: Binding<Bool>,
-        viewModel: RoomSharingViewModel
-    ) -> some View {
-        navigation(isActive: isDisplaing) {
-            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
-                room: viewModel.room,
-                outputLink: viewModel.changedLinkBinding
-            ))
         }
     }
 

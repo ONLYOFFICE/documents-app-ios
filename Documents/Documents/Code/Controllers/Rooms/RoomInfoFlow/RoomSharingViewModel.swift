@@ -52,7 +52,6 @@ final class RoomSharingViewModel: ObservableObject {
 
     @Published var selectedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
-    @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
     @Published var isAddUsersScreenDisplaying: Bool = false
     @Published var isDeleteAlertDisplaying: Bool = false
@@ -105,10 +104,6 @@ final class RoomSharingViewModel: ObservableObject {
 
     func addUsers() {
         isAddUsersScreenDisplaying = true
-    }
-
-    func createAddLinkAction() {
-        isCreatingLinkScreenDisplaing = true
     }
 
     func createAndCopyGeneralLink() {
@@ -271,7 +266,7 @@ private extension RoomSharingViewModel {
             flowModel.links.append(inputLink)
         }
         // editing screen dismissed
-        if selectdLink == nil, !isCreatingLinkScreenDisplaing {
+        if selectdLink == nil {
             buildViewModel()
         }
         changedLink.send(nil)

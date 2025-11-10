@@ -2475,6 +2475,9 @@
     "This room is available to anyone with the link.\n External users will have View Only permission\n for all the files." : {
 
     },
+    "This room is available to anyone with the link.\nAccess for external users is provided depending\non the selected type of access rights." : {
+
+    },
     "This spreadsheet is being edited. Do you want open %@ to view only?" : {
 
     },

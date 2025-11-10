@@ -4829,6 +4829,12 @@ Os usuários externos terão a permissão Exibir somente
 para todos os arquivos.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+Access for external users is provided depending
+on the selected type of access rights.</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target state="translated">Esta planilha está sendo editada. Você deseja abrir %@ apenas para visualização?</target>

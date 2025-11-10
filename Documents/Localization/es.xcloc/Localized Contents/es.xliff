@@ -4826,6 +4826,12 @@ Los usuarios externos tendrán permiso de solo visualización
 para todos los archivos.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+Access for external users is provided depending
+on the selected type of access rights.</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target state="translated">Esta hoja de cálculo está siendo editada. ¿Desea abrir %@ en el modo de solo visualización?</target>

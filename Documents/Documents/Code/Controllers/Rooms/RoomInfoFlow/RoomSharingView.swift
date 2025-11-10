@@ -18,11 +18,13 @@ struct RoomSharingView: View {
         handleHUD()
 
         return screenView
-            .navigationBarTitle(Text(verbatim: viewModel.room.title), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
+            .toolbar {
+                navBarTitle
+            }
             .navigationBarItems(viewModel: viewModel)
             .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
@@ -45,6 +47,17 @@ struct RoomSharingView: View {
         } else {
             VStack {
                 ActivityIndicatorView()
+            }
+        }
+    }
+
+    private var navBarTitle: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            VStack {
+                Text(verbatim: viewModel.room.title)
+                Text(verbatim: viewModel.navbarSubtitle)
+                    .font(.footnote)
+                    .foregroundColor(.secondaryLabel)
             }
         }
     }

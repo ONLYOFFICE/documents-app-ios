@@ -384,3 +384,22 @@ extension RoomSharingViewModel {
         }
     }
 }
+
+extension RoomSharingViewModel {
+    var navbarSubtitle: String {
+        switch room.roomType {
+        case .public:
+            return NSLocalizedString("Public room", comment: "")
+        case .custom:
+            return NSLocalizedString("Custom Room", comment: "")
+        case .colobaration:
+            return NSLocalizedString("Collaboration Room", comment: "")
+        case .fillingForm:
+            return NSLocalizedString("Form Filling Room", comment: "")
+        case .virtualData:
+            return NSLocalizedString("Virtual Data Room", comment: "")
+        default:
+            return ""
+        }
+    }
+}

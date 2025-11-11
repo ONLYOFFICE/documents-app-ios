@@ -21,22 +21,15 @@ final class SharingInfoViewModel: ObservableObject {
 
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
-    var isPossibleCreateNewLink: Bool {
-        switch room.roomType {
-        case .colobaration, .virtualData:
-            return false
-        default:
-            return true
-        }
-    }
 
     var canAddLink: Bool {
         sharedLinksModels.count < linksLimit && isSharingPossible
     }
 
     let linksLimit = 6
-    var isSharingPossible: Bool { room.rootFolderType != .archive && room.security.editAccess }
-    var isUserSelectionAllow: Bool { room.rootFolderType != .archive && room.security.editAccess }
+    var isPossibleCreateNewLink: Bool { viewModelService.isPossibleCreateNewLink }
+    var isSharingPossible: Bool { viewModelService.isSharingPossible }
+    var isUserSelectionAllow: Bool { viewModelService.isUserSelectionAllow }
     private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false
@@ -69,6 +62,7 @@ final class SharingInfoViewModel: ObservableObject {
 
     // MARK: - Private vars
 
+    private let viewModelService: SharingInfoViewModelService
     private let linkAccessService: SharingInfoLinkAccessService
     private var applyingDeletingLink: SharingInfoLinkModel?
     private var cancelable = Set<AnyCancellable>()
@@ -77,9 +71,11 @@ final class SharingInfoViewModel: ObservableObject {
 
     init(
         room: ASCRoom,
+        viewModelService: SharingInfoViewModelService,
         linkAccessService: SharingInfoLinkAccessService
     ) {
         self.room = room
+        self.viewModelService = viewModelService
         self.linkAccessService = linkAccessService
         
         Task {

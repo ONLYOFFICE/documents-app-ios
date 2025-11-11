@@ -31,7 +31,7 @@ protocol SharingInfoLinkAccessService {
 
 actor SharingInfoLinkAccessServiceImp {
     
-    private let entityType: EntityType
+    private let entityType: SharingInfoEntityType
     
     // MARK: Dependencies
     
@@ -41,7 +41,7 @@ actor SharingInfoLinkAccessServiceImp {
     // MARK: Init
     
     init(
-        entityType: EntityType,
+        entityType: SharingInfoEntityType,
         roomSharingLinkAccesskService: RoomSharingLinkAccessService,
         sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
     ) {
@@ -99,14 +99,5 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
                 room: room
             )
         }
-    }
-}
-
-// MARK: - EntityType
-
-extension SharingInfoLinkAccessServiceImp {
-    
-    enum EntityType {
-        case room(ASCRoom)
     }
 }

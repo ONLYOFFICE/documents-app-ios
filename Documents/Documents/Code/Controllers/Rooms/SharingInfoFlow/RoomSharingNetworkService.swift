@@ -9,8 +9,8 @@
 import Foundation
 
 protocol RoomSharingNetworkServiceProtocol {
-    func fetch(room: ASCFolder) async throws -> ([RoomLinkResponseModel], [RoomUsersResponseModel])
-    func fetchRoomLinks(room: ASCFolder) async throws -> [RoomLinkResponseModel]
+    func fetch(room: ASCFolder) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel])
+    func fetchRoomLinks(room: ASCFolder) async throws -> [SharingInfoLinkResponseModel]
     func fetchRoomUsers(room: ASCFolder) async throws -> [RoomUsersResponseModel]
     func toggleRoomNotifications(room: ASCFolder) async throws -> RoomNotificationsResponceModel
     func duplicateRoom(
@@ -25,7 +25,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
 
     // MARK: fetch(room: links+users параллельно)
 
-    func fetch(room: ASCFolder) async throws -> ([RoomLinkResponseModel], [RoomUsersResponseModel]) {
+    func fetch(room: ASCFolder) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel]) {
         async let links = fetchRoomLinks(room: room)
         async let users = fetchRoomUsers(room: room)
         return try await(links, users)
@@ -33,7 +33,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
 
     // MARK: links
 
-    func fetchRoomLinks(room: ASCFolder) async throws -> [RoomLinkResponseModel] {
+    func fetchRoomLinks(room: ASCFolder) async throws -> [SharingInfoLinkResponseModel] {
         let requestModel = RoomLinksRequestModel(type: 1)
 
         let response = try await networkService.request(

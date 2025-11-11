@@ -464,14 +464,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
     }
 
     func favorite(for provider: ASCFileProviderProtocol, entity: AnyObject?, favorite: Bool, handler: ASCEntityHandler? = nil) {
-        guard let file = entity as? ASCFile else {
+        guard let entity = entity as? ASCEntity else {
             handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
 
         handler?(.begin, nil, nil)
 
-        provider.favorite(file, favorite: favorite) { provider, entity, success, error in
+        provider.favorite(entity, favorite: favorite) { provider, entity, success, error in
             if !success {
                 handler?(.error, nil, error ?? ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
             } else {

@@ -2616,64 +2616,83 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
 
     func favorite(cell: UICollectionViewCell, favorite: Bool) {
-        guard
-            let provider = provider,
-            let fileCell = cell as? ASCFileViewCell,
-            let file = fileCell.entity as? ASCFile
-        else { return }
+        func entity(from cell: UICollectionViewCell) -> ASCEntity? {
+            if let cell = cell as? ASCFileViewCell { return cell.entity }
+            if let cell = cell as? ASCFolderViewCell { return cell.entity }
+            return nil
+        }
+
+        guard let provider = provider, let entity = entity(from: cell) else { return }
 
         var hud: MBProgressHUD?
+        let message = favorite
+            ? NSLocalizedString("Added to favorites", comment: "")
+            : NSLocalizedString("Removed from favorites", comment: "")
 
-        ASCEntityManager.shared.favorite(for: provider, entity: file, favorite: favorite) { [unowned self] status, entity, error in
-            if status == .begin {
+        ASCEntityManager.shared.favorite(for: provider, entity: entity, favorite: favorite) { [weak self] status, updated, error in
+            guard let self else { return }
+
+            switch status {
+            case .begin:
                 hud = MBProgressHUD.showTopMost()
                 hud?.mode = .indeterminate
-            } else if status == .error {
-                hud?.hide(animated: true)
 
+            case .error:
+                hud?.hide(animated: true)
                 if let error {
                     UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
-            } else if status == .end {
-                if entity != nil {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: .standardDelay)
 
-                    if let indexPath = self.collectionView.indexPath(for: cell),
-                       let file = entity as? ASCFile
-                    {
-                        updateProviderStatus(for: file, indexPath: indexPath)
-                    }
-                } else {
+            case .end:
+                guard let updated else {
                     hud?.hide(animated: false)
+                    return
                 }
+                hud?.setSuccessState()
+                hud?.label.text = message
+                hud?.hide(animated: false, afterDelay: .standardDelay)
+
+                if let entity = updated as? ASCEntity {
+                    self.updateProviderStatus(for: entity)
+                }
+
+            @unknown default:
+                hud?.hide(animated: false)
             }
         }
     }
 
-    func updateProviderStatus(for entity: ASCEntity, indexPath: IndexPath) {
-        if let file = entity as? ASCFile {
-            handleStatusUpdate(for: file, indexPath: indexPath)
-        }
+    func updateProviderStatus(for entity: ASCEntity) {
+        handleStatusUpdate(entity)
     }
 
-    func handleStatusUpdate(for file: ASCFile, indexPath: IndexPath) {
-        if let index = tableData.firstIndex(where: { existingEntity -> Bool in
-            guard let existingFile = existingEntity as? ASCFile else { return false }
-            return existingFile.id == file.id
-        }) {
-            let updatedIndexPath = IndexPath(row: index, section: 0)
+    private func handleStatusUpdate(_ entity: ASCEntity) {
+        let extracted: (id: String, isFavorite: Bool?)? = {
+            if let file = entity as? ASCFile { return (file.id, file.isFavorite) }
+            if let folder = entity as? ASCFolder { return (folder.id, folder.isFavorite) }
+            return nil
+        }()
 
-            if categoryIsFavorite, !file.isFavorite {
-                provider?.remove(at: updatedIndexPath.row)
-                collectionView.deleteItems(at: [updatedIndexPath])
+        guard
+            let (id, isFavorite) = extracted,
+            let index = tableData.firstIndex(where: { $0.id == id })
+        else { return }
 
-                showEmptyView(total < 1)
-            } else {
-                provider?.items[updatedIndexPath.row] = file
-                collectionView.reloadItems(at: [updatedIndexPath])
-            }
+        let indexPath = IndexPath(row: index, section: 0)
+
+        if categoryIsFavorite, isFavorite == false {
+            provider?.remove(at: index)
+            collectionView.performBatchUpdates({
+                collectionView.deleteItems(at: [indexPath])
+            }, completion: { [weak self] _ in
+                let isEmpty = self?.provider?.items.isEmpty ?? (self?.tableData.isEmpty ?? false)
+                self?.showEmptyView(isEmpty)
+            })
+            return
         }
+
+        provider?.items[index] = entity
+        collectionView.reloadItems(at: [indexPath])
     }
 
     func markAsRead(cell: UICollectionViewCell) {

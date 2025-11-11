@@ -74,8 +74,8 @@ struct SharingInfoView: View {
                             onTapAction: {
                                 Task { @MainActor in
                                     viewModel.sharedLinksModels.isEmpty
-                                    ? viewModel.createAndCopyGeneralLink
-                                    : viewModel.createAndCopyAdditionalLink
+                                        ? viewModel.createAndCopyGeneralLink
+                                        : viewModel.createAndCopyAdditionalLink
                                 }
                             }
                         )

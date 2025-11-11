@@ -26,9 +26,9 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     // MARK: fetch(room: links+users параллельно)
 
     func fetch(room: ASCFolder) async throws -> ([RoomLinkResponseModel], [RoomUsersResponseModel]) {
-        async let links  = fetchRoomLinks(room: room)
-        async let users  = fetchRoomUsers(room: room)
-        return try await (links, users)
+        async let links = fetchRoomLinks(room: room)
+        async let users = fetchRoomUsers(room: room)
+        return try await(links, users)
     }
 
     // MARK: links
@@ -74,31 +74,31 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     // MARK: duplicate
 
     func duplicateRoom(
-         room: ASCFolder,
-         pollInterval: UInt64 = NSEC_PER_SEC,
-         progress: ((Int) -> Void)? = nil
-     ) async throws {
-         let req = RoomDuplicateRequestModel(folderIds: [room.id], fileIds: [])
-         let _ = try await networkService.request(
-             endpoint: OnlyofficeAPI.Endpoints.Operations.duplicateRoom,
-             parameters: req.dictionary
-         )
+        room: ASCFolder,
+        pollInterval: UInt64 = NSEC_PER_SEC,
+        progress: ((Int) -> Void)? = nil
+    ) async throws {
+        let req = RoomDuplicateRequestModel(folderIds: [room.id], fileIds: [])
+        _ = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Operations.duplicateRoom,
+            parameters: req.dictionary
+        )
 
-         // poling
-         while true {
-             try Task.checkCancellation()
-             let progressResult = try await fetchLatestOperationProgress()
-             progress?(progressResult)
-             if progressResult >= 100 { return }
-             try await Task.sleep(nanoseconds: pollInterval)
-         }
-     }
-    
+        // poling
+        while true {
+            try Task.checkCancellation()
+            let progressResult = try await fetchLatestOperationProgress()
+            progress?(progressResult)
+            if progressResult >= 100 { return }
+            try await Task.sleep(nanoseconds: pollInterval)
+        }
+    }
+
     private func fetchLatestOperationProgress() async throws -> Int {
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Operations.list
         )
-        
+
         guard let operation = response.result?.first else {
             throw NetworkingError.invalidData
         }

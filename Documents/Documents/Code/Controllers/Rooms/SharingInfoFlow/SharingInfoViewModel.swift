@@ -78,7 +78,7 @@ final class SharingInfoViewModel: ObservableObject {
 
     init(room: ASCRoom) {
         self.room = room
-        
+
         Task {
             await loadData()
         }
@@ -248,9 +248,9 @@ final class SharingInfoViewModel: ObservableObject {
                 flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
             }
         } catch {
-            self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
+            sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
             buildViewModel()
-            self.errorMessage = error.localizedDescription
+            errorMessage = error.localizedDescription
         }
     }
 

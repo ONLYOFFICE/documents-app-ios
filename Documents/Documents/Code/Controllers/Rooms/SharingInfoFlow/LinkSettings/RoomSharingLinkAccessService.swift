@@ -9,7 +9,6 @@
 import Foundation
 
 protocol RoomSharingLinkAccessService {
-
     func removeLink(
         id: String,
         title: String,

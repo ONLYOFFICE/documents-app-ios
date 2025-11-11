@@ -154,7 +154,7 @@ extension RoomSharingCustomizeLinkViewModel {
         guard isPossibleToSave else { return nil }
 
         await saveCurrentState()
-        
+
         return nil
     }
 
@@ -187,7 +187,6 @@ extension RoomSharingCustomizeLinkViewModel {
 // MARK: Private
 
 private extension RoomSharingCustomizeLinkViewModel {
-    
     @MainActor
     func saveCurrentState() async {
         isSaving = true

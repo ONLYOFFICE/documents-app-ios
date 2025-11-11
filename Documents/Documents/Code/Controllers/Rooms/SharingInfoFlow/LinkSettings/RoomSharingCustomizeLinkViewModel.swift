@@ -123,63 +123,63 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 // MARK: Handlers
 
 extension RoomSharingCustomizeLinkViewModel {
-    func onDelete() {
+    func onDelete() async {
         guard let linkId, var link = link ?? outputLink else { return }
         isDeleting = true
-        linkAccessService.removeLink(
-            id: linkId,
-            title: link.linkInfo.title,
-            linkType: link.linkInfo.linkType,
-            password: link.linkInfo.password,
-            room: room
-        ) { [self] error in
+        do {
+            try await linkAccessService.removeLink(
+                id: linkId,
+                title: link.linkInfo.title,
+                linkType: link.linkInfo.linkType,
+                password: link.linkInfo.password,
+                room: room
+            )
             isDeleting = false
-            guard error == nil else {
-                log.error(error?.localizedDescription ?? "")
-                errorMessage = error?.localizedDescription
-                return
-            }
             link.access = .none
             outputLink = link
             isDeleted = true
             isReadyToDismissed = true
+        } catch {
+            isDeleting = false
+            log.error(error.localizedDescription)
+            errorMessage = error.localizedDescription
         }
     }
 
-    func onSave(completion: @escaping (String?) -> Void) {
+    func onSave() async -> String? {
         if isProtected, !isPasswordValid(password) {
-            completion(.passwordErrorAlertMessage)
-            return
+            return .passwordErrorAlertMessage
         }
 
-        guard isPossibleToSave else { return }
+        guard isPossibleToSave else { return nil }
 
-        saveCurrentState()
-        completion(nil)
+        await saveCurrentState()
+
+        return nil
     }
 
-    func onRevoke() {
+    func onRevoke() async {
         guard let linkId,
               var link = link ?? outputLink else { return }
         isRevoking = true
-        linkAccessService.revokeLink(
-            id: linkId,
-            title: link.linkInfo.title,
-            linkType: link.linkInfo.linkType,
-            password: link.linkInfo.password,
-            room: room,
-            denyDownload: isRestrictCopyOn
-        ) { [self] error in
+        do {
+            try await linkAccessService.revokeLink(
+                id: linkId,
+                title: link.linkInfo.title,
+                linkType: link.linkInfo.linkType,
+                password: link.linkInfo.password,
+                room: room,
+                denyDownload: isRestrictCopyOn
+            )
             isRevoking = false
-            guard error == nil else {
-                log.error(error?.localizedDescription ?? "")
-                errorMessage = error?.localizedDescription
-                return
-            }
             link.access = .none
             outputLink = link
             isRevoked = true
             isReadyToDismissed = true
+        } catch {
+            isRevoking = false
+            log.error(error.localizedDescription)
+            errorMessage = error.localizedDescription
         }
     }
 }
@@ -187,41 +187,35 @@ extension RoomSharingCustomizeLinkViewModel {
 // MARK: Private
 
 private extension RoomSharingCustomizeLinkViewModel {
-    func saveCurrentState() {
+    @MainActor
+    func saveCurrentState() async {
         isSaving = true
-        linkAccessService.changeOrCreateLink(
-            id: linkId,
-            title: linkName,
-            access: selectedAccessRight.rawValue,
-            expirationDate: isTimeLimited ? Self.sendDateFormatter.string(from: selectedDate) : nil,
-            linkType: ASCShareLinkType.external,
-            denyDownload: isRestrictCopyOn,
-            password: isProtected ? password : nil,
-            room: room
-        ) { [self] result in
-            switch result {
-            case let .success(link):
-                DispatchQueue.main.async { [self] in
-                    isSaving = false
-                    UIPasteboard.general.string = link.linkInfo.shareLink
-                    outputLink = link
-                    defineSharingLink()
-                    if isExpired, selectedDate > Date() {
-                        isExpired = false
-                    }
-                    resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
-                    isSaved = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + CGFloat.dismissAfterSeconds) { [self] in
-                        self.isReadyToDismissed = true
-                    }
-                }
-            case let .failure(error):
-                DispatchQueue.main.async { [self] in
-                    isSaving = false
-                    log.error(error.localizedDescription)
-                    errorMessage = error.localizedDescription
-                }
+        do {
+            let link = try await linkAccessService.changeOrCreateLink(
+                id: linkId,
+                title: linkName,
+                access: selectedAccessRight.rawValue,
+                expirationDate: isTimeLimited ? Self.sendDateFormatter.string(from: selectedDate) : nil,
+                linkType: ASCShareLinkType.external,
+                denyDownload: isRestrictCopyOn,
+                password: isProtected ? password : nil,
+                room: room
+            )
+            isSaving = false
+            UIPasteboard.general.string = link.linkInfo.shareLink
+            outputLink = link
+            defineSharingLink()
+            if isExpired, selectedDate > Date() {
+                isExpired = false
             }
+            resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
+            isSaved = true
+            try await Task.sleep(nanoseconds: UInt64(Double.dismissAfterSeconds) * 1_000_000_000)
+            isReadyToDismissed = true
+        } catch {
+            isSaving = false
+            log.error(error.localizedDescription)
+            errorMessage = error.localizedDescription
         }
     }
 
@@ -253,8 +247,8 @@ private extension RoomSharingCustomizeLinkViewModel {
     }()
 }
 
-private extension CGFloat {
-    static let dismissAfterSeconds = 1.0
+private extension Double {
+    static let dismissAfterSeconds: Double = 1.0
 }
 
 private extension Int {

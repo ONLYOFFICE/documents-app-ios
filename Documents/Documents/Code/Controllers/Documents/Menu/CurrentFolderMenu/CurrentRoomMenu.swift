@@ -126,7 +126,9 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                         ? UIImage(systemName: "bell.slash")
                         : UIImage(systemName: "bell")
                 ) { [weak viewController] _ in
-                    viewController?.disableNotifications(room: folder)
+                    Task { @MainActor in
+                        await viewController?.disableNotifications(room: folder)
+                    }
                 }
             )
         }

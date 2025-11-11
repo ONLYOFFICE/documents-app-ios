@@ -566,7 +566,9 @@ extension ASCDocumentsViewController {
                         ? UIImage(systemName: "bell")
                         : UIImage(systemName: "bell.slash")
                 ) { [unowned self] action in
-                    disableNotifications(room: folder)
+                    Task { @MainActor in
+                        await disableNotifications(room: folder)
+                    }
                 }
             )
         }
@@ -609,7 +611,9 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Duplicate", comment: ""),
                     image: UIImage(systemName: "doc.on.doc")
                 ) { [unowned self] _ in
-                    self.duplicateRoom(room: folder)
+                    Task { @MainActor in
+                        await self.duplicateRoom(room: folder)
+                    }
                 }
             )
         }

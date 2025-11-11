@@ -27,19 +27,13 @@ class ASCSceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Initialize PasscodeLock presenter
         initPasscodeLock(for: window)
 
-        // Handle URL context if app was launched via URL
-        if let urlContext = connectionOptions.urlContexts.first {
-            handleUrl(urlContext.url)
-        }
-
-        // Handle shortcut item if app was launched via shortcut
-        if let shortcutItem = connectionOptions.shortcutItem {
-            handleShortcut(shortcutItem)
-        }
-
-        // Handle user activity if app was launched via user activity
-        if let userActivity = connectionOptions.userActivities.first {
-            handleUserActivity(userActivity)
+        if passcodeLockPresenter.hasPasscode {
+            passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = { [weak self] in
+                self?.handleConnectionOptions(connectionOptions)
+                self?.passcodeLockPresenter.dismissPasscodeLock(animated: true)
+            }
+        } else {
+            handleConnectionOptions(connectionOptions)
         }
     }
 
@@ -76,7 +70,31 @@ class ASCSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else { return }
-        handleUrl(url)
+        if passcodeLockPresenter.hasPasscode {
+            passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = { [weak self] in
+                self?.handleUrl(url)
+                self?.passcodeLockPresenter.dismissPasscodeLock(animated: true)
+            }
+        } else {
+            handleUrl(url)
+        }
+    }
+
+    func handleConnectionOptions(_ connectionOptions: UIScene.ConnectionOptions) {
+        // Handle URL context if app was launched via URL
+        if let urlContext = connectionOptions.urlContexts.first {
+            handleUrl(urlContext.url)
+        }
+
+        // Handle shortcut item if app was launched via shortcut
+        if let shortcutItem = connectionOptions.shortcutItem {
+            handleShortcut(shortcutItem)
+        }
+
+        // Handle user activity if app was launched via user activity
+        if let userActivity = connectionOptions.userActivities.first {
+            handleUserActivity(userActivity)
+        }
     }
 
     private func handleUrl(_ url: URL) {

@@ -637,9 +637,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             if open {
                 let title = file.title
                 let fileExt = title.fileExtension().lowercased()
-                let isDocument = fileExt == ASCConstants.FileExtensions.docx
-                let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
-                let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
+                let isDocument = ASCConstants.FileExtensions.documents.contains(fileExt)
+                let isSpreadsheet = ASCConstants.FileExtensions.spreadsheets.contains(fileExt)
+                let isPresentation = ASCConstants.FileExtensions.presentations.contains(fileExt)
                 let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
                 if isDocument || isSpreadsheet || isPresentation || isForm {
@@ -1872,11 +1872,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             hud?.mode = .annularDeterminate
             hud?.progress = 0
             hud?.label.text = NSLocalizedString("Duplication", comment: "Caption of the processing")
-            
+
             try await RoomSharingNetworkService().duplicateRoom(room: room) { progress in
                 hud?.progress = Float(progress)
             }
-            
+
             hud?.setSuccessState()
             hud?.hide(animated: false, afterDelay: .standardDelay)
             loadFirstPage()
@@ -1885,8 +1885,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             UIAlertController.showError(
                 in: self,
                 message: error.localizedDescription.isEmpty
-                ? NSLocalizedString("Could not duplicate the room.", comment: "")
-                : error.localizedDescription
+                    ? NSLocalizedString("Could not duplicate the room.", comment: "")
+                    : error.localizedDescription
             )
         }
     }

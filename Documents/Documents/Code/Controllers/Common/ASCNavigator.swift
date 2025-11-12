@@ -70,7 +70,7 @@ final class ASCNavigator {
             var shareRoomNavigationVC: ASCBaseNavigationController?
             if entity.isRoom {
                 if let room = entity as? ASCFolder {
-                    let shareRoomViewController = RoomSharingRootViewController(room: room)
+                    let shareRoomViewController = SharingInfoRootViewController(room: room)
                     shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
                 }
             } else if let sharedViewController = viewController as? ASCSharingOptionsViewController {
@@ -114,7 +114,7 @@ final class ASCNavigator {
             }
 
         case .roomSharingLink:
-            if let shareRoomViewController = viewController as? RoomSharingRootViewController {
+            if let shareRoomViewController = viewController as? SharingInfoRootViewController {
                 let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
 
                 shareRoomNavigationVC.modalPresentationStyle = .formSheet
@@ -183,7 +183,7 @@ final class ASCNavigator {
         case .themeOptions:
             return ASCAppThemeViewController()
         case let .roomSharingLink(folder):
-            return RoomSharingRootViewController(room: folder)
+            return SharingInfoRootViewController(room: folder)
         case let .sharedSettingsLink(file):
             return SharedSettingsRootViewController(file: file)
         }

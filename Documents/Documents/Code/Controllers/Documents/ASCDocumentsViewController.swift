@@ -637,9 +637,9 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             if open {
                 let title = file.title
                 let fileExt = title.fileExtension().lowercased()
-                let isDocument = fileExt == ASCConstants.FileExtensions.docx
-                let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
-                let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
+                let isDocument = ASCConstants.FileExtensions.documents.contains(fileExt)
+                let isSpreadsheet = ASCConstants.FileExtensions.spreadsheets.contains(fileExt)
+                let isPresentation = ASCConstants.FileExtensions.presentations.contains(fileExt)
                 let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
 
                 if isDocument || isSpreadsheet || isPresentation || isForm {
@@ -1743,25 +1743,24 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    func disableNotifications(room: ASCFolder) {
-        RoomSharingNetworkService().toggleRoomNotifications(room: room) { result in
-            switch result {
-            case let .success(responce):
-                if let roomId = Int(room.id),
-                   responce.disabledRooms.contains(roomId)
-                {
-                    room.mute = true
-                } else {
-                    room.mute = false
-                }
-            case let .failure(error):
-                log.error(error)
-
-                UIAlertController.showError(
-                    in: self,
-                    message: NSLocalizedString("Something wrong", comment: "")
-                )
+    @MainActor
+    func disableNotifications(room: ASCFolder) async {
+        do {
+            let responce = try await RoomSharingNetworkService().toggleRoomNotifications(room: room)
+            if let roomId = Int(room.id),
+               responce.disabledRooms.contains(roomId)
+            {
+                room.mute = true
+            } else {
+                room.mute = false
             }
+        } catch {
+            log.error(error)
+
+            UIAlertController.showError(
+                in: self,
+                message: NSLocalizedString("Something wrong", comment: "")
+            )
         }
     }
 
@@ -1866,28 +1865,29 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         present(vc, animated: true)
     }
 
-    func duplicateRoom(room: ASCFolder) {
+    func duplicateRoom(room: ASCFolder) async {
         var hud: MBProgressHUD?
+        do {
+            hud = MBProgressHUD.showTopMost()
+            hud?.mode = .annularDeterminate
+            hud?.progress = 0
+            hud?.label.text = NSLocalizedString("Duplication", comment: "Caption of the processing")
 
-        RoomSharingNetworkService().duplicateRoom(room: room) { [unowned self] status, progress, result, error, cancel in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-                hud?.mode = .annularDeterminate
-                hud?.progress = 0
-                hud?.label.text = NSLocalizedString("Duplication", comment: "Caption of the processing")
-            } else if status == .progress {
-                hud?.progress = progress
-            } else if status == .error {
-                hud?.hide(animated: true)
-                UIAlertController.showError(
-                    in: self,
-                    message: error?.localizedDescription ?? NSLocalizedString("Could not duplicate the room.", comment: "")
-                )
-            } else if status == .end {
-                hud?.setSuccessState()
-                hud?.hide(animated: false, afterDelay: .standardDelay)
-                loadFirstPage()
+            try await RoomSharingNetworkService().duplicateRoom(room: room) { progress in
+                hud?.progress = Float(progress)
             }
+
+            hud?.setSuccessState()
+            hud?.hide(animated: false, afterDelay: .standardDelay)
+            loadFirstPage()
+        } catch {
+            hud?.hide(animated: true)
+            UIAlertController.showError(
+                in: self,
+                message: error.localizedDescription.isEmpty
+                    ? NSLocalizedString("Could not duplicate the room.", comment: "")
+                    : error.localizedDescription
+            )
         }
     }
 

@@ -2352,7 +2352,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         copyProvider.cancel()
         copyProvider.reset()
         copyProvider.folder = folder
-        ASCEditorManager.shared.isOpenedFileFromDeeplink = isShareFile
+        ASCEditorManager.isOpenedFileFromDeeplink = isShareFile
         if isShareFile {
             let editorManager = ASCEditorManager(config: ASCEditorManager.Configuration(onlyofficeClient: apiClient))
             editorManager.editCloud(

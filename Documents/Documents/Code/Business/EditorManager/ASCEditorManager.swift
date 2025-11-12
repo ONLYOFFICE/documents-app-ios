@@ -110,7 +110,7 @@ class ASCEditorManager: NSObject {
         return openedFile != nil
     }
 
-    var isOpenedFileFromDeeplink: Bool = false
+    static var isOpenedFileFromDeeplink: Bool = false
 
     lazy var editorFontsPaths: [String] = {
         var paths = [Bundle.main.resourcePath?.appendingPathComponent("fonts") ?? ""]
@@ -1306,6 +1306,7 @@ extension ASCEditorManager {
 
                 cleanup()
                 openedFile = nil
+                ASCEditorManager.isOpenedFileFromDeeplink = false
 
                 return
             }
@@ -1401,6 +1402,7 @@ extension ASCEditorManager {
 
                                 cleanup()
                                 openedFile = nil
+                                ASCEditorManager.isOpenedFileFromDeeplink = false
                             }
                         }
                     )
@@ -1443,6 +1445,7 @@ extension ASCEditorManager {
 
                     cleanup()
                     openedFile = nil
+                    ASCEditorManager.isOpenedFileFromDeeplink = false
                 }
 
             } else {
@@ -1459,10 +1462,12 @@ extension ASCEditorManager {
 
                         cleanup()
                         self?.openedFile = nil
+                        ASCEditorManager.isOpenedFileFromDeeplink = false
                     }
                 } else {
                     cleanup()
                     openedFile = nil
+                    ASCEditorManager.isOpenedFileFromDeeplink = false
                 }
             }
 

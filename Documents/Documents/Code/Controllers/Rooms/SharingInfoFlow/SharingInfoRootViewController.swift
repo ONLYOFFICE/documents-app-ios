@@ -1,5 +1,5 @@
 //
-//  RoomSharingRootViewController.swift
+//  SharingInfoRootViewController.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 19.12.2023.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class RoomSharingRootViewController: UIHostingController<RoomSharingView> {
+class SharingInfoRootViewController: UIHostingController<SharingInfoView> {
     // MARK: - Lifecycle Methods
 
     @available(*, unavailable)
@@ -19,8 +19,8 @@ class RoomSharingRootViewController: UIHostingController<RoomSharingView> {
 
     init(room: ASCFolder) {
         super.init(
-            rootView: RoomSharingView(
-                viewModel: RoomSharingViewModel(room: room)
+            rootView: SharingInfoView(
+                viewModel: SharingInfoViewModel(room: room)
             )
         )
     }

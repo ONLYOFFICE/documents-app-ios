@@ -188,8 +188,8 @@ struct RoomSharingCustomizeLinkView: View {
         Button(
             NSLocalizedString("Done", comment: ""),
             action: {
-                viewModel.onSave { errorMessage in
-                    if let errorMessage = errorMessage {
+                Task { @MainActor in
+                    if let errorMessage = await viewModel.onSave() {
                         showErrorAlert(message: errorMessage)
                     }
                 }
@@ -240,7 +240,9 @@ struct RoomSharingCustomizeLinkView: View {
             title: Text("Delete link"),
             message: Text(verbatim: String.deleteAlertMessage),
             primaryButton: .destructive(Text("Delete"), action: {
-                viewModel.onDelete()
+                Task { @MainActor in
+                    await viewModel.onDelete()
+                }
             }),
             secondaryButton: .cancel()
         )
@@ -251,7 +253,9 @@ struct RoomSharingCustomizeLinkView: View {
             title: Text("Revoke link"),
             message: Text(verbatim: String.revokeAlertMessage),
             primaryButton: .destructive(Text("Revoke link"), action: {
-                viewModel.onRevoke()
+                Task { @MainActor in
+                    await viewModel.onRevoke()
+                }
             }),
             secondaryButton: .cancel()
         )

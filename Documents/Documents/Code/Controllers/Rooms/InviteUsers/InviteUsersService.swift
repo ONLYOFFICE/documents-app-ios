@@ -17,9 +17,8 @@ protocol InviteUsersService {
     func setExternalLinkAccess(
         linkId: String?,
         room: ASCRoom,
-        settingAccess: ASCShareAccess,
-        completion: @escaping (Result<ASCSharingOprionsExternalLink?, Error>) -> Void
-    )
+        settingAccess: ASCShareAccess
+    ) async throws -> ASCSharingOprionsExternalLink?
 }
 
 // MARK: - InviteUsersServiceImp
@@ -67,27 +66,19 @@ extension InviteUsersServiceImp: InviteUsersService {
     func setExternalLinkAccess(
         linkId: String?,
         room: ASCRoom,
-        settingAccess: ASCShareAccess,
-        completion: @escaping (Result<ASCSharingOprionsExternalLink?, Error>) -> Void
-    ) {
+        settingAccess: ASCShareAccess
+    ) async throws -> ASCSharingOprionsExternalLink? {
         if let linkId, settingAccess == .deny || settingAccess == .none {
-            roomLinkService.removeLink(
+            try await roomLinkService.removeLink(
                 id: linkId,
                 title: "Invite",
                 linkType: .invitation,
                 password: nil,
                 room: room
-            ) { error in
-                if let error {
-                    completion(
-                        .failure(error)
-                    )
-                } else {
-                    completion(.success(nil))
-                }
-            }
+            )
+            return nil
         } else {
-            roomLinkService.changeOrCreateLink(
+            let model = try await roomLinkService.changeOrCreateLink(
                 id: linkId,
                 title: "Invite",
                 access: settingAccess.rawValue,
@@ -96,25 +87,13 @@ extension InviteUsersServiceImp: InviteUsersService {
                 denyDownload: false,
                 password: nil,
                 room: room
-            ) { result in
-                switch result {
-                case let .success(model):
-                    completion(
-                        .success(
-                            ASCSharingOprionsExternalLink(
-                                id: model.linkInfo.id,
-                                link: model.linkInfo.shareLink,
-                                isLocked: model.isLocked,
-                                access: model.access
-                            )
-                        )
-                    )
-                case let .failure(error):
-                    completion(
-                        .failure(error)
-                    )
-                }
-            }
+            )
+            return ASCSharingOprionsExternalLink(
+                id: model.linkInfo.id,
+                link: model.linkInfo.shareLink,
+                isLocked: model.isLocked,
+                access: model.access
+            )
         }
     }
 }

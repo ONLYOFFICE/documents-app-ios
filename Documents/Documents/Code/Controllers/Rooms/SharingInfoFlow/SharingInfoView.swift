@@ -191,10 +191,11 @@ struct SharingInfoView: View {
 
     private var addButton: some View {
         Button {
-            viewModel.sharedLinksModels.isEmpty
-                ? viewModel.createAndCopyGeneralLink()
-                : viewModel.createAndCopyAdditionalLink()
-
+            Task { @MainActor in
+                await viewModel.sharedLinksModels.isEmpty
+                    ? viewModel.createAndCopyGeneralLink()
+                    : viewModel.createAndCopyAdditionalLink()
+            }
         } label: {
             Image(systemName: "plus")
                 .foregroundColor(Asset.Colors.brend.swiftUIColor)

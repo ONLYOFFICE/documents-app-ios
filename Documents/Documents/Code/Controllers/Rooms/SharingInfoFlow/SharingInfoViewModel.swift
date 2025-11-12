@@ -389,7 +389,7 @@ extension SharingInfoViewModel {
     }
 }
 
-extension RoomSharingViewModel {
+extension SharingInfoViewModel {
     var navbarSubtitle: String {
         switch room.roomType {
         case .public:

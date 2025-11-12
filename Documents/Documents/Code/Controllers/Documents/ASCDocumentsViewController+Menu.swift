@@ -492,7 +492,9 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Duplicate", comment: ""),
             image: UIImage(systemName: "doc.on.doc")
         ) { [unowned self] _ in
-            self.duplicateRoom(room: folder)
+            Task { @MainActor in
+                await self.duplicateRoom(room: folder)
+            }
         }
 
         /// Download

@@ -407,4 +407,3 @@ extension SharingInfoViewModel {
         }
     }
 }
-

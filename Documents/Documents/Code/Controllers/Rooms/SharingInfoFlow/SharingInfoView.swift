@@ -29,7 +29,7 @@ struct SharingInfoView: View {
             .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
     }
-    
+
     private var navBarTitle: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             VStack {

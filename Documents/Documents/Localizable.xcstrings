@@ -7221,6 +7221,9 @@
         }
       }
     },
+    "Added to favorites" : {
+
+    },
     "Additional links" : {
       "localizations" : {
         "ar-SA" : {
@@ -15919,6 +15922,9 @@
           }
         }
       }
+    },
+    "Copy shared link" : {
+      "comment" : "Button title"
     },
     "Copying" : {
       "comment" : "Caption of the processing",
@@ -40637,6 +40643,9 @@
         }
       }
     },
+    "Manage" : {
+      "comment" : "Button title"
+    },
     "Mark as Favorite" : {
       "comment" : "Button title",
       "localizations" : {
@@ -48313,6 +48322,9 @@
         }
       }
     },
+    "Open location" : {
+
+    },
     "Opened the form to fill out" : {
       "localizations" : {
         "ar-SA" : {
@@ -54534,6 +54546,9 @@
         }
       }
     },
+    "Removed from favorites" : {
+
+    },
     "Removing" : {
       "comment" : "Caption of the process",
       "localizations" : {
@@ -60314,6 +60329,7 @@
       }
     },
     "Share" : {
+      "comment" : "Button title",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
@@ -69239,6 +69255,9 @@
           }
         }
       }
+    },
+    "This room is available to anyone with the link.\nAccess for external users is provided depending\non the selected type of access rights." : {
+
     },
     "This spreadsheet is being edited. Do you want open %@ to view only?" : {
       "localizations" : {

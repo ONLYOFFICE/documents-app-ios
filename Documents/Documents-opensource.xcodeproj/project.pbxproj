@@ -41,6 +41,8 @@
 		E86A8F052C94A5630062198A /* FillFormMenuScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86A8F042C94A5630062198A /* FillFormMenuScreen.swift */; };
 		E86A8F092C94C0260062198A /* CopyFileInsideProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86A8F082C94C0250062198A /* CopyFileInsideProviderService.swift */; };
 		E86A8F0B2C94DB3D0062198A /* FillFormMenuScreenRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86A8F0A2C94DB3D0062198A /* FillFormMenuScreenRepresentable.swift */; };
+		E86E4E5D2E9AE2FC0093A9B0 /* OnlyofficeSharedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E4E5C2E9AE2FC0093A9B0 /* OnlyofficeSharedUser.swift */; };
+		E86E4E5F2E9AE3240093A9B0 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E4E5E2E9AE3240093A9B0 /* UIImageView+Extensions.swift */; };
 		E8720A912D3DA18E0048D14F /* PeopleGuestsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8720A902D3DA17C0048D14F /* PeopleGuestsRequestModel.swift */; };
 		E87FF6742BF746F8000EFDE5 /* PeopleFilterRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6722BF746F8000EFDE5 /* PeopleFilterRequestModel.swift */; };
 		E87FF6752BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FF6732BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift */; };
@@ -781,6 +783,8 @@
 		E86A8F042C94A5630062198A /* FillFormMenuScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreen.swift; sourceTree = "<group>"; };
 		E86A8F082C94C0250062198A /* CopyFileInsideProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFileInsideProviderService.swift; sourceTree = "<group>"; };
 		E86A8F0A2C94DB3D0062198A /* FillFormMenuScreenRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFormMenuScreenRepresentable.swift; sourceTree = "<group>"; };
+		E86E4E5C2E9AE2FC0093A9B0 /* OnlyofficeSharedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeSharedUser.swift; sourceTree = "<group>"; };
+		E86E4E5E2E9AE3240093A9B0 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		E8720A902D3DA17C0048D14F /* PeopleGuestsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleGuestsRequestModel.swift; sourceTree = "<group>"; };
 		E87FF6722BF746F8000EFDE5 /* PeopleFilterRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleFilterRequestModel.swift; sourceTree = "<group>"; };
 		E87FF6732BF746F8000EFDE5 /* ChangeRoomOwnerRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeRoomOwnerRequestModel.swift; sourceTree = "<group>"; };
@@ -2423,6 +2427,7 @@
 				FC03A63B2BDA7F67005E8FFB /* RoomNotificationsResponceModel.swift */,
 				F3D3A9572D443513002E43D4 /* SharePasswordResponseModel.swift */,
 				E883CF642EC4D0A600921A51 /* SharingInfoLinkResponseModel.swift */,
+				E86E4E5C2E9AE2FC0093A9B0 /* OnlyofficeSharedUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2725,6 +2730,7 @@
 		FC31B2851E76C01B008699C3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E86E4E5E2E9AE3240093A9B0 /* UIImageView+Extensions.swift */,
 				FC83D5F42A974E2200C404CB /* Array+Extensions.swift */,
 				FC83D5D62A974E1C00C404CB /* CALayer+Animate.swift */,
 				FC83D5ED2A974E2100C404CB /* Collection+Extensions.swift */,
@@ -4613,6 +4619,7 @@
 				FC5943B92AE6B3C4001BA2F9 /* ASCIntroPage.swift in Sources */,
 				FC83D60D2A974E2300C404CB /* UIWindow+Extensions.swift in Sources */,
 				FC4820932C33D7F500E22605 /* ASCEntityViewLayoutType.swift in Sources */,
+				E86E4E5D2E9AE2FC0093A9B0 /* OnlyofficeSharedUser.swift in Sources */,
 				FC379D692C380C5900B120D9 /* ASCCreateLinkCellView.swift in Sources */,
 				E8720A912D3DA18E0048D14F /* PeopleGuestsRequestModel.swift in Sources */,
 				FC379D5B2C380C5900B120D9 /* ASCDocSpaceLinkViewModel.swift in Sources */,
@@ -4639,6 +4646,7 @@
 				FC83D5822A9742F000C404CB /* ASCAccountsManager.swift in Sources */,
 				FCCC8D8F2DDCA8A00045DB93 /* ASCHelpAndFeedbackViewController.swift in Sources */,
 				FC7081D62812E2260057FCD2 /* ASCConnectCloudViewController.swift in Sources */,
+				E86E4E5F2E9AE3240093A9B0 /* UIImageView+Extensions.swift in Sources */,
 				FC7081D92812E2260057FCD2 /* ASCYandexFileProvider.swift in Sources */,
 				FC7081DB2812E2260057FCD2 /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				FC7081DC2812E2260057FCD2 /* ASCPortalTypeDefinderProtocol.swift in Sources */,

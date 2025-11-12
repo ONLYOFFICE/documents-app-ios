@@ -37,10 +37,11 @@ extension SharingInfoLinkResponseModel {
         let denyDownload: Bool
         let isExpired: Bool
         let primary: Bool
+        let `internal`: Bool
         let requestToken: String?
 
         enum CodingKeys: String, CodingKey {
-            case id, title, shareLink, expirationDate, linkType, password, denyDownload, isExpired, primary, requestToken
+            case id, title, shareLink, expirationDate, linkType, password, denyDownload, isExpired, primary, `internal`, requestToken
         }
     }
 }

@@ -105,6 +105,8 @@
 		E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82715762B5EBA66004137F3 /* KFImageView.swift */; };
 		E82DA8942C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */; };
 		E83248C22EBB82480013990C /* SharingInfoLinkAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83248C12EBB822E0013990C /* SharingInfoLinkAccessService.swift */; };
+		E86E4E612E9AE3BD0093A9B0 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E4E602E9AE3BD0093A9B0 /* UIImageView+Extensions.swift */; };
+		E86E4E632E9AE42F0093A9B0 /* OnlyofficeSharedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E4E622E9AE42F0093A9B0 /* OnlyofficeSharedUser.swift */; };
 		E879A0EB2E0FEA6D000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879A0EA2E0FEA5B000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift */; };
 		E87CCAE12C9DBECF00C43968 /* ASCTransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */; };
 		E87CCAE42C9DCBB000C43968 /* CopyFileInsideProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */; };
@@ -841,6 +843,8 @@
 		E82715762B5EBA66004137F3 /* KFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
 		E82DA8932C32021500928641 /* ASCConnectCloudViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E83248C12EBB822E0013990C /* SharingInfoLinkAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingInfoLinkAccessService.swift; sourceTree = "<group>"; };
+		E86E4E602E9AE3BD0093A9B0 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		E86E4E622E9AE42F0093A9B0 /* OnlyofficeSharedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeSharedUser.swift; sourceTree = "<group>"; };
 		E879A0EA2E0FEA5B000202C5 /* ASCDocumentsViewController+ASCProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+ASCProviderDelegate.swift"; sourceTree = "<group>"; };
 		E87CCAE02C9DBECF00C43968 /* ASCTransferViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewModel.swift; sourceTree = "<group>"; };
 		E87CCAE22C9DCBB000C43968 /* CopyFileInsideProviderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyFileInsideProviderService.swift; sourceTree = "<group>"; };
@@ -2434,6 +2438,7 @@
 		FC31B2851E76C01B008699C3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E86E4E602E9AE3BD0093A9B0 /* UIImageView+Extensions.swift */,
 				F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */,
 				F35933202B305CAF00449F33 /* View+Extensions.swift */,
 				FC35D41F2A987DF800C6383F /* Array+Extensions.swift */,
@@ -3400,6 +3405,7 @@
 			isa = PBXGroup;
 			children = (
 				1D4731972E5F736900604A1A /* SharingInfoLinkResponseModel.swift */,
+				E86E4E622E9AE42F0093A9B0 /* OnlyofficeSharedUser.swift */,
 				1D4731982E5F736900604A1A /* RoomUsersResponseModel.swift */,
 				FC9EEF902BFB201700A66DE8 /* Request */,
 				F39306A42C74ECBC0034691F /* OnlyofficeRoomOperation.swift */,
@@ -4918,6 +4924,7 @@
 				FC2A74B92C383C4800A515F7 /* ASCEntityViewCellProtocol.swift in Sources */,
 				1D8DF02F2639B6B10054B2F9 /* ASCOneDriveProvider.swift in Sources */,
 				FCE835192A84CAF100EFA839 /* CreateEntityViewModel.swift in Sources */,
+				E86E4E612E9AE3BD0093A9B0 /* UIImageView+Extensions.swift in Sources */,
 				FC759CD72C00687A00510096 /* DispatchQueueExtensions.swift in Sources */,
 				F3D385172C8F7B40002889EE /* ASCUserWithEmailRowView.swift in Sources */,
 				FC759C2E2C00614D00510096 /* Rooms.swift in Sources */,
@@ -5074,6 +5081,7 @@
 				F3AAEFC328241179008ED772 /* ASCFiltersCollectionViewModelBuilder.swift in Sources */,
 				F30DD7D82DEF27D900E82CA9 /* ASCRoomTemplatesViewModel.swift in Sources */,
 				FC5943602AE6816E001BA2F9 /* EditorDocumentProtocol.swift in Sources */,
+				E86E4E632E9AE42F0093A9B0 /* OnlyofficeSharedUser.swift in Sources */,
 				FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */,
 				FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */,
 				FC41D80E2265DADC00A155C2 /* ASCFileProviderType.swift in Sources */,

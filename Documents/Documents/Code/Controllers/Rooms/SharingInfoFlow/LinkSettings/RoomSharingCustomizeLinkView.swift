@@ -72,11 +72,13 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var generalSection: some View {
         Section(
-            header: Text("General"))
-        {
+            header: Text("General")
+        ) {
             accessCell
-            timeLimitCell
-                .disabled(viewModel.isExpired)
+            if viewModel.showTimeLimit {
+                timeLimitCell
+                    .disabled(viewModel.isExpired)
+            }
         }
     }
 
@@ -174,7 +176,7 @@ struct RoomSharingCustomizeLinkView: View {
             MenuView(menuItems: viewModel.accessMenuItems) {
                 ASCDetailedImageChevronUpDownCellView(model: ASCDetailedImageChevronUpDownCellViewModel(
                     title: NSLocalizedString("Access rights", comment: ""),
-                    image: viewModel.selectedAccessRight.swiftUIImage ?? Image(""),
+                    subtitle: viewModel.selectedAccessRight.title(),
                     isEnabled: !viewModel.isExpired
                 ))
             }

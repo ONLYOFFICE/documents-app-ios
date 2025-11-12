@@ -1343,6 +1343,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target state="translated">Ajouter des filigranes aux documents</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Added to favorites" xml:space="preserve">
+        <source>Added to favorites</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target state="translated">Liens supplémentaires</target>
@@ -1789,6 +1793,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
         <target state="translated">Copier le lien</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -3172,6 +3180,10 @@ Caption of the process</note>
         <target state="translated">Mo</target>
         <note>Measurement unit</note>
       </trans-unit>
+      <trans-unit id="Manage" xml:space="preserve">
+        <source>Manage</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target state="translated">Marquer comme favori</target>
@@ -3589,6 +3601,10 @@ Share status</note>
         <target state="translated">Ouvrir le fichier</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Open location" xml:space="preserve">
+        <source>Open location</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
         <target state="translated">a ouvert le formulaire à remplir</target>
@@ -3956,6 +3972,10 @@ Share status</note>
         <target state="translated">Supprimer le lien</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Removed from favorites" xml:space="preserve">
+        <source>Removed from favorites</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
         <target state="translated">Suppression</target>
@@ -4296,7 +4316,7 @@ Navigation bar button title</note>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
         <target state="translated">Partager</target>
-        <note/>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
@@ -4826,6 +4846,12 @@ pour tous les fichiers.</target>
         <target state="translated">Cette salle est accessible à toute personne possédant le lien.
 Les utilisateurs externes auront l'autorisation de voir uniquement
 tous les fichiers.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+Access for external users is provided depending
+on the selected type of access rights.</source>
         <note/>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">

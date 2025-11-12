@@ -50,7 +50,6 @@ final class SharingInfoViewModel: ObservableObject {
 
     @Published var selectedUser: ASCUser?
     @Published var selectdLink: SharingInfoLinkModel?
-    @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
     @Published var isAddUsersScreenDisplaying: Bool = false
     @Published var isDeleteAlertDisplaying: Bool = false
@@ -113,10 +112,6 @@ final class SharingInfoViewModel: ObservableObject {
 
     func addUsers() {
         isAddUsersScreenDisplaying = true
-    }
-
-    func createAddLinkAction() {
-        isCreatingLinkScreenDisplaing = true
     }
 
     func createAndCopyGeneralLink() async {
@@ -274,7 +269,7 @@ private extension SharingInfoViewModel {
             flowModel.links.append(inputLink)
         }
         // editing screen dismissed
-        if selectdLink == nil, !isCreatingLinkScreenDisplaing {
+        if selectdLink == nil {
             buildViewModel()
         }
         changedLink.send(nil)
@@ -316,9 +311,15 @@ private extension SharingInfoViewModel {
         if link.linkInfo.expirationDate != nil {
             imagesNames.append("clock.fill")
         }
+
+        var subtitle = link.linkInfo.internal
+            ? NSLocalizedString("Docspace user only", comment: "")
+            : NSLocalizedString("Anyone with the link", comment: "")
+
         return RoomSharingLinkRowModel(
             id: link.linkInfo.id,
             titleString: link.linkInfo.title,
+            subtitle: subtitle,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,
@@ -367,6 +368,10 @@ private extension SharingInfoViewModel {
 extension SharingInfoViewModel {
     var title: String {
         viewModelService.title
+    }
+    
+    var navbarSubtitle: String {
+        viewModelService.navbarSubtitle
     }
 
     var entityDescription: String? {

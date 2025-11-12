@@ -57,6 +57,8 @@
 		E854595E2EC4C98E00C2B34E /* SharingInfoEntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854595D2EC4C98E00C2B34E /* SharingInfoEntityType.swift */; };
 		E85459622EC4CA1E00C2B34E /* SharingInfoLinkAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854595F2EC4CA1E00C2B34E /* SharingInfoLinkAccessService.swift */; };
 		E85459632EC4CA1E00C2B34E /* SharingInfoViewModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85459602EC4CA1E00C2B34E /* SharingInfoViewModelService.swift */; };
+		E865EE042E8AF817001838C1 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865EE032E8AF80D001838C1 /* UIImageView+Extensions.swift */; };
+		E865EE062E8AFCF1001838C1 /* OnlyofficeSharedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865EE052E8AFCDA001838C1 /* OnlyofficeSharedUser.swift */; };
 		E8674B752B2B15C200CDA5DC /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */; };
 		E8674B762B2B15C200CDA5DC /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B6E2B2B15C100CDA5DC /* WSTagsFieldRepresentable.swift */; };
 		E8674B782B2B15C200CDA5DC /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B702B2B15C100CDA5DC /* ActivityIndicatorView.swift */; };
@@ -897,6 +899,8 @@
 		E854595D2EC4C98E00C2B34E /* SharingInfoEntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingInfoEntityType.swift; sourceTree = "<group>"; };
 		E854595F2EC4CA1E00C2B34E /* SharingInfoLinkAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingInfoLinkAccessService.swift; sourceTree = "<group>"; };
 		E85459602EC4CA1E00C2B34E /* SharingInfoViewModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingInfoViewModelService.swift; sourceTree = "<group>"; };
+		E865EE032E8AF80D001838C1 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		E865EE052E8AFCDA001838C1 /* OnlyofficeSharedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeSharedUser.swift; sourceTree = "<group>"; };
 		E8674B6C2B2B15C100CDA5DC /* TagsFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
 		E8674B6E2B2B15C100CDA5DC /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
 		E8674B702B2B15C100CDA5DC /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -2259,6 +2263,7 @@
 				FC83D51B2A973E2000C404CB /* UIDevice+Extension.swift */,
 				FC83D50A2A973E1E00C404CB /* UIFont+Extensions.swift */,
 				FC83D4FA2A973E1D00C404CB /* UIImage+Extension.swift */,
+				E865EE032E8AF80D001838C1 /* UIImageView+Extensions.swift */,
 				FC83D5062A973E1E00C404CB /* UILabel+Extension.swift */,
 				FC83D50B2A973E1F00C404CB /* UINavigationController+Extension.swift */,
 				FC83D51E2A973E2000C404CB /* UINavigationItem+Extensions.swift */,
@@ -3373,6 +3378,7 @@
 				FC9EF0152BFB208800A66DE8 /* OnlyofficePath.swift */,
 				FC9EF0162BFB208800A66DE8 /* OnlyofficeResponse.swift */,
 				FC9EF0172BFB208800A66DE8 /* OnlyofficeShare.swift */,
+				E865EE052E8AFCDA001838C1 /* OnlyofficeSharedUser.swift */,
 				FC9EF0182BFB208800A66DE8 /* OnlyofficeUserPhoto.swift */,
 				FC9EF0192BFB208800A66DE8 /* OnlyofficeVersion.swift */,
 				FC9EF01B2BFB208800A66DE8 /* RoomNotificationsResponceModel.swift */,
@@ -4458,6 +4464,7 @@
 				FC83D54B2A973E2100C404CB /* UITextField+Extensions.swift in Sources */,
 				F3772FCC2C9DEBC0002B33A8 /* CompletedFormResponceModel.swift in Sources */,
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
+				E865EE042E8AF817001838C1 /* UIImageView+Extensions.swift in Sources */,
 				FC00CC002C4664DD00D3344D /* ASCThirdpartySelectFolderProvider.swift in Sources */,
 				FC759BCB2C00611000510096 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FC7D9984272996D600410795 /* UIButton+Style.swift in Sources */,
@@ -4690,6 +4697,7 @@
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
+				E865EE062E8AFCF1001838C1 /* OnlyofficeSharedUser.swift in Sources */,
 				FC83D52A2A973E2100C404CB /* URL+Extensions.swift in Sources */,
 				FC7DC8F82861FF4900E61C69 /* ASCDevelopOptionsViewController.swift in Sources */,
 				1DA4207B2E58CC9600F76BA1 /* AddMembersToRoomView.swift in Sources */,

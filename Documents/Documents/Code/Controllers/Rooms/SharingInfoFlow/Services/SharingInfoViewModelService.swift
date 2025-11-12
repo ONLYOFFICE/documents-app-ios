@@ -10,6 +10,7 @@ import Foundation
 
 protocol SharingInfoViewModelService {
     var title: String { get }
+    var navbarSubtitle: String { get }
     var isPossibleCreateNewLink: Bool { get }
     var isSharingPossible: Bool { get }
     var isAddingLinksAvailable: Bool { get }
@@ -33,6 +34,32 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         switch entityType {
         case let .room(room):
             return room.title
+        case .file:
+            // TODO: Sharing info stub
+            return ""
+        case .folder:
+            // TODO: Sharing info stub
+            return ""
+        }
+    }
+    
+    var navbarSubtitle: String {
+        switch entityType {
+        case let .room(room):
+            switch room.roomType {
+            case .public:
+                return NSLocalizedString("Public room", comment: "")
+            case .custom:
+                return NSLocalizedString("Custom Room", comment: "")
+            case .colobaration:
+                return NSLocalizedString("Collaboration Room", comment: "")
+            case .fillingForm:
+                return NSLocalizedString("Form Filling Room", comment: "")
+            case .virtualData:
+                return NSLocalizedString("Virtual Data Room", comment: "")
+            default:
+                return ""
+            }
         case .file:
             // TODO: Sharing info stub
             return ""

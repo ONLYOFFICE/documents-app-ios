@@ -53,7 +53,6 @@ final class SharingInfoViewModel: ObservableObject {
 
     @Published var selectedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
-    @Published var isCreatingLinkScreenDisplaing: Bool = false
     @Published var isSharingScreenPresenting: Bool = false
     @Published var isAddUsersScreenDisplaying: Bool = false
     @Published var isDeleteAlertDisplaying: Bool = false
@@ -110,10 +109,6 @@ final class SharingInfoViewModel: ObservableObject {
 
     func addUsers() {
         isAddUsersScreenDisplaying = true
-    }
-
-    func createAddLinkAction() {
-        isCreatingLinkScreenDisplaing = true
     }
 
     func createAndCopyGeneralLink() async {
@@ -275,7 +270,7 @@ private extension SharingInfoViewModel {
             flowModel.links.append(inputLink)
         }
         // editing screen dismissed
-        if selectdLink == nil, !isCreatingLinkScreenDisplaing {
+        if selectdLink == nil {
             buildViewModel()
         }
         changedLink.send(nil)
@@ -317,9 +312,15 @@ private extension SharingInfoViewModel {
         if link.linkInfo.expirationDate != nil {
             imagesNames.append("clock.fill")
         }
+
+        var subtitle = link.linkInfo.internal
+            ? NSLocalizedString("Docspace user only", comment: "")
+            : NSLocalizedString("Anyone with the link", comment: "")
+
         return RoomSharingLinkRowModel(
             id: link.linkInfo.id,
             titleString: link.linkInfo.title,
+            subtitle: subtitle,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
             isGeneral: link.isGeneral,
@@ -369,7 +370,7 @@ private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
     static let fillingFormRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files.", comment: "")
-    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
+    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\nAccess for external users is provided depending\non the selected type of access rights.", comment: "")
     static let customRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
 }
 
@@ -387,3 +388,23 @@ extension SharingInfoViewModel {
         }
     }
 }
+
+extension SharingInfoViewModel {
+    var navbarSubtitle: String {
+        switch room.roomType {
+        case .public:
+            return NSLocalizedString("Public room", comment: "")
+        case .custom:
+            return NSLocalizedString("Custom Room", comment: "")
+        case .colobaration:
+            return NSLocalizedString("Collaboration Room", comment: "")
+        case .fillingForm:
+            return NSLocalizedString("Form Filling Room", comment: "")
+        case .virtualData:
+            return NSLocalizedString("Virtual Data Room", comment: "")
+        default:
+            return ""
+        }
+    }
+}
+

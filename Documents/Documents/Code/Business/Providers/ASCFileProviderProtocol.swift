@@ -53,6 +53,7 @@ struct ASCEntityActions: OptionSet {
     static let editTemplate = ASCEntityActions(rawValue: 1 << 39)
     static let deleteRoomTemplate = ASCEntityActions(rawValue: 1 << 40)
     static let createRoom = ASCEntityActions(rawValue: 1 << 41)
+    static let openLocation = ASCEntityActions(rawValue: 1 << 42)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

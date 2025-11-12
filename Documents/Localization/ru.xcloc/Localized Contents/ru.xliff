@@ -1444,6 +1444,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">Добавляйте водяные знаки в документы</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Added to favorites" xml:space="preserve">
+        <source>Added to favorites</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target state="translated">Дополнительные ссылки</target>
@@ -1892,6 +1896,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
         <target state="translated">Копировать ссылку</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -3316,6 +3324,10 @@ Caption of the process</note>
         <target state="translated">Мб</target>
         <note>Measurement unit</note>
       </trans-unit>
+      <trans-unit id="Manage" xml:space="preserve">
+        <source>Manage</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target state="translated">Добавить в избранное</target>
@@ -3743,6 +3755,10 @@ Share status</note>
         <target state="translated">Открыть файл</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Open location" xml:space="preserve">
+        <source>Open location</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
         <target state="translated">Открыл форму для заполнения</target>
@@ -4110,6 +4126,10 @@ Share status</note>
         <target state="translated">Удалить ссылку</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Removed from favorites" xml:space="preserve">
+        <source>Removed from favorites</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
         <target state="translated">Удаление</target>
@@ -4450,7 +4470,7 @@ Navigation bar button title</note>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
         <target state="translated">Совместный доступ</target>
-        <note/>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
@@ -4977,6 +4997,12 @@ clipboard.</source>
  for all the files.</source>
         <target state="translated">Эта комната доступна всем, у кого есть ссылка.
 Внешние пользователи будут иметь разрешение "Только просмотр” для всех файлов.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+Access for external users is provided depending
+on the selected type of access rights.</source>
         <note/>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">

@@ -100,9 +100,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         guard let file = entity as? ASCFile else { return false }
                         return file.id == newFile.id || file.id == originalFile.id
                     }) {
-                        let indexPath = IndexPath(row: index, section: 0)
-
-                        self.updateProviderStatus(for: newFile, indexPath: indexPath)
+                        self.updateProviderStatus(for: newFile)
                     } else {
                         self.provider?.add(item: newFile, at: 0)
                         UIView.performWithoutAnimation { [weak self] in

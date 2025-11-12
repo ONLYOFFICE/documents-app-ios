@@ -1304,6 +1304,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="new">Add watermarks to documents</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Added to favorites" xml:space="preserve">
+        <source>Added to favorites</source>
+        <target state="new">Added to favorites</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target state="new">Additional links</target>
@@ -1752,6 +1757,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
         <target state="new">Copy link</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target state="new">Copy shared link</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -3126,6 +3136,11 @@ Caption of the process</note>
         <target state="new">MB</target>
         <note>Measurement unit</note>
       </trans-unit>
+      <trans-unit id="Manage" xml:space="preserve">
+        <source>Manage</source>
+        <target state="new">Manage</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target state="new">Mark as Favorite</target>
@@ -3538,6 +3553,11 @@ Share status</note>
         <target state="new">Open file</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Open location" xml:space="preserve">
+        <source>Open location</source>
+        <target state="new">Open location</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
         <target state="new">Opened the form to fill out</target>
@@ -3905,6 +3925,11 @@ Share status</note>
         <target state="new">Remove link</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Removed from favorites" xml:space="preserve">
+        <source>Removed from favorites</source>
+        <target state="new">Removed from favorites</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
         <target state="new">Removing</target>
@@ -4245,7 +4270,7 @@ Navigation bar button title</note>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
         <target state="new">Share</target>
-        <note/>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
@@ -4776,6 +4801,15 @@ clipboard.</target>
         <target state="new">This room is available to anyone with the link.
  External users will have View Only permission
  for all the files.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
+        <source>This room is available to anyone with the link.
+Access for external users is provided depending
+on the selected type of access rights.</source>
+        <target state="new">This room is available to anyone with the link.
+Access for external users is provided depending
+on the selected type of access rights.</target>
         <note/>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">

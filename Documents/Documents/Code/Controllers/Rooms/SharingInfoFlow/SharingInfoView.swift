@@ -18,15 +18,27 @@ struct SharingInfoView: View {
         handleHUD()
 
         return screenView
-            .navigationBarTitle(Text(verbatim: viewModel.room.title), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
-            .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
+            .toolbar {
+                navBarTitle
+            }
             .navigationBarItems(viewModel: viewModel)
             .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
+    }
+    
+    private var navBarTitle: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            VStack {
+                Text(verbatim: viewModel.room.title)
+                Text(verbatim: viewModel.navbarSubtitle)
+                    .font(.footnote)
+                    .foregroundColor(.secondaryLabel)
+            }
+        }
     }
 
     @ViewBuilder
@@ -179,7 +191,12 @@ struct SharingInfoView: View {
 
     private var addButton: some View {
         Button {
-            viewModel.createAddLinkAction()
+            Task { @MainActor in
+                await viewModel.sharedLinksModels.isEmpty
+                    ? viewModel.createAndCopyGeneralLink()
+                    : viewModel.createAndCopyAdditionalLink()
+            }
+
         } label: {
             Image(systemName: "plus")
                 .foregroundColor(Asset.Colors.brend.swiftUIColor)
@@ -279,18 +296,6 @@ private extension View {
                     onRemove: viewModel.onUserRemove(userId:)
                 )
             )
-        }
-    }
-
-    func navigateToCreateLink(
-        isDisplaing: Binding<Bool>,
-        viewModel: SharingInfoViewModel
-    ) -> some View {
-        navigation(isActive: isDisplaing) {
-            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
-                room: viewModel.room,
-                outputLink: viewModel.changedLinkBinding
-            ))
         }
     }
 

@@ -579,16 +579,6 @@ extension ASCDocumentsViewController {
             navigator.navigate(to: .shareSettings(entity: folder))
         }
 
-        if actions.contains(.link), actions.contains(.share) {
-            var shareMenuElements: [UIMenuElement] = [copyLink, share]
-            if actions.contains(.addUsers) {
-                shareMenuElements.append(inviteUsers)
-            }
-            basicActions.append(
-                UIMenu(title: NSLocalizedString("Share", comment: "Button title"), children: shareMenuElements)
-            )
-        }
-
         /// Create room
 
         let createRoom = UIAction(
@@ -598,11 +588,18 @@ extension ASCDocumentsViewController {
             createRoomFrom(template: folder)
         }
 
-        if actions.contains(.link),
-           actions.contains(.createRoom) || actions.contains(.shareAsRoom)
-        {
+        if actions.contains(.link), actions.contains(.share) {
+            var shareMenuElements: [UIMenuElement] = [copyLink, share]
+
+            if actions.contains(.addUsers) {
+                shareMenuElements.append(inviteUsers)
+            }
+
+            if actions.contains(.createRoom) || actions.contains(.shareAsRoom) {
+                shareMenuElements.append(createRoom)
+            }
             basicActions.append(
-                UIMenu(title: NSLocalizedString("Share", comment: "Button title"), children: [copyLink, share, createRoom])
+                UIMenu(title: NSLocalizedString("Share", comment: "Button title"), children: shareMenuElements)
             )
         }
 

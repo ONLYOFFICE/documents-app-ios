@@ -570,12 +570,6 @@ extension ASCDocumentsViewController {
             self.copyGeneralLinkToClipboard(room: folder)
         }
 
-        if actions.contains(.link), actions.contains(.addUsers) {
-            basicActions.append(
-                UIMenu(title: NSLocalizedString("Share", comment: "Button title"), children: [inviteUsers, copyLink])
-            )
-        }
-
         /// Share action
 
         let share = UIAction(
@@ -583,6 +577,16 @@ extension ASCDocumentsViewController {
             image: UIImage(systemName: "person.2")
         ) { [unowned self] _ in
             navigator.navigate(to: .shareSettings(entity: folder))
+        }
+
+        if actions.contains(.link), actions.contains(.share) {
+            var shareMenuElements: [UIMenuElement] = [copyLink, share]
+            if actions.contains(.addUsers) {
+                shareMenuElements.append(inviteUsers)
+            }
+            basicActions.append(
+                UIMenu(title: NSLocalizedString("Share", comment: "Button title"), children: shareMenuElements)
+            )
         }
 
         /// Create room

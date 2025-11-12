@@ -1549,7 +1549,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isUserCategory, isDocspace, canShare {
+            if isDocspace, canShare {
                 entityActions.insert(.docspaceShare)
                 entityActions.insert(.copySharedLink)
             }
@@ -1627,7 +1627,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects, !isRoomFolder, !isInDocSpaceCategory(folder: folder) {
+            if canEdit, canShare, !isProjects {
                 entityActions.insert(.share)
             }
 

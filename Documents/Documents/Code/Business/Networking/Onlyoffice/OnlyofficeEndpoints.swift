@@ -62,6 +62,7 @@ enum OnlyofficeAPI {
         static let peopleRoom = "api/\(version)/people/room/%@"
         static let groups = "api/\(version)/group"
         static let shareFile = "api/\(version)/files/file/%@/share"
+        static let sharedUsers = "api/\(version)/files/file/%@/sharedusers"
         static let shareFolder = "api/\(version)/files/folder/%@/share"
         static let shareRoom = "api/\(version)/files/rooms/%@/share"
         static let changeOwner = "api/\(version)/files/owner"
@@ -426,6 +427,10 @@ enum OnlyofficeAPI {
 
             static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
+            }
+
+            static func users(fileId: String, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeSharedUser>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeSharedUser>>.make(String(format: Path.sharedUsers, fileId), method)
             }
 
             static func password(token: String) -> Endpoint<OnlyofficeResponseCodable<SharePasswordResponseModel>> {

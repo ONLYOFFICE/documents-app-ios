@@ -29,6 +29,17 @@ struct SharingInfoView: View {
             .alert(isPresented: $viewModel.isRevokeAlertDisplaying, content: revokeAlert)
             .onAppear { viewModel.onAppear() }
     }
+    
+    private var navBarTitle: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            VStack {
+                Text(verbatim: viewModel.room.title)
+                Text(verbatim: viewModel.navbarSubtitle)
+                    .font(.footnote)
+                    .foregroundColor(.secondaryLabel)
+            }
+        }
+    }
 
     @ViewBuilder
     private var screenView: some View {
@@ -47,17 +58,6 @@ struct SharingInfoView: View {
         } else {
             VStack {
                 ActivityIndicatorView()
-            }
-        }
-    }
-
-    private var navBarTitle: some ToolbarContent {
-        ToolbarItem(placement: .principal) {
-            VStack {
-                Text(verbatim: viewModel.room.title)
-                Text(verbatim: viewModel.navbarSubtitle)
-                    .font(.footnote)
-                    .foregroundColor(.secondaryLabel)
             }
         }
     }
@@ -196,6 +196,7 @@ struct SharingInfoView: View {
                     ? viewModel.createAndCopyGeneralLink()
                     : viewModel.createAndCopyAdditionalLink()
             }
+
         } label: {
             Image(systemName: "plus")
                 .foregroundColor(Asset.Colors.brend.swiftUIColor)

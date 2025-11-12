@@ -32,7 +32,7 @@ extension ASCDocumentsViewController {
             topActions.append(
                 UIAction(
                     title: NSLocalizedString("Fill", comment: "Fill form Button title"),
-                    image: UIImage(systemName: "square.and.pencil")
+                    image: Asset.Images.menuStartFilling.image
                 ) { [unowned self] action in
                     self.fillForm(file: file)
                 }
@@ -45,7 +45,7 @@ extension ASCDocumentsViewController {
             topActions.append(
                 UIAction(
                     title: NSLocalizedString("Start filling", comment: "Start filling form Button title"),
-                    image: UIImage(systemName: "square.and.pencil")
+                    image: Asset.Images.menuStartFilling.image
                 ) { [unowned self] action in
                     self.startFilling(file: file)
                 }
@@ -58,7 +58,7 @@ extension ASCDocumentsViewController {
             topActions.append(
                 UIAction(
                     title: NSLocalizedString("Filling Status", comment: "Start filling form Button title"),
-                    image: UIImage(systemName: "note.text")
+                    image: Asset.Images.menuFillingStatus.image
                 ) { [unowned self] action in
                     self.fillingStatus(file: file)
                 }
@@ -71,7 +71,7 @@ extension ASCDocumentsViewController {
             topActions.append(
                 UIAction(
                     title: NSLocalizedString("Preview", comment: "Button title"),
-                    image: UIImage(systemName: "eye")
+                    image: Asset.Images.menuPreview.image
                 ) { [unowned self] action in
                     self.open(file: file, openMode: .view)
                 }
@@ -84,7 +84,7 @@ extension ASCDocumentsViewController {
             topActions.append(
                 UIAction(
                     title: NSLocalizedString("Edit", comment: "Button title"),
-                    image: UIImage(systemName: "pencil")
+                    image: Asset.Images.menuRename.image
                 ) { [unowned self] action in
                     self.open(file: file, openMode: .edit)
                 }
@@ -94,7 +94,7 @@ extension ASCDocumentsViewController {
         /// Copy shared link
         let copySharedLink = UIAction(
             title: NSLocalizedString("Copy shared link", comment: ""),
-            image: UIImage(systemName: "link")
+            image: Asset.Images.menuCopyLink.image
         ) { [unowned self] action in
             self.copySharedLink(file: file)
         }
@@ -103,7 +103,7 @@ extension ASCDocumentsViewController {
 
         let sharingSettings = UIAction(
             title: NSLocalizedString("Share", comment: ""),
-            image: UIImage(systemName: "square.and.arrow.up")
+            image: Asset.Images.menuExport.image
         ) { [unowned self] action in
             navigator.navigate(to: .sharedSettingsLink(file: file))
         }
@@ -131,7 +131,7 @@ extension ASCDocumentsViewController {
             shareActions.append(
                 UIAction(
                     title: NSLocalizedString("Show version history", comment: ""),
-                    image: UIImage(systemName: "clock.arrow.circlepath")
+                    image: Asset.Images.menuShowVersionHistory.image
                 ) { [unowned self] action in
                     self.showVersionsHistory(file: file)
                 })
@@ -169,7 +169,7 @@ extension ASCDocumentsViewController {
             topActions.append(
                 UIAction(
                     title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    image: UIImage(systemName: "envelope.open")
+                    image: Asset.Images.menuMarkAsRead.image
                 ) { [unowned self] action in
                     self.markAsRead(cell: cell)
                 }
@@ -185,8 +185,8 @@ extension ASCDocumentsViewController {
                         ? NSLocalizedString("Remove from Favorites", comment: "Button title")
                         : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     image: file.isFavorite
-                        ? UIImage(systemName: "star.fill")
-                        : UIImage(systemName: "star")
+                        ? Asset.Images.menuRemoveFromFavorites.image
+                        : Asset.Images.menuMarkAsFavorite.image,
                 ) { [unowned self] action in
                     self.favorite(cell: cell, favorite: !file.isFavorite)
                 }
@@ -197,7 +197,7 @@ extension ASCDocumentsViewController {
 
         let copy = UIAction(
             title: NSLocalizedString("Copy", comment: "Button title"),
-            image: UIImage(systemName: "doc.on.doc")
+            image: Asset.Images.listMenuCopy.image
         ) { [unowned self] action in
             self.copy(cell: cell)
         }
@@ -206,7 +206,7 @@ extension ASCDocumentsViewController {
 
         let duplicate = UIAction(
             title: NSLocalizedString("Duplicate", comment: "Button title"),
-            image: UIImage(systemName: "plus.rectangle.on.rectangle")
+            image: Asset.Images.menuDuplicate.image
         ) { [unowned self] action in
             self.duplicate(cell: cell)
         }
@@ -215,7 +215,7 @@ extension ASCDocumentsViewController {
 
         let move = UIAction(
             title: NSLocalizedString("Move", comment: "Button title"),
-            image: UIImage(systemName: "folder")
+            image: Asset.Images.menuMove.image
         ) { [unowned self] action in
             self.move(cell: cell)
         }
@@ -226,7 +226,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Download", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.down")
+                    image: Asset.Images.menuDownload.image
                 ) { [unowned self] action in
                     self.download(cell: cell)
                 }
@@ -257,7 +257,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Restore", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.2.circlepath")
+                    image: Asset.Images.menuRestore.image
                 ) { [unowned self] action in
                     self.recover(cell: cell)
                 }
@@ -270,7 +270,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Export", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.up")
+                    image: Asset.Images.menuExport.image
                 ) { [unowned self] action in
                     self.export(cell: cell)
                 }
@@ -283,7 +283,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
+                    image: Asset.Images.menuDelete.image,
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -297,7 +297,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Rename", comment: "Button title"),
-                    image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
+                    image: Asset.Images.menuRename.image
                 ) { [unowned self] action in
                     self.rename(cell: cell)
                 }
@@ -310,7 +310,7 @@ extension ASCDocumentsViewController {
             bottomActions.append(
                 UIAction(
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-                    image: UIImage(systemName: "person.2")
+                    image: Asset.Images.menuShare2.image
                 ) { [unowned self] action in
                     navigator.navigate(to: .shareSettings(entity: file))
                 }
@@ -323,7 +323,7 @@ extension ASCDocumentsViewController {
             bottomActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
+                    image: Asset.Images.menuDelete.image,
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -359,7 +359,7 @@ extension ASCDocumentsViewController {
             commonActions.append(
                 UIAction(
                     title: NSLocalizedString("Select", comment: "Button title"),
-                    image: UIImage(systemName: "checkmark.circle")
+                    image: Asset.Images.menuSelect.image
                 ) { [weak self] action in
                     self?.setEditMode(true)
 
@@ -379,7 +379,7 @@ extension ASCDocumentsViewController {
             commonActions.append(
                 UIAction(
                     title: NSLocalizedString("Open", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.triangle.turn.up.right.circle")
+                    image: Asset.Images.menuOpen.image
                 ) { [weak self] action in
                     guard
                         let self,
@@ -397,7 +397,7 @@ extension ASCDocumentsViewController {
             commonActions.append(
                 UIAction(
                     title: NSLocalizedString("Pin to top", comment: "Button title"),
-                    image: UIImage(systemName: "pin")
+                    image: Asset.Images.menuPin.image
                 ) { [unowned self] action in
                     self.pinToggle(cell: cell)
                 }
@@ -410,7 +410,7 @@ extension ASCDocumentsViewController {
             commonActions.append(
                 UIAction(
                     title: NSLocalizedString("Unpin", comment: "Button title"),
-                    image: UIImage(systemName: "pin.fill")
+                    image: Asset.Images.menuUnpin.image
                 ) { [unowned self] action in
                     self.pinToggle(cell: cell)
                 }
@@ -426,8 +426,8 @@ extension ASCDocumentsViewController {
                         ? NSLocalizedString("Enable notifications", comment: "")
                         : NSLocalizedString("Disable notifications", comment: ""),
                     image: folder.mute
-                        ? UIImage(systemName: "bell")
-                        : UIImage(systemName: "bell.slash")
+                        ? Asset.Images.menuNotificationsMute.image
+                        : Asset.Images.menuNotificationsUnmute.image
                 ) { [unowned self] action in
                     Task { @MainActor in
                         await disableNotifications(room: folder)
@@ -446,7 +446,7 @@ extension ASCDocumentsViewController {
             basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    image: UIImage(systemName: "envelope.open")
+                    image: Asset.Images.menuMarkAsRead.image
                 ) { [unowned self] action in
                     self.markAsRead(cell: cell)
                 }
@@ -459,7 +459,7 @@ extension ASCDocumentsViewController {
             basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Rename", comment: "Button title"),
-                    image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
+                    image: Asset.Images.menuRename.image
                 ) { [unowned self] action in
                     self.rename(cell: cell)
                 }
@@ -472,7 +472,7 @@ extension ASCDocumentsViewController {
 
         let editRoomAction = UIAction(
             title: NSLocalizedString("Edit room", comment: "Button title"),
-            image: UIImage(systemName: "gear")
+            image: Asset.Images.menuEditRoom.image
         ) { [unowned self] _ in
             self.editRoom(folder: folder)
         }
@@ -481,7 +481,7 @@ extension ASCDocumentsViewController {
 
         let saveAsTemplate = UIAction(
             title: NSLocalizedString("Save as template", comment: ""),
-            image: UIImage(systemName: "note.text.badge.plus")
+            image: Asset.Images.menuSaveAsTemplate.image
         ) { [unowned self] _ in
             self.saveAsTemplate(room: folder)
         }
@@ -490,7 +490,7 @@ extension ASCDocumentsViewController {
 
         let duplicateRoom = UIAction(
             title: NSLocalizedString("Duplicate", comment: ""),
-            image: UIImage(systemName: "doc.on.doc")
+            image: Asset.Images.menuDuplicate.image
         ) { [unowned self] _ in
             Task { @MainActor in
                 await self.duplicateRoom(room: folder)
@@ -501,7 +501,7 @@ extension ASCDocumentsViewController {
 
         let downloadRoom = UIAction(
             title: NSLocalizedString("Download", comment: "Button title"),
-            image: UIImage(systemName: "square.and.arrow.down")
+            image: Asset.Images.menuDownload.image
         ) { [unowned self] _ in
             self.download(cell: cell)
         }
@@ -509,7 +509,7 @@ extension ASCDocumentsViewController {
         /// Change room owner
         let changeRoomOwner = UIAction(
             title: NSLocalizedString("Change room owner", comment: "Button title"),
-            image: UIImage(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
+            image: Asset.Images.menuChangeRoomOwner.image
         ) { [unowned self] action in
             self.leaveRoom(cell: cell, folder: folder, changeOwner: true)
         }
@@ -535,7 +535,7 @@ extension ASCDocumentsViewController {
             basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Edit template", comment: ""),
-                    image: UIImage(systemName: "gear")
+                    image: Asset.Images.menuEditRoom.image
                 ) { [unowned self] action in
                     editTemplate(template: folder)
                 }
@@ -548,7 +548,7 @@ extension ASCDocumentsViewController {
 
         let inviteUsers = UIAction(
             title: NSLocalizedString("Invite users", comment: "Button title"),
-            image: UIImage(systemName: "person.badge.plus")
+            image: Asset.Images.menuAddUsers.image
         ) { [unowned self] action in
             navigator.navigate(to: .addUsers(entity: folder))
         }
@@ -565,7 +565,7 @@ extension ASCDocumentsViewController {
         }
         let copyLink = UIAction(
             title: title,
-            image: UIImage(systemName: "link")
+            image: Asset.Images.menuCopyLink.image
         ) { [unowned self] action in
             self.copyGeneralLinkToClipboard(room: folder)
         }
@@ -574,7 +574,7 @@ extension ASCDocumentsViewController {
 
         let share = UIAction(
             title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-            image: UIImage(systemName: "person.2")
+            image: Asset.Images.menuShare2.image
         ) { [unowned self] _ in
             navigator.navigate(to: .shareSettings(entity: folder))
         }
@@ -609,7 +609,7 @@ extension ASCDocumentsViewController {
             basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Info", comment: "Button title"),
-                    image: UIImage(systemName: "info.circle")
+                    image: Asset.Images.menuInfo.image
                 ) { [unowned self] action in
                     if folder.isRoom {
                         navigator.navigate(to: .roomSharingLink(folder: folder))
@@ -632,15 +632,13 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIMenu(title: NSLocalizedString("Share", comment: ""), children: childrenMenu)
             )
-        } else if actions.contains(.link), folder.isRoom {
-            transferActions.append(copyLink)
         }
 
         /// Duplicate room
 
         let duplicate = UIAction(
             title: NSLocalizedString("Duplicate", comment: ""),
-            image: UIImage(systemName: "doc.on.doc")
+            image: Asset.Images.listMenuCopy.image
         ) { [unowned self] _ in
             Task { @MainActor in
                 await self.duplicateRoom(room: folder)
@@ -651,7 +649,7 @@ extension ASCDocumentsViewController {
 
         let download = UIAction(
             title: NSLocalizedString("Download", comment: "Button title"),
-            image: UIImage(systemName: "square.and.arrow.down")
+            image: Asset.Images.menuDownload.image
         ) { [unowned self] _ in
             self.download(cell: cell)
         }
@@ -671,7 +669,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Move to archive", comment: "Button title"),
-                    image: UIImage(systemName: "archivebox")
+                    image: Asset.Images.menuArchive.image
                 ) { [unowned self] action in
                     self.archive(cell: cell, folder: folder)
                 }
@@ -682,7 +680,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Move from archive", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.up.bin")
+                    image: Asset.Images.menuRestore.image
                 ) { [unowned self] action in
                     self.showRestoreRoomAlert { [weak self] in
                         guard let self else { return }
@@ -696,7 +694,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete template", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
+                    image: Asset.Images.menuDelete.image,
                     attributes: [.destructive]
                 ) { [unowned self] action in
                     self.deleteRoomTempateAlert(template: folder) { [weak self] in
@@ -715,8 +713,8 @@ extension ASCDocumentsViewController {
                         ? NSLocalizedString("Remove from Favorites", comment: "Button title")
                         : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     image: isFavorite
-                        ? UIImage(systemName: "star.fill")
-                        : UIImage(systemName: "star")
+                        ? Asset.Images.menuRemoveFromFavorites.image
+                        : Asset.Images.menuMarkAsFavorite.image,
                 ) { [unowned self] action in
                     self.favorite(cell: cell, favorite: !isFavorite)
                 }
@@ -727,7 +725,7 @@ extension ASCDocumentsViewController {
 
         let copy = UIAction(
             title: NSLocalizedString("Copy", comment: "Button title"),
-            image: UIImage(systemName: "doc.on.doc")
+            image: Asset.Images.listMenuCopy.image
         ) { [unowned self] action in
             self.copy(cell: cell)
         }
@@ -736,7 +734,7 @@ extension ASCDocumentsViewController {
 
         let move = UIAction(
             title: NSLocalizedString("Move", comment: "Button title"),
-            image: UIImage(systemName: "folder")
+            image: Asset.Images.menuMove.image
         ) { [unowned self] action in
             self.move(cell: cell)
         }
@@ -762,7 +760,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Restore", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.2.circlepath")
+                    image: Asset.Images.menuRestore.image
                 ) { [unowned self] action in
                     self.recover(cell: cell)
                 }
@@ -775,7 +773,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Leave the room", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.right.square")
+                    image: Asset.Images.menuLeaveTheRoom.image
                 ) { [unowned self] action in
                     self.leaveRoom(cell: cell, folder: folder)
                 }
@@ -788,7 +786,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
+                    image: Asset.Images.menuDelete.image,
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -802,7 +800,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
+                    image: Asset.Images.menuDelete.image,
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)

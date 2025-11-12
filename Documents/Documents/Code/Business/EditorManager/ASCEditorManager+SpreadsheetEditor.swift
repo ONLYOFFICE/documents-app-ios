@@ -169,4 +169,9 @@ extension ASCEditorManager: SpreadsheetEditorViewControllerDelegate {
             }
         }
     }
+
+    @MainActor
+    func spreadsheetFetchSharedUsers() async -> [[String: Any]] {
+        await fetchSharedUsers()
+    }
 }

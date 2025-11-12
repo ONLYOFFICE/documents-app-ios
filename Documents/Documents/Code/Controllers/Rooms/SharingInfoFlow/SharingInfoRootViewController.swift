@@ -17,18 +17,9 @@ class SharingInfoRootViewController: UIHostingController<SharingInfoView> {
         fatalError("init?(coder aDecoder: NSCoder) is not implemented")
     }
 
-    init(room: ASCFolder) {
+    init(entityType: SharingInfoEntityType) {
         super.init(
-            rootView: SharingInfoView(
-                viewModel: SharingInfoViewModel(
-                    room: room,
-                    linkAccessService: SharingInfoLinkAccessServiceImp(
-                        entityType: .room(room),
-                        roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService,
-                        sharingRoomNetworkService: ServicesProvider.shared.roomSharingNetworkService
-                    )
-                )
-            )
+            rootView: SharingInfoAssemler.make(entityType: entityType)
         )
     }
 }

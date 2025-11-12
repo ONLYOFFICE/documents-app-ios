@@ -18,7 +18,7 @@ struct SharingInfoView: View {
         handleHUD()
 
         return screenView
-            .navigationBarTitle(Text(verbatim: viewModel.room.title), displayMode: .inline)
+            .navigationBarTitle(Text(verbatim: viewModel.title), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
@@ -33,7 +33,7 @@ struct SharingInfoView: View {
     private var screenView: some View {
         if !viewModel.isInitializing {
             VStack {
-                roomDescriptionText
+                descriptionText
                 List {
                     sharedLinksSection
                     adminSection
@@ -51,9 +51,9 @@ struct SharingInfoView: View {
     }
 
     @ViewBuilder
-    private var roomDescriptionText: some View {
-        if viewModel.room.roomType != .colobaration {
-            Text(verbatim: viewModel.roomTypeDescription)
+    private var descriptionText: some View {
+        if let description = viewModel.entityDescription {
+            Text(verbatim: description)
                 .multilineTextAlignment(.center)
                 .padding(.top, Constants.descriptionTopPadding)
                 .padding(.horizontal, Constants.horizontalAlignment)
@@ -151,7 +151,7 @@ struct SharingInfoView: View {
 
     @ViewBuilder
     private var sharedLinksSectionHeader: some View {
-        if viewModel.room.isFillingFormRoom {
+        if viewModel.isAddingLinksAvailable {
             formRoomHeader
         } else {
             sharedLinksHeader
@@ -166,7 +166,7 @@ struct SharingInfoView: View {
         HStack {
             Text(verbatim: sharedLinksTitle)
             Spacer()
-            if viewModel.canAddLink {
+            if viewModel.canAddOneMoreLink {
                 addButton
             }
         }
@@ -267,72 +267,97 @@ private extension View {
         }
     }
 
+    @ViewBuilder
     func navigateToChangeAccess(
         selectedUser: Binding<ASCUser?>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(item: selectedUser) { user in
-            RoomSharingAccessTypeView(
-                viewModel: RoomSharingAccessTypeViewModel(
-                    room: viewModel.room,
-                    user: user,
-                    onRemove: viewModel.onUserRemove(userId:)
+        switch viewModel.entityType {
+        case .room(let room):
+            navigation(item: selectedUser) { user in
+                RoomSharingAccessTypeView(
+                    viewModel: RoomSharingAccessTypeViewModel(
+                        room: room,
+                        user: user,
+                        onRemove: viewModel.onUserRemove(userId:)
+                    )
                 )
-            )
+            }
+        case .file(_):
+            // TODO: Sharing info stub
+            EmptyView()
+        case .folder(_):
+            // TODO: Sharing info stub
+            EmptyView()
         }
     }
 
+    @ViewBuilder
     func navigateToCreateLink(
         isDisplaing: Binding<Bool>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(isActive: isDisplaing) {
-            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
-                room: viewModel.room,
-                outputLink: viewModel.changedLinkBinding
-            ))
+        switch viewModel.entityType {
+        case .room(let room):
+            navigation(isActive: isDisplaing) {
+                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
+                    room: room,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            }
+        case .file(_):
+            // TODO: Sharing info stub
+            EmptyView()
+        case .folder(_):
+            // TODO: Sharing info stub
+            EmptyView()
         }
     }
 
+    @ViewBuilder
     func navigateToEditLink(
         selectedLink: Binding<SharingInfoLinkModel?>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(item: selectedLink, destination: { link in
-            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
-                room: viewModel.room,
-                inputLink: link,
-                outputLink: viewModel.changedLinkBinding
-            ))
-        })
+        switch viewModel.entityType {
+        case .room(let room):
+            navigation(item: selectedLink, destination: { link in
+                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
+                    room: room,
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            })
+        case .file(_):
+            // TODO: Sharing info stub
+            EmptyView()
+        case .folder(_):
+            // TODO: Sharing info stub
+            EmptyView()
+        }
     }
 
+    @ViewBuilder
     func navigateToAddUsers(
         isDisplaying: Binding<Bool>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(isActive: isDisplaying) {
-            InviteUsersView(
-                viewModel: InviteUsersViewModel(
-                    room: viewModel.room
+        switch viewModel.entityType {
+        case .room(let room):
+            navigation(isActive: isDisplaying) {
+                InviteUsersView(
+                    viewModel: InviteUsersViewModel(
+                        room: room
+                    )
                 )
-            )
+            }
+        case .file(_):
+            // TODO: Sharing info stub
+            EmptyView()
+        case .folder(_):
+            // TODO: Sharing info stub
+            EmptyView()
         }
-    }
-}
-
-struct SharingInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        SharingInfoView(
-            viewModel: SharingInfoViewModel(
-                room: .init(),
-                linkAccessService: SharingInfoLinkAccessServiceImp(
-                    entityType: .room(.init()),
-                    roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService,
-                    sharingRoomNetworkService: ServicesProvider.shared.roomSharingNetworkService
-                )
-            )
-        )
     }
 }
 
@@ -418,4 +443,11 @@ private enum Constants {
     static let imageWidth: CGFloat = 40
     static let imageHeight: CGFloat = 40
     static let imageCornerRadius: CGFloat = 20
+}
+
+struct SharingInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        SharingInfoAssemler.make(entityType: .room(.init()))
+    }
 }

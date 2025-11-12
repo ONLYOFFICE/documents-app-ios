@@ -59,6 +59,12 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
         switch entityType {
         case .room(let room):
             try await sharingRoomNetworkService.fetch(room: room)
+        case .file(_):
+            // TODO: Sharing info stub
+            ([], [])
+        case .folder(_):
+            // TODO: Sharing info stub
+            ([], [])
         }
     }
     
@@ -66,6 +72,12 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
         switch entityType {
         case .room(let room):
             try await roomSharingLinkAccesskService.createGeneralLink(room: room)
+        case .file(_):
+            // TODO: Sharing info stub
+            throw NetworkingError.invalidData
+        case .folder(_):
+            // TODO: Sharing info stub
+            throw NetworkingError.invalidData
         }
     }
     
@@ -80,6 +92,12 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
                 linkType: linkType,
                 room: room
             )
+        case .file(_):
+            // TODO: Sharing info stub
+            throw NetworkingError.invalidData
+        case .folder(_):
+            // TODO: Sharing info stub
+            throw NetworkingError.invalidData
         }
     }
     
@@ -98,6 +116,12 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
                 password: password,
                 room: room
             )
+        case .file(_):
+            // TODO: Sharing info stub
+            throw NetworkingError.invalidData
+        case .folder(_):
+            // TODO: Sharing info stub
+            throw NetworkingError.invalidData
         }
     }
 }

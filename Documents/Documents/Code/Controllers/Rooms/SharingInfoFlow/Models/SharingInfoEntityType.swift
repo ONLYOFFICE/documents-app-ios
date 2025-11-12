@@ -8,4 +8,6 @@
 
 enum SharingInfoEntityType {
     case room(ASCRoom)
+    case file(ASCFile)
+    case folder(ASCFolder)
 }

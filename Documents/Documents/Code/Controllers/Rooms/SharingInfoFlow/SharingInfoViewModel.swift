@@ -20,12 +20,16 @@ final class SharingInfoViewModel: ObservableObject {
     // MARK: - Published vars
 
     private(set) var flowModel = RoomSharingFlowModel()
-    let room: ASCRoom
+    let entityType: SharingInfoEntityType
 
-    var canAddLink: Bool {
+    var canAddOneMoreLink: Bool {
         sharedLinksModels.count < linksLimit && isSharingPossible
     }
-
+    
+    var isAddingLinksAvailable: Bool {
+        viewModelService.isAddingLinksAvailable
+    }
+    
     let linksLimit = 6
     var isPossibleCreateNewLink: Bool { viewModelService.isPossibleCreateNewLink }
     var isSharingPossible: Bool { viewModelService.isSharingPossible }
@@ -70,11 +74,11 @@ final class SharingInfoViewModel: ObservableObject {
     // MARK: - Init
 
     init(
-        room: ASCRoom,
+        entityType: SharingInfoEntityType,
         viewModelService: SharingInfoViewModelService,
         linkAccessService: SharingInfoLinkAccessService
     ) {
-        self.room = room
+        self.entityType = entityType
         self.viewModelService = viewModelService
         self.linkAccessService = linkAccessService
         
@@ -169,7 +173,7 @@ final class SharingInfoViewModel: ObservableObject {
             if deletingLink.isGeneral {
                 buildViewModel()
                 applyingDeletingLink = deletingLink
-                if room.roomType == .public {
+                if viewModelService.canRemoveGeneralLink {
                     isRevokeAlertDisplaying = true
                 } else {
                     isDeleteAlertDisplaying = true
@@ -180,7 +184,7 @@ final class SharingInfoViewModel: ObservableObject {
 
             // romove from UI
             let removedModel = sharedLinksModels[safe: index]
-            withAnimation {
+            _ = withAnimation {
                 sharedLinksModels.remove(at: index)
             }
 
@@ -222,7 +226,9 @@ final class SharingInfoViewModel: ObservableObject {
                     password: deletingLink.linkInfo.password
                 )
                 flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
-                if room.roomType == .public {
+                if viewModelService.canRemoveGeneralLink {
+                    buildViewModel()
+                } else {
                     isActivitiIndicatorDisplaying = true
                     await loadData()
                     resultModalModel = .init(
@@ -230,8 +236,6 @@ final class SharingInfoViewModel: ObservableObject {
                         message: NSLocalizedString("The new shared link was created", comment: "")
                     )
                     isActivitiIndicatorDisplaying = false
-                } else {
-                    buildViewModel()
                 }
             } else {
                 try await linkAccessService.removeLink(
@@ -360,25 +364,18 @@ private extension SharingInfoViewModel {
     }
 }
 
+extension SharingInfoViewModel {
+    
+    var title: String {
+        viewModelService.title
+    }
+    
+    var entityDescription: String? {
+        viewModelService.entityDescription
+    }
+}
+
 private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
-    static let fillingFormRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files.", comment: "")
-    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
-    static let customRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
-}
-
-extension SharingInfoViewModel {
-    var roomTypeDescription: String {
-        switch room.roomType {
-        case .fillingForm:
-            return .fillingFormRoomDescription
-        case .public:
-            return .publicRoomDescription
-        case .custom:
-            return .customRoomDescription
-        default:
-            return ""
-        }
-    }
 }

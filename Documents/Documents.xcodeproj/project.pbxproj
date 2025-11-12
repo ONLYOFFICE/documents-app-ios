@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1469,6 +1469,10 @@
 		FCFDAA9A1E48A10C007A240C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF1B246C8E6383E9C844D7A7 /* Pods-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E80E30462EC4B004003964E6 /* Assembler */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Assembler; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FCCDE6722049733F00CFC653 /* Frameworks */ = {
@@ -3001,6 +3005,7 @@
 		FC759C1B2C00614D00510096 /* SharingInfoFlow */ = {
 			isa = PBXGroup;
 			children = (
+				E80E30462EC4B004003964E6 /* Assembler */,
 				E83248C02EBB82010013990C /* Services */,
 				FC759C0D2C00614D00510096 /* LinkSettings */,
 				FC759C0F2C00614D00510096 /* Models */,
@@ -4015,6 +4020,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E80E30462EC4B004003964E6 /* Assembler */,
 			);
 			name = Documents;
 			packageProductDependencies = (

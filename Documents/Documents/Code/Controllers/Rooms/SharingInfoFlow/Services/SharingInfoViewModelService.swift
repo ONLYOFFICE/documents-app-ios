@@ -19,32 +19,29 @@ protocol SharingInfoViewModelService {
 }
 
 final class SharingInfoViewModelServiceImp {
-    
     private let entityType: SharingInfoEntityType
-    
+
     init(entityType: SharingInfoEntityType) {
         self.entityType = entityType
     }
-    
 }
 
 // MARK: - SharingInfoViewModelService
 
 extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
-    
     var title: String {
         switch entityType {
         case let .room(room):
             return room.title
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             return ""
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             return ""
         }
     }
-    
+
     var isPossibleCreateNewLink: Bool {
         switch entityType {
         case let .room(room):
@@ -54,67 +51,67 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             default:
                 return true
             }
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             return false
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             return false
         }
     }
-    
+
     var isSharingPossible: Bool {
         return switch entityType {
         case let .room(room):
             room.rootFolderType != .archive && room.security.editAccess
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             false
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             false
         }
     }
-    
+
     var isAddingLinksAvailable: Bool {
         switch entityType {
         case let .room(room):
             !room.isFillingFormRoom
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             false
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             false
         }
     }
-    
+
     var isUserSelectionAllow: Bool {
         switch entityType {
         case let .room(room):
             room.rootFolderType != .archive && room.security.editAccess
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             false
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             false
         }
     }
-    
+
     var canRemoveGeneralLink: Bool {
         switch entityType {
         case let .room(room):
             room.isPublicRoom == false
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             false
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             false
         }
     }
-    
+
     var entityDescription: String? {
         switch entityType {
         case let .room(room):
@@ -128,10 +125,10 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             default:
                 return nil
             }
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             return nil
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             return nil
         }

@@ -273,7 +273,7 @@ private extension View {
         viewModel: SharingInfoViewModel
     ) -> some View {
         switch viewModel.entityType {
-        case .room(let room):
+        case let .room(room):
             navigation(item: selectedUser) { user in
                 RoomSharingAccessTypeView(
                     viewModel: RoomSharingAccessTypeViewModel(
@@ -283,10 +283,10 @@ private extension View {
                     )
                 )
             }
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             EmptyView()
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             EmptyView()
         }
@@ -298,17 +298,17 @@ private extension View {
         viewModel: SharingInfoViewModel
     ) -> some View {
         switch viewModel.entityType {
-        case .room(let room):
+        case let .room(room):
             navigation(isActive: isDisplaing) {
                 RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
                     room: room,
                     outputLink: viewModel.changedLinkBinding
                 ))
             }
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             EmptyView()
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             EmptyView()
         }
@@ -320,7 +320,7 @@ private extension View {
         viewModel: SharingInfoViewModel
     ) -> some View {
         switch viewModel.entityType {
-        case .room(let room):
+        case let .room(room):
             navigation(item: selectedLink, destination: { link in
                 RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
                     room: room,
@@ -328,10 +328,10 @@ private extension View {
                     outputLink: viewModel.changedLinkBinding
                 ))
             })
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             EmptyView()
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             EmptyView()
         }
@@ -343,7 +343,7 @@ private extension View {
         viewModel: SharingInfoViewModel
     ) -> some View {
         switch viewModel.entityType {
-        case .room(let room):
+        case let .room(room):
             navigation(isActive: isDisplaying) {
                 InviteUsersView(
                     viewModel: InviteUsersViewModel(
@@ -351,10 +351,10 @@ private extension View {
                     )
                 )
             }
-        case .file(_):
+        case .file:
             // TODO: Sharing info stub
             EmptyView()
-        case .folder(_):
+        case .folder:
             // TODO: Sharing info stub
             EmptyView()
         }
@@ -447,7 +447,6 @@ private enum Constants {
 
 struct SharingInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        
         SharingInfoAssemler.make(entityType: .room(.init()))
     }
 }

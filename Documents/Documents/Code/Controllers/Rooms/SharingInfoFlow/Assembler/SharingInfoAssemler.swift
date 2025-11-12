@@ -6,10 +6,7 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-
-
 enum SharingInfoAssemler {
-    
     @MainActor
     static func make(entityType: SharingInfoEntityType) -> SharingInfoView {
         SharingInfoView(

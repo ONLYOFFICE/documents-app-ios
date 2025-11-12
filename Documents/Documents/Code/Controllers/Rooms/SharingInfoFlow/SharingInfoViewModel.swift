@@ -25,11 +25,11 @@ final class SharingInfoViewModel: ObservableObject {
     var canAddOneMoreLink: Bool {
         sharedLinksModels.count < linksLimit && isSharingPossible
     }
-    
+
     var isAddingLinksAvailable: Bool {
         viewModelService.isAddingLinksAvailable
     }
-    
+
     let linksLimit = 6
     var isPossibleCreateNewLink: Bool { viewModelService.isPossibleCreateNewLink }
     var isSharingPossible: Bool { viewModelService.isSharingPossible }
@@ -81,7 +81,7 @@ final class SharingInfoViewModel: ObservableObject {
         self.entityType = entityType
         self.viewModelService = viewModelService
         self.linkAccessService = linkAccessService
-        
+
         Task {
             await loadData()
         }
@@ -247,9 +247,9 @@ final class SharingInfoViewModel: ObservableObject {
                 flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
             }
         } catch {
-            self.sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
+            sharedLinksModels.append(mapToLinkViewModel(link: deletingLink))
             buildViewModel()
-            self.errorMessage = error.localizedDescription
+            errorMessage = error.localizedDescription
         }
     }
 
@@ -365,11 +365,10 @@ private extension SharingInfoViewModel {
 }
 
 extension SharingInfoViewModel {
-    
     var title: String {
         viewModelService.title
     }
-    
+
     var entityDescription: String? {
         viewModelService.entityDescription
     }

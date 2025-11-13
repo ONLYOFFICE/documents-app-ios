@@ -317,7 +317,7 @@ private extension View {
         switch viewModel.entityType {
         case let .room(room):
             navigation(item: selectedLink, destination: { link in
-                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
+                EditSharedLinkView(viewModel: EditSharedLinkViewModel(
                     room: room,
                     inputLink: link,
                     outputLink: viewModel.changedLinkBinding

@@ -1,5 +1,5 @@
 //
-//  EditSharedLinkView.swift
+//  EditFileSharedLinkView.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 05.06.2024.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct EditSharedLinkView: View {
-    @ObservedObject var viewModel: EditSharedLinkViewModel
+struct EditFileSharedLinkView: View {
+    @ObservedObject var viewModel: EditFileSharedLinkViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {

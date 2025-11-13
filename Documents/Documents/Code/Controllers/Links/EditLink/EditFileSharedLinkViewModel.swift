@@ -1,5 +1,5 @@
 //
-//  EditSharedLinkViewModel.swift
+//  EditFileSharedLinkViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 05.06.2024.
@@ -10,7 +10,7 @@ import Combine
 import MBProgressHUD
 import SwiftUI
 
-final class EditSharedLinkViewModel: ObservableObject {
+final class EditFileSharedLinkViewModel: ObservableObject {
     @Published var sharingLinkURL: URL? = nil
     @Published var linkAccess: LinkAccess
     @Published var isExpired: Bool = false
@@ -266,7 +266,7 @@ final class EditSharedLinkViewModel: ObservableObject {
 
 // MARK: Date formaters
 
-private extension EditSharedLinkViewModel {
+private extension EditFileSharedLinkViewModel {
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"

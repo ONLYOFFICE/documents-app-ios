@@ -1,5 +1,5 @@
 //
-//  EditSharedLinkViewModel.swift
+//  RoomSharingCustomizeLinkViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 03.12.2023.
@@ -9,18 +9,12 @@
 import Combine
 import SwiftUI
 
-enum EditSharedLinkEntityType {
-    case room(ASCRoom)
-    case folder(ASCFolder)
-    case file(ASCFile)
-}
-
 enum LinkSettingsContentState {
     case general
     case additional
 }
 
-final class EditSharedLinkViewModel: ObservableObject {
+final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     let contentState: LinkSettingsContentState
 
     @Published var linkName: String = ""
@@ -132,7 +126,7 @@ final class EditSharedLinkViewModel: ObservableObject {
 
 // MARK: Handlers
 
-extension EditSharedLinkViewModel {
+extension RoomSharingCustomizeLinkViewModel {
     func onDelete() async {
         guard let linkId, var link = link ?? outputLink else { return }
         isDeleting = true
@@ -196,7 +190,7 @@ extension EditSharedLinkViewModel {
 
 // MARK: Private
 
-private extension EditSharedLinkViewModel {
+private extension RoomSharingCustomizeLinkViewModel {
     @MainActor
     func saveCurrentState() async {
         isSaving = true
@@ -239,7 +233,7 @@ private extension EditSharedLinkViewModel {
 
 // MARK: Date formaters
 
-private extension EditSharedLinkViewModel {
+private extension RoomSharingCustomizeLinkViewModel {
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
@@ -275,7 +269,7 @@ private extension String {
     )
 }
 
-extension EditSharedLinkViewModel {
+extension RoomSharingCustomizeLinkViewModel {
     func isPasswordValid(_ password: String) -> Bool {
         guard password.count >= 8 else { return false }
 

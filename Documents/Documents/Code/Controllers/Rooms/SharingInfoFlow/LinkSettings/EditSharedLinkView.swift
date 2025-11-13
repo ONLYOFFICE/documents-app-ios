@@ -1,5 +1,5 @@
 //
-//  RoomSharingCustomizeLinkView.swift
+//  EditSharedLinkView.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 03.12.2023.
@@ -9,10 +9,10 @@
 import MBProgressHUD
 import SwiftUI
 
-struct RoomSharingCustomizeLinkView: View {
+struct EditSharedLinkView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
+    @ObservedObject var viewModel: EditSharedLinkViewModel
     @State private var showDeleteAlert = false
     @State private var showRevokeAlert = false
     @State private var showPasswordErrorAlert = false
@@ -291,7 +291,7 @@ private extension View {
 }
 
 #Preview {
-    RoomSharingCustomizeLinkView(
+    EditSharedLinkView(
         viewModel: .init(
             room: .init(),
             inputLink: nil,

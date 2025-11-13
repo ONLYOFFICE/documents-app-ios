@@ -81,8 +81,8 @@ extension View {
         selectedLink: Binding<SharedSettingsLinkResponceModel?>, viewModel: SharedSettingsViewModel
     ) -> some View {
         navigation(item: selectedLink) { link in
-            EditSharedLinkView(
-                viewModel: EditSharedLinkViewModel(
+            EditFileSharedLinkView(
+                viewModel: EditFileSharedLinkViewModel(
                     file: viewModel.file,
                     inputLink: link,
                     outputLink: Binding(

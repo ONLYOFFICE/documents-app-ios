@@ -24,9 +24,9 @@ struct EditSharedLinkView: View {
 
         return content
             .navigationBarItems(rightBtn: doneButton.alert(isPresented: $showPasswordErrorAlert) { passwordErrorAlert })
-            .disabledIfDeleting(viewModel.isDeleting)
+            .disabledIfDeleting(viewModel.screenModel.isDeleting)
             .alertForErrorMessage($viewModel.errorMessage)
-            .dismissOnChange(of: viewModel.isReadyToDismissed, using: presentationMode)
+            .dismissOnChange(of: viewModel.screenModel.isReadyToDismissed, using: presentationMode)
     }
 
     @ViewBuilder
@@ -66,7 +66,7 @@ struct EditSharedLinkView: View {
 
     private var linkNameSection: some View {
         Section(header: Text("Link name")) {
-            TextField("Link name", text: $viewModel.linkName)
+            TextField("Link name", text: $viewModel.linkModel.linkName)
         }
     }
 
@@ -77,24 +77,24 @@ struct EditSharedLinkView: View {
             accessCell
             if viewModel.showTimeLimit {
                 timeLimitCell
-                    .disabled(viewModel.isExpired)
+                    .disabled(viewModel.linkModel.isExpired)
             }
         }
     }
 
     private var protectedSection: some View {
         Section(header: Text("Protection"), footer: protectionSectionFooter) {
-            Toggle(isOn: $viewModel.isProtected.animation()) {
+            Toggle(isOn: $viewModel.linkModel.isProtected.animation()) {
                 Text("Password access")
             }
             .tintColor(Color(Asset.Colors.brend.color))
             .foregroundColor(.primary)
 
-            if viewModel.isProtected {
+            if viewModel.linkModel.isProtected {
                 PasswordCellView(
                     model: PasswordCellModel(
-                        password: $viewModel.password,
-                        isPasswordVisible: $viewModel.isPasswordVisible
+                        password: $viewModel.linkModel.password,
+                        isPasswordVisible: $viewModel.screenModel.isPasswordVisible
                     )
                 )
                 .foregroundColor(.primary)
@@ -108,14 +108,14 @@ struct EditSharedLinkView: View {
 
     @ViewBuilder
     private var timeLimitCell: some View {
-        Toggle(isOn: $viewModel.isTimeLimited.animation()) {
+        Toggle(isOn: $viewModel.linkModel.isTimeLimited.animation()) {
             Text("Enable time limit")
         }
         .tintColor(Color(Asset.Colors.brend.color))
 
-        if viewModel.isTimeLimited {
+        if viewModel.linkModel.isTimeLimited {
             TimeLimitCellView(model: TimeLimitCellModel(
-                selectedDate: $viewModel.selectedDate,
+                selectedDate: $viewModel.linkModel.selectedDate,
                 title: NSLocalizedString("Valid through", comment: ""),
                 displayedComponents: [.date, .hourAndMinute]
             ))
@@ -126,7 +126,7 @@ struct EditSharedLinkView: View {
     private var restrictionSection: some View {
         if viewModel.roomType != .fillingForm {
             Section(footer: Text(verbatim: String.restrictionSectionFooterText)) {
-                Toggle(isOn: $viewModel.isRestrictCopyOn) {
+                Toggle(isOn: $viewModel.linkModel.isRestrictCopyOn) {
                     Text("Restrict file content copy, file download and printing")
                 }
                 .tintColor(Color(Asset.Colors.brend.color))
@@ -176,8 +176,8 @@ struct EditSharedLinkView: View {
             MenuView(menuItems: viewModel.accessMenuItems) {
                 ASCDetailedImageChevronUpDownCellView(model: ASCDetailedImageChevronUpDownCellViewModel(
                     title: NSLocalizedString("Access rights", comment: ""),
-                    subtitle: viewModel.selectedAccessRight.title(),
-                    isEnabled: !viewModel.isExpired
+                    subtitle: viewModel.linkModel.selectedAccessRight.title(),
+                    isEnabled: !viewModel.linkModel.isExpired
                 ))
             }
         }
@@ -206,14 +206,14 @@ struct EditSharedLinkView: View {
     private func handleHUD() {
         MBProgressHUD.currentHUD?.hide(animated: false)
 
-        if viewModel.isSaving || viewModel.isDeleting || viewModel.isRevoking {
+        if viewModel.screenModel.isSaving || viewModel.screenModel.isDeleting || viewModel.screenModel.isRevoking {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
-            if viewModel.isDeleting {
+            if viewModel.screenModel.isDeleting {
                 hud?.label.text = NSLocalizedString("Removing", comment: "") + "..."
-            } else if viewModel.isSaving {
+            } else if viewModel.screenModel.isSaving {
                 hud?.label.text = NSLocalizedString("Saving", comment: "") + "..."
-            } else if viewModel.isRevoking {
+            } else if viewModel.screenModel.isRevoking {
                 hud?.label.text = NSLocalizedString("Revoking", comment: "") + "..."
             }
         } else if let resultModalModel = viewModel.resultModalModel,
@@ -221,11 +221,11 @@ struct EditSharedLinkView: View {
         {
             switch resultModalModel.result {
             case .success:
-                if viewModel.isDeleted {
+                if viewModel.screenModel.isDeleted {
                     hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
-                } else if viewModel.isSaved {
+                } else if viewModel.screenModel.isSaved {
                     hud.setState(result: .success(resultModalModel.message))
-                } else if viewModel.isRevoked {
+                } else if viewModel.screenModel.isRevoked {
                     hud.setState(result: .success(NSLocalizedString("Revoked", comment: "")))
                 }
             case .failure:

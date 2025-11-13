@@ -16,9 +16,16 @@
 		1DA4207B2E58CC9600F76BA1 /* AddMembersToRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4207A2E58CC8A00F76BA1 /* AddMembersToRoomView.swift */; };
 		1DA4207D2E58CCFC00F76BA1 /* AddMembersToRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */; };
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
+		7714E97D2EC1F9B400D28198 /* OwncloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7714E97C2EC1F9B400D28198 /* OwncloudHelper.swift */; };
+		772A25362EB8C4BF009264BA /* OwncloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A25352EB8C4BF009264BA /* OwncloudEndpoints.swift */; };
+		774E68C42EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E68C32EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift */; };
 		77586F622DD3749300861561 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */; };
+		776052F92EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776052F82EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift */; };
 		77898AA42EA0E4B300880FEB /* NextcloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77898AA32EA0E4B300880FEB /* NextcloudUserData.swift */; };
 		77A2D66A2DED95850093549D /* CreateAndCopyLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */; };
+		77B98C962EBA0FDA0092DC7F /* ASCOwnCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B98C952EBA0FDA0092DC7F /* ASCOwnCloudConnectStorageDelegate.swift */; };
+		77B98C9D2EBA1AE70092DC7F /* OwncloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B98C9C2EBA1AE70092DC7F /* OwncloudUserData.swift */; };
+		77B98C9F2EBA1CE60092DC7F /* OwncloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B98C9E2EBA1CE60092DC7F /* OwncloudApiClient.swift */; };
 		77DD89B92EA1230500EFD127 /* NextcloudMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DD89B82EA1230500EFD127 /* NextcloudMeta.swift */; };
 		8A01844923A261540025BE85 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */; };
 		8A01844A23A261540025BE85 /* ASCConnectPortalThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */; };
@@ -848,9 +855,16 @@
 		1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRolesMappingUsersRequestModel.swift; sourceTree = "<group>"; };
 		1DA4207A2E58CC8A00F76BA1 /* AddMembersToRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomView.swift; sourceTree = "<group>"; };
 		1DA4207C2E58CCF800F76BA1 /* AddMembersToRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersToRoomViewModel.swift; sourceTree = "<group>"; };
+		7714E97C2EC1F9B400D28198 /* OwncloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudHelper.swift; sourceTree = "<group>"; };
+		772A25352EB8C4BF009264BA /* OwncloudEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudEndpoints.swift; sourceTree = "<group>"; };
+		774E68C32EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Owncloud.swift; sourceTree = "<group>"; };
 		77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCHelpAndFeedbackViewController.swift; sourceTree = "<group>"; };
+		776052F82EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOwnCloudServerController.swift; sourceTree = "<group>"; };
 		77898AA32EA0E4B300880FEB /* NextcloudUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudUserData.swift; sourceTree = "<group>"; };
 		77A2D6692DED95850093549D /* CreateAndCopyLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndCopyLinkRequestModel.swift; sourceTree = "<group>"; };
+		77B98C952EBA0FDA0092DC7F /* ASCOwnCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOwnCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
+		77B98C9C2EBA1AE70092DC7F /* OwncloudUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudUserData.swift; sourceTree = "<group>"; };
+		77B98C9E2EBA1CE60092DC7F /* OwncloudApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudApiClient.swift; sourceTree = "<group>"; };
 		77DD89B82EA1230500EFD127 /* NextcloudMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudMeta.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalThirdPartyViewController.swift; sourceTree = "<group>"; };
@@ -1604,6 +1618,25 @@
 			path = AddMembersToRoom;
 			sourceTree = "<group>";
 		};
+		772A252A2EB8C0BD009264BA /* OwnCloud */ = {
+			isa = PBXGroup;
+			children = (
+				77B98C9B2EBA1AD90092DC7F /* Model */,
+				772A25352EB8C4BF009264BA /* OwncloudEndpoints.swift */,
+				77B98C9E2EBA1CE60092DC7F /* OwncloudApiClient.swift */,
+				7714E97C2EC1F9B400D28198 /* OwncloudHelper.swift */,
+			);
+			path = OwnCloud;
+			sourceTree = "<group>";
+		};
+		77B98C9B2EBA1AD90092DC7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77B98C9C2EBA1AE70092DC7F /* OwncloudUserData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8A69B5B3249762DE00152BDE /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -2034,6 +2067,9 @@
 				FC7DC8F52861FED400E61C69 /* ASCDropboxSDKWrapper.swift */,
 				FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */,
 				FC41FE6928C789020049F20F /* ASCConnectStorageWebDavControllerConfiguration.swift */,
+				776052F82EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift */,
+				77B98C952EBA0FDA0092DC7F /* ASCOwnCloudConnectStorageDelegate.swift */,
+				774E68C32EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift */,
 			);
 			path = ConnectStorage;
 			sourceTree = "<group>";
@@ -2548,6 +2584,7 @@
 		FC5D0409263AE01D00D9DBCF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				772A252A2EB8C0BD009264BA /* OwnCloud */,
 				FC0377D42BDD1D4100DDB2EF /* DocumentServer */,
 				FC2B0CB92640302A00969DB9 /* Onlyoffice */,
 				FC68522B26835A1700D830EC /* Onedrive */,
@@ -4498,6 +4535,7 @@
 				E80387272D6D34B200D162E3 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
 				E80387282D6D34B200D162E3 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				E80387292D6D34B200D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift in Sources */,
+				77B98C9F2EBA1CE60092DC7F /* OwncloudApiClient.swift in Sources */,
 				E803872A2D6D34B200D162E3 /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
 				E803872B2D6D34B200D162E3 /* ASCDocSpaceAccessOFormProvider.swift in Sources */,
 				E803872C2D6D34B200D162E3 /* ASCDocSpaceAccessDocumentProvider.swift in Sources */,
@@ -4586,6 +4624,7 @@
 				FC759BBA2C00611000510096 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
 				FC9F496F27F5D0C900D88936 /* ASCAppleIdSignInController.swift in Sources */,
 				FC9EF0242BFB208800A66DE8 /* PeopleFilterRequestModel.swift in Sources */,
+				77B98C9D2EBA1AE70092DC7F /* OwncloudUserData.swift in Sources */,
 				FC2B0CD12642C79800969DB9 /* OnlyofficeServerError.swift in Sources */,
 				FC2A74B12C383BDA00A515F7 /* ASCEntityViewCellProtocol.swift in Sources */,
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
@@ -4595,6 +4634,7 @@
 				FC83D5252A973E2100C404CB /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC759BC52C00611000510096 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC83D5462A973E2100C404CB /* Decodable+Extensions.swift in Sources */,
+				774E68C42EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift in Sources */,
 				FC9EF02D2BFB208800A66DE8 /* OnlyofficePath.swift in Sources */,
 				FC2A74AC2C383B6E00A515F7 /* ASCLoaderViewCell.swift in Sources */,
 				8A69B5B6249762DE00152BDE /* ASCDebugNavigationController.swift in Sources */,
@@ -4743,6 +4783,7 @@
 				FC759BF12C00611000510096 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC8540C41E83A582000C2436 /* ASCProgressAlert.swift in Sources */,
 				FC86503A1ED3232B00C73AEF /* ASCAboutViewController.swift in Sources */,
+				776052F92EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift in Sources */,
 				FCFE46D9275E237E007C9AE0 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
 				F3C64CAC2E53310B00F7BACC /* ASCZoomSignInController.swift in Sources */,
@@ -4880,6 +4921,7 @@
 				8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */,
 				FC2C73E32754BCDF008E9063 /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */,
 				FCC64F86291921D7004D9A47 /* ASCSharingSettingsAccessRoomsProvider.swift in Sources */,
+				772A25362EB8C4BF009264BA /* OwncloudEndpoints.swift in Sources */,
 				FC379D342C37ED7000B120D9 /* SelectableLabledCellView.swift in Sources */,
 				FCEBA6FA28B361910009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
 				E8674B792B2B15C200CDA5DC /* MenuView.swift in Sources */,
@@ -4902,6 +4944,7 @@
 				F30716BC2DF76513003CBBD2 /* ASCCreateRoomFromTemplateRootViewController.swift in Sources */,
 				F30716BD2DF76513003CBBD2 /* ASCEditTemplateRootViewController.swift in Sources */,
 				F30716BE2DF76513003CBBD2 /* ASCChooseRoomTemplateMembersView.swift in Sources */,
+				77B98C962EBA0FDA0092DC7F /* ASCOwnCloudConnectStorageDelegate.swift in Sources */,
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */,
 				FCB4CE3029F93B04009C1E2E /* ASCEditorManager+DocumentEditor.swift in Sources */,
@@ -4954,6 +4997,7 @@
 				FC759BCD2C00611000510096 /* ASCSharingRightHolder.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,
 				FC7D994D272994BB00410795 /* AppDelegate+Helpers.swift in Sources */,
+				7714E97D2EC1F9B400D28198 /* OwncloudHelper.swift in Sources */,
 				E801C9A42D36E43900E9939A /* ASCEntityViewLayoutTypeProvider.swift in Sources */,
 				E8D2DFEA2D445E3100F26718 /* OnlyofficeOperation.swift in Sources */,
 				E8D2DFEB2D445E3100F26718 /* OnlyofficeRoomIndexExportOperation.swift in Sources */,

@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "0UV-ad-V6Z.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Next\"; ObjectID = \"0UV-ad-V6Z\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next"
+          }
+        }
+      }
+    },
     "1hg-GO-WNq.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Next\"; ObjectID = \"1hg-GO-WNq\";",
       "extractionState" : "extracted_with_value",
@@ -385,6 +397,18 @@
         }
       }
     },
+    "CAb-Ol-Sq3.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Server\"; ObjectID = \"CAb-Ol-Sq3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Server"
+          }
+        }
+      }
+    },
     "fGf-yk-zsE.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Password\"; ObjectID = \"fGf-yk-zsE\";",
       "extractionState" : "extracted_with_value",
@@ -477,6 +501,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "密码"
+          }
+        }
+      }
+    },
+    "gmK-yF-ka4.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"example.com\"; ObjectID = \"gmK-yF-ka4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "example.com"
           }
         }
       }

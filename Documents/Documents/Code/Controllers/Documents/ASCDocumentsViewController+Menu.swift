@@ -186,7 +186,7 @@ extension ASCDocumentsViewController {
                         : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     image: file.isFavorite
                         ? Asset.Images.starFill.image
-                        : Asset.Images.star.image,
+                        : Asset.Images.star.image
                 ) { [unowned self] action in
                     self.favorite(cell: cell, favorite: !file.isFavorite)
                 }
@@ -714,7 +714,7 @@ extension ASCDocumentsViewController {
                         : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     image: isFavorite
                         ? Asset.Images.starFill.image
-                        : Asset.Images.star.image,
+                        : Asset.Images.star.image
                 ) { [unowned self] action in
                     self.favorite(cell: cell, favorite: !isFavorite)
                 }

@@ -79,6 +79,13 @@
 		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
+		775726E82EC604C00088124F /* OwncloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E52EC604C00088124F /* OwncloudEndpoints.swift */; };
+		775726E92EC604C00088124F /* OwncloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E42EC604C00088124F /* OwncloudApiClient.swift */; };
+		775726EA2EC604C00088124F /* OwncloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E62EC604C00088124F /* OwncloudHelper.swift */; };
+		775726EB2EC604C00088124F /* OwncloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E22EC604C00088124F /* OwncloudUserData.swift */; };
+		775726ED2EC6053E0088124F /* ASCConnectStorageOwnCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726EC2EC6053E0088124F /* ASCConnectStorageOwnCloudServerController.swift */; };
+		775726EF2EC605640088124F /* ASCConnectStorageOAuth2Owncloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726EE2EC605640088124F /* ASCConnectStorageOAuth2Owncloud.swift */; };
+		775726F12EC6058F0088124F /* ASCOwnCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726F02EC6058F0088124F /* ASCOwnCloudConnectStorageDelegate.swift */; };
 		77E206C42EA8E97700920AAA /* NextcloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206C32EA8E97700920AAA /* NextcloudUserData.swift */; };
 		77E206C52EA8E97700920AAA /* NextcloudOCSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206C22EA8E97700920AAA /* NextcloudOCSResponse.swift */; };
 		77E206C62EA8E97700920AAA /* NextcloudMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206C12EA8E97700920AAA /* NextcloudMeta.swift */; };
@@ -808,6 +815,14 @@
 		3BF384B26A0BED3EFC4A3889 /* Pods-Documents-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.release.xcconfig"; sourceTree = "<group>"; };
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
 		6CBC0ED0667B3A2030713452 /* Pods-Documents-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.debug.xcconfig"; sourceTree = "<group>"; };
+		775726E22EC604C00088124F /* OwncloudUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudUserData.swift; sourceTree = "<group>"; };
+		775726E42EC604C00088124F /* OwncloudApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudApiClient.swift; sourceTree = "<group>"; };
+		775726E52EC604C00088124F /* OwncloudEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudEndpoints.swift; sourceTree = "<group>"; };
+		775726E62EC604C00088124F /* OwncloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwncloudHelper.swift; sourceTree = "<group>"; };
+		775726EC2EC6053E0088124F /* ASCConnectStorageOwnCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOwnCloudServerController.swift; sourceTree = "<group>"; };
+		775726EE2EC605640088124F /* ASCConnectStorageOAuth2Owncloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Owncloud.swift; sourceTree = "<group>"; };
+		775726F02EC6058F0088124F /* ASCOwnCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOwnCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
+		775726F22EC606740088124F /* HtmlRenderer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HtmlRenderer.xcframework; path = "../../editors-ios/build/SDK/lib/HtmlRenderer.xcframework"; sourceTree = "<group>"; };
 		776605EDCAB83C1E517628AF /* Pods-Documents-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		77E206C12EA8E97700920AAA /* NextcloudMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudMeta.swift; sourceTree = "<group>"; };
 		77E206C22EA8E97700920AAA /* NextcloudOCSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudOCSResponse.swift; sourceTree = "<group>"; };
@@ -1897,6 +1912,7 @@
 		3C50733DA18F920525F5E1EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				775726F22EC606740088124F /* HtmlRenderer.xcframework */,
 				FC28021425B9B8C5000E9D99 /* CloudKit.framework */,
 				223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */,
 				C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */,
@@ -1904,6 +1920,25 @@
 				92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		775726E32EC604C00088124F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				775726E22EC604C00088124F /* OwncloudUserData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		775726E72EC604C00088124F /* OwnCloud */ = {
+			isa = PBXGroup;
+			children = (
+				775726E32EC604C00088124F /* Model */,
+				775726E42EC604C00088124F /* OwncloudApiClient.swift */,
+				775726E52EC604C00088124F /* OwncloudEndpoints.swift */,
+				775726E62EC604C00088124F /* OwncloudHelper.swift */,
+			);
+			path = OwnCloud;
 			sourceTree = "<group>";
 		};
 		8DAE80D35B150AEE2BBFA722 /* Pods */ = {
@@ -2274,6 +2309,9 @@
 				FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */,
 				FC7DC889285F631100E61C69 /* ASCDropboxSDKWrapper.swift */,
 				F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */,
+				775726EC2EC6053E0088124F /* ASCConnectStorageOwnCloudServerController.swift */,
+				775726EE2EC605640088124F /* ASCConnectStorageOAuth2Owncloud.swift */,
+				775726F02EC6058F0088124F /* ASCOwnCloudConnectStorageDelegate.swift */,
 			);
 			path = ConnectStorage;
 			sourceTree = "<group>";
@@ -2787,6 +2825,7 @@
 		FC68524326837B7300D830EC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				775726E72EC604C00088124F /* OwnCloud */,
 				FC0377A12BDB8D6500DDB2EF /* DocumentServer */,
 				FC68524426837B7300D830EC /* Nextcloud */,
 				FC68524C26837B7300D830EC /* Onedrive */,
@@ -4570,6 +4609,7 @@
 				E803870A2D6D27D400D162E3 /* ASCDocSpaceAccessDocumentFormProvider.swift in Sources */,
 				E803870B2D6D27D400D162E3 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				1D47318F2E5F730800604A1A /* AddMembersToRoomView.swift in Sources */,
+				775726ED2EC6053E0088124F /* ASCConnectStorageOwnCloudServerController.swift in Sources */,
 				1D4731902E5F730800604A1A /* ASCStartFillingAssignToRoleViewModel.swift in Sources */,
 				1D4731912E5F730800604A1A /* AddMembersToRoomViewModel.swift in Sources */,
 				1D4731922E5F730800604A1A /* ASCStartFillingAssignToRoleView.swift in Sources */,
@@ -4616,6 +4656,10 @@
 				F36C131F2DDDFC9C00E8B704 /* ASCSaveAsTemplateRootViewController.swift in Sources */,
 				FC759C9A2C00615E00510096 /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */,
+				775726E82EC604C00088124F /* OwncloudEndpoints.swift in Sources */,
+				775726E92EC604C00088124F /* OwncloudApiClient.swift in Sources */,
+				775726EA2EC604C00088124F /* OwncloudHelper.swift in Sources */,
+				775726EB2EC604C00088124F /* OwncloudUserData.swift in Sources */,
 				FC759CB12C00615E00510096 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */,
 				FC35D4632A987DFC00C6383F /* NSAttributedString+Extensions.swift in Sources */,
 				FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */,
@@ -4649,6 +4693,7 @@
 				1D9BBE9629A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
 				FC9EEFAB2BFB201700A66DE8 /* OnlyofficeCapabilities.swift in Sources */,
 				FC692BD82BA9BC230095C7AD /* ASCRootViewController+ManagedAppConfig.swift in Sources */,
+				775726F12EC6058F0088124F /* ASCOwnCloudConnectStorageDelegate.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
 				E8DE98372C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift in Sources */,
@@ -4973,6 +5018,7 @@
 				FCCE50A32C1AF79000102056 /* ASCDocSpaceLinkViewController.swift in Sources */,
 				FC35D44B2A987DFB00C6383F /* UIView+Extension.swift in Sources */,
 				F3B6B7462DF7304D0096A7E5 /* ASCRoomTemplateMemberRow.swift in Sources */,
+				775726EF2EC605640088124F /* ASCConnectStorageOAuth2Owncloud.swift in Sources */,
 				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				F3A4841A2C909A71007A57B2 /* ASCTransferPresenter.swift in Sources */,
 				FC68529926837B7300D830EC /* DropboxApiClient.swift in Sources */,

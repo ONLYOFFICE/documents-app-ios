@@ -73,6 +73,9 @@ final class ASCNavigator {
                     let shareRoomViewController = SharingInfoRootViewController(entityType: .room(room))
                     shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
                 }
+            } else if let folder = entity as? ASCFolder {
+                let shareRoomViewController = SharingInfoRootViewController(entityType: .folder(folder))
+                shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
             } else if let sharedViewController = viewController as? ASCSharingOptionsViewController {
                 shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
                 sharedViewController.setup(entity: entity)
@@ -145,17 +148,18 @@ final class ASCNavigator {
         switch destination {
         case .sort:
             return ASCSortViewController.instance()
-        case .shareSettings:
-            return ASCSharingOptionsViewController(sourceViewController: navigationController?.viewControllers.last)
+        case .shareSettings(let entity):
+            if let folder = entity as? ASCFolder {
+                return SharingInfoRootViewController(entityType: .folder(folder))
+            }
+            return UIViewController()
         case let .addUsers(folder):
             if let folder = folder as? ASCFolder {
-                let vc = InviteUsersViewController(folder: folder)
-                return vc
+                return InviteUsersViewController(folder: folder)
             }
             return UIViewController()
         case .leaveRoom:
-            let vc = ASCSharingChooseNewOwnerRightHoldersViewController()
-            return vc
+            return ASCSharingChooseNewOwnerRightHoldersViewController()
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
         case let .onlyofficeSignIn(portal):

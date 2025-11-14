@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="AZl-CS-15I" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="no6-cW-rms">
-                        <rect key="frame" x="0.0" y="94" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="94" width="390" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -27,7 +27,7 @@
         <!--Connect Storage-->
         <scene sceneID="rE5-1B-dYl">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectPortalThirdPartyViewController" id="atj-gF-cBt" customClass="ASCConnectPortalThirdPartyViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectPortalThirdPartyViewController" id="atj-gF-cBt" customClass="ASCConnectPortalThirdPartyViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="w7h-mx-KAW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
         <!--ConnectStorage OAuth2 View Controller-->
         <scene sceneID="03v-J5-3Ba">
             <objects>
-                <viewController storyboardIdentifier="ASCConnectStorageOAuth2ViewController" id="0k5-t4-ZyS" userLabel="ConnectStorage OAuth2 View Controller" customClass="ASCConnectStorageOAuth2ViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ASCConnectStorageOAuth2ViewController" id="0k5-t4-ZyS" userLabel="ConnectStorage OAuth2 View Controller" customClass="ASCConnectStorageOAuth2ViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pf7-ag-ZkR"/>
                         <viewControllerLayoutGuide type="bottom" id="KXn-gC-po4"/>
@@ -86,7 +86,7 @@
             <objects>
                 <navigationController id="AH0-KI-BpN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qoa-IQ-q1f">
-                        <rect key="frame" x="0.0" y="94" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="94" width="390" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -100,7 +100,7 @@
         <!--Connect Cloud-->
         <scene sceneID="N9l-wW-KWa">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectCloudViewController" id="eeO-aA-EMd" customClass="ASCConnectCloudViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectCloudViewController" id="eeO-aA-EMd" customClass="ASCConnectCloudViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="78" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="mel-cT-MWn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +250,7 @@
         <!--Connect Storage Web Dav Controller-->
         <scene sceneID="sFf-Jr-apz">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectStorageWebDavController" id="1Tk-tU-uCs" customClass="ASCConnectStorageWebDavController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectStorageWebDavController" id="1Tk-tU-uCs" customClass="ASCConnectStorageWebDavController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="Qei-5d-GFn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -426,7 +426,7 @@
         <!--Connect Storage Next Cloud Server Controller-->
         <scene sceneID="6IA-nl-84F">
             <objects>
-                <tableViewController storyboardIdentifier="ASCConnectStorageNextCloudServerController" id="1qg-xC-CtZ" customClass="ASCConnectStorageNextCloudServerController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCConnectStorageNextCloudServerController" id="1qg-xC-CtZ" customClass="ASCConnectStorageNextCloudServerController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="Byp-8B-lLD">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -532,6 +532,144 @@
             </objects>
             <point key="canvasLocation" x="1555" y="1684"/>
         </scene>
+        <!--Connect Storage Own Cloud Server Controller-->
+        <scene sceneID="rjW-Xx-p2w">
+            <objects>
+                <tableViewController storyboardIdentifier="ASCConnectStorageOwnCloudServerController" id="9D1-Ge-9L5" customClass="ASCConnectStorageOwnCloudServerController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="P7u-5O-gFp">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="guW-Kt-6SL">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-owncloud-large" translatesAutoresizingMaskIntoConstraints="NO" id="tpj-xN-0M6">
+                                    <rect key="frame" x="145" y="19" width="100" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="rLP-Nr-PLa"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="tpj-xN-0M6" firstAttribute="centerX" secondItem="guW-Kt-6SL" secondAttribute="centerX" id="BnD-0Z-oF9"/>
+                                <constraint firstItem="tpj-xN-0M6" firstAttribute="centerY" secondItem="guW-Kt-6SL" secondAttribute="centerY" id="Cya-OW-bQt"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection id="kSm-IR-rNq">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="e2M-Li-grm">
+                                        <rect key="frame" x="16" y="106" width="358" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="e2M-Li-grm" id="88i-J6-3MI">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="example.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gmK-yF-ka4">
+                                                    <rect key="frame" x="121" y="0.0" width="221" height="52"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="next"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAb-Ol-Sq3">
+                                                    <rect key="frame" x="16" y="15.666666666666664" width="100" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="QXU-9Q-7KI"/>
+                                                        <constraint firstAttribute="height" constant="21" id="W6J-8f-Hn2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gmK-yF-ka4" firstAttribute="leading" secondItem="CAb-Ol-Sq3" secondAttribute="trailing" constant="5" id="7DL-hC-JcE"/>
+                                                <constraint firstItem="CAb-Ol-Sq3" firstAttribute="centerY" secondItem="88i-J6-3MI" secondAttribute="centerY" id="Hkb-4x-AKz"/>
+                                                <constraint firstAttribute="bottom" secondItem="gmK-yF-ka4" secondAttribute="bottom" id="Q6e-cd-W4L"/>
+                                                <constraint firstItem="gmK-yF-ka4" firstAttribute="top" secondItem="88i-J6-3MI" secondAttribute="top" id="hjG-Z0-7jp"/>
+                                                <constraint firstItem="CAb-Ol-Sq3" firstAttribute="leading" secondItem="88i-J6-3MI" secondAttribute="leadingMargin" id="loP-BL-f2Q"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gmK-yF-ka4" secondAttribute="trailing" id="w2d-hH-ceH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="juw-Gr-Ho7">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="USY-05-ier">
+                                        <rect key="frame" x="16" y="194" width="358" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USY-05-ier" id="qlt-Mt-CPx">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UV-ad-V6Z">
+                                                    <rect key="frame" x="16" y="15.666666666666664" width="326" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="i3c-7z-cCl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" name="brend"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0UV-ad-V6Z" firstAttribute="centerX" secondItem="qlt-Mt-CPx" secondAttribute="centerX" id="A5f-3i-nCV"/>
+                                                <constraint firstItem="0UV-ad-V6Z" firstAttribute="centerY" secondItem="qlt-Mt-CPx" secondAttribute="centerY" id="B67-dB-JQA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0UV-ad-V6Z" secondAttribute="trailing" id="JZf-xE-GBv"/>
+                                                <constraint firstItem="0UV-ad-V6Z" firstAttribute="leading" secondItem="qlt-Mt-CPx" secondAttribute="leadingMargin" id="dDQ-SL-mba"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="9D1-Ge-9L5" id="S7v-Zh-UMP"/>
+                            <outlet property="delegate" destination="9D1-Ge-9L5" id="dfa-rY-71g"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="owE-Yk-beM"/>
+                    <connections>
+                        <outlet property="doneCell" destination="USY-05-ier" id="I38-n0-qD4"/>
+                        <outlet property="doneLabel" destination="0UV-ad-V6Z" id="tEd-SD-loh"/>
+                        <outlet property="serverCell" destination="e2M-Li-grm" id="99i-jE-rIo"/>
+                        <outlet property="serverField" destination="gmK-yF-ka4" id="0Bj-vH-PFp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M1g-d8-RuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1554" y="2367"/>
+        </scene>
+        <!--ConnectStorage OAuth2 View Controller-->
+        <scene sceneID="fIS-am-fdk">
+            <objects>
+                <viewController storyboardIdentifier="ASCConnectStorageOAuth2Owncloud" id="ZiS-ru-KDx" userLabel="ConnectStorage OAuth2 View Controller" customClass="ASCConnectStorageOAuth2Owncloud" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Aj-Gq-hm8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ugw-AP-bxx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mzK-w5-2gf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JGk-4y-xR4">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="view-background"/>
+                        <constraints>
+                            <constraint firstItem="JGk-4y-xR4" firstAttribute="centerX" secondItem="mzK-w5-2gf" secondAttribute="centerX" id="IsA-LS-3BQ"/>
+                            <constraint firstItem="JGk-4y-xR4" firstAttribute="centerY" secondItem="mzK-w5-2gf" secondAttribute="centerY" id="nwj-Lm-LGY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="indicator" destination="JGk-4y-xR4" id="nly-Ks-a28"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mg7-A8-nJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2286" y="176"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="brend"/>
     <resources>
@@ -543,7 +681,7 @@
         <image name="logo-owncloud-large" width="100" height="50"/>
         <image name="logo-webdav-large" width="144" height="50"/>
         <namedColor name="brend">
-            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.17647058823529413" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="view-background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

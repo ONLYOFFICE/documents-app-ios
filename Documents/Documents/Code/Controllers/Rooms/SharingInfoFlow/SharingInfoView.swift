@@ -164,9 +164,9 @@ struct SharingInfoView: View {
     @ViewBuilder
     private var sharedLinksSectionHeader: some View {
         if viewModel.isAddingLinksAvailable {
-            formRoomHeader
-        } else {
             sharedLinksHeader
+        } else {
+            formRoomHeader
         }
     }
 
@@ -416,9 +416,9 @@ struct ASCUserRow: View {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains(String.defaultUserPhotoSize),
-               let url = URL(string: portal + string)
+               let url = URL(string: portal)?.appendingSafePath(string)
             {
-                KFImage(url)
+                KFOnlyOfficeProviderImageView(url: url)
                     .resizable()
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .cornerRadius(Constants.imageCornerRadius)

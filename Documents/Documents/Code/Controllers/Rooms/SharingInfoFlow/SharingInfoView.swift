@@ -164,9 +164,9 @@ struct SharingInfoView: View {
     @ViewBuilder
     private var sharedLinksSectionHeader: some View {
         if viewModel.isAddingLinksAvailable {
-            formRoomHeader
-        } else {
             sharedLinksHeader
+        } else {
+            formRoomHeader
         }
     }
 

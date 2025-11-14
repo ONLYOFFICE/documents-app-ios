@@ -8,7 +8,40 @@
 
 
 final class EditFileSharedLinkService {
-    func delete(file: ASCFile) {
-        
+    private let networkService = OnlyofficeApiClient.shared
+
+    func delete(
+        linkId: String,
+        access: Int,
+        primary: Bool,
+        `internal`: Bool,
+        expirationDate: String? = nil,
+        denyDownload: Bool,
+        password: String? = nil,
+        title: String,
+        file: ASCFile
+    ) async throws {
+        let request = FileRemoveLinkRequestModel(
+            linkId: linkId,
+            access: access,
+            primary: primary,
+            internal: `internal`,
+            expirationDate: expirationDate,
+            denyDownload: denyDownload,
+            title: title,
+            password: password)
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Files.deleteLink(file: file),
+            parameters: request.dictionary
+        )
+        guard response.statusCode != nil else { throw Errors.emptyResponse }
+    }
+}
+
+
+extension EditFileSharedLinkService {
+    enum Errors: Error {
+        case emptyResponse
     }
 }

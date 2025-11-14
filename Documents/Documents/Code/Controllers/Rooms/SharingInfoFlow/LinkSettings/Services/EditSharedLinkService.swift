@@ -7,7 +7,7 @@
 //
 
 protocol EditSharedLinkServiceProtocol: AnyObject {
-    func delete(id: String, title: String, linkType: ASCShareLinkType, password: String?) async throws
+    func delete(id: String, access: Int, primary: Bool, `internal`: Bool, denyDownload: Bool, title: String, linkType: ASCShareLinkType, password: String?) async throws
     func revoke(id: String, title: String, linkType: ASCShareLinkType, password: String?,denyDownload: Bool) async throws
     func save()
 }
@@ -23,14 +23,30 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
         self.entity = entity
     }
     
-    func delete(id: String, title: String, linkType: ASCShareLinkType, password: String?) async throws {
+    func delete(
+        id: String,
+        access: Int,
+        primary: Bool,
+        `internal`: Bool,
+        denyDownload: Bool,
+        title: String,
+        linkType: ASCShareLinkType,
+        password: String?
+    ) async throws {
         switch entity {
         case let .room(room):
             try await editRoomSharedLinkService?.delete(id: id, title: title, linkType: linkType, password: password, room: room)
         case let .folder(folder):
             editFolderSharedLinkService?.delete(folder: folder)
         case let .file(file):
-            editFileSharedLinkService?.delete(file: file)
+            try await editFileSharedLinkService?.delete(
+                linkId: id,
+                access: access,
+                primary: primary,
+                internal: `internal`,
+                denyDownload: denyDownload,
+                title: title,
+                file: file)
         }
     }
     

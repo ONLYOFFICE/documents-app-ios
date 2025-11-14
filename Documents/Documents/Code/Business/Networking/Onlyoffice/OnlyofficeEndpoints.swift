@@ -363,6 +363,10 @@ enum OnlyofficeAPI {
             static func delete(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .delete)
             }
+            
+            static func deleteLink(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.fileLinks, file.id), .put)
+            }
 
             static func openEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<OnlyofficeDocumentConfig>> {
                 guard let requestToken = file.requestToken else {

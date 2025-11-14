@@ -201,9 +201,9 @@ struct VDRFillingStatusEventRowView: View {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains(String.defaultUserPhotoSize),
-               let url = URL(string: portal + string)
+               let url = URL(string: portal)?.appendingSafePath(string)
             {
-                KFImage(url)
+                KFOnlyOfficeProviderImageView(url: url)
                     .resizable()
                     .frame(width: .imageWidth, height: .imageHeight)
                     .cornerRadius(.imageCornerRadius)

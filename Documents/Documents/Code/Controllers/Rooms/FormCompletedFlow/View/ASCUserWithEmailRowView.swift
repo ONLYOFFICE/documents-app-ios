@@ -54,9 +54,9 @@ struct ASCUserWithEmailRowView: View {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains(String.defaultUserPhotoSize),
-               let url = URL(string: portal + string)
+               let url = URL(string: portal)?.appendingSafePath(string)
             {
-                KFImageView(url: url)
+                KFOnlyOfficeProviderImageView(url: url)
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .cornerRadius(Constants.imageCornerRadius)
                     .clipped()

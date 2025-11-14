@@ -6,7 +6,7 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-struct FileRemoveLinkRequestModel: Codable {
+struct RemoveLinkRequestModel: Codable {
     var linkId: String
     var access: Int
     var primary: Bool

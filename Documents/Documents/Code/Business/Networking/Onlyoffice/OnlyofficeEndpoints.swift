@@ -98,6 +98,7 @@ enum OnlyofficeAPI {
         static let customFilter = "api/\(version)/files/file/%@/customfilter"
         static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
         static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
+        static let folderLinks = "api/\(version)/files/folder/%@/links"
 
         static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -186,6 +187,9 @@ enum OnlyofficeAPI {
 
             static func filter(folderId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
+            }
+            static func deleteLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.folderLinks, folder.id), .put)
             }
         }
 

@@ -21,7 +21,7 @@ final class EditFileSharedLinkService {
         title: String,
         file: ASCFile
     ) async throws {
-        let request = FileRemoveLinkRequestModel(
+        let request = RemoveLinkRequestModel(
             linkId: linkId,
             access: access,
             primary: primary,

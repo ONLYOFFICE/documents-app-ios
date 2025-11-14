@@ -37,7 +37,7 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
         case let .room(room):
             try await editRoomSharedLinkService?.delete(id: id, title: title, linkType: linkType, password: password, room: room)
         case let .folder(folder):
-            editFolderSharedLinkService?.delete(folder: folder)
+            try await editFolderSharedLinkService?.delete(linkId: id, access: access, primary: primary, internal: `internal`, denyDownload: denyDownload, title: title, folder: folder)
         case let .file(file):
             try await editFileSharedLinkService?.delete(
                 linkId: id,

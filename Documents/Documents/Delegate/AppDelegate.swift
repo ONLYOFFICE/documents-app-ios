@@ -11,9 +11,9 @@ import CoreSpotlight
 import FirebaseCore
 import FirebaseMessaging
 import GoogleSignIn
-import Siren
 import SwiftyDropbox
 import UIKit
+import Updeto
 import UserNotifications
 #if DEBUG
     import Atlantis
@@ -106,12 +106,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureAppUpdater() {
-        let siren = Siren.shared
-        let rules = Rules(promptFrequency: .immediately, forAlertType: .option)
+        let updeto = Updeto()
 
-        Siren.shared.rulesManager = RulesManager(globalRules: rules,
-                                                 showAlertAfterCurrentVersionHasBeenReleasedForDays: 1)
+        updeto.isAppUpdated { [weak self] result in
+            guard let self = self else { return }
 
-        siren.wail()
+            DispatchQueue.main.async {
+                switch result {
+                case .outdated:
+                    self.showUpdateAlert(appstoreURL: updeto.appstoreURL)
+                default:
+                    break
+                }
+            }
+        }
     }
 }

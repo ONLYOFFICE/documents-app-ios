@@ -26,4 +26,27 @@ extension AppDelegate {
         ASCDIContainer.shared.register(type: ASCSpreadsheetEditorConfigurationProtocol.self, service: ASCSpreadsheetEditorConfiguration())
         ASCDIContainer.shared.register(type: ASCPresentationEditorConfigurationProtocol.self, service: ASCPresentationEditorConfiguration())
     }
+
+    func showUpdateAlert(appstoreURL: URL?) {
+        guard let url = appstoreURL else { return }
+
+        let alert = UIAlertController(
+            title: NSLocalizedString("Update Available", comment: ""),
+            message: NSLocalizedString("Please install the latest version of the app.", comment: ""),
+            preferredStyle: .alert
+        )
+
+        let laterAction = UIAlertAction(title: NSLocalizedString("Later", comment: ""), style: .cancel, handler: nil)
+
+        let updateAction = UIAlertAction(title: NSLocalizedString("Update", comment: ""), style: .default) { _ in
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+
+        alert.addAction(laterAction)
+        alert.addAction(updateAction)
+
+        if let rootVC = UIWindow.keyWindow?.rootViewController {
+            rootVC.present(alert, animated: true)
+        }
+    }
 }

@@ -25,6 +25,7 @@
 		1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC53290D85E600F71071 /* ASCDocumentsCellContextMenu.swift */; };
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
+		773F86612EC7170F00FE9109 /* Updeto in Frameworks */ = {isa = PBXBuildFile; productRef = 773F86602EC7170F00FE9109 /* Updeto */; };
 		77E206FB2EA8E9C100920AAA /* NextcloudMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206F82EA8E9C100920AAA /* NextcloudMeta.swift */; };
 		77E206FC2EA8E9C100920AAA /* NextcloudOCSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206F92EA8E9C100920AAA /* NextcloudOCSResponse.swift */; };
 		77E206FD2EA8E9C100920AAA /* NextcloudUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E206FA2EA8E9C100920AAA /* NextcloudUserData.swift */; };
@@ -1380,6 +1381,7 @@
 				FC87B46A2BBBEBD900DBDBDD /* PresentationEditor in Frameworks */,
 				FC87B4682BBBEBD900DBDBDD /* DocumentEditor in Frameworks */,
 				FC7082242812E2260057FCD2 /* CloudKit.framework in Frameworks */,
+				773F86612EC7170F00FE9109 /* Updeto in Frameworks */,
 				FC87B46C2BBBEBD900DBDBDD /* SpreadsheetEditor in Frameworks */,
 				FC6A757029915CE10056262F /* Pulse in Frameworks */,
 				FC87B4662BBBEBD900DBDBDD /* DocumentConverter in Frameworks */,
@@ -3789,6 +3791,7 @@
 				FC87B4672BBBEBD900DBDBDD /* DocumentEditor */,
 				FC87B4692BBBEBD900DBDBDD /* PresentationEditor */,
 				FC87B46B2BBBEBD900DBDBDD /* SpreadsheetEditor */,
+				773F86602EC7170F00FE9109 /* Updeto */,
 			);
 			productName = "Documents-Swift";
 			productReference = FC70824C2812E2270057FCD2 /* Documents.app */;
@@ -3837,6 +3840,7 @@
 				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
 				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
 				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
+				773F865F2EC7170F00FE9109 /* XCRemoteSwiftPackageReference "Updeto" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -5040,6 +5044,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		773F865F2EC7170F00FE9109 /* XCRemoteSwiftPackageReference "Updeto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/manasv/Updeto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -5059,6 +5071,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		773F86602EC7170F00FE9109 /* Updeto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 773F865F2EC7170F00FE9109 /* XCRemoteSwiftPackageReference "Updeto" */;
+			productName = Updeto;
+		};
 		FC397E372B3591CF00830F43 /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;

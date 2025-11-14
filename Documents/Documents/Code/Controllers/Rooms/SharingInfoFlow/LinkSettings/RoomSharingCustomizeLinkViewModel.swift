@@ -149,10 +149,13 @@ extension EditSharedLinkViewModel {
         do {
             try await editSharedLinkService?.delete(
                 id: linkId,
+                access: link.access.rawValue,
+                primary: link.linkInfo.primary,
+                internal: link.linkInfo.internal,
+                denyDownload: link.linkInfo.denyDownload,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
-                password: link.linkInfo.password
-            )
+                password: link.linkInfo.password)
             screenModel.isDeleting = false
             link.access = .none
             outputLink = link

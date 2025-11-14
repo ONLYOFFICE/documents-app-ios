@@ -41,20 +41,17 @@ struct EditSharedLinkScreenModel {
     static let empty = EditSharedLinkScreenModel(isPasswordVisible: false, isDeleting: false, isDeleted: false, isRevoking: false, isRevoked: false, isSaving: false, isSaved: false, isReadyToDismissed: false)
 }
 
-final class EditSharedLinkService {
-    private var entity: EditSharedLinkEntityType
-    
-    init(entity: EditSharedLinkEntityType) {
-        self.entity = entity
-    }
-}
-
 enum LinkSettingsContentState {
     case general
     case additional
 }
 
 final class EditSharedLinkViewModel: ObservableObject {
+    
+    private var entity: EditSharedLinkEntityType
+    private var editSharedLinkService: EditSharedLinkServiceProtocol?
+    private var viewService: EditSharedLnkViewService?
+    
     let contentState: LinkSettingsContentState
     
     @Published var linkModel: EditSharedLinkModel = .empty
@@ -78,76 +75,64 @@ final class EditSharedLinkViewModel: ObservableObject {
     }
 
     var isDeletePossible: Bool {
-        if (room.roomType == .public && link?.isGeneral == true) || room.roomType == .fillingForm {
-            return false
-        }
-        if sharingLinkURL == nil {
-            return false
-        }
-        return true
+        viewService?.isDeletePossible ?? false
     }
-
-    var isRevokePossible: Bool {
-        if (room.roomType == .public && link?.isGeneral == true) || room.roomType == .fillingForm {
-            return true
-        } else {
-            return false
-        }
+    
+    var showRestrictCopySection: Bool {
+        viewService?.showRestrictCopySection ?? false
     }
 
     var isPossibleToSave: Bool {
         !linkModel.linkName.isEmpty && linkModel.selectedDate > Date() && !screenModel.isSaving
     }
 
-    var roomType: ASCRoomType?
-
     var isEditAccessPossible: Bool {
-        room.security.editAccess
+        viewService?.isEditAccessPossible ?? false
     }
 
     var showTimeLimit: Bool {
-        link?.linkInfo.primary == false
+        link.linkInfo.primary == false
     }
 
     private var cancelable = Set<AnyCancellable>()
 
     private var linkId: String? {
-        link?.linkInfo.id ?? outputLink?.linkInfo.id
+        link.linkInfo.id
     }
 
-    private let link: SharingInfoLinkModel?
-    private let room: ASCRoom
+    private let link: SharingInfoLinkModel
 
     @Binding private var outputLink: SharingInfoLinkModel?
 
     private var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
 
     init(
-        room: ASCRoom,
-        inputLink: SharingInfoLinkModel? = nil,
+        entity: EditSharedLinkEntityType,
+        inputLink: SharingInfoLinkModel,
         outputLink: Binding<SharingInfoLinkModel?>
     ) {
         link = inputLink
-        self.room = room
-        roomType = room.roomType
+        self.entity = entity
+        self.editSharedLinkService = EditSharedLinkService(entity: entity)
+        self.viewService = EditSharedLnkViewService(entity: entity, link: link)
+        
         _outputLink = outputLink
-        let linkInfo = link?.linkInfo
-        contentState = link?.isGeneral == true ? .general : .additional
+        contentState = link.isGeneral == true ? .general : .additional
         
         linkModel = EditSharedLinkModel(
-            linkName: linkInfo?.title ?? "",
+            linkName: link.linkInfo.title,
             isProtected: !linkModel.password.isEmpty,
-            isRestrictCopyOn: linkInfo?.denyDownload == true,
-            isTimeLimited: linkInfo?.expirationDate != nil,
+            isRestrictCopyOn: link.linkInfo.denyDownload == true,
+            isTimeLimited: link.linkInfo.expirationDate != nil,
             selectedDate: {
-                guard let dateString = linkInfo?.expirationDate else {
+                guard let dateString = link.linkInfo.expirationDate else {
                     return Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
                 }
                 return Self.dateFormatter.date(from: dateString) ?? Date()
             }(),
-            password: linkInfo?.password ?? "",
-            isExpired: linkInfo?.isExpired ?? false,
-            selectedAccessRight: link?.access ?? .none)
+            password: link.linkInfo.password ?? "",
+            isExpired: link.linkInfo.isExpired,
+            selectedAccessRight: link.access)
 
         defineSharingLink()
     }
@@ -156,16 +141,17 @@ final class EditSharedLinkViewModel: ObservableObject {
 // MARK: Handlers
 
 extension EditSharedLinkViewModel {
+    @MainActor
     func onDelete() async {
-        guard let linkId, var link = link ?? outputLink else { return }
+        guard let linkId else { return }
+        var link = link
         screenModel.isDeleting = true
         do {
-            try await linkAccessService.removeLink(
+            try await editSharedLinkService?.delete(
                 id: linkId,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
-                password: link.linkInfo.password,
-                room: room
+                password: link.linkInfo.password
             )
             screenModel.isDeleting = false
             link.access = .none
@@ -192,16 +178,15 @@ extension EditSharedLinkViewModel {
     }
 
     func onRevoke() async {
-        guard let linkId,
-              var link = link ?? outputLink else { return }
+        guard let linkId else { return }
+        var link = link
         screenModel.isRevoking = true
         do {
-            try await linkAccessService.revokeLink(
+            try await editSharedLinkService?.revoke(
                 id: linkId,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
                 password: link.linkInfo.password,
-                room: room,
                 denyDownload: linkModel.isRestrictCopyOn
             )
             screenModel.isRevoking = false
@@ -232,7 +217,7 @@ private extension EditSharedLinkViewModel {
                 linkType: ASCShareLinkType.external,
                 denyDownload: linkModel.isRestrictCopyOn,
                 password: linkModel.isProtected ? linkModel.password : nil,
-                room: room
+                room: ASCRoom()
             )
             screenModel.isSaving = false
             UIPasteboard.general.string = link.linkInfo.shareLink
@@ -253,10 +238,8 @@ private extension EditSharedLinkViewModel {
     }
 
     func defineSharingLink() {
-        guard let strLink = link?.linkInfo.shareLink ?? outputLink?.linkInfo.shareLink,
-              link?.linkInfo.isExpired != true
-        else { return }
-        sharingLinkURL = URL(string: strLink)
+        guard link.linkInfo.isExpired != true else { return }
+        sharingLinkURL = URL(string: link.linkInfo.shareLink)
     }
 }
 

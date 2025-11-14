@@ -124,7 +124,7 @@ struct EditSharedLinkView: View {
 
     @ViewBuilder
     private var restrictionSection: some View {
-        if viewModel.roomType != .fillingForm {
+        if viewModel.showRestrictCopySection {
             Section(footer: Text(verbatim: String.restrictionSectionFooterText)) {
                 Toggle(isOn: $viewModel.linkModel.isRestrictCopyOn) {
                     Text("Restrict file content copy, file download and printing")
@@ -154,7 +154,7 @@ struct EditSharedLinkView: View {
 
     @ViewBuilder
     private var revokeSection: some View {
-        if viewModel.isRevokePossible {
+        if !viewModel.isDeletePossible{
             Section {
                 ASCLabledCellView(
                     model: ASCLabledCellModel(
@@ -288,16 +288,6 @@ private extension View {
             }
         }
     }
-}
-
-#Preview {
-    EditSharedLinkView(
-        viewModel: .init(
-            room: .init(),
-            inputLink: nil,
-            outputLink: .constant(nil)
-        )
-    )
 }
 
 private extension String {

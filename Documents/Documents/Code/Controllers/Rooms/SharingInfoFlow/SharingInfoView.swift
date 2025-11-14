@@ -318,7 +318,11 @@ private extension View {
         case let .room(room):
             navigation(item: selectedLink, destination: { link in
                 EditSharedLinkView(viewModel: EditSharedLinkViewModel(
-                    room: room,
+                    entity: .room(room),
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            })
                     inputLink: link,
                     outputLink: viewModel.changedLinkBinding
                 ))

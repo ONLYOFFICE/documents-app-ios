@@ -36,7 +36,6 @@ final class EditFolderSharedLinkService {
         title: String,
         linkType: ASCShareLinkType,
         password: String?,
-        room: ASCRoom,
         denyDownload: Bool,
         folder: ASCFolder
     ) async throws {

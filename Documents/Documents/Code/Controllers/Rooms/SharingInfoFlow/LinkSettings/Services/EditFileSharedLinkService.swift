@@ -30,6 +30,29 @@ final class EditFileSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
+    
+    func revoke(
+        id: String,
+        title: String,
+        linkType: ASCShareLinkType,
+        password: String?,
+        denyDownload: Bool,
+        file: ASCFile
+    ) async throws {
+        let request = RevokeLinkRequestModel(
+            linkId: id,
+            title: title,
+            access: ASCShareAccess.none.rawValue,
+            linkType: linkType.rawValue,
+            password: password,
+            denyDownload: denyDownload)
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Files.deleteLink(file: file),
+            parameters: request.dictionary
+        )
+        guard response.statusCode != nil else { throw Errors.emptyResponse }
+    }
 }
 
 

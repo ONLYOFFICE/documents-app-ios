@@ -12,11 +12,9 @@ enum Destination {
     // MARK: - Documents
 
     case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
-    case shareSettings(entity: ASCEntity)
     case addUsers(entity: ASCEntity)
     case leaveRoom(entity: ASCEntity, handler: ASCEntityHandler?)
-    case roomSharingLink(folder: ASCFolder)
-    case sharedSettingsLink(file: ASCFile)
+    case sharingLink(entityType: SharingInfoEntityType)
 
     // MARK: - Login
 
@@ -66,28 +64,6 @@ final class ASCNavigator {
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
 
-        case let .shareSettings(entity):
-            var shareRoomNavigationVC: ASCBaseNavigationController?
-            if entity.isRoom {
-                if let room = entity as? ASCFolder {
-                    let shareRoomViewController = SharingInfoRootViewController(entityType: .room(room))
-                    shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
-                }
-            } else if let folder = entity as? ASCFolder {
-                let shareRoomViewController = SharingInfoRootViewController(entityType: .folder(folder))
-                shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
-            } else if let sharedViewController = viewController as? ASCSharingOptionsViewController {
-                shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
-                sharedViewController.setup(entity: entity)
-                sharedViewController.requestToLoadRightHolders()
-            }
-
-            if let shareRoomNavigationVC {
-                shareRoomNavigationVC.modalPresentationStyle = .formSheet
-                shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-                navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
-            }
-
         case .addUsers:
             let nc = ASCBaseNavigationController(rootASCViewController: viewController)
             nc.modalPresentationStyle = .formSheet
@@ -116,7 +92,7 @@ final class ASCNavigator {
                 }
             }
 
-        case .roomSharingLink:
+        case .sharingLink:
             if let shareRoomViewController = viewController as? SharingInfoRootViewController {
                 let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
 
@@ -125,15 +101,6 @@ final class ASCNavigator {
 
                 navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
-
-        case let .sharedSettingsLink(file):
-            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                sharedSettingsViewController.modalPresentationStyle = .formSheet
-            } else {
-                sharedSettingsViewController.modalPresentationStyle = .pageSheet
-            }
-            navigationController?.present(sharedSettingsViewController, animated: true)
 
         default:
             navigationController?.pushViewController(viewController, animated: true)
@@ -148,11 +115,6 @@ final class ASCNavigator {
         switch destination {
         case .sort:
             return ASCSortViewController.instance()
-        case .shareSettings(let entity):
-            if let folder = entity as? ASCFolder {
-                return SharingInfoRootViewController(entityType: .folder(folder))
-            }
-            return UIViewController()
         case let .addUsers(folder):
             if let folder = folder as? ASCFolder {
                 return InviteUsersViewController(folder: folder)
@@ -186,10 +148,8 @@ final class ASCNavigator {
             return ASCDevelopOptionsViewController()
         case .themeOptions:
             return ASCAppThemeViewController()
-        case let .roomSharingLink(folder):
-            return SharingInfoRootViewController(entityType: .room(folder))
-        case let .sharedSettingsLink(file):
-            return SharedSettingsRootViewController(file: file)
+        case let .sharingLink(entityType: entityType):
+            return SharingInfoRootViewController(entityType: entityType)
         }
     }
 }

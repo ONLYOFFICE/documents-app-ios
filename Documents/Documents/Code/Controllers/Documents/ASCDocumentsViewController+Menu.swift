@@ -105,7 +105,7 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Share", comment: ""),
             image: Asset.Images.squareAndArrowUp.image
         ) { [unowned self] action in
-            navigator.navigate(to: .sharedSettingsLink(file: file))
+            navigator.navigate(to: .sharingLink(entityType: .file(file)))
         }
 
         /// Tranfrorm to room
@@ -312,7 +312,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: Asset.Images.person2.image
                 ) { [unowned self] action in
-                    navigator.navigate(to: .shareSettings(entity: file))
+                    navigator.navigate(to: .sharingLink(entityType: .file(file)))
                 }
             )
         }
@@ -576,7 +576,7 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Sharing Settings", comment: "Button title"),
             image: Asset.Images.person2.image
         ) { [unowned self] _ in
-            navigator.navigate(to: .shareSettings(entity: folder))
+            navigator.navigate(to: .sharingLink(entityType: folder.isRoom ? .room(folder) : .folder(folder)))
         }
 
         /// Create room
@@ -612,9 +612,9 @@ extension ASCDocumentsViewController {
                     image: Asset.Images.infoCircle.image
                 ) { [unowned self] action in
                     if folder.isRoom {
-                        navigator.navigate(to: .roomSharingLink(folder: folder))
+                        navigator.navigate(to: .sharingLink(entityType: .room(folder)))
                     } else {
-                        navigator.navigate(to: .shareSettings(entity: folder))
+                        navigator.navigate(to: .sharingLink(entityType: .folder(folder)))
                     }
                 }
             )
@@ -978,7 +978,7 @@ extension ASCDocumentsViewController {
         // Info
         let info = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
-            navigator.navigate(to: .shareSettings(entity: folder))
+            navigator.navigate(to: .sharingLink(entityType: folder.isRoom ? .room(folder) : .folder(folder)))
             actionPerformed(true)
         }
         info.image = swipeLayout(icon: Asset.Images.barInfo.image.withTintColor(.white), text: NSLocalizedString("Info", comment: "Button title"))
@@ -1179,7 +1179,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        navigator.navigate(to: .shareSettings(entity: file))
+                        navigator.navigate(to: .sharingLink(entityType: .file(file)))
                     }
                 )
             )
@@ -1381,7 +1381,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Info", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
-                        navigator.navigate(to: .shareSettings(entity: folder))
+                        navigator.navigate(to: .sharingLink(entityType: folder.isRoom ? .room(folder) : .folder(folder)))
                     }
                 )
             )

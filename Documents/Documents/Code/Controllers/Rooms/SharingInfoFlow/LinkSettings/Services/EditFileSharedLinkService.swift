@@ -11,24 +11,17 @@ final class EditFileSharedLinkService {
     private let networkService = OnlyofficeApiClient.shared
 
     func delete(
-        linkId: String,
-        access: Int,
-        primary: Bool,
-        `internal`: Bool,
-        expirationDate: String? = nil,
-        denyDownload: Bool,
-        password: String? = nil,
+        id: String,
         title: String,
+        linkType: ASCShareLinkType,
+        password: String?,
         file: ASCFile
     ) async throws {
         let request = RemoveLinkRequestModel(
-            linkId: linkId,
-            access: access,
-            primary: primary,
-            internal: `internal`,
-            expirationDate: expirationDate,
-            denyDownload: denyDownload,
+            linkId: id,
             title: title,
+            access: ASCShareAccess.none.rawValue,
+            linkType: linkType.rawValue,
             password: password)
 
         let response = try await networkService.request(

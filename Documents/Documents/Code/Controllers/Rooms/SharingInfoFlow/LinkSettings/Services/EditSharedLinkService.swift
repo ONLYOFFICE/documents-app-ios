@@ -7,8 +7,8 @@
 //
 
 protocol EditSharedLinkServiceProtocol: AnyObject {
-    func delete(id: String, access: Int, primary: Bool, `internal`: Bool, denyDownload: Bool, title: String, linkType: ASCShareLinkType, password: String?) async throws
-    func revoke(id: String, title: String, linkType: ASCShareLinkType, password: String?,denyDownload: Bool) async throws
+    func delete(id: String, title: String, linkType: ASCShareLinkType, password: String?) async throws
+    func revoke(id: String, denyDownload: Bool, title: String, linkType: ASCShareLinkType, password: String?) async throws
     func save()
 }
 
@@ -25,10 +25,6 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
     
     func delete(
         id: String,
-        access: Int,
-        primary: Bool,
-        `internal`: Bool,
-        denyDownload: Bool,
         title: String,
         linkType: ASCShareLinkType,
         password: String?
@@ -37,26 +33,25 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
         case let .room(room):
             try await editRoomSharedLinkService?.delete(id: id, title: title, linkType: linkType, password: password, room: room)
         case let .folder(folder):
-            try await editFolderSharedLinkService?.delete(linkId: id, access: access, primary: primary, internal: `internal`, denyDownload: denyDownload, title: title, folder: folder)
+            try await editFolderSharedLinkService?.delete(id: id, title: title, linkType: linkType, password: password, folder: folder)
         case let .file(file):
             try await editFileSharedLinkService?.delete(
-                linkId: id,
-                access: access,
-                primary: primary,
-                internal: `internal`,
-                denyDownload: denyDownload,
-                title: title,
-                file: file)
+                id: id, title: title, linkType: linkType, password: password, file: file)
         }
     }
     
-    func revoke(id: String, title: String, linkType: ASCShareLinkType, password: String?,denyDownload: Bool) async throws  {
+    func revoke(
+        id: String,
+        denyDownload: Bool,
+        title: String,
+        linkType: ASCShareLinkType,
+        password: String?
+    ) async throws  {
         switch entity {
         case let .room(room):
             try await editRoomSharedLinkService?.revokeLink(id: id, title: title, linkType: linkType, password: password, room: room, denyDownload: denyDownload)
         case let .folder(folder):
-            return
-            //editFolderSharedLinkService?.delete(folder: folder)
+            try await editFolderSharedLinkService?.delete(id: id, title: title, linkType: linkType, password: password, folder: folder)
         case let .file(file):
             return
             //editFileSharedLinkService?.delete(file: file)

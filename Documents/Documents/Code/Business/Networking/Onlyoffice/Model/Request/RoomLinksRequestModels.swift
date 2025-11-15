@@ -22,7 +22,7 @@ struct RoomLinkRequestModel: Codable {
     var password: String?
 }
 
-struct RoomRemoveLinkRequestModel: Codable {
+struct RemoveLinkRequestModel: Codable {
     var linkId: String
     var title: String
     var access: Int
@@ -30,7 +30,7 @@ struct RoomRemoveLinkRequestModel: Codable {
     var password: String?
 }
 
-struct RoomRevokeLinkRequestModel: Codable {
+struct RevokeLinkRequestModel: Codable {
     var linkId: String
     var title: String
     var access: Int

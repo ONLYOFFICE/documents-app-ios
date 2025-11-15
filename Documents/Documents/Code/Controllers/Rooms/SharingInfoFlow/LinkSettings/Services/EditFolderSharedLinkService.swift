@@ -10,25 +10,43 @@ final class EditFolderSharedLinkService {
     private let networkService = OnlyofficeApiClient.shared
     
     func delete(
-        linkId: String,
-        access: Int,
-        primary: Bool,
-        `internal`: Bool,
-        expirationDate: String? = nil,
-        denyDownload: Bool,
-        password: String? = nil,
+        id: String,
         title: String,
+        linkType: ASCShareLinkType,
+        password: String?,
         folder: ASCFolder
     ) async throws {
         let request = RemoveLinkRequestModel(
-            linkId: linkId,
-            access: access,
-            primary: primary,
-            internal: `internal`,
-            expirationDate: expirationDate,
-            denyDownload: denyDownload,
+            linkId: id,
             title: title,
-            password: password)
+            access: ASCShareAccess.none.rawValue,
+            linkType: linkType.rawValue,
+            password: password
+        )
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Folders.deleteLink(folder: folder),
+            parameters: request.dictionary
+        )
+        guard response.statusCode != nil else { throw Errors.emptyResponse }
+    }
+    
+    func revoke(
+        id: String,
+        title: String,
+        linkType: ASCShareLinkType,
+        password: String?,
+        room: ASCRoom,
+        denyDownload: Bool,
+        folder: ASCFolder
+    ) async throws {
+        let request = RevokeLinkRequestModel(
+            linkId: id,
+            title: title,
+            access: ASCShareAccess.none.rawValue,
+            linkType: linkType.rawValue,
+            password: password,
+            denyDownload: denyDownload)
 
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Folders.deleteLink(folder: folder),

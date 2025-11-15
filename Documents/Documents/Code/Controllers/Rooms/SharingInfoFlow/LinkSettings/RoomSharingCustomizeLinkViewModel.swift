@@ -148,11 +148,7 @@ extension EditSharedLinkViewModel {
         screenModel.isDeleting = true
         do {
             try await editSharedLinkService?.delete(
-                id: linkId,
-                access: link.access.rawValue,
-                primary: link.linkInfo.primary,
-                internal: link.linkInfo.internal,
-                denyDownload: link.linkInfo.denyDownload,
+                id: link.linkInfo.id,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
                 password: link.linkInfo.password)
@@ -180,6 +176,7 @@ extension EditSharedLinkViewModel {
         return nil
     }
 
+    @MainActor
     func onRevoke() async {
         guard let linkId else { return }
         var link = link
@@ -187,11 +184,10 @@ extension EditSharedLinkViewModel {
         do {
             try await editSharedLinkService?.revoke(
                 id: linkId,
+                denyDownload: link.linkInfo.denyDownload,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
-                password: link.linkInfo.password,
-                denyDownload: linkModel.isRestrictCopyOn
-            )
+                password: link.linkInfo.password)
             screenModel.isRevoking = false
             link.access = .none
             outputLink = link

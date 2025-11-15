@@ -89,7 +89,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         password: String?,
         room: ASCRoom
     ) async throws {
-        let request = RoomRemoveLinkRequestModel(
+        let request = RemoveLinkRequestModel(
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,
@@ -112,7 +112,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         room: ASCRoom,
         denyDownload: Bool
     ) async throws {
-        let request = RoomRevokeLinkRequestModel(
+        let request = RevokeLinkRequestModel(
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,

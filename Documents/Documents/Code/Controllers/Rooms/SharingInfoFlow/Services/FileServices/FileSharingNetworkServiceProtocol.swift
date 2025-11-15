@@ -12,6 +12,9 @@ protocol FileSharingNetworkServiceProtocol {
     func fetch(file: ASCFile) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel])
     func fetchLinks(file: ASCFile) async throws -> [SharingInfoLinkResponseModel]
     func fetchUsers(file: ASCFile) async throws -> [RoomUsersResponseModel]
+    
+    func createGeneralLink(file: ASCFile) async throws -> SharingInfoLinkModel
+    func createLink(file: ASCFile) async throws -> SharingInfoLinkModel 
 }
 
 actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
@@ -37,6 +40,29 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
         return links
     }
     
+    func createGeneralLink(file: ASCFile) async throws -> SharingInfoLinkModel {
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Files.getLink(file: file)
+        )
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
+    }
+    
+    func createLink(file: ASCFile) async throws -> SharingInfoLinkModel {
+        let requestModel = CreateAndCopyLinkRequestModel(
+            access: ASCShareAccess.read.rawValue,
+            primary: false,
+            expirationDate: nil,
+            isInternal: false
+        )
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Files.createLink(file: file),
+            parameters: requestModel.dictionary
+        )
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
+    }
    
     // MARK: users
 
@@ -45,10 +71,11 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
             endpoint: OnlyofficeAPI.Endpoints.Sharing.fileUsers(file: file, method: .get)
         )
 
-        guard var users = response.result else { throw Errors.emptyResponse }
+        guard let users = response.result else { throw Errors.emptyResponse }
         users.forEach { $0.user.accessValue = $0.access }
         return users
     }
+    
 }
 
 extension FileSharingNetworkService {

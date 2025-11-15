@@ -74,12 +74,11 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
         switch entityType {
         case let .room(room):
             try await roomSharingLinkAccesskService.createGeneralLink(room: room)
-        case .file:
-            // TODO: Sharing info stub
-            throw NetworkingError.invalidData
         case .folder:
             // TODO: Sharing info stub
             throw NetworkingError.invalidData
+        case let .file(file):
+            try await fileSharingNetworkService.createGeneralLink(file: file)
         }
     }
 
@@ -94,9 +93,8 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
                 linkType: linkType,
                 room: room
             )
-        case .file:
-            // TODO: Sharing info stub
-            throw NetworkingError.invalidData
+        case let .file(file):
+            try await fileSharingNetworkService.createLink(file: file)
         case .folder:
             // TODO: Sharing info stub
             throw NetworkingError.invalidData

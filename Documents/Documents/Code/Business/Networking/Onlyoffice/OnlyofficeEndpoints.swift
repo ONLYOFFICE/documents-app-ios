@@ -29,6 +29,7 @@ enum OnlyofficeAPI {
         static let fileLinks = "api/\(version)/files/file/%@/links"
         static let createAndCopyFileLink = "api/\(version)/files/file/%@/link"
         static let folder = "api/\(version)/files/folder/%@"
+        static let folderLinks = "api/\(version)/files/folder/%@/links"
         static let favorite = "api/\(version)/files/favorites"
         static let filesShare = "api/\(version)/files/share"
         static let filesSharePassword = "api/\(version)/files/share/%@/password"
@@ -190,6 +191,14 @@ enum OnlyofficeAPI {
             }
             static func deleteLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.folderLinks, folder.id), .put)
+            }
+            
+            static func getLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<SharingInfoLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<SharingInfoLinkResponseModel>>.make(String(format: Path.folderLinks, folder.id), .get, URLEncoding.default)
+            }
+            
+            static func users(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>>.make(String(format: Path.shareFolder, folder.id), .get, URLEncoding.default)
             }
         }
 

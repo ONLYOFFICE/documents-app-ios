@@ -134,6 +134,7 @@
 		E89D3F082DDDF23600FF7D8E /* OverlayLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D3F072DDDF23600FF7D8E /* OverlayLoader.swift */; };
 		E89D3F092DDDF23600FF7D8E /* FullScreenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D3F062DDDF23600FF7D8E /* FullScreenLoader.swift */; };
 		E89D3F0C2DDDF26200FF7D8E /* CardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D3F0A2DDDF26200FF7D8E /* CardStyle.swift */; };
+		E8A997EE2EC67601009F8DDD /* FolderSharingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A997ED2EC675F4009F8DDD /* FolderSharingNetworkService.swift */; };
 		E8B0F6DC2C2322FB00D63389 /* ExpirationLinkDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */; };
 		E8B62E8F2D399D6B0053668E /* TopBannerViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B62E8E2D399D6B0053668E /* TopBannerViewModelDelegate.swift */; };
 		E8BBE8CD2B77AF1F0033B085 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */; };
@@ -877,6 +878,7 @@
 		E89D3F062DDDF23600FF7D8E /* FullScreenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoader.swift; sourceTree = "<group>"; };
 		E89D3F072DDDF23600FF7D8E /* OverlayLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayLoader.swift; sourceTree = "<group>"; };
 		E89D3F0A2DDDF26200FF7D8E /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
+		E8A997ED2EC675F4009F8DDD /* FolderSharingNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderSharingNetworkService.swift; sourceTree = "<group>"; };
 		E8B0F6DB2C2322FB00D63389 /* ExpirationLinkDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationLinkDateService.swift; sourceTree = "<group>"; };
 		E8B62E8E2D399D6B0053668E /* TopBannerViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewModelDelegate.swift; sourceTree = "<group>"; };
 		E8BBE8CC2B77AF1F0033B085 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
@@ -1981,6 +1983,8 @@
 		E83248C02EBB82010013990C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E8A997EC2EC675DB009F8DDD /* FolderServices */,
+				E8A997EB2EC675C7009F8DDD /* RoomServices */,
 				E80E30442EC3E93B003964E6 /* SharingInfoViewModelService.swift */,
 				E83248C12EBB822E0013990C /* SharingInfoLinkAccessService.swift */,
 			);
@@ -2050,6 +2054,22 @@
 				E89D3F0A2DDDF26200FF7D8E /* CardStyle.swift */,
 			);
 			path = SwiftUIViewModifiers;
+			sourceTree = "<group>";
+		};
+		E8A997EB2EC675C7009F8DDD /* RoomServices */ = {
+			isa = PBXGroup;
+			children = (
+				FC759C162C00614D00510096 /* RoomSharingNetworkService.swift */,
+			);
+			path = RoomServices;
+			sourceTree = "<group>";
+		};
+		E8A997EC2EC675DB009F8DDD /* FolderServices */ = {
+			isa = PBXGroup;
+			children = (
+				E8A997ED2EC675F4009F8DDD /* FolderSharingNetworkService.swift */,
+			);
+			path = FolderServices;
 			sourceTree = "<group>";
 		};
 		E8B0F6DA2C2322C700D63389 /* Services */ = {
@@ -3039,7 +3059,6 @@
 				FC759C0F2C00614D00510096 /* Models */,
 				FC759C132C00614D00510096 /* RoomSharingAccessType */,
 				FC759C152C00614D00510096 /* Views */,
-				FC759C162C00614D00510096 /* RoomSharingNetworkService.swift */,
 				FC759C172C00614D00510096 /* SharingInfoRootViewController.swift */,
 				FC759C182C00614D00510096 /* SharingInfoView.swift */,
 				FC759C192C00614D00510096 /* SharingInfoViewModel.swift */,
@@ -5076,6 +5095,7 @@
 				FC1828FA2A24E65B005D9220 /* ASCDetailCell.swift in Sources */,
 				FC759CAB2C00615E00510096 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */,
 				FC19849C2805559D002057B2 /* ASCFiltersCollectionViewHeader.swift in Sources */,
+				E8A997EE2EC67601009F8DDD /* FolderSharingNetworkService.swift in Sources */,
 				FCCE50AB2C1AF79000102056 /* SharedSettingsView.swift in Sources */,
 				F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				E801C9902D36904C00E9939A /* FilesOrderRequesModel.swift in Sources */,

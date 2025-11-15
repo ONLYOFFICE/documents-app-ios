@@ -117,13 +117,11 @@ final class ASCNavigator {
             return ASCSortViewController.instance()
         case let .addUsers(folder):
             if let folder = folder as? ASCFolder {
-                let vc = InviteUsersViewController(folder: folder)
-                return vc
+                return InviteUsersViewController(folder: folder)
             }
             return UIViewController()
         case .leaveRoom:
-            let vc = ASCSharingChooseNewOwnerRightHoldersViewController()
-            return vc
+            return ASCSharingChooseNewOwnerRightHoldersViewController()
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
         case let .onlyofficeSignIn(portal):

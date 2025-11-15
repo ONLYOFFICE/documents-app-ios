@@ -284,14 +284,13 @@ private extension View {
         }
     }
 
-    @ViewBuilder
     func navigateToChangeAccess(
         selectedUser: Binding<ASCUser?>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        switch viewModel.entityType {
-        case let .room(room):
-            navigation(item: selectedUser) { user in
+        navigation(item: selectedUser) { user in
+            switch viewModel.entityType {
+            case let .room(room):
                 RoomSharingAccessTypeView(
                     viewModel: RoomSharingAccessTypeViewModel(
                         room: room,
@@ -299,59 +298,58 @@ private extension View {
                         onRemove: viewModel.onUserRemove(userId:)
                     )
                 )
+            case .file:
+                // TODO: Sharing info stub
+                EmptyView()
+            case .folder:
+                // TODO: Sharing info stub
+                EmptyView()
             }
-        case .file:
-            // TODO: Sharing info stub
-            EmptyView()
-        case .folder:
-            // TODO: Sharing info stub
-            EmptyView()
         }
     }
 
-    @ViewBuilder
     func navigateToEditLink(
         selectedLink: Binding<SharingInfoLinkModel?>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        switch viewModel.entityType {
-        case let .room(room):
-            navigation(item: selectedLink, destination: { link in
+        navigation(item: selectedLink, destination: { link in
+            switch viewModel.entityType {
+            case let .room(room):
                 RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
                     room: room,
                     inputLink: link,
                     outputLink: viewModel.changedLinkBinding
                 ))
-            })
-        case .file:
-            // TODO: Sharing info stub
-            EmptyView()
-        case .folder:
-            // TODO: Sharing info stub
-            EmptyView()
-        }
+                
+            case .file:
+                // TODO: Sharing info stub
+                EmptyView()
+            case .folder:
+                // TODO: Sharing info stub
+                EmptyView()
+            }
+        })
     }
 
-    @ViewBuilder
     func navigateToAddUsers(
         isDisplaying: Binding<Bool>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        switch viewModel.entityType {
-        case let .room(room):
-            navigation(isActive: isDisplaying) {
+        navigation(isActive: isDisplaying) {
+            switch viewModel.entityType {
+            case let .room(room):
                 InviteUsersView(
                     viewModel: InviteUsersViewModel(
                         room: room
                     )
                 )
+            case .file:
+                // TODO: Sharing info stub
+                EmptyView()
+            case .folder:
+                // TODO: Sharing info stub
+                EmptyView()
             }
-        case .file:
-            // TODO: Sharing info stub
-            EmptyView()
-        case .folder:
-            // TODO: Sharing info stub
-            EmptyView()
         }
     }
 }

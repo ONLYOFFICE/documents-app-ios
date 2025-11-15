@@ -37,9 +37,8 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         case .file:
             // TODO: Sharing info stub
             return ""
-        case .folder:
-            // TODO: Sharing info stub
-            return ""
+        case let .folder(folder):
+            return folder.title
         }
     }
     
@@ -64,7 +63,6 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             return ""
         case .folder:
-            // TODO: Sharing info stub
             return ""
         }
     }
@@ -82,8 +80,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             return false
         case .folder:
-            // TODO: Sharing info stub
-            return false
+            return true
         }
     }
 
@@ -95,8 +92,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             false
         case .folder:
-            // TODO: Sharing info stub
-            false
+            true
         }
     }
 
@@ -108,8 +104,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             false
         case .folder:
-            // TODO: Sharing info stub
-            false
+            true
         }
     }
 
@@ -121,8 +116,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             false
         case .folder:
-            // TODO: Sharing info stub
-            false
+            true
         }
     }
 
@@ -134,8 +128,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             false
         case .folder:
-            // TODO: Sharing info stub
-            false
+            true
         }
     }
 
@@ -156,8 +149,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             // TODO: Sharing info stub
             return nil
         case .folder:
-            // TODO: Sharing info stub
-            return nil
+            return NSLocalizedString("Sharing settings", comment: "")
         }
     }
 }

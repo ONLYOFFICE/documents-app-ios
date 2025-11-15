@@ -23,7 +23,7 @@ protocol RoomSharingNetworkServiceProtocol {
 final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     private let networkService = OnlyofficeApiClient.shared
 
-    // MARK: fetch(room: links+users параллельно)
+    // MARK: fetch(room: links+users)
 
     func fetch(room: ASCFolder) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel]) {
         async let links = fetchRoomLinks(room: room)

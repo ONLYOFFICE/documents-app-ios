@@ -35,6 +35,7 @@ actor SharingInfoLinkAccessServiceImp {
 
     private let roomSharingLinkAccesskService: RoomSharingLinkAccessService
     private let folderSharingNetworkService: FolderSharingNetworkServiceProtocol
+    private let fileSharingNetworkService: FileSharingNetworkServiceProtocol
     
     private let sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
 
@@ -44,11 +45,13 @@ actor SharingInfoLinkAccessServiceImp {
         entityType: SharingInfoEntityType,
         roomSharingLinkAccesskService: RoomSharingLinkAccessService,
         folderSharingNetworkService: FolderSharingNetworkServiceProtocol,
+        fileSharingNetworkService: FileSharingNetworkServiceProtocol,
         sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
     ) {
         self.entityType = entityType
         self.roomSharingLinkAccesskService = roomSharingLinkAccesskService
         self.folderSharingNetworkService = folderSharingNetworkService
+        self.fileSharingNetworkService = fileSharingNetworkService
         self.sharingRoomNetworkService = sharingRoomNetworkService
     }
 }
@@ -60,9 +63,8 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
         switch entityType {
         case let .room(room):
             try await sharingRoomNetworkService.fetch(room: room)
-        case .file:
-            // TODO: Sharing info stub
-            ([], [])
+        case let .file(file):
+            try await fileSharingNetworkService.fetch(file: file)
         case let .folder(folder):
             try await folderSharingNetworkService.fetch(folder: folder)
         }

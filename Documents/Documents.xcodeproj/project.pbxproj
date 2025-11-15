@@ -148,6 +148,7 @@
 		E8CD620F2D1080AE00DF3440 /* StorageQuotaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62052D1080AE00DF3440 /* StorageQuotaSection.swift */; };
 		E8CD62102D1080AE00DF3440 /* RestrictContentCopySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62042D1080AE00DF3440 /* RestrictContentCopySection.swift */; };
 		E8CD62122D1080E700DF3440 /* RoomQuotaNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CD62112D1080E700DF3440 /* RoomQuotaNetworkService.swift */; };
+		E8DC7CBD2EC8AD1F0071CC24 /* FileSharingNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7CBC2EC8AD1F0071CC24 /* FileSharingNetworkServiceProtocol.swift */; };
 		E8DE98372C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */; };
 		E8DE98392C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */; };
 		E8DE983B2C459617007401EF /* ChevronRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE983A2C459617007401EF /* ChevronRightView.swift */; };
@@ -892,6 +893,7 @@
 		E8CD62072D1080AE00DF3440 /* WatermarkImageEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkImageEditorView.swift; sourceTree = "<group>"; };
 		E8CD62082D1080AE00DF3440 /* WatermarkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkSection.swift; sourceTree = "<group>"; };
 		E8CD62112D1080E700DF3440 /* RoomQuotaNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomQuotaNetworkService.swift; sourceTree = "<group>"; };
+		E8DC7CBC2EC8AD1F0071CC24 /* FileSharingNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSharingNetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		E8DE98362C4477DA007401EF /* ASCThirdpartySelectFolderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCThirdpartySelectFolderProvider.swift; sourceTree = "<group>"; };
 		E8DE98382C4591CA007401EF /* ASCTransferViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTransferViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		E8DE983A2C459617007401EF /* ChevronRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRightView.swift; sourceTree = "<group>"; };
@@ -1983,6 +1985,7 @@
 		E83248C02EBB82010013990C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E8DC7CBB2EC8AD0B0071CC24 /* FileServices */,
 				E8A997EC2EC675DB009F8DDD /* FolderServices */,
 				E8A997EB2EC675C7009F8DDD /* RoomServices */,
 				E80E30442EC3E93B003964E6 /* SharingInfoViewModelService.swift */,
@@ -2092,6 +2095,14 @@
 				E8CD62082D1080AE00DF3440 /* WatermarkSection.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		E8DC7CBB2EC8AD0B0071CC24 /* FileServices */ = {
+			isa = PBXGroup;
+			children = (
+				E8DC7CBC2EC8AD1F0071CC24 /* FileSharingNetworkServiceProtocol.swift */,
+			);
+			path = FileServices;
 			sourceTree = "<group>";
 		};
 		F30BCE362C9B6FCB00900E07 /* Models */ = {
@@ -5197,6 +5208,7 @@
 				E87CCAE82C9DCC2500C43968 /* FillFormMenuScreen.swift in Sources */,
 				FC759C3D2C00614D00510096 /* SharingInfoView.swift in Sources */,
 				FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */,
+				E8DC7CBD2EC8AD1F0071CC24 /* FileSharingNetworkServiceProtocol.swift in Sources */,
 				FC08F8731ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift in Sources */,
 				FCECDDDA26430B28006CD7B9 /* ASCPasswordRecoveryController.swift in Sources */,
 				FC066ABF252DB812007357F7 /* ASCiCloudProvider.swift in Sources */,

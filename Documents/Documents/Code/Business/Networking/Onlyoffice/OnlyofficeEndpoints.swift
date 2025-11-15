@@ -336,8 +336,12 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id))
             }
 
-            static func getLinks(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>> {
+            static func getLinksShort(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>> {
                 return Endpoint<OnlyofficeResponseArrayCodable<SharedSettingsLinkResponceModel>>.make(String(format: Path.fileLinks, file.id), .get)
+            }
+            
+            static func getLinks(file: ASCFile) -> Endpoint<OnlyofficeResponseArrayCodable<SharingInfoLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<SharingInfoLinkResponseModel>>.make(String(format: Path.fileLinks, file.id), .get)
             }
 
             static func customFilter(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
@@ -441,8 +445,12 @@ enum OnlyofficeAPI {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.changeOwner, .post)
             }
 
-            static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+            static func fileShare(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
+            }
+            
+            static func fileUsers(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>>.make(String(format: Path.shareFile, file.id), method)
             }
 
             static func users(fileId: String, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeSharedUser>> {

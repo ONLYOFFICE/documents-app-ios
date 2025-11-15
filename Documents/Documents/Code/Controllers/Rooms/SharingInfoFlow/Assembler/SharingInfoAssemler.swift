@@ -17,6 +17,7 @@ enum SharingInfoAssemler {
                     entityType: entityType,
                     roomSharingLinkAccesskService: ServicesProvider.shared.roomSharingLinkAccesskService,
                     folderSharingNetworkService: ServicesProvider.shared.folderSharingNetworkService,
+                    fileSharingNetworkService: ServicesProvider.shared.fileSharingNetworkService,
                     sharingRoomNetworkService: ServicesProvider.shared.roomSharingNetworkService
                 )
             )

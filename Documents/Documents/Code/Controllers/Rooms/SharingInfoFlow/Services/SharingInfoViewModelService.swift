@@ -34,11 +34,8 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         switch entityType {
         case let .room(room):
             return room.title
-        case .file:
-            // TODO: Sharing info stub
-            return ""
-        case let .folder(folder):
-            return folder.title
+        case .file, .folder:
+            return NSLocalizedString("Sharing settings", comment: "")
         }
     }
     
@@ -60,7 +57,6 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
                 return ""
             }
         case .file:
-            // TODO: Sharing info stub
             return ""
         case .folder:
             return ""
@@ -77,8 +73,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
                 return true
             }
         case .file:
-            // TODO: Sharing info stub
-            return false
+            return true
         case .folder:
             return true
         }
@@ -89,8 +84,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         case let .room(room):
             room.rootFolderType != .archive && room.security.editAccess
         case .file:
-            // TODO: Sharing info stub
-            false
+            true
         case .folder:
             true
         }
@@ -101,8 +95,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         case let .room(room):
             !room.isFillingFormRoom
         case .file:
-            // TODO: Sharing info stub
-            false
+            true
         case .folder:
             true
         }
@@ -113,8 +106,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         case let .room(room):
             room.rootFolderType != .archive && room.security.editAccess
         case .file:
-            // TODO: Sharing info stub
-            false
+            true
         case .folder:
             true
         }
@@ -125,8 +117,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         case let .room(room):
             room.isPublicRoom == false
         case .file:
-            // TODO: Sharing info stub
-            false
+            true
         case .folder:
             true
         }
@@ -146,10 +137,9 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
                 return nil
             }
         case .file:
-            // TODO: Sharing info stub
-            return nil
+            return NSLocalizedString("Provide access to the document and set the permission levels.", comment: "")
         case .folder:
-            return NSLocalizedString("Sharing settings", comment: "")
+            return NSLocalizedString("Provide access to the folder and set the permission levels.", comment: "")
         }
     }
 }

@@ -93,6 +93,7 @@ final class SharingInfoViewModel: ObservableObject {
             .store(in: &cancelable)
     }
 
+    @MainActor
     func loadData() async {
         isInitializing = true
         do {
@@ -275,6 +276,7 @@ private extension SharingInfoViewModel {
         changedLink.send(nil)
     }
 
+    @MainActor
     func buildViewModel() {
         sharedLinksModels = flowModel.links.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }

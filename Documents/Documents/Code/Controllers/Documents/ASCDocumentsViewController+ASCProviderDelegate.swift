@@ -170,19 +170,14 @@ private extension ASCDocumentsViewController {
     ///   - parent: Parent view controller
     ///   - entity: Entity to share
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        guard !entity.isRoom else {
-            if let room = entity as? ASCRoom {
-                navigator.navigate(to: .roomSharingLink(folder: room))
-            }
-            return
+        if let folder = entity as? ASCFolder {
+            folder.isRoom
+            ?  navigator.navigate(to: .sharingLink(entityType: .room(folder)))
+            :  navigator.navigate(to: .sharingLink(entityType: .folder(folder)))
         }
 
         if let file = entity as? ASCFile, ASCOnlyofficeProvider.isDocspaceApi {
-            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
-            sharedSettingsViewController.modalPresentationStyle = .formSheet
-            sharedSettingsViewController.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-
-            parent.present(sharedSettingsViewController, animated: true, completion: nil)
+            navigator.navigate(to: .sharingLink(entityType: .file(file)))
 
         } else {
             let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)

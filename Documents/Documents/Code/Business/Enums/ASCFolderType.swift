@@ -98,3 +98,21 @@ enum ASCFolderType: Int {
     case onedriveAll = 108
     case kdriveAll = 109
 }
+
+extension ASCFolderType {
+    
+    var isRoomType: Bool {
+        switch self {
+        case .customRoom,
+                .publicRoom,
+                .editingRoom,
+                .virtualRooms,
+                .virtualDataRoom,
+                .fillingFormsRoom,
+                .roomTemplates:
+            return true
+        default:
+            return false
+        }
+    }
+}

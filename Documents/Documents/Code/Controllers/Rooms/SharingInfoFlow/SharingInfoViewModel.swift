@@ -170,9 +170,9 @@ final class SharingInfoViewModel: ObservableObject {
                 buildViewModel()
                 applyingDeletingLink = deletingLink
                 if viewModelService.canRemoveGeneralLink {
-                    isRevokeAlertDisplaying = true
-                } else {
                     isDeleteAlertDisplaying = true
+                } else {
+                    isRevokeAlertDisplaying = true
                 }
                 withAnimation { buildViewModel() }
                 return

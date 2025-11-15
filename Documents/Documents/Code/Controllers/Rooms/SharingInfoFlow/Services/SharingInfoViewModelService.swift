@@ -116,10 +116,10 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
         switch entityType {
         case let .room(room):
             room.isPublicRoom == false
-        case .file:
-            true
-        case .folder:
-            true
+        case let .file(file):
+            !file.rootFolderType.isRoomType
+        case let .folder(folder):
+            !folder.rootFolderType.isRoomType
         }
     }
 

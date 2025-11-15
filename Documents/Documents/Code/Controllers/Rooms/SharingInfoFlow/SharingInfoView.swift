@@ -323,16 +323,22 @@ private extension View {
                     outputLink: viewModel.changedLinkBinding
                 ))
             })
+        case let .file(file):
+            navigation(item: selectedLink, destination: { link in
+                EditSharedLinkView(viewModel: EditSharedLinkViewModel(
+                    entity: .file(file),
                     inputLink: link,
                     outputLink: viewModel.changedLinkBinding
                 ))
             })
-        case .file:
-            // TODO: Sharing info stub
-            EmptyView()
-        case .folder:
-            // TODO: Sharing info stub
-            EmptyView()
+        case let .folder(folder):
+            navigation(item: selectedLink, destination: { link in
+                EditSharedLinkView(viewModel: EditSharedLinkViewModel(
+                    entity: .folder(folder),
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            })
         }
     }
 

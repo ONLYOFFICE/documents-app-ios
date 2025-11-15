@@ -12,7 +12,7 @@ struct RoomLinksRequestModel: Codable {
     var type: Int
 }
 
-struct RoomLinkRequestModel: Codable {
+struct LinkRequestModel: Codable {
     var linkId: String?
     var title: String
     var access: Int

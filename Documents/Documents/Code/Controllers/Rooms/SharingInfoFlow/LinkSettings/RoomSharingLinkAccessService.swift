@@ -138,7 +138,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         password: String?,
         room: ASCRoom
     ) async throws -> SharingInfoLinkModel {
-        let request = RoomLinkRequestModel(
+        let request = LinkRequestModel(
             linkId: id,
             title: title,
             access: access,

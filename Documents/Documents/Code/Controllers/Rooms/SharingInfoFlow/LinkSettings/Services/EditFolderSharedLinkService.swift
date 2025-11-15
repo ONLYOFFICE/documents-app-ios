@@ -53,6 +53,36 @@ final class EditFolderSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
+    
+    func editFolderLink(
+        id: String?,
+        title: String,
+        access: Int,
+        expirationDate: String?,
+        linkType: ASCShareLinkType,
+        denyDownload: Bool,
+        password: String?,
+        folder: ASCFolder
+    ) async throws -> SharingInfoLinkModel {
+        let request = LinkRequestModel(
+            linkId: id,
+            title: title,
+            access: access,
+            expirationDate: expirationDate,
+            linkType: linkType.rawValue,
+            denyDownload: denyDownload,
+            password: password
+        )
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Folders.setLinks(folder: folder),
+            parameters: request.dictionary
+        )
+
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
+    }
+    
 }
 
 extension EditFolderSharedLinkService {

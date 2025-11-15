@@ -204,6 +204,10 @@ enum OnlyofficeAPI {
             static func users(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>> {
                 return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponseModel>>.make(String(format: Path.shareFolder, folder.id), .get, URLEncoding.default)
             }
+            
+            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<SharingInfoLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharingInfoLinkResponseModel>>.make(String(format: Path.folderLinks, folder.id), .put)
+            }
         }
 
         // MARK: Tags

@@ -9,7 +9,7 @@
 protocol EditSharedLinkServiceProtocol: AnyObject {
     func delete(id: String, title: String, linkType: ASCShareLinkType, password: String?) async throws
     func revoke(id: String, denyDownload: Bool, title: String, linkType: ASCShareLinkType, password: String?) async throws
-    func save()
+    func editLink(id: String?, title: String, access: Int, expirationDate: String?, linkType: ASCShareLinkType, denyDownload: Bool, password: String?) async throws -> SharingInfoLinkModel
 }
 
 class EditSharedLinkService: EditSharedLinkServiceProtocol {
@@ -57,8 +57,62 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
         }
     }
     
-    func save() {
-        
+    func editLink(
+        id: String?,
+        title: String,
+        access: Int,
+        expirationDate: String?,
+        linkType: ASCShareLinkType,
+        denyDownload: Bool,
+        password: String?
+    ) async throws -> SharingInfoLinkModel {
+        switch entity {
+        case let .room(room):
+            let result = try await editRoomSharedLinkService?.editRoomLink(
+                id: id,
+                title: title,
+                access: access,
+                expirationDate: expirationDate,
+                linkType: linkType,
+                denyDownload: denyDownload,
+                password: password,
+                room: room
+            )
+            guard let result else {
+                throw Errors.invalidData
+            }
+            return result
+        case let .folder(folder):
+            let result = try await editFolderSharedLinkService?.editFolderLink(
+                id: id,
+                title: title,
+                access: access,
+                expirationDate: expirationDate,
+                linkType: linkType,
+                denyDownload: denyDownload,
+                password: password,
+                folder: folder
+            )
+            guard let result else {
+                throw Errors.invalidData
+            }
+            return result
+        case let .file(file):
+            let result = try await editFileSharedLinkService?.editFileLink(
+                id: id,
+                title: title,
+                access: access,
+                expirationDate: expirationDate,
+                linkType: linkType,
+                denyDownload: denyDownload,
+                password: password,
+                file: file
+            )
+            guard let result else {
+                throw Errors.invalidData
+            }
+            return result
+        }
     }
 }
 

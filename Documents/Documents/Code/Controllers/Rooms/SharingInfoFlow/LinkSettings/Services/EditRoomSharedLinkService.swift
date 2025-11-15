@@ -55,6 +55,36 @@ final class EditRoomSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
+    
+    func editRoomLink(
+        id: String?,
+        title: String,
+        access: Int,
+        expirationDate: String?,
+        linkType: ASCShareLinkType,
+        denyDownload: Bool,
+        password: String?,
+        room: ASCRoom
+    ) async throws -> SharingInfoLinkModel {
+        let request = LinkRequestModel(
+            linkId: id,
+            title: title,
+            access: access,
+            expirationDate: expirationDate,
+            linkType: linkType.rawValue,
+            denyDownload: denyDownload,
+            password: password
+        )
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Rooms.setLinks(folder: room),
+            parameters: request.dictionary
+        )
+
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
+    }
+
 }
 
 extension EditRoomSharedLinkService {

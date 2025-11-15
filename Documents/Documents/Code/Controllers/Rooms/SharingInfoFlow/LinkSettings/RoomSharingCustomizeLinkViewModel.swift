@@ -208,18 +208,17 @@ private extension EditSharedLinkViewModel {
     func saveCurrentState() async {
         screenModel.isSaving = true
         do {
-            let link = try await linkAccessService.changeOrCreateLink(
+            let link = try await editSharedLinkService?.editLink(
                 id: linkId,
                 title: linkModel.linkName,
                 access: linkModel.selectedAccessRight.rawValue,
                 expirationDate: linkModel.isTimeLimited ? Self.sendDateFormatter.string(from: linkModel.selectedDate) : nil,
                 linkType: ASCShareLinkType.external,
                 denyDownload: linkModel.isRestrictCopyOn,
-                password: linkModel.isProtected ? linkModel.password : nil,
-                room: ASCRoom()
+                password: linkModel.isProtected ? linkModel.password : nil
             )
             screenModel.isSaving = false
-            UIPasteboard.general.string = link.linkInfo.shareLink
+            UIPasteboard.general.string = link?.linkInfo.shareLink
             outputLink = link
             defineSharingLink()
             if linkModel.isExpired, linkModel.selectedDate > Date() {

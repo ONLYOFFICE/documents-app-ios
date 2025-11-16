@@ -104,8 +104,6 @@ final class EditSharedLinkViewModel: ObservableObject {
 
     @Binding private var outputLink: SharingInfoLinkModel?
 
-    private var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
-
     init(
         entity: EditSharedLinkEntityType,
         inputLink: SharingInfoLinkModel,
@@ -143,7 +141,6 @@ final class EditSharedLinkViewModel: ObservableObject {
 extension EditSharedLinkViewModel {
     @MainActor
     func onDelete() async {
-        guard let linkId else { return }
         var link = link
         screenModel.isDeleting = true
         do {

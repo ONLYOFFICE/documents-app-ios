@@ -21,9 +21,12 @@ protocol SharingInfoLinkAccessService {
     func removeLink(
         id: String,
         title: String,
+        denyDownload: Bool,
         linkType: ASCShareLinkType,
         password: String?
     ) async throws
+    
+    func changeAccess(for id: String, newAccess: ASCShareAccess) async throws
 }
 
 // MARK: - Implementation
@@ -38,6 +41,7 @@ actor SharingInfoLinkAccessServiceImp {
     private let fileSharingNetworkService: FileSharingNetworkServiceProtocol
     
     private let sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
+    private let editSharedLinkService: EditSharedLinkServiceProtocol
 
     // MARK: Init
 
@@ -46,13 +50,15 @@ actor SharingInfoLinkAccessServiceImp {
         roomSharingLinkAccesskService: RoomSharingLinkAccessService,
         folderSharingNetworkService: FolderSharingNetworkServiceProtocol,
         fileSharingNetworkService: FileSharingNetworkServiceProtocol,
-        sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
+        sharingRoomNetworkService: RoomSharingNetworkServiceProtocol,
+        editSharedLinkService: EditSharedLinkServiceProtocol
     ) {
         self.entityType = entityType
         self.roomSharingLinkAccesskService = roomSharingLinkAccesskService
         self.folderSharingNetworkService = folderSharingNetworkService
         self.fileSharingNetworkService = fileSharingNetworkService
         self.sharingRoomNetworkService = sharingRoomNetworkService
+        self.editSharedLinkService = editSharedLinkService
     }
 }
 
@@ -102,23 +108,45 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
     func removeLink(
         id: String,
         title: String,
+        denyDownload: Bool,
         linkType: ASCShareLinkType,
         password: String?
     ) async throws {
-        switch entityType {
+        try await editSharedLinkService.revoke(
+            id: id,
+            denyDownload: denyDownload,
+            title: title,
+            linkType: linkType,
+            password: password
+        )
+    }
+    
+    func changeAccess(for id: String, newAccess: ASCShareAccess) async throws {
+        let response: OnlyofficeResponseBase = switch entityType {
         case let .room(room):
-            try await roomSharingLinkAccesskService.removeLink(
-                id: id,
-                title: title,
-                linkType: linkType,
-                password: password,
-                room: room
+            try await OnlyofficeApiClient.shared.request(
+                endpoint: OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: room),
+                parameters: OnlyofficeInviteRequestModel(
+                    notify: false,
+                    invitations: [OnlyofficeInviteItemRequestModel(id: id, access: newAccess)]
+                ).toJSON()
             )
-        case .file:
-            // TODO: Sharing info stub
-            throw NetworkingError.invalidData
-        case .folder:
-            // TODO: Sharing info stub
+        case let .file(file):
+            try await OnlyofficeApiClient.shared.request(
+                endpoint: OnlyofficeAPI.Endpoints.Sharing.fileShare(file: file, method: .put),
+                parameters: OnlyofficeShareRequestModel(
+                    share: [OnlyofficeShareItemRequestModel(shareTo: id, access: newAccess)]
+                ).toJSON()
+            )
+        case let .folder(folder):
+            try await OnlyofficeApiClient.shared.request(
+                endpoint: OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder, method: .put),
+                parameters: OnlyofficeShareRequestModel(
+                    share: [OnlyofficeShareItemRequestModel(shareTo: id, access: newAccess)]
+                ).toJSON()
+            )
+        }
+        guard let statusCode = response.statusCode, (200..<300).contains(statusCode) else {
             throw NetworkingError.invalidData
         }
     }

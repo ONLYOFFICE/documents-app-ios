@@ -17,6 +17,7 @@ protocol SharingInfoViewModelService {
     var isUserSelectionAllow: Bool { get }
     var canRemoveGeneralLink: Bool { get }
     var entityDescription: String? { get }
+    var memberAccessList: [ASCShareAccess] { get }
 }
 
 final class SharingInfoViewModelServiceImp {
@@ -104,11 +105,11 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
     var isUserSelectionAllow: Bool {
         switch entityType {
         case let .room(room):
-            room.rootFolderType != .archive && room.security.editAccess
-        case .file:
-            true
-        case .folder:
-            true
+            return room.rootFolderType != .archive && room.security.editAccess
+        case let .file(file):
+            return !file.rootFolderType.isRoomType
+        case let .folder(folder):
+            return !folder.rootFolderType.isRoomType
         }
     }
 
@@ -140,6 +141,26 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             return NSLocalizedString("Provide access to the document and set the permission levels.", comment: "")
         case .folder:
             return NSLocalizedString("Provide access to the folder and set the permission levels.", comment: "")
+        }
+    }
+    
+    var memberAccessList: [ASCShareAccess] {
+        switch entityType {
+        case let .room(room):
+            switch room.roomType {
+            case .colobaration:
+                [.roomManager, .contentCreator, .editing, .read]
+            case .public:
+                [.roomManager, .contentCreator]
+            case .custom:
+                [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
+            case .fillingForm:
+                [.roomManager, .contentCreator, .fillForms]
+            default:
+                [.roomManager, .contentCreator, .editing, .fillForms, .review, .comment, .read]
+            }
+        case .file, .folder:
+            [.full, .editing, .review, .comment, .read, .deny]
         }
     }
 }

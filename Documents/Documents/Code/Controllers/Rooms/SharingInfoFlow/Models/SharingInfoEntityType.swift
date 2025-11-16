@@ -11,3 +11,17 @@ enum SharingInfoEntityType {
     case file(ASCFile)
     case folder(ASCFolder)
 }
+
+extension SharingInfoEntityType {
+
+    var editSharedLinkEntityType: EditSharedLinkEntityType {
+        switch self {
+        case .room(let room):
+            .room(room)
+        case .file(let file):
+            .file(file)
+        case .folder(let folder):
+            .folder(folder)
+        }
+    }
+}

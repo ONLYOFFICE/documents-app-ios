@@ -18,7 +18,6 @@ struct SharingInfoView: View {
         handleHUD()
 
         return screenView
-            .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
@@ -110,9 +109,7 @@ struct SharingInfoView: View {
         if !viewModel.admins.isEmpty {
             Section(header: usersSectionHeader(title: NSLocalizedString("Administration", comment: ""), count: viewModel.admins.count)) {
                 ForEach(viewModel.admins) { model in
-                    ASCUserRow(
-                        model: model
-                    )
+                    makeUserRow(for: model)
                 }
             }
         }
@@ -123,12 +120,12 @@ struct SharingInfoView: View {
         if !viewModel.users.isEmpty {
             Section(header: usersSectionHeader(title: NSLocalizedString("Users", comment: ""), count: viewModel.users.count)) {
                 ForEach(viewModel.users) { model in
-                    ASCUserRow(model: model)
+                    makeUserRow(for: model)
                 }
             }
         }
     }
-
+    
     @ViewBuilder
     private var guestsSection: some View {
         if !viewModel.guests.isEmpty {
@@ -139,7 +136,7 @@ struct SharingInfoView: View {
                 )
             ) {
                 ForEach(viewModel.guests) { model in
-                    ASCUserRow(model: model)
+                    makeUserRow(for: model)
                 }
             }
         }
@@ -155,9 +152,20 @@ struct SharingInfoView: View {
                 )
             ) {
                 ForEach(viewModel.invites) { model in
-                    ASCUserRow(model: model)
+                    makeUserRow(for: model)
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func makeUserRow(for model: ASCUserRowModel) -> some View {
+        if viewModel.isUserSelectionAllow, !model.isOwner {
+            MenuView(menuItems: viewModel.buildAccessMenu(for: model)) {
+                ASCUserRow(model: model)
+            }
+        } else {
+            ASCUserRow(model: model)
         }
     }
 
@@ -284,30 +292,6 @@ private extension View {
         }
     }
 
-    func navigateToChangeAccess(
-        selectedUser: Binding<ASCUser?>,
-        viewModel: SharingInfoViewModel
-    ) -> some View {
-        navigation(item: selectedUser) { user in
-            switch viewModel.entityType {
-            case let .room(room):
-                RoomSharingAccessTypeView(
-                    viewModel: RoomSharingAccessTypeViewModel(
-                        room: room,
-                        user: user,
-                        onRemove: viewModel.onUserRemove(userId:)
-                    )
-                )
-            case .file:
-                // TODO: Sharing info stub
-                EmptyView()
-            case .folder:
-                // TODO: Sharing info stub
-                EmptyView()
-            }
-        }
-    }
-
     func navigateToEditLink(
         selectedLink: Binding<SharingInfoLinkModel?>,
         viewModel: SharingInfoViewModel
@@ -352,25 +336,28 @@ private extension View {
                         room: room
                     )
                 )
-            case .file:
-                // TODO: Sharing info stub
-                EmptyView()
-            case .folder:
-                // TODO: Sharing info stub
-                EmptyView()
+            case let .file(file):
+                SharingInviteRightHoldersRepresentable(entity: file)
+                    .navigationBarHidden(true)
+                    .ignoresSafeArea(edges: .bottom)
+            case let .folder(folder):
+                SharingInviteRightHoldersRepresentable(entity: folder)
+                    .navigationBarHidden(true)
+                    .ignoresSafeArea(edges: .bottom)
             }
         }
     }
 }
 
 struct ASCUserRowModel: Identifiable {
-    var id = UUID()
+    var id: String
     var image: ImageSourceType
     var userName: String
+    var access: ASCShareAccess
     var accessString: String
     var emailString: String
     var isOwner: Bool
-    var onTapAction: (() -> Void)?
+    var showRightIcon: Bool
 
     enum ImageSourceType {
         case url(String)
@@ -380,6 +367,12 @@ struct ASCUserRowModel: Identifiable {
 
 struct ASCUserRow: View {
     var model: ASCUserRowModel
+    
+    var subtitle: String {
+        [model.accessString, model.emailString]
+            .compactMap { $0.isEmpty ? nil : $0 }
+            .joined(separator: " | ")
+    }
 
     var body: some View {
         HStack(alignment: .center) {
@@ -389,7 +382,7 @@ struct ASCUserRow: View {
                 Text(verbatim: model.userName)
                     .lineLimit(1)
                     .font(.callout)
-                Text(verbatim: [model.accessString, model.emailString].joined(separator: " | "))
+                Text(verbatim: subtitle)
                     .lineLimit(1)
                     .foregroundColor(.secondaryLabel)
                     .font(.caption)
@@ -403,14 +396,11 @@ struct ASCUserRow: View {
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.trailing)
 
-            if !model.isOwner, model.onTapAction != nil {
-                ChevronRightView()
+            if model.showRightIcon {
+                ChevronUpDownView()
             }
         }
         .contentShape(Rectangle())
-        .onTapGesture {
-            model.onTapAction?()
-        }
     }
 
     @ViewBuilder

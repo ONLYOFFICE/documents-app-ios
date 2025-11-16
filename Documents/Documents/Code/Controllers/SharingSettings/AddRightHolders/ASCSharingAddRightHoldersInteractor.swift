@@ -37,8 +37,10 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             }
         case .loadAdminsWithoutOwner:
             loadAdminsWithoutOwner()
-        case .loadGroups: return
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
+        case .loadGroups:
+            guard let endpoint = getGroupEndpoint(for: dataStore?.entity) else { return }
+            let requestModel = PeopleRoomRequestModel(includeShared: nil)
+            OnlyofficeApiClient.request(endpoint, requestModel.dictionary) { [unowned self] response, error in
                 if let error = error {
                     log.error(error)
                 } else if let groups = response?.result {
@@ -48,16 +50,14 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 }
             }
         case .loadGuests:
+            guard let endpoint = getUserEndpoint(for: dataStore?.entity) else { return }
             let requestModel = PeopleGuestsRequestModel()
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.room(roomId: dataStore?.entity?.id ?? ""), requestModel.dictionary) { [unowned self] response, error in
+            OnlyofficeApiClient.request(endpoint, requestModel.dictionary) { [unowned self] response, error in
                 if let error = error {
                     log.error(error)
                 } else if let guests = response?.result {
                     let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
                     let sharedInfoItemsIds = Set(sharedInfoItems.compactMap { $0.user?.userId })
-//                    let guests = guests.filter {
-//                        !sharedInfoItemsIds.contains($0.userId ?? "")
-//                    }
                     self.dataStore?.guests = guests
                     self.presenter?.presentData(
                         responseType: .presentGuests(
@@ -136,7 +136,9 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
     }
 
     private func loadUsers(hideUsersWhoHasRights: Bool, showOnlyAdmins: Bool) {
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
+        guard let endpoint = getUserEndpoint(for: dataStore?.entity) else { return }
+        let requestModel = PeopleRoomRequestModel(includeShared: nil)
+        OnlyofficeApiClient.request(endpoint, requestModel.dictionary) { [unowned self] response, error in
             if let error = error {
                 log.error(error)
             } else if let users = response?.result {
@@ -229,6 +231,33 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             return .groups
         } else if let _ = dataStore.guests.firstIndex(where: { $0.userId == id }) {
             return .guests
+        }
+        return nil
+    }
+}
+
+private extension ASCSharingAddRightHoldersInteractor {
+    
+    func getUserEndpoint(for entity: ASCEntity?) -> Endpoint<OnlyofficeResponseArray<ASCUser>>? {
+        guard let entity else { return nil }
+        if entity.isRoom {
+            return OnlyofficeAPI.Endpoints.People.room(roomId: entity.id)
+        } else if let folder = entity as? ASCFolder {
+            return OnlyofficeAPI.Endpoints.People.folder(folderId: folder.id)
+        } else if let file = entity as? ASCFile {
+            return OnlyofficeAPI.Endpoints.People.file(fileId: file.id)
+        }
+        return nil
+    }
+    
+    func getGroupEndpoint(for entity: ASCEntity?) -> Endpoint<OnlyofficeResponseArray<ASCGroup>>? {
+        guard let entity else { return nil }
+        if entity.isRoom {
+            return OnlyofficeAPI.Endpoints.People.groupRoom(roomId: entity.id)
+        } else if let folder = entity as? ASCFolder {
+            return OnlyofficeAPI.Endpoints.People.groupFolder(folderId: folder.id)
+        } else if let file = entity as? ASCFile {
+            return OnlyofficeAPI.Endpoints.People.groupFile(fileId: file.id)
         }
         return nil
     }

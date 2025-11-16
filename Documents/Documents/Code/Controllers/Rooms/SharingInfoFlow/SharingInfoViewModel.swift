@@ -106,6 +106,13 @@ final class SharingInfoViewModel: ObservableObject {
         }
         isInitializing = false
     }
+    
+    func updateData() async throws {
+        let (links, sharings) = try await linkAccessService.fetchLinksAndUsers()
+        flowModel.links = links
+        flowModel.sharings = sharings
+        buildViewModel()
+    }
 
     // MARK: Handlers
 
@@ -150,12 +157,6 @@ final class SharingInfoViewModel: ObservableObject {
         buildViewModel()
     }
 
-    func onUserRemove(userId: String) {
-        flowModel.sharings.removeAll(where: { $0.user.userId == userId })
-        selectedUser = nil
-        buildViewModel()
-    }
-
     func deleteSharedLink(indexSet: IndexSet) {
         let indices = indexSet.sorted(by: >)
 
@@ -191,6 +192,7 @@ final class SharingInfoViewModel: ObservableObject {
                     try await linkAccessService.removeLink(
                         id: deletingLink.linkInfo.id,
                         title: deletingLink.linkInfo.title,
+                        denyDownload: deletingLink.linkInfo.denyDownload,
                         linkType: deletingLink.linkInfo.linkType,
                         password: deletingLink.linkInfo.password
                     )
@@ -218,6 +220,7 @@ final class SharingInfoViewModel: ObservableObject {
                 try await linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
                     title: deletingLink.linkInfo.title,
+                    denyDownload: deletingLink.linkInfo.denyDownload,
                     linkType: deletingLink.linkInfo.linkType,
                     password: deletingLink.linkInfo.password
                 )
@@ -237,6 +240,7 @@ final class SharingInfoViewModel: ObservableObject {
                 try await linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
                     title: deletingLink.linkInfo.title,
+                    denyDownload: deletingLink.linkInfo.denyDownload,
                     linkType: deletingLink.linkInfo.linkType,
                     password: deletingLink.linkInfo.password
                 )
@@ -247,6 +251,42 @@ final class SharingInfoViewModel: ObservableObject {
             buildViewModel()
             errorMessage = error.localizedDescription
         }
+    }
+    
+    func buildAccessMenu(for member: ASCUserRowModel) -> [MenuViewItem] {
+        var menuItems = viewModelService.memberAccessList.map { access in
+            MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
+                guard member.access != access else { return }
+                Task { @MainActor in
+                    isActivitiIndicatorDisplaying = true
+                    do {
+                        try await linkAccessService.changeAccess(for: member.id, newAccess: access)
+                        try await updateData()
+                    } catch {
+                        self.errorMessage = error.localizedDescription
+                        log.info(error.localizedDescription)
+                    }
+                    isActivitiIndicatorDisplaying = false
+                }
+            }
+        }
+        menuItems.append(MenuViewItem(
+            text: NSLocalizedString("Remove", comment: ""),
+            color: .red
+        ) { [unowned self] in
+            Task { @MainActor in
+                isActivitiIndicatorDisplaying = true
+                do {
+                    try await linkAccessService.changeAccess(for: member.id, newAccess: .none)
+                    try await updateData()
+                } catch {
+                    self.errorMessage = error.localizedDescription
+                    log.info(error.localizedDescription)
+                }
+                isActivitiIndicatorDisplaying = false
+            }
+        })
+        return menuItems
     }
 
     func declineRemoveLink() {
@@ -262,7 +302,13 @@ private extension SharingInfoViewModel {
         guard let inputLink else { return }
         if let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == inputLink.linkInfo.id }) {
             if [.deny, .none].contains(inputLink.access) {
-                flowModel.links.remove(at: index)
+                if !inputLink.isGeneral {
+                    flowModel.links.remove(at: index)
+                } else {
+                    Task { @MainActor in
+                        try? await updateData()
+                    }
+                }
             } else {
                 flowModel.links[index] = inputLink
             }
@@ -292,16 +338,15 @@ private extension SharingInfoViewModel {
     }
 
     func mapToUserViewModel(sharing: RoomUsersResponseModel, isInvitation: Bool = false) -> ASCUserRowModel {
-        let onTapAction: (() -> Void)? = isUserSelectionAllow && !sharing.user.isOwner
-            ? { [weak self] in self?.selectedUser = sharing.user }
-            : nil
-        return ASCUserRowModel(
+        ASCUserRowModel(
+            id: sharing.user.userId ?? sharing.sharedToGroup?.id ?? UUID().uuidString,
             image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
-            userName: sharing.user.displayName ?? "",
+            userName: sharing.user.displayName ?? sharing.sharedToGroup?.name ?? "-",
+            access: sharing.access,
             accessString: sharing.user.accessValue.title(),
             emailString: sharing.user.email ?? "",
             isOwner: sharing.user.isOwner,
-            onTapAction: onTapAction
+            showRightIcon: isUserSelectionAllow && !sharing.user.isOwner
         )
     }
 
@@ -314,7 +359,7 @@ private extension SharingInfoViewModel {
             imagesNames.append("clock.fill")
         }
 
-        var subtitle = link.linkInfo.internal
+        let subtitle = link.linkInfo.internal
             ? NSLocalizedString("Docspace user only", comment: "")
             : NSLocalizedString("Anyone with the link", comment: "")
 

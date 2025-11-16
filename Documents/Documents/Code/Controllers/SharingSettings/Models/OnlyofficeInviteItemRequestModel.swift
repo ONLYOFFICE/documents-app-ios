@@ -42,6 +42,17 @@ class OnlyofficeInviteRequestModel: Mappable {
     var invitations: [OnlyofficeInviteItemRequestModel]?
 
     init() {}
+    
+    convenience init(
+        notify: Bool,
+        inviteMessage: String? = nil,
+        invitations: [OnlyofficeInviteItemRequestModel]
+    ) {
+        self.init()
+        self.notify = notify
+        self.inviteMessage = inviteMessage
+        self.invitations = invitations
+    }
 
     required init?(map: Map) {}
 

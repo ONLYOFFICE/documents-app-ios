@@ -62,7 +62,12 @@ enum OnlyofficeAPI {
         static let people = "api/\(version)/people"
         static let peopleFilter = "api/\(version)/people/filter"
         static let peopleRoom = "api/\(version)/people/room/%@"
+        static let peopleFile = "api/\(version)/people/file/%@"
+        static let peopleFolder = "api/\(version)/people/folder/%@"
         static let groups = "api/\(version)/group"
+        static let groupRoom = "api/\(version)/group/room/%@"
+        static let groupFile = "api/\(version)/group/file/%@"
+        static let groupFolder = "api/\(version)/group/folder/%@"
         static let shareFile = "api/\(version)/files/file/%@/share"
         static let sharedUsers = "api/\(version)/files/file/%@/sharedusers"
         static let shareFolder = "api/\(version)/files/folder/%@/share"
@@ -144,13 +149,29 @@ enum OnlyofficeAPI {
             static let filter: Endpoint<OnlyofficeResponseArray<ASCUser>> =
                 Endpoint<OnlyofficeResponseArray<ASCUser>>.make(Path.peopleFilter, .get, URLEncoding.default)
             static let groups: Endpoint<OnlyofficeResponseArray<ASCGroup>> = Endpoint<OnlyofficeResponseArray<ASCGroup>>.make(Path.groups)
+            
+            static func groupRoom(roomId: String) -> Endpoint<OnlyofficeResponseArray<ASCGroup>> {
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(String(format: Path.groupRoom, roomId), .get, URLEncoding.default)
+            }
+            
+            static func groupFolder(folderId: String) -> Endpoint<OnlyofficeResponseArray<ASCGroup>> {
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(String(format: Path.groupFolder, folderId), .get, URLEncoding.default)
+            }
+            
+            static func groupFile(fileId: String) -> Endpoint<OnlyofficeResponseArray<ASCGroup>> {
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(String(format: Path.groupFile, fileId), .get, URLEncoding.default)
+            }
 
-            static func room(roomId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> { Endpoint<OnlyofficeResponseArray<ASCUser>>
-                .make(
-                    String(format: Path.peopleRoom, roomId),
-                    .get,
-                    URLEncoding.default
-                )
+            static func room(roomId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> {
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(String(format: Path.peopleRoom, roomId), .get, URLEncoding.default)
+            }
+            
+            static func file(fileId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> {
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(String(format: Path.peopleFile, fileId), .get, URLEncoding.default)
+            }
+            
+            static func folder(folderId: String) -> Endpoint<OnlyofficeResponseArray<ASCUser>> {
+                Endpoint<OnlyofficeResponseArray<ASCUser>>.make(String(format: Path.peopleFolder, folderId), .get, URLEncoding.default)
             }
 
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {

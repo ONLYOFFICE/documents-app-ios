@@ -1,5 +1,5 @@
 //
-//  RoomSharingCustomizeLinkViewModel.swift
+//  EditSharedLinkViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 03.12.2023.

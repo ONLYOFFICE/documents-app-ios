@@ -16,6 +16,7 @@ struct EditSharedLinkView: View {
     @State private var showDeleteAlert = false
     @State private var showRevokeAlert = false
     @State private var showPasswordErrorAlert = false
+    @State private var showRestrictCopyAlert = false
 
     @State private var passwordErrorAlertMessage = ""
 
@@ -45,6 +46,7 @@ struct EditSharedLinkView: View {
             generalSection
             protectedSection
             restrictionSection
+                .alert(isPresented: $showRestrictCopyAlert, content: restrictCopyAlert)
             deleteSection
             revokeSection
                 .alert(isPresented: $showRevokeAlert, content: revokeAlert)
@@ -130,6 +132,13 @@ struct EditSharedLinkView: View {
                     Text("Restrict file content copy, file download and printing")
                 }
                 .tintColor(Color(Asset.Colors.brend.color))
+                .onChange(of: viewModel.linkModel.isRestrictCopyOn) { newValue in
+                    if newValue == false,
+                       viewModel.isFileOrFolderVDRoomWithDenyDownload {
+                        viewModel.linkModel.isRestrictCopyOn = true
+                        showRestrictCopyAlert = true
+                    }
+                }
             }
         }
     }
@@ -260,6 +269,14 @@ struct EditSharedLinkView: View {
             secondaryButton: .cancel()
         )
     }
+    
+    private func restrictCopyAlert() -> Alert {
+        Alert(
+            title: Text("Warning"),
+            message: Text(verbatim: String.restrictCopyAlertMessage),
+            dismissButton: .cancel(Text("OK"))
+        )
+    }
 
     private var passwordErrorAlert: Alert {
         Alert(
@@ -295,4 +312,5 @@ private extension String {
     static let restrictionSectionFooterText = NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: "")
     static let deleteAlertMessage = NSLocalizedString("Links to all files in the room will be deleted. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
     static let revokeAlertMessage = NSLocalizedString("Links to all files in the room will be re-generated. Previous links to room files and embedded documents will become unavailable.\n \nThis action cannot be undone. Are you sure you want to continue?", comment: "")
+    static let restrictCopyAlertMessage = NSLocalizedString("You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.", comment: "")
 }

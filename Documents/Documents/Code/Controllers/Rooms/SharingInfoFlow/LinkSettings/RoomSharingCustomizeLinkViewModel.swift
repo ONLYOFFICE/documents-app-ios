@@ -1,5 +1,5 @@
 //
-//  EditSharedLinkViewModel.swift
+//  RoomSharingCustomizeLinkViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 03.12.2023.
@@ -56,11 +56,11 @@ final class EditSharedLinkViewModel: ObservableObject {
     
     @Published var linkModel: EditSharedLinkModel = .empty
     @Published var screenModel: EditSharedLinkScreenModel = .empty
-
+    
     @Published var sharingLinkURL: URL? = nil
     @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
-
+    
     var accessMenuItems: [MenuViewItem] {
         [
             ASCShareAccess.editing,
@@ -73,7 +73,7 @@ final class EditSharedLinkViewModel: ObservableObject {
             }
         }
     }
-
+    
     var isDeletePossible: Bool {
         viewService?.isDeletePossible ?? false
     }
@@ -81,17 +81,42 @@ final class EditSharedLinkViewModel: ObservableObject {
     var showRestrictCopySection: Bool {
         viewService?.showRestrictCopySection ?? false
     }
-
+    
     var isPossibleToSave: Bool {
         !linkModel.linkName.isEmpty && linkModel.selectedDate > Date() && !screenModel.isSaving
     }
-
+    
     var isEditAccessPossible: Bool {
         viewService?.isEditAccessPossible ?? false
     }
-
+    
     var showTimeLimit: Bool {
         link.linkInfo.primary == false
+    }
+    
+    var isFileOrFolderVDRoomWithDenyDownload: Bool {
+        switch entity {
+        case let .folder(folder):
+            guard
+                folder.rootFolderType == .virtualRooms,
+                let room = folder.parent
+            else {
+                return false
+            }
+            return room.denyDownload
+
+        case let .file(file):
+            guard
+                file.rootFolderType == .virtualRooms,
+                let room = file.parent
+            else {
+                return false
+            }
+            return room.denyDownload
+
+        case .room:
+            return false
+        }
     }
 
     private var cancelable = Set<AnyCancellable>()
@@ -120,7 +145,7 @@ final class EditSharedLinkViewModel: ObservableObject {
         linkModel = EditSharedLinkModel(
             linkName: link.linkInfo.title,
             isProtected: !linkModel.password.isEmpty,
-            isRestrictCopyOn: link.linkInfo.denyDownload == true,
+            isRestrictCopyOn: isRestrictCopyOn(),
             isTimeLimited: link.linkInfo.expirationDate != nil,
             selectedDate: {
                 guard let dateString = link.linkInfo.expirationDate else {
@@ -236,6 +261,11 @@ private extension EditSharedLinkViewModel {
         guard link.linkInfo.isExpired != true else { return }
         sharingLinkURL = URL(string: link.linkInfo.shareLink)
     }
+    
+    func isRestrictCopyOn() -> Bool {
+        link.linkInfo.denyDownload || isFileOrFolderVDRoomWithDenyDownload
+    }
+
 }
 
 // MARK: Date formaters

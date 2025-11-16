@@ -11,6 +11,9 @@ protocol FolderSharingNetworkServiceProtocol {
     func fetch(folder: ASCFolder) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel])
     func fetchLinks(folder: ASCFolder) async throws -> [SharingInfoLinkResponseModel]
     func fetchUsers(folder: ASCFolder) async throws -> [RoomUsersResponseModel]
+    
+    func createGeneralLink(folder: ASCFolder) async throws -> SharingInfoLinkModel
+    func createLink(folder: ASCFolder) async throws -> SharingInfoLinkModel
 }
 
 actor FolderSharingNetworkService: FolderSharingNetworkServiceProtocol {
@@ -28,15 +31,36 @@ actor FolderSharingNetworkService: FolderSharingNetworkServiceProtocol {
     // MARK: links
 
     func fetchLinks(folder: ASCFolder) async throws -> [SharingInfoLinkResponseModel] {
-        let requestModel = RoomLinksRequestModel(type: 1)
-
         let response = try await networkService.request(
-            endpoint: OnlyofficeAPI.Endpoints.Folders.getLinks(folder: folder),
-            parameters: requestModel.dictionary
+            endpoint: OnlyofficeAPI.Endpoints.Folders.getLinks(folder: folder)
         )
 
         guard let links = response.result else { throw Errors.emptyResponse }
         return links
+    }
+    
+    func createGeneralLink(folder: ASCFolder) async throws -> SharingInfoLinkModel {
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Folders.getLink(folder: folder)
+        )
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
+    }
+    
+    func createLink(folder: ASCFolder) async throws -> SharingInfoLinkModel {
+        let requestModel = CreateAndCopyLinkRequestModel(
+            access: ASCShareAccess.read.rawValue,
+            primary: false,
+            expirationDate: nil,
+            isInternal: false
+        )
+
+        let response = try await networkService.request(
+            endpoint: OnlyofficeAPI.Endpoints.Folders.createLink(folder: folder),
+            parameters: requestModel.dictionary
+        )
+        guard let result = response.result else { throw Errors.emptyResponse }
+        return result
     }
 
     // MARK: users
@@ -46,7 +70,7 @@ actor FolderSharingNetworkService: FolderSharingNetworkServiceProtocol {
             endpoint: OnlyofficeAPI.Endpoints.Folders.users(folder: folder)
         )
 
-        guard var users = response.result else { throw Errors.emptyResponse }
+        guard let users = response.result else { throw Errors.emptyResponse }
         users.forEach { $0.user.accessValue = $0.access }
         return users
     }

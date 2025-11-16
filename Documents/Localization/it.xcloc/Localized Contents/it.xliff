@@ -1683,6 +1683,10 @@ Category title</note>
         <target state="translated">Collaborazione</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Collaboration Room" xml:space="preserve">
+        <source>Collaboration Room</source>
+        <note from="auto-generated">Title for a room type that is a collaboration room.</note>
+      </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
         <target state="translated">Stanza di collaborazione</target>
@@ -2055,6 +2059,10 @@ altri che utilizzano il protocollo WebDAV.</target>
         <source>Custom</source>
         <target state="translated">Personalizzata</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="Custom Room" xml:space="preserve">
+        <source>Custom Room</source>
+        <note from="auto-generated">Title of a room with a custom type.</note>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
@@ -3899,6 +3907,10 @@ Se il problema persiste, contattaci e menziona questo codice di errore: Zoom - %
         <target state="translated">Concedi l'accesso al documento e imposta i livelli di autorizzazione.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
+        <source>Provide access to the folder and set the permission levels.</source>
+        <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target state="translated">Fornisci accesso generale al documento selezionando il livello di autorizzazione richiesto.</target>
@@ -4846,12 +4858,6 @@ Gli utenti esterni avranno l'autorizzazione di sola visualizzazione
 per tutti i file.</target>
         <note/>
       </trans-unit>
-      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
-        <source>This room is available to anyone with the link.
-Access for external users is provided depending
-on the selected type of access rights.</source>
-        <note/>
-      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target state="translated">Questo foglio di calcolo è in corso di elaborazione. Vuoi aprire %@ in sola lettura?</target>
@@ -5378,6 +5384,10 @@ una stanza nella sezione Stanza</target>
         <source>You can create a template from a room in the Room section</source>
         <target state="translated">Puoi creare un modello da una stanza nella sezione Stanza</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
+        <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>

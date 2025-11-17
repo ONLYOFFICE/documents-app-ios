@@ -50,4 +50,23 @@ final class EditSharedLnkViewService {
             file.security.edit
         }
     }
+    
+    var showWhoHasAccessSection: Bool {
+        switch entity {
+        case let .room(room):
+            return room.roomType != .public && room.roomType != .virtualData
+
+        case let .folder(folder):
+            if let rootFolder = folder.parent {
+                return rootFolder.roomType != .public && rootFolder.roomType != .virtualData
+            }
+            return true
+
+        case let .file(file):
+            if let rootFolder = file.parent {
+                return rootFolder.roomType != .public && rootFolder.roomType != .virtualData
+            }
+            return true
+        }
+    }
 }

@@ -44,6 +44,7 @@ struct EditSharedLinkView: View {
         List {
             linkNameSection
             generalSection
+            typeSection
             protectedSection
             restrictionSection
                 .alert(isPresented: $showRestrictCopyAlert, content: restrictCopyAlert)
@@ -58,8 +59,10 @@ struct EditSharedLinkView: View {
         List {
             linkNameSection
             generalSection
+            typeSection
             protectedSection
             restrictionSection
+                .alert(isPresented: $showRestrictCopyAlert, content: restrictCopyAlert)
             deleteSection
                 .alert(isPresented: $showDeleteAlert, content: deleteAlert)
         }
@@ -80,6 +83,18 @@ struct EditSharedLinkView: View {
             if viewModel.showTimeLimit {
                 timeLimitCell
                     .disabled(viewModel.linkModel.isExpired)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var typeSection: some View {
+        if viewModel.showWhoHasAccessSection {
+            Section(
+                header: Text("Who has access"))
+            {
+                anyoneWithTheinkCell
+                docspaceUserOnlyCell
             }
         }
     }
@@ -122,6 +137,36 @@ struct EditSharedLinkView: View {
                 displayedComponents: [.date, .hourAndMinute]
             ))
         }
+    }
+    
+    @ViewBuilder
+    private var anyoneWithTheinkCell: some View {
+        CheckmarkCellView(model: CheckmarkCellViewModel(
+            text: NSLocalizedString("Anyone with the link", comment: ""),
+            isChecked: viewModel.linkModel.whoHasAccess == .anyoneWithLink,
+            isEnabled: !viewModel.linkModel.isExpired,
+            onTapAction: {
+                if viewModel.linkModel.whoHasAccess != .anyoneWithLink {
+                    viewModel.linkModel.whoHasAccess = .anyoneWithLink
+                }
+            }
+        ))
+        .disabled(viewModel.linkModel.isExpired)
+    }
+    
+    @ViewBuilder
+    private var docspaceUserOnlyCell: some View {
+        CheckmarkCellView(model: CheckmarkCellViewModel(
+            text: NSLocalizedString("DoсSpace users only", comment: ""),
+            isChecked: viewModel.linkModel.whoHasAccess == .docspaceUserOnly,
+            isEnabled: !viewModel.linkModel.isExpired,
+            onTapAction: {
+                if viewModel.linkModel.whoHasAccess != .docspaceUserOnly {
+                    viewModel.linkModel.whoHasAccess = .docspaceUserOnly
+                }
+            }
+        ))
+        .disabled(viewModel.linkModel.isExpired)
     }
 
     @ViewBuilder

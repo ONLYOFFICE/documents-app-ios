@@ -34,6 +34,7 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
     ) async throws -> SharingInfoLinkModel
 
@@ -44,6 +45,7 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
     ) async throws -> SharingInfoLinkModel
 
@@ -62,6 +64,7 @@ extension RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool = false,
         password: String? = nil,
+        isInternal: Bool = false,
         room: ASCRoom
     ) async throws -> SharingInfoLinkModel {
         try await changeOrCreateLink(
@@ -72,6 +75,7 @@ extension RoomSharingLinkAccessService {
             linkType: linkType,
             denyDownload: denyDownload,
             password: password,
+            isInternal: isInternal,
             room: room
         )
     }
@@ -136,6 +140,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
     ) async throws -> SharingInfoLinkModel {
         let request = LinkRequestModel(
@@ -145,6 +150,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             expirationDate: expirationDate,
             linkType: linkType.rawValue,
             denyDownload: denyDownload,
+            internal: isInternal,
             password: password
         )
 

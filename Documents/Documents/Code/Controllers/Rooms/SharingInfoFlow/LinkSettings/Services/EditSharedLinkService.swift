@@ -9,7 +9,7 @@
 protocol EditSharedLinkServiceProtocol: AnyObject {
     func delete(id: String, title: String, linkType: ASCShareLinkType, password: String?) async throws
     func revoke(id: String, denyDownload: Bool, title: String, linkType: ASCShareLinkType, password: String?) async throws
-    func editLink(id: String?, title: String, access: Int, expirationDate: String?, linkType: ASCShareLinkType, denyDownload: Bool, password: String?) async throws -> SharingInfoLinkModel
+    func editLink(id: String?, title: String, access: Int, expirationDate: String?, linkType: ASCShareLinkType, denyDownload: Bool, password: String?, isInternal: Bool) async throws -> SharingInfoLinkModel
 }
 
 class EditSharedLinkService: EditSharedLinkServiceProtocol {
@@ -65,7 +65,8 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
         expirationDate: String?,
         linkType: ASCShareLinkType,
         denyDownload: Bool,
-        password: String?
+        password: String?,
+        isInternal: Bool
     ) async throws -> SharingInfoLinkModel {
         switch entity {
         case let .room(room):
@@ -77,6 +78,7 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
                 linkType: linkType,
                 denyDownload: denyDownload,
                 password: password,
+                isInternal: isInternal,
                 room: room
             )
             guard let result else {
@@ -92,6 +94,7 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
                 linkType: linkType,
                 denyDownload: denyDownload,
                 password: password,
+                isInternal: isInternal,
                 folder: folder
             )
             guard let result else {
@@ -107,6 +110,7 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
                 linkType: linkType,
                 denyDownload: denyDownload,
                 password: password,
+                isInternal: isInternal,
                 file: file
             )
             guard let result else {

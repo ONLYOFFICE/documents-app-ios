@@ -63,6 +63,7 @@ final class EditFolderSharedLinkService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         folder: ASCFolder
     ) async throws -> SharingInfoLinkModel {
         let request = LinkRequestModel(
@@ -72,7 +73,8 @@ final class EditFolderSharedLinkService {
             expirationDate: expirationDate,
             linkType: linkType.rawValue,
             denyDownload: denyDownload,
-            password: password
+            internal: isInternal,
+            password: password,
         )
 
         let response = try await networkService.request(

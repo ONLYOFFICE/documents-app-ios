@@ -86,6 +86,7 @@ extension InviteUsersServiceImp: InviteUsersService {
                 linkType: .invitation,
                 denyDownload: false,
                 password: nil,
+                isInternal: false,
                 room: room
             )
             return ASCSharingOprionsExternalLink(

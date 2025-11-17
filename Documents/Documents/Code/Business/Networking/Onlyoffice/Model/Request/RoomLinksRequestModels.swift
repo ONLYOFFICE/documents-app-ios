@@ -19,6 +19,7 @@ struct LinkRequestModel: Codable {
     var expirationDate: String?
     var linkType: Int
     var denyDownload: Bool
+    var `internal`: Bool = false
     var password: String?
 }
 

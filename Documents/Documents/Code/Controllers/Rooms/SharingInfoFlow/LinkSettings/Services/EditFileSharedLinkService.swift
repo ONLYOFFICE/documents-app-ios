@@ -63,6 +63,7 @@ final class EditFileSharedLinkService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         file: ASCFile
     ) async throws -> SharingInfoLinkModel {
         let request = LinkRequestModel(
@@ -72,6 +73,7 @@ final class EditFileSharedLinkService {
             expirationDate: expirationDate,
             linkType: linkType.rawValue,
             denyDownload: denyDownload,
+            internal: isInternal,
             password: password
         )
 

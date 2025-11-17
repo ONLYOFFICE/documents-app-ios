@@ -63,6 +63,7 @@ final class EditRoomSharedLinkService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
     ) async throws -> SharingInfoLinkModel {
         let request = LinkRequestModel(
@@ -72,6 +73,7 @@ final class EditRoomSharedLinkService {
             expirationDate: expirationDate,
             linkType: linkType.rawValue,
             denyDownload: denyDownload,
+            internal: isInternal,
             password: password
         )
 

@@ -24,6 +24,7 @@ struct EditSharedLinkModel {
     var password: String = ""
     var isExpired: Bool = false
     var selectedAccessRight: ASCShareAccess = .none
+    var whoHasAccess: LinkAccess = .anyoneWithLink
 
     static let empty = EditSharedLinkModel(linkName: "", isProtected: false, isRestrictCopyOn: false, isTimeLimited: false, selectedDate: Date(), password: "", isExpired: false, selectedAccessRight: .none)
 }
@@ -87,6 +88,10 @@ final class EditSharedLinkViewModel: ObservableObject {
 
     var isEditAccessPossible: Bool {
         viewService?.isEditAccessPossible ?? false
+    }
+    
+    var showWhoHasAccessSection: Bool {
+        viewService?.showWhoHasAccessSection ?? false
     }
 
     var showTimeLimit: Bool {
@@ -154,7 +159,8 @@ final class EditSharedLinkViewModel: ObservableObject {
             }(),
             password: link.linkInfo.password ?? "",
             isExpired: link.linkInfo.isExpired,
-            selectedAccessRight: link.access
+            selectedAccessRight: link.access,
+            whoHasAccess: link.linkInfo.internal ? .docspaceUserOnly : .anyoneWithLink
         )
 
         defineSharingLink()
@@ -239,7 +245,8 @@ private extension EditSharedLinkViewModel {
                 expirationDate: linkModel.isTimeLimited ? Self.sendDateFormatter.string(from: linkModel.selectedDate) : nil,
                 linkType: ASCShareLinkType.external,
                 denyDownload: linkModel.isRestrictCopyOn,
-                password: linkModel.isProtected ? linkModel.password : nil
+                password: linkModel.isProtected ? linkModel.password : nil,
+                isInternal: linkModel.whoHasAccess == .docspaceUserOnly
             )
             screenModel.isSaving = false
             UIPasteboard.general.string = link?.linkInfo.shareLink

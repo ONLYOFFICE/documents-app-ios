@@ -9506,6 +9506,9 @@
         }
       }
     },
+    "Authorization code not found" : {
+
+    },
     "Automatic indexing" : {
       "localizations" : {
         "ar-SA" : {
@@ -37568,6 +37571,9 @@
         }
       }
     },
+    "Invalid server URL" : {
+
+    },
     "Invalid Url" : {
       "localizations" : {
         "ar-SA" : {
@@ -37655,6 +37661,9 @@
           }
         }
       }
+    },
+    "Invalid URL" : {
+
     },
     "Invite" : {
       "localizations" : {
@@ -43243,6 +43252,9 @@
           }
         }
       }
+    },
+    "Network error" : {
+
     },
     "new" : {
       "comment" : "Badge of file in file list",
@@ -50876,6 +50888,9 @@
           }
         }
       }
+    },
+    "Please enter a server URL" : {
+
     },
     "Please go to Settings and enable the camera for this app to use this feature." : {
       "localizations" : {
@@ -59988,6 +60003,9 @@
         }
       }
     },
+    "Server is unreachable" : {
+
+    },
     "Set favorite failed." : {
       "localizations" : {
         "ar-SA" : {
@@ -62979,6 +62997,9 @@
           }
         }
       }
+    },
+    "State is invalid" : {
+
     },
     "Stop filling" : {
       "extractionState" : "manual",

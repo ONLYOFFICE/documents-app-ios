@@ -18,7 +18,6 @@ struct SharingInfoView: View {
         handleHUD()
 
         return screenView
-            .navigateToChangeAccess(selectedUser: $viewModel.selectedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
@@ -33,7 +32,7 @@ struct SharingInfoView: View {
     private var navBarTitle: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             VStack {
-                Text(verbatim: viewModel.room.title)
+                Text(verbatim: viewModel.title)
                 Text(verbatim: viewModel.navbarSubtitle)
                     .font(.footnote)
                     .foregroundColor(.secondaryLabel)
@@ -45,7 +44,7 @@ struct SharingInfoView: View {
     private var screenView: some View {
         if !viewModel.isInitializing {
             VStack {
-                roomDescriptionText
+                descriptionText
                 List {
                     sharedLinksSection
                     adminSection
@@ -63,9 +62,9 @@ struct SharingInfoView: View {
     }
 
     @ViewBuilder
-    private var roomDescriptionText: some View {
-        if viewModel.room.roomType != .colobaration {
-            Text(verbatim: viewModel.roomTypeDescription)
+    private var descriptionText: some View {
+        if let description = viewModel.entityDescription {
+            Text(verbatim: description)
                 .multilineTextAlignment(.center)
                 .padding(.top, Constants.descriptionTopPadding)
                 .padding(.horizontal, Constants.horizontalAlignment)
@@ -85,9 +84,9 @@ struct SharingInfoView: View {
                             imageNames: [],
                             onTapAction: {
                                 Task { @MainActor in
-                                    viewModel.sharedLinksModels.isEmpty
-                                        ? viewModel.createAndCopyGeneralLink
-                                        : viewModel.createAndCopyAdditionalLink
+                                    await viewModel.sharedLinksModels.isEmpty
+                                        ? viewModel.createAndCopyGeneralLink()
+                                        : viewModel.createAndCopyAdditionalLink()
                                 }
                             }
                         )
@@ -110,9 +109,7 @@ struct SharingInfoView: View {
         if !viewModel.admins.isEmpty {
             Section(header: usersSectionHeader(title: NSLocalizedString("Administration", comment: ""), count: viewModel.admins.count)) {
                 ForEach(viewModel.admins) { model in
-                    ASCUserRow(
-                        model: model
-                    )
+                    makeUserRow(for: model)
                 }
             }
         }
@@ -123,7 +120,7 @@ struct SharingInfoView: View {
         if !viewModel.users.isEmpty {
             Section(header: usersSectionHeader(title: NSLocalizedString("Users", comment: ""), count: viewModel.users.count)) {
                 ForEach(viewModel.users) { model in
-                    ASCUserRow(model: model)
+                    makeUserRow(for: model)
                 }
             }
         }
@@ -139,7 +136,7 @@ struct SharingInfoView: View {
                 )
             ) {
                 ForEach(viewModel.guests) { model in
-                    ASCUserRow(model: model)
+                    makeUserRow(for: model)
                 }
             }
         }
@@ -155,18 +152,29 @@ struct SharingInfoView: View {
                 )
             ) {
                 ForEach(viewModel.invites) { model in
-                    ASCUserRow(model: model)
+                    makeUserRow(for: model)
                 }
             }
         }
     }
 
     @ViewBuilder
-    private var sharedLinksSectionHeader: some View {
-        if viewModel.room.isFillingFormRoom {
-            formRoomHeader
+    private func makeUserRow(for model: ASCUserRowModel) -> some View {
+        if viewModel.isUserSelectionAllow, !model.isOwner {
+            MenuView(menuItems: viewModel.buildAccessMenu(for: model)) {
+                ASCUserRow(model: model)
+            }
         } else {
+            ASCUserRow(model: model)
+        }
+    }
+
+    @ViewBuilder
+    private var sharedLinksSectionHeader: some View {
+        if viewModel.isAddingLinksAvailable {
             sharedLinksHeader
+        } else {
+            formRoomHeader
         }
     }
 
@@ -178,7 +186,7 @@ struct SharingInfoView: View {
         HStack {
             Text(verbatim: sharedLinksTitle)
             Spacer()
-            if viewModel.canAddLink {
+            if viewModel.canAddOneMoreLink {
                 addButton
             }
         }
@@ -284,32 +292,36 @@ private extension View {
         }
     }
 
-    func navigateToChangeAccess(
-        selectedUser: Binding<ASCUser?>,
-        viewModel: SharingInfoViewModel
-    ) -> some View {
-        navigation(item: selectedUser) { user in
-            RoomSharingAccessTypeView(
-                viewModel: RoomSharingAccessTypeViewModel(
-                    room: viewModel.room,
-                    user: user,
-                    onRemove: viewModel.onUserRemove(userId:)
-                )
-            )
-        }
-    }
-
     func navigateToEditLink(
-        selectedLink: Binding<RoomSharingLinkModel?>,
+        selectedLink: Binding<SharingInfoLinkModel?>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(item: selectedLink, destination: { link in
-            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
-                room: viewModel.room,
-                inputLink: link,
-                outputLink: viewModel.changedLinkBinding
-            ))
-        })
+        switch viewModel.entityType {
+        case let .room(room):
+            navigation(item: selectedLink, destination: { link in
+                EditSharedLinkView(viewModel: EditSharedLinkViewModel(
+                    entity: .room(room),
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            })
+        case let .file(file):
+            navigation(item: selectedLink, destination: { link in
+                EditSharedLinkView(viewModel: EditSharedLinkViewModel(
+                    entity: .file(file),
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            })
+        case let .folder(folder):
+            navigation(item: selectedLink, destination: { link in
+                EditSharedLinkView(viewModel: EditSharedLinkViewModel(
+                    entity: .folder(folder),
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
+                ))
+            })
+        }
     }
 
     func navigateToAddUsers(
@@ -317,31 +329,35 @@ private extension View {
         viewModel: SharingInfoViewModel
     ) -> some View {
         navigation(isActive: isDisplaying) {
-            InviteUsersView(
-                viewModel: InviteUsersViewModel(
-                    room: viewModel.room
+            switch viewModel.entityType {
+            case let .room(room):
+                InviteUsersView(
+                    viewModel: InviteUsersViewModel(
+                        room: room
+                    )
                 )
-            )
+            case let .file(file):
+                SharingInviteRightHoldersRepresentable(entity: file)
+                    .navigationBarHidden(true)
+                    .ignoresSafeArea(edges: .bottom)
+            case let .folder(folder):
+                SharingInviteRightHoldersRepresentable(entity: folder)
+                    .navigationBarHidden(true)
+                    .ignoresSafeArea(edges: .bottom)
+            }
         }
     }
 }
 
-struct SharingInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        SharingInfoView(
-            viewModel: SharingInfoViewModel(room: .init())
-        )
-    }
-}
-
 struct ASCUserRowModel: Identifiable {
-    var id = UUID()
+    var id: String
     var image: ImageSourceType
     var userName: String
+    var access: ASCShareAccess
     var accessString: String
     var emailString: String
     var isOwner: Bool
-    var onTapAction: (() -> Void)?
+    var showRightIcon: Bool
 
     enum ImageSourceType {
         case url(String)
@@ -352,6 +368,12 @@ struct ASCUserRowModel: Identifiable {
 struct ASCUserRow: View {
     var model: ASCUserRowModel
 
+    var subtitle: String {
+        [model.accessString, model.emailString]
+            .compactMap { $0.isEmpty ? nil : $0 }
+            .joined(separator: " | ")
+    }
+
     var body: some View {
         HStack(alignment: .center) {
             imageView(for: model.image)
@@ -360,7 +382,7 @@ struct ASCUserRow: View {
                 Text(verbatim: model.userName)
                     .lineLimit(1)
                     .font(.callout)
-                Text(verbatim: [model.accessString, model.emailString].joined(separator: " | "))
+                Text(verbatim: subtitle)
                     .lineLimit(1)
                     .foregroundColor(.secondaryLabel)
                     .font(.caption)
@@ -374,14 +396,11 @@ struct ASCUserRow: View {
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.trailing)
 
-            if !model.isOwner, model.onTapAction != nil {
-                ChevronRightView()
+            if model.showRightIcon {
+                ChevronUpDownView()
             }
         }
         .contentShape(Rectangle())
-        .onTapGesture {
-            model.onTapAction?()
-        }
     }
 
     @ViewBuilder
@@ -390,9 +409,9 @@ struct ASCUserRow: View {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains(String.defaultUserPhotoSize),
-               let url = URL(string: portal + string)
+               let url = URL(string: portal)?.appendingSafePath(string)
             {
-                KFImage(url)
+                KFOnlyOfficeProviderImageView(url: url)
                     .resizable()
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .cornerRadius(Constants.imageCornerRadius)
@@ -416,4 +435,10 @@ private enum Constants {
     static let imageWidth: CGFloat = 40
     static let imageHeight: CGFloat = 40
     static let imageCornerRadius: CGFloat = 20
+}
+
+struct SharingInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        SharingInfoAssemler.make(entityType: .room(.init()))
+    }
 }

@@ -354,14 +354,15 @@ class OnlyofficeApiClient: NetworkingClient {
     }
 
     func absoluteUrl(from url: URL?) -> URL? {
-        if let url = url {
-            if let _ = url.host {
-                return url
-            } else {
-                return URL(string: (baseURL?.absoluteString ?? "") + url.absoluteString)
-            }
+        guard let url else { return nil }
+
+        if url.host != nil {
+            return url
+        } else if let baseURL {
+            return baseURL.appendingSafePath(url.relativePath)
+        } else {
+            return nil
         }
-        return nil
     }
 }
 

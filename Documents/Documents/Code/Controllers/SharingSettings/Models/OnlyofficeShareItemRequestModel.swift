@@ -36,6 +36,12 @@ class OnlyofficeShareRequestModel: Mappable {
 
     init() {}
 
+    convenience init(share: [OnlyofficeShareItemRequestModel]) {
+        self.init()
+
+        self.share = share
+    }
+
     required init?(map: Map) {}
 
     func mapping(map: Map) {

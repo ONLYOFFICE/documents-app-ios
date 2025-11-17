@@ -11,7 +11,7 @@ import Foundation
 import MBProgressHUD
 
 final class FormCompletedViewModel: ObservableObject {
-    typealias FormSharingLinkModel = RoomSharingLinkModel
+    typealias FormSharingLinkModel = SharingInfoLinkModel
 
     var formModel: FormModel
 

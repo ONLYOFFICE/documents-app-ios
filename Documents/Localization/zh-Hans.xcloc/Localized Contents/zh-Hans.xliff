@@ -1631,6 +1631,10 @@ Category title</note>
         <target state="translated">协作</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Collaboration Room" xml:space="preserve">
+        <source>Collaboration Room</source>
+        <note from="auto-generated">Title for a room type that is a collaboration room.</note>
+      </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
         <target state="translated">协作房间</target>
@@ -2003,6 +2007,10 @@ others which use WebDAV protocol.</source>
         <source>Custom</source>
         <target state="translated">自訂</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="Custom Room" xml:space="preserve">
+        <source>Custom Room</source>
+        <note from="auto-generated">Title of a room with a custom type.</note>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
@@ -3817,6 +3825,10 @@ Share status</note>
         <target state="translated">提供对文档的访问权限并设置权限级别。</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
+        <source>Provide access to the folder and set the permission levels.</source>
+        <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target state="translated">选择所需的权限级别，设置对文档的通用访问权限。</target>
@@ -4765,12 +4777,6 @@ clipboard.</source>
 权限。</target>
         <note/>
       </trans-unit>
-      <trans-unit id="This room is available to anyone with the link.&#10;Access for external users is provided depending&#10;on the selected type of access rights." xml:space="preserve">
-        <source>This room is available to anyone with the link.
-Access for external users is provided depending
-on the selected type of access rights.</source>
-        <note/>
-      </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
         <target state="translated">此电子表格正在编辑中。您想打开 %@ 只查看吗？</target>
@@ -5297,6 +5303,10 @@ a room in the Room section</source>
         <source>You can create a template from a room in the Room section</source>
         <target state="translated">您可以在“房间”部分中从房间创建模板</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
+        <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>

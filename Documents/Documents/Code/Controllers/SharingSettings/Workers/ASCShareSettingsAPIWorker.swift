@@ -14,7 +14,7 @@ class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
         var request: Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>?
 
         if let file = entity as? ASCFile {
-            request = OnlyofficeAPI.Endpoints.Sharing.file(file: file, method: reason.httpMethod)
+            request = OnlyofficeAPI.Endpoints.Sharing.fileShare(file: file, method: reason.httpMethod)
         } else if let folder = entity as? ASCFolder {
             request = OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder, method: reason.httpMethod)
         }

@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 
 struct RoomSharingFlowModel {
-    var links: [RoomLinkResponseModel] = []
+    var links: [SharingInfoLinkResponseModel] = []
     var sharings: [RoomUsersResponseModel] = []
 }
 
@@ -20,23 +20,20 @@ final class SharingInfoViewModel: ObservableObject {
     // MARK: - Published vars
 
     private(set) var flowModel = RoomSharingFlowModel()
-    let room: ASCRoom
-    var isPossibleCreateNewLink: Bool {
-        switch room.roomType {
-        case .colobaration, .virtualData:
-            return false
-        default:
-            return true
-        }
-    }
+    let entityType: SharingInfoEntityType
 
-    var canAddLink: Bool {
+    var canAddOneMoreLink: Bool {
         sharedLinksModels.count < linksLimit && isSharingPossible
     }
 
+    var isAddingLinksAvailable: Bool {
+        viewModelService.isAddingLinksAvailable
+    }
+
     let linksLimit = 6
-    var isSharingPossible: Bool { room.rootFolderType != .archive && room.security.editAccess }
-    var isUserSelectionAllow: Bool { room.rootFolderType != .archive && room.security.editAccess }
+    var isPossibleCreateNewLink: Bool { viewModelService.isPossibleCreateNewLink }
+    var isSharingPossible: Bool { viewModelService.isSharingPossible }
+    var isUserSelectionAllow: Bool { viewModelService.isUserSelectionAllow }
     private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false
@@ -52,7 +49,7 @@ final class SharingInfoViewModel: ObservableObject {
     // MARK: Navigation published vars
 
     @Published var selectedUser: ASCUser?
-    @Published var selectdLink: RoomSharingLinkModel?
+    @Published var selectdLink: SharingInfoLinkModel?
     @Published var isSharingScreenPresenting: Bool = false
     @Published var isAddUsersScreenDisplaying: Bool = false
     @Published var isDeleteAlertDisplaying: Bool = false
@@ -60,23 +57,29 @@ final class SharingInfoViewModel: ObservableObject {
 
     // MARK: var input
 
-    lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil)
-    lazy var changedLinkBinding = Binding<RoomSharingLinkModel?>(
+    lazy var changedLink = CurrentValueSubject<SharingInfoLinkModel?, Never>(nil)
+    lazy var changedLinkBinding = Binding<SharingInfoLinkModel?>(
         get: { self.changedLink.value },
         set: { self.changedLink.send($0) }
     )
 
     // MARK: - Private vars
 
-    private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
-    private lazy var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
-    private var applyingDeletingLink: RoomLinkResponseModel?
+    private let viewModelService: SharingInfoViewModelService
+    private let linkAccessService: SharingInfoLinkAccessService
+    private var applyingDeletingLink: SharingInfoLinkModel?
     private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
 
-    init(room: ASCRoom) {
-        self.room = room
+    init(
+        entityType: SharingInfoEntityType,
+        viewModelService: SharingInfoViewModelService,
+        linkAccessService: SharingInfoLinkAccessService
+    ) {
+        self.entityType = entityType
+        self.viewModelService = viewModelService
+        self.linkAccessService = linkAccessService
 
         Task {
             await loadData()
@@ -90,10 +93,11 @@ final class SharingInfoViewModel: ObservableObject {
             .store(in: &cancelable)
     }
 
+    @MainActor
     func loadData() async {
         isInitializing = true
         do {
-            let (links, sharings) = try await sharingRoomNetworkService.fetch(room: room)
+            let (links, sharings) = try await linkAccessService.fetchLinksAndUsers()
             flowModel.links = links
             flowModel.sharings = sharings
             buildViewModel()
@@ -101,6 +105,13 @@ final class SharingInfoViewModel: ObservableObject {
             log.error(error)
         }
         isInitializing = false
+    }
+
+    func updateData() async throws {
+        let (links, sharings) = try await linkAccessService.fetchLinksAndUsers()
+        flowModel.links = links
+        flowModel.sharings = sharings
+        buildViewModel()
     }
 
     // MARK: Handlers
@@ -114,7 +125,7 @@ final class SharingInfoViewModel: ObservableObject {
     func createAndCopyGeneralLink() async {
         isActivitiIndicatorDisplaying = true
         do {
-            let link = try await linkAccessService.createGeneralLink(room: room)
+            let link = try await linkAccessService.createGeneralLink()
             flowModel.links.append(link)
             UIPasteboard.general.string = link.linkInfo.shareLink
             resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
@@ -130,8 +141,7 @@ final class SharingInfoViewModel: ObservableObject {
         do {
             let link = try await linkAccessService.createLink(
                 title: String(format: NSLocalizedString("Link name %@", comment: ""), "(1)"),
-                linkType: ASCShareLinkType.external,
-                room: room
+                linkType: ASCShareLinkType.external
             )
             flowModel.links.append(link)
             UIPasteboard.general.string = link.linkInfo.shareLink
@@ -144,12 +154,6 @@ final class SharingInfoViewModel: ObservableObject {
     }
 
     func onAppear() {
-        buildViewModel()
-    }
-
-    func onUserRemove(userId: String) {
-        flowModel.sharings.removeAll(where: { $0.user.userId == userId })
-        selectedUser = nil
         buildViewModel()
     }
 
@@ -166,10 +170,10 @@ final class SharingInfoViewModel: ObservableObject {
             if deletingLink.isGeneral {
                 buildViewModel()
                 applyingDeletingLink = deletingLink
-                if room.roomType == .public {
-                    isRevokeAlertDisplaying = true
-                } else {
+                if viewModelService.canRemoveGeneralLink {
                     isDeleteAlertDisplaying = true
+                } else {
+                    isRevokeAlertDisplaying = true
                 }
                 withAnimation { buildViewModel() }
                 return
@@ -177,7 +181,7 @@ final class SharingInfoViewModel: ObservableObject {
 
             // romove from UI
             let removedModel = sharedLinksModels[safe: index]
-            withAnimation {
+            _ = withAnimation {
                 sharedLinksModels.remove(at: index)
             }
 
@@ -188,9 +192,9 @@ final class SharingInfoViewModel: ObservableObject {
                     try await linkAccessService.removeLink(
                         id: deletingLink.linkInfo.id,
                         title: deletingLink.linkInfo.title,
+                        denyDownload: deletingLink.linkInfo.denyDownload,
                         linkType: deletingLink.linkInfo.linkType,
-                        password: deletingLink.linkInfo.password,
-                        room: room
+                        password: deletingLink.linkInfo.password
                     )
                     await MainActor.run {
                         self.flowModel.links.removeAll { $0.linkInfo.id == deletingLink.linkInfo.id }
@@ -216,12 +220,14 @@ final class SharingInfoViewModel: ObservableObject {
                 try await linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
                     title: deletingLink.linkInfo.title,
+                    denyDownload: deletingLink.linkInfo.denyDownload,
                     linkType: deletingLink.linkInfo.linkType,
-                    password: deletingLink.linkInfo.password,
-                    room: room
+                    password: deletingLink.linkInfo.password
                 )
                 flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
-                if room.roomType == .public {
+                if viewModelService.canRemoveGeneralLink {
+                    buildViewModel()
+                } else {
                     isActivitiIndicatorDisplaying = true
                     await loadData()
                     resultModalModel = .init(
@@ -229,16 +235,14 @@ final class SharingInfoViewModel: ObservableObject {
                         message: NSLocalizedString("The new shared link was created", comment: "")
                     )
                     isActivitiIndicatorDisplaying = false
-                } else {
-                    buildViewModel()
                 }
             } else {
                 try await linkAccessService.removeLink(
                     id: deletingLink.linkInfo.id,
                     title: deletingLink.linkInfo.title,
+                    denyDownload: deletingLink.linkInfo.denyDownload,
                     linkType: deletingLink.linkInfo.linkType,
-                    password: deletingLink.linkInfo.password,
-                    room: room
+                    password: deletingLink.linkInfo.password
                 )
                 flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
             }
@@ -247,6 +251,42 @@ final class SharingInfoViewModel: ObservableObject {
             buildViewModel()
             errorMessage = error.localizedDescription
         }
+    }
+
+    func buildAccessMenu(for member: ASCUserRowModel) -> [MenuViewItem] {
+        var menuItems = viewModelService.memberAccessList.map { access in
+            MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
+                guard member.access != access else { return }
+                Task { @MainActor in
+                    isActivitiIndicatorDisplaying = true
+                    do {
+                        try await linkAccessService.changeAccess(for: member.id, newAccess: access)
+                        try await updateData()
+                    } catch {
+                        self.errorMessage = error.localizedDescription
+                        log.info(error.localizedDescription)
+                    }
+                    isActivitiIndicatorDisplaying = false
+                }
+            }
+        }
+        menuItems.append(MenuViewItem(
+            text: NSLocalizedString("Remove", comment: ""),
+            color: .red
+        ) { [unowned self] in
+            Task { @MainActor in
+                isActivitiIndicatorDisplaying = true
+                do {
+                    try await linkAccessService.changeAccess(for: member.id, newAccess: .none)
+                    try await updateData()
+                } catch {
+                    self.errorMessage = error.localizedDescription
+                    log.info(error.localizedDescription)
+                }
+                isActivitiIndicatorDisplaying = false
+            }
+        })
+        return menuItems
     }
 
     func declineRemoveLink() {
@@ -258,11 +298,17 @@ final class SharingInfoViewModel: ObservableObject {
 // MARK: Private
 
 private extension SharingInfoViewModel {
-    func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
+    func handleInputLink(_ inputLink: SharingInfoLinkModel?) {
         guard let inputLink else { return }
         if let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == inputLink.linkInfo.id }) {
             if [.deny, .none].contains(inputLink.access) {
-                flowModel.links.remove(at: index)
+                if !inputLink.isGeneral {
+                    flowModel.links.remove(at: index)
+                } else {
+                    Task { @MainActor in
+                        try? await updateData()
+                    }
+                }
             } else {
                 flowModel.links[index] = inputLink
             }
@@ -276,6 +322,7 @@ private extension SharingInfoViewModel {
         changedLink.send(nil)
     }
 
+    @MainActor
     func buildViewModel() {
         sharedLinksModels = flowModel.links.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
@@ -291,20 +338,19 @@ private extension SharingInfoViewModel {
     }
 
     func mapToUserViewModel(sharing: RoomUsersResponseModel, isInvitation: Bool = false) -> ASCUserRowModel {
-        let onTapAction: (() -> Void)? = isUserSelectionAllow && !sharing.user.isOwner
-            ? { [weak self] in self?.selectedUser = sharing.user }
-            : nil
-        return ASCUserRowModel(
+        ASCUserRowModel(
+            id: sharing.user.userId ?? sharing.sharedToGroup?.id ?? UUID().uuidString,
             image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
-            userName: sharing.user.displayName ?? "",
+            userName: sharing.user.displayName ?? sharing.sharedToGroup?.name ?? "-",
+            access: sharing.access,
             accessString: sharing.user.accessValue.title(),
             emailString: sharing.user.email ?? "",
             isOwner: sharing.user.isOwner,
-            onTapAction: onTapAction
+            showRightIcon: isUserSelectionAllow && !sharing.user.isOwner
         )
     }
 
-    func mapToLinkViewModel(link: RoomLinkResponseModel) -> RoomSharingLinkRowModel {
+    func mapToLinkViewModel(link: SharingInfoLinkModel) -> RoomSharingLinkRowModel {
         var imagesNames: [String] = []
         if link.linkInfo.password != nil {
             imagesNames.append("lock.circle.fill")
@@ -313,7 +359,7 @@ private extension SharingInfoViewModel {
             imagesNames.append("clock.fill")
         }
 
-        var subtitle = link.linkInfo.internal
+        let subtitle = link.linkInfo.internal
             ? NSLocalizedString("Docspace user only", comment: "")
             : NSLocalizedString("Anyone with the link", comment: "")
 
@@ -341,7 +387,7 @@ private extension SharingInfoViewModel {
         )
     }
 
-    private func onCopyLinkAndNotify(link: RoomSharingLinkModel?) {
+    private func onCopyLinkAndNotify(link: SharingInfoLinkModel?) {
         guard let link = link else { return }
         isActivitiIndicatorDisplaying = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [self] in
@@ -366,44 +412,21 @@ private extension SharingInfoViewModel {
     }
 }
 
+extension SharingInfoViewModel {
+    var title: String {
+        viewModelService.title
+    }
+
+    var navbarSubtitle: String {
+        viewModelService.navbarSubtitle
+    }
+
+    var entityDescription: String? {
+        viewModelService.entityDescription
+    }
+}
+
 private extension String {
     static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
     static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
-    static let fillingFormRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have Form Filler permission\n for all the files.", comment: "")
-    static let publicRoomDescription = NSLocalizedString("This room is available to anyone with the link.\nAccess for external users is provided depending\non the selected type of access rights.", comment: "")
-    static let customRoomDescription = NSLocalizedString("This room is available to anyone with the link.\n External users will have View Only permission\n for all the files.", comment: "")
-}
-
-extension SharingInfoViewModel {
-    var roomTypeDescription: String {
-        switch room.roomType {
-        case .fillingForm:
-            return .fillingFormRoomDescription
-        case .public:
-            return .publicRoomDescription
-        case .custom:
-            return .customRoomDescription
-        default:
-            return ""
-        }
-    }
-}
-
-extension SharingInfoViewModel {
-    var navbarSubtitle: String {
-        switch room.roomType {
-        case .public:
-            return NSLocalizedString("Public room", comment: "")
-        case .custom:
-            return NSLocalizedString("Custom Room", comment: "")
-        case .colobaration:
-            return NSLocalizedString("Collaboration Room", comment: "")
-        case .fillingForm:
-            return NSLocalizedString("Form Filling Room", comment: "")
-        case .virtualData:
-            return NSLocalizedString("Virtual Data Room", comment: "")
-        default:
-            return ""
-        }
-    }
 }

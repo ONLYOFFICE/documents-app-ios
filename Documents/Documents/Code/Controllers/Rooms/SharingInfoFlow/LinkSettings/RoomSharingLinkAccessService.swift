@@ -34,8 +34,9 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel
+    ) async throws -> SharingInfoLinkModel
 
     func createLink(
         title: String,
@@ -44,12 +45,13 @@ protocol RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel
+    ) async throws -> SharingInfoLinkModel
 
     func createGeneralLink(
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel
+    ) async throws -> SharingInfoLinkModel
 }
 
 // MARK: - Defaults
@@ -62,8 +64,9 @@ extension RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool = false,
         password: String? = nil,
+        isInternal: Bool = false,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel {
+    ) async throws -> SharingInfoLinkModel {
         try await changeOrCreateLink(
             id: nil,
             title: title,
@@ -72,6 +75,7 @@ extension RoomSharingLinkAccessService {
             linkType: linkType,
             denyDownload: denyDownload,
             password: password,
+            isInternal: isInternal,
             room: room
         )
     }
@@ -89,7 +93,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         password: String?,
         room: ASCRoom
     ) async throws {
-        let request = RoomRemoveLinkRequestModel(
+        let request = RemoveLinkRequestModel(
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,
@@ -112,7 +116,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         room: ASCRoom,
         denyDownload: Bool
     ) async throws {
-        let request = RoomRevokeLinkRequestModel(
+        let request = RevokeLinkRequestModel(
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,
@@ -136,15 +140,17 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
+        isInternal: Bool,
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel {
-        let request = RoomLinkRequestModel(
+    ) async throws -> SharingInfoLinkModel {
+        let request = LinkRequestModel(
             linkId: id,
             title: title,
             access: access,
             expirationDate: expirationDate,
             linkType: linkType.rawValue,
             denyDownload: denyDownload,
+            internal: isInternal,
             password: password
         )
 
@@ -159,7 +165,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
 
     func createGeneralLink(
         room: ASCRoom
-    ) async throws -> RoomLinkResponseModel {
+    ) async throws -> SharingInfoLinkModel {
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)
         )

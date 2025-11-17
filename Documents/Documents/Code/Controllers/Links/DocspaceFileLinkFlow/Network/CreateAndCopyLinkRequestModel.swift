@@ -8,11 +8,12 @@
 
 struct CreateAndCopyLinkRequestModel: Codable {
     var access: Int
+    var primary: Bool = false
     var expirationDate: String?
     var isInternal: Bool
 
     enum CodingKeys: String, CodingKey {
         case isInternal = "internal"
-        case access, expirationDate
+        case access, primary, expirationDate
     }
 }

@@ -24,7 +24,7 @@ struct EditSharedLinkModel {
     var password: String = ""
     var isExpired: Bool = false
     var selectedAccessRight: ASCShareAccess = .none
-    
+
     static let empty = EditSharedLinkModel(linkName: "", isProtected: false, isRestrictCopyOn: false, isTimeLimited: false, selectedDate: Date(), password: "", isExpired: false, selectedAccessRight: .none)
 }
 
@@ -37,7 +37,7 @@ struct EditSharedLinkScreenModel {
     var isSaving: Bool = false
     var isSaved: Bool = false
     var isReadyToDismissed: Bool = false
-    
+
     static let empty = EditSharedLinkScreenModel(isPasswordVisible: false, isDeleting: false, isDeleted: false, isRevoking: false, isRevoked: false, isSaving: false, isSaved: false, isReadyToDismissed: false)
 }
 
@@ -47,20 +47,19 @@ enum LinkSettingsContentState {
 }
 
 final class EditSharedLinkViewModel: ObservableObject {
-    
     private var entity: EditSharedLinkEntityType
     private var editSharedLinkService: EditSharedLinkServiceProtocol?
     private var viewService: EditSharedLnkViewService?
-    
+
     let contentState: LinkSettingsContentState
-    
+
     @Published var linkModel: EditSharedLinkModel = .empty
     @Published var screenModel: EditSharedLinkScreenModel = .empty
-    
+
     @Published var sharingLinkURL: URL? = nil
     @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
-    
+
     var accessMenuItems: [MenuViewItem] {
         [
             ASCShareAccess.editing,
@@ -73,27 +72,27 @@ final class EditSharedLinkViewModel: ObservableObject {
             }
         }
     }
-    
+
     var isDeletePossible: Bool {
         viewService?.isDeletePossible ?? false
     }
-    
+
     var showRestrictCopySection: Bool {
         viewService?.showRestrictCopySection ?? false
     }
-    
+
     var isPossibleToSave: Bool {
         !linkModel.linkName.isEmpty && linkModel.selectedDate > Date() && !screenModel.isSaving
     }
-    
+
     var isEditAccessPossible: Bool {
         viewService?.isEditAccessPossible ?? false
     }
-    
+
     var showTimeLimit: Bool {
         link.linkInfo.primary == false
     }
-    
+
     var isFileOrFolderVDRoomWithDenyDownload: Bool {
         switch entity {
         case let .folder(folder):
@@ -136,12 +135,12 @@ final class EditSharedLinkViewModel: ObservableObject {
     ) {
         link = inputLink
         self.entity = entity
-        self.editSharedLinkService = EditSharedLinkService(entity: entity)
-        self.viewService = EditSharedLnkViewService(entity: entity, link: link)
-        
+        editSharedLinkService = EditSharedLinkService(entity: entity)
+        viewService = EditSharedLnkViewService(entity: entity, link: link)
+
         _outputLink = outputLink
         contentState = link.isGeneral == true ? .general : .additional
-        
+
         linkModel = EditSharedLinkModel(
             linkName: link.linkInfo.title,
             isProtected: !linkModel.password.isEmpty,
@@ -155,7 +154,8 @@ final class EditSharedLinkViewModel: ObservableObject {
             }(),
             password: link.linkInfo.password ?? "",
             isExpired: link.linkInfo.isExpired,
-            selectedAccessRight: link.access)
+            selectedAccessRight: link.access
+        )
 
         defineSharingLink()
     }
@@ -173,7 +173,8 @@ extension EditSharedLinkViewModel {
                 id: link.linkInfo.id,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
-                password: link.linkInfo.password)
+                password: link.linkInfo.password
+            )
             screenModel.isDeleting = false
             link.access = .none
             outputLink = link
@@ -209,7 +210,8 @@ extension EditSharedLinkViewModel {
                 denyDownload: link.linkInfo.denyDownload,
                 title: link.linkInfo.title,
                 linkType: link.linkInfo.linkType,
-                password: link.linkInfo.password)
+                password: link.linkInfo.password
+            )
             screenModel.isRevoking = false
             link.access = .none
             outputLink = link
@@ -261,11 +263,10 @@ private extension EditSharedLinkViewModel {
         guard link.linkInfo.isExpired != true else { return }
         sharingLinkURL = URL(string: link.linkInfo.shareLink)
     }
-    
+
     func isRestrictCopyOn() -> Bool {
         link.linkInfo.denyDownload || isFileOrFolderVDRoomWithDenyDownload
     }
-
 }
 
 // MARK: Date formaters

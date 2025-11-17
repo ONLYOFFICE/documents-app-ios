@@ -39,7 +39,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             return NSLocalizedString("Sharing settings", comment: "")
         }
     }
-    
+
     var navbarSubtitle: String {
         switch entityType {
         case let .room(room):
@@ -143,7 +143,7 @@ extension SharingInfoViewModelServiceImp: SharingInfoViewModelService {
             return NSLocalizedString("Provide access to the folder and set the permission levels.", comment: "")
         }
     }
-    
+
     var memberAccessList: [ASCShareAccess] {
         switch entityType {
         case let .room(room):

@@ -125,7 +125,7 @@ struct SharingInfoView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var guestsSection: some View {
         if !viewModel.guests.isEmpty {
@@ -157,7 +157,7 @@ struct SharingInfoView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private func makeUserRow(for model: ASCUserRowModel) -> some View {
         if viewModel.isUserSelectionAllow, !model.isOwner {
@@ -367,7 +367,7 @@ struct ASCUserRowModel: Identifiable {
 
 struct ASCUserRow: View {
     var model: ASCUserRowModel
-    
+
     var subtitle: String {
         [model.accessString, model.emailString]
             .compactMap { $0.isEmpty ? nil : $0 }

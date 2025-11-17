@@ -35,7 +35,7 @@ class OnlyofficeShareRequestModel: Mappable {
     var share: [OnlyofficeShareItemRequestModel]?
 
     init() {}
-    
+
     convenience init(share: [OnlyofficeShareItemRequestModel]) {
         self.init()
 

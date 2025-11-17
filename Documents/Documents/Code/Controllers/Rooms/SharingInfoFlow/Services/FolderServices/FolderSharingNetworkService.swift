@@ -6,18 +6,16 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-
 protocol FolderSharingNetworkServiceProtocol {
     func fetch(folder: ASCFolder) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel])
     func fetchLinks(folder: ASCFolder) async throws -> [SharingInfoLinkResponseModel]
     func fetchUsers(folder: ASCFolder) async throws -> [RoomUsersResponseModel]
-    
+
     func createGeneralLink(folder: ASCFolder) async throws -> SharingInfoLinkModel
     func createLink(folder: ASCFolder) async throws -> SharingInfoLinkModel
 }
 
 actor FolderSharingNetworkService: FolderSharingNetworkServiceProtocol {
-    
     private let networkService = OnlyofficeApiClient.shared
 
     // MARK: fetch(room: links+users)
@@ -38,7 +36,7 @@ actor FolderSharingNetworkService: FolderSharingNetworkServiceProtocol {
         guard let links = response.result else { throw Errors.emptyResponse }
         return links
     }
-    
+
     func createGeneralLink(folder: ASCFolder) async throws -> SharingInfoLinkModel {
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Folders.getLink(folder: folder)
@@ -46,7 +44,7 @@ actor FolderSharingNetworkService: FolderSharingNetworkServiceProtocol {
         guard let result = response.result else { throw Errors.emptyResponse }
         return result
     }
-    
+
     func createLink(folder: ASCFolder) async throws -> SharingInfoLinkModel {
         let requestModel = CreateAndCopyLinkRequestModel(
             access: ASCShareAccess.read.rawValue,

@@ -13,14 +13,13 @@ enum SharingInfoEntityType {
 }
 
 extension SharingInfoEntityType {
-
     var editSharedLinkEntityType: EditSharedLinkEntityType {
         switch self {
-        case .room(let room):
+        case let .room(room):
             .room(room)
-        case .file(let file):
+        case let .file(file):
             .file(file)
-        case .folder(let folder):
+        case let .folder(folder):
             .folder(folder)
         }
     }

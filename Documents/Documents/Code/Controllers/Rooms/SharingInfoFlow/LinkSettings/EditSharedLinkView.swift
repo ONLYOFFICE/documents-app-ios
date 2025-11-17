@@ -134,7 +134,8 @@ struct EditSharedLinkView: View {
                 .tintColor(Color(Asset.Colors.brend.color))
                 .onChange(of: viewModel.linkModel.isRestrictCopyOn) { newValue in
                     if newValue == false,
-                       viewModel.isFileOrFolderVDRoomWithDenyDownload {
+                       viewModel.isFileOrFolderVDRoomWithDenyDownload
+                    {
                         viewModel.linkModel.isRestrictCopyOn = true
                         showRestrictCopyAlert = true
                     }
@@ -163,7 +164,7 @@ struct EditSharedLinkView: View {
 
     @ViewBuilder
     private var revokeSection: some View {
-        if !viewModel.isDeletePossible{
+        if !viewModel.isDeletePossible {
             Section {
                 ASCLabledCellView(
                     model: ASCLabledCellModel(
@@ -269,7 +270,7 @@ struct EditSharedLinkView: View {
             secondaryButton: .cancel()
         )
     }
-    
+
     private func restrictCopyAlert() -> Alert {
         Alert(
             title: Text("Warning"),

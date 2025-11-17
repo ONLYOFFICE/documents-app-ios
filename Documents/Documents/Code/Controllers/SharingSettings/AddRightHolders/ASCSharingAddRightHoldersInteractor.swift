@@ -237,7 +237,6 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
 }
 
 private extension ASCSharingAddRightHoldersInteractor {
-    
     func getUserEndpoint(for entity: ASCEntity?) -> Endpoint<OnlyofficeResponseArray<ASCUser>>? {
         guard let entity else { return nil }
         if entity.isRoom {
@@ -249,7 +248,7 @@ private extension ASCSharingAddRightHoldersInteractor {
         }
         return nil
     }
-    
+
     func getGroupEndpoint(for entity: ASCEntity?) -> Endpoint<OnlyofficeResponseArray<ASCGroup>>? {
         guard let entity else { return nil }
         if entity.isRoom {

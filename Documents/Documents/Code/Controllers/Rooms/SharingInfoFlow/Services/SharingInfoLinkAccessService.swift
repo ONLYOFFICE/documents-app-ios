@@ -25,7 +25,7 @@ protocol SharingInfoLinkAccessService {
         linkType: ASCShareLinkType,
         password: String?
     ) async throws
-    
+
     func changeAccess(for id: String, newAccess: ASCShareAccess) async throws
 }
 
@@ -39,7 +39,7 @@ actor SharingInfoLinkAccessServiceImp {
     private let roomSharingLinkAccesskService: RoomSharingLinkAccessService
     private let folderSharingNetworkService: FolderSharingNetworkServiceProtocol
     private let fileSharingNetworkService: FileSharingNetworkServiceProtocol
-    
+
     private let sharingRoomNetworkService: RoomSharingNetworkServiceProtocol
     private let editSharedLinkService: EditSharedLinkServiceProtocol
 
@@ -120,7 +120,7 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
             password: password
         )
     }
-    
+
     func changeAccess(for id: String, newAccess: ASCShareAccess) async throws {
         let response: OnlyofficeResponseBase = switch entityType {
         case let .room(room):
@@ -146,7 +146,7 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
                 ).toJSON()
             )
         }
-        guard let statusCode = response.statusCode, (200..<300).contains(statusCode) else {
+        guard let statusCode = response.statusCode, (200 ..< 300).contains(statusCode) else {
             throw NetworkingError.invalidData
         }
     }

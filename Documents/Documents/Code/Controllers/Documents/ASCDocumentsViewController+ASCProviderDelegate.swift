@@ -172,8 +172,8 @@ private extension ASCDocumentsViewController {
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
         if let folder = entity as? ASCFolder {
             folder.isRoom
-            ?  navigator.navigate(to: .sharingLink(entityType: .room(folder)))
-            :  navigator.navigate(to: .sharingLink(entityType: .folder(folder)))
+                ? navigator.navigate(to: .sharingLink(entityType: .room(folder)))
+                : navigator.navigate(to: .sharingLink(entityType: .folder(folder)))
         }
 
         if let file = entity as? ASCFile, ASCOnlyofficeProvider.isDocspaceApi {

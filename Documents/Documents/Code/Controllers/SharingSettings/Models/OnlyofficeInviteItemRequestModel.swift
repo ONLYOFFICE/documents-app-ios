@@ -42,7 +42,7 @@ class OnlyofficeInviteRequestModel: Mappable {
     var invitations: [OnlyofficeInviteItemRequestModel]?
 
     init() {}
-    
+
     convenience init(
         notify: Bool,
         inviteMessage: String? = nil,

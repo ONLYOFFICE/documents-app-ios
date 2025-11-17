@@ -9,7 +9,7 @@
 final class EditSharedLnkViewService {
     private var entity: EditSharedLinkEntityType
     private var link: SharingInfoLinkModel
-    
+
     init(
         entity: EditSharedLinkEntityType,
         link: SharingInfoLinkModel
@@ -17,6 +17,7 @@ final class EditSharedLnkViewService {
         self.entity = entity
         self.link = link
     }
+
     var isDeletePossible: Bool {
         switch entity {
         case let .room(room):
@@ -29,7 +30,7 @@ final class EditSharedLnkViewService {
             return !link.isGeneral
         }
     }
-    
+
     var showRestrictCopySection: Bool {
         return switch entity {
         case let .room(room):
@@ -38,7 +39,7 @@ final class EditSharedLnkViewService {
             true
         }
     }
-    
+
     var isEditAccessPossible: Bool {
         switch entity {
         case let .room(room):

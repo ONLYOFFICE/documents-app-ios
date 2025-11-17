@@ -48,7 +48,7 @@ public extension URL {
     }
 
     func appendingSafePath(_ path: String) -> URL {
-        let trimmedBase = self.absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        let trimmedBase = absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         let trimmedPath = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         let fullString = "\(trimmedBase)/\(trimmedPath)"
         return URL(string: fullString) ?? self

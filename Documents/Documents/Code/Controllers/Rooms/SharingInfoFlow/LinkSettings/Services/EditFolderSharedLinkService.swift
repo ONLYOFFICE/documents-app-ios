@@ -8,7 +8,7 @@
 
 final class EditFolderSharedLinkService {
     private let networkService = OnlyofficeApiClient.shared
-    
+
     func delete(
         id: String,
         title: String,
@@ -30,7 +30,7 @@ final class EditFolderSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
-    
+
     func revoke(
         id: String,
         title: String,
@@ -45,7 +45,8 @@ final class EditFolderSharedLinkService {
             access: ASCShareAccess.none.rawValue,
             linkType: linkType.rawValue,
             password: password,
-            denyDownload: denyDownload)
+            denyDownload: denyDownload
+        )
 
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Folders.deleteLink(folder: folder),
@@ -53,7 +54,7 @@ final class EditFolderSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
-    
+
     func editFolderLink(
         id: String?,
         title: String,
@@ -82,7 +83,6 @@ final class EditFolderSharedLinkService {
         guard let result = response.result else { throw Errors.emptyResponse }
         return result
     }
-    
 }
 
 extension EditFolderSharedLinkService {

@@ -14,15 +14,15 @@ protocol EditSharedLinkServiceProtocol: AnyObject {
 
 class EditSharedLinkService: EditSharedLinkServiceProtocol {
     private var entity: EditSharedLinkEntityType
-    
-    private lazy var editFileSharedLinkService: EditFileSharedLinkService?  = EditFileSharedLinkService()
+
+    private lazy var editFileSharedLinkService: EditFileSharedLinkService? = EditFileSharedLinkService()
     private lazy var editFolderSharedLinkService: EditFolderSharedLinkService? = EditFolderSharedLinkService()
     private lazy var editRoomSharedLinkService: EditRoomSharedLinkService? = EditRoomSharedLinkService()
-    
+
     init(entity: EditSharedLinkEntityType) {
         self.entity = entity
     }
-    
+
     func delete(
         id: String,
         title: String,
@@ -36,17 +36,18 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
             try await editFolderSharedLinkService?.delete(id: id, title: title, linkType: linkType, password: password, folder: folder)
         case let .file(file):
             try await editFileSharedLinkService?.delete(
-                id: id, title: title, linkType: linkType, password: password, file: file)
+                id: id, title: title, linkType: linkType, password: password, file: file
+            )
         }
     }
-    
+
     func revoke(
         id: String,
         denyDownload: Bool,
         title: String,
         linkType: ASCShareLinkType,
         password: String?
-    ) async throws  {
+    ) async throws {
         switch entity {
         case let .room(room):
             try await editRoomSharedLinkService?.revokeLink(id: id, title: title, linkType: linkType, password: password, room: room, denyDownload: denyDownload)
@@ -56,7 +57,7 @@ class EditSharedLinkService: EditSharedLinkServiceProtocol {
             try await editFileSharedLinkService?.revoke(id: id, title: title, linkType: linkType, password: password, denyDownload: denyDownload, file: file)
         }
     }
-    
+
     func editLink(
         id: String?,
         title: String,

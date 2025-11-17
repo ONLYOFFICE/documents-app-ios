@@ -100,16 +100,15 @@ enum ASCFolderType: Int {
 }
 
 extension ASCFolderType {
-    
     var isRoomType: Bool {
         switch self {
         case .customRoom,
-                .publicRoom,
-                .editingRoom,
-                .virtualRooms,
-                .virtualDataRoom,
-                .fillingFormsRoom,
-                .roomTemplates:
+             .publicRoom,
+             .editingRoom,
+             .virtualRooms,
+             .virtualDataRoom,
+             .fillingFormsRoom,
+             .roomTemplates:
             return true
         default:
             return false

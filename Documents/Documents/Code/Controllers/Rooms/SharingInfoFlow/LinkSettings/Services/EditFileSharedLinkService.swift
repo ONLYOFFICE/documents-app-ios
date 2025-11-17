@@ -6,7 +6,6 @@
 //  Copyright © 2025 Ascensio System SIA. All rights reserved.
 //
 
-
 final class EditFileSharedLinkService {
     private let networkService = OnlyofficeApiClient.shared
 
@@ -22,7 +21,8 @@ final class EditFileSharedLinkService {
             title: title,
             access: ASCShareAccess.none.rawValue,
             linkType: linkType.rawValue,
-            password: password)
+            password: password
+        )
 
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Files.deleteLink(file: file),
@@ -30,7 +30,7 @@ final class EditFileSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
-    
+
     func revoke(
         id: String,
         title: String,
@@ -45,7 +45,8 @@ final class EditFileSharedLinkService {
             access: ASCShareAccess.none.rawValue,
             linkType: linkType.rawValue,
             password: password,
-            denyDownload: denyDownload)
+            denyDownload: denyDownload
+        )
 
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Files.deleteLink(file: file),
@@ -53,7 +54,7 @@ final class EditFileSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
-    
+
     func editFileLink(
         id: String?,
         title: String,
@@ -83,7 +84,6 @@ final class EditFileSharedLinkService {
         return result
     }
 }
-
 
 extension EditFileSharedLinkService {
     enum Errors: Error {

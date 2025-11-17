@@ -21,12 +21,12 @@ struct RoomUsersResponseModel: Codable {
     enum CodingKeys: String, CodingKey {
         case access
         case user = "sharedTo"
-        case sharedToGroup = "sharedToGroup"
+        case sharedToGroup
         case isLocked
         case isOwner
         case canEditAccess
     }
-    
+
     struct SharedToGroup: Codable {
         let id: String
         let name: String

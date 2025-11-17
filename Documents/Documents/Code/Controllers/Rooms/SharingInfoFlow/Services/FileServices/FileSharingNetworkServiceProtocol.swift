@@ -12,13 +12,12 @@ protocol FileSharingNetworkServiceProtocol {
     func fetch(file: ASCFile) async throws -> ([SharingInfoLinkResponseModel], [RoomUsersResponseModel])
     func fetchLinks(file: ASCFile) async throws -> [SharingInfoLinkResponseModel]
     func fetchUsers(file: ASCFile) async throws -> [RoomUsersResponseModel]
-    
+
     func createGeneralLink(file: ASCFile) async throws -> SharingInfoLinkModel
-    func createLink(file: ASCFile) async throws -> SharingInfoLinkModel 
+    func createLink(file: ASCFile) async throws -> SharingInfoLinkModel
 }
 
 actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
-    
     private let networkService = OnlyofficeApiClient.shared
 
     // MARK: fetch(room: links+users)
@@ -35,11 +34,11 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Files.getLinks(file: file)
         )
-        
+
         guard let links = response.result else { throw Errors.emptyResponse }
         return links
     }
-    
+
     func createGeneralLink(file: ASCFile) async throws -> SharingInfoLinkModel {
         let response = try await networkService.request(
             endpoint: OnlyofficeAPI.Endpoints.Files.getLink(file: file)
@@ -47,7 +46,7 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
         guard let result = response.result else { throw Errors.emptyResponse }
         return result
     }
-    
+
     func createLink(file: ASCFile) async throws -> SharingInfoLinkModel {
         let requestModel = CreateAndCopyLinkRequestModel(
             access: ASCShareAccess.read.rawValue,
@@ -63,7 +62,7 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
         guard let result = response.result else { throw Errors.emptyResponse }
         return result
     }
-   
+
     // MARK: users
 
     func fetchUsers(file: ASCFile) async throws -> [RoomUsersResponseModel] {
@@ -75,7 +74,6 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
         users.forEach { $0.user.accessValue = $0.access }
         return users
     }
-    
 }
 
 extension FileSharingNetworkService {

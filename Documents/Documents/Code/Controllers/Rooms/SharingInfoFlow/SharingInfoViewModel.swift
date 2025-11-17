@@ -106,7 +106,7 @@ final class SharingInfoViewModel: ObservableObject {
         }
         isInitializing = false
     }
-    
+
     func updateData() async throws {
         let (links, sharings) = try await linkAccessService.fetchLinksAndUsers()
         flowModel.links = links
@@ -252,7 +252,7 @@ final class SharingInfoViewModel: ObservableObject {
             errorMessage = error.localizedDescription
         }
     }
-    
+
     func buildAccessMenu(for member: ASCUserRowModel) -> [MenuViewItem] {
         var menuItems = viewModelService.memberAccessList.map { access in
             MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
@@ -416,7 +416,7 @@ extension SharingInfoViewModel {
     var title: String {
         viewModelService.title
     }
-    
+
     var navbarSubtitle: String {
         viewModelService.navbarSubtitle
     }

@@ -7,7 +7,6 @@
 //
 
 final class EditRoomSharedLinkService {
-    
     private let networkService = OnlyofficeApiClient.shared
 
     func delete(
@@ -31,7 +30,7 @@ final class EditRoomSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
-    
+
     func revokeLink(
         id: String,
         title: String,
@@ -55,7 +54,7 @@ final class EditRoomSharedLinkService {
         )
         guard response.statusCode != nil else { throw Errors.emptyResponse }
     }
-    
+
     func editRoomLink(
         id: String?,
         title: String,
@@ -84,7 +83,6 @@ final class EditRoomSharedLinkService {
         guard let result = response.result else { throw Errors.emptyResponse }
         return result
     }
-
 }
 
 extension EditRoomSharedLinkService {

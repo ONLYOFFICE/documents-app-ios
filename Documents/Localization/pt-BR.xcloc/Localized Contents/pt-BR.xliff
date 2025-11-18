@@ -5287,6 +5287,11 @@ Deslize para saber mais sobre o aplicativo.</target>
         <source>Who has access</source>
         <note from="auto-generated">A section header that reads "Who has access".</note>
       </trans-unit>
+      <trans-unit id="Work with docs offline in the On device tab.&#10;Created files can later be uploaded to online portal and then accessed from any other device." xml:space="preserve">
+        <source>Work with docs offline in the On device tab.
+Created files can later be uploaded to online portal and then accessed from any other device.</source>
+        <note>Introduction Step Four - Description</note>
+      </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
         <source>Work with documents offline.
 Created files can later be uploaded to online portal and

@@ -77,30 +77,56 @@ struct SharingInfoView: View {
     private var sharedLinksSection: some View {
         if viewModel.isSharingPossible, viewModel.isPossibleCreateNewLink {
             Section(header: sharedLinksSectionHeader) {
-                if viewModel.sharedLinksModels.isEmpty {
-                    ASCCreateLinkCellView(
-                        model: ASCCreateLinkCellModel(
-                            textString: NSLocalizedString("Create and copy", comment: ""),
-                            imageNames: [],
-                            onTapAction: {
-                                Task { @MainActor in
-                                    await viewModel.sharedLinksModels.isEmpty
-                                        ? viewModel.createAndCopyGeneralLink()
-                                        : viewModel.createAndCopyAdditionalLink()
-                                }
-                            }
-                        )
-                    )
+                if !viewModel.sharedLinksModels.isEmpty {
+                    linkRows
                 } else {
-                    ForEach(viewModel.sharedLinksModels) { linkModel in
-                        RoomSharingLinkRow(model: linkModel)
-                    }
-                    .onDelete { indexSet in
-                        viewModel.deleteSharedLink(indexSet: indexSet)
-                    }
+                    createLink
                 }
             }
             .alert(isPresented: $viewModel.isDeleteAlertDisplaying, content: deleteAlert)
+        }
+    }
+    
+    private var createLink: some View {
+        ASCCreateLinkCellView(
+            model: ASCCreateLinkCellModel(
+                textString: NSLocalizedString("Create and copy", comment: ""),
+                imageNames: [],
+                onTapAction: {
+                    Task { @MainActor in
+                        await viewModel.sharedLinksModels.isEmpty
+                            ? viewModel.createAndCopyGeneralLink()
+                            : viewModel.createAndCopyAdditionalLink()
+                    }
+                }
+            )
+        )
+    }
+    
+    @ViewBuilder
+    private var linkRows: some View {
+        if #available(iOS 15.0, *) {
+            ForEach(Array(viewModel.sharedLinksModels.enumerated()), id: \.element.id) { index, linkModel in
+                RoomSharingLinkRow(model: linkModel)
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            viewModel.deleteSharedLink(indexSet: [index])
+                        } label: {
+                            if linkModel.isGeneral, !viewModel.canRemoveGeneralLink {
+                                Text("Revoke")
+                            } else {
+                                Text("Remove")
+                            }
+                        }
+                    }
+            }
+        } else {
+            ForEach(viewModel.sharedLinksModels) { linkModel in
+                RoomSharingLinkRow(model: linkModel)
+            }
+            .onDelete { indexSet in
+                viewModel.deleteSharedLink(indexSet: indexSet)
+            }
         }
     }
 

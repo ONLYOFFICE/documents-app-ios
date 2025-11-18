@@ -413,8 +413,13 @@ private extension SharingInfoViewModel {
 }
 
 extension SharingInfoViewModel {
+    
     var title: String {
         viewModelService.title
+    }
+    
+    var canRemoveGeneralLink: Bool {
+        viewModelService.canRemoveGeneralLink
     }
 
     var navbarSubtitle: String {

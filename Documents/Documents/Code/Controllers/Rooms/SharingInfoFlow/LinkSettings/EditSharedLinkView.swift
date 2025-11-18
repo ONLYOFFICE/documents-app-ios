@@ -86,7 +86,7 @@ struct EditSharedLinkView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var typeSection: some View {
         if viewModel.showWhoHasAccessSection {
@@ -138,7 +138,7 @@ struct EditSharedLinkView: View {
             ))
         }
     }
-    
+
     @ViewBuilder
     private var anyoneWithTheinkCell: some View {
         CheckmarkCellView(model: CheckmarkCellViewModel(
@@ -153,7 +153,7 @@ struct EditSharedLinkView: View {
         ))
         .disabled(viewModel.linkModel.isExpired)
     }
-    
+
     @ViewBuilder
     private var docspaceUserOnlyCell: some View {
         CheckmarkCellView(model: CheckmarkCellViewModel(

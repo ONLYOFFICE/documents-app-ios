@@ -158,7 +158,7 @@ struct RoleRow: View {
                     .font(.subheadline)
                     .foregroundColor(.primary)
                 if let accessValue = role.appliedUser?.userType.description {
-                    Text(accessValue)
+                    Text(verbatim: accessValue)
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }

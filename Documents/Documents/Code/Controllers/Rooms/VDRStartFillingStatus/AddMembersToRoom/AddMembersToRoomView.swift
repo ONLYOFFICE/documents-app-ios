@@ -123,7 +123,7 @@ struct AddMembersToRoomView: View {
                         }
                     }
                 } label: {
-                    Text(viewModel.dataModel.selectedAccess.title())
+                    Text(verbatim: viewModel.dataModel.selectedAccess.title())
                         .brandButton(.inline)
                         .padding(.vertical, 4)
                         .padding(.horizontal, 12)

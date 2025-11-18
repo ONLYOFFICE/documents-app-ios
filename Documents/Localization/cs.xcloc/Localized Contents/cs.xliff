@@ -2,9 +2,13 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
+      <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
+        <source>Next</source>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
+      </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
         <target state="translated">Další</target>
@@ -25,6 +29,10 @@
         <target state="translated">Přihlásit se</target>
         <note>Class = "UILabel"; text = "Login"; ObjectID = "8QU-S0-L4O";</note>
       </trans-unit>
+      <trans-unit id="CAb-Ol-Sq3.text" xml:space="preserve">
+        <source>Server</source>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "CAb-Ol-Sq3";</note>
+      </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
         <source>Connect Storage</source>
         <target state="translated">Připojit úložiště</target>
@@ -34,6 +42,10 @@
         <source>Password</source>
         <target state="translated">Heslo</target>
         <note>Class = "UILabel"; text = "Password"; ObjectID = "fGf-yk-zsE";</note>
+      </trans-unit>
+      <trans-unit id="gmK-yF-ka4.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "gmK-yF-ka4";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
         <source>Required</source>
@@ -74,7 +86,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +174,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +196,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -435,7 +447,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -582,7 +594,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -663,7 +675,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -690,7 +702,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -727,7 +739,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -784,7 +796,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -856,7 +868,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -938,7 +950,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Documents-InfoPlist.xcstrings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -999,7 +1011,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Localizable.xcstrings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1046,26 +1058,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>%d days</source>
         <target state="translated">%d dní</target>
         <note>Days left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.few" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodin</target>
-        <note>Hours left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.many" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodin</target>
-        <note>Hours left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.one" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodina</target>
-        <note>Hours left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.other" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodin</target>
-        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="%d months|==|plural.few" xml:space="preserve">
         <source>%d months</source>
@@ -1573,6 +1565,10 @@ Category title</note>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target state="translated">Autor</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Authorization code not found" xml:space="preserve">
+        <source>Authorization code not found</source>
         <note/>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
@@ -2658,11 +2654,6 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
         <target state="translated">Očekávat uživatele</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Expired" xml:space="preserve">
-        <source>Expired</source>
-        <target state="translated">Vypršela platnost</target>
-        <note>Expiration status</note>
-      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target state="translated">Platnost vyprší po 7 dnech</target>
@@ -3124,6 +3115,10 @@ Folder order</note>
         <target state="translated">Neplatné údaje</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Invalid URL" xml:space="preserve">
+        <source>Invalid URL</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
         <source>Invalid Url</source>
         <target state="translated">Neplatná URL adresa</target>
@@ -3132,6 +3127,10 @@ Folder order</note>
       <trans-unit id="Invalid folder" xml:space="preserve">
         <source>Invalid folder</source>
         <target state="translated">Neplatná složka</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Invalid server URL" xml:space="preserve">
+        <source>Invalid server URL</source>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
@@ -3468,6 +3467,10 @@ If current user name is not set</note>
       <trans-unit id="Name is empty" xml:space="preserve">
         <source>Name is empty</source>
         <target state="translated">Název je prázdný</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Network error" xml:space="preserve">
+        <source>Network error</source>
         <note/>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
@@ -3880,6 +3883,10 @@ Share status</note>
         <target state="translated">Připnutí</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Please enter a server URL" xml:space="preserve">
+        <source>Please enter a server URL</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
         <target state="translated">Přejděte do části Nastavení a povolte, aby tato aplikace využívala kameru. </target>
@@ -4096,11 +4103,6 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target state="translated">Obnova</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Regenerate link" xml:space="preserve">
-        <source>Regenerate link</source>
-        <target state="translated">Přegenerovat odkaz</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target state="translated">Registrace</target>
@@ -4120,11 +4122,6 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <source>Remove from Favorites</source>
         <target state="translated">Odstranění z oblíbených položek</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Remove link" xml:space="preserve">
-        <source>Remove link</source>
-        <target state="translated">Odstranit odkaz</target>
-        <note/>
       </trans-unit>
       <trans-unit id="Removed from favorites" xml:space="preserve">
         <source>Removed from favorites</source>
@@ -4447,6 +4444,10 @@ Navigation bar button title</note>
         <target state="translated">Odesílání</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Server is unreachable" xml:space="preserve">
+        <source>Server is unreachable</source>
+        <note/>
+      </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
         <target state="translated">Nastavení oblíbených se nezdařilo.</target>
@@ -4495,11 +4496,6 @@ Navigation bar button title</note>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target state="translated">Sdílený přístup</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Shared link" xml:space="preserve">
-        <source>Shared link</source>
-        <target state="translated">Sdílený odkaz</target>
         <note/>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
@@ -4611,6 +4607,10 @@ Navigation bar button title</note>
         <source>Start filling</source>
         <target state="translated">Začněte plnit</target>
         <note>Start filling form Button title</note>
+      </trans-unit>
+      <trans-unit id="State is invalid" xml:space="preserve">
+        <source>State is invalid</source>
+        <note/>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
         <source>Stop filling</source>
@@ -5410,6 +5410,10 @@ Přetáhněte prstem a zjistěte více o aplikaci.</target>
         <target state="translated">Novinky</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Who has access" xml:space="preserve">
+        <source>Who has access</source>
+        <note from="auto-generated">A section header that reads "Who has access".</note>
+      </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
         <source>Work with documents offline.
 Created files can later be uploaded to online portal and
@@ -5736,7 +5740,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1" build-num="17B55"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

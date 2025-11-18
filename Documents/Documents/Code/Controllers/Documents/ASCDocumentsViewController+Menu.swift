@@ -102,8 +102,8 @@ extension ASCDocumentsViewController {
         /// Share action
 
         let sharingSettings = UIAction(
-            title: NSLocalizedString("Share", comment: ""),
-            image: Asset.Images.squareAndArrowUp.image
+            title: NSLocalizedString("Sharing settings", comment: ""),
+            image: Asset.Images.gear.image
         ) { [unowned self] action in
             navigator.navigate(to: .sharingLink(entityType: .file(file)))
         }
@@ -574,7 +574,7 @@ extension ASCDocumentsViewController {
 
         let share = UIAction(
             title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-            image: Asset.Images.person2.image
+            image: Asset.Images.gear.image
         ) { [unowned self] _ in
             navigator.navigate(to: .sharingLink(entityType: folder.isRoom ? .room(folder) : .folder(folder)))
         }
@@ -589,7 +589,11 @@ extension ASCDocumentsViewController {
         }
 
         if actions.contains(.link), actions.contains(.share) {
-            var shareMenuElements: [UIMenuElement] = [copyLink, share]
+            var shareMenuElements: [UIMenuElement] = [copyLink]
+            
+            if !folder.isRoom {
+                shareMenuElements.append(share)
+            }
 
             if actions.contains(.addUsers) {
                 shareMenuElements.append(inviteUsers)

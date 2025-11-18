@@ -1561,6 +1561,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if file.security.startFilling {
                 entityActions.insert(.startFilling)
             }
+            
+            if file.security.createRoomFrom {
+                entityActions.insert(.createRoom)
+            }
 
             if file.security.fillingStatus {
                 entityActions.insert(.fillingStatus)

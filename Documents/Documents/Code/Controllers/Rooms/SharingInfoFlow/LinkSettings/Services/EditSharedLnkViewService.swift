@@ -50,7 +50,7 @@ final class EditSharedLnkViewService {
             file.security.edit
         }
     }
-    
+
     var showWhoHasAccessSection: Bool {
         switch entity {
         case let .room(room):

@@ -89,7 +89,7 @@ final class EditSharedLinkViewModel: ObservableObject {
     var isEditAccessPossible: Bool {
         viewService?.isEditAccessPossible ?? false
     }
-    
+
     var showWhoHasAccessSection: Bool {
         viewService?.showWhoHasAccessSection ?? false
     }

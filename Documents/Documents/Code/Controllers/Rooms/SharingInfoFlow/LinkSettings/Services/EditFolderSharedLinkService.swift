@@ -74,7 +74,7 @@ final class EditFolderSharedLinkService {
             linkType: linkType.rawValue,
             denyDownload: denyDownload,
             internal: isInternal,
-            password: password,
+            password: password
         )
 
         let response = try await networkService.request(

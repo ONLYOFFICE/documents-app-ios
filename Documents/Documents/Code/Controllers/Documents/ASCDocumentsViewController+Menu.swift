@@ -590,7 +590,7 @@ extension ASCDocumentsViewController {
 
         if actions.contains(.link), actions.contains(.share) {
             var shareMenuElements: [UIMenuElement] = [copyLink]
-            
+
             if !folder.isRoom {
                 shareMenuElements.append(share)
             }

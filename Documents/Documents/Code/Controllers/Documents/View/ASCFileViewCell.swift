@@ -671,42 +671,6 @@ extension ASCFileViewCell {
     private var iconSize: CGSize {
         layoutType == .grid ? Constants.gridIconSize : Constants.listIconSize
     }
-
-    private var iconFormatImage: UIImage {
-        layoutType == .list ? Asset.Images.listFormatImage.image : Asset.Images.gridFormatImage.image
-    }
-
-    private var iconFormatDocument: UIImage {
-        layoutType == .list ? Asset.Images.listFormatDocument.image : Asset.Images.gridFormatDocument.image
-    }
-
-    private var iconFormatSpreadsheet: UIImage {
-        layoutType == .list ? Asset.Images.listFormatSpreadsheet.image : Asset.Images.gridFormatSpreadsheet.image
-    }
-
-    private var iconFormatPresentation: UIImage {
-        layoutType == .list ? Asset.Images.listFormatPresentation.image : Asset.Images.gridFormatPresentation.image
-    }
-
-    private var iconFormatVideo: UIImage {
-        layoutType == .list ? Asset.Images.listFormatVideo.image : Asset.Images.gridFormatVideo.image
-    }
-
-    private var iconFormatDocxf: UIImage {
-        layoutType == .list ? Asset.Images.listFormatDocxf.image : Asset.Images.gridFormatDocxf.image
-    }
-
-    private var iconFormatOform: UIImage {
-        layoutType == .list ? Asset.Images.listFormatOform.image : Asset.Images.gridFormatOform.image
-    }
-
-    private var iconFormatUnknown: UIImage {
-        layoutType == .list ? Asset.Images.listFormatUnknown.image : Asset.Images.gridFormatUnknown.image
-    }
-
-    private var iconFormatPdf: UIImage {
-        layoutType == .list ? Asset.Images.listFormatPdf.image : Asset.Images.gridFormatPdf.image
-    }
 }
 
 extension ASCFileViewCell {

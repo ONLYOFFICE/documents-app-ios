@@ -86,7 +86,9 @@ public extension UIImage {
 
 extension UIImage {
     static func getFileExtensionBasedImage(fileExt: String, layoutType: ASCEntityViewLayoutType) -> UIImage {
-        if ASCConstants.FileExtensions.documents.contains(fileExt) {
+        if fileExt == ASCConstants.FileExtensions.txt {
+            return iconFormaTxt(for: layoutType)
+        } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
             return iconFormatDocument(for: layoutType)
         } else if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
             return iconFormatSpreadsheet(for: layoutType)
@@ -151,5 +153,9 @@ extension UIImage {
 
     private static func iconFormatPdf(for layoutType: ASCEntityViewLayoutType) -> UIImage {
         return layoutType == .list ? Asset.Images.listFormatPdf.image : Asset.Images.gridFormatPdf.image
+    }
+
+    private static func iconFormaTxt(for layoutType: ASCEntityViewLayoutType) -> UIImage {
+        layoutType == .list ? Asset.Images.listFormatTxt.image : Asset.Images.gridFormatTxt.image
     }
 }

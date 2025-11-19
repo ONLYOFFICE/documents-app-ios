@@ -43,15 +43,13 @@ struct SharingInfoView: View {
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
-            VStack {
+            List {
                 descriptionText
-                List {
-                    sharedLinksSection
-                    adminSection
-                    usersSection
-                    guestsSection
-                    invitesSection
-                }
+                sharedLinksSection
+                adminSection
+                usersSection
+                guestsSection
+                invitesSection
             }
             .background(Color.systemGroupedBackground.ignoresSafeArea())
         } else {
@@ -66,10 +64,10 @@ struct SharingInfoView: View {
         if let description = viewModel.entityDescription {
             Text(verbatim: description)
                 .multilineTextAlignment(.center)
-                .padding(.top, Constants.descriptionTopPadding)
                 .padding(.horizontal, Constants.horizontalAlignment)
                 .font(.caption)
                 .foregroundColor(.secondaryLabel)
+                .listRowBackground(Color.clear)
         }
     }
 

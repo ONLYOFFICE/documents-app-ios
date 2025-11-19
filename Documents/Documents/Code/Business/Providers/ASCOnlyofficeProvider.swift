@@ -1266,10 +1266,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let folder = entity as? ASCFolder
         let parentFolder = file?.parent ?? folder?.parent
 
-        if let folder = folder, folder.isRoom, folder.rootFolderType != .archive {
-            return false
-        }
-
         if file == nil, folder == nil {
             return false
         }
@@ -1621,6 +1617,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
+            }
+            
+            if !(folder.rootFolderType == .trash) {
+                entityActions.insert(.open)
             }
 
             if canCopy, !isRoomFolder {

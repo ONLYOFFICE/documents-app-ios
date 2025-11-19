@@ -667,33 +667,6 @@ extension ASCDocumentsViewController {
             )
         }
 
-        /// Archive
-
-        if actions.contains(.archive) {
-            transferActions.append(
-                UIAction(
-                    title: NSLocalizedString("Move to archive", comment: "Button title"),
-                    image: Asset.Images.archivebox.image
-                ) { [unowned self] action in
-                    self.archive(cell: cell, folder: folder)
-                }
-            )
-        }
-
-        if actions.contains(.unarchive) {
-            transferActions.append(
-                UIAction(
-                    title: NSLocalizedString("Move from archive", comment: "Button title"),
-                    image: Asset.Images.trashSlash.image
-                ) { [unowned self] action in
-                    self.showRestoreRoomAlert { [weak self] in
-                        guard let self else { return }
-                        self.unarchive(cell: cell, folder: folder)
-                    }
-                }
-            )
-        }
-
         if actions.contains(.deleteRoomTemplate) {
             transferActions.append(
                 UIAction(
@@ -783,13 +756,43 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        /// Archive
+
+        if actions.contains(.archive) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Move to archive", comment: "Button title"),
+                    image: Asset.Images.archivebox.image
+                ) { [unowned self] action in
+                    self.archive(cell: cell, folder: folder)
+                }
+            )
+        }
+
+        if actions.contains(.unarchive) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Move from archive", comment: "Button title"),
+                    image: Asset.Images.trashSlash.image
+                ) { [unowned self] action in
+                    self.showRestoreRoomAlert { [weak self] in
+                        guard let self else { return }
+                        self.unarchive(cell: cell, folder: folder)
+                    }
+                }
+            )
+        }
 
         /// Delete action
 
         if actions.contains(.delete) {
+            let title: String = folder.isRoom
+            ? NSLocalizedString("Delete room", comment: "Button title")
+            : NSLocalizedString("Delete", comment: "Button title")
             transferActions.append(
                 UIAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
+                    title: title,
                     image: Asset.Images.trash.image,
                     attributes: .destructive
                 ) { [unowned self] action in
@@ -1392,9 +1395,12 @@ extension ASCDocumentsViewController {
         }
 
         if actions.contains(.delete) {
+            let title: String = folder.isRoom
+            ? NSLocalizedString("Delete room", comment: "Button title")
+            : NSLocalizedString("Delete", comment: "Button title")
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
+                    title: title,
                     style: .destructive,
                     handler: { [unowned self] action in
                         self.delete(cell: cell)

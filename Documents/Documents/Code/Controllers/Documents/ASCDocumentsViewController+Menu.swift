@@ -25,6 +25,26 @@ extension ASCDocumentsViewController {
         var shareActions: [UIMenuElement] = []
         var middleActions: [UIMenuElement] = []
         var bottomActions: [UIMenuElement] = []
+        
+        if actions.contains(.select) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Select", comment: "Button title"),
+                    image: Asset.Images.checkmarkCircle.image
+                ) { [weak self] action in
+                    self?.setEditMode(true)
+
+                    if let index = self?.collectionView.indexPath(for: cell) {
+                        self?.collectionView.selectItem(
+                            at: index,
+                            animated: true,
+                            scrollPosition: .centeredHorizontally
+                        )
+                        self?.updateSelectedItems(indexPath: index)
+                    }
+                }
+            )
+        }
 
         /// Fill pdf form
 

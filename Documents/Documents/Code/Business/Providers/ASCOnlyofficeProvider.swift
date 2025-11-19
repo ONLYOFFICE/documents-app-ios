@@ -1494,6 +1494,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canRename {
                 entityActions.insert(.rename)
             }
+            
+            entityActions.insert(.select)
 
             if canPreview {
                 entityActions.insert(.open)
@@ -1609,11 +1611,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            let folderIsRoomsListAndNotEmpty: Bool = folder.isRoomListFolder && total > .zero
-
-            if !folder.isEmpty || folderIsRoomsListAndNotEmpty {
-                entityActions.insert(.select)
-            }
+            entityActions.insert(.select)
 
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
@@ -1631,7 +1629,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects {
+            if canShare, !isProjects {
                 entityActions.insert(.share)
             }
 

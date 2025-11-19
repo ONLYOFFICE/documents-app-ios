@@ -52,6 +52,7 @@ class NetworkManagingRoomServiceImp: ManagingRoomService {
         createRoomNetwork(model: model) { result in
             switch result {
             case let .success(room):
+                room.isCanLeaveRoom = true
                 let group = DispatchGroup()
                 group.enter()
                 self.createAndAttachTags(tags: model.tags, room: room) {

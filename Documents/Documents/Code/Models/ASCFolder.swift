@@ -44,7 +44,7 @@ class ASCFolder: ASCEntity {
     var logo: ASCFolderLogo?
     var tags: [String]?
     var security: ASCFolderSecurity = .init()
-    var availableShareRights: ASCShareRights = .init()
+    var availableShareRights: ASCShareRights = ASCShareRights.defaults
     var indexing: Bool = false
     var denyDownload: Bool = false
     var lifetime: LifeTime?

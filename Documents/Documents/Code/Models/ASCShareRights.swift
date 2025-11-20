@@ -16,6 +16,10 @@ final class ASCShareRights: Mappable {
     var externalLink: [ASCShareAccess] = []
     var group: [ASCShareAccess] = []
     var primaryExternalLink: [ASCShareAccess] = []
+    
+    var isEmpty: Bool {
+        user.isEmpty && externalLink.isEmpty && group.isEmpty && primaryExternalLink.isEmpty
+    }
 
     init() {}
 
@@ -44,4 +48,50 @@ struct ShareAccessArrayTransform: TransformType {
         guard let value else { return nil }
         return value.map { $0.serverString }
     }
+}
+
+extension ASCShareRights {
+    private convenience init(user: [ASCShareAccess], externalLink: [ASCShareAccess], group: [ASCShareAccess], primaryExternalLink: [ASCShareAccess] ) {
+        self.init()
+        self.user = user
+        self.externalLink = externalLink
+        self.group = group
+        self.primaryExternalLink = primaryExternalLink
+    }
+    static var defaults: ASCShareRights {
+            return ASCShareRights(
+                user: [
+                    .full,
+                    .editing,
+                    .review,
+                    .comment,
+                    .read,
+                    .deny,
+                    .none
+                ],
+                externalLink: [
+                    .editing,
+                    .review,
+                    .comment,
+                    .read,
+                    .none
+                ],
+                group: [
+                    .full,
+                    .editing,
+                    .review,
+                    .comment,
+                    .read,
+                    .deny,
+                    .none
+                ],
+                primaryExternalLink: [
+                    .editing,
+                    .review,
+                    .comment,
+                    .read,
+                    .none
+                ]
+            )
+        }
 }

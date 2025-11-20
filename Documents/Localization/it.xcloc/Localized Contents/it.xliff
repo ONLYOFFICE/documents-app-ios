@@ -7,6 +7,7 @@
     <body>
       <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
         <source>Next</source>
+        <target state="translated">Prossimo</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
       </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -31,6 +32,7 @@
       </trans-unit>
       <trans-unit id="CAb-Ol-Sq3.text" xml:space="preserve">
         <source>Server</source>
+        <target state="translated">Server</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "CAb-Ol-Sq3";</note>
       </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
@@ -45,6 +47,7 @@
       </trans-unit>
       <trans-unit id="gmK-yF-ka4.placeholder" xml:space="preserve">
         <source>example.com</source>
+        <target state="translated">example.com</target>
         <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "gmK-yF-ka4";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
@@ -1144,17 +1147,17 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target state="translated">12 ore</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/br&gt;Istruzioni di connessione più dettagliate sono disponibili in &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Istruzioni di connessione più dettagliate sono disponibili nella &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note/>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target state="translated">&lt;p&gt;Devi avere una versione a pagamento del lettore per utilizzare questo servizio.&lt;/p&gt;&lt;p&gt;Se hai attivato la doppia autenticazione, genera un'applicazione CDM dal gestore di Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Altro...&lt;/a&gt;&lt;/p&gt;</target>
         <note/>
@@ -1347,6 +1350,7 @@ possibilità di leggere, rivedere o modificare i documenti.</target>
       </trans-unit>
       <trans-unit id="Added to favorites" xml:space="preserve">
         <source>Added to favorites</source>
+        <target state="translated">Aggiungi hai favoriti</target>
         <note/>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
@@ -1482,6 +1486,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Authorization code not found" xml:space="preserve">
         <source>Authorization code not found</source>
+        <target state="translated">Codice di autorizzazione non trovato</target>
         <note/>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
@@ -1691,6 +1696,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Collaboration Room" xml:space="preserve">
         <source>Collaboration Room</source>
+        <target state="translated">Stanza di collaborazione</target>
         <note from="auto-generated">Title for a room type that is a collaboration room.</note>
       </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
@@ -1809,6 +1815,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Copy shared link" xml:space="preserve">
         <source>Copy shared link</source>
+        <target state="translated">Copia il link condiviso</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -2068,6 +2075,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Custom Room" xml:space="preserve">
         <source>Custom Room</source>
+        <target state="translated">Stanza personalizzata</target>
         <note from="auto-generated">Title of a room with a custom type.</note>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
@@ -2609,6 +2617,7 @@ Hai apportato modifiche all'indice. Se procedi senza salvare, tali modifiche non
       </trans-unit>
       <trans-unit id="Failed to verify user credentials." xml:space="preserve">
         <source>Failed to verify user credentials.</source>
+        <target state="translated">Impossibile verificare le credenziali dell'utente.</target>
         <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
       </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
@@ -2997,6 +3006,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invalid URL" xml:space="preserve">
         <source>Invalid URL</source>
+        <target state="translated">URL non valido</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
@@ -3011,6 +3021,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invalid server URL" xml:space="preserve">
         <source>Invalid server URL</source>
+        <target state="translated">URL del server non valido</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
@@ -3201,6 +3212,7 @@ Caption of the process</note>
       </trans-unit>
       <trans-unit id="Manage" xml:space="preserve">
         <source>Manage</source>
+        <target state="translated">Gestisci</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
@@ -3259,7 +3271,7 @@ If current user name is not set</note>
         <target state="translated">Membri</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
+      <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=>?@[]^_`{|}" xml:space="preserve">
         <source>Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</source>
         <target state="translated">Lunghezza minima: 8 caratteri | Caratteri consentiti: a-z, A-Z, 0-9, !"#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}</target>
         <note/>
@@ -3341,6 +3353,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Network error" xml:space="preserve">
         <source>Network error</source>
+        <target state="translated">Errore di rete</target>
         <note/>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
@@ -3626,6 +3639,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Open location" xml:space="preserve">
         <source>Open location</source>
+        <target state="translated">Apri posizione</target>
         <note/>
       </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
@@ -3708,7 +3722,7 @@ Share status</note>
         <target state="translated">La password è vuota</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~" xml:space="preserve">
+      <trans-unit id="Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !&quot;№%&amp;'()*+,-./:;&lt;=>?@[\]^_`{|}~" xml:space="preserve">
         <source>Password must contain: Minimum length: 8 Allowed characters: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</source>
         <target state="translated">La password deve includere: Lunghezza minima: 8 caratteri Caratteri consentiti: a-z, A-Z, 0-9, !"№%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</target>
         <note/>
@@ -3755,6 +3769,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Please enter a server URL" xml:space="preserve">
         <source>Please enter a server URL</source>
+        <target state="translated">Inserisci un URL del server</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
@@ -3926,6 +3941,7 @@ Se il problema persiste, contattaci e menziona questo codice di errore: Zoom - %
       </trans-unit>
       <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
         <source>Provide access to the folder and set the permission levels.</source>
+        <target state="translated">Concedi l'accesso alla cartella e imposta i livelli di autorizzazione.</target>
         <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
       </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
@@ -3995,6 +4011,7 @@ Se il problema persiste, contattaci e menziona questo codice di errore: Zoom - %
       </trans-unit>
       <trans-unit id="Removed from favorites" xml:space="preserve">
         <source>Removed from favorites</source>
+        <target state="translated">Rimosso dai favoriti</target>
         <note/>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
@@ -4316,6 +4333,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Server is unreachable" xml:space="preserve">
         <source>Server is unreachable</source>
+        <target state="translated">Il server non è raggiungibile</target>
         <note/>
       </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
@@ -4480,6 +4498,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="State is invalid" xml:space="preserve">
         <source>State is invalid</source>
+        <target state="translated">Lo stato non è valido</target>
         <note/>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
@@ -5282,11 +5301,14 @@ Scorri per saperne di più.</target>
       </trans-unit>
       <trans-unit id="Who has access" xml:space="preserve">
         <source>Who has access</source>
+        <target state="translated">Chi ha accesso</target>
         <note from="auto-generated">A section header that reads "Who has access".</note>
       </trans-unit>
       <trans-unit id="Work with docs offline in the On device tab.&#10;Created files can later be uploaded to online portal and then accessed from any other device." xml:space="preserve">
         <source>Work with docs offline in the On device tab.
 Created files can later be uploaded to online portal and then accessed from any other device.</source>
+        <target state="translated">Lavora con i documenti offline nella scheda "Sul dispositivo".
+I file creati possono essere successivamente caricati sul portale online e accessibili da qualsiasi altro dispositivo.</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
@@ -5406,6 +5428,7 @@ una stanza nella sezione Stanza</target>
       </trans-unit>
       <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
         <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <target state="translated">Non è possibile disattivare la restrizione sul download e sulla copia dei dati perché questa impostazione viene applicata a livello di stanza per tutti i file.</target>
         <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">

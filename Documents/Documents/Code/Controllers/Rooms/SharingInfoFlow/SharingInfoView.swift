@@ -352,23 +352,46 @@ private extension View {
         isDisplaying: Binding<Bool>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(isActive: isDisplaying) {
-            switch viewModel.entityType {
-            case let .room(room):
+        modifier(NavigateToAddUsersModifier(isDisplaying: isDisplaying, viewModel: viewModel))
+    }
+}
+
+private struct NavigateToAddUsersModifier: ViewModifier {
+    @Binding var isDisplaying: Bool
+    let viewModel: SharingInfoViewModel
+
+    func body(content: Content) -> some View {
+        switch viewModel.entityType {
+        case let .room(room):
+            content.navigation(isActive: $isDisplaying) {
                 InviteUsersView(
-                    viewModel: InviteUsersViewModel(
-                        room: room
-                    )
+                    viewModel: InviteUsersViewModel(room: room)
                 )
-            case let .file(file):
-                SharingInviteRightHoldersRepresentable(entity: file)
-                    .navigationBarHidden(true)
-                    .ignoresSafeArea(edges: .bottom)
-            case let .folder(folder):
-                SharingInviteRightHoldersRepresentable(entity: folder)
-                    .navigationBarHidden(true)
-                    .ignoresSafeArea(edges: .bottom)
+                .onDisappear {
+                    Task { @MainActor in
+                        try? await viewModel.updateData()
+                    }
+                }
             }
+            
+        case let .file(file):
+            sheet(content: content, entity: file)
+            
+        case let .folder(folder):
+            sheet(content: content, entity: folder)
+        }
+    }
+    
+    @ViewBuilder
+    private func sheet(content: Content, entity: ASCEntity) -> some View {
+        content.sheet(isPresented: $isDisplaying) {
+            SharingInviteRightHoldersRepresentable(entity: entity)
+                .ignoresSafeArea(edges: .bottom)
+                .onDisappear {
+                    Task { @MainActor in
+                        try? await viewModel.updateData()
+                    }
+                }
         }
     }
 }

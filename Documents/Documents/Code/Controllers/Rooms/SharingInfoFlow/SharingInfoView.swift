@@ -43,15 +43,13 @@ struct SharingInfoView: View {
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
-            VStack {
+            List {
                 descriptionText
-                List {
-                    sharedLinksSection
-                    adminSection
-                    usersSection
-                    guestsSection
-                    invitesSection
-                }
+                sharedLinksSection
+                adminSection
+                usersSection
+                guestsSection
+                invitesSection
             }
             .background(Color.systemGroupedBackground.ignoresSafeArea())
         } else {
@@ -66,10 +64,10 @@ struct SharingInfoView: View {
         if let description = viewModel.entityDescription {
             Text(verbatim: description)
                 .multilineTextAlignment(.center)
-                .padding(.top, Constants.descriptionTopPadding)
                 .padding(.horizontal, Constants.horizontalAlignment)
                 .font(.caption)
                 .foregroundColor(.secondaryLabel)
+                .listRowBackground(Color.clear)
         }
     }
 
@@ -77,30 +75,56 @@ struct SharingInfoView: View {
     private var sharedLinksSection: some View {
         if viewModel.isSharingPossible, viewModel.isPossibleCreateNewLink {
             Section(header: sharedLinksSectionHeader) {
-                if viewModel.sharedLinksModels.isEmpty {
-                    ASCCreateLinkCellView(
-                        model: ASCCreateLinkCellModel(
-                            textString: NSLocalizedString("Create and copy", comment: ""),
-                            imageNames: [],
-                            onTapAction: {
-                                Task { @MainActor in
-                                    await viewModel.sharedLinksModels.isEmpty
-                                        ? viewModel.createAndCopyGeneralLink()
-                                        : viewModel.createAndCopyAdditionalLink()
-                                }
-                            }
-                        )
-                    )
+                if !viewModel.sharedLinksModels.isEmpty {
+                    linkRows
                 } else {
-                    ForEach(viewModel.sharedLinksModels) { linkModel in
-                        RoomSharingLinkRow(model: linkModel)
-                    }
-                    .onDelete { indexSet in
-                        viewModel.deleteSharedLink(indexSet: indexSet)
-                    }
+                    createLink
                 }
             }
             .alert(isPresented: $viewModel.isDeleteAlertDisplaying, content: deleteAlert)
+        }
+    }
+    
+    private var createLink: some View {
+        ASCCreateLinkCellView(
+            model: ASCCreateLinkCellModel(
+                textString: NSLocalizedString("Create and copy", comment: ""),
+                imageNames: [],
+                onTapAction: {
+                    Task { @MainActor in
+                        await viewModel.sharedLinksModels.isEmpty
+                            ? viewModel.createAndCopyGeneralLink()
+                            : viewModel.createAndCopyAdditionalLink()
+                    }
+                }
+            )
+        )
+    }
+    
+    @ViewBuilder
+    private var linkRows: some View {
+        if #available(iOS 15.0, *) {
+            ForEach(Array(viewModel.sharedLinksModels.enumerated()), id: \.element.id) { index, linkModel in
+                RoomSharingLinkRow(model: linkModel)
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            viewModel.deleteSharedLink(indexSet: [index])
+                        } label: {
+                            if linkModel.isGeneral, !viewModel.canRemoveGeneralLink {
+                                Text("Revoke")
+                            } else {
+                                Text("Remove")
+                            }
+                        }
+                    }
+            }
+        } else {
+            ForEach(viewModel.sharedLinksModels) { linkModel in
+                RoomSharingLinkRow(model: linkModel)
+            }
+            .onDelete { indexSet in
+                viewModel.deleteSharedLink(indexSet: indexSet)
+            }
         }
     }
 
@@ -328,23 +352,46 @@ private extension View {
         isDisplaying: Binding<Bool>,
         viewModel: SharingInfoViewModel
     ) -> some View {
-        navigation(isActive: isDisplaying) {
-            switch viewModel.entityType {
-            case let .room(room):
+        modifier(NavigateToAddUsersModifier(isDisplaying: isDisplaying, viewModel: viewModel))
+    }
+}
+
+private struct NavigateToAddUsersModifier: ViewModifier {
+    @Binding var isDisplaying: Bool
+    let viewModel: SharingInfoViewModel
+
+    func body(content: Content) -> some View {
+        switch viewModel.entityType {
+        case let .room(room):
+            content.navigation(isActive: $isDisplaying) {
                 InviteUsersView(
-                    viewModel: InviteUsersViewModel(
-                        room: room
-                    )
+                    viewModel: InviteUsersViewModel(room: room)
                 )
-            case let .file(file):
-                SharingInviteRightHoldersRepresentable(entity: file)
-                    .navigationBarHidden(true)
-                    .ignoresSafeArea(edges: .bottom)
-            case let .folder(folder):
-                SharingInviteRightHoldersRepresentable(entity: folder)
-                    .navigationBarHidden(true)
-                    .ignoresSafeArea(edges: .bottom)
+                .onDisappear {
+                    Task { @MainActor in
+                        try? await viewModel.updateData()
+                    }
+                }
             }
+            
+        case let .file(file):
+            sheet(content: content, entity: file)
+            
+        case let .folder(folder):
+            sheet(content: content, entity: folder)
+        }
+    }
+    
+    @ViewBuilder
+    private func sheet(content: Content, entity: ASCEntity) -> some View {
+        content.sheet(isPresented: $isDisplaying) {
+            SharingInviteRightHoldersRepresentable(entity: entity)
+                .ignoresSafeArea(edges: .bottom)
+                .onDisappear {
+                    Task { @MainActor in
+                        try? await viewModel.updateData()
+                    }
+                }
         }
     }
 }

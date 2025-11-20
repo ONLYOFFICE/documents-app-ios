@@ -29,8 +29,9 @@ struct InviteUsersView: View {
         .navigationBarTitle(Text("Invite users"), displayMode: .inline)
         .navigationBarItems(trailing: cancelButton)
         .navigateToInviteByEmail(isDisplaying: $viewModel.isInviteByEmailsScreenDisplaying, viewModel: viewModel)
-        .navigateToAddUsers(isDisplaying: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
+        .inviteRightHoldersSheet(isPresented: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
         .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
+    
         .onAppear {
             viewModel.fetchData()
         }
@@ -149,14 +150,10 @@ private extension View {
                 .ignoresSafeArea(edges: .bottom)
         }
     }
-
-    func navigateToAddUsers(
-        isDisplaying: Binding<Bool>,
-        viewModel: InviteUsersViewModel
-    ) -> some View {
-        navigation(isActive: isDisplaying) {
+    
+    func inviteRightHoldersSheet(isPresented: Binding<Bool>, viewModel: InviteUsersViewModel) -> some View {
+        sheet(isPresented: isPresented) {
             SharingInviteRightHoldersRepresentable(entity: viewModel.room)
-                .navigationBarHidden(true)
                 .ignoresSafeArea(edges: .bottom)
         }
     }

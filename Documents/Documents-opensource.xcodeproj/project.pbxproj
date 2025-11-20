@@ -148,6 +148,7 @@
 		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
 		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
+		F379BBC22ECF4453007EA2E9 /* ASCShareRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = F379BBC12ECF4453007EA2E9 /* ASCShareRights.swift */; };
 		F3BAE5942D3543420024AB6A /* TopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAE5932D3543400024AB6A /* TopBannerView.swift */; };
 		F3BBE48F2ECB15AE00DD5FEB /* FileSharingNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE4892ECB15AE00DD5FEB /* FileSharingNetworkServiceProtocol.swift */; };
 		F3BBE4902ECB15AE00DD5FEB /* RoomSharingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE48D2ECB15AE00DD5FEB /* RoomSharingNetworkService.swift */; };
@@ -905,6 +906,7 @@
 		F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountScreenModel.swift; sourceTree = "<group>"; };
 		F378024329DAE3720020B453 /* AccountCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
 		F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
+		F379BBC12ECF4453007EA2E9 /* ASCShareRights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareRights.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		F3BAE5932D3543400024AB6A /* TopBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerView.swift; sourceTree = "<group>"; };
 		F3BBE4892ECB15AE00DD5FEB /* FileSharingNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSharingNetworkServiceProtocol.swift; sourceTree = "<group>"; };
@@ -3530,6 +3532,7 @@
 		FCAE8B891E71671C004FC332 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F379BBC12ECF4453007EA2E9 /* ASCShareRights.swift */,
 				FCACAF552DDE079100CD11A8 /* Enums */,
 				FC059D961E82581D00BC2F5E /* Transforms */,
 				FC142A30289819B400EDE7CE /* ASCAccount.swift */,
@@ -4712,6 +4715,7 @@
 				1D8CFC41290D7F5000F71071 /* ASCShareSettingsRoomsAPIWorker.swift in Sources */,
 				FCACAF412DDDCDCC00CD11A8 /* ASCCustomFilterRequestModel.swift in Sources */,
 				FC7081CF2812E2260057FCD2 /* ASCOnlyofficeProvider.swift in Sources */,
+				F379BBC22ECF4453007EA2E9 /* ASCShareRights.swift in Sources */,
 				FC7081D12812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FC379D6E2C380C5900B120D9 /* ImagedDetailCellView.swift in Sources */,
 				77E206FB2EA8E9C100920AAA /* NextcloudMeta.swift in Sources */,

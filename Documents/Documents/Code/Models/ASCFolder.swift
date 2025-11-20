@@ -44,6 +44,7 @@ class ASCFolder: ASCEntity {
     var logo: ASCFolderLogo?
     var tags: [String]?
     var security: ASCFolderSecurity = .init()
+    var availableShareRights: ASCShareRights = .init()
     var indexing: Bool = false
     var denyDownload: Bool = false
     var lifetime: LifeTime?
@@ -96,6 +97,7 @@ class ASCFolder: ASCEntity {
         tags <- map["tags"]
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]
+        availableShareRights <- map["availableShareRights"]
         indexing <- map["indexing"]
         denyDownload <- map["denyDownload"]
         lifetime <- map["lifetime"]

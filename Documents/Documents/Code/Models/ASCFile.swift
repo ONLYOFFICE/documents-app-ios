@@ -33,6 +33,7 @@ class ASCFile: ASCEntity {
     var requestToken: String?
     var rootFolderType: ASCFolderType = .default
     var security: ASCFileSecurity = .init()
+    var availableShareRights: ASCShareRights = .init()
     var shared: Bool = false
     var thumbnailStatus: ASCThumbnailStatus?
     var thumbnailUrl: String?
@@ -119,6 +120,7 @@ class ASCFile: ASCEntity {
         pureContentLength <- map["pureContentLength"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         security <- map["security"]
+        availableShareRights <- map["availableShareRights"]
         shared <- map["shared"]
         thumbnailStatus <- (map["thumbnailStatus"], EnumTransform())
         thumbnailUrl <- map["thumbnailUrl"]

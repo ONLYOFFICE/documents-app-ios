@@ -13,6 +13,14 @@ enum EditSharedLinkEntityType {
     case room(ASCRoom)
     case folder(ASCFolder)
     case file(ASCFile)
+
+    var availableShareRights: ASCShareRights {
+        switch self {
+        case let .file(file): return file.availableShareRights
+        case let .folder(folder): return folder.availableShareRights
+        case let .room(room): return room.availableShareRights
+        }
+    }
 }
 
 struct EditSharedLinkModel {
@@ -25,6 +33,7 @@ struct EditSharedLinkModel {
     var isExpired: Bool = false
     var selectedAccessRight: ASCShareAccess = .none
     var whoHasAccess: LinkAccess = .anyoneWithLink
+    var linkAccessRightsList: [ASCShareAccess] = []
 
     static let empty = EditSharedLinkModel(linkName: "", isProtected: false, isRestrictCopyOn: false, isTimeLimited: false, selectedDate: Date(), password: "", isExpired: false, selectedAccessRight: .none)
 }
@@ -62,12 +71,7 @@ final class EditSharedLinkViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
 
     var accessMenuItems: [MenuViewItem] {
-        [
-            ASCShareAccess.editing,
-            ASCShareAccess.review,
-            ASCShareAccess.comment,
-            ASCShareAccess.read,
-        ].map { access in
+        linkModel.linkAccessRightsList.map { access in
             MenuViewItem(text: access.title(), customImage: access.swiftUIImage) { [unowned self] in
                 linkModel.selectedAccessRight = access
             }
@@ -160,7 +164,8 @@ final class EditSharedLinkViewModel: ObservableObject {
             password: link.linkInfo.password ?? "",
             isExpired: link.linkInfo.isExpired,
             selectedAccessRight: link.access,
-            whoHasAccess: link.linkInfo.internal ? .docspaceUserOnly : .anyoneWithLink
+            whoHasAccess: link.linkInfo.internal ? .docspaceUserOnly : .anyoneWithLink,
+            linkAccessRightsList: (link.linkInfo.primary ? entity.availableShareRights.primaryExternalLink : entity.availableShareRights.externalLink).filter { $0 != .none }
         )
 
         defineSharingLink()

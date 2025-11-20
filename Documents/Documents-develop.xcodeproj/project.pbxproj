@@ -148,6 +148,7 @@
 		F30EFE8F2DF19A660048BADE /* ASCDeleteRoomTemplateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EFE892DF19A660048BADE /* ASCDeleteRoomTemplateRequestModel.swift */; };
 		F30EFE902DF19A660048BADE /* OnlyofficeTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EFE8B2DF19A660048BADE /* OnlyofficeTemplateOperation.swift */; };
 		F30EFEA22DF19AA50048BADE /* TemplateViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30EFEA12DF19AA50048BADE /* TemplateViewRow.swift */; };
+		F349BF822ECF29B2006EE68C /* ASCShareRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = F349BF7D2ECF29B1006EE68C /* ASCShareRights.swift */; };
 		F35A8A3A2ECA8F6F0001C979 /* EditSharedLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A8A382ECA8F6F0001C979 /* EditSharedLinkView.swift */; };
 		F35A8A462ECA8F780001C979 /* EditSharedLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A8A432ECA8F780001C979 /* EditSharedLinkService.swift */; };
 		F35A8A472ECA8F780001C979 /* EditFolderSharedLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A8A412ECA8F780001C979 /* EditFolderSharedLinkService.swift */; };
@@ -1023,6 +1024,7 @@
 		F30EFE8A2DF19A660048BADE /* ASCRoomFromTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomFromTemplateOperation.swift; sourceTree = "<group>"; };
 		F30EFE8B2DF19A660048BADE /* OnlyofficeTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeTemplateOperation.swift; sourceTree = "<group>"; };
 		F30EFEA12DF19AA50048BADE /* TemplateViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewRow.swift; sourceTree = "<group>"; };
+		F349BF7D2ECF29B1006EE68C /* ASCShareRights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareRights.swift; sourceTree = "<group>"; };
 		F35A8A382ECA8F6F0001C979 /* EditSharedLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSharedLinkView.swift; sourceTree = "<group>"; };
 		F35A8A402ECA8F780001C979 /* EditFileSharedLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFileSharedLinkService.swift; sourceTree = "<group>"; };
 		F35A8A412ECA8F780001C979 /* EditFolderSharedLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFolderSharedLinkService.swift; sourceTree = "<group>"; };
@@ -3692,6 +3694,7 @@
 				FCE2B41C2930CCA700E50429 /* ASCRoomType.swift */,
 				FCE2B41B2930CCA700E50429 /* ASCUser.swift */,
 				FCA1D4EF2B4FD18D00904A30 /* ResultViewModel.swift */,
+				F349BF7D2ECF29B1006EE68C /* ASCShareRights.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -5036,6 +5039,7 @@
 				FC759B522C00608600510096 /* InviteUsersView.swift in Sources */,
 				FC7D997B2729966300410795 /* ASCBaseTableViewController.swift in Sources */,
 				E8674BA42B2B166800CDA5DC /* NavigationLink+Extensions.swift in Sources */,
+				F349BF822ECF29B2006EE68C /* ASCShareRights.swift in Sources */,
 				E8FD34C32EC35C36004925BB /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
 				E8FD34C42EC35C36004925BB /* SharingInviteRightHoldersRepresentable.swift in Sources */,
 				E8FD34C52EC35C36004925BB /* LinkModel.swift in Sources */,

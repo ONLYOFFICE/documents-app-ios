@@ -227,13 +227,12 @@ class ASCViewControllerManager {
                 } else {
                     // Import and open file
                     routeOpenLocalFile(info: info)
+                    openFileInfo = nil
                 }
             } else {
                 // Portal
                 routeOpenPortalEntity(info: info)
             }
-
-            openFileInfo = nil
         }
     }
 

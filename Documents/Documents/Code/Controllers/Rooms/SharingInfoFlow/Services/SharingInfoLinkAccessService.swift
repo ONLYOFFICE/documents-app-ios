@@ -93,15 +93,16 @@ extension SharingInfoLinkAccessServiceImp: SharingInfoLinkAccessService {
     ) async throws -> SharingInfoLinkModel {
         switch entityType {
         case let .room(room):
-            try await roomSharingLinkAccesskService.createLink(
+            return try await roomSharingLinkAccesskService.createLink(
                 title: title,
                 linkType: linkType,
                 room: room
             )
         case let .file(file):
-            try await fileSharingNetworkService.createLink(file: file)
+            let access: ASCShareAccess = file.isForm ? .editing : .read
+            return try await fileSharingNetworkService.createLink(file: file, access: access)
         case let .folder(folder):
-            try await folderSharingNetworkService.createLink(folder: folder)
+            return try await folderSharingNetworkService.createLink(folder: folder)
         }
     }
 

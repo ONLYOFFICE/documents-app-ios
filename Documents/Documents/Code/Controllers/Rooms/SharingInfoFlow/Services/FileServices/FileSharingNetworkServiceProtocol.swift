@@ -14,7 +14,13 @@ protocol FileSharingNetworkServiceProtocol {
     func fetchUsers(file: ASCFile) async throws -> [RoomUsersResponseModel]
 
     func createGeneralLink(file: ASCFile) async throws -> SharingInfoLinkModel
-    func createLink(file: ASCFile) async throws -> SharingInfoLinkModel
+    func createLink(file: ASCFile, access: ASCShareAccess) async throws -> SharingInfoLinkModel
+}
+
+extension FileSharingNetworkServiceProtocol {
+    func createLink(file: ASCFile, access: ASCShareAccess? = .some(.read)) async throws -> SharingInfoLinkModel {
+        try await createLink(file: file, access: access)
+    }
 }
 
 actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
@@ -47,9 +53,9 @@ actor FileSharingNetworkService: FileSharingNetworkServiceProtocol {
         return result
     }
 
-    func createLink(file: ASCFile) async throws -> SharingInfoLinkModel {
+    func createLink(file: ASCFile, access: ASCShareAccess) async throws -> SharingInfoLinkModel {
         let requestModel = CreateAndCopyLinkRequestModel(
-            access: ASCShareAccess.read.rawValue,
+            access: access.rawValue,
             primary: false,
             expirationDate: nil,
             isInternal: false

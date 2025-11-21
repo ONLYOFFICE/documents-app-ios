@@ -177,8 +177,12 @@ private extension ASCDocumentsViewController {
         }
 
         if let file = entity as? ASCFile, ASCOnlyofficeProvider.isDocspaceApi {
-            navigator.navigate(to: .sharingLink(entityType: .file(file)))
+            let shareRoomViewController = SharingInfoRootViewController(entityType: .file(file))
+            let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
 
+            shareRoomNavigationVC.modalPresentationStyle = .formSheet
+            shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+            parent.present(shareRoomNavigationVC, animated: true)
         } else {
             let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
             let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)

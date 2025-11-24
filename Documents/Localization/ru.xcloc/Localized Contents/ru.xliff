@@ -7,6 +7,7 @@
     <body>
       <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
         <source>Next</source>
+        <target state="translated">Далее</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
       </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">

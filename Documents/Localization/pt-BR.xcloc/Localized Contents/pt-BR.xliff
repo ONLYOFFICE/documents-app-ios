@@ -5431,6 +5431,7 @@ uma sala na seção Sala</target>
       </trans-unit>
       <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
         <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <target state="translated">Não é possível desativar a restrição de download e cópia de dados, pois essa configuração é aplicada a todos os arquivos no nível da sala.</target>
         <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">

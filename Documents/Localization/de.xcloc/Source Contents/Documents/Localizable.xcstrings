@@ -842,6 +842,9 @@
     "Delete permanently" : {
 
     },
+    "Delete room" : {
+      "comment" : "Button title"
+    },
     "Delete template" : {
       "comment" : "Button title"
     },
@@ -2058,6 +2061,9 @@
     "Reviewer" : {
       "comment" : "Share status"
     },
+    "Revoke" : {
+
+    },
     "Revoke link" : {
 
     },
@@ -2760,10 +2766,6 @@
     },
     "Work with docs offline in the On device tab.\nCreated files can later be uploaded to online portal and then accessed from any other device." : {
       "comment" : "Introduction Step Four - Description"
-    },
-    "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." : {
-      "comment" : "Introduction Step Four - Description",
-      "extractionState" : "stale"
     },
     "Work with office files" : {
       "comment" : "Introduction Step Two - Title"

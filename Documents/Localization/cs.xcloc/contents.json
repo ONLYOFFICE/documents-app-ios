@@ -3,10 +3,10 @@
   "project" : "Documents.xcodeproj",
   "targetLocale" : "cs",
   "toolInfo" : {
-    "toolBuildNumber" : "17B55",
+    "toolBuildNumber" : "17B100",
     "toolID" : "com.apple.dt.xcode",
     "toolName" : "Xcode",
-    "toolVersion" : "26.1"
+    "toolVersion" : "26.1.1"
   },
   "version" : "1.0"
 }

@@ -79,6 +79,7 @@
 		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
+		772B716F2ED5858E0009BEF8 /* SSAppUpdater in Frameworks */ = {isa = PBXBuildFile; productRef = 772B716E2ED5858E0009BEF8 /* SSAppUpdater */; };
 		775726E82EC604C00088124F /* OwncloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E52EC604C00088124F /* OwncloudEndpoints.swift */; };
 		775726E92EC604C00088124F /* OwncloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E42EC604C00088124F /* OwncloudApiClient.swift */; };
 		775726EA2EC604C00088124F /* OwncloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E62EC604C00088124F /* OwncloudHelper.swift */; };
@@ -1496,7 +1497,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E80E30462EC4B004003964E6 /* Assembler */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Assembler; sourceTree = "<group>"; };
+		E80E30462EC4B004003964E6 /* Assembler */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1524,6 +1535,7 @@
 				FC87B43B2BBAE06B00DBDBDD /* DocumentEditor in Frameworks */,
 				FC2B7EF82B4E7E0C0064DDDA /* HTMLString in Frameworks */,
 				7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */,
+				772B716F2ED5858E0009BEF8 /* SSAppUpdater in Frameworks */,
 				FC87B4392BBAE06B00DBDBDD /* DocumentConverter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4115,6 +4127,7 @@
 				FC87B43A2BBAE06B00DBDBDD /* DocumentEditor */,
 				FC87B43C2BBAE06B00DBDBDD /* PresentationEditor */,
 				FC87B43E2BBAE06B00DBDBDD /* SpreadsheetEditor */,
+				772B716E2ED5858E0009BEF8 /* SSAppUpdater */,
 			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents.app */;
@@ -4180,10 +4193,11 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A754B29910FB80056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
-				FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
-				FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
-				FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "../../editors-ios" */,
+				FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "HTMLString" */,
+				FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */,
+				FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "editors-ios" */,
+				772B716D2ED5858E0009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -4313,7 +4327,6 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/ReCaptcha/ReCaptcha.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework",
@@ -4372,7 +4385,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReCaptcha.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRater.framework",
@@ -4470,8 +4482,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5702,25 +5713,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
+		FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
+		FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
+		FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
-		FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "../../editors-ios" */ = {
+		FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "editors-ios" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../editors-ios";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		772B716D2ED5858E0009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSAppUpdater.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		FC6A754B29910FB80056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -5732,6 +5751,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		772B716E2ED5858E0009BEF8 /* SSAppUpdater */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 772B716D2ED5858E0009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */;
+			productName = SSAppUpdater;
+		};
 		FC2B7EF72B4E7E0C0064DDDA /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;

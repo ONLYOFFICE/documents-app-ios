@@ -24,6 +24,7 @@
 		1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC53290D85E600F71071 /* ASCDocumentsCellContextMenu.swift */; };
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
+		772B71A32ED586540009BEF8 /* SSAppUpdater in Frameworks */ = {isa = PBXBuildFile; productRef = 772B71A22ED586540009BEF8 /* SSAppUpdater */; };
 		773F86152EC607AC00FE9109 /* OwncloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F86112EC607AC00FE9109 /* OwncloudApiClient.swift */; };
 		773F86162EC607AC00FE9109 /* OwncloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F86122EC607AC00FE9109 /* OwncloudEndpoints.swift */; };
 		773F86172EC607AC00FE9109 /* OwncloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F86132EC607AC00FE9109 /* OwncloudHelper.swift */; };
@@ -1390,10 +1391,50 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VDRStartFillingStatus; sourceTree = "<group>"; };
-		E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VDRFillingStatus; sourceTree = "<group>"; };
-		E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SwiftUIViewModifiers; sourceTree = "<group>"; };
-		E8C5FD8F2D343489004112D3 /* Protocols */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Protocols; sourceTree = "<group>"; };
+		E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = VDRStartFillingStatus;
+			sourceTree = "<group>";
+		};
+		E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = VDRFillingStatus;
+			sourceTree = "<group>";
+		};
+		E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = SwiftUIViewModifiers;
+			sourceTree = "<group>";
+		};
+		E8C5FD8F2D343489004112D3 /* Protocols */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1409,6 +1450,7 @@
 				FC87B4682BBBEBD900DBDBDD /* DocumentEditor in Frameworks */,
 				FC7082242812E2260057FCD2 /* CloudKit.framework in Frameworks */,
 				FC87B46C2BBBEBD900DBDBDD /* SpreadsheetEditor in Frameworks */,
+				772B71A32ED586540009BEF8 /* SSAppUpdater in Frameworks */,
 				FC6A757029915CE10056262F /* Pulse in Frameworks */,
 				FC87B4662BBBEBD900DBDBDD /* DocumentConverter in Frameworks */,
 				86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */,
@@ -3887,6 +3929,7 @@
 				FC87B4672BBBEBD900DBDBDD /* DocumentEditor */,
 				FC87B4692BBBEBD900DBDBDD /* PresentationEditor */,
 				FC87B46B2BBBEBD900DBDBDD /* SpreadsheetEditor */,
+				772B71A22ED586540009BEF8 /* SSAppUpdater */,
 			);
 			productName = "Documents-Swift";
 			productReference = FC70824C2812E2270057FCD2 /* Documents.app */;
@@ -3931,10 +3974,11 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
-				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
-				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
+				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */,
+				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */,
+				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */,
 				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
+				772B71A12ED586540009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -4127,7 +4171,6 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/ReCaptcha/ReCaptcha.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework",
@@ -4186,7 +4229,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReCaptcha.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRater.framework",
@@ -5137,21 +5179,29 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
+		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
+		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
+		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		772B71A12ED586540009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSAppUpdater.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -5171,6 +5221,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		772B71A22ED586540009BEF8 /* SSAppUpdater */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 772B71A12ED586540009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */;
+			productName = SSAppUpdater;
+		};
 		FC397E372B3591CF00830F43 /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;

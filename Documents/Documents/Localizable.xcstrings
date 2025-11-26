@@ -1016,7 +1016,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "％d 月份"
+                  "value" : "%d 月份"
                 }
               }
             }
@@ -21871,7 +21871,7 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete %#@arg1@ and %2$#@aSmazat %1$#@arg1@ a %#@arg2@rg2@"
+            "value" : "Delete %#@arg1@ and %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {

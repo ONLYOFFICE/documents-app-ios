@@ -2238,7 +2238,7 @@ je povolen</target>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
-        <target state="translated">Delete %1$#@arg1@ and %2$#@aSmazat %1$#@arg1@ a %2$#@arg2@rg2@</target>
+        <target state="translated">Delete %1$#@arg1@ and %2$#@arg2@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.few" xml:space="preserve">

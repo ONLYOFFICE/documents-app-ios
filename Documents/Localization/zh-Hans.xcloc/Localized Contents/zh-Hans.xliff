@@ -1034,7 +1034,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="%d months|==|plural.other" xml:space="preserve">
         <source>%d months</source>
-        <target state="translated">％d 月份</target>
+        <target state="translated">%d 月份</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d selected|==|plural.other" xml:space="preserve">

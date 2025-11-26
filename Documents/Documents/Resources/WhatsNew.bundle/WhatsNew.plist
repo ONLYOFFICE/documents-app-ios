@@ -8,43 +8,43 @@
 	<array>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-ai</string>
-			<key>Title</key>
-			<string>AI assistant in editors</string>
-			<key>Subtitle</key>
-			<string>Connect AI models (OpenAI, Anthropic, Google, Ollama) to receive writing assistance and automate tasks in documents and spreadsheets.</string>
-		</dict>
-		<dict>
-			<key>Image</key>
 			<string>whatsnew-onlyoffice</string>
 			<key>Title</key>
-			<string>Role-based form filling in DocSpace</string>
+			<string>Improved DocSpace experience</string>
 			<key>Subtitle</key>
-			<string>When working with DocSpace 3.1.0 or higher, assign roles to participants for a form-filling process.</string>
+			<string>Benefit from enhanced file sharing and new document sections: Shared with me, Favorites, and Recent.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-text-direction</string>
+			<string>whatsnew-search</string>
 			<key>Title</key>
-			<string>Text direction options</string>
+			<string>Enhanced search in editors</string>
 			<key>Subtitle</key>
-			<string>Switch between Right-to-left and Left-to-right text direction in all editors for better multilingual support.</string>
+			<string>Find text faster in documents, spreadsheets, and presentations with the updated in-editor search.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-file</string>
+			<string>whatsnew-custom-cell</string>
 			<key>Title</key>
-			<string>More file formats supported for viewing</string>
+			<string>More table cell settings</string>
 			<key>Subtitle</key>
-			<string>Open dotx, xlsb, ots, xltx, otp, potx, and ppsx files right from your device.</string>
+			<string>Use extended cell formatting options in document and presentation editors for finer layout control.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-share</string>
+			<string>whatsnew-mentions</string>
 			<key>Title</key>
-			<string>Improved collaboration</string>
+			<string>Mentions in comments</string>
 			<key>Subtitle</key>
-			<string>Enhanced Track changes, user counter, and user avatars in the co-editing list.</string>
+			<string>Tag collaborators in comments to draw their attention and improve teamwork.</string>
+		</dict>
+		<dict>
+			<key>Image</key>
+			<string>whatsnew-sign-in</string>
+			<key>Title</key>
+			<string>oCIS sign-in support</string>
+			<key>Subtitle</key>
+			<string>Connect to your ownCloud environment using oCIS authentication.</string>
 		</dict>
 	</array>
 </dict>

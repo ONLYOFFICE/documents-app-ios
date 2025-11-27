@@ -2744,8 +2744,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%#@arg1@ and %#@arg2@ selected"
+            "state" : "translated",
+            "value" : "已選取 %#@arg1@ 和 %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {
@@ -2755,8 +2755,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg 個資料夾"
                     }
                   }
                 }
@@ -2769,8 +2769,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg 個檔案"
                     }
                   }
                 }
@@ -6673,6 +6673,12 @@
             "state" : "translated",
             "value" : "添加用户或群组"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增使用者或群組"
+          }
         }
       }
     },
@@ -6997,6 +7003,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加到收藏夹"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加到收藏夹"
@@ -7522,6 +7534,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "所有协作空间和房间管理员都可以使用此模板创建房间。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有 DocSpace 和房間管理員都將能夠使用此範本建立房間。"
           }
         }
       }
@@ -9343,6 +9361,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到授权码"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "未找到授权码"
@@ -13298,6 +13322,12 @@
             "state" : "translated",
             "value" : "协作房间"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "协作房间"
+          }
         }
       }
     },
@@ -15895,6 +15925,12 @@
             "state" : "translated",
             "value" : "複製共享連結"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複製共享連結"
+          }
         }
       }
     },
@@ -17041,6 +17077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法删除该版本。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法刪除該版本。"
           }
         }
       }
@@ -19327,6 +19369,12 @@
             "state" : "translated",
             "value" : "基于模板创建房间。所有设置、用户、文件夹和文件都将取自所选的房间模板。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "根據範本建立房間。所有設定、使用者、資料夾和檔案都將沿用選取的房間範本。"
+          }
         }
       }
     },
@@ -20293,6 +20341,12 @@
             "state" : "translated",
             "value" : "当前文件将保存在版本历史记录中。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前的檔案將儲存於版本記錄中。"
+          }
         }
       }
     },
@@ -20552,6 +20606,12 @@
             "state" : "translated",
             "value" : "所选文件的自定义过滤器\n已禁用"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已停用所選檔案的自訂篩選"
+          }
         }
       }
     },
@@ -20627,6 +20687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "所选文件的自定义过滤器\n已启用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已啟用所選檔案的自訂篩選"
           }
         }
       }
@@ -20778,6 +20844,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义房间"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "自定义房间"
@@ -22470,8 +22542,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete %#@arg1@ and %#@arg2@"
+            "state" : "translated",
+            "value" : "刪除 %#@arg1@ 和 %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {
@@ -22481,8 +22553,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg 個資料夾"
                     }
                   }
                 }
@@ -22495,8 +22567,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg 個檔案"
                     }
                   }
                 }
@@ -23118,6 +23190,12 @@
             "state" : "translated",
             "value" : "删除模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除範本"
+          }
         }
       }
     },
@@ -23200,6 +23278,12 @@
             "state" : "translated",
             "value" : "删除此项？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除此項目？"
+          }
         }
       }
     },
@@ -23281,6 +23365,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除版本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除版本"
           }
         }
       }
@@ -23896,6 +23986,12 @@
             "state" : "translated",
             "value" : "主管"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "總監"
+          }
         }
       }
     },
@@ -23977,6 +24073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "禁用自定义过滤器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用自訂篩選"
           }
         }
       }
@@ -24325,6 +24427,12 @@
             "state" : "translated",
             "value" : "您确实要删除模板房间 %@ 吗？该模板无法恢复。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您確定要刪除範本房間 %@ 嗎？範本刪除後無法還原。"
+          }
         }
       }
     },
@@ -24664,6 +24772,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "仅限协作空间用户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅限 Docspace 用戶"
           }
         }
       }
@@ -25365,6 +25479,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "草稿"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "草稿"
@@ -26514,6 +26634,12 @@
             "state" : "translated",
             "value" : "编辑模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編輯範本"
+          }
         }
       }
     },
@@ -27126,6 +27252,12 @@
             "state" : "translated",
             "value" : "员工"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "員工"
+          }
         }
       }
     },
@@ -27471,6 +27603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "启用自定义过滤器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用自訂篩選"
           }
         }
       }
@@ -28991,6 +29129,12 @@
             "state" : "translated",
             "value" : "退出不保存？\n您已对索引进行了更改。如果继续退出，您的更改将不会被应用。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不儲存並離開？「您已在索引中進行變更。若不儲存直接繼續，這些變更將不會套用。」"
+          }
         }
       }
     },
@@ -29069,6 +29213,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。"
@@ -30637,6 +30787,12 @@
             "state" : "translated",
             "value" : "用户凭据验证失败。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户凭据验证失败。"
+          }
         }
       }
     },
@@ -30712,6 +30868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法打开编辑器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法開啟編輯器"
           }
         }
       }
@@ -30883,6 +31045,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法打开编辑器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法開啟編輯器"
           }
         }
       }
@@ -32470,6 +32638,12 @@
             "state" : "translated",
             "value" : "填写状态"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "填寫狀態"
+          }
         }
       }
     },
@@ -32553,6 +32727,12 @@
             "state" : "translated",
             "value" : "填写状态"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "填寫狀態"
+          }
         }
       }
     },
@@ -32634,6 +32814,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "填写被终止"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "填寫已由以下人員停止："
           }
         }
       }
@@ -33416,6 +33602,12 @@
             "state" : "translated",
             "value" : "表单已完成"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表單已定稿"
+          }
         }
       }
     },
@@ -33491,6 +33683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "表单已准备填写"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表單已準備就緒，可在房間中填寫"
           }
         }
       }
@@ -33925,6 +34123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "从模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自範本"
           }
         }
       }
@@ -36564,6 +36768,12 @@
             "state" : "translated",
             "value" : "进行中"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進行中"
+          }
         }
       }
     },
@@ -36639,6 +36849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在此面板中，您可以监控\n您参与的或\n组织的表单完成情况"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度"
           }
         }
       }
@@ -36723,6 +36939,12 @@
             "state" : "translated",
             "value" : "在此面板中，您可以监控您参与的或组织完成的表单完成情况"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度"
+          }
         }
       }
     },
@@ -36804,6 +37026,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在此面板中，您可以监控您参与的或组织完成的表单完成情况"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度"
           }
         }
       }
@@ -37657,6 +37885,12 @@
             "state" : "translated",
             "value" : "服务器 URL 无效"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器 URL 无效"
+          }
         }
       }
     },
@@ -37805,6 +38039,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无效的URL"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "无效的URL"
@@ -38419,6 +38659,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "该文件将被不可恢复地删除。此操作无法撤销。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該項目將被永久刪除。此動作無法復原。"
           }
         }
       }
@@ -40869,6 +41115,12 @@
             "state" : "translated",
             "value" : "管理"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理"
+          }
         }
       }
     },
@@ -42033,6 +42285,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "成员"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成員"
           }
         }
       }
@@ -43523,6 +43781,12 @@
             "state" : "translated",
             "value" : "网络错误"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网络错误"
+          }
         }
       }
     },
@@ -44222,6 +44486,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "邀请新访客加入房间后，系统会将他们添加到此处。您可以分享您的访客，并将其他人邀请的访客添加到您的列表中。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成員"
           }
         }
       }
@@ -45009,6 +45279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "尚未添加任何访客"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未新增訪客"
           }
         }
       }
@@ -46235,6 +46511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此处没有模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這裡還沒有範本"
           }
         }
       }
@@ -47643,6 +47925,12 @@
             "state" : "translated",
             "value" : "此处仅显示协作空间和房间管理员"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這裡僅顯示 DocSpace 和房間管理員"
+          }
         }
       }
     },
@@ -47724,6 +48012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "只有来自选定群组的协作空间和房间管理员才能够使用此模板创建房间。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅限所選群組中的 DocSpace 和房間管理員能使用此範本建立房間。"
           }
         }
       }
@@ -48673,6 +48967,12 @@
             "state" : "translated",
             "value" : "开放位置"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开放位置"
+          }
         }
       }
     },
@@ -48754,6 +49054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开表单填写"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已開啟表單以進行填寫"
           }
         }
       }
@@ -50427,6 +50733,12 @@
             "state" : "translated",
             "value" : "PDF 文档"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF 文件"
+          }
         }
       }
     },
@@ -50508,6 +50820,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PDF 表单"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF 表單"
           }
         }
       }
@@ -51281,6 +51599,12 @@
             "state" : "translated",
             "value" : "请输入服务器网址"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请输入服务器网址"
+          }
         }
       }
     },
@@ -51885,6 +52209,12 @@
             "state" : "translated",
             "value" : "请重试。\n\n如果问题仍然存在，请联系我们并提及此错误代码：Linkedin - %@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請重試。如果問題持續發生，請聯絡我們並提供此錯誤代碼：Linkedin - %@"
+          }
         }
       }
     },
@@ -52224,6 +52554,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "请重试。\n\n如果问题仍然存在，请联系我们并提及此错误代码：Zoom - %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請重試。如果問題持續發生，請聯絡我們並提供此錯誤代碼：Zoom - %@"
           }
         }
       }
@@ -52578,6 +52914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "高级用户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高級用戶"
           }
         }
       }
@@ -53103,6 +53445,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "流程详细信息"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "程序詳細資訊"
           }
         }
       }
@@ -53696,6 +54044,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提供对文件夹的访问权限并设置权限级别。"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "提供对文件夹的访问权限并设置权限级别。"
@@ -54908,6 +55262,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已从喜爱内容中删除"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "已从喜爱内容中删除"
@@ -56319,6 +56679,12 @@
             "state" : "translated",
             "value" : "恢复此版本吗？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "還原此版本？"
+          }
         }
       }
     },
@@ -56400,6 +56766,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "恢复"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已還原"
           }
         }
       }
@@ -57017,6 +57389,12 @@
             "state" : "translated",
             "value" : "角色描述"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角色描述"
+          }
         }
       }
     },
@@ -57187,6 +57565,12 @@
             "state" : "translated",
             "value" : "表单中的角色："
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表單中的角色："
+          }
         }
       }
     },
@@ -57356,6 +57740,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "房间已创建"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "房間已建立"
           }
         }
       }
@@ -58146,6 +58536,12 @@
             "state" : "translated",
             "value" : "另存为模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "另存為範本"
+          }
         }
       }
     },
@@ -58492,6 +58888,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此设备不支持扫描"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此裝置不支援掃描"
           }
         }
       }
@@ -59281,6 +59683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择成员"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選取成員"
           }
         }
       }
@@ -60402,6 +60810,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法连接服务器"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法连接服务器"
@@ -61990,6 +62404,12 @@
             "state" : "translated",
             "value" : "显示版本历史记录"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示版本記錄"
+          }
         }
       }
     },
@@ -63310,6 +63730,12 @@
             "state" : "translated",
             "value" : "开始填写"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始填寫"
+          }
         }
       }
     },
@@ -63370,6 +63796,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态无效"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "状态无效"
@@ -63457,6 +63889,12 @@
             "state" : "translated",
             "value" : "停止填写"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止填寫"
+          }
         }
       }
     },
@@ -63536,6 +63974,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已停止"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "已停止"
@@ -63885,6 +64329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已提交他们的部分。表格已发送给下一个角色。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已提交其部分。表單已傳送給下一個角色。"
           }
         }
       }
@@ -64408,6 +64858,12 @@
             "state" : "translated",
             "value" : "标签将应用于基于此模板创建的房间。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "標籤將套用到根據此範本所建立的房間。"
+          }
         }
       }
     },
@@ -64844,6 +65300,12 @@
             "state" : "translated",
             "value" : "模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本"
+          }
         }
       }
     },
@@ -64925,6 +65387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "模板 %@ 已保存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本 %@ 已儲存"
           }
         }
       }
@@ -65008,6 +65476,12 @@
             "state" : "translated",
             "value" : "模板可供所有人使用"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本可供所有人使用"
+          }
         }
       }
     },
@@ -65089,6 +65563,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本"
           }
         }
       }
@@ -65614,6 +66094,12 @@
             "state" : "translated",
             "value" : "添加的管理员将能够使用此模板创建房间。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增的管理員將能夠使用此範本建立房間。"
+          }
         }
       }
     },
@@ -65695,6 +66181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "客户端和服务器版本不兼容。您只能在查看模式下打开文档"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用戶端與伺服器版本不相容。您只能以檢視模式開啟文件"
           }
         }
       }
@@ -66658,6 +67150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已启用自定义过滤器的文件链接已成功复制到剪贴板。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用自訂篩選的檔案連結已成功複製到剪貼簿。"
           }
         }
       }
@@ -68407,6 +68905,12 @@
             "state" : "translated",
             "value" : "没有访客"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有訪客"
+          }
         }
       }
     },
@@ -68482,6 +68986,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有可添加的访客"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有可新增的訪客"
           }
         }
       }
@@ -68647,6 +69157,12 @@
             "state" : "translated",
             "value" : "没有用户"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有使用者"
+          }
         }
       }
     },
@@ -68722,6 +69238,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有可添加的用户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有可新增的使用者"
           }
         }
       }
@@ -72591,6 +73113,12 @@
             "state" : "translated",
             "value" : "未知状态"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知狀態"
+          }
         }
       }
     },
@@ -75139,6 +75667,12 @@
             "state" : "translated",
             "value" : "版本 ％@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本 %@"
+          }
         }
       }
     },
@@ -75220,6 +75754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本历史记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本記錄"
           }
         }
       }
@@ -76963,6 +77503,12 @@
             "state" : "translated",
             "value" : "谁有权限"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "谁有权限"
+          }
         }
       }
     },
@@ -77024,6 +77570,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在“设备上”选项卡中离线处理文档。\n创建的文件之后可以上传到在线门户，然后从任何其他设备访问。"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "在“设备上”选项卡中离线处理文档。\n创建的文件之后可以上传到在线门户，然后从任何其他设备访问。"
@@ -77640,6 +78192,12 @@
             "state" : "translated",
             "value" : "您即将删除一个文件版本。删除后将无法再查看或恢复它。您确定要继续吗？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您即將刪除檔案版本。刪除後將無法再查看或還原。確定要繼續嗎？"
+          }
         }
       }
     },
@@ -77810,6 +78368,12 @@
             "state" : "translated",
             "value" : "您即将删除此文件。该文件将在 30 天后永久删除。您确定要继续吗？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您即將刪除此檔案。該檔案將在 30 天後永久刪除。您確定要繼續嗎？"
+          }
         }
       }
     },
@@ -77891,6 +78455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您即将删除此文件夹。该文件夹将在 30 天后永久删除。您确定要继续吗？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您即將刪除此資料夾。該資料夾將在 30 天後永久刪除。您確定要繼續嗎？"
           }
         }
       }
@@ -78143,6 +78713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您被分配作为第一个角色填写表单。\n通知已发送到您的邮箱，您可以立即开始填写\n或复制填写链接稍后填写。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您被分配為第一個填寫此表格的人。\n一封通知郵件已寄至您的信箱。您可以立即開始填寫，\n或複製填寫連結稍後再填寫。"
           }
         }
       }
@@ -78660,6 +79236,12 @@
             "state" : "translated",
             "value" : "您可以在“房间”部分中创建\n房间模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以從房間區段中的房間建立範本"
+          }
         }
       }
     },
@@ -78741,6 +79323,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您可以在“房间”部分中从房间创建模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以從房間區段中的房間建立範本"
           }
         }
       }
@@ -78892,6 +79480,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您无法禁用下载和复制数据的限制，因为此设置在房间级别对所有文件都强制执行。"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "您无法禁用下载和复制数据的限制，因为此设置在房间级别对所有文件都强制执行。"
@@ -79770,6 +80364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "轮到您了"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輪到您了"
           }
         }
       }

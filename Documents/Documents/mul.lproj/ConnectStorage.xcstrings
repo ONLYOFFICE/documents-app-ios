@@ -70,6 +70,12 @@
             "state" : "translated",
             "value" : "下一步"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一个"
+          }
         }
       }
     },
@@ -526,6 +532,12 @@
             "state" : "translated",
             "value" : "服务器"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器"
+          }
         }
       }
     },
@@ -690,6 +702,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example.com"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "example.com"

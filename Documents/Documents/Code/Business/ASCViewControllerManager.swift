@@ -646,7 +646,7 @@ class ASCViewControllerManager {
             }
         }
 
-        delay(seconds: 0.3) {
+        DispatchQueue.main.debounce(interval: 0.3) {
             processAndOpenFile()
         }
     }

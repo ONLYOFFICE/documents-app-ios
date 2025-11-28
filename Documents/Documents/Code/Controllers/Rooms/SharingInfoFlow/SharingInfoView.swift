@@ -84,7 +84,7 @@ struct SharingInfoView: View {
             .alert(isPresented: $viewModel.isDeleteAlertDisplaying, content: deleteAlert)
         }
     }
-    
+
     private var createLink: some View {
         ASCCreateLinkCellView(
             model: ASCCreateLinkCellModel(
@@ -100,7 +100,7 @@ struct SharingInfoView: View {
             )
         )
     }
-    
+
     @ViewBuilder
     private var linkRows: some View {
         if #available(iOS 15.0, *) {
@@ -373,15 +373,15 @@ private struct NavigateToAddUsersModifier: ViewModifier {
                     }
                 }
             }
-            
+
         case let .file(file):
             sheet(content: content, entity: file)
-            
+
         case let .folder(folder):
             sheet(content: content, entity: folder)
         }
     }
-    
+
     @ViewBuilder
     private func sheet(content: Content, entity: ASCEntity) -> some View {
         content.sheet(isPresented: $isDisplaying) {

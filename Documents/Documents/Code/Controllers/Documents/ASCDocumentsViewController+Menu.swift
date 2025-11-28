@@ -25,7 +25,7 @@ extension ASCDocumentsViewController {
         var shareActions: [UIMenuElement] = []
         var middleActions: [UIMenuElement] = []
         var bottomActions: [UIMenuElement] = []
-        
+
         if actions.contains(.select) {
             topActions.append(
                 UIAction(
@@ -776,7 +776,7 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
+
         /// Archive
 
         if actions.contains(.archive) {
@@ -808,8 +808,8 @@ extension ASCDocumentsViewController {
 
         if actions.contains(.delete) {
             let title: String = folder.isRoom
-            ? NSLocalizedString("Delete room", comment: "Button title")
-            : NSLocalizedString("Delete", comment: "Button title")
+                ? NSLocalizedString("Delete room", comment: "Button title")
+                : NSLocalizedString("Delete", comment: "Button title")
             transferActions.append(
                 UIAction(
                     title: title,
@@ -1416,8 +1416,8 @@ extension ASCDocumentsViewController {
 
         if actions.contains(.delete) {
             let title: String = folder.isRoom
-            ? NSLocalizedString("Delete room", comment: "Button title")
-            : NSLocalizedString("Delete", comment: "Button title")
+                ? NSLocalizedString("Delete room", comment: "Button title")
+                : NSLocalizedString("Delete", comment: "Button title")
             actionAlertController.addAction(
                 UIAlertAction(
                     title: title,

@@ -129,9 +129,10 @@ class ASCFile: ASCEntity {
         version <- map["version"]
         viewUrl <- map["viewUrl"]
         webUrl <- map["webUrl"]
-        
+
         if let availableShareRights: ASCShareRights = try? map.value("availableShareRights"),
-           !availableShareRights.isEmpty {
+           !availableShareRights.isEmpty
+        {
             self.availableShareRights = availableShareRights
         }
 

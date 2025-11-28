@@ -31,7 +31,6 @@ struct InviteUsersView: View {
         .navigateToInviteByEmail(isDisplaying: $viewModel.isInviteByEmailsScreenDisplaying, viewModel: viewModel)
         .inviteRightHoldersSheet(isPresented: $viewModel.isAddUsersScreenDisplaying, viewModel: viewModel)
         .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
-    
         .onAppear {
             viewModel.fetchData()
         }
@@ -150,7 +149,7 @@ private extension View {
                 .ignoresSafeArea(edges: .bottom)
         }
     }
-    
+
     func inviteRightHoldersSheet(isPresented: Binding<Bool>, viewModel: InviteUsersViewModel) -> some View {
         sheet(isPresented: isPresented) {
             SharingInviteRightHoldersRepresentable(entity: viewModel.room)

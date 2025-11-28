@@ -1494,7 +1494,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canRename {
                 entityActions.insert(.rename)
             }
-            
+
             entityActions.insert(.select)
 
             if canPreview {
@@ -1616,7 +1616,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
             }
-            
+
             if !(folder.rootFolderType == .trash) {
                 entityActions.insert(.open)
             }

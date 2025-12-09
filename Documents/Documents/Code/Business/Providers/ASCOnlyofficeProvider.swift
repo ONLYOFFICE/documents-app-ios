@@ -1447,7 +1447,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isShared = file.rootFolderType == .share
             let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
             let canShowVersion = file.version > 1
-            let canOpenLocation = (file.parent?.rootFolderType == .recent) || (file.parent?.rootFolderType == .favorites)
+            let canOpenLocation = (file.parent?.rootFolderType == .recent) // || (file.parent?.rootFolderType == .favorites)
             let canSetCustomFilter = allowSetCustomFilter(entity: file)
 
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||

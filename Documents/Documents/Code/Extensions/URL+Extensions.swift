@@ -46,4 +46,11 @@ public extension URL {
         }
         return UIImage(cgImage: cgImage)
     }
+
+    func appendingSafePath(_ path: String) -> URL {
+        let trimmedBase = absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        let trimmedPath = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        let fullString = "\(trimmedBase)/\(trimmedPath)"
+        return URL(string: fullString) ?? self
+    }
 }

@@ -2,9 +2,14 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
+      <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
+        <source>Next</source>
+        <target state="translated">Další</target>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
+      </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
         <target state="translated">Další</target>
@@ -25,6 +30,11 @@
         <target state="translated">Přihlásit se</target>
         <note>Class = "UILabel"; text = "Login"; ObjectID = "8QU-S0-L4O";</note>
       </trans-unit>
+      <trans-unit id="CAb-Ol-Sq3.text" xml:space="preserve">
+        <source>Server</source>
+        <target state="translated">Server</target>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "CAb-Ol-Sq3";</note>
+      </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
         <source>Connect Storage</source>
         <target state="translated">Připojit úložiště</target>
@@ -34,6 +44,11 @@
         <source>Password</source>
         <target state="translated">Heslo</target>
         <note>Class = "UILabel"; text = "Password"; ObjectID = "fGf-yk-zsE";</note>
+      </trans-unit>
+      <trans-unit id="gmK-yF-ka4.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <target state="translated">example.com</target>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "gmK-yF-ka4";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
         <source>Required</source>
@@ -74,7 +89,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +177,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +199,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -435,7 +450,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -582,7 +597,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -663,7 +678,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -690,7 +705,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -727,7 +742,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -784,7 +799,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -856,7 +871,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -938,7 +953,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Documents-InfoPlist.xcstrings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -999,7 +1014,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Localizable.xcstrings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1046,26 +1061,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>%d days</source>
         <target state="translated">%d dní</target>
         <note>Days left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.few" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodin</target>
-        <note>Hours left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.many" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodin</target>
-        <note>Hours left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.one" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodina</target>
-        <note>Hours left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.other" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hodin</target>
-        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="%d months|==|plural.few" xml:space="preserve">
         <source>%d months</source>
@@ -1154,47 +1149,47 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$#@arg1@ and %2$#@arg2@ selected</source>
-        <target state="new">%1$#@arg1@ and %2$#@arg2@ selected</target>
+        <target state="translated">%1$#@arg1@ and %2$#@arg2@ selected</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.few" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu složky</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.many" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu složek</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.one" xml:space="preserve">
         <source>%1$lu Folder</source>
-        <target state="new">%1$lu Folder</target>
+        <target state="translated">%1$lu složka</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu složek</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.few" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu soubory</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.many" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu souborů</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.one" xml:space="preserve">
         <source>%2$lu File</source>
-        <target state="new">%2$lu File</target>
+        <target state="translated">%2$lu soubor</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu souborů</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder selected|==|plural.few" xml:space="preserve">
@@ -1276,6 +1271,9 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>A notification has already been sent to the user in the first
  role, prompting them to fill out the form. You can navigate
  to the room or share the filling link with the participants.</source>
+        <target state="translated">Uživateli v první roli již bylo odesláno oznámení s výzvou k vyplnění
+formuláře. Můžete přejít
+do místnosti nebo sdílet odkaz pro vyplnění s účastníky.</target>
         <note/>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1440,6 +1438,11 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target state="translated">Přidání prvků vodoznaku</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Added to favorites" xml:space="preserve">
+        <source>Added to favorites</source>
+        <target state="translated">Přidat do oblíbených</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target state="translated">Další odkazy</target>
@@ -1569,6 +1572,11 @@ Category title</note>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target state="translated">Autor</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Authorization code not found" xml:space="preserve">
+        <source>Authorization code not found</source>
+        <target state="translated">Autorizační kód nenalezen</target>
         <note/>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
@@ -1776,6 +1784,11 @@ Category title</note>
         <target state="translated">Spolupráce</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Collaboration Room" xml:space="preserve">
+        <source>Collaboration Room</source>
+        <target state="translated">Místnost pro spolupráci</target>
+        <note from="auto-generated">Title for a room type that is a collaboration room.</note>
+      </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
         <target state="translated">Místnost pro spolupráci</target>
@@ -1888,6 +1901,11 @@ které používají protokol WebDAV.</target>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
         <target state="translated">Kopírovat odkaz</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target state="translated">Zkopírovat sdílený odkaz</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -2145,6 +2163,11 @@ které používají protokol WebDAV.</target>
         <target state="translated">Vlastní</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Custom Room" xml:space="preserve">
+        <source>Custom Room</source>
+        <target state="translated">Vlastní místnost</target>
+        <note from="auto-generated">Title of a room with a custom type.</note>
+      </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
         <target state="translated">Vlastní filtr</target>
@@ -2215,47 +2238,47 @@ je povolen</target>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
-        <target state="new">Delete %1$#@arg1@ and %2$#@arg2@</target>
+        <target state="translated">Delete %1$#@arg1@ and %2$#@arg2@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.few" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu složky</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.many" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu složek</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.one" xml:space="preserve">
         <source>%1$lu Folder</source>
-        <target state="new">%1$lu Folder</target>
+        <target state="translated">%1$lu složka</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu složek</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.few" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu soubory</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.many" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu souborů</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.one" xml:space="preserve">
         <source>%2$lu File</source>
-        <target state="new">%2$lu File</target>
+        <target state="translated">%2$lu soubor</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu souborů</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder|==|plural.few" xml:space="preserve">
@@ -2307,6 +2330,10 @@ je povolen</target>
         <source>Delete permanently</source>
         <target state="translated">Trvale odstranit</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="Delete room" xml:space="preserve">
+        <source>Delete room</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete template" xml:space="preserve">
         <source>Delete template</source>
@@ -2642,11 +2669,6 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
         <target state="translated">Očekávat uživatele</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Expired" xml:space="preserve">
-        <source>Expired</source>
-        <target state="translated">Vypršela platnost</target>
-        <note>Expiration status</note>
-      </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
         <target state="translated">Platnost vyprší po 7 dnech</target>
@@ -2729,10 +2751,12 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
       </trans-unit>
       <trans-unit id="Failed to verify user credentials." xml:space="preserve">
         <source>Failed to verify user credentials.</source>
+        <target state="translated">Nepodařilo se ověřit přihlašovací údaje uživatele.</target>
         <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
       </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
         <source>Failure to open editor</source>
+        <target state="translated">Nepodařilo se otevřít editor</target>
         <note/>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2832,6 +2856,7 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
       </trans-unit>
       <trans-unit id="Filling status" xml:space="preserve">
         <source>Filling status</source>
+        <target state="translated">Stav plnění</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filling was stopped by" xml:space="preserve">
@@ -2876,6 +2901,7 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
       </trans-unit>
       <trans-unit id="Form Finalized" xml:space="preserve">
         <source>Form Finalized</source>
+        <target state="translated">Formulář dokončen</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
@@ -2885,6 +2911,7 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
       </trans-unit>
       <trans-unit id="Form is ready for filling in room" xml:space="preserve">
         <source>Form is ready for filling in room</source>
+        <target state="translated">Formulář je připraven k vyplnění v místnosti</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -3056,6 +3083,9 @@ Provedli jste změny v indexu. Pokud budete pokračovat bez uložení, tyto změ
         <source>In this panel you can monitor the completion of
  the form in which you participate or in which you
  are the organizer of completion</source>
+        <target state="translated">V tomto panelu můžete sledovat vyplnění
+ formuláře, kterého se účastníte nebo ve kterém
+ jste organizátorem vyplnění</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
@@ -3108,6 +3138,11 @@ Folder order</note>
         <target state="translated">Neplatné údaje</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Invalid URL" xml:space="preserve">
+        <source>Invalid URL</source>
+        <target state="translated">Neplatná URL adresa</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
         <source>Invalid Url</source>
         <target state="translated">Neplatná URL adresa</target>
@@ -3116,6 +3151,11 @@ Folder order</note>
       <trans-unit id="Invalid folder" xml:space="preserve">
         <source>Invalid folder</source>
         <target state="translated">Neplatná složka</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Invalid server URL" xml:space="preserve">
+        <source>Invalid server URL</source>
+        <target state="translated">Neplatná adresa URL serveru</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
@@ -3304,6 +3344,11 @@ Caption of the process</note>
         <target state="translated">Mb</target>
         <note>Measurement unit</note>
       </trans-unit>
+      <trans-unit id="Manage" xml:space="preserve">
+        <source>Manage</source>
+        <target state="translated">Spravovat</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target state="translated">Označit jako oblíbené</target>
@@ -3448,6 +3493,11 @@ If current user name is not set</note>
       <trans-unit id="Name is empty" xml:space="preserve">
         <source>Name is empty</source>
         <target state="translated">Název je prázdný</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Network error" xml:space="preserve">
+        <source>Network error</source>
+        <target state="translated">Chyba sítě</target>
         <note/>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
@@ -3731,6 +3781,11 @@ Share status</note>
         <target state="translated">Otevřít soubor</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Open location" xml:space="preserve">
+        <source>Open location</source>
+        <target state="translated">Otevřít umístění</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
         <target state="translated">Otevřel formulář k vyplnění</target>
@@ -3855,6 +3910,11 @@ Share status</note>
         <source>Pinning</source>
         <target state="translated">Připnutí</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Please enter a server URL" xml:space="preserve">
+        <source>Please enter a server URL</source>
+        <target state="translated">Zadejte prosím URL adresu serveru</target>
+        <note/>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
@@ -4023,6 +4083,11 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target state="translated">Zajistěte přístup k dokumentu a nastavte úrovně oprávnění.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
+        <source>Provide access to the folder and set the permission levels.</source>
+        <target state="translated">Poskytněte přístup ke složce a nastavte úrovně oprávnění.</target>
+        <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target state="translated">Zajistěte obecný přístup k dokumentu výběrem požadované úrovně oprávnění.</target>
@@ -4068,11 +4133,6 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target state="translated">Obnova</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Regenerate link" xml:space="preserve">
-        <source>Regenerate link</source>
-        <target state="translated">Přegenerovat odkaz</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target state="translated">Registrace</target>
@@ -4093,9 +4153,9 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <target state="translated">Odstranění z oblíbených položek</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Remove link" xml:space="preserve">
-        <source>Remove link</source>
-        <target state="translated">Odstranit odkaz</target>
+      <trans-unit id="Removed from favorites" xml:space="preserve">
+        <source>Removed from favorites</source>
+        <target state="translated">Odstraněno z oblíbených</target>
         <note/>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
@@ -4197,6 +4257,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <source>Reviewer</source>
         <target state="translated">Recenzent</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Revoke" xml:space="preserve">
+        <source>Revoke</source>
+        <note/>
       </trans-unit>
       <trans-unit id="Revoke link" xml:space="preserve">
         <source>Revoke link</source>
@@ -4415,6 +4479,11 @@ Navigation bar button title</note>
         <target state="translated">Odesílání</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Server is unreachable" xml:space="preserve">
+        <source>Server is unreachable</source>
+        <target state="translated">Server je nedostupný</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
         <target state="translated">Nastavení oblíbených se nezdařilo.</target>
@@ -4438,7 +4507,7 @@ Navigation bar button title</note>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
         <target state="translated">Sdílet</target>
-        <note/>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
@@ -4463,11 +4532,6 @@ Navigation bar button title</note>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target state="translated">Sdílený přístup</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Shared link" xml:space="preserve">
-        <source>Shared link</source>
-        <target state="translated">Sdílený odkaz</target>
         <note/>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
@@ -4580,6 +4644,11 @@ Navigation bar button title</note>
         <target state="translated">Začněte plnit</target>
         <note>Start filling form Button title</note>
       </trans-unit>
+      <trans-unit id="State is invalid" xml:space="preserve">
+        <source>State is invalid</source>
+        <target state="translated">Stát je neplatný</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
         <source>Stop filling</source>
         <target state="translated">Zastavit plnění</target>
@@ -4627,6 +4696,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="TB" xml:space="preserve">
         <source>TB</source>
+        <target state="translated">Tb</target>
         <note>Measurement unit</note>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
@@ -4884,10 +4954,12 @@ schránky.</target>
       </trans-unit>
       <trans-unit id="There are no guests" xml:space="preserve">
         <source>There are no guests</source>
+        <target state="translated">Nejsou tu žádní hosté</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <target state="translated">Nejsou žádní hosté k přidání</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
@@ -4897,10 +4969,12 @@ schránky.</target>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
         <source>There are no users</source>
+        <target state="translated">Nejsou zde žádní uživatelé</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users to add" xml:space="preserve">
         <source>There are no users to add</source>
+        <target state="translated">Nejsou žádní uživatelé k přidání</target>
         <note/>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5378,13 +5452,16 @@ Přetáhněte prstem a zjistěte více o aplikaci.</target>
         <target state="translated">Novinky</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
-        <source>Work with documents offline.
-Created files can later be uploaded to online portal and
-then accessed from any other device.</source>
-        <target state="translated">Pracujte s dokumenty offline.
-Vytvořené soubory mohou být později nahrány do online portálu.
-Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
+      <trans-unit id="Who has access" xml:space="preserve">
+        <source>Who has access</source>
+        <target state="translated">Kdo má přístup</target>
+        <note from="auto-generated">A section header that reads "Who has access".</note>
+      </trans-unit>
+      <trans-unit id="Work with docs offline in the On device tab.&#10;Created files can later be uploaded to online portal and then accessed from any other device." xml:space="preserve">
+        <source>Work with docs offline in the On device tab.
+Created files can later be uploaded to online portal and then accessed from any other device.</source>
+        <target state="translated">Pracujte s dokumenty offline na kartě Na zařízení.
+Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with office files" xml:space="preserve">
@@ -5451,6 +5528,9 @@ Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
         <source>You are assigned to fill out the form as the first role. A
  notification has been sent to your email. You can start filling
  it out now or copy the filling link and return later.</source>
+        <target state="translated">Jako první jste pověřeni vyplněním formuláře.
+Na váš e-mail bylo odesláno oznámení. Můžete začít s vyplňováním
+nyní nebo zkopírovat odkaz pro vyplnění a vrátit se později.</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5489,6 +5569,11 @@ můžete vytvořit v sekci Místnost</target>
         <source>You can create a template from a room in the Room section</source>
         <target state="translated">Šablonu z místnosti si můžete vytvořit v sekci Místnost</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
+        <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <target state="translated">Omezení stahování a kopírování dat nelze zakázat, protože toto nastavení se vynucuje na úrovni místnosti pro všechny soubory.</target>
+        <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
@@ -5700,7 +5785,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

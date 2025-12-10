@@ -33,6 +33,7 @@ class ASCFolder: ASCEntity {
     var rootFolderType: ASCFolderType = .default
     var updated: Date?
     var updatedBy: ASCUser?
+    var isFavorite: Bool?
     var created: Date?
     var createdBy: ASCUser?
     var new: Int = 0
@@ -43,6 +44,7 @@ class ASCFolder: ASCEntity {
     var logo: ASCFolderLogo?
     var tags: [String]?
     var security: ASCFolderSecurity = .init()
+    var availableShareRights: ASCShareRights = ASCShareRights.defaults
     var indexing: Bool = false
     var denyDownload: Bool = false
     var lifetime: LifeTime?
@@ -86,6 +88,7 @@ class ASCFolder: ASCEntity {
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]
+        isFavorite <- map["isFavorite"]
         created <- (map["created"], ASCDateTransform())
         createdBy <- map["createdBy"]
         new <- map["new"]
@@ -94,6 +97,7 @@ class ASCFolder: ASCEntity {
         tags <- map["tags"]
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]
+        availableShareRights <- map["availableShareRights"]
         indexing <- map["indexing"]
         denyDownload <- map["denyDownload"]
         lifetime <- map["lifetime"]
@@ -126,6 +130,7 @@ class ASCFolder: ASCEntity {
             folder.rootFolderType = rootFolderType
             folder.updated = updated
             folder.updatedBy = updatedBy
+            folder.isFavorite = isFavorite
             folder.created = created
             folder.createdBy = createdBy
             folder.new = new

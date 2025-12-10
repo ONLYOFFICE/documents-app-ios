@@ -158,7 +158,7 @@ struct RoleRow: View {
                     .font(.subheadline)
                     .foregroundColor(.primary)
                 if let accessValue = role.appliedUser?.userType.description {
-                    Text(accessValue)
+                    Text(verbatim: accessValue)
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }
@@ -178,9 +178,9 @@ struct RoleRow: View {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains(String.defaultUserPhotoSize),
-               let url = URL(string: portal + string)
+               let url = URL(string: portal)?.appendingSafePath(string)
             {
-                KFImage(url)
+                KFOnlyOfficeProviderImageView(url: url)
                     .resizable()
                     .frame(width: .imageWidth, height: .imageHeight)
                     .cornerRadius(.imageCornerRadius)

@@ -2,9 +2,14 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
+      <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
+        <source>Next</source>
+        <target state="new">Next</target>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
+      </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
         <target state="new">Next</target>
@@ -25,6 +30,11 @@
         <target state="new">Login</target>
         <note>Class = "UILabel"; text = "Login"; ObjectID = "8QU-S0-L4O";</note>
       </trans-unit>
+      <trans-unit id="CAb-Ol-Sq3.text" xml:space="preserve">
+        <source>Server</source>
+        <target state="new">Server</target>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "CAb-Ol-Sq3";</note>
+      </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
         <source>Connect Storage</source>
         <target state="new">Connect Storage</target>
@@ -34,6 +44,11 @@
         <source>Password</source>
         <target state="new">Password</target>
         <note>Class = "UILabel"; text = "Password"; ObjectID = "fGf-yk-zsE";</note>
+      </trans-unit>
+      <trans-unit id="gmK-yF-ka4.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <target state="new">example.com</target>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "gmK-yF-ka4";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
         <source>Required</source>
@@ -74,7 +89,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +177,7 @@ start using your office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +199,7 @@ start using your office</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -435,7 +450,7 @@ Authentication</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -582,7 +597,7 @@ Authentication</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -663,7 +678,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -690,7 +705,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -727,7 +742,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -784,7 +799,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -856,7 +871,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -938,7 +953,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Documents-InfoPlist.xcstrings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1000,7 +1015,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Localizable.xcstrings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1017,11 +1032,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>%d days</source>
         <target state="new">%d days</target>
         <note>Days left</note>
-      </trans-unit>
-      <trans-unit id="%d hours" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="new">%d hours</target>
-        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="%d months" xml:space="preserve">
         <source>%d months</source>
@@ -1304,6 +1314,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="new">Add watermarks to documents</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Added to favorites" xml:space="preserve">
+        <source>Added to favorites</source>
+        <target state="new">Added to favorites</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target state="new">Additional links</target>
@@ -1433,6 +1448,11 @@ Category title</note>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target state="new">Author</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Authorization code not found" xml:space="preserve">
+        <source>Authorization code not found</source>
+        <target state="new">Authorization code not found</target>
         <note/>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
@@ -1640,6 +1660,11 @@ Category title</note>
         <target state="new">Collaboration</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Collaboration Room" xml:space="preserve">
+        <source>Collaboration Room</source>
+        <target state="new">Collaboration Room</target>
+        <note from="auto-generated">Title for a room type that is a collaboration room.</note>
+      </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
         <target state="new">Collaboration room</target>
@@ -1752,6 +1777,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
         <target state="new">Copy link</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target state="new">Copy shared link</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -2009,6 +2039,11 @@ others which use WebDAV protocol.</target>
         <target state="new">Custom</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Custom Room" xml:space="preserve">
+        <source>Custom Room</source>
+        <target state="new">Custom Room</target>
+        <note from="auto-generated">Title of a room with a custom type.</note>
+      </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
         <target state="new">Custom filter</target>
@@ -2121,6 +2156,11 @@ enabled</target>
         <source>Delete permanently</source>
         <target state="new">Delete permanently</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="Delete room" xml:space="preserve">
+        <source>Delete room</source>
+        <target state="new">Delete room</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete template" xml:space="preserve">
         <source>Delete template</source>
@@ -2454,11 +2494,6 @@ You have made changes in the index. If you proceed without saving, those changes
         <source>Expect users</source>
         <target state="new">Expect users</target>
         <note/>
-      </trans-unit>
-      <trans-unit id="Expired" xml:space="preserve">
-        <source>Expired</source>
-        <target state="new">Expired</target>
-        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2929,6 +2964,11 @@ Folder order</note>
         <target state="new">Invalid Data</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Invalid URL" xml:space="preserve">
+        <source>Invalid URL</source>
+        <target state="new">Invalid URL</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
         <source>Invalid Url</source>
         <target state="new">Invalid Url</target>
@@ -2937,6 +2977,11 @@ Folder order</note>
       <trans-unit id="Invalid folder" xml:space="preserve">
         <source>Invalid folder</source>
         <target state="new">Invalid folder</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Invalid server URL" xml:space="preserve">
+        <source>Invalid server URL</source>
+        <target state="new">Invalid server URL</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
@@ -3126,6 +3171,11 @@ Caption of the process</note>
         <target state="new">MB</target>
         <note>Measurement unit</note>
       </trans-unit>
+      <trans-unit id="Manage" xml:space="preserve">
+        <source>Manage</source>
+        <target state="new">Manage</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target state="new">Mark as Favorite</target>
@@ -3255,6 +3305,11 @@ If current user name is not set</note>
       <trans-unit id="Name is empty" xml:space="preserve">
         <source>Name is empty</source>
         <target state="new">Name is empty</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Network error" xml:space="preserve">
+        <source>Network error</source>
+        <target state="new">Network error</target>
         <note/>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
@@ -3538,6 +3593,11 @@ Share status</note>
         <target state="new">Open file</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Open location" xml:space="preserve">
+        <source>Open location</source>
+        <target state="new">Open location</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
         <target state="new">Opened the form to fill out</target>
@@ -3662,6 +3722,11 @@ Share status</note>
         <source>Pinning</source>
         <target state="new">Pinning</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Please enter a server URL" xml:space="preserve">
+        <source>Please enter a server URL</source>
+        <target state="new">Please enter a server URL</target>
+        <note/>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
@@ -3830,6 +3895,11 @@ Share status</note>
         <target state="new">Provide access to the document and set the permission levels.</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
+        <source>Provide access to the folder and set the permission levels.</source>
+        <target state="new">Provide access to the folder and set the permission levels.</target>
+        <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
+      </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
         <target state="new">Provide general access to the document selecting the required permission level.</target>
@@ -3875,11 +3945,6 @@ Share status</note>
         <target state="new">Recovery</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Regenerate link" xml:space="preserve">
-        <source>Regenerate link</source>
-        <target state="new">Regenerate link</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target state="new">Registration</target>
@@ -3900,9 +3965,9 @@ Share status</note>
         <target state="new">Remove from Favorites</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Remove link" xml:space="preserve">
-        <source>Remove link</source>
-        <target state="new">Remove link</target>
+      <trans-unit id="Removed from favorites" xml:space="preserve">
+        <source>Removed from favorites</source>
+        <target state="new">Removed from favorites</target>
         <note/>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
@@ -4004,6 +4069,11 @@ Share status</note>
         <source>Reviewer</source>
         <target state="new">Reviewer</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Revoke" xml:space="preserve">
+        <source>Revoke</source>
+        <target state="new">Revoke</target>
+        <note/>
       </trans-unit>
       <trans-unit id="Revoke link" xml:space="preserve">
         <source>Revoke link</source>
@@ -4222,6 +4292,11 @@ Navigation bar button title</note>
         <target state="new">Sending</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Server is unreachable" xml:space="preserve">
+        <source>Server is unreachable</source>
+        <target state="new">Server is unreachable</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
         <target state="new">Set favorite failed.</target>
@@ -4245,7 +4320,7 @@ Navigation bar button title</note>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
         <target state="new">Share</target>
-        <note/>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
@@ -4270,11 +4345,6 @@ Navigation bar button title</note>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target state="new">Shared access</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Shared link" xml:space="preserve">
-        <source>Shared link</source>
-        <target state="new">Shared link</target>
         <note/>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
@@ -4386,6 +4456,11 @@ Navigation bar button title</note>
         <source>Start filling</source>
         <target state="new">Start filling</target>
         <note>Start filling form Button title</note>
+      </trans-unit>
+      <trans-unit id="State is invalid" xml:space="preserve">
+        <source>State is invalid</source>
+        <target state="new">State is invalid</target>
+        <note/>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
         <source>Stop filling</source>
@@ -5190,13 +5265,16 @@ Swipe to learn more about the app.</target>
         <target state="new">What's New</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
-        <source>Work with documents offline.
-Created files can later be uploaded to online portal and
-then accessed from any other device.</source>
-        <target state="new">Work with documents offline.
-Created files can later be uploaded to online portal and
-then accessed from any other device.</target>
+      <trans-unit id="Who has access" xml:space="preserve">
+        <source>Who has access</source>
+        <target state="new">Who has access</target>
+        <note from="auto-generated">A section header that reads "Who has access".</note>
+      </trans-unit>
+      <trans-unit id="Work with docs offline in the On device tab.&#10;Created files can later be uploaded to online portal and then accessed from any other device." xml:space="preserve">
+        <source>Work with docs offline in the On device tab.
+Created files can later be uploaded to online portal and then accessed from any other device.</source>
+        <target state="new">Work with docs offline in the On device tab.
+Created files can later be uploaded to online portal and then accessed from any other device.</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with office files" xml:space="preserve">
@@ -5304,6 +5382,11 @@ a room in the Room section</target>
         <source>You can create a template from a room in the Room section</source>
         <target state="new">You can create a template from a room in the Room section</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
+        <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <target state="new">You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</target>
+        <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
@@ -5515,7 +5598,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

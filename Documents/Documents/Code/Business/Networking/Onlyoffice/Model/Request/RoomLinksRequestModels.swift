@@ -12,17 +12,18 @@ struct RoomLinksRequestModel: Codable {
     var type: Int
 }
 
-struct RoomLinkRequestModel: Codable {
+struct LinkRequestModel: Codable {
     var linkId: String?
     var title: String
     var access: Int
     var expirationDate: String?
     var linkType: Int
     var denyDownload: Bool
+    var `internal`: Bool = false
     var password: String?
 }
 
-struct RoomRemoveLinkRequestModel: Codable {
+struct RemoveLinkRequestModel: Codable {
     var linkId: String
     var title: String
     var access: Int
@@ -30,7 +31,7 @@ struct RoomRemoveLinkRequestModel: Codable {
     var password: String?
 }
 
-struct RoomRevokeLinkRequestModel: Codable {
+struct RevokeLinkRequestModel: Codable {
     var linkId: String
     var title: String
     var access: Int

@@ -227,19 +227,17 @@ class ASCViewControllerManager {
                 } else {
                     // Import and open file
                     routeOpenLocalFile(info: info)
+                    openFileInfo = nil
                 }
             } else {
                 // Portal
                 routeOpenPortalEntity(info: info)
             }
-
-            openFileInfo = nil
         }
     }
 
     private func routeOpenLocalFile(info: [String: Any], needImport: Bool = true) {
         guard
-            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let url = info["url"] as? URL,
             url.isFileURL,
             !FileManager.default.isUbiquitousItem(at: url)
@@ -349,23 +347,13 @@ class ASCViewControllerManager {
             }
         }
 
-        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
-            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                DispatchQueue.main.debounce(interval: 1.0) {
-                    processAndOpenFile()
-                }
-            }
-        } else {
-            DispatchQueue.main.debounce(interval: 1.0) {
-                processAndOpenFile()
-            }
+        delay(seconds: 1.0) {
+            processAndOpenFile()
         }
     }
 
     private func routeOpeniCloudFile(info: [String: Any]) {
         guard
-            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let url = info["url"] as? URL,
             url.isFileURL,
             FileManager.default.isUbiquitousItem(at: url)
@@ -424,14 +412,7 @@ class ASCViewControllerManager {
             }
         }
 
-        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
-            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                processAndOpenFile()
-            }
-        } else {
-            processAndOpenFile()
-        }
+        processAndOpenFile()
     }
 
     /// Fix model under camelCase. Model for deeplink is wrong
@@ -457,7 +438,6 @@ class ASCViewControllerManager {
         let correctInfo = camelCaseKeys(of: info)
 
         guard
-            let sceneDelegate = UIApplication.shared.firstForegroundScene?.delegate as? ASCSceneDelegate,
             let deepLink = ASCDeepLink(JSON: correctInfo),
             let originalUrl = deepLink.originalUrl,
             let portal = URL(string: originalUrl)?.dropPathAndQuery().absoluteString,
@@ -480,7 +460,7 @@ class ASCViewControllerManager {
             }
 
             /// Prevent open if open editor
-            if ASCEditorManager.shared.isOpenedFile || ASCEditorManager.shared.isOpenedFileFromDeeplink,
+            if ASCEditorManager.shared.isOpenedFile || ASCEditorManager.isOpenedFileFromDeeplink,
                let topWindow = UIApplication.shared.lastKeyWindow,
                let topVC = topWindow.rootViewController?.topMostViewController()
             {
@@ -615,30 +595,28 @@ class ASCViewControllerManager {
                     hud?.hide(animated: true)
 
                     if !folder.id.isEmpty {
-                        delay(seconds: 0.2) {
-                            if let copyFolder = ASCFolder(JSON: folder.toJSON()) {
-                                // Correction root folfer type
-                                if copyFolder.rootFolderType == .bunch {
-                                    copyFolder.title = ASCOnlyofficeCategory.title(of: .projects)
-                                    copyFolder.rootFolderType = .projects
-                                }
+                        if let copyFolder = ASCFolder(JSON: folder.toJSON()) {
+                            // Correction root folder type
+                            if copyFolder.rootFolderType == .bunch {
+                                copyFolder.title = ASCOnlyofficeCategory.title(of: .projects)
+                                copyFolder.rootFolderType = .projects
+                            }
 
-                                if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() {
-                                    let topOpenFolder: ASCFolder? = (topMostViewController as? ASCDocumentsViewController)?.folder
+                            if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+                                let topOpenFolder: ASCFolder? = (topMostViewController as? ASCDocumentsViewController)?.folder
 
-                                    if topOpenFolder != copyFolder {
-                                        ASCViewControllerManager.shared.rootController?.display(
-                                            provider: ASCFileManager.onlyofficeProvider,
-                                            folder: copyFolder
-                                        )
-                                    }
+                                if topOpenFolder != copyFolder {
+                                    ASCViewControllerManager.shared.rootController?.display(
+                                        provider: ASCFileManager.onlyofficeProvider,
+                                        folder: copyFolder
+                                    )
                                 }
                             }
                         }
                     }
 
                     if let file, !file.id.isEmpty {
-                        delay(seconds: 1) {
+                        delay(seconds: 1.0) {
                             if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
                                let documentVC = topMostViewController as? ASCDocumentsViewController
                             {
@@ -668,17 +646,8 @@ class ASCViewControllerManager {
             }
         }
 
-        if sceneDelegate.passcodeLockPresenter.isPasscodePresented {
-            sceneDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                sceneDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                DispatchQueue.main.debounce(interval: 1.0) {
-                    processAndOpenFile()
-                }
-            }
-        } else {
-            DispatchQueue.main.debounce(interval: 1.0) {
-                processAndOpenFile()
-            }
+        DispatchQueue.main.debounce(interval: 0.3) {
+            processAndOpenFile()
         }
     }
 

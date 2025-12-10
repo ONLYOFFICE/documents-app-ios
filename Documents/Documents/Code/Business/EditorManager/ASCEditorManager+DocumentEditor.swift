@@ -78,17 +78,11 @@ extension ASCEditorManager {
 
         if isCoauthoring {
             let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
+            let actualWorkspace = OnlyofficeApiClient.shared.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "11.0") ?? false
+            let isVisitor = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
 
-            /// Enabling the Favorite function only on portals version 11 and higher
-            /// and not DocSpace
-            if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
-               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0"),
-               let user = ASCFileManager.onlyofficeProvider?.user,
-               protalType != .docSpace
-            {
-                configuration.favorite = file.isFavorite && !user.isVisitor
-                configuration.denyDownload = file.denyDownload
-            }
+            configuration.favorite = (protalType == .docSpace || actualWorkspace) ? file.isFavorite && !isVisitor : nil
+            configuration.denyDownload = file.denyDownload
 
             configuration = cloudEditor(config: configuration, file: file, provider: ASCFileManager.onlyofficeProvider)
         } else {
@@ -219,5 +213,10 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
                 editorFetchAvatars(for: usersId, completion: completion)
             }
         }
+    }
+
+    @MainActor
+    func documentFetchSharedUsers() async -> [[String: Any]] {
+        await fetchSharedUsers()
     }
 }

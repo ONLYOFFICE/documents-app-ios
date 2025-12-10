@@ -22,7 +22,7 @@ final class NetworkManagerSharedSettings: NetworkManagerSharedSettingsProtocol {
     private var networkService = OnlyofficeApiClient.shared
 
     func fetchFileLinks(file: ASCFile, completion: @escaping (Result<[SharedSettingsLinkResponceModel], Error>) -> Void) {
-        networkService.request(OnlyofficeAPI.Endpoints.Files.getLinks(file: file)) { result, error in
+        networkService.request(OnlyofficeAPI.Endpoints.Files.getLinksShort(file: file)) { result, error in
             guard let links = result?.result else {
                 if let error {
                     completion(.failure(error))

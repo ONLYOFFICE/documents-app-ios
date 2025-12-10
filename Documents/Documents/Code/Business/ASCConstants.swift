@@ -186,6 +186,7 @@ class ASCConstants {
         static let oform = "oform"
         static let docxf = "docxf"
         static let pdf = "pdf"
+        static let txt = "txt"
     }
 
     enum Clouds {

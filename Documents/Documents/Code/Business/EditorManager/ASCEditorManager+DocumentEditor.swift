@@ -219,4 +219,8 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
     func documentFetchSharedUsers() async -> [[String: Any]] {
         await fetchSharedUsers()
     }
+
+    func documentEditorNotify(notificationInfo: [String: Any]) {
+        sendEditorNotify(notificationInfo: notificationInfo)
+    }
 }

@@ -103,6 +103,7 @@ enum OnlyofficeAPI {
         static let deleteFileVersion = "api/\(version)/files/fileops/deleteversion"
         static let editComment = "api/\(version)/files/file/%@/comment"
         static let customFilter = "api/\(version)/files/file/%@/customfilter"
+        static let sendEditorNotify = "api/\(version)/files/file/%@/sendeditornotify"
         static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
         static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
 
@@ -526,6 +527,10 @@ enum OnlyofficeAPI {
 
             static func inviteRequestBase(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.shareRoom, folder.id), .put)
+            }
+
+            static func sendEditorNotify(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.sendEditorNotify, file.id), .post)
             }
         }
 

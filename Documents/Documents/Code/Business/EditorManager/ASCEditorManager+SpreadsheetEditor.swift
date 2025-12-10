@@ -174,4 +174,8 @@ extension ASCEditorManager: SpreadsheetEditorViewControllerDelegate {
     func spreadsheetFetchSharedUsers() async -> [[String: Any]] {
         await fetchSharedUsers()
     }
+
+    func spreadsheetEditorNotify(notificationInfo: [String: Any]) {
+        sendEditorNotify(notificationInfo: notificationInfo)
+    }
 }

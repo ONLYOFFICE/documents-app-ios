@@ -1685,6 +1685,16 @@ extension ASCEditorManager {
             return []
         }
     }
+
+    func sendEditorNotify(notificationInfo: [String: Any]) {
+        guard let file = openedFile else { return }
+        guard case let emails as [String] = notificationInfo["emails"], emails.isEmpty == false else { return }
+
+        clientRequest(
+            OnlyofficeAPI.Endpoints.Sharing.sendEditorNotify(file: file),
+            notificationInfo
+        )
+    }
 }
 
 private extension ASCEditorManager {

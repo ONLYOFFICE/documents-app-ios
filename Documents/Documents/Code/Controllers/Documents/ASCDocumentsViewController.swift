@@ -1497,11 +1497,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     // MARK: - Entity actions
 
-    func openFolder(folder: ASCFolder) {
+    func openFolder(folder: ASCFolder, completion: ((ASCDocumentsViewController?) -> Void)? = nil) {
         let transitionToFolderCompletion: (ASCFolder?) -> Void = { [weak navigationController, provider] folder in
             guard let folder else { return }
             let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-            navigationController?.pushViewController(controller, animated: true)
+            navigationController?.pushViewController(controller, animated: true) {
+                completion?(controller)
+            }
 
             controller.provider = provider?.copy()
             controller.provider?.cancel()
@@ -1523,6 +1525,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 case let .success(folder):
                     transitionToFolderCompletion(folder)
                 case let .failure(error):
+                    completion?(nil)
                     UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             })

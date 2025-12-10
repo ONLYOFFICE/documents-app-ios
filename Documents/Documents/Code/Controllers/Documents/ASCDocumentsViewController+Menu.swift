@@ -163,7 +163,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Open location", comment: ""),
                     image: Asset.Images.menuOpenLocation.image
                 ) { [unowned self] _ in
-
+                    openLocation(file: file)
                 }
             )
         }
@@ -1121,7 +1121,7 @@ extension ASCDocumentsViewController {
                     title: NSLocalizedString("Open location", comment: ""),
                     style: .default,
                     handler: { [unowned self] _ in
-
+                        openLocation(file: file)
                     }
                 )
             )

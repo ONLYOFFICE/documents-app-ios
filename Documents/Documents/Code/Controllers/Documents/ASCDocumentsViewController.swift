@@ -2098,6 +2098,24 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
         present(vc, animated: true, completion: nil)
     }
+    
+    func openLocation(file: ASCFile) {
+        if let folderId = file.folderId {
+            let targetFolder = ASCFolder()
+            targetFolder.id = String(folderId)
+            openFolder(folder: targetFolder) { controller in
+                guard let controller else { return }
+                controller.setupSearchFilter(text: file.title)
+            }
+        }
+    }
+    
+    private func setupSearchFilter(text: String) {
+        searchController.isActive = true
+        searchController.searchBar.text = text
+        searchValue = text
+        sendSearchRequest()
+    }
 
     private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
         let hud = MBProgressHUD.showTopMost()

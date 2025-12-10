@@ -7,6 +7,7 @@
     <body>
       <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
         <source>Next</source>
+        <target state="translated">ඊළඟ</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
       </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -31,6 +32,7 @@
       </trans-unit>
       <trans-unit id="CAb-Ol-Sq3.text" xml:space="preserve">
         <source>Server</source>
+        <target state="translated">සේවාදායකය</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "CAb-Ol-Sq3";</note>
       </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
@@ -45,6 +47,7 @@
       </trans-unit>
       <trans-unit id="gmK-yF-ka4.placeholder" xml:space="preserve">
         <source>example.com</source>
+        <target state="translated">example.com</target>
         <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "gmK-yF-ka4";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
@@ -1022,32 +1025,32 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="%d Groups|==|plural.one" xml:space="preserve">
         <source>%d Groups</source>
-        <target state="translated">One Group</target>
+        <target state="translated">කණ්ඩායම් %d</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d Groups|==|plural.other" xml:space="preserve">
         <source>%d Groups</source>
-        <target state="translated">%d Groups</target>
+        <target state="translated">කණ්ඩායම් %d</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d days|==|plural.one" xml:space="preserve">
         <source>%d days</source>
-        <target state="translated">%d day</target>
+        <target state="translated">දින %d</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="%d days|==|plural.other" xml:space="preserve">
         <source>%d days</source>
-        <target state="translated">%d days</target>
+        <target state="translated">දින %d</target>
         <note>Days left</note>
       </trans-unit>
       <trans-unit id="%d months|==|plural.one" xml:space="preserve">
         <source>%d months</source>
-        <target state="translated">%d month</target>
+        <target state="translated">මාස %d</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d months|==|plural.other" xml:space="preserve">
         <source>%d months</source>
-        <target state="translated">%d months</target>
+        <target state="translated">මාස %d</target>
         <note/>
       </trans-unit>
       <trans-unit id="%d selected|==|plural.one" xml:space="preserve">
@@ -1097,17 +1100,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$#@arg1@ and %2$#@arg2@ selected</source>
-        <target state="new">%1$#@arg1@ and %2$#@arg2@ selected</target>
+        <target state="translated">%1$#@arg1@ සහ %2$#@arg2@ තෝරා ගන්නා ලදී</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.one" xml:space="preserve">
         <source>%1$lu Folder</source>
-        <target state="new">%1$lu Folder</target>
+        <target state="translated">ෆෝල්ඩරය %1$lu</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">ෆෝල්ඩර %1$lu</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.one" xml:space="preserve">
@@ -1194,6 +1197,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>A notification has already been sent to the user in the first
  role, prompting them to fill out the form. You can navigate
  to the room or share the filling link with the participants.</source>
+        <target state="translated">පළමු භූමිකාවේ පරිශීලකයාට දැනටමත් දැනුම්දීමක් යවා ඇති අතර,
+එමඟින් පෝරමය පුරවන ලෙස ඔවුන්ව පොළඹවා ඇත. ඔබට කාමරයට සංචාලනය කිරීමට
+හෝ සහභාගිවන්නන් සමඟ පිරවුම් සබැඳිය බෙදා ගැනීමට හැකිය.</target>
         <note/>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -1360,6 +1366,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Added to favorites" xml:space="preserve">
         <source>Added to favorites</source>
+        <target state="translated">ප්‍රියතමයන් වෙත එක් කරන ලදී</target>
         <note/>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
@@ -1485,6 +1492,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Assign to role" xml:space="preserve">
         <source>Assign to role</source>
+        <target state="translated">භූමිකාවට පවරන්න</target>
         <note/>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1494,6 +1502,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Authorization code not found" xml:space="preserve">
         <source>Authorization code not found</source>
+        <target state="translated">අවසර කේතය හමු නොවීය</target>
         <note/>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
@@ -1703,6 +1712,7 @@ Category title</note>
       </trans-unit>
       <trans-unit id="Collaboration Room" xml:space="preserve">
         <source>Collaboration Room</source>
+        <target state="translated">සහයෝගිත්‍ව කාමරය</target>
         <note from="auto-generated">Title for a room type that is a collaboration room.</note>
       </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
@@ -1820,6 +1830,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Copy shared link" xml:space="preserve">
         <source>Copy shared link</source>
+        <target state="translated">බෙදාගත් සබැඳිය පිටපත් කරන්න</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -2079,6 +2090,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Custom Room" xml:space="preserve">
         <source>Custom Room</source>
+        <target state="translated">අභිරුචි කාමරය</target>
         <note from="auto-generated">Title of a room with a custom type.</note>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
@@ -2099,6 +2111,7 @@ disabled</source>
         <source>Custom filter for
 the selected file
 enabled</source>
+        <target state="translated">තෝරාගත් ගොනුව සඳහා අභිරුචි පෙරහන සක්‍රීය කර ඇත</target>
         <note/>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
@@ -2143,17 +2156,17 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
-        <target state="new">Delete %1$#@arg1@ and %2$#@arg2@</target>
+        <target state="translated">%1$#@arg1@ සහ %2$#@arg2@ මකන්න</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.one" xml:space="preserve">
         <source>%1$lu Folder</source>
-        <target state="new">%1$lu Folder</target>
+        <target state="translated">ෆෝල්ඩරය %1$lu</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">ෆෝල්ඩර %1$lu</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.one" xml:space="preserve">
@@ -2307,6 +2320,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Docspace user only" xml:space="preserve">
         <source>Docspace user only</source>
+        <target state="translated">DocSpace පරිශීලකයාට පමණි</target>
         <note/>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2533,6 +2547,8 @@ Operation completed</note>
       <trans-unit id="Exit without saving?&#10;You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving?
 You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">සුරැකීමකින් තොරව පිටවන්නද?
+ඔබ දර්ශකයේ වෙනස්කම් සිදු කර ඇත. සුරැකීමකින් තොරව ඔබ ඉදිරියට ගියහොත්, එම වෙනස්කම් අදාළ නොවේ.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
@@ -2627,10 +2643,12 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Failed to verify user credentials." xml:space="preserve">
         <source>Failed to verify user credentials.</source>
+        <target state="translated">පරිශීලක අක්තපත්‍ර සත්‍යාපනය කිරීමට අසමත් විය.</target>
         <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
       </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
         <source>Failure to open editor</source>
+        <target state="translated">සංස්කාරකය විවෘත කිරීමට අපොහොසත් වීම</target>
         <note/>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2640,6 +2658,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
         <source>Faliure to open editor</source>
+        <target state="translated">සංස්කාරකය විවෘත කිරීමට අපොහොසත් වීම</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2774,6 +2793,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form Finalized" xml:space="preserve">
         <source>Form Finalized</source>
+        <target state="translated">පෝරමය අවසන් කරන ලදී</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
@@ -2783,6 +2803,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form is ready for filling in room" xml:space="preserve">
         <source>Form is ready for filling in room</source>
+        <target state="translated">කාමරයේ පිරවීම සඳහා පෝරමය සූදානම්</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -2812,6 +2833,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="From templates" xml:space="preserve">
         <source>From templates</source>
+        <target state="translated">සැකිලි වලින්</target>
         <note/>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2953,6 +2975,7 @@ You have made changes in the index. If you proceed without saving, those changes
         <source>In this panel you can monitor the completion of
  the form in which you participate or in which you
  are the organizer of completion</source>
+        <target state="translated">මෙම පැනලය තුළ ඔබ සහභාගී වන හෝ ඔබ සම්පූර්ණ කිරීමේ සංවිධායක වන පෝරමය සම්පූර්ණ කිරීම නිරීක්ෂණය කළ හැකිය</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
@@ -2976,6 +2999,7 @@ are the organizer of completion</source>
       </trans-unit>
       <trans-unit id="Index" xml:space="preserve">
         <source>Index</source>
+        <target state="translated">දර්ශකය</target>
         <note>File order
 Folder order</note>
       </trans-unit>
@@ -3006,6 +3030,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invalid URL" xml:space="preserve">
         <source>Invalid URL</source>
+        <target state="translated">අවලංගු URL එකක්</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
@@ -3020,6 +3045,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="Invalid server URL" xml:space="preserve">
         <source>Invalid server URL</source>
+        <target state="translated">අවලංගු සේවාදායක URL එක</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
@@ -3211,6 +3237,7 @@ Caption of the process</note>
       </trans-unit>
       <trans-unit id="Manage" xml:space="preserve">
         <source>Manage</source>
+        <target state="translated">කළමනාකරණය කරන්න</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
@@ -3241,12 +3268,12 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Me and %d Users|==|plural.one" xml:space="preserve">
         <source>Me and %d Users</source>
-        <target state="translated">Me and One Users</target>
+        <target state="translated">මම සහ %d පරිශීලකයින්</target>
         <note/>
       </trans-unit>
       <trans-unit id="Me and %d Users|==|plural.other" xml:space="preserve">
         <source>Me and %d Users</source>
-        <target state="translated">Me and %d Users</target>
+        <target state="translated">මම සහ %d පරිශීලකයින්</target>
         <note/>
       </trans-unit>
       <trans-unit id="Measurement unit" xml:space="preserve">
@@ -3351,6 +3378,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Network error" xml:space="preserve">
         <source>Network error</source>
+        <target state="translated">ජාල දෝෂයකි</target>
         <note/>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
@@ -3636,6 +3664,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Open location" xml:space="preserve">
         <source>Open location</source>
+        <target state="translated">ස්ථානය විවෘත කරන්න</target>
         <note/>
       </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
@@ -3765,6 +3794,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Please enter a server URL" xml:space="preserve">
         <source>Please enter a server URL</source>
+        <target state="translated">කරුණාකර සේවාදායක URL එකක් ඇතුළත් කරන්න</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
@@ -3813,6 +3843,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <target state="translated">යළි උත්සාහ කරන්න. 
+
+ගැටලුව දිගටම පවතී නම් අප හා සම්බන්ධ වී මෙම දෝෂ කේතය සඳහන් කරන්න: Linkedin - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
@@ -3846,6 +3879,9 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Zoom - %@</source>
+        <target state="translated">යළි උත්සාහ කරන්න. 
+
+ගැටලුව දිගටම පවතී නම් අප හා සම්බන්ධ වී මෙම දෝෂ කේතය සඳහන් කරන්න: Zoom - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -3930,6 +3966,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
         <source>Provide access to the folder and set the permission levels.</source>
+        <target state="translated">ෆෝල්ඩරයට ප්‍රවේශය ලබා දී අවසර මට්ටම් සකසන්න.</target>
         <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
       </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
@@ -3999,6 +4036,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Removed from favorites" xml:space="preserve">
         <source>Removed from favorites</source>
+        <target state="translated">ප්‍රියතමයන්ගෙන් ඉවත් කරන ලදී</target>
         <note/>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
@@ -4324,6 +4362,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Server is unreachable" xml:space="preserve">
         <source>Server is unreachable</source>
+        <target state="translated">සේවාදායකයට ළඟා විය නොහැක</target>
         <note/>
       </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
@@ -4488,6 +4527,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="State is invalid" xml:space="preserve">
         <source>State is invalid</source>
+        <target state="translated">රාජ්‍යය වලංගු නොවේ</target>
         <note/>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
@@ -4795,10 +4835,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no guests" xml:space="preserve">
         <source>There are no guests</source>
+        <target state="translated">අමුත්තන් නැත</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <target state="translated">එකතු කිරීමට අමුත්තන් නැත</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
@@ -4808,10 +4850,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
         <source>There are no users</source>
+        <target state="translated">පරිශීලකයින් නැත</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users to add" xml:space="preserve">
         <source>There are no users to add</source>
+        <target state="translated">එකතු කිරීමට පරිශීලකයින් නැත</target>
         <note/>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -5084,6 +5128,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Upload PDF forms from DocSpace or device." xml:space="preserve">
         <source>Upload PDF forms from DocSpace or device.</source>
+        <target state="translated">DocSpace හෝ උපාංගයෙන් PDF පෝරම උඩුගත කරන්න</target>
         <note/>
       </trans-unit>
       <trans-unit id="Upload PDF forms into the room. Invite users to fill out a PDF form. Review completed forms and analyze data automatically collected in a spreadsheet." xml:space="preserve">
@@ -5290,11 +5335,14 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Who has access" xml:space="preserve">
         <source>Who has access</source>
+        <target state="translated">ප්‍රවේශය ඇත්තේ කාටද?</target>
         <note from="auto-generated">A section header that reads "Who has access".</note>
       </trans-unit>
       <trans-unit id="Work with docs offline in the On device tab.&#10;Created files can later be uploaded to online portal and then accessed from any other device." xml:space="preserve">
         <source>Work with docs offline in the On device tab.
 Created files can later be uploaded to online portal and then accessed from any other device.</source>
+        <target state="translated">උපාංග මත ටැබය තුළ නොබැඳිව ලේඛන සමඟ වැඩ කරන්න.
+සාදන ලද ගොනු පසුව මාර්ගගත ද්වාරයට උඩුගත කර වෙනත් ඕනෑම උපාංගයකින් ප්‍රවේශ විය හැක.</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with office files" xml:space="preserve">
@@ -5361,6 +5409,9 @@ Created files can later be uploaded to online portal and then accessed from any 
         <source>You are assigned to fill out the form as the first role. A
  notification has been sent to your email. You can start filling
  it out now or copy the filling link and return later.</source>
+        <target state="translated">පළමු භූමිකාව ලෙස පෝරමය පිරවීමට ඔබට පවරා ඇත.
+ඔබගේ විද්‍යුත් තැපෑලට දැනුම්දීමක් යවා ඇත. ඔබට දැන් එය පිරවීම ආරම්භ කළ හැකිය,
+නැතහොත් පිරවුම් සබැඳිය පිටපත් කර පසුව ආපසු පැමිණිය හැකිය.</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5391,6 +5442,7 @@ Created files can later be uploaded to online portal and then accessed from any 
       <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
         <source>You can create a template from
 a room in the Room section</source>
+        <target state="translated">ඔබට කාමර කොටසේ කාමරයකින් සැකිල්ලක් සෑදිය හැක</target>
         <note/>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">
@@ -5400,6 +5452,7 @@ a room in the Room section</source>
       </trans-unit>
       <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
         <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <target state="translated">මෙම සැකසුම සියලුම ගොනු සඳහා කාමර මට්ටමින් ක්‍රියාත්මක වන බැවින්, දත්ත බාගැනීම සහ පිටපත් කිරීම සීමා කිරීම ඔබට අක්‍රිය කළ නොහැක.</target>
         <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">

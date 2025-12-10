@@ -2623,6 +2623,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		FC45B28C2EE9C09E00CFA1E1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F3D321282E2E62B4002D8037 /* ASCInvitationSettingsResponceModel.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		FC4639CC2BFE10FF00DA603A /* NavigationBarExtendPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -4027,6 +4035,7 @@
 				FCFDAA8E1E48A10C007A240C /* Products */,
 				8DAE80D35B150AEE2BBFA722 /* Pods */,
 				3C50733DA18F920525F5E1EB /* Frameworks */,
+				FC45B28C2EE9C09E00CFA1E1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};

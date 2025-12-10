@@ -99,7 +99,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     title: NSLocalizedString("Info", comment: "Button title"),
                     image: UIImage(systemName: "info.circle")
                 ) { [weak viewController] action in
-                    viewController?.navigator.navigate(to: .shareSettings(entity: folder))
+                    viewController?.navigator.navigate(to: .sharingLink(entityType: folder.isRoom ? .room(folder) : .folder(folder)))
                 }
             )
         }
@@ -126,7 +126,9 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                         ? UIImage(systemName: "bell.slash")
                         : UIImage(systemName: "bell")
                 ) { [weak viewController] _ in
-                    viewController?.disableNotifications(room: folder)
+                    Task { @MainActor in
+                        await viewController?.disableNotifications(room: folder)
+                    }
                 }
             )
         }

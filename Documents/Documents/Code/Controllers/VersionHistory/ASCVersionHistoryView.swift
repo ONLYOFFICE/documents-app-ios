@@ -319,6 +319,8 @@ extension View {
 extension ASCVersionHistoryView {
     private func getFileIcon(fileExt: String) -> Image {
         switch fileExt {
+        case ASCConstants.FileExtensions.txt:
+            return Asset.Images.listFormatTxt.swiftUIImage
         case _ where ASCConstants.FileExtensions.documents.contains(fileExt):
             return Asset.Images.listFormatDocument.swiftUIImage
         case _ where ASCConstants.FileExtensions.spreadsheets.contains(fileExt):

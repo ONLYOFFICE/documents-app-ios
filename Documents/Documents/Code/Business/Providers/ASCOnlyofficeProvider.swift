@@ -517,28 +517,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {
-        guard let file = entity as? ASCFile else {
+        var requestModel: [String: [String]] = [:]
+        var successCompletion: (() -> Void)?
+        let failCompletion = {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
+        }
+        switch entity {
+        case let file as ASCFile:
+            requestModel = ["fileIds": [file.id]]
+            file.isFavorite = favorite
+            successCompletion = { completeon?(self, file, true, nil) }
+        case let folder as ASCFolder:
+            requestModel = ["folderIds": [folder.id]]
+            folder.isFavorite = favorite
+            successCompletion = { completeon?(self, folder, true, nil) }
+        default:
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
 
-        if favorite {
-            apiClient.request(OnlyofficeAPI.Endpoints.Files.addFavorite, ["fileIds": [file.id]]) { response, error in
-                if response?.result ?? false {
-                    file.isFavorite = true
-                    completeon?(self, file, true, nil)
-                } else {
-                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
-                }
-            }
-        } else {
-            apiClient.request(OnlyofficeAPI.Endpoints.Files.removeFavorite, ["fileIds": [file.id]]) { response, error in
-                if response?.result ?? false {
-                    file.isFavorite = false
-                    completeon?(self, file, true, nil)
-                } else {
-                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
-                }
+        let endpoint = favorite
+            ? OnlyofficeAPI.Endpoints.Files.addFavorite
+            : OnlyofficeAPI.Endpoints.Files.removeFavorite
+
+        apiClient.request(endpoint, requestModel) { response, error in
+            if response?.result == true {
+                successCompletion?()
+            } else {
+                failCompletion()
             }
         }
     }
@@ -1260,10 +1266,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let folder = entity as? ASCFolder
         let parentFolder = file?.parent ?? folder?.parent
 
-        if let folder = folder, folder.isRoom, folder.rootFolderType != .archive {
-            return false
-        }
-
         if file == nil, folder == nil {
             return false
         }
@@ -1445,6 +1447,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isShared = file.rootFolderType == .share
             let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
             let canShowVersion = file.version > 1
+            let canOpenLocation = (file.parent?.rootFolderType == .recent) || (file.parent?.rootFolderType == .favorites)
             let canSetCustomFilter = allowSetCustomFilter(entity: file)
 
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
@@ -1491,6 +1494,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canRename {
                 entityActions.insert(.rename)
             }
+
+            entityActions.insert(.select)
 
             if canPreview {
                 entityActions.insert(.open)
@@ -1542,7 +1547,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isUserCategory, isDocspace, canShare {
+            if isDocspace, canShare {
                 entityActions.insert(.docspaceShare)
                 entityActions.insert(.copySharedLink)
             }
@@ -1555,6 +1560,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.startFilling)
             }
 
+            if file.security.createRoomFrom {
+                entityActions.insert(.createRoom)
+            }
+
             if file.security.fillingStatus {
                 entityActions.insert(.fillingStatus)
             }
@@ -1563,8 +1572,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.showVersionsHistory)
             }
 
+            if canOpenLocation {
+                entityActions.insert(.openLocation)
+            }
+
             if canSetCustomFilter {
                 entityActions.insert(.setCustomFilter)
+            }
+
+            if !isTrash, !(file.rootFolderType == .archive), isDocspace {
+                entityActions.insert(.favarite)
             }
         }
 
@@ -1594,14 +1611,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            let folderIsRoomsListAndNotEmpty: Bool = folder.isRoomListFolder && total > .zero
-
-            if !folder.isEmpty || folderIsRoomsListAndNotEmpty {
-                entityActions.insert(.select)
-            }
+            entityActions.insert(.select)
 
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
+            }
+
+            if !(folder.rootFolderType == .trash) {
+                entityActions.insert(.open)
             }
 
             if canCopy, !isRoomFolder {
@@ -1612,7 +1629,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects, !isRoomFolder, !isInDocSpaceCategory(folder: folder) {
+            if canShare, !isProjects {
                 entityActions.insert(.share)
             }
 
@@ -1712,6 +1729,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                !folder.isTemplateRoom
             {
                 entityActions.insert(.changeRoomOwner)
+            }
+
+            if !(folder.rootFolderType == .trash), !(folder.rootFolderType == .archive), isDocspace, !folder.isRoom {
+                entityActions.insert(.favarite)
             }
         }
 
@@ -2333,7 +2354,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         copyProvider.cancel()
         copyProvider.reset()
         copyProvider.folder = folder
-        ASCEditorManager.shared.isOpenedFileFromDeeplink = isShareFile
+        ASCEditorManager.isOpenedFileFromDeeplink = isShareFile
         if isShareFile {
             let editorManager = ASCEditorManager(config: ASCEditorManager.Configuration(onlyofficeClient: apiClient))
             editorManager.editCloud(

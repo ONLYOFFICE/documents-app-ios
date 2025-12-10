@@ -313,13 +313,8 @@ class ASCConnectCloudViewController: UITableViewController {
                 connectionVC = viewController
             }
         case .owncloud:
-            let viewController = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
-                provider: .ownCloud,
-                logo: providerImage(type),
-                title: providerName(type),
-                complation: authComplation(info:)
-            )
+            let viewController = ASCConnectStorageOwnCloudServerController.instantiate(from: Storyboard.connectStorage)
+            viewController.completion = authComplation(info:)
             if animated {
                 navigationController?.pushViewController(viewController, animated: animated)
             } else {
@@ -402,15 +397,6 @@ class ASCConnectCloudViewController: UITableViewController {
         guard let identifier = segue.identifier else { return }
 
         switch identifier {
-        case "owncloudSegue":
-            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                var configuration = ASCConnectStorageWebDavControllerConfiguration.defaultConfiguration()
-                configuration.complation = authComplation(info:)
-                configuration.title = providerName(.owncloud)
-                configuration.provider = .ownCloud
-                configuration.logo = providerImage(.owncloud)
-                viewController.configuration = configuration
-            }
         case "webdavSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 var configuration = ASCConnectStorageWebDavControllerConfiguration.defaultConfiguration()

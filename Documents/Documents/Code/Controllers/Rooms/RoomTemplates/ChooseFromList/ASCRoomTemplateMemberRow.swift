@@ -125,9 +125,9 @@ struct ASCRoomTemplateMemberRow: View {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains(String.defaultUserPhotoSize),
-               let url = URL(string: portal + string)
+               let url = URL(string: portal)?.appendingSafePath(string)
             {
-                KFImage(url)
+                KFOnlyOfficeProviderImageView(url: url)
                     .resizable()
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .cornerRadius(Constants.imageCornerRadius)

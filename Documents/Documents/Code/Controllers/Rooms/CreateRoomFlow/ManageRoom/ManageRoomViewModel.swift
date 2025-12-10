@@ -121,7 +121,7 @@ class ManageRoomViewModel: ObservableObject {
            !urlStr.isEmpty,
            let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed
         {
-            return URL(string: portal + urlStr)
+            return URL(string: portal)?.appendingSafePath(urlStr)
         }
         return nil
     }

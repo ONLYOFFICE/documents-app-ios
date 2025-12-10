@@ -51,3 +51,19 @@ struct KFProviderImageView: UIViewRepresentable {
         }
     }
 }
+
+struct KFOnlyOfficeProviderImageView: View {
+    let url: URL
+
+    var body: some View {
+        if let provider = ASCFileManager.onlyofficeProvider {
+            KFProviderImageView(url: url, provider: provider)
+        }
+    }
+}
+
+extension KFOnlyOfficeProviderImageView {
+    func resizable() -> some View {
+        self
+    }
+}

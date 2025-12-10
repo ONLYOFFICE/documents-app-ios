@@ -137,3 +137,41 @@ enum ASCShareAccess: Int, CaseIterable {
 }
 
 extension ASCShareAccess: Codable {}
+
+extension ASCShareAccess {
+    var serverString: String {
+        switch self {
+        case .none: return "None"
+        case .full: return "ReadWrite"
+        case .read: return "Read"
+        case .deny: return "Restrict"
+        case .varies: return "Varies"
+        case .review: return "Review"
+        case .comment: return "Comment"
+        case .fillForms: return "FillForms"
+        case .userFilter: return "CustomFilter"
+        case .roomManager: return "RoomManager"
+        case .editing: return "Editing"
+        case .contentCreator: return "ContentCreator"
+        }
+    }
+
+    init?(serverString: String) {
+        switch serverString {
+        case "None": self = .none
+        case "ReadWrite": self = .full
+        case "Read": self = .read
+        case "Restrict": self = .deny
+        case "Varies": self = .varies
+        case "Review": self = .review
+        case "Comment": self = .comment
+        case "FillForms": self = .fillForms
+        case "CustomFilter": self = .userFilter
+        case "RoomManager": self = .roomManager
+        case "Editing": self = .editing
+        case "ContentCreator": self = .contentCreator
+        default:
+            return nil
+        }
+    }
+}

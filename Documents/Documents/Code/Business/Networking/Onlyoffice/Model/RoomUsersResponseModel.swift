@@ -13,6 +13,7 @@ import Foundation
 struct RoomUsersResponseModel: Codable {
     let access: ASCShareAccess
     let user: ASCUser
+    let sharedToGroup: SharedToGroup?
     let isLocked: Bool
     let isOwner: Bool
     let canEditAccess: Bool
@@ -20,8 +21,14 @@ struct RoomUsersResponseModel: Codable {
     enum CodingKeys: String, CodingKey {
         case access
         case user = "sharedTo"
+        case sharedToGroup
         case isLocked
         case isOwner
         case canEditAccess
+    }
+
+    struct SharedToGroup: Codable {
+        let id: String
+        let name: String
     }
 }

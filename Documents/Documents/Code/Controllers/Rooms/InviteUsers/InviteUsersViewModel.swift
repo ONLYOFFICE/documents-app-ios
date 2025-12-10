@@ -127,29 +127,26 @@ final class InviteUsersViewModel: ObservableObject {
     }
 
     private func changeLinkAccess(newAccess: ASCShareAccess) {
-        service.setExternalLinkAccess(
-            linkId: externalLink?.id,
-            room: room,
-            settingAccess: newAccess
-        ) { [weak self] result in
-            guard let self else { return }
-            DispatchQueue.main.async { [self] in
-                switch result {
-                case let .success(externalLink):
-                    if let externalLink {
-                        self.linkStr = externalLink.link
-                        self.selectedAccessRight = externalLink.access
-                        self.externalLink = externalLink
-                    } else {
-                        self.externalLink = nil
-                        self.preventToggleAction = true
-                        self.isExternalLinkSwitchActive = false
-                    }
-                case let .failure(error):
+        Task { @MainActor in
+            do {
+                let externalLink = try await service.setExternalLinkAccess(
+                    linkId: externalLink?.id,
+                    room: room,
+                    settingAccess: newAccess
+                )
+                if let externalLink {
+                    self.linkStr = externalLink.link
+                    self.selectedAccessRight = externalLink.access
+                    self.externalLink = externalLink
+                } else {
+                    self.externalLink = nil
                     self.preventToggleAction = true
-                    self.isExternalLinkSwitchActive.toggle()
-                    log.error(error.localizedDescription, error)
+                    self.isExternalLinkSwitchActive = false
                 }
+            } catch {
+                self.preventToggleAction = true
+                self.isExternalLinkSwitchActive.toggle()
+                log.error(error.localizedDescription, error)
             }
         }
     }

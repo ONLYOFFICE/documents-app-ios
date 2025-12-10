@@ -48,6 +48,7 @@ class ASCEditorManagerError: LocalizedError, CustomStringConvertible, CustomNSEr
     }
 }
 
+typealias FullName = String
 typealias ASCEditorManagerOpenHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerCloseHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ result: ASCFile?, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @escaping (Bool) -> Void) -> Void
@@ -110,7 +111,7 @@ class ASCEditorManager: NSObject {
         return openedFile != nil
     }
 
-    var isOpenedFileFromDeeplink: Bool = false
+    static var isOpenedFileFromDeeplink: Bool = false
 
     lazy var editorFontsPaths: [String] = {
         var paths = [Bundle.main.resourcePath?.appendingPathComponent("fonts") ?? ""]
@@ -200,6 +201,14 @@ class ASCEditorManager: NSObject {
     ) {
         NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
         apiClient.request(endpoint, parameters, completion)
+    }
+
+    private func clientRequest<Response>(
+        _ endpoint: Endpoint<Response>,
+        _ parameters: [String: Any]? = nil
+    ) async throws -> Response {
+        NetworkingClient.clearCookies(for: apiClient.url(path: endpoint.path))
+        return try await apiClient.request(endpoint: endpoint, parameters: parameters)
     }
 
     private func fetchDocumentInfo(_ file: ASCFile, openMode: ASCDocumentOpenMode = .edit) async -> Result<OnlyofficeDocumentConfig, Error> {
@@ -1306,6 +1315,7 @@ extension ASCEditorManager {
 
                 cleanup()
                 openedFile = nil
+                ASCEditorManager.isOpenedFileFromDeeplink = false
 
                 return
             }
@@ -1401,6 +1411,7 @@ extension ASCEditorManager {
 
                                 cleanup()
                                 openedFile = nil
+                                ASCEditorManager.isOpenedFileFromDeeplink = false
                             }
                         }
                     )
@@ -1443,6 +1454,7 @@ extension ASCEditorManager {
 
                     cleanup()
                     openedFile = nil
+                    ASCEditorManager.isOpenedFileFromDeeplink = false
                 }
 
             } else {
@@ -1459,10 +1471,12 @@ extension ASCEditorManager {
 
                         cleanup()
                         self?.openedFile = nil
+                        ASCEditorManager.isOpenedFileFromDeeplink = false
                     }
                 } else {
                     cleanup()
                     openedFile = nil
+                    ASCEditorManager.isOpenedFileFromDeeplink = false
                 }
             }
 
@@ -1630,6 +1644,59 @@ extension ASCEditorManager {
             group.notify(queue: .main) {
                 completion(result)
             }
+        }
+    }
+
+    @MainActor
+    func fetchSharedUsers() async -> [[String: Any]] {
+        guard let fileId = openedFile?.id else { return [] }
+        do {
+            let response: OnlyofficeResponseArray<OnlyofficeSharedUser> = try await clientRequest(
+                OnlyofficeAPI.Endpoints.Sharing.users(fileId: fileId, method: .get)
+            )
+            guard let users = response.result else { return [] }
+
+            let store = ImageStore()
+
+            await withTaskGroup(of: Void.self) { [provider] group in
+                for user in users {
+                    if let imageStr = user.image, let url = URL(string: imageStr) {
+                        group.addTask {
+                            let img = try? await UIImageView.kfImage(for: url, provider: provider)
+                            await store.set(imageStr, img)
+                        }
+                    }
+                }
+                await group.waitForAll()
+            }
+
+            let images = await store.getAll()
+
+            return users.compactMap { user in
+                guard let name = user.name, let email = user.email else { return nil }
+                return [
+                    "name": name,
+                    "email": email,
+                    "image": user.image.flatMap { images[$0] ?? nil },
+                ]
+            }
+        } catch {
+            log.error(error)
+            return []
+        }
+    }
+}
+
+private extension ASCEditorManager {
+    actor ImageStore {
+        private var storage: [String: UIImage] = [:]
+
+        func set(_ key: String, _ image: UIImage?) {
+            storage[key] = image
+        }
+
+        func getAll() -> [String: UIImage] {
+            storage
         }
     }
 }

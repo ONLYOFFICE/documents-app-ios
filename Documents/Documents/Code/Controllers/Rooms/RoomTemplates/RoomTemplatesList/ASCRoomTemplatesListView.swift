@@ -73,7 +73,7 @@ struct ASCRoomTemplatesListView: View {
         else {
             return nil
         }
-        return URL(string: portal + urlStr)
+        return URL(string: portal)?.appendingSafePath(urlStr)
     }
 
     @ViewBuilder

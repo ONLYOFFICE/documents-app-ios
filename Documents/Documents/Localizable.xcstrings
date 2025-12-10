@@ -276,13 +276,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d day"
+                  "value" : "%d Tag"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d days"
+                  "value" : "%d Tage"
                 }
               }
             }
@@ -444,7 +444,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d days"
+                  "value" : "%d 天"
                 }
               }
             }
@@ -562,13 +562,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "One Group"
+                  "value" : "%d Gruppe"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d Groups"
+                  "value" : "%d Gruppen"
                 }
               }
             }
@@ -730,7 +730,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d Groups"
+                  "value" : "%d 组"
                 }
               }
             }
@@ -743,293 +743,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%d Groups"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%d hours" : {
-      "comment" : "Hours left",
-      "localizations" : {
-        "ar-SA" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ساعة"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ساعتان"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ساعة"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ساعات"
-                }
-              },
-              "two" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ساعةً"
-                }
-              },
-              "zero" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ساعةً"
-                }
-              }
-            }
-          }
-        },
-        "bg" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d часа"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d часа"
-                }
-              }
-            }
-          }
-        },
-        "cs" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hodin"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hodin"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hodina"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hodin"
-                }
-              }
-            }
-          }
-        },
-        "de" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hour"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hours"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hora"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d horas"
-                }
-              }
-            }
-          }
-        },
-        "fr" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d heures"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d heures"
-                }
-              }
-            }
-          }
-        },
-        "hy-AM" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ժամ"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ժամ"
-                }
-              }
-            }
-          }
-        },
-        "it" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ore"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d ore"
-                }
-              }
-            }
-          }
-        },
-        "ja" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hours"
-                }
-              }
-            }
-          }
-        },
-        "pt-BR" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hora"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d horas"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d часа"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d часов"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Один час"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d часов"
-                }
-              }
-            }
-          }
-        },
-        "si" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hour"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hours"
-                }
-              }
-            }
-          }
-        },
-        "zh-Hans" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hours"
-                }
-              }
-            }
-          }
-        },
-        "zh-Hant" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%d hours"
                 }
               }
             }
@@ -1135,13 +848,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d month"
+                  "value" : "%d Monat"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d months"
+                  "value" : "%d Monate"
                 }
               }
             }
@@ -1303,7 +1016,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d months"
+                  "value" : "%d 月份"
                 }
               }
             }
@@ -1714,13 +1427,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d year"
+                  "value" : "%d Jahr"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d years"
+                  "value" : "%d Jahre"
                 }
               }
             }
@@ -1882,7 +1595,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d years"
+                  "value" : "%d 年"
                 }
               }
             }
@@ -1926,7 +1639,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$i von %2$i"
+            "value" : "%i von %i"
           }
         },
         "es" : {
@@ -2431,7 +2144,7 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%#@arg1@ and %#@arg2@ selected"
           },
           "substitutions" : {
@@ -2442,26 +2155,26 @@
                 "plural" : {
                   "few" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg složky"
                     }
                   },
                   "many" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg složek"
                     }
                   },
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folder"
+                      "state" : "translated",
+                      "value" : "%arg složka"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg složek"
                     }
                   }
                 }
@@ -2474,26 +2187,26 @@
                 "plural" : {
                   "few" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg soubory"
                     }
                   },
                   "many" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg souborů"
                     }
                   },
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg File"
+                      "state" : "translated",
+                      "value" : "%arg soubor"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg souborů"
                     }
                   }
                 }
@@ -3031,8 +2744,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%#@arg1@ and %#@arg2@ selected"
+            "state" : "translated",
+            "value" : "已選取 %#@arg1@ 和 %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {
@@ -3042,8 +2755,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg 個資料夾"
                     }
                   }
                 }
@@ -3056,8 +2769,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg 個檔案"
                     }
                   }
                 }
@@ -3382,7 +3095,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$lu Objekte mit demselben Namen existieren bereits im Ordner '%2$@'. Objekte überschreiben?"
+            "value" : "%lu Objekte mit demselben Namen existieren bereits im Ordner '%@'. Objekte überschreiben?"
           }
         },
         "es" : {
@@ -4339,6 +4052,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вече е изпратено известие до потребителя в първата роля,\nкоето го подканва да попълни формуляра. Можете да отидете\nдо стаята или да споделите линка за попълване с участниците."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uživateli v první roli již bylo odesláno oznámení s výzvou k vyplnění\nformuláře. Můžete přejít\ndo místnosti nebo sdílet odkaz pro vyplnění s účastníky."
           }
         },
         "de" : {
@@ -6954,6 +6673,12 @@
             "state" : "translated",
             "value" : "添加用户或群组"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增使用者或群組"
+          }
         }
       }
     },
@@ -7217,6 +6942,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加水印到文档"
+          }
+        }
+      }
+    },
+    "Added to favorites" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمت الإضافة إلى المفضلة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавено към любими"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přidat do oblíbených"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu Favoriten hinzugefügt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar a favoritos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouté aux favoris"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi hai favoriti"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionado aos favoritos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить в избранное"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加到收藏夹"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加到收藏夹"
           }
         }
       }
@@ -7739,6 +7534,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "所有协作空间和房间管理员都可以使用此模板创建房间。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有 DocSpace 和房間管理員都將能夠使用此範本建立房間。"
           }
         }
       }
@@ -9499,6 +9300,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "作者"
+          }
+        }
+      }
+    },
+    "Authorization code not found" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم العثور على رمز التفويض"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кодът за оторизация не е намерен"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorizační kód nenalezen"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisierungscode nicht gefunden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró el código de autorización"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code d'autorisation introuvable"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Codice di autorizzazione non trovato"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código de autorização não encontrado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Код авторизации не найден"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到授权码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到授权码"
           }
         }
       }
@@ -13388,6 +13259,78 @@
         }
       }
     },
+    "Collaboration Room" : {
+      "comment" : "Title for a room type that is a collaboration room.",
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غرفة التعاون"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стая за съвместна работа"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Místnost pro spolupráci"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raum für Zusammenarbeit"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sala de colaboración"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salle de collaboration"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stanza di collaborazione"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sala de colaboração"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Комната для совместной работы"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "协作房间"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "协作房间"
+          }
+        }
+      }
+    },
     "Commentator" : {
       "comment" : "Share status",
       "localizations" : {
@@ -13921,7 +13864,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me"
+            "value" : "Eu"
           }
         },
         "ru" : {
@@ -15920,6 +15863,77 @@
         }
       }
     },
+    "Copy shared link" : {
+      "comment" : "Button title",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نسخ الرابط المشترك"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Копирай споделен линк"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zkopírovat sdílený odkaz"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Freigegebenen Link kopieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar enlace compartido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copier le lien partagé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copia il link condiviso"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar link compartilhado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать общую ссылку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複製共享連結"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複製共享連結"
+          }
+        }
+      }
+    },
     "Copying" : {
       "comment" : "Caption of the processing",
       "localizations" : {
@@ -17063,6 +17077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法删除该版本。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法刪除該版本。"
           }
         }
       }
@@ -19349,6 +19369,12 @@
             "state" : "translated",
             "value" : "基于模板创建房间。所有设置、用户、文件夹和文件都将取自所选的房间模板。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "根據範本建立房間。所有設定、使用者、資料夾和檔案都將沿用選取的房間範本。"
+          }
         }
       }
     },
@@ -20315,6 +20341,12 @@
             "state" : "translated",
             "value" : "当前文件将保存在版本历史记录中。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前的檔案將儲存於版本記錄中。"
+          }
         }
       }
     },
@@ -20574,6 +20606,12 @@
             "state" : "translated",
             "value" : "所选文件的自定义过滤器\n已禁用"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已停用所選檔案的自訂篩選"
+          }
         }
       }
     },
@@ -20649,6 +20687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "所选文件的自定义过滤器\n已启用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已啟用所選檔案的自訂篩選"
           }
         }
       }
@@ -20737,6 +20781,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自訂房間"
+          }
+        }
+      }
+    },
+    "Custom Room" : {
+      "comment" : "Title of a room with a custom type.",
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غرفة مخصصة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Персонализирана стая"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vlastní místnost"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefinierter Raum"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sala personalizada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salle personnalisée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stanza personalizzata"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sala personalizada"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользовательская комната"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义房间"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义房间"
           }
         }
       }
@@ -21826,7 +21942,7 @@
         },
         "cs" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Delete %#@arg1@ and %#@arg2@"
           },
           "substitutions" : {
@@ -21837,26 +21953,26 @@
                 "plural" : {
                   "few" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg složky"
                     }
                   },
                   "many" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg složek"
                     }
                   },
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folder"
+                      "state" : "translated",
+                      "value" : "%arg složka"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg složek"
                     }
                   }
                 }
@@ -21869,26 +21985,26 @@
                 "plural" : {
                   "few" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg soubory"
                     }
                   },
                   "many" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg souborů"
                     }
                   },
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg File"
+                      "state" : "translated",
+                      "value" : "%arg soubor"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg souborů"
                     }
                   }
                 }
@@ -22426,8 +22542,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete %#@arg1@ and %#@arg2@"
+            "state" : "translated",
+            "value" : "刪除 %#@arg1@ 和 %#@arg2@"
           },
           "substitutions" : {
             "arg1" : {
@@ -22437,8 +22553,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "%arg 個資料夾"
                     }
                   }
                 }
@@ -22451,8 +22567,8 @@
                 "plural" : {
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Files"
+                      "state" : "translated",
+                      "value" : "%arg 個檔案"
                     }
                   }
                 }
@@ -22991,6 +23107,9 @@
         }
       }
     },
+    "Delete room" : {
+      "comment" : "Button title"
+    },
     "Delete template" : {
       "comment" : "Button title",
       "localizations" : {
@@ -23070,6 +23189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除範本"
           }
         }
       }
@@ -23153,6 +23278,12 @@
             "state" : "translated",
             "value" : "删除此项？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除此項目？"
+          }
         }
       }
     },
@@ -23234,6 +23365,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除版本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刪除版本"
           }
         }
       }
@@ -23849,6 +23986,12 @@
             "state" : "translated",
             "value" : "主管"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "總監"
+          }
         }
       }
     },
@@ -23930,6 +24073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "禁用自定义过滤器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用自訂篩選"
           }
         }
       }
@@ -24278,6 +24427,12 @@
             "state" : "translated",
             "value" : "您确实要删除模板房间 %@ 吗？该模板无法恢复。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您確定要刪除範本房間 %@ 嗎？範本刪除後無法還原。"
+          }
         }
       }
     },
@@ -24617,6 +24772,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "仅限协作空间用户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅限 Docspace 用戶"
           }
         }
       }
@@ -25318,6 +25479,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "草稿"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "草稿"
@@ -26467,6 +26634,12 @@
             "state" : "translated",
             "value" : "编辑模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編輯範本"
+          }
         }
       }
     },
@@ -27079,6 +27252,12 @@
             "state" : "translated",
             "value" : "员工"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "員工"
+          }
         }
       }
     },
@@ -27424,6 +27603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "启用自定义过滤器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用自訂篩選"
           }
         }
       }
@@ -28944,6 +29129,12 @@
             "state" : "translated",
             "value" : "退出不保存？\n您已对索引进行了更改。如果继续退出，您的更改将不会被应用。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不儲存並離開？「您已在索引中進行變更。若不儲存直接繼續，這些變更將不會套用。」"
+          }
         }
       }
     },
@@ -29022,6 +29213,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。"
@@ -29113,95 +29310,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "預期使用者"
-          }
-        }
-      }
-    },
-    "Expired" : {
-      "comment" : "Expiration status",
-      "localizations" : {
-        "ar-SA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "منتهي الصلاحية"
-          }
-        },
-        "bg" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Изтекъл"
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vypršela platnost"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abgelaufen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expirado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expiré"
-          }
-        },
-        "hy-AM" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ժամկետանց"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scaduto"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "期限切れ"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expirado"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Истек"
-          }
-        },
-        "si" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "කල් ඉකුත් විය"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已过期"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已过期"
           }
         }
       }
@@ -30620,10 +30728,70 @@
       "comment" : "Error message shown when the user credentials are not valid.",
       "isCommentAutoGenerated" : true,
       "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل التحقق من بيانات اعتماد المستخدم."
+          }
+        },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неуспешно потвърждаване на потребителските идентификационни данни."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nepodařilo se ověřit přihlašovací údaje uživatele."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überprüfung der Benutzeranmeldeinformationen ist fehlgeschlagen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron verificar las credenciales del usuario."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de la vérification des informations d'identification de l'utilisateur."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile verificare le credenziali dell'utente."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha ao verificar as credenciais do usuário."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось проверить учетные данные пользователя."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户凭据验证失败。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户凭据验证失败。"
           }
         }
       }
@@ -30640,6 +30808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неуспешно отваряне на редактора"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nepodařilo se otevřít editor"
           }
         },
         "de" : {
@@ -30694,6 +30868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法打开编辑器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法開啟編輯器"
           }
         }
       }
@@ -30865,6 +31045,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法打开编辑器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法開啟編輯器"
           }
         }
       }
@@ -32387,6 +32573,12 @@
             "value" : "Състояние на попълване"
           }
         },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stav plnění"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32445,6 +32637,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "填写状态"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "填寫狀態"
           }
         }
       }
@@ -32529,6 +32727,12 @@
             "state" : "translated",
             "value" : "填写状态"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "填寫狀態"
+          }
         }
       }
     },
@@ -32610,6 +32814,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "填写被终止"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "填寫已由以下人員停止："
           }
         }
       }
@@ -33333,6 +33543,12 @@
             "value" : "Формулярът е финализиран"
           }
         },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formulář dokončen"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33386,6 +33602,12 @@
             "state" : "translated",
             "value" : "表单已完成"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表單已定稿"
+          }
         }
       }
     },
@@ -33401,6 +33623,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Формулярът е готов за попълване в стаята"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formulář je připraven k vyplnění v místnosti"
           }
         },
         "de" : {
@@ -33455,6 +33683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "表单已准备填写"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表單已準備就緒，可在房間中填寫"
           }
         }
       }
@@ -33889,6 +34123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "从模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "來自範本"
           }
         }
       }
@@ -36528,6 +36768,12 @@
             "state" : "translated",
             "value" : "进行中"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "進行中"
+          }
         }
       }
     },
@@ -36543,6 +36789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "В този панел можете да следите завършването\nна формуляра, в който участвате или на чието завършване\nсте организатор"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V tomto panelu můžete sledovat vyplnění\n formuláře, kterého se účastníte nebo ve kterém\n jste organizátorem vyplnění"
           }
         },
         "de" : {
@@ -36597,6 +36849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在此面板中，您可以监控\n您参与的或\n组织的表单完成情况"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度"
           }
         }
       }
@@ -36681,6 +36939,12 @@
             "state" : "translated",
             "value" : "在此面板中，您可以监控您参与的或组织完成的表单完成情况"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度"
+          }
         }
       }
     },
@@ -36762,6 +37026,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在此面板中，您可以监控您参与的或组织完成的表单完成情况"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度"
           }
         }
       }
@@ -37554,6 +37824,76 @@
         }
       }
     },
+    "Invalid server URL" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عنوان URL للخادم غير صالح"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Невалиден URL адрес на сървъра"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neplatná adresa URL serveru"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültige Server-URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL del servidor no válida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL du serveur invalide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL del server non valido"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL do servidor inválida"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неверный URL-адрес сервера."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器 URL 无效"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "服务器 URL 无效"
+          }
+        }
+      }
+    },
     "Invalid Url" : {
       "localizations" : {
         "ar-SA" : {
@@ -37619,7 +37959,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неверный URL"
+            "value" : "Неверный URL-адрес"
           }
         },
         "si" : {
@@ -37638,6 +37978,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL无效"
+          }
+        }
+      }
+    },
+    "Invalid URL" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عنوان URL غير صالح"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Невалиден URL"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neplatná URL adresa"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungültige URL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL no válida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL non valide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL non valido"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL inválida"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неверный URL-адрес"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无效的URL"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无效的URL"
           }
         }
       }
@@ -38249,6 +38659,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "该文件将被不可恢复地删除。此操作无法撤销。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "該項目將被永久刪除。此動作無法復原。"
           }
         }
       }
@@ -40637,6 +41053,77 @@
         }
       }
     },
+    "Manage" : {
+      "comment" : "Button title",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إدارة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Управлявам"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spravovat"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwalten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gérer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestisci"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Управлять"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理"
+          }
+        }
+      }
+    },
     "Mark as Favorite" : {
       "comment" : "Button title",
       "localizations" : {
@@ -41141,7 +41628,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Me"
+            "value" : "Eu"
           }
         },
         "ru" : {
@@ -41798,6 +42285,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "成员"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成員"
           }
         }
       }
@@ -43227,6 +43720,76 @@
         }
       }
     },
+    "Network error" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خطأ في الشبكة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мрежова грешка"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chyba sítě"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkfehler"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de red"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur réseau"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore di rete"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erro de rede"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка сети"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网络错误"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网络错误"
+          }
+        }
+      }
+    },
     "new" : {
       "comment" : "Badge of file in file list",
       "localizations" : {
@@ -43923,6 +44486,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "邀请新访客加入房间后，系统会将他们添加到此处。您可以分享您的访客，并将其他人邀请的访客添加到您的列表中。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成員"
           }
         }
       }
@@ -44710,6 +45279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "尚未添加任何访客"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未新增訪客"
           }
         }
       }
@@ -45936,6 +46511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此处没有模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這裡還沒有範本"
           }
         }
       }
@@ -47344,6 +47925,12 @@
             "state" : "translated",
             "value" : "此处仅显示协作空间和房间管理员"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這裡僅顯示 DocSpace 和房間管理員"
+          }
         }
       }
     },
@@ -47425,6 +48012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "只有来自选定群组的协作空间和房间管理员才能够使用此模板创建房间。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅限所選群組中的 DocSpace 和房間管理員能使用此範本建立房間。"
           }
         }
       }
@@ -48313,6 +48906,76 @@
         }
       }
     },
+    "Open location" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فتح الموقع"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отворено местоположение"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít umístění"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standort öffnen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación abierta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir l'emplacement"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri posizione"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir a localização"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открытое папку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开放位置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开放位置"
+          }
+        }
+      }
+    },
     "Opened the form to fill out" : {
       "localizations" : {
         "ar-SA" : {
@@ -48391,6 +49054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开表单填写"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已開啟表單以進行填寫"
           }
         }
       }
@@ -50064,6 +50733,12 @@
             "state" : "translated",
             "value" : "PDF 文档"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF 文件"
+          }
         }
       }
     },
@@ -50145,6 +50820,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PDF 表单"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF 表單"
           }
         }
       }
@@ -50857,6 +51538,76 @@
         }
       }
     },
+    "Please enter a server URL" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى إدخال عنوان URL للخادم"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Моля, въведете URL адрес на сървъра"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadejte prosím URL adresu serveru"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte geben Sie eine Server-URL ein"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduzca la URL del servidor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez saisir une URL de serveur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci un URL del server"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, insira um URL de servidor."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите URL-адрес сервера"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请输入服务器网址"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请输入服务器网址"
+          }
+        }
+      }
+    },
     "Please go to Settings and enable the camera for this app to use this feature." : {
       "localizations" : {
         "ar-SA" : {
@@ -51458,6 +52209,12 @@
             "state" : "translated",
             "value" : "请重试。\n\n如果问题仍然存在，请联系我们并提及此错误代码：Linkedin - %@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請重試。如果問題持續發生，請聯絡我們並提供此錯誤代碼：Linkedin - %@"
+          }
         }
       }
     },
@@ -51797,6 +52554,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "请重试。\n\n如果问题仍然存在，请联系我们并提及此错误代码：Zoom - %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請重試。如果問題持續發生，請聯絡我們並提供此錯誤代碼：Zoom - %@"
           }
         }
       }
@@ -52151,6 +52914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "高级用户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高級用戶"
           }
         }
       }
@@ -52676,6 +53445,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "流程详细信息"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "程序詳細資訊"
           }
         }
       }
@@ -53206,6 +53981,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "提供對文件的存取權限並設置權限級別。"
+          }
+        }
+      }
+    },
+    "Provide access to the folder and set the permission levels." : {
+      "comment" : "Text displayed in the Sharing Info view model when the entity is a folder.",
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وفّروا إمكانية الوصول إلى المجلد وحددوا مستويات الصلاحية."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Осигурете достъп до папката и задайте нивата на разрешения."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poskytněte přístup ke složce a nastavte úrovně oprávnění."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewähren Sie Zugriff auf den Ordner und legen Sie die Berechtigungsstufen fest."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proporcione acceso a la carpeta y configure los niveles de permisos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donnez accès au dossieret définissez les niveaux d'autorisation."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concedi l'accesso alla cartella e imposta i livelli di autorizzazione."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conceda acesso à pasta e defina os níveis de permissão."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предоставьте доступ к папке и установите уровни разрешений."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提供对文件夹的访问权限并设置权限级别。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提供对文件夹的访问权限并设置权限级别。"
           }
         }
       }
@@ -54005,94 +54852,6 @@
         }
       }
     },
-    "Regenerate link" : {
-      "localizations" : {
-        "ar-SA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "إعادة إنشاء الرابط"
-          }
-        },
-        "bg" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Генерирайте повторно линк"
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Přegenerovat odkaz"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Link neu generieren"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volver a generar enlace"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Régénérer le lien"
-          }
-        },
-        "hy-AM" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Վերականգնել հղումը"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rigenera link"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リンクの再生成"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regenerar link"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Восстановить ссылку"
-          }
-        },
-        "si" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "සබැඳිය නැවත උත්පාදනය කරන්න"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新生成链接"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新生成連結"
-          }
-        }
-      }
-    },
     "Registration" : {
       "localizations" : {
         "ar-SA" : {
@@ -54446,90 +55205,72 @@
         }
       }
     },
-    "Remove link" : {
+    "Removed from favorites" : {
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "إزالة الرابط"
+            "value" : "أزيل من المفضلة"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Премахнете линк"
+            "value" : "Премахнато от любими"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Odstranit odkaz"
+            "value" : "Odstraněno z oblíbených"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Link entfernen"
+            "value" : "Aus den Favoriten entfernt"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eliminar enlace"
+            "value" : "Eliminado de Favoritos"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supprimer le lien"
-          }
-        },
-        "hy-AM" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Հեռացնել հղումը"
+            "value" : "Rétiré des favoris"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rimuovi link"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リンクの削除"
+            "value" : "Rimosso dai favoriti"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Remover link"
+            "value" : "Removido dos favoritos"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалить ссылку"
-          }
-        },
-        "si" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "සබැඳිය ඉවත් කරන්න"
+            "value" : "Удалено из избранного"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "删除链接"
+            "value" : "已从喜爱内容中删除"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "移除連結"
+            "value" : "已从喜爱内容中删除"
           }
         }
       }
@@ -55938,6 +56679,12 @@
             "state" : "translated",
             "value" : "恢复此版本吗？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "還原此版本？"
+          }
         }
       }
     },
@@ -56019,6 +56766,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "恢复"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已還原"
           }
         }
       }
@@ -56288,6 +57041,9 @@
           }
         }
       }
+    },
+    "Revoke" : {
+
     },
     "Revoke link" : {
       "localizations" : {
@@ -56633,6 +57389,12 @@
             "state" : "translated",
             "value" : "角色描述"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角色描述"
+          }
         }
       }
     },
@@ -56803,6 +57565,12 @@
             "state" : "translated",
             "value" : "表单中的角色："
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表單中的角色："
+          }
         }
       }
     },
@@ -56972,6 +57740,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "房间已创建"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "房間已建立"
           }
         }
       }
@@ -57762,6 +58536,12 @@
             "state" : "translated",
             "value" : "另存为模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "另存為範本"
+          }
         }
       }
     },
@@ -58108,6 +58888,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此设备不支持扫描"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此裝置不支援掃描"
           }
         }
       }
@@ -58897,6 +59683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择成员"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選取成員"
           }
         }
       }
@@ -59961,6 +60753,76 @@
         }
       }
     },
+    "Server is unreachable" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الخادم غير قابل للوصول"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сървърът е недостъпен"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server je nedostupný"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Server ist nicht erreichbar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El servidor es inaccesible."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serveur inaccessible"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il server non è raggiungibile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O servidor está inacessível"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер недоступен"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法连接服务器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法连接服务器"
+          }
+        }
+      }
+    },
     "Set favorite failed." : {
       "localizations" : {
         "ar-SA" : {
@@ -60314,6 +61176,7 @@
       }
     },
     "Share" : {
+      "comment" : "Button title",
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
@@ -60751,94 +61614,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "共享访问"
-          }
-        }
-      }
-    },
-    "Shared link" : {
-      "localizations" : {
-        "ar-SA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الرابط المشترك"
-          }
-        },
-        "bg" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Споделен линк"
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sdílený odkaz"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geteilter Link"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enlace compartido"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lien partagé"
-          }
-        },
-        "hy-AM" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Համօգտագործված հղում"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Link condiviso"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "共有リンク"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Link compartilhado"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Общая ссылка"
-          }
-        },
-        "si" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "බෙදාගත් සබැඳිය"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "共享链接"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "共享連結"
           }
         }
       }
@@ -61628,6 +62403,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "显示版本历史记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示版本記錄"
           }
         }
       }
@@ -62949,6 +63730,82 @@
             "state" : "translated",
             "value" : "开始填写"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始填寫"
+          }
+        }
+      }
+    },
+    "State is invalid" : {
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحالة غير صالحة"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Щатът е невалиден"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stát je neplatný"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Zustand ist ungültig"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El estado no es válido."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'état est invalide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo stato non è valido"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O estado é inválido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Состояние недействительно"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态无效"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态无效"
+          }
         }
       }
     },
@@ -63032,6 +63889,12 @@
             "state" : "translated",
             "value" : "停止填写"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止填寫"
+          }
         }
       }
     },
@@ -63111,6 +63974,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已停止"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "已停止"
@@ -63460,6 +64329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已提交他们的部分。表格已发送给下一个角色。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已提交其部分。表單已傳送給下一個角色。"
           }
         }
       }
@@ -63983,6 +64858,12 @@
             "state" : "translated",
             "value" : "标签将应用于基于此模板创建的房间。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "標籤將套用到根據此範本所建立的房間。"
+          }
         }
       }
     },
@@ -64266,6 +65147,12 @@
             "value" : "Тб"
           }
         },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tb"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -64413,6 +65300,12 @@
             "state" : "translated",
             "value" : "模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本"
+          }
         }
       }
     },
@@ -64494,6 +65387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "模板 %@ 已保存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本 %@ 已儲存"
           }
         }
       }
@@ -64577,6 +65476,12 @@
             "state" : "translated",
             "value" : "模板可供所有人使用"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本可供所有人使用"
+          }
         }
       }
     },
@@ -64658,6 +65563,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "範本"
           }
         }
       }
@@ -65183,6 +66094,12 @@
             "state" : "translated",
             "value" : "添加的管理员将能够使用此模板创建房间。"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增的管理員將能夠使用此範本建立房間。"
+          }
         }
       }
     },
@@ -65264,6 +66181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "客户端和服务器版本不兼容。您只能在查看模式下打开文档"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用戶端與伺服器版本不相容。您只能以檢視模式開啟文件"
           }
         }
       }
@@ -66227,6 +67150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已启用自定义过滤器的文件链接已成功复制到剪贴板。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用自訂篩選的檔案連結已成功複製到剪貼簿。"
           }
         }
       }
@@ -67917,6 +68846,12 @@
             "value" : "Няма гости"
           }
         },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejsou tu žádní hosté"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67970,6 +68905,12 @@
             "state" : "translated",
             "value" : "没有访客"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有訪客"
+          }
         }
       }
     },
@@ -67985,6 +68926,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Няма гости за добавяне"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejsou žádní hosté k přidání"
           }
         },
         "de" : {
@@ -68039,6 +68986,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有可添加的访客"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有可新增的訪客"
           }
         }
       }
@@ -68145,6 +69098,12 @@
             "value" : "Няма потребители"
           }
         },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejsou zde žádní uživatelé"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -68198,6 +69157,12 @@
             "state" : "translated",
             "value" : "没有用户"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有使用者"
+          }
         }
       }
     },
@@ -68213,6 +69178,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Няма потребители за добавяне"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejsou žádní uživatelé k přidání"
           }
         },
         "de" : {
@@ -68267,6 +69238,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "没有可添加的用户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有可新增的使用者"
           }
         }
       }
@@ -72136,6 +73113,12 @@
             "state" : "translated",
             "value" : "未知状态"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知狀態"
+          }
         }
       }
     },
@@ -74684,6 +75667,12 @@
             "state" : "translated",
             "value" : "版本 ％@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本 %@"
+          }
         }
       }
     },
@@ -74765,6 +75754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本历史记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本記錄"
           }
         }
       }
@@ -76445,91 +77440,145 @@
         }
       }
     },
-    "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." : {
-      "comment" : "Introduction Step Four - Description",
+    "Who has access" : {
+      "comment" : "A section header that reads \"Who has access\".",
+      "isCommentAutoGenerated" : true,
       "localizations" : {
         "ar-SA" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "العمل مع المستندات دون اتصال بالإنترنت.\nيمكن لاحقًا تحميل الملفات التي تم إنشاؤها إلى البوابة الإلكترونية و\nثم الوصول إليها من أي جهاز آخر."
+            "value" : "من لديه صلاحية الوصول"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Работа с документи офлайн.\nСъздадените файлове по-късно могат да бъдат качени в онлайн портала и\nслед това достъпни от всяко друго устройство."
+            "value" : "Кой има достъп"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pracujte s dokumenty offline.\nVytvořené soubory mohou být později nahrány do online portálu.\nPoté k nim lze přistoupit z jakéhokoli jiného zařízení."
+            "value" : "Kdo má přístup"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arbeiten Sie mit Dokumenten offline.\nErstellte Dateien können später in das Online-Portal hochgeladen und\ndann von jedem anderen Gerät aus abgerufen werden."
+            "value" : "Wer hat Zugriff"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trabaje con documentos offline.\nLos archivos creados se puede cargar al portal en línea más tarde y luego acceder desde cualquier otro dispositivo."
+            "value" : "¿Quién tiene acceso?"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Travaillez avec des documents hors ligne.\nLes fichiers créés peuvent ensuite être chargés sur le portail en ligne et \nseront ensuite accessibles à partir de n'importe quel autre appareil."
-          }
-        },
-        "hy-AM" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Աշխատեք փաստաթղթերի հետ անցանց:\nՍտեղծված ֆայլերը հետագայում կարող են վերբեռնվել առցանց պորտալ և\nայնուհետև հասանելի է ցանկացած այլ սարքից:"
+            "value" : "Qui a accès"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lavora con i documenti offline.\nI file creati si può caricare sul portale online e\npoi accedergli da qualsiasi dispositivo."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ドキュメントをオフラインで編集する。作成したファイルは、後ほどオンラインポータルでアップロードされることがありますそして任意の他のデバイスからアクセスしました。"
+            "value" : "Chi ha accesso"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trabalhe com documentos offline.\nOs arquivos criados podem ser carregados posteriormente para o portal online e,\na seguir, acessados a partir de qualquer outro dispositivo."
+            "value" : "Quem tem acesso?"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Работайте с документами без интернета.\nСозданные файлы можно загрузить позднее на портал и\nполучить доступ к ним с любого устройства."
-          }
-        },
-        "si" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ලේඛන සමඟ මාර්ගඅපගතව වැඩ කරන්න.\nසාදන ලද ගොනු පසුව මාර්ගගත ද්වාරයට උඩුගත කර\nවෙනත් ඕනෑම උපාංගයකින් ප්‍රවේශ වීමට හැකිය."
+            "value" : "Кто имеет доступ"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "离线处理文件。\n创建的文件以后可以上传到在线门户，\n并从任何其他设备访问。"
+            "value" : "谁有权限"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "离线处理文件。\n创建的文件以后可以上传到在线门户，\n并从任何其他设备访问。"
+            "value" : "谁有权限"
+          }
+        }
+      }
+    },
+    "Work with docs offline in the On device tab.\nCreated files can later be uploaded to online portal and then accessed from any other device." : {
+      "comment" : "Introduction Step Four - Description",
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اعملوا مع المستندات دون اتصال في علامة تبوالتبويب \"على الجهاز\".\nيمكن لاحقا تحميل الملفات المنشأة إلى البوابة الإلكترونية ثم الوصول إليها من أي جهاز آخر."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Работете с документи офлайн в раздела „На устройството“.\nСъздадените файлове могат по-късно да бъдат качени в онлайн портал и след това да бъдат достъпни от всяко друго устройство."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pracujte s dokumenty offline na kartě Na zařízení.\nVytvořené soubory mohou být později nahrány do online portálu. Poté k nim lze přistoupit z jakéhokoli jiného zařízení."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Tab „Auf dem Gerät“ können Sie Dokumente offline bearbeiten.\nErstellte Dateien lassen sich später in das Online-Portal hochladen und von jedem anderen Gerät aus aufrufen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabaje con documentos offline en la pestaña \"En el dispositivo\".\n Los archivos creados se puede cargar al portal en línea más tarde y luego acceder desde cualquier otro dispositivo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Travaillez avec des documents hors ligne dans l'onglet « Sur l'appareil ». Les fichiers créés peuvent ensuite être téléchargés sur le portail en ligne et ensuite accessible à partir de n'importe quel autre appareil."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lavora con i documenti offline nella scheda \"Sul dispositivo\".\nI file creati possono essere successivamente caricati sul portale online e accessibili da qualsiasi altro dispositivo."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabalhe com documentos offline na guia \"No dispositivo\".\nOs arquivos criados podem ser posteriormente carregados no portal online e acessados ​​de qualquer outro dispositivo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Работайте с документами офлайн во вкладке «На устройстве».\nСозданные файлы впоследствии можно загрузить на онлайн-портал и получить к ним доступ с любого другого устройства."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在“设备上”选项卡中离线处理文档。\n创建的文件之后可以上传到在线门户，然后从任何其他设备访问。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在“设备上”选项卡中离线处理文档。\n创建的文件之后可以上传到在线门户，然后从任何其他设备访问。"
           }
         }
       }
@@ -77143,6 +78192,12 @@
             "state" : "translated",
             "value" : "您即将删除一个文件版本。删除后将无法再查看或恢复它。您确定要继续吗？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您即將刪除檔案版本。刪除後將無法再查看或還原。確定要繼續嗎？"
+          }
         }
       }
     },
@@ -77313,6 +78368,12 @@
             "state" : "translated",
             "value" : "您即将删除此文件。该文件将在 30 天后永久删除。您确定要继续吗？"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您即將刪除此檔案。該檔案將在 30 天後永久刪除。您確定要繼續嗎？"
+          }
         }
       }
     },
@@ -77394,6 +78455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您即将删除此文件夹。该文件夹将在 30 天后永久删除。您确定要继续吗？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您即將刪除此資料夾。該資料夾將在 30 天後永久刪除。您確定要繼續嗎？"
           }
         }
       }
@@ -77588,6 +78655,12 @@
             "value" : "Вие сте назначени да попълните формуляра като първа роля.\nИзпратено е известие на вашия имейл. Можете да започнете\nда го попълвате сега или да копирате връзката за попълване и да се върнете по-късно."
           }
         },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jako první jste pověřeni vyplněním formuláře.\nNa váš e-mail bylo odesláno oznámení. Můžete začít s vyplňováním\nnyní nebo zkopírovat odkaz pro vyplnění a vrátit se později."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77640,6 +78713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您被分配作为第一个角色填写表单。\n通知已发送到您的邮箱，您可以立即开始填写\n或复制填写链接稍后填写。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您被分配為第一個填寫此表格的人。\n一封通知郵件已寄至您的信箱。您可以立即開始填寫，\n或複製填寫連結稍後再填寫。"
           }
         }
       }
@@ -78157,6 +79236,12 @@
             "state" : "translated",
             "value" : "您可以在“房间”部分中创建\n房间模板"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以從房間區段中的房間建立範本"
+          }
         }
       }
     },
@@ -78238,6 +79323,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您可以在“房间”部分中从房间创建模板"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以從房間區段中的房間建立範本"
           }
         }
       }
@@ -78326,6 +79417,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "頂部釘選無法超過10個房間。請取消釘選一些目前已釘選的房間。"
+          }
+        }
+      }
+    },
+    "You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." : {
+      "comment" : "Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.",
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "ar-SA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يمكنكم تعطيل تقييد تنزيل ونسخ البيانات لأن هذا الإعداد مفروض على مستوى الغرفة لجميع الملفات."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не можете да деактивирате ограничението за изтегляне и копиране на данни, защото тази настройка се прилага на ниво стая за всички файлове."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omezení stahování a kopírování dat nelze zakázat, protože toto nastavení se vynucuje na úrovni místnosti pro všechny soubory."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Beschränkung für das Herunterladen und Kopieren von Daten kann nicht deaktiviert werden, da diese Einstellung auf Raumebene für alle Dateien gilt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede desactivar la restricción de descarga y copia de datos porque esta configuración se aplica a nivel de sala para todos los archivos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous ne pouvez pas désactiver la restriction sur le téléchargement et la copie des données car ce paramètre est appliqué au niveau de la salle pour tous les fichiers."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non è possibile disattivare la restrizione sul download e sulla copia dei dati perché questa impostazione viene applicata a livello di stanza per tutti i file."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível desativar a restrição de download e cópia de dados, pois essa configuração é aplicada a todos os arquivos no nível da sala."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы не можете отключить ограничение на загрузку и копирование данных, поскольку эта настройка применяется на уровне комнаты для всех файлов."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您无法禁用下载和复制数据的限制，因为此设置在房间级别对所有文件都强制执行。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您无法禁用下载和复制数据的限制，因为此设置在房间级别对所有文件都强制执行。"
           }
         }
       }
@@ -79201,6 +80364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "轮到您了"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "輪到您了"
           }
         }
       }

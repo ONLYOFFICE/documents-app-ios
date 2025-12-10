@@ -61,7 +61,7 @@ final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfiguration
             let canDownload = !file.denyDownload
             let isProjects = file.rootFolderType == .bunch || file.rootFolderType == .projects
 
-            config.supportShare = canEdit && canShare && !isProjects && canDownload && folder.roomType == nil
+            config.supportShare = canEdit && canShare && !isProjects && canDownload
         }
 
         return config

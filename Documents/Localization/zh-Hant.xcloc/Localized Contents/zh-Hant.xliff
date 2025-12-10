@@ -2,9 +2,14 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
+      <trans-unit id="0UV-ad-V6Z.text" xml:space="preserve">
+        <source>Next</source>
+        <target state="translated">下一个</target>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "0UV-ad-V6Z";</note>
+      </trans-unit>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
         <target state="translated">下一个</target>
@@ -25,6 +30,11 @@
         <target state="translated">登录</target>
         <note>Class = "UILabel"; text = "Login"; ObjectID = "8QU-S0-L4O";</note>
       </trans-unit>
+      <trans-unit id="CAb-Ol-Sq3.text" xml:space="preserve">
+        <source>Server</source>
+        <target state="translated">服务器</target>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "CAb-Ol-Sq3";</note>
+      </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
         <source>Connect Storage</source>
         <target state="translated">连接存储</target>
@@ -34,6 +44,11 @@
         <source>Password</source>
         <target state="translated">密码</target>
         <note>Class = "UILabel"; text = "Password"; ObjectID = "fGf-yk-zsE";</note>
+      </trans-unit>
+      <trans-unit id="gmK-yF-ka4.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <target state="translated">example.com</target>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "gmK-yF-ka4";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
         <source>Required</source>
@@ -74,7 +89,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +177,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +199,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -435,7 +450,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -582,7 +597,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -663,7 +678,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -690,7 +705,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -727,7 +742,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -784,7 +799,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLock.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -856,7 +871,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -938,7 +953,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Documents-InfoPlist.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -999,7 +1014,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Localizable.xcstrings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="%@" xml:space="preserve">
@@ -1016,11 +1031,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>%d days</source>
         <target state="translated">%d days</target>
         <note>Days left</note>
-      </trans-unit>
-      <trans-unit id="%d hours|==|plural.other" xml:space="preserve">
-        <source>%d hours</source>
-        <target state="translated">%d hours</target>
-        <note>Hours left</note>
       </trans-unit>
       <trans-unit id="%d months|==|plural.other" xml:space="preserve">
         <source>%d months</source>
@@ -1049,17 +1059,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$#@arg1@ and %2$#@arg2@ selected</source>
-        <target state="new">%1$#@arg1@ and %2$#@arg2@ selected</target>
+        <target state="translated">已選取 %1$#@arg1@ 和 %2$#@arg2@</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu 個資料夾</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu 個檔案</target>
         <note/>
       </trans-unit>
       <trans-unit id="%lu Folder selected|==|plural.other" xml:space="preserve">
@@ -1241,6 +1251,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add Users or Groups" xml:space="preserve">
         <source>Add Users or Groups</source>
+        <target state="translated">新增使用者或群組</target>
         <note/>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
@@ -1290,6 +1301,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target state="translated">添加水印到文档</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Added to favorites" xml:space="preserve">
+        <source>Added to favorites</source>
+        <target state="translated">添加到收藏夹</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
         <target state="translated">附加連結</target>
@@ -1317,6 +1333,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All DocSpace and Room admins will be able to create rooms using this template." xml:space="preserve">
         <source>All DocSpace and Room admins will be able to create rooms using this template.</source>
+        <target state="translated">所有 DocSpace 和房間管理員都將能夠使用此範本建立房間。</target>
         <note/>
       </trans-unit>
       <trans-unit id="All Files" xml:space="preserve">
@@ -1418,6 +1435,11 @@ Category title</note>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target state="translated">作者</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Authorization code not found" xml:space="preserve">
+        <source>Authorization code not found</source>
+        <target state="translated">未找到授权码</target>
         <note/>
       </trans-unit>
       <trans-unit id="Automatic indexing" xml:space="preserve">
@@ -1625,6 +1647,11 @@ Category title</note>
         <target state="translated">协作</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Collaboration Room" xml:space="preserve">
+        <source>Collaboration Room</source>
+        <target state="translated">协作房间</target>
+        <note from="auto-generated">Title for a room type that is a collaboration room.</note>
+      </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
         <target state="translated">協作房間</target>
@@ -1739,6 +1766,11 @@ Nextcloud、ownCloud、Dropbox
         <target state="translated">複製連結</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Copy shared link" xml:space="preserve">
+        <source>Copy shared link</source>
+        <target state="translated">複製共享連結</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
         <target state="translated">正在复制</target>
@@ -1806,6 +1838,7 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Could not delete the version." xml:space="preserve">
         <source>Could not delete the version.</source>
+        <target state="translated">無法刪除該版本。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Could not delete." xml:space="preserve">
@@ -1930,6 +1963,7 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Create a room based on a template. All settings, users, folders and files will be taken from the selected room template." xml:space="preserve">
         <source>Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</source>
+        <target state="translated">根據範本建立房間。所有設定、使用者、資料夾和檔案都將沿用選取的房間範本。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
@@ -1984,12 +2018,18 @@ Nextcloud、ownCloud、Dropbox
       </trans-unit>
       <trans-unit id="Current file will be saved in version history." xml:space="preserve">
         <source>Current file will be saved in version history.</source>
+        <target state="translated">目前的檔案將儲存於版本記錄中。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
         <target state="translated">自訂</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="Custom Room" xml:space="preserve">
+        <source>Custom Room</source>
+        <target state="translated">自定义房间</target>
+        <note from="auto-generated">Title of a room with a custom type.</note>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
@@ -2000,12 +2040,14 @@ Nextcloud、ownCloud、Dropbox
         <source>Custom filter for
 the selected file
 disabled</source>
+        <target state="translated">已停用所選檔案的自訂篩選</target>
         <note/>
       </trans-unit>
       <trans-unit id="Custom filter for&#10;the selected file&#10;enabled" xml:space="preserve">
         <source>Custom filter for
 the selected file
 enabled</source>
+        <target state="translated">已啟用所選檔案的自訂篩選</target>
         <note/>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
@@ -2040,17 +2082,17 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$#@arg1@ and %2$#@arg2@</source>
-        <target state="new">Delete %1$#@arg1@ and %2$#@arg2@</target>
+        <target state="translated">刪除 %1$#@arg1@ 和 %2$#@arg2@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg1.plural.other" xml:space="preserve">
         <source>%1$lu Folders</source>
-        <target state="new">%1$lu Folders</target>
+        <target state="translated">%1$lu 個資料夾</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File|==|substitutions.arg2.plural.other" xml:space="preserve">
         <source>%2$lu Files</source>
-        <target state="new">%2$lu Files</target>
+        <target state="translated">%2$lu 個檔案</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete %lu Folder|==|plural.other" xml:space="preserve">
@@ -2088,16 +2130,23 @@ enabled</source>
         <target state="translated">永久删除</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Delete room" xml:space="preserve">
+        <source>Delete room</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Delete template" xml:space="preserve">
         <source>Delete template</source>
+        <target state="translated">刪除範本</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete this item?" xml:space="preserve">
         <source>Delete this item?</source>
+        <target state="translated">刪除此項目？</target>
         <note/>
       </trans-unit>
       <trans-unit id="Delete version" xml:space="preserve">
         <source>Delete version</source>
+        <target state="translated">刪除版本</target>
         <note/>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
@@ -2132,10 +2181,12 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Director" xml:space="preserve">
         <source>Director</source>
+        <target state="translated">總監</target>
         <note/>
       </trans-unit>
       <trans-unit id="Disable Custom filter" xml:space="preserve">
         <source>Disable Custom filter</source>
+        <target state="translated">停用自訂篩選</target>
         <note/>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
@@ -2155,6 +2206,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Do you really want to delete template room %@? The template cannot be restored. " xml:space="preserve">
         <source>Do you really want to delete template room %@? The template cannot be restored. </source>
+        <target state="translated">您確定要刪除範本房間 %@ 嗎？範本刪除後無法還原。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
@@ -2174,6 +2226,7 @@ enabled</source>
       </trans-unit>
       <trans-unit id="Docspace user only" xml:space="preserve">
         <source>Docspace user only</source>
+        <target state="translated">僅限 Docspace 用戶</target>
         <note/>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2214,6 +2267,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Draft" xml:space="preserve">
         <source>Draft</source>
+        <target state="translated">草稿</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
@@ -2278,6 +2332,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Edit template" xml:space="preserve">
         <source>Edit template</source>
+        <target state="translated">編輯範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
@@ -2312,6 +2367,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Employee" xml:space="preserve">
         <source>Employee</source>
+        <target state="translated">員工</target>
         <note/>
       </trans-unit>
       <trans-unit id="Employees" xml:space="preserve">
@@ -2326,6 +2382,7 @@ Operation completed</note>
       </trans-unit>
       <trans-unit id="Enable Custom filter" xml:space="preserve">
         <source>Enable Custom filter</source>
+        <target state="translated">啟用自訂篩選</target>
         <note/>
       </trans-unit>
       <trans-unit id="Enable automatic indexing to index files and folders by serial number. Sorting by number will be set as default for all users." xml:space="preserve">
@@ -2396,21 +2453,18 @@ Operation completed</note>
       <trans-unit id="Exit without saving?&#10;You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving?
 You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">不儲存並離開？「您已在索引中進行變更。若不儲存直接繼續，這些變更將不會套用。」</target>
         <note/>
       </trans-unit>
       <trans-unit id="Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied." xml:space="preserve">
         <source>Exit without saving? You have made changes in the index. If you proceed without saving, those changes will not be applied.</source>
+        <target state="translated">退出不保存？您已对索引进行了更改。如果继续退出，您的更改将不会被应用。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
         <source>Expect users</source>
         <target state="translated">預期使用者</target>
         <note/>
-      </trans-unit>
-      <trans-unit id="Expired" xml:space="preserve">
-        <source>Expired</source>
-        <target state="translated">已过期</target>
-        <note>Expiration status</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
@@ -2494,10 +2548,12 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Failed to verify user credentials." xml:space="preserve">
         <source>Failed to verify user credentials.</source>
+        <target state="translated">用户凭据验证失败。</target>
         <note from="auto-generated">Error message shown when the user credentials are not valid.</note>
       </trans-unit>
       <trans-unit id="Failure to open editor" xml:space="preserve">
         <source>Failure to open editor</source>
+        <target state="translated">無法開啟編輯器</target>
         <note/>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
@@ -2507,6 +2563,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Falure to open editor" xml:space="preserve">
         <source>Faliure to open editor</source>
+        <target state="translated">無法開啟編輯器</target>
         <note/>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2586,6 +2643,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Filling Status" xml:space="preserve">
         <source>Filling Status</source>
+        <target state="translated">填寫狀態</target>
         <note>Start filling form Button title</note>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
@@ -2595,10 +2653,12 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Filling status" xml:space="preserve">
         <source>Filling status</source>
+        <target state="translated">填寫狀態</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filling was stopped by" xml:space="preserve">
         <source>Filling was stopped by</source>
+        <target state="translated">填寫已由以下人員停止：</target>
         <note/>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2638,6 +2698,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form Finalized" xml:space="preserve">
         <source>Form Finalized</source>
+        <target state="translated">表單已定稿</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form completed successfully" xml:space="preserve">
@@ -2647,6 +2708,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="Form is ready for filling in room" xml:space="preserve">
         <source>Form is ready for filling in room</source>
+        <target state="translated">表單已準備就緒，可在房間中填寫</target>
         <note/>
       </trans-unit>
       <trans-unit id="Form number" xml:space="preserve">
@@ -2671,6 +2733,7 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="From template" xml:space="preserve">
         <source>From template</source>
+        <target state="translated">來自範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="From templates" xml:space="preserve">
@@ -2810,22 +2873,26 @@ You have made changes in the index. If you proceed without saving, those changes
       </trans-unit>
       <trans-unit id="In progress" xml:space="preserve">
         <source>In progress</source>
+        <target state="translated">進行中</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10; the form in which you participate or in which you&#10; are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of
  the form in which you participate or in which you
  are the organizer of completion</source>
+        <target state="translated">在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of&#10;the form in which you participate or in which you&#10;are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of
 the form in which you participate or in which you
 are the organizer of completion</source>
+        <target state="translated">在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度</target>
         <note/>
       </trans-unit>
       <trans-unit id="In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion" xml:space="preserve">
         <source>In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion</source>
+        <target state="translated">在此面板中，您可以監控您參與填寫或由您負責主辦的表單完成進度</target>
         <note/>
       </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
@@ -2864,6 +2931,11 @@ Folder order</note>
         <target state="translated">数据无效</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Invalid URL" xml:space="preserve">
+        <source>Invalid URL</source>
+        <target state="translated">无效的URL</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
         <source>Invalid Url</source>
         <target state="translated">URL无效</target>
@@ -2872,6 +2944,11 @@ Folder order</note>
       <trans-unit id="Invalid folder" xml:space="preserve">
         <source>Invalid folder</source>
         <target state="translated">無效的資料夾</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Invalid server URL" xml:space="preserve">
+        <source>Invalid server URL</source>
+        <target state="translated">服务器 URL 无效</target>
         <note/>
       </trans-unit>
       <trans-unit id="Invalid server data." xml:space="preserve">
@@ -2911,6 +2988,7 @@ Folder order</note>
       </trans-unit>
       <trans-unit id="It will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>It will be irretrievably deleted. This action is irreversible.</source>
+        <target state="translated">該項目將被永久刪除。此動作無法復原。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Items in Trash are automatically deleted after 30 days" xml:space="preserve">
@@ -3057,6 +3135,11 @@ Caption of the process</note>
         <target state="translated">Mb</target>
         <note>Measurement unit</note>
       </trans-unit>
+      <trans-unit id="Manage" xml:space="preserve">
+        <source>Manage</source>
+        <target state="translated">管理</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Mark as Favorite" xml:space="preserve">
         <source>Mark as Favorite</source>
         <target state="translated">标记为收藏</target>
@@ -3105,6 +3188,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Members" xml:space="preserve">
         <source>Members</source>
+        <target state="translated">成員</target>
         <note/>
       </trans-unit>
       <trans-unit id="Minimum length: 8 | Allowed characters: a-z, A-Z, 0-9, !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{|}" xml:space="preserve">
@@ -3187,6 +3271,11 @@ If current user name is not set</note>
         <target state="translated">名称为空</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Network error" xml:space="preserve">
+        <source>Network error</source>
+        <target state="translated">网络错误</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="New" xml:space="preserve">
         <source>New</source>
         <target state="translated">新</target>
@@ -3229,6 +3318,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list." xml:space="preserve">
         <source>New guests will be added here once you invite them to the room. You can share your guests and add guests invited by others to your list.</source>
+        <target state="translated">成員</target>
         <note/>
       </trans-unit>
       <trans-unit id="New room" xml:space="preserve">
@@ -3273,6 +3363,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No added guests yet" xml:space="preserve">
         <source>No added guests yet</source>
+        <target state="translated">尚未新增訪客</target>
         <note/>
       </trans-unit>
       <trans-unit id="No archived rooms here yet" xml:space="preserve">
@@ -3332,6 +3423,7 @@ If current user name is not set</note>
       </trans-unit>
       <trans-unit id="No templates here yet" xml:space="preserve">
         <source>No templates here yet</source>
+        <target state="translated">這裡還沒有範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
@@ -3427,10 +3519,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Only DocSpace and Room admins are shown here" xml:space="preserve">
         <source>Only DocSpace and Room admins are shown here</source>
+        <target state="translated">這裡僅顯示 DocSpace 和房間管理員</target>
         <note/>
       </trans-unit>
       <trans-unit id="Only DocSpace and Room admins from the selected groups will be able to create rooms using this template." xml:space="preserve">
         <source>Only DocSpace and Room admins from the selected groups will be able to create rooms using this template.</source>
+        <target state="translated">僅限所選群組中的 DocSpace 和房間管理員能使用此範本建立房間。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Only a room administrator or a DocSpace administrator can become the room owner." xml:space="preserve">
@@ -3463,8 +3557,14 @@ Share status</note>
         <target state="translated">打开文件</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Open location" xml:space="preserve">
+        <source>Open location</source>
+        <target state="translated">开放位置</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Opened the form to fill out" xml:space="preserve">
         <source>Opened the form to fill out</source>
+        <target state="translated">已開啟表單以進行填寫</target>
         <note/>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -3514,10 +3614,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="PDF-Documents" xml:space="preserve">
         <source>PDF-Documents</source>
+        <target state="translated">PDF 文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="PDF-Forms" xml:space="preserve">
         <source>PDF-Forms</source>
+        <target state="translated">PDF 表單</target>
         <note/>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
@@ -3585,6 +3687,11 @@ Share status</note>
         <target state="translated">固定中</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Please enter a server URL" xml:space="preserve">
+        <source>Please enter a server URL</source>
+        <target state="translated">请输入服务器网址</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
         <target state="translated">请转到"设置"并为此应用程序的相机启用此功能。</target>
@@ -3631,6 +3738,7 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Linkedin - %@</source>
+        <target state="translated">請重試。如果問題持續發生，請聯絡我們並提供此錯誤代碼：Linkedin - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
@@ -3664,6 +3772,7 @@ Share status</note>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Zoom - %@</source>
+        <target state="translated">請重試。如果問題持續發生，請聯絡我們並提供此錯誤代碼：Zoom - %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
@@ -3683,6 +3792,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target state="translated">高級用戶</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -3712,6 +3822,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Process details" xml:space="preserve">
         <source>Process details</source>
+        <target state="translated">程序詳細資訊</target>
         <note/>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
@@ -3743,6 +3854,11 @@ Share status</note>
         <source>Provide access to the document and set the permission levels.</source>
         <target state="translated">提供對文件的存取權限並設置權限級別。</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="Provide access to the folder and set the permission levels." xml:space="preserve">
+        <source>Provide access to the folder and set the permission levels.</source>
+        <target state="translated">提供对文件夹的访问权限并设置权限级别。</target>
+        <note from="auto-generated">Text displayed in the Sharing Info view model when the entity is a folder.</note>
       </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
@@ -3789,11 +3905,6 @@ Share status</note>
         <target state="translated">恢复</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Regenerate link" xml:space="preserve">
-        <source>Regenerate link</source>
-        <target state="translated">重新生成連結</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target state="translated">注册</target>
@@ -3814,9 +3925,9 @@ Share status</note>
         <target state="translated">从收藏夹中删除</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Remove link" xml:space="preserve">
-        <source>Remove link</source>
-        <target state="translated">移除連結</target>
+      <trans-unit id="Removed from favorites" xml:space="preserve">
+        <source>Removed from favorites</source>
+        <target state="translated">已从喜爱内容中删除</target>
         <note/>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
@@ -3896,10 +4007,12 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Restore this version?" xml:space="preserve">
         <source>Restore this version?</source>
+        <target state="translated">還原此版本？</target>
         <note/>
       </trans-unit>
       <trans-unit id="Restored" xml:space="preserve">
         <source>Restored</source>
+        <target state="translated">已還原</target>
         <note/>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
@@ -3916,6 +4029,10 @@ Share status</note>
         <source>Reviewer</source>
         <target state="translated">檢閱者</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Revoke" xml:space="preserve">
+        <source>Revoke</source>
+        <note/>
       </trans-unit>
       <trans-unit id="Revoke link" xml:space="preserve">
         <source>Revoke link</source>
@@ -3934,6 +4051,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Role description" xml:space="preserve">
         <source>Role description</source>
+        <target state="translated">角色描述</target>
         <note/>
       </trans-unit>
       <trans-unit id="Roles" xml:space="preserve">
@@ -3943,6 +4061,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Roles from the form:" xml:space="preserve">
         <source>Roles from the form:</source>
+        <target state="translated">表單中的角色：</target>
         <note/>
       </trans-unit>
       <trans-unit id="Room Name" xml:space="preserve">
@@ -3957,6 +4076,7 @@ Share status</note>
       </trans-unit>
       <trans-unit id="Room created" xml:space="preserve">
         <source>Room created</source>
+        <target state="translated">房間已建立</target>
         <note/>
       </trans-unit>
       <trans-unit id="Room manager" xml:space="preserve">
@@ -4002,6 +4122,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Save as template" xml:space="preserve">
         <source>Save as template</source>
+        <target state="translated">另存為範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -4021,6 +4142,7 @@ DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="Scanning is not supported on this device" xml:space="preserve">
         <source>Scanning is not supported on this device</source>
+        <target state="translated">此裝置不支援掃描</target>
         <note/>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
@@ -4071,6 +4193,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select members" xml:space="preserve">
         <source>Select members</source>
+        <target state="translated">選取成員</target>
         <note/>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -4128,6 +4251,11 @@ Navigation bar button title</note>
         <target state="translated">正在发送</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Server is unreachable" xml:space="preserve">
+        <source>Server is unreachable</source>
+        <target state="translated">无法连接服务器</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
         <target state="translated">设置收藏夹失败。</target>
@@ -4151,7 +4279,7 @@ Navigation bar button title</note>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
         <target state="translated">分享</target>
-        <note/>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Share &amp; collect" xml:space="preserve">
         <source>Share &amp; collect</source>
@@ -4176,11 +4304,6 @@ Navigation bar button title</note>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
         <target state="translated">共享访问</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="Shared link" xml:space="preserve">
-        <source>Shared link</source>
-        <target state="translated">共享連結</target>
         <note/>
       </trans-unit>
       <trans-unit id="Shared links" xml:space="preserve">
@@ -4220,6 +4343,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Show version history" xml:space="preserve">
         <source>Show version history</source>
+        <target state="translated">顯示版本記錄</target>
         <note/>
       </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
@@ -4289,14 +4413,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Start filling" xml:space="preserve">
         <source>Start filling</source>
+        <target state="translated">開始填寫</target>
         <note>Start filling form Button title</note>
+      </trans-unit>
+      <trans-unit id="State is invalid" xml:space="preserve">
+        <source>State is invalid</source>
+        <target state="translated">状态无效</target>
+        <note/>
       </trans-unit>
       <trans-unit id="Stop filling" xml:space="preserve">
         <source>Stop filling</source>
+        <target state="translated">停止填寫</target>
         <note/>
       </trans-unit>
       <trans-unit id="Stopped" xml:space="preserve">
         <source>Stopped</source>
+        <target state="translated">已停止</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
@@ -4316,6 +4448,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Submitted their part. The form was sent to the next role." xml:space="preserve">
         <source>Submitted their part. The form was sent to the next role.</source>
+        <target state="translated">已提交其部分。表單已傳送給下一個角色。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Success" xml:space="preserve">
@@ -4350,6 +4483,7 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Tags are applied to the room which will be created based on this template." xml:space="preserve">
         <source>Tags are applied to the room which will be created based on this template.</source>
+        <target state="translated">標籤將套用到根據此範本所建立的房間。</target>
         <note/>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
@@ -4369,18 +4503,22 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Template" xml:space="preserve">
         <source>Template</source>
+        <target state="translated">範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="Template %@ saved" xml:space="preserve">
         <source>Template %@ saved</source>
+        <target state="translated">範本 %@ 已儲存</target>
         <note/>
       </trans-unit>
       <trans-unit id="Template available to everyone" xml:space="preserve">
         <source>Template available to everyone</source>
+        <target state="translated">範本可供所有人使用</target>
         <note/>
       </trans-unit>
       <trans-unit id="Templates" xml:space="preserve">
         <source>Templates</source>
+        <target state="translated">範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="Terminate account" xml:space="preserve">
@@ -4415,10 +4553,12 @@ Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="The added administrators will be able to create rooms using this template." xml:space="preserve">
         <source>The added administrators will be able to create rooms using this template.</source>
+        <target state="translated">新增的管理員將能夠使用此範本建立房間。</target>
         <note/>
       </trans-unit>
       <trans-unit id="The client and server versions are incompatible. You can only open the document in view mode" xml:space="preserve">
         <source>The client and server versions are incompatible. You can only open the document in view mode</source>
+        <target state="translated">用戶端與伺服器版本不相容。您只能以檢視模式開啟文件</target>
         <note/>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
@@ -4486,6 +4626,7 @@ Custom filter is
 successfully
 copied to the
 clipboard.</source>
+        <target state="translated">啟用自訂篩選的檔案連結已成功複製到剪貼簿。</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
@@ -4580,10 +4721,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no guests" xml:space="preserve">
         <source>There are no guests</source>
+        <target state="translated">沒有訪客</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no guests to add" xml:space="preserve">
         <source>There are no guests to add</source>
+        <target state="translated">沒有可新增的訪客</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no rooms here yet" xml:space="preserve">
@@ -4593,10 +4736,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="There are no users" xml:space="preserve">
         <source>There are no users</source>
+        <target state="translated">沒有使用者</target>
         <note/>
       </trans-unit>
       <trans-unit id="There are no users to add" xml:space="preserve">
         <source>There are no users to add</source>
+        <target state="translated">沒有可新增的使用者</target>
         <note/>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -4822,6 +4967,7 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Unknown status" xml:space="preserve">
         <source>Unknown status</source>
+        <target state="translated">未知狀態</target>
         <note/>
       </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
@@ -4966,10 +5112,12 @@ clipboard.</source>
       </trans-unit>
       <trans-unit id="Version %@" xml:space="preserve">
         <source>Version %@</source>
+        <target state="translated">版本 %@</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version History" xml:space="preserve">
         <source>Version History</source>
+        <target state="translated">版本記錄</target>
         <note/>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
@@ -5069,13 +5217,16 @@ Swipe to learn more about the app.</source>
         <target state="translated">新增功能</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
-        <source>Work with documents offline.
-Created files can later be uploaded to online portal and
-then accessed from any other device.</source>
-        <target state="translated">离线处理文件。
-创建的文件以后可以上传到在线门户，
-并从任何其他设备访问。</target>
+      <trans-unit id="Who has access" xml:space="preserve">
+        <source>Who has access</source>
+        <target state="translated">谁有权限</target>
+        <note from="auto-generated">A section header that reads "Who has access".</note>
+      </trans-unit>
+      <trans-unit id="Work with docs offline in the On device tab.&#10;Created files can later be uploaded to online portal and then accessed from any other device." xml:space="preserve">
+        <source>Work with docs offline in the On device tab.
+Created files can later be uploaded to online portal and then accessed from any other device.</source>
+        <target state="translated">在“设备上”选项卡中离线处理文档。
+创建的文件之后可以上传到在线门户，然后从任何其他设备访问。</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with office files" xml:space="preserve">
@@ -5110,6 +5261,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete a file version. It will be no possible to see or restore it anymore. Are you sure you want to continue?</source>
+        <target state="translated">您即將刪除檔案版本。刪除後將無法再查看或還原。確定要繼續嗎？</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are about to delete these rooms. You won't be able to restore them. Are you sure you want to continue?" xml:space="preserve">
@@ -5119,10 +5271,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this file. The file will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target state="translated">您即將刪除此檔案。該檔案將在 30 天後永久刪除。您確定要繼續嗎？</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?" xml:space="preserve">
         <source>You are about to delete this folder. The folder will be permanently deleted in 30 days. Are you sure you want to continue?</source>
+        <target state="translated">您即將刪除此資料夾。該資料夾將在 30 天後永久刪除。您確定要繼續嗎？</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won't be able to restore it. Are you sure you want to continue?" xml:space="preserve">
@@ -5139,6 +5293,9 @@ then accessed from any other device.</source>
         <source>You are assigned to fill out the form as the first role. A
  notification has been sent to your email. You can start filling
  it out now or copy the filling link and return later.</source>
+        <target state="translated">您被分配為第一個填寫此表格的人。
+一封通知郵件已寄至您的信箱。您可以立即開始填寫，
+或複製填寫連結稍後再填寫。</target>
         <note/>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
@@ -5169,11 +5326,18 @@ then accessed from any other device.</source>
       <trans-unit id="You can create a template from&#10;a room in the Room section" xml:space="preserve">
         <source>You can create a template from
 a room in the Room section</source>
+        <target state="translated">您可以從房間區段中的房間建立範本</target>
         <note/>
       </trans-unit>
       <trans-unit id="You can create a template from a room in the Room section" xml:space="preserve">
         <source>You can create a template from a room in the Room section</source>
+        <target state="translated">您可以從房間區段中的房間建立範本</target>
         <note/>
+      </trans-unit>
+      <trans-unit id="You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files." xml:space="preserve">
+        <source>You cannot disable the restriction on downloading and copying data because this setting is enforced at the room level for all files.</source>
+        <target state="translated">您无法禁用下载和复制数据的限制，因为此设置在房间级别对所有文件都强制执行。</target>
+        <note from="auto-generated">Message displayed in an alert when the user tries to disable the restriction on downloading and copying data.</note>
       </trans-unit>
       <trans-unit id="You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned." xml:space="preserve">
         <source>You can’t pin more than 10 rooms to the top. Unpin some that are currently pinned.</source>
@@ -5227,6 +5391,7 @@ a room in the Room section</source>
       </trans-unit>
       <trans-unit id="Your turn" xml:space="preserve">
         <source>Your turn</source>
+        <target state="translated">輪到您了</target>
         <note>Form filling status</note>
       </trans-unit>
       <trans-unit id="Zb" xml:space="preserve">
@@ -5384,7 +5549,7 @@ Measurement unit</note>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.0.1" build-num="17A400"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="26.1.1" build-num="17B100"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

@@ -32,7 +32,7 @@ final class ASCIntroPageStore: ASCIntroPageStoreProtocol {
             /// 4
             ASCIntroPage(
                 title: NSLocalizedString("Edit documents locally", comment: "Introduction Step Four - Title"),
-                subtitle: NSLocalizedString("Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device.", comment: "Introduction Step Four - Description"),
+                subtitle: NSLocalizedString("Work with docs offline in the On device tab.\nCreated files can later be uploaded to online portal and then accessed from any other device.", comment: "Introduction Step Four - Description"),
                 image: Asset.Images.introStepFour.image
             ),
             /// 5

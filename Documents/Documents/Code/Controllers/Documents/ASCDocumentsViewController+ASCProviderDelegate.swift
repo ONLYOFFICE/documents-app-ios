@@ -100,9 +100,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         guard let file = entity as? ASCFile else { return false }
                         return file.id == newFile.id || file.id == originalFile.id
                     }) {
-                        let indexPath = IndexPath(row: index, section: 0)
-
-                        self.updateProviderStatus(for: newFile, indexPath: indexPath)
+                        self.updateProviderStatus(for: newFile)
                     } else {
                         self.provider?.add(item: newFile, at: 0)
                         UIView.performWithoutAnimation { [weak self] in
@@ -172,20 +170,19 @@ private extension ASCDocumentsViewController {
     ///   - parent: Parent view controller
     ///   - entity: Entity to share
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        guard !entity.isRoom else {
-            if let room = entity as? ASCRoom {
-                navigator.navigate(to: .roomSharingLink(folder: room))
-            }
-            return
+        if let folder = entity as? ASCFolder {
+            folder.isRoom
+                ? navigator.navigate(to: .sharingLink(entityType: .room(folder)))
+                : navigator.navigate(to: .sharingLink(entityType: .folder(folder)))
         }
 
         if let file = entity as? ASCFile, ASCOnlyofficeProvider.isDocspaceApi {
-            let sharedSettingsViewController = SharedSettingsRootViewController(file: file)
-            sharedSettingsViewController.modalPresentationStyle = .formSheet
-            sharedSettingsViewController.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+            let shareRoomViewController = SharingInfoRootViewController(entityType: .file(file))
+            let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
 
-            parent.present(sharedSettingsViewController, animated: true, completion: nil)
-
+            shareRoomNavigationVC.modalPresentationStyle = .formSheet
+            shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+            parent.present(shareRoomNavigationVC, animated: true)
         } else {
             let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
             let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)

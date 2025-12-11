@@ -17,8 +17,11 @@ protocol InviteUsersService {
     func setExternalLinkAccess(
         linkId: String?,
         room: ASCRoom,
-        settingAccess: ASCShareAccess
-    ) async throws -> ASCSharingOprionsExternalLink?
+        settingAccess: ASCShareAccess,
+        completion: @escaping (Result<ASCSharingOprionsExternalLink?, Error>) -> Void
+    )
+    
+    func getInvitationSettings(completion: @escaping(Result<ASCInvitationSettingsResponceModel?, Error>) -> Void)
 }
 
 // MARK: - InviteUsersServiceImp
@@ -95,6 +98,16 @@ extension InviteUsersServiceImp: InviteUsersService {
                 isLocked: model.isLocked,
                 access: model.access
             )
+        }
+    }
+    
+    func getInvitationSettings(completion: @escaping(Result<ASCInvitationSettingsResponceModel?, Error>) -> Void) {
+        networkingRequestManager.request(OnlyofficeAPI.Endpoints.Sharing.getInvitationSettings(), nil) { result, error in
+            if let result = result?.result {
+                completion(.success(result))
+            } else if let error {
+                completion(.failure(error))
+            }
         }
     }
 }

@@ -17,11 +17,8 @@ protocol InviteUsersService {
     func setExternalLinkAccess(
         linkId: String?,
         room: ASCRoom,
-        settingAccess: ASCShareAccess,
-        completion: @escaping (Result<ASCSharingOprionsExternalLink?, Error>) -> Void
-    )
-    
-    func getInvitationSettings(completion: @escaping(Result<ASCInvitationSettingsResponceModel?, Error>) -> Void)
+        settingAccess: ASCShareAccess
+    ) async throws -> ASCSharingOprionsExternalLink?
 }
 
 // MARK: - InviteUsersServiceImp

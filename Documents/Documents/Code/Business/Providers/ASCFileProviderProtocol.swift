@@ -111,6 +111,7 @@ protocol ASCFileProviderProtocol: ASCEntityViewLayoutTypeProvider {
     func reset()
     func userInfo(completeon: ASCProviderUserInfoHandler?)
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?)
+    func fetchFolder(id: String) async -> ASCFolder?
     func updateSort(completeon: ASCProviderCompletionHandler?)
     func serialize() -> String?
     func deserialize(_ jsonString: String)
@@ -186,6 +187,7 @@ extension ASCFileProviderProtocol {
     func handleNetworkError(_ error: Error?) -> Bool { false }
     func modifyImageDownloader(request: URLRequest) -> URLRequest { request }
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
+    func fetchFolder(id: String) async -> ASCFolder? { nil }
     func download(_ path: String, to: URL, range: Range<Int64>?, processing: @escaping NetworkProgressHandler) {}
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}

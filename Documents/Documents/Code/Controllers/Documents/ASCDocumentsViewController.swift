@@ -2100,10 +2100,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     }
     
     func openLocation(file: ASCFile) {
-        if let folderId = file.folderId {
-            let targetFolder = ASCFolder()
-            targetFolder.id = String(folderId)
-            openFolder(folder: targetFolder) { controller in
+        Task {
+            guard let folderId = file.folderId,
+                  let folder = await provider?.fetchFolder(id: String(folderId))
+            else { return }
+            openFolder(folder: folder) { controller in
                 guard let controller else { return }
                 controller.setupSearchFilter(text: file.title)
             }
@@ -2113,7 +2114,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     private func setupSearchFilter(text: String) {
         searchController.isActive = true
         searchController.searchBar.text = text
-        searchValue = text
         sendSearchRequest()
     }
 

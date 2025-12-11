@@ -11,7 +11,7 @@ import CoreSpotlight
 import FirebaseCore
 import FirebaseMessaging
 import GoogleSignIn
-import Siren
+import SSAppUpdater
 import SwiftyDropbox
 import UIKit
 import UserNotifications
@@ -106,12 +106,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureAppUpdater() {
-        let siren = Siren.shared
-        let rules = Rules(promptFrequency: .immediately, forAlertType: .option)
-
-        Siren.shared.rulesManager = RulesManager(globalRules: rules,
-                                                 showAlertAfterCurrentVersionHasBeenReleasedForDays: 1)
-
-        siren.wail()
+        SSAppUpdater.shared.performCheck(
+            isForceUpdate: false,
+            updateAlertFrequency: .weekly,
+            skipVersionAllow: true,
+            redirectToAppStore: true
+        ) { _ in }
     }
 }

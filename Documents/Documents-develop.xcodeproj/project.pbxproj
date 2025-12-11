@@ -18,6 +18,7 @@
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
 		7714E97D2EC1F9B400D28198 /* OwncloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7714E97C2EC1F9B400D28198 /* OwncloudHelper.swift */; };
 		772A25362EB8C4BF009264BA /* OwncloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A25352EB8C4BF009264BA /* OwncloudEndpoints.swift */; };
+		772B71662ED584610009BEF8 /* SSAppUpdater in Frameworks */ = {isa = PBXBuildFile; productRef = 772B71652ED584610009BEF8 /* SSAppUpdater */; };
 		774E68C42EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E68C32EBB5C250092D879 /* ASCConnectStorageOAuth2Owncloud.swift */; };
 		77586F622DD3749300861561 /* ASCHelpAndFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77586F612DD3749300861561 /* ASCHelpAndFeedbackViewController.swift */; };
 		776052F92EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776052F82EB8A6F1000DC43D /* ASCConnectStorageOwnCloudServerController.swift */; };
@@ -1653,6 +1654,7 @@
 				FC4293B2294A684900DC3932 /* DocxRenderer.xcframework in Frameworks */,
 				FC4293C4294A685500DC3932 /* UnicodeConverter.xcframework in Frameworks */,
 				FCC0D9A22BCE81E70025DC02 /* engine.xcframework in Frameworks */,
+				772B71662ED584610009BEF8 /* SSAppUpdater in Frameworks */,
 				3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */,
 				FC4293B8294A684A00DC3932 /* graphics.xcframework in Frameworks */,
 				FC9A676E2DCB74C500AC30D1 /* OFDFile.xcframework in Frameworks */,
@@ -4198,6 +4200,7 @@
 				FC2B7F252B4E87070064DDDA /* PasscodeLock */,
 				FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */,
 				FCE30B092E964DC800A0A859 /* Lottie */,
+				772B71652ED584610009BEF8 /* SSAppUpdater */,
 			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents-dev.app */;
@@ -4249,11 +4252,12 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
-				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
-				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
-				FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */,
+				FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "HTMLString" */,
+				FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */,
+				FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "SDKCore" */,
 				FCE30B082E964DC800A0A859 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				772B71642ED584610009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -4453,7 +4457,6 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/ReCaptcha/ReCaptcha.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework",
@@ -4512,7 +4515,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReCaptcha.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRater.framework",
@@ -5745,25 +5747,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
+		FC2B7F1E2B4E86EA0064DDDA /* XCLocalSwiftPackageReference "HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
+		FC2B7F212B4E86F90064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
+		FC2B7F242B4E87070064DDDA /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
-		FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */ = {
+		FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "SDKCore" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../editors-ios/Common/SDKCore";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		772B71642ED584610009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSAppUpdater.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -5783,6 +5793,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		772B71652ED584610009BEF8 /* SSAppUpdater */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 772B71642ED584610009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */;
+			productName = SSAppUpdater;
+		};
 		FC2B7F1F2B4E86EA0064DDDA /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;
@@ -5807,7 +5822,7 @@
 		};
 		FCC0D9D62BCE9B9F0025DC02 /* SDKCoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "../../editors-ios/Common/SDKCore" */;
+			package = FCC0D9D32BCE9AEC0025DC02 /* XCLocalSwiftPackageReference "SDKCore" */;
 			productName = SDKCoreSwift;
 		};
 		FCE30B092E964DC800A0A859 /* Lottie */ = {

@@ -2277,6 +2277,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                         // Delay so that the loading indication is completed
                         delay(seconds: 0.6) {
+                            openingAlert.progress = 1
                             openingAlert.hide()
 
                             let splitVC = ASCViewControllerManager.shared.topViewController as? ASCBaseSplitViewController
@@ -2782,6 +2783,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         message: NSLocalizedString("Could not download the file.", comment: "")
                     )
                 } else if result != nil {
+                    openingAlert.progress = 1
                     openingAlert.hide()
 
                     // Create entity info

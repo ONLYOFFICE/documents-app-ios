@@ -97,7 +97,7 @@ final class InviteUsersViewModel: ObservableObject {
             }
         }
     }
-    
+
 //    func fetchInvitationSettings() {
 //        service.getInvitationSettings { [weak self] result in
 //            guard let self else { return }

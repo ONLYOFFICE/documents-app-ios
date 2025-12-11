@@ -79,6 +79,7 @@
 		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
+		772B716F2ED5858E0009BEF8 /* SSAppUpdater in Frameworks */ = {isa = PBXBuildFile; productRef = 772B716E2ED5858E0009BEF8 /* SSAppUpdater */; };
 		775726E82EC604C00088124F /* OwncloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E52EC604C00088124F /* OwncloudEndpoints.swift */; };
 		775726E92EC604C00088124F /* OwncloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E42EC604C00088124F /* OwncloudApiClient.swift */; };
 		775726EA2EC604C00088124F /* OwncloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775726E62EC604C00088124F /* OwncloudHelper.swift */; };
@@ -215,6 +216,7 @@
 		F3C64C932E40BD0700F7BACC /* ASCZoomSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C64C922E40BD0500F7BACC /* ASCZoomSignInController.swift */; };
 		F3C64C972E434A3E00F7BACC /* ASCLinkedInSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C64C962E434A2E00F7BACC /* ASCLinkedInSignInController.swift */; };
 		F3C935CB2DE8971800599EE4 /* ASCRoomFromTemplateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */; };
+		F3D321292E2E62CA002D8037 /* ASCInvitationSettingsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D321282E2E62B4002D8037 /* ASCInvitationSettingsResponceModel.swift */; };
 		F3D3850E2C8F472E002889EE /* FormCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850D2C8F472E002889EE /* FormCompletedView.swift */; };
 		F3D385102C8F473E002889EE /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */; };
 		F3D385152C8F5439002889EE /* ASCFormCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D385142C8F5439002889EE /* ASCFormCellView.swift */; };
@@ -964,6 +966,7 @@
 		F3C64C922E40BD0500F7BACC /* ASCZoomSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCZoomSignInController.swift; sourceTree = "<group>"; };
 		F3C64C962E434A2E00F7BACC /* ASCLinkedInSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLinkedInSignInController.swift; sourceTree = "<group>"; };
 		F3C935CA2DE8970100599EE4 /* ASCRoomFromTemplateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomFromTemplateOperation.swift; sourceTree = "<group>"; };
+		F3D321282E2E62B4002D8037 /* ASCInvitationSettingsResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCInvitationSettingsResponceModel.swift; sourceTree = "<group>"; };
 		F3D3850D2C8F472E002889EE /* FormCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedView.swift; sourceTree = "<group>"; };
 		F3D3850F2C8F473E002889EE /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
 		F3D385142C8F5439002889EE /* ASCFormCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFormCellView.swift; sourceTree = "<group>"; };
@@ -1496,7 +1499,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E80E30462EC4B004003964E6 /* Assembler */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Assembler; sourceTree = "<group>"; };
+		E80E30462EC4B004003964E6 /* Assembler */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1524,6 +1537,7 @@
 				FC87B43B2BBAE06B00DBDBDD /* DocumentEditor in Frameworks */,
 				FC2B7EF82B4E7E0C0064DDDA /* HTMLString in Frameworks */,
 				7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */,
+				772B716F2ED5858E0009BEF8 /* SSAppUpdater in Frameworks */,
 				FC87B4392BBAE06B00DBDBDD /* DocumentConverter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2619,6 +2633,14 @@
 				1D29914E274FB37600A06F3B /* ASCPortalType.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		FC45B28C2EE9C09E00CFA1E1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F3D321282E2E62B4002D8037 /* ASCInvitationSettingsResponceModel.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		FC4639CC2BFE10FF00DA603A /* NavigationBarExtendPanel */ = {
@@ -4025,6 +4047,7 @@
 				FCFDAA8E1E48A10C007A240C /* Products */,
 				8DAE80D35B150AEE2BBFA722 /* Pods */,
 				3C50733DA18F920525F5E1EB /* Frameworks */,
+				FC45B28C2EE9C09E00CFA1E1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4115,6 +4138,7 @@
 				FC87B43A2BBAE06B00DBDBDD /* DocumentEditor */,
 				FC87B43C2BBAE06B00DBDBDD /* PresentationEditor */,
 				FC87B43E2BBAE06B00DBDBDD /* SpreadsheetEditor */,
+				772B716E2ED5858E0009BEF8 /* SSAppUpdater */,
 			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents.app */;
@@ -4180,10 +4204,11 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A754B29910FB80056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
-				FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
-				FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
-				FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "../../editors-ios" */,
+				FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "HTMLString" */,
+				FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */,
+				FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "editors-ios" */,
+				772B716D2ED5858E0009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -4313,7 +4338,6 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/ReCaptcha/ReCaptcha.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework",
@@ -4372,7 +4396,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReCaptcha.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRater.framework",
@@ -4470,8 +4493,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4832,6 +4854,7 @@
 				1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */,
 				FC759C2F2C00614D00510096 /* InviteUsersService.swift in Sources */,
 				FC759CCE2C00615E00510096 /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
+				F3D321292E2E62CA002D8037 /* ASCInvitationSettingsResponceModel.swift in Sources */,
 				F3F706FE2DB837720004A09F /* ASCFileSwiftUICell.swift in Sources */,
 				FC759CA32C00615E00510096 /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				FC759CC22C00615E00510096 /* ASCSharingOptionsModels.swift in Sources */,
@@ -5702,25 +5725,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
+		FC2B7F0A2B4E83620064DDDA /* XCLocalSwiftPackageReference "HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
+		FC2B7F0D2B4E83760064DDDA /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
+		FC7DD7A82B503B980037405B /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};
-		FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "../../editors-ios" */ = {
+		FC87B4372BBAE06B00DBDBDD /* XCLocalSwiftPackageReference "editors-ios" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "../../editors-ios";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		772B716D2ED5858E0009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSAppUpdater.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		FC6A754B29910FB80056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Pulse/";
@@ -5732,6 +5763,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		772B716E2ED5858E0009BEF8 /* SSAppUpdater */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 772B716D2ED5858E0009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */;
+			productName = SSAppUpdater;
+		};
 		FC2B7EF72B4E7E0C0064DDDA /* HTMLString */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HTMLString;

@@ -47,6 +47,12 @@
             "value" : "Suivant(e)"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Հաջորդը"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63,6 +69,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Далее"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඊළඟ"
           }
         },
         "zh-Hans" : {
@@ -509,6 +521,12 @@
             "value" : "Serveur"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Սպասարկիչ"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -525,6 +543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сервер"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සේවාදායකය"
           }
         },
         "zh-Hans" : {
@@ -683,6 +707,12 @@
             "value" : "example.com"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example.com"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -696,6 +726,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "example.com"
+          }
+        },
+        "si" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "example.com"

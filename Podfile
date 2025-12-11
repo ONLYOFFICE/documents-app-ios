@@ -38,7 +38,6 @@ def common_pods
   pod 'MBProgressHUD', :git => 'https://github.com/jdg/MBProgressHUD.git'
   pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git'
   pod 'SwiftRater'
-  pod 'Siren'
   pod 'WhatsNewKit'
   pod 'PhoneNumberKit'
   pod 'SwiftMessages'

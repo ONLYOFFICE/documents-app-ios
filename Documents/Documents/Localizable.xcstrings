@@ -426,13 +426,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d day"
+                  "value" : "දින %d"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d days"
+                  "value" : "දින %d"
                 }
               }
             }
@@ -712,13 +712,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "One Group"
+                  "value" : "කණ්ඩායම් %d"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d Groups"
+                  "value" : "කණ්ඩායම් %d"
                 }
               }
             }
@@ -998,13 +998,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d month"
+                  "value" : "මාස %d"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d months"
+                  "value" : "මාස %d"
                 }
               }
             }
@@ -2660,8 +2660,8 @@
         },
         "si" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%#@arg1@ and %#@arg2@ selected"
+            "state" : "translated",
+            "value" : "%#@arg1@ සහ %#@arg2@ තෝරා ගන්නා ලදී"
           },
           "substitutions" : {
             "arg1" : {
@@ -2671,14 +2671,14 @@
                 "plural" : {
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folder"
+                      "state" : "translated",
+                      "value" : "ෆෝල්ඩරය %arg"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "ෆෝල්ඩර %arg"
                     }
                   }
                 }
@@ -4106,6 +4106,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пользователю, выполняющему первую\nроль, отправлено уведомление с предложением заполнить форму. Вы можете перейти\nв комнату или поделиться ссылкой на форму с участниками."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පළමු භූමිකාවේ පරිශීලකයාට දැනටමත් දැනුම්දීමක් යවා ඇති අතර,\nඑමඟින් පෝරමය පුරවන ලෙස ඔවුන්ව පොළඹවා ඇත. ඔබට කාමරයට සංචාලනය කිරීමට\nහෝ සහභාගිවන්නන් සමඟ පිරවුම් සබැඳිය බෙදා ගැනීමට හැකිය."
           }
         },
         "zh-Hans" : {
@@ -6984,6 +6990,12 @@
             "value" : "Ajouté aux favoris"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ավելացված է ընտրյալների ցանկում"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7000,6 +7012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить в избранное"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්‍රියතමයන් වෙත එක් කරන ලදී"
           }
         },
         "zh-Hans" : {
@@ -9202,6 +9220,12 @@
             "value" : "Назначить роль"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "භූමිකාවට පවරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9342,6 +9366,12 @@
             "value" : "Code d'autorisation introuvable"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Հաստատման կոդը չի գտնվել"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9358,6 +9388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Код авторизации не найден"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවසර කේතය හමු නොවීය"
           }
         },
         "zh-Hans" : {
@@ -13299,6 +13335,12 @@
             "value" : "Salle de collaboration"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Համագործակցության սենյակ"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13315,6 +13357,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Комната для совместной работы"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සහයෝගිත්‍ව කාමරය"
           }
         },
         "zh-Hans" : {
@@ -15902,6 +15950,12 @@
             "value" : "Copier le lien partagé"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Պատճենել ընդհանուր հղումը"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15918,6 +15972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скопировать общую ссылку"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "බෙදාගත් සබැඳිය පිටපත් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -20683,6 +20743,12 @@
             "value" : "Пользовательский фильтр для\nвыбранного файла\nвключен"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "තෝරාගත් ගොනුව සඳහා අභිරුචි පෙරහන සක්‍රීය කර ඇත"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20825,6 +20891,12 @@
             "value" : "Salle personnalisée"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Հարմարեցված սենյակ"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20841,6 +20913,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пользовательская комната"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අභිරුචි කාමරය"
           }
         },
         "zh-Hans" : {
@@ -22458,8 +22536,8 @@
         },
         "si" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete %#@arg1@ and %#@arg2@"
+            "state" : "translated",
+            "value" : "%#@arg1@ සහ %#@arg2@ මකන්න"
           },
           "substitutions" : {
             "arg1" : {
@@ -22469,14 +22547,14 @@
                 "plural" : {
                   "one" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folder"
+                      "state" : "translated",
+                      "value" : "ෆෝල්ඩරය %arg"
                     }
                   },
                   "other" : {
                     "stringUnit" : {
-                      "state" : "new",
-                      "value" : "%arg Folders"
+                      "state" : "translated",
+                      "value" : "ෆෝල්ඩර %arg"
                     }
                   }
                 }
@@ -24766,6 +24844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Только для пользователей Docspace"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DocSpace පරිශීලකයාට පමණි"
           }
         },
         "zh-Hans" : {
@@ -29124,6 +29208,12 @@
             "value" : "Выйти без сохранения?\nВы внесли изменения в индекс. Если вы продолжите без сохранения, изменения не будут применены."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සුරැකීමකින් තොරව පිටවන්නද?\nඔබ දර්ශකයේ වෙනස්කම් සිදු කර ඇත. සුරැකීමකින් තොරව ඔබ ඉදිරියට ගියහොත්, එම වෙනස්කම් අදාළ නොවේ."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30764,6 +30854,12 @@
             "value" : "Échec de la vérification des informations d'identification de l'utilisateur."
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Չհաջողվեց ստուգել օգտատիրոջ տվյալները։"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30780,6 +30876,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось проверить учетные данные пользователя."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිශීලක අක්තපත්‍ර සත්‍යාපනය කිරීමට අසමත් විය."
           }
         },
         "zh-Hans" : {
@@ -30862,6 +30964,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось открыть редактор"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සංස්කාරකය විවෘත කිරීමට අපොහොසත් වීම"
           }
         },
         "zh-Hans" : {
@@ -31039,6 +31147,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не удалось открыть редактор"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සංස්කාරකය විවෘත කිරීමට අපොහොසත් වීම"
           }
         },
         "zh-Hans" : {
@@ -33597,6 +33711,12 @@
             "value" : "Форма завершена"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පෝරමය අවසන් කරන ලදී"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33677,6 +33797,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Форма готова к заполнению в комнате"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කාමරයේ පිරවීම සඳහා පෝරමය සූදානම්"
           }
         },
         "zh-Hans" : {
@@ -34199,6 +34325,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Из шаблонов"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සැකිලි වලින්"
           }
         },
         "zh-Hans" : {
@@ -36845,6 +36977,12 @@
             "value" : "На этой панели вы можете следить за заполнением\nформы, участником или организатором заполнения которой\nвы являетесь"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම පැනලය තුළ ඔබ සහභාගී වන හෝ ඔබ සම්පූර්ණ කිරීමේ සංවිධායක වන පෝරමය සම්පූර්ණ කිරීම නිරීක්ෂණය කළ හැකිය"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37191,6 +37329,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Индекс"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "දර්ශකය"
           }
         },
         "zh-Hans" : {
@@ -37862,6 +38006,12 @@
             "value" : "URL du serveur invalide"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Անվավեր սերվերի URL"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37878,6 +38028,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неверный URL-адрес сервера."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවලංගු සේවාදායක URL එක"
           }
         },
         "zh-Hans" : {
@@ -38020,6 +38176,12 @@
             "value" : "URL non valide"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Անվավեր URL"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -38036,6 +38198,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Неверный URL-адрес"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අවලංගු URL එකක්"
           }
         },
         "zh-Hans" : {
@@ -41092,6 +41260,12 @@
             "value" : "Gérer"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Կառավարել"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -41108,6 +41282,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Управлять"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කළමනාකරණය කරන්න"
           }
         },
         "zh-Hans" : {
@@ -41905,13 +42085,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Me and One Users"
+                  "value" : "මම සහ %d පරිශීලකයින්"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Me and %d Users"
+                  "value" : "මම සහ %d පරිශීලකයින්"
                 }
               }
             }
@@ -43758,6 +43938,12 @@
             "value" : "Erreur réseau"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ցանցի սխալ"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43774,6 +43960,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ошибка сети"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ජාල දෝෂයකි"
           }
         },
         "zh-Hans" : {
@@ -48944,6 +49136,12 @@
             "value" : "Ouvrir l'emplacement"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Բացել լոկացիան"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -48960,6 +49158,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Открытое папку"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ස්ථානය විවෘත කරන්න"
           }
         },
         "zh-Hans" : {
@@ -51576,6 +51780,12 @@
             "value" : "Veuillez saisir une URL de serveur"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Խնդրում ենք մուտքագրել սերվերի URL-ը"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51592,6 +51802,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Введите URL-адрес сервера"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "කරුණාකර සේවාදායක URL එකක් ඇතුළත් කරන්න"
           }
         },
         "zh-Hans" : {
@@ -52204,6 +52420,12 @@
             "value" : "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: Linkedin - %@"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "යළි උත්සාහ කරන්න. \n\nගැටලුව දිගටම පවතී නම් අප හා සම්බන්ධ වී මෙම දෝෂ කේතය සඳහන් කරන්න: Linkedin - %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -52548,6 +52770,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: Zoom - %@"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "යළි උත්සාහ කරන්න. \n\nගැටලුව දිගටම පවතී නම් අප හා සම්බන්ධ වී මෙම දෝෂ කේතය සඳහන් කරන්න: Zoom - %@"
           }
         },
         "zh-Hans" : {
@@ -54025,6 +54253,12 @@
             "value" : "Donnez accès au dossieret définissez les niveaux d'autorisation."
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Տրամադրեք թղթապանակին մուտք գործելու իրավունք և սահմանեք թույլտվության մակարդակները։"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54041,6 +54275,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Предоставьте доступ к папке и установите уровни разрешений."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ෆෝල්ඩරයට ප්‍රවේශය ලබා දී අවසර මට්ටම් සකසන්න."
           }
         },
         "zh-Hans" : {
@@ -55243,6 +55483,12 @@
             "value" : "Rétiré des favoris"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Հեռացված է ընտրյալներից"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55259,6 +55505,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Удалено из избранного"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්‍රියතමයන්ගෙන් ඉවත් කරන ලදී"
           }
         },
         "zh-Hans" : {
@@ -60791,6 +61043,12 @@
             "value" : "Serveur inaccessible"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Սերվերն անհասանելի է"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -60807,6 +61065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сервер недоступен"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "සේවාදායකයට ළඟා විය නොහැක"
           }
         },
         "zh-Hans" : {
@@ -63777,6 +64041,12 @@
             "value" : "L'état est invalide"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Նահանգն անվավեր է"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63793,6 +64063,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Состояние недействительно"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "රාජ්‍යය වලංගු නොවේ"
           }
         },
         "zh-Hans" : {
@@ -68900,6 +69176,12 @@
             "value" : "Гостей нет"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "අමුත්තන් නැත"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -68980,6 +69262,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет гостей для добавления"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එකතු කිරීමට අමුත්තන් නැත"
           }
         },
         "zh-Hans" : {
@@ -69152,6 +69440,12 @@
             "value" : "Пользователей нет"
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පරිශීලකයින් නැත"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69232,6 +69526,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет пользователей для добавления"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "එකතු කිරීමට පරිශීලකයින් නැත"
           }
         },
         "zh-Hans" : {
@@ -73984,6 +74284,12 @@
             "value" : "Загрузите PDF-формы из DocSpace или устройства."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DocSpace හෝ උපාංගයෙන් PDF පෝරම උඩුගත කරන්න"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77480,6 +77786,12 @@
             "value" : "Qui a accès"
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ով ունի մուտքի իրավունք"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77496,6 +77808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кто имеет доступ"
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ප්‍රවේශය ඇත්තේ කාටද?"
           }
         },
         "zh-Hans" : {
@@ -77551,6 +77869,12 @@
             "value" : "Travaillez avec des documents hors ligne dans l'onglet « Sur l'appareil ». Les fichiers créés peuvent ensuite être téléchargés sur le portail en ligne et ensuite accessible à partir de n'importe quel autre appareil."
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Աշխատեք փաստաթղթերի հետ օֆլայն ռեժիմով՝ Սարքի վրա ներդիրում:\nՍտեղծված ֆայլերը հետագայում կարող են վերբեռնվել առցանց պորտալ, ապա մուտք գործել ցանկացած այլ սարքից:"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77567,6 +77891,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Работайте с документами офлайн во вкладке «На устройстве».\nСозданные файлы впоследствии можно загрузить на онлайн-портал и получить к ним доступ с любого другого устройства."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "උපාංග මත ටැබය තුළ නොබැඳිව ලේඛන සමඟ වැඩ කරන්න.\nසාදන ලද ගොනු පසුව මාර්ගගත ද්වාරයට උඩුගත කර වෙනත් ඕනෑම උපාංගයකින් ප්‍රවේශ විය හැක."
           }
         },
         "zh-Hans" : {
@@ -78709,6 +79039,12 @@
             "value" : "Вам поручено заполнить форму в качестве участника с первой ролью.\nУведомление отправлено на вашу электронную почту. Вы можете начать заполнять ее\nсейчас или скопировать ссылку для заполнения и вернуться позже."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "පළමු භූමිකාව ලෙස පෝරමය පිරවීමට ඔබට පවරා ඇත.\nඔබගේ විද්‍යුත් තැපෑලට දැනුම්දීමක් යවා ඇත. ඔබට දැන් එය පිරවීම ආරම්භ කළ හැකිය,\nනැතහොත් පිරවුම් සබැඳිය පිටපත් කර පසුව ආපසු පැමිණිය හැකිය."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -79231,6 +79567,12 @@
             "value" : "Вы можете создать шаблон из комнаты в разделе «Комната»."
           }
         },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ඔබට කාමර කොටසේ කාමරයකින් සැකිල්ලක් සෑදිය හැක"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -79461,6 +79803,12 @@
             "value" : "Vous ne pouvez pas désactiver la restriction sur le téléchargement et la copie des données car ce paramètre est appliqué au niveau de la salle pour tous les fichiers."
           }
         },
+        "hy-AM" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Դուք չեք կարող անջատել տվյալների ներբեռնման և պատճենման սահմանափակումը, քանի որ այս կարգավորումը պարտադրված է սենյակի մակարդակում բոլոր ֆայլերի համար։"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -79477,6 +79825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы не можете отключить ограничение на загрузку и копирование данных, поскольку эта настройка применяется на уровне комнаты для всех файлов."
+          }
+        },
+        "si" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "මෙම සැකසුම සියලුම ගොනු සඳහා කාමර මට්ටමින් ක්‍රියාත්මක වන බැවින්, දත්ත බාගැනීම සහ පිටපත් කිරීම සීමා කිරීම ඔබට අක්‍රිය කළ නොහැක."
           }
         },
         "zh-Hans" : {

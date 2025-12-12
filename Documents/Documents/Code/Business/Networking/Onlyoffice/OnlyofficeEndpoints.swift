@@ -106,6 +106,7 @@ enum OnlyofficeAPI {
         static let sendEditorNotify = "api/\(version)/files/file/%@/sendeditornotify"
         static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
         static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
+        static let invitationSettings = "api/\(version)/settings/invitationsettings"
 
         static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -531,6 +532,9 @@ enum OnlyofficeAPI {
 
             static func sendEditorNotify(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.sendEditorNotify, file.id), .post)
+
+            static func getInvitationSettings() -> Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>>.make(String(format: Path.invitationSettings), .get)
             }
         }
 

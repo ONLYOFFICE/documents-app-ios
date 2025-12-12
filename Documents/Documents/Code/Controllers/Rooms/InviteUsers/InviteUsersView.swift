@@ -33,7 +33,7 @@ struct InviteUsersView: View {
         .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
         .onAppear {
             viewModel.fetchData()
-//            viewModel.fetchInvitationSettings()
+            viewModel.fetchInvitationSettings()
         }
         .background(handleHUD())
     }

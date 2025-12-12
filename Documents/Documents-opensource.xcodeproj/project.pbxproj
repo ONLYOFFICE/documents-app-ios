@@ -161,6 +161,7 @@
 		F3BBE4A42ECB17AF00DD5FEB /* EditRoomSharedLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE49E2ECB17AF00DD5FEB /* EditRoomSharedLinkService.swift */; };
 		F3BBE4A52ECB17AF00DD5FEB /* EditFolderSharedLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE49D2ECB17AF00DD5FEB /* EditFolderSharedLinkService.swift */; };
 		F3BBE4A62ECB17AF00DD5FEB /* EditSharedLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE49F2ECB17AF00DD5FEB /* EditSharedLinkService.swift */; };
+		F3BF16582EEAFEE300FB31F2 /* ASCInvitationSettingsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF16572EEAFEE300FB31F2 /* ASCInvitationSettingsResponceModel.swift */; };
 		F3C003E72D6C9254008510F1 /* ASCDocumentsViewController+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C003E62D6C9241008510F1 /* ASCDocumentsViewController+Localized.swift */; };
 		F3D28A562E5331D400685E33 /* ASCZoomSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D28A552E5331D400685E33 /* ASCZoomSignInController.swift */; };
 		F3D28A572E5331D400685E33 /* ASCLinkedInSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D28A542E5331D400685E33 /* ASCLinkedInSignInController.swift */; };
@@ -920,6 +921,7 @@
 		F3BBE49E2ECB17AF00DD5FEB /* EditRoomSharedLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoomSharedLinkService.swift; sourceTree = "<group>"; };
 		F3BBE49F2ECB17AF00DD5FEB /* EditSharedLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSharedLinkService.swift; sourceTree = "<group>"; };
 		F3BBE4A02ECB17AF00DD5FEB /* EditSharedLnkViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSharedLnkViewService.swift; sourceTree = "<group>"; };
+		F3BF16572EEAFEE300FB31F2 /* ASCInvitationSettingsResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCInvitationSettingsResponceModel.swift; sourceTree = "<group>"; };
 		F3C003E62D6C9241008510F1 /* ASCDocumentsViewController+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+Localized.swift"; sourceTree = "<group>"; };
 		F3D28A542E5331D400685E33 /* ASCLinkedInSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLinkedInSignInController.swift; sourceTree = "<group>"; };
 		F3D28A552E5331D400685E33 /* ASCZoomSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCZoomSignInController.swift; sourceTree = "<group>"; };
@@ -1391,50 +1393,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = VDRStartFillingStatus;
-			sourceTree = "<group>";
-		};
-		E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = VDRFillingStatus;
-			sourceTree = "<group>";
-		};
-		E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = SwiftUIViewModifiers;
-			sourceTree = "<group>";
-		};
-		E8C5FD8F2D343489004112D3 /* Protocols */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
+		E84AB34E2DB959D400269DAB /* VDRStartFillingStatus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VDRStartFillingStatus; sourceTree = "<group>"; };
+		E897FAF02DCF41BE00E63B22 /* VDRFillingStatus */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VDRFillingStatus; sourceTree = "<group>"; };
+		E8AE7A602DCF541800BEBB00 /* SwiftUIViewModifiers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SwiftUIViewModifiers; sourceTree = "<group>"; };
+		E8C5FD8F2D343489004112D3 /* Protocols */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Protocols; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2498,6 +2460,7 @@
 		FC03A62F2BDA7F67005E8FFB /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3BF16572EEAFEE300FB31F2 /* ASCInvitationSettingsResponceModel.swift */,
 				1D581BDD2E5F71BD00F53678 /* FormRolesMappingUsersRequestModel.swift */,
 				1D581BDE2E5F71BD00F53678 /* PeopleRoomRequestModel.swift */,
 				F30716F12DF765F8003CBBD2 /* ASCRoomTemplateInviteRequestModel.swift */,
@@ -3974,9 +3937,9 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
-				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */,
-				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */,
-				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */,
+				FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */,
+				FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */,
+				FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */,
 				FC87B4642BBBEBD900DBDBDD /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 				772B71A12ED586540009BEF8 /* XCRemoteSwiftPackageReference "SSAppUpdater" */,
 			);
@@ -4538,6 +4501,7 @@
 				FC70814F2812E2260057FCD2 /* ASCAppleIdSignInController.swift in Sources */,
 				FC7081502812E2260057FCD2 /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				FC7081512812E2260057FCD2 /* ASCSortViewController.swift in Sources */,
+				F3BF16582EEAFEE300FB31F2 /* ASCInvitationSettingsResponceModel.swift in Sources */,
 				FC03A6462BDA7F67005E8FFB /* LogoUploadResult.swift in Sources */,
 				F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */,
 				1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */,
@@ -5179,15 +5143,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "HTMLString" */ = {
+		FC397E362B3591CF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/HTMLString" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/HTMLString;
 		};
-		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Observable-Swift" */ = {
+		FC397E3A2B3596AF00830F43 /* XCLocalSwiftPackageReference "Documents/Code/Vendor/Observable-Swift" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Documents/Code/Vendor/Observable-Swift";
 		};
-		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "PasscodeLock" */ = {
+		FCA3E6FE2B35C89000C5EDEC /* XCLocalSwiftPackageReference "Documents/Code/Vendor/PasscodeLock" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Documents/Code/Vendor/PasscodeLock;
 		};

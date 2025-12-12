@@ -19,6 +19,8 @@ final class InviteUsersViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isExternalLinkSectionAvailable: Bool = false
     @Published var externalLink: ASCSharingOprionsExternalLink?
+    @Published var allowInvitingMembers: Bool = false
+    @Published var allowInvitingGuests: Bool = false
 
     // MARK: Navigation related published vars
 
@@ -92,6 +94,21 @@ final class InviteUsersViewModel: ObservableObject {
                 case let .failure(error):
                     log.error(error.localizedDescription, error)
                 }
+            }
+        }
+    }
+
+    func fetchInvitationSettings() {
+        service.getInvitationSettings { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(settings):
+                guard let allowInvitingGuests = settings?.allowInvitingGuests,
+                      let allowInvitingMembers = settings?.allowInvitingMembers else { return }
+                self.allowInvitingGuests = allowInvitingGuests
+                self.allowInvitingMembers = allowInvitingMembers
+            case let .failure(error):
+                log.error(error.localizedDescription, error)
             }
         }
     }

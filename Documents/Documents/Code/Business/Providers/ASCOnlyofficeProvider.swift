@@ -465,6 +465,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
+    
+    func fetchFolder(id: String) async -> ASCFolder? {
+        try? await OnlyofficeApiClient.request(
+            OnlyofficeAPI.Endpoints.Folders.info(folderId: id)
+        )?.result
+    }
 
     func searchArea(for folder: ASCFolder) -> String? {
         guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return nil }

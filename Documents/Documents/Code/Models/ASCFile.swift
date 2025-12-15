@@ -29,6 +29,7 @@ class ASCFile: ASCEntity {
     var openVersionMode: Bool = false
     var order: String?
     var parent: ASCFolder?
+    var folderId: Int?
     var pureContentLength: Int = 0
     var requestToken: String?
     var rootFolderType: ASCFolderType = .default
@@ -117,6 +118,7 @@ class ASCFile: ASCEntity {
         formFillingStatus <- (map["formFillingStatus"], EnumTransform())
         isForm <- map["isForm"]
         order <- map["order"]
+        folderId <- map["folderId"]
         pureContentLength <- map["pureContentLength"]
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         security <- map["security"]
@@ -235,6 +237,7 @@ extension ASCFile {
         if shouldUpdate(\.openVersionMode) { openVersionMode = file.openVersionMode }
         if shouldUpdate(\.order) { order = file.order }
         if shouldUpdate(\.parent) { parent = file.parent }
+        if shouldUpdate(\.folderId) { folderId = file.folderId }
         if shouldUpdate(\.pureContentLength) { pureContentLength = file.pureContentLength }
         if shouldUpdate(\.requestToken) { requestToken = file.requestToken }
         if shouldUpdate(\.rootFolderType) { rootFolderType = file.rootFolderType }

@@ -636,8 +636,12 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 break
             }
         }
-
-        authorLabel.text = file.createdBy?.displayName
+        let createdByName = file.createdBy?.displayName
+        authorLabel.text = [createdByName, file.originRoomTitle].compactMap {
+            guard let str = $0?.trimmed, !str.isEmpty else { return nil }
+            return str
+        }
+        .joined(separator: " • ")
 
         return authorLabel
     }

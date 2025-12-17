@@ -30,6 +30,6 @@ class ASCCreateEntityUIViewController: UIHostingController<ASCCreateEntityUI> {
                 onAction: .constant(onAction)
             )
         )
-        view?.backgroundColor = Asset.Colors.createPanel.color
+        view?.backgroundColor = .clear
     }
 }

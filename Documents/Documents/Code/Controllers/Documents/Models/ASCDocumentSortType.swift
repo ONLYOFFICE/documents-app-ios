@@ -65,4 +65,48 @@ enum ASCDocumentSortType: String, CaseIterable {
             return ""
         }
     }
+
+    func subtitle(for ascending: Bool) -> String {
+        switch self {
+        case .dateandtime:
+            return ascending
+                ? NSLocalizedString("From new to old", comment: "")
+                : NSLocalizedString("From old to new", comment: "")
+
+        case .az:
+            return ascending
+                ? NSLocalizedString("Ascending", comment: "")
+                : NSLocalizedString("Descending", comment: "")
+
+        case .size:
+            return ascending
+                ? NSLocalizedString("From big to small", comment: "")
+                : NSLocalizedString("From small to big", comment: "")
+
+        case .author:
+            return ascending
+                ? NSLocalizedString("Ascending", comment: "")
+                : NSLocalizedString("Descending", comment: "")
+
+        case .type:
+            return ascending
+                ? NSLocalizedString("Ascending", comment: "")
+                : NSLocalizedString("Descending", comment: "")
+
+        case .new:
+            return ascending
+                ? NSLocalizedString("Newer", comment: "")
+                : NSLocalizedString("Older", comment: "")
+
+        case .tag:
+            return ascending
+                ? NSLocalizedString("Ascending", comment: "")
+                : NSLocalizedString("Descending", comment: "")
+
+        case .unknown:
+            return ascending
+                ? NSLocalizedString("Ascending", comment: "")
+                : NSLocalizedString("Descending", comment: "")
+        }
+    }
 }

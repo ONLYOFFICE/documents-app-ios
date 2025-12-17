@@ -114,7 +114,7 @@ extension ASCDocumentsViewController {
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0
 
-        configureNavigationBar()
+        configureNavigationBar(animated: false)
     }
 }
 

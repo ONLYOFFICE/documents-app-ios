@@ -1487,15 +1487,15 @@ extension ASCDocumentsViewController {
         if #available(iOS 26.0, *) {
             return icon
         }
-        let canvasSize = isiOS26()
+        let canvasSize = ASCCommon.isiOS26
             ? CGSize(width: 40, height: 40)
             : CGSize(width: 60, height: 60)
 
-        let imageViewFrame = isiOS26()
+        let imageViewFrame = ASCCommon.isiOS26
             ? CGRect(origin: .zero, size: canvasSize)
             : CGRect(x: 0, y: 8, width: canvasSize.width, height: canvasSize.height * 0.4)
 
-        let labelFrame = isiOS26()
+        let labelFrame = ASCCommon.isiOS26
             ? CGRect(x: 0, y: canvasSize.height - 15, width: canvasSize.width, height: canvasSize.height)
             : CGRect(x: 0, y: canvasSize.height * 0.5 + 5, width: canvasSize.width, height: canvasSize.height * 0.5 - 5)
 
@@ -1507,7 +1507,7 @@ extension ASCDocumentsViewController {
 
         let label = UILabel(frame: labelFrame)
         label.font = UIFont.preferredFont(forTextStyle: .caption1).bold()
-        label.textColor = isiOS26() ? .secondaryLabel : .white
+        label.textColor = ASCCommon.isiOS26 ? .secondaryLabel : .white
         label.numberOfLines = 2
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
@@ -1532,16 +1532,9 @@ extension ASCDocumentsViewController {
         backgroundColor: UIColor?,
         handler: @escaping UIContextualAction.Handler
     ) -> UIContextualAction {
-        let contextualAction = UIContextualAction(style: style, title: isiOS26() ? title : nil, handler: handler)
-        contextualAction.image = swipeMenuImage(icon: icon.withTintColor(.white), text: isiOS26() ? "" : title ?? "")
+        let contextualAction = UIContextualAction(style: style, title: ASCCommon.isiOS26 ? title : nil, handler: handler)
+        contextualAction.image = swipeMenuImage(icon: icon.withTintColor(.white), text: ASCCommon.isiOS26 ? "" : title ?? "")
         contextualAction.backgroundColor = backgroundColor
         return contextualAction
-    }
-
-    private func isiOS26() -> Bool {
-        if #available(iOS 26.0, *) {
-            return true
-        }
-        return false
     }
 }

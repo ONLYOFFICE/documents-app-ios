@@ -20,16 +20,17 @@ enum ASCStyles {
     }()
 
     static func createBarButton(image: UIImage?, target: Any?, action: Selector, color: UIColor? = nil) -> UIBarButtonItem {
+        let defaultColor = ASCCommon.isiOS26 ? .label : Asset.Colors.brend.color
         let buttonSize = UIDevice.phone
             ? CGSize(width: 35, height: 30)
             : CGSize(width: 50, height: 35)
         let button: UIButton = UIButton(type: .custom)
-        if let image = image {
+        if let image {
             button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
         }
         button.addTarget(target, action: action, for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: buttonSize.width, height: buttonSize.height)
-        button.tintColor = color ?? Asset.Colors.brend.color
+        button.tintColor = color ?? defaultColor
 
         return UIBarButtonItem(customView: button)
     }

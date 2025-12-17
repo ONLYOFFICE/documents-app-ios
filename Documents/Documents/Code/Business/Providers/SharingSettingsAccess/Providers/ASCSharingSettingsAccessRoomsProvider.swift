@@ -22,7 +22,7 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
         case .fillingForm:
             switch rightHoldersTableType {
             case .users, .none:
-                return [.roomManager, .contentCreator, .fillForms]
+                return [.contentCreator, .roomManager, .fillForms]
             case .groups:
                 return [.roomManager, .fillForms]
             case .guests:
@@ -37,7 +37,7 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
         case .custom:
             return [.roomManager, .contentCreator, .editing, .review, .comment, .read]
         case .public:
-            return [.roomManager, .contentCreator]
+            return [.contentCreator, .roomManager]
         case .virtualData:
             return [.roomManager, .contentCreator, .editing, .read]
         }

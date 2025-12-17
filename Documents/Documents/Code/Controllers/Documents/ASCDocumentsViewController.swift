@@ -224,6 +224,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     private var searchTask: DispatchWorkItem?
     private var searchValue: String?
+    private var firstLoadSearchValue: String?
 
     // Events
     let events = EventManager()
@@ -1024,6 +1025,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             var params: [String: Any] = [:]
 
             // Search
+            if let firstLoadSearchValue, !firstLoadSearchValue.isEmpty {
+                params["search"] = [
+                    "text": firstLoadSearchValue,
+                ]
+            }
+            
             if searchController.isActive, let searchValue = searchValue {
                 params["search"] = [
                     "text": searchValue,
@@ -1155,6 +1162,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         message: NSLocalizedString("Check your internet connection", comment: "")
                     )
                 }
+                self.firstLoadSearchValue = nil
             }
         }
     }
@@ -1497,15 +1505,23 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
     // MARK: - Entity actions
 
-    func openFolder(folder: ASCFolder) {
+    func openFolder(folder: ASCFolder, searchFilter: String? = nil) {
+        
         let transitionToFolderCompletion: (ASCFolder?) -> Void = { [weak navigationController, provider] folder in
             guard let folder else { return }
             let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-            navigationController?.pushViewController(controller, animated: true)
+
+            navigationController?.pushViewController(controller, animated: true) {
+                if let searchFilter, !searchFilter.isEmpty {
+                    controller.searchController.isActive = true
+                    controller.searchController.searchBar.text = searchFilter
+                }
+            }
 
             controller.provider = provider?.copy()
             controller.provider?.cancel()
             controller.provider?.reset()
+            controller.firstLoadSearchValue = searchFilter
             controller.folder = folder
             controller.title = folder.title
         }
@@ -2094,6 +2110,21 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             vc.modalPresentationStyle = .formSheet
         }
         present(vc, animated: true, completion: nil)
+    }
+    
+    func openLocation(file: ASCFile) {
+        Task {
+            guard let folderId = file.folderId,
+                  let folder = await provider?.fetchFolder(id: String(folderId))
+            else { return }
+            openFolder(folder: folder, searchFilter: file.title)
+        }
+    }
+    
+    private func setupSearchFilter(text: String) {
+        searchController.isActive = true
+        searchController.searchBar.text = text
+        sendSearchRequest()
     }
 
     private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
@@ -3698,14 +3729,15 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
 extension ASCDocumentsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         /// Throttle search
-
-        searchTask?.cancel()
-        let task = DispatchWorkItem { [weak self] in
-            self?.sendSearchRequest()
+        if firstLoadSearchValue == nil {
+            searchTask?.cancel()
+            let task = DispatchWorkItem { [weak self] in
+                self?.sendSearchRequest()
+            }
+            searchTask = task
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
         }
-        searchTask = task
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
     }
 
     private func sendSearchRequest() {

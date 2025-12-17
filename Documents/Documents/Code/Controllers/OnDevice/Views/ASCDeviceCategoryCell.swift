@@ -30,9 +30,12 @@ class ASCDeviceCategoryCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//
-//        selectedBackgroundView = UIView()
-//        selectedBackgroundView?.backgroundColor = UIColor(white: 0.95, alpha: 1)
+
+        if ASCCommon.isiOS26 {
+            caption?.textColor = selected ? .white : .label
+            categoryImage?.image = category?.image?.withRenderingMode(selected ? .alwaysTemplate : .alwaysOriginal)
+            categoryImage?.tintColor = selected ? .white : .label
+        }
     }
 
     func updateData() {

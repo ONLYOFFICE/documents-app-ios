@@ -30,11 +30,7 @@ class ASCBaseSplitViewController: UISplitViewController {
 
         delegate = self
 
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
-        } else {
-            view.backgroundColor = .white
-        }
+        view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
 
         if let navigationController = viewControllers.last as? UINavigationController {
             navigationController.topViewController?.navigationItem.leftBarButtonItem = displayModeButtonItem
@@ -50,11 +46,7 @@ class ASCBaseSplitViewController: UISplitViewController {
     // MARK: - UI
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
-        } else {
-            view.backgroundColor = .white
-        }
+        view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
     }
 }
 

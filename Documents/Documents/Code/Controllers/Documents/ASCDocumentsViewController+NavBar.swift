@@ -107,7 +107,7 @@ extension ASCDocumentsViewController {
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
 
             var rightBarBtnItems = [UIBarButtonItem]()
-            
+
             if !ASCCommon.isiOS26 {
                 rightBarBtnItems.append(ASCStyles.barFixedSpace)
             }

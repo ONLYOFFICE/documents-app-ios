@@ -57,6 +57,10 @@ class ASCCloudCategoryCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        if ASCCommon.isiOS26 {
+            title?.textColor = selected ? .white : .label
+        }
     }
 
     func updateData() {

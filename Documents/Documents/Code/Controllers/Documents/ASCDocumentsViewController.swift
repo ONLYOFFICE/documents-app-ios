@@ -1169,8 +1169,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             showEmptyView(false)
 
             view.addSubview(loadingView)
-            loadingView.anchorCenterXToSuperview()
             loadingView.anchorCenterYToSuperview(constant: 40)
+            loadingView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
 
         } else {
             loadingView.removeFromSuperview()
@@ -1262,7 +1262,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             else { return }
 
             view.insertSubview(localEmptyView, aboveSubview: collectionView)
-            localEmptyView.fillToSuperview()
+            localEmptyView.anchor(
+                top: view.safeAreaLayoutGuide.topAnchor,
+                leading: view.safeAreaLayoutGuide.leadingAnchor,
+                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                trailing: view.safeAreaLayoutGuide.trailingAnchor
+            )
         }
     }
 

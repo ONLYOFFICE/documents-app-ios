@@ -35,7 +35,8 @@ final class ASCLoaderViewCell: UICollectionViewCell {
         }
 
         contentView.addSubview(indicator)
-        indicator.anchorCenterSuperview()
+        indicator.anchorCenterYToSuperview()
+        indicator.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
     }
 
     func startActivity() {

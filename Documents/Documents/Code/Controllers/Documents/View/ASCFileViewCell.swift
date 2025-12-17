@@ -142,7 +142,13 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         let itemView = layoutType == .grid ? buildGridView() : buildListView()
 
         contentView.addSubview(itemView)
-        itemView.fillToSuperview()
+
+        itemView.anchor(
+            top: contentView.topAnchor,
+            leading: contentView.safeAreaLayoutGuide.leadingAnchor,
+            bottom: contentView.bottomAnchor,
+            trailing: contentView.safeAreaLayoutGuide.trailingAnchor
+        )
 
         updateEditing()
         updateSelected()

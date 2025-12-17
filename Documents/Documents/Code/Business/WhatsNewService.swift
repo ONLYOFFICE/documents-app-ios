@@ -54,18 +54,13 @@ final class WhatsNewService {
             var configuration = WhatsNewViewController.Configuration()
             configuration.completionButton.title = NSLocalizedString("Get started", comment: "")
             configuration.completionButton.backgroundColor = dummyButton.backgroundColor ?? Asset.Colors.brend.color
-            configuration.completionButton.cornerRadius = dummyButton.layerCornerRadius
+            configuration.completionButton.cornerRadius = ASCCommon.isiOS26 ? 24 : dummyButton.layerCornerRadius
             configuration.titleView.titleFont = ASCTextStyle.largeTitleBold.font
             configuration.itemsView.titleFont = ASCTextStyle.headline.font
             configuration.itemsView.subtitleFont = ASCTextStyle.subheadline.font
             configuration.itemsView.autoTintImage = false
-
-            if #available(iOS 13.0, *) {
-                configuration.backgroundColor = .systemBackground
-                configuration.itemsView.subtitleColor = .secondaryLabel
-            } else {
-                configuration.itemsView.subtitleColor = .darkGray
-            }
+            configuration.backgroundColor = .systemBackground
+            configuration.itemsView.subtitleColor = .secondaryLabel
 
             /// Increase TitleView Insets
             configuration.titleView.insets.top = 60

@@ -90,7 +90,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         avatarView?.kf.indicatorType = .activity
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
-            documentsNC.hasShadow = true
+            documentsNC.hasShadow = !ASCCommon.isiOS26
             documentsNC.setToolbarHidden(true, animated: false)
         }
 

@@ -303,7 +303,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -691,7 +691,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete template", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: [.destructive]
                 ) { [unowned self] action in
                     self.deleteRoomTempateAlert(template: folder) { [weak self] in
@@ -813,7 +813,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: title,
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -827,7 +827,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)

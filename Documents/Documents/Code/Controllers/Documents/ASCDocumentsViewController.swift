@@ -1025,7 +1025,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             var params: [String: Any] = [:]
 
             // Search
-            if let firstLoadSearchValue {
+            if let firstLoadSearchValue, !firstLoadSearchValue.isEmpty {
                 params["search"] = [
                     "text": firstLoadSearchValue,
                 ]
@@ -1512,16 +1512,16 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
 
             navigationController?.pushViewController(controller, animated: true) {
-                controller.searchController.isActive = true
-                controller.searchController.searchBar.text = searchFilter
+                if let searchFilter, !searchFilter.isEmpty {
+                    controller.searchController.isActive = true
+                    controller.searchController.searchBar.text = searchFilter
+                }
             }
 
             controller.provider = provider?.copy()
             controller.provider?.cancel()
             controller.provider?.reset()
-            if let searchFilter, !searchFilter.isEmpty {
-                controller.firstLoadSearchValue = searchFilter
-            }
+            controller.firstLoadSearchValue = searchFilter
             controller.folder = folder
             controller.title = folder.title
         }

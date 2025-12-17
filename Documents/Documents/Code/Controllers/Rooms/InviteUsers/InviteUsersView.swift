@@ -33,6 +33,7 @@ struct InviteUsersView: View {
         .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
         .onAppear {
             viewModel.fetchData()
+            viewModel.fetchInvitationSettings()
         }
         .background(handleHUD())
     }
@@ -98,15 +99,18 @@ struct InviteUsersView: View {
         }
     }
 
+    @ViewBuilder
     private var inviteByEmailCell: some View {
-        HStack {
-            Text("Invite guests by email")
-            Spacer()
-            ChevronRightView()
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            viewModel.isInviteByEmailsScreenDisplaying = true
+        if viewModel.allowInvitingGuests {
+            HStack {
+                Text("Invite guests by email")
+                Spacer()
+                ChevronRightView()
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                viewModel.isInviteByEmailsScreenDisplaying = true
+            }
         }
     }
 

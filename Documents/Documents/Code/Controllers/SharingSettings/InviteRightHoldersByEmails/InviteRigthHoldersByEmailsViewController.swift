@@ -143,6 +143,9 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
         let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGuestureRecognize))
         tagsView.addGestureRecognizer(touchGestureRecognizer)
+        
+        addObservers()
+        setupHideKeyboardGesture()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -158,8 +161,45 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         IQKeyboardManager.shared.isEnabled = false
     }
 
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { _ in
+            self.view.layoutIfNeeded()
+        })
+    }
+
+    deinit {
+        removeObservers()
+    }
+
+    private func addObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboard(notification:)),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
+    }
+
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    private func setupHideKeyboardGesture() {
+        let hideKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTapAction))
+        hideKeyboardTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(hideKeyboardTap)
+    }
+
     @objc func tapGuestureRecognize() {
         tagsView.textField.becomeFirstResponder()
+    }
+
+    @objc private func hideKeyboardTapAction() {
+        view.endEditing(true)
     }
 
     func checkQouta() {
@@ -256,6 +296,45 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         let barItem = UIBarButtonItem(customView: nextBtn)
         barItem.isEnabled = isNextBarBtnEnabled
         return barItem
+    }
+
+    @objc private func handleKeyboard(notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let endFrameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+            let durationNumber = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+            let curveNumber = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+        else { return }
+
+        let isPhone = traitCollection.userInterfaceIdiom == .phone
+        let isPadLandscape = traitCollection.userInterfaceIdiom == .pad &&
+            (view.window?.windowScene?.interfaceOrientation.isLandscape ?? false)
+
+        guard isPhone || isPadLandscape else {
+            navigationController?.toolbar.transform = .identity
+            return
+        }
+
+        let endFrame = endFrameValue.cgRectValue
+        let keyboardFrameInView = view.convert(endFrame, from: nil)
+
+        let rawOverlap = view.bounds.maxY - keyboardFrameInView.origin.y
+
+        let adjustedOverlap = max(0, rawOverlap - (isPhone ? 30 : 0))
+
+        let duration = durationNumber.doubleValue
+        let options = UIView.AnimationOptions(rawValue: curveNumber.uintValue << 16)
+
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       options: options,
+                       animations: { [weak self] in
+                           guard let self = self else { return }
+                           self.navigationController?.toolbar.transform = CGAffineTransform(
+                               translationX: 0,
+                               y: -adjustedOverlap
+                           )
+                       })
     }
 
     @objc func onNextButtonTapped() {

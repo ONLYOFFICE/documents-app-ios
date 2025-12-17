@@ -105,6 +105,7 @@ enum OnlyofficeAPI {
         static let customFilter = "api/\(version)/files/file/%@/customfilter"
         static let publicRoomTemplate = "api/\(version)/files/roomtemplate/public"
         static let isTemplatePublic = "api/\(version)/files/roomtemplate/%@/public"
+        static let invitationSettings = "api/\(version)/settings/invitationsettings"
 
         static let defaultGeneralLink = "rooms/shared/filter"
 
@@ -191,8 +192,8 @@ enum OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.room, ""), .get, URLEncoding.default)
             }
 
-            static func info(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id))
+            static func info(folderId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folderId))
             }
 
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -526,6 +527,10 @@ enum OnlyofficeAPI {
 
             static func inviteRequestBase(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.shareRoom, folder.id), .put)
+            }
+
+            static func getInvitationSettings() -> Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>>.make(String(format: Path.invitationSettings), .get)
             }
         }
 

@@ -47,7 +47,7 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
             let accountsNavigationVC = ASCBaseNavigationController(rootASCViewController: accountsVC)
 
             if let account = renewAccount {
-                accountsVC.presenter?.renewal(by: account, animated: true)
+                accountsVC.presenter?.login(by: account, completion: {})
                 renewAccount = nil
             }
 

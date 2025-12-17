@@ -194,6 +194,7 @@
 		F3772FD52C9DEBC1002B33A8 /* FormCompletedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */; };
 		F3772FD72C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FD62C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift */; };
 		F3772FD92C9DED02002B33A8 /* RoomDuplicateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3772FD82C9DED02002B33A8 /* RoomDuplicateRequestModel.swift */; };
+		F3BF16212EEAF9D700FB31F2 /* ASCInvitationSettingsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF16202EEAF9D700FB31F2 /* ASCInvitationSettingsResponceModel.swift */; };
 		F3C64CAC2E53310B00F7BACC /* ASCZoomSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C64CAB2E53310B00F7BACC /* ASCZoomSignInController.swift */; };
 		F3C64CAD2E53310B00F7BACC /* ASCLinkedInSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C64CAA2E53310B00F7BACC /* ASCLinkedInSignInController.swift */; };
 		F3FB7AF52DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */; };
@@ -1070,6 +1071,7 @@
 		F3772FCA2C9DEBC0002B33A8 /* FormCompletedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCompletedViewModel.swift; sourceTree = "<group>"; };
 		F3772FD62C9DECA3002B33A8 /* OnlyofficeRoomOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeRoomOperation.swift; sourceTree = "<group>"; };
 		F3772FD82C9DED02002B33A8 /* RoomDuplicateRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDuplicateRequestModel.swift; sourceTree = "<group>"; };
+		F3BF16202EEAF9D700FB31F2 /* ASCInvitationSettingsResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCInvitationSettingsResponceModel.swift; sourceTree = "<group>"; };
 		F3C64CAA2E53310B00F7BACC /* ASCLinkedInSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLinkedInSignInController.swift; sourceTree = "<group>"; };
 		F3C64CAB2E53310B00F7BACC /* ASCZoomSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCZoomSignInController.swift; sourceTree = "<group>"; };
 		F3FB7AF02DC0BBF800FA318A /* ASCVersionHistoryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCVersionHistoryNetworkService.swift; sourceTree = "<group>"; };
@@ -3563,6 +3565,7 @@
 		FC9EF00F2BFB208800A66DE8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				F3BF16202EEAF9D700FB31F2 /* ASCInvitationSettingsResponceModel.swift */,
 				1DA420772E54A12200F76BA1 /* FormRolesMappingUsersRequestModel.swift */,
 				1DA420752E4E4CD700F76BA1 /* PeopleRoomRequestModel.swift */,
 				F30716C12DF76583003CBBD2 /* ASCRoomTemplateInviteRequestModel.swift */,
@@ -4962,6 +4965,7 @@
 				FC759BDD2C00611000510096 /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				FC83D5262A973E2100C404CB /* UIColor+Extension.swift in Sources */,
 				FC4639E22BFE11C800DA603A /* ASCSegmentCategory.swift in Sources */,
+				F3BF16212EEAF9D700FB31F2 /* ASCInvitationSettingsResponceModel.swift in Sources */,
 				FC759B652C00608600510096 /* ChevronUpDownView.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
 				FC9F497127F5D0D100D88936 /* ASCMicrosoftSignInController.swift in Sources */,

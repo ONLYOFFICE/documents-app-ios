@@ -624,9 +624,13 @@ extension ASCFolderViewCell {
         guard let folder = entity as? ASCFolder else { return nil }
         let roomTypeDescription = folder.roomType?.description
 
-        authorLabel.text = [roomTypeDescription, folder.createdBy?.displayName, folder.originRoomTitle]
+        authorLabel.text = [
+            roomTypeDescription,
+            folder.createdBy?.displayName,
+            folder.originRoomTitle
+        ]
             .compactMap {
-                guard let str = $0?.trimmed, !str.isEmpty else { return nil }
+                guard let str = $0?.trimmed.truncated(toLength: 25), !str.isEmpty else { return nil }
                 return str
             }
             .joined(separator: " • ")

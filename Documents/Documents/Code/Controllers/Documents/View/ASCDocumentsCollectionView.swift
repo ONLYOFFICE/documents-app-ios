@@ -81,7 +81,7 @@ class GridCompositionalLayout: UICollectionViewCompositionalLayout {
                 heightDimension: .absolute(190)
             )
 
-            let count = Int((collectionView.superview?.width ?? 330) / 110.0)
+            let count = Int(collectionView.width / 110.0)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: count)
             group.interItemSpacing = .fixed(groupSpacing)
 
@@ -159,7 +159,9 @@ class GridCompositionalLayout: UICollectionViewCompositionalLayout {
             return cell is ASCLoaderViewCell
         }
 
-        if indexPath.row == collectionView.numberOfItems(inSection: indexPath.section) - 1, indexPath.row < documentsViewController.total - 1 {
+        if indexPath.row == collectionView.numberOfItems(inSection: indexPath.section) - 1,
+           indexPath.row < documentsViewController.total - 1
+        {
             return true
         }
 

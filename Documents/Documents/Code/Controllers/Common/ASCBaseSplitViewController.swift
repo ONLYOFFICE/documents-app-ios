@@ -32,9 +32,11 @@ class ASCBaseSplitViewController: UISplitViewController {
 
         view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
 
-        if let navigationController = viewControllers.last as? UINavigationController {
-            navigationController.topViewController?.navigationItem.leftBarButtonItem = displayModeButtonItem
-            navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
+        if !ASCCommon.isiOS26 {
+            if let navigationController = viewControllers.last as? UINavigationController {
+                navigationController.topViewController?.navigationItem.leftBarButtonItem = displayModeButtonItem
+                navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
+            }
         }
     }
 

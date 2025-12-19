@@ -124,15 +124,22 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                 }
                 createEntityVC.popoverPresentationController?.backgroundColor = .systemGroupedBackground
 
-                if ASCCommon.isiOS26, let barButton = sender as? UIBarButtonItem {
-                    createEntityVC.popoverPresentationController?.barButtonItem = barButton
+                if #available(iOS 26.0, *) {
+                    if let barButton = sender as? UIBarButtonItem {
+                        createEntityVC.popoverPresentationController?.barButtonItem = barButton
+                    } else {
+                        createEntityVC.popoverPresentationController?.sourceView = senderView
+                        createEntityVC.preferredTransition = .zoom { context in
+                            senderView
+                        }
+                    }
                 } else {
                     createEntityVC.popoverPresentationController?.sourceView = senderView
                     createEntityVC.popoverPresentationController?.sourceRect = senderView.bounds
                 }
             }
 
-            viewController.present(createEntityVC, animated: true, completion: nil)
+            viewController.present(createEntityVC, animated: true)
         }
     }
 

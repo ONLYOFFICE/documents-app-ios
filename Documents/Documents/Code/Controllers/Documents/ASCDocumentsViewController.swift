@@ -332,12 +332,21 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             collectionView.contentInset.top = TopBannerView.bannerHeight
         }
 
-        collectionView.anchor(
-            top: view.topAnchor,
-            leading: view.leadingAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            trailing: view.trailingAnchor
-        )
+        if #available(iOS 26.0, *) {
+            collectionView.anchor(
+                top: view.topAnchor,
+                leading: view.safeAreaLayoutGuide.leadingAnchor,
+                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                trailing: view.safeAreaLayoutGuide.trailingAnchor
+            )
+        } else {
+            collectionView.anchor(
+                top: view.topAnchor,
+                leading: view.leadingAnchor,
+                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                trailing: view.trailingAnchor
+            )
+        }
 
         applyButton.anchor(
             leading: view.leadingAnchor,

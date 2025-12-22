@@ -1206,6 +1206,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
             let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
             let isDocSpace = (provider as? ASCOnlyofficeProvider)?.apiClient.serverVersion?.docSpace != nil
+            let isFavorites = folder?.rootFolderType == .favorites
             let isDocRecently = isDocSpace && folder?.rootFolderType == .recent
 
             // If loading view still display
@@ -1250,8 +1251,10 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         } else if !(provider.allowEdit(entity: folder)) {
                             localEmptyView?.type = .docspaceNoPermissions
                         }
+                    } else if isFavorites {
+                        localEmptyView?.type = .favorites
                     } else if isDocRecently {
-                        localEmptyView?.type = .recentlyAccessibleViaLink
+                        localEmptyView?.type = .recent
                     } else {
                         localEmptyView?.type = .cloud
                         if !(provider.allowEdit(entity: folder)) {

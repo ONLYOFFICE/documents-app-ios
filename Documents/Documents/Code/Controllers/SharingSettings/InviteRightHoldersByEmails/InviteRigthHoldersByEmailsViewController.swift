@@ -198,7 +198,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         let message = NSLocalizedString("Selected users will not be invited to the room", comment: "")
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
         controller.addOk { [unowned self] _ in
-            navigationController?.popViewController(animated: true)
+            navigationController?.dismiss(animated: true)
         }
         controller.addCancel()
         present(controller, animated: true)

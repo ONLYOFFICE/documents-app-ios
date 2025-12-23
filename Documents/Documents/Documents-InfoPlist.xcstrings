@@ -32,7 +32,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Documents-dev"
+            "value" : "Documents"
           }
         },
         "es" : {
@@ -98,7 +98,7 @@
       }
     },
     "Microsoft Excel Binary Workbook (.xlsb)" : {
-      "shouldTranslate" : false
+
     },
     "New Document" : {
       "localizations" : {

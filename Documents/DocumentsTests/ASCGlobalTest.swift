@@ -39,4 +39,5 @@ extension XCTestCase {
     typealias Parameters = Alamofire.Parameters
     typealias ShareAccessNote = Documents.ShareAccessNote
     typealias ShareSettingsAPIWorkerReason = Documents.ShareSettingsAPIWorkerReason
+    typealias ASCCommon = Documents.ASCCommon
 }

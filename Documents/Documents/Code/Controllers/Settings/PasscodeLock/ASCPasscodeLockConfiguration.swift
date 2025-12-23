@@ -26,6 +26,9 @@ class ASCPasscodeLockConfiguration: PasscodeLockConfigurationType {
 
     let shouldRequestTouchIDImmediately = true
     let maximumInccorectPasscodeAttempts = -1
+    var logoImage: UIImage? {
+        Asset.Images.logoLarge.image
+    }
 
     // MARK: - Lifecycle Methods
 

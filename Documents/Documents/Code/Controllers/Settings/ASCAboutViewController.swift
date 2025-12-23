@@ -48,6 +48,7 @@ class ASCAboutViewController: ASCBaseTableViewController, UIGestureRecognizerDel
 
     // MARK: - Properties
 
+    @IBOutlet var backButtonLegacy: UIButton!
     @IBOutlet var versionLabel: UILabel!
     @IBOutlet var rateCell: UITableViewCell!
     @IBOutlet var tellFriendCell: UITableViewCell!
@@ -78,6 +79,26 @@ class ASCAboutViewController: ASCBaseTableViewController, UIGestureRecognizerDel
         let logoGestureTap = UITapGestureRecognizer(target: self, action: #selector(logoTap))
         logoImageView.addGestureRecognizer(logoGestureTap)
         logoImageView.isUserInteractionEnabled = true
+
+        if #available(iOS 26.0, *) {
+            backButtonLegacy.isHidden = true
+
+            let backImageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold, scale: .large)
+            let backImage = UIImage(systemName: "chevron.backward", withConfiguration: backImageConfig)
+            let backButton = UIButton(configuration: .glass())
+            backButton.setImage(backImage, for: .normal)
+            backButton.configuration?.contentInsets = .init(top: 12, leading: 12, bottom: 12, trailing: 12)
+            backButton.add(for: .touchUpInside) { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+
+            self.view.addSubview(backButton)
+            backButton.anchor(
+                top: view.safeAreaLayoutGuide.topAnchor,
+                leading: view.safeAreaLayoutGuide.leadingAnchor,
+                padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+            )
+        }
     }
 
     override func didReceiveMemoryWarning() {

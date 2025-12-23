@@ -333,12 +333,21 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             collectionView.contentInset.top = TopBannerView.bannerHeight
         }
 
-        collectionView.anchor(
-            top: view.topAnchor,
-            leading: view.leadingAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            trailing: view.trailingAnchor
-        )
+        if #available(iOS 26.0, *) {
+            collectionView.anchor(
+                top: view.topAnchor,
+                leading: view.safeAreaLayoutGuide.leadingAnchor,
+                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                trailing: view.safeAreaLayoutGuide.trailingAnchor
+            )
+        } else {
+            collectionView.anchor(
+                top: view.topAnchor,
+                leading: view.leadingAnchor,
+                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                trailing: view.trailingAnchor
+            )
+        }
 
         applyButton.anchor(
             leading: view.leadingAnchor,
@@ -1177,8 +1186,8 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             showEmptyView(false)
 
             view.addSubview(loadingView)
-            loadingView.anchorCenterXToSuperview()
             loadingView.anchorCenterYToSuperview(constant: 40)
+            loadingView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 0).isActive = true
 
         } else {
             loadingView.removeFromSuperview()
@@ -1270,7 +1279,12 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             else { return }
 
             view.insertSubview(localEmptyView, aboveSubview: collectionView)
-            localEmptyView.fillToSuperview()
+            localEmptyView.anchor(
+                top: view.safeAreaLayoutGuide.topAnchor,
+                leading: view.safeAreaLayoutGuide.leadingAnchor,
+                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                trailing: view.safeAreaLayoutGuide.trailingAnchor
+            )
         }
     }
 
@@ -2308,6 +2322,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
 
                         // Delay so that the loading indication is completed
                         delay(seconds: 0.6) {
+                            openingAlert.progress = 1
                             openingAlert.hide()
 
                             let splitVC = ASCViewControllerManager.shared.topViewController as? ASCBaseSplitViewController
@@ -2818,6 +2833,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                         message: NSLocalizedString("Could not download the file.", comment: "")
                     )
                 } else if result != nil {
+                    openingAlert.progress = 1
                     openingAlert.hide()
 
                     // Create entity info

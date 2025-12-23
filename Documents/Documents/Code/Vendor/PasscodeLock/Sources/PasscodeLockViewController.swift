@@ -97,6 +97,18 @@
                 view.insertSubview(blur, at: 0)
             }
 
+            if let logoImage = passcodeConfiguration.logoImage, let titleLabel {
+                let logoImageView = UIImageView(image: logoImage)
+                logoImageView.contentMode = .center
+                logoImageView.translatesAutoresizingMaskIntoConstraints = false
+
+                view.addSubview(logoImageView)
+
+                logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+                logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+                logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 0).isActive = true
+            }
+
             setupEvents()
         }
 

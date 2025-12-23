@@ -75,6 +75,13 @@ public enum ASCCommon {
         }
         return false
     }
+
+    static var isiOS26: Bool {
+        if #available(iOS 26.0, *) {
+            return true
+        }
+        return false
+    }
 }
 
 func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {

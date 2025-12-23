@@ -30,15 +30,12 @@ class ASCSharingView {
     }()
 
     private var navBarHeigh: CGFloat = 0
-    private lazy var addRightsBarButtonItem: UIBarButtonItem = {
-        var icon: UIImage?
-        if #available(iOS 13.0, *) {
-            icon = UIImage(systemName: "person.crop.circle.fill.badge.plus")
-        } else {
-            icon = Asset.Images.navAdd.image
-        }
-        return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onAddRightsBarButtonTap))
-    }()
+    private lazy var addRightsBarButtonItem: UIBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "person.crop.circle.fill.badge.plus"),
+        style: .plain,
+        target: self,
+        action: #selector(onAddRightsBarButtonTap)
+    )
 
     lazy var loadingTableActivityIndicator = UIActivityIndicatorView()
 

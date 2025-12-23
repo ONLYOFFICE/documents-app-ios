@@ -8,7 +8,7 @@
 
 #if os(iOS)
 
-    import Foundation
+    import UIKit
 
     public protocol PasscodeLockConfigurationType {
         var repository: PasscodeRepositoryType { get }
@@ -17,6 +17,7 @@
         var shouldRequestTouchIDImmediately: Bool { get }
         var touchIdReason: String? { get set }
         var maximumInccorectPasscodeAttempts: Int { get }
+        var logoImage: UIImage? { get }
     }
 
 #endif

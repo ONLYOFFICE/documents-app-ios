@@ -178,7 +178,27 @@ struct ASCCreateEntityUI: View {
             .padding([.leading, .trailing, .bottom], 16)
             .padding(.top, allowForms ? 16 : 0)
         }
-        .background(Color(Asset.Colors.createPanel.color))
+        .modifier(GlassEffectIfAvailableWithIgnoreSafeArea())
+    }
+}
+
+private struct GlassEffectIfAvailableWithIgnoreSafeArea: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            ZStack {
+                Color.clear
+                    .glassEffect(in: .rect)
+                    .ignoresSafeArea()
+
+                content
+            }
+        } else {
+            content
+                .background(
+                    Color(Asset.Colors.createPanel.color)
+                        .ignoresSafeArea()
+                )
+        }
     }
 }
 

@@ -35,29 +35,56 @@ extension ASCDocumentsViewController {
     }
 
     func configureNavigationBar(animated: Bool = true) {
+        let firstDocumentsViewController = navigationController?.viewControllers.first(where: { $0 is ASCDocumentsViewController }) as? ASCDocumentsViewController
+
+        var addBarButtonIdentifier: String? = nil
+        var sortSelectBarButtonIdentifier: String? = nil
+        var sortBarButtonIdentifier: String? = nil
+        var filterBarButtonIdentifier: String? = nil
+
+        /// Store identifier of navigation item from the first screen
+        /// to disable animation while `setRightBarButtonItems` on iOS 26
+        if #available(iOS 26.0, *) {
+            addBarButtonIdentifier = firstDocumentsViewController?.addBarButton?.identifier
+            sortSelectBarButtonIdentifier = firstDocumentsViewController?.sortSelectBarButton?.identifier
+            sortBarButtonIdentifier = firstDocumentsViewController?.sortBarButton?.identifier
+            filterBarButtonIdentifier = firstDocumentsViewController?.filterBarButton?.identifier
+        }
+
         addBarButton = addBarButton
-            ?? createAddBarButton()
+            ?? createAddBarButton(identifier: addBarButtonIdentifier)
         sortSelectBarButton = sortSelectBarButton
-            ?? createSortSelectBarButton()
+            ?? createSortSelectBarButton(identifier: sortSelectBarButtonIdentifier)
         sortBarButton = sortBarButton
-            ?? createSortBarButton()
-        filterBarButton = createFilterBarButton()
+            ?? createSortBarButton(identifier: sortBarButtonIdentifier)
+        filterBarButton = filterBarButton
+            ?? createFilterBarButton(identifier: filterBarButtonIdentifier)
         selectBarButton = selectBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
         cancelBarButton = cancelBarButton
             ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
-        reorderIndexButton = reorderIndexButton ?? ASCStyles.createBarButton(title: NSLocalizedString("Reorder", comment: "Button title"), target: self, action: #selector(onReorderAction))
+        reorderIndexButton = reorderIndexButton
+            ?? ASCStyles.createBarButton(title: NSLocalizedString("Reorder", comment: "Button title"), target: self, action: #selector(onReorderAction))
         if let folder = folder,
            !folder.isRoom
         {
             sortSelectBarButton?.isEnabled = total > 0
         }
+        let isReset = provider?.filterController?.isReset ?? true
+
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
         filterBarButton?.isEnabled = total > 0 || provider?.filterController?.isReset == false
+        if let filterBarButton, let filterBarButtonInner = filterBarButton.customView as? UIButton {
+            filterBarButtonInner.setImageForAllStates(
+                isReset
+                    ? Asset.Images.barFilter.image.withRenderingMode(.alwaysTemplate)
+                    : Asset.Images.barFilterOn.image.withRenderingMode(.alwaysTemplate)
+            )
+        }
 
         if #available(iOS 14.0, *) {
             for barButton in [sortSelectBarButton, sortBarButton] {
@@ -79,7 +106,11 @@ extension ASCDocumentsViewController {
         } else {
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
 
-            var rightBarBtnItems = [ASCStyles.barFixedSpace]
+            var rightBarBtnItems = [UIBarButtonItem]()
+
+            if !ASCCommon.isiOS26 {
+                rightBarBtnItems.append(ASCStyles.barFixedSpace)
+            }
 
             if let sortSelectBarBtn = sortSelectBarButton {
                 rightBarBtnItems.append(sortSelectBarBtn)
@@ -114,7 +145,7 @@ extension ASCDocumentsViewController {
         selectBarButton?.isEnabled = !hasError && total > 0
         filterBarButton?.isEnabled = !hasError && total > 0
 
-        configureNavigationBar()
+        configureNavigationBar(animated: false)
     }
 }
 
@@ -590,7 +621,7 @@ private extension ASCDocumentsViewController {
         setEditMode(false)
     }
 
-    func createAddBarButton() -> UIBarButtonItem? {
+    func createAddBarButton(identifier: String? = nil) -> UIBarButtonItem? {
         guard (provider?.allowAdd(toFolder: folder)) != nil, folder?.rootFolderType != .archive else { return nil }
 
         let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
@@ -602,32 +633,50 @@ private extension ASCDocumentsViewController {
             return Asset.Images.barRectanglesAdd.image
         }()
 
-        return ASCStyles.createBarButton(
+        let barButtomItem = ASCStyles.createBarButton(
             image: icon,
             target: self,
             action: #selector(onAddEntityAction)
         )
+
+        if #available(iOS 26.0, *) {
+            barButtomItem.identifier = identifier ?? String(format: "[%d]", arc4random())
+        }
+
+        return barButtomItem
     }
 
-    func createFilterBarButton() -> UIBarButtonItem {
+    func createFilterBarButton(identifier: String? = nil) -> UIBarButtonItem {
         let isReset = provider?.filterController?.isReset ?? true
 
-        return ASCStyles.createBarButton(
+        let barButtomItem = ASCStyles.createBarButton(
             image: isReset ? Asset.Images.barFilter.image : Asset.Images.barFilterOn.image,
             target: self,
             action: #selector(onFilterAction)
         )
+
+        if #available(iOS 26.0, *) {
+            barButtomItem.identifier = identifier ?? String(format: "[%d]", arc4random())
+        }
+
+        return barButtomItem
     }
 
-    func createSortSelectBarButton() -> UIBarButtonItem {
+    func createSortSelectBarButton(identifier: String? = nil) -> UIBarButtonItem {
         guard categoryIsRecent else {
             let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
 
-            return ASCStyles.createBarButton(
+            let barButtomItem = ASCStyles.createBarButton(
                 image: UIImage(systemName: "ellipsis.circle", withConfiguration: config),
                 target: self,
                 action: #selector(onActionSelect)
             )
+
+            if #available(iOS 26.0, *) {
+                barButtomItem.identifier = identifier ?? String(format: "[%d]", arc4random())
+            }
+
+            return barButtomItem
         }
 
         return ASCStyles.createBarButton(
@@ -637,12 +686,22 @@ private extension ASCDocumentsViewController {
         )
     }
 
-    func createSortBarButton() -> UIBarButtonItem? {
+    func createSortBarButton(identifier: String? = nil) -> UIBarButtonItem? {
         guard !categoryIsRecent else {
             return nil
         }
 
-        return ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+        let barButtomItem = ASCStyles.createBarButton(
+            image: Asset.Images.navSort.image,
+            target: self,
+            action: #selector(onSortAction)
+        )
+
+        if #available(iOS 26.0, *) {
+            barButtomItem.identifier = identifier ?? String(format: "[%d]", arc4random())
+        }
+
+        return barButtomItem
     }
 }
 

@@ -14,11 +14,13 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             case extensionFilters
             case ownerFilters
             case searchFilters
+            case locationFilters
         }
 
         var filterModels: [ASCDocumentsFilterModel]
         var authorsModels: [ActionFilterModel]
         var searchFilterModels: [ASCDocumentsFilterModel]
+        var locationFilterModels: [ASCDocumentsFilterModel] = []
         var itemsCount: Int
 
         static var defaultState: (Int) -> State = { count in
@@ -29,10 +31,29 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         }
 
         static var recentlyCategoryDefaultState: (Int) -> State = { count in
-            State(filterModels: defaultFilterModel.filter { $0.filterType != .folders },
-                  authorsModels: defaultAuthorsModels,
-                  searchFilterModels: searchFilterModels,
-                  itemsCount: count)
+            State(
+                filterModels: defaultFilterModel.filter { $0.filterType != .folders },
+                authorsModels: defaultAuthorsModels,
+                searchFilterModels: searchFilterModels,
+                locationFilterModels: defaultLocationFilterModels + [
+                    ASCDocumentsFilterModel(
+                        filterName: FiltersName.sharedWithMeLocation.localizedString(),
+                        isSelected: false,
+                        filterType: .sharedWithMeLocation
+                    ),
+                ],
+                itemsCount: count
+            )
+        }
+        
+        static var favoritesCategoryDefaultState: (Int) -> State = { count in
+            State(
+                filterModels: defaultFilterModel,
+                authorsModels: defaultAuthorsModels,
+                searchFilterModels: searchFilterModels,
+                locationFilterModels: defaultLocationFilterModels,
+                itemsCount: count
+            )
         }
 
         static let defaultFilterModel = [
@@ -52,6 +73,19 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         ]
 
         static let searchFilterModels = [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)]
+        
+        static let defaultLocationFilterModels = [
+            ASCDocumentsFilterModel(
+                filterName: FiltersName.myDocumentsLocation.localizedString(),
+                isSelected: false,
+                filterType: .myDocumentsLocation
+            ),
+            ASCDocumentsFilterModel(
+                filterName: FiltersName.roomsLocation.localizedString(),
+                isSelected: false,
+                filterType: .roomsLocation
+            )
+        ]
     }
 
     // MARK: -  state
@@ -84,12 +118,21 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     private var isRecentCategory: Bool {
         folder?.rootFolderType == .recent
     }
+    
+    private var isFavoritesCategory: Bool {
+        folder?.rootFolderType == .favorites
+    }
 
     private var allowSearchFilter: Bool {
         guard let onlyofficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        let isRecentCategory = folder?.rootFolderType == .recent
         let isServerVersionCorrect = onlyofficeProvider.apiClient.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "12.0.1") == true
-        return !isRecentCategory && isServerVersionCorrect
+        return !isRecentCategory
+        && !isFavoritesCategory
+        && isServerVersionCorrect
+    }
+    
+    private var allowLocationFilter: Bool {
+        return isRecentCategory || isFavoritesCategory
     }
 
     // MARK: - public properties
@@ -132,7 +175,11 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     func getDefaultState(_ total: Int) -> State {
-        guard !isRecentCategory else { return .recentlyCategoryDefaultState(total) }
+        if isRecentCategory {
+            return .recentlyCategoryDefaultState(total)
+        } else if isFavoritesCategory {
+            return .favoritesCategoryDefaultState(total)
+        }
         return .defaultState(total)
     }
 
@@ -146,6 +193,8 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                 result = result || state.authorsModels.compactMap { $0.selectedName }.count > 0
             case .searchFilters:
                 result = result || state.searchFilterModels.map { $0.isSelected }.contains(true)
+            case .locationFilters:
+                result = result || state.locationFilterModels.map { $0.isSelected }.contains(true)
             }
         }
         return result
@@ -177,6 +226,11 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                 {
                     params["userIdOrGroupId"] = id
                 }
+                
+            case .locationFilters:
+                if let model = state.locationFilterModels.first(where: { $0.isSelected }) {
+                    params["location"] = model.filterType.filterValue
+                }
             }
         }
 
@@ -184,12 +238,18 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func updateViewModel() {
+        let typeFilterSection = FiltersContainer(sectionName: FiltersSection.type.localizedString(), elements: tempState.filterModels)
+        let authorFilterSection = FiltersContainer(sectionName: FiltersSection.author.localizedString(), elements: tempState.authorsModels)
+        let searchFilterSection = allowSearchFilter ? FiltersContainer(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels) : nil
+        let locationFilterModels = allowLocationFilter ? FiltersContainer(sectionName: FiltersSection.location.localizedString(), elements: tempState.locationFilterModels) : nil
+        
         let viewModel = builder.buildViewModel(
             state: currentLoading ? .loading : .normal,
             filtersContainers: [
-                .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.filterModels),
-                .init(sectionName: FiltersSection.author.localizedString(), elements: tempState.authorsModels),
-                allowSearchFilter ? .init(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels) : nil,
+                typeFilterSection,
+                authorFilterSection,
+                searchFilterSection,
+                locationFilterModels,
             ].compactMap { $0 },
             actionButtonViewModel: tempState.itemsCount > 0
                 ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
@@ -211,7 +271,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             guard let self = self else { return }
             for type in State.DataType.allCases {
                 switch type {
-                case .extensionFilters, .searchFilters: break
+                case .extensionFilters, .searchFilters, .locationFilters: break
                 case .ownerFilters:
                     if let index = self.tempState.authorsModels.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
                         self.resetAuthorModel(index: index)
@@ -280,6 +340,16 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                         }
                         self.runPreload()
                     }
+                case .locationFilters:
+                    let isFilterModelsContainsSelectedId: Bool = self.tempState.locationFilterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+
+                    if isFilterModelsContainsSelectedId {
+                        let previousSelectedFilter = self.tempState.locationFilterModels.first(where: { $0.isSelected })
+                        for (index, filterModel) in self.tempState.locationFilterModels.enumerated() {
+                            self.tempState.locationFilterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                        }
+                        self.runPreload()
+                    }
                 }
             }
         }
@@ -297,6 +367,8 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                     self.resetAuthorModels()
                 case .searchFilters:
                     self.resetModels(models: &self.tempState.searchFilterModels)
+                case .locationFilters:
+                    self.resetModels(models: &self.tempState.locationFilterModels)
                 }
             }
             self.resetButtonTapped = true

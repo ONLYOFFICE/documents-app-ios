@@ -144,9 +144,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 itemsCount: 0
             )
         case .docspace:
-            return ASCDocSpaceFiltersController(builder: ASCFiltersCollectionViewModelBuilder(),
-                                                filtersViewController: ASCFiltersViewController(),
-                                                itemsCount: 0)
+            return ASCDocSpaceFiltersController(
+                builder: ASCFiltersCollectionViewModelBuilder(),
+                filtersViewController: ASCFiltersViewController(),
+                itemsCount: 0
+            )
         case .docspaceRooms:
             return ASCDocSpaceRoomsFiltersController(
                 builder: ASCFiltersCollectionViewModelBuilder(),
@@ -157,7 +159,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     fileprivate func filterControllerType(forFolder folder: ASCFolder) -> FilterControllerType {
-        guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return .documents }
+        guard
+            ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
+            folder.rootFolderType != .recent
+        else { return .documents }
         guard folder.isRoomListFolder else { return .docspace }
         return .docspaceRooms
     }
@@ -464,6 +469,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         }
+    }
+    
+    func fetchFolder(id: String) async -> ASCFolder? {
+        try? await OnlyofficeApiClient.request(
+            OnlyofficeAPI.Endpoints.Folders.info(folderId: id)
+        )?.result
     }
 
     func searchArea(for folder: ASCFolder) -> String? {

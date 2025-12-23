@@ -76,6 +76,14 @@ final class ASCFolderViewCell: UICollectionViewCell & ASCEntityViewCellProtocol 
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    private lazy var sharedBadge: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.clipsToBounds = true
+        $0.image = Asset.Images.listSharedLink.image
+        $0.contentMode = .scaleAspectFit
+        return $0
+    }(UIImageView())
+
     private lazy var separatorView: UIView = {
         $0.backgroundColor = .separator
         return $0
@@ -582,11 +590,25 @@ extension ASCFolderViewCell {
 
         titleLabel.text = folder.title
 
+        if folder.shared, !folder.isRoom {
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(sharedBadge))
+        }
+
         if folder.pinned {
             items.append({
                 $0.contentMode = .center
                 return $0
             }(UIImageView(image: Asset.Images.pin.image)))
+        }
+
+        if let _ = folder.isFavorite, !folder.isRoom {
+            items.append({
+                $0.contentMode = .center
+                return $0
+            }(UIImageView(image: Asset.Images.listFavoritesSmall.image)))
         }
 
         items.append(UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 0))))
@@ -602,8 +624,15 @@ extension ASCFolderViewCell {
         guard let folder = entity as? ASCFolder else { return nil }
         let roomTypeDescription = folder.roomType?.description
 
-        authorLabel.text = [roomTypeDescription, folder.createdBy?.displayName]
-            .compactMap { $0 }
+        authorLabel.text = [
+            roomTypeDescription,
+            folder.createdBy?.displayName,
+            folder.originRoomTitle
+        ]
+            .compactMap {
+                guard let str = $0?.trimmed.truncated(toLength: 25), !str.isEmpty else { return nil }
+                return str
+            }
             .joined(separator: " • ")
 
         if authorLabel.text?.isEmpty == true {
@@ -655,8 +684,16 @@ private extension ASCFolderViewCell {
         // Overlay markers
         var overlays: [UIView] = []
 
+        if folder.shared, !folder.isRoom {
+            overlays.append(buildSymbolBadge(imageView: sharedBadge))
+        }
+
         if folder.pinned {
-            overlays.append(UIImageView(image: Asset.Images.pin.image))
+            overlays.append(buildSymbolBadge(imageView: UIImageView(image: Asset.Images.listPinSmall.image)))
+        }
+
+        if let _ = folder.isFavorite, !folder.isRoom {
+            overlays.append(buildSymbolBadge(imageView: UIImageView(image: Asset.Images.listFavoritesSmall.image)))
         }
 
         let overlayView = {
@@ -697,7 +734,7 @@ private extension ASCFolderViewCell {
         overlayView.anchor(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
-            padding: UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 0)
+            padding: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 0)
         )
 
         checkmarkView.removeConstraints(checkmarkView.constraints)
@@ -712,6 +749,45 @@ private extension ASCFolderViewCell {
 
         return containerView
     }
+
+    private func buildSymbolBadge(
+        imageView: UIImageView,
+        tint: UIColor = Asset.Colors.brend.color,
+        pointSize: CGFloat = Badge.pointSize,
+        weight: UIFont.Weight = .black,
+        padding: CGFloat = Badge.padding,
+        bgColor: UIColor = .systemBackground,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat = 0
+    ) -> UIView {
+        imageView.contentMode = UIView.ContentMode.center
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+
+        let diameter = pointSize + padding * 2
+        let container = UIView(frame: CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter)))
+        container.backgroundColor = bgColor
+        container.isOpaque = true
+        container.layer.cornerRadius = diameter / 2
+        container.layer.masksToBounds = true
+        if let borderColor { container.layer.borderColor = borderColor.cgColor; container.layer.borderWidth = borderWidth }
+        container.translatesAutoresizingMaskIntoConstraints = false
+
+        container.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            container.widthAnchor.constraint(equalToConstant: diameter),
+            container.heightAnchor.constraint(equalToConstant: diameter),
+            imageView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+        ])
+
+        return container
+    }
+}
+
+private enum Badge {
+    static let pointSize: CGFloat = Constants.overlayBagesFontSize
+    static let padding: CGFloat = 3
 }
 
 extension ASCFolderViewCell {

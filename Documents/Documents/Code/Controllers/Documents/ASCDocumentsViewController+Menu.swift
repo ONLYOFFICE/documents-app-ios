@@ -116,7 +116,7 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Copy shared link", comment: ""),
             image: Asset.Images.link.image
         ) { [unowned self] action in
-            self.copySharedLink(file: file)
+            self.copySharedLink(cell: cell, file: file)
         }
 
         /// Share action
@@ -157,16 +157,16 @@ extension ASCDocumentsViewController {
                 })
         }
 
-//        if actions.contains(.openLocation) {
-//            shareActions.append(
-//                UIAction(
-//                    title: NSLocalizedString("Open location", comment: ""),
-//                    image: Asset.Images.menuOpenLocation.image
-//                ) { [unowned self] _ in
-//
-//                }
-//            )
-//        }
+        if actions.contains(.openLocation) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Open location", comment: ""),
+                    image: Asset.Images.menuOpenLocation.image
+                ) { [unowned self] _ in
+                    openLocation(file: file)
+                }
+            )
+        }
 
         /// Custom filter
 
@@ -587,7 +587,7 @@ extension ASCDocumentsViewController {
             title: title,
             image: Asset.Images.link.image
         ) { [unowned self] action in
-            self.copyGeneralLinkToClipboard(room: folder)
+            self.copyGeneralLinkToClipboard(cell: cell, room: folder)
         }
 
         /// Share action
@@ -1115,17 +1115,17 @@ extension ASCDocumentsViewController {
                 ))
         }
 
-//        if actions.contains(.openLocation) {
-//            actionAlertController.addAction(
-//                UIAlertAction(
-//                    title: NSLocalizedString("Open location", comment: ""),
-//                    style: .default,
-//                    handler: { [unowned self] _ in
-//
-//                    }
-//                )
-//            )
-//        }
+        if actions.contains(.openLocation) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Open location", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        openLocation(file: file)
+                    }
+                )
+            )
+        }
 
         if actions.contains(.rename) {
             actionAlertController.addAction(

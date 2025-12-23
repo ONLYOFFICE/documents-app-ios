@@ -83,6 +83,14 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         return $0
     }(UIImageView())
 
+    private lazy var sharedBadge: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.clipsToBounds = true
+        $0.image = Asset.Images.listSharedLink.image
+        $0.contentMode = .scaleAspectFit
+        return $0
+    }(UIImageView())
+
     private lazy var separatorView: UIView = {
         $0.backgroundColor = .separator
         return $0
@@ -156,6 +164,10 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         var items: [UIView] = [titleLabel]
 
         titleLabel.text = file.title
+
+        if file.shared {
+            items.append(sharedBadge)
+        }
 
         if file.isEditing {
             items.append({
@@ -455,6 +467,13 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
 
     private func buildGridBadgesOverlayView(file: ASCFile) -> UIView {
         var overlays = [UIView]()
+
+        if file.shared {
+            overlays.append(buildSymbolBadge(
+                imageView: sharedBadge
+            ))
+        }
+
         if file.isNew, let badgeNewImage = newBadge.screenshot {
             overlays.append(UIImageView(image: badgeNewImage))
         }
@@ -469,7 +488,9 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         }
 
         if file.customFilterEnabled {
-            overlays.append(filterBadge)
+            overlays.append(buildSymbolBadge(
+                imageView: filterBadge
+            ))
         }
         if file.isEditing {
             overlays.append(buildSymbolBadge("pencil"))
@@ -615,8 +636,12 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
                 break
             }
         }
-
-        authorLabel.text = file.createdBy?.displayName
+        let createdByName = file.createdBy?.displayName
+        authorLabel.text = [createdByName, file.originRoomTitle].compactMap {
+            guard let str = $0?.trimmed.truncated(toLength: 25), !str.isEmpty else { return nil }
+            return str
+        }
+        .joined(separator: " • ")
 
         return authorLabel
     }
@@ -690,6 +715,28 @@ extension ASCFileViewCell {
             image: UIImage(systemName: systemName, withConfiguration: config)?
                 .withTintColor(tint, renderingMode: .alwaysOriginal)
         )
+        return buildSymbolBadge(
+            imageView: imageView,
+            tint: tint,
+            pointSize: pointSize,
+            weight: weight,
+            padding: padding,
+            bgColor: bgColor,
+            borderColor: borderColor,
+            borderWidth: borderWidth
+        )
+    }
+
+    private func buildSymbolBadge(
+        imageView: UIImageView,
+        tint: UIColor = Asset.Colors.brend.color,
+        pointSize: CGFloat = Badge.pointSize,
+        weight: UIFont.Weight = .black,
+        padding: CGFloat = Badge.padding,
+        bgColor: UIColor = .systemBackground,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat = 0
+    ) -> UIView {
         imageView.contentMode = UIView.ContentMode.center
         imageView.translatesAutoresizingMaskIntoConstraints = false
 

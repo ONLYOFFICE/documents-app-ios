@@ -532,6 +532,7 @@ enum OnlyofficeAPI {
 
             static func sendEditorNotify(file: ASCFile) -> Endpoint<OnlyofficeResponseBase> {
                 return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.sendEditorNotify, file.id), .post)
+            }
 
             static func getInvitationSettings() -> Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<ASCInvitationSettingsResponceModel>>.make(String(format: Path.invitationSettings), .get)

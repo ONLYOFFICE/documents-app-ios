@@ -7827,6 +7827,9 @@
         }
       }
     },
+    "All recent files opened in the portal end up in this section. Files are stored for 90 days." : {
+
+    },
     "All shared links in this room will become active, and its contents will be available to everyone with the link. Do you want to restore the room?" : {
       "localizations" : {
         "ar-SA" : {
@@ -45866,6 +45869,9 @@
         }
       }
     },
+    "No favorites yet" : {
+
+    },
     "No files here yet" : {
       "localizations" : {
         "ar-SA" : {
@@ -46393,6 +46399,9 @@
           }
         }
       }
+    },
+    "No recent files here yet" : {
+
     },
     "No results matching your search could be found. Please try another phrase." : {
       "localizations" : {
@@ -63869,6 +63878,9 @@
           }
         }
       }
+    },
+    "Star files and folders to keep them easily accessible and within reach." : {
+
     },
     "Start" : {
       "extractionState" : "manual",

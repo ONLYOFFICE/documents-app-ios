@@ -170,4 +170,8 @@ extension ASCEditorManager: PresentationEditorViewControllerDelegate {
     func presentationFetchSharedUsers() async -> [[String: Any]] {
         await fetchSharedUsers()
     }
+
+    func presentationEditorNotify(notificationInfo: [String: Any]) {
+        sendEditorNotify(notificationInfo: notificationInfo)
+    }
 }

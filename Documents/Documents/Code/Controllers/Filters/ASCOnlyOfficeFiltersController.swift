@@ -45,7 +45,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                 itemsCount: count
             )
         }
-        
+
         static var favoritesCategoryDefaultState: (Int) -> State = { count in
             State(
                 filterModels: defaultFilterModel,
@@ -73,7 +73,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         ]
 
         static let searchFilterModels = [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)]
-        
+
         static let defaultLocationFilterModels = [
             ASCDocumentsFilterModel(
                 filterName: FiltersName.myDocumentsLocation.localizedString(),
@@ -84,7 +84,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                 filterName: FiltersName.roomsLocation.localizedString(),
                 isSelected: false,
                 filterType: .roomsLocation
-            )
+            ),
         ]
     }
 
@@ -118,7 +118,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     private var isRecentCategory: Bool {
         folder?.rootFolderType == .recent
     }
-    
+
     private var isFavoritesCategory: Bool {
         folder?.rootFolderType == .favorites
     }
@@ -127,10 +127,10 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         guard let onlyofficeProvider = provider as? ASCOnlyofficeProvider else { return false }
         let isServerVersionCorrect = onlyofficeProvider.apiClient.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "12.0.1") == true
         return !isRecentCategory
-        && !isFavoritesCategory
-        && isServerVersionCorrect
+            && !isFavoritesCategory
+            && isServerVersionCorrect
     }
-    
+
     private var allowLocationFilter: Bool {
         return isRecentCategory || isFavoritesCategory
     }
@@ -226,7 +226,6 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                 {
                     params["userIdOrGroupId"] = id
                 }
-                
             case .locationFilters:
                 if let model = state.locationFilterModels.first(where: { $0.isSelected }) {
                     params["location"] = model.filterType.filterValue
@@ -242,7 +241,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         let authorFilterSection = FiltersContainer(sectionName: FiltersSection.author.localizedString(), elements: tempState.authorsModels)
         let searchFilterSection = allowSearchFilter ? FiltersContainer(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels) : nil
         let locationFilterModels = allowLocationFilter ? FiltersContainer(sectionName: FiltersSection.location.localizedString(), elements: tempState.locationFilterModels) : nil
-        
+
         let viewModel = builder.buildViewModel(
             state: currentLoading ? .loading : .normal,
             filtersContainers: [

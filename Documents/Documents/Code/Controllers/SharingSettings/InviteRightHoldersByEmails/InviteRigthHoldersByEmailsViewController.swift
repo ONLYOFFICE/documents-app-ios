@@ -143,7 +143,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
         let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGuestureRecognize))
         tagsView.addGestureRecognizer(touchGestureRecognizer)
-        
+
         addObservers()
         setupHideKeyboardGesture()
     }

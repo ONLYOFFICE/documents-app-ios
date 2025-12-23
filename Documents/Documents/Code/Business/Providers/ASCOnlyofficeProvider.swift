@@ -470,7 +470,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
-    
+
     func fetchFolder(id: String) async -> ASCFolder? {
         try? await OnlyofficeApiClient.request(
             OnlyofficeAPI.Endpoints.Folders.info(folderId: id)

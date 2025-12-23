@@ -1039,7 +1039,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     "text": firstLoadSearchValue,
                 ]
             }
-            
+
             if searchController.isActive, let searchValue = searchValue {
                 params["search"] = [
                     "text": searchValue,
@@ -1520,7 +1520,6 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
     // MARK: - Entity actions
 
     func openFolder(folder: ASCFolder, searchFilter: String? = nil) {
-        
         let transitionToFolderCompletion: (ASCFolder?) -> Void = { [weak navigationController, provider] folder in
             guard let folder else { return }
             let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
@@ -2125,7 +2124,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
         present(vc, animated: true, completion: nil)
     }
-    
+
     func openLocation(file: ASCFile) {
         Task {
             guard let folderId = file.folderId,
@@ -2134,7 +2133,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             openFolder(folder: folder, searchFilter: file.title)
         }
     }
-    
+
     private func setupSearchFilter(text: String) {
         searchController.isActive = true
         searchController.searchBar.text = text
@@ -3763,7 +3762,7 @@ extension ASCDocumentsViewController: UISearchResultsUpdating {
                 self?.sendSearchRequest()
             }
             searchTask = task
-            
+
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
         }
     }

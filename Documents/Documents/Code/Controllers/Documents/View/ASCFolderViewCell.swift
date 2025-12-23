@@ -627,13 +627,13 @@ extension ASCFolderViewCell {
         authorLabel.text = [
             roomTypeDescription,
             folder.createdBy?.displayName,
-            folder.originRoomTitle
+            folder.originRoomTitle,
         ]
-            .compactMap {
-                guard let str = $0?.trimmed.truncated(toLength: 25), !str.isEmpty else { return nil }
-                return str
-            }
-            .joined(separator: " • ")
+        .compactMap {
+            guard let str = $0?.trimmed.truncated(toLength: 25), !str.isEmpty else { return nil }
+            return str
+        }
+        .joined(separator: " • ")
 
         if authorLabel.text?.isEmpty == true {
             return nil

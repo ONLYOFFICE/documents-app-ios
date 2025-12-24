@@ -337,7 +337,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
             collectionView.anchor(
                 top: view.topAnchor,
                 leading: view.safeAreaLayoutGuide.leadingAnchor,
-                bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                bottom: view.bottomAnchor,
                 trailing: view.safeAreaLayoutGuide.trailingAnchor
             )
         } else {

@@ -75,13 +75,24 @@ extension CurrentFolderMenuProtocol {
         sortType: ASCDocumentSortType,
         sortAscending: Bool
     ) -> UIAction {
-        UIAction(
-            title: sort.type.description,
-            image: .sortDirectionIcon(isActive: sort.active, sortAscending: sortAscending),
-            state: sort.active ? .on : .off
-        ) { _ in
-            let sortInfo = Self.buildSortInfo(sortState: sort, sortType: sortType, sortAscending: sortAscending)
-            UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+        if #available(iOS 26.0, *) {
+            UIAction(
+                title: sort.type.description,
+                subtitle: sort.active ? sort.type.subtitle(for: sortAscending) : nil,
+                state: sort.active ? .on : .off
+            ) { _ in
+                let sortInfo = Self.buildSortInfo(sortState: sort, sortType: sortType, sortAscending: sortAscending)
+                UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+            }
+        } else {
+            UIAction(
+                title: sort.type.description,
+                image: .sortDirectionIcon(isActive: sort.active, sortAscending: sortAscending),
+                state: sort.active ? .on : .off
+            ) { _ in
+                let sortInfo = Self.buildSortInfo(sortState: sort, sortType: sortType, sortAscending: sortAscending)
+                UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+            }
         }
     }
 
@@ -91,13 +102,24 @@ extension CurrentFolderMenuProtocol {
         sortAscending: Bool,
         folder: ASCFolder
     ) -> UIAction {
-        UIAction(
-            title: sort.type.description,
-            image: .sortDirectionIcon(isActive: sort.active, sortAscending: sortAscending),
-            state: sort.active ? .on : .off
-        ) { _ in
-            let sortInfo = Self.buildSortInfo(sortState: sort, sortType: sortType, sortAscending: sortAscending)
-            Self.setSortInfoOnRootFolderType(folder: folder, sortInfo: sortInfo)
+        if #available(iOS 26.0, *) {
+            UIAction(
+                title: sort.type.description,
+                subtitle: sort.active ? sort.type.subtitle(for: sortAscending) : nil,
+                state: sort.active ? .on : .off
+            ) { _ in
+                let sortInfo = Self.buildSortInfo(sortState: sort, sortType: sortType, sortAscending: sortAscending)
+                Self.setSortInfoOnRootFolderType(folder: folder, sortInfo: sortInfo)
+            }
+        } else {
+            UIAction(
+                title: sort.type.description,
+                image: .sortDirectionIcon(isActive: sort.active, sortAscending: sortAscending),
+                state: sort.active ? .on : .off
+            ) { _ in
+                let sortInfo = Self.buildSortInfo(sortState: sort, sortType: sortType, sortAscending: sortAscending)
+                Self.setSortInfoOnRootFolderType(folder: folder, sortInfo: sortInfo)
+            }
         }
     }
 }

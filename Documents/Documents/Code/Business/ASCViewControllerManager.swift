@@ -565,7 +565,7 @@ class ASCViewControllerManager {
 
             // Read full folder info
             requestGroup.enter()
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folder: folder)) { response, error in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folderId: folder.id)) { response, error in
                 defer { requestGroup.leave() }
 
                 if let resultFolder = response?.result {

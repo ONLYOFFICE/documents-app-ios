@@ -116,7 +116,7 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Copy shared link", comment: ""),
             image: Asset.Images.link.image
         ) { [unowned self] action in
-            self.copySharedLink(file: file)
+            self.copySharedLink(cell: cell, file: file)
         }
 
         /// Share action
@@ -157,16 +157,16 @@ extension ASCDocumentsViewController {
                 })
         }
 
-//        if actions.contains(.openLocation) {
-//            shareActions.append(
-//                UIAction(
-//                    title: NSLocalizedString("Open location", comment: ""),
-//                    image: Asset.Images.menuOpenLocation.image
-//                ) { [unowned self] _ in
-//
-//                }
-//            )
-//        }
+        if actions.contains(.openLocation) {
+            shareActions.append(
+                UIAction(
+                    title: NSLocalizedString("Open location", comment: ""),
+                    image: Asset.Images.menuOpenLocation.image
+                ) { [unowned self] _ in
+                    openLocation(file: file)
+                }
+            )
+        }
 
         /// Custom filter
 
@@ -303,7 +303,7 @@ extension ASCDocumentsViewController {
             middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -343,7 +343,7 @@ extension ASCDocumentsViewController {
             bottomActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -587,7 +587,7 @@ extension ASCDocumentsViewController {
             title: title,
             image: Asset.Images.link.image
         ) { [unowned self] action in
-            self.copyGeneralLinkToClipboard(room: folder)
+            self.copyGeneralLinkToClipboard(cell: cell, room: folder)
         }
 
         /// Share action
@@ -691,7 +691,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete template", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: [.destructive]
                 ) { [unowned self] action in
                     self.deleteRoomTempateAlert(template: folder) { [weak self] in
@@ -813,7 +813,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: title,
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -827,7 +827,7 @@ extension ASCDocumentsViewController {
             transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: Asset.Images.trash.image,
+                    image: Asset.Images.trash.image.withTintColor(.systemRed),
                     attributes: .destructive
                 ) { [unowned self] action in
                     self.delete(cell: cell)
@@ -865,15 +865,22 @@ extension ASCDocumentsViewController {
         let actions = provider.actions(for: file)
 
         // Restore
-        let restore = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let restore = makeContextualAction(
+            icon: Asset.Images.listMenuRestore.image,
+            title: NSLocalizedString("Restore", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.recover(cell: cell)
             actionPerformed(true)
         }
-        restore.image = swipeLayout(icon: Asset.Images.listMenuRestore.image, text: NSLocalizedString("Restore", comment: "Button title"))
-        restore.backgroundColor = ASCConstants.Colors.grey
 
         // Delete
-        let delete = UIContextualAction(style: .destructive, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let delete = makeContextualAction(
+            icon: Asset.Images.listMenuTrash.image,
+            style: .destructive,
+            title: NSLocalizedString("Delete", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.red
+        ) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
 
             self.deleteIfNeeded(cell: cell, menuButton: cell) { cell, allowDelete in
@@ -884,41 +891,47 @@ extension ASCDocumentsViewController {
 
             actionPerformed(true)
         }
-        delete.image = swipeLayout(icon: Asset.Images.listMenuTrash.image, text: NSLocalizedString("Delete", comment: "Button title"))
-        delete.backgroundColor = ASCConstants.Colors.red
 
         // Download
-        let download = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let download = makeContextualAction(
+            icon: Asset.Images.listMenuDownload.image,
+            title: NSLocalizedString("Download", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.download(cell: cell)
             actionPerformed(true)
         }
-        download.image = swipeLayout(icon: Asset.Images.listMenuDownload.image, text: NSLocalizedString("Download", comment: "Button title"))
-        download.backgroundColor = ASCConstants.Colors.grey
 
         // Rename
-        let rename = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let rename = makeContextualAction(
+            icon: Asset.Images.listMenuRename.image,
+            title: NSLocalizedString("Rename", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.rename(cell: cell)
             actionPerformed(true)
         }
-        rename.image = swipeLayout(icon: Asset.Images.listMenuRename.image, text: NSLocalizedString("Rename", comment: "Button title"))
-        rename.backgroundColor = ASCConstants.Colors.grey
 
         // Copy
-        let copy = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let copy = makeContextualAction(
+            icon: Asset.Images.listMenuCopy.image,
+            title: NSLocalizedString("Copy", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.copy(cell: cell)
             actionPerformed(true)
         }
-        copy.image = swipeLayout(icon: Asset.Images.listMenuCopy.image, text: NSLocalizedString("Copy", comment: "Button title"))
-        copy.backgroundColor = ASCConstants.Colors.grey
 
         // More
-        let more = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let more = makeContextualAction(
+            icon: Asset.Images.listMenuMore.image,
+            title: NSLocalizedString("More", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.lightGrey
+        ) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
             self.more(cell: cell, menuButton: cell)
             actionPerformed(true)
         }
-        more.image = swipeLayout(icon: Asset.Images.listMenuMore.image, text: NSLocalizedString("More", comment: "Button title"))
-        more.backgroundColor = ASCConstants.Colors.lightGrey
 
         var items: [UIContextualAction] = []
 
@@ -946,15 +959,22 @@ extension ASCDocumentsViewController {
         let actions = provider.actions(for: folder)
 
         // Restore
-        let restore = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let restore = makeContextualAction(
+            icon: Asset.Images.listMenuRestore.image,
+            title: NSLocalizedString("Restore", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.recover(cell: cell)
             actionPerformed(true)
         }
-        restore.image = swipeLayout(icon: Asset.Images.listMenuRestore.image, text: NSLocalizedString("Restore", comment: "Button title"))
-        restore.backgroundColor = ASCConstants.Colors.grey
 
         // Delete
-        let delete = UIContextualAction(style: .destructive, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let delete = makeContextualAction(
+            icon: Asset.Images.listMenuTrash.image,
+            style: .destructive,
+            title: NSLocalizedString("Delete", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.red
+        ) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
 
             self.deleteIfNeeded(cell: cell, menuButton: cell) { cell, allowDelete in
@@ -965,51 +985,59 @@ extension ASCDocumentsViewController {
 
             actionPerformed(true)
         }
-        delete.image = swipeLayout(icon: Asset.Images.listMenuTrash.image, text: NSLocalizedString("Delete", comment: "Button title"))
-        delete.backgroundColor = ASCConstants.Colors.red
 
         // Rename
-        let rename = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let rename = makeContextualAction(
+            icon: Asset.Images.listMenuRename.image,
+            title: NSLocalizedString("Rename", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.rename(cell: cell)
             actionPerformed(true)
         }
-        rename.image = swipeLayout(icon: Asset.Images.listMenuRename.image, text: NSLocalizedString("Rename", comment: "Button title"))
-        rename.backgroundColor = ASCConstants.Colors.grey
 
         // Copy
-        let copy = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let copy = makeContextualAction(
+            icon: Asset.Images.listMenuCopy.image,
+            title: NSLocalizedString("Copy", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] action, sourceView, actionPerformed in
             self.copy(cell: cell)
             actionPerformed(true)
         }
-        copy.image = swipeLayout(icon: Asset.Images.listMenuCopy.image, text: NSLocalizedString("Copy", comment: "Button title"))
-        copy.backgroundColor = ASCConstants.Colors.grey
 
         // More
-        let more = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let more = makeContextualAction(
+            icon: Asset.Images.listMenuMore.image,
+            title: NSLocalizedString("More", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.lightGrey
+        ) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
             self.more(cell: cell, menuButton: cell)
             actionPerformed(true)
         }
-        more.image = swipeLayout(icon: Asset.Images.listMenuMore.image, text: NSLocalizedString("More", comment: "Button title"))
-        more.backgroundColor = ASCConstants.Colors.lightGrey
 
         // Archive
-        let archive = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let archive = makeContextualAction(
+            icon: Asset.Images.categoryArchived.image,
+            title: NSLocalizedString("Archive", comment: "Button title"),
+            backgroundColor: Asset.Colors.brend.color
+        ) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
             self.archive(cell: cell, folder: folder)
             actionPerformed(true)
         }
-        archive.image = swipeLayout(icon: Asset.Images.categoryArchived.image.withTintColor(.white), text: NSLocalizedString("Archive", comment: "Button title"))
-        archive.backgroundColor = Asset.Colors.brend.color
 
         // Info
-        let info = UIContextualAction(style: .normal, title: nil) { [unowned self] action, sourceView, actionPerformed in
+        let info = makeContextualAction(
+            icon: Asset.Images.barInfo.image,
+            title: NSLocalizedString("More", comment: "Button title"),
+            backgroundColor: ASCConstants.Colors.lightGrey
+        ) { [unowned self] action, sourceView, actionPerformed in
             guard view.isUserInteractionEnabled else { return }
             navigator.navigate(to: .sharingLink(entityType: folder.isRoom ? .room(folder) : .folder(folder)))
             actionPerformed(true)
         }
-        info.image = swipeLayout(icon: Asset.Images.barInfo.image.withTintColor(.white), text: NSLocalizedString("Info", comment: "Button title"))
-        info.backgroundColor = ASCConstants.Colors.lighterGrey
 
         var items: [UIContextualAction] = []
 
@@ -1115,17 +1143,17 @@ extension ASCDocumentsViewController {
                 ))
         }
 
-//        if actions.contains(.openLocation) {
-//            actionAlertController.addAction(
-//                UIAlertAction(
-//                    title: NSLocalizedString("Open location", comment: ""),
-//                    style: .default,
-//                    handler: { [unowned self] _ in
-//
-//                    }
-//                )
-//            )
-//        }
+        if actions.contains(.openLocation) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Open location", comment: ""),
+                    style: .default,
+                    handler: { [unowned self] _ in
+                        openLocation(file: file)
+                    }
+                )
+            )
+        }
 
         if actions.contains(.rename) {
             actionAlertController.addAction(
@@ -1455,17 +1483,31 @@ extension ASCDocumentsViewController {
         return actionAlertController
     }
 
-    private func swipeLayout(icon: UIImage, text: String) -> UIImage {
-        let canvasSize = CGSize(width: 60, height: 60)
+    private func swipeMenuImage(icon: UIImage, text: String) -> UIImage {
+        if #available(iOS 26.0, *) {
+            return icon
+        }
+        let canvasSize = ASCCommon.isiOS26
+            ? CGSize(width: 40, height: 40)
+            : CGSize(width: 60, height: 60)
+
+        let imageViewFrame = ASCCommon.isiOS26
+            ? CGRect(origin: .zero, size: canvasSize)
+            : CGRect(x: 0, y: 8, width: canvasSize.width, height: canvasSize.height * 0.4)
+
+        let labelFrame = ASCCommon.isiOS26
+            ? CGRect(x: 0, y: canvasSize.height - 15, width: canvasSize.width, height: canvasSize.height)
+            : CGRect(x: 0, y: canvasSize.height * 0.5 + 5, width: canvasSize.width, height: canvasSize.height * 0.5 - 5)
+
         let img = icon.withTintColor(.white, renderingMode: .alwaysOriginal)
 
-        let imageView = UIImageView(frame: .init(x: 0, y: 8, width: canvasSize.width, height: canvasSize.height * 0.4))
+        let imageView = UIImageView(frame: imageViewFrame)
         imageView.image = img
         imageView.contentMode = .center
 
-        let label = UILabel(frame: .init(x: 0, y: canvasSize.height * 0.5 + 5, width: canvasSize.width, height: canvasSize.height * 0.5 - 5))
+        let label = UILabel(frame: labelFrame)
         label.font = UIFont.preferredFont(forTextStyle: .caption1).bold()
-        label.textColor = .white
+        label.textColor = ASCCommon.isiOS26 ? .secondaryLabel : .white
         label.numberOfLines = 2
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
@@ -1481,5 +1523,18 @@ extension ASCDocumentsViewController {
             tempView.layer.render(in: rendererContext.cgContext)
         }
         return image
+    }
+
+    private func makeContextualAction(
+        icon: UIImage,
+        style: UIContextualAction.Style = .normal,
+        title: String?,
+        backgroundColor: UIColor?,
+        handler: @escaping UIContextualAction.Handler
+    ) -> UIContextualAction {
+        let contextualAction = UIContextualAction(style: style, title: ASCCommon.isiOS26 ? title : nil, handler: handler)
+        contextualAction.image = swipeMenuImage(icon: icon.withTintColor(.white), text: ASCCommon.isiOS26 ? "" : title ?? "")
+        contextualAction.backgroundColor = backgroundColor
+        return contextualAction
     }
 }

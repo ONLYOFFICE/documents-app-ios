@@ -488,7 +488,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1169</string>
+	<string>1175</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>
@@ -601,8 +601,6 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
-	<key>UIDesignRequiresCompatibility</key>
-	<true/>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

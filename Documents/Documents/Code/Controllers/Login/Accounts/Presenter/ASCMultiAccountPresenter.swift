@@ -14,7 +14,7 @@ protocol ASCMultiAccountPresenterProtocol: AnyObject {
     var view: ASCMultiAccountViewProtocol? { get }
     func setup()
     func deleteFromDevice(account: ASCAccount?, completion: () -> Void)
-    func renewal(by account: ASCAccount, animated: Bool)
+    func login(by account: ASCAccount, completion: @escaping () -> Void)
     func createPortal(animated: Bool)
 }
 

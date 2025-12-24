@@ -80,9 +80,9 @@ final class TopBannerView: UICollectionReusableView {
     private func setupStackViewConstraint() {
         stackView.anchor(
             top: topAnchor,
-            leading: leadingAnchor,
+            leading: safeAreaLayoutGuide.leadingAnchor,
             bottom: bottomAnchor,
-            trailing: trailingAnchor,
+            trailing: safeAreaLayoutGuide.trailingAnchor,
             padding: UIEdgeInsets(top: .zero, left: .horizontalPadding, bottom: .zero, right: .horizontalPadding)
         )
     }

@@ -34,6 +34,8 @@ class ASCDocumentsEmptyView: UIView {
         case networkError
         case paymentRequired
         case docspaceArchive
+        case favorites
+        case recent
         case recentlyAccessibleViaLink
         case formFillingRoomSubfolder
         case roomTemplates
@@ -204,6 +206,16 @@ class ASCDocumentsEmptyView: UIView {
             imageView?.image = Asset.Images.noFindingArchive.image
             titleLabel.text = NSLocalizedString("No archived rooms here yet", comment: "")
             subtitleLabel.text = NSLocalizedString("You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here.", comment: "")
+            actionButton?.removeFromSuperview()
+        case .favorites:
+            imageView?.image = Asset.Images.emptyFavorites.image
+            titleLabel?.text = NSLocalizedString("No favorites yet", comment: "")
+            subtitleLabel?.text = NSLocalizedString("Star files and folders to keep them easily accessible and within reach.", comment: "")
+            actionButton?.removeFromSuperview()
+        case .recent:
+            imageView?.image = Asset.Images.emptyRecently.image
+            titleLabel?.text = NSLocalizedString("No recent files here yet", comment: "")
+            subtitleLabel?.text = NSLocalizedString("All recent files opened in the portal end up in this section. Files are stored for 90 days.", comment: "")
             actionButton?.removeFromSuperview()
         case .recentlyAccessibleViaLink:
             imageView?.image = Asset.Images.emptyFolder.image

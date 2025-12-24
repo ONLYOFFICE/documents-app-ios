@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6sx-I7-SXg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6sx-I7-SXg">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,11 +12,11 @@
         <!--Settings-->
         <scene sceneID="DVq-zQ-hml">
             <objects>
-                <navigationController id="6sx-I7-SXg" customClass="ASCBaseNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="6sx-I7-SXg" customClass="ASCBaseNavigationController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="tab-settings" selectedImage="tab-settings" id="MZJ-3d-460"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="AgV-sO-gMo">
-                        <rect key="frame" x="0.0" y="94" width="390" height="96"/>
+                        <rect key="frame" x="0.0" y="94" width="390" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -30,7 +30,7 @@
         <!--Settings-->
         <scene sceneID="5bU-IN-0Md">
             <objects>
-                <tableViewController id="FE6-xk-Oxs" customClass="ASCSettingsViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FE6-xk-Oxs" customClass="ASCSettingsViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Pva-VI-rrb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--About-->
         <scene sceneID="FEg-QA-S8d">
             <objects>
-                <tableViewController storyboardIdentifier="ASCAboutViewController" hidesBottomBarWhenPushed="YES" id="ClM-GS-qV6" customClass="ASCAboutViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCAboutViewController" hidesBottomBarWhenPushed="YES" id="ClM-GS-qV6" customClass="ASCAboutViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="Goy-pY-xCj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,6 +199,7 @@
                     <navigationItem key="navigationItem" title="About" id="0DJ-uV-iju"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="backButtonLegacy" destination="c5N-oG-LuX" id="knV-rj-7D9"/>
                         <outlet property="copyrightsLabel" destination="lEo-YM-MnB" id="ACY-dQ-TKs"/>
                         <outlet property="logoImageView" destination="Gn0-uI-Qcf" id="tCB-fB-Xr5"/>
                         <outlet property="privacyPolicyCell" destination="ocW-UF-TG6" id="R0X-LK-opo"/>
@@ -215,7 +216,7 @@
         <!--Passcode Lock-->
         <scene sceneID="zKy-Wb-soJ">
             <objects>
-                <tableViewController storyboardIdentifier="ASCPasscodeLockViewController" hidesBottomBarWhenPushed="YES" id="HD4-gx-psy" customClass="ASCPasscodeLockViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ASCPasscodeLockViewController" hidesBottomBarWhenPushed="YES" id="HD4-gx-psy" customClass="ASCPasscodeLockViewController" customModule="Documents_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="EW4-BM-Y6b">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,7 +278,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwo-GN-XCz">
-                                                    <rect key="frame" x="293" y="10.666666666666664" width="51" height="31"/>
+                                                    <rect key="frame" x="281" y="12" width="63" height="28"/>
                                                     <color key="onTintColor" name="brend"/>
                                                     <connections>
                                                         <action selector="onAllowTouchID:" destination="HD4-gx-psy" eventType="valueChanged" id="A8V-WL-S93"/>
@@ -328,7 +329,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <image name="nav-back" width="13" height="21"/>
         <image name="tab-settings" width="30" height="28"/>
         <namedColor name="brend">
-            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.17647058823529413" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

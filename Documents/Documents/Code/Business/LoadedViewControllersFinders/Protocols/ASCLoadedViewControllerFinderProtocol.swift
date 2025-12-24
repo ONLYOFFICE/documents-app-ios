@@ -15,6 +15,6 @@ protocol ASCLoadedViewControllerFinderProtocol {
 
 extension ASCLoadedViewControllerFinderProtocol {
     func getRootViewController() -> UIViewController? {
-        UIApplication.shared.windows.first?.rootViewController
+        UIWindow.keyWindow?.rootViewController
     }
 }

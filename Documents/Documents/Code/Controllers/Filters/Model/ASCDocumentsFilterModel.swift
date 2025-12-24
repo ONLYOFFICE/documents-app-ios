@@ -120,6 +120,10 @@ enum ApiFilterType {
     case googleDrive
     case oneDrive
     case box
+    /// location
+    case myDocumentsLocation
+    case sharedWithMeLocation
+    case roomsLocation
 
     var rawValue: String {
         switch self {
@@ -181,6 +185,12 @@ enum ApiFilterType {
             return "googleDrive"
         case .box:
             return "box"
+        case .myDocumentsLocation:
+            return "2"
+        case .sharedWithMeLocation:
+            return "3"
+        case .roomsLocation:
+            return "1"
         }
     }
 
@@ -241,6 +251,12 @@ enum ApiFilterType {
         case .oneDrive:
             return "5"
         case .box:
+            return "1"
+        case .myDocumentsLocation:
+            return "2"
+        case .sharedWithMeLocation:
+            return "3"
+        case .roomsLocation:
             return "1"
         }
     }
@@ -355,6 +371,7 @@ enum FiltersSection: String, CaseIterable {
     case member
     case tags
     case thirdPartyResource
+    case location
 
     func localizedString() -> String {
         switch self {
@@ -370,6 +387,8 @@ enum FiltersSection: String, CaseIterable {
             return NSLocalizedString("Tags", comment: "")
         case .thirdPartyResource:
             return NSLocalizedString("Third party resource", comment: "")
+        case .location:
+            return NSLocalizedString("Location", comment: "")
         }
     }
 }
@@ -402,6 +421,9 @@ enum FiltersName: String, CaseIterable {
     case googleDrive
     case oneDrive
     case box
+    case myDocumentsLocation
+    case sharedWithMeLocation
+    case roomsLocation
 
     func localizedString() -> String {
         switch self {
@@ -455,6 +477,12 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Form Filling", comment: "")
         case .virtualDataRoom:
             return NSLocalizedString("Virtual data room", comment: "Rooms filter")
+        case .myDocumentsLocation:
+            return NSLocalizedString("My documents", comment: "")
+        case .sharedWithMeLocation:
+            return NSLocalizedString("Shared with me", comment: "")
+        case .roomsLocation:
+            return NSLocalizedString("Room", comment: "")
         }
     }
 }

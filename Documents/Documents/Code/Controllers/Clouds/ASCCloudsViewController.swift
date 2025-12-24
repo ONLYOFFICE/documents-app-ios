@@ -74,7 +74,7 @@ class ASCCloudsViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .always
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
-            documentsNC.hasShadow = true
+            documentsNC.hasShadow = !ASCCommon.isiOS26
             documentsNC.setToolbarHidden(true, animated: false)
         }
 

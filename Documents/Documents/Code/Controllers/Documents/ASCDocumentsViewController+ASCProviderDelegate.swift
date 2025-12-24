@@ -30,6 +30,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             }
 
             if status == .end || status == .error || status == .silentError {
+                openingAlert.progress = 1
                 openingAlert.hide()
 
                 if status == .error {

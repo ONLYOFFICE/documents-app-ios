@@ -188,7 +188,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                      .googleDrive,
                      .oneDrive,
                      .box,
-                     .tag:
+                     .tag,
+                     .myDocumentsLocation,
+                     .sharedWithMeLocation,
+                     .roomsLocation:
                     return list
                 }
             }(commonList)

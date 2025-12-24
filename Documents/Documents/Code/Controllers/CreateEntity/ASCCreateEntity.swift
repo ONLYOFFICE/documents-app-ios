@@ -38,7 +38,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
            provider.apiClient.serverVersion?.docSpace != nil,
            provider.folder?.isRoomListFolder == true
         {
-            showCreateRoomController(provider: provider, viewController: viewController)
+            showCreateRoomController(provider: provider, viewController: viewController, sender: sender)
             return
         }
 
@@ -123,15 +123,27 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                     createEntityVC.preferredContentSize = CGSize(width: 375, height: 420 - (allowClouds ? 0 : 50) + (allowScanDocument ? 50 : 0))
                 }
                 createEntityVC.popoverPresentationController?.backgroundColor = .systemGroupedBackground
-                createEntityVC.popoverPresentationController?.sourceView = senderView
-                createEntityVC.popoverPresentationController?.sourceRect = senderView.bounds
+
+                if #available(iOS 26.0, *) {
+                    if let barButton = sender as? UIBarButtonItem {
+                        createEntityVC.popoverPresentationController?.barButtonItem = barButton
+                    } else {
+                        createEntityVC.popoverPresentationController?.sourceView = senderView
+                        createEntityVC.preferredTransition = .zoom { context in
+                            senderView
+                        }
+                    }
+                } else {
+                    createEntityVC.popoverPresentationController?.sourceView = senderView
+                    createEntityVC.popoverPresentationController?.sourceRect = senderView.bounds
+                }
             }
 
-            viewController.present(createEntityVC, animated: true, completion: nil)
+            viewController.present(createEntityVC, animated: true)
         }
     }
 
-    private func showCreateRoomController(provider: ASCOnlyofficeProvider, viewController: ASCDocumentsViewController) {
+    private func showCreateRoomController(provider: ASCOnlyofficeProvider, viewController: ASCDocumentsViewController, sender: Any? = nil) {
         let vc = CreateRoomRouteViewViewController(onAction: { [weak viewController] room in
             viewController?.add(entity: room, open: true)
         })
@@ -139,6 +151,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         if UIDevice.pad {
             vc.isModalInPresentation = true
             vc.modalPresentationStyle = .formSheet
+
+            if ASCCommon.isiOS26, let barButton = sender as? UIBarButtonItem {
+                vc.isModalInPresentation = false
+                vc.modalPresentationStyle = .popover
+                vc.preferredContentSize = CGSize(width: 575, height: 680)
+                vc.popoverPresentationController?.backgroundColor = .systemGroupedBackground
+                vc.popoverPresentationController?.barButtonItem = barButton
+            }
         }
 
         viewController.present(vc, animated: true, completion: nil)

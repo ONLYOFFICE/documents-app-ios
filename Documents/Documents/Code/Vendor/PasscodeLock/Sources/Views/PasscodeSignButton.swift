@@ -57,14 +57,18 @@
         fileprivate var defaultBackgroundColor = UIColor.clear
 
         fileprivate func setupView() {
-            layer.borderWidth = 1
-            layer.cornerRadius = borderRadius
-            layer.borderColor = borderColor.cgColor
+            if #available(iOS 26.0, *) {
+                configuration = .glass()
+            } else {
+                layer.borderWidth = 1
+                layer.cornerRadius = borderRadius
+                layer.borderColor = borderColor.cgColor
 
-            setTitleColor(PasscodeLockStyles.SignButtonStyles.textColor, for: .normal)
+                setTitleColor(PasscodeLockStyles.SignButtonStyles.textColor, for: .normal)
 
-            if let backgroundColor = backgroundColor {
-                defaultBackgroundColor = backgroundColor
+                if let backgroundColor = backgroundColor {
+                    defaultBackgroundColor = backgroundColor
+                }
             }
         }
 

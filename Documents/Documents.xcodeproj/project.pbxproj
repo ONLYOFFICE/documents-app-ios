@@ -361,7 +361,6 @@
 		FC4D0A2D24950503001EF1B5 /* ASCDebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A2C24950503001EF1B5 /* ASCDebugManager.swift */; };
 		FC54E804271F04BE00195CFD /* ASCCreatePortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54E803271F04BE00195CFD /* ASCCreatePortal.swift */; };
 		FC56B5C620C017C300557C1F /* ASCStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C520C017C300557C1F /* ASCStyles.swift */; };
-		FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C520C017C300557C1F /* ASCStyles.swift */; };
 		FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */; };
 		FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */; };
 		FC582BF82E549B2200DC3D84 /* ASCSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC582BF72E549B2200DC3D84 /* ASCSceneDelegate.swift */; };
@@ -4582,7 +4581,6 @@
 				1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */,
 				FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */,
 				FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */,
-				FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */,
 				FC98A53329A4D6CC003A3A8D /* ASCLogIntercepter.swift in Sources */,
 				FC5C45122AEB8A4200DEE5ED /* ASCConstants.swift in Sources */,

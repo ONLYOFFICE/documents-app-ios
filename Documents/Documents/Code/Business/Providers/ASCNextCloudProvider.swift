@@ -46,6 +46,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
 
     private var entityExistenceChecker: ASCEntityExistenceChecker?
     private var entityUniqNameFinder: ASCUniqNameFinder?
+    private var authBackend: String?
 
     // MARK: - Lifecycle Methods
 
@@ -55,7 +56,9 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     }
 
     init(baseURL: URL, credential: URLCredential, userData: NextcloudUserData) {
-        let isLDAP = userData.backend == "LDAP"
+        authBackend = userData.backend
+
+        let isLDAP = authBackend == "LDAP"
         let credentialUsername = credential.user ?? ""
 
         var providerUrl = baseURL
@@ -105,6 +108,39 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         apiClient?.cancelAll()
     }
 
+    override func serialize() -> String? {
+        var info: [String: Any] = [
+            "type": type.rawValue,
+        ]
+
+        if let baseUrl = provider?.baseURL?.absoluteString {
+            info += ["baseUrl": baseUrl.hasSuffix("/") ? baseUrl.dropLast() : baseUrl]
+        }
+
+        if let password = provider?.credential?.password {
+            info += ["password": password]
+        }
+
+        if let authBackend = authBackend {
+            info += ["authBackend": authBackend]
+        }
+
+        if let user = user {
+            info += ["user": user.toJSON()]
+        } else {
+            let user = ASCUser()
+            user.userId = provider?.credential?.user
+            user.displayName = user.userId
+            info += ["user": user.toJSON()]
+        }
+
+        if let id = id {
+            info += ["id": id]
+        }
+
+        return info.jsonString()
+    }
+
     override func deserialize(_ jsonString: String) {
         if let json = jsonString.toDictionary() {
             if let userJson = json["user"] as? [String: Any] {
@@ -114,11 +150,16 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
             if
                 let baseUrl = URL(string: json["baseUrl"] as? String ?? ""),
                 let password = json["password"] as? String,
+                let authBackend = json["authBackend"] as? String,
                 let user = user,
                 let userId = user.userId,
                 let userDisplayName = user.displayName
             {
-                let credential = URLCredential(user: userDisplayName, password: password, persistence: .permanent)
+                self.authBackend = authBackend
+                let isLDAP = (authBackend == "LDAP")
+
+                let credentialUser = isLDAP ? userDisplayName : userId
+                let credential = URLCredential(user: credentialUser, password: password, persistence: .permanent)
                 var providerUrl = baseUrl
                 let urlPath = String(format: endpointPath, userId)
 

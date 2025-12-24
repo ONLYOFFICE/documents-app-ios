@@ -236,7 +236,7 @@ class ASCViewControllerManager {
         }
     }
 
-    private func routeOpenLocalFile(info: [String: Any], needImport: Bool = true) {
+    private func routeOpenLocalFile(info: [String: Any], needImport: Bool = false) {
         guard
             let url = info["url"] as? URL,
             url.isFileURL,
@@ -263,7 +263,8 @@ class ASCViewControllerManager {
                 )
                 return
             }
-
+            
+            //MARK: Don't forget adapt
             if needImport {
                 /// Navigate and open
                 ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
@@ -309,8 +310,12 @@ class ASCViewControllerManager {
                     }
                 }
             } else {
+                let url = url.resolvingSymlinksInPath().standardizedFileURL
+                let successfulSecurityScopedResourceAccess = url.startAccessingSecurityScopedResource()
+                print("file URL", url)
+                print("scope is: ", successfulSecurityScopedResourceAccess)
+
                 guard
-                    let url = URL(string: url.absoluteString.replacingOccurrences(of: "file:///private/var/", with: "file:///var/", options: .anchored)),
                     let path = Path(url: url)
                 else { return }
 

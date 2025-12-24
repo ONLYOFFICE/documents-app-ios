@@ -605,6 +605,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 file.displayContentLength = String.fileSizeToString(with: destination.fileSize ?? 0)
                 file.pureContentLength = Int(destination.fileSize ?? 0)
 
+                print("downloadUrlString: ", downloadUrlString)
+                print("destination", destination)
                 handler?(.end, 1, file, nil, &cancel)
             } else {
                 handler?(.progress, Float(progress), nil, nil, &cancel)
@@ -723,6 +725,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     if let file = result as? ASCFile {
                         handler?(.end, 1, file, nil, &cancel)
                         NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+
+                        do {
+                            let url = try path.asURL().resolvingSymlinksInPath().standardizedFileURL
+                            url.stopAccessingSecurityScopedResource()
+                            print("stop access to path")
+                        } catch {
+                            print("path.asURL() failed:", error)
+                        }
                     } else {
                         handler?(.progress, Float(progress), nil, nil, &cancel)
                     }

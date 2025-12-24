@@ -236,6 +236,10 @@ enum OnlyofficeAPI {
             static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<SharingInfoLinkResponseModel>> {
                 return Endpoint<OnlyofficeResponseCodable<SharingInfoLinkResponseModel>>.make(String(format: Path.folderLinks, folder.id), .put)
             }
+            
+            static func copyLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<SharingInfoLinkResponseModel>> {
+                return Endpoint<OnlyofficeResponseCodable<SharingInfoLinkResponseModel>>.make(String(format: Path.folderLink, folder.id), .post)
+            }
         }
 
         // MARK: Tags

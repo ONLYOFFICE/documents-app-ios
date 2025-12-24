@@ -2539,20 +2539,43 @@ extension ASCOnlyofficeProvider {
         let urlStr = String(format: path, baseUrl, file.id)
         return urlStr
     }
-
+    
     func generalLink(forFolder folder: ASCFolder) async -> Result<String, Error> {
         if folder.isRoom {
             let result = await generalLink(forRoom: folder)
             return result
+        } else {
+            do {
+                let link = try await copyLink(folder: folder)
+                return .success(link)
+            } catch {
+                return .failure(error)
+            }
         }
 
-        if folder.isRoomListSubfolder, let link = generalLink(forRoomSubfolder: folder) {
-            return .success(link)
+    }
+ 
+    private func copyLink(folder: ASCFolder) async throws -> String {
+        let requestModel = CreateAndCopyLinkRequestModel(
+            access: ASCShareAccess.read.rawValue,
+            primary: false,
+            expirationDate: nil,
+            isInternal: false
+        )
+
+        let response = try await apiClient.request(
+            endpoint: OnlyofficeAPI.Endpoints.Folders.copyLink(folder: folder),
+            parameters: requestModel.dictionary
+        )
+
+        guard let link = response.result?.linkInfo.shareLink, !link.isEmpty else {
+            throw NetworkingError.invalidData
         }
 
-        return .failure(NetworkingError.invalidUrl)
+        return link
     }
 
+    
     private func generalLink(forRoom room: ASCFolder) async -> Result<String, Error> {
         await withCheckedContinuation { continuation in
             guard room.roomType != .colobaration && room.roomType != .virtualData && room.rootFolderType != .roomTemplates else {
@@ -2589,15 +2612,6 @@ extension ASCOnlyofficeProvider {
                 )
             }
         }
-    }
-
-    private func generalLink(forRoomSubfolder folder: ASCFolder) -> String? {
-        guard folder.isRoomListSubfolder,
-              let baseUrl = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
-        else { return nil }
-        let path = "%@/rooms/shared/%@/filter?folder=%@"
-        let urlStr = String(format: path, baseUrl, folder.id, folder.id)
-        return urlStr
     }
 
     private func progressUpdates(for operationId: String, interval: UInt64 = NSEC_PER_SEC) -> AsyncThrowingStream<Int, Error> {

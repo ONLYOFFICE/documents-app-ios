@@ -52,6 +52,8 @@ class ASCLoadedDocumentViewControllerByProviderAndFolderFinder: ASCLoadedViewCon
             let vc = queue.removeFirst()
             if let nc = vc as? ASCDocumentsNavigationController {
                 values.append(nc)
+            } else if let sc = vc as? UISplitViewController {
+                queue.append(contentsOf: sc.viewControllers)
             } else {
                 queue.append(contentsOf: vc.children)
             }

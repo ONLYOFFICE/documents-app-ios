@@ -116,7 +116,7 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Copy shared link", comment: ""),
             image: Asset.Images.link.image
         ) { [unowned self] action in
-            self.copySharedLink(file: file)
+            self.copySharedLink(cell: cell, file: file)
         }
 
         /// Share action
@@ -587,7 +587,7 @@ extension ASCDocumentsViewController {
             title: title,
             image: Asset.Images.link.image
         ) { [unowned self] action in
-            self.copyGeneralLinkToClipboard(room: folder)
+            self.copyGeneralLinkToClipboard(cell: cell, room: folder)
         }
 
         /// Share action

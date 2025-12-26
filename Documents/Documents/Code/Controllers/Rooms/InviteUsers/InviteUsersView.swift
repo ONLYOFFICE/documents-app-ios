@@ -103,7 +103,7 @@ struct InviteUsersView: View {
     private var inviteByEmailCell: some View {
         if viewModel.allowInvitingGuests {
             HStack {
-                Text("Invite guests by email")
+                Text("Invite people by email")
                 Spacer()
                 ChevronRightView()
             }

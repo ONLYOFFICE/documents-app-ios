@@ -638,7 +638,7 @@ final class ASCFileViewCell: UICollectionViewCell & ASCEntityViewCellProtocol {
         }
         let createdByName = file.createdBy?.displayName
         authorLabel.text = [createdByName, file.originRoomTitle].compactMap {
-            guard let str = $0?.trimmed, !str.isEmpty else { return nil }
+            guard let str = $0?.trimmed.truncated(toLength: 25), !str.isEmpty else { return nil }
             return str
         }
         .joined(separator: " • ")

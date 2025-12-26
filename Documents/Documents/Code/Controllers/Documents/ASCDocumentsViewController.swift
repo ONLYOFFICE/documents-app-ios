@@ -2424,7 +2424,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         }
     }
 
-    func copySharedLink(file: ASCFile) {
+    func copySharedLink(cell: UICollectionViewCell, file: ASCFile) {
         Task { @MainActor in
             let hud = MBProgressHUD.showTopMost()
             let successMessage = file.customFilterEnabled
@@ -2446,6 +2446,11 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                 }
                 UIPasteboard.general.string = link
                 hud?.setState(result: .success(successMessage))
+                if let indexPath = self.collectionView.indexPath(for: cell) {
+                    file.shared = true
+                    self.provider?.items[indexPath.row] = file
+                    self.collectionView.reloadItems(at: [indexPath])
+                }
             } catch {
                 hud?.setState(result: .failure(error.localizedDescription))
             }
@@ -3300,7 +3305,7 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
         })
     }
 
-    func copyGeneralLinkToClipboard(room: ASCFolder) {
+    func copyGeneralLinkToClipboard(cell: UICollectionViewCell? = nil, room: ASCFolder) {
         if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
             let hud = MBProgressHUD.showTopMost()
             Task {
@@ -3311,6 +3316,13 @@ class ASCDocumentsViewController: ASCBaseViewController, UIGestureRecognizerDele
                     case let .success(link):
                         UIPasteboard.general.string = link
                         hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+                        if let cell = cell,
+                           let indexPath = self.collectionView.indexPath(for: cell)
+                        {
+                            folder?.shared = true
+                            self.provider?.items[indexPath.row] = room
+                            self.collectionView.reloadItems(at: [indexPath])
+                        }
 
                     case .failure:
                         hud?.setState(result: .failure(nil))
